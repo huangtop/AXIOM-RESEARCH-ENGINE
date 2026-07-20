@@ -1,0 +1,64 @@
+[
+  {
+    "valuation_book_id": "valuation_book:company:US-NVDA:valuation_scenario:NVDA-2026Q3-BASE:security:NASDAQ-NVDA",
+    "company_id": "company:US-NVDA",
+    "security_id": "security:NASDAQ-NVDA",
+    "scenario_id": "valuation_scenario:NVDA-2026Q3-BASE",
+    "as_of_date": "2026-07-19",
+    "profile_ids": [
+      "valuation_profile:high-growth-ai-semiconductor"
+    ],
+    "entries": [
+      {
+        "model_type": "forward_pe",
+        "applicability": "primary",
+        "priority": 1,
+        "snapshot_id": "valuation_snapshot:company:US-NVDA:valuation_scenario:NVDA-2026Q3-BASE:forward_pe:ab63542c378dc20a",
+        "status": "completed",
+        "fair_value_per_share": 384.939,
+        "upside": 0.898028,
+        "confidence": 0.85,
+        "reason_zh_tw": "市場主要以預估獲利與成長速度衡量。",
+        "warnings": []
+      },
+      {
+        "model_type": "forward_ps",
+        "applicability": "secondary",
+        "priority": 2,
+        "snapshot_id": "valuation_snapshot:company:US-NVDA:valuation_scenario:NVDA-2026Q3-BASE:forward_ps:9dbadd90739c1c86",
+        "status": "completed",
+        "fair_value_per_share": 202.74384,
+        "upside": -0.000326,
+        "confidence": 0.7,
+        "reason_zh_tw": "高速成長期間可用預估營收倍數交叉檢驗。",
+        "warnings": []
+      },
+      {
+        "model_type": "ev_ebitda",
+        "applicability": "secondary",
+        "priority": 3,
+        "snapshot_id": "valuation_snapshot:company:US-NVDA:valuation_scenario:NVDA-2026Q3-BASE:ev_ebitda:8565c573dd720169",
+        "status": "completed",
+        "fair_value_per_share": 202.632397,
+        "upside": -0.000876,
+        "confidence": 0.7,
+        "reason_zh_tw": "用企業價值與營運獲利能力檢查資本結構後的估值。",
+        "warnings": []
+      },
+      {
+        "model_type": "forward_pb",
+        "applicability": "optional",
+        "priority": 4,
+        "snapshot_id": "valuation_snapshot:company:US-NVDA:valuation_scenario:NVDA-2026Q3-BASE:forward_pb:c905563ce47c1417",
+        "status": "completed",
+        "fair_value_per_share": 293.9901,
+        "upside": 0.449584,
+        "confidence": 0.55,
+        "reason_zh_tw": "資產報酬率高時本淨比僅作輔助，不作主要定價依據。",
+        "warnings": []
+      }
+    ],
+    "blended_fair_value": 291.030695,
+    "blended_upside": 0.434992
+  }
+]

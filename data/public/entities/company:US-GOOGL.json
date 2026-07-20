@@ -1,0 +1,168 @@
+{
+  "entity_id": "company:US-GOOGL",
+  "entity_type": "company",
+  "name": "Alphabet Inc.",
+  "name_zh_tw": "Alphabet",
+  "aliases": [
+    "Google",
+    "GOOGL",
+    "GOOG"
+  ],
+  "country": "US",
+  "active": true,
+  "securities": [
+    {
+      "security_id": "security:NASDAQ-GOOGL",
+      "company_id": "company:US-GOOGL",
+      "ticker": "GOOGL",
+      "exchange": "NASDAQ",
+      "currency": "USD",
+      "security_type": "common_stock",
+      "share_class": "Class A",
+      "provider_symbols": {
+        "yahoo": "GOOGL"
+      },
+      "active": true
+    },
+    {
+      "security_id": "security:NASDAQ-GOOG",
+      "company_id": "company:US-GOOGL",
+      "ticker": "GOOG",
+      "exchange": "NASDAQ",
+      "currency": "USD",
+      "security_type": "common_stock",
+      "share_class": "Class C",
+      "provider_symbols": {
+        "yahoo": "GOOG"
+      },
+      "active": true
+    }
+  ],
+  "financial_facts": [
+    {
+      "fact_id": "fact:GOOGL-MARKET-PRICE-2026-07-20",
+      "company_id": "company:US-GOOGL",
+      "metric": "market_price",
+      "value": 185.2,
+      "unit": "USD",
+      "period_type": "instant",
+      "period_end": "2026-07-20",
+      "quality": "reported",
+      "source_ids": [
+        "source:GOOGL-MANUAL-VALUATION-2026Q3"
+      ],
+      "input_fact_ids": []
+    },
+    {
+      "fact_id": "fact:GOOGL-DILUTED-EPS-FY2025",
+      "company_id": "company:US-GOOGL",
+      "metric": "diluted_eps",
+      "value": 8.12,
+      "unit": "USD/share",
+      "period_type": "annual",
+      "period_end": "2025-12-31",
+      "fiscal_year": 2025,
+      "quality": "reported",
+      "source_ids": [
+        "source:GOOGL-MANUAL-VALUATION-2026Q3"
+      ],
+      "input_fact_ids": []
+    }
+  ],
+  "estimates": [
+    {
+      "estimate_id": "estimate:GOOGL-DILUTED-EPS-FY2027-BASE",
+      "company_id": "company:US-GOOGL",
+      "security_id": "security:NASDAQ-GOOGL",
+      "metric": "diluted_eps",
+      "value": 10.5,
+      "unit": "USD/share",
+      "fiscal_period": "FY2027",
+      "estimate_type": "manual",
+      "scenario": "base",
+      "as_of_date": "2026-07-20",
+      "source_ids": [
+        "source:GOOGL-MANUAL-VALUATION-2026Q3"
+      ],
+      "notes": "Seed data for architecture testing; replace with verified current estimate."
+    }
+  ],
+  "valuation_scenarios": [
+    {
+      "scenario_id": "valuation_scenario:GOOGL-2026Q3-BASE",
+      "company_id": "company:US-GOOGL",
+      "research_period": "2026Q3",
+      "revision": 1,
+      "name": "2026 Q3 Base Case",
+      "scenario_type": "base",
+      "as_of_date": "2026-07-20",
+      "description_zh_tw": "用於驗證估值架構的人工基準情境。"
+    }
+  ],
+  "valuation_results": [],
+  "valuation_profiles": [
+    {
+      "profile_id": "valuation_profile:mature-digital-platform",
+      "name": "Mature Digital Platform",
+      "description_zh_tw": "具有穩定獲利、現金流與多元數位平台業務的成熟企業。",
+      "business_characteristics": [
+        "positive_free_cash_flow",
+        "multiple_business_segments",
+        "share_buybacks",
+        "high_capex"
+      ],
+      "models": [
+        {
+          "model_type": "forward_pe",
+          "applicability": "primary",
+          "priority": 1,
+          "enabled": true,
+          "reason_zh_tw": "獲利穩定且市場普遍以預估本益比比較。",
+          "parameter_keys": [],
+          "required_metrics": [],
+          "parameters": {}
+        },
+        {
+          "model_type": "dcf",
+          "applicability": "primary",
+          "priority": 2,
+          "enabled": true,
+          "reason_zh_tw": "自由現金流具可預測性，可建立長期現金流情境。",
+          "parameter_keys": [],
+          "required_metrics": [],
+          "parameters": {}
+        },
+        {
+          "model_type": "sotp",
+          "applicability": "secondary",
+          "priority": 3,
+          "enabled": true,
+          "reason_zh_tw": "廣告、雲端與其他業務可分部評估。",
+          "parameter_keys": [],
+          "required_metrics": [],
+          "parameters": {}
+        },
+        {
+          "model_type": "price_to_sales",
+          "applicability": "disabled",
+          "priority": 4,
+          "enabled": false,
+          "reason_zh_tw": "公司已成熟且獲利穩定，營收倍數不是主要方法。",
+          "parameter_keys": [],
+          "required_metrics": [],
+          "parameters": {}
+        }
+      ]
+    }
+  ],
+  "company_valuation_profile": {
+    "company_id": "company:US-GOOGL",
+    "profile_ids": [
+      "valuation_profile:mature-digital-platform"
+    ],
+    "model_overrides": [],
+    "selected_by": "human",
+    "effective_from": "2026-07-20",
+    "rationale_zh_tw": "Alphabet 具有成熟廣告現金流、快速成長雲端業務與可選擇性資產，適合 Forward P/E、DCF 與 SOTP。"
+  }
+}
