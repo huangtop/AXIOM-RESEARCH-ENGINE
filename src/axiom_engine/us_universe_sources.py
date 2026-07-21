@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import csv
+import gzip
 import io
 import json
 import urllib.request
+import zlib
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable, Iterable
@@ -92,9 +94,23 @@ def _download_text(url: str, user_agent: str) -> str:
     )
     try:
         with urllib.request.urlopen(request, timeout=30) as response:  # noqa: S310
-            return response.read().decode("utf-8-sig")
+            body = response.read()
+            content_encoding = response.headers.get("Content-Encoding", "")
+            return _decode_response_body(body, content_encoding)
     except Exception as exc:  # pragma: no cover - network behavior is environment-dependent
         raise USUniverseSourceError(f"failed to fetch official source: {url}") from exc
+
+
+def _decode_response_body(body: bytes, content_encoding: str | None) -> str:
+    encoding = (content_encoding or "").split(",", 1)[0].strip().lower()
+    if encoding == "gzip":
+        body = gzip.decompress(body)
+    elif encoding == "deflate":
+        try:
+            body = zlib.decompress(body)
+        except zlib.error:
+            body = zlib.decompress(body, -zlib.MAX_WBITS)
+    return body.decode("utf-8-sig")
 
 
 def parse_nasdaq_listed(text: str) -> tuple[USListingSourceRecord, ...]:

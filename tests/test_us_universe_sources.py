@@ -1,12 +1,15 @@
 from __future__ import annotations
 
+import gzip
 import json
+import zlib
 from pathlib import Path
 
 import pytest
 
 from axiom_engine.us_universe_sources import (
     OfficialUSUniverseSourceClient,
+    _download_text,
     USUniverseSourceError,
     merge_official_sources,
     parse_nasdaq_listed,
@@ -93,3 +96,50 @@ def test_client_uses_injected_fetcher_and_writes_snapshot(tmp_path: Path) -> Non
 def test_user_agent_is_required() -> None:
     with pytest.raises(ValueError, match="user_agent"):
         OfficialUSUniverseSourceClient(user_agent=" ")
+
+
+class _FakeResponse:
+    def __init__(self, body: bytes, content_encoding: str | None = None) -> None:
+        self._body = body
+        self.headers = {} if content_encoding is None else {"Content-Encoding": content_encoding}
+
+    def __enter__(self) -> "_FakeResponse":
+        return self
+
+    def __exit__(self, *_args: object) -> None:
+        return None
+
+    def read(self) -> bytes:
+        return self._body
+
+
+def test_download_text_plain_utf8(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(
+        "axiom_engine.us_universe_sources.urllib.request.urlopen",
+        lambda *_args, **_kwargs: _FakeResponse("plain text".encode()),
+    )
+    assert _download_text("https://example.test/plain", "AXIOM test@example.com") == "plain text"
+
+
+def test_download_text_utf8_bom(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(
+        "axiom_engine.us_universe_sources.urllib.request.urlopen",
+        lambda *_args, **_kwargs: _FakeResponse(b"\xef\xbb\xbfwith bom"),
+    )
+    assert _download_text("https://example.test/bom", "AXIOM test@example.com") == "with bom"
+
+
+def test_download_text_gzip(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(
+        "axiom_engine.us_universe_sources.urllib.request.urlopen",
+        lambda *_args, **_kwargs: _FakeResponse(gzip.compress(b"gzip text"), "gzip"),
+    )
+    assert _download_text("https://example.test/gzip", "AXIOM test@example.com") == "gzip text"
+
+
+def test_download_text_deflate(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(
+        "axiom_engine.us_universe_sources.urllib.request.urlopen",
+        lambda *_args, **_kwargs: _FakeResponse(zlib.compress(b"deflate text"), "deflate"),
+    )
+    assert _download_text("https://example.test/deflate", "AXIOM test@example.com") == "deflate text"
