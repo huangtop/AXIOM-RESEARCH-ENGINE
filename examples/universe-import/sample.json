@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "source": "example",
+  "companies": [
+    {
+      "company_id": "company:US-ACME",
+      "legal_name": "Acme Corporation",
+      "display_name": "Acme",
+      "country": "US",
+      "status": "active",
+      "primary_security_id": "security:NASDAQ-ACME",
+      "research_level": "basic",
+      "classification_ids": ["sector:information-technology"],
+      "valuation_profile_ids": ["valuation_profile:mature-digital-platform"],
+      "metadata": {"import_source": "example"}
+    }
+  ],
+  "securities": [
+    {
+      "security_id": "security:NASDAQ-ACME",
+      "company_id": "company:US-ACME",
+      "exchange": "NASDAQ",
+      "ticker": "ACME",
+      "currency": "USD",
+      "primary_listing": true
+    }
+  ],
+  "valuation_profile_assignments": [
+    {
+      "assignment_id": "valuation_profile_assignment:US-ACME-primary",
+      "company_id": "company:US-ACME",
+      "profile_id": "valuation_profile:mature-digital-platform",
+      "applicability": "primary",
+      "priority": 1,
+      "confidence": 1.0,
+      "method": "imported"
+    }
+  ]
+}

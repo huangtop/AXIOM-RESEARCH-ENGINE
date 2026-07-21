@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://axiom.local/schemas/universe-import.schema.json",
+  "title": "AXIOM Universe Import Bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$"},
+    "source": {"type": "string"},
+    "companies": {"type": "array", "items": {"type": "object"}},
+    "securities": {"type": "array", "items": {"type": "object"}},
+    "valuation_profile_assignments": {"type": "array", "items": {"type": "object"}}
+  },
+  "required": ["companies", "securities", "valuation_profile_assignments"]
+}
