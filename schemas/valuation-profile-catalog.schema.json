@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://axiom.local/schemas/valuation-profile-catalog.schema.json",
+  "title": "AXIOM Valuation Profile Catalog",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["profile_id", "name", "description_zh_tw", "lifecycle_stages", "profitability_states", "model_policy"],
+    "properties": {
+      "profile_id": {"type": "string", "pattern": "^valuation_profile:"},
+      "name": {"type": "string", "minLength": 1},
+      "description_zh_tw": {"type": "string", "minLength": 1},
+      "business_model_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^business_model:"}},
+      "lifecycle_stages": {"type": "array", "minItems": 1, "items": {"enum": ["pre_revenue", "early_growth", "high_growth", "mature", "declining", "cyclical"]}},
+      "profitability_states": {"type": "array", "minItems": 1, "items": {"enum": ["pre_profit", "loss_making", "break_even", "profitable", "highly_profitable"]}},
+      "classification_rules": {"type": "object", "additionalProperties": {"type": "array", "items": {"type": "string"}}},
+      "model_policy": {"type": "array", "minItems": 1},
+      "confidence_policy": {"type": "object"},
+      "catalog_version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$"},
+      "active": {"type": "boolean"},
+      "metadata": {"type": "object"}
+    },
+    "additionalProperties": false
+  }
+}
