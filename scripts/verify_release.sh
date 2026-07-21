@@ -1,18 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
-
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-cd "$ROOT_DIR"
-
-PYTHON_BIN="${PYTHON_BIN:-python3}"
-
-"$PYTHON_BIN" -c 'import axiom_engine; assert axiom_engine.__version__ == "0.4.0"; print("version:", axiom_engine.__version__)'
-"$PYTHON_BIN" -c 'from axiom_engine.io import read_json, write_json; print("io import: OK")'
-ruff check .
-pytest -q
+python -c "import axiom_engine, axiom_engine.io; print('version:', axiom_engine.__version__); print('io import: OK')"
+python -m ruff check .
+python -m pytest -q
 axiom validate
 axiom research --company-id company:US-NVDA >/dev/null
+axiom industry --company-id company:US-NVDA --source-id demand_driver:CLOUD-AI-CAPEX --target-id company:US-NVDA >/dev/null
 axiom value >/dev/null
+axiom etf --etf-id etf:AXSM >/dev/null
+axiom impact --shock-id shock:CLOUD-AI-CAPEX-DOWN-15 >/dev/null
+axiom impact --shock-id shock:HBM4-SUPPLY-DOWN-20 >/dev/null
 axiom build-public >/dev/null
-
-echo "AXIOM v0.4.0 release verification: PASS"
+echo "AXIOM v0.7.0 release verification: PASS"

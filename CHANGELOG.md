@@ -1,19 +1,15 @@
 # Changelog
 
-## 0.4.0 — Research Foundation
+## 0.7.0
 
-### Added
-- Canonical research models: `InvestmentThesis`, `ResearchDriver`, `Catalyst`, `DriverImpact`, `ResearchSnapshot`, and `ResearchRevision`.
-- Research ingestion staging models: `RawArticle`, `EntityMention`, `ExtractedClaim`, and `ArticleAdmission`.
-- Research summary CLI command.
-- NVIDIA seed graph covering Blackwell, Vera Rubin qualification, future-period estimates, and valuation links.
-- Public JSON builder support for research data.
-- GitHub Actions release checks.
+- Added Shock, PropagationRule, ImpactScenario, ImpactNode, CompanyImpactSnapshot, and ETFImpactSnapshot models.
+- Added deterministic cause-to-effect propagation with strength, elasticity, attenuation, confidence, and accumulated lag.
+- Added company revenue/EPS/fair-value impact mapping.
+- Added ETF holding-weighted impact aggregation and coverage disclosure.
+- Added `axiom impact` CLI and public impact JSON output.
+- Added four impact tests.
 
-### Preserved
-- v0.3 multi-model valuation: Forward PE, Forward PS, EV/EBITDA, and Forward PB.
-- Execution/snapshot separation and snapshot deduplication.
+## 0.6.0
 
-### Fixed in verified artifact
-- The complete repository includes `src/axiom_engine/io.py`.
-- The verified artifact does not depend on the earlier incomplete update-only patch.
+- Added ETF Foundation models, holdings, derived theme exposure, and valuation coverage mapping.
+- Corrected Cloud AI CapEx → Vera Rubin causal direction.

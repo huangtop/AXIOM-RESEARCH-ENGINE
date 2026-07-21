@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://axiom.local/schemas/universe-company.schema.json",
+  "title": "CompanyMaster",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["company_id", "legal_name", "country"],
+  "properties": {
+    "company_id": {"type": "string", "pattern": "^company:"},
+    "legal_name": {"type": "string", "minLength": 1},
+    "display_name": {"type": ["string", "null"]},
+    "aliases": {"type": "array", "items": {"type": "string"}, "default": []},
+    "country": {"type": "string", "minLength": 2, "maxLength": 2},
+    "status": {"enum": ["active", "inactive", "delisted", "acquired", "bankrupt"], "default": "active"},
+    "primary_security_id": {"type": ["string", "null"], "pattern": "^security:"},
+    "research_level": {"enum": ["none", "basic", "focus", "core"], "default": "none"},
+    "classification_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true, "default": []},
+    "valuation_profile_ids": {"type": "array", "items": {"type": "string", "pattern": "^valuation_profile:"}, "uniqueItems": true, "default": []},
+    "website": {"type": ["string", "null"]},
+    "founded_year": {"type": ["integer", "null"], "minimum": 1600, "maximum": 2200},
+    "metadata": {"type": "object", "default": {}}
+  }
+}

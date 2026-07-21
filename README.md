@@ -1,59 +1,23 @@
-# AXIOM Research Engine v0.3.0
+# AXIOM Research Engine v0.7.0
 
-## Valuation Profiles & Multi-Model Book
+AXIOM is an evidence-based investment knowledge graph with valuation, Industry Graph, ETF exposure mapping, and deterministic causal impact propagation.
 
-This release extends the valuation foundation into a profile-driven, multi-model engine.
-It intentionally does **not** require DCF. The seeded models reflect the current dashboard style:
-
-- Forward P/E
-- Forward P/B
-- Forward P/S
-- EV/EBITDA
-
-A company is assigned one or more valuation profiles. The profile determines which models are
-primary, secondary, optional or disabled. Human selection remains authoritative; AI suggestions
-can be added later without changing the schema.
-
-### Important v0.3 changes
-
-- `axiom value` runs every enabled model in the company profile.
-- A deterministic `valuation_snapshot_id` is derived from company, security, scenario, model
-  version and inputs. Re-running unchanged inputs does not duplicate valuation snapshots.
-- Every invocation still creates an execution record for auditability.
-- Results are grouped into a `ValuationBook`.
-- NVDA sample data is included from the user-provided structure snapshot dated 2026-07-19.
-- GOOGL remains as the original Forward P/E architecture sample.
-
-### Install
+## Verify
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-python3 -m pip install -e '.[dev]'
+python -m pip install -e '.[dev]'
+./scripts/verify_release.sh
 ```
 
-### Run
+## Impact examples
 
 ```bash
-axiom validate
-axiom value --company-id company:US-NVDA --security-id security:NASDAQ-NVDA --scenario-id valuation_scenario:NVDA-2026Q3-BASE
-axiom value --company-id company:US-GOOGL --security-id security:NASDAQ-GOOGL --scenario-id valuation_scenario:GOOGL-2026Q3-BASE
-axiom build-public
-pytest -q
-ruff check .
+axiom impact --shock-id shock:CLOUD-AI-CAPEX-DOWN-15
+axiom impact --shock-id shock:HBM4-SUPPLY-DOWN-20
 ```
 
-Generated data:
+The graph convention is always **cause → effect**. v0.7 maps entity shocks through Industry Graph paths to company revenue, EPS, fair-value impact, and ETF holding-weighted impact.
 
-```text
-data/generated/executions.json
-data/generated/valuation_snapshots.json
-data/generated/valuation_books.json
-```
-
-The NVDA figures are preserved as user-provided seed data for architecture validation, not as a
-freshly verified investment recommendation.
-
-
-## v0.4 Research Foundation
-Run `axiom research --company-id company:US-NVDA` to inspect canonical theses, drivers, catalysts and impacts. The web layer should consume only `data/public`.
+See `docs/impact-engine.md` for formulas and limitations.

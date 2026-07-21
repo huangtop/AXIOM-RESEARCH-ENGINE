@@ -1,4 +1,10 @@
 from .core import Entity, Evidence, Relation, Security, Source
+from .industry import IndustryEdge, IndustryExposure, IndustryGraphSnapshot
+from .etf import ETFHolding, ETFProfile, ETFThemeExposure, ETFValuationSnapshot
+from .impact import (
+    CompanyImpactSnapshot, ETFImpactSnapshot, ImpactNode, ImpactScenario,
+    PropagationMode, PropagationRule, Shock, ShockDirection,
+)
 from .research import (
     ArticleAdmission,
     Catalyst,
@@ -48,4 +54,19 @@ __all__ = [
     "EntityMention",
     "ExtractedClaim",
     "ArticleAdmission",
+    "IndustryEdge",
+    "IndustryExposure",
+    "IndustryGraphSnapshot",
+    "ETFProfile",
+    "ETFHolding",
+    "ETFThemeExposure",
+    "ETFValuationSnapshot",
+    "Shock",
+    "ShockDirection",
+    "PropagationMode",
+    "PropagationRule",
+    "ImpactNode",
+    "CompanyImpactSnapshot",
+    "ETFImpactSnapshot",
+    "ImpactScenario",
 ]

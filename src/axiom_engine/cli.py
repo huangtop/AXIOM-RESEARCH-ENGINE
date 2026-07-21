@@ -9,6 +9,9 @@ from .services.public_builder import build_public
 from .services.validator import validate_bundle
 from .services.valuation import run_valuation_book
 from .services.research import research_summary
+from .services.industry import industry_summary, find_paths
+from .services.etf import etf_summary
+from .services.impact import impact_summary
 
 app = typer.Typer(no_args_is_help=True)
 
@@ -75,6 +78,34 @@ def research(company_id: str = typer.Option("company:US-NVDA")) -> None:
     bundle = load_bundle()
     validate_bundle(bundle)
     typer.echo(json.dumps(research_summary(bundle, company_id), ensure_ascii=False, indent=2))
+
+
+@app.command()
+def industry(
+    company_id: str = typer.Option("company:US-NVDA"),
+    source_id: str | None = typer.Option(None),
+    target_id: str | None = typer.Option(None),
+) -> None:
+    bundle = load_bundle()
+    validate_bundle(bundle)
+    payload = industry_summary(bundle, company_id)
+    if source_id and target_id:
+        payload["paths"] = find_paths(bundle, source_id, target_id)
+    typer.echo(json.dumps(payload, ensure_ascii=False, indent=2))
+
+
+@app.command()
+def etf(etf_id: str = typer.Option("etf:AXSM")) -> None:
+    bundle = load_bundle()
+    validate_bundle(bundle)
+    typer.echo(json.dumps(etf_summary(bundle, etf_id), ensure_ascii=False, indent=2))
+
+
+@app.command()
+def impact(shock_id: str = typer.Option("shock:CLOUD-AI-CAPEX-DOWN-15")) -> None:
+    bundle = load_bundle()
+    validate_bundle(bundle)
+    typer.echo(json.dumps(impact_summary(bundle, shock_id), ensure_ascii=False, indent=2))
 
 
 @app.command("build-public")

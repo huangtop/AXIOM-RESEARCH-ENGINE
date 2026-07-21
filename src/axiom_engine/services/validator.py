@@ -34,6 +34,16 @@ def validate_bundle(b: RepositoryBundle) -> ValidationSummary:
         "entity_mentions": "mention_id",
         "extracted_claims": "claim_id",
         "article_admissions": "admission_id",
+        "industry_edges": "edge_id",
+        "industry_exposures": "exposure_id",
+        "industry_graph_snapshots": "graph_snapshot_id",
+        "etf_profiles": "etf_id",
+        "etf_holdings": "holding_id",
+        "etf_theme_exposures": "exposure_id",
+        "etf_valuation_snapshots": "snapshot_id",
+        "shocks": "shock_id",
+        "propagation_rules": "rule_id",
+        "impact_scenarios": "scenario_id",
     }
     for name, field in id_fields.items():
         vals = [getattr(x, field) for x in collections[name]]
@@ -67,6 +77,68 @@ def validate_bundle(b: RepositoryBundle) -> ValidationSummary:
     for x in b.investment_theses:
         if set(x.driver_ids + x.risk_driver_ids) - driver_ids or set(x.catalyst_ids) - catalyst_ids:
             raise ValueError(f"Unknown research refs in {x.thesis_id}")
+    edge_ids = {x.edge_id for x in b.industry_edges}
+    exposure_ids = {x.exposure_id for x in b.industry_exposures}
+    for x in b.industry_edges:
+        if x.source_entity_id not in entity_ids or x.target_entity_id not in entity_ids:
+            raise ValueError(f"Unknown entity in {x.edge_id}")
+        if set(x.evidence_ids) - evidence_ids:
+            raise ValueError(f"Unknown evidence in {x.edge_id}")
+    for x in b.industry_exposures:
+        if x.company_id not in entity_ids or x.entity_id not in entity_ids:
+            raise ValueError(f"Unknown entity in {x.exposure_id}")
+        if set(x.driver_ids) - driver_ids:
+            raise ValueError(f"Unknown driver in {x.exposure_id}")
+        if set(x.evidence_ids) - evidence_ids:
+            raise ValueError(f"Unknown evidence in {x.exposure_id}")
+    for x in b.industry_graph_snapshots:
+        if set(x.edge_ids) - edge_ids or set(x.exposure_ids) - exposure_ids:
+            raise ValueError(f"Unknown industry refs in {x.graph_snapshot_id}")
+
+    etf_ids = {x.etf_id for x in b.etf_profiles}
+    security_ids = {x.security_id for x in b.securities}
+    holding_ids = {x.holding_id for x in b.etf_holdings}
+    for x in b.etf_profiles:
+        if x.entity_id not in entity_ids:
+            raise ValueError(f"Unknown ETF entity in {x.etf_id}")
+    for x in b.etf_holdings:
+        if x.etf_id not in etf_ids or x.company_id not in entity_ids:
+            raise ValueError(f"Unknown ETF/company in {x.holding_id}")
+        if x.security_id and x.security_id not in security_ids:
+            raise ValueError(f"Unknown security in {x.holding_id}")
+    totals = {}
+    for x in b.etf_holdings:
+        totals[x.etf_id] = totals.get(x.etf_id, 0.0) + x.weight
+    for etf_id, total in totals.items():
+        if total > 1.000001:
+            raise ValueError(f"ETF holding weights exceed 100% for {etf_id}")
+    for x in b.etf_theme_exposures:
+        if x.etf_id not in etf_ids or x.entity_id not in entity_ids:
+            raise ValueError(f"Unknown ETF/entity in {x.exposure_id}")
+        if set(x.source_holding_ids) - holding_ids:
+            raise ValueError(f"Unknown holding in {x.exposure_id}")
+    for x in b.etf_valuation_snapshots:
+        if x.etf_id not in etf_ids:
+            raise ValueError(f"Unknown ETF in {x.snapshot_id}")
+        if set(x.covered_holding_ids) - holding_ids:
+            raise ValueError(f"Unknown holding in {x.snapshot_id}")
+
+
+    shock_ids = {x.shock_id for x in b.shocks}
+    rule_edge_ids = set()
+    for x in b.shocks:
+        if x.entity_id not in entity_ids:
+            raise ValueError(f"Unknown shock entity in {x.shock_id}")
+    for x in b.propagation_rules:
+        if x.edge_id not in edge_ids:
+            raise ValueError(f"Unknown edge in {x.rule_id}")
+        if x.edge_id in rule_edge_ids:
+            raise ValueError(f"Duplicate propagation rule for edge {x.edge_id}")
+        rule_edge_ids.add(x.edge_id)
+    for x in b.impact_scenarios:
+        if set(x.shock_ids) - shock_ids:
+            raise ValueError(f"Unknown shock in {x.scenario_id}")
+
     for x in b.estimates:
         if (
             set(x.supported_by_driver_ids) - driver_ids

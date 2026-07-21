@@ -1,6 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass
-from .config import CANONICAL_DIR, INGESTION_DIR, RESEARCH_DIR, VALUATION_DIR
+from .config import CANONICAL_DIR, ETF_DIR, IMPACT_DIR, INDUSTRY_DIR, INGESTION_DIR, RESEARCH_DIR, VALUATION_DIR
 from .io import load_models
 from .models import (
     ArticleAdmission,
@@ -14,6 +14,16 @@ from .models import (
     ExtractedClaim,
     FinancialFact,
     InvestmentThesis,
+    IndustryEdge,
+    IndustryExposure,
+    IndustryGraphSnapshot,
+    ETFHolding,
+    ETFProfile,
+    ETFThemeExposure,
+    ETFValuationSnapshot,
+    ImpactScenario,
+    PropagationRule,
+    Shock,
     RawArticle,
     Relation,
     ResearchDriver,
@@ -50,6 +60,16 @@ class RepositoryBundle:
     entity_mentions: list[EntityMention]
     extracted_claims: list[ExtractedClaim]
     article_admissions: list[ArticleAdmission]
+    industry_edges: list[IndustryEdge]
+    industry_exposures: list[IndustryExposure]
+    industry_graph_snapshots: list[IndustryGraphSnapshot]
+    etf_profiles: list[ETFProfile]
+    etf_holdings: list[ETFHolding]
+    etf_theme_exposures: list[ETFThemeExposure]
+    etf_valuation_snapshots: list[ETFValuationSnapshot]
+    shocks: list[Shock]
+    propagation_rules: list[PropagationRule]
+    impact_scenarios: list[ImpactScenario]
 
 
 def _load(path, model):
@@ -79,4 +99,14 @@ def load_bundle() -> RepositoryBundle:
         _load(INGESTION_DIR / "entity_mentions.json", EntityMention),
         _load(INGESTION_DIR / "extracted_claims.json", ExtractedClaim),
         _load(INGESTION_DIR / "article_admissions.json", ArticleAdmission),
+        _load(INDUSTRY_DIR / "industry_edges.json", IndustryEdge),
+        _load(INDUSTRY_DIR / "industry_exposures.json", IndustryExposure),
+        _load(INDUSTRY_DIR / "industry_graph_snapshots.json", IndustryGraphSnapshot),
+        _load(ETF_DIR / "etf_profiles.json", ETFProfile),
+        _load(ETF_DIR / "etf_holdings.json", ETFHolding),
+        _load(ETF_DIR / "etf_theme_exposures.json", ETFThemeExposure),
+        _load(ETF_DIR / "etf_valuation_snapshots.json", ETFValuationSnapshot),
+        _load(IMPACT_DIR / "shocks.json", Shock),
+        _load(IMPACT_DIR / "propagation_rules.json", PropagationRule),
+        _load(IMPACT_DIR / "impact_scenarios.json", ImpactScenario),
     )

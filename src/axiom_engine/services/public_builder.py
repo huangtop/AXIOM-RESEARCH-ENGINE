@@ -5,6 +5,8 @@ from datetime import datetime, timezone
 from ..config import GENERATED_DIR, PUBLIC_DIR
 from ..io import read_json, write_json
 from ..repository import RepositoryBundle
+from .etf import etf_summary
+from .impact import impact_summary
 
 
 def build_public(bundle: RepositoryBundle) -> dict[str, int]:
@@ -40,6 +42,14 @@ def build_public(bundle: RepositoryBundle) -> dict[str, int]:
     drivers_by_company: dict[str, list] = {}
     for item in bundle.research_drivers:
         drivers_by_company.setdefault(item.company_id, []).append(item)
+    exposures_by_company: dict[str, list] = {}
+    for item in bundle.industry_exposures:
+        exposures_by_company.setdefault(item.company_id, []).append(item)
+    edges_by_entity: dict[str, list] = {}
+    for item in bundle.industry_edges:
+        edges_by_entity.setdefault(item.source_entity_id, []).append(item)
+        edges_by_entity.setdefault(item.target_entity_id, []).append(item)
+
     catalysts_by_company: dict[str, list] = {}
     for item in bundle.catalysts:
         catalysts_by_company.setdefault(item.company_id, []).append(item)
@@ -74,6 +84,14 @@ def build_public(bundle: RepositoryBundle) -> dict[str, int]:
                 x.model_dump(mode="json", exclude_none=True)
                 for x in catalysts_by_company.get(entity.entity_id, [])
             ]
+            payload["industry_exposures"] = [
+                x.model_dump(mode="json", exclude_none=True)
+                for x in exposures_by_company.get(entity.entity_id, [])
+            ]
+            payload["industry_edges"] = [
+                x.model_dump(mode="json", exclude_none=True)
+                for x in edges_by_entity.get(entity.entity_id, [])
+            ]
             payload["valuation_profiles"] = []
             if cp:
                 payload["company_valuation_profile"] = cp.model_dump(mode="json", exclude_none=True)
@@ -92,8 +110,14 @@ def build_public(bundle: RepositoryBundle) -> dict[str, int]:
             }
         )
 
+    for profile in bundle.etf_profiles:
+        write_json(PUBLIC_DIR / "etfs" / f"{profile.etf_id}.json", etf_summary(bundle, profile.etf_id))
+
+    for shock in bundle.shocks:
+        write_json(PUBLIC_DIR / "impacts" / f"{shock.shock_id}.json", impact_summary(bundle, shock.shock_id))
+
     manifest = {
-        "schema_version": "0.4.0",
+        "schema_version": "0.7.0",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "counts": {
             "entities": len(bundle.entities),
@@ -109,6 +133,15 @@ def build_public(bundle: RepositoryBundle) -> dict[str, int]:
             "research_drivers": len(bundle.research_drivers),
             "catalysts": len(bundle.catalysts),
             "investment_theses": len(bundle.investment_theses),
+            "industry_edges": len(bundle.industry_edges),
+            "industry_exposures": len(bundle.industry_exposures),
+            "industry_graph_snapshots": len(bundle.industry_graph_snapshots),
+            "etf_profiles": len(bundle.etf_profiles),
+            "etf_holdings": len(bundle.etf_holdings),
+            "etf_theme_exposures": sum(len(etf_summary(bundle, x.etf_id)["theme_exposures"]) for x in bundle.etf_profiles),
+            "shocks": len(bundle.shocks),
+            "propagation_rules": len(bundle.propagation_rules),
+            "impact_scenarios": len(bundle.impact_scenarios),
         },
     }
     write_json(PUBLIC_DIR / "manifest.json", manifest)

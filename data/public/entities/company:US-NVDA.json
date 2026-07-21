@@ -505,6 +505,68 @@
       "evidence_ids": []
     }
   ],
+  "industry_exposures": [
+    {
+      "exposure_id": "industry_exposure:NVDA-HBM4",
+      "company_id": "company:US-NVDA",
+      "entity_id": "technology:HBM4",
+      "exposure_type": "supply_dependency",
+      "direction": "positive_if_available",
+      "materiality": "high",
+      "weight": 0.85,
+      "confidence": 0.65,
+      "rationale_zh_tw": "HBM4 供應與認證是 Vera Rubin 平台進度的重要條件。",
+      "driver_ids": [
+        "driver:NVDA-NEXT-GEN-PRODUCT-CYCLE"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "exposure_id": "industry_exposure:NVDA-COWOS",
+      "company_id": "company:US-NVDA",
+      "entity_id": "technology:TSMC-COWOS",
+      "exposure_type": "capacity_dependency",
+      "direction": "positive_if_available",
+      "materiality": "high",
+      "weight": 0.8,
+      "confidence": 0.7,
+      "rationale_zh_tw": "CoWoS 產能影響高階 AI 系統出貨能力。",
+      "driver_ids": [
+        "driver:NVDA-NEXT-GEN-PRODUCT-CYCLE"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "exposure_id": "industry_exposure:NVDA-CLOUD-CAPEX",
+      "company_id": "company:US-NVDA",
+      "entity_id": "demand_driver:CLOUD-AI-CAPEX",
+      "exposure_type": "demand_dependency",
+      "direction": "positive",
+      "materiality": "high",
+      "weight": 0.9,
+      "confidence": 0.7,
+      "rationale_zh_tw": "雲端服務商 AI 資本支出決定加速運算平台的需求強度。",
+      "driver_ids": [
+        "driver:NVDA-AI-COMPUTE-PLATFORM-LEADERSHIP"
+      ],
+      "evidence_ids": []
+    }
+  ],
+  "industry_edges": [
+    {
+      "edge_id": "industry_edge:RUBIN-ENABLES-NVDA",
+      "source_entity_id": "product_architecture:NVDA-VERA-RUBIN",
+      "target_entity_id": "company:US-NVDA",
+      "edge_type": "enables",
+      "description_zh_tw": "Vera Rubin 產品週期支援 NVIDIA 遠期營收與獲利。",
+      "directionality": "directed",
+      "strength": 0.95,
+      "confidence": 0.75,
+      "lead_lag_months": 6,
+      "evidence_ids": [],
+      "active": true
+    }
+  ],
   "valuation_profiles": [
     {
       "profile_id": "valuation_profile:high-growth-ai-semiconductor",

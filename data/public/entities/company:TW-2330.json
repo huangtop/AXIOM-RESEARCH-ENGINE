@@ -26,5 +26,32 @@
   "valuation_results": [],
   "research_drivers": [],
   "catalysts": [],
+  "industry_exposures": [],
+  "industry_edges": [
+    {
+      "edge_id": "industry_edge:TSMC-MANUFACTURES-RUBIN",
+      "source_entity_id": "company:TW-2330",
+      "target_entity_id": "product_architecture:NVDA-VERA-RUBIN",
+      "edge_type": "manufactures",
+      "description_zh_tw": "台積電製造 Vera Rubin 相關晶片。",
+      "directionality": "directed",
+      "strength": 0.95,
+      "confidence": 0.8,
+      "evidence_ids": [],
+      "active": true
+    },
+    {
+      "edge_id": "industry_edge:TSMC-ENABLES-COWOS",
+      "source_entity_id": "company:TW-2330",
+      "target_entity_id": "technology:TSMC-COWOS",
+      "edge_type": "enables",
+      "description_zh_tw": "台積電提供 CoWoS 先進封裝產能。",
+      "directionality": "directed",
+      "strength": 0.95,
+      "confidence": 0.85,
+      "evidence_ids": [],
+      "active": true
+    }
+  ],
   "valuation_profiles": []
 }
