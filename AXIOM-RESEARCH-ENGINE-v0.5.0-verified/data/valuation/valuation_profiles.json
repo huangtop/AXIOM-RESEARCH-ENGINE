@@ -1,0 +1,123 @@
+[
+  {
+    "profile_id": "valuation_profile:mature-digital-platform",
+    "name": "Mature Digital Platform",
+    "description_zh_tw": "具有穩定獲利、現金流與多元數位平台業務的成熟企業。",
+    "business_characteristics": [
+      "positive_free_cash_flow",
+      "multiple_business_segments",
+      "share_buybacks",
+      "high_capex"
+    ],
+    "models": [
+      {
+        "model_type": "forward_pe",
+        "applicability": "primary",
+        "priority": 1,
+        "enabled": true,
+        "reason_zh_tw": "獲利穩定且市場普遍以預估本益比比較。",
+        "parameter_keys": [],
+        "required_metrics": []
+      },
+      {
+        "model_type": "dcf",
+        "applicability": "primary",
+        "priority": 2,
+        "enabled": true,
+        "reason_zh_tw": "自由現金流具可預測性，可建立長期現金流情境。",
+        "parameter_keys": [],
+        "required_metrics": []
+      },
+      {
+        "model_type": "sotp",
+        "applicability": "secondary",
+        "priority": 3,
+        "enabled": true,
+        "reason_zh_tw": "廣告、雲端與其他業務可分部評估。",
+        "parameter_keys": [],
+        "required_metrics": []
+      },
+      {
+        "model_type": "price_to_sales",
+        "applicability": "disabled",
+        "priority": 4,
+        "enabled": false,
+        "reason_zh_tw": "公司已成熟且獲利穩定，營收倍數不是主要方法。",
+        "parameter_keys": [],
+        "required_metrics": []
+      }
+    ]
+  },
+  {
+    "profile_id": "valuation_profile:high-growth-ai-semiconductor",
+    "name": "High-Growth AI Semiconductor",
+    "description_zh_tw": "高速成長、具正向獲利與高估值倍數的人工智慧核心運算半導體公司。",
+    "business_characteristics": [
+      "high_growth",
+      "positive_earnings",
+      "high_operating_leverage",
+      "semiconductor_cycle",
+      "ai_capex_exposure"
+    ],
+    "models": [
+      {
+        "model_type": "forward_pe",
+        "applicability": "primary",
+        "priority": 1,
+        "enabled": true,
+        "reason_zh_tw": "市場主要以預估獲利與成長速度衡量。",
+        "parameter_keys": [
+          "target_pe"
+        ],
+        "required_metrics": [
+          "diluted_eps",
+          "market_price"
+        ]
+      },
+      {
+        "model_type": "forward_ps",
+        "applicability": "secondary",
+        "priority": 2,
+        "enabled": true,
+        "reason_zh_tw": "高速成長期間可用預估營收倍數交叉檢驗。",
+        "parameter_keys": [
+          "target_ps"
+        ],
+        "required_metrics": [
+          "future_revenue_per_share",
+          "market_price"
+        ]
+      },
+      {
+        "model_type": "ev_ebitda",
+        "applicability": "secondary",
+        "priority": 3,
+        "enabled": true,
+        "reason_zh_tw": "用企業價值與營運獲利能力檢查資本結構後的估值。",
+        "parameter_keys": [
+          "target_ev_ebitda"
+        ],
+        "required_metrics": [
+          "ebitda",
+          "net_debt",
+          "shares_outstanding",
+          "market_price"
+        ]
+      },
+      {
+        "model_type": "forward_pb",
+        "applicability": "optional",
+        "priority": 4,
+        "enabled": true,
+        "reason_zh_tw": "資產報酬率高時本淨比僅作輔助，不作主要定價依據。",
+        "parameter_keys": [
+          "target_pb"
+        ],
+        "required_metrics": [
+          "book_value_per_share",
+          "market_price"
+        ]
+      }
+    ]
+  }
+]
