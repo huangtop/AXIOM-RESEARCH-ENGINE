@@ -1,0 +1,118 @@
+{
+  "shock": {
+    "shock_id": "shock:HBM4-SUPPLY-DOWN-20",
+    "entity_id": "technology:HBM4",
+    "name": "HBM4 supply declines 20%",
+    "direction": "negative",
+    "magnitude": 0.2,
+    "unit": "fraction",
+    "start_date": "2026-07-21",
+    "duration_months": 9,
+    "confidence": 0.7,
+    "notes_zh_tw": "示範供應衝擊。"
+  },
+  "nodes": [
+    {
+      "entity_id": "technology:HBM4",
+      "impact": -0.2,
+      "confidence": 0.7,
+      "lag_months": 0,
+      "path": [
+        "technology:HBM4"
+      ],
+      "edge_ids": []
+    },
+    {
+      "entity_id": "product_architecture:NVDA-VERA-RUBIN",
+      "impact": -0.1215,
+      "confidence": 0.455,
+      "lag_months": 6,
+      "path": [
+        "technology:HBM4",
+        "product_architecture:NVDA-VERA-RUBIN"
+      ],
+      "edge_ids": [
+        "industry_edge:HBM4-ENABLES-RUBIN"
+      ]
+    },
+    {
+      "entity_id": "company:US-NVDA",
+      "impact": -0.076758,
+      "confidence": 0.34125,
+      "lag_months": 12,
+      "path": [
+        "technology:HBM4",
+        "product_architecture:NVDA-VERA-RUBIN",
+        "company:US-NVDA"
+      ],
+      "edge_ids": [
+        "industry_edge:HBM4-ENABLES-RUBIN",
+        "industry_edge:RUBIN-ENABLES-NVDA"
+      ]
+    }
+  ],
+  "company_impacts": [
+    {
+      "snapshot_id": "company_impact:shock:HBM4-SUPPLY-DOWN-20:company:US-NVDA",
+      "shock_id": "shock:HBM4-SUPPLY-DOWN-20",
+      "company_id": "company:US-NVDA",
+      "as_of_date": "2026-07-21",
+      "estimated_revenue_impact": -0.076758,
+      "estimated_eps_impact": -0.088272,
+      "estimated_fair_value_impact": -0.097099,
+      "confidence": 0.34125,
+      "source_paths": [
+        [
+          "technology:HBM4",
+          "product_architecture:NVDA-VERA-RUBIN",
+          "company:US-NVDA"
+        ]
+      ]
+    }
+  ],
+  "etf_impacts": [
+    {
+      "snapshot_id": "etf_impact:shock:HBM4-SUPPLY-DOWN-20:etf:AXSM",
+      "shock_id": "shock:HBM4-SUPPLY-DOWN-20",
+      "etf_id": "etf:AXSM",
+      "as_of_date": "2026-07-21",
+      "estimated_fair_value_impact": -0.04855,
+      "impact_coverage": 0.5,
+      "confidence": 0.34125,
+      "contributors": [
+        {
+          "holding_id": "etf_holding:AXSM-NVDA",
+          "company_id": "company:US-NVDA",
+          "weight": 0.5,
+          "company_fair_value_impact": -0.097099,
+          "contribution": -0.04855
+        }
+      ]
+    },
+    {
+      "snapshot_id": "etf_impact:shock:HBM4-SUPPLY-DOWN-20:etf:AXAI",
+      "shock_id": "shock:HBM4-SUPPLY-DOWN-20",
+      "etf_id": "etf:AXAI",
+      "as_of_date": "2026-07-21",
+      "estimated_fair_value_impact": -0.067969,
+      "impact_coverage": 0.7,
+      "confidence": 0.34125,
+      "contributors": [
+        {
+          "holding_id": "etf_holding:AXAI-NVDA",
+          "company_id": "company:US-NVDA",
+          "weight": 0.7,
+          "company_fair_value_impact": -0.097099,
+          "contribution": -0.067969
+        }
+      ]
+    }
+  ],
+  "methodology": {
+    "graph_direction": "cause_to_effect",
+    "node_impact": "upstream_impact_x_edge_strength_x_elasticity_x_attenuation",
+    "confidence": "upstream_confidence_x_edge_confidence",
+    "company_mapping": "revenue=node; eps=revenue_x_1.15; fair_value=eps_x_1.10",
+    "etf_mapping": "sum(holding_weight_x_company_fair_value_impact)"
+  }
+}

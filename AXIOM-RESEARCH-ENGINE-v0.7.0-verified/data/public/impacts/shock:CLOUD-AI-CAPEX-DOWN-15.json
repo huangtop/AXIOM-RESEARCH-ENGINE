@@ -1,0 +1,118 @@
+{
+  "shock": {
+    "shock_id": "shock:CLOUD-AI-CAPEX-DOWN-15",
+    "entity_id": "demand_driver:CLOUD-AI-CAPEX",
+    "name": "Cloud AI CapEx declines 15%",
+    "direction": "negative",
+    "magnitude": 0.15,
+    "unit": "fraction",
+    "start_date": "2026-07-21",
+    "duration_months": 12,
+    "confidence": 0.75,
+    "notes_zh_tw": "示範需求衝擊，用於驗證原因到結果的傳導。"
+  },
+  "nodes": [
+    {
+      "entity_id": "demand_driver:CLOUD-AI-CAPEX",
+      "impact": -0.15,
+      "confidence": 0.75,
+      "lag_months": 0,
+      "path": [
+        "demand_driver:CLOUD-AI-CAPEX"
+      ],
+      "edge_ids": []
+    },
+    {
+      "entity_id": "product_architecture:NVDA-VERA-RUBIN",
+      "impact": -0.0912,
+      "confidence": 0.45,
+      "lag_months": 3,
+      "path": [
+        "demand_driver:CLOUD-AI-CAPEX",
+        "product_architecture:NVDA-VERA-RUBIN"
+      ],
+      "edge_ids": [
+        "industry_edge:CLOUD-CAPEX-DRIVES-RUBIN"
+      ]
+    },
+    {
+      "entity_id": "company:US-NVDA",
+      "impact": -0.057616,
+      "confidence": 0.3375,
+      "lag_months": 9,
+      "path": [
+        "demand_driver:CLOUD-AI-CAPEX",
+        "product_architecture:NVDA-VERA-RUBIN",
+        "company:US-NVDA"
+      ],
+      "edge_ids": [
+        "industry_edge:CLOUD-CAPEX-DRIVES-RUBIN",
+        "industry_edge:RUBIN-ENABLES-NVDA"
+      ]
+    }
+  ],
+  "company_impacts": [
+    {
+      "snapshot_id": "company_impact:shock:CLOUD-AI-CAPEX-DOWN-15:company:US-NVDA",
+      "shock_id": "shock:CLOUD-AI-CAPEX-DOWN-15",
+      "company_id": "company:US-NVDA",
+      "as_of_date": "2026-07-21",
+      "estimated_revenue_impact": -0.057616,
+      "estimated_eps_impact": -0.066258,
+      "estimated_fair_value_impact": -0.072884,
+      "confidence": 0.3375,
+      "source_paths": [
+        [
+          "demand_driver:CLOUD-AI-CAPEX",
+          "product_architecture:NVDA-VERA-RUBIN",
+          "company:US-NVDA"
+        ]
+      ]
+    }
+  ],
+  "etf_impacts": [
+    {
+      "snapshot_id": "etf_impact:shock:CLOUD-AI-CAPEX-DOWN-15:etf:AXSM",
+      "shock_id": "shock:CLOUD-AI-CAPEX-DOWN-15",
+      "etf_id": "etf:AXSM",
+      "as_of_date": "2026-07-21",
+      "estimated_fair_value_impact": -0.036442,
+      "impact_coverage": 0.5,
+      "confidence": 0.3375,
+      "contributors": [
+        {
+          "holding_id": "etf_holding:AXSM-NVDA",
+          "company_id": "company:US-NVDA",
+          "weight": 0.5,
+          "company_fair_value_impact": -0.072884,
+          "contribution": -0.036442
+        }
+      ]
+    },
+    {
+      "snapshot_id": "etf_impact:shock:CLOUD-AI-CAPEX-DOWN-15:etf:AXAI",
+      "shock_id": "shock:CLOUD-AI-CAPEX-DOWN-15",
+      "etf_id": "etf:AXAI",
+      "as_of_date": "2026-07-21",
+      "estimated_fair_value_impact": -0.051019,
+      "impact_coverage": 0.7,
+      "confidence": 0.3375,
+      "contributors": [
+        {
+          "holding_id": "etf_holding:AXAI-NVDA",
+          "company_id": "company:US-NVDA",
+          "weight": 0.7,
+          "company_fair_value_impact": -0.072884,
+          "contribution": -0.051019
+        }
+      ]
+    }
+  ],
+  "methodology": {
+    "graph_direction": "cause_to_effect",
+    "node_impact": "upstream_impact_x_edge_strength_x_elasticity_x_attenuation",
+    "confidence": "upstream_confidence_x_edge_confidence",
+    "company_mapping": "revenue=node; eps=revenue_x_1.15; fair_value=eps_x_1.10",
+    "etf_mapping": "sum(holding_weight_x_company_fair_value_impact)"
+  }
+}
