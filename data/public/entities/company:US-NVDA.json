@@ -216,6 +216,8 @@
       "source_ids": [
         "source:NVDA-USER-STRUCTURE-2026-07-19"
       ],
+      "supported_by_driver_ids": [],
+      "supported_by_catalyst_ids": [],
       "notes": "User-provided structure.json seed data."
     },
     {
@@ -231,6 +233,13 @@
       "as_of_date": "2026-07-19",
       "source_ids": [
         "source:NVDA-USER-STRUCTURE-2026-07-19"
+      ],
+      "supported_by_driver_ids": [
+        "driver:NVDA-AI-COMPUTE-PLATFORM-LEADERSHIP",
+        "driver:NVDA-NEXT-GEN-PRODUCT-CYCLE"
+      ],
+      "supported_by_catalyst_ids": [
+        "catalyst:NVDA-VERA-RUBIN-QUALIFICATION"
       ],
       "notes": "User-provided structure.json seed data."
     },
@@ -248,6 +257,8 @@
       "source_ids": [
         "source:NVDA-USER-STRUCTURE-2026-07-19"
       ],
+      "supported_by_driver_ids": [],
+      "supported_by_catalyst_ids": [],
       "notes": "User-provided structure.json seed data."
     },
     {
@@ -264,6 +275,8 @@
       "source_ids": [
         "source:NVDA-USER-STRUCTURE-2026-07-19"
       ],
+      "supported_by_driver_ids": [],
+      "supported_by_catalyst_ids": [],
       "notes": "User-provided structure.json seed data."
     },
     {
@@ -280,6 +293,8 @@
       "source_ids": [
         "source:NVDA-USER-STRUCTURE-2026-07-19"
       ],
+      "supported_by_driver_ids": [],
+      "supported_by_catalyst_ids": [],
       "notes": "User-provided structure.json seed data."
     }
   ],
@@ -421,6 +436,73 @@
         "implied_equity_value_per_share": 293.9901
       },
       "confidence": 0.55
+    }
+  ],
+  "research_drivers": [
+    {
+      "driver_id": "driver:NVDA-AI-COMPUTE-PLATFORM-LEADERSHIP",
+      "company_id": "company:US-NVDA",
+      "name": "AI Compute Platform Leadership",
+      "name_zh_tw": "AI 運算平台領先地位",
+      "driver_kind": "structural",
+      "status": "active",
+      "description_zh_tw": "由加速運算、軟體生態與系統整合共同支撐的長期競爭力。",
+      "entity_ids": [
+        "company:US-NVDA"
+      ],
+      "affected_periods": [
+        "2026",
+        "2027",
+        "2028"
+      ],
+      "confidence": 0.8,
+      "materiality": "high",
+      "evidence_ids": []
+    },
+    {
+      "driver_id": "driver:NVDA-NEXT-GEN-PRODUCT-CYCLE",
+      "company_id": "company:US-NVDA",
+      "name": "Next-generation Product Cycle",
+      "name_zh_tw": "次世代產品週期",
+      "driver_kind": "cyclical",
+      "status": "monitoring",
+      "description_zh_tw": "未來平台從認證、量產到客戶採用的時間表，影響遠期營收與獲利預期。",
+      "entity_ids": [
+        "product_architecture:NVDA-VERA-RUBIN",
+        "product_architecture:NVDA-BLACKWELL"
+      ],
+      "affected_periods": [
+        "2027",
+        "2028"
+      ],
+      "confidence": 0.65,
+      "materiality": "high",
+      "evidence_ids": []
+    }
+  ],
+  "catalysts": [
+    {
+      "catalyst_id": "catalyst:NVDA-VERA-RUBIN-QUALIFICATION",
+      "company_id": "company:US-NVDA",
+      "name": "Vera Rubin Qualification",
+      "name_zh_tw": "Vera Rubin 認證進度",
+      "catalyst_type": "customer_qualification",
+      "status": "expected",
+      "subject_entity_ids": [
+        "product_architecture:NVDA-VERA-RUBIN"
+      ],
+      "driver_ids": [
+        "driver:NVDA-NEXT-GEN-PRODUCT-CYCLE",
+        "driver:NVDA-AI-COMPUTE-PLATFORM-LEADERSHIP"
+      ],
+      "affected_periods": [
+        "2027",
+        "2028"
+      ],
+      "market_materiality": "high",
+      "expectation_state": "not_yet_assessed",
+      "confidence": 0.5,
+      "evidence_ids": []
     }
   ],
   "valuation_profiles": [

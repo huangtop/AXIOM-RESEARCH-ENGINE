@@ -1,7 +1,7 @@
 Metadata-Version: 2.4
 Name: axiom-research-engine
-Version: 0.3.0
-Summary: Evidence-based investment knowledge graph and valuation foundation.
+Version: 0.4.0
+Summary: Evidence-based investment knowledge graph and research graph and valuation foundation.
 Requires-Python: >=3.11
 Description-Content-Type: text/markdown
 Requires-Dist: pydantic<3,>=2.7
@@ -65,3 +65,7 @@ data/generated/valuation_books.json
 
 The NVDA figures are preserved as user-provided seed data for architecture validation, not as a
 freshly verified investment recommendation.
+
+
+## v0.4 Research Foundation
+Run `axiom research --company-id company:US-NVDA` to inspect canonical theses, drivers, catalysts and impacts. The web layer should consume only `data/public`.
