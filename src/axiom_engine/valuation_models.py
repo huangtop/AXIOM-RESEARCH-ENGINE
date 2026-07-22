@@ -15,6 +15,19 @@ class ValuationModelType(StrEnum):
     relative_multiples = "relative_multiples"
 
 
+class RelativeMultipleType(StrEnum):
+    """Supported enterprise-value and equity-value multiples."""
+
+    ev_to_revenue = "ev_to_revenue"
+    ev_to_ebit = "ev_to_ebit"
+    ev_to_ebitda = "ev_to_ebitda"
+    ev_to_free_cash_flow = "ev_to_free_cash_flow"
+    price_to_earnings_basic = "price_to_earnings_basic"
+    price_to_earnings_diluted = "price_to_earnings_diluted"
+    price_to_book = "price_to_book"
+    price_to_sales = "price_to_sales"
+
+
 class TerminalValueMethod(StrEnum):
     """Methods available for estimating value beyond the explicit forecast."""
 
@@ -287,6 +300,100 @@ class ValuationResult:
             raise ValueError("fair_value_per_share cannot be negative")
         if self.market_price is not None and self.market_price < 0:
             raise ValueError("market_price cannot be negative")
+
+    def to_dict(self) -> dict[str, Any]:
+        return _serialize(asdict(self))
+
+
+@dataclass(frozen=True, slots=True)
+class MultiplesFinancials:
+    """Financial denominators used by relative-valuation multiples."""
+
+    revenue: Decimal | None = None
+    ebit: Decimal | None = None
+    ebitda: Decimal | None = None
+    free_cash_flow: Decimal | None = None
+    net_income: Decimal | None = None
+    book_value: Decimal | None = None
+    basic_shares_outstanding: Decimal | None = None
+
+    def __post_init__(self) -> None:
+        if self.basic_shares_outstanding is not None and self.basic_shares_outstanding <= 0:
+            raise ValueError("basic_shares_outstanding must be positive")
+
+
+@dataclass(frozen=True, slots=True)
+class MultipleAssumption:
+    """One target multiple used to infer a company value."""
+
+    multiple_type: RelativeMultipleType
+    multiple: Decimal
+
+    def __post_init__(self) -> None:
+        if self.multiple <= 0:
+            raise ValueError("multiple must be positive")
+
+
+@dataclass(frozen=True, slots=True)
+class MultiplesInputs:
+    """Immutable market and financial inputs for the multiples engine."""
+
+    identity: ValuationIdentity
+    financials: MultiplesFinancials
+    capital_structure: CapitalStructure
+    assumptions: tuple[MultipleAssumption, ...] = ()
+    market_price: Decimal | None = None
+    model_version: str = "1.0"
+
+    def __post_init__(self) -> None:
+        _require_text("model_version", self.model_version)
+        if self.market_price is not None and self.market_price < 0:
+            raise ValueError("market_price cannot be negative")
+        types = [assumption.multiple_type for assumption in self.assumptions]
+        if len(types) != len(set(types)):
+            raise ValueError("multiple assumptions must be unique by multiple_type")
+
+    def to_dict(self) -> dict[str, Any]:
+        return _serialize(asdict(self))
+
+
+@dataclass(frozen=True, slots=True)
+class MultipleValuation:
+    """Observed and implied values for one relative multiple."""
+
+    multiple_type: RelativeMultipleType
+    denominator: Decimal | None
+    observed_multiple: Decimal | None
+    target_multiple: Decimal | None
+    implied_enterprise_value: Decimal | None
+    implied_equity_value: Decimal | None
+    implied_value_per_share: Decimal | None
+    upside: Decimal | None
+    warnings: tuple[str, ...] = ()
+
+    def __post_init__(self) -> None:
+        if self.observed_multiple is not None and self.observed_multiple < 0:
+            raise ValueError("observed_multiple cannot be negative")
+        if self.target_multiple is not None and self.target_multiple <= 0:
+            raise ValueError("target_multiple must be positive")
+        if self.implied_value_per_share is not None and self.implied_value_per_share < 0:
+            raise ValueError("implied_value_per_share cannot be negative")
+
+
+@dataclass(frozen=True, slots=True)
+class MultiplesResult:
+    """Relative-valuation outputs, one independent result per multiple."""
+
+    identity: ValuationIdentity
+    model_type: ValuationModelType
+    model_version: str
+    market_equity_value: Decimal | None
+    market_enterprise_value: Decimal | None
+    valuations: tuple[MultipleValuation, ...]
+    warnings: tuple[str, ...] = ()
+
+    def __post_init__(self) -> None:
+        _require_text("model_version", self.model_version)
 
     def to_dict(self) -> dict[str, Any]:
         return _serialize(asdict(self))
