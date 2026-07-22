@@ -192,6 +192,7 @@ class ValuationBookEntry(StrictModel):
     model_type: str
     applicability: ModelApplicability
     priority: int
+    blend_weight: float | None = Field(default=None, ge=0)
     snapshot_id: str | None = None
     status: str
     fair_value_per_share: float | None = None
