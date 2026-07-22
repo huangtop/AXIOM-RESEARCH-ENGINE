@@ -219,6 +219,21 @@ class FinancialRepository:
     ) -> FinancialValue | None:
         return self.cash_flow(identifier, fiscal_year=fiscal_year).free_cash_flow
 
+    def normalize(
+        self,
+        identifier: str,
+        *,
+        fiscal_year: int | None = None,
+    ):
+        """Return an immutable normalized financial snapshot."""
+
+        from .financial_normalizer import FinancialNormalizer
+
+        return FinancialNormalizer(self).normalize(
+            identifier,
+            fiscal_year=fiscal_year,
+        )
+
     def net_margin(
         self,
         identifier: str,
