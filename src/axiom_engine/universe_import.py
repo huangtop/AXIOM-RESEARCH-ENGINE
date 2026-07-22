@@ -12,6 +12,7 @@ from typing import Any, Iterable
 from pydantic import ValidationError
 
 from .models.universe import CompanyMaster, SecurityMaster, ValuationProfileAssignment
+from .repository_layout import CanonicalRepositoryLayout
 from .universe_repository import UniverseIntegrityError, UniverseRepository
 
 
@@ -67,9 +68,12 @@ class UniverseImporter:
     mode: ImportMode = ImportMode.MERGE
     conflict_policy: ConflictPolicy = ConflictPolicy.ERROR
     _warnings: list[str] = field(default_factory=list, init=False)
+    _layout: CanonicalRepositoryLayout = field(init=False, repr=False)
 
     def __post_init__(self) -> None:
-        self.universe_dir = Path(self.universe_dir)
+        layout = CanonicalRepositoryLayout.resolve(self.universe_dir)
+        self.universe_dir = layout.universe_dir
+        self._layout = layout
 
     def import_file(self, source_path: str | Path, *, dry_run: bool = True) -> UniverseImportReport:
         source = Path(source_path)
@@ -302,13 +306,13 @@ class UniverseImporter:
 
     def _validate_staged(self, bundle: UniverseImportBundle) -> None:
         classifications = UniverseRepository._load_models(
-            self.universe_dir / "classifications.json",
+            self._layout.classifications_path,
             __import__(
                 "axiom_engine.models.universe", fromlist=["ClassificationNode"]
             ).ClassificationNode,
         )
         valuation_profiles = UniverseRepository._load_models(
-            self.universe_dir / "valuation_profile_catalog.json",
+            self._layout.valuation_profile_catalog_path,
             __import__(
                 "axiom_engine.models.valuation_catalog",
                 fromlist=["ValuationProfileCatalogEntry"],

@@ -818,5 +818,87 @@
     "status": "completed",
     "created_snapshot": false,
     "warnings": []
+  },
+  {
+    "execution_id": "execution:375475e72cfe4375a042caa59e48024f",
+    "valuation_snapshot_id": "valuation_snapshot:company:US-NVDA:valuation_scenario:NVDA-2026Q3-BASE:forward_pe:ab63542c378dc20a",
+    "company_id": "company:US-NVDA",
+    "security_id": "security:NASDAQ-NVDA",
+    "scenario_id": "valuation_scenario:NVDA-2026Q3-BASE",
+    "model_type": "forward_pe",
+    "model_version": "forward_pe.v2",
+    "input_refs": [
+      "estimate:NVDA-DILUTED-EPS-FORWARD-BASE",
+      "assumption:NVDA-2026Q3-BASE-TARGET-PE",
+      "fact:NVDA-MARKET-PRICE-2026-07-19"
+    ],
+    "input_hash": "ab63542c378dc20ade49ddca191f2d586f61c8f832a05f95148334454146dae8",
+    "started_at": "2026-07-22T03:57:59.045225Z",
+    "completed_at": "2026-07-22T03:57:59.045372Z",
+    "status": "completed",
+    "created_snapshot": false,
+    "warnings": []
+  },
+  {
+    "execution_id": "execution:ad8afd79ac204ab39ad49e65bb1a5c23",
+    "valuation_snapshot_id": "valuation_snapshot:company:US-NVDA:valuation_scenario:NVDA-2026Q3-BASE:forward_ps:9dbadd90739c1c86",
+    "company_id": "company:US-NVDA",
+    "security_id": "security:NASDAQ-NVDA",
+    "scenario_id": "valuation_scenario:NVDA-2026Q3-BASE",
+    "model_type": "forward_ps",
+    "model_version": "forward_ps.v1",
+    "input_refs": [
+      "estimate:NVDA-FUTURE-REVENUE-PER-SHARE-BASE",
+      "assumption:NVDA-2026Q3-BASE-TARGET-PS",
+      "fact:NVDA-MARKET-PRICE-2026-07-19"
+    ],
+    "input_hash": "9dbadd90739c1c860c412a53798bc5e8eccfad58d5239d4a64d2c0d1cb740913",
+    "started_at": "2026-07-22T03:57:59.045390Z",
+    "completed_at": "2026-07-22T03:57:59.045415Z",
+    "status": "completed",
+    "created_snapshot": false,
+    "warnings": []
+  },
+  {
+    "execution_id": "execution:48206af400474df0a2fe091d8aeba7b1",
+    "valuation_snapshot_id": "valuation_snapshot:company:US-NVDA:valuation_scenario:NVDA-2026Q3-BASE:ev_ebitda:8565c573dd720169",
+    "company_id": "company:US-NVDA",
+    "security_id": "security:NASDAQ-NVDA",
+    "scenario_id": "valuation_scenario:NVDA-2026Q3-BASE",
+    "model_type": "ev_ebitda",
+    "model_version": "ev_ebitda.v1",
+    "input_refs": [
+      "fact:NVDA-EBITDA-2026-07-19",
+      "fact:NVDA-NET-DEBT-2026-07-19",
+      "fact:NVDA-SHARES-OUTSTANDING-2026-07-19",
+      "assumption:NVDA-2026Q3-BASE-TARGET-EV-EBITDA",
+      "fact:NVDA-MARKET-PRICE-2026-07-19"
+    ],
+    "input_hash": "8565c573dd720169d9c15a643f4c070882831dafcf96108f2b7fb9a6328b72e5",
+    "started_at": "2026-07-22T03:57:59.045423Z",
+    "completed_at": "2026-07-22T03:57:59.045443Z",
+    "status": "completed",
+    "created_snapshot": false,
+    "warnings": []
+  },
+  {
+    "execution_id": "execution:7d029fa1c3e34b64b2f468dbf90a3911",
+    "valuation_snapshot_id": "valuation_snapshot:company:US-NVDA:valuation_scenario:NVDA-2026Q3-BASE:forward_pb:c905563ce47c1417",
+    "company_id": "company:US-NVDA",
+    "security_id": "security:NASDAQ-NVDA",
+    "scenario_id": "valuation_scenario:NVDA-2026Q3-BASE",
+    "model_type": "forward_pb",
+    "model_version": "forward_pb.v1",
+    "input_refs": [
+      "fact:NVDA-BOOK-VALUE-PER-SHARE-2026-07-19",
+      "assumption:NVDA-2026Q3-BASE-TARGET-PB",
+      "fact:NVDA-MARKET-PRICE-2026-07-19"
+    ],
+    "input_hash": "c905563ce47c14174c1a2696cd93d75c7d6efe7ad0eeb8b1fecde73cbef13261",
+    "started_at": "2026-07-22T03:57:59.045448Z",
+    "completed_at": "2026-07-22T03:57:59.045462Z",
+    "status": "completed",
+    "created_snapshot": false,
+    "warnings": []
   }
 ]

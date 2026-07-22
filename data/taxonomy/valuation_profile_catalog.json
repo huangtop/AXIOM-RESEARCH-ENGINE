@@ -1,0 +1,61 @@
+[
+  {
+    "profile_id": "valuation_profile:mature-digital-platform",
+    "name": "Mature Digital Platform",
+    "description_zh_tw": "具有穩定獲利、現金流與多元數位平台業務的成熟企業。",
+    "business_model_ids": [
+      "business_model:digital-platform",
+      "business_model:advertising",
+      "business_model:cloud"
+    ],
+    "lifecycle_stages": ["mature"],
+    "profitability_states": ["profitable", "highly_profitable"],
+    "classification_rules": {
+      "sector": ["sector:communication-services", "sector:information-technology"],
+      "characteristics": ["positive_free_cash_flow", "multiple_business_segments"]
+    },
+    "model_policy": [
+      {"model_type": "forward_pe", "applicability": "primary", "priority": 1, "legacy_calc_type": "pe", "default_assumptions": {}, "warning_rules": ["negative_forward_eps"]},
+      {"model_type": "dcf", "applicability": "primary", "priority": 2, "legacy_calc_type": "dcf", "default_assumptions": {}, "warning_rules": ["insufficient_cash_flow_history"]},
+      {"model_type": "sotp", "applicability": "secondary", "priority": 3, "legacy_calc_type": "sotp", "default_assumptions": {}, "warning_rules": ["missing_segment_disclosure"]},
+      {"model_type": "price_to_sales", "applicability": "disabled", "priority": 4, "legacy_calc_type": "ps", "default_assumptions": {}, "warning_rules": []}
+    ],
+    "confidence_policy": {
+      "base_confidence": 0.7,
+      "maximum_confidence": 0.95,
+      "minimum_confidence": 0.2,
+      "penalties": {"missing_primary_metric": 0.25, "stale_inputs": 0.1}
+    },
+    "catalog_version": "1.0.0",
+    "active": true,
+    "metadata": {}
+  },
+  {
+    "profile_id": "valuation_profile:high-growth-ai-semiconductor",
+    "name": "High-Growth AI Semiconductor",
+    "description_zh_tw": "高速成長、具正向獲利與高估值倍數的人工智慧核心運算半導體公司。",
+    "business_model_ids": ["business_model:fabless-semiconductor"],
+    "lifecycle_stages": ["high_growth", "cyclical"],
+    "profitability_states": ["profitable", "highly_profitable"],
+    "classification_rules": {
+      "industry": ["industry:semiconductors"],
+      "theme": ["theme:ai-infrastructure"],
+      "characteristics": ["high_growth", "positive_earnings", "ai_capex_exposure"]
+    },
+    "model_policy": [
+      {"model_type": "forward_pe", "applicability": "primary", "priority": 1, "legacy_calc_type": "pe", "default_assumptions": {}, "warning_rules": ["negative_forward_eps", "earnings_revision_volatility"]},
+      {"model_type": "forward_ps", "applicability": "secondary", "priority": 2, "legacy_calc_type": "ps", "default_assumptions": {}, "warning_rules": ["missing_future_revenue_per_share"]},
+      {"model_type": "ev_ebitda", "applicability": "secondary", "priority": 3, "legacy_calc_type": "ev", "default_assumptions": {}, "warning_rules": ["missing_net_debt", "missing_ebitda"]},
+      {"model_type": "forward_pb", "applicability": "optional", "priority": 4, "legacy_calc_type": "pb", "default_assumptions": {}, "warning_rules": ["negative_book_value"]}
+    ],
+    "confidence_policy": {
+      "base_confidence": 0.65,
+      "maximum_confidence": 0.9,
+      "minimum_confidence": 0.15,
+      "penalties": {"missing_primary_metric": 0.3, "stale_inputs": 0.1, "cycle_uncertainty": 0.1}
+    },
+    "catalog_version": "1.0.0",
+    "active": true,
+    "metadata": {}
+  }
+]

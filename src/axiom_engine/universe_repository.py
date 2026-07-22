@@ -13,6 +13,7 @@ from .models.universe import (
     ValuationProfileAssignment,
 )
 from .models.valuation_catalog import ValuationProfileCatalogEntry
+from .repository_layout import CanonicalRepositoryLayout
 
 
 class UniverseRepositoryError(RuntimeError):
@@ -143,19 +144,19 @@ class UniverseRepository:
     def from_directory(
         cls, universe_dir: str | Path, *, validate: bool = True
     ) -> "UniverseRepository":
-        root = Path(universe_dir)
+        layout = CanonicalRepositoryLayout.resolve(universe_dir)
         return cls(
-            companies=cls._load_models(root / "companies.json", CompanyMaster),
-            securities=cls._load_models(root / "securities.json", SecurityMaster),
+            companies=cls._load_models(layout.companies_path, CompanyMaster),
+            securities=cls._load_models(layout.securities_path, SecurityMaster),
             classifications=cls._load_models(
-                root / "classifications.json", ClassificationNode
+                layout.classifications_path, ClassificationNode
             ),
             valuation_profile_assignments=cls._load_models(
-                root / "valuation_profile_assignments.json",
+                layout.valuation_profile_assignments_path,
                 ValuationProfileAssignment,
             ),
             valuation_profiles=cls._load_models(
-                root / "valuation_profile_catalog.json",
+                layout.valuation_profile_catalog_path,
                 ValuationProfileCatalogEntry,
             ),
             validate=validate,
