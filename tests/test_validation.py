@@ -6,5 +6,5 @@ def test_bundle_validates():
     summary = validate_bundle(load_bundle())
     assert summary.counts["entities"] == 14
     assert summary.counts["securities"] == 4
-    assert summary.counts["estimates"] == 6
+    assert summary.counts["estimates"] == 12
     assert summary.counts["valuation_profiles"] == 2

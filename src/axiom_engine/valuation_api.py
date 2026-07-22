@@ -74,6 +74,7 @@ class BackendValuationAPIService:
                 "fair_value": _number_text(entry.fair_value_per_share),
                 "upside": _number_text(entry.upside),
                 "confidence": _number_text(entry.confidence),
+                "blend_weight": _number_text(entry.blend_weight),
                 "inputs": _serialize(snapshot.model_inputs) if snapshot else None,
                 "outputs": _serialize(snapshot.model_outputs) if snapshot else None,
                 "warnings": list(entry.warnings),
@@ -88,6 +89,18 @@ class BackendValuationAPIService:
             "company_id": security.company_id,
             "security_id": security.security_id,
             "scenario_id": scenario.scenario_id,
+            "scenario_type": scenario.scenario_type.value,
+            "available_scenarios": [
+                {
+                    "scenario_id": item.scenario_id,
+                    "scenario_type": item.scenario_type.value,
+                    "name": item.name,
+                }
+                for item in sorted(
+                    (x for x in bundle.valuation_scenarios if x.company_id == security.company_id),
+                    key=lambda x: (x.as_of_date, x.revision, x.scenario_type.value),
+                )
+            ],
             "valuation_as_of": scenario.as_of_date.isoformat(),
             "reference_price_date": close.session_date.isoformat(),
             "reference_price": _number_text(close.close),
@@ -132,7 +145,9 @@ def _resolve_scenario(bundle: RepositoryBundle, company_id: str, requested: Any)
         return candidates[0]
     if not candidates:
         raise ValuationAPIError(f"no valuation scenario configured for company: {company_id}")
-    return max(candidates, key=lambda item: (item.as_of_date, item.revision, item.scenario_id))
+    base_candidates = [item for item in candidates if item.scenario_type.value == "base"]
+    preferred = base_candidates or candidates
+    return max(preferred, key=lambda item: (item.as_of_date, item.revision, item.scenario_id))
 
 
 def _with_previous_close(

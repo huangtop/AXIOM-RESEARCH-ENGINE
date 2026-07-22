@@ -51,7 +51,7 @@
   {
     "profile_id": "valuation_profile:high-growth-ai-semiconductor",
     "name": "High-Growth AI Semiconductor",
-    "description_zh_tw": "高速成長、具正向獲利與高估值倍數的人工智慧核心運算半導體公司。",
+    "description_zh_tw": "高速成長、具正向獲利與高估值倍數的人工智慧核心運算半導體公司；以統一六模型權重進行 Bull/Base/Bear 情境估值。",
     "business_characteristics": [
       "high_growth",
       "positive_earnings",
@@ -72,12 +72,33 @@
         "required_metrics": [
           "diluted_eps",
           "market_price"
-        ]
+        ],
+        "parameters": {
+          "blend_weight": 0.3
+        }
+      },
+      {
+        "model_type": "peg",
+        "applicability": "primary",
+        "priority": 2,
+        "enabled": true,
+        "reason_zh_tw": "以預估獲利成長與 PEG 倍數檢查成長是否足以支持本益比。",
+        "parameter_keys": [
+          "target_peg"
+        ],
+        "required_metrics": [
+          "diluted_eps",
+          "growth_estimate",
+          "market_price"
+        ],
+        "parameters": {
+          "blend_weight": 0.25
+        }
       },
       {
         "model_type": "forward_ps",
         "applicability": "secondary",
-        "priority": 2,
+        "priority": 3,
         "enabled": true,
         "reason_zh_tw": "高速成長期間可用預估營收倍數交叉檢驗。",
         "parameter_keys": [
@@ -86,12 +107,15 @@
         "required_metrics": [
           "future_revenue_per_share",
           "market_price"
-        ]
+        ],
+        "parameters": {
+          "blend_weight": 0.15
+        }
       },
       {
         "model_type": "ev_ebitda",
         "applicability": "secondary",
-        "priority": 3,
+        "priority": 4,
         "enabled": true,
         "reason_zh_tw": "用企業價值與營運獲利能力檢查資本結構後的估值。",
         "parameter_keys": [
@@ -102,12 +126,15 @@
           "net_debt",
           "shares_outstanding",
           "market_price"
-        ]
+        ],
+        "parameters": {
+          "blend_weight": 0.15
+        }
       },
       {
         "model_type": "forward_pb",
         "applicability": "optional",
-        "priority": 4,
+        "priority": 5,
         "enabled": true,
         "reason_zh_tw": "資產報酬率高時本淨比僅作輔助，不作主要定價依據。",
         "parameter_keys": [
@@ -116,7 +143,28 @@
         "required_metrics": [
           "book_value_per_share",
           "market_price"
-        ]
+        ],
+        "parameters": {
+          "blend_weight": 0.05
+        }
+      },
+      {
+        "model_type": "milestone",
+        "applicability": "secondary",
+        "priority": 6,
+        "enabled": true,
+        "reason_zh_tw": "以重大產品與平台里程碑的成功機率估算期望價值。",
+        "parameter_keys": [
+          "milestone_success_probability",
+          "milestone_success_multiple",
+          "milestone_failure_multiple"
+        ],
+        "required_metrics": [
+          "market_price"
+        ],
+        "parameters": {
+          "blend_weight": 0.1
+        }
       }
     ]
   }

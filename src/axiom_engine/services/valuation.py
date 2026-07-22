@@ -21,6 +21,8 @@ MODEL_VERSIONS = {
     "forward_pb": "forward_pb.v1",
     "forward_ps": "forward_ps.v1",
     "ev_ebitda": "ev_ebitda.v1",
+    "peg": "peg.v1",
+    "milestone": "milestone.v1",
 }
 
 
@@ -122,6 +124,79 @@ def _calculate(bundle, company_id, security_id, scenario, model_type):
             },
             {"implied_equity_value_per_share": revps.value * multiple.value},
         )
+    if model_type == "peg":
+        eps = _estimate(
+            bundle, company_id, security_id, "diluted_eps", scenario.scenario_type.value
+        )
+        growth = _estimate(
+            bundle, company_id, security_id, "growth_estimate", scenario.scenario_type.value
+        )
+        target_peg = _assumption(bundle, scenario.scenario_id, "target_peg")
+        if eps.value <= 0:
+            raise ValueError("PEG unavailable: diluted_eps must be positive")
+        if growth.value <= 0:
+            raise ValueError("PEG unavailable: growth_estimate must be positive")
+        implied_pe = target_peg.value * growth.value * 100.0
+        fair = eps.value * implied_pe
+        return Calculation(
+            fair,
+            price.value,
+            price.unit,
+            [eps.estimate_id, growth.estimate_id, target_peg.assumption_id, price.fact_id],
+            {
+                "forward_eps": eps.value,
+                "growth_rate": growth.value,
+                "target_peg": target_peg.value,
+                "implied_pe": implied_pe,
+                "market_price": price.value,
+            },
+            {"implied_equity_value_per_share": fair},
+        )
+    if model_type == "milestone":
+        success_probability = _assumption(
+            bundle, scenario.scenario_id, "milestone_success_probability"
+        )
+        success_multiple = _assumption(
+            bundle, scenario.scenario_id, "milestone_success_multiple"
+        )
+        failure_multiple = _assumption(
+            bundle, scenario.scenario_id, "milestone_failure_multiple"
+        )
+        if not 0.0 <= success_probability.value <= 1.0:
+            raise ValueError("milestone_success_probability must be between 0 and 1")
+        if success_multiple.value < 0 or failure_multiple.value < 0:
+            raise ValueError("milestone multiples cannot be negative")
+        failure_probability = 1.0 - success_probability.value
+        expected_multiple = (
+            success_probability.value * success_multiple.value
+            + failure_probability * failure_multiple.value
+        )
+        fair = price.value * expected_multiple
+        return Calculation(
+            fair,
+            price.value,
+            price.unit,
+            [
+                success_probability.assumption_id,
+                success_multiple.assumption_id,
+                failure_multiple.assumption_id,
+                price.fact_id,
+            ],
+            {
+                "current_price": price.value,
+                "success_probability": success_probability.value,
+                "failure_probability": failure_probability,
+                "success_multiple": success_multiple.value,
+                "failure_multiple": failure_multiple.value,
+                "market_price": price.value,
+            },
+            {
+                "expected_multiple": expected_multiple,
+                "success_value_per_share": price.value * success_multiple.value,
+                "failure_value_per_share": price.value * failure_multiple.value,
+                "implied_equity_value_per_share": fair,
+            },
+        )
     if model_type == "ev_ebitda":
         ebitda = _fact(bundle, company_id, security_id, "ebitda", scenario.as_of_date)
         net_debt = _fact(bundle, company_id, security_id, "net_debt", scenario.as_of_date)
@@ -171,6 +246,21 @@ def _effective_models(bundle, company_id):
     return assignment, sorted(by_type.values(), key=lambda x: x.priority)
 
 
+def _blend_weight(config) -> float:
+    raw = config.parameters.get("blend_weight")
+    if raw is None:
+        raw = {
+            ModelApplicability.primary: 1.0,
+            ModelApplicability.secondary: 0.65,
+            ModelApplicability.optional: 0.35,
+            ModelApplicability.disabled: 0.0,
+        }[config.applicability]
+    weight = float(raw)
+    if weight < 0:
+        raise ValueError(f"blend_weight cannot be negative: {config.model_type}")
+    return weight
+
+
 def run_valuation_book(
     bundle: RepositoryBundle,
     *,
@@ -190,6 +280,7 @@ def run_valuation_book(
                     model_type=config.model_type,
                     applicability=config.applicability,
                     priority=config.priority,
+                    blend_weight=_blend_weight(config),
                     status="disabled",
                     reason_zh_tw=config.reason_zh_tw,
                 )
@@ -246,6 +337,7 @@ def run_valuation_book(
                     model_type=config.model_type,
                     applicability=config.applicability,
                     priority=config.priority,
+                    blend_weight=_blend_weight(config),
                     snapshot_id=snapshot_id,
                     status="completed",
                     fair_value_per_share=fair,
@@ -267,6 +359,7 @@ def run_valuation_book(
                     model_type=config.model_type,
                     applicability=config.applicability,
                     priority=config.priority,
+                    blend_weight=_blend_weight(config),
                     status="skipped",
                     reason_zh_tw=config.reason_zh_tw,
                     warnings=warnings,
@@ -296,19 +389,12 @@ def run_valuation_book(
     ]
     blended = None
     if completed_entries:
-        weights = {
-            ModelApplicability.primary: 1.0,
-            ModelApplicability.secondary: 0.65,
-            ModelApplicability.optional: 0.35,
-        }
-        total = sum(
-            weights[x.applicability] * float(x.confidence or 0.5) for x in completed_entries
-        )
+        total = sum(float(x.blend_weight or 0.0) for x in completed_entries)
+        if total <= 0:
+            raise ValueError("completed valuation models require a positive total blend weight")
         blended = (
             sum(
-                float(x.fair_value_per_share)
-                * weights[x.applicability]
-                * float(x.confidence or 0.5)
+                float(x.fair_value_per_share) * float(x.blend_weight or 0.0)
                 for x in completed_entries
             )
             / total
