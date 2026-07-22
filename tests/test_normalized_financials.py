@@ -8,6 +8,7 @@ import pytest
 
 from axiom_engine.normalized_financials import (
     EfficiencyMetrics,
+    GrowthMetrics,
     LeverageMetrics,
     LiquidityMetrics,
     NormalizedBalance,
@@ -69,6 +70,7 @@ def test_metric_sections_default_to_missing_values() -> None:
     snapshot = _snapshot()
 
     assert snapshot.profitability == ProfitabilityMetrics()
+    assert snapshot.growth == GrowthMetrics()
     assert snapshot.efficiency == EfficiencyMetrics()
     assert snapshot.liquidity == LiquidityMetrics()
     assert snapshot.leverage == LeverageMetrics()
@@ -84,12 +86,14 @@ def test_metric_sections_accept_decimal_fractions() -> None:
         balance=NormalizedBalance(),
         cash_flow=NormalizedCashFlow(),
         profitability=ProfitabilityMetrics(net_margin=Decimal("0.55848")),
+        growth=GrowthMetrics(revenue_growth=Decimal("0.25")),
         efficiency=EfficiencyMetrics(return_on_equity=Decimal("1.02")),
         liquidity=LiquidityMetrics(current_ratio=Decimal("4.10")),
         leverage=LeverageMetrics(debt_ratio=Decimal("0.29")),
     )
 
     assert snapshot.profitability.net_margin == Decimal("0.55848")
+    assert snapshot.growth.revenue_growth == Decimal("0.25")
     assert snapshot.efficiency.return_on_equity == Decimal("1.02")
     assert snapshot.liquidity.current_ratio == Decimal("4.10")
     assert snapshot.leverage.debt_ratio == Decimal("0.29")
@@ -121,6 +125,7 @@ def test_model_shape_exposes_normalization_sections() -> None:
         "balance",
         "cash_flow",
         "profitability",
+        "growth",
         "efficiency",
         "liquidity",
         "leverage",

@@ -62,6 +62,16 @@ class ProfitabilityMetrics:
 
 
 @dataclass(frozen=True, slots=True)
+class GrowthMetrics:
+    """Year-over-year growth metrics expressed as decimal fractions."""
+
+    revenue_growth: Decimal | None = None
+    net_income_growth: Decimal | None = None
+    eps_diluted_growth: Decimal | None = None
+    free_cash_flow_growth: Decimal | None = None
+
+
+@dataclass(frozen=True, slots=True)
 class EfficiencyMetrics:
     """Capital and asset efficiency metrics."""
 
@@ -96,6 +106,7 @@ class NormalizedFinancials:
     balance: NormalizedBalance
     cash_flow: NormalizedCashFlow
     profitability: ProfitabilityMetrics = ProfitabilityMetrics()
+    growth: GrowthMetrics = GrowthMetrics()
     efficiency: EfficiencyMetrics = EfficiencyMetrics()
     liquidity: LiquidityMetrics = LiquidityMetrics()
     leverage: LeverageMetrics = LeverageMetrics()

@@ -8,6 +8,7 @@ from .financial_repository import FinancialRepository
 from .financial_statement_models import FinancialStatements, FinancialValue
 from .normalized_financials import (
     EfficiencyMetrics,
+    GrowthMetrics,
     LeverageMetrics,
     LiquidityMetrics,
     NormalizedBalance,
@@ -79,6 +80,7 @@ class FinancialNormalizer:
                 free_cash_flow=_amount(statements.cash_flow.free_cash_flow),
             ),
             profitability=_profitability_metrics(statements),
+            growth=_growth_metrics(statements, prior),
             efficiency=_efficiency_metrics(statements, prior),
             liquidity=_liquidity_metrics(statements),
             leverage=_leverage_metrics(statements),
@@ -160,6 +162,44 @@ def _prior_statements(
     if not older_years:
         return None
     return repository.statements(identifier, fiscal_year=max(older_years))
+
+
+def _growth_metrics(
+    statements: FinancialStatements,
+    prior: FinancialStatements | None,
+) -> GrowthMetrics:
+    if prior is None:
+        return GrowthMetrics()
+
+    return GrowthMetrics(
+        revenue_growth=_growth_rate(
+            statements.income.revenue,
+            prior.income.revenue,
+        ),
+        net_income_growth=_growth_rate(
+            statements.income.net_income,
+            prior.income.net_income,
+        ),
+        eps_diluted_growth=_growth_rate(
+            statements.income.eps_diluted,
+            prior.income.eps_diluted,
+        ),
+        free_cash_flow_growth=_growth_rate(
+            statements.cash_flow.free_cash_flow,
+            prior.cash_flow.free_cash_flow,
+        ),
+    )
+
+
+def _growth_rate(
+    current: FinancialValue | None,
+    prior: FinancialValue | None,
+) -> Decimal | None:
+    if current is None or prior is None:
+        return None
+    if current.unit != prior.unit or prior.value <= 0:
+        return None
+    return (current.value - prior.value) / prior.value
 
 
 def _efficiency_metrics(
