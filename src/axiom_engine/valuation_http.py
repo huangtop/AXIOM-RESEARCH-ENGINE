@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 from http import HTTPStatus
 from typing import Any, Callable, Iterable
 
@@ -27,6 +28,8 @@ class ValuationWSGIApp:
     def __call__(self, environ: dict[str, Any], start_response: StartResponse) -> Iterable[bytes]:
         method = str(environ.get("REQUEST_METHOD", "GET")).upper()
         path = str(environ.get("PATH_INFO", "/"))
+        if method == "OPTIONS" and path in {"/v1/valuations", "/v1/debug/valuations/legacy-parity"}:
+            return self._respond(start_response, HTTPStatus.NO_CONTENT, {})
         if method == "GET" and path == "/health":
             return self._respond(start_response, HTTPStatus.OK, {"status": "ok"})
         if method != "POST":
@@ -66,12 +69,16 @@ class ValuationWSGIApp:
         payload: dict[str, Any],
     ) -> list[bytes]:
         body = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).encode()
+        allowed_origin = os.getenv("AXIOM_CORS_ORIGIN", "*")
         start_response(
             f"{status.value} {status.phrase}",
             [
                 ("Content-Type", "application/json; charset=utf-8"),
                 ("Content-Length", str(len(body))),
                 ("Cache-Control", "no-store"),
+                ("Access-Control-Allow-Origin", allowed_origin),
+                ("Access-Control-Allow-Headers", "Content-Type"),
+                ("Access-Control-Allow-Methods", "POST, GET, OPTIONS"),
             ],
         )
         return [body]
