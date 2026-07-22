@@ -14,33 +14,32 @@ from axiom_engine.universe_repository import (
 UNIVERSE_DIR = Path(__file__).resolve().parents[1] / "data" / "universe"
 
 
-def test_repository_loads_and_resolves_seed_company() -> None:
+def test_repository_loads_and_resolves_official_company() -> None:
     repo = UniverseRepository.from_directory(UNIVERSE_DIR)
 
     nvda = repo.resolve_company("NVDA")
 
-    assert nvda.company_id == "company:US-NVDA"
-    assert nvda.name == "NVIDIA"
-    assert nvda.research_level == ResearchLevel.CORE
+    assert nvda.company_id == "company:US-CIK0001045810"
+    assert nvda.name == "NVIDIA Corporation"
+    assert nvda.research_level == ResearchLevel.NONE
     assert nvda.primary_security is not None
     assert nvda.primary_security.security_id == "security:NASDAQ-NVDA"
-    assert [item.classification_id for item in nvda.themes] == ["theme:ai-compute"]
-    assert nvda.primary_valuation_profile is not None
-    assert (
-        nvda.primary_valuation_profile.profile_id
-        == "valuation_profile:high-growth-ai-semiconductor"
-    )
-    assert nvda.primary_model_types == ("forward_pe",)
-    assert nvda.business_model_ids == ("business_model:fabless-semiconductor",)
+
+    # Official Universe records contain market identity data only.
+    # Research classifications and valuation assignments are separate enrichments.
+    assert nvda.themes == ()
+    assert nvda.primary_valuation_profile is None
+    assert nvda.primary_model_types == ()
+    assert nvda.business_model_ids == ()
 
 
 def test_repository_supports_company_security_and_exchange_lookup() -> None:
     repo = UniverseRepository.from_directory(UNIVERSE_DIR)
 
-    assert repo.resolve_company("company:US-NVDA").company_id == "company:US-NVDA"
+    assert repo.resolve_company("company:US-CIK0001045810").company_id == "company:US-CIK0001045810"
     assert (
         repo.resolve_company("security:NASDAQ-NVDA").company_id
-        == "company:US-NVDA"
+        == "company:US-CIK0001045810"
     )
     assert (
         repo.get_security_by_ticker("nvda", exchange="nasdaq").security_id
