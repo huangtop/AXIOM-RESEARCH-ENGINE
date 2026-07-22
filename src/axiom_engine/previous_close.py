@@ -5,9 +5,10 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from dataclasses import asdict, dataclass
-from datetime import date, datetime, timezone
+from datetime import date, datetime, time, timezone
 from decimal import Decimal, InvalidOperation
 from typing import Any, Callable, Mapping, Protocol
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 YAHOO_CHART_URL = (
     "https://query1.finance.yahoo.com/v8/finance/chart/{symbol}"
@@ -101,37 +102,70 @@ def _parse_yahoo_close(
     timestamps = result.get("timestamp")
     indicators = result.get("indicators")
     quote = indicators.get("quote") if isinstance(indicators, Mapping) else None
-    closes = quote[0].get("close") if isinstance(quote, list) and quote and isinstance(quote[0], Mapping) else None
+    closes = (
+        quote[0].get("close")
+        if isinstance(quote, list) and quote and isinstance(quote[0], Mapping)
+        else None
+    )
     if not isinstance(timestamps, list) or not isinstance(closes, list):
         raise PreviousCloseResponseError("Yahoo chart response is missing daily closes")
 
     cutoff = as_of or datetime.now(tz=timezone.utc)
     if cutoff.tzinfo is None or cutoff.utcoffset() is None:
         raise ValueError("as_of must be timezone-aware")
-    candidates: list[tuple[int, Decimal]] = []
+
+    meta = result.get("meta") if isinstance(result.get("meta"), Mapping) else {}
+    timezone_name = _text(meta.get("exchangeTimezoneName"))
+    exchange_tz = _exchange_zone(timezone_name)
+    local_cutoff = cutoff.astimezone(exchange_tz)
+
+    candidates: list[tuple[date, int, Decimal]] = []
     for raw_ts, raw_close in zip(timestamps, closes, strict=False):
         if not isinstance(raw_ts, (int, float)) or raw_close is None:
             continue
-        bar_time = datetime.fromtimestamp(raw_ts, tz=timezone.utc)
-        if bar_time > cutoff:
+        bar_time = datetime.fromtimestamp(raw_ts, tz=timezone.utc).astimezone(exchange_tz)
+        session_date = bar_time.date()
+        if _regular_session_close(session_date, exchange_tz, meta) > local_cutoff:
             continue
         try:
             close = Decimal(str(raw_close))
         except (InvalidOperation, ValueError):
             continue
         if close > 0:
-            candidates.append((int(raw_ts), close))
+            candidates.append((session_date, int(raw_ts), close))
+
     if not candidates:
         raise PreviousCloseResponseError("Yahoo chart response has no completed positive close")
-    timestamp, close = max(candidates, key=lambda item: item[0])
-    meta = result.get("meta") if isinstance(result.get("meta"), Mapping) else {}
+    session_date, _timestamp, close = max(candidates, key=lambda item: (item[0], item[1]))
     return DailyClose(
         symbol=symbol,
-        session_date=datetime.fromtimestamp(timestamp, tz=timezone.utc).date(),
+        session_date=session_date,
         close=close,
         currency=_text(meta.get("currency")),
-        exchange_timezone=_text(meta.get("exchangeTimezoneName")),
+        exchange_timezone=timezone_name,
     )
+
+
+def _exchange_zone(timezone_name: str | None):
+    if not timezone_name:
+        return timezone.utc
+    try:
+        return ZoneInfo(timezone_name)
+    except ZoneInfoNotFoundError:
+        return timezone.utc
+
+
+def _regular_session_close(session_date: date, exchange_tz, meta: Mapping[str, Any]) -> datetime:
+    current = meta.get("currentTradingPeriod")
+    regular = current.get("regular") if isinstance(current, Mapping) else None
+    end = regular.get("end") if isinstance(regular, Mapping) else None
+    if isinstance(end, (int, float)):
+        provider_close = datetime.fromtimestamp(end, tz=timezone.utc).astimezone(exchange_tz)
+        if provider_close.date() == session_date:
+            return provider_close
+    # Yahoo daily bars are timestamped near session open. A bar is not a
+    # completed close merely because its timestamp is earlier than `as_of`.
+    return datetime.combine(session_date, time(hour=16), tzinfo=exchange_tz)
 
 
 def _text(value: object) -> str | None:
