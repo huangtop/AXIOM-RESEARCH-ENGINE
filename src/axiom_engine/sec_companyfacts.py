@@ -28,10 +28,11 @@ class SECObservation:
             raise SECCompanyFactsValidationError("observation is missing val")
         value = payload["val"]
         if not isinstance(value, (int, float, str)) or isinstance(value, bool):
-            raise SECCompanyFactsValidationError("observation val must be a number or string")
-        fiscal_year = payload.get("fy")
-        if fiscal_year is not None and not isinstance(fiscal_year, int):
-            raise SECCompanyFactsValidationError("observation fy must be an integer")
+            raise SECCompanyFactsValidationError(
+                "observation val must be a number or string"
+            )
+
+        fiscal_year = _optional_integer(payload.get("fy"), field_name="fy")
         return cls(
             value=value,
             accession_number=_optional_string(payload.get("accn")),
@@ -74,9 +75,8 @@ class SECCompanyFacts:
     @classmethod
     def from_mapping(cls, payload: Mapping[str, Any]) -> "SECCompanyFacts":
         cik = _normalize_payload_cik(payload.get("cik"))
-        entity_name = payload.get("entityName")
-        if not isinstance(entity_name, str) or not entity_name.strip():
-            raise SECCompanyFactsValidationError("entityName must be a non-empty string")
+        entity_name = _metadata_string(payload.get("entityName"), default="").strip()
+
         raw_facts = payload.get("facts")
         if not isinstance(raw_facts, Mapping):
             raise SECCompanyFactsValidationError("facts must be an object")
@@ -85,30 +85,47 @@ class SECCompanyFacts:
         for taxonomy, concepts in raw_facts.items():
             if not isinstance(taxonomy, str) or not isinstance(concepts, Mapping):
                 raise SECCompanyFactsValidationError("taxonomy entries must be objects")
+
             for concept, fact_payload in concepts.items():
                 if not isinstance(concept, str) or not isinstance(fact_payload, Mapping):
                     raise SECCompanyFactsValidationError("fact entries must be objects")
-                label = fact_payload.get("label", concept)
-                description = fact_payload.get("description", "")
+
+                label = _metadata_string(fact_payload.get("label"), default=concept)
+                description = _metadata_string(
+                    fact_payload.get("description"),
+                    default="",
+                )
+
                 units_payload = fact_payload.get("units")
-                if not isinstance(label, str) or not isinstance(description, str):
-                    raise SECCompanyFactsValidationError(
-                        "fact label and description must be strings"
-                    )
+                if units_payload is None:
+                    units_payload = {}
                 if not isinstance(units_payload, Mapping):
                     raise SECCompanyFactsValidationError("fact units must be an object")
+
                 unit_series: list[SECUnitSeries] = []
                 for unit, observations_payload in units_payload.items():
-                    if not isinstance(unit, str) or not isinstance(observations_payload, list):
-                        raise SECCompanyFactsValidationError("unit observations must be arrays")
+                    if not isinstance(unit, str) or not isinstance(
+                        observations_payload,
+                        list,
+                    ):
+                        raise SECCompanyFactsValidationError(
+                            "unit observations must be arrays"
+                        )
+
                     observations = tuple(
                         SECObservation.from_mapping(item)
                         for item in observations_payload
                         if isinstance(item, Mapping)
                     )
                     if len(observations) != len(observations_payload):
-                        raise SECCompanyFactsValidationError("observations must be objects")
-                    unit_series.append(SECUnitSeries(unit=unit, observations=observations))
+                        raise SECCompanyFactsValidationError(
+                            "observations must be objects"
+                        )
+
+                    unit_series.append(
+                        SECUnitSeries(unit=unit, observations=observations)
+                    )
+
                 facts.append(
                     SECFact(
                         taxonomy=taxonomy,
@@ -118,9 +135,10 @@ class SECCompanyFacts:
                         units=tuple(unit_series),
                     )
                 )
+
         return cls(
             cik=cik,
-            entity_name=entity_name.strip(),
+            entity_name=entity_name,
             facts=tuple(facts),
             raw_payload=dict(payload),
         )
@@ -130,9 +148,13 @@ class SECCompanyFacts:
         try:
             payload = json.loads(text)
         except json.JSONDecodeError as exc:
-            raise SECCompanyFactsValidationError("invalid Company Facts JSON") from exc
+            raise SECCompanyFactsValidationError(
+                "invalid Company Facts JSON"
+            ) from exc
         if not isinstance(payload, Mapping):
-            raise SECCompanyFactsValidationError("Company Facts payload must be an object")
+            raise SECCompanyFactsValidationError(
+                "Company Facts payload must be an object"
+            )
         return cls.from_mapping(payload)
 
     @property
@@ -186,9 +208,44 @@ def _normalize_payload_cik(value: object) -> str:
         raise SECCompanyFactsValidationError("invalid cik") from exc
 
 
+def _metadata_string(value: object, *, default: str) -> str:
+    """Normalize descriptive SEC metadata without rejecting usable facts."""
+    if value is None:
+        return default
+    if isinstance(value, str):
+        return value
+    return str(value)
+
+
 def _optional_string(value: object) -> str | None:
+    """Normalize optional scalar observation metadata.
+
+    SEC normally emits these fields as strings. Coercing scalar values makes the
+    parser resilient to issuer-specific and historical payload variations while
+    preserving the original raw payload for provenance.
+    """
     if value is None:
         return None
-    if not isinstance(value, str):
-        raise SECCompanyFactsValidationError("optional observation fields must be strings")
-    return value
+    if isinstance(value, (str, int, float, bool)):
+        return str(value)
+    raise SECCompanyFactsValidationError(
+        "optional observation fields must be scalar values"
+    )
+
+
+def _optional_integer(value: object, *, field_name: str) -> int | None:
+    if value is None:
+        return None
+    if isinstance(value, bool):
+        raise SECCompanyFactsValidationError(
+            f"observation {field_name} must be an integer"
+        )
+    if isinstance(value, int):
+        return value
+    if isinstance(value, str):
+        stripped = value.strip()
+        if stripped and stripped.lstrip("-").isdigit():
+            return int(stripped)
+    raise SECCompanyFactsValidationError(
+        f"observation {field_name} must be an integer"
+    )
