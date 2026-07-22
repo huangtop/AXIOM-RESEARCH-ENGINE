@@ -44,6 +44,7 @@ class FinancialNormalizer:
         values = tuple(_statement_values(statements))
         currency = _resolve_currency(values)
         period_start, period_end = _resolve_period(values)
+        prior = _prior_statements(self._repository, identifier, statements.fiscal_year)
 
         return NormalizedFinancials(
             identity=NormalizedIdentity(
@@ -66,6 +67,8 @@ class FinancialNormalizer:
                 cash=_amount(statements.balance.cash),
                 accounts_receivable=_amount(statements.balance.accounts_receivable),
                 inventory=_amount(statements.balance.inventory),
+                current_assets=_amount(statements.balance.current_assets),
+                current_liabilities=_amount(statements.balance.current_liabilities),
                 total_assets=_amount(statements.balance.total_assets),
                 total_liabilities=_amount(statements.balance.total_liabilities),
                 shareholders_equity=_amount(statements.balance.shareholders_equity),
@@ -76,9 +79,9 @@ class FinancialNormalizer:
                 free_cash_flow=_amount(statements.cash_flow.free_cash_flow),
             ),
             profitability=_profitability_metrics(statements),
-            efficiency=EfficiencyMetrics(),
-            liquidity=LiquidityMetrics(),
-            leverage=LeverageMetrics(),
+            efficiency=_efficiency_metrics(statements, prior),
+            liquidity=_liquidity_metrics(statements),
+            leverage=_leverage_metrics(statements),
             period_start=period_start,
             period_end=period_end,
         )
@@ -99,6 +102,8 @@ def _statement_values(statements: FinancialStatements) -> Iterable[FinancialValu
         statements.balance.cash,
         statements.balance.accounts_receivable,
         statements.balance.inventory,
+        statements.balance.current_assets,
+        statements.balance.current_liabilities,
         statements.balance.total_assets,
         statements.balance.total_liabilities,
         statements.balance.shareholders_equity,
@@ -142,6 +147,70 @@ def _profitability_metrics(statements: FinancialStatements) -> ProfitabilityMetr
             revenue,
         ),
     )
+
+
+def _prior_statements(
+    repository: FinancialRepository,
+    identifier: str,
+    fiscal_year: int,
+) -> FinancialStatements | None:
+    older_years = tuple(
+        year for year in repository.fiscal_years(identifier) if year < fiscal_year
+    )
+    if not older_years:
+        return None
+    return repository.statements(identifier, fiscal_year=max(older_years))
+
+
+def _efficiency_metrics(
+    statements: FinancialStatements,
+    prior: FinancialStatements | None,
+) -> EfficiencyMetrics:
+    net_income = statements.income.net_income
+    revenue = statements.income.revenue
+    equity = statements.balance.shareholders_equity
+    assets = statements.balance.total_assets
+    prior_equity = prior.balance.shareholders_equity if prior is not None else None
+    prior_assets = prior.balance.total_assets if prior is not None else None
+
+    average_equity = _average_balance(equity, prior_equity)
+    average_assets = _average_balance(assets, prior_assets)
+    return EfficiencyMetrics(
+        return_on_equity=_safe_ratio(_amount(net_income), average_equity),
+        return_on_assets=_safe_ratio(_amount(net_income), average_assets),
+        asset_turnover=_safe_ratio(_amount(revenue), average_assets),
+    )
+
+
+def _liquidity_metrics(statements: FinancialStatements) -> LiquidityMetrics:
+    return LiquidityMetrics(
+        current_ratio=_safe_ratio(
+            _amount(statements.balance.current_assets),
+            _amount(statements.balance.current_liabilities),
+        )
+    )
+
+
+def _leverage_metrics(statements: FinancialStatements) -> LeverageMetrics:
+    liabilities = _amount(statements.balance.total_liabilities)
+    return LeverageMetrics(
+        debt_ratio=_safe_ratio(liabilities, _amount(statements.balance.total_assets)),
+        debt_to_equity=_safe_ratio(
+            liabilities,
+            _amount(statements.balance.shareholders_equity),
+        ),
+    )
+
+
+def _average_balance(
+    current: FinancialValue | None,
+    prior: FinancialValue | None,
+) -> Decimal | None:
+    if current is None:
+        return None
+    if prior is None or prior.unit != current.unit:
+        return current.value
+    return (current.value + prior.value) / Decimal("2")
 
 
 def _safe_ratio(numerator: Decimal | None, denominator: Decimal | None) -> Decimal | None:

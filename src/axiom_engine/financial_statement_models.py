@@ -45,6 +45,8 @@ class BalanceSheet:
     cash: FinancialValue | None = None
     accounts_receivable: FinancialValue | None = None
     inventory: FinancialValue | None = None
+    current_assets: FinancialValue | None = None
+    current_liabilities: FinancialValue | None = None
     total_assets: FinancialValue | None = None
     total_liabilities: FinancialValue | None = None
     shareholders_equity: FinancialValue | None = None

@@ -35,6 +35,8 @@ class NormalizedBalance:
     cash: Decimal | None = None
     accounts_receivable: Decimal | None = None
     inventory: Decimal | None = None
+    current_assets: Decimal | None = None
+    current_liabilities: Decimal | None = None
     total_assets: Decimal | None = None
     total_liabilities: Decimal | None = None
     shareholders_equity: Decimal | None = None
