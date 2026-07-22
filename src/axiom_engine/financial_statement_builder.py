@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping, Sequence
-from dataclasses import replace
+from dataclasses import dataclass, replace
 from datetime import date
 from decimal import Decimal, InvalidOperation
 from typing import Any
@@ -21,6 +21,24 @@ class FinancialStatementBuildError(ValueError):
 
 
 _ANNUAL_FORMS = frozenset({"10-K", "10-K/A", "20-F", "20-F/A", "40-F", "40-F/A"})
+
+
+@dataclass(frozen=True, slots=True)
+class StatementContext:
+    fiscal_year: int
+    fiscal_period: str
+    balance_sheet_end: date | None
+    duration_end: date | None
+
+
+@dataclass(frozen=True, slots=True, order=True)
+class CandidateScore:
+    statement_date_match: int
+    statement_date_recency: date
+    period_score: int
+    alias_priority: int
+    unit_priority: int
+    filed: date
 
 
 class FinancialStatementBuilder:
@@ -48,8 +66,19 @@ class FinancialStatementBuilder:
         if target_year is None:
             raise FinancialStatementBuildError(f"no {fiscal_period} observations found")
 
+        context = self._statement_context(
+            facts,
+            target_year,
+            fiscal_period,
+            filed_on_or_before,
+        )
         selected: dict[str, FinancialValue | None] = {}
         for definition in self._registry.definitions:
+            target_end = (
+                context.balance_sheet_end
+                if definition.instant
+                else context.duration_end
+            )
             selected[definition.field_name] = self._resolve(
                 facts,
                 definition.aliases,
@@ -58,6 +87,7 @@ class FinancialStatementBuilder:
                 target_year,
                 fiscal_period,
                 filed_on_or_before,
+                target_end=target_end,
             )
 
         operating_cash_flow = selected["operating_cash_flow"]
@@ -89,10 +119,59 @@ class FinancialStatementBuilder:
         filed_on_or_before: date | None,
     ) -> int | None:
         years: list[int] = []
+        for observation in _iter_observations(facts):
+            if _eligible(observation, None, fiscal_period, filed_on_or_before):
+                year = _optional_int(observation.get("fy"))
+                if year is not None:
+                    years.append(year)
+        return max(years) if years else None
+
+    def _statement_context(
+        self,
+        facts: Mapping[str, Any],
+        fiscal_year: int,
+        fiscal_period: str,
+        filed_on_or_before: date | None,
+    ) -> StatementContext:
+        balance_aliases = _aliases_for(
+            self._registry,
+            StatementKind.BALANCE,
+            preferred_fields=("total_assets", "total_liabilities", "cash"),
+        )
+        duration_aliases = _aliases_for(
+            self._registry,
+            StatementKind.INCOME,
+            preferred_fields=("revenue", "net_income"),
+        ) + _aliases_for(
+            self._registry,
+            StatementKind.CASH_FLOW,
+            preferred_fields=("operating_cash_flow",),
+        )
+        return StatementContext(
+            fiscal_year=fiscal_year,
+            fiscal_period=fiscal_period,
+            balance_sheet_end=self._latest_end_for_aliases(
+                facts, balance_aliases, fiscal_year, fiscal_period, filed_on_or_before
+            ),
+            duration_end=self._latest_end_for_aliases(
+                facts, duration_aliases, fiscal_year, fiscal_period, filed_on_or_before
+            ),
+        )
+
+    def _latest_end_for_aliases(
+        self,
+        facts: Mapping[str, Any],
+        aliases: tuple[str, ...],
+        fiscal_year: int,
+        fiscal_period: str,
+        filed_on_or_before: date | None,
+    ) -> date | None:
+        ends: list[date] = []
         for taxonomy_payload in facts.values():
             if not isinstance(taxonomy_payload, Mapping):
                 continue
-            for concept_payload in taxonomy_payload.values():
+            for alias in aliases:
+                concept_payload = taxonomy_payload.get(alias)
                 if not isinstance(concept_payload, Mapping):
                     continue
                 units = concept_payload.get("units")
@@ -104,11 +183,17 @@ class FinancialStatementBuilder:
                     for observation in observations:
                         if not isinstance(observation, Mapping):
                             continue
-                        if _eligible(observation, None, fiscal_period, filed_on_or_before):
-                            year = _optional_int(observation.get("fy"))
-                            if year is not None:
-                                years.append(year)
-        return max(years) if years else None
+                        if not _eligible(
+                            observation,
+                            fiscal_year,
+                            fiscal_period,
+                            filed_on_or_before,
+                        ):
+                            continue
+                        end = _parse_date(observation.get("end"))
+                        if end is not None:
+                            ends.append(end)
+        return max(ends) if ends else None
 
     def _resolve(
         self,
@@ -119,8 +204,10 @@ class FinancialStatementBuilder:
         fiscal_year: int,
         fiscal_period: str,
         filed_on_or_before: date | None,
+        *,
+        target_end: date | None,
     ) -> FinancialValue | None:
-        candidates: list[tuple[tuple[int, int, int, date], FinancialValue]] = []
+        candidates: list[tuple[CandidateScore, FinancialValue]] = []
         for taxonomy, taxonomy_payload in facts.items():
             if not isinstance(taxonomy_payload, Mapping):
                 continue
@@ -144,11 +231,51 @@ class FinancialStatementBuilder:
                         parsed = _parse_value(observation, str(taxonomy), alias, str(unit))
                         if parsed is None:
                             continue
+                        parsed_end = parsed.end or date.min
                         candidates.append((
-                            (-alias_rank, -unit_rank, _period_score(parsed, instant), parsed.filed),
+                            CandidateScore(
+                                statement_date_match=int(target_end is not None and parsed.end == target_end),
+                                statement_date_recency=parsed_end,
+                                period_score=_period_score(parsed, instant),
+                                alias_priority=-alias_rank,
+                                unit_priority=-unit_rank,
+                                filed=parsed.filed,
+                            ),
                             parsed,
                         ))
         return max(candidates, key=lambda item: item[0])[1] if candidates else None
+
+
+def _aliases_for(
+    registry: FinancialConceptRegistry,
+    statement: StatementKind,
+    *,
+    preferred_fields: tuple[str, ...],
+) -> tuple[str, ...]:
+    by_name = {item.field_name: item for item in registry.for_statement(statement)}
+    return tuple(
+        alias
+        for field_name in preferred_fields
+        for alias in by_name.get(field_name, ()).aliases
+    )
+
+
+def _iter_observations(facts: Mapping[str, Any]):
+    for taxonomy_payload in facts.values():
+        if not isinstance(taxonomy_payload, Mapping):
+            continue
+        for concept_payload in taxonomy_payload.values():
+            if not isinstance(concept_payload, Mapping):
+                continue
+            units = concept_payload.get("units")
+            if not isinstance(units, Mapping):
+                continue
+            for observations in units.values():
+                if not isinstance(observations, Sequence):
+                    continue
+                for observation in observations:
+                    if isinstance(observation, Mapping):
+                        yield observation
 
 
 def _as_payload(value: object) -> Mapping[str, Any]:

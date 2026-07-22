@@ -31,9 +31,9 @@ DEFAULT_CONCEPTS: tuple[ConceptDefinition, ...] = (
     ConceptDefinition("inventory", StatementKind.BALANCE, ("InventoryNet",), ("USD",), instant=True),
     ConceptDefinition("total_assets", StatementKind.BALANCE, ("Assets",), ("USD",), instant=True),
     ConceptDefinition("total_liabilities", StatementKind.BALANCE, ("Liabilities",), ("USD",), instant=True),
-    ConceptDefinition("shareholders_equity", StatementKind.BALANCE, ("StockholdersEquity", "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest"), ("USD",), instant=True),
+    ConceptDefinition("shareholders_equity", StatementKind.BALANCE, ("StockholdersEquity", "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest", "EntityCommonStockholdersEquity", "PartnersCapital"), ("USD",), instant=True),
     ConceptDefinition("operating_cash_flow", StatementKind.CASH_FLOW, ("NetCashProvidedByUsedInOperatingActivities",), ("USD",)),
-    ConceptDefinition("capital_expenditure", StatementKind.CASH_FLOW, ("PaymentsToAcquirePropertyPlantAndEquipment", "PaymentsForAdditionsToPropertyPlantAndEquipment"), ("USD",)),
+    ConceptDefinition("capital_expenditure", StatementKind.CASH_FLOW, ("PaymentsToAcquirePropertyPlantAndEquipment", "PaymentsForAdditionsToPropertyPlantAndEquipment", "PaymentsToAcquireProductiveAssets", "PaymentsToAcquirePropertyPlantAndEquipmentAndIntangibleAssets", "PropertyPlantAndEquipmentAdditions"), ("USD",)),
 )
 
 
