@@ -296,6 +296,124 @@
       "supported_by_driver_ids": [],
       "supported_by_catalyst_ids": [],
       "notes": "User-provided structure.json seed data."
+    },
+    {
+      "estimate_id": "estimate:NVDA-DILUTED-EPS-2026Q3-BEAR",
+      "company_id": "company:US-NVDA",
+      "security_id": "security:NASDAQ-NVDA",
+      "metric": "diluted_eps",
+      "value": 10.5,
+      "unit": "USD/share",
+      "fiscal_period": "Forward",
+      "estimate_type": "manual",
+      "scenario": "bear",
+      "as_of_date": "2026-07-19",
+      "source_ids": [
+        "source:NVDA-USER-STRUCTURE-2026-07-19"
+      ],
+      "supported_by_driver_ids": [
+        "driver:NVDA-AI-COMPUTE-PLATFORM-LEADERSHIP",
+        "driver:NVDA-NEXT-GEN-PRODUCT-CYCLE"
+      ],
+      "supported_by_catalyst_ids": [
+        "catalyst:NVDA-VERA-RUBIN-QUALIFICATION"
+      ],
+      "notes": "Commit-013 canonical bear scenario seed; replace through the estimates pipeline when refreshed."
+    },
+    {
+      "estimate_id": "estimate:NVDA-GROWTH-ESTIMATE-2026Q3-BEAR",
+      "company_id": "company:US-NVDA",
+      "security_id": "security:NASDAQ-NVDA",
+      "metric": "growth_estimate",
+      "value": 0.28,
+      "unit": "ratio",
+      "fiscal_period": "Forward",
+      "estimate_type": "manual",
+      "scenario": "bear",
+      "as_of_date": "2026-07-19",
+      "source_ids": [
+        "source:NVDA-USER-STRUCTURE-2026-07-19"
+      ],
+      "supported_by_driver_ids": [],
+      "supported_by_catalyst_ids": [],
+      "notes": "Commit-013 canonical bear scenario seed; replace through the estimates pipeline when refreshed."
+    },
+    {
+      "estimate_id": "estimate:NVDA-FUTURE-REVENUE-PER-SHARE-2026Q3-BEAR",
+      "company_id": "company:US-NVDA",
+      "security_id": "security:NASDAQ-NVDA",
+      "metric": "future_revenue_per_share",
+      "value": 14.2,
+      "unit": "USD/share",
+      "fiscal_period": "Forward",
+      "estimate_type": "manual",
+      "scenario": "bear",
+      "as_of_date": "2026-07-19",
+      "source_ids": [
+        "source:NVDA-USER-STRUCTURE-2026-07-19"
+      ],
+      "supported_by_driver_ids": [],
+      "supported_by_catalyst_ids": [],
+      "notes": "Commit-013 canonical bear scenario seed; replace through the estimates pipeline when refreshed."
+    },
+    {
+      "estimate_id": "estimate:NVDA-DILUTED-EPS-2026Q3-BULL",
+      "company_id": "company:US-NVDA",
+      "security_id": "security:NASDAQ-NVDA",
+      "metric": "diluted_eps",
+      "value": 15.2,
+      "unit": "USD/share",
+      "fiscal_period": "Forward",
+      "estimate_type": "manual",
+      "scenario": "bull",
+      "as_of_date": "2026-07-19",
+      "source_ids": [
+        "source:NVDA-USER-STRUCTURE-2026-07-19"
+      ],
+      "supported_by_driver_ids": [
+        "driver:NVDA-AI-COMPUTE-PLATFORM-LEADERSHIP",
+        "driver:NVDA-NEXT-GEN-PRODUCT-CYCLE"
+      ],
+      "supported_by_catalyst_ids": [
+        "catalyst:NVDA-VERA-RUBIN-QUALIFICATION"
+      ],
+      "notes": "Commit-013 canonical bull scenario seed; replace through the estimates pipeline when refreshed."
+    },
+    {
+      "estimate_id": "estimate:NVDA-GROWTH-ESTIMATE-2026Q3-BULL",
+      "company_id": "company:US-NVDA",
+      "security_id": "security:NASDAQ-NVDA",
+      "metric": "growth_estimate",
+      "value": 0.55,
+      "unit": "ratio",
+      "fiscal_period": "Forward",
+      "estimate_type": "manual",
+      "scenario": "bull",
+      "as_of_date": "2026-07-19",
+      "source_ids": [
+        "source:NVDA-USER-STRUCTURE-2026-07-19"
+      ],
+      "supported_by_driver_ids": [],
+      "supported_by_catalyst_ids": [],
+      "notes": "Commit-013 canonical bull scenario seed; replace through the estimates pipeline when refreshed."
+    },
+    {
+      "estimate_id": "estimate:NVDA-FUTURE-REVENUE-PER-SHARE-2026Q3-BULL",
+      "company_id": "company:US-NVDA",
+      "security_id": "security:NASDAQ-NVDA",
+      "metric": "future_revenue_per_share",
+      "value": 18.6,
+      "unit": "USD/share",
+      "fiscal_period": "Forward",
+      "estimate_type": "manual",
+      "scenario": "bull",
+      "as_of_date": "2026-07-19",
+      "source_ids": [
+        "source:NVDA-USER-STRUCTURE-2026-07-19"
+      ],
+      "supported_by_driver_ids": [],
+      "supported_by_catalyst_ids": [],
+      "notes": "Commit-013 canonical bull scenario seed; replace through the estimates pipeline when refreshed."
     }
   ],
   "valuation_scenarios": [
@@ -308,6 +426,26 @@
       "scenario_type": "base",
       "as_of_date": "2026-07-19",
       "description_zh_tw": "依使用者現有 structure.json 數值建立的多模型架構驗證情境。"
+    },
+    {
+      "scenario_id": "valuation_scenario:NVDA-2026Q3-BEAR",
+      "company_id": "company:US-NVDA",
+      "research_period": "2026Q3",
+      "revision": 1,
+      "name": "2026 Q3 Bear Case",
+      "scenario_type": "bear",
+      "as_of_date": "2026-07-19",
+      "description_zh_tw": "成長與估值倍數同步收斂，里程碑成功機率較低。"
+    },
+    {
+      "scenario_id": "valuation_scenario:NVDA-2026Q3-BULL",
+      "company_id": "company:US-NVDA",
+      "research_period": "2026Q3",
+      "revision": 1,
+      "name": "2026 Q3 Bull Case",
+      "scenario_type": "bull",
+      "as_of_date": "2026-07-19",
+      "description_zh_tw": "人工智慧需求與產品週期優於基準，成長與估值倍數上修。"
     }
   ],
   "valuation_results": [
@@ -571,7 +709,7 @@
     {
       "profile_id": "valuation_profile:high-growth-ai-semiconductor",
       "name": "High-Growth AI Semiconductor",
-      "description_zh_tw": "高速成長、具正向獲利與高估值倍數的人工智慧核心運算半導體公司。",
+      "description_zh_tw": "高速成長、具正向獲利與高估值倍數的人工智慧核心運算半導體公司；以統一六模型權重進行 Bull/Base/Bear 情境估值。",
       "business_characteristics": [
         "high_growth",
         "positive_earnings",
@@ -593,12 +731,32 @@
             "diluted_eps",
             "market_price"
           ],
-          "parameters": {}
+          "parameters": {
+            "blend_weight": 0.3
+          }
+        },
+        {
+          "model_type": "peg",
+          "applicability": "primary",
+          "priority": 2,
+          "enabled": true,
+          "reason_zh_tw": "以預估獲利成長與 PEG 倍數檢查成長是否足以支持本益比。",
+          "parameter_keys": [
+            "target_peg"
+          ],
+          "required_metrics": [
+            "diluted_eps",
+            "growth_estimate",
+            "market_price"
+          ],
+          "parameters": {
+            "blend_weight": 0.25
+          }
         },
         {
           "model_type": "forward_ps",
           "applicability": "secondary",
-          "priority": 2,
+          "priority": 3,
           "enabled": true,
           "reason_zh_tw": "高速成長期間可用預估營收倍數交叉檢驗。",
           "parameter_keys": [
@@ -608,12 +766,14 @@
             "future_revenue_per_share",
             "market_price"
           ],
-          "parameters": {}
+          "parameters": {
+            "blend_weight": 0.15
+          }
         },
         {
           "model_type": "ev_ebitda",
           "applicability": "secondary",
-          "priority": 3,
+          "priority": 4,
           "enabled": true,
           "reason_zh_tw": "用企業價值與營運獲利能力檢查資本結構後的估值。",
           "parameter_keys": [
@@ -625,12 +785,14 @@
             "shares_outstanding",
             "market_price"
           ],
-          "parameters": {}
+          "parameters": {
+            "blend_weight": 0.15
+          }
         },
         {
           "model_type": "forward_pb",
           "applicability": "optional",
-          "priority": 4,
+          "priority": 5,
           "enabled": true,
           "reason_zh_tw": "資產報酬率高時本淨比僅作輔助，不作主要定價依據。",
           "parameter_keys": [
@@ -640,7 +802,27 @@
             "book_value_per_share",
             "market_price"
           ],
-          "parameters": {}
+          "parameters": {
+            "blend_weight": 0.05
+          }
+        },
+        {
+          "model_type": "milestone",
+          "applicability": "secondary",
+          "priority": 6,
+          "enabled": true,
+          "reason_zh_tw": "以重大產品與平台里程碑的成功機率估算期望價值。",
+          "parameter_keys": [
+            "milestone_success_probability",
+            "milestone_success_multiple",
+            "milestone_failure_multiple"
+          ],
+          "required_metrics": [
+            "market_price"
+          ],
+          "parameters": {
+            "blend_weight": 0.1
+          }
         }
       ]
     }
