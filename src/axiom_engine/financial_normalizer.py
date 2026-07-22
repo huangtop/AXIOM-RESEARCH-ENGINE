@@ -75,7 +75,7 @@ class FinancialNormalizer:
                 capital_expenditure=_amount(statements.cash_flow.capital_expenditure),
                 free_cash_flow=_amount(statements.cash_flow.free_cash_flow),
             ),
-            profitability=ProfitabilityMetrics(),
+            profitability=_profitability_metrics(statements),
             efficiency=EfficiencyMetrics(),
             liquidity=LiquidityMetrics(),
             leverage=LeverageMetrics(),
@@ -129,3 +129,22 @@ def _resolve_period(values: tuple[FinancialValue, ...]) -> tuple[date | None, da
     starts = [value.start for value in duration_values if value.start is not None]
     ends = [value.end for value in values if value.end is not None]
     return (min(starts) if starts else None, max(ends) if ends else None)
+
+
+def _profitability_metrics(statements: FinancialStatements) -> ProfitabilityMetrics:
+    revenue = _amount(statements.income.revenue)
+    return ProfitabilityMetrics(
+        gross_margin=_safe_ratio(_amount(statements.income.gross_profit), revenue),
+        operating_margin=_safe_ratio(_amount(statements.income.operating_income), revenue),
+        net_margin=_safe_ratio(_amount(statements.income.net_income), revenue),
+        free_cash_flow_margin=_safe_ratio(
+            _amount(statements.cash_flow.free_cash_flow),
+            revenue,
+        ),
+    )
+
+
+def _safe_ratio(numerator: Decimal | None, denominator: Decimal | None) -> Decimal | None:
+    if numerator is None or denominator is None or denominator == 0:
+        return None
+    return numerator / denominator

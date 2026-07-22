@@ -158,11 +158,13 @@ def test_normalizer_sets_period_dates() -> None:
     assert normalized.period_end == date(2025, 12, 31)
 
 
-def test_metrics_remain_empty_in_commit_010b() -> None:
+def test_profitability_metrics_are_populated_but_other_metric_groups_remain_empty() -> None:
     normalized = FinancialNormalizer(_repository()).normalize("NVDA")
 
-    assert normalized.profitability.net_margin is None
+    assert normalized.profitability.net_margin == Decimal("0.25")
+    assert normalized.profitability.free_cash_flow_margin == Decimal("0.35")
     assert normalized.profitability.gross_margin is None
+    assert normalized.profitability.operating_margin is None
     assert normalized.efficiency.return_on_equity is None
     assert normalized.liquidity.current_ratio is None
     assert normalized.leverage.debt_ratio is None
