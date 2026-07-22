@@ -399,6 +399,52 @@ class MultiplesResult:
         return _serialize(asdict(self))
 
 
+@dataclass(frozen=True, slots=True)
+class IntrinsicValueInputs:
+    """Unified request contract for one or more valuation engines."""
+
+    identity: ValuationIdentity
+    dcf: DCFInputs | None = None
+    reverse_dcf: ReverseDCFInputs | None = None
+    multiples: MultiplesInputs | None = None
+    market_price: Decimal | None = None
+    model_version: str = "1.0"
+
+    def __post_init__(self) -> None:
+        _require_text("model_version", self.model_version)
+        if self.dcf is None and self.reverse_dcf is None and self.multiples is None:
+            raise ValueError("at least one valuation input is required")
+        if self.market_price is not None and self.market_price < 0:
+            raise ValueError("market_price cannot be negative")
+        nested = (self.dcf, self.reverse_dcf, self.multiples)
+        for valuation_input in nested:
+            if valuation_input is not None and valuation_input.identity != self.identity:
+                raise ValueError("all valuation inputs must use the same identity")
+
+    def to_dict(self) -> dict[str, Any]:
+        return _serialize(asdict(self))
+
+
+@dataclass(frozen=True, slots=True)
+class IntrinsicValueResult:
+    """Combined outputs returned by the unified valuation entry point."""
+
+    identity: ValuationIdentity
+    model_version: str
+    dcf: ValuationResult | None = None
+    reverse_dcf: ReverseDCFResult | None = None
+    multiples: MultiplesResult | None = None
+    warnings: tuple[str, ...] = ()
+
+    def __post_init__(self) -> None:
+        _require_text("model_version", self.model_version)
+        if self.dcf is None and self.reverse_dcf is None and self.multiples is None:
+            raise ValueError("at least one valuation result is required")
+
+    def to_dict(self) -> dict[str, Any]:
+        return _serialize(asdict(self))
+
+
 def _require_text(name: str, value: str) -> None:
     if not value.strip():
         raise ValueError(f"{name} cannot be empty")
