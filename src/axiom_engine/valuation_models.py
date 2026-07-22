@@ -169,6 +169,86 @@ class DCFInputs:
 
 
 @dataclass(frozen=True, slots=True)
+class ReverseDCFInputs:
+    """Inputs for solving the constant FCF growth implied by a market price."""
+
+    identity: ValuationIdentity
+    current_free_cash_flow: Decimal
+    forecast_years: int
+    discount_rates: DiscountRateAssumptions
+    terminal_value: TerminalValueAssumptions
+    capital_structure: CapitalStructure
+    market_price: Decimal
+    minimum_growth_rate: Decimal = Decimal("-0.50")
+    maximum_growth_rate: Decimal = Decimal("1.00")
+    tolerance: Decimal = Decimal("0.000001")
+    max_iterations: int = 200
+    model_version: str = "1.0"
+
+    def __post_init__(self) -> None:
+        _require_text("model_version", self.model_version)
+        if self.current_free_cash_flow <= 0:
+            raise ValueError("current_free_cash_flow must be positive")
+        if self.forecast_years < 1:
+            raise ValueError("forecast_years must be positive")
+        if self.market_price <= 0:
+            raise ValueError("market_price must be positive")
+        if self.capital_structure.diluted_shares_outstanding is None:
+            raise ValueError("diluted_shares_outstanding is required")
+        if self.minimum_growth_rate <= Decimal("-1"):
+            raise ValueError("minimum_growth_rate must be greater than -1")
+        if self.minimum_growth_rate >= self.maximum_growth_rate:
+            raise ValueError("minimum_growth_rate must be lower than maximum_growth_rate")
+        if self.tolerance <= 0:
+            raise ValueError("tolerance must be positive")
+        if self.max_iterations < 1:
+            raise ValueError("max_iterations must be positive")
+        wacc = self.discount_rates.weighted_average_cost_of_capital
+        if wacc <= 0:
+            raise ValueError("WACC must be positive")
+        if self.terminal_value.method is TerminalValueMethod.perpetual_growth:
+            growth = self.terminal_value.perpetual_growth_rate
+            if growth is not None and growth >= wacc:
+                raise ValueError("perpetual growth must be lower than WACC")
+
+    def to_dict(self) -> dict[str, Any]:
+        return _serialize(asdict(self))
+
+
+@dataclass(frozen=True, slots=True)
+class ReverseDCFResult:
+    """Market-implied constant FCF growth and the DCF that reproduces it."""
+
+    identity: ValuationIdentity
+    model_type: ValuationModelType
+    model_version: str
+    market_price: Decimal
+    target_equity_value: Decimal
+    target_enterprise_value: Decimal
+    implied_growth_rate: Decimal
+    enterprise_value: Decimal
+    equity_value: Decimal
+    implied_value_per_share: Decimal
+    forecast_values: tuple[DiscountedCashFlowPeriod, ...]
+    terminal_value: Decimal
+    present_value_terminal: Decimal
+    iterations: int
+    converged: bool
+    valuation_error: Decimal
+    warnings: tuple[str, ...] = ()
+
+    def __post_init__(self) -> None:
+        _require_text("model_version", self.model_version)
+        if self.market_price <= 0:
+            raise ValueError("market_price must be positive")
+        if self.iterations < 0:
+            raise ValueError("iterations cannot be negative")
+
+    def to_dict(self) -> dict[str, Any]:
+        return _serialize(asdict(self))
+
+
+@dataclass(frozen=True, slots=True)
 class DiscountedCashFlowPeriod:
     """Calculated present value for one forecast period."""
 
