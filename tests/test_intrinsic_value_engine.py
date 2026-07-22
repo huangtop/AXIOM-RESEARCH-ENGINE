@@ -186,3 +186,50 @@ def test_to_dict_serializes_nested_results_and_decimals() -> None:
     assert payload["identity"]["as_of_date"] == "2026-07-22"
     assert payload["multiples"]["market_equity_value"] == "200"
     assert payload["dcf"] is None
+
+
+def test_unified_api_runs_peg_and_milestone_models() -> None:
+    from axiom_engine.valuation_models import MilestoneInputs, PEGInputs
+
+    result = IntrinsicValueEngine().calculate(
+        IntrinsicValueInputs(
+            identity=identity(),
+            peg=PEGInputs(
+                identity=identity(),
+                forward_earnings_per_share=Decimal("5"),
+                growth_rate=Decimal("0.20"),
+                peg_ratio=Decimal("1"),
+            ),
+            milestone=MilestoneInputs(
+                identity=identity(),
+                current_price=Decimal("100"),
+                success_probability=Decimal("0.20"),
+            ),
+        )
+    )
+
+    assert result.peg is not None
+    assert result.peg.fair_value_per_share == Decimal("100.00")
+    assert result.milestone is not None
+    assert result.milestone.fair_value_per_share == Decimal("100.000")
+    assert result.dcf is None
+    assert result.multiples is None
+
+
+def test_intrinsic_result_serializes_new_models() -> None:
+    from axiom_engine.valuation_models import PEGInputs
+
+    result = IntrinsicValueEngine().calculate(
+        IntrinsicValueInputs(
+            identity=identity(),
+            peg=PEGInputs(
+                identity=identity(),
+                forward_earnings_per_share=Decimal("2"),
+                growth_rate=Decimal("0.25"),
+            ),
+        )
+    )
+
+    payload = result.to_dict()
+    assert payload["peg"]["fair_value_per_share"] == "45.000"
+    assert payload["milestone"] is None

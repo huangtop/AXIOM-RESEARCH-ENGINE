@@ -13,6 +13,8 @@ class ValuationModelType(StrEnum):
     discounted_cash_flow = "discounted_cash_flow"
     reverse_discounted_cash_flow = "reverse_discounted_cash_flow"
     relative_multiples = "relative_multiples"
+    price_earnings_growth = "price_earnings_growth"
+    milestone_scenario = "milestone_scenario"
 
 
 class RelativeMultipleType(StrEnum):
@@ -400,6 +402,111 @@ class MultiplesResult:
 
 
 @dataclass(frozen=True, slots=True)
+class PEGInputs:
+    """Inputs for price/earnings-to-growth valuation."""
+
+    identity: ValuationIdentity
+    forward_earnings_per_share: Decimal
+    growth_rate: Decimal
+    peg_ratio: Decimal = Decimal("0.9")
+    fallback_price_to_earnings: Decimal = Decimal("15")
+    market_price: Decimal | None = None
+    model_version: str = "1.0"
+
+    def __post_init__(self) -> None:
+        _require_text("model_version", self.model_version)
+        if self.peg_ratio <= 0:
+            raise ValueError("peg_ratio must be positive")
+        if self.fallback_price_to_earnings <= 0:
+            raise ValueError("fallback_price_to_earnings must be positive")
+        if self.market_price is not None and self.market_price < 0:
+            raise ValueError("market_price cannot be negative")
+
+    def to_dict(self) -> dict[str, Any]:
+        return _serialize(asdict(self))
+
+
+@dataclass(frozen=True, slots=True)
+class PEGResult:
+    """PEG valuation result with explicit fallback behavior."""
+
+    identity: ValuationIdentity
+    model_type: ValuationModelType
+    model_version: str
+    forward_earnings_per_share: Decimal
+    growth_rate: Decimal
+    peg_ratio: Decimal
+    implied_price_to_earnings: Decimal | None
+    applied_price_to_earnings: Decimal | None
+    used_fallback: bool
+    fair_value_per_share: Decimal | None
+    market_price: Decimal | None
+    upside: Decimal | None
+    warnings: tuple[str, ...] = ()
+
+    def __post_init__(self) -> None:
+        _require_text("model_version", self.model_version)
+        if self.fair_value_per_share is not None and self.fair_value_per_share < 0:
+            raise ValueError("fair_value_per_share cannot be negative")
+
+    def to_dict(self) -> dict[str, Any]:
+        return _serialize(asdict(self))
+
+
+@dataclass(frozen=True, slots=True)
+class MilestoneInputs:
+    """Probability-weighted success and failure scenario inputs."""
+
+    identity: ValuationIdentity
+    current_price: Decimal
+    success_probability: Decimal
+    success_multiple: Decimal = Decimal("3.0")
+    failure_multiple: Decimal = Decimal("0.5")
+    model_version: str = "1.0"
+
+    def __post_init__(self) -> None:
+        _require_text("model_version", self.model_version)
+        if self.current_price < 0:
+            raise ValueError("current_price cannot be negative")
+        _require_rate("success_probability", self.success_probability)
+        if self.success_multiple < 0:
+            raise ValueError("success_multiple cannot be negative")
+        if self.failure_multiple < 0:
+            raise ValueError("failure_multiple cannot be negative")
+
+    def to_dict(self) -> dict[str, Any]:
+        return _serialize(asdict(self))
+
+
+@dataclass(frozen=True, slots=True)
+class MilestoneResult:
+    """Probability-weighted milestone scenario valuation result."""
+
+    identity: ValuationIdentity
+    model_type: ValuationModelType
+    model_version: str
+    current_price: Decimal
+    success_probability: Decimal
+    failure_probability: Decimal
+    success_multiple: Decimal
+    failure_multiple: Decimal
+    success_value_per_share: Decimal
+    failure_value_per_share: Decimal
+    expected_multiple: Decimal
+    fair_value_per_share: Decimal
+    upside: Decimal | None
+    warnings: tuple[str, ...] = ()
+
+    def __post_init__(self) -> None:
+        _require_text("model_version", self.model_version)
+        if self.fair_value_per_share < 0:
+            raise ValueError("fair_value_per_share cannot be negative")
+
+    def to_dict(self) -> dict[str, Any]:
+        return _serialize(asdict(self))
+
+
+@dataclass(frozen=True, slots=True)
 class IntrinsicValueInputs:
     """Unified request contract for one or more valuation engines."""
 
@@ -409,14 +516,32 @@ class IntrinsicValueInputs:
     multiples: MultiplesInputs | None = None
     market_price: Decimal | None = None
     model_version: str = "1.0"
+    peg: PEGInputs | None = None
+    milestone: MilestoneInputs | None = None
 
     def __post_init__(self) -> None:
         _require_text("model_version", self.model_version)
-        if self.dcf is None and self.reverse_dcf is None and self.multiples is None:
+        if all(
+            item is None
+            for item in (
+                self.dcf,
+                self.reverse_dcf,
+                self.multiples,
+                self.peg,
+                self.milestone,
+            )
+        ):
             raise ValueError("at least one valuation input is required")
         if self.market_price is not None and self.market_price < 0:
             raise ValueError("market_price cannot be negative")
-        nested = (self.dcf, self.reverse_dcf, self.multiples)
+
+        nested = (
+            self.dcf,
+            self.reverse_dcf,
+            self.multiples,
+            self.peg,
+            self.milestone,
+        )
         for valuation_input in nested:
             if valuation_input is not None and valuation_input.identity != self.identity:
                 raise ValueError("all valuation inputs must use the same identity")
@@ -435,10 +560,21 @@ class IntrinsicValueResult:
     reverse_dcf: ReverseDCFResult | None = None
     multiples: MultiplesResult | None = None
     warnings: tuple[str, ...] = ()
+    peg: PEGResult | None = None
+    milestone: MilestoneResult | None = None
 
     def __post_init__(self) -> None:
         _require_text("model_version", self.model_version)
-        if self.dcf is None and self.reverse_dcf is None and self.multiples is None:
+        if all(
+            item is None
+            for item in (
+                self.dcf,
+                self.reverse_dcf,
+                self.multiples,
+                self.peg,
+                self.milestone,
+            )
+        ):
             raise ValueError("at least one valuation result is required")
 
     def to_dict(self) -> dict[str, Any]:
