@@ -18,8 +18,11 @@ from .services.industry import industry_summary, find_paths
 from .services.etf import etf_summary
 from .services.impact import impact_summary
 from .company_registry import import_company_universe
+from .ontology import load_ontology, validate_ontology, OntologyRegistry
 
 app = typer.Typer(no_args_is_help=True)
+ontology_app = typer.Typer(no_args_is_help=True)
+app.add_typer(ontology_app, name="ontology")
 
 
 @app.command()
@@ -163,6 +166,34 @@ def import_company_universe_command(
         dry_run=not write,
     )
     typer.echo(json.dumps(report.model_dump(mode="json"), ensure_ascii=False, indent=2))
+
+
+@ontology_app.command("validate")
+def ontology_validate_command(root: str = typer.Option("data/ontology")) -> None:
+    stats = validate_ontology(load_ontology(root))
+    typer.echo("OK " + " ".join(f"{k}={v}" for k, v in stats.items()))
+
+
+@ontology_app.command("stats")
+def ontology_stats_command(root: str = typer.Option("data/ontology")) -> None:
+    stats = validate_ontology(load_ontology(root))
+    typer.echo(json.dumps(stats, ensure_ascii=False, indent=2))
+
+
+@ontology_app.command("list-types")
+def ontology_list_types_command(root: str = typer.Option("data/ontology")) -> None:
+    bundle = load_ontology(root)
+    typer.echo(json.dumps({"entity_types": [x.entity_type_id for x in bundle.entity_types], "relation_types": [x.relation_type_id for x in bundle.relation_types]}, ensure_ascii=False, indent=2))
+
+
+@ontology_app.command("show")
+def ontology_show_command(entity_id: str, root: str = typer.Option("data/ontology")) -> None:
+    bundle = load_ontology(root)
+    registry = OntologyRegistry(bundle)
+    if entity_id not in registry.entities:
+        raise typer.BadParameter(f"unknown ontology entity: {entity_id}")
+    entity = registry.entities[entity_id]
+    typer.echo(json.dumps({**entity.__dict__, "aliases": list(entity.aliases), "parents": registry.parents(entity_id), "children": registry.children(entity_id)}, ensure_ascii=False, indent=2))
 
 
 @app.command("build-public")
