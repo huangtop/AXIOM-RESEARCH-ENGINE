@@ -4,6 +4,7 @@ import json
 from datetime import datetime, timezone
 
 import typer
+from axiom_engine.market_data import import_market_data, validate_market_data
 
 from .cached_close import write_close_cache
 from .config import GENERATED_DIR, PREVIOUS_CLOSE_CACHE
@@ -275,6 +276,23 @@ def real_100_status_command(cohort_path: str = typer.Option("data/onboarding/us_
 @app.command("build-sec-real-100-registry-source")
 def build_sec_real_100_registry_source_command(user_agent: str = typer.Option(...), cohort_path: str = typer.Option("data/onboarding/us_real_100_cohort.json"), output: str = typer.Option("data/onboarding/generated/company_universe_source.json"), write: bool = typer.Option(False,"--write")) -> None:
     typer.echo(json.dumps(build_sec_registry_source(user_agent,cohort_path,output,write),ensure_ascii=False,indent=2))
+
+
+@app.command("import-market-data")
+def import_market_data_command(
+    source: str = typer.Option(..., help="Provider-normalized market data source JSON"),
+    output_dir: str = typer.Option("data/market_data"),
+    company_registry_dir: str = typer.Option("data/company_registry"),
+    write: bool = typer.Option(False, "--write", help="Write output; default is dry-run"),
+) -> None:
+    report = import_market_data(source, output_dir=output_dir, company_registry_dir=company_registry_dir, dry_run=not write)
+    typer.echo(json.dumps(report.model_dump(mode="json"), ensure_ascii=False, indent=2))
+
+
+@app.command("validate-market-data")
+def validate_market_data_command(root: str = typer.Option("data/market_data")) -> None:
+    stats = validate_market_data(root)
+    typer.echo("OK " + " ".join(f"{key}={value}" for key, value in stats.items()))
 
 
 @app.command("build-public")

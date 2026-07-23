@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AXIOM Market Data Source",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "provider_id",
+    "provider_name",
+    "as_of_date",
+    "provenance",
+    "observations"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "provider_id": {
+      "type": "string",
+      "pattern": "^provider:"
+    },
+    "provider_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "as_of_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "provenance": {
+      "type": "array",
+      "minItems": 1
+    },
+    "observations": {
+      "type": "array",
+      "minItems": 1
+    },
+    "trading_statuses": {
+      "type": "array"
+    }
+  },
+  "additionalProperties": false
+}
