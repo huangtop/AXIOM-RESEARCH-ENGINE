@@ -19,6 +19,7 @@ from .services.etf import etf_summary
 from .services.impact import impact_summary
 from .company_registry import import_company_universe
 from .ontology import load_ontology, validate_ontology, OntologyRegistry
+from .financial_data import import_financial_data, validate_financial_data
 
 app = typer.Typer(no_args_is_help=True)
 ontology_app = typer.Typer(no_args_is_help=True)
@@ -194,6 +195,23 @@ def ontology_show_command(entity_id: str, root: str = typer.Option("data/ontolog
         raise typer.BadParameter(f"unknown ontology entity: {entity_id}")
     entity = registry.entities[entity_id]
     typer.echo(json.dumps({**entity.__dict__, "aliases": list(entity.aliases), "parents": registry.parents(entity_id), "children": registry.children(entity_id)}, ensure_ascii=False, indent=2))
+
+
+@app.command("import-financial-data")
+def import_financial_data_command(
+    source: str = typer.Option(..., help="Provider-normalized financial data source JSON"),
+    output_dir: str = typer.Option("data/financial_data"),
+    company_registry_dir: str = typer.Option("data/company_registry"),
+    write: bool = typer.Option(False, "--write", help="Write output; default is dry-run"),
+) -> None:
+    report = import_financial_data(source, output_dir=output_dir, company_registry_dir=company_registry_dir, dry_run=not write)
+    typer.echo(json.dumps(report.model_dump(mode="json"), ensure_ascii=False, indent=2))
+
+
+@app.command("validate-financial-data")
+def validate_financial_data_command(root: str = typer.Option("data/financial_data")) -> None:
+    stats = validate_financial_data(root)
+    typer.echo("OK " + " ".join(f"{key}={value}" for key, value in stats.items()))
 
 
 @app.command("build-public")
