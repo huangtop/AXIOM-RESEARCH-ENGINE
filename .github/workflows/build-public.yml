@@ -1,29 +1,52 @@
-name: Build Public Data
+name: Daily Market Cache and Public Data
 
 on:
   workflow_dispatch:
   schedule:
+    # 22:20 UTC, Monday-Friday. This runs once after the US regular session.
     - cron: "20 22 * * 1-5"
 
 permissions:
   contents: write
+
+concurrency:
+  group: daily-market-cache
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: pip
+
       - run: pip install -e .[dev]
+
+      # Network access happens here, once per scheduled run — never in Render.
+      # During the current validation phase, refresh only symbols configured in
+      # the canonical repository. Add more --symbol options as coverage grows.
+      - name: Refresh completed daily closes
+        run: axiom refresh-closes
+
       - run: axiom validate
       - run: axiom build-public
       - run: pytest -q
-      - name: Commit public data
+
+      - name: Commit generated cache and public data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/public
-          git diff --cached --quiet || git commit -m "chore(data): rebuild public JSON"
-          git push
+          git add data/cache data/public
+          if git diff --cached --quiet; then
+            echo "No generated-data changes"
+            exit 0
+          fi
+          git commit -m "chore(data): refresh daily close cache and public JSON"
+          git pull --rebase origin main
+          git push origin HEAD:main

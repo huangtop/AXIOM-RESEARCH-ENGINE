@@ -5,6 +5,8 @@ import os
 from http import HTTPStatus
 from typing import Any, Callable, Iterable
 
+from axiom_engine.cached_close import JsonCachedPreviousCloseProvider
+from axiom_engine.config import PREVIOUS_CLOSE_CACHE
 from axiom_engine.previous_close import PreviousCloseError, YahooPreviousCloseAdapter
 from axiom_engine.valuation_api import (
     BackendValuationAPIService,
@@ -21,9 +23,13 @@ class ValuationWSGIApp:
         production_service: BackendValuationAPIService | None = None,
         legacy_service: LegacyValuationAPIService | None = None,
     ) -> None:
-        close_provider = YahooPreviousCloseAdapter()
-        self.production_service = production_service or BackendValuationAPIService(close_provider)
-        self.legacy_service = legacy_service or LegacyValuationAPIService(close_provider)
+        cached_close_provider = JsonCachedPreviousCloseProvider(PREVIOUS_CLOSE_CACHE)
+        yahoo_close_provider = YahooPreviousCloseAdapter()
+        self.production_service = production_service or BackendValuationAPIService(
+            cached_close_provider
+        )
+        # Debug-only parity endpoint may still fetch when explicitly requested.
+        self.legacy_service = legacy_service or LegacyValuationAPIService(yahoo_close_provider)
 
     def __call__(self, environ: dict[str, Any], start_response: StartResponse) -> Iterable[bytes]:
         method = str(environ.get("REQUEST_METHOD", "GET")).upper()

@@ -1,9 +1,14 @@
 from __future__ import annotations
 
 import json
+from datetime import datetime, timezone
+
 import typer
-from .config import GENERATED_DIR
+
+from .cached_close import write_close_cache
+from .config import GENERATED_DIR, PREVIOUS_CLOSE_CACHE
 from .io import read_json, write_json
+from .previous_close import PreviousCloseError, YahooPreviousCloseAdapter
 from .repository import load_bundle
 from .services.public_builder import build_public
 from .services.validator import validate_bundle
@@ -106,6 +111,43 @@ def impact(shock_id: str = typer.Option("shock:CLOUD-AI-CAPEX-DOWN-15")) -> None
     bundle = load_bundle()
     validate_bundle(bundle)
     typer.echo(json.dumps(impact_summary(bundle, shock_id), ensure_ascii=False, indent=2))
+
+
+@app.command("refresh-closes")
+def refresh_closes(
+    symbol: list[str] | None = typer.Option(
+        None, "--symbol", "-s", help="Ticker to refresh; repeat for multiple symbols."
+    ),
+) -> None:
+    """Fetch completed daily closes once and persist them for the Render API."""
+    bundle = load_bundle()
+    requested = {item.strip().upper() for item in (symbol or []) if item.strip()}
+    symbols = sorted(
+        {item.ticker.upper() for item in bundle.securities if item.active}
+        if not requested
+        else requested
+    )
+    provider = YahooPreviousCloseAdapter()
+    closes = []
+    failures = []
+    for ticker in symbols:
+        try:
+            closes.append(provider.previous_close(ticker))
+            typer.echo(f"OK {ticker} {closes[-1].session_date} {closes[-1].close}")
+        except PreviousCloseError as exc:
+            failures.append(f"{ticker}: {exc}")
+            typer.echo(f"WARN {ticker}: {exc}", err=True)
+
+    if closes:
+        write_close_cache(
+            PREVIOUS_CLOSE_CACHE, closes, generated_at=datetime.now(timezone.utc)
+        )
+    if not closes:
+        raise typer.Exit(code=1)
+    typer.echo(
+        f"Updated {len(closes)} close(s) in {PREVIOUS_CLOSE_CACHE}; "
+        f"failures={len(failures)}"
+    )
 
 
 @app.command("build-public")
