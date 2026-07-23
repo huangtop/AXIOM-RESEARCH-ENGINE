@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AXIOM Independent Company Universe Source",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "as_of_date", "source_name", "provenance", "companies", "securities"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "as_of_date": {"type": "string", "format": "date"},
+    "source_name": {"type": "string", "minLength": 1},
+    "provenance": {"type": "array", "minItems": 1},
+    "companies": {"type": "array"},
+    "securities": {"type": "array"}
+  }
+}
