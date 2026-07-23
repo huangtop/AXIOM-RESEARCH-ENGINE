@@ -21,6 +21,7 @@ from .company_registry import import_company_universe
 from .ontology import load_ontology, validate_ontology, OntologyRegistry
 from .financial_data import import_financial_data, validate_financial_data
 from .estimate_data import import_estimate_data, validate_estimate_data
+from .canonical_valuation import run_batch_valuation, validate_canonical_valuation, valuation_readiness
 
 app = typer.Typer(no_args_is_help=True)
 ontology_app = typer.Typer(no_args_is_help=True)
@@ -229,6 +230,35 @@ def import_estimate_data_command(
 @app.command("validate-estimate-data")
 def validate_estimate_data_command(root: str = typer.Option("data/estimate_data")) -> None:
     stats = validate_estimate_data(root)
+    typer.echo("OK " + " ".join(f"{key}={value}" for key, value in stats.items()))
+
+
+@app.command("valuation-readiness")
+def valuation_readiness_command(
+    financial_dir: str = typer.Option("data/financial_data"),
+    estimate_dir: str = typer.Option("data/estimate_data"),
+    required_company_count: int = typer.Option(100, min=1),
+) -> None:
+    report = valuation_readiness(financial_dir=financial_dir, estimate_dir=estimate_dir, required_company_count=required_company_count)
+    typer.echo(json.dumps(report.model_dump(mode="json"), ensure_ascii=False, indent=2))
+    if not report.acceptance_passed:
+        raise typer.Exit(code=2)
+
+
+@app.command("run-canonical-valuation")
+def run_canonical_valuation_command(
+    financial_dir: str = typer.Option("data/financial_data"),
+    estimate_dir: str = typer.Option("data/estimate_data"),
+    output_dir: str = typer.Option("data/canonical_valuation"),
+    write: bool = typer.Option(False, "--write", help="Write output; default is dry-run"),
+) -> None:
+    report = run_batch_valuation(financial_dir=financial_dir, estimate_dir=estimate_dir, output_dir=output_dir, dry_run=not write)
+    typer.echo(json.dumps(report.model_dump(mode="json"), ensure_ascii=False, indent=2))
+
+
+@app.command("validate-canonical-valuation")
+def validate_canonical_valuation_command(root: str = typer.Option("data/canonical_valuation")) -> None:
+    stats = validate_canonical_valuation(root)
     typer.echo("OK " + " ".join(f"{key}={value}" for key, value in stats.items()))
 
 
