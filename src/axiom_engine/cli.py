@@ -1,15 +1,11 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
-
 import typer
 from axiom_engine.market_data import import_market_data, validate_market_data
-
-from .cached_close import write_close_cache
-from .config import GENERATED_DIR, PREVIOUS_CLOSE_CACHE
+from axiom_engine.company_registry_builder import build_real_100_registry, validate_real_100_registry
+from .config import GENERATED_DIR
 from .io import read_json, write_json
-from .previous_close import PreviousCloseError, YahooPreviousCloseAdapter
 from .repository import load_bundle
 from .services.public_builder import build_public
 from .services.validator import validate_bundle
@@ -120,43 +116,6 @@ def impact(shock_id: str = typer.Option("shock:CLOUD-AI-CAPEX-DOWN-15")) -> None
     bundle = load_bundle()
     validate_bundle(bundle)
     typer.echo(json.dumps(impact_summary(bundle, shock_id), ensure_ascii=False, indent=2))
-
-
-@app.command("refresh-closes")
-def refresh_closes(
-    symbol: list[str] | None = typer.Option(
-        None, "--symbol", "-s", help="Ticker to refresh; repeat for multiple symbols."
-    ),
-) -> None:
-    """Fetch completed daily closes once and persist them for the Render API."""
-    bundle = load_bundle()
-    requested = {item.strip().upper() for item in (symbol or []) if item.strip()}
-    symbols = sorted(
-        {item.ticker.upper() for item in bundle.securities if item.active}
-        if not requested
-        else requested
-    )
-    provider = YahooPreviousCloseAdapter()
-    closes = []
-    failures = []
-    for ticker in symbols:
-        try:
-            closes.append(provider.previous_close(ticker))
-            typer.echo(f"OK {ticker} {closes[-1].session_date} {closes[-1].close}")
-        except PreviousCloseError as exc:
-            failures.append(f"{ticker}: {exc}")
-            typer.echo(f"WARN {ticker}: {exc}", err=True)
-
-    if closes:
-        write_close_cache(
-            PREVIOUS_CLOSE_CACHE, closes, generated_at=datetime.now(timezone.utc)
-        )
-    if not closes:
-        raise typer.Exit(code=1)
-    typer.echo(
-        f"Updated {len(closes)} close(s) in {PREVIOUS_CLOSE_CACHE}; "
-        f"failures={len(failures)}"
-    )
 
 
 @app.command("import-company-universe")
@@ -311,3 +270,27 @@ def run() -> None:
 
 if __name__ == "__main__":
     app()
+
+
+@app.command("build-real-100-company-registry")
+def build_real_100_company_registry_command(
+    user_agent: str = typer.Option(..., help="SEC-compliant application and contact email"),
+    cohort_path: str = typer.Option("data/onboarding/us_real_100_cohort.json"),
+    sec_file: str | None = typer.Option(None, help="Optional downloaded SEC JSON for deterministic/offline runs"),
+    source_output: str = typer.Option("data/onboarding/generated/real_100_company_registry_source.json"),
+    registry_dir: str = typer.Option("data/company_registry"),
+    write: bool = typer.Option(False, "--write", help="Write source and canonical registry; default is dry-run"),
+) -> None:
+    report = build_real_100_registry(user_agent=user_agent, cohort_path=cohort_path, sec_file=sec_file, source_output=source_output, registry_dir=registry_dir, write=write)
+    typer.echo(json.dumps(report.model_dump(mode="json"), ensure_ascii=False, indent=2))
+
+
+@app.command("validate-real-100-company-registry")
+def validate_real_100_company_registry_command(
+    cohort_path: str = typer.Option("data/onboarding/us_real_100_cohort.json"),
+    registry_dir: str = typer.Option("data/company_registry"),
+) -> None:
+    report = validate_real_100_registry(cohort_path=cohort_path, registry_dir=registry_dir)
+    typer.echo(json.dumps(report, ensure_ascii=False, indent=2))
+    if not report["acceptance_passed"]:
+        raise typer.Exit(code=2)
