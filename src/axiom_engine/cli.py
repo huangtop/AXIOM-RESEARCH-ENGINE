@@ -17,6 +17,7 @@ from .services.research import research_summary
 from .services.industry import industry_summary, find_paths
 from .services.etf import etf_summary
 from .services.impact import impact_summary
+from .company_registry import import_company_universe
 
 app = typer.Typer(no_args_is_help=True)
 
@@ -148,6 +149,20 @@ def refresh_closes(
         f"Updated {len(closes)} close(s) in {PREVIOUS_CLOSE_CACHE}; "
         f"failures={len(failures)}"
     )
+
+
+@app.command("import-company-universe")
+def import_company_universe_command(
+    source: str = typer.Option(..., help="Independent company-universe source JSON"),
+    output_dir: str = typer.Option("data/company_registry"),
+    write: bool = typer.Option(False, "--write", help="Write output; default is dry-run"),
+) -> None:
+    report = import_company_universe(
+        source,
+        output_dir=output_dir,
+        dry_run=not write,
+    )
+    typer.echo(json.dumps(report.model_dump(mode="json"), ensure_ascii=False, indent=2))
 
 
 @app.command("build-public")
