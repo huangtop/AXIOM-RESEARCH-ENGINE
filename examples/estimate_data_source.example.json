@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0.0",
+  "provider_id": "provider:example",
+  "provider_name": "Example Consensus Provider",
+  "as_of_date": "2026-07-23",
+  "provenance": [
+    {
+      "provenance_id": "provenance:example:nvda-fy2027",
+      "provider_id": "provider:example",
+      "source_type": "manual_fixture",
+      "source_name": "Example fixture",
+      "source_record_id": "NVDA-FY2027",
+      "retrieved_at": "2026-07-23T00:00:00Z"
+    }
+  ],
+  "estimates": [
+    {
+      "estimate_id": "estimate:example:nvda:revenue:fy2027:mean",
+      "company_id": "company:US-NVDA",
+      "metric": "revenue",
+      "value": "200000000000",
+      "unit": "currency",
+      "currency": "USD",
+      "period_end": "2027-01-31",
+      "fiscal_year": 2027,
+      "fiscal_period": "FY",
+      "estimate_kind": "consensus_mean",
+      "analyst_count": 40,
+      "provenance_ids": ["provenance:example:nvda-fy2027"]
+    }
+  ],
+  "forward_assumptions": [
+    {
+      "assumption_id": "forward_assumption:example:nvda:revenue-growth:3y",
+      "company_id": "company:US-NVDA",
+      "metric": "revenue_growth_rate",
+      "value": "0.25",
+      "unit": "ratio",
+      "effective_date": "2026-07-23",
+      "horizon_years": 3,
+      "assumption_type": "research_assumption",
+      "status": "proposed",
+      "provenance_ids": ["provenance:example:nvda-fy2027"],
+      "rationale": "Example only; not a valuation output."
+    }
+  ]
+}

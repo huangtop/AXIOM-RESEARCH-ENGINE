@@ -20,6 +20,7 @@ from .services.impact import impact_summary
 from .company_registry import import_company_universe
 from .ontology import load_ontology, validate_ontology, OntologyRegistry
 from .financial_data import import_financial_data, validate_financial_data
+from .estimate_data import import_estimate_data, validate_estimate_data
 
 app = typer.Typer(no_args_is_help=True)
 ontology_app = typer.Typer(no_args_is_help=True)
@@ -211,6 +212,23 @@ def import_financial_data_command(
 @app.command("validate-financial-data")
 def validate_financial_data_command(root: str = typer.Option("data/financial_data")) -> None:
     stats = validate_financial_data(root)
+    typer.echo("OK " + " ".join(f"{key}={value}" for key, value in stats.items()))
+
+
+@app.command("import-estimate-data")
+def import_estimate_data_command(
+    source: str = typer.Option(..., help="Provider-normalized estimate data source JSON"),
+    output_dir: str = typer.Option("data/estimate_data"),
+    company_registry_dir: str = typer.Option("data/company_registry"),
+    write: bool = typer.Option(False, "--write", help="Write output; default is dry-run"),
+) -> None:
+    report = import_estimate_data(source, output_dir=output_dir, company_registry_dir=company_registry_dir, dry_run=not write)
+    typer.echo(json.dumps(report.model_dump(mode="json"), ensure_ascii=False, indent=2))
+
+
+@app.command("validate-estimate-data")
+def validate_estimate_data_command(root: str = typer.Option("data/estimate_data")) -> None:
+    stats = validate_estimate_data(root)
     typer.echo("OK " + " ".join(f"{key}={value}" for key, value in stats.items()))
 
 
