@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Canonical valuation result",
+  "type": "object",
+  "required": ["valuation_result_id", "company_id", "as_of_date", "currency", "status", "models", "engine_version"],
+  "properties": {
+    "valuation_result_id": {"type": "string", "pattern": "^canonical_valuation_result:"},
+    "company_id": {"type": "string", "pattern": "^company:"},
+    "status": {"enum": ["completed", "partial", "unavailable"]},
+    "blended_fair_value_per_share": {"type": ["number", "string", "null"]}
+  },
+  "additionalProperties": true
+}
