@@ -22,6 +22,7 @@ from .ontology import load_ontology, validate_ontology, OntologyRegistry
 from .financial_data import import_financial_data, validate_financial_data
 from .estimate_data import import_estimate_data, validate_estimate_data
 from .canonical_valuation import run_batch_valuation, validate_canonical_valuation, valuation_readiness
+from .real_100_onboarding import build_sec_registry_source, load_cohort, onboarding_status
 
 app = typer.Typer(no_args_is_help=True)
 ontology_app = typer.Typer(no_args_is_help=True)
@@ -260,6 +261,20 @@ def run_canonical_valuation_command(
 def validate_canonical_valuation_command(root: str = typer.Option("data/canonical_valuation")) -> None:
     stats = validate_canonical_valuation(root)
     typer.echo("OK " + " ".join(f"{key}={value}" for key, value in stats.items()))
+
+
+@app.command("real-100-plan")
+def real_100_plan_command(cohort_path: str = typer.Option("data/onboarding/us_real_100_cohort.json")) -> None:
+    typer.echo(json.dumps(load_cohort(cohort_path).model_dump(mode="json"), ensure_ascii=False, indent=2))
+
+@app.command("real-100-status")
+def real_100_status_command(cohort_path: str = typer.Option("data/onboarding/us_real_100_cohort.json"), registry_dir: str = typer.Option("data/company_registry"), financial_dir: str = typer.Option("data/financial_data"), estimate_dir: str = typer.Option("data/estimate_data")) -> None:
+    report=onboarding_status(cohort_path,registry_dir,financial_dir,estimate_dir); typer.echo(json.dumps(report,ensure_ascii=False,indent=2))
+    if not report["acceptance_passed"]: raise typer.Exit(code=2)
+
+@app.command("build-sec-real-100-registry-source")
+def build_sec_real_100_registry_source_command(user_agent: str = typer.Option(...), cohort_path: str = typer.Option("data/onboarding/us_real_100_cohort.json"), output: str = typer.Option("data/onboarding/generated/company_universe_source.json"), write: bool = typer.Option(False,"--write")) -> None:
+    typer.echo(json.dumps(build_sec_registry_source(user_agent,cohort_path,output,write),ensure_ascii=False,indent=2))
 
 
 @app.command("build-public")
