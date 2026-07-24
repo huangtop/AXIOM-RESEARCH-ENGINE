@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AXIOM Production Orchestrator State",
+  "type": "object",
+  "required": ["schema_version", "orchestrator_version", "valid", "company_count", "completed", "failed", "stages"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "orchestrator_version": {"const": "V027.3"},
+    "valid": {"type": "boolean"},
+    "company_count": {"type": "integer", "minimum": 0},
+    "completed": {"type": "integer", "minimum": 0},
+    "failed": {"type": "integer", "minimum": 0},
+    "stages": {"type": "array", "minItems": 4}
+  }
+}
