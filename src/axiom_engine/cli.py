@@ -26,6 +26,9 @@ from .real_100_estimate_loader import Real100EstimateError, build_real_100_estim
 
 from .real_100_estimate_loader import Real100EstimateError, build_real_100_estimate_template, build_real_100_estimates, validate_real_100_estimates
 
+from .valuation_engine import ValuationEngineError, build_valuations, validate_valuations
+from .market_data import MarketDataError, build_market_data, validate_market_data, write_template
+
 app = typer.Typer(no_args_is_help=True)
 ontology_app = typer.Typer(no_args_is_help=True)
 app.add_typer(ontology_app, name="ontology")
@@ -314,6 +317,99 @@ def validate_real_100_estimates_command(
     typer.echo(json.dumps(report, ensure_ascii=False, indent=2))
     if not report["acceptance_passed"]: raise typer.Exit(code=2)
 
+
+@app.command("build-valuations")
+def build_valuations_command(
+    financial_dir: str = typer.Option("data/financial_data", "--financial-dir"),
+    estimate_dir: str = typer.Option("data/estimate_data", "--estimate-dir"),
+    market_dir: str = typer.Option("data/market_data", "--market-dir"),
+    registry_dir: str = typer.Option("data/company_registry", "--registry-dir"),
+    assumptions_file: str = typer.Option("data/valuation_assumptions.json", "--assumptions-file"),
+    output_dir: str = typer.Option("data/valuation_data", "--output-dir"),
+    company: str | None = typer.Option(None, "--company", help="Company ID or primary ticker"),
+    scenario: list[str] | None = typer.Option(None, "--scenario", help="Repeat for bear/base/bull; default builds all"),
+    forecast_years: int = typer.Option(5, "--forecast-years"),
+    write: bool = typer.Option(False, "--write", help="Write canonical valuation bundle"),
+    compact: bool = typer.Option(False, "--compact"),
+) -> None:
+    scenarios = tuple(scenario or ["bear", "base", "bull"])
+    invalid = sorted(set(scenarios) - {"bear", "base", "bull"})
+    if invalid:
+        typer.echo(f"Error: unsupported scenarios: {', '.join(invalid)}", err=True)
+        raise typer.Exit(code=2)
+    try:
+        report = build_valuations(
+            financial_dir=financial_dir,
+            estimate_dir=estimate_dir,
+            market_dir=market_dir,
+            registry_dir=registry_dir,
+            assumptions_file=assumptions_file,
+            output_dir=output_dir,
+            company=company,
+            scenarios=scenarios,
+            forecast_years=forecast_years,
+            write=write,
+            compact=compact,
+        )
+    except ValuationEngineError as exc:
+        typer.echo(f"Error: {exc}", err=True)
+        raise typer.Exit(code=2)
+    typer.echo(json.dumps(report, ensure_ascii=False, indent=2))
+    if write and not report["acceptance_passed"]:
+        raise typer.Exit(code=2)
+
+@app.command("validate-valuations")
+def validate_valuations_command(
+    output_dir: str = typer.Option("data/valuation_data", "--output-dir"),
+) -> None:
+    try:
+        report = validate_valuations(output_dir)
+    except ValuationEngineError as exc:
+        typer.echo(f"Error: {exc}", err=True)
+        raise typer.Exit(code=2)
+    typer.echo(json.dumps(report, ensure_ascii=False, indent=2))
+    if not report["valid"]:
+        raise typer.Exit(code=2)
+
+
+@app.command("build-market-data-template")
+def build_market_data_template_command(
+    output: str = typer.Option("data/onboarding/generated/market_data_template.json", "--output"),
+    trading_date: str | None = typer.Option(None, "--trading-date"),
+) -> None:
+    typer.echo(json.dumps(write_template(output, fiscal_date=trading_date), ensure_ascii=False, indent=2))
+
+@app.command("build-market-data")
+def build_market_data_command(
+    source: str = typer.Option(..., "--source"),
+    registry_dir: str = typer.Option("data/company_registry", "--registry-dir"),
+    output_dir: str = typer.Option("data/market_data", "--output-dir"),
+    adapter: str = typer.Option("auto", "--adapter", help="auto/canonical/generic/yahoo/fmp/finnhub/polygon/alpha_vantage"),
+    provider_id: str = typer.Option("provider:manual", "--provider-id"),
+    provider_name: str = typer.Option("Manual Provider", "--provider-name"),
+    as_of_date: str | None = typer.Option(None, "--as-of-date"),
+    write: bool = typer.Option(False, "--write"),
+    compact: bool = typer.Option(False, "--compact"),
+) -> None:
+    allowed={"auto","canonical","generic","yahoo","fmp","finnhub","polygon","alpha_vantage"}
+    if adapter not in allowed:
+        typer.echo(f"Error: unsupported adapter: {adapter}", err=True); raise typer.Exit(code=2)
+    try:
+        report=build_market_data(source=source,registry_dir=registry_dir,output_dir=output_dir,adapter=adapter,provider_id=provider_id,provider_name=provider_name,as_of_date=as_of_date,write=write,compact=compact)
+    except MarketDataError as exc:
+        typer.echo(f"Error: {exc}", err=True); raise typer.Exit(code=2)
+    typer.echo(json.dumps(report,ensure_ascii=False,indent=2))
+    if write and not report["acceptance_passed"]: raise typer.Exit(code=2)
+
+@app.command("validate-market-data")
+def validate_market_data_command(
+    output_dir: str = typer.Option("data/market_data", "--output-dir"),
+) -> None:
+    try: report=validate_market_data(output_dir)
+    except MarketDataError as exc:
+        typer.echo(f"Error: {exc}",err=True); raise typer.Exit(code=2)
+    typer.echo(json.dumps(report,ensure_ascii=False,indent=2))
+    if not report["valid"]: raise typer.Exit(code=2)
 
 @app.command("build-public")
 def build_public_command() -> None:
