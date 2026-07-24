@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AXIOM V028.3 Production Estimate Manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "estimate_version",
+    "generated_at",
+    "estimate_count",
+    "company_count",
+    "errors",
+    "warnings",
+    "valid",
+    "files"
+  ],
+  "properties": {
+    "estimate_version": {
+      "const": "V028.3"
+    },
+    "estimate_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "company_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "errors": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "warnings": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "valid": {
+      "type": "boolean"
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

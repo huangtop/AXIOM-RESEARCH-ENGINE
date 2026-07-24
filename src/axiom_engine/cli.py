@@ -42,6 +42,8 @@ from .production_financial import ProductionFinancialError, build_production_fin
 
 from .production_market import ProductionMarketError, build_production_market, validate_production_market
 
+from .production_estimate import ProductionEstimateError, build_production_estimates, validate_production_estimates
+
 app = typer.Typer(no_args_is_help=True)
 ontology_app = typer.Typer(no_args_is_help=True)
 app.add_typer(ontology_app, name="ontology")
@@ -745,6 +747,37 @@ def validate_production_market_command(
     try:
         result = validate_production_market(output_dir=output_dir, registry_dir=registry_dir)
     except ProductionMarketError as exc:
+        typer.echo(f"Error: {exc}", err=True)
+        raise typer.Exit(code=2)
+    typer.echo(json.dumps(result, ensure_ascii=False, indent=2))
+    if not result["valid"]:
+        raise typer.Exit(code=1)
+
+
+@app.command("build-production-estimates")
+def build_production_estimates_command(
+    source_dir: str = typer.Option(..., "--source-dir"),
+    output_dir: str = typer.Option("data/estimates", "--output-dir"),
+    registry_dir: str = typer.Option("data/company_registry", "--registry-dir"),
+    strict: bool = typer.Option(False, "--strict"),
+    write: bool = typer.Option(False, "--write"),
+) -> None:
+    try:
+        result = build_production_estimates(source_dir=source_dir, output_dir=output_dir, registry_dir=registry_dir, strict=strict, write=write)
+    except ProductionEstimateError as exc:
+        typer.echo(f"Error: {exc}", err=True)
+        raise typer.Exit(code=2)
+    typer.echo(json.dumps(result, ensure_ascii=False, indent=2))
+
+
+@app.command("validate-production-estimates")
+def validate_production_estimates_command(
+    output_dir: str = typer.Option("data/estimates", "--output-dir"),
+    registry_dir: str = typer.Option("data/company_registry", "--registry-dir"),
+) -> None:
+    try:
+        result = validate_production_estimates(output_dir=output_dir, registry_dir=registry_dir)
+    except ProductionEstimateError as exc:
         typer.echo(f"Error: {exc}", err=True)
         raise typer.Exit(code=2)
     typer.echo(json.dumps(result, ensure_ascii=False, indent=2))
