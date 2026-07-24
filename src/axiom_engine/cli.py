@@ -22,6 +22,10 @@ from .estimate_data import import_estimate_data, validate_estimate_data
 from .canonical_valuation import run_batch_valuation, validate_canonical_valuation, valuation_readiness
 from .real_100_onboarding import build_sec_registry_source, load_cohort, onboarding_status
 
+from .real_100_estimate_loader import Real100EstimateError, build_real_100_estimate_template, build_real_100_estimates, validate_real_100_estimates
+
+from .real_100_estimate_loader import Real100EstimateError, build_real_100_estimate_template, build_real_100_estimates, validate_real_100_estimates
+
 app = typer.Typer(no_args_is_help=True)
 ontology_app = typer.Typer(no_args_is_help=True)
 app.add_typer(ontology_app, name="ontology")
@@ -253,6 +257,62 @@ def import_market_data_command(
 def validate_market_data_command(root: str = typer.Option("data/market_data")) -> None:
     stats = validate_market_data(root)
     typer.echo("OK " + " ".join(f"{key}={value}" for key, value in stats.items()))
+
+
+@app.command("build-real-100-estimate-template")
+def build_real_100_estimate_template_command(
+    registry_dir: str = typer.Option("data/company_registry"),
+    output: str = typer.Option("data/onboarding/generated/real_100_estimate_template.csv"),
+    fiscal_year: int | None = typer.Option(None, "--fiscal-year"),
+    period_end: str | None = typer.Option(None, "--period-end"),
+) -> None:
+    report = build_real_100_estimate_template(
+        registry_dir=registry_dir,
+        output=output,
+        fiscal_year=fiscal_year,
+        period_end=period_end,
+    )
+    typer.echo(json.dumps(report, ensure_ascii=False, indent=2))
+
+@app.command("build-real-100-estimates")
+def build_real_100_estimates_command(
+    source: str = typer.Option(..., help="Provider estimate export in JSON or CSV"),
+    registry_dir: str = typer.Option("data/company_registry"),
+    output_dir: str = typer.Option("data/estimate_data"),
+    write: bool = typer.Option(False, "--write", help="Write canonical estimate_data bundle"),
+    adapter: str = typer.Option("auto", "--adapter"),
+    provider_id: str | None = typer.Option(None, "--provider-id"),
+    provider_name: str | None = typer.Option(None, "--provider-name"),
+    as_of_date: str | None = typer.Option(None, "--as-of-date"),
+    compact: bool = typer.Option(False, "--compact"),
+) -> None:
+    try:
+        report = build_real_100_estimates(
+            source,
+            registry_dir=registry_dir,
+            output_dir=output_dir,
+            write=write,
+            adapter=adapter,
+            provider_id=provider_id,
+            provider_name=provider_name,
+            as_of_date=as_of_date,
+            compact=compact,
+        )
+    except Real100EstimateError as exc:
+        typer.echo(f"Error: {exc}", err=True)
+        raise typer.Exit(code=2)
+    typer.echo(json.dumps(report, ensure_ascii=False, indent=2))
+    if write and not report["acceptance_passed"]:
+        raise typer.Exit(code=2)
+
+@app.command("validate-real-100-estimates")
+def validate_real_100_estimates_command(
+    estimate_dir: str = typer.Option("data/estimate_data"),
+    registry_dir: str = typer.Option("data/company_registry"),
+) -> None:
+    report = validate_real_100_estimates(estimate_dir=estimate_dir, registry_dir=registry_dir)
+    typer.echo(json.dumps(report, ensure_ascii=False, indent=2))
+    if not report["acceptance_passed"]: raise typer.Exit(code=2)
 
 
 @app.command("build-public")

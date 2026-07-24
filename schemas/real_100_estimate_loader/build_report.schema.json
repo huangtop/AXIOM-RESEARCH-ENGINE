@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AXIOM V024.1 Estimate Build Report",
+  "type": "object",
+  "required": ["companies_requested", "companies_with_estimates", "estimates_built", "rows_received", "rows_skipped_blank", "provider_id", "provider_adapter", "metric_company_coverage", "acceptance_passed"],
+  "properties": {
+    "companies_requested": {"type": "integer", "minimum": 0},
+    "companies_with_estimates": {"type": "integer", "minimum": 0},
+    "estimates_built": {"type": "integer", "minimum": 0},
+    "rows_received": {"type": "integer", "minimum": 0},
+    "rows_skipped_blank": {"type": "integer", "minimum": 0},
+    "rows_valid": {"type": "integer", "minimum": 0},
+    "rows_invalid": {"type": "integer", "minimum": 0},
+    "provider_id": {"type": "string", "pattern": "^provider:"},
+    "provider_name": {"type": "string"},
+    "provider_adapter": {"type": "string"},
+    "as_of_date": {"type": "string"},
+    "metric_company_coverage": {"type": "object"},
+    "summary": {"type": "object"},
+    "input_status": {"type": "string"},
+    "reason": {"type": "string"},
+    "diagnostics": {"type": "string"},
+    "acceptance_passed": {"type": "boolean"}
+  },
+  "additionalProperties": true
+}
