@@ -32,6 +32,7 @@ from .valuation_engine import ValuationEngineError, build_valuations, validate_v
 from .market_data import MarketDataError, build_market_data, validate_market_data, write_template
 
 from .research_engine import ResearchEngineError, build_research, validate_research
+from .batch_pipeline import BatchPipelineError, run_batch_pipeline, validate_batch_pipeline
 
 app = typer.Typer(no_args_is_help=True)
 ontology_app = typer.Typer(no_args_is_help=True)
@@ -528,6 +529,52 @@ def validate_company_coverage_command(
     if not result["valid"]:
         raise typer.Exit(code=1)
 
+
+
+@app.command("run-canonical-pipeline")
+def run_canonical_pipeline_command(
+    registry_dir: str = typer.Option("data/company_registry"),
+    financial_dir: str = typer.Option("data/financial_data"),
+    estimate_dir: str = typer.Option("data/estimate_data"),
+    market_dir: str = typer.Option("data/market_data"),
+    valuation_dir: str = typer.Option("data/valuation_data"),
+    output_dir: str = typer.Option("data/production_pipeline"),
+    company: str | None = typer.Option(None, "--company"),
+    batch_size: int = typer.Option(100, "--batch-size"),
+    resume: bool = typer.Option(False, "--resume"),
+    retry_failed: bool = typer.Option(False, "--retry-failed"),
+    write: bool = typer.Option(False, "--write"),
+) -> None:
+    try:
+        result = run_batch_pipeline(
+            registry_dir=registry_dir,
+            financial_dir=financial_dir,
+            estimate_dir=estimate_dir,
+            market_dir=market_dir,
+            valuation_dir=valuation_dir,
+            output_dir=output_dir,
+            company=company,
+            batch_size=batch_size,
+            resume=resume,
+            retry_failed=retry_failed,
+            write=write,
+        )
+    except BatchPipelineError as exc:
+        typer.echo(f"Error: {exc}", err=True)
+        raise typer.Exit(code=2)
+    typer.echo(json.dumps(result, ensure_ascii=False, indent=2))
+    if write and not result["valid"]:
+        raise typer.Exit(code=2)
+
+
+@app.command("validate-canonical-pipeline")
+def validate_canonical_pipeline_command(
+    output_dir: str = typer.Option("data/production_pipeline"),
+) -> None:
+    result = validate_batch_pipeline(output_dir=output_dir)
+    typer.echo(json.dumps(result, ensure_ascii=False, indent=2))
+    if not result["valid"]:
+        raise typer.Exit(code=1)
 
 if __name__ == "__main__":
     app()

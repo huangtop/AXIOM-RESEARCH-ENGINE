@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AXIOM Batch Canonical Pipeline State",
+  "type": "object",
+  "required": ["schema_version", "pipeline_version", "company_count", "completed", "failed", "companies"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "pipeline_version": {"const": "V027.1"},
+    "company_count": {"type": "integer", "minimum": 0},
+    "completed": {"type": "integer", "minimum": 0},
+    "failed": {"type": "integer", "minimum": 0},
+    "companies": {"type": "object"}
+  }
+}
