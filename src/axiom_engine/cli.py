@@ -29,6 +29,8 @@ from .real_100_estimate_loader import Real100EstimateError, build_real_100_estim
 from .valuation_engine import ValuationEngineError, build_valuations, validate_valuations
 from .market_data import MarketDataError, build_market_data, validate_market_data, write_template
 
+from .research_engine import ResearchEngineError, build_research, validate_research
+
 app = typer.Typer(no_args_is_help=True)
 ontology_app = typer.Typer(no_args_is_help=True)
 app.add_typer(ontology_app, name="ontology")
@@ -410,6 +412,40 @@ def validate_market_data_command(
         typer.echo(f"Error: {exc}",err=True); raise typer.Exit(code=2)
     typer.echo(json.dumps(report,ensure_ascii=False,indent=2))
     if not report["valid"]: raise typer.Exit(code=2)
+
+@app.command("build-research")
+def build_research_command(
+    registry_dir: str = typer.Option("data/company_registry", "--registry-dir"),
+    financial_dir: str = typer.Option("data/financial_data", "--financial-dir"),
+    estimate_dir: str = typer.Option("data/estimate_data", "--estimate-dir"),
+    market_dir: str = typer.Option("data/market_data", "--market-dir"),
+    valuation_dir: str = typer.Option("data/valuation_data", "--valuation-dir"),
+    output_dir: str = typer.Option("data/research_data", "--output-dir"),
+    company: str | None = typer.Option(None, "--company", help="Company ID or primary ticker"),
+    write: bool = typer.Option(False, "--write", help="Write canonical research bundle"),
+    compact: bool = typer.Option(False, "--compact"),
+) -> None:
+    try:
+        report = build_research(registry_dir=registry_dir, financial_dir=financial_dir, estimate_dir=estimate_dir, market_dir=market_dir, valuation_dir=valuation_dir, output_dir=output_dir, company=company, write=write, compact=compact)
+    except ResearchEngineError as exc:
+        typer.echo(f"Error: {exc}", err=True)
+        raise typer.Exit(code=2)
+    typer.echo(json.dumps(report, ensure_ascii=False, indent=2))
+    if write and not report["acceptance_passed"]:
+        raise typer.Exit(code=2)
+
+@app.command("validate-research")
+def validate_research_command(
+    output_dir: str = typer.Option("data/research_data", "--output-dir"),
+) -> None:
+    try:
+        report = validate_research(output_dir)
+    except ResearchEngineError as exc:
+        typer.echo(f"Error: {exc}", err=True)
+        raise typer.Exit(code=2)
+    typer.echo(json.dumps(report, ensure_ascii=False, indent=2))
+    if not report["valid"]:
+        raise typer.Exit(code=2)
 
 @app.command("build-public")
 def build_public_command() -> None:
