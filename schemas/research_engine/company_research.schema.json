@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://axiom.local/schemas/research_engine/company_research.schema.json",
+  "title": "Canonical Company Research Bundle",
+  "type": "object",
+  "required": ["research_bundle_id", "company_id", "status", "profile", "financial_summary", "estimate_summary", "market_snapshot", "valuation_summary", "confidence", "source_record_ids"],
+  "properties": {
+    "research_bundle_id": {"type": "string", "minLength": 1},
+    "company_id": {"type": "string", "minLength": 1},
+    "ticker": {"type": ["string", "null"]},
+    "status": {"enum": ["completed", "partial"]},
+    "generated_at": {"type": "string"},
+    "profile": {"type": "object"},
+    "financial_summary": {"type": "object"},
+    "estimate_summary": {"type": "object"},
+    "market_snapshot": {"type": "object"},
+    "valuation_summary": {"type": "object"},
+    "confidence": {"type": "object", "required": ["score", "components"]},
+    "source_record_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+  },
+  "additionalProperties": true
+}

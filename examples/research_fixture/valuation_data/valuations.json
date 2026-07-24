@@ -1,0 +1,347 @@
+[
+  {
+    "valuation_id": "valuation:US-CIK0000320193:2026-07-24:bear",
+    "company_id": "company:US-CIK0000320193",
+    "company_name": "Apple Demo",
+    "ticker": "AAPL",
+    "as_of_date": "2026-07-24",
+    "scenario": "bear",
+    "currency": "USD",
+    "status": "partial",
+    "blended_fair_value_per_share": "744.3437042457450983308212453",
+    "current_price": "210.15",
+    "upside_downside": "2.541963855559101110306073021",
+    "confidence": {
+      "score": 82,
+      "components": {
+        "method_completion": 52,
+        "market_freshness": 15,
+        "assumption_provenance": 15
+      }
+    },
+    "methods": [
+      {
+        "method": "discounted_cash_flow",
+        "status": "completed",
+        "fair_value_per_share": "1407.087373813264121303189673",
+        "enterprise_value": "1387087.373813264121303189673",
+        "equity_value": "1407087.373813264121303189673",
+        "inputs": {
+          "base_fcff_proxy": "1E+5",
+          "fcff_growth_rate": "0.04",
+          "discount_rate": "0.1",
+          "terminal_growth_rate": "0.02",
+          "forecast_years": 5
+        },
+        "forecast": [
+          {
+            "year": 1,
+            "fcff": "1.04E+5",
+            "present_value": "94545.45454545454545454545455"
+          },
+          {
+            "year": 2,
+            "fcff": "1.0816E+5",
+            "present_value": "89388.42975206611570247933884"
+          },
+          {
+            "year": 3,
+            "fcff": "112486.4",
+            "present_value": "84512.697220135236664162284"
+          },
+          {
+            "year": 4,
+            "fcff": "116985.856",
+            "present_value": "79902.91373540058739157161396"
+          },
+          {
+            "year": 5,
+            "fcff": "121665.29024",
+            "present_value": "75544.57298619691898839498047"
+          }
+        ],
+        "source_record_ids": [
+          "financial_fact:demo:ocf",
+          "financial_fact:demo:capex",
+          "financial_fact:demo:cash",
+          "financial_fact:demo:debt",
+          "financial_fact:demo:shares"
+        ],
+        "diagnostics": [
+          "FCFF proxy calculated as operating cash flow minus absolute capital expenditures"
+        ]
+      },
+      {
+        "method": "forward_pe",
+        "status": "completed",
+        "fair_value_per_share": "136",
+        "inputs": {
+          "forward_eps": "8",
+          "target_forward_pe": "17"
+        },
+        "source_record_ids": [
+          "estimate:demo:eps"
+        ]
+      },
+      {
+        "method": "forward_ps",
+        "status": "completed",
+        "fair_value_per_share": "0.00008669556518839613204401467156",
+        "inputs": {
+          "forward_revenue": "4E+5",
+          "shares_outstanding": "1.4995E+10",
+          "target_forward_ps": "3.25"
+        },
+        "source_record_ids": [
+          "estimate:demo:revenue",
+          "market_observation:demo:shares"
+        ]
+      },
+      {
+        "method": "forward_ev_ebitda",
+        "status": "unavailable",
+        "diagnostics": [
+          "forward EBITDA, cash, debt, and positive shares are required"
+        ]
+      }
+    ],
+    "assumptions": {
+      "fcff_growth_rate": "0.04",
+      "discount_rate": "0.1",
+      "terminal_growth_rate": "0.02",
+      "target_forward_pe": "17",
+      "target_forward_ps": "3.25",
+      "target_ev_ebitda": "12"
+    }
+  },
+  {
+    "valuation_id": "valuation:US-CIK0000320193:2026-07-24:base",
+    "company_id": "company:US-CIK0000320193",
+    "company_name": "Apple Demo",
+    "ticker": "AAPL",
+    "as_of_date": "2026-07-24",
+    "scenario": "base",
+    "currency": "USD",
+    "status": "partial",
+    "blended_fair_value_per_share": "973.8680776418734554283583554",
+    "current_price": "210.15",
+    "upside_downside": "3.634156924301087106487548681",
+    "confidence": {
+      "score": 82,
+      "components": {
+        "method_completion": 52,
+        "market_freshness": 15,
+        "assumption_provenance": 15
+      }
+    },
+    "methods": [
+      {
+        "method": "discounted_cash_flow",
+        "status": "completed",
+        "fair_value_per_share": "1851.736112602853279646313243",
+        "enterprise_value": "1831736.112602853279646313243",
+        "equity_value": "1851736.112602853279646313243",
+        "inputs": {
+          "base_fcff_proxy": "1E+5",
+          "fcff_growth_rate": "0.06",
+          "discount_rate": "0.09",
+          "terminal_growth_rate": "0.025",
+          "forecast_years": 5
+        },
+        "forecast": [
+          {
+            "year": 1,
+            "fcff": "1.06E+5",
+            "present_value": "97247.70642201834862385321101"
+          },
+          {
+            "year": 2,
+            "fcff": "1.1236E+5",
+            "present_value": "94571.16404343068765255449878"
+          },
+          {
+            "year": 3,
+            "fcff": "119101.6",
+            "present_value": "91968.28796884085221257593459"
+          },
+          {
+            "year": 4,
+            "fcff": "126247.696",
+            "present_value": "89437.05068529477371131237676"
+          },
+          {
+            "year": 5,
+            "fcff": "133822.55776",
+            "present_value": "86975.48048294721113210194437"
+          }
+        ],
+        "source_record_ids": [
+          "financial_fact:demo:ocf",
+          "financial_fact:demo:capex",
+          "financial_fact:demo:cash",
+          "financial_fact:demo:debt",
+          "financial_fact:demo:shares"
+        ],
+        "diagnostics": [
+          "FCFF proxy calculated as operating cash flow minus absolute capital expenditures"
+        ]
+      },
+      {
+        "method": "forward_pe",
+        "status": "completed",
+        "fair_value_per_share": "1.6E+2",
+        "inputs": {
+          "forward_eps": "8",
+          "target_forward_pe": "2E+1"
+        },
+        "source_record_ids": [
+          "estimate:demo:eps"
+        ]
+      },
+      {
+        "method": "forward_ps",
+        "status": "completed",
+        "fair_value_per_share": "0.0001067022340780260086695565188",
+        "inputs": {
+          "forward_revenue": "4E+5",
+          "shares_outstanding": "1.4995E+10",
+          "target_forward_ps": "4"
+        },
+        "source_record_ids": [
+          "estimate:demo:revenue",
+          "market_observation:demo:shares"
+        ]
+      },
+      {
+        "method": "forward_ev_ebitda",
+        "status": "unavailable",
+        "diagnostics": [
+          "forward EBITDA, cash, debt, and positive shares are required"
+        ]
+      }
+    ],
+    "assumptions": {
+      "fcff_growth_rate": "0.06",
+      "discount_rate": "0.09",
+      "terminal_growth_rate": "0.025",
+      "target_forward_pe": "2E+1",
+      "target_forward_ps": "4",
+      "target_ev_ebitda": "12"
+    }
+  },
+  {
+    "valuation_id": "valuation:US-CIK0000320193:2026-07-24:bull",
+    "company_id": "company:US-CIK0000320193",
+    "company_name": "Apple Demo",
+    "ticker": "AAPL",
+    "as_of_date": "2026-07-24",
+    "scenario": "bull",
+    "currency": "USD",
+    "status": "partial",
+    "blended_fair_value_per_share": "1345.200025341780593531177059",
+    "current_price": "210.15",
+    "upside_downside": "5.401142161988011389632058335",
+    "confidence": {
+      "score": 82,
+      "components": {
+        "method_completion": 52,
+        "market_freshness": 15,
+        "assumption_provenance": 15
+      }
+    },
+    "methods": [
+      {
+        "method": "discounted_cash_flow",
+        "status": "completed",
+        "fair_value_per_share": "2.58E+3",
+        "enterprise_value": "2.56E+6",
+        "equity_value": "2.58E+6",
+        "inputs": {
+          "base_fcff_proxy": "1E+5",
+          "fcff_growth_rate": "0.08",
+          "discount_rate": "0.08",
+          "terminal_growth_rate": "0.03",
+          "forecast_years": 5
+        },
+        "forecast": [
+          {
+            "year": 1,
+            "fcff": "1.08E+5",
+            "present_value": "1E+5"
+          },
+          {
+            "year": 2,
+            "fcff": "1.1664E+5",
+            "present_value": "1E+5"
+          },
+          {
+            "year": 3,
+            "fcff": "125971.2",
+            "present_value": "1E+5"
+          },
+          {
+            "year": 4,
+            "fcff": "136048.896",
+            "present_value": "1E+5"
+          },
+          {
+            "year": 5,
+            "fcff": "146932.80768",
+            "present_value": "1E+5"
+          }
+        ],
+        "source_record_ids": [
+          "financial_fact:demo:ocf",
+          "financial_fact:demo:capex",
+          "financial_fact:demo:cash",
+          "financial_fact:demo:debt",
+          "financial_fact:demo:shares"
+        ],
+        "diagnostics": [
+          "FCFF proxy calculated as operating cash flow minus absolute capital expenditures"
+        ]
+      },
+      {
+        "method": "forward_pe",
+        "status": "completed",
+        "fair_value_per_share": "184",
+        "inputs": {
+          "forward_eps": "8",
+          "target_forward_pe": "23"
+        },
+        "source_record_ids": [
+          "estimate:demo:eps"
+        ]
+      },
+      {
+        "method": "forward_ps",
+        "status": "completed",
+        "fair_value_per_share": "0.0001267089029676558852950983661",
+        "inputs": {
+          "forward_revenue": "4E+5",
+          "shares_outstanding": "1.4995E+10",
+          "target_forward_ps": "4.75"
+        },
+        "source_record_ids": [
+          "estimate:demo:revenue",
+          "market_observation:demo:shares"
+        ]
+      },
+      {
+        "method": "forward_ev_ebitda",
+        "status": "unavailable",
+        "diagnostics": [
+          "forward EBITDA, cash, debt, and positive shares are required"
+        ]
+      }
+    ],
+    "assumptions": {
+      "fcff_growth_rate": "0.08",
+      "discount_rate": "0.08",
+      "terminal_growth_rate": "0.03",
+      "target_forward_pe": "23",
+      "target_forward_ps": "4.75",
+      "target_ev_ebitda": "12"
+    }
+  }
+]
