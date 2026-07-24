@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://axiom.local/schemas/production_research_card/research_card.schema.json",
+  "title": "AXIOM Production Research Card",
+  "type": "object",
+  "required": ["schema_version", "card_version", "card_id", "company", "primary_security", "market", "financials", "estimates", "coverage"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "card_version": {"const": "V029.0"},
+    "card_id": {"type": "string"},
+    "company": {"type": "object"},
+    "primary_security": {"type": ["object", "null"]},
+    "securities": {"type": "array"},
+    "market": {"type": "object"},
+    "financials": {"type": "array"},
+    "estimates": {"type": "array"},
+    "coverage": {"type": "object"},
+    "api": {"type": "object"}
+  }
+}

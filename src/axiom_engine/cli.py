@@ -45,6 +45,12 @@ from .production_market import ProductionMarketError, build_production_market, v
 from .production_estimate import ProductionEstimateError, build_production_estimates, validate_production_estimates
 
 from .production_build import ProductionBuildError, build_production, validate_production
+from .production_research_card import (
+    ProductionResearchCardError,
+    build_production_research_cards,
+    get_production_research_card,
+    validate_production_research_cards,
+)
 app = typer.Typer(no_args_is_help=True)
 ontology_app = typer.Typer(no_args_is_help=True)
 app.add_typer(ontology_app, name="ontology")
@@ -807,6 +813,47 @@ def build_production_command(
 @app.command("validate-production")
 def validate_production_command(output_dir: str = typer.Option("data/production")) -> None:
     payload = validate_production(output_dir=output_dir)
+    typer.echo(json.dumps(payload, ensure_ascii=False, indent=2))
+    if not payload.get("valid"):
+        raise typer.Exit(code=1)
+
+
+@app.command("build-production-research-cards")
+def build_production_research_cards_command(
+    production_dir: str = typer.Option("data/production"),
+    output_dir: str = typer.Option("data/production_research_cards"),
+    strict: bool = typer.Option(False),
+    write: bool = typer.Option(False),
+) -> None:
+    try:
+        payload = build_production_research_cards(
+            production_dir=production_dir, output_dir=output_dir, strict=strict, write=write
+        )
+    except ProductionResearchCardError as exc:
+        raise typer.BadParameter(str(exc)) from exc
+    typer.echo(json.dumps(payload, ensure_ascii=False, indent=2))
+
+
+@app.command("get-production-research-card")
+def get_production_research_card_command(
+    output_dir: str = typer.Option("data/production_research_cards"),
+    symbol: str | None = typer.Option(None),
+    company_id: str | None = typer.Option(None),
+) -> None:
+    try:
+        payload = get_production_research_card(
+            output_dir=output_dir, symbol=symbol, company_id=company_id
+        )
+    except ProductionResearchCardError as exc:
+        raise typer.BadParameter(str(exc)) from exc
+    typer.echo(json.dumps(payload, ensure_ascii=False, indent=2))
+
+
+@app.command("validate-production-research-cards")
+def validate_production_research_cards_command(
+    output_dir: str = typer.Option("data/production_research_cards"),
+) -> None:
+    payload = validate_production_research_cards(output_dir=output_dir)
     typer.echo(json.dumps(payload, ensure_ascii=False, indent=2))
     if not payload.get("valid"):
         raise typer.Exit(code=1)
