@@ -51,6 +51,7 @@ from .production_research_card import (
     get_production_research_card,
     validate_production_research_cards,
 )
+from .existing_universe_population import ExistingUniversePopulationError, build_existing_universe_population, validate_existing_universe_population
 app = typer.Typer(no_args_is_help=True)
 ontology_app = typer.Typer(no_args_is_help=True)
 app.add_typer(ontology_app, name="ontology")
@@ -854,6 +855,32 @@ def validate_production_research_cards_command(
     output_dir: str = typer.Option("data/production_research_cards"),
 ) -> None:
     payload = validate_production_research_cards(output_dir=output_dir)
+    typer.echo(json.dumps(payload, ensure_ascii=False, indent=2))
+    if not payload.get("valid"):
+        raise typer.Exit(code=1)
+
+
+@app.command("populate-existing-universe")
+def populate_existing_universe_command(
+    universe_dir: str = typer.Option("data/universe"),
+    output_dir: str = typer.Option("data/existing_universe_population"),
+    strict: bool = typer.Option(False),
+    write: bool = typer.Option(False),
+) -> None:
+    try:
+        payload = build_existing_universe_population(
+            universe_dir=universe_dir, output_dir=output_dir, strict=strict, write=write
+        )
+    except ExistingUniversePopulationError as exc:
+        raise typer.BadParameter(str(exc)) from exc
+    typer.echo(json.dumps(payload, ensure_ascii=False, indent=2))
+
+
+@app.command("validate-existing-universe-population")
+def validate_existing_universe_population_command(
+    output_dir: str = typer.Option("data/existing_universe_population"),
+) -> None:
+    payload = validate_existing_universe_population(output_dir=output_dir)
     typer.echo(json.dumps(payload, ensure_ascii=False, indent=2))
     if not payload.get("valid"):
         raise typer.Exit(code=1)
