@@ -36,6 +36,8 @@ from .batch_pipeline import BatchPipelineError, run_batch_pipeline, validate_bat
 from .valuation_strategy import ValuationStrategyError, build_valuation_strategies, validate_valuation_strategies
 from .production_orchestrator import ProductionOrchestratorError, run_production_orchestrator, validate_production_orchestrator
 
+from .production_registry import ProductionRegistryError, build_production_registry, validate_production_registry
+
 app = typer.Typer(no_args_is_help=True)
 ontology_app = typer.Typer(no_args_is_help=True)
 app.add_typer(ontology_app, name="ontology")
@@ -643,6 +645,36 @@ def validate_production_orchestrator_command(
     output_dir: str = typer.Option("data/production_orchestrator"),
 ) -> None:
     result = validate_production_orchestrator(output_dir=output_dir)
+    typer.echo(json.dumps(result, ensure_ascii=False, indent=2))
+    if not result["valid"]:
+        raise typer.Exit(code=1)
+
+
+@app.command("build-production-registry")
+def build_production_registry_command(
+    source_dir: str = typer.Option(..., "--source-dir"),
+    output_dir: str = typer.Option("data/company_registry", "--output-dir"),
+    strict: bool = typer.Option(False, "--strict"),
+    write: bool = typer.Option(False, "--write"),
+) -> None:
+    try:
+        result = build_production_registry(
+            source_dir=source_dir,
+            output_dir=output_dir,
+            strict=strict,
+            write=write,
+        )
+    except ProductionRegistryError as exc:
+        typer.echo(f"Error: {exc}", err=True)
+        raise typer.Exit(code=2)
+    typer.echo(json.dumps(result, ensure_ascii=False, indent=2))
+
+
+@app.command("validate-production-registry")
+def validate_production_registry_command(
+    output_dir: str = typer.Option("data/company_registry", "--output-dir"),
+) -> None:
+    result = validate_production_registry(output_dir=output_dir)
     typer.echo(json.dumps(result, ensure_ascii=False, indent=2))
     if not result["valid"]:
         raise typer.Exit(code=1)
