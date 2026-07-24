@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AXIOM Canonical Valuation Result",
+  "type": "object",
+  "required": ["valuation_id", "company_id", "as_of_date", "scenario", "status", "methods", "confidence"],
+  "properties": {
+    "valuation_id": {"type": "string", "pattern": "^valuation:"},
+    "company_id": {"type": "string", "pattern": "^company:"},
+    "as_of_date": {"type": "string", "format": "date"},
+    "scenario": {"enum": ["bear", "base", "bull"]},
+    "status": {"enum": ["completed", "partial", "unavailable"]},
+    "blended_fair_value_per_share": {"type": ["string", "null"]},
+    "methods": {"type": "array", "minItems": 1},
+    "confidence": {"type": "object", "required": ["score", "components"]}
+  },
+  "additionalProperties": true
+}

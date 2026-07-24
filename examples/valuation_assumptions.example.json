@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "as_of_date": "2026-07-24",
+  "source": "research-approved-assumption-profile",
+  "defaults": {
+    "fcff_growth_rate": "0.06",
+    "discount_rate": "0.09",
+    "terminal_growth_rate": "0.025",
+    "target_forward_pe": "20",
+    "target_forward_ps": "4",
+    "target_ev_ebitda": "12",
+    "source": "research-approved-assumption-profile",
+    "as_of_date": "2026-07-24",
+    "method_weights": {
+      "discounted_cash_flow": "0.50",
+      "forward_pe": "0.30",
+      "forward_ps": "0.20",
+      "forward_ev_ebitda": "0.00"
+    },
+    "scenarios": {
+      "bear": {"fcff_growth_rate": "-0.02", "discount_rate": "0.01", "terminal_growth_rate": "-0.005", "target_forward_pe": "-3", "target_forward_ps": "-0.75"},
+      "base": {},
+      "bull": {"fcff_growth_rate": "0.02", "discount_rate": "-0.01", "terminal_growth_rate": "0.005", "target_forward_pe": "3", "target_forward_ps": "0.75"}
+    }
+  },
+  "companies": {}
+}
