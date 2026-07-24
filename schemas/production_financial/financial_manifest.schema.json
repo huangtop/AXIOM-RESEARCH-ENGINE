@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://axiom.local/schemas/production_financial/financial_manifest.schema.json",
+  "title": "AXIOM Production Financial Manifest",
+  "type": "object",
+  "required": ["schema_version", "financial_version", "generated_at", "fact_count", "company_count", "errors", "warnings", "valid", "files"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "financial_version": {"const": "V028.1"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "fact_count": {"type": "integer", "minimum": 0},
+    "company_count": {"type": "integer", "minimum": 0},
+    "errors": {"type": "integer", "minimum": 0},
+    "warnings": {"type": "integer", "minimum": 0},
+    "valid": {"type": "boolean"},
+    "files": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

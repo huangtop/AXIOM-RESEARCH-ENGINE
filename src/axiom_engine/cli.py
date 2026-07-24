@@ -38,6 +38,8 @@ from .production_orchestrator import ProductionOrchestratorError, run_production
 
 from .production_registry import ProductionRegistryError, build_production_registry, validate_production_registry
 
+from .production_financial import ProductionFinancialError, build_production_financials, validate_production_financials
+
 app = typer.Typer(no_args_is_help=True)
 ontology_app = typer.Typer(no_args_is_help=True)
 app.add_typer(ontology_app, name="ontology")
@@ -675,6 +677,43 @@ def validate_production_registry_command(
     output_dir: str = typer.Option("data/company_registry", "--output-dir"),
 ) -> None:
     result = validate_production_registry(output_dir=output_dir)
+    typer.echo(json.dumps(result, ensure_ascii=False, indent=2))
+    if not result["valid"]:
+        raise typer.Exit(code=1)
+
+
+@app.command("build-production-financials")
+def build_production_financials_command(
+    source_dir: str = typer.Option(..., "--source-dir"),
+    output_dir: str = typer.Option("data/financials", "--output-dir"),
+    registry_dir: str = typer.Option("data/company_registry", "--registry-dir"),
+    strict: bool = typer.Option(False, "--strict"),
+    write: bool = typer.Option(False, "--write"),
+) -> None:
+    try:
+        result = build_production_financials(
+            source_dir=source_dir,
+            output_dir=output_dir,
+            registry_dir=registry_dir,
+            strict=strict,
+            write=write,
+        )
+    except ProductionFinancialError as exc:
+        typer.echo(f"Error: {exc}", err=True)
+        raise typer.Exit(code=2)
+    typer.echo(json.dumps(result, ensure_ascii=False, indent=2))
+
+
+@app.command("validate-production-financials")
+def validate_production_financials_command(
+    output_dir: str = typer.Option("data/financials", "--output-dir"),
+    registry_dir: str = typer.Option("data/company_registry", "--registry-dir"),
+) -> None:
+    try:
+        result = validate_production_financials(output_dir=output_dir, registry_dir=registry_dir)
+    except ProductionFinancialError as exc:
+        typer.echo(f"Error: {exc}", err=True)
+        raise typer.Exit(code=2)
     typer.echo(json.dumps(result, ensure_ascii=False, indent=2))
     if not result["valid"]:
         raise typer.Exit(code=1)
