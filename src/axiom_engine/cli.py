@@ -4,6 +4,7 @@ import json
 import typer
 from axiom_engine.market_data import import_market_data, validate_market_data
 from axiom_engine.company_registry_builder import build_real_100_registry, validate_real_100_registry
+from axiom_engine.sec_financial_loader import build_real_100_financials, validate_real_100_financials
 from .config import GENERATED_DIR
 from .io import read_json, write_json
 from .repository import load_bundle
@@ -294,3 +295,25 @@ def validate_real_100_company_registry_command(
     typer.echo(json.dumps(report, ensure_ascii=False, indent=2))
     if not report["acceptance_passed"]:
         raise typer.Exit(code=2)
+
+
+@app.command("build-real-100-financials")
+def build_real_100_financials_command(
+    user_agent: str = typer.Option(..., help="SEC-compliant application and contact email"),
+    registry_dir: str = typer.Option("data/company_registry"),
+    source_output: str = typer.Option("data/onboarding/generated/real_100_sec_financial_source.json"),
+    financial_dir: str = typer.Option("data/financial_data"),
+    cache_dir: str = typer.Option("data/onboarding/sec_companyfacts"),
+    diagnostics_output: str = typer.Option("data/onboarding/generated/v023_financial_diagnostics.json"),
+    sleep_seconds: float = typer.Option(0.12),
+    write: bool = typer.Option(False, "--write", help="Write source and canonical financial data; default is dry-run"),
+) -> None:
+    report = build_real_100_financials(user_agent=user_agent, registry_dir=registry_dir, source_output=source_output, financial_dir=financial_dir, cache_dir=cache_dir, diagnostics_output=diagnostics_output, sleep_seconds=sleep_seconds, write=write)
+    typer.echo(json.dumps(report.model_dump(mode="json"), ensure_ascii=False, indent=2))
+    if write and not report.acceptance_passed: raise typer.Exit(code=2)
+
+@app.command("validate-real-100-financials")
+def validate_real_100_financials_command(registry_dir: str = typer.Option("data/company_registry"), financial_dir: str = typer.Option("data/financial_data")) -> None:
+    report = validate_real_100_financials(registry_dir=registry_dir, financial_dir=financial_dir)
+    typer.echo(json.dumps(report, ensure_ascii=False, indent=2))
+    if not report["acceptance_passed"]: raise typer.Exit(code=2)

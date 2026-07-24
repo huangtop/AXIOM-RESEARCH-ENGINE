@@ -1,0 +1,47 @@
+{
+  "type": "object",
+  "required": [
+    "companies_requested",
+    "companies_with_facts",
+    "facts_built",
+    "metric_company_coverage",
+    "acceptance_passed",
+    "companies_without_facts",
+    "missing_metrics_by_company",
+    "tag_usage_by_metric",
+    "diagnostics_file"
+  ],
+  "properties": {
+    "companies_without_facts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "missing_metrics_by_company": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "tag_usage_by_metric": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "diagnostics_file": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}
