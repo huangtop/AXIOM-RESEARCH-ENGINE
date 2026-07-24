@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://axiom.local/schemas/production_market/market_manifest.schema.json",
+  "title": "AXIOM Production Market Manifest",
+  "type": "object",
+  "required": ["schema_version", "market_version", "generated_at", "snapshot_count", "company_count", "security_count", "provider_count", "errors", "warnings", "valid", "files"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "market_version": {"const": "V028.2"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "snapshot_count": {"type": "integer", "minimum": 0},
+    "company_count": {"type": "integer", "minimum": 0},
+    "security_count": {"type": "integer", "minimum": 0},
+    "provider_count": {"type": "integer", "minimum": 0},
+    "errors": {"type": "integer", "minimum": 0},
+    "warnings": {"type": "integer", "minimum": 0},
+    "valid": {"type": "boolean"},
+    "files": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}
