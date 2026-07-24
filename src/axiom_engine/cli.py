@@ -44,6 +44,7 @@ from .production_market import ProductionMarketError, build_production_market, v
 
 from .production_estimate import ProductionEstimateError, build_production_estimates, validate_production_estimates
 
+from .production_build import ProductionBuildError, build_production, validate_production
 app = typer.Typer(no_args_is_help=True)
 ontology_app = typer.Typer(no_args_is_help=True)
 app.add_typer(ontology_app, name="ontology")
@@ -784,6 +785,31 @@ def validate_production_estimates_command(
     if not result["valid"]:
         raise typer.Exit(code=1)
 
+
+
+@app.command("build-production")
+def build_production_command(
+    registry_source_dir: str = typer.Option(...),
+    financial_source_dir: str = typer.Option(...),
+    market_source_dir: str = typer.Option(...),
+    estimate_source_dir: str = typer.Option(...),
+    output_dir: str = typer.Option("data/production"),
+    strict: bool = typer.Option(False),
+    write: bool = typer.Option(False),
+) -> None:
+    try:
+        payload = build_production(registry_source_dir=registry_source_dir, financial_source_dir=financial_source_dir, market_source_dir=market_source_dir, estimate_source_dir=estimate_source_dir, output_dir=output_dir, strict=strict, write=write)
+    except ProductionBuildError as exc:
+        raise typer.BadParameter(str(exc)) from exc
+    typer.echo(json.dumps(payload, ensure_ascii=False, indent=2))
+
+
+@app.command("validate-production")
+def validate_production_command(output_dir: str = typer.Option("data/production")) -> None:
+    payload = validate_production(output_dir=output_dir)
+    typer.echo(json.dumps(payload, ensure_ascii=False, indent=2))
+    if not payload.get("valid"):
+        raise typer.Exit(code=1)
 
 if __name__ == "__main__":
     app()
