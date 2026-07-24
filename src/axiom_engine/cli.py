@@ -33,6 +33,7 @@ from .market_data import MarketDataError, build_market_data, validate_market_dat
 
 from .research_engine import ResearchEngineError, build_research, validate_research
 from .batch_pipeline import BatchPipelineError, run_batch_pipeline, validate_batch_pipeline
+from .valuation_strategy import ValuationStrategyError, build_valuation_strategies, validate_valuation_strategies
 
 app = typer.Typer(no_args_is_help=True)
 ontology_app = typer.Typer(no_args_is_help=True)
@@ -575,6 +576,38 @@ def validate_canonical_pipeline_command(
     typer.echo(json.dumps(result, ensure_ascii=False, indent=2))
     if not result["valid"]:
         raise typer.Exit(code=1)
+
+@app.command("build-valuation-strategies")
+def build_valuation_strategies_command(
+    registry_dir: str = typer.Option("data/company_registry"),
+    financial_dir: str = typer.Option("data/financial_data"),
+    estimate_dir: str = typer.Option("data/estimate_data"),
+    market_dir: str = typer.Option("data/market_data"),
+    output_dir: str = typer.Option("data/valuation_strategy"),
+    company: str | None = typer.Option(None, "--company"),
+    write: bool = typer.Option(False, "--write"),
+) -> None:
+    try:
+        result = build_valuation_strategies(
+            registry_dir=registry_dir, financial_dir=financial_dir,
+            estimate_dir=estimate_dir, market_dir=market_dir,
+            output_dir=output_dir, company=company, write=write,
+        )
+    except ValuationStrategyError as exc:
+        typer.echo(f"Error: {exc}", err=True)
+        raise typer.Exit(code=2)
+    typer.echo(json.dumps(result, ensure_ascii=False, indent=2))
+
+
+@app.command("validate-valuation-strategies")
+def validate_valuation_strategies_command(
+    output_dir: str = typer.Option("data/valuation_strategy"),
+) -> None:
+    result = validate_valuation_strategies(output_dir=output_dir)
+    typer.echo(json.dumps(result, ensure_ascii=False, indent=2))
+    if not result["valid"]:
+        raise typer.Exit(code=1)
+
 
 if __name__ == "__main__":
     app()

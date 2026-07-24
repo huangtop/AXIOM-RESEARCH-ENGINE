@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AXIOM Valuation Strategy Result",
+  "type": "object",
+  "required": ["strategy_id", "company_id", "status", "selected_strategy", "coverage_tier", "confidence", "missing_inputs", "source_record_ids"],
+  "properties": {
+    "strategy_id": {"type": "string"},
+    "company_id": {"type": "string"},
+    "ticker": {"type": "string"},
+    "status": {"enum": ["selected", "unavailable"]},
+    "selected_strategy": {"type": "string"},
+    "coverage_tier": {"enum": ["A", "B", "C", "D", "X"]},
+    "confidence": {"type": "integer", "minimum": 0, "maximum": 100},
+    "fair_value_per_share": {"type": ["string", "null"]},
+    "fallback_reason": {"type": ["string", "null"]},
+    "missing_inputs": {"type": "array", "items": {"type": "string"}},
+    "source_record_ids": {"type": "array", "items": {"type": "string"}}
+  }
+}
