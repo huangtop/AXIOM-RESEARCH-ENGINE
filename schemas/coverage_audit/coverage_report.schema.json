@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://axiom.local/schemas/coverage_audit/coverage_report.schema.json",
+  "title": "AXIOM Company Coverage Report",
+  "type": "object",
+  "required": ["schema_version", "generated_at", "company_count", "readiness", "valuation_eligibility", "coverage"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "generated_at": {"type": "string"},
+    "company_count": {"type": "integer", "minimum": 0},
+    "readiness": {
+      "type": "object",
+      "required": ["ready", "partial", "blocked"],
+      "properties": {
+        "ready": {"type": "integer", "minimum": 0},
+        "partial": {"type": "integer", "minimum": 0},
+        "blocked": {"type": "integer", "minimum": 0}
+      }
+    },
+    "valuation_eligibility": {"type": "object"},
+    "coverage": {"type": "object"}
+  }
+}

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import typer
+from .coverage_audit import build_coverage_audit, validate_coverage_audit
 from .valuation_card import build_valuation_cards, validate_valuation_cards
 from axiom_engine.market_data import import_market_data, validate_market_data
 from axiom_engine.company_registry_builder import build_real_100_registry, validate_real_100_registry
@@ -491,6 +492,42 @@ def serve_valuation_card_command(
     typer.echo(f"Serving research valuation card on http://{host}:{port}")
     with make_server(host, port, ValuationCardWSGIApp(research_dir)) as server:
         server.serve_forever()
+
+
+
+@app.command("audit-company-coverage")
+def audit_company_coverage_command(
+    registry_path: str = typer.Option("data/company_registry"),
+    financial_path: str = typer.Option("data/financial_data"),
+    estimate_path: str = typer.Option("data/estimate_data"),
+    market_path: str = typer.Option("data/market_data"),
+    valuation_path: str = typer.Option("data/valuation_data"),
+    research_path: str = typer.Option("data/research_data"),
+    output_dir: str = typer.Option("data/coverage_audit"),
+    write: bool = typer.Option(False, "--write"),
+) -> None:
+    result = build_coverage_audit(
+        registry_path=registry_path,
+        financial_path=financial_path,
+        estimate_path=estimate_path,
+        market_path=market_path,
+        valuation_path=valuation_path,
+        research_path=research_path,
+        output_dir=output_dir,
+        write=write,
+    )
+    typer.echo(json.dumps(result, ensure_ascii=False, indent=2))
+
+
+@app.command("validate-company-coverage")
+def validate_company_coverage_command(
+    output_dir: str = typer.Option("data/coverage_audit"),
+) -> None:
+    result = validate_coverage_audit(output_dir=output_dir)
+    typer.echo(json.dumps(result, ensure_ascii=False, indent=2))
+    if not result["valid"]:
+        raise typer.Exit(code=1)
+
 
 if __name__ == "__main__":
     app()
