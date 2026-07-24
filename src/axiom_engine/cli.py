@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import typer
+from .valuation_card import build_valuation_cards, validate_valuation_cards
 from axiom_engine.market_data import import_market_data, validate_market_data
 from axiom_engine.company_registry_builder import build_real_100_registry, validate_real_100_registry
 from axiom_engine.sec_financial_loader import build_real_100_financials, validate_real_100_financials
@@ -460,6 +461,36 @@ def run() -> None:
     value()
     build_public_command()
 
+
+
+
+@app.command("build-valuation-cards")
+def build_valuation_cards_command(
+    research_dir: str = typer.Option("data/research_data"),
+    output_dir: str = typer.Option("data/valuation_card"),
+    write: bool = typer.Option(False, "--write"),
+) -> None:
+    typer.echo(json.dumps(build_valuation_cards(research_dir=research_dir, output_dir=output_dir, write=write), ensure_ascii=False, indent=2))
+
+
+@app.command("validate-valuation-cards")
+def validate_valuation_cards_command(
+    output_dir: str = typer.Option("data/valuation_card"),
+) -> None:
+    typer.echo(json.dumps(validate_valuation_cards(output_dir=output_dir), ensure_ascii=False, indent=2))
+
+
+@app.command("serve-valuation-card")
+def serve_valuation_card_command(
+    research_dir: str = typer.Option("data/research_data"),
+    host: str = typer.Option("127.0.0.1"),
+    port: int = typer.Option(8766),
+) -> None:
+    from wsgiref.simple_server import make_server
+    from .valuation_card.http import ValuationCardWSGIApp
+    typer.echo(f"Serving research valuation card on http://{host}:{port}")
+    with make_server(host, port, ValuationCardWSGIApp(research_dir)) as server:
+        server.serve_forever()
 
 if __name__ == "__main__":
     app()
