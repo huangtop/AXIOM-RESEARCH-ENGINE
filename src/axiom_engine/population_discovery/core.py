@@ -9,6 +9,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
 
+from axiom_engine.semantic import classify_semantic_type
+
 LAYER_TERMS = {
     "financial": {
         "path": ("financial", "financials", "fundamental", "xbrl"),
@@ -139,6 +141,8 @@ def _key_evidence(rows: list[dict[str, Any]], layer: str) -> tuple[list[str], fl
 
 def classify_candidate(path: Path, rows: list[dict[str, Any]], universe: UniverseIndex, repository_root: Path) -> list[dict[str, Any]]:
     rel = path.relative_to(repository_root).as_posix()
+    semantic = classify_semantic_type(rel, rows)
+    semantic_payload = semantic.as_dict()
     low = rel.lower()
     row_count = len(rows)
     linked = sum(1 for row in rows if _linked(row, universe))
@@ -146,6 +150,8 @@ def classify_candidate(path: Path, rows: list[dict[str, Any]], universe: Univers
     link_ratio = linked / max(1, row_count)
     results = []
     for layer in LAYER_TERMS:
+        if layer not in semantic.eligible_layers:
+            continue
         path_hits = sorted({term for term in LAYER_TERMS[layer]["path"] if term in low})
         key_hits, key_strength = _key_evidence(rows, layer)
         if not path_hits and not key_hits:
@@ -165,6 +171,7 @@ def classify_candidate(path: Path, rows: list[dict[str, Any]], universe: Univers
             score -= 18.0
         score = round(max(0.0, min(100.0, score)), 2)
         results.append({
+            **semantic_payload,
             "layer": layer,
             "path": rel,
             "format": path.suffix.lower().lstrip("."),
@@ -219,8 +226,8 @@ def discover(repository_root: Path, population_dir: Path | None = None, config: 
         selections[layer] = dict(eligible[0]) if eligible else None
     now = datetime.now(timezone.utc).isoformat()
     return {
-        "schema_version": "population-manifest.v030.35",
-        "version": "V030.35",
+        "schema_version": "population-manifest.v030.5",
+        "version": "V030.5",
         "generated_at": now,
         "repository_root": ".",
         "universe": {
@@ -231,6 +238,7 @@ def discover(repository_root: Path, population_dir: Path | None = None, config: 
         "selections": selections,
         "selection_status": {layer: ("selected" if selections[layer] else "missing") for layer in LAYER_TERMS},
         "candidate_count": len(candidates),
+        "semantic_summary": dict(sorted(__import__("collections").Counter(x["semantic_type"] for x in candidates).items())),
         "candidates": candidates,
         "unreadable_files": unreadable,
     }
@@ -239,7 +247,7 @@ def discover(repository_root: Path, population_dir: Path | None = None, config: 
 def validate_manifest(manifest: dict[str, Any], repository_root: Path) -> dict[str, Any]:
     errors: list[str] = []
     warnings: list[str] = []
-    if manifest.get("schema_version") != "population-manifest.v030.35":
+    if manifest.get("schema_version") != "population-manifest.v030.5":
         errors.append("invalid_schema_version")
     selections = manifest.get("selections")
     if not isinstance(selections, dict):
@@ -286,6 +294,7 @@ def write_outputs(payload: dict[str, Any], output_dir: Path) -> None:
         "selection_status": payload["selection_status"],
         "selections": payload["selections"],
         "candidate_count": len(candidates),
+        "semantic_summary": payload.get("semantic_summary", {}),
         "unreadable_files": unreadable,
     }
     (output_dir / "population_discovery_report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

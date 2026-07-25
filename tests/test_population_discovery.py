@@ -34,3 +34,25 @@ def test_missing_layers_are_warnings(tmp_path):
     root=_repo(tmp_path); payload=discover(root); write_outputs(payload,root/'out')
     result=validate_manifest(json.loads((root/'out/population_manifest.json').read_text()),root)
     assert result['valid'] is True and len(result['missing_layers'])==3
+
+
+def test_semantic_gate_excludes_valuation_snapshot_from_market(tmp_path):
+    root=_repo(tmp_path); (root/'data/generated').mkdir()
+    (root/'data/generated/valuation_snapshots.json').write_text(json.dumps([{
+        "company_id":"company:1", "security_id":"security:1", "ticker":"AAA",
+        "market_price":10, "fair_value":12, "valuation_method":"dcf", "implied_upside":0.2
+    }]))
+    payload=discover(root)
+    assert payload['selections']['market'] is None
+    assert all(x['path'] != 'data/generated/valuation_snapshots.json' for x in payload['candidates'])
+
+def test_selected_candidate_contains_semantic_metadata(tmp_path):
+    root=_repo(tmp_path); (root/'data/production').mkdir()
+    (root/'data/production/market_prices.json').write_text(json.dumps([{
+        "ticker":"AAA", "last_price":10, "quote_time":"2026-07-25T00:00:00Z"
+    }]))
+    payload=discover(root)
+    selected=payload['selections']['market']
+    assert selected['semantic_type']=='market_fact'
+    assert selected['eligible_layers']==['market']
+    assert selected['semantic_confidence'] >= 0.5

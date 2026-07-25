@@ -1,23 +1,40 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "population_manifest.schema.json",
-  "title": "AXIOM Population Manifest V030.35",
+  "title": "AXIOM Population Manifest V030.5",
   "type": "object",
-  "required": ["schema_version", "version", "generated_at", "universe", "selections", "selection_status"],
+  "required": ["schema_version", "version", "generated_at", "universe", "selections", "selection_status", "semantic_summary"],
   "properties": {
-    "schema_version": {"const": "population-manifest.v030.35"},
-    "version": {"const": "V030.35"},
+    "schema_version": {"const": "population-manifest.v030.5"},
+    "version": {"const": "V030.5"},
     "generated_at": {"type": "string"},
     "universe": {"type": "object"},
+    "semantic_summary": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}},
     "selections": {
       "type": "object",
       "required": ["financial", "market", "estimate"],
       "properties": {
-        "financial": {"type": ["object", "null"]},
-        "market": {"type": ["object", "null"]},
-        "estimate": {"type": ["object", "null"]}
+        "financial": {"$ref": "#/$defs/selection"},
+        "market": {"$ref": "#/$defs/selection"},
+        "estimate": {"$ref": "#/$defs/selection"}
       }
     },
     "selection_status": {"type": "object"}
+  },
+  "$defs": {
+    "selection": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "required": ["layer", "path", "semantic_type", "semantic_confidence", "eligible_layers"],
+          "properties": {
+            "semantic_type": {"enum": ["financial_fact", "market_fact", "estimate_fact"]},
+            "semantic_confidence": {"type": "number", "minimum": 0, "maximum": 1},
+            "eligible_layers": {"type": "array", "items": {"enum": ["financial", "market", "estimate"]}}
+          }
+        }
+      ]
+    }
   }
 }

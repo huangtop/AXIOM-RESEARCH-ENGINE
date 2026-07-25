@@ -13,7 +13,7 @@ def main() -> int:
     p.add_argument("--repository-root", default=".")
     p.add_argument("--population-dir", default="data/universe")
     p.add_argument("--output-dir", default="data/generated/population_manifest")
-    p.add_argument("--config", default="config/population_discovery.v030.35.json")
+    p.add_argument("--config", default="config/population_discovery.v030.5.json")
     p.add_argument("--write", action="store_true")
     p.add_argument("--strict", action="store_true")
     a=p.parse_args(); root=Path(a.repository_root).resolve()
