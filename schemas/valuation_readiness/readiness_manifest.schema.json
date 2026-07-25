@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://axiom.local/schemas/valuation_readiness/readiness_manifest.schema.json",
+  "title": "AXIOM V030.3 Valuation Readiness Manifest",
+  "type": "object",
+  "required": ["schema_version", "version", "valid", "universe_company_count", "readiness_record_count", "files"],
+  "properties": {
+    "schema_version": {"const": "valuation-readiness.v030.3"},
+    "version": {"const": "V030.3"},
+    "valid": {"type": "boolean"},
+    "universe_company_count": {"type": "integer", "minimum": 1},
+    "readiness_record_count": {"type": "integer", "minimum": 1},
+    "files": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

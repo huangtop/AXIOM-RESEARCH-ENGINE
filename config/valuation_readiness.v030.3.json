@@ -1,0 +1,10 @@
+{
+  "schema_version": "valuation-readiness-config.v030.3",
+  "models": ["forward_pe", "peg", "forward_ps", "ev_ebitda", "forward_pb", "milestone"],
+  "status_thresholds": {"ready_minimum_eligible_models": 2, "partial_minimum_eligible_models": 1},
+  "principles": [
+    "Missing one model must not abort a company readiness record.",
+    "Every blocked model must expose machine-readable reason codes.",
+    "Readiness is a derived diagnostic and does not modify canonical data."
+  ]
+}
