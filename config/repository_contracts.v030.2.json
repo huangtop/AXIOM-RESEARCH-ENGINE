@@ -1,0 +1,18 @@
+{
+  "schema_version": "v030.2",
+  "policy": {
+    "read_only": true,
+    "move_existing_data": false,
+    "delete_legacy_data": false,
+    "overwrite_existing_outputs": false,
+    "frontend_cutover": false
+  },
+  "decisions": {
+    "legacy_universe_role": "accepted source input",
+    "company_registry_role": "staging/onboarding input",
+    "production_registry_role": "runtime canonical owner",
+    "structure_json_role": "legacy human knowledge source pending V030.3 migration",
+    "research_layers_role": "canonical core-stock deep research",
+    "production_research_card_role": "read-only frontend assembly contract"
+  }
+}
