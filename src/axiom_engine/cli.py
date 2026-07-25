@@ -52,6 +52,7 @@ from .production_research_card import (
     validate_production_research_cards,
 )
 from .existing_universe_population import ExistingUniversePopulationError, build_existing_universe_population, validate_existing_universe_population
+from .financial_population_baseline import FinancialPopulationBaselineError, build_financial_population_baseline, validate_financial_population_baseline
 app = typer.Typer(no_args_is_help=True)
 ontology_app = typer.Typer(no_args_is_help=True)
 app.add_typer(ontology_app, name="ontology")
@@ -863,7 +864,7 @@ def validate_production_research_cards_command(
 @app.command("populate-existing-universe")
 def populate_existing_universe_command(
     universe_dir: str = typer.Option("data/universe"),
-    output_dir: str = typer.Option("data/existing_universe_population"),
+    output_dir: str = typer.Option("data/universe"),
     strict: bool = typer.Option(False),
     write: bool = typer.Option(False),
 ) -> None:
@@ -878,12 +879,24 @@ def populate_existing_universe_command(
 
 @app.command("validate-existing-universe-population")
 def validate_existing_universe_population_command(
-    output_dir: str = typer.Option("data/existing_universe_population"),
+    output_dir: str = typer.Option("data/universe"),
 ) -> None:
     payload = validate_existing_universe_population(output_dir=output_dir)
     typer.echo(json.dumps(payload, ensure_ascii=False, indent=2))
     if not payload.get("valid"):
         raise typer.Exit(code=1)
+
+
+@app.command("build-financial-population-baseline")
+def build_financial_population_baseline_command(population_dir: str = typer.Option("data/universe"), source_dir: str = typer.Option("data/onboarding/generated"), output_dir: str = typer.Option("data/financial_population_baseline"), strict: bool = typer.Option(False), write: bool = typer.Option(False)) -> None:
+    try: payload=build_financial_population_baseline(population_dir=population_dir,source_dir=source_dir,output_dir=output_dir,strict=strict,write=write)
+    except FinancialPopulationBaselineError as exc: raise typer.BadParameter(str(exc)) from exc
+    typer.echo(json.dumps(payload,ensure_ascii=False,indent=2))
+
+@app.command("validate-financial-population-baseline")
+def validate_financial_population_baseline_command(output_dir: str = typer.Option("data/financial_population_baseline"), population_dir: str = typer.Option("data/universe")) -> None:
+    payload=validate_financial_population_baseline(output_dir=output_dir,population_dir=population_dir); typer.echo(json.dumps(payload,ensure_ascii=False,indent=2))
+    if not payload.get("valid"): raise typer.Exit(code=1)
 
 if __name__ == "__main__":
     app()
