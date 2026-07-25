@@ -20,7 +20,7 @@ def main() -> int:
     cfg_path=root/a.config; config=json.loads(cfg_path.read_text()) if cfg_path.exists() else {}
     payload=discover(root, Path(a.population_dir), config)
     if a.write: write_outputs(payload, root/a.output_dir)
-    summary={k:v for k,v in payload.items() if k not in {"candidates","unreadable_files"}}
+    summary={k:v for k,v in payload.items() if k not in {"candidates","source_inventory","unreadable_files"}}
     summary["top_candidates"]={layer:[x for x in payload["candidates"] if x["layer"]==layer][:5] for layer in ("financial","market","estimate")}
     summary["output_dir"]=str((root/a.output_dir).resolve()); summary["dry_run"]=not a.write
     print(json.dumps(summary, ensure_ascii=False, indent=2))

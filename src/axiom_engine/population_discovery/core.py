@@ -188,12 +188,42 @@ def classify_candidate(path: Path, rows: list[dict[str, Any]], universe: Univers
     return results
 
 
+def _inventory_record(path: Path, rows: list[dict[str, Any]], universe: UniverseIndex, repository_root: Path) -> dict[str, Any]:
+    rel = path.relative_to(repository_root).as_posix()
+    semantic = classify_semantic_type(rel, rows)
+    linked = sum(1 for row in rows if _linked(row, universe))
+    row_count = len(rows)
+    ranked = classify_candidate(path, rows, universe, repository_root)
+    rejection_reasons: list[str] = []
+    if not semantic.eligible_layers:
+        rejection_reasons.append(f"semantic_type_not_population_eligible:{semantic.semantic_type.value}")
+    if linked == 0:
+        rejection_reasons.append("zero_universe_linkage")
+    if not ranked and semantic.eligible_layers:
+        rejection_reasons.append("no_layer_evidence")
+    if ranked and not any(item["selection_eligible"] for item in ranked):
+        rejection_reasons.append("below_selection_threshold")
+    return {
+        **semantic.as_dict(),
+        "path": rel,
+        "format": path.suffix.lower().lstrip("."),
+        "row_count": row_count,
+        "linked_company_count": linked,
+        "link_ratio_pct": round(linked / max(1, row_count) * 100, 4),
+        "ranking_candidate": bool(ranked),
+        "selection_eligible": any(item["selection_eligible"] for item in ranked),
+        "evaluated_layers": [item["layer"] for item in ranked],
+        "rejection_reasons": rejection_reasons,
+    }
+
+
 def discover(repository_root: Path, population_dir: Path | None = None, config: dict[str, Any] | None = None) -> dict[str, Any]:
     config = config or {}
     universe = load_universe(repository_root, population_dir)
     roots = config.get("scan_roots", ["data"])
     max_bytes = int(config.get("max_file_bytes", 250_000_000))
     candidates: list[dict[str, Any]] = []
+    source_inventory: list[dict[str, Any]] = []
     unreadable: list[dict[str, str]] = []
     seen: set[Path] = set()
     for root_name in roots:
@@ -217,14 +247,20 @@ def discover(repository_root: Path, population_dir: Path | None = None, config: 
                 continue
             if not rows:
                 continue
+            source_inventory.append(_inventory_record(path, rows, universe, repository_root))
             candidates.extend(classify_candidate(path, rows, universe, repository_root))
     candidates.sort(key=lambda x: (x["layer"], -x["score"], -x["linked_company_count"], x["path"]))
+    source_inventory.sort(key=lambda x: (x["semantic_type"], x["path"]))
     selections: dict[str, Any] = {}
     for layer in LAYER_TERMS:
         layer_candidates = [x for x in candidates if x["layer"] == layer]
         eligible = [x for x in layer_candidates if x["selection_eligible"]]
         selections[layer] = dict(eligible[0]) if eligible else None
     now = datetime.now(timezone.utc).isoformat()
+    semantic_summary = dict(sorted(__import__("collections").Counter(x["semantic_type"] for x in source_inventory).items()))
+    rejection_summary = dict(sorted(__import__("collections").Counter(
+        reason for item in source_inventory for reason in item["rejection_reasons"]
+    ).items()))
     return {
         "schema_version": "population-manifest.v030.5",
         "version": "V030.5",
@@ -237,12 +273,15 @@ def discover(repository_root: Path, population_dir: Path | None = None, config: 
         },
         "selections": selections,
         "selection_status": {layer: ("selected" if selections[layer] else "missing") for layer in LAYER_TERMS},
+        "discovered_source_count": len(source_inventory),
         "candidate_count": len(candidates),
-        "semantic_summary": dict(sorted(__import__("collections").Counter(x["semantic_type"] for x in candidates).items())),
+        "selection_eligible_source_count": sum(1 for x in source_inventory if x["selection_eligible"]),
+        "semantic_summary": semantic_summary,
+        "rejection_summary": rejection_summary,
+        "source_inventory": source_inventory,
         "candidates": candidates,
         "unreadable_files": unreadable,
     }
-
 
 def validate_manifest(manifest: dict[str, Any], repository_root: Path) -> dict[str, Any]:
     errors: list[str] = []
@@ -284,17 +323,22 @@ def write_outputs(payload: dict[str, Any], output_dir: Path) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     manifest = dict(payload)
     candidates = manifest.pop("candidates", [])
+    source_inventory = manifest.pop("source_inventory", [])
     unreadable = manifest.pop("unreadable_files", [])
     (output_dir / "population_manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    (output_dir / "population_source_inventory.json").write_text(json.dumps(candidates, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (output_dir / "population_source_inventory.json").write_text(json.dumps(source_inventory, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (output_dir / "population_ranked_candidates.json").write_text(json.dumps(candidates, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     report = {
         "schema_version": payload["schema_version"],
         "version": payload["version"],
         "generated_at": payload["generated_at"],
         "selection_status": payload["selection_status"],
         "selections": payload["selections"],
+        "discovered_source_count": len(source_inventory),
         "candidate_count": len(candidates),
+        "selection_eligible_source_count": payload.get("selection_eligible_source_count", 0),
         "semantic_summary": payload.get("semantic_summary", {}),
+        "rejection_summary": payload.get("rejection_summary", {}),
         "unreadable_files": unreadable,
     }
     (output_dir / "population_discovery_report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
