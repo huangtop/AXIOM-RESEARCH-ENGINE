@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "population_manifest.schema.json",
+  "title": "AXIOM Population Manifest V030.35",
+  "type": "object",
+  "required": ["schema_version", "version", "generated_at", "universe", "selections", "selection_status"],
+  "properties": {
+    "schema_version": {"const": "population-manifest.v030.35"},
+    "version": {"const": "V030.35"},
+    "generated_at": {"type": "string"},
+    "universe": {"type": "object"},
+    "selections": {
+      "type": "object",
+      "required": ["financial", "market", "estimate"],
+      "properties": {
+        "financial": {"type": ["object", "null"]},
+        "market": {"type": ["object", "null"]},
+        "estimate": {"type": ["object", "null"]}
+      }
+    },
+    "selection_status": {"type": "object"}
+  }
+}
