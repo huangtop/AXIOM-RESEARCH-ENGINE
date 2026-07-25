@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AXIOM V030.4 Production Population Summary",
+  "type": "object",
+  "required": ["schema_version", "version", "universe_company_count", "population_record_counts", "data_present_company_counts", "company_status_counts"],
+  "properties": {
+    "schema_version": {"const": "production-population-summary.v030.4"},
+    "version": {"const": "V030.4"},
+    "universe_company_count": {"type": "integer", "minimum": 1},
+    "population_record_counts": {"type": "object"},
+    "data_present_company_counts": {"type": "object"},
+    "company_status_counts": {"type": "object"}
+  }
+}
