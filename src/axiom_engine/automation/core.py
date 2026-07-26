@@ -9,9 +9,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable, Iterable, Mapping, Sequence
 
-SCHEMA_VERSION = "automation-run.v030.8.3"
-STATE_SCHEMA_VERSION = "automation-state.v030.8.3"
-VERSION = "V030.8.3"
+SCHEMA_VERSION = "automation-run.v030.8.4"
+STATE_SCHEMA_VERSION = "automation-state.v030.8.4"
+VERSION = "V030.8.4"
 TERMINAL_STAGE_STATES = {"completed", "failed", "skipped"}
 
 
@@ -75,6 +75,7 @@ def normalize_stage_specs(specs: Iterable[Mapping[str, Any]]) -> list[dict[str, 
             "required": bool(spec.get("required", True)),
             "supports_strict": bool(spec.get("supports_strict", True)),
             "expected_report": spec.get("expected_report"),
+            "run_if_report": spec.get("run_if_report"),
         })
     if not normalized:
         raise ValueError("automation requires at least one stage")
@@ -231,6 +232,28 @@ def run_automation(
             state["updated_at"] = now
             _atomic_write_json(state_path, state)
             continue
+
+        spec = next(item for item in specs if item["name"] == stage["name"])
+        condition = spec.get("run_if_report")
+        if condition:
+            report_path = root / str(condition.get("path", ""))
+            allowed = set(condition.get("field_in", []))
+            field = str(condition.get("field", "status"))
+            try:
+                condition_report = json.loads(report_path.read_text(encoding="utf-8"))
+                actual = condition_report.get(field)
+            except (OSError, json.JSONDecodeError):
+                actual = None
+            if actual not in allowed:
+                now = utc_now()
+                stage.update({"status": "skipped", "started_at": now, "finished_at": now,
+                              "duration_ms": 0, "returncode": None,
+                              "error": "condition_not_met",
+                              "condition": {"path": str(report_path), "field": field,
+                                            "actual": actual, "allowed": sorted(allowed)}})
+                state["updated_at"] = now
+                _atomic_write_json(state_path, state)
+                continue
 
         stage_started = utc_now()
         stage.update({"status": "running", "started_at": stage_started, "finished_at": None,

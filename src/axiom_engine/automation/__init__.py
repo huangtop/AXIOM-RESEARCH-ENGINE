@@ -22,3 +22,5 @@ __all__ = [
     "LOCK_SCHEMA_VERSION", "SCHEDULE_SCHEMA_VERSION", "SCHEDULE_VERSION",
     "acquire_scheduler_lock", "release_scheduler_lock", "run_scheduled_automation",
 ]
+
+from .incremental import build_input_snapshot, compare_snapshots, plan_incremental_refresh

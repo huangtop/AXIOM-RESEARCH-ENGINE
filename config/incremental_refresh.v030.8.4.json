@@ -1,0 +1,17 @@
+{
+  "schema_version": "incremental-refresh-config.v030.8.4",
+  "version": "V030.8.4",
+  "watch_patterns": [
+    "data/provider_intake/accepted/**/*.json",
+    "data/provider_intake/processed/**/*.json",
+    "data/provider_intake/receipts/**/*.json",
+    "data/onboarding/generated/*.json",
+    "data/generated/production_sources/**/*.json"
+  ],
+  "symbol_keys": ["symbol", "ticker", "company_symbol"],
+  "targeted_refresh": {
+    "enabled": false,
+    "max_symbols": 250,
+    "note": "Enable only after refresh_production_population.py accepts a bounded symbols file. Until then changed inputs safely fall back to full refresh."
+  }
+}
