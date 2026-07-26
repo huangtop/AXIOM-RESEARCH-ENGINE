@@ -16,9 +16,10 @@ from axiom_engine.production_refresh import run_refresh
 def main() -> int:
     parser = argparse.ArgumentParser(description="Run the canonical AXIOM production population refresh pipeline")
     parser.add_argument("--repository-root", default=".")
-    parser.add_argument("--config", default="config/production_refresh.v030.6.5.json")
+    parser.add_argument("--config", default="config/production_refresh.v030.6.6.json")
     parser.add_argument("--output", default="data/generated/production_refresh/refresh_report.json")
     parser.add_argument("--strict", action="store_true")
+    parser.add_argument("--require-ready", action="store_true", help="Return exit code 3 when readiness gates are blocked")
     args = parser.parse_args()
 
     root = Path(args.repository_root).resolve()
@@ -28,9 +29,18 @@ def main() -> int:
         for spec in commands:
             if "--strict" not in spec["argv"] and spec.get("supports_strict", True):
                 spec["argv"].append("--strict")
-    report = run_refresh(root, commands, root / args.output)
+    report = run_refresh(
+        root,
+        commands,
+        root / args.output,
+        readiness_policy=config.get("readiness_policy"),
+    )
     print(json.dumps(report, ensure_ascii=False, indent=2))
-    return 0 if report["status"] == "completed" else 2
+    if report["status"] != "completed":
+        return 2
+    if args.require_ready and report["readiness_assessment"]["status"] != "qualified":
+        return 3
+    return 0
 
 
 if __name__ == "__main__":
