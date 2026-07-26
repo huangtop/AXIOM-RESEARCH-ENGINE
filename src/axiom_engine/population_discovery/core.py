@@ -36,6 +36,9 @@ class UniverseIndex:
     security_ids: frozenset[str]
     tickers: frozenset[str]
     cik_tokens: frozenset[str]
+    security_to_company: dict[str, str]
+    ticker_to_company: dict[str, str]
+    cik_to_company: dict[str, str]
 
 
 def _norm(value: Any) -> str:
@@ -94,16 +97,48 @@ def load_universe(repository_root: Path, population_dir: Path | None = None) -> 
     companies = _flatten_rows(json.loads(companies_path.read_text(encoding="utf-8")))
     securities = _flatten_rows(json.loads(securities_path.read_text(encoding="utf-8")))
     company_ids = {_norm(r.get("company_id") or r.get("entity_id") or r.get("id")) for r in companies}
+    company_ids = {x for x in company_ids if x}
     security_ids = {_norm(r.get("security_id") or r.get("id")) for r in securities}
     tickers = {_norm(r.get("ticker") or r.get("symbol")) for r in securities}
-    cik_tokens = set()
-    for row in companies + securities:
+    security_to_company: dict[str, str] = {}
+    ticker_to_company: dict[str, str] = {}
+    cik_to_company: dict[str, str] = {}
+
+    for row in companies:
+        company_id = _norm(row.get("company_id") or row.get("entity_id") or row.get("id"))
+        if not company_id:
+            continue
         for key in ("cik", "company_id", "entity_id"):
             value = _norm(row.get(key))
-            m = re.search(r"CIK0*(\d+)", value)
-            if m:
-                cik_tokens.add(m.group(1))
-    return UniverseIndex(frozenset(x for x in company_ids if x), frozenset(x for x in security_ids if x), frozenset(x for x in tickers if x), frozenset(cik_tokens))
+            match = re.search(r"CIK0*(\d+)", value)
+            if match:
+                cik_to_company.setdefault(match.group(1), company_id)
+
+    for row in securities:
+        company_id = _norm(row.get("company_id") or row.get("entity_id") or row.get("issuer_id"))
+        if company_id not in company_ids:
+            continue
+        security_id = _norm(row.get("security_id") or row.get("id"))
+        ticker = _norm(row.get("ticker") or row.get("symbol"))
+        if security_id:
+            security_to_company.setdefault(security_id, company_id)
+        if ticker:
+            ticker_to_company.setdefault(ticker, company_id)
+        for key in ("cik", "company_id", "entity_id"):
+            value = _norm(row.get(key))
+            match = re.search(r"CIK0*(\d+)", value)
+            if match:
+                cik_to_company.setdefault(match.group(1), company_id)
+
+    return UniverseIndex(
+        frozenset(company_ids),
+        frozenset(x for x in security_ids if x),
+        frozenset(x for x in tickers if x),
+        frozenset(cik_to_company),
+        security_to_company,
+        ticker_to_company,
+        cik_to_company,
+    )
 
 
 def _candidate_tokens(row: dict[str, Any]) -> set[str]:
@@ -125,9 +160,31 @@ def _candidate_tokens(row: dict[str, Any]) -> set[str]:
     return out
 
 
+def _linked_company_ids(row: dict[str, Any], universe: UniverseIndex) -> set[str]:
+    """Resolve a source row to canonical universe company IDs.
+
+    A source may link through company_id, security_id, ticker, or CIK.  Returning
+    canonical company IDs allows discovery coverage to count distinct companies
+    rather than counting every linked fact row as a separate company.
+    """
+    resolved: set[str] = set()
+    for token in _candidate_tokens(row):
+        if token in universe.company_ids:
+            resolved.add(token)
+        company_id = universe.security_to_company.get(token)
+        if company_id:
+            resolved.add(company_id)
+        company_id = universe.ticker_to_company.get(token)
+        if company_id:
+            resolved.add(company_id)
+        company_id = universe.cik_to_company.get(token)
+        if company_id:
+            resolved.add(company_id)
+    return resolved
+
+
 def _linked(row: dict[str, Any], universe: UniverseIndex) -> bool:
-    tokens = _candidate_tokens(row)
-    return bool(tokens & universe.company_ids or tokens & universe.security_ids or tokens & universe.tickers or tokens & universe.cik_tokens)
+    return bool(_linked_company_ids(row, universe))
 
 
 def _key_evidence(rows: list[dict[str, Any]], layer: str) -> tuple[list[str], float]:
@@ -145,9 +202,16 @@ def classify_candidate(path: Path, rows: list[dict[str, Any]], universe: Univers
     semantic_payload = semantic.as_dict()
     low = rel.lower()
     row_count = len(rows)
-    linked = sum(1 for row in rows if _linked(row, universe))
-    coverage = linked / max(1, len(universe.company_ids))
-    link_ratio = linked / max(1, row_count)
+    linked_row_count = 0
+    linked_company_ids: set[str] = set()
+    for row in rows:
+        resolved = _linked_company_ids(row, universe)
+        if resolved:
+            linked_row_count += 1
+            linked_company_ids.update(resolved)
+    linked_company_count = len(linked_company_ids)
+    coverage = linked_company_count / max(1, len(universe.company_ids))
+    link_ratio = linked_row_count / max(1, row_count)
     results = []
     for layer in LAYER_TERMS:
         if layer not in semantic.eligible_layers:
@@ -167,7 +231,7 @@ def classify_candidate(path: Path, rows: list[dict[str, Any]], universe: Univers
         score -= 12.0 * len(penalties)
         if row_count < 20:
             score -= 8.0
-        if linked == 0:
+        if linked_company_count == 0:
             score -= 18.0
         score = round(max(0.0, min(100.0, score)), 2)
         results.append({
@@ -176,14 +240,15 @@ def classify_candidate(path: Path, rows: list[dict[str, Any]], universe: Univers
             "path": rel,
             "format": path.suffix.lower().lstrip("."),
             "row_count": row_count,
-            "linked_company_count": linked,
+            "linked_row_count": linked_row_count,
+            "linked_company_count": linked_company_count,
             "coverage_pct": round(coverage * 100, 4),
             "link_ratio_pct": round(link_ratio * 100, 4),
             "score": score,
             "path_evidence": path_hits,
             "key_evidence": key_hits,
             "penalties": penalties,
-            "selection_eligible": linked > 0 and score >= 20.0,
+            "selection_eligible": linked_company_count > 0 and score >= 20.0,
         })
     return results
 
@@ -191,13 +256,20 @@ def classify_candidate(path: Path, rows: list[dict[str, Any]], universe: Univers
 def _inventory_record(path: Path, rows: list[dict[str, Any]], universe: UniverseIndex, repository_root: Path) -> dict[str, Any]:
     rel = path.relative_to(repository_root).as_posix()
     semantic = classify_semantic_type(rel, rows)
-    linked = sum(1 for row in rows if _linked(row, universe))
+    linked_row_count = 0
+    linked_company_ids: set[str] = set()
+    for row in rows:
+        resolved = _linked_company_ids(row, universe)
+        if resolved:
+            linked_row_count += 1
+            linked_company_ids.update(resolved)
+    linked_company_count = len(linked_company_ids)
     row_count = len(rows)
     ranked = classify_candidate(path, rows, universe, repository_root)
     rejection_reasons: list[str] = []
     if not semantic.eligible_layers:
         rejection_reasons.append(f"semantic_type_not_population_eligible:{semantic.semantic_type.value}")
-    if linked == 0:
+    if linked_company_count == 0:
         rejection_reasons.append("zero_universe_linkage")
     if not ranked and semantic.eligible_layers:
         rejection_reasons.append("no_layer_evidence")
@@ -208,8 +280,10 @@ def _inventory_record(path: Path, rows: list[dict[str, Any]], universe: Universe
         "path": rel,
         "format": path.suffix.lower().lstrip("."),
         "row_count": row_count,
-        "linked_company_count": linked,
-        "link_ratio_pct": round(linked / max(1, row_count) * 100, 4),
+        "linked_row_count": linked_row_count,
+        "linked_company_count": linked_company_count,
+        "coverage_pct": round(linked_company_count / max(1, len(universe.company_ids)) * 100, 4),
+        "link_ratio_pct": round(linked_row_count / max(1, row_count) * 100, 4),
         "ranking_candidate": bool(ranked),
         "selection_eligible": any(item["selection_eligible"] for item in ranked),
         "evaluated_layers": [item["layer"] for item in ranked],

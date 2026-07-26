@@ -81,3 +81,36 @@ def test_write_outputs_separates_inventory_and_ranked_candidates(tmp_path):
     assert len(inventory) >= len(ranked)
     assert any(x['semantic_type']=='template' for x in inventory)
     assert all('layer' in x for x in ranked)
+
+
+def test_distinct_company_coverage_deduplicates_multiple_rows(tmp_path):
+    root=_repo(tmp_path); (root/'data/production').mkdir()
+    (root/'data/production/financial_population.json').write_text(json.dumps([
+        {"company_id":"company:1","fiscal_year":2024,"revenue":10},
+        {"company_id":"company:1","fiscal_year":2023,"revenue":9},
+        {"company_id":"company:1","fiscal_year":2022,"revenue":8},
+        {"company_id":"company:2","fiscal_year":2024,"revenue":20},
+    ]))
+    payload=discover(root)
+    selected=payload['selections']['financial']
+    assert selected['linked_row_count']==4
+    assert selected['linked_company_count']==2
+    assert selected['coverage_pct']==100.0
+    assert selected['link_ratio_pct']==100.0
+
+
+def test_security_and_ticker_linkage_resolve_to_distinct_companies(tmp_path):
+    root=_repo(tmp_path); (root/'data/production').mkdir()
+    (root/'data/production/market_prices.json').write_text(json.dumps([
+        {"security_id":"security:1","last_price":10,"quote_time":"2026-07-25"},
+        {"ticker":"AAA","last_price":11,"quote_time":"2026-07-26"},
+        {"ticker":"BBB","last_price":20,"quote_time":"2026-07-25"},
+    ]))
+    payload=discover(root)
+    selected=payload['selections']['market']
+    assert selected['linked_row_count']==3
+    assert selected['linked_company_count']==2
+    assert selected['coverage_pct']==100.0
+    inventory=next(x for x in payload['source_inventory'] if x['path']=='data/production/market_prices.json')
+    assert inventory['linked_row_count']==3
+    assert inventory['linked_company_count']==2
