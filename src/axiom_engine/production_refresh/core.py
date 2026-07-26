@@ -88,6 +88,76 @@ def overlap_summary(index_rows: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
+
+def build_overlap_targets(
+    index_rows: list[dict[str, Any]],
+    *,
+    max_targets: int = 200,
+    preferred_missing_layers: list[str] | None = None,
+) -> dict[str, Any]:
+    """Build an auditable company-level queue for increasing cross-layer overlap.
+
+    Tier 1 companies already have two usable layers and need exactly one more
+    provider observation to become production-ready. Tier 2 companies have one
+    usable layer and are retained as the next expansion pool.
+    """
+    layer_order = [layer for layer in (preferred_missing_layers or ["estimate", "market", "financial"]) if layer in LAYERS]
+    layer_rank = {layer: i for i, layer in enumerate(layer_order)}
+    candidates: list[dict[str, Any]] = []
+    counts_by_missing_layer: Counter[str] = Counter()
+    counts_by_tier: Counter[str] = Counter()
+
+    for row in index_rows:
+        usability = row.get("data_usability") if isinstance(row.get("data_usability"), dict) else {}
+        usable_layers = [layer for layer in LAYERS if bool(usability.get(layer))]
+        missing_layers = [layer for layer in LAYERS if layer not in usable_layers]
+        if not missing_layers or not usable_layers:
+            continue
+        tier = "one_layer_to_ready" if len(missing_layers) == 1 else "two_layers_to_ready"
+        if len(missing_layers) > 2:
+            continue
+        for layer in missing_layers:
+            counts_by_missing_layer[layer] += 1
+        counts_by_tier[tier] += 1
+        identity = {
+            key: row.get(key)
+            for key in ("company_id", "company_name", "name", "ticker", "primary_ticker", "security_id", "cik")
+            if row.get(key) not in (None, "", [])
+        }
+        candidates.append({
+            **identity,
+            "priority_tier": tier,
+            "usable_layers": usable_layers,
+            "missing_layers": missing_layers,
+            "missing_layer_count": len(missing_layers),
+            "production_ready_uplift_if_completed": 1 if len(missing_layers) == 1 else 0,
+            "recommended_action": "populate_" + "_and_".join(missing_layers),
+        })
+
+    def sort_key(item: dict[str, Any]) -> tuple[Any, ...]:
+        missing = item["missing_layers"]
+        first_rank = min((layer_rank.get(layer, len(LAYERS)) for layer in missing), default=len(LAYERS))
+        return (item["missing_layer_count"], first_rank, str(item.get("company_id") or item.get("ticker") or ""))
+
+    candidates.sort(key=sort_key)
+    selected = candidates[:max(0, int(max_targets))]
+    one_layer = [item for item in candidates if item["missing_layer_count"] == 1]
+    return {
+        "schema_version": "cross-layer-overlap-targets.v030.6.7",
+        "version": "V030.6.7",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "strategy": "minimum_missing_layers_then_bottleneck_order",
+        "company_count_evaluated": len(index_rows),
+        "candidate_count": len(candidates),
+        "immediate_ready_opportunity_count": len(one_layer),
+        "potential_production_ready_uplift": len(one_layer),
+        "counts_by_tier": dict(sorted(counts_by_tier.items())),
+        "counts_by_missing_layer": dict(sorted(counts_by_missing_layer.items())),
+        "target_count": len(selected),
+        "targets_truncated": len(candidates) > len(selected),
+        "targets": selected,
+    }
+
 def build_readiness_assessment(
     after: dict[str, dict[str, float | int]],
     delta: dict[str, dict[str, float | int]],
@@ -172,6 +242,8 @@ def build_readiness_assessment(
     if regressions:
         next_actions.append("investigate_coverage_regression")
 
+    overlap_targets = build_overlap_targets(index_rows, preferred_missing_layers=bottleneck_order)
+
     return {
         "status": "qualified" if not blockers else "blocked",
         "policy_version": str(policy.get("version") or "V030.6.6-default"),
@@ -180,6 +252,7 @@ def build_readiness_assessment(
         "layer_gaps": layer_gaps,
         "bottleneck_order": bottleneck_order,
         "overlap": overlap,
+        "overlap_targeting_summary": {key: value for key, value in overlap_targets.items() if key != "targets"},
         "next_actions": list(dict.fromkeys(next_actions)),
     }
 
@@ -191,15 +264,23 @@ def build_refresh_report(
     *,
     index_rows: list[dict[str, Any]] | None = None,
     readiness_policy: dict[str, Any] | None = None,
+    overlap_targeting: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     before = coverage_snapshot(before_summary)
     after = coverage_snapshot(after_summary)
     delta = coverage_delta(before, after)
-    assessment = build_readiness_assessment(after, delta, index_rows or [], readiness_policy, stages)
+    rows = index_rows or []
+    assessment = build_readiness_assessment(after, delta, rows, readiness_policy, stages)
+    targeting_config = overlap_targeting or {}
+    targets = build_overlap_targets(
+        rows,
+        max_targets=int(targeting_config.get("max_targets", 200) or 200),
+        preferred_missing_layers=targeting_config.get("preferred_missing_layers"),
+    )
     pipeline_completed = all(stage.get("returncode") == 0 for stage in stages)
     return {
-        "schema_version": "production-refresh-report.v030.6.6",
-        "version": "V030.6.6",
+        "schema_version": "production-refresh-report.v030.6.7",
+        "version": "V030.6.7",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "status": "completed" if pipeline_completed else "failed",
         "stages": stages,
@@ -207,6 +288,7 @@ def build_refresh_report(
         "coverage_after": after,
         "coverage_delta": delta,
         "readiness_assessment": assessment,
+        "overlap_targets": targets,
     }
 
 
@@ -217,6 +299,8 @@ def run_refresh(
     runner: Callable[..., subprocess.CompletedProcess[str]] = subprocess.run,
     *,
     readiness_policy: dict[str, Any] | None = None,
+    overlap_targeting: dict[str, Any] | None = None,
+    targets_output_path: Path | None = None,
 ) -> dict[str, Any]:
     repository_root = repository_root.resolve()
     summary_path = repository_root / "data/generated/production_population/production_population_summary.json"
@@ -249,7 +333,11 @@ def run_refresh(
         stages,
         index_rows=index_rows,
         readiness_policy=readiness_policy,
+        overlap_targeting=overlap_targeting,
     )
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    if targets_output_path is not None:
+        targets_output_path.parent.mkdir(parents=True, exist_ok=True)
+        targets_output_path.write_text(json.dumps(report["overlap_targets"], ensure_ascii=False, indent=2), encoding="utf-8")
     return report

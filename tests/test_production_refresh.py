@@ -94,7 +94,7 @@ def test_readiness_assessment_detects_coverage_regression():
 def test_refresh_report_marks_failed_stage():
     report = build_refresh_report(_summary(), _summary(), [{"name": "build", "returncode": 2}])
     assert report["status"] == "failed"
-    assert report["schema_version"] == "production-refresh-report.v030.6.6"
+    assert report["schema_version"] == "production-refresh-report.v030.6.7"
     assert report["readiness_assessment"]["status"] == "blocked"
 
 
@@ -118,3 +118,52 @@ def test_run_refresh_stops_after_failure_and_writes_report(tmp_path: Path):
     assert report["status"] == "failed"
     assert len(calls) == 2
     assert output.exists()
+
+
+def test_overlap_targets_prioritize_one_missing_layer():
+    from axiom_engine.production_refresh import build_overlap_targets
+    rows = [
+        {"company_id": "c_fin_est", "ticker": "AAA", "data_usability": {"financial": True, "market": False, "estimate": True}},
+        {"company_id": "c_fin", "ticker": "BBB", "data_usability": {"financial": True, "market": False, "estimate": False}},
+        {"company_id": "c_fin_mkt", "ticker": "CCC", "data_usability": {"financial": True, "market": True, "estimate": False}},
+    ]
+    result = build_overlap_targets(rows)
+    assert result["immediate_ready_opportunity_count"] == 2
+    assert [x["company_id"] for x in result["targets"][:2]] == ["c_fin_mkt", "c_fin_est"]
+    assert result["targets"][0]["missing_layers"] == ["estimate"]
+
+
+def test_overlap_targets_exclude_empty_and_ready_companies():
+    from axiom_engine.production_refresh import build_overlap_targets
+    rows = [
+        {"company_id": "empty", "data_usability": {}},
+        {"company_id": "ready", "data_usability": {"financial": True, "market": True, "estimate": True}},
+        {"company_id": "candidate", "data_usability": {"financial": True}},
+    ]
+    result = build_overlap_targets(rows)
+    assert result["candidate_count"] == 1
+    assert result["targets"][0]["company_id"] == "candidate"
+
+
+def test_refresh_report_embeds_overlap_targets():
+    rows = [{"company_id": "c1", "ticker": "AAA", "data_usability": {"financial": True, "market": True, "estimate": False}}]
+    report = build_refresh_report(_summary(), _summary(), [{"name": "all", "returncode": 0}], index_rows=rows, readiness_policy=_policy())
+    assert report["schema_version"] == "production-refresh-report.v030.6.7"
+    assert report["overlap_targets"]["targets"][0]["recommended_action"] == "populate_estimate"
+
+
+def test_run_refresh_writes_targets_artifact(tmp_path: Path):
+    summary_dir = tmp_path / "data/generated/production_population"
+    summary_dir.mkdir(parents=True)
+    (summary_dir / "production_population_summary.json").write_text(json.dumps(_summary()), encoding="utf-8")
+    (summary_dir / "population_index.json").write_text(json.dumps([
+        {"company_id": "c1", "ticker": "AAA", "data_usability": {"financial": True, "market": False, "estimate": True}}
+    ]), encoding="utf-8")
+    def runner(argv, **kwargs):
+        return CompletedProcess(argv, 0, stdout="ok", stderr="")
+    output = tmp_path / "data/generated/production_refresh/refresh_report.json"
+    targets = tmp_path / "data/generated/production_refresh/overlap_targets.json"
+    run_refresh(tmp_path, [{"name": "all", "argv": ["python", "x.py"]}], output, runner=runner, readiness_policy=_policy(), targets_output_path=targets)
+    payload = json.loads(targets.read_text(encoding="utf-8"))
+    assert payload["target_count"] == 1
+    assert payload["targets"][0]["company_id"] == "c1"

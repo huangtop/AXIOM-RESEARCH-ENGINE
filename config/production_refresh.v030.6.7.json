@@ -1,0 +1,68 @@
+{
+  "schema_version": "production-refresh-config.v030.6.7",
+  "version": "V030.6.7",
+  "commands": [
+    {
+      "name": "production_source_expansion",
+      "argv": [
+        "python",
+        "scripts/expand_production_sources.py",
+        "--write"
+      ],
+      "supports_strict": true
+    },
+    {
+      "name": "population_source_discovery",
+      "argv": [
+        "python",
+        "scripts/discover_population_sources.py",
+        "--write"
+      ],
+      "supports_strict": true
+    },
+    {
+      "name": "production_population_build",
+      "argv": [
+        "python",
+        "scripts/build_production_population.py",
+        "--write"
+      ],
+      "supports_strict": true
+    },
+    {
+      "name": "production_population_validation",
+      "argv": [
+        "python",
+        "scripts/validate_production_population.py"
+      ],
+      "supports_strict": true
+    }
+  ],
+  "readiness_policy": {
+    "version": "production-readiness-policy.v030.6.7",
+    "fail_on_coverage_regression": true,
+    "minimum_production_ready_company_count": 1,
+    "layer_minimums": {
+      "financial": {
+        "usable_company_count": 99,
+        "usable_coverage_pct": 1.5316
+      },
+      "market": {
+        "usable_company_count": 2,
+        "usable_coverage_pct": 0.0309
+      },
+      "estimate": {
+        "usable_company_count": 1,
+        "usable_coverage_pct": 0.0155
+      }
+    }
+  },
+  "overlap_targeting": {
+    "max_targets": 200,
+    "preferred_missing_layers": [
+      "estimate",
+      "market",
+      "financial"
+    ]
+  }
+}
