@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import subprocess
+import hashlib
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
@@ -232,6 +233,108 @@ def _write_worklist_csv(path: Path, rows: list[dict[str, Any]]) -> None:
                 flat[key] = "|".join(str(x) for x in (row.get(key) or []))
             writer.writerow(flat)
 
+
+
+def build_provider_batch_contracts(provider_worklists: dict[str, Any]) -> dict[str, Any]:
+    """Build deterministic request contracts and response templates for provider batches."""
+    worklists = provider_worklists.get("worklists") if isinstance(provider_worklists.get("worklists"), dict) else {}
+    batches: dict[str, dict[str, Any]] = {}
+    for layer in LAYERS:
+        rows = worklists.get(layer) if isinstance(worklists.get(layer), list) else []
+        requests: list[dict[str, Any]] = []
+        for row in rows:
+            company_id = str(row.get("company_id") or "")
+            ticker = str(row.get("ticker") or row.get("primary_ticker") or "")
+            raw = f"V030.6.9|{layer}|{company_id}|{ticker}"
+            request_id = "provider-request:" + hashlib.sha256(raw.encode("utf-8")).hexdigest()[:24]
+            requests.append({
+                "request_id": request_id,
+                "target_layer": layer,
+                "company_id": company_id,
+                "ticker": ticker or None,
+                "priority_rank": row.get("priority_rank"),
+                "priority_tier": row.get("priority_tier"),
+                "immediate_production_ready_uplift": bool(row.get("immediate_production_ready_uplift")),
+                "required_fields": list(row.get("required_fields") or []),
+            })
+        batch_seed = "|".join(request["request_id"] for request in requests)
+        batch_id = f"provider-batch:{layer}:" + hashlib.sha256(batch_seed.encode("utf-8")).hexdigest()[:16]
+        batches[layer] = {
+            "schema_version": "provider-batch-request.v030.6.9",
+            "version": "V030.6.9",
+            "batch_id": batch_id,
+            "target_layer": layer,
+            "request_count": len(requests),
+            "requests": requests,
+            "response_contract": {
+                "schema_version": "provider-batch-response.v030.6.9",
+                "required_envelope_fields": ["schema_version", "batch_id", "target_layer", "provider", "observations"],
+                "observation_required_fields": ["request_id", "company_id", "provider_record_id", "observed_at", "data"],
+            },
+        }
+    return {
+        "schema_version": "provider-batch-contracts.v030.6.9",
+        "version": "V030.6.9",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "batch_count": len(LAYERS),
+        "request_count_by_layer": {layer: batches[layer]["request_count"] for layer in LAYERS},
+        "batches": batches,
+    }
+
+
+def validate_provider_batch_response(response: dict[str, Any], batch_request: dict[str, Any]) -> dict[str, Any]:
+    """Validate identity, envelope, duplicates and minimum provider observation fields."""
+    errors: list[dict[str, Any]] = []
+    accepted: list[dict[str, Any]] = []
+    expected = {str(r.get("request_id")): r for r in batch_request.get("requests", []) if isinstance(r, dict)}
+    if response.get("schema_version") != "provider-batch-response.v030.6.9":
+        errors.append({"reason": "invalid_schema_version"})
+    for key in ("batch_id", "target_layer"):
+        if response.get(key) != batch_request.get(key):
+            errors.append({"reason": f"{key}_mismatch", "actual": response.get(key), "expected": batch_request.get(key)})
+    if not response.get("provider"):
+        errors.append({"reason": "missing_provider"})
+    observations = response.get("observations") if isinstance(response.get("observations"), list) else []
+    seen: set[str] = set()
+    rejected: list[dict[str, Any]] = []
+    for index, observation in enumerate(observations):
+        if not isinstance(observation, dict):
+            rejected.append({"index": index, "reason": "observation_not_object"}); continue
+        request_id = str(observation.get("request_id") or "")
+        request = expected.get(request_id)
+        reason = None
+        if not request:
+            reason = "unknown_request_id"
+        elif request_id in seen:
+            reason = "duplicate_request_id"
+        elif observation.get("company_id") != request.get("company_id"):
+            reason = "company_id_mismatch"
+        elif not observation.get("provider_record_id"):
+            reason = "missing_provider_record_id"
+        elif not observation.get("observed_at"):
+            reason = "missing_observed_at"
+        elif not isinstance(observation.get("data"), dict) or not observation.get("data"):
+            reason = "missing_data"
+        if reason:
+            rejected.append({"index": index, "request_id": request_id or None, "reason": reason})
+        else:
+            seen.add(request_id); accepted.append(observation)
+    return {
+        "schema_version": "provider-batch-validation.v030.6.9",
+        "version": "V030.6.9",
+        "batch_id": batch_request.get("batch_id"),
+        "target_layer": batch_request.get("target_layer"),
+        "valid": not errors and not rejected,
+        "envelope_errors": errors,
+        "observation_count": len(observations),
+        "accepted_count": len(accepted),
+        "rejected_count": len(rejected),
+        "unfulfilled_request_count": len(expected) - len(seen),
+        "rejected_observations": rejected,
+        "accepted_observations": accepted,
+    }
+
+
 def build_readiness_assessment(
     after: dict[str, dict[str, float | int]],
     delta: dict[str, dict[str, float | int]],
@@ -353,8 +456,8 @@ def build_refresh_report(
     )
     pipeline_completed = all(stage.get("returncode") == 0 for stage in stages)
     return {
-        "schema_version": "production-refresh-report.v030.6.8",
-        "version": "V030.6.8",
+        "schema_version": "production-refresh-report.v030.6.9",
+        "version": "V030.6.9",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "status": "completed" if pipeline_completed else "failed",
         "stages": stages,
@@ -377,6 +480,7 @@ def run_refresh(
     targets_output_path: Path | None = None,
     worklists_output_dir: Path | None = None,
     max_worklist_rows_per_layer: int = 200,
+    contracts_output_dir: Path | None = None,
 ) -> dict[str, Any]:
     repository_root = repository_root.resolve()
     summary_path = repository_root / "data/generated/production_population/production_population_summary.json"
@@ -433,4 +537,28 @@ def run_refresh(
                 json.dumps(rows, ensure_ascii=False, indent=2), encoding="utf-8"
             )
             _write_worklist_csv(worklists_output_dir / f"{layer}_population_worklist.csv", rows)
+    contracts = build_provider_batch_contracts(worklists)
+    report["provider_batch_contracts_summary"] = {
+        key: value for key, value in contracts.items() if key != "batches"
+    }
+    output_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    if contracts_output_dir is not None:
+        contracts_output_dir.mkdir(parents=True, exist_ok=True)
+        (contracts_output_dir / "provider_batch_contracts.json").write_text(
+            json.dumps(contracts, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+        for layer, batch in contracts["batches"].items():
+            (contracts_output_dir / f"{layer}_batch_request.json").write_text(
+                json.dumps(batch, ensure_ascii=False, indent=2), encoding="utf-8"
+            )
+            template = {
+                "schema_version": "provider-batch-response.v030.6.9",
+                "batch_id": batch["batch_id"],
+                "target_layer": layer,
+                "provider": "REPLACE_WITH_PROVIDER",
+                "observations": [],
+            }
+            (contracts_output_dir / f"{layer}_batch_response.template.json").write_text(
+                json.dumps(template, ensure_ascii=False, indent=2), encoding="utf-8"
+            )
     return report

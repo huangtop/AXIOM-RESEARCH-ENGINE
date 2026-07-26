@@ -94,7 +94,7 @@ def test_readiness_assessment_detects_coverage_regression():
 def test_refresh_report_marks_failed_stage():
     report = build_refresh_report(_summary(), _summary(), [{"name": "build", "returncode": 2}])
     assert report["status"] == "failed"
-    assert report["schema_version"] == "production-refresh-report.v030.6.8"
+    assert report["schema_version"] == "production-refresh-report.v030.6.9"
     assert report["readiness_assessment"]["status"] == "blocked"
 
 
@@ -148,7 +148,7 @@ def test_overlap_targets_exclude_empty_and_ready_companies():
 def test_refresh_report_embeds_overlap_targets():
     rows = [{"company_id": "c1", "ticker": "AAA", "data_usability": {"financial": True, "market": True, "estimate": False}}]
     report = build_refresh_report(_summary(), _summary(), [{"name": "all", "returncode": 0}], index_rows=rows, readiness_policy=_policy())
-    assert report["schema_version"] == "production-refresh-report.v030.6.8"
+    assert report["schema_version"] == "production-refresh-report.v030.6.9"
     assert report["overlap_targets"]["targets"][0]["recommended_action"] == "populate_estimate"
 
 
@@ -209,9 +209,38 @@ def test_run_refresh_writes_provider_worklists_json_and_csv(tmp_path: Path):
     output = tmp_path / "data/generated/production_refresh/refresh_report.json"
     workdir = tmp_path / "data/generated/production_refresh/provider_worklists"
     report = run_refresh(tmp_path, [{"name": "all", "argv": ["python", "x.py"]}], output, runner=runner, readiness_policy=_policy(), worklists_output_dir=workdir)
-    assert report["schema_version"] == "production-refresh-report.v030.6.8"
+    assert report["schema_version"] == "production-refresh-report.v030.6.9"
     assert (workdir / "provider_worklists.json").exists()
     assert (workdir / "estimate_population_worklist.json").exists()
     csv_text = (workdir / "estimate_population_worklist.csv").read_text(encoding="utf-8")
     assert "AAA" in csv_text
     assert "forward_revenue_or_eps" in csv_text
+
+def test_provider_batch_contracts_are_deterministic_and_layered():
+    from axiom_engine.production_refresh import build_provider_batch_contracts
+    worklists={"worklists":{"financial":[],"market":[{"company_id":"c1","ticker":"AAPL","priority_rank":1,"required_fields":["price"]}],"estimate":[]}}
+    first=build_provider_batch_contracts(worklists); second=build_provider_batch_contracts(worklists)
+    req=first["batches"]["market"]["requests"][0]
+    assert req["request_id"]==second["batches"]["market"]["requests"][0]["request_id"]
+    assert first["request_count_by_layer"]=={"financial":0,"market":1,"estimate":0}
+
+
+def test_provider_batch_response_validation_accepts_matching_observation():
+    from axiom_engine.production_refresh import build_provider_batch_contracts, validate_provider_batch_response
+    contracts=build_provider_batch_contracts({"worklists":{"financial":[],"market":[{"company_id":"c1","ticker":"AAPL","required_fields":["price"]}],"estimate":[]}})
+    batch=contracts["batches"]["market"]; req=batch["requests"][0]
+    response={"schema_version":"provider-batch-response.v030.6.9","batch_id":batch["batch_id"],"target_layer":"market","provider":"licensed_market","observations":[{"request_id":req["request_id"],"company_id":"c1","provider_record_id":"p1","observed_at":"2026-07-26T00:00:00Z","data":{"price":200}}]}
+    result=validate_provider_batch_response(response,batch)
+    assert result["valid"] is True
+    assert result["accepted_count"]==1
+
+
+def test_provider_batch_response_validation_rejects_identity_mismatch_and_duplicates():
+    from axiom_engine.production_refresh import build_provider_batch_contracts, validate_provider_batch_response
+    contracts=build_provider_batch_contracts({"worklists":{"financial":[],"market":[],"estimate":[{"company_id":"c1","ticker":"NVDA","required_fields":["forward_eps"]}]}})
+    batch=contracts["batches"]["estimate"]; req=batch["requests"][0]
+    obs={"request_id":req["request_id"],"company_id":"wrong","provider_record_id":"p1","observed_at":"2026-07-26","data":{"forward_eps":1}}
+    result=validate_provider_batch_response({"schema_version":"provider-batch-response.v030.6.9","batch_id":batch["batch_id"],"target_layer":"estimate","provider":"licensed","observations":[obs,obs]},batch)
+    assert result["valid"] is False
+    assert result["rejected_count"]==2
+    assert result["rejected_observations"][0]["reason"]=="company_id_mismatch"
