@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AXIOM Canonical Production Source Record V030.6.1",
+  "type": "object",
+  "required": ["record_id", "semantic_type", "company_id", "provider", "source_path", "values"],
+  "properties": {
+    "record_id": {"type": "string"},
+    "semantic_type": {"enum": ["financial_fact", "market_fact", "estimate_fact"]},
+    "company_id": {"type": "string", "pattern": "^company:"},
+    "security_id": {"type": ["string", "null"]},
+    "ticker": {"type": ["string", "null"]},
+    "observed_at": {"type": ["string", "null"]},
+    "provider": {"type": "string", "minLength": 1},
+    "source_path": {"type": "string", "minLength": 1},
+    "linkage_method": {"type": ["string", "null"]},
+    "values": {"type": "object", "minProperties": 1}
+  },
+  "additionalProperties": true
+}
