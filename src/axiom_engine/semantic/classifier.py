@@ -86,6 +86,18 @@ def classify_semantic_type(path: Path | str, rows: list[dict[str, Any]]) -> Sema
     keys = _sample_keys(rows)
     evidence: list[str] = []
 
+    # Canonical production sources declare their semantic contract explicitly.
+    declared = {str(row.get("semantic_type") or "").strip().lower() for row in rows[:100]}
+    declared.discard("")
+    declared_map = {
+        "financial_fact": SemanticType.FINANCIAL_FACT,
+        "market_fact": SemanticType.MARKET_FACT,
+        "estimate_fact": SemanticType.ESTIMATE_FACT,
+    }
+    if len(declared) == 1 and next(iter(declared)) in declared_map:
+        value = next(iter(declared))
+        return _result(declared_map[value], 0.99, [f"declared_semantic_type:{value}"])
+
     if any(term in low_path for term in _FIXTURE_PATH_TERMS):
         return _result(SemanticType.FIXTURE, 0.99, ["path:fixture"])
     if any(term in low_path for term in _TEMPLATE_PATH_TERMS):

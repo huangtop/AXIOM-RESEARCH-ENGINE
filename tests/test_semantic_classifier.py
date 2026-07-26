@@ -35,3 +35,10 @@ def test_financial_fact_classification():
     result = classify_semantic_type("data/provider/company_facts.json", rows)
     assert result.semantic_type is SemanticType.FINANCIAL_FACT
     assert result.eligible_layers == ("financial",)
+
+
+def test_declared_estimate_fact_overrides_period_field_overlap():
+    rows=[{"semantic_type":"estimate_fact","company_id":"company:1","forward_revenue":100,"fiscal_year":2027,"period_end":"2027-12-31"}]
+    result=classify_semantic_type("data/generated/production_sources/estimate_facts.json",rows)
+    assert result.semantic_type.value=="estimate_fact"
+    assert result.eligible_layers==("estimate",)

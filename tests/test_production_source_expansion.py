@@ -84,3 +84,23 @@ def test_market_source_spec_supplies_default_currency_and_state(tmp_path):
     assert row['currency']=='USD'
     assert row['market_state']=='historical'
     assert row['price']==12.25
+
+
+def test_normalizes_metric_value_consensus_estimate(tmp_path):
+    root=_repo(tmp_path); (root/'provider').mkdir()
+    payload={"estimates":[{"ticker":"AAA","metric":"revenue","value":"450000000000","unit":"currency","currency":"USD","period_end":"2027-09-30","fiscal_year":2027,"fiscal_period":"FY","estimate_kind":"consensus_mean","analyst_count":35,"source_record_id":"AAA-REV-FY2027"}]}
+    (root/'provider/estimates.json').write_text(json.dumps(payload))
+    result=expand_production_sources(root, config={"sources":{"estimate":[{"path":"provider/estimates.json","provider":"licensed","as_of_date":"2026-07-24"}]}})
+    row=result['outputs']['estimate'][0]
+    assert row['forward_revenue']==450000000000.0
+    assert row['analyst_count']==35
+    assert row['record_state']=='complete'
+    assert row['observed_at']=='2026-07-24'
+
+
+def test_estimate_metric_value_requires_supported_metric(tmp_path):
+    root=_repo(tmp_path); (root/'provider').mkdir()
+    (root/'provider/estimates.json').write_text(json.dumps({"estimates":[{"ticker":"AAA","metric":"unknown_metric","value":1}]}))
+    result=expand_production_sources(root, config={"sources":{"estimate":[{"path":"provider/estimates.json","provider":"licensed","as_of_date":"2026-07-24"}]}})
+    assert result['coverage']['estimate']['record_count']==0
+    assert result['rejected_records'][0]['reason']=='no_usable_values'

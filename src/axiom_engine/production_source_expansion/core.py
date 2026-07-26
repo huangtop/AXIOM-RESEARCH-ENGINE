@@ -42,6 +42,15 @@ DATE_KEYS = {
     "market": ("observed_at", "quote_time", "trade_date", "market_date", "session_date", "as_of"),
     "estimate": ("estimate_date", "as_of_date", "as_of"),
 }
+ESTIMATE_METRIC_MAP = {
+    "eps": "forward_eps",
+    "diluted_eps": "forward_eps",
+    "revenue": "forward_revenue",
+    "sales": "forward_revenue",
+    "ebit": "forward_ebit",
+    "ebitda": "forward_ebitda",
+    "target_price": "target_price",
+}
 
 
 def _rows(path: Path) -> list[dict[str, Any]]:
@@ -92,6 +101,11 @@ def _normalise_values(layer: str, row: dict[str, Any]) -> dict[str, Any]:
         value = _first(row, aliases)
         if _present(value):
             values[canonical] = _coerce_number(value)
+    # Consensus exports commonly use metric/value rows instead of wide columns.
+    if layer == "estimate" and _present(row.get("metric")) and _present(row.get("value")):
+        metric = ESTIMATE_METRIC_MAP.get(str(row["metric"]).strip().lower())
+        if metric:
+            values[metric] = _coerce_number(row["value"])
     return values
 
 
@@ -114,7 +128,8 @@ def _normalise_row(
     values = _normalise_values(layer, row)
     if not values:
         return None, "no_usable_values"
-    observed_at = _first(row, DATE_KEYS[layer])
+    source_spec = source_spec or {}
+    observed_at = _first(row, DATE_KEYS[layer]) or source_spec.get("as_of_date")
     if layer == "market" and not observed_at:
         return None, "missing_market_date"
     security_id = row.get("security_id")
@@ -134,12 +149,19 @@ def _normalise_row(
     }
     if layer == "estimate":
         result["fiscal_period"] = row.get("fiscal_period") or row.get("forecast_period")
-        result["estimate_type"] = row.get("estimate_type") or "provider"
+        result["fiscal_year"] = row.get("fiscal_year")
+        result["period_end"] = row.get("period_end")
+        result["estimate_type"] = row.get("estimate_type") or row.get("estimate_kind") or "provider"
+        result["estimate_kind"] = row.get("estimate_kind")
+        result["unit"] = row.get("unit")
+        result["currency"] = row.get("currency") or source_spec.get("currency")
+        result["analyst_count"] = _coerce_number(row.get("analyst_count")) if _present(row.get("analyst_count")) else None
+        result["source_record_id"] = row.get("source_record_id") or row.get("estimate_id")
+        result["record_state"] = "complete"
     if layer == "financial":
         result["fiscal_year"] = row.get("fiscal_year")
         result["period_end"] = row.get("period_end") or observed_at
     if layer == "market":
-        source_spec = source_spec or {}
         result["currency"] = row.get("currency") or source_spec.get("currency")
         result["market_state"] = row.get("market_state") or source_spec.get("market_state") or "historical"
         result["exchange_timezone"] = row.get("exchange_timezone")
@@ -184,8 +206,8 @@ def expand_production_sources(repository_root: Path, population_dir: Path = Path
     company_counts = {layer: len({x["company_id"] for x in outputs[layer]}) for layer in LAYERS}
     universe = len(companies)
     return {
-        "schema_version": "production-source-expansion-summary.v030.6.2",
-        "version": "V030.6.2",
+        "schema_version": "production-source-expansion-summary.v030.6.3",
+        "version": "V030.6.3",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "universe_company_count": universe,
         "outputs": outputs,
