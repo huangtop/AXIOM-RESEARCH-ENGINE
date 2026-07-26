@@ -9,9 +9,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable, Iterable, Mapping, Sequence
 
-SCHEMA_VERSION = "automation-run.v030.8.2"
-STATE_SCHEMA_VERSION = "automation-state.v030.8.2"
-VERSION = "V030.8.2"
+SCHEMA_VERSION = "automation-run.v030.8.3"
+STATE_SCHEMA_VERSION = "automation-state.v030.8.3"
+VERSION = "V030.8.3"
 TERMINAL_STAGE_STATES = {"completed", "failed", "skipped"}
 
 

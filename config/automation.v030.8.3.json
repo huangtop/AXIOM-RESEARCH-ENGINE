@@ -1,0 +1,26 @@
+{
+  "schema_version": "automation-config.v030.8.3",
+  "version": "V030.8.3",
+  "failure_policy": "stop_on_required_failure",
+  "state_machine": {
+    "states": ["pending", "running", "completed", "failed", "skipped", "interrupted"],
+    "persist_before_stage": true,
+    "persist_after_stage": true
+  },
+  "stages": [
+    {
+      "name": "production_refresh",
+      "argv": ["python", "scripts/refresh_production_population.py", "--config", "config/production_refresh.v030.7.2.json"],
+      "required": true,
+      "supports_strict": true,
+      "expected_report": "data/generated/production_refresh/refresh_report.json"
+    },
+    {
+      "name": "provider_delivery_reconciliation",
+      "argv": ["python", "scripts/reconcile_provider_deliveries.py"],
+      "required": true,
+      "supports_strict": true,
+      "expected_report": "data/generated/production_refresh/provider_delivery_reconciliation.json"
+    }
+  ]
+}

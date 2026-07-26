@@ -15,9 +15,9 @@ from axiom_engine.automation import load_automation_state, run_automation
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Run the AXIOM V030.8.2 automation state machine")
+    parser = argparse.ArgumentParser(description="Run the AXIOM V030.8.3 automation state machine")
     parser.add_argument("--repository-root", default=".")
-    parser.add_argument("--config", default="config/automation.v030.8.2.json")
+    parser.add_argument("--config", default="config/automation.v030.8.3.json")
     parser.add_argument("--output-dir", default="data/generated/automation")
     parser.add_argument("--strict", action="store_true")
     parser.add_argument("--continue-on-failure", action="store_true")
