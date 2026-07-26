@@ -42,6 +42,29 @@ DATE_KEYS = {
     "market": ("observed_at", "quote_time", "trade_date", "market_date", "session_date", "as_of"),
     "estimate": ("estimate_date", "as_of_date", "as_of"),
 }
+FINANCIAL_METRIC_MAP = {
+    "revenue": "revenue",
+    "revenues": "revenue",
+    "sales": "revenue",
+    "net_income": "net_income",
+    "netincomeloss": "net_income",
+    "operating_income": "ebit",
+    "ebit": "ebit",
+    "ebitda": "ebitda",
+    "eps": "eps",
+    "diluted_eps": "eps",
+    "free_cash_flow": "free_cash_flow",
+    "fcf": "free_cash_flow",
+    "capital_expenditures": "capital_expenditures",
+    "cash_and_cash_equivalents": "cash_and_cash_equivalents",
+    "total_assets": "total_assets",
+    "total_liabilities": "total_liabilities",
+    "shareholders_equity": "shareholders_equity",
+    "operating_cash_flow": "operating_cash_flow",
+    "diluted_shares_outstanding": "diluted_shares_outstanding",
+    "total_debt": "total_debt",
+}
+
 ESTIMATE_METRIC_MAP = {
     "eps": "forward_eps",
     "diluted_eps": "forward_eps",
@@ -101,6 +124,11 @@ def _normalise_values(layer: str, row: dict[str, Any]) -> dict[str, Any]:
         value = _first(row, aliases)
         if _present(value):
             values[canonical] = _coerce_number(value)
+    # SEC/XBRL financial exports commonly use metric/value rows.
+    if layer == "financial" and _present(row.get("metric")) and _present(row.get("value")):
+        metric = FINANCIAL_METRIC_MAP.get(str(row["metric"]).strip().lower())
+        if metric:
+            values[metric] = _coerce_number(row["value"])
     # Consensus exports commonly use metric/value rows instead of wide columns.
     if layer == "estimate" and _present(row.get("metric")) and _present(row.get("value")):
         metric = ESTIMATE_METRIC_MAP.get(str(row["metric"]).strip().lower())
@@ -159,8 +187,23 @@ def _normalise_row(
         result["source_record_id"] = row.get("source_record_id") or row.get("estimate_id")
         result["record_state"] = "complete"
     if layer == "financial":
+        result["financial_fact_id"] = row.get("financial_fact_id") or row.get("fact_id")
+        result["metric"] = row.get("metric")
+        result["value"] = _coerce_number(row.get("value")) if _present(row.get("value")) else None
+        result["unit"] = row.get("unit")
+        result["currency"] = row.get("currency") or source_spec.get("currency")
+        result["period_type"] = row.get("period_type")
+        result["period_start"] = row.get("period_start")
         result["fiscal_year"] = row.get("fiscal_year")
+        result["fiscal_period"] = row.get("fiscal_period")
         result["period_end"] = row.get("period_end") or observed_at
+        result["statement"] = row.get("statement")
+        result["form_type"] = row.get("form_type")
+        result["accession_number"] = row.get("accession_number")
+        result["audited"] = row.get("audited")
+        result["provenance_ids"] = row.get("provenance_ids") or row.get("source_ids") or []
+        result["metadata"] = row.get("metadata") or {}
+        result["record_state"] = "official" if row.get("audited") is True else "partial"
     if layer == "market":
         result["currency"] = row.get("currency") or source_spec.get("currency")
         result["market_state"] = row.get("market_state") or source_spec.get("market_state") or "historical"
@@ -206,8 +249,8 @@ def expand_production_sources(repository_root: Path, population_dir: Path = Path
     company_counts = {layer: len({x["company_id"] for x in outputs[layer]}) for layer in LAYERS}
     universe = len(companies)
     return {
-        "schema_version": "production-source-expansion-summary.v030.6.3",
-        "version": "V030.6.3",
+        "schema_version": "production-source-expansion-summary.v030.6.4",
+        "version": "V030.6.4",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "universe_company_count": universe,
         "outputs": outputs,

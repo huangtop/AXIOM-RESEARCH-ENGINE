@@ -104,3 +104,24 @@ def test_estimate_metric_value_requires_supported_metric(tmp_path):
     result=expand_production_sources(root, config={"sources":{"estimate":[{"path":"provider/estimates.json","provider":"licensed","as_of_date":"2026-07-24"}]}})
     assert result['coverage']['estimate']['record_count']==0
     assert result['rejected_records'][0]['reason']=='no_usable_values'
+
+
+def test_normalizes_metric_value_sec_financial_fact_and_preserves_provenance(tmp_path):
+    root=_repo(tmp_path); (root/'provider').mkdir()
+    fact={"financial_fact_id":"fact:1","company_id":"company:1","metric":"revenue","value":"123000","unit":"currency","currency":"USD","period_type":"duration","period_start":"2025-01-01","period_end":"2025-12-31","fiscal_year":2025,"fiscal_period":"FY","statement":"income_statement","form_type":"10-K","accession_number":"0001","audited":True,"provenance_ids":["prov:1"]}
+    (root/'provider/sec.json').write_text(json.dumps([fact]))
+    result=expand_production_sources(root, config={"sources":{"financial":[{"path":"provider/sec.json","provider":"sec_companyfacts"}]}})
+    row=result['outputs']['financial'][0]
+    assert row['revenue']==123000.0
+    assert row['metric']=='revenue'
+    assert row['record_state']=='official'
+    assert row['accession_number']=='0001'
+    assert row['provenance_ids']==['prov:1']
+
+
+def test_rejects_unsupported_metric_value_financial_row(tmp_path):
+    root=_repo(tmp_path); (root/'provider').mkdir()
+    (root/'provider/sec.json').write_text(json.dumps([{"company_id":"company:1","metric":"market_price","value":99,"period_end":"2025-12-31"}]))
+    result=expand_production_sources(root, config={"sources":{"financial":[{"path":"provider/sec.json","provider":"sec_companyfacts"}]}})
+    assert result['coverage']['financial']['record_count']==0
+    assert result['rejected_records'][0]['reason']=='no_usable_values'

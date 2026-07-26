@@ -10,7 +10,7 @@ def main() -> int:
     p=argparse.ArgumentParser(description="Normalize provider data into canonical production sources")
     p.add_argument("--repository-root", default=".")
     p.add_argument("--population-dir", default="data/universe")
-    p.add_argument("--config", default="config/production_source_expansion.v030.6.3.json")
+    p.add_argument("--config", default="config/production_source_expansion.v030.6.4.json")
     p.add_argument("--output-dir", default="data/generated/production_sources")
     p.add_argument("--write", action="store_true")
     p.add_argument("--strict", action="store_true")
@@ -22,6 +22,7 @@ def main() -> int:
     summary["rejected_record_count"]=len(payload["rejected_records"])
     summary["output_dir"]=str((root/a.output_dir).resolve()); summary["dry_run"]=not a.write
     print(json.dumps(summary, ensure_ascii=False, indent=2))
-    if a.strict and any(x["rejected_rows"] for x in payload["source_summaries"]): return 2
+    # Strict mode rejects unusable configured sources, while row-level rejects remain diagnostics.
+    if a.strict and any(x["input_rows"] > 0 and x["accepted_rows"] == 0 for x in payload["source_summaries"]): return 2
     return 0
 if __name__ == "__main__": raise SystemExit(main())

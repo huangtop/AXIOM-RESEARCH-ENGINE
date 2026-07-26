@@ -1,0 +1,28 @@
+{
+  "schema_version": "production-source-expansion-config.v030.6.4",
+  "sources": {
+    "financial": [
+      {
+        "path": "data/financial_data/financial_facts.json",
+        "provider": "sec_companyfacts",
+        "currency": "USD"
+      }
+    ],
+    "market": [
+      {
+        "path": "data/cache/previous_closes.json",
+        "provider": "yahoo_finance",
+        "market_state": "historical",
+        "currency": "USD"
+      }
+    ],
+    "estimate": [
+      {
+        "path": "data/onboarding/generated/provider-estimates-test.json",
+        "provider": "licensed_consensus",
+        "as_of_date": "2026-07-24",
+        "currency": "USD"
+      }
+    ]
+  }
+}
