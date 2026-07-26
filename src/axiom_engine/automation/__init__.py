@@ -24,3 +24,20 @@ __all__ = [
 ]
 
 from .incremental import build_input_snapshot, compare_snapshots, plan_incremental_refresh
+from .monitoring import (
+    METRICS_SCHEMA_VERSION,
+    MONITORING_SCHEMA_VERSION,
+    TREND_SCHEMA_VERSION,
+    build_metrics,
+    build_trends,
+    collect_operational_snapshot,
+    format_automation_status,
+    load_history,
+    record_automation_run,
+)
+
+__all__ += [
+    "METRICS_SCHEMA_VERSION", "MONITORING_SCHEMA_VERSION", "TREND_SCHEMA_VERSION",
+    "build_metrics", "build_trends", "collect_operational_snapshot",
+    "format_automation_status", "load_history", "record_automation_run",
+]

@@ -9,9 +9,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable, Iterable, Mapping, Sequence
 
-SCHEMA_VERSION = "automation-run.v030.8.4"
-STATE_SCHEMA_VERSION = "automation-state.v030.8.4"
-VERSION = "V030.8.4"
+SCHEMA_VERSION = "automation-run.v030.8.5"
+STATE_SCHEMA_VERSION = "automation-state.v030.8.5"
+VERSION = "V030.8.5"
 TERMINAL_STAGE_STATES = {"completed", "failed", "skipped"}
 
 
@@ -331,4 +331,7 @@ def run_automation(
                     "failed_stage_count", "skipped_stage_count", "resume_count")
     _atomic_write_json(output_path.parent / "automation_summary.json", {key: report[key] for key in summary_keys})
     _atomic_write_json(output_path.parent / "automation_failures.json", {"run_id": state["run_id"], "failures": failed})
+    if not dry_run:
+        from .monitoring import record_automation_run
+        record_automation_run(root, report, output_path.parent)
     return report
