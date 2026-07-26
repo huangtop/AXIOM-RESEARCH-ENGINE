@@ -456,8 +456,8 @@ def build_refresh_report(
     )
     pipeline_completed = all(stage.get("returncode") == 0 for stage in stages)
     return {
-        "schema_version": "production-refresh-report.v030.6.9",
-        "version": "V030.6.9",
+        "schema_version": "production-refresh-report.v030.7.0",
+        "version": "V030.7.0",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "status": "completed" if pipeline_completed else "failed",
         "stages": stages,
@@ -562,3 +562,187 @@ def run_refresh(
                 json.dumps(template, ensure_ascii=False, indent=2), encoding="utf-8"
             )
     return report
+
+
+
+def _stable_provider_fact_id(layer: str, provider: str, provider_record_id: str, company_id: str) -> str:
+    seed = f"V030.7.0|{layer}|{provider}|{provider_record_id}|{company_id}"
+    return f"provider-fact:{layer}:" + hashlib.sha256(seed.encode("utf-8")).hexdigest()[:28]
+
+
+def canonicalize_provider_observation(
+    observation: dict[str, Any],
+    *,
+    provider: str,
+    target_layer: str,
+    request: dict[str, Any],
+) -> tuple[dict[str, Any] | None, str | None]:
+    """Convert one validated provider observation into a canonical population fact."""
+    data = observation.get("data") if isinstance(observation.get("data"), dict) else {}
+    company_id = str(request.get("company_id") or observation.get("company_id") or "")
+    provider_record_id = str(observation.get("provider_record_id") or "")
+    base = {
+        "record_id": _stable_provider_fact_id(target_layer, provider, provider_record_id, company_id),
+        "semantic_type": f"{target_layer}_fact",
+        "company_id": company_id,
+        "ticker": request.get("ticker") or None,
+        "provider": provider,
+        "provider_record_id": provider_record_id,
+        "observed_at": observation.get("observed_at"),
+        "source_request_id": observation.get("request_id"),
+        "source_batch_id": observation.get("batch_id"),
+        "record_state": "provider_observed",
+        "provenance_ids": [provider_record_id, str(observation.get("request_id") or "")],
+    }
+    if target_layer == "market":
+        price = data.get("price", data.get("close", data.get("previous_close")))
+        try:
+            price = float(price)
+        except (TypeError, ValueError):
+            return None, "invalid_market_price"
+        session_date = data.get("session_date") or data.get("market_date") or data.get("date")
+        currency = data.get("currency")
+        if not session_date:
+            return None, "missing_session_date"
+        if not currency:
+            return None, "missing_currency"
+        return {
+            **base,
+            "price": price,
+            "currency": str(currency),
+            "session_date": str(session_date),
+            "market_state": data.get("market_state") or "historical",
+            "exchange_timezone": data.get("exchange_timezone"),
+        }, None
+    if target_layer == "estimate":
+        metric_aliases = {
+            "forward_revenue": "forward_revenue", "revenue": "forward_revenue", "sales": "forward_revenue",
+            "forward_eps": "forward_eps", "eps": "forward_eps", "diluted_eps": "forward_eps",
+            "forward_ebit": "forward_ebit", "ebit": "forward_ebit",
+            "forward_ebitda": "forward_ebitda", "ebitda": "forward_ebitda",
+            "target_price": "target_price",
+        }
+        metric = data.get("metric")
+        value = data.get("value")
+        if metric is None:
+            for key in metric_aliases:
+                if data.get(key) is not None:
+                    metric, value = key, data.get(key)
+                    break
+        canonical_metric = metric_aliases.get(str(metric or "").lower())
+        if not canonical_metric:
+            return None, "unsupported_estimate_metric"
+        try:
+            value = float(value)
+        except (TypeError, ValueError):
+            return None, "invalid_estimate_value"
+        period_end = data.get("period_end")
+        fiscal_period = data.get("fiscal_period")
+        if not period_end and not fiscal_period:
+            return None, "missing_estimate_period"
+        return {
+            **base,
+            "metric": canonical_metric,
+            "value": value,
+            "currency": data.get("currency"),
+            "unit": data.get("unit"),
+            "estimate_kind": data.get("estimate_kind") or "consensus",
+            "analyst_count": data.get("analyst_count"),
+            "fiscal_year": data.get("fiscal_year"),
+            "fiscal_period": fiscal_period,
+            "period_end": period_end,
+        }, None
+    if target_layer == "financial":
+        metric = data.get("metric")
+        value = data.get("value")
+        if not metric:
+            return None, "missing_financial_metric"
+        try:
+            value = float(value)
+        except (TypeError, ValueError):
+            return None, "invalid_financial_value"
+        if not data.get("period_end"):
+            return None, "missing_period_end"
+        return {
+            **base,
+            "metric": str(metric),
+            "value": value,
+            "currency": data.get("currency"),
+            "unit": data.get("unit"),
+            "period_start": data.get("period_start"),
+            "period_end": data.get("period_end"),
+            "fiscal_year": data.get("fiscal_year"),
+            "fiscal_period": data.get("fiscal_period"),
+            "statement": data.get("statement"),
+        }, None
+    return None, "unsupported_target_layer"
+
+
+def merge_provider_facts(existing_rows: list[dict[str, Any]], incoming_rows: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], int, int]:
+    """Merge by stable record_id; incoming provider observations replace older duplicates."""
+    merged = {str(row.get("record_id") or ""): row for row in existing_rows if isinstance(row, dict) and row.get("record_id")}
+    inserted = updated = 0
+    for row in incoming_rows:
+        record_id = str(row.get("record_id") or "")
+        if not record_id:
+            continue
+        if record_id in merged:
+            updated += 1
+        else:
+            inserted += 1
+        merged[record_id] = row
+    return sorted(merged.values(), key=lambda row: (str(row.get("company_id") or ""), str(row.get("record_id") or ""))), inserted, updated
+
+
+def import_provider_batch_response(
+    response: dict[str, Any],
+    batch_request: dict[str, Any],
+    existing_ledger_rows: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    """Validate a provider response, canonicalize accepted observations and merge the persistent ledger."""
+    validation = validate_provider_batch_response(response, batch_request)
+    provider = str(response.get("provider") or "")
+    layer = str(batch_request.get("target_layer") or "")
+    request_map = {str(row.get("request_id")): row for row in batch_request.get("requests", []) if isinstance(row, dict)}
+    canonical_rows: list[dict[str, Any]] = []
+    canonical_rejections: list[dict[str, Any]] = []
+    if not validation["envelope_errors"]:
+        for observation in validation["accepted_observations"]:
+            request = request_map.get(str(observation.get("request_id") or ""), {})
+            enriched = dict(observation)
+            enriched["batch_id"] = response.get("batch_id")
+            row, reason = canonicalize_provider_observation(
+                enriched, provider=provider, target_layer=layer, request=request
+            )
+            if reason:
+                canonical_rejections.append({"request_id": observation.get("request_id"), "reason": reason})
+            elif row:
+                canonical_rows.append(row)
+    merged, inserted, updated = merge_provider_facts(existing_ledger_rows or [], canonical_rows)
+    valid = bool(validation["valid"] and not canonical_rejections)
+    return {
+        "schema_version": "provider-response-import-report.v030.7.0",
+        "version": "V030.7.0",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "valid": valid,
+        "batch_id": batch_request.get("batch_id"),
+        "target_layer": layer,
+        "provider": provider,
+        "validation": {key: value for key, value in validation.items() if key != "accepted_observations"},
+        "canonicalized_count": len(canonical_rows),
+        "canonical_rejected_count": len(canonical_rejections),
+        "canonical_rejections": canonical_rejections,
+        "inserted_count": inserted,
+        "updated_count": updated,
+        "ledger_record_count": len(merged),
+        "canonical_rows": canonical_rows,
+        "ledger_rows": merged,
+    }
+
+
+def merge_intake_ledger_into_production_source(
+    ledger_rows: list[dict[str, Any]],
+    production_rows: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    merged, _, _ = merge_provider_facts(production_rows, ledger_rows)
+    return merged

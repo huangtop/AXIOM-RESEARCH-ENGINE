@@ -16,7 +16,7 @@ from axiom_engine.production_refresh import run_refresh
 def main() -> int:
     parser = argparse.ArgumentParser(description="Run the canonical AXIOM production population refresh pipeline")
     parser.add_argument("--repository-root", default=".")
-    parser.add_argument("--config", default="config/production_refresh.v030.6.9.json")
+    parser.add_argument("--config", default="config/production_refresh.v030.7.0.json")
     parser.add_argument("--output", default="data/generated/production_refresh/refresh_report.json")
     parser.add_argument("--targets-output", default="data/generated/production_refresh/overlap_targets.json")
     parser.add_argument("--worklists-output-dir", default="data/generated/production_refresh/provider_worklists")

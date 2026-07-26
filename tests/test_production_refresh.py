@@ -94,7 +94,7 @@ def test_readiness_assessment_detects_coverage_regression():
 def test_refresh_report_marks_failed_stage():
     report = build_refresh_report(_summary(), _summary(), [{"name": "build", "returncode": 2}])
     assert report["status"] == "failed"
-    assert report["schema_version"] == "production-refresh-report.v030.6.9"
+    assert report["schema_version"] == "production-refresh-report.v030.7.0"
     assert report["readiness_assessment"]["status"] == "blocked"
 
 
@@ -148,7 +148,7 @@ def test_overlap_targets_exclude_empty_and_ready_companies():
 def test_refresh_report_embeds_overlap_targets():
     rows = [{"company_id": "c1", "ticker": "AAA", "data_usability": {"financial": True, "market": True, "estimate": False}}]
     report = build_refresh_report(_summary(), _summary(), [{"name": "all", "returncode": 0}], index_rows=rows, readiness_policy=_policy())
-    assert report["schema_version"] == "production-refresh-report.v030.6.9"
+    assert report["schema_version"] == "production-refresh-report.v030.7.0"
     assert report["overlap_targets"]["targets"][0]["recommended_action"] == "populate_estimate"
 
 
@@ -209,7 +209,7 @@ def test_run_refresh_writes_provider_worklists_json_and_csv(tmp_path: Path):
     output = tmp_path / "data/generated/production_refresh/refresh_report.json"
     workdir = tmp_path / "data/generated/production_refresh/provider_worklists"
     report = run_refresh(tmp_path, [{"name": "all", "argv": ["python", "x.py"]}], output, runner=runner, readiness_policy=_policy(), worklists_output_dir=workdir)
-    assert report["schema_version"] == "production-refresh-report.v030.6.9"
+    assert report["schema_version"] == "production-refresh-report.v030.7.0"
     assert (workdir / "provider_worklists.json").exists()
     assert (workdir / "estimate_population_worklist.json").exists()
     csv_text = (workdir / "estimate_population_worklist.csv").read_text(encoding="utf-8")
@@ -244,3 +244,50 @@ def test_provider_batch_response_validation_rejects_identity_mismatch_and_duplic
     assert result["valid"] is False
     assert result["rejected_count"]==2
     assert result["rejected_observations"][0]["reason"]=="company_id_mismatch"
+
+
+def test_provider_response_import_canonicalizes_market_fact():
+    from axiom_engine.production_refresh import build_provider_batch_contracts, import_provider_batch_response
+    contracts = build_provider_batch_contracts({"worklists":{"financial":[],"market":[{"company_id":"c1","ticker":"AAPL","required_fields":["price"]}],"estimate":[]}})
+    batch = contracts["batches"]["market"]; request = batch["requests"][0]
+    response = {"schema_version":"provider-batch-response.v030.6.9","batch_id":batch["batch_id"],"target_layer":"market","provider":"licensed_market","observations":[{"request_id":request["request_id"],"company_id":"c1","provider_record_id":"m1","observed_at":"2026-07-26T00:00:00Z","data":{"price":"215.42","currency":"USD","session_date":"2026-07-25"}}]}
+    result = import_provider_batch_response(response, batch)
+    assert result["valid"] is True
+    assert result["canonical_rows"][0]["semantic_type"] == "market_fact"
+    assert result["canonical_rows"][0]["price"] == 215.42
+    assert result["inserted_count"] == 1
+
+
+def test_provider_response_import_canonicalizes_estimate_fact():
+    from axiom_engine.production_refresh import build_provider_batch_contracts, import_provider_batch_response
+    contracts = build_provider_batch_contracts({"worklists":{"financial":[],"market":[],"estimate":[{"company_id":"c1","ticker":"NVDA","required_fields":["forward_eps"]}]}})
+    batch = contracts["batches"]["estimate"]; request = batch["requests"][0]
+    response = {"schema_version":"provider-batch-response.v030.6.9","batch_id":batch["batch_id"],"target_layer":"estimate","provider":"licensed_estimate","observations":[{"request_id":request["request_id"],"company_id":"c1","provider_record_id":"e1","observed_at":"2026-07-26T00:00:00Z","data":{"forward_eps":5.25,"fiscal_period":"FY2027","period_end":"2027-01-31","currency":"USD"}}]}
+    result = import_provider_batch_response(response, batch)
+    assert result["valid"] is True
+    row = result["canonical_rows"][0]
+    assert row["semantic_type"] == "estimate_fact"
+    assert row["metric"] == "forward_eps"
+    assert row["value"] == 5.25
+
+
+def test_provider_response_import_rejects_semantically_invalid_market_data():
+    from axiom_engine.production_refresh import build_provider_batch_contracts, import_provider_batch_response
+    contracts = build_provider_batch_contracts({"worklists":{"financial":[],"market":[{"company_id":"c1","ticker":"AAPL","required_fields":["price"]}],"estimate":[]}})
+    batch = contracts["batches"]["market"]; request = batch["requests"][0]
+    response = {"schema_version":"provider-batch-response.v030.6.9","batch_id":batch["batch_id"],"target_layer":"market","provider":"licensed_market","observations":[{"request_id":request["request_id"],"company_id":"c1","provider_record_id":"m1","observed_at":"2026-07-26T00:00:00Z","data":{"price":"bad","currency":"USD","session_date":"2026-07-25"}}]}
+    result = import_provider_batch_response(response, batch)
+    assert result["valid"] is False
+    assert result["canonical_rejections"][0]["reason"] == "invalid_market_price"
+
+
+def test_provider_response_import_is_idempotent_by_provider_record():
+    from axiom_engine.production_refresh import build_provider_batch_contracts, import_provider_batch_response
+    contracts = build_provider_batch_contracts({"worklists":{"financial":[],"market":[{"company_id":"c1","ticker":"AAPL","required_fields":["price"]}],"estimate":[]}})
+    batch = contracts["batches"]["market"]; request = batch["requests"][0]
+    response = {"schema_version":"provider-batch-response.v030.6.9","batch_id":batch["batch_id"],"target_layer":"market","provider":"licensed_market","observations":[{"request_id":request["request_id"],"company_id":"c1","provider_record_id":"m1","observed_at":"2026-07-26T00:00:00Z","data":{"price":215,"currency":"USD","session_date":"2026-07-25"}}]}
+    first = import_provider_batch_response(response, batch)
+    second = import_provider_batch_response(response, batch, first["ledger_rows"])
+    assert second["inserted_count"] == 0
+    assert second["updated_count"] == 1
+    assert second["ledger_record_count"] == 1
