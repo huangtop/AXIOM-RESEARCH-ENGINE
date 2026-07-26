@@ -1,14 +1,43 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "AXIOM V030.4 Production Population Summary",
+  "title": "AXIOM V030.5 Production Population Summary",
   "type": "object",
-  "required": ["schema_version", "version", "universe_company_count", "population_record_counts", "data_present_company_counts", "company_status_counts"],
+  "required": [
+    "schema_version",
+    "version",
+    "universe_company_count",
+    "population_record_counts",
+    "coverage",
+    "record_state_summary",
+    "readiness",
+    "company_status_counts"
+  ],
   "properties": {
-    "schema_version": {"const": "production-population-summary.v030.4"},
-    "version": {"const": "V030.4"},
+    "schema_version": {"const": "production-population-summary.v030.5"},
+    "version": {"const": "V030.5"},
     "universe_company_count": {"type": "integer", "minimum": 1},
+    "universe_security_count": {"type": "integer", "minimum": 0},
     "population_record_counts": {"type": "object"},
+    "coverage": {
+      "type": "object",
+      "required": ["financial", "market", "estimate"],
+      "additionalProperties": {
+        "type": "object",
+        "required": ["linked", "linked_pct", "usable", "usable_pct", "states"]
+      }
+    },
+    "record_state_summary": {"type": "object"},
+    "readiness": {
+      "type": "object",
+      "required": [
+        "production_ready_company_count",
+        "financial_ready_company_count",
+        "market_ready_company_count",
+        "estimate_ready_company_count"
+      ]
+    },
+    "company_status_counts": {"type": "object"},
     "data_present_company_counts": {"type": "object"},
-    "company_status_counts": {"type": "object"}
+    "coverage_pct": {"type": "object"}
   }
 }

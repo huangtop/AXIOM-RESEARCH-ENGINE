@@ -32,3 +32,36 @@ def test_ticker_linkage(tmp_path):
 
 def test_validator(tmp_path):
     fixture(tmp_path); r=build_population(tmp_path,Path("data/universe"),Path("manifest.json")); out=tmp_path/"out"; write_population(r,out); assert validate_population(tmp_path,Path("data/universe"),out)["valid"]
+
+
+def test_record_states_and_coverage_v2(tmp_path):
+    fixture(tmp_path)
+    result = build_population(tmp_path, Path("data/universe"), Path("manifest.json"))
+    summary = result["summary"]
+    assert summary["schema_version"] == "production-population-summary.v030.5"
+    assert summary["coverage"]["financial"]["linked"] == 1
+    assert summary["coverage"]["financial"]["usable"] == 1
+    assert summary["coverage"]["market"]["states"]["snapshot"] == 1
+    assert summary["coverage"]["estimate"]["states"]["complete"] == 1
+    assert summary["readiness"]["production_ready_company_count"] == 0
+
+
+def test_estimate_blank_template_is_linked_but_unusable(tmp_path):
+    fixture(tmp_path)
+    (tmp_path / "data/src/estimate.csv").write_text("ticker,forward_eps\nONE,\n")
+    result = build_population(tmp_path, Path("data/universe"), Path("manifest.json"))
+    rows = {row["company_id"]: row for row in result["populations"]["estimate"]}
+    assert rows["company:US-CIK0001"]["record_state"] == "placeholder"
+    assert rows["company:US-CIK0001"]["linked"] is True
+    assert rows["company:US-CIK0001"]["usable"] is False
+    assert result["summary"]["coverage"]["estimate"]["linked"] == 1
+    assert result["summary"]["coverage"]["estimate"]["usable"] == 0
+
+
+def test_missing_manifest_selection_produces_missing_states(tmp_path):
+    fixture(tmp_path)
+    (tmp_path / "manifest.json").write_text(json.dumps({"selections": {"financial": {"path": "data/src/financial.json"}, "market": None, "estimate": None}}))
+    result = build_population(tmp_path, Path("data/universe"), Path("manifest.json"))
+    assert result["summary"]["coverage"]["market"]["states"] == {"missing": 2}
+    assert result["summary"]["coverage"]["estimate"]["states"] == {"missing": 2}
+    assert result["summary"]["coverage"]["market"]["usable"] == 0
