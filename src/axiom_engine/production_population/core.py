@@ -97,7 +97,11 @@ def _record_state(layer: str, records: list[dict[str, Any]], selected: dict[str,
         if statuses & {"PENDING", "QUEUED", "REQUESTED"}:
             return "pending"
         return "complete" if _record_has_any_value(records, ESTIMATE_VALUE_KEYS) else "placeholder"
-    # Market source freshness/type is source-level metadata. Prefer explicit fields, then path hints.
+    # Market freshness/type may be record-level provider metadata or source-level metadata.
+    record_kinds = {_norm(row.get("market_state") or row.get("record_state")) for row in records}
+    for preferred in ("REALTIME", "SNAPSHOT", "HISTORICAL"):
+        if preferred in record_kinds:
+            return preferred.lower()
     source_path = _norm((selected or {}).get("path"))
     source_kind = _norm((selected or {}).get("market_state") or (selected or {}).get("record_state"))
     if source_kind in {"REALTIME", "SNAPSHOT", "HISTORICAL"}:

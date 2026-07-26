@@ -10,7 +10,7 @@ def main() -> int:
     p=argparse.ArgumentParser(description="Normalize provider data into canonical production sources")
     p.add_argument("--repository-root", default=".")
     p.add_argument("--population-dir", default="data/universe")
-    p.add_argument("--config", default="config/production_source_expansion.v030.6.1.json")
+    p.add_argument("--config", default="config/production_source_expansion.v030.6.2.json")
     p.add_argument("--output-dir", default="data/generated/production_sources")
     p.add_argument("--write", action="store_true")
     p.add_argument("--strict", action="store_true")

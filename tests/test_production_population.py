@@ -65,3 +65,7 @@ def test_missing_manifest_selection_produces_missing_states(tmp_path):
     assert result["summary"]["coverage"]["market"]["states"] == {"missing": 2}
     assert result["summary"]["coverage"]["estimate"]["states"] == {"missing": 2}
     assert result["summary"]["coverage"]["market"]["usable"] == 0
+
+def test_market_record_state_prefers_provider_record_metadata(tmp_path):
+    from axiom_engine.production_population.core import _record_state
+    assert _record_state("market", [{"price": 10, "market_state": "historical"}], {"path": "market_facts.json"}) == "historical"

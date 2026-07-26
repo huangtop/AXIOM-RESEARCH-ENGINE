@@ -48,3 +48,39 @@ def test_writes_canonical_outputs(tmp_path):
     assert (out/'market_facts.json').exists()
     assert (out/'estimate_facts.json').exists()
     assert json.loads((out/'expansion_summary.json').read_text())['coverage']['financial']['company_count']==1
+
+def test_reads_symbol_keyed_market_cache_and_counts_distinct_companies(tmp_path):
+    root=_repo(tmp_path); (root/'data/cache').mkdir(parents=True)
+    payload={"symbols":{
+        "AAA":{"session_date":"2026-07-25","close":"10.5","currency":"USD"},
+        "BBB":{"symbol":"BBB","session_date":"2026-07-25","close":"20","currency":"USD"},
+    }}
+    (root/'data/cache/previous_closes.json').write_text(json.dumps(payload))
+    result=expand_production_sources(root, config={"sources":{"market":[{
+        "path":"data/cache/previous_closes.json","provider":"demo","market_state":"historical"
+    }]}})
+    assert result['coverage']['market']['record_count']==2
+    assert result['coverage']['market']['company_count']==2
+    assert result['outputs']['market'][0]['semantic_type']=='market_fact'
+    assert all(row['market_state']=='historical' for row in result['outputs']['market'])
+    assert {row['price'] for row in result['outputs']['market']}=={10.5,20.0}
+
+
+def test_market_observation_requires_market_date(tmp_path):
+    root=_repo(tmp_path); (root/'provider').mkdir()
+    (root/'provider/quotes.json').write_text(json.dumps([{"ticker":"AAA","price":10}]))
+    result=expand_production_sources(root, config={"sources":{"market":[{"path":"provider/quotes.json","provider":"demo"}]}})
+    assert result['coverage']['market']['record_count']==0
+    assert result['rejected_records'][0]['reason']=='missing_market_date'
+
+
+def test_market_source_spec_supplies_default_currency_and_state(tmp_path):
+    root=_repo(tmp_path); (root/'provider').mkdir()
+    (root/'provider/quotes.json').write_text(json.dumps([{"ticker":"AAA","close":"12.25","trade_date":"2026-07-25"}]))
+    result=expand_production_sources(root, config={"sources":{"market":[{
+        "path":"provider/quotes.json","provider":"demo","currency":"USD","market_state":"historical"
+    }]}})
+    row=result['outputs']['market'][0]
+    assert row['currency']=='USD'
+    assert row['market_state']=='historical'
+    assert row['price']==12.25

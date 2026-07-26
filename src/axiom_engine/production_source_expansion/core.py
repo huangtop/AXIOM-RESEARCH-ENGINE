@@ -39,7 +39,7 @@ VALUE_ALIASES = {
 }
 DATE_KEYS = {
     "financial": ("period_end", "filing_date", "as_of_date"),
-    "market": ("observed_at", "quote_time", "trade_date", "market_date", "as_of"),
+    "market": ("observed_at", "quote_time", "trade_date", "market_date", "session_date", "as_of"),
     "estimate": ("estimate_date", "as_of_date", "as_of"),
 }
 
@@ -58,6 +58,10 @@ def _rows(path: Path) -> list[dict[str, Any]]:
             value = payload.get(key)
             if isinstance(value, list):
                 return [x for x in value if isinstance(x, dict)]
+        # Market caches commonly store observations as a symbol-keyed mapping.
+        symbols = payload.get("symbols")
+        if isinstance(symbols, dict):
+            return [dict(value, symbol=value.get("symbol") or symbol) for symbol, value in symbols.items() if isinstance(value, dict)]
     return []
 
 
@@ -72,12 +76,22 @@ def _first(row: dict[str, Any], keys: tuple[str, ...]) -> Any:
     return None
 
 
+def _coerce_number(value: Any) -> Any:
+    if isinstance(value, str):
+        token = value.strip().replace(",", "")
+        try:
+            return float(token)
+        except ValueError:
+            return value
+    return value
+
+
 def _normalise_values(layer: str, row: dict[str, Any]) -> dict[str, Any]:
     values: dict[str, Any] = {}
     for canonical, aliases in VALUE_ALIASES[layer].items():
         value = _first(row, aliases)
         if _present(value):
-            values[canonical] = value
+            values[canonical] = _coerce_number(value)
     return values
 
 
@@ -86,7 +100,14 @@ def _record_id(layer: str, company_id: str, date_value: Any, values: dict[str, A
     return f"{layer}_fact:" + hashlib.sha256(raw.encode()).hexdigest()[:24]
 
 
-def _normalise_row(layer: str, row: dict[str, Any], indexes: dict[str, dict[str, str]], source_path: str, provider: str) -> tuple[dict[str, Any] | None, str | None]:
+def _normalise_row(
+    layer: str,
+    row: dict[str, Any],
+    indexes: dict[str, dict[str, str]],
+    source_path: str,
+    provider: str,
+    source_spec: dict[str, Any] | None = None,
+) -> tuple[dict[str, Any] | None, str | None]:
     company_id, method = resolve_company_id(row, indexes)
     if not company_id:
         return None, "unresolved_identity"
@@ -94,6 +115,8 @@ def _normalise_row(layer: str, row: dict[str, Any], indexes: dict[str, dict[str,
     if not values:
         return None, "no_usable_values"
     observed_at = _first(row, DATE_KEYS[layer])
+    if layer == "market" and not observed_at:
+        return None, "missing_market_date"
     security_id = row.get("security_id")
     ticker = row.get("ticker") or row.get("symbol")
     result = {
@@ -116,8 +139,11 @@ def _normalise_row(layer: str, row: dict[str, Any], indexes: dict[str, dict[str,
         result["fiscal_year"] = row.get("fiscal_year")
         result["period_end"] = row.get("period_end") or observed_at
     if layer == "market":
-        result["currency"] = row.get("currency")
-        result["market_state"] = row.get("market_state") or "snapshot"
+        source_spec = source_spec or {}
+        result["currency"] = row.get("currency") or source_spec.get("currency")
+        result["market_state"] = row.get("market_state") or source_spec.get("market_state") or "historical"
+        result["exchange_timezone"] = row.get("exchange_timezone")
+        result["session_date"] = row.get("session_date") or observed_at
     return result, None
 
 
@@ -137,7 +163,7 @@ def expand_production_sources(repository_root: Path, population_dir: Path = Path
             accepted = 0
             reasons: Counter[str] = Counter()
             for index, row in enumerate(rows):
-                normalised, reason = _normalise_row(layer, row, indexes, source_path, provider)
+                normalised, reason = _normalise_row(layer, row, indexes, source_path, provider, spec)
                 if normalised:
                     outputs[layer].append(normalised)
                     accepted += 1
@@ -158,8 +184,8 @@ def expand_production_sources(repository_root: Path, population_dir: Path = Path
     company_counts = {layer: len({x["company_id"] for x in outputs[layer]}) for layer in LAYERS}
     universe = len(companies)
     return {
-        "schema_version": "production-source-expansion-summary.v030.6.1",
-        "version": "V030.6.1",
+        "schema_version": "production-source-expansion-summary.v030.6.2",
+        "version": "V030.6.2",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "universe_company_count": universe,
         "outputs": outputs,
