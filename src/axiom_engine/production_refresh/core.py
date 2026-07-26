@@ -746,3 +746,48 @@ def merge_intake_ledger_into_production_source(
 ) -> list[dict[str, Any]]:
     merged, _, _ = merge_provider_facts(production_rows, ledger_rows)
     return merged
+
+
+def provider_response_content_hash(payload: bytes | str | dict[str, Any]) -> str:
+    """Return a deterministic SHA-256 digest for replay protection."""
+    if isinstance(payload, dict):
+        raw = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    elif isinstance(payload, str):
+        raw = payload.encode("utf-8")
+    else:
+        raw = payload
+    return hashlib.sha256(raw).hexdigest()
+
+
+def build_provider_intake_receipt(
+    *,
+    response_path: str,
+    content_hash: str,
+    status: str,
+    layer: str | None = None,
+    import_report: dict[str, Any] | None = None,
+    failure_reason: str | None = None,
+) -> dict[str, Any]:
+    """Build the durable receipt used by the provider intake lifecycle."""
+    report = import_report or {}
+    return {
+        "schema_version": "provider-intake-receipt.v030.7.1",
+        "version": "V030.7.1",
+        "processed_at": datetime.now(timezone.utc).isoformat(),
+        "response_path": response_path,
+        "content_sha256": content_hash,
+        "status": status,
+        "target_layer": layer or report.get("target_layer"),
+        "batch_id": report.get("batch_id"),
+        "provider": report.get("provider"),
+        "canonicalized_count": int(report.get("canonicalized_count", 0) or 0),
+        "inserted_count": int(report.get("inserted_count", 0) or 0),
+        "updated_count": int(report.get("updated_count", 0) or 0),
+        "failure_reason": failure_reason,
+    }
+
+
+def provider_archive_filename(original_name: str, content_hash: str, *, status: str) -> str:
+    """Create a collision-resistant, deterministic archive filename."""
+    path = Path(original_name)
+    return f"{path.stem}.{status}.{content_hash[:12]}{path.suffix}"

@@ -291,3 +291,28 @@ def test_provider_response_import_is_idempotent_by_provider_record():
     assert second["inserted_count"] == 0
     assert second["updated_count"] == 1
     assert second["ledger_record_count"] == 1
+
+
+def test_provider_response_content_hash_is_deterministic_for_dicts():
+    from axiom_engine.production_refresh import provider_response_content_hash
+    assert provider_response_content_hash({"b": 2, "a": 1}) == provider_response_content_hash({"a": 1, "b": 2})
+
+
+def test_provider_archive_filename_contains_status_and_hash():
+    from axiom_engine.production_refresh import provider_archive_filename
+    name = provider_archive_filename("market_batch_response.json", "abcdef1234567890", status="accepted")
+    assert name == "market_batch_response.accepted.abcdef123456.json"
+
+
+def test_provider_intake_receipt_captures_import_counts():
+    from axiom_engine.production_refresh import build_provider_intake_receipt
+    receipt = build_provider_intake_receipt(response_path="inbox/market.json", content_hash="abc", status="accepted", layer="market", import_report={"batch_id":"b1","provider":"licensed","canonicalized_count":1,"inserted_count":1,"updated_count":0})
+    assert receipt["schema_version"] == "provider-intake-receipt.v030.7.1"
+    assert receipt["status"] == "accepted"
+    assert receipt["inserted_count"] == 1
+
+
+def test_provider_intake_receipt_captures_failure_reason():
+    from axiom_engine.production_refresh import build_provider_intake_receipt
+    receipt = build_provider_intake_receipt(response_path="inbox/bad.json", content_hash="bad", status="failed", failure_reason="missing_batch_request")
+    assert receipt["failure_reason"] == "missing_batch_request"
