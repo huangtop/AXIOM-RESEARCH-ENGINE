@@ -1,5 +1,6 @@
 from .core import (
     build_overlap_targets,
+    build_provider_worklists,
     build_readiness_assessment,
     build_refresh_report,
     coverage_delta,
@@ -13,6 +14,7 @@ __all__ = [
     "coverage_delta",
     "overlap_summary",
     "build_overlap_targets",
+    "build_provider_worklists",
     "build_readiness_assessment",
     "build_refresh_report",
     "run_refresh",

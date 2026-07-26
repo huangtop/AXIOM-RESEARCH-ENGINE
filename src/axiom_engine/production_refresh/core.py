@@ -158,6 +158,80 @@ def build_overlap_targets(
         "targets": selected,
     }
 
+
+def build_provider_worklists(
+    overlap_targets: dict[str, Any],
+    *,
+    max_per_layer: int = 200,
+) -> dict[str, Any]:
+    """Convert overlap targets into provider-ready per-layer worklists."""
+    targets = overlap_targets.get("targets") if isinstance(overlap_targets.get("targets"), list) else []
+    worklists: dict[str, list[dict[str, Any]]] = {layer: [] for layer in LAYERS}
+    for target in targets:
+        if not isinstance(target, dict):
+            continue
+        missing_layers = target.get("missing_layers") if isinstance(target.get("missing_layers"), list) else []
+        for layer in missing_layers:
+            if layer not in worklists or len(worklists[layer]) >= max(0, int(max_per_layer)):
+                continue
+            identity = {
+                key: target.get(key)
+                for key in ("company_id", "company_name", "name", "ticker", "primary_ticker", "security_id", "cik")
+                if target.get(key) not in (None, "", [])
+            }
+            immediate = int(target.get("missing_layer_count", 0) or 0) == 1
+            required_fields = {
+                "market": ["price", "currency", "session_date", "provider"],
+                "estimate": ["forward_revenue_or_eps", "fiscal_period", "period_end", "provider"],
+                "financial": ["metric", "value", "period_end", "provider"],
+            }[layer]
+            worklists[layer].append({
+                **identity,
+                "target_layer": layer,
+                "priority_tier": target.get("priority_tier"),
+                "priority_rank": len(worklists[layer]) + 1,
+                "usable_layers": list(target.get("usable_layers") or []),
+                "missing_layers": list(missing_layers),
+                "required_fields": required_fields,
+                "immediate_production_ready_uplift": immediate,
+                "expected_ready_uplift": 1 if immediate else 0,
+                "recommended_action": f"fetch_{layer}_provider_data",
+            })
+    counts = {layer: len(rows) for layer, rows in worklists.items()}
+    immediate_counts = {
+        layer: sum(1 for row in rows if row["immediate_production_ready_uplift"])
+        for layer, rows in worklists.items()
+    }
+    return {
+        "schema_version": "provider-population-worklists.v030.6.8",
+        "version": "V030.6.8",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "strategy": "cross_layer_overlap_then_provider_layer",
+        "source_target_schema_version": overlap_targets.get("schema_version"),
+        "counts_by_layer": counts,
+        "immediate_ready_opportunities_by_layer": immediate_counts,
+        "potential_production_ready_uplift": sum(immediate_counts.values()),
+        "worklists": worklists,
+    }
+
+def _write_worklist_csv(path: Path, rows: list[dict[str, Any]]) -> None:
+    import csv
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fieldnames = [
+        "priority_rank", "company_id", "ticker", "primary_ticker", "security_id", "cik",
+        "company_name", "name", "target_layer", "priority_tier",
+        "immediate_production_ready_uplift", "expected_ready_uplift",
+        "usable_layers", "missing_layers", "required_fields", "recommended_action",
+    ]
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, extrasaction="ignore")
+        writer.writeheader()
+        for row in rows:
+            flat = dict(row)
+            for key in ("usable_layers", "missing_layers", "required_fields"):
+                flat[key] = "|".join(str(x) for x in (row.get(key) or []))
+            writer.writerow(flat)
+
 def build_readiness_assessment(
     after: dict[str, dict[str, float | int]],
     delta: dict[str, dict[str, float | int]],
@@ -279,8 +353,8 @@ def build_refresh_report(
     )
     pipeline_completed = all(stage.get("returncode") == 0 for stage in stages)
     return {
-        "schema_version": "production-refresh-report.v030.6.7",
-        "version": "V030.6.7",
+        "schema_version": "production-refresh-report.v030.6.8",
+        "version": "V030.6.8",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "status": "completed" if pipeline_completed else "failed",
         "stages": stages,
@@ -301,6 +375,8 @@ def run_refresh(
     readiness_policy: dict[str, Any] | None = None,
     overlap_targeting: dict[str, Any] | None = None,
     targets_output_path: Path | None = None,
+    worklists_output_dir: Path | None = None,
+    max_worklist_rows_per_layer: int = 200,
 ) -> dict[str, Any]:
     repository_root = repository_root.resolve()
     summary_path = repository_root / "data/generated/production_population/production_population_summary.json"
@@ -340,4 +416,21 @@ def run_refresh(
     if targets_output_path is not None:
         targets_output_path.parent.mkdir(parents=True, exist_ok=True)
         targets_output_path.write_text(json.dumps(report["overlap_targets"], ensure_ascii=False, indent=2), encoding="utf-8")
+    worklists = build_provider_worklists(
+        report["overlap_targets"], max_per_layer=max_worklist_rows_per_layer
+    )
+    report["provider_worklists_summary"] = {
+        key: value for key, value in worklists.items() if key != "worklists"
+    }
+    output_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    if worklists_output_dir is not None:
+        worklists_output_dir.mkdir(parents=True, exist_ok=True)
+        (worklists_output_dir / "provider_worklists.json").write_text(
+            json.dumps(worklists, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+        for layer, rows in worklists["worklists"].items():
+            (worklists_output_dir / f"{layer}_population_worklist.json").write_text(
+                json.dumps(rows, ensure_ascii=False, indent=2), encoding="utf-8"
+            )
+            _write_worklist_csv(worklists_output_dir / f"{layer}_population_worklist.csv", rows)
     return report

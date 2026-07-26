@@ -16,9 +16,10 @@ from axiom_engine.production_refresh import run_refresh
 def main() -> int:
     parser = argparse.ArgumentParser(description="Run the canonical AXIOM production population refresh pipeline")
     parser.add_argument("--repository-root", default=".")
-    parser.add_argument("--config", default="config/production_refresh.v030.6.7.json")
+    parser.add_argument("--config", default="config/production_refresh.v030.6.8.json")
     parser.add_argument("--output", default="data/generated/production_refresh/refresh_report.json")
     parser.add_argument("--targets-output", default="data/generated/production_refresh/overlap_targets.json")
+    parser.add_argument("--worklists-output-dir", default="data/generated/production_refresh/provider_worklists")
     parser.add_argument("--strict", action="store_true")
     parser.add_argument("--require-ready", action="store_true", help="Return exit code 3 when readiness gates are blocked")
     args = parser.parse_args()
@@ -37,6 +38,8 @@ def main() -> int:
         readiness_policy=config.get("readiness_policy"),
         overlap_targeting=config.get("overlap_targeting"),
         targets_output_path=root / args.targets_output,
+        worklists_output_dir=root / args.worklists_output_dir,
+        max_worklist_rows_per_layer=int(config.get("provider_worklists", {}).get("max_rows_per_layer", 200)),
     )
     print(json.dumps(report, ensure_ascii=False, indent=2))
     if report["status"] != "completed":

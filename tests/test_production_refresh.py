@@ -94,7 +94,7 @@ def test_readiness_assessment_detects_coverage_regression():
 def test_refresh_report_marks_failed_stage():
     report = build_refresh_report(_summary(), _summary(), [{"name": "build", "returncode": 2}])
     assert report["status"] == "failed"
-    assert report["schema_version"] == "production-refresh-report.v030.6.7"
+    assert report["schema_version"] == "production-refresh-report.v030.6.8"
     assert report["readiness_assessment"]["status"] == "blocked"
 
 
@@ -148,7 +148,7 @@ def test_overlap_targets_exclude_empty_and_ready_companies():
 def test_refresh_report_embeds_overlap_targets():
     rows = [{"company_id": "c1", "ticker": "AAA", "data_usability": {"financial": True, "market": True, "estimate": False}}]
     report = build_refresh_report(_summary(), _summary(), [{"name": "all", "returncode": 0}], index_rows=rows, readiness_policy=_policy())
-    assert report["schema_version"] == "production-refresh-report.v030.6.7"
+    assert report["schema_version"] == "production-refresh-report.v030.6.8"
     assert report["overlap_targets"]["targets"][0]["recommended_action"] == "populate_estimate"
 
 
@@ -167,3 +167,51 @@ def test_run_refresh_writes_targets_artifact(tmp_path: Path):
     payload = json.loads(targets.read_text(encoding="utf-8"))
     assert payload["target_count"] == 1
     assert payload["targets"][0]["company_id"] == "c1"
+
+
+def test_provider_worklists_split_targets_by_missing_layer():
+    from axiom_engine.production_refresh import build_provider_worklists
+    targets = {
+        "schema_version": "cross-layer-overlap-targets.v030.6.7",
+        "targets": [
+            {"company_id": "nvda", "ticker": "NVDA", "usable_layers": ["financial", "market"], "missing_layers": ["estimate"], "missing_layer_count": 1, "priority_tier": "one_layer_to_ready"},
+            {"company_id": "aapl", "ticker": "AAPL", "usable_layers": ["financial", "estimate"], "missing_layers": ["market"], "missing_layer_count": 1, "priority_tier": "one_layer_to_ready"},
+            {"company_id": "amd", "ticker": "AMD", "usable_layers": ["financial"], "missing_layers": ["market", "estimate"], "missing_layer_count": 2, "priority_tier": "two_layers_to_ready"},
+        ],
+    }
+    result = build_provider_worklists(targets)
+    assert [x["ticker"] for x in result["worklists"]["estimate"]] == ["NVDA", "AMD"]
+    assert [x["ticker"] for x in result["worklists"]["market"]] == ["AAPL", "AMD"]
+    assert result["immediate_ready_opportunities_by_layer"] == {"financial": 0, "market": 1, "estimate": 1}
+    assert result["potential_production_ready_uplift"] == 2
+
+
+def test_provider_worklists_have_required_provider_fields():
+    from axiom_engine.production_refresh import build_provider_worklists
+    result = build_provider_worklists({"targets": [
+        {"company_id": "c1", "ticker": "AAA", "usable_layers": ["financial", "market"], "missing_layers": ["estimate"], "missing_layer_count": 1, "priority_tier": "one_layer_to_ready"}
+    ]})
+    row = result["worklists"]["estimate"][0]
+    assert "forward_revenue_or_eps" in row["required_fields"]
+    assert row["immediate_production_ready_uplift"] is True
+    assert row["priority_rank"] == 1
+
+
+def test_run_refresh_writes_provider_worklists_json_and_csv(tmp_path: Path):
+    summary_dir = tmp_path / "data/generated/production_population"
+    summary_dir.mkdir(parents=True)
+    (summary_dir / "production_population_summary.json").write_text(json.dumps(_summary()), encoding="utf-8")
+    (summary_dir / "population_index.json").write_text(json.dumps([
+        {"company_id": "c1", "ticker": "AAA", "data_usability": {"financial": True, "market": True, "estimate": False}}
+    ]), encoding="utf-8")
+    def runner(argv, **kwargs):
+        return CompletedProcess(argv, 0, stdout="ok", stderr="")
+    output = tmp_path / "data/generated/production_refresh/refresh_report.json"
+    workdir = tmp_path / "data/generated/production_refresh/provider_worklists"
+    report = run_refresh(tmp_path, [{"name": "all", "argv": ["python", "x.py"]}], output, runner=runner, readiness_policy=_policy(), worklists_output_dir=workdir)
+    assert report["schema_version"] == "production-refresh-report.v030.6.8"
+    assert (workdir / "provider_worklists.json").exists()
+    assert (workdir / "estimate_population_worklist.json").exists()
+    csv_text = (workdir / "estimate_population_worklist.csv").read_text(encoding="utf-8")
+    assert "AAA" in csv_text
+    assert "forward_revenue_or_eps" in csv_text
