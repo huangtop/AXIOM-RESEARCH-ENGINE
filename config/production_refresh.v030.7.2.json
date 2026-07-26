@@ -1,0 +1,107 @@
+{
+  "schema_version": "production-refresh-config.v030.7.2",
+  "version": "V030.7.2",
+  "commands": [
+    {
+      "name": "production_source_expansion",
+      "argv": [
+        "python",
+        "scripts/expand_production_sources.py",
+        "--write"
+      ],
+      "supports_strict": true
+    },
+    {
+      "name": "provider_response_intake",
+      "argv": [
+        "python",
+        "scripts/import_provider_inbox.py"
+      ],
+      "supports_strict": true
+    },
+    {
+      "name": "population_source_discovery",
+      "argv": [
+        "python",
+        "scripts/discover_population_sources.py",
+        "--write"
+      ],
+      "supports_strict": true
+    },
+    {
+      "name": "production_population_build",
+      "argv": [
+        "python",
+        "scripts/build_production_population.py",
+        "--write"
+      ],
+      "supports_strict": true
+    },
+    {
+      "name": "production_population_validation",
+      "argv": [
+        "python",
+        "scripts/validate_production_population.py"
+      ],
+      "supports_strict": true
+    }
+  ],
+  "readiness_policy": {
+    "version": "production-readiness-policy.v030.7.1",
+    "fail_on_coverage_regression": true,
+    "minimum_production_ready_company_count": 1,
+    "layer_minimums": {
+      "financial": {
+        "usable_company_count": 99,
+        "usable_coverage_pct": 1.5316
+      },
+      "market": {
+        "usable_company_count": 2,
+        "usable_coverage_pct": 0.0309
+      },
+      "estimate": {
+        "usable_company_count": 1,
+        "usable_coverage_pct": 0.0155
+      }
+    }
+  },
+  "overlap_targeting": {
+    "max_targets": 200,
+    "preferred_missing_layers": [
+      "estimate",
+      "market",
+      "financial"
+    ]
+  },
+  "provider_worklists": {
+    "max_rows_per_layer": 200,
+    "formats": [
+      "json",
+      "csv"
+    ]
+  },
+  "provider_batch_contracts": {
+    "output_formats": [
+      "json"
+    ],
+    "strict_identity_matching": true,
+    "reject_duplicate_request_ids": true
+  },
+  "provider_response_import": {
+    "inbox": "data/provider_intake/inbox",
+    "accepted_ledger": "data/provider_intake/accepted",
+    "reports": "data/generated/production_refresh/provider_imports",
+    "merge_into_canonical_sources": true,
+    "idempotency_key": "provider+provider_record_id+company_id",
+    "processed_archive": "data/provider_intake/processed",
+    "failed_quarantine": "data/provider_intake/failed",
+    "receipts": "data/provider_intake/receipts",
+    "archive_after_processing": true,
+    "replay_protection": "sha256_content_hash"
+  },
+  "provider_delivery_reconciliation": {
+    "output": "data/generated/production_refresh/provider_delivery_reconciliation.json",
+    "track_request_fulfillment": true,
+    "track_immediate_ready_uplift": true
+  }
+}

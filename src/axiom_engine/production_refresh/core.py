@@ -791,3 +791,59 @@ def provider_archive_filename(original_name: str, content_hash: str, *, status: 
     """Create a collision-resistant, deterministic archive filename."""
     path = Path(original_name)
     return f"{path.stem}.{status}.{content_hash[:12]}{path.suffix}"
+
+
+def build_provider_delivery_reconciliation(
+    batches: dict[str, dict[str, Any]],
+    ledger_rows_by_layer: dict[str, list[dict[str, Any]]],
+    receipts: list[dict[str, Any]] | None = None,
+    duplicate_archive_count_by_layer: dict[str, int] | None = None,
+) -> dict[str, Any]:
+    """Reconcile batch requests against accepted provider facts and lifecycle receipts."""
+    receipts = receipts or []
+    duplicate_archive_count_by_layer = duplicate_archive_count_by_layer or {}
+    receipt_counts: dict[str, dict[str, int]] = {}
+    for receipt in receipts:
+        layer = str(receipt.get("target_layer") or "unknown")
+        status = str(receipt.get("status") or "unknown")
+        receipt_counts.setdefault(layer, {})[status] = receipt_counts.setdefault(layer, {}).get(status, 0) + 1
+    layers = {}
+    total_requests = total_fulfilled = immediate_total = immediate_fulfilled = 0
+    for layer in ("financial", "market", "estimate"):
+        batch = batches.get(layer, {}) if isinstance(batches, dict) else {}
+        requests = [r for r in batch.get("requests", []) if isinstance(r, dict)]
+        expected = {str(r.get("request_id")): r for r in requests if r.get("request_id")}
+        fulfilled_ids = {str(r.get("source_request_id")) for r in ledger_rows_by_layer.get(layer, []) if r.get("source_request_id") in expected}
+        immediate_ids = {rid for rid, req in expected.items() if req.get("immediate_production_ready_uplift")}
+        unfulfilled = [rid for rid in expected if rid not in fulfilled_ids]
+        status = "complete" if expected and not unfulfilled else ("partial" if fulfilled_ids else ("not_started" if expected else "no_requests"))
+        layers[layer] = {
+            "batch_id": batch.get("batch_id"),
+            "status": status,
+            "request_count": len(expected),
+            "fulfilled_request_count": len(fulfilled_ids),
+            "unfulfilled_request_count": len(unfulfilled),
+            "fulfillment_pct": round((len(fulfilled_ids) / len(expected) * 100), 4) if expected else 100.0,
+            "immediate_ready_request_count": len(immediate_ids),
+            "immediate_ready_fulfilled_count": len(immediate_ids & fulfilled_ids),
+            "accepted_receipt_count": receipt_counts.get(layer, {}).get("accepted", 0),
+            "failed_receipt_count": receipt_counts.get(layer, {}).get("failed", 0),
+            "duplicate_delivery_count": int(duplicate_archive_count_by_layer.get(layer, 0)),
+            "unfulfilled_request_ids": unfulfilled,
+        }
+        total_requests += len(expected); total_fulfilled += len(fulfilled_ids)
+        immediate_total += len(immediate_ids); immediate_fulfilled += len(immediate_ids & fulfilled_ids)
+    return {
+        "schema_version": "provider-delivery-reconciliation.v030.7.2",
+        "version": "V030.7.2",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "status": "complete" if total_requests and total_fulfilled == total_requests else ("partial" if total_fulfilled else "not_started"),
+        "request_count": total_requests,
+        "fulfilled_request_count": total_fulfilled,
+        "unfulfilled_request_count": total_requests - total_fulfilled,
+        "fulfillment_pct": round((total_fulfilled / total_requests * 100), 4) if total_requests else 100.0,
+        "immediate_ready_request_count": immediate_total,
+        "immediate_ready_fulfilled_count": immediate_fulfilled,
+        "realized_ready_uplift": immediate_fulfilled,
+        "layers": layers,
+    }

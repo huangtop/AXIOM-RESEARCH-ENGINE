@@ -316,3 +316,27 @@ def test_provider_intake_receipt_captures_failure_reason():
     from axiom_engine.production_refresh import build_provider_intake_receipt
     receipt = build_provider_intake_receipt(response_path="inbox/bad.json", content_hash="bad", status="failed", failure_reason="missing_batch_request")
     assert receipt["failure_reason"] == "missing_batch_request"
+
+
+def test_provider_delivery_reconciliation_tracks_fulfilled_requests():
+    from axiom_engine.production_refresh import build_provider_delivery_reconciliation
+    batches={"market":{"batch_id":"b1","requests":[{"request_id":"r1","immediate_production_ready_uplift":True},{"request_id":"r2","immediate_production_ready_uplift":False}]}}
+    result=build_provider_delivery_reconciliation(batches,{"market":[{"source_request_id":"r1"}]})
+    assert result["layers"]["market"]["status"]=="partial"
+    assert result["fulfilled_request_count"]==1
+    assert result["realized_ready_uplift"]==1
+
+def test_provider_delivery_reconciliation_reports_complete_layer():
+    from axiom_engine.production_refresh import build_provider_delivery_reconciliation
+    batches={"estimate":{"batch_id":"b2","requests":[{"request_id":"e1"}]}}
+    result=build_provider_delivery_reconciliation(batches,{"estimate":[{"source_request_id":"e1"}]})
+    assert result["layers"]["estimate"]["status"]=="complete"
+    assert result["unfulfilled_request_count"]==0
+
+def test_provider_delivery_reconciliation_counts_receipts_and_duplicates():
+    from axiom_engine.production_refresh import build_provider_delivery_reconciliation
+    result=build_provider_delivery_reconciliation({"market":{"requests":[]}}, {}, [{"target_layer":"market","status":"accepted"},{"target_layer":"market","status":"failed"}], {"market":2})
+    row=result["layers"]["market"]
+    assert row["accepted_receipt_count"]==1
+    assert row["failed_receipt_count"]==1
+    assert row["duplicate_delivery_count"]==2
