@@ -1,0 +1,17 @@
+{
+  "version": "V030.13.2",
+  "dataset_input": "data/generated/historical_multiples/historical_multiple_dataset.json",
+  "statistics_output": "data/generated/historical_multiple_statistics/historical_multiple_statistics.json",
+  "diagnostic_output": "data/generated/historical_multiple_statistics/historical_multiple_statistics_diagnostic.json",
+  "windows": {
+    "20d": 20,
+    "60d": 60,
+    "252d": 252,
+    "all": null
+  },
+  "minimum_ready_observations": 20,
+  "outlier_method": "iqr_exclusion",
+  "outlier_iqr_multiplier": 1.5,
+  "percentile_interpolation": "linear",
+  "insufficient_history_policy": "do_not_emit_statistics"
+}
