@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://axiom.local/schemas/valuation_qa/valuation_qa_report.schema.json",
+  "title": "AXIOM Valuation QA Report V030.12.3",
+  "type": "object",
+  "required": ["schema_version", "version", "generated_at", "summary", "gates", "issues"],
+  "properties": {
+    "schema_version": {"const": "valuation-qa-report.v030.12.3"},
+    "version": {"const": "V030.12.3"},
+    "generated_at": {"type": "string"},
+    "summary": {
+      "type": "object",
+      "required": ["status", "critical_issue_count", "warning_issue_count", "company_count", "method_record_count"],
+      "properties": {
+        "status": {"enum": ["pass", "fail"]},
+        "critical_issue_count": {"type": "integer", "minimum": 0},
+        "warning_issue_count": {"type": "integer", "minimum": 0},
+        "company_count": {"type": "integer", "minimum": 0},
+        "method_record_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "gates": {"type": "object", "additionalProperties": {"enum": ["pass", "fail"]}},
+    "issues": {"type": "array", "items": {"type": "object"}}
+  }
+}
