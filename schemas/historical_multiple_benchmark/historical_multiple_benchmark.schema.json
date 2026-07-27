@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "historical-multiple-benchmark.v030.13.3",
+  "title": "Historical Multiple Benchmark",
+  "type": "object",
+  "required": ["schema_version", "version", "summary", "benchmarks"],
+  "properties": {
+    "schema_version": {"const": "historical-multiple-benchmark.v030.13.3"},
+    "version": {"const": "V030.13.3"},
+    "summary": {"type": "object"},
+    "benchmarks": {"type": "array"}
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "version": "V030.13.3",
+  "statistics_input": "data/generated/historical_multiple_statistics/historical_multiple_statistics.json",
+  "benchmark_output": "data/generated/historical_multiple_benchmark/historical_multiple_benchmark.json",
+  "diagnostic_output": "data/generated/historical_multiple_benchmark/historical_multiple_benchmark_diagnostic.json",
+  "window_preference": ["252d", "60d", "20d", "all"],
+  "benchmark_statistic": "median",
+  "lower_bound_statistic": "p25",
+  "upper_bound_statistic": "p75",
+  "medium_confidence_observations": 60,
+  "high_confidence_observations": 252,
+  "insufficient_history_policy": "do_not_emit_benchmark"
+}
