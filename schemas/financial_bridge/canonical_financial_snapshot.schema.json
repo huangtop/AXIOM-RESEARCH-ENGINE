@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "canonical-financial-snapshot.v030.11.0",
+  "type": "object",
+  "required": ["schema_version", "version", "generated_at", "summary", "companies"],
+  "properties": {
+    "schema_version": {"const": "canonical-financial-snapshot.v030.11.0"},
+    "version": {"const": "V030.11.0"},
+    "generated_at": {"type": "string"},
+    "summary": {"type": "object"},
+    "companies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["company_id", "fact_count", "metric_count", "metrics", "facts", "bridge_state"],
+        "properties": {
+          "company_id": {"type": "string", "minLength": 1},
+          "cik": {"type": ["string", "null"]},
+          "primary_symbol": {"type": ["string", "null"]},
+          "fact_count": {"type": "integer", "minimum": 1},
+          "metric_count": {"type": "integer", "minimum": 1},
+          "metrics": {"type": "object"},
+          "facts": {"type": "array", "minItems": 1},
+          "bridge_state": {"const": "canonical"}
+        }
+      }
+    }
+  }
+}

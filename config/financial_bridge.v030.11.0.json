@@ -1,0 +1,13 @@
+{
+  "schema_version": "financial-bridge-config.v030.11.0",
+  "version": "V030.11.0",
+  "financial_facts_path": "data/financial_data/financial_facts.json",
+  "identity_map_path": "data/generated/identity/company_identity_map.json",
+  "output_path": "data/generated/financial_bridge/canonical_financial_snapshot.json",
+  "diagnostic_path": "data/generated/financial_bridge/financial_bridge_diagnostic.json",
+  "provider": "sec_companyfacts",
+  "strict_failures": [
+    "invalid_financial_fact",
+    "duplicate_financial_fact_id"
+  ]
+}
