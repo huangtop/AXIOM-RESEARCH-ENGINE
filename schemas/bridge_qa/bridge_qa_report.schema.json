@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://axiom.local/schemas/bridge_qa/bridge_qa_report.schema.json",
+  "title": "AXIOM Bridge QA Report V030.11.3",
+  "type": "object",
+  "required": ["schema_version", "version", "generated_at", "status", "summary", "gates", "issues"],
+  "properties": {
+    "schema_version": {"const": "bridge-qa-report.v030.11.3"},
+    "version": {"const": "V030.11.3"},
+    "generated_at": {"type": "string"},
+    "status": {"enum": ["pass", "fail"]},
+    "summary": {"type": "object"},
+    "gates": {
+      "type": "object",
+      "required": ["identity_linkage", "bridge_integrity", "timeline_integrity", "router_attribution"],
+      "additionalProperties": {"enum": ["pass", "fail"]}
+    },
+    "issues": {"type": "array", "items": {"type": "object"}}
+  }
+}
