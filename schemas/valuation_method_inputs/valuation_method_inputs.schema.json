@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "valuation-method-inputs.v030.12.2",
+  "title": "AXIOM Valuation Method Inputs",
+  "type": "object",
+  "required": ["schema_version", "version", "summary", "companies"],
+  "properties": {
+    "schema_version": {"const": "valuation-method-inputs.v030.12.2"},
+    "version": {"const": "V030.12.2"},
+    "summary": {"type": "object"},
+    "companies": {"type": "array"}
+  }
+}
