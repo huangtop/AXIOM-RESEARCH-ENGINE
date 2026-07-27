@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "company_identity_map.schema.json",
+  "title": "AXIOM Canonical Company Identity Map",
+  "type": "object",
+  "required": ["schema_version", "version", "generated_at", "summary", "records", "indexes", "diagnostics"],
+  "properties": {
+    "schema_version": {"const": "canonical-identity-map.v030.10.4"},
+    "version": {"const": "V030.10.4"},
+    "generated_at": {"type": "string"},
+    "summary": {"type": "object"},
+    "records": {"type": "array"},
+    "indexes": {"type": "object"},
+    "diagnostics": {"type": "object"}
+  }
+}

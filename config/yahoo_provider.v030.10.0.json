@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "release": "V030.10.0",
+  "provider": "yahoo_finance",
+  "market_data_policy": {
+    "price_type": "completed_daily_close",
+    "refresh_frequency": "once_per_trading_day_after_close",
+    "retention_days": 365,
+    "archive_root": "data/generated/provider_cache/yahoo/daily_close",
+    "latest_cache": "data/generated/market/previous_close_cache.json"
+  },
+  "request_policy": {
+    "timeout_seconds": 15,
+    "delay_between_symbols_seconds": 0.25,
+    "resume_by_session_cache": true,
+    "continue_on_symbol_failure": true
+  }
+}
