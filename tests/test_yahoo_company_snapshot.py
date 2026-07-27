@@ -1,0 +1,149 @@
+from __future__ import annotations
+
+import json
+from datetime import datetime, timedelta, timezone
+
+from axiom_engine.providers.yahoo_company_snapshot import (
+    YahooCompanySnapshotCache,
+    refresh_yahoo_company_snapshots,
+    snapshot_from_info,
+)
+
+
+class FakeFetcher:
+    def __init__(self) -> None:
+        self.calls: list[str] = []
+
+    def company_info(self, symbol: str):
+        self.calls.append(symbol)
+        return {
+            "longName": f"{symbol} Corp",
+            "longBusinessSummary": "Builds advanced computing systems.",
+            "sector": "Technology",
+            "industry": "Semiconductors",
+            "marketCap": 1000,
+            "enterpriseValue": 1100,
+            "sharesOutstanding": 100,
+            "totalRevenue": 500,
+            "ebitda": 125,
+            "trailingEps": 4.2,
+            "forwardEps": 5.1,
+            "numberOfAnalystOpinions": 42,
+        }
+
+
+def test_snapshot_normalizes_fields():
+    now = datetime(2026, 7, 27, tzinfo=timezone.utc)
+    row = snapshot_from_info("nvda", {"marketCap": 1234, "forwardEps": 5.5}, fetched_at=now)
+    assert row.symbol == "NVDA"
+    assert row.market_cap == "1234"
+    assert row.forward_eps == "5.5"
+
+
+def test_cache_first_skips_before_provider_request(tmp_path):
+    now = datetime(2026, 7, 27, tzinfo=timezone.utc)
+    cache = YahooCompanySnapshotCache(tmp_path / "symbols", canonical_output_path=tmp_path / "canonical.json", ttl_days=30)
+    fetcher = FakeFetcher()
+    first = refresh_yahoo_company_snapshots(["NVDA", "AAPL"], fetcher=fetcher, cache=cache, now=now)
+    second = refresh_yahoo_company_snapshots(["NVDA", "AAPL"], fetcher=fetcher, cache=cache, now=now + timedelta(days=1))
+    assert first.fetched == 2
+    assert second.fetched == 0
+    assert second.skipped_cached_before_request == 2
+    assert fetcher.calls == ["AAPL", "NVDA"]
+
+
+def test_expired_cache_refetches(tmp_path):
+    now = datetime(2026, 7, 27, tzinfo=timezone.utc)
+    cache = YahooCompanySnapshotCache(tmp_path / "symbols", canonical_output_path=tmp_path / "canonical.json", ttl_days=30)
+    fetcher = FakeFetcher()
+    refresh_yahoo_company_snapshots(["NVDA"], fetcher=fetcher, cache=cache, now=now)
+    report = refresh_yahoo_company_snapshots(["NVDA"], fetcher=fetcher, cache=cache, now=now + timedelta(days=31))
+    assert report.fetched == 1
+    assert fetcher.calls == ["NVDA", "NVDA"]
+
+
+def test_canonical_output_contains_all_cached_symbols(tmp_path):
+    now = datetime(2026, 7, 27, tzinfo=timezone.utc)
+    output = tmp_path / "canonical.json"
+    cache = YahooCompanySnapshotCache(tmp_path / "symbols", canonical_output_path=output, ttl_days=30)
+    refresh_yahoo_company_snapshots(["NVDA", "AAPL"], fetcher=FakeFetcher(), cache=cache, now=now)
+    payload = json.loads(output.read_text())
+    assert sorted(payload["symbols"]) == ["AAPL", "NVDA"]
+    assert payload["symbols"]["NVDA"]["revenue_ttm"] == "500"
+
+
+def test_field_level_fallback_keeps_company_successful(tmp_path):
+    now = datetime(2026, 7, 27, tzinfo=timezone.utc)
+
+    class PartialFetcher:
+        def company_info(self, symbol: str):
+            return {
+                "shortName": "Fallback Corp",
+                "marketCap": 1000,
+                "previousClose": 10,
+                "trailingEps": 2.5,
+                "__financials__": {"Total Revenue": {"2025-12-31": 900}},
+            }
+
+    cache = YahooCompanySnapshotCache(tmp_path / "symbols", canonical_output_path=tmp_path / "canonical.json")
+    report = refresh_yahoo_company_snapshots(["TEST"], fetcher=PartialFetcher(), cache=cache, now=now)
+    payload = json.loads((tmp_path / "symbols" / "TEST.json").read_text())
+    diagnostic = json.loads(cache.diagnostic_path.read_text())
+
+    assert report.succeeded == 1
+    assert report.failed == 0
+    assert payload["company_name"] == "Fallback Corp"
+    assert payload["shares_outstanding"] == "100"
+    assert payload["forward_eps"] == "2.5"
+    assert payload["revenue_ttm"] == "900"
+    assert diagnostic["TEST"]["company_name"] == "fallback"
+    assert diagnostic["TEST"]["shares"] == "fallback"
+    assert diagnostic["TEST"]["forward_eps"] == "fallback"
+
+
+def test_missing_optional_fields_are_diagnostic_not_company_failure(tmp_path):
+    now = datetime(2026, 7, 27, tzinfo=timezone.utc)
+
+    class MinimalFetcher:
+        def company_info(self, symbol: str):
+            return {"longName": "Minimal Corp"}
+
+    cache = YahooCompanySnapshotCache(tmp_path / "symbols", canonical_output_path=tmp_path / "canonical.json")
+    report = refresh_yahoo_company_snapshots(["MIN"], fetcher=MinimalFetcher(), cache=cache, now=now)
+    diagnostic = json.loads(cache.diagnostic_path.read_text())
+
+    assert report.succeeded == 1
+    assert report.failed == 0
+    assert diagnostic["MIN"]["forward_revenue"] == "missing"
+    assert diagnostic["MIN"]["market_cap"] == "missing"
+
+
+def test_json_safe_serializes_decimal_datetime_and_numpy_like_values(tmp_path):
+    from decimal import Decimal
+
+    from axiom_engine.providers.yahoo_company_snapshot import json_safe
+
+    class NumpyLike:
+        def item(self):
+            return 12.5
+
+    payload = json_safe({"decimal": Decimal("1.20"), "timestamp": datetime(2026, 7, 27, tzinfo=timezone.utc), "numpy": NumpyLike()})
+    assert payload == {"decimal": "1.20", "timestamp": "2026-07-27T00:00:00+00:00", "numpy": 12.5}
+
+
+def test_provider_exception_is_logged_and_other_symbols_continue(tmp_path):
+    now = datetime(2026, 7, 27, tzinfo=timezone.utc)
+
+    class MixedFetcher:
+        def company_info(self, symbol: str):
+            if symbol == "BAD":
+                raise KeyError("forwardRevenue")
+            return {"longName": "Good Corp"}
+
+    cache = YahooCompanySnapshotCache(tmp_path / "symbols", canonical_output_path=tmp_path / "canonical.json")
+    report = refresh_yahoo_company_snapshots(["BAD", "GOOD"], fetcher=MixedFetcher(), cache=cache, now=now)
+
+    assert report.succeeded == 1
+    assert report.failed == 1
+    assert "KeyError" in report.failures["BAD"]
+    assert "forwardRevenue" in cache.error_log_path.read_text()
