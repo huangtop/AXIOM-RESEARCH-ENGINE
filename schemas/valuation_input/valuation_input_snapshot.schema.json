@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://axiom.local/schemas/valuation_input/valuation_input_snapshot.schema.json",
+  "title": "AXIOM Valuation Input Snapshot V030.12.0",
+  "type": "object",
+  "required": ["schema_version", "version", "generated_at", "as_of_date", "summary", "companies", "indexes"],
+  "properties": {
+    "schema_version": {"const": "valuation-input-snapshot.v030.12.0"},
+    "version": {"const": "V030.12.0"},
+    "generated_at": {"type": "string"},
+    "as_of_date": {"type": "string", "format": "date"},
+    "summary": {"type": "object"},
+    "companies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["company_id", "primary_symbol", "input_state", "market", "financial_metrics", "capabilities"],
+        "properties": {
+          "company_id": {"type": "string"},
+          "primary_symbol": {"type": "string"},
+          "input_state": {"enum": ["ready", "financial_only", "market_only", "insufficient"]},
+          "market": {"type": "object"},
+          "financial_metrics": {"type": "object"},
+          "capabilities": {"type": "object"}
+        }
+      }
+    },
+    "indexes": {"type": "object"},
+    "diagnostics": {"type": "object"}
+  }
+}
