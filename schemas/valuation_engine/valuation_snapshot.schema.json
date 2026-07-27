@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "valuation-engine-snapshot.v030.13.0",
+  "title": "AXIOM Multiple Valuation Engine Foundation Snapshot",
+  "type": "object",
+  "required": ["schema_version", "version", "summary", "companies"],
+  "properties": {
+    "schema_version": {"const": "valuation-engine-snapshot.v030.13.0"},
+    "version": {"const": "V030.13.0"},
+    "summary": {"type": "object"},
+    "companies": {"type": "array"}
+  }
+}
