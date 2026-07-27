@@ -78,12 +78,35 @@ def build_identity_mapping(
     securities_path: str = "data/universe/securities.json",
     yahoo_snapshot_path: str = "data/generated/company/yahoo_company_snapshot.json",
     yahoo_symbol_cache_root: str = "data/generated/provider_cache/yahoo/company_snapshot",
+    registry_companies_path: str = "data/company_registry/companies.json",
+    registry_securities_path: str = "data/company_registry/securities.json",
 ) -> dict[str, Any]:
     companies = _load(repository_root / companies_path, [])
     securities = _load(repository_root / securities_path, [])
     canonical_symbols = _snapshot_symbols(_load(repository_root / yahoo_snapshot_path, {}))
     per_symbol_cache_symbols = _symbol_cache_symbols(repository_root / yahoo_symbol_cache_root)
     yahoo_symbols = canonical_symbols | per_symbol_cache_symbols
+    registry_companies = _load(repository_root / registry_companies_path, [])
+    registry_securities = _load(repository_root / registry_securities_path, [])
+
+    registry_company_by_id = {
+        str(row.get("company_id")): row
+        for row in registry_companies
+        if isinstance(row, dict) and row.get("company_id")
+    }
+    registry_cik_by_symbol: dict[str, str] = {}
+    for security in registry_securities:
+        if not isinstance(security, dict):
+            continue
+        symbol = normalize_symbol(security.get("ticker") or security.get("symbol"))
+        registry_company = registry_company_by_id.get(str(security.get("company_id") or ""), {})
+        cik = normalize_cik(
+            (registry_company.get("metadata") or {}).get("cik")
+            or registry_company.get("cik")
+            or registry_company.get("company_id")
+        )
+        if symbol and cik:
+            registry_cik_by_symbol[symbol] = cik
 
     company_by_id = {str(row.get("company_id")): row for row in companies if row.get("company_id")}
     securities_by_company: dict[str, list[dict[str, Any]]] = defaultdict(list)
@@ -124,10 +147,12 @@ def build_identity_mapping(
             unresolved_primary_security.append(company_id)
             primary = {}
 
+        primary_symbol = normalize_symbol(primary.get("ticker") or primary.get("symbol"))
         cik = normalize_cik((company.get("metadata") or {}).get("cik") or company.get("cik") or company_id)
+        if cik is None and primary_symbol:
+            cik = registry_cik_by_symbol.get(primary_symbol)
         if cik is None:
             missing_cik.append(company_id)
-        primary_symbol = normalize_symbol(primary.get("ticker") or primary.get("symbol"))
         aliases = sorted({
             symbol for symbol in (
                 normalize_symbol(s.get("ticker") or s.get("symbol")) for s in listings

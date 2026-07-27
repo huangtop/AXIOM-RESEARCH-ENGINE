@@ -84,3 +84,39 @@ def test_per_symbol_cache_uses_filename_when_payload_is_invalid(tmp_path):
     (cache_root / "EXM.json").write_text("not-json")
     report = build_identity_mapping(root)
     assert report["summary"]["yahoo_cached_symbol_count"] == 1
+
+
+def test_enriches_missing_universe_cik_from_registry_symbol(tmp_path):
+    root = fixture_repo(tmp_path, ["BRK-B"])
+    companies_path = root / "data/universe/companies.json"
+    securities_path = root / "data/universe/securities.json"
+    companies_path.write_text(json.dumps([{
+        "company_id": "company:US-NYSE-BRK.B",
+        "legal_name": "Berkshire Hathaway Inc.",
+        "primary_security_id": "security:NYSE-BRK.B",
+        "metadata": {},
+    }]))
+    securities_path.write_text(json.dumps([{
+        "security_id": "security:NYSE-BRK.B",
+        "company_id": "company:US-NYSE-BRK.B",
+        "exchange": "NYSE",
+        "ticker": "BRK.B",
+        "currency": "USD",
+        "primary_listing": True,
+    }]))
+    (root / "data/company_registry").mkdir(parents=True)
+    (root / "data/company_registry/companies.json").write_text(json.dumps([{
+        "company_id": "company:US-CIK0001067983",
+        "metadata": {"cik": "0001067983"},
+    }]))
+    (root / "data/company_registry/securities.json").write_text(json.dumps([{
+        "security_id": "security:NYSE-BRK-B",
+        "company_id": "company:US-CIK0001067983",
+        "ticker": "BRK.B",
+    }]))
+
+    report = build_identity_mapping(root)
+    record = next(row for row in report["records"] if row["primary_symbol"] == "BRK-B")
+    assert record["cik"] == "0001067983"
+    assert record["identity_state"] == "resolved"
+    assert report["indexes"]["cik_to_company_id"]["0001067983"] == "company:US-NYSE-BRK.B"
