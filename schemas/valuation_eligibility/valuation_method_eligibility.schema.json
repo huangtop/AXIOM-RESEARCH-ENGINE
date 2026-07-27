@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://axiom.local/schemas/valuation_method_eligibility.v030.12.1.json",
+  "title": "AXIOM Valuation Method Eligibility V030.12.1",
+  "type": "object",
+  "required": ["schema_version", "version", "generated_at", "summary", "companies"],
+  "properties": {
+    "schema_version": {"const": "valuation-method-eligibility.v030.12.1"},
+    "version": {"const": "V030.12.1"},
+    "generated_at": {"type": "string"},
+    "as_of_date": {"type": ["string", "null"]},
+    "summary": {
+      "type": "object",
+      "required": ["company_count", "method_count", "company_state_counts", "method_eligibility_counts", "blocked_method_record_count"]
+    },
+    "companies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["company_id", "eligibility_state", "eligible_method_count", "total_method_count", "methods"],
+        "properties": {
+          "eligibility_state": {"enum": ["fully_eligible", "partially_eligible", "ineligible"]},
+          "methods": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "required": ["status", "confidence", "reason", "missing_inputs", "invalid_inputs", "stale_inputs", "inputs"],
+              "properties": {
+                "status": {"enum": ["eligible", "blocked"]},
+                "confidence": {"enum": ["none", "low", "medium", "high"]}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
