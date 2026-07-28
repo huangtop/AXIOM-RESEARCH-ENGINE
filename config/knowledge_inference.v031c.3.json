@@ -1,0 +1,26 @@
+{
+  "schema_version": "knowledge-inference-policy.v031c.3",
+  "version": "V031C.3",
+  "maximum_iterations": 8,
+  "rules": [
+    {"rule_id":"rule:sector-ai-compute","output_id":"sector:ai_compute","output_dimension":"sector","canonical_name":"AI Compute","any_inputs":["product:graphics_processor"],"reliability":0.94},
+    {"rule_id":"rule:cluster-accelerator-silicon","output_id":"cluster:accelerator_silicon","output_dimension":"cluster","canonical_name":"Accelerator Silicon","any_inputs":["product:graphics_processor"],"reliability":0.96},
+    {"rule_id":"rule:sector-ai-networking","output_id":"sector:ai_networking","output_dimension":"sector","canonical_name":"AI Networking","any_inputs":["capability:high_speed_data_center_networking","technology:silicon_photonics","technology:co_packaged_optics","product:optical_transceiver","product:ethernet_switch","product:serdes"],"reliability":0.90},
+    {"rule_id":"rule:cluster-optical-interconnect","output_id":"cluster:optical_interconnect","output_dimension":"cluster","canonical_name":"Optical Interconnect","any_inputs":["technology:silicon_photonics","technology:co_packaged_optics","product:optical_transceiver"],"reliability":0.94},
+    {"rule_id":"rule:cluster-networking-silicon","output_id":"cluster:networking_silicon","output_dimension":"cluster","canonical_name":"Networking Silicon","any_inputs":["product:ethernet_switch","product:serdes"],"reliability":0.94},
+    {"rule_id":"rule:sector-ai-memory","output_id":"sector:ai_memory","output_dimension":"sector","canonical_name":"AI Memory","any_inputs":["technology:high_bandwidth_memory"],"reliability":0.98},
+    {"rule_id":"rule:cluster-hbm","output_id":"cluster:high_bandwidth_memory","output_dimension":"cluster","canonical_name":"High Bandwidth Memory","any_inputs":["technology:high_bandwidth_memory"],"reliability":0.99},
+    {"rule_id":"rule:sector-data-center-power","output_id":"sector:data_center_power","output_dimension":"sector","canonical_name":"Data Center Power and Cooling","any_inputs":["infrastructure:data_center_power"],"reliability":0.95},
+    {"rule_id":"rule:sector-semiconductors","output_id":"sector:semiconductors","output_dimension":"sector","canonical_name":"Semiconductors","any_inputs":["product:semiconductor","product:graphics_processor","technology:high_bandwidth_memory","technology:advanced_packaging"],"reliability":0.88},
+    {"rule_id":"rule:theme-ai-infrastructure","output_id":"theme:ai_infrastructure","output_dimension":"theme","canonical_name":"AI Infrastructure","any_inputs":["sector:ai_compute","sector:ai_networking","sector:ai_memory","sector:data_center_power"],"reliability":0.95},
+    {"rule_id":"rule:theme-artificial-intelligence","output_id":"theme:artificial_intelligence","output_dimension":"theme","canonical_name":"Artificial Intelligence","any_inputs":["technology:artificial_intelligence","theme:ai_infrastructure"],"reliability":0.88},
+    {"rule_id":"rule:sector-quantum-computing","output_id":"sector:quantum_computing","output_dimension":"sector","canonical_name":"Quantum Computing","any_inputs":["technology:quantum_computing"],"reliability":0.98},
+    {"rule_id":"rule:theme-quantum","output_id":"theme:quantum_computing","output_dimension":"theme","canonical_name":"Quantum Computing","any_inputs":["sector:quantum_computing"],"reliability":0.98},
+    {"rule_id":"rule:sector-robotics","output_id":"sector:robotics_automation","output_dimension":"sector","canonical_name":"Robotics and Automation","any_inputs":["technology:robotics"],"reliability":0.96},
+    {"rule_id":"rule:theme-robotics","output_id":"theme:robotics","output_dimension":"theme","canonical_name":"Robotics","any_inputs":["sector:robotics_automation"],"reliability":0.97},
+    {"rule_id":"rule:sector-autonomous-driving","output_id":"sector:autonomous_driving","output_dimension":"sector","canonical_name":"Autonomous Driving","any_inputs":["technology:autonomous_driving"],"reliability":0.97},
+    {"rule_id":"rule:theme-autonomous-vehicles","output_id":"theme:autonomous_vehicles","output_dimension":"theme","canonical_name":"Autonomous Vehicles","any_inputs":["sector:autonomous_driving"],"reliability":0.97},
+    {"rule_id":"rule:sector-space-systems","output_id":"sector:space_systems","output_dimension":"sector","canonical_name":"Space Systems","any_inputs":["product:space_system"],"reliability":0.96},
+    {"rule_id":"rule:theme-space-economy","output_id":"theme:space_economy","output_dimension":"theme","canonical_name":"Space Economy","any_inputs":["sector:space_systems"],"reliability":0.97}
+  ]
+}
