@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://axiom.local/schemas/theme-sector-inference.v031.1.json",
+  "title": "AXIOM Theme and Sector Evidence Inference",
+  "type": "object",
+  "required": ["schema_version", "version", "summary", "policy", "records", "diagnostics", "indexes"],
+  "properties": {
+    "schema_version": {"const": "theme-sector-inference.v031.1"},
+    "version": {"const": "V031.1"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "summary": {"type": "object", "required": ["company_count", "evidence_eligible_company_count", "selected_research_company_count", "rejected_evidence_count"]},
+    "policy": {"type": "object"},
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["company_id", "status", "research_score", "themes", "sectors", "analysis_policy", "research_universe_status"],
+        "properties": {
+          "company_id": {"type": "string"},
+          "ticker": {"type": ["string", "null"]},
+          "research_score": {"type": "number", "minimum": 0, "maximum": 1},
+          "research_universe_status": {"enum": ["selected", "eligible_not_selected", "not_eligible"]}
+        }
+      }
+    },
+    "diagnostics": {"type": "object"},
+    "indexes": {"type": "object"}
+  }
+}

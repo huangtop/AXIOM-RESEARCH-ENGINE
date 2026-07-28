@@ -1,0 +1,38 @@
+{
+  "schema_version": "theme-sector-inference-policy.v031.1",
+  "version": "V031.1",
+  "research_universe": {"minimum_score": 0.55, "maximum_selected_companies": 300},
+  "analysis_thresholds": {"news": 0.55, "etf": 0.65, "industry_chain": 0.75},
+  "themes": [
+    {
+      "theme_id": "theme:artificial-intelligence",
+      "name": "Artificial Intelligence",
+      "sectors": [
+        {"sector_id": "sector:ai-compute", "terms": ["artificial intelligence", "ai accelerator", "graphics processing unit", "gpu", "machine learning accelerator", "accelerated computing"]},
+        {"sector_id": "sector:ai-networking", "terms": ["ai networking", "data center interconnect", "optical transceiver", "silicon photonics", "co-packaged optics", "infiniband"]},
+        {"sector_id": "sector:ai-memory", "terms": ["high bandwidth memory", "hbm3", "hbm4", "ai memory"]},
+        {"sector_id": "sector:ai-infrastructure", "terms": ["ai infrastructure", "ai data center", "data center power", "liquid cooling"]}
+      ]
+    },
+    {
+      "theme_id": "theme:quantum-computing",
+      "name": "Quantum Computing",
+      "sectors": [{"sector_id": "sector:quantum-computing", "terms": ["quantum computing", "quantum computer", "quantum processor", "quantum annealing", "trapped ion", "superconducting qubit"]}]
+    },
+    {
+      "theme_id": "theme:robotics",
+      "name": "Robotics",
+      "sectors": [{"sector_id": "sector:robotics-automation", "terms": ["industrial robot", "warehouse robot", "humanoid robot", "robotic automation", "surgical robot", "autonomous mobile robot"]}]
+    },
+    {
+      "theme_id": "theme:space-economy",
+      "name": "Space Economy",
+      "sectors": [{"sector_id": "sector:space-infrastructure", "terms": ["launch vehicle", "satellite constellation", "spacecraft", "space launch", "orbital infrastructure", "satellite communications"]}]
+    },
+    {
+      "theme_id": "theme:autonomous-vehicles",
+      "name": "Autonomous Vehicles",
+      "sectors": [{"sector_id": "sector:autonomous-driving", "terms": ["autonomous driving", "self-driving", "robotaxi", "advanced driver assistance", "adas", "lidar"]}]
+    }
+  ]
+}

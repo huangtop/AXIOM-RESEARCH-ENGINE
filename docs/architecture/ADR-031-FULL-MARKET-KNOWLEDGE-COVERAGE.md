@@ -38,3 +38,7 @@ The Research Universe is a generated, versioned output with evidence and scores,
 ## Causal evidence rule
 
 A relationship such as “AAOI supplies NVDA” cannot enter the Knowledge graph from keyword co-occurrence. It requires an attributable source, relationship type, observation date, confidence, and evidence record. Order value and revenue contribution remain unknown unless explicitly disclosed or derived by a versioned formula with bounded assumptions. Valuation impact is downstream of the verified relationship and must expose its derivation.
+
+## V031.1 evidence gate
+
+Theme and sector inference accepts only canonical descriptions and classifications whose provenance IDs resolve in the provenance repository, or Knowledge relationships whose evidence IDs resolve to approved Canonical evidence. Company names and ticker symbols are display and lookup attributes, never classification evidence. The 300-company Research Universe limit is a maximum operational capacity, not a quota; an empty result is valid when the evidence layer is empty.

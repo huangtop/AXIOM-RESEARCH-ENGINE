@@ -18,6 +18,11 @@ from axiom_engine.full_market_coverage import (
     FullMarketCoverageService,
 )
 from axiom_engine.previous_close import PreviousCloseError, YahooPreviousCloseAdapter
+from axiom_engine.theme_sector_inference import (
+    ThemeSectorInferenceError,
+    ThemeSectorInferenceNotFound,
+    ThemeSectorInferenceService,
+)
 from axiom_engine.valuation_api import (
     BackendValuationAPIService,
     LegacyValuationAPIService,
@@ -34,6 +39,7 @@ class ValuationWSGIApp:
         legacy_service: LegacyValuationAPIService | None = None,
         fair_value_service: FairValueSnapshotService | None = None,
         full_market_service: FullMarketCoverageService | None = None,
+        theme_sector_service: ThemeSectorInferenceService | None = None,
     ) -> None:
         cached_close_provider = JsonCachedPreviousCloseProvider(PREVIOUS_CLOSE_CACHE)
         yahoo_close_provider = YahooPreviousCloseAdapter()
@@ -44,6 +50,7 @@ class ValuationWSGIApp:
         self.legacy_service = legacy_service or LegacyValuationAPIService(yahoo_close_provider)
         self.fair_value_service = fair_value_service or FairValueSnapshotService()
         self.full_market_service = full_market_service or FullMarketCoverageService()
+        self.theme_sector_service = theme_sector_service or ThemeSectorInferenceService()
 
     def __call__(self, environ: dict[str, Any], start_response: StartResponse) -> Iterable[bytes]:
         method = str(environ.get("REQUEST_METHOD", "GET")).upper()
@@ -54,9 +61,11 @@ class ValuationWSGIApp:
                 "/v1/debug/valuations/legacy-parity",
                 "/v1/fair-values",
                 "/v1/companies",
+                "/v1/research-universe",
             }
             or path.startswith("/v1/fair-values/")
             or (path.startswith("/v1/companies/") and path.endswith("/valuation-card"))
+            or (path.startswith("/v1/companies/") and path.endswith("/research-policy"))
         ):
             return self._respond(start_response, HTTPStatus.NO_CONTENT, {})
         if method == "GET" and path == "/health":
@@ -77,6 +86,35 @@ class ValuationWSGIApp:
                 return self._respond(start_response, HTTPStatus.OK, self.full_market_service.list())
             except FullMarketCoverageError as exc:
                 return self._respond(start_response, HTTPStatus.SERVICE_UNAVAILABLE, {"error": "full_market_coverage_unavailable", "message": str(exc)})
+        if method == "GET" and path == "/v1/research-universe":
+            try:
+                return self._respond(
+                    start_response, HTTPStatus.OK, self.theme_sector_service.selected()
+                )
+            except ThemeSectorInferenceError as exc:
+                return self._respond(
+                    start_response,
+                    HTTPStatus.SERVICE_UNAVAILABLE,
+                    {"error": "theme_sector_inference_unavailable", "message": str(exc)},
+                )
+        if method == "GET" and path.startswith("/v1/companies/") and path.endswith("/research-policy"):
+            symbol = path.removeprefix("/v1/companies/").removesuffix("/research-policy").strip("/")
+            try:
+                return self._respond(
+                    start_response, HTTPStatus.OK, dict(self.theme_sector_service.get(symbol))
+                )
+            except ThemeSectorInferenceNotFound as exc:
+                return self._respond(
+                    start_response,
+                    HTTPStatus.NOT_FOUND,
+                    {"error": "company_not_found", "message": str(exc)},
+                )
+            except ThemeSectorInferenceError as exc:
+                return self._respond(
+                    start_response,
+                    HTTPStatus.SERVICE_UNAVAILABLE,
+                    {"error": "theme_sector_inference_unavailable", "message": str(exc)},
+                )
         if method == "GET" and path.startswith("/v1/companies/") and path.endswith("/valuation-card"):
             symbol = path.removeprefix("/v1/companies/").removesuffix("/valuation-card").strip("/")
             try:
