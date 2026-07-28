@@ -7,6 +7,11 @@ from typing import Any, Callable, Iterable
 
 from axiom_engine.cached_close import JsonCachedPreviousCloseProvider
 from axiom_engine.config import PREVIOUS_CLOSE_CACHE
+from axiom_engine.fair_value_snapshot import (
+    FairValueSnapshotAPIError,
+    FairValueSnapshotNotFound,
+    FairValueSnapshotService,
+)
 from axiom_engine.previous_close import PreviousCloseError, YahooPreviousCloseAdapter
 from axiom_engine.valuation_api import (
     BackendValuationAPIService,
@@ -22,6 +27,7 @@ class ValuationWSGIApp:
         self,
         production_service: BackendValuationAPIService | None = None,
         legacy_service: LegacyValuationAPIService | None = None,
+        fair_value_service: FairValueSnapshotService | None = None,
     ) -> None:
         cached_close_provider = JsonCachedPreviousCloseProvider(PREVIOUS_CLOSE_CACHE)
         yahoo_close_provider = YahooPreviousCloseAdapter()
@@ -30,14 +36,47 @@ class ValuationWSGIApp:
         )
         # Debug-only parity endpoint may still fetch when explicitly requested.
         self.legacy_service = legacy_service or LegacyValuationAPIService(yahoo_close_provider)
+        self.fair_value_service = fair_value_service or FairValueSnapshotService()
 
     def __call__(self, environ: dict[str, Any], start_response: StartResponse) -> Iterable[bytes]:
         method = str(environ.get("REQUEST_METHOD", "GET")).upper()
         path = str(environ.get("PATH_INFO", "/"))
-        if method == "OPTIONS" and path in {"/v1/valuations", "/v1/debug/valuations/legacy-parity"}:
+        if method == "OPTIONS" and (
+            path in {"/v1/valuations", "/v1/debug/valuations/legacy-parity", "/v1/fair-values"}
+            or path.startswith("/v1/fair-values/")
+        ):
             return self._respond(start_response, HTTPStatus.NO_CONTENT, {})
         if method == "GET" and path == "/health":
             return self._respond(start_response, HTTPStatus.OK, {"status": "ok"})
+        if method == "GET" and path == "/v1/fair-values":
+            try:
+                return self._respond(
+                    start_response, HTTPStatus.OK, self.fair_value_service.list_companies()
+                )
+            except FairValueSnapshotAPIError as exc:
+                return self._respond(
+                    start_response,
+                    HTTPStatus.SERVICE_UNAVAILABLE,
+                    {"error": "snapshot_unavailable", "message": str(exc)},
+                )
+        if method == "GET" and path.startswith("/v1/fair-values/"):
+            symbol = path.removeprefix("/v1/fair-values/")
+            try:
+                return self._respond(
+                    start_response, HTTPStatus.OK, self.fair_value_service.get_company(symbol)
+                )
+            except FairValueSnapshotNotFound as exc:
+                return self._respond(
+                    start_response,
+                    HTTPStatus.NOT_FOUND,
+                    {"error": "fair_value_not_found", "message": str(exc)},
+                )
+            except FairValueSnapshotAPIError as exc:
+                return self._respond(
+                    start_response,
+                    HTTPStatus.SERVICE_UNAVAILABLE,
+                    {"error": "snapshot_unavailable", "message": str(exc)},
+                )
         if method != "POST":
             return self._respond(start_response, HTTPStatus.NOT_FOUND, {"error": "not_found"})
         try:
