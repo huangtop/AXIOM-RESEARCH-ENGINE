@@ -27,11 +27,11 @@ def _submission(cik: str) -> dict:
         "sic": "3674",
         "sicDescription": "Semiconductors and Related Devices",
         "filings": {"recent": {
-            "form": ["10-Q", "10-K", "10-K"],
-            "accessionNumber": ["0001-26-000003", "0001-26-000002", "0001-25-000001"],
-            "filingDate": ["2026-06-01", "2026-03-01", "2025-03-01"],
-            "reportDate": ["2026-03-31", "2025-12-31", "2024-12-31"],
-            "primaryDocument": ["q.htm", "annual.htm", "old.htm"],
+            "form": ["10-Q", "10-K/A", "10-K", "10-K"],
+            "accessionNumber": ["0001-26-000004", "0001-26-000003", "0001-26-000002", "0001-25-000001"],
+            "filingDate": ["2026-06-01", "2026-03-15", "2026-03-01", "2025-03-01"],
+            "reportDate": ["2026-03-31", "2025-12-31", "2025-12-31", "2024-12-31"],
+            "primaryDocument": ["q.htm", "amendment.htm", "annual.htm", "old.htm"],
         }},
     }
 

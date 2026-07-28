@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import sys
+from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -19,11 +20,13 @@ from axiom_engine.sec_company_evidence import (  # noqa: E402
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build canonical SEC company evidence for the full Registry.")
     parser.add_argument("--bulk-zip", type=Path)
+    parser.add_argument("--cache-dir", default="data/generated/provider_cache/sec/submissions")
     parser.add_argument("--download-bulk", action="store_true")
     parser.add_argument("--user-agent", default="")
     parser.add_argument("--allow-live", action="store_true")
     parser.add_argument("--write-cache", action="store_true")
     parser.add_argument("--write", action="store_true")
+    parser.add_argument("--as-of", type=datetime.fromisoformat)
     parser.add_argument("--output-dir", type=Path, default=Path("data/generated/canonical_company_evidence"))
     args = parser.parse_args()
     if args.download_bulk:
@@ -33,9 +36,11 @@ def main() -> int:
     report = build_sec_company_evidence(
         ROOT,
         bulk_zip=args.bulk_zip,
+        cache_dir=args.cache_dir,
         allow_live=args.allow_live,
         user_agent=args.user_agent,
         write_cache=args.write_cache,
+        now=args.as_of,
     )
     if args.write:
         write_sec_company_evidence(report, ROOT / args.output_dir)

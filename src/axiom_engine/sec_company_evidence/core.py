@@ -180,7 +180,15 @@ def build_sec_company_evidence(
                 "provenance_ids": [provenance_id],
             })
         annual = [row for row in _recent_filings(payload) if row.get("form") in ANNUAL_FORMS]
-        annual.sort(key=lambda row: (str(row.get("filingDate") or ""), str(row.get("accessionNumber") or "")), reverse=True)
+        annual.sort(
+            key=lambda row: (
+                str(row.get("reportDate") or ""),
+                not str(row.get("form") or "").endswith("/A"),
+                str(row.get("filingDate") or ""),
+                str(row.get("accessionNumber") or ""),
+            ),
+            reverse=True,
+        )
         if annual:
             row = annual[0]
             accession = str(row.get("accessionNumber") or "")

@@ -46,3 +46,7 @@ Theme and sector inference accepts only canonical descriptions and classificatio
 ## V031.2A SEC acquisition boundary
 
 SEC Submissions metadata is ingested cache-first from the nightly bulk archive, with optional per-CIK live fallback. SEC SIC is preserved as an authoritative source classification under its own scheme; it is never presented as an inferred AXIOM sector. Annual filing URLs are recorded as extraction candidates, while filing text extraction, summarization, company signals, and theme inference remain downstream stages.
+
+## V031.2B filing evidence boundary
+
+Annual filing extraction preserves the attributable Business section, document and text hashes, filing identity, source URL, retrieval time, and section locator. It does not summarize or classify the company. Extraction failures remain diagnostics and cannot be replaced with company-name or ticker inference.
