@@ -113,18 +113,34 @@ def build_full_market_coverage(
     financial_path: str = "data/financial_data/financial_facts.json",
     market_path: str = "data/generated/market/previous_close_cache.json",
     estimate_path: str = "data/estimate_data/consensus_estimates.json",
+    security_identity_path: str = "data/generated/security_identity/security_identity_normalization.json",
 ) -> dict[str, Any]:
     companies = _load(root / companies_path)
     securities = _load(root / securities_path)
     financials = _load(root / financial_path, default=[])
     market_payload = _load(root / market_path, default={"symbols": {}})
     estimates = _load(root / estimate_path, default=[])
+    identity = _load(root / security_identity_path, default={"companies": [], "securities": []})
     if not all(isinstance(rows, list) for rows in (companies, securities, financials, estimates)):
         raise FullMarketCoverageError("population and canonical layers must contain arrays")
 
+    scoped_company_ids = {
+        str(row.get("company_id"))
+        for row in identity.get("companies", [])
+        if row.get("valuation_scope_status") == "included"
+    }
+    eligible_security_ids = {
+        str(row.get("security_id"))
+        for row in identity.get("securities", [])
+        if row.get("valuation_eligible") is True
+    }
+    if not scoped_company_ids:
+        scoped_company_ids = {str(row.get("company_id")) for row in companies}
+    if not eligible_security_ids:
+        eligible_security_ids = {str(row.get("security_id")) for row in securities}
     securities_by_company: dict[str, list[Mapping[str, Any]]] = defaultdict(list)
     for row in securities:
-        if row.get("status") in (None, "active"):
+        if row.get("status") in (None, "active") and str(row.get("security_id")) in eligible_security_ids:
             securities_by_company[str(row.get("company_id") or "")].append(row)
     financial_by_company: dict[str, list[Mapping[str, Any]]] = defaultdict(list)
     for row in financials:
@@ -141,6 +157,8 @@ def build_full_market_coverage(
     status_counts: Counter[str] = Counter()
     for company in sorted(companies, key=lambda row: str(row.get("company_id") or "")):
         company_id = str(company.get("company_id") or "")
+        if company_id not in scoped_company_ids:
+            continue
         company_securities = securities_by_company.get(company_id, [])
         primary = next((row for row in company_securities if row.get("security_id") == company.get("primary_security_id")), None)
         primary = primary or next((row for row in company_securities if row.get("primary_listing") is True), None)
@@ -201,7 +219,7 @@ def build_full_market_coverage(
         "schema_version": "full-market-coverage.v031.0",
         "version": "V031.0",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "summary": {"company_count": len(cards), "security_count": len(securities), "status_counts": {name: status_counts[name] for name in ("ready", "partial", "unavailable")}, "model_eligible_counts": {name: model_counts[name] for name in MODELS}, "market_ready_company_count": sum(card["market"]["status"] == "ready" for card in cards), "financial_present_company_count": sum(bool(financial_by_company.get(card["company"]["company_id"])) for card in cards), "estimate_present_company_count": sum(bool(estimates_by_company.get(card["company"]["company_id"])) for card in cards)},
+        "summary": {"company_count": len(cards), "registry_company_count": len(companies), "excluded_non_company_instrument_count": len(companies) - len(cards), "security_count": len(securities), "valuation_security_count": len(eligible_security_ids), "status_counts": {name: status_counts[name] for name in ("ready", "partial", "unavailable")}, "model_eligible_counts": {name: model_counts[name] for name in MODELS}, "market_ready_company_count": sum(card["market"]["status"] == "ready" for card in cards), "financial_present_company_count": sum(bool(financial_by_company.get(card["company"]["company_id"])) for card in cards), "estimate_present_company_count": sum(bool(estimates_by_company.get(card["company"]["company_id"])) for card in cards)},
         "cards": cards,
         "indexes": {"ticker_to_position": ticker_index, "company_id_to_position": {card["company"]["company_id"]: index for index, card in enumerate(cards)}},
     }

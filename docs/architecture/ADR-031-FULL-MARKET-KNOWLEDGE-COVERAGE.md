@@ -54,3 +54,7 @@ Annual filing extraction preserves the attributable Business section, document a
 ## Layer 1 completion order
 
 Research classification does not gate full-market valuation. Market, financial, and estimate population must first raise the seven-model eligibility and calculation coverage for every Registry company. Theme, sector, news, ETF, and causal-chain processing remain downstream Layer 2 and Layer 3 work. Security instruments misidentified as companies or common stock must be diagnosed and normalized before their valuation inputs are consumed.
+
+## V031V.2 instrument boundary
+
+Exchange-listed instruments remain in the Registry but do not automatically create operating-company valuation identities. Warrant-, unit-, right-, and preferred-only identities are excluded from company valuation scope. A verified common or ordinary equity keeps its linked company in scope while non-common instruments are excluded individually. Future issuer relinking requires identity evidence and cannot be inferred solely from a ticker stem.

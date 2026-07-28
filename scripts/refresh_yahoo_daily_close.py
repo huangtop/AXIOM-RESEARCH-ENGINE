@@ -92,6 +92,13 @@ def load_primary_symbols(universe_root: Path) -> list[str]:
     if not isinstance(companies, list) or not isinstance(securities, list):
         raise ValueError("universe companies and securities must be arrays")
     by_id = {str(row.get("security_id")): row for row in securities if isinstance(row, Mapping)}
+    normalization_path = universe_root.parent / "generated/security_identity/security_identity_normalization.json"
+    eligible_security_ids: set[str] | None = None
+    included_company_ids: set[str] | None = None
+    if normalization_path.is_file():
+        normalization = json.loads(normalization_path.read_text(encoding="utf-8"))
+        eligible_security_ids = {str(row.get("security_id")) for row in normalization.get("securities", []) if row.get("valuation_eligible") is True}
+        included_company_ids = {str(row.get("company_id")) for row in normalization.get("companies", []) if row.get("valuation_scope_status") == "included"}
     by_company: dict[str, list[Mapping[str, object]]] = {}
     for row in securities:
         if isinstance(row, Mapping) and row.get("status") in (None, "active"):
@@ -100,10 +107,24 @@ def load_primary_symbols(universe_root: Path) -> list[str]:
     for company in companies:
         if not isinstance(company, Mapping):
             continue
+        if included_company_ids is not None and str(company.get("company_id")) not in included_company_ids:
+            continue
         primary = by_id.get(str(company.get("primary_security_id") or ""))
+        if primary and eligible_security_ids is not None and str(primary.get("security_id")) not in eligible_security_ids:
+            primary = None
         if not primary:
             primary = next(
-                (row for row in by_company.get(str(company.get("company_id") or ""), []) if row.get("primary_listing") is True),
+                (row for row in by_company.get(str(company.get("company_id") or ""), []) if row.get("primary_listing") is True and (eligible_security_ids is None or str(row.get("security_id")) in eligible_security_ids)),
+                None,
+            )
+        if not primary:
+            primary = next(
+                (
+                    row
+                    for row in by_company.get(str(company.get("company_id") or ""), [])
+                    if eligible_security_ids is None
+                    or str(row.get("security_id")) in eligible_security_ids
+                ),
                 None,
             )
         symbol = str((primary or {}).get("ticker") or "").strip().upper()

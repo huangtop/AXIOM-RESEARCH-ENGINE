@@ -17,10 +17,12 @@ def report():
 
 def test_builder_uses_entire_population_without_a_maintained_ticker_cohort():
     payload = report()
-    assert payload["summary"]["company_count"] == 6464
+    assert payload["summary"]["registry_company_count"] == 6464
+    assert payload["summary"]["company_count"] == 5876
+    assert payload["summary"]["excluded_non_company_instrument_count"] == 588
     assert payload["summary"]["security_count"] == 7451
-    assert len(payload["cards"]) == 6464
-    assert len(payload["indexes"]["ticker_to_position"]) > 7000
+    assert len(payload["cards"]) == 5876
+    assert len(payload["indexes"]["ticker_to_position"]) == 6059
 
 
 def test_every_company_has_seven_model_slots_and_explicit_reasons():
@@ -58,7 +60,8 @@ def test_http_exposes_full_market_list_and_company_card():
     list_response, listing = _get(app, "/v1/companies")
     card_response, card = _get(app, "/v1/companies/NVDA/valuation-card")
     assert list_response["status"].startswith("200")
-    assert listing["summary"]["company_count"] == 6464
+    assert listing["summary"]["registry_company_count"] == 6464
+    assert listing["summary"]["company_count"] == 5876
     assert card_response["status"].startswith("200")
     assert card["primary_security"]["ticker"] == "NVDA"
     assert set(card["valuation"]["models"]) == MODELS

@@ -24,5 +24,5 @@ def test_population_uses_one_primary_active_security_per_company(tmp_path):
 
 def test_real_population_symbol_list_is_not_a_maintained_cohort():
     symbols = load_primary_symbols(__import__("pathlib").Path("data/universe"))
-    assert len(symbols) > 6000
+    assert len(symbols) == 5876
     assert "NVDA" in symbols

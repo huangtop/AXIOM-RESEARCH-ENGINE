@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://axiom.local/schemas/security-identity-normalization.v031v.2.json",
+  "title": "Security Identity and Instrument Normalization",
+  "type": "object",
+  "required": ["schema_version", "version", "generated_at", "summary", "companies", "securities", "indexes"],
+  "properties": {
+    "schema_version": {"const": "security-identity-normalization.v031v.2"},
+    "version": {"const": "V031V.2"},
+    "summary": {"type": "object", "required": ["registry_company_count", "registry_security_count", "valuation_company_count", "excluded_company_count", "instrument_type_counts"]},
+    "companies": {"type": "array", "items": {"type": "object", "required": ["company_id", "valuation_scope_status", "reason_code", "eligible_security_ids", "excluded_security_ids"]}},
+    "securities": {"type": "array", "items": {"type": "object", "required": ["security_id", "company_id", "instrument_type", "valuation_eligible", "reason_code", "source_record_ids"]}},
+    "indexes": {"type": "object"}
+  }
+}
