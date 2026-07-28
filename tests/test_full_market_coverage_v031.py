@@ -31,17 +31,18 @@ def test_every_company_has_seven_model_slots_and_explicit_reasons():
         assert set(card["valuation"]["models"]) == MODELS
         assert card["status"] in {"ready", "partial", "unavailable"}
         for model in card["valuation"]["models"].values():
-            assert model["status"] in {"eligible", "unavailable"}
+            assert model["status"] in {"calculated", "unavailable"}
             if model["status"] == "unavailable":
                 assert model["reason_code"]
-                assert model["missing_inputs"]
+                if model["reason_code"] == "MISSING_REQUIRED_INPUT":
+                    assert model["missing_inputs"]
 
 
 def test_unknown_or_missing_data_never_creates_a_fair_value():
-    service = FullMarketCoverageService(root=ROOT)
-    card = service.get("AIR")
+    payload = report()
+    card = next(card for card in payload["cards"] if card["valuation"]["calculated_model_count"] == 0)
     assert card["valuation"]["fair_value"] is None
-    assert card["valuation"]["reason_code"] in {"NO_ELIGIBLE_MODELS", "VALUATION_ENGINE_NOT_EXECUTED"}
+    assert card["valuation"]["reason_code"] == "NO_CALCULATED_MODELS"
 
 
 def _get(app, path):

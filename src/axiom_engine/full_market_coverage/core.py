@@ -7,6 +7,8 @@ from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any, Mapping
 
+from axiom_engine.seven_model_valuation import calculate_seven_models
+
 
 MODELS = ("dcf", "forward_pe", "peg", "forward_ps", "ev_ebitda", "forward_pb", "milestone")
 
@@ -76,35 +78,6 @@ def _derived(value: Decimal | None, formula: str, source_ids: list[str], reason:
     }
 
 
-def _check(requirements: list[tuple[bool, str, str]]) -> dict[str, Any]:
-    missing = [{"code": code, "input": name} for ok, code, name in requirements if not ok]
-    return {
-        "status": "eligible" if not missing else "unavailable",
-        "reason_code": None if not missing else missing[0]["code"],
-        "missing_inputs": missing,
-        "fair_value": None,
-    }
-
-
-def _eligibility(fin: Mapping[str, Any], est: Mapping[str, Any], market: Mapping[str, Any]) -> dict[str, Any]:
-    def positive(layer: Mapping[str, Any], name: str) -> bool:
-        value = _number((layer.get(name) or {}).get("value"))
-        return value is not None and value > 0
-
-    price = _number(market.get("current_price"))
-    has_price = price is not None and price > 0
-    has_shares = positive(fin, "diluted_shares_outstanding")
-    return {
-        "dcf": _check([(has_price, "MISSING_MARKET_PRICE", "current_price"), (positive(fin, "free_cash_flow"), "MISSING_POSITIVE_FCF", "free_cash_flow"), (has_shares, "MISSING_POSITIVE_SHARES", "diluted_shares_outstanding")]),
-        "forward_pe": _check([(has_price, "MISSING_MARKET_PRICE", "current_price"), (positive(est, "forward_eps"), "MISSING_POSITIVE_FORWARD_EPS", "forward_eps")]),
-        "peg": _check([(has_price, "MISSING_MARKET_PRICE", "current_price"), (positive(est, "forward_eps"), "MISSING_POSITIVE_FORWARD_EPS", "forward_eps"), (positive(est, "forward_eps_growth"), "MISSING_POSITIVE_FORWARD_EPS_GROWTH", "forward_eps_growth")]),
-        "forward_ps": _check([(has_price, "MISSING_MARKET_PRICE", "current_price"), (has_shares, "MISSING_POSITIVE_SHARES", "diluted_shares_outstanding"), (positive(est, "forward_revenue"), "MISSING_POSITIVE_FORWARD_REVENUE", "forward_revenue")]),
-        "ev_ebitda": _check([(has_price, "MISSING_MARKET_PRICE", "current_price"), (positive(fin, "ebitda") or positive(est, "forward_ebitda"), "MISSING_POSITIVE_EBITDA", "ebitda")]),
-        "forward_pb": _check([(has_price, "MISSING_MARKET_PRICE", "current_price"), (positive(fin, "book_value_per_share"), "MISSING_POSITIVE_BOOK_VALUE_PER_SHARE", "book_value_per_share")]),
-        "milestone": _check([(positive(est, "milestone_probability"), "MISSING_MILESTONE_PROBABILITY", "milestone_probability"), (positive(est, "milestone_value"), "MISSING_MILESTONE_VALUE", "milestone_value")]),
-    }
-
-
 def build_full_market_coverage(
     root: Path,
     *,
@@ -114,6 +87,8 @@ def build_full_market_coverage(
     market_path: str = "data/generated/market/previous_close_cache.json",
     estimate_path: str = "data/estimate_data/consensus_estimates.json",
     security_identity_path: str = "data/generated/security_identity/security_identity_normalization.json",
+    valuation_assumptions_path: str = "data/knowledge/valuation_assumptions.json",
+    dcf_policy_path: str = "config/fair_value_snapshot.v030.14.0.json",
 ) -> dict[str, Any]:
     companies = _load(root / companies_path)
     securities = _load(root / securities_path)
@@ -121,7 +96,10 @@ def build_full_market_coverage(
     market_payload = _load(root / market_path, default={"symbols": {}})
     estimates = _load(root / estimate_path, default=[])
     identity = _load(root / security_identity_path, default={"companies": [], "securities": []})
-    if not all(isinstance(rows, list) for rows in (companies, securities, financials, estimates)):
+    assumption_rows = _load(root / valuation_assumptions_path, default=[])
+    dcf_policy_payload = _load(root / dcf_policy_path)
+    dcf_policy = dcf_policy_payload.get("dcf", {})
+    if not all(isinstance(rows, list) for rows in (companies, securities, financials, estimates, assumption_rows)):
         raise FullMarketCoverageError("population and canonical layers must contain arrays")
 
     scoped_company_ids = {
@@ -148,6 +126,11 @@ def build_full_market_coverage(
     estimates_by_company: dict[str, list[Mapping[str, Any]]] = defaultdict(list)
     for row in estimates:
         estimates_by_company[str(row.get("company_id") or "")].append(row)
+    assumptions_by_company = {
+        str(row.get("company_id")): row.get("assumptions") or {}
+        for row in assumption_rows
+        if row.get("company_id") and row.get("evidence_ids")
+    }
     market_symbols = market_payload.get("symbols") if isinstance(market_payload, Mapping) else {}
     market_symbols = market_symbols if isinstance(market_symbols, Mapping) else {}
 
@@ -192,10 +175,16 @@ def build_full_market_coverage(
             "as_of_date": market_row.get("session_date") if isinstance(market_row, Mapping) else None,
             "reason_code": None if isinstance(market_row, Mapping) else "CANONICAL_MARKET_NOT_POPULATED",
         }
-        models = _eligibility(fin, est, market)
-        eligible_count = sum(row["status"] == "eligible" for row in models.values())
-        model_counts.update(name for name, row in models.items() if row["status"] == "eligible")
-        status = "ready" if eligible_count >= 2 else "partial" if eligible_count == 1 else "unavailable"
+        models = calculate_seven_models(
+            fin,
+            est,
+            assumptions_by_company.get(company_id, {}),
+            dcf_policy=dcf_policy,
+        )
+        calculated_values = [Decimal(row["fair_value"]) for row in models.values() if row["status"] == "calculated"]
+        calculated_count = len(calculated_values)
+        model_counts.update(name for name, row in models.items() if row["status"] == "calculated")
+        status = "ready" if calculated_count >= 2 else "partial" if calculated_count == 1 else "unavailable"
         status_counts[status] += 1
         card = {
             "schema_version": "full-market-valuation-card.v031.0",
@@ -206,7 +195,7 @@ def build_full_market_coverage(
             "market": market,
             "financials": fin,
             "estimates": est,
-            "valuation": {"status": status, "eligible_model_count": eligible_count, "total_model_count": 7, "fair_value": None, "reason_code": "VALUATION_ENGINE_NOT_EXECUTED" if eligible_count else "NO_ELIGIBLE_MODELS", "models": models},
+            "valuation": {"status": status, "calculated_model_count": calculated_count, "total_model_count": 7, "fair_value": format(sum(calculated_values) / len(calculated_values), "f") if calculated_values else None, "aggregation_version": "equal-weight-calculated-models.v031v.5", "reason_code": None if calculated_values else "NO_CALCULATED_MODELS", "models": models},
         }
         position = len(cards)
         cards.append(card)
@@ -219,7 +208,7 @@ def build_full_market_coverage(
         "schema_version": "full-market-coverage.v031.0",
         "version": "V031.0",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "summary": {"company_count": len(cards), "registry_company_count": len(companies), "excluded_non_company_instrument_count": len(companies) - len(cards), "security_count": len(securities), "valuation_security_count": len(eligible_security_ids), "status_counts": {name: status_counts[name] for name in ("ready", "partial", "unavailable")}, "model_eligible_counts": {name: model_counts[name] for name in MODELS}, "market_ready_company_count": sum(card["market"]["status"] == "ready" for card in cards), "financial_present_company_count": sum(bool(financial_by_company.get(card["company"]["company_id"])) for card in cards), "estimate_present_company_count": sum(bool(estimates_by_company.get(card["company"]["company_id"])) for card in cards)},
+        "summary": {"company_count": len(cards), "registry_company_count": len(companies), "excluded_non_company_instrument_count": len(companies) - len(cards), "security_count": len(securities), "valuation_security_count": len(eligible_security_ids), "status_counts": {name: status_counts[name] for name in ("ready", "partial", "unavailable")}, "model_calculated_counts": {name: model_counts[name] for name in MODELS}, "market_ready_company_count": sum(card["market"]["status"] == "ready" for card in cards), "financial_present_company_count": sum(bool(financial_by_company.get(card["company"]["company_id"])) for card in cards), "estimate_present_company_count": sum(bool(estimates_by_company.get(card["company"]["company_id"])) for card in cards)},
         "cards": cards,
         "indexes": {"ticker_to_position": ticker_index, "company_id_to_position": {card["company"]["company_id"]: index for index, card in enumerate(cards)}},
     }

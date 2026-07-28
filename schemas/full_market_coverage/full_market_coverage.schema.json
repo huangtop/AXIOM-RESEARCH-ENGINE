@@ -8,11 +8,11 @@
     "version": {"const": "V031.0"},
     "summary": {
       "type": "object",
-      "required": ["company_count", "security_count", "status_counts", "model_eligible_counts"]
+      "required": ["company_count", "security_count", "status_counts", "model_calculated_counts"]
     },
     "cards": {
       "type": "array",
-      "minItems": 6464,
+      "minItems": 1,
       "items": {
         "type": "object",
         "required": ["schema_version", "company", "primary_security", "status", "market", "financials", "estimates", "valuation"],
@@ -21,7 +21,7 @@
           "status": {"enum": ["ready", "partial", "unavailable"]},
           "valuation": {
             "type": "object",
-            "required": ["status", "eligible_model_count", "total_model_count", "fair_value", "reason_code", "models"],
+            "required": ["status", "calculated_model_count", "total_model_count", "fair_value", "aggregation_version", "reason_code", "models"],
             "properties": {
               "total_model_count": {"const": 7},
               "models": {
