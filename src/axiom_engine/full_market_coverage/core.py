@@ -110,7 +110,7 @@ def build_full_market_coverage(
     *,
     companies_path: str = "data/universe/companies.json",
     securities_path: str = "data/universe/securities.json",
-    financial_path: str = "data/financial_data/financial_facts.json",
+    financial_path: str = "data/generated/canonical_financial_population/financial_facts.json",
     market_path: str = "data/generated/market/previous_close_cache.json",
     estimate_path: str = "data/estimate_data/consensus_estimates.json",
     security_identity_path: str = "data/generated/security_identity/security_identity_normalization.json",

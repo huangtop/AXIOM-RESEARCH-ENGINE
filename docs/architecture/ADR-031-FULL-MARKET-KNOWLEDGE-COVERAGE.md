@@ -58,3 +58,7 @@ Research classification does not gate full-market valuation. Market, financial, 
 ## V031V.2 instrument boundary
 
 Exchange-listed instruments remain in the Registry but do not automatically create operating-company valuation identities. Warrant-, unit-, right-, and preferred-only identities are excluded from company valuation scope. A verified common or ordinary equity keeps its linked company in scope while non-common instruments are excluded individually. Future issuer relinking requires identity evidence and cannot be inferred solely from a ticker stem.
+
+## V031V.3 financial evidence boundary
+
+Full-scope financial population consumes official SEC Companyfacts one CIK at a time from the nightly bulk archive. Derived book value per share requires same-period equity and instant shares with traceable source facts. Missing EBITDA remains unavailable; operating income or EBIT cannot be silently substituted. The existing smaller financial repository is not overwritten during population and cutover is validated through full-market eligibility counts.

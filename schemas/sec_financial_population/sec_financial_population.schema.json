@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://axiom.local/schemas/sec-financial-population.v031v.3.json",
+  "title": "SEC Companyfacts Financial Population",
+  "type": "object",
+  "required": ["schema_version", "version", "generated_at", "summary", "financial_facts", "diagnostics"],
+  "properties": {
+    "schema_version": {"const": "sec-financial-population.v031v.3"},
+    "version": {"const": "V031V.3"},
+    "summary": {"type": "object", "required": ["valuation_scope_company_count", "cik_scope_company_count", "companies_with_companyfacts", "companies_with_financial_facts", "financial_fact_count", "metric_company_coverage"]},
+    "financial_facts": {"type": "array", "items": {"type": "object", "required": ["financial_fact_id", "company_id", "metric", "value", "unit", "period_type", "period_end", "source"]}},
+    "diagnostics": {"type": "array", "items": {"type": "object", "required": ["company_id", "cik", "reason_code"]}}
+  }
+}
