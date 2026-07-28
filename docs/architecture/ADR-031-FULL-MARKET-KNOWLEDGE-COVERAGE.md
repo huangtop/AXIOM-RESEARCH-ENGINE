@@ -42,3 +42,7 @@ A relationship such as “AAOI supplies NVDA” cannot enter the Knowledge graph
 ## V031.1 evidence gate
 
 Theme and sector inference accepts only canonical descriptions and classifications whose provenance IDs resolve in the provenance repository, or Knowledge relationships whose evidence IDs resolve to approved Canonical evidence. Company names and ticker symbols are display and lookup attributes, never classification evidence. The 300-company Research Universe limit is a maximum operational capacity, not a quota; an empty result is valid when the evidence layer is empty.
+
+## V031.2A SEC acquisition boundary
+
+SEC Submissions metadata is ingested cache-first from the nightly bulk archive, with optional per-CIK live fallback. SEC SIC is preserved as an authoritative source classification under its own scheme; it is never presented as an inferred AXIOM sector. Annual filing URLs are recorded as extraction candidates, while filing text extraction, summarization, company signals, and theme inference remain downstream stages.

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://axiom.local/schemas/sec-company-evidence.v031.2a.json",
+  "title": "SEC Canonical Company Evidence",
+  "type": "object",
+  "required": ["schema_version", "version", "generated_at", "summary", "official_classifications", "filing_documents", "provenance", "coverage_audit"],
+  "properties": {
+    "schema_version": {"const": "sec-company-evidence.v031.2a"},
+    "version": {"const": "V031.2A"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "summary": {"type": "object", "required": ["registry_company_count", "submissions_available_count", "sic_classification_count", "annual_filing_manifest_count", "missing_submissions_count"]},
+    "official_classifications": {"type": "array", "items": {"type": "object", "required": ["classification_id", "company_id", "classification_scheme", "classification_code", "authority", "observed_at", "provenance_ids"]}},
+    "filing_documents": {"type": "array", "items": {"type": "object", "required": ["filing_document_id", "company_id", "cik", "form", "accession_number", "filing_date", "document_url", "extraction_status", "provenance_ids"]}},
+    "provenance": {"type": "array", "items": {"type": "object", "required": ["provenance_id", "source_type", "source_name", "source_record_id", "retrieved_at", "source_url", "content_sha256", "acquisition_mode"]}},
+    "coverage_audit": {"type": "object", "required": ["missing_companies"]}
+  }
+}
