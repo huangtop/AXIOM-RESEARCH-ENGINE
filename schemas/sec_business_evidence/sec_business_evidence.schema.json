@@ -8,7 +8,7 @@
     "schema_version": {"const": "sec-business-evidence.v031.2b"},
     "version": {"const": "V031.2B"},
     "generated_at": {"type": "string", "format": "date-time"},
-    "summary": {"type": "object", "required": ["filings_requested", "documents_downloaded", "business_evidence_available", "business_evidence_unavailable", "availability_ratio"]},
+    "summary": {"type": "object", "required": ["source_filing_manifest_count", "batch_offset", "filings_requested", "documents_downloaded", "business_evidence_available", "business_evidence_unavailable", "availability_ratio"]},
     "business_evidence": {"type": "array", "items": {"type": "object", "required": ["business_evidence_id", "company_id", "evidence_type", "form", "accession_number", "document_url", "document_sha256", "text", "text_sha256", "provenance_id"]}},
     "diagnostics": {"type": "array", "items": {"type": "object", "required": ["company_id", "filing_document_id", "status", "reason_code"]}}
   }

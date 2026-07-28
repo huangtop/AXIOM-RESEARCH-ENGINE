@@ -9,3 +9,5 @@ V031.2B downloads annual filing primary documents incrementally and extracts evi
 - Missing cache, fetch failure, missing boundaries, short sections, and unsupported forms remain explicit diagnostics.
 
 Raw filing HTML is a rebuildable provider cache and is excluded from Git. This stage does not generate summaries, signals, themes, sectors, clusters, or ticker membership.
+
+Production population is resumable through explicit batch offsets and limits. Canonical manifests record the full source filing count and current batch offset so partial coverage cannot be mistaken for a completed population.

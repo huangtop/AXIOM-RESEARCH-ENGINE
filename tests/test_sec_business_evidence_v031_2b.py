@@ -76,6 +76,17 @@ def test_offline_missing_document_is_diagnostic_not_fabricated(tmp_path):
     assert report["diagnostics"][0]["reason_code"] == "FILING_DOCUMENT_NOT_CACHED"
 
 
+def test_offset_supports_resumable_population_batches(tmp_path):
+    _manifest(tmp_path)
+    manifest = tmp_path / "data/generated/canonical_company_evidence/filing_documents.json"
+    first = json.loads(manifest.read_text())[0]
+    second = {**first, "company_id": "company:2", "accession_number": "0002-26-000001"}
+    manifest.write_text(json.dumps([first, second]), encoding="utf-8")
+    report = build_sec_business_evidence(tmp_path, offset=1, limit=1, now=NOW)
+    assert report["summary"]["filings_requested"] == 1
+    assert report["diagnostics"][0]["company_id"] == "company:2"
+
+
 def test_live_fetcher_can_populate_cache_incrementally(tmp_path):
     _manifest(tmp_path)
     calls = []

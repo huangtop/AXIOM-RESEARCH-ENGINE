@@ -173,6 +173,7 @@ def build_sec_business_evidence(
     allow_live: bool = False,
     user_agent: str = "",
     limit: int | None = None,
+    offset: int = 0,
     company_ids: Iterable[str] | None = None,
     write_cache: bool = False,
     request_delay_seconds: float = 0.11,
@@ -182,13 +183,17 @@ def build_sec_business_evidence(
     current = now or datetime.now(timezone.utc)
     if current.tzinfo is None or current.utcoffset() is None:
         raise ValueError("now must be timezone-aware")
+    if offset < 0:
+        raise ValueError("offset cannot be negative")
     rows = _load(root / filing_manifest_path)
     if not isinstance(rows, list):
         raise SECBusinessEvidenceError("filing document manifest must be an array")
+    source_filing_count = len(rows)
     selected = set(company_ids or [])
     if selected:
         rows = [row for row in rows if row.get("company_id") in selected]
     rows = sorted(rows, key=lambda row: str(row.get("company_id") or ""))
+    rows = rows[offset:]
     if limit is not None:
         rows = rows[:limit]
     cache_root = root / cache_dir
@@ -277,6 +282,8 @@ def build_sec_business_evidence(
         "version": "V031.2B",
         "generated_at": current.isoformat(),
         "summary": {
+            "source_filing_manifest_count": source_filing_count,
+            "batch_offset": offset,
             "filings_requested": len(rows),
             "documents_downloaded": downloaded,
             "business_evidence_available": len(evidence),

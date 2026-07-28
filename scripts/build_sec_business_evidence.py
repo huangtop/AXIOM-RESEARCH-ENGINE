@@ -22,6 +22,7 @@ def main() -> int:
     parser.add_argument("--write-cache", action="store_true")
     parser.add_argument("--write", action="store_true")
     parser.add_argument("--limit", type=int)
+    parser.add_argument("--offset", type=int, default=0)
     parser.add_argument("--company-id", action="append", default=[])
     parser.add_argument("--delay", type=float, default=0.11)
     parser.add_argument("--output-dir", type=Path, default=Path("data/generated/canonical_business_evidence"))
@@ -31,6 +32,7 @@ def main() -> int:
         allow_live=args.allow_live,
         user_agent=args.user_agent,
         limit=args.limit,
+        offset=args.offset,
         company_ids=args.company_id,
         write_cache=args.write_cache,
         request_delay_seconds=args.delay,
