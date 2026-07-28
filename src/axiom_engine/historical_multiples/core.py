@@ -18,6 +18,7 @@ METHOD_METRICS = {
     "price_to_sales": "current_multiple",
     "ev_to_sales": "current_multiple",
     "ev_to_ebitda": "current_multiple",
+    "price_to_book": "current_multiple",
     "fcf_yield": "current_yield_percent",
 }
 

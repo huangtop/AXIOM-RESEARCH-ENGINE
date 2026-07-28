@@ -12,7 +12,7 @@ class HistoricalMultipleBenchmarkError(RuntimeError):
 
 
 SUPPORTED_METHODS = {
-    "forward_pe", "trailing_pe", "price_to_sales", "ev_to_sales", "ev_to_ebitda", "fcf_yield",
+    "forward_pe", "trailing_pe", "price_to_sales", "ev_to_sales", "ev_to_ebitda", "price_to_book", "fcf_yield",
 }
 CONFIDENCE_RANK = {"none": 0, "low": 1, "medium": 2, "high": 3}
 

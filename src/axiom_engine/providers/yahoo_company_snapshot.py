@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import math
+import re
 import time
 from dataclasses import asdict, dataclass
 from datetime import date, datetime, timedelta, timezone
@@ -49,6 +50,8 @@ class YahooCompanySnapshot:
     total_debt: str | None
     trailing_eps: str | None
     forward_eps: str | None
+    forward_eps_growth: str | None
+    forward_revenue: str | None
     trailing_pe: str | None
     forward_pe: str | None
     price_to_book: str | None
@@ -57,6 +60,7 @@ class YahooCompanySnapshot:
     beta: str | None
     analyst_target_mean: str | None
     analyst_count: int | None
+    previous_close: str | None
 
     def to_dict(self) -> dict[str, object]:
         return asdict(self)
@@ -97,7 +101,8 @@ class YFinanceCompanyInfoFetcher:
                 "yfinance is required for live Yahoo company snapshots; install with: pip install yfinance"
             ) from exc
 
-        ticker = yf.Ticker(symbol)
+        provider_symbol = symbol.replace(".", "-") if re.fullmatch(r"[A-Z]+\.[A-Z]", symbol) else symbol
+        ticker = yf.Ticker(provider_symbol)
         payload: dict[str, object] = {}
         endpoint_errors: dict[str, str] = {}
 
@@ -350,7 +355,7 @@ def snapshot_and_diagnostic_from_info(
     previous_close = _first_decimal(info.get("previousClose"), fast.get("previousClose"), fast.get("previous_close"))
     implied_shares = _divide_decimal(market_cap, previous_close)
     shares = resolve("shares", [("info.sharesOutstanding", info.get("sharesOutstanding")), ("info.impliedSharesOutstanding", info.get("impliedSharesOutstanding")), ("market_cap/previous_close", implied_shares)], _decimal_text)
-    forward_eps = resolve("forward_eps", [("earnings_estimate.avg", _estimate_value(earnings, ("avg", "Average"))), ("info.forwardEps", info.get("forwardEps")), ("info.trailingEps", info.get("trailingEps"))], _decimal_text)
+    forward_eps = resolve("forward_eps", [("earnings_estimate.avg", _estimate_value(earnings, ("avg", "Average"))), ("info.forwardEps", info.get("forwardEps"))], _decimal_text)
     revenue_ttm = resolve("revenue_ttm", [("info.totalRevenue", info.get("totalRevenue")), ("financials.Total Revenue", _financial_value(financials, ("Total Revenue", "TotalRevenue")))], _decimal_text)
     forward_revenue = resolve("forward_revenue", [("revenue_estimate.avg", _estimate_value(revenue_estimate, ("avg", "Average"))), ("calendar.revenueAverage", calendar.get("revenueAverage")), ("financials.Total Revenue", _financial_value(financials, ("Total Revenue", "TotalRevenue")))], _decimal_text)
 
@@ -388,6 +393,8 @@ def snapshot_and_diagnostic_from_info(
         total_debt=_decimal_text(info.get("totalDebt")),
         trailing_eps=_decimal_text(info.get("trailingEps")),
         forward_eps=forward_eps,
+        forward_eps_growth=_decimal_text(info.get("earningsGrowth")),
+        forward_revenue=forward_revenue,
         trailing_pe=_decimal_text(info.get("trailingPE")),
         forward_pe=_decimal_text(info.get("forwardPE")),
         price_to_book=_decimal_text(info.get("priceToBook")),
@@ -396,6 +403,7 @@ def snapshot_and_diagnostic_from_info(
         beta=_decimal_text(info.get("beta")),
         analyst_target_mean=_decimal_text(info.get("targetMeanPrice")),
         analyst_count=_integer(info.get("numberOfAnalystOpinions")),
+        previous_close=_decimal_text(previous_close),
     )
     diagnostic: dict[str, object] = {
         "company_name": sources["company_name"],

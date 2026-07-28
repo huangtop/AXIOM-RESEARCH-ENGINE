@@ -165,7 +165,7 @@ def build_full_market_coverage(
 
         latest_est = _latest(estimates_by_company.get(company_id, []), "metric")
         est = {name: _metric(latest_est.get(name), source_id_field="estimate_id") for name in (
-            "forward_eps", "forward_eps_growth", "forward_revenue", "forward_ebitda", "milestone_probability", "milestone_value",
+            "forward_eps", "forward_eps_growth", "forward_revenue", "forward_ebitda", "ebitda_ttm", "milestone_probability", "milestone_value",
         )}
         market_row = market_symbols.get(ticker) if ticker else None
         market = {

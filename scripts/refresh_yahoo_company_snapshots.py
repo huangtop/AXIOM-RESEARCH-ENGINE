@@ -24,6 +24,8 @@ def main() -> int:
     parser.add_argument("--ttl-days", type=int, default=30)
     parser.add_argument("--delay", type=float, default=0.5)
     parser.add_argument("--force", action="store_true")
+    parser.add_argument("--offset", type=int, default=0)
+    parser.add_argument("--limit", type=int)
     parser.add_argument("--report", type=Path, default=Path("data/generated/provider_cache/yahoo/company_snapshot_refresh_report.json"))
     parser.add_argument("--diagnostic", type=Path, default=Path("data/generated/provider_cache/yahoo/provider_diagnostic.json"))
     parser.add_argument("--error-log", type=Path, default=Path("data/generated/provider_cache/yahoo/provider_errors.log"))
@@ -35,6 +37,9 @@ def main() -> int:
     symbols = sorted({str(symbol).strip().upper() for symbol in symbols if str(symbol).strip()})
     if not symbols:
         parser.error("provide --symbols or --symbols-file")
+    if args.offset < 0 or (args.limit is not None and args.limit < 1):
+        parser.error("--offset must be non-negative and --limit must be positive")
+    symbols = symbols[args.offset:None if args.limit is None else args.offset + args.limit]
 
     cache = YahooCompanySnapshotCache(
         args.cache_root,

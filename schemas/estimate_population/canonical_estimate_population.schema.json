@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "V031V.6 Canonical Estimate Population",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["estimate_id", "company_id", "security_id", "ticker", "metric", "value", "as_of_date", "provider", "source_record_id", "record_state"],
+    "properties": {
+      "metric": {"enum": ["forward_eps", "forward_eps_growth", "forward_revenue", "forward_ebitda", "ebitda_ttm"]},
+      "provider": {"const": "yahoo_finance"},
+      "record_state": {"const": "provider_observation"}
+    }
+  }
+}

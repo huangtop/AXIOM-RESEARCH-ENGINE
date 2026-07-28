@@ -52,7 +52,7 @@ def calculate_seven_models(
     cash = _value(financials, "cash_and_cash_equivalents")
     debt = _value(financials, "total_debt")
     book_value_per_share = _value(financials, "book_value_per_share")
-    ebitda = _value(estimates, "forward_ebitda") or _value(financials, "ebitda")
+    ebitda = _value(estimates, "forward_ebitda") or _value(estimates, "ebitda_ttm") or _value(financials, "ebitda")
     forward_eps = _value(estimates, "forward_eps")
     growth = _value(estimates, "forward_eps_growth")
     forward_revenue = _value(estimates, "forward_revenue")
@@ -115,7 +115,7 @@ def calculate_seven_models(
         "forward_pe": _result(forward_pe_value, "forward-pe-fair-value.v031v.5", ["forward_eps", "target_forward_pe"], [name for name, value in (("forward_eps", forward_eps), ("target_forward_pe", target_pe)) if value is None], assumption_source="knowledge.valuation_assumptions"),
         "peg": _result(peg_value, "peg-fair-value.v031v.5", ["forward_eps", "forward_eps_growth", "target_peg"], [name for name, value in (("forward_eps", forward_eps), ("forward_eps_growth", growth), ("target_peg", target_peg)) if value is None], assumption_source="knowledge.valuation_assumptions"),
         "forward_ps": _result(forward_ps_value, "forward-ps-fair-value.v031v.5", ["forward_revenue", "shares", "target_forward_ps"], [name for name, value in (("forward_revenue", forward_revenue), ("shares", shares), ("target_forward_ps", target_ps)) if value is None], assumption_source="knowledge.valuation_assumptions"),
-        "ev_ebitda": _result(ev_value, "ev-ebitda-fair-value.v031v.5", ["ebitda", "cash", "debt", "shares", "target_ev_ebitda"], [name for name, value in (("ebitda", ebitda), ("cash", cash), ("debt", debt), ("shares", shares), ("target_ev_ebitda", target_ev_ebitda)) if value is None], assumption_source="knowledge.valuation_assumptions"),
+        "ev_ebitda": _result(ev_value, "ev-ebitda-fair-value.v031v.6", ["forward_ebitda_or_ebitda_ttm", "cash", "debt", "shares", "target_ev_ebitda"], [name for name, value in (("forward_ebitda_or_ebitda_ttm", ebitda), ("cash", cash), ("debt", debt), ("shares", shares), ("target_ev_ebitda", target_ev_ebitda)) if value is None], assumption_source="knowledge.valuation_assumptions"),
         "forward_pb": _result(pb_value, "forward-pb-fair-value.v031v.5", ["book_value_per_share", "target_forward_pb"], [name for name, value in (("book_value_per_share", book_value_per_share), ("target_forward_pb", target_pb)) if value is None], assumption_source="knowledge.valuation_assumptions"),
         "milestone": _result(milestone_value, "milestone-fair-value.v031v.5", ["success_probability", "success_value_per_share", "failure_value_per_share"], [name for name, value in (("success_probability", success_probability), ("success_value_per_share", success_value), ("failure_value_per_share", failure_value)) if value is None], assumption_source="knowledge.valuation_assumptions"),
     }

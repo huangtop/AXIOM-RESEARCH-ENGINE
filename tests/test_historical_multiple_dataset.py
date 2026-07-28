@@ -16,6 +16,7 @@ def _engine(date: str = "2026-07-24") -> dict:
         "price_to_sales": {"current_multiple": 10.0},
         "ev_to_sales": {"current_multiple": 9.0},
         "ev_to_ebitda": {"current_multiple": 20.0},
+        "price_to_book": {"current_multiple": 8.0},
         "fcf_yield": {"current_yield_percent": 2.5},
         "dcf": {"current_price": 300.0},
     }
@@ -36,12 +37,12 @@ def _write(root: Path, payload: dict) -> None:
     path.write_text(json.dumps(payload), encoding="utf-8")
 
 
-def test_builds_six_historical_metrics_and_excludes_dcf(tmp_path: Path) -> None:
+def test_builds_seven_historical_metrics_and_excludes_dcf(tmp_path: Path) -> None:
     _write(tmp_path, _engine())
     report = build_historical_multiple_dataset(tmp_path)
-    assert report["summary"]["observation_count"] == 6
+    assert report["summary"]["observation_count"] == 7
     assert {row["method"] for row in report["observations"]} == {
-        "forward_pe", "trailing_pe", "price_to_sales", "ev_to_sales", "ev_to_ebitda", "fcf_yield"
+        "forward_pe", "trailing_pe", "price_to_sales", "ev_to_sales", "ev_to_ebitda", "price_to_book", "fcf_yield"
     }
 
 
@@ -61,8 +62,8 @@ def test_same_day_is_idempotently_replaced(tmp_path: Path) -> None:
     clean = dict(first); clean.pop("diagnostic")
     path.write_text(json.dumps(clean), encoding="utf-8")
     second = build_historical_multiple_dataset(tmp_path)
-    assert second["summary"]["observation_count"] == 6
-    assert second["summary"]["replaced_observation_count"] == 6
+    assert second["summary"]["observation_count"] == 7
+    assert second["summary"]["replaced_observation_count"] == 7
 
 
 def test_new_date_appends_observations(tmp_path: Path) -> None:
@@ -74,8 +75,8 @@ def test_new_date_appends_observations(tmp_path: Path) -> None:
     path.write_text(json.dumps(clean), encoding="utf-8")
     _write(tmp_path, _engine("2026-07-25"))
     second = build_historical_multiple_dataset(tmp_path)
-    assert second["summary"]["observation_count"] == 12
-    assert second["summary"]["added_observation_count"] == 6
+    assert second["summary"]["observation_count"] == 14
+    assert second["summary"]["added_observation_count"] == 7
 
 
 def test_series_statistics_are_computed(tmp_path: Path) -> None:
@@ -99,7 +100,7 @@ def test_blocked_method_is_skipped(tmp_path: Path) -> None:
     payload["companies"][0]["methods"]["forward_pe"] = {"status": "blocked", "metrics": {}}
     _write(tmp_path, payload)
     report = build_historical_multiple_dataset(tmp_path)
-    assert report["summary"]["observation_count"] == 5
+    assert report["summary"]["observation_count"] == 6
     assert report["summary"]["skipped_method_record_count"] == 1
 
 
@@ -108,7 +109,7 @@ def test_non_finite_metric_is_skipped(tmp_path: Path) -> None:
     payload["companies"][0]["methods"]["forward_pe"]["metrics"]["current_multiple"] = "NaN"
     _write(tmp_path, payload)
     report = build_historical_multiple_dataset(tmp_path)
-    assert report["summary"]["observation_count"] == 5
+    assert report["summary"]["observation_count"] == 6
 
 
 def test_requires_as_of_date(tmp_path: Path) -> None:

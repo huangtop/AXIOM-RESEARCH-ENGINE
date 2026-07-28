@@ -18,6 +18,7 @@ SUPPORTED_METHODS = {
     "price_to_sales",
     "ev_to_sales",
     "ev_to_ebitda",
+    "price_to_book",
     "fcf_yield",
 }
 

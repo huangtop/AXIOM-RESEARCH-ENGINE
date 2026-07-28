@@ -94,11 +94,11 @@ def test_field_level_fallback_keeps_company_successful(tmp_path):
     assert report.failed == 0
     assert payload["company_name"] == "Fallback Corp"
     assert payload["shares_outstanding"] == "100"
-    assert payload["forward_eps"] == "2.5"
+    assert payload["forward_eps"] is None
     assert payload["revenue_ttm"] == "900"
     assert diagnostic["TEST"]["company_name"] == "fallback"
     assert diagnostic["TEST"]["shares"] == "fallback"
-    assert diagnostic["TEST"]["forward_eps"] == "fallback"
+    assert diagnostic["TEST"]["forward_eps"] == "missing"
 
 
 def test_missing_optional_fields_are_diagnostic_not_company_failure(tmp_path):
@@ -147,3 +147,13 @@ def test_provider_exception_is_logged_and_other_symbols_continue(tmp_path):
     assert report.failed == 1
     assert "KeyError" in report.failures["BAD"]
     assert "forwardRevenue" in cache.error_log_path.read_text()
+
+
+def test_trailing_eps_is_never_relabelled_as_forward_eps():
+    snapshot = snapshot_from_info(
+        "TEST",
+        {"longName": "Test", "trailingEps": 4.2},
+        fetched_at=datetime(2026, 7, 28, tzinfo=timezone.utc),
+    )
+    assert snapshot.trailing_eps == "4.2"
+    assert snapshot.forward_eps is None
