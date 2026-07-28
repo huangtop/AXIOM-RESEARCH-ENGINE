@@ -15,6 +15,9 @@
   "financials": {
     "source": "sec_companyfacts_bulk_or_cache",
     "cache_ttl_days": 90,
-    "stale_cache_policy": "retain_as_explicit_fallback_until_new_bulk_is_available"
+    "stale_cache_policy": "retain_as_explicit_fallback_until_new_bulk_is_available",
+    "submissions_metadata_poll": "daily",
+    "refresh_triggers": ["new_10-k_accession", "new_10-q_accession", "new_20-f_accession", "new_40-f_accession", "new_xbrl_6-k_accession", "safety_ttl_expired"],
+    "yahoo_earnings_calendar_role": "advisory_only"
   }
 }
