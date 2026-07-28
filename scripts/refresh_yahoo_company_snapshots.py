@@ -24,6 +24,10 @@ def main() -> int:
     parser.add_argument("--ttl-days", type=int, default=30)
     parser.add_argument("--delay", type=float, default=0.5)
     parser.add_argument("--force", action="store_true")
+    parser.add_argument("--rate-limit-retries", type=int, default=2)
+    parser.add_argument("--rate-limit-backoff", type=float, default=30.0)
+    parser.add_argument("--rate-limit-circuit-breaker", type=int, default=5)
+    parser.add_argument("--max-fetch", type=int)
     parser.add_argument("--offset", type=int, default=0)
     parser.add_argument("--limit", type=int)
     parser.add_argument("--report", type=Path, default=Path("data/generated/provider_cache/yahoo/company_snapshot_refresh_report.json"))
@@ -55,6 +59,10 @@ def main() -> int:
         now=datetime.now(tz=timezone.utc),
         request_delay_seconds=args.delay,
         force=args.force,
+        rate_limit_retries=args.rate_limit_retries,
+        rate_limit_backoff_seconds=args.rate_limit_backoff,
+        rate_limit_circuit_breaker=args.rate_limit_circuit_breaker,
+        max_fetch=args.max_fetch,
     )
     args.report.parent.mkdir(parents=True, exist_ok=True)
     args.report.write_text(json.dumps(report.to_dict(), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

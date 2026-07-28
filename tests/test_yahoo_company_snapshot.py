@@ -157,3 +157,38 @@ def test_trailing_eps_is_never_relabelled_as_forward_eps():
     )
     assert snapshot.trailing_eps == "4.2"
     assert snapshot.forward_eps is None
+
+
+def test_rate_limit_retry_is_bounded_and_circuit_breaker_preserves_checkpoint(tmp_path):
+    class LimitedFetcher:
+        def __init__(self):
+            self.calls = 0
+
+        def company_info(self, symbol: str):
+            self.calls += 1
+            raise RuntimeError("Too Many Requests: rate limited")
+
+    fetcher = LimitedFetcher()
+    sleeps = []
+    cache = YahooCompanySnapshotCache(tmp_path / "symbols", canonical_output_path=tmp_path / "canonical.json")
+    report = refresh_yahoo_company_snapshots(
+        ["A", "B", "C"], fetcher=fetcher, cache=cache,
+        now=datetime(2026, 7, 28, tzinfo=timezone.utc), sleep=sleeps.append,
+        rate_limit_retries=1, rate_limit_backoff_seconds=2, rate_limit_circuit_breaker=2,
+    )
+    assert fetcher.calls == 4
+    assert sleeps == [2, 2]
+    assert report.failed == 2
+    assert json.loads(cache.diagnostic_path.read_text())["__batch__"]["state"] == "rate_limit_circuit_open"
+
+
+def test_max_fetch_limits_only_uncached_requests(tmp_path):
+    fetcher = FakeFetcher()
+    cache = YahooCompanySnapshotCache(tmp_path / "symbols", canonical_output_path=tmp_path / "canonical.json")
+    now = datetime(2026, 7, 28, tzinfo=timezone.utc)
+    refresh_yahoo_company_snapshots(["A"], fetcher=fetcher, cache=cache, now=now)
+    fetcher.calls.clear()
+    report = refresh_yahoo_company_snapshots(["A", "B", "C"], fetcher=fetcher, cache=cache, now=now, max_fetch=1)
+    assert fetcher.calls == ["B"]
+    assert report.skipped_cached_before_request == 1
+    assert report.fetched == 1

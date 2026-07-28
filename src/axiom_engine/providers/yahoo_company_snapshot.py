@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import math
+import os
 import re
 import time
 from dataclasses import asdict, dataclass
@@ -113,11 +114,10 @@ class YFinanceCompanyInfoFetcher:
 
         fast_info = self._mapping_endpoint(ticker, "fast_info", endpoint_errors)
         payload["__fast_info__"] = fast_info
-        payload["__calendar__"] = self._mapping_endpoint(ticker, "calendar", endpoint_errors)
+        payload["__calendar__"] = {}
         payload["__earnings_estimate__"] = self._dataframe_records(ticker, "earnings_estimate", endpoint_errors)
         payload["__revenue_estimate__"] = self._dataframe_records(ticker, "revenue_estimate", endpoint_errors)
-        payload["__financials__"] = self._dataframe_records(ticker, "financials", endpoint_errors)
-        payload["__quarterly_financials__"] = self._dataframe_records(ticker, "quarterly_financials", endpoint_errors)
+        payload["__financials__"] = {}
         payload["__endpoint_errors__"] = endpoint_errors
 
         if not payload or not any(key for key in payload if not key.startswith("__")):
@@ -252,7 +252,7 @@ class YahooCompanySnapshotCache:
     @staticmethod
     def _atomic_json_write(path: Path, payload: Mapping[str, object]) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
-        temporary = path.with_suffix(path.suffix + ".tmp")
+        temporary = path.with_suffix(path.suffix + f".{os.getpid()}.tmp")
         temporary.write_text(json.dumps(json_safe(payload), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         temporary.replace(path)
 
@@ -266,6 +266,10 @@ def refresh_yahoo_company_snapshots(
     request_delay_seconds: float = 0.0,
     force: bool = False,
     sleep: Callable[[float], None] = time.sleep,
+    rate_limit_retries: int = 0,
+    rate_limit_backoff_seconds: float = 30.0,
+    rate_limit_circuit_breaker: int = 5,
+    max_fetch: int | None = None,
 ) -> YahooCompanyRefreshReport:
     if request_delay_seconds < 0:
         raise ValueError("request_delay_seconds cannot be negative")
@@ -280,28 +284,45 @@ def refresh_yahoo_company_snapshots(
             skipped += 1
         else:
             pending.append(symbol)
+    if max_fetch is not None:
+        if max_fetch < 1:
+            raise ValueError("max_fetch must be positive")
+        pending = pending[:max_fetch]
 
     successes = 0
     failures: dict[str, str] = {}
     diagnostics: dict[str, object] = {}
+    consecutive_rate_limits = 0
     for index, symbol in enumerate(pending):
-        try:
-            info = fetcher.company_info(symbol)
-            snapshot, diagnostic = snapshot_and_diagnostic_from_info(symbol, info, fetched_at=current)
-            cache.write_symbol(snapshot)
-            diagnostics[symbol] = diagnostic
-            successes += 1
-        except Exception as exc:  # preserve batch progress and record the real exception type
-            failures[symbol] = f"{type(exc).__name__}: {exc}"
-            diagnostics[symbol] = {"company": "failed", "error": failures[symbol]}
-            cache.append_error(symbol, exc, occurred_at=current)
+        for attempt in range(rate_limit_retries + 1):
+            try:
+                info = fetcher.company_info(symbol)
+                snapshot, diagnostic = snapshot_and_diagnostic_from_info(symbol, info, fetched_at=current)
+                cache.write_symbol(snapshot)
+                diagnostics[symbol] = diagnostic
+                successes += 1
+                consecutive_rate_limits = 0
+                break
+            except Exception as exc:  # preserve batch progress and record the real exception type
+                rate_limited = "rate limit" in str(exc).lower() or "too many requests" in str(exc).lower()
+                if rate_limited and attempt < rate_limit_retries:
+                    sleep(rate_limit_backoff_seconds * (attempt + 1))
+                    continue
+                failures[symbol] = f"{type(exc).__name__}: {exc}"
+                diagnostics[symbol] = {"company": "failed", "error": failures[symbol]}
+                cache.append_error(symbol, exc, occurred_at=current)
+                consecutive_rate_limits = consecutive_rate_limits + 1 if rate_limited else 0
+                break
+        if rate_limit_circuit_breaker and consecutive_rate_limits >= rate_limit_circuit_breaker:
+            diagnostics["__batch__"] = {"state": "rate_limit_circuit_open", "consecutive_rate_limits": consecutive_rate_limits, "resume_policy": "rerun_cache_first_after_cooldown"}
+            break
         if request_delay_seconds and index < len(pending) - 1:
             sleep(request_delay_seconds)
 
     cache.write_diagnostics(diagnostics)
     cache.rebuild_canonical_output(generated_at=current)
     return YahooCompanyRefreshReport(
-        requested=len(normalized),
+        requested=skipped + len(pending),
         fetched=len(pending),
         succeeded=successes,
         skipped_cached_before_request=skipped,
