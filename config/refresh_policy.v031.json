@@ -1,0 +1,20 @@
+{
+  "schema_version": "refresh-policy.v031.0",
+  "market": {
+    "source": "yahoo_finance",
+    "value": "last_completed_session_close",
+    "schedule": "once_per_trading_day_after_close",
+    "dedupe_key": ["symbol", "session_date"],
+    "request_cache_key": ["symbol", "fetch_date"]
+  },
+  "estimates": {
+    "source": "yahoo_finance",
+    "cache_ttl_days": 30,
+    "refresh_mode": "pending_or_expired_only"
+  },
+  "financials": {
+    "source": "sec_companyfacts_bulk_or_cache",
+    "cache_ttl_days": 90,
+    "stale_cache_policy": "retain_as_explicit_fallback_until_new_bulk_is_available"
+  }
+}

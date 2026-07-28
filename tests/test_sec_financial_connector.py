@@ -143,6 +143,10 @@ def test_connector_uses_fresh_cache_without_network(tmp_path: Path) -> None:
     assert connector.company_facts(1045810).fact_count == 2
 
 
+def test_default_financial_cache_ttl_is_ninety_days() -> None:
+    assert SECConnectorConfig(user_agent="AXIOM test@example.com").cache_ttl_seconds == 90 * 86_400
+
+
 def test_refresh_replaces_cache(tmp_path: Path) -> None:
     cache_path = tmp_path / "CIK0001045810.json"
     stale = {**SAMPLE_PAYLOAD, "entityName": "OLD"}

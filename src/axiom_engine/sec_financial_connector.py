@@ -40,7 +40,7 @@ class SECConnectorConfig:
     minimum_interval_seconds: float = 0.11
     backoff_base_seconds: float = 0.5
     cache_directory: Path | None = None
-    cache_ttl_seconds: float | None = 86_400.0
+    cache_ttl_seconds: float | None = 90 * 86_400.0
 
     def __post_init__(self) -> None:
         if not self.user_agent.strip():

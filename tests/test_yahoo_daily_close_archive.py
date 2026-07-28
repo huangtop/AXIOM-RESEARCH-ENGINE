@@ -57,7 +57,7 @@ def test_refresh_continues_after_symbol_failure_and_resumes(tmp_path):
     assert second.archive.history_rows == 2
 
 
-def test_recent_latest_cache_skips_before_provider_request(tmp_path):
+def test_same_run_date_cache_skips_before_provider_request(tmp_path):
     archive = YahooDailyCloseArchive(tmp_path / "history", retention_days=365)
     archive.write(
         [close("AAPL", date(2026, 7, 24), "212")],
@@ -72,7 +72,7 @@ def test_recent_latest_cache_skips_before_provider_request(tmp_path):
         ["AAPL"],
         fetcher=MustNotFetch(),
         archive=archive,
-        as_of=datetime(2026, 7, 28, tzinfo=timezone.utc),
+        as_of=datetime(2026, 7, 25, tzinfo=timezone.utc),
     )
     assert report.skipped_existing == 1
     assert report.succeeded == 0

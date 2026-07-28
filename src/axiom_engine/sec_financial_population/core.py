@@ -80,6 +80,7 @@ def build_sec_financial_population(
     limit: int | None = None,
     offset: int = 0,
     write_cache: bool = False,
+    cache_ttl_days: int = 90,
     now: datetime | None = None,
 ) -> dict[str, Any]:
     current = now or datetime.now(timezone.utc)
@@ -99,7 +100,8 @@ def build_sec_financial_population(
     for company in scope:
         cik = company["cik"]
         cache_path = cache_root / f"CIK{cik}.json"
-        if cache_path.is_file():
+        cache_is_fresh = cache_path.is_file() and current.timestamp() - cache_path.stat().st_mtime <= cache_ttl_days * 86_400
+        if cache_is_fresh:
             payload, mode = _load(cache_path), "cache"
         elif f"CIK{cik}.json" in bulk_names and bulk_archive is not None:
             payload = json.loads(bulk_archive.read(f"CIK{cik}.json"))
@@ -107,6 +109,8 @@ def build_sec_financial_population(
             if write_cache:
                 cache_path.parent.mkdir(parents=True, exist_ok=True)
                 cache_path.write_text(json.dumps(payload, ensure_ascii=False) + "\n", encoding="utf-8")
+        elif cache_path.is_file():
+            payload, mode = _load(cache_path), "stale_cache_fallback"
         else:
             diagnostics.append({**company, "reason_code": "SEC_COMPANYFACTS_NOT_AVAILABLE"})
             continue
@@ -137,7 +141,7 @@ def build_sec_financial_population(
     coverage_names = [*all_specs, "book_value_per_share"]
     return {
         "schema_version": "sec-financial-population.v031v.3", "version": "V031V.3", "generated_at": current.isoformat(),
-        "summary": {"valuation_scope_company_count": 5876, "cik_scope_company_count": source_scope_count, "batch_offset": offset, "companies_requested": len(scope), "companies_with_companyfacts": sum(source_modes.values()), "companies_with_financial_facts": companies_with_facts, "financial_fact_count": len(facts), "metric_company_coverage": {name: company_coverage[name] for name in coverage_names}, "source_mode_counts": dict(sorted(source_modes.items())), "missing_companyfacts_count": len(diagnostics)},
+        "summary": {"valuation_scope_company_count": 5876, "cik_scope_company_count": source_scope_count, "batch_offset": offset, "companies_requested": len(scope), "companies_with_companyfacts": sum(source_modes.values()), "companies_with_financial_facts": companies_with_facts, "financial_fact_count": len(facts), "metric_company_coverage": {name: company_coverage[name] for name in coverage_names}, "source_mode_counts": dict(sorted(source_modes.items())), "missing_companyfacts_count": len(diagnostics), "cache_ttl_days": cache_ttl_days},
         "financial_facts": facts, "diagnostics": diagnostics,
     }
 

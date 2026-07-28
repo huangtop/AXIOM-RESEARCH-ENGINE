@@ -296,12 +296,36 @@ def build_sec_business_evidence(
     }
 
 
-def write_sec_business_evidence(report: Mapping[str, Any], output_dir: Path) -> None:
+def write_sec_business_evidence(
+    report: Mapping[str, Any], output_dir: Path, *, merge_existing: bool = False
+) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
+    evidence = list(report["business_evidence"])
+    diagnostics = list(report["diagnostics"])
+    if merge_existing:
+        evidence_path = output_dir / "business_evidence.json"
+        diagnostics_path = output_dir / "diagnostics.json"
+        prior_evidence = _load(evidence_path) if evidence_path.is_file() else []
+        prior_diagnostics = _load(diagnostics_path) if diagnostics_path.is_file() else []
+        evidence = list({str(row["business_evidence_id"]): row for row in [*prior_evidence, *evidence]}.values())
+        available_companies = {str(row.get("company_id")) for row in evidence}
+        diagnostics = [
+            row for row in {str(row.get("filing_document_id") or row.get("company_id")): row for row in [*prior_diagnostics, *diagnostics]}.values()
+            if str(row.get("company_id")) not in available_companies
+        ]
+        evidence.sort(key=lambda row: str(row.get("company_id") or ""))
+        diagnostics.sort(key=lambda row: str(row.get("company_id") or ""))
+    summary = dict(report["summary"])
+    summary.update({
+        "business_evidence_available": len(evidence),
+        "business_evidence_unavailable": len(diagnostics),
+        "cumulative_company_count": len({str(row.get("company_id")) for row in evidence}),
+        "write_mode": "merge_existing" if merge_existing else "replace",
+    })
     for filename, payload in {
-        "manifest.json": {key: report[key] for key in ("schema_version", "version", "generated_at", "summary")},
-        "business_evidence.json": report["business_evidence"],
-        "diagnostics.json": report["diagnostics"],
+        "manifest.json": {"schema_version": report["schema_version"], "version": report["version"], "generated_at": report["generated_at"], "summary": summary},
+        "business_evidence.json": evidence,
+        "diagnostics.json": diagnostics,
     }.items():
         temporary = output_dir / f"{filename}.tmp"
         temporary.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

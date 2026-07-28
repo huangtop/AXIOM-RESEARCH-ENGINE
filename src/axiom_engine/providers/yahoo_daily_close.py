@@ -102,7 +102,7 @@ class YahooDailyCloseArchive:
             previous = latest.get(close.symbol)
             previous_date = str(previous.get("session_date")) if isinstance(previous, Mapping) else ""
             if not previous_date or close.session_date.isoformat() >= previous_date:
-                latest[close.symbol] = close.to_dict()
+                latest[close.symbol] = {**close.to_dict(), "fetched_at": now.isoformat()}
         self._atomic_json_write(
             self.latest_cache_path,
             {
@@ -153,6 +153,15 @@ class YahooDailyCloseArchive:
         normalized = symbol.strip().upper()
         item = self._read_latest_rows().get(normalized)
         return _daily_close_from_dict(normalized, item) if isinstance(item, Mapping) else None
+
+    def was_fetched_on(self, symbol: str, fetch_date: date) -> bool:
+        item = self._read_latest_rows().get(symbol.strip().upper())
+        if not isinstance(item, Mapping) or not item.get("fetched_at"):
+            return False
+        try:
+            return datetime.fromisoformat(str(item["fetched_at"])).date() == fetch_date
+        except ValueError:
+            return False
 
     def prune(self, *, reference_date: date | None = None) -> int:
         reference = reference_date or date.today()
@@ -228,9 +237,8 @@ def refresh_yahoo_daily_closes(
 
     for index, symbol in enumerate(normalized):
         requested += 1
-        cached = archive.latest(symbol) if skip_existing else None
         cutoff_date = (as_of or datetime.now(tz=timezone.utc)).date()
-        if cached and 0 <= (cutoff_date - cached.session_date).days <= 7:
+        if skip_existing and archive.was_fetched_on(symbol, cutoff_date):
             skipped += 1
             continue
         try:

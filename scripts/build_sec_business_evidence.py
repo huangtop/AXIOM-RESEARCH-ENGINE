@@ -21,6 +21,7 @@ def main() -> int:
     parser.add_argument("--allow-live", action="store_true")
     parser.add_argument("--write-cache", action="store_true")
     parser.add_argument("--write", action="store_true")
+    parser.add_argument("--merge-existing", action="store_true")
     parser.add_argument("--limit", type=int)
     parser.add_argument("--offset", type=int, default=0)
     parser.add_argument("--company-id", action="append", default=[])
@@ -38,7 +39,7 @@ def main() -> int:
         request_delay_seconds=args.delay,
     )
     if args.write:
-        write_sec_business_evidence(report, ROOT / args.output_dir)
+        write_sec_business_evidence(report, ROOT / args.output_dir, merge_existing=args.merge_existing)
     for key, value in report["summary"].items():
         print(f"{key}: {value}")
     return 0
