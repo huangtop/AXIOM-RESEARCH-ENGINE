@@ -11,6 +11,7 @@ def test_wordpress_adapter_uses_production_api_base_and_shortcode():
     assert "http://127.0.0.1:8765" in source
     assert "add_shortcode('axiom_valuation'" in source
     assert 'type="module"' in source
+    assert source.count("'30.14.1'") == 2
 
 
 def test_dashboard_uses_v03014_snapshot_contract():
@@ -70,3 +71,10 @@ def test_http_api_exposes_cors_for_browser_frontend():
     assert 'method == "OPTIONS"' in source
     assert "Access-Control-Allow-Origin" in source
     assert "AXIOM_CORS_ORIGIN" in source
+
+
+def test_mobile_css_constrains_dynamic_company_selector():
+    source = Path("frontend/axiom-valuation-dashboard.css").read_text()
+    assert ".axiom-toolbar select { max-width: 100%; min-width: 0; }" in source
+    assert ".axiom-toolbar > label," in source
+    assert "overflow-wrap: anywhere" in source
