@@ -1,0 +1,236 @@
+from __future__ import annotations
+
+import json
+from collections import Counter, defaultdict
+from datetime import datetime, timezone
+from decimal import Decimal, InvalidOperation
+from pathlib import Path
+from typing import Any, Mapping
+
+
+MODELS = ("dcf", "forward_pe", "peg", "forward_ps", "ev_ebitda", "forward_pb", "milestone")
+
+
+class FullMarketCoverageError(RuntimeError):
+    pass
+
+
+class FullMarketCoverageNotFound(FullMarketCoverageError):
+    pass
+
+
+def _load(path: Path, *, default: Any = None) -> Any:
+    if not path.is_file() and default is not None:
+        return default
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise FullMarketCoverageError(f"cannot read {path}: {exc}") from exc
+
+
+def _number(value: Any) -> Decimal | None:
+    if value in (None, ""):
+        return None
+    try:
+        result = Decimal(str(value))
+    except (InvalidOperation, ValueError):
+        return None
+    return result if result.is_finite() else None
+
+
+def _latest(rows: list[Mapping[str, Any]], metric_field: str) -> dict[str, Mapping[str, Any]]:
+    result: dict[str, Mapping[str, Any]] = {}
+    for row in rows:
+        metric = str(row.get(metric_field) or "").strip().lower()
+        if not metric:
+            continue
+        current = result.get(metric)
+        key = str(row.get("period_end") or row.get("as_of_date") or row.get("observed_at") or "")
+        old = str((current or {}).get("period_end") or (current or {}).get("as_of_date") or (current or {}).get("observed_at") or "")
+        if key >= old:
+            result[metric] = row
+    return result
+
+
+def _metric(row: Mapping[str, Any] | None, *, source_id_field: str) -> dict[str, Any]:
+    if not row:
+        return {"status": "unavailable", "value": None, "reason_code": "canonical_metric_not_populated", "source_record_ids": []}
+    return {
+        "status": "ready",
+        "value": str(row.get("value")),
+        "unit": row.get("unit"),
+        "currency": row.get("currency"),
+        "as_of_date": row.get("period_end") or row.get("as_of_date"),
+        "reason_code": None,
+        "source_record_ids": [row.get(source_id_field)] if row.get(source_id_field) else [],
+    }
+
+
+def _derived(value: Decimal | None, formula: str, source_ids: list[str], reason: str) -> dict[str, Any]:
+    return {
+        "status": "ready" if value is not None else "unavailable",
+        "value": format(value, "f") if value is not None else None,
+        "reason_code": None if value is not None else reason,
+        "formula_version": formula,
+        "source_record_ids": source_ids,
+    }
+
+
+def _check(requirements: list[tuple[bool, str, str]]) -> dict[str, Any]:
+    missing = [{"code": code, "input": name} for ok, code, name in requirements if not ok]
+    return {
+        "status": "eligible" if not missing else "unavailable",
+        "reason_code": None if not missing else missing[0]["code"],
+        "missing_inputs": missing,
+        "fair_value": None,
+    }
+
+
+def _eligibility(fin: Mapping[str, Any], est: Mapping[str, Any], market: Mapping[str, Any]) -> dict[str, Any]:
+    def positive(layer: Mapping[str, Any], name: str) -> bool:
+        value = _number((layer.get(name) or {}).get("value"))
+        return value is not None and value > 0
+
+    price = _number(market.get("current_price"))
+    has_price = price is not None and price > 0
+    has_shares = positive(fin, "diluted_shares_outstanding")
+    return {
+        "dcf": _check([(has_price, "MISSING_MARKET_PRICE", "current_price"), (positive(fin, "free_cash_flow"), "MISSING_POSITIVE_FCF", "free_cash_flow"), (has_shares, "MISSING_POSITIVE_SHARES", "diluted_shares_outstanding")]),
+        "forward_pe": _check([(has_price, "MISSING_MARKET_PRICE", "current_price"), (positive(est, "forward_eps"), "MISSING_POSITIVE_FORWARD_EPS", "forward_eps")]),
+        "peg": _check([(has_price, "MISSING_MARKET_PRICE", "current_price"), (positive(est, "forward_eps"), "MISSING_POSITIVE_FORWARD_EPS", "forward_eps"), (positive(est, "forward_eps_growth"), "MISSING_POSITIVE_FORWARD_EPS_GROWTH", "forward_eps_growth")]),
+        "forward_ps": _check([(has_price, "MISSING_MARKET_PRICE", "current_price"), (has_shares, "MISSING_POSITIVE_SHARES", "diluted_shares_outstanding"), (positive(est, "forward_revenue"), "MISSING_POSITIVE_FORWARD_REVENUE", "forward_revenue")]),
+        "ev_ebitda": _check([(has_price, "MISSING_MARKET_PRICE", "current_price"), (positive(fin, "ebitda") or positive(est, "forward_ebitda"), "MISSING_POSITIVE_EBITDA", "ebitda")]),
+        "forward_pb": _check([(has_price, "MISSING_MARKET_PRICE", "current_price"), (positive(fin, "book_value_per_share"), "MISSING_POSITIVE_BOOK_VALUE_PER_SHARE", "book_value_per_share")]),
+        "milestone": _check([(positive(est, "milestone_probability"), "MISSING_MILESTONE_PROBABILITY", "milestone_probability"), (positive(est, "milestone_value"), "MISSING_MILESTONE_VALUE", "milestone_value")]),
+    }
+
+
+def build_full_market_coverage(
+    root: Path,
+    *,
+    companies_path: str = "data/universe/companies.json",
+    securities_path: str = "data/universe/securities.json",
+    financial_path: str = "data/financial_data/financial_facts.json",
+    market_path: str = "data/generated/market/previous_close_cache.json",
+    estimate_path: str = "data/estimate_data/consensus_estimates.json",
+) -> dict[str, Any]:
+    companies = _load(root / companies_path)
+    securities = _load(root / securities_path)
+    financials = _load(root / financial_path, default=[])
+    market_payload = _load(root / market_path, default={"symbols": {}})
+    estimates = _load(root / estimate_path, default=[])
+    if not all(isinstance(rows, list) for rows in (companies, securities, financials, estimates)):
+        raise FullMarketCoverageError("population and canonical layers must contain arrays")
+
+    securities_by_company: dict[str, list[Mapping[str, Any]]] = defaultdict(list)
+    for row in securities:
+        if row.get("status") in (None, "active"):
+            securities_by_company[str(row.get("company_id") or "")].append(row)
+    financial_by_company: dict[str, list[Mapping[str, Any]]] = defaultdict(list)
+    for row in financials:
+        financial_by_company[str(row.get("company_id") or "")].append(row)
+    estimates_by_company: dict[str, list[Mapping[str, Any]]] = defaultdict(list)
+    for row in estimates:
+        estimates_by_company[str(row.get("company_id") or "")].append(row)
+    market_symbols = market_payload.get("symbols") if isinstance(market_payload, Mapping) else {}
+    market_symbols = market_symbols if isinstance(market_symbols, Mapping) else {}
+
+    cards: list[dict[str, Any]] = []
+    ticker_index: dict[str, int] = {}
+    model_counts: Counter[str] = Counter()
+    status_counts: Counter[str] = Counter()
+    for company in sorted(companies, key=lambda row: str(row.get("company_id") or "")):
+        company_id = str(company.get("company_id") or "")
+        company_securities = securities_by_company.get(company_id, [])
+        primary = next((row for row in company_securities if row.get("security_id") == company.get("primary_security_id")), None)
+        primary = primary or next((row for row in company_securities if row.get("primary_listing") is True), None)
+        primary = primary or (company_securities[0] if company_securities else {})
+        ticker = str(primary.get("ticker") or "").upper()
+
+        latest_fin = _latest(financial_by_company.get(company_id, []), "metric")
+        fin = {name: _metric(latest_fin.get(name), source_id_field="financial_fact_id") for name in (
+            "revenue", "net_income", "operating_cash_flow", "capital_expenditures", "cash_and_cash_equivalents", "total_debt", "diluted_shares_outstanding", "ebitda", "book_value_per_share",
+        )}
+        net_income = _number((latest_fin.get("net_income") or {}).get("value"))
+        shares = _number((latest_fin.get("diluted_shares_outstanding") or {}).get("value"))
+        eps_ids = [str((latest_fin.get(name) or {}).get("financial_fact_id")) for name in ("net_income", "diluted_shares_outstanding") if (latest_fin.get(name) or {}).get("financial_fact_id")]
+        fin["trailing_eps"] = _derived(net_income / shares if net_income is not None and shares and shares > 0 else None, "trailing_eps.v031.0", eps_ids, "EPS_INPUTS_UNAVAILABLE")
+        ocf = latest_fin.get("operating_cash_flow") or {}
+        capex = latest_fin.get("capital_expenditures") or {}
+        same_period = bool(ocf and capex and ocf.get("fiscal_year") == capex.get("fiscal_year") and ocf.get("fiscal_period") == capex.get("fiscal_period"))
+        ocf_value, capex_value = _number(ocf.get("value")), _number(capex.get("value"))
+        fcf_ids = [str(row.get("financial_fact_id")) for row in (ocf, capex) if row.get("financial_fact_id")]
+        fin["free_cash_flow"] = _derived(ocf_value - abs(capex_value) if same_period and ocf_value is not None and capex_value is not None else None, "free_cash_flow.v031.0", fcf_ids, "FCF_PERIOD_MISMATCH" if ocf and capex else "FCF_INPUTS_UNAVAILABLE")
+
+        latest_est = _latest(estimates_by_company.get(company_id, []), "metric")
+        est = {name: _metric(latest_est.get(name), source_id_field="estimate_id") for name in (
+            "forward_eps", "forward_eps_growth", "forward_revenue", "forward_ebitda", "milestone_probability", "milestone_value",
+        )}
+        market_row = market_symbols.get(ticker) if ticker else None
+        market = {
+            "status": "ready" if isinstance(market_row, Mapping) and _number(market_row.get("close")) is not None else "unavailable",
+            "current_price": str(market_row.get("close")) if isinstance(market_row, Mapping) and market_row.get("close") is not None else None,
+            "currency": market_row.get("currency") if isinstance(market_row, Mapping) else primary.get("currency"),
+            "as_of_date": market_row.get("session_date") if isinstance(market_row, Mapping) else None,
+            "reason_code": None if isinstance(market_row, Mapping) else "CANONICAL_MARKET_NOT_POPULATED",
+        }
+        models = _eligibility(fin, est, market)
+        eligible_count = sum(row["status"] == "eligible" for row in models.values())
+        model_counts.update(name for name, row in models.items() if row["status"] == "eligible")
+        status = "ready" if eligible_count >= 2 else "partial" if eligible_count == 1 else "unavailable"
+        status_counts[status] += 1
+        card = {
+            "schema_version": "full-market-valuation-card.v031.0",
+            "company": {"company_id": company_id, "display_name": company.get("display_name"), "legal_name": company.get("legal_name"), "country": company.get("country"), "business_summary": None, "business_summary_reason_code": "CANONICAL_BUSINESS_SUMMARY_NOT_POPULATED"},
+            "primary_security": {"security_id": primary.get("security_id"), "ticker": ticker or None, "exchange": primary.get("exchange"), "currency": primary.get("currency")},
+            "securities": [{"security_id": row.get("security_id"), "ticker": row.get("ticker"), "exchange": row.get("exchange"), "primary_listing": row.get("primary_listing")} for row in company_securities],
+            "status": status,
+            "market": market,
+            "financials": fin,
+            "estimates": est,
+            "valuation": {"status": status, "eligible_model_count": eligible_count, "total_model_count": 7, "fair_value": None, "reason_code": "VALUATION_ENGINE_NOT_EXECUTED" if eligible_count else "NO_ELIGIBLE_MODELS", "models": models},
+        }
+        position = len(cards)
+        cards.append(card)
+        for row in company_securities:
+            symbol = str(row.get("ticker") or "").upper()
+            if symbol:
+                ticker_index.setdefault(symbol, position)
+
+    return {
+        "schema_version": "full-market-coverage.v031.0",
+        "version": "V031.0",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "summary": {"company_count": len(cards), "security_count": len(securities), "status_counts": {name: status_counts[name] for name in ("ready", "partial", "unavailable")}, "model_eligible_counts": {name: model_counts[name] for name in MODELS}, "market_ready_company_count": sum(card["market"]["status"] == "ready" for card in cards), "financial_present_company_count": sum(bool(financial_by_company.get(card["company"]["company_id"])) for card in cards), "estimate_present_company_count": sum(bool(estimates_by_company.get(card["company"]["company_id"])) for card in cards)},
+        "cards": cards,
+        "indexes": {"ticker_to_position": ticker_index, "company_id_to_position": {card["company"]["company_id"]: index for index, card in enumerate(cards)}},
+    }
+
+
+def write_full_market_coverage(report: Mapping[str, Any], output: Path) -> None:
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(report, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+
+
+class FullMarketCoverageService:
+    def __init__(self, *, root: Path | None = None, snapshot_path: Path | None = None) -> None:
+        self.root = root or Path.cwd()
+        self.snapshot_path = snapshot_path or self.root / "data/generated/full_market_coverage/full_market_coverage.json"
+        self._payload: Mapping[str, Any] | None = None
+
+    def _get_payload(self) -> Mapping[str, Any]:
+        if self._payload is None:
+            self._payload = _load(self.snapshot_path) if self.snapshot_path.is_file() else build_full_market_coverage(self.root)
+        return self._payload
+
+    def list(self) -> dict[str, Any]:
+        payload = self._get_payload()
+        return {"schema_version": payload["schema_version"], "version": payload["version"], "summary": payload["summary"], "companies": [{"company_id": card["company"]["company_id"], "ticker": card["primary_security"]["ticker"], "display_name": card["company"]["display_name"], "status": card["status"]} for card in payload["cards"]]}
+
+    def get(self, ticker: str) -> Mapping[str, Any]:
+        symbol = str(ticker or "").strip().upper()
+        payload = self._get_payload()
+        position = payload.get("indexes", {}).get("ticker_to_position", {}).get(symbol)
+        if position is None:
+            raise FullMarketCoverageNotFound(f"ticker not found in full-market population: {symbol}")
+        return payload["cards"][position]

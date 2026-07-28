@@ -12,6 +12,11 @@ from axiom_engine.fair_value_snapshot import (
     FairValueSnapshotNotFound,
     FairValueSnapshotService,
 )
+from axiom_engine.full_market_coverage import (
+    FullMarketCoverageError,
+    FullMarketCoverageNotFound,
+    FullMarketCoverageService,
+)
 from axiom_engine.previous_close import PreviousCloseError, YahooPreviousCloseAdapter
 from axiom_engine.valuation_api import (
     BackendValuationAPIService,
@@ -28,6 +33,7 @@ class ValuationWSGIApp:
         production_service: BackendValuationAPIService | None = None,
         legacy_service: LegacyValuationAPIService | None = None,
         fair_value_service: FairValueSnapshotService | None = None,
+        full_market_service: FullMarketCoverageService | None = None,
     ) -> None:
         cached_close_provider = JsonCachedPreviousCloseProvider(PREVIOUS_CLOSE_CACHE)
         yahoo_close_provider = YahooPreviousCloseAdapter()
@@ -37,13 +43,20 @@ class ValuationWSGIApp:
         # Debug-only parity endpoint may still fetch when explicitly requested.
         self.legacy_service = legacy_service or LegacyValuationAPIService(yahoo_close_provider)
         self.fair_value_service = fair_value_service or FairValueSnapshotService()
+        self.full_market_service = full_market_service or FullMarketCoverageService()
 
     def __call__(self, environ: dict[str, Any], start_response: StartResponse) -> Iterable[bytes]:
         method = str(environ.get("REQUEST_METHOD", "GET")).upper()
         path = str(environ.get("PATH_INFO", "/"))
         if method == "OPTIONS" and (
-            path in {"/v1/valuations", "/v1/debug/valuations/legacy-parity", "/v1/fair-values"}
+            path in {
+                "/v1/valuations",
+                "/v1/debug/valuations/legacy-parity",
+                "/v1/fair-values",
+                "/v1/companies",
+            }
             or path.startswith("/v1/fair-values/")
+            or (path.startswith("/v1/companies/") and path.endswith("/valuation-card"))
         ):
             return self._respond(start_response, HTTPStatus.NO_CONTENT, {})
         if method == "GET" and path == "/health":
@@ -59,6 +72,19 @@ class ValuationWSGIApp:
                     HTTPStatus.SERVICE_UNAVAILABLE,
                     {"error": "snapshot_unavailable", "message": str(exc)},
                 )
+        if method == "GET" and path == "/v1/companies":
+            try:
+                return self._respond(start_response, HTTPStatus.OK, self.full_market_service.list())
+            except FullMarketCoverageError as exc:
+                return self._respond(start_response, HTTPStatus.SERVICE_UNAVAILABLE, {"error": "full_market_coverage_unavailable", "message": str(exc)})
+        if method == "GET" and path.startswith("/v1/companies/") and path.endswith("/valuation-card"):
+            symbol = path.removeprefix("/v1/companies/").removesuffix("/valuation-card").strip("/")
+            try:
+                return self._respond(start_response, HTTPStatus.OK, self.full_market_service.get(symbol))
+            except FullMarketCoverageNotFound as exc:
+                return self._respond(start_response, HTTPStatus.NOT_FOUND, {"error": "company_not_found", "message": str(exc)})
+            except FullMarketCoverageError as exc:
+                return self._respond(start_response, HTTPStatus.SERVICE_UNAVAILABLE, {"error": "full_market_coverage_unavailable", "message": str(exc)})
         if method == "GET" and path.startswith("/v1/fair-values/"):
             symbol = path.removeprefix("/v1/fair-values/")
             try:
