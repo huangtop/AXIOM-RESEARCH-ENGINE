@@ -72,3 +72,17 @@ def test_retries_transient_rate_limit_with_exponential_backoff():
     assert close.close == Decimal("205.47")
     assert len(calls) == 3
     assert sleeps == [0.25, 0.5]
+
+
+def test_maps_us_class_share_dot_to_yahoo_hyphen_without_changing_canonical_symbol():
+    observed = {}
+
+    def opener(request, timeout):
+        observed["url"] = request.full_url
+        return Response(json.dumps(payload()).encode())
+
+    close = YahooPreviousCloseAdapter(opener=opener).previous_close(
+        "AGM.A", as_of=datetime.fromtimestamp(1784700000, tz=timezone.utc)
+    )
+    assert "/AGM-A?" in observed["url"]
+    assert close.symbol == "AGM.A"

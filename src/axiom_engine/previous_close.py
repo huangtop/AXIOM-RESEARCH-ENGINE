@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import time as time_module
 import urllib.error
 import urllib.parse
@@ -81,7 +82,8 @@ class YahooPreviousCloseAdapter:
         normalized = symbol.strip().upper()
         if not normalized:
             raise ValueError("symbol cannot be empty")
-        encoded = urllib.parse.quote(normalized, safe="")
+        provider_symbol = normalized.replace(".", "-") if re.search(r"\.[A-Z]$", normalized) else normalized
+        encoded = urllib.parse.quote(provider_symbol, safe="")
         request = urllib.request.Request(
             YAHOO_CHART_URL.format(symbol=encoded),
             headers={"User-Agent": self._user_agent, "Accept": "application/json"},

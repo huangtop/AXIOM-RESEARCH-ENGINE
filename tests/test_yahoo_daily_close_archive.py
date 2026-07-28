@@ -55,3 +55,38 @@ def test_refresh_continues_after_symbol_failure_and_resumes(tmp_path):
     assert second.succeeded == 0
     assert second.skipped_existing == 2
     assert second.archive.history_rows == 2
+
+
+def test_recent_latest_cache_skips_before_provider_request(tmp_path):
+    archive = YahooDailyCloseArchive(tmp_path / "history", retention_days=365)
+    archive.write(
+        [close("AAPL", date(2026, 7, 24), "212")],
+        generated_at=datetime(2026, 7, 25, tzinfo=timezone.utc),
+    )
+
+    class MustNotFetch:
+        def previous_close(self, symbol, *, as_of=None):
+            raise AssertionError(symbol)
+
+    report = refresh_yahoo_daily_closes(
+        ["AAPL"],
+        fetcher=MustNotFetch(),
+        archive=archive,
+        as_of=datetime(2026, 7, 28, tzinfo=timezone.utc),
+    )
+    assert report.skipped_existing == 1
+    assert report.succeeded == 0
+
+
+def test_refresh_checkpoints_successes_before_batch_completion(tmp_path):
+    archive = YahooDailyCloseArchive(tmp_path / "history", retention_days=365)
+    report = refresh_yahoo_daily_closes(
+        ["A", "B", "C"],
+        fetcher=FakeFetcher(),
+        archive=archive,
+        as_of=datetime(2026, 7, 25, tzinfo=timezone.utc),
+        checkpoint_size=2,
+    )
+    assert report.succeeded == 3
+    assert archive.latest("A") is not None
+    assert archive.latest("C") is not None

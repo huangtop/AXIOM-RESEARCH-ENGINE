@@ -62,3 +62,7 @@ Exchange-listed instruments remain in the Registry but do not automatically crea
 ## V031V.3 financial evidence boundary
 
 Full-scope financial population consumes official SEC Companyfacts one CIK at a time from the nightly bulk archive. Derived book value per share requires same-period equity and instant shares with traceable source facts. Missing EBITDA remains unavailable; operating income or EBIT cannot be silently substituted. The existing smaller financial repository is not overwritten during population and cutover is validated through full-market eligibility counts.
+
+## V031V.4 market population boundary
+
+Completed-session closes are populated only for normalized valuation securities. Provider-specific symbol forms are reversible adapter concerns and never overwrite Canonical tickers. Recent cache rows are skipped before network access, successful rows are checkpointed in bounded batches, and provider failures remain diagnostics rather than synthetic prices.

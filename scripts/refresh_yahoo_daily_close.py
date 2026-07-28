@@ -4,12 +4,20 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable, Mapping
 
-from axiom_engine.previous_close import YahooPreviousCloseAdapter
-from axiom_engine.providers.yahoo_daily_close import YahooDailyCloseArchive, refresh_yahoo_daily_closes
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT / "src") not in sys.path:
+    sys.path.insert(0, str(ROOT / "src"))
+
+from axiom_engine.previous_close import YahooPreviousCloseAdapter  # noqa: E402
+from axiom_engine.providers.yahoo_daily_close import (  # noqa: E402
+    YahooDailyCloseArchive,
+    refresh_yahoo_daily_closes,
+)
 
 
 def main() -> int:
@@ -25,6 +33,7 @@ def main() -> int:
     parser.add_argument("--delay", type=float, default=0.25, help="Delay between symbols in seconds.")
     parser.add_argument("--timeout", type=float, default=15.0)
     parser.add_argument("--force", action="store_true", help="Refetch/write rows already present for the session.")
+    parser.add_argument("--checkpoint-size", type=int, default=25)
     parser.add_argument("--report", type=Path, default=Path("data/generated/provider_cache/yahoo/daily_close_refresh_report.json"))
     args = parser.parse_args()
 
@@ -56,6 +65,7 @@ def main() -> int:
         as_of=datetime.now(tz=timezone.utc),
         request_delay_seconds=args.delay,
         skip_existing=not args.force,
+        checkpoint_size=args.checkpoint_size,
     )
     args.report.parent.mkdir(parents=True, exist_ok=True)
     args.report.write_text(json.dumps(report.to_dict(), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

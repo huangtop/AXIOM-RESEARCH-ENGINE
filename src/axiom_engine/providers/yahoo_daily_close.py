@@ -38,7 +38,7 @@ class YahooDailyCloseRefreshReport:
 
     @property
     def success_rate(self) -> float:
-        return 1.0 if self.requested == 0 else self.succeeded / self.requested
+        return 1.0 if self.requested == 0 else (self.succeeded + self.skipped_existing) / self.requested
 
     def to_dict(self) -> dict[str, object]:
         payload = asdict(self)
@@ -149,6 +149,11 @@ class YahooDailyCloseArchive:
     def has(self, symbol: str, session_date: date) -> bool:
         return symbol.strip().upper() in self._read_session(self._session_path(session_date))
 
+    def latest(self, symbol: str) -> DailyClose | None:
+        normalized = symbol.strip().upper()
+        item = self._read_latest_rows().get(normalized)
+        return _daily_close_from_dict(normalized, item) if isinstance(item, Mapping) else None
+
     def prune(self, *, reference_date: date | None = None) -> int:
         reference = reference_date or date.today()
         cutoff = reference - timedelta(days=self.retention_days - 1)
@@ -206,18 +211,28 @@ def refresh_yahoo_daily_closes(
     as_of: datetime | None = None,
     request_delay_seconds: float = 0.0,
     skip_existing: bool = True,
+    checkpoint_size: int = 25,
     sleep: Callable[[float], None] = time.sleep,
 ) -> YahooDailyCloseRefreshReport:
     if request_delay_seconds < 0:
         raise ValueError("request_delay_seconds cannot be negative")
+    if checkpoint_size < 1:
+        raise ValueError("checkpoint_size must be positive")
     normalized = _normalize_symbols(symbols)
     successes: list[DailyClose] = []
     failures: dict[str, str] = {}
     skipped = 0
     requested = 0
+    succeeded = 0
+    write_report: ArchiveWriteReport | None = None
 
     for index, symbol in enumerate(normalized):
         requested += 1
+        cached = archive.latest(symbol) if skip_existing else None
+        cutoff_date = (as_of or datetime.now(tz=timezone.utc)).date()
+        if cached and 0 <= (cutoff_date - cached.session_date).days <= 7:
+            skipped += 1
+            continue
         try:
             close = fetcher.previous_close(symbol, as_of=as_of)
             if skip_existing and archive.has(symbol, close.session_date):
@@ -226,13 +241,20 @@ def refresh_yahoo_daily_closes(
                 successes.append(close)
         except (PreviousCloseError, ValueError, OSError) as exc:
             failures[symbol] = f"{type(exc).__name__}: {exc}"
+        if (index + 1) % checkpoint_size == 0:
+            write_report = archive.write(
+                successes, generated_at=as_of or datetime.now(tz=timezone.utc)
+            )
+            succeeded += len(successes)
+            successes.clear()
         if request_delay_seconds and index < len(normalized) - 1:
             sleep(request_delay_seconds)
 
     write_report = archive.write(successes, generated_at=as_of or datetime.now(tz=timezone.utc))
+    succeeded += len(successes)
     return YahooDailyCloseRefreshReport(
         requested=requested,
-        succeeded=len(successes),
+        succeeded=succeeded,
         failed=len(failures),
         skipped_existing=skipped,
         failures=failures,
