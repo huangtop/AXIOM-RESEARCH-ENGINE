@@ -50,3 +50,7 @@ SEC Submissions metadata is ingested cache-first from the nightly bulk archive, 
 ## V031.2B filing evidence boundary
 
 Annual filing extraction preserves the attributable Business section, document and text hashes, filing identity, source URL, retrieval time, and section locator. It does not summarize or classify the company. Extraction failures remain diagnostics and cannot be replaced with company-name or ticker inference.
+
+## Layer 1 completion order
+
+Research classification does not gate full-market valuation. Market, financial, and estimate population must first raise the seven-model eligibility and calculation coverage for every Registry company. Theme, sector, news, ETF, and causal-chain processing remain downstream Layer 2 and Layer 3 work. Security instruments misidentified as companies or common stock must be diagnosed and normalized before their valuation inputs are consumed.

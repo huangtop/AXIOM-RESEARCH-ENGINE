@@ -16,6 +16,9 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Refresh Yahoo completed daily closes and retain one year of history.")
     parser.add_argument("--symbols", nargs="*", default=[])
     parser.add_argument("--symbols-file", type=Path)
+    parser.add_argument("--universe-root", type=Path, help="Load one primary active security per company.")
+    parser.add_argument("--offset", type=int, default=0)
+    parser.add_argument("--limit", type=int)
     parser.add_argument("--archive-root", type=Path, default=Path("data/generated/provider_cache/yahoo/daily_close"))
     parser.add_argument("--latest-cache", type=Path, default=Path("data/generated/market/previous_close_cache.json"))
     parser.add_argument("--retention-days", type=int, default=365)
@@ -28,9 +31,18 @@ def main() -> int:
     symbols = list(args.symbols)
     if args.symbols_file:
         symbols.extend(load_symbols(args.symbols_file))
+    if args.universe_root:
+        symbols.extend(load_primary_symbols(args.universe_root))
     symbols = sorted({str(symbol).strip().upper() for symbol in symbols if str(symbol).strip()})
     if not symbols:
-        parser.error("provide --symbols or --symbols-file")
+        parser.error("provide --symbols, --symbols-file, or --universe-root")
+    if args.offset < 0:
+        parser.error("--offset cannot be negative")
+    symbols = symbols[args.offset:]
+    if args.limit is not None:
+        if args.limit < 1:
+            parser.error("--limit must be positive")
+        symbols = symbols[: args.limit]
 
     archive = YahooDailyCloseArchive(
         args.archive_root,
@@ -72,6 +84,32 @@ def load_symbols(path: Path) -> Iterable[str]:
         return [_symbol_from_mapping(row) for row in rows if _symbol_from_mapping(row)]
     payload = json.loads(path.read_text(encoding="utf-8-sig"))
     return _symbols_from_json(payload)
+
+
+def load_primary_symbols(universe_root: Path) -> list[str]:
+    companies = json.loads((universe_root / "companies.json").read_text(encoding="utf-8"))
+    securities = json.loads((universe_root / "securities.json").read_text(encoding="utf-8"))
+    if not isinstance(companies, list) or not isinstance(securities, list):
+        raise ValueError("universe companies and securities must be arrays")
+    by_id = {str(row.get("security_id")): row for row in securities if isinstance(row, Mapping)}
+    by_company: dict[str, list[Mapping[str, object]]] = {}
+    for row in securities:
+        if isinstance(row, Mapping) and row.get("status") in (None, "active"):
+            by_company.setdefault(str(row.get("company_id") or ""), []).append(row)
+    output: list[str] = []
+    for company in companies:
+        if not isinstance(company, Mapping):
+            continue
+        primary = by_id.get(str(company.get("primary_security_id") or ""))
+        if not primary:
+            primary = next(
+                (row for row in by_company.get(str(company.get("company_id") or ""), []) if row.get("primary_listing") is True),
+                None,
+            )
+        symbol = str((primary or {}).get("ticker") or "").strip().upper()
+        if symbol:
+            output.append(symbol)
+    return sorted(set(output))
 
 
 def _symbols_from_json(payload: object) -> list[str]:

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import time as time_module
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -61,12 +62,20 @@ class YahooPreviousCloseAdapter:
         opener: Callable[..., object] | None = None,
         timeout_seconds: float = 15.0,
         user_agent: str = "AXIOM-Research-Engine/0.7",
+        max_attempts: int = 3,
+        backoff_seconds: float = 0.5,
+        sleep: Callable[[float], None] = time_module.sleep,
     ) -> None:
         if timeout_seconds <= 0:
             raise ValueError("timeout_seconds must be positive")
+        if max_attempts < 1 or backoff_seconds < 0:
+            raise ValueError("retry configuration is invalid")
         self._opener = opener or urllib.request.urlopen
         self._timeout_seconds = timeout_seconds
         self._user_agent = user_agent
+        self._max_attempts = max_attempts
+        self._backoff_seconds = backoff_seconds
+        self._sleep = sleep
 
     def previous_close(self, symbol: str, *, as_of: datetime | None = None) -> DailyClose:
         normalized = symbol.strip().upper()
@@ -77,13 +86,26 @@ class YahooPreviousCloseAdapter:
             YAHOO_CHART_URL.format(symbol=encoded),
             headers={"User-Agent": self._user_agent, "Accept": "application/json"},
         )
-        try:
-            with self._opener(request, timeout=self._timeout_seconds) as response:
-                payload = json.loads(response.read().decode("utf-8-sig"))
-        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as exc:
-            raise PreviousCloseError("Yahoo history request failed") from exc
-        except (UnicodeDecodeError, json.JSONDecodeError) as exc:
-            raise PreviousCloseResponseError("Yahoo history response is not valid JSON") from exc
+        payload = None
+        last_error: BaseException | None = None
+        for attempt in range(1, self._max_attempts + 1):
+            try:
+                with self._opener(request, timeout=self._timeout_seconds) as response:
+                    payload = json.loads(response.read().decode("utf-8-sig"))
+                break
+            except urllib.error.HTTPError as exc:
+                last_error = exc
+                if exc.code not in {429, 500, 502, 503, 504}:
+                    raise PreviousCloseError(f"Yahoo history request failed: HTTP {exc.code}") from exc
+            except (urllib.error.URLError, TimeoutError, OSError) as exc:
+                last_error = exc
+            except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+                raise PreviousCloseResponseError("Yahoo history response is not valid JSON") from exc
+            if attempt < self._max_attempts and self._backoff_seconds:
+                self._sleep(self._backoff_seconds * (2 ** (attempt - 1)))
+        if payload is None:
+            detail = f"HTTP {last_error.code}" if isinstance(last_error, urllib.error.HTTPError) else type(last_error).__name__
+            raise PreviousCloseError(f"Yahoo history request failed after {self._max_attempts} attempts: {detail}") from last_error
         if not isinstance(payload, Mapping):
             raise PreviousCloseResponseError("Yahoo history response must be an object")
         return _parse_yahoo_close(payload, normalized, as_of=as_of)

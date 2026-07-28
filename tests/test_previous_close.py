@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import io
 import json
+import urllib.error
 from datetime import datetime, timezone
 from decimal import Decimal
 
@@ -50,3 +51,24 @@ def test_rejects_naive_cutoff():
 def test_rejects_missing_history():
     with pytest.raises(PreviousCloseResponseError):
         YahooPreviousCloseAdapter(opener=opener_for({"chart": {"error": None, "result": []}})).previous_close("NVDA")
+
+
+def test_retries_transient_rate_limit_with_exponential_backoff():
+    calls = []
+    sleeps = []
+
+    def opener(request, timeout):
+        calls.append(request)
+        if len(calls) < 3:
+            raise urllib.error.HTTPError(request.full_url, 429, "rate limited", {}, None)
+        return Response(json.dumps(payload()).encode())
+
+    close = YahooPreviousCloseAdapter(
+        opener=opener,
+        max_attempts=3,
+        backoff_seconds=0.25,
+        sleep=sleeps.append,
+    ).previous_close("NVDA", as_of=datetime.fromtimestamp(1784700000, tz=timezone.utc))
+    assert close.close == Decimal("205.47")
+    assert len(calls) == 3
+    assert sleeps == [0.25, 0.5]
