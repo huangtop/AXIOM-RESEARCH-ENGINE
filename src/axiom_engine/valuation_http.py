@@ -19,6 +19,11 @@ from axiom_engine.full_market_coverage import (
 )
 from axiom_engine.etf_exposure_api import ETFExposureAPIError, ETFExposureNotFound, ETFExposureService
 from axiom_engine.etf_change_api import ETFChangeAPIError, ETFChangeNotFound, ETFChangeService
+from axiom_engine.etf_company_card_api import (
+    ETFCompanyCardAPIError,
+    ETFCompanyCardNotFound,
+    ETFCompanyCardService,
+)
 from axiom_engine.previous_close import PreviousCloseError, YahooPreviousCloseAdapter
 from axiom_engine.theme_sector_inference import (
     ThemeSectorInferenceError,
@@ -44,6 +49,7 @@ class ValuationWSGIApp:
         theme_sector_service: ThemeSectorInferenceService | None = None,
         etf_exposure_service: ETFExposureService | None = None,
         etf_change_service: ETFChangeService | None = None,
+        etf_company_card_service: ETFCompanyCardService | None = None,
     ) -> None:
         cached_close_provider = JsonCachedPreviousCloseProvider(PREVIOUS_CLOSE_CACHE)
         yahoo_close_provider = YahooPreviousCloseAdapter()
@@ -57,6 +63,7 @@ class ValuationWSGIApp:
         self.theme_sector_service = theme_sector_service or ThemeSectorInferenceService()
         self.etf_exposure_service = etf_exposure_service or ETFExposureService()
         self.etf_change_service = etf_change_service or ETFChangeService()
+        self.etf_company_card_service = etf_company_card_service or ETFCompanyCardService()
 
     def __call__(self, environ: dict[str, Any], start_response: StartResponse) -> Iterable[bytes]:
         method = str(environ.get("REQUEST_METHOD", "GET")).upper()
@@ -75,6 +82,7 @@ class ValuationWSGIApp:
             or (path.startswith("/v1/companies/") and path.endswith("/etf-exposure"))
             or (path.startswith("/v1/companies/") and path.endswith("/etf-events"))
             or (path.startswith("/v1/etfs/") and path.endswith("/changes"))
+            or (path.startswith("/v1/etfs/") and path.endswith("/company-cards"))
         ):
             return self._respond(start_response, HTTPStatus.NO_CONTENT, {})
         if method == "GET" and path == "/health":
@@ -156,6 +164,14 @@ class ValuationWSGIApp:
                 return self._respond(start_response, HTTPStatus.NOT_FOUND, {"error": "etf_not_found", "message": str(exc)})
             except ETFChangeAPIError as exc:
                 return self._respond(start_response, HTTPStatus.SERVICE_UNAVAILABLE, {"error": "etf_events_unavailable", "message": str(exc)})
+        if method == "GET" and path.startswith("/v1/etfs/") and path.endswith("/company-cards"):
+            symbol = path.removeprefix("/v1/etfs/").removesuffix("/company-cards").strip("/")
+            try:
+                return self._respond(start_response, HTTPStatus.OK, self.etf_company_card_service.get(symbol))
+            except ETFCompanyCardNotFound as exc:
+                return self._respond(start_response, HTTPStatus.NOT_FOUND, {"error": "etf_not_found", "message": str(exc)})
+            except ETFCompanyCardAPIError as exc:
+                return self._respond(start_response, HTTPStatus.SERVICE_UNAVAILABLE, {"error": "etf_company_cards_unavailable", "message": str(exc)})
         if method == "GET" and path.startswith("/v1/fair-values/"):
             symbol = path.removeprefix("/v1/fair-values/")
             try:
