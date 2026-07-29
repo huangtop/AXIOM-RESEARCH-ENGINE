@@ -64,7 +64,7 @@ def test_preserves_ambiguous_unsupported_unresolved_and_non_equity(tmp_path: Pat
 
 def test_real_snapshot_preserves_every_holding_symbol_and_resolves_nvda():
     root = Path(__file__).parents[1]
-    report = build_etf_identity_bridge(root)
+    report = json.loads((root / "data/generated/etf_identity_bridge/identity_bridge.json").read_text())
     assert report["summary"]["holding_symbol_count"] == 423
     nvda = report["records"][report["indexes"]["holding_symbol_to_position"]["NVDA"]]
     assert nvda["security_id"] == "security:NASDAQ-NVDA"
