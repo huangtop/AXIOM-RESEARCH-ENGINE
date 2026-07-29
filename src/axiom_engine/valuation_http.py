@@ -17,6 +17,7 @@ from axiom_engine.full_market_coverage import (
     FullMarketCoverageNotFound,
     FullMarketCoverageService,
 )
+from axiom_engine.etf_exposure_api import ETFExposureAPIError, ETFExposureNotFound, ETFExposureService
 from axiom_engine.previous_close import PreviousCloseError, YahooPreviousCloseAdapter
 from axiom_engine.theme_sector_inference import (
     ThemeSectorInferenceError,
@@ -40,6 +41,7 @@ class ValuationWSGIApp:
         fair_value_service: FairValueSnapshotService | None = None,
         full_market_service: FullMarketCoverageService | None = None,
         theme_sector_service: ThemeSectorInferenceService | None = None,
+        etf_exposure_service: ETFExposureService | None = None,
     ) -> None:
         cached_close_provider = JsonCachedPreviousCloseProvider(PREVIOUS_CLOSE_CACHE)
         yahoo_close_provider = YahooPreviousCloseAdapter()
@@ -51,6 +53,7 @@ class ValuationWSGIApp:
         self.fair_value_service = fair_value_service or FairValueSnapshotService()
         self.full_market_service = full_market_service or FullMarketCoverageService()
         self.theme_sector_service = theme_sector_service or ThemeSectorInferenceService()
+        self.etf_exposure_service = etf_exposure_service or ETFExposureService()
 
     def __call__(self, environ: dict[str, Any], start_response: StartResponse) -> Iterable[bytes]:
         method = str(environ.get("REQUEST_METHOD", "GET")).upper()
@@ -66,6 +69,7 @@ class ValuationWSGIApp:
             or path.startswith("/v1/fair-values/")
             or (path.startswith("/v1/companies/") and path.endswith("/valuation-card"))
             or (path.startswith("/v1/companies/") and path.endswith("/research-policy"))
+            or (path.startswith("/v1/companies/") and path.endswith("/etf-exposure"))
         ):
             return self._respond(start_response, HTTPStatus.NO_CONTENT, {})
         if method == "GET" and path == "/health":
@@ -123,6 +127,14 @@ class ValuationWSGIApp:
                 return self._respond(start_response, HTTPStatus.NOT_FOUND, {"error": "company_not_found", "message": str(exc)})
             except FullMarketCoverageError as exc:
                 return self._respond(start_response, HTTPStatus.SERVICE_UNAVAILABLE, {"error": "full_market_coverage_unavailable", "message": str(exc)})
+        if method == "GET" and path.startswith("/v1/companies/") and path.endswith("/etf-exposure"):
+            symbol = path.removeprefix("/v1/companies/").removesuffix("/etf-exposure").strip("/")
+            try:
+                return self._respond(start_response, HTTPStatus.OK, self.etf_exposure_service.get(symbol))
+            except ETFExposureNotFound as exc:
+                return self._respond(start_response, HTTPStatus.NOT_FOUND, {"error": "company_not_found", "message": str(exc)})
+            except ETFExposureAPIError as exc:
+                return self._respond(start_response, HTTPStatus.SERVICE_UNAVAILABLE, {"error": "etf_exposure_unavailable", "message": str(exc)})
         if method == "GET" and path.startswith("/v1/fair-values/"):
             symbol = path.removeprefix("/v1/fair-values/")
             try:
