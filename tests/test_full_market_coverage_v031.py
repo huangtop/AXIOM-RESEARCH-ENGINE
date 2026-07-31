@@ -62,16 +62,15 @@ def test_http_exposes_full_market_list_and_company_card():
     card_response, card = _get(app, "/v1/companies/NVDA/valuation-card")
     contextual_response, contextual = _get(app, "/v1/companies/F/valuation-card")
     assert list_response["status"].startswith("200")
-    assert listing["summary"]["registry_company_count"] == 6464
-    assert listing["summary"]["company_count"] == 80
-    assert listing["summary"]["source_company_count"] == 5851
+    assert listing["summary"]["company_count"] == 5851
+    assert listing["summary"]["source"] == "compact_publication_catalog"
     assert card_response["status"].startswith("200")
     assert card["primary_security"]["ticker"] == "NVDA"
     assert set(card["valuation"]["models"]) == MODELS
-    assert card["coverage_policy"]["publication_tier"] == "core"
-    assert contextual_response["status"].startswith("404")
-    assert contextual["error"] == "company_not_published"
-    assert contextual["publication_tier"] == "contextual"
+    assert card["coverage_policy"]["research_scope"] == "core"
+    assert contextual_response["status"].startswith("200")
+    assert contextual["primary_security"]["ticker"] == "F"
+    assert contextual["coverage_policy"]["product_scope"] == "basic_market"
 
 
 def test_no_frontend_files_are_part_of_v031_implementation():

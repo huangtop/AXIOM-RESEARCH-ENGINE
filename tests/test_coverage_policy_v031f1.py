@@ -24,8 +24,8 @@ def _write(root: Path, relative: str, payload) -> None:
 
 
 def _fixture(tmp_path: Path) -> Path:
-    policy = json.loads((ROOT / "config/coverage_policy.v031f.1.json").read_text())
-    _write(tmp_path, "config/coverage_policy.v031f.1.json", policy)
+    policy = json.loads((ROOT / "config/coverage_policy.v031f.2.1.json").read_text())
+    _write(tmp_path, "config/coverage_policy.v031f.2.1.json", policy)
     companies = [{"company_id": f"company:{name}", "display_name": name} for name in ("core", "chain", "pending", "context", "fund")]
     securities = [
         {"company_id": f"company:{name}", "ticker": name.upper(), "primary_listing": True}
@@ -59,13 +59,15 @@ def _fixture(tmp_path: Path) -> Path:
 def test_coverage_tiers_are_derived_independently(tmp_path: Path):
     report = build_coverage_policy(_fixture(tmp_path))
     records = {row["company_id"]: row for row in report["records"]}
-    assert records["company:core"]["publication_tier"] == "core"
-    assert records["company:chain"]["publication_tier"] == "coverage"
-    assert records["company:pending"]["publication_tier"] == "candidate"
+    assert records["company:core"]["research_scope"] == "core"
+    assert records["company:chain"]["research_scope"] == "coverage"
+    assert records["company:pending"]["research_scope"] == "candidate"
     assert "company:context" not in records
-    assert records["company:fund"]["publication_tier"] == "excluded"
-    assert report["summary"]["default_contextual_company_count"] == 1
-    assert report["contract"]["unlisted_company_default_tier"] == "contextual"
+    assert records["company:fund"]["product_scope"] == "excluded"
+    assert report["summary"]["default_basic_market_company_count"] == 1
+    assert report["contract"]["unlisted_operating_company_default_tier"] == "basic_market"
+    assert records["company:core"]["scope_axes"]["news_ai"] is True
+    assert records["company:chain"]["scope_axes"]["supply_chain_analysis"] is True
 
 
 def test_non_company_instrument_never_gets_page_or_valuation(tmp_path: Path):
@@ -75,24 +77,24 @@ def test_non_company_instrument_never_gets_page_or_valuation(tmp_path: Path):
     assert record["valuation"]["scope_status"] == "not_applicable"
 
 
-def test_sparse_service_resolves_contextual_default_and_denies_publication(tmp_path: Path):
+def test_sparse_service_resolves_contextual_default_as_basic_market(tmp_path: Path):
     root = _fixture(tmp_path)
     report = build_coverage_policy(root)
     output = root / "data/generated/coverage_policy/coverage_policy.json"
     write_coverage_policy(report, output)
     service = CoveragePolicyService(root=root)
-    assert service.get("CORE")["publication_tier"] == "core"
-    assert service.get("CORE.B")["publication_tier"] == "core"
-    assert service.get("CORE-B")["publication_tier"] == "core"
-    assert service.get("CONTEXT")["publication_tier"] == "contextual"
-    with pytest.raises(CoveragePublicationDenied) as exc:
-        service.require_public("CONTEXT")
-    assert exc.value.reason_code == "CONTEXTUAL_COMPANY_NOT_COVERED"
+    assert service.get("CORE")["research_scope"] == "core"
+    assert service.get("CORE.B")["research_scope"] == "core"
+    assert service.get("CORE-B")["research_scope"] == "core"
+    assert service.get("CONTEXT")["publication_tier"] == "basic_market"
+    assert service.require_public("CONTEXT")["publication"]["valuation_card"] is True
+    with pytest.raises(CoveragePublicationDenied):
+        service.require_public("FUND")
 
 
 def test_policy_rejects_ticker_membership(tmp_path: Path):
     root = _fixture(tmp_path)
-    path = root / "config/coverage_policy.v031f.1.json"
+    path = root / "config/coverage_policy.v031f.2.1.json"
     policy = json.loads(path.read_text())
     policy["symbols"] = ["NVDA"]
     path.write_text(json.dumps(policy))
@@ -105,8 +107,10 @@ def test_real_projection_preserves_key_identity_and_scope_contracts():
     by_ticker = {row["ticker"]: row for row in report["records"] if row.get("ticker")}
     assert report["summary"]["company_count"] == 6464
     assert report["summary"]["explicit_record_count"] < report["summary"]["company_count"]
-    assert by_ticker["MU"]["publication_tier"] == "core"
-    assert by_ticker["TSLA"]["publication_tier"] == "core"
-    assert by_ticker["SKHY"]["publication_tier"] == "candidate"
+    assert by_ticker["MU"]["research_scope"] == "core"
+    assert by_ticker["TSLA"]["research_scope"] == "core"
+    assert by_ticker["SKHY"]["research_scope"] == "candidate"
+    assert report["summary"]["public_valuation_card_count"] == 5851
+    assert report["summary"]["research_page_count"] == 80
     assert report["contract"]["etf_exposure_determines_tier"] is False
     assert report["contract"]["valuation_readiness_determines_research_scope"] is False

@@ -24,23 +24,26 @@ def _load(path: Path, label: str) -> Any:
 
 
 def _validate_policy(policy: Mapping[str, Any]) -> None:
-    if policy.get("schema_version") != "coverage-policy-config.v031f.1":
+    if policy.get("schema_version") != "coverage-policy-config.v031f.2.1":
         raise CoveragePolicyError("unsupported coverage policy")
     serialized = json.dumps(policy)
     if any(f'"{key}"' in serialized for key in FORBIDDEN_MEMBERSHIP_KEYS):
         raise CoveragePolicyError("ticker/company membership is forbidden in coverage policy")
-    publication = policy.get("publication")
-    if not isinstance(publication, Mapping) or set(publication) != set(TIERS):
-        raise CoveragePolicyError("coverage policy must define every publication tier")
-    derivation = policy.get("tier_derivation") or {}
+    axes = policy.get("scope_axes") or {}
+    if set(axes) != {"operating_company", "excluded_instrument"}:
+        raise CoveragePolicyError("coverage policy must define instrument scope axes")
+    for scope in axes.values():
+        if not isinstance(scope, Mapping) or set(scope) != {"company_page", "valuation_card", "etf_exposure"}:
+            raise CoveragePolicyError("invalid instrument scope axis")
+    derivation = policy.get("research_tier_derivation") or {}
     for key in ("core_requires_any_enabled_action", "coverage_requires_any_enabled_action"):
         values = derivation.get(key)
         if not isinstance(values, list) or not values or not set(values).issubset(ACTIONS):
             raise CoveragePolicyError(f"invalid action list: {key}")
     projection = policy.get("projection") or {}
-    emit_tiers = projection.get("emit_tiers")
-    if projection.get("default_unlisted_tier") != "contextual":
-        raise CoveragePolicyError("sparse projection default must be contextual")
+    emit_tiers = projection.get("emit_research_tiers")
+    if projection.get("default_operating_company_tier") != "basic_market":
+        raise CoveragePolicyError("sparse projection default must be basic_market")
     if not isinstance(emit_tiers, list) or not set(emit_tiers).issubset(TIERS) or "contextual" in emit_tiers:
         raise CoveragePolicyError("sparse projection emit tiers are invalid")
 
@@ -57,7 +60,7 @@ def _tier(
 ) -> tuple[str, str]:
     if identity.get("valuation_scope_status") != "included":
         return "excluded", "NON_OPERATING_COMPANY_INSTRUMENT"
-    derivation = policy["tier_derivation"]
+    derivation = policy["research_tier_derivation"]
     if _enabled(research, list(derivation["core_requires_any_enabled_action"])):
         return "core", "ACTIVE_INTELLIGENCE_ENABLED"
     if _enabled(research, list(derivation["coverage_requires_any_enabled_action"])):
@@ -70,19 +73,15 @@ def _tier(
     return "contextual", "IDENTITY_RESOLVED_CONTEXT_ONLY"
 
 
-def _valuation_projection(tier: str, card: Mapping[str, Any] | None) -> dict[str, Any]:
+def _valuation_projection(instrument_included: bool, card: Mapping[str, Any] | None) -> dict[str, Any]:
     data_status = str((card or {}).get("status") or "unavailable")
     models = ((card or {}).get("valuation") or {}).get("models") or {}
     eligible_methods = sorted(
         str(method) for method, result in models.items()
         if isinstance(result, Mapping) and result.get("status") == "calculated"
     )
-    if tier in {"core", "coverage"}:
-        scope_status, reason = "eligible", "PUBLIC_TIER_VALUATION_ELIGIBLE"
-    elif tier == "candidate":
-        scope_status, reason = "deferred", "CANDIDATE_NOT_YET_PUBLISHED"
-    elif tier == "contextual":
-        scope_status, reason = "not_covered", "CONTEXTUAL_COMPANY_NO_VALUATION_COMMITMENT"
+    if instrument_included:
+        scope_status, reason = "eligible", "OPERATING_COMPANY_VALUATION_ELIGIBLE"
     else:
         scope_status, reason = "not_applicable", "NON_OPERATING_COMPANY_INSTRUMENT"
     return {
@@ -97,7 +96,7 @@ def _valuation_projection(tier: str, card: Mapping[str, Any] | None) -> dict[str
 def build_coverage_policy(
     root: Path,
     *,
-    policy_path: str = "config/coverage_policy.v031f.1.json",
+    policy_path: str = "config/coverage_policy.v031f.2.1.json",
     companies_path: str = "data/universe/companies.json",
     securities_path: str = "data/universe/securities.json",
     identity_path: str = "data/generated/security_identity/security_identity_normalization.json",
@@ -143,14 +142,24 @@ def build_coverage_policy(
         identity = identity_by_company.get(company_id, {})
         research = research_by_company.get(company_id, {})
         tier, tier_reason = _tier(identity, research, policy)
-        publication = dict(policy["publication"][tier])
-        valuation = _valuation_projection(tier, valuation_by_company.get(company_id))
+        instrument_included = identity.get("valuation_scope_status") == "included"
+        base_axes = dict(policy["scope_axes"]["operating_company" if instrument_included else "excluded_instrument"])
+        valuation = _valuation_projection(instrument_included, valuation_by_company.get(company_id))
         evidence = research.get("evidence_summary") if isinstance(research.get("evidence_summary"), Mapping) else {}
         security = primary_security.get(company_id, {})
         actions = {
             action: bool(((research.get("decisions") or {}).get(action) or {}).get("enabled"))
             for action in ACTIONS
         }
+        scope_axes = {
+            **base_axes,
+            "research_page": any(actions.values()),
+            "news_ai": actions["news"],
+            "etf_change_analysis": actions["etf"],
+            "supply_chain_analysis": actions["supply_chain"],
+            "deep_research": actions["deep_research"],
+        }
+        product_scope = "excluded" if not instrument_included else ("frontier_research" if scope_axes["research_page"] else "basic_market")
         reason_codes = [tier_reason, valuation["reason_code"]]
         relevance_reason = ((research.get("research_relevance") or {}).get("reason_code"))
         if relevance_reason:
@@ -163,9 +172,15 @@ def build_coverage_policy(
                 "status": "operating_company_equity" if identity.get("valuation_scope_status") == "included" else "excluded",
                 "reason_code": identity.get("reason_code") or "IDENTITY_RECORD_UNAVAILABLE",
             },
+            "product_scope": product_scope,
             "research_scope": tier,
-            "publication_tier": tier,
-            "publication": publication,
+            "publication_tier": product_scope,
+            "scope_axes": scope_axes,
+            "publication": {
+                "company_page": scope_axes["company_page"],
+                "valuation_card": scope_axes["valuation_card"],
+                "visibility": "public" if scope_axes["company_page"] else "none",
+            },
             "valuation": valuation,
             "research_actions": actions,
             "context": {
@@ -181,24 +196,29 @@ def build_coverage_policy(
         records.append(record)
         tier_counts[tier] += 1
         valuation_scope_counts[valuation["scope_status"]] += 1
-        publication_counts[str(publication["visibility"])] += 1
+        publication_counts["public" if scope_axes["company_page"] else "none"] += 1
 
     records.sort(key=lambda row: row["company_id"])
-    emit_tiers = set(policy["projection"]["emit_tiers"])
-    emitted_records = [row for row in records if row["publication_tier"] in emit_tiers]
+    emit_tiers = set(policy["projection"]["emit_research_tiers"])
+    emitted_records = [row for row in records if row["research_scope"] in emit_tiers]
     return {
-        "schema_version": "coverage-policy-projection.v031f.1",
-        "version": "V031F.1",
+        "schema_version": "coverage-policy-projection.v031f.2.1",
+        "version": "V031F.2.1",
         "generated_at": current.isoformat(),
         "summary": {
             "company_count": len(records),
             "explicit_record_count": len(emitted_records),
-            "default_contextual_company_count": tier_counts["contextual"],
+            "default_basic_market_company_count": tier_counts["contextual"],
             "tier_counts": dict(sorted(tier_counts.items())),
             "valuation_scope_counts": dict(sorted(valuation_scope_counts.items())),
             "publication_visibility_counts": dict(sorted(publication_counts.items())),
-            "public_company_page_count": sum(bool(row["publication"]["company_page"]) for row in records),
-            "public_valuation_card_count": sum(bool(row["publication"]["valuation_card"]) for row in records),
+            "public_company_page_count": sum(bool(row["scope_axes"]["company_page"]) for row in records),
+            "public_valuation_card_count": sum(bool(row["scope_axes"]["valuation_card"]) for row in records),
+            "research_page_count": sum(bool(row["scope_axes"]["research_page"]) for row in records),
+            "news_ai_count": sum(bool(row["scope_axes"]["news_ai"]) for row in records),
+            "etf_change_analysis_count": sum(bool(row["scope_axes"]["etf_change_analysis"]) for row in records),
+            "supply_chain_analysis_count": sum(bool(row["scope_axes"]["supply_chain_analysis"]) for row in records),
+            "deep_research_count": sum(bool(row["scope_axes"]["deep_research"]) for row in records),
             "etf_exposed_company_count": sum(row["context"]["etf_exposure_count"] > 0 for row in records),
         },
         "sources": {
@@ -214,7 +234,9 @@ def build_coverage_policy(
             "valuation_readiness_determines_research_scope": False,
             "manual_editorial_override_enabled": False,
             "sparse_projection": True,
-            "unlisted_company_default_tier": policy["projection"]["default_unlisted_tier"],
+            "scope_axes_independent": True,
+            "research_actions_determine_basic_publication": False,
+            "unlisted_operating_company_default_tier": policy["projection"]["default_operating_company_tier"],
         },
         "records": emitted_records,
         "indexes": {

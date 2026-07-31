@@ -167,5 +167,6 @@ def test_real_population_remains_full_market_and_not_valuation_gated():
     assert report["summary"]["company_count"] == 6464
     assert report["summary"]["active_intelligence_company_count"] <= 80
     assert report["summary"]["supply_chain_company_count"] <= 200
-    assert report["summary"]["deep_research_company_count"] <= 40
+    assert report["summary"]["deep_research_company_count"] <= 200
+    assert report["policy"]["tier_limits"]["deep_research"] == 200
     assert report["policy"]["valuation_readiness_consumed"] is False

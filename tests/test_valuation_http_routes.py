@@ -43,9 +43,8 @@ def test_old_legacy_route_is_removed():
     assert status.startswith("404")
 
 
-def test_production_valuation_route_rejects_contextual_company():
+def test_production_valuation_route_accepts_basic_market_company():
     app = ValuationWSGIApp(StubService({"endpoint_mode": "production"}), StubService({}))
     status, payload = invoke(app, "/v1/valuations", {"symbol": "F"})
-    assert status.startswith("404")
-    assert payload["error"] == "company_not_published"
-    assert payload["publication_tier"] == "contextual"
+    assert status.startswith("200")
+    assert payload["endpoint_mode"] == "production"

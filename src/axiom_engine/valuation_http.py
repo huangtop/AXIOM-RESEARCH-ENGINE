@@ -68,8 +68,8 @@ class ValuationWSGIApp:
         # Debug-only parity endpoint may still fetch when explicitly requested.
         self.legacy_service = legacy_service or LegacyValuationAPIService(yahoo_close_provider)
         self.fair_value_service = fair_value_service or FairValueSnapshotService()
-        self.full_market_service = full_market_service or FullMarketCoverageService()
         self.coverage_service = coverage_service or CoveragePolicyService()
+        self.full_market_service = full_market_service or FullMarketCoverageService(coverage_service=self.coverage_service)
         self.theme_sector_service = theme_sector_service or ThemeSectorInferenceService()
         self.etf_exposure_service = etf_exposure_service or ETFExposureService()
         self.etf_change_service = etf_change_service or ETFChangeService()
