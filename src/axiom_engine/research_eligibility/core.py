@@ -52,6 +52,7 @@ def build_research_eligibility(
     knowledge_path: str = "data/generated/knowledge_inference/knowledge_inference.json",
     securities_path: str = "data/universe/securities.json",
     identity_path: str = "data/generated/security_identity/security_identity_normalization.json",
+    relevance_gate_path: str = "data/generated/research_relevance_gate/research_relevance_gate.json",
     now: datetime | None = None,
 ) -> dict[str, Any]:
     current = now or datetime.now(timezone.utc)
@@ -61,6 +62,11 @@ def build_research_eligibility(
     knowledge_payload = _load(root / knowledge_path)
     securities = _load(root / securities_path)
     identity = _load(root / identity_path)
+    gate_file = root / relevance_gate_path
+    gate_payload = _load(gate_file) if gate_file.is_file() else {"records": []}
+    gate_by_company = {
+        str(row["company_id"]): row for row in gate_payload.get("records") or [] if row.get("company_id")
+    }
     _validate_policy(policy)
     if knowledge_payload.get("schema_version") != "multidimensional-knowledge-inference.v031c.3":
         raise ResearchEligibilityError("V031C.3 knowledge inference input is required")
@@ -86,6 +92,8 @@ def build_research_eligibility(
         evidence_ids = sorted({value for item in knowledge for value in item.get("source_business_evidence_ids") or []})
         source_signal_ids = sorted({value for item in knowledge for value in item.get("source_signal_ids") or []})
         inferred_dimensions = {str(item["dimension"]) for item in knowledge if item.get("derivation_type") == "rule_inference"}
+        gate = gate_by_company.get(company_id)
+        research_irrelevant = bool(gate and gate.get("deep_inference_required") is False)
         breadth = min(1.0, len(evidence_ids) / 5.0)
         research_score = round(
             scores["theme"] * float(weights["theme"])
@@ -120,10 +128,20 @@ def build_research_eligibility(
             "supply_chain": _decision(not chain_missing, "THEME_AND_CHAIN_EVIDENCE_QUALIFIED", chain_missing),
             "deep_research": _decision(not deep_missing, "MULTIDIMENSIONAL_EVIDENCE_QUALIFIED", deep_missing),
         }
+        if research_irrelevant:
+            decisions = {
+                action: _decision(False, "", ["RESEARCH_RELEVANCE_GATE_EXCLUDED"])
+                for action in decisions
+            }
         records.append({
             "company_id": company_id,
             "ticker": primary_ticker.get(company_id) or None,
             "knowledge_status": source["status"],
+            "research_relevance": {
+                "status": (gate or {}).get("status"),
+                "upper_category": (gate or {}).get("upper_category"),
+                "reason_code": (gate or {}).get("reason_code"),
+            },
             "research_score": research_score,
             "score_components": {**scores, "evidence_breadth": breadth},
             "evidence_summary": {"business_evidence_ids": evidence_ids, "source_signal_ids": source_signal_ids, "derived_dimensions": sorted(inferred_dimensions)},

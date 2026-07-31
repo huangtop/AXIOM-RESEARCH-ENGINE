@@ -55,6 +55,7 @@ def build_knowledge_inference(
     *,
     policy_path: str = "config/knowledge_inference.v031c.3.json",
     signals_path: str = "data/generated/company_signals/company_signals.json",
+    relevance_gate_path: str = "data/generated/research_relevance_gate/research_relevance_gate.json",
     now: datetime | None = None,
 ) -> dict[str, Any]:
     current = now or datetime.now(timezone.utc)
@@ -62,6 +63,11 @@ def build_knowledge_inference(
         raise ValueError("now must be timezone-aware")
     policy = _load(root / policy_path)
     signals_payload = _load(root / signals_path)
+    gate_file = root / relevance_gate_path
+    gate_payload = _load(gate_file) if gate_file.is_file() else {"records": []}
+    gate_by_company = {
+        str(row["company_id"]): row for row in gate_payload.get("records") or [] if row.get("company_id")
+    }
     rules = _validate_policy(policy)
     records_in = signals_payload.get("records") if isinstance(signals_payload, Mapping) else None
     if not isinstance(records_in, list) or signals_payload.get("schema_version") != "company-signals.v031c.2":
@@ -86,6 +92,20 @@ def build_knowledge_inference(
             for signal in signals
         }
         inferred_ids: set[str] = set()
+        gate = gate_by_company.get(str(company["company_id"]))
+        deep_inference_required = not gate or gate.get("deep_inference_required") is not False
+        if not deep_inference_required:
+            knowledge = sorted(available.values(), key=lambda row: (row["dimension"], -float(row["confidence"]), row["knowledge_id"]))
+            for item in knowledge:
+                dimension_counts[str(item["dimension"])] += 1
+            output_records.append({
+                "company_id": company["company_id"],
+                "status": "research_irrelevant",
+                "source_company_signal_status": company["status"],
+                "relevance_gate_status": gate.get("status"),
+                "knowledge": knowledge,
+            })
+            continue
         for _ in range(int(policy.get("maximum_iterations") or 1)):
             changed = False
             for rule in rules:
@@ -133,6 +153,7 @@ def build_knowledge_inference(
             "company_id": company["company_id"],
             "status": "knowledge_available" if inferred_ids else "signals_only" if signals else company["status"],
             "source_company_signal_status": company["status"],
+            "relevance_gate_status": (gate or {}).get("status"),
             "knowledge": knowledge,
         })
 
@@ -144,6 +165,7 @@ def build_knowledge_inference(
             "company_count": len(output_records),
             "knowledge_available_company_count": sum(row["status"] == "knowledge_available" for row in output_records),
             "signals_only_company_count": sum(row["status"] == "signals_only" for row in output_records),
+            "research_irrelevant_company_count": sum(row["status"] == "research_irrelevant" for row in output_records),
             "dimension_record_counts": dict(sorted(dimension_counts.items())),
             "inferred_classification_company_counts": dict(sorted(classification_counts.items())),
         },
