@@ -16,12 +16,18 @@ def _fixture(tmp_path: Path) -> Path:
         {"company_id": "company:operating"},
         {"company_id": "company:warrant-shell"},
         {"company_id": "company:preferred-shell"},
+        {"company_id": "company:etf"},
+        {"company_id": "company:commodity"},
+        {"company_id": "company:eaton"},
     ]), encoding="utf-8")
     (root / "securities.json").write_text(json.dumps([
         {"security_id": "security:common", "company_id": "company:operating", "ticker": "AAA", "exchange": "NYSE", "metadata": {"security_name": "Alpha Common Stock", "source_ids": ["source:1"]}},
         {"security_id": "security:warrant-linked", "company_id": "company:operating", "ticker": "AAA.W", "exchange": "NYSE", "metadata": {"security_name": "Alpha Warrants"}},
         {"security_id": "security:warrant", "company_id": "company:warrant-shell", "ticker": "BBB.W", "exchange": "NYSE", "metadata": {"security_name": "Beta Redeemable Warrants"}},
         {"security_id": "security:preferred", "company_id": "company:preferred-shell", "ticker": "CCC$A", "exchange": "NYSE", "metadata": {"security_name": "Gamma Series A Preferred Stock"}},
+        {"security_id": "security:etf", "company_id": "company:etf", "ticker": "THEME", "exchange": "NASDAQ", "security_type": "etf", "metadata": {"security_name": "Theme Robotics ETF"}},
+        {"security_id": "security:commodity", "company_id": "company:commodity", "ticker": "METAL", "exchange": "NYSE", "metadata": {"security_name": "Example Gold Trust"}},
+        {"security_id": "security:eaton", "company_id": "company:eaton", "ticker": "ETN", "exchange": "NYSE", "security_type": "common_stock", "metadata": {"security_name": "Eaton Corporation Ordinary Shares"}},
     ]), encoding="utf-8")
     return tmp_path
 
@@ -35,6 +41,12 @@ def test_instrument_only_shells_are_excluded_but_linked_warrant_does_not_exclude
     assert by_company["company:preferred-shell"]["valuation_scope_status"] == "excluded"
     assert by_security["security:warrant"]["instrument_type"] == "warrant"
     assert by_security["security:preferred"]["instrument_type"] == "preferred_stock"
+    assert by_security["security:etf"]["instrument_type"] == "exchange_traded_fund"
+    assert by_security["security:commodity"]["instrument_type"] == "commodity_trust"
+    assert by_company["company:etf"]["valuation_scope_status"] == "excluded"
+    assert by_company["company:commodity"]["valuation_scope_status"] == "excluded"
+    assert by_security["security:eaton"]["instrument_type"] == "common_or_ordinary_equity"
+    assert by_company["company:eaton"]["valuation_scope_status"] == "included"
 
 
 def test_real_registry_is_classified_without_a_ticker_membership_list():
