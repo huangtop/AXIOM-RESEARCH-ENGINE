@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from axiom_engine.etf_exposure_api import ETFExposureService
+from axiom_engine.coverage_policy import CoveragePolicyService
 from axiom_engine.valuation_http import ValuationWSGIApp
 
 
@@ -25,8 +26,13 @@ def _fixture(tmp_path: Path) -> ETFExposureService:
     _write(tmp_path, "data/generated/canonical_etf_exposure/etf_exposures.json", exposures)
     _write(tmp_path, "data/generated/canonical_etf_exposure/indexes.json", {"company_id_to_exposure_positions":{"company:1":[0,1]}})
     _write(tmp_path, "data/universe/companies.json", [{"company_id":"company:1","display_name":"Test Corp"},{"company_id":"company:2","display_name":"Empty Corp"}])
-    _write(tmp_path, "data/universe/securities.json", [{"security_id":"security:1","company_id":"company:1","ticker":"TEST"},{"security_id":"security:2","company_id":"company:2","ticker":"EMPTY"}])
+    _write(tmp_path, "data/universe/securities.json", [{"security_id":"security:1","company_id":"company:1","ticker":"TEST","primary_listing":True},{"security_id":"security:2","company_id":"company:2","ticker":"EMPTY","primary_listing":True}])
     _write(tmp_path, "data/generated/security_identity/security_identity_normalization.json", {"schema_version":"security-identity-normalization.v031v.2","securities":[{"security_id":"security:1","instrument_type":"common_or_ordinary_equity"},{"security_id":"security:2","instrument_type":"common_or_ordinary_equity"}]})
+    records = [
+        {"company_id":"company:1","ticker":"TEST","publication_tier":"core","publication":{"company_page":True,"valuation_card":True}},
+        {"company_id":"company:2","ticker":"EMPTY","publication_tier":"coverage","publication":{"company_page":True,"valuation_card":True}},
+    ]
+    _write(tmp_path, "data/generated/coverage_policy/coverage_policy.json", {"schema_version":"coverage-policy-projection.v031f.1","contract":{"unlisted_company_default_tier":"contextual"},"records":records,"indexes":{"ticker_to_company_id":{"TEST":"company:1","EMPTY":"company:2"},"company_id_to_position":{"company:1":0,"company:2":1}}})
     return ETFExposureService(root=tmp_path)
 
 
@@ -46,7 +52,7 @@ def test_company_exposures_are_sorted_and_weight_semantics_are_explicit(tmp_path
 
 
 def test_known_company_without_exposure_returns_200_empty_not_404(tmp_path: Path):
-    status, payload = _get(ValuationWSGIApp(etf_exposure_service=_fixture(tmp_path)), "/v1/companies/EMPTY/etf-exposure")
+    status, payload = _get(ValuationWSGIApp(etf_exposure_service=_fixture(tmp_path), coverage_service=CoveragePolicyService(root=tmp_path)), "/v1/companies/EMPTY/etf-exposure")
     assert status == "200 OK"
     assert payload["status"] == "unavailable"
     assert payload["reason_code"] == "NO_TOP_HOLDINGS_EXPOSURE_OBSERVED"
@@ -54,7 +60,7 @@ def test_known_company_without_exposure_returns_200_empty_not_404(tmp_path: Path
 
 
 def test_http_route_returns_exposure_and_unknown_company_404(tmp_path: Path):
-    app = ValuationWSGIApp(etf_exposure_service=_fixture(tmp_path))
+    app = ValuationWSGIApp(etf_exposure_service=_fixture(tmp_path), coverage_service=CoveragePolicyService(root=tmp_path))
     status, payload = _get(app, "/v1/companies/TEST/etf-exposure")
     missing_status, missing = _get(app, "/v1/companies/MISSING/etf-exposure")
     assert status == "200 OK"

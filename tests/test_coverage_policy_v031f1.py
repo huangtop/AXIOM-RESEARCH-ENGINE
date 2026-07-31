@@ -5,7 +5,13 @@ from pathlib import Path
 
 import pytest
 
-from axiom_engine.coverage_policy import CoveragePolicyError, build_coverage_policy
+from axiom_engine.coverage_policy import (
+    CoveragePolicyError,
+    CoveragePolicyService,
+    CoveragePublicationDenied,
+    build_coverage_policy,
+    write_coverage_policy,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -25,6 +31,7 @@ def _fixture(tmp_path: Path) -> Path:
         {"company_id": f"company:{name}", "ticker": name.upper(), "primary_listing": True}
         for name in ("core", "chain", "pending", "context", "fund")
     ]
+    securities.append({"company_id": "company:core", "ticker": "CORE.B", "primary_listing": False, "status": "active"})
     _write(tmp_path, "data/universe/companies.json", companies)
     _write(tmp_path, "data/universe/securities.json", securities)
     _write(tmp_path, "data/generated/security_identity/security_identity_normalization.json", {"companies": [
@@ -66,6 +73,21 @@ def test_non_company_instrument_never_gets_page_or_valuation(tmp_path: Path):
     record = next(row for row in report["records"] if row["company_id"] == "company:fund")
     assert record["publication"] == {"company_page": False, "valuation_card": False, "visibility": "none"}
     assert record["valuation"]["scope_status"] == "not_applicable"
+
+
+def test_sparse_service_resolves_contextual_default_and_denies_publication(tmp_path: Path):
+    root = _fixture(tmp_path)
+    report = build_coverage_policy(root)
+    output = root / "data/generated/coverage_policy/coverage_policy.json"
+    write_coverage_policy(report, output)
+    service = CoveragePolicyService(root=root)
+    assert service.get("CORE")["publication_tier"] == "core"
+    assert service.get("CORE.B")["publication_tier"] == "core"
+    assert service.get("CORE-B")["publication_tier"] == "core"
+    assert service.get("CONTEXT")["publication_tier"] == "contextual"
+    with pytest.raises(CoveragePublicationDenied) as exc:
+        service.require_public("CONTEXT")
+    assert exc.value.reason_code == "CONTEXTUAL_COMPANY_NOT_COVERED"
 
 
 def test_policy_rejects_ticker_membership(tmp_path: Path):

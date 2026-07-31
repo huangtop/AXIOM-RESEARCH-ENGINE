@@ -18,11 +18,11 @@ def report():
 def test_builder_uses_entire_population_without_a_maintained_ticker_cohort():
     payload = report()
     assert payload["summary"]["registry_company_count"] == 6464
-    assert payload["summary"]["company_count"] == 5876
-    assert payload["summary"]["excluded_non_company_instrument_count"] == 588
+    assert payload["summary"]["company_count"] == 5851
+    assert payload["summary"]["excluded_non_company_instrument_count"] == 613
     assert payload["summary"]["security_count"] == 7451
-    assert len(payload["cards"]) == 5876
-    assert len(payload["indexes"]["ticker_to_position"]) == 6059
+    assert len(payload["cards"]) == 5851
+    assert len(payload["indexes"]["ticker_to_position"]) == 6027
 
 
 def test_every_company_has_seven_model_slots_and_explicit_reasons():
@@ -60,12 +60,18 @@ def test_http_exposes_full_market_list_and_company_card():
     app = ValuationWSGIApp(full_market_service=FullMarketCoverageService(root=ROOT))
     list_response, listing = _get(app, "/v1/companies")
     card_response, card = _get(app, "/v1/companies/NVDA/valuation-card")
+    contextual_response, contextual = _get(app, "/v1/companies/F/valuation-card")
     assert list_response["status"].startswith("200")
     assert listing["summary"]["registry_company_count"] == 6464
-    assert listing["summary"]["company_count"] == 5876
+    assert listing["summary"]["company_count"] == 80
+    assert listing["summary"]["source_company_count"] == 5851
     assert card_response["status"].startswith("200")
     assert card["primary_security"]["ticker"] == "NVDA"
     assert set(card["valuation"]["models"]) == MODELS
+    assert card["coverage_policy"]["publication_tier"] == "core"
+    assert contextual_response["status"].startswith("404")
+    assert contextual["error"] == "company_not_published"
+    assert contextual["publication_tier"] == "contextual"
 
 
 def test_no_frontend_files_are_part_of_v031_implementation():

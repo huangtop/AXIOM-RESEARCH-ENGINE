@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any, Mapping
 
 from axiom_engine.seven_model_valuation import calculate_seven_models
+from axiom_engine.coverage_policy import CoveragePolicyService
 
 
 MODELS = ("dcf", "forward_pe", "peg", "forward_ps", "ev_ebitda", "forward_pb", "milestone")
@@ -220,9 +221,10 @@ def write_full_market_coverage(report: Mapping[str, Any], output: Path) -> None:
 
 
 class FullMarketCoverageService:
-    def __init__(self, *, root: Path | None = None, snapshot_path: Path | None = None) -> None:
+    def __init__(self, *, root: Path | None = None, snapshot_path: Path | None = None, coverage_service: CoveragePolicyService | None = None) -> None:
         self.root = root or Path.cwd()
         self.snapshot_path = snapshot_path or self.root / "data/generated/full_market_coverage/full_market_coverage.json"
+        self.coverage_service = coverage_service or CoveragePolicyService(root=self.root)
         self._payload: Mapping[str, Any] | None = None
 
     def _get_payload(self) -> Mapping[str, Any]:
@@ -232,12 +234,27 @@ class FullMarketCoverageService:
 
     def list(self) -> dict[str, Any]:
         payload = self._get_payload()
-        return {"schema_version": payload["schema_version"], "version": payload["version"], "summary": payload["summary"], "companies": [{"company_id": card["company"]["company_id"], "ticker": card["primary_security"]["ticker"], "display_name": card["company"]["display_name"], "status": card["status"]} for card in payload["cards"]]}
+        public_ids = self.coverage_service.public_company_ids()
+        companies = [
+            {"company_id": card["company"]["company_id"], "ticker": card["primary_security"]["ticker"], "display_name": card["company"]["display_name"], "status": card["status"]}
+            for card in payload["cards"] if card["company"]["company_id"] in public_ids
+        ]
+        summary = {
+            "company_count": len(companies),
+            "source_company_count": payload["summary"].get("company_count"),
+            "registry_company_count": payload["summary"].get("registry_company_count"),
+            "publication_gate": "coverage-policy.v031f.1",
+        }
+        return {"schema_version": "published-company-list.v031f.2", "version": "V031F.2", "summary": summary, "companies": companies}
 
     def get(self, ticker: str) -> Mapping[str, Any]:
         symbol = str(ticker or "").strip().upper()
+        coverage = self.coverage_service.require_public(symbol, capability="valuation_card")
         payload = self._get_payload()
         position = payload.get("indexes", {}).get("ticker_to_position", {}).get(symbol)
         if position is None:
             raise FullMarketCoverageNotFound(f"ticker not found in full-market population: {symbol}")
-        return payload["cards"][position]
+        return {**payload["cards"][position], "coverage_policy": {
+            "publication_tier": coverage.get("publication_tier"),
+            "reason_codes": coverage.get("reason_codes") or [],
+        }}

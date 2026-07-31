@@ -8,6 +8,8 @@ from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any, Mapping
 
+from axiom_engine.coverage_policy import CoveragePolicyService
+
 
 class ETFCompanyCardError(RuntimeError):
     pass
@@ -35,13 +37,14 @@ def _atomic_write(path: Path, payload: Any) -> None:
     os.replace(temporary, path)
 
 
-def build_etf_company_cards(root: Path, *, now: datetime | None = None) -> dict[str, Any]:
+def build_etf_company_cards(root: Path, *, now: datetime | None = None, coverage_service: CoveragePolicyService | None = None) -> dict[str, Any]:
     current = now or datetime.now(timezone.utc)
     exposure_root = root / "data/generated/canonical_etf_exposure"
     exposure_manifest = _load(exposure_root / "manifest.json")
     exposures = _load(exposure_root / "etf_exposures.json")
     exposure_audit = _load(exposure_root / "coverage_audit.json")
     valuations = _load(root / "data/generated/full_market_coverage/full_market_coverage.json")
+    coverage = coverage_service or CoveragePolicyService(root=root)
     if exposure_manifest.get("schema_version") != "canonical-etf-exposure.v031e.1":
         raise ETFCompanyCardError("unsupported Canonical ETF Exposure schema")
     if valuations.get("schema_version") != "full-market-coverage.v031.0":
@@ -61,19 +64,24 @@ def build_etf_company_cards(root: Path, *, now: datetime | None = None) -> dict[
     )
     cards: list[dict[str, Any]] = []
     missing_valuation = []
+    valuation_withheld = 0
     for exposure in exposures:
         etf_id = str(exposure.get("etf_id") or "")
         if not etf_id.startswith("US-"):
             continue
         company_id = str(exposure.get("company_id") or "")
+        holding_symbol = str(exposure.get("holding_symbol") or "").upper()
+        coverage_record = coverage.get(holding_symbol)
+        valuation_public = bool((coverage_record.get("publication") or {}).get("valuation_card"))
         valuation_card = valuation_by_company.get(company_id)
         if valuation_card is None:
-            missing_valuation.append({
-                "etf_id": etf_id,
-                "company_id": company_id,
-                "security_id": exposure.get("security_id"),
-                "reason_code": "COMPANY_NOT_IN_FULL_MARKET_VALUATION_SCOPE",
-            })
+            if valuation_public:
+                missing_valuation.append({
+                    "etf_id": etf_id,
+                    "company_id": company_id,
+                    "security_id": exposure.get("security_id"),
+                    "reason_code": "COMPANY_NOT_IN_FULL_MARKET_VALUATION_SCOPE",
+                })
             company, security, market, valuation = {}, {}, {}, {}
         else:
             company = valuation_card.get("company") or {}
@@ -81,11 +89,14 @@ def build_etf_company_cards(root: Path, *, now: datetime | None = None) -> dict[
             market = valuation_card.get("market") or {}
             valuation = valuation_card.get("valuation") or {}
         price = _decimal(market.get("current_price"))
-        fair_value = _decimal(valuation.get("fair_value"))
+        fair_value = _decimal(valuation.get("fair_value")) if valuation_public else None
         upside = fair_value / price - 1 if price is not None and price > 0 and fair_value is not None else None
         valuation_status = str(valuation.get("status") or "unavailable")
         reason = valuation.get("reason_code")
-        if valuation_card is None:
+        if not valuation_public:
+            valuation_status, reason = "not_covered", "COVERAGE_POLICY_VALUATION_WITHHELD"
+            valuation_withheld += 1
+        elif valuation_card is None:
             valuation_status, reason = "unavailable", "COMPANY_NOT_IN_FULL_MARKET_VALUATION_SCOPE"
         elif fair_value is None:
             valuation_status, reason = "unavailable", reason or "NO_CALCULATED_MODELS"
@@ -97,6 +108,11 @@ def build_etf_company_cards(root: Path, *, now: datetime | None = None) -> dict[
             "company": {
                 "company_id": company_id,
                 "display_name": company.get("display_name") or company.get("legal_name"),
+            },
+            "coverage_policy": {
+                "publication_tier": coverage_record.get("publication_tier"),
+                "company_page": bool((coverage_record.get("publication") or {}).get("company_page")),
+                "valuation_card": valuation_public,
             },
             "security": {
                 "security_id": exposure.get("security_id"),
@@ -119,10 +135,10 @@ def build_etf_company_cards(root: Path, *, now: datetime | None = None) -> dict[
             },
             "valuation": {
                 "status": valuation_status,
-                "fair_value": valuation.get("fair_value"),
+                "fair_value": valuation.get("fair_value") if valuation_public else None,
                 "upside": format(upside, "f") if upside is not None else None,
                 "upside_percent": float(upside * 100) if upside is not None else None,
-                "calculated_model_count": int(valuation.get("calculated_model_count") or 0),
+                "calculated_model_count": int(valuation.get("calculated_model_count") or 0) if valuation_public else 0,
                 "total_model_count": int(valuation.get("total_model_count") or 7),
                 "reason_code": reason,
                 "aggregation_version": valuation.get("aggregation_version"),
@@ -148,7 +164,9 @@ def build_etf_company_cards(root: Path, *, now: datetime | None = None) -> dict[
             "card_count": len(cards),
             "valuation_status_counts": dict(sorted(status_counts.items())),
             "missing_valuation_card_count": len(missing_valuation),
+            "valuation_withheld_by_coverage_policy_count": valuation_withheld,
             "valuation_readiness_used_for_membership": False,
+            "coverage_policy_used_for_valuation_visibility": True,
         },
         "cards": cards,
         "coverage_audit": {"missing_valuation_cards": missing_valuation},

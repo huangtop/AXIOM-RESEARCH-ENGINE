@@ -19,6 +19,19 @@ def _write(root: Path, relative: str, payload) -> None:
 
 
 def _fixture(root: Path) -> None:
+    _write(root, "data/universe/securities.json", [
+        {"company_id":"company:MU","ticker":"MU","primary_listing":True},
+        {"company_id":"company:MISSING","ticker":"MISSING","primary_listing":True},
+    ])
+    _write(root, "data/generated/coverage_policy/coverage_policy.json", {
+        "schema_version":"coverage-policy-projection.v031f.1",
+        "contract":{"unlisted_company_default_tier":"contextual"},
+        "records":[{
+            "company_id":"company:MU","ticker":"MU","publication_tier":"core",
+            "publication":{"company_page":True,"valuation_card":True,"visibility":"public"}
+        }],
+        "indexes":{"ticker_to_company_id":{"MU":"company:MU"},"company_id_to_position":{"company:MU":0}}
+    })
     _write(root, "data/generated/canonical_etf_exposure/manifest.json", {"schema_version":"canonical-etf-exposure.v031e.1","source_snapshot":{"provider_generated_at":"2026-07-28T00:00:00Z"}})
     _write(root, "data/generated/canonical_etf_exposure/coverage_audit.json", {"source_etf_ids":["US-QQQ","US-EMPTY","TW-0050"]})
     _write(root, "data/generated/canonical_etf_exposure/etf_exposures.json", [
@@ -44,8 +57,9 @@ def test_projection_keeps_holdings_when_valuation_is_unavailable_and_excludes_tw
     missing = next(card for card in report["cards"] if card["security"]["ticker"] == "MISSING")
     assert mu["valuation"]["upside_percent"] == 25.0
     assert mu["valuation"]["calculated_model_count"] == 5
-    assert missing["valuation"]["status"] == "unavailable"
-    assert missing["valuation"]["reason_code"] == "COMPANY_NOT_IN_FULL_MARKET_VALUATION_SCOPE"
+    assert missing["valuation"]["status"] == "not_covered"
+    assert missing["valuation"]["reason_code"] == "COVERAGE_POLICY_VALUATION_WITHHELD"
+    assert missing["coverage_policy"]["publication_tier"] == "contextual"
     assert report["summary"]["valuation_readiness_used_for_membership"] is False
     assert all(card["etf_id"].startswith("US-") for card in report["cards"])
 

@@ -7,6 +7,12 @@ from typing import Any, Callable, Iterable
 
 from axiom_engine.cached_close import JsonCachedPreviousCloseProvider
 from axiom_engine.config import PREVIOUS_CLOSE_CACHE
+from axiom_engine.coverage_policy import (
+    CoveragePolicyError,
+    CoveragePolicyNotFound,
+    CoveragePolicyService,
+    CoveragePublicationDenied,
+)
 from axiom_engine.fair_value_snapshot import (
     FairValueSnapshotAPIError,
     FairValueSnapshotNotFound,
@@ -52,6 +58,7 @@ class ValuationWSGIApp:
         etf_change_service: ETFChangeService | None = None,
         etf_company_card_service: ETFCompanyCardService | None = None,
         etf_detail_service: ETFDetailService | None = None,
+        coverage_service: CoveragePolicyService | None = None,
     ) -> None:
         cached_close_provider = JsonCachedPreviousCloseProvider(PREVIOUS_CLOSE_CACHE)
         yahoo_close_provider = YahooPreviousCloseAdapter()
@@ -62,6 +69,7 @@ class ValuationWSGIApp:
         self.legacy_service = legacy_service or LegacyValuationAPIService(yahoo_close_provider)
         self.fair_value_service = fair_value_service or FairValueSnapshotService()
         self.full_market_service = full_market_service or FullMarketCoverageService()
+        self.coverage_service = coverage_service or CoveragePolicyService()
         self.theme_sector_service = theme_sector_service or ThemeSectorInferenceService()
         self.etf_exposure_service = etf_exposure_service or ETFExposureService()
         self.etf_change_service = etf_change_service or ETFChangeService()
@@ -94,10 +102,38 @@ class ValuationWSGIApp:
             return self._respond(start_response, HTTPStatus.NO_CONTENT, {})
         if method == "GET" and path == "/health":
             return self._respond(start_response, HTTPStatus.OK, {"status": "ok"})
+        company_suffixes = ("/valuation-card", "/research-policy", "/etf-exposure", "/etf-events")
+        gated_symbol = None
+        if method == "GET" and path.startswith("/v1/companies/") and path.endswith(company_suffixes):
+            gated_symbol = path.removeprefix("/v1/companies/").rsplit("/", 1)[0].strip("/")
+        elif method == "GET" and path.startswith("/v1/fair-values/"):
+            gated_symbol = path.removeprefix("/v1/fair-values/").strip("/")
+        if gated_symbol is not None:
+            try:
+                self.coverage_service.require_public(gated_symbol)
+            except CoveragePublicationDenied as exc:
+                return self._respond(start_response, HTTPStatus.NOT_FOUND, {
+                    "error": "company_not_published",
+                    "publication_tier": exc.publication_tier,
+                    "reason_code": exc.reason_code,
+                    "message": str(exc),
+                })
+            except CoveragePolicyNotFound as exc:
+                return self._respond(start_response, HTTPStatus.NOT_FOUND, {"error": "company_not_found", "message": str(exc)})
+            except CoveragePolicyError as exc:
+                return self._respond(start_response, HTTPStatus.SERVICE_UNAVAILABLE, {"error": "coverage_policy_unavailable", "message": str(exc)})
         if method == "GET" and path == "/v1/fair-values":
             try:
+                payload = self.fair_value_service.list_companies()
+                public_tickers = self.coverage_service.public_tickers()
+                companies = [row for row in payload.get("companies", []) if str(row.get("symbol") or "").upper() in public_tickers]
+                payload = {**payload, "companies": companies, "summary": {
+                    "company_count": len(companies),
+                    "source_company_count": len(payload.get("companies", [])),
+                    "publication_gate": "coverage-policy.v031f.1",
+                }}
                 return self._respond(
-                    start_response, HTTPStatus.OK, self.fair_value_service.list_companies()
+                    start_response, HTTPStatus.OK, payload
                 )
             except FairValueSnapshotAPIError as exc:
                 return self._respond(
@@ -105,11 +141,15 @@ class ValuationWSGIApp:
                     HTTPStatus.SERVICE_UNAVAILABLE,
                     {"error": "snapshot_unavailable", "message": str(exc)},
                 )
+            except CoveragePolicyError as exc:
+                return self._respond(start_response, HTTPStatus.SERVICE_UNAVAILABLE, {"error": "coverage_policy_unavailable", "message": str(exc)})
         if method == "GET" and path == "/v1/companies":
             try:
                 return self._respond(start_response, HTTPStatus.OK, self.full_market_service.list())
             except FullMarketCoverageError as exc:
                 return self._respond(start_response, HTTPStatus.SERVICE_UNAVAILABLE, {"error": "full_market_coverage_unavailable", "message": str(exc)})
+            except CoveragePolicyError as exc:
+                return self._respond(start_response, HTTPStatus.SERVICE_UNAVAILABLE, {"error": "coverage_policy_unavailable", "message": str(exc)})
         if method == "GET" and path == "/v1/research-universe":
             try:
                 return self._respond(
@@ -210,11 +250,23 @@ class ValuationWSGIApp:
         try:
             request = _read_json(environ)
             if path == "/v1/valuations":
+                self.coverage_service.require_public(str(request.get("symbol") or ""), capability="valuation_card")
                 payload = self.production_service.calculate(request)
             elif path == "/v1/debug/valuations/legacy-parity":
                 payload = self.legacy_service.calculate(request)
             else:
                 return self._respond(start_response, HTTPStatus.NOT_FOUND, {"error": "not_found"})
+        except CoveragePublicationDenied as exc:
+            return self._respond(start_response, HTTPStatus.NOT_FOUND, {
+                "error": "company_not_published",
+                "publication_tier": exc.publication_tier,
+                "reason_code": exc.reason_code,
+                "message": str(exc),
+            })
+        except CoveragePolicyNotFound as exc:
+            return self._respond(start_response, HTTPStatus.NOT_FOUND, {"error": "company_not_found", "message": str(exc)})
+        except CoveragePolicyError as exc:
+            return self._respond(start_response, HTTPStatus.SERVICE_UNAVAILABLE, {"error": "coverage_policy_unavailable", "message": str(exc)})
         except ValuationAPIError as exc:
             return self._respond(
                 start_response,

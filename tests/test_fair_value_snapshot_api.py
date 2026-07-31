@@ -131,4 +131,4 @@ def test_http_returns_404_for_symbol_outside_snapshot(snapshot_path: Path):
     app = ValuationWSGIApp(fair_value_service=FairValueSnapshotService(snapshot_path))
     observed, payload = invoke_get(app, "/v1/fair-values/UNKNOWN")
     assert observed["status"] == "404 Not Found"
-    assert payload["error"] == "fair_value_not_found"
+    assert payload["error"] == "company_not_found"
