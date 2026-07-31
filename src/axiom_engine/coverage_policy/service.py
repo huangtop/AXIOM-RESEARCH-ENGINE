@@ -46,7 +46,7 @@ class CoveragePolicyService:
     def _data(self) -> dict[str, Any]:
         if self._payload is None:
             payload = _load(self.projection_path)
-            if payload.get("schema_version") != "coverage-policy-projection.v031f.1":
+            if payload.get("schema_version") != "coverage-policy-projection.v031f.2.1":
                 raise CoveragePolicyError("unsupported Coverage Policy projection")
             if not isinstance(payload.get("records"), list) or not isinstance(payload.get("indexes"), Mapping):
                 raise CoveragePolicyError("invalid Coverage Policy projection")
@@ -85,10 +85,12 @@ class CoveragePolicyService:
         return {
             "company_id": company_id,
             "ticker": symbol,
+            "product_scope": data["contract"]["unlisted_operating_company_default_tier"],
             "research_scope": "contextual",
-            "publication_tier": data["contract"]["unlisted_company_default_tier"],
-            "publication": {"company_page": False, "valuation_card": False, "visibility": "embedded_only"},
-            "valuation": {"scope_status": "not_covered", "reason_code": "CONTEXTUAL_COMPANY_NO_VALUATION_COMMITMENT"},
+            "publication_tier": "basic_market",
+            "scope_axes": {"company_page": True, "valuation_card": True, "etf_exposure": True, "research_page": False, "news_ai": False, "etf_change_analysis": False, "supply_chain_analysis": False, "deep_research": False},
+            "publication": {"company_page": True, "valuation_card": True, "visibility": "public"},
+            "valuation": {"scope_status": "eligible", "reason_code": "OPERATING_COMPANY_VALUATION_ELIGIBLE"},
             "reason_codes": ["IDENTITY_RESOLVED_CONTEXT_ONLY"],
             "review_status": "automatic_default",
         }
@@ -100,15 +102,10 @@ class CoveragePolicyService:
         return record
 
     def public_company_ids(self) -> set[str]:
-        return {
-            str(row["company_id"])
-            for row in self._data()["records"]
-            if bool((row.get("publication") or {}).get("company_page"))
-        }
+        data = self._data()
+        excluded = {str(row["company_id"]) for row in data["records"] if not bool((row.get("publication") or {}).get("company_page"))}
+        return set(self._registry_tickers().values()) - excluded
 
     def public_tickers(self) -> set[str]:
-        return {
-            str(row["ticker"]).upper()
-            for row in self._data()["records"]
-            if row.get("ticker") and bool((row.get("publication") or {}).get("company_page"))
-        }
+        public_ids = self.public_company_ids()
+        return {ticker for ticker, company_id in self._registry_tickers().items() if company_id in public_ids}

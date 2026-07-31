@@ -6,6 +6,7 @@ from datetime import datetime, timezone
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any, Mapping
+from zipfile import BadZipFile, ZipFile
 
 from axiom_engine.seven_model_valuation import calculate_seven_models
 from axiom_engine.coverage_policy import CoveragePolicyService
@@ -221,11 +222,13 @@ def write_full_market_coverage(report: Mapping[str, Any], output: Path) -> None:
 
 
 class FullMarketCoverageService:
-    def __init__(self, *, root: Path | None = None, snapshot_path: Path | None = None, coverage_service: CoveragePolicyService | None = None) -> None:
+    def __init__(self, *, root: Path | None = None, snapshot_path: Path | None = None, coverage_service: CoveragePolicyService | None = None, publication_root: Path | None = None) -> None:
         self.root = root or Path.cwd()
         self.snapshot_path = snapshot_path or self.root / "data/generated/full_market_coverage/full_market_coverage.json"
         self.coverage_service = coverage_service or CoveragePolicyService(root=self.root)
+        self.publication_root = publication_root or self.root / "data/generated/publication_gate"
         self._payload: Mapping[str, Any] | None = None
+        self._catalog: Mapping[str, Any] | None = None
 
     def _get_payload(self) -> Mapping[str, Any]:
         if self._payload is None:
@@ -233,6 +236,16 @@ class FullMarketCoverageService:
         return self._payload
 
     def list(self) -> dict[str, Any]:
+        catalog_path = self.publication_root / "company_catalog.json"
+        if catalog_path.is_file():
+            if self._catalog is None:
+                self._catalog = _load(catalog_path)
+            if self._catalog.get("schema_version") == "publication-gate-catalog.v031f.2.1":
+                companies = [
+                    {"company_id": row["company_id"], "ticker": row["ticker"], "display_name": row.get("display_name"), "status": row.get("valuation_status")}
+                    for row in self._catalog.get("companies") or []
+                ]
+                return {"schema_version": "published-company-list.v031f.2.1", "version": "V031F.2.1", "summary": {"company_count": len(companies), "publication_gate": "coverage-policy.v031f.2.1", "source": "compact_publication_catalog"}, "companies": companies}
         payload = self._get_payload()
         public_ids = self.coverage_service.public_company_ids()
         companies = [
@@ -250,6 +263,25 @@ class FullMarketCoverageService:
     def get(self, ticker: str) -> Mapping[str, Any]:
         symbol = str(ticker or "").strip().upper()
         coverage = self.coverage_service.require_public(symbol, capability="valuation_card")
+        catalog_path = self.publication_root / "company_catalog.json"
+        if catalog_path.is_file():
+            if self._catalog is None:
+                self._catalog = _load(catalog_path)
+            filename = (self._catalog.get("indexes") or {}).get("ticker_to_file", {}).get(symbol)
+            if filename:
+                loose_projection = self.publication_root / "companies" / filename
+                if loose_projection.is_file():
+                    projection = _load(loose_projection)
+                else:
+                    archive = self.publication_root / "company_projections.zip"
+                    try:
+                        with ZipFile(archive) as bundle:
+                            projection = json.loads(bundle.read(filename))
+                    except (OSError, KeyError, BadZipFile, json.JSONDecodeError) as exc:
+                        raise FullMarketCoverageError(f"cannot read company projection for {symbol}: {exc}") from exc
+                card = projection.get("valuation_card")
+                if isinstance(card, Mapping):
+                    return {**card, "coverage_policy": {"product_scope": projection.get("product_scope"), "research_scope": projection.get("research_scope"), "scope_axes": projection.get("scope_axes") or {}, "reason_codes": (projection.get("coverage_policy") or {}).get("reason_codes") or []}}
         payload = self._get_payload()
         position = payload.get("indexes", {}).get("ticker_to_position", {}).get(symbol)
         if position is None:

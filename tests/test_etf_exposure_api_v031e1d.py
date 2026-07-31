@@ -29,10 +29,10 @@ def _fixture(tmp_path: Path) -> ETFExposureService:
     _write(tmp_path, "data/universe/securities.json", [{"security_id":"security:1","company_id":"company:1","ticker":"TEST","primary_listing":True},{"security_id":"security:2","company_id":"company:2","ticker":"EMPTY","primary_listing":True}])
     _write(tmp_path, "data/generated/security_identity/security_identity_normalization.json", {"schema_version":"security-identity-normalization.v031v.2","securities":[{"security_id":"security:1","instrument_type":"common_or_ordinary_equity"},{"security_id":"security:2","instrument_type":"common_or_ordinary_equity"}]})
     records = [
-        {"company_id":"company:1","ticker":"TEST","publication_tier":"core","publication":{"company_page":True,"valuation_card":True}},
-        {"company_id":"company:2","ticker":"EMPTY","publication_tier":"coverage","publication":{"company_page":True,"valuation_card":True}},
+        {"company_id":"company:1","ticker":"TEST","publication_tier":"frontier_research","research_scope":"core","product_scope":"frontier_research","publication":{"company_page":True,"valuation_card":True}},
+        {"company_id":"company:2","ticker":"EMPTY","publication_tier":"basic_market","research_scope":"contextual","product_scope":"basic_market","publication":{"company_page":True,"valuation_card":True}},
     ]
-    _write(tmp_path, "data/generated/coverage_policy/coverage_policy.json", {"schema_version":"coverage-policy-projection.v031f.1","contract":{"unlisted_company_default_tier":"contextual"},"records":records,"indexes":{"ticker_to_company_id":{"TEST":"company:1","EMPTY":"company:2"},"company_id_to_position":{"company:1":0,"company:2":1}}})
+    _write(tmp_path, "data/generated/coverage_policy/coverage_policy.json", {"schema_version":"coverage-policy-projection.v031f.2.1","contract":{"unlisted_operating_company_default_tier":"basic_market"},"records":records,"indexes":{"ticker_to_company_id":{"TEST":"company:1","EMPTY":"company:2"},"company_id_to_position":{"company:1":0,"company:2":1}}})
     return ETFExposureService(root=tmp_path)
 
 

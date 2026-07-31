@@ -24,10 +24,11 @@ def _fixture(root: Path) -> None:
         {"company_id":"company:MISSING","ticker":"MISSING","primary_listing":True},
     ])
     _write(root, "data/generated/coverage_policy/coverage_policy.json", {
-        "schema_version":"coverage-policy-projection.v031f.1",
-        "contract":{"unlisted_company_default_tier":"contextual"},
+        "schema_version":"coverage-policy-projection.v031f.2.1",
+        "contract":{"unlisted_operating_company_default_tier":"basic_market"},
         "records":[{
-            "company_id":"company:MU","ticker":"MU","publication_tier":"core",
+            "company_id":"company:MU","ticker":"MU","publication_tier":"frontier_research","research_scope":"core","product_scope":"frontier_research",
+            "scope_axes":{"company_page":True,"valuation_card":True,"etf_exposure":True,"research_page":True,"news_ai":True,"etf_change_analysis":True,"supply_chain_analysis":True,"deep_research":False},
             "publication":{"company_page":True,"valuation_card":True,"visibility":"public"}
         }],
         "indexes":{"ticker_to_company_id":{"MU":"company:MU"},"company_id_to_position":{"company:MU":0}}
@@ -57,9 +58,9 @@ def test_projection_keeps_holdings_when_valuation_is_unavailable_and_excludes_tw
     missing = next(card for card in report["cards"] if card["security"]["ticker"] == "MISSING")
     assert mu["valuation"]["upside_percent"] == 25.0
     assert mu["valuation"]["calculated_model_count"] == 5
-    assert missing["valuation"]["status"] == "not_covered"
-    assert missing["valuation"]["reason_code"] == "COVERAGE_POLICY_VALUATION_WITHHELD"
-    assert missing["coverage_policy"]["publication_tier"] == "contextual"
+    assert missing["valuation"]["status"] == "unavailable"
+    assert missing["valuation"]["reason_code"] == "COMPANY_NOT_IN_FULL_MARKET_VALUATION_SCOPE"
+    assert missing["coverage_policy"]["publication_tier"] == "basic_market"
     assert report["summary"]["valuation_readiness_used_for_membership"] is False
     assert all(card["etf_id"].startswith("US-") for card in report["cards"])
 
