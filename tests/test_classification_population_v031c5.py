@@ -30,19 +30,19 @@ def _fixture(tmp_path: Path) -> Path:
         {"company_id":"company:override","classification_scheme":"SEC_SIC","classification_code":"6021","classification_label":"National Commercial Banks"}
     ])
     _write(tmp_path, "data/generated/company_signals/company_signals.json", {"records":[{
-        "company_id":"company:override","signals":[{"signal_id":"technology:blockchain","dimension":"technology"}]
+        "company_id":"company:override","signals":[{"signal_id":"capability:digital_asset_infrastructure","dimension":"capability"}]
     }]})
     return tmp_path
 
 
-def test_sic_gate_deprioritizes_traditional_companies_and_keeps_crypto(tmp_path: Path):
+def test_sic_gate_deprioritizes_traditional_companies_and_digital_assets(tmp_path: Path):
     report = build_research_relevance_gate(_fixture(tmp_path))
     records = {row["company_id"]: row for row in report["records"]}
     assert records["company:bank"]["status"] == "deprioritized_non_research"
     assert records["company:shoe"]["status"] == "deprioritized_non_research"
-    assert records["company:crypto"]["upper_category"] == "fintech_and_digital_assets"
-    assert records["company:crypto"]["status"] == "priority_candidate"
-    assert records["company:override"]["reason_code"] == "VERIFIED_RESEARCH_SIGNAL_OVERRIDE"
+    assert records["company:crypto"]["upper_category"] == "finance_and_investment_vehicles"
+    assert records["company:crypto"]["status"] == "deprioritized_non_research"
+    assert records["company:override"]["status"] == "deprioritized_non_research"
     assert report["policy"]["contains_ticker_membership"] is False
 
 
@@ -62,4 +62,5 @@ def test_real_gate_covers_full_registry_and_expected_sic_examples():
     records = {row["company_id"]: row for row in report["records"]}
     assert records["company:US-CIK0000831001"]["upper_category"] == "traditional_banking"
     assert records["company:US-CIK0000320187"]["upper_category"] == "apparel_and_footwear"
-    assert records["company:US-CIK0001679788"]["upper_category"] == "fintech_and_digital_assets"
+    assert records["company:US-CIK0001679788"]["upper_category"] == "finance_and_investment_vehicles"
+    assert records["company:US-CIK0001679788"]["status"] == "deprioritized_non_research"

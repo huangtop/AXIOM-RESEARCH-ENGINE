@@ -48,6 +48,9 @@ def _validate(policy: Mapping[str, Any]) -> None:
             if not rule_id or rule_id in ids or not rule.get("codes") or not rule.get("category"):
                 raise ClassificationPopulationError(f"invalid or duplicate relevance rule: {rule_id}")
             ids.add(rule_id)
+    category_overrides = policy.get("research_override_signal_ids_by_category") or {}
+    if not isinstance(category_overrides, Mapping) or any(not isinstance(value, list) for value in category_overrides.values()):
+        raise ClassificationPopulationError("category-specific signal overrides must be arrays")
 
 
 def build_research_relevance_gate(
@@ -80,6 +83,10 @@ def build_research_relevance_gate(
     }
     override_dimensions = set(policy.get("research_override_dimensions") or [])
     override_ids = set(policy.get("research_override_signal_ids") or [])
+    category_override_ids = {
+        str(category): set(values)
+        for category, values in (policy.get("research_override_signal_ids_by_category") or {}).items()
+    }
     records: list[dict[str, Any]] = []
     status_counts: Counter[str] = Counter()
     category_counts: Counter[str] = Counter()
@@ -100,15 +107,16 @@ def build_research_relevance_gate(
                 if _matches(code, list(rule["codes"])):
                     matched, status, reason = rule, "deprioritized_non_research", "NON_RESEARCH_SIC"
                     break
+        category = str((matched or {}).get("category") or "unclassified")
+        effective_override_ids = category_override_ids.get(category, override_ids)
         signals = signals_by_company.get(company_id, [])
         override_signals = sorted({
             str(signal.get("signal_id")) for signal in signals
-            if signal.get("dimension") in override_dimensions or signal.get("signal_id") in override_ids
+            if signal.get("dimension") in override_dimensions or signal.get("signal_id") in effective_override_ids
         })
         if status == "deprioritized_non_research" and override_signals:
             status, reason = "priority_candidate", "VERIFIED_RESEARCH_SIGNAL_OVERRIDE"
             overrides += 1
-        category = str((matched or {}).get("category") or "unclassified")
         status_counts[status] += 1
         category_counts[category] += 1
         records.append({

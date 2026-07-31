@@ -1,0 +1,91 @@
+{
+  "schema_version": "research-theme-catalog.v031c.5.1",
+  "version": "V031C.5.1",
+  "principle": "Themes define evidence-driven research actions. Ticker or company membership is forbidden.",
+  "tier_limits": {
+    "active_intelligence": 80,
+    "supply_chain": 200,
+    "deep_research": 40
+  },
+  "tier_minimum_scores": {
+    "active_intelligence": 0.60,
+    "supply_chain": 0.50,
+    "deep_research": 0.65
+  },
+  "themes": [
+    {
+      "theme_id": "theme:ai_infrastructure",
+      "canonical_name": "AI Infrastructure",
+      "priority": 1.0,
+      "actions": {"news": true, "etf": true, "supply_chain": true, "deep_research": true},
+      "required_any_knowledge": [
+        "sector:ai_compute", "sector:ai_memory", "sector:ai_networking", "sector:ai_servers",
+        "sector:data_center_power", "sector:power_semiconductors"
+      ]
+    },
+    {
+      "theme_id": "theme:physical_ai",
+      "canonical_name": "Physical AI",
+      "priority": 1.0,
+      "actions": {"news": true, "etf": true, "supply_chain": true, "deep_research": true},
+      "required_any_knowledge": [
+        "product:humanoid_robot", "product:autonomous_mobile_robot", "product:robot_actuator",
+        "product:robotaxi_platform", "capability:autonomous_perception"
+      ]
+    },
+    {
+      "theme_id": "theme:quantum_computing",
+      "canonical_name": "Quantum Computing",
+      "priority": 0.98,
+      "actions": {"news": true, "etf": true, "supply_chain": true, "deep_research": true}
+    },
+    {
+      "theme_id": "theme:space_economy",
+      "canonical_name": "Space and LEO Economy",
+      "priority": 0.96,
+      "actions": {"news": true, "etf": true, "supply_chain": true, "deep_research": true},
+      "required_any_knowledge": ["sector:leo_satellites", "sector:satellite_communications", "sector:space_systems"]
+    },
+    {
+      "theme_id": "theme:advanced_communications",
+      "canonical_name": "Advanced Communications",
+      "priority": 0.94,
+      "actions": {"news": true, "etf": true, "supply_chain": true, "deep_research": true}
+    },
+    {
+      "theme_id": "theme:robotics",
+      "canonical_name": "Robotics",
+      "priority": 0.92,
+      "actions": {"news": true, "etf": true, "supply_chain": true, "deep_research": true}
+    },
+    {
+      "theme_id": "theme:autonomous_vehicles",
+      "canonical_name": "AI Autonomous Vehicles",
+      "priority": 0.90,
+      "actions": {"news": true, "etf": true, "supply_chain": true, "deep_research": true},
+      "required_any_knowledge": [
+        "technology:full_self_driving", "product:robotaxi_platform", "product:autonomous_compute",
+        "capability:autonomous_perception", "theme:physical_ai"
+      ]
+    },
+    {
+      "theme_id": "theme:digital_assets",
+      "canonical_name": "Digital Asset Infrastructure",
+      "priority": 0.78,
+      "actions": {"news": false, "etf": false, "supply_chain": false, "deep_research": false},
+      "required_any_knowledge": ["product:digital_asset_platform", "capability:digital_asset_infrastructure"]
+    },
+    {
+      "theme_id": "theme:cybersecurity",
+      "canonical_name": "Cybersecurity",
+      "priority": 0.55,
+      "actions": {"news": false, "etf": false, "supply_chain": false, "deep_research": false}
+    },
+    {
+      "theme_id": "theme:artificial_intelligence",
+      "canonical_name": "Generic Artificial Intelligence",
+      "priority": 0.0,
+      "actions": {"news": false, "etf": false, "supply_chain": false, "deep_research": false}
+    }
+  ]
+}

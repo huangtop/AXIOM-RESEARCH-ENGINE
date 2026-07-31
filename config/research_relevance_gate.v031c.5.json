@@ -1,29 +1,74 @@
 {
   "schema_version": "research-relevance-gate-policy.v031c.5",
   "version": "V031C.5",
-  "principle": "Use official classifications for coarse triage, never ticker membership. Verified research signals override a deprioritized SIC.",
+  "principle": "Use official classifications for coarse triage, never ticker membership. Only verified in-scope technology or product signals override a deprioritized SIC.",
   "priority_sic_rules": [
     {"rule_id":"sic:computer-hardware","codes":["3570-3579"],"category":"computing_hardware"},
     {"rule_id":"sic:communications-electronics","codes":["3660-3699"],"category":"communications_and_electronics"},
     {"rule_id":"sic:software-data","codes":["7370-7379"],"category":"software_and_data"},
-    {"rule_id":"sic:navigation-sensing","codes":["3812","3823","3825"],"category":"sensing_and_instrumentation"},
-    {"rule_id":"sic:space-aerospace","codes":["3720-3729","3760-3769"],"category":"aerospace_and_space"},
-    {"rule_id":"sic:automotive-platform","codes":["3711"],"category":"automotive_platform"},
-    {"rule_id":"sic:digital-finance","codes":["6199"],"category":"fintech_and_digital_assets"}
+    {"rule_id":"sic:navigation-sensing","codes":["3812","3823","3825"],"category":"sensing_and_instrumentation"}
   ],
   "deprioritized_sic_rules": [
     {"rule_id":"sic:commercial-banks","codes":["6021","6022","6029","6035","6036","6061","6062","6081","6082"],"category":"traditional_banking"},
     {"rule_id":"sic:traditional-insurance","codes":["6311","6321","6331","6351","6361","6399"],"category":"traditional_insurance"},
+    {"rule_id":"sic:traditional-automobile","codes":["3711"],"category":"traditional_automobile_manufacturing"},
     {"rule_id":"sic:apparel-footwear","codes":["2300-2399","3021","3100-3199"],"category":"apparel_and_footwear"},
     {"rule_id":"sic:restaurants-hotels","codes":["5812","7011"],"category":"hospitality_and_restaurants"},
     {"rule_id":"sic:traditional-food-tobacco","codes":["2000-2199"],"category":"traditional_consumer_staples"},
-    {"rule_id":"sic:real-estate-operators","codes":["6500-6553"],"category":"traditional_real_estate"}
+    {"rule_id":"sic:real-estate-operators","codes":["6500-6553"],"category":"traditional_real_estate"},
+    {"rule_id":"sic:mining-metals","codes":["1000-1099","3300-3499"],"category":"mining_and_metals"},
+    {"rule_id":"sic:oil-gas","codes":["1300-1389","2911"],"category":"traditional_oil_and_gas"},
+    {"rule_id":"sic:utilities","codes":["4900-4991"],"category":"traditional_utilities"},
+    {"rule_id":"sic:medical-healthcare","codes":["2830-2836","3841-3851","8000-8099"],"category":"medical_and_healthcare"},
+    {"rule_id":"sic:retail-wholesale","codes":["5000-5999"],"category":"retail_wholesale_and_distribution"},
+    {"rule_id":"sic:defense-aerospace-ordnance","codes":["3480-3489","3720-3729","3760-3769"],"category":"defense_aerospace_and_ordnance"},
+    {"rule_id":"sic:investment-finance","codes":["6100-6199","6200-6299","6700-6799"],"category":"finance_and_investment_vehicles"}
   ],
-  "research_override_dimensions": ["technology","capability","infrastructure"],
+  "research_override_dimensions": [],
+  "research_override_signal_ids_by_category": {
+    "traditional_banking": [],
+    "traditional_insurance": [],
+    "apparel_and_footwear": [],
+    "hospitality_and_restaurants": [],
+    "traditional_consumer_staples": [],
+    "traditional_real_estate": [],
+    "traditional_oil_and_gas": [],
+    "medical_and_healthcare": [],
+    "retail_wholesale_and_distribution": [],
+    "traditional_automobile_manufacturing": [
+      "technology:full_self_driving", "technology:physical_ai",
+      "capability:autonomous_perception", "product:robotaxi_platform",
+      "product:autonomous_compute", "product:humanoid_robot"
+    ],
+    "defense_aerospace_and_ordnance": [
+      "technology:low_earth_orbit", "capability:satellite_communications",
+      "product:leo_satellite", "product:satellite_terminal"
+    ],
+    "traditional_utilities": [
+      "infrastructure:data_center_power", "technology:power_semiconductor",
+      "product:power_semiconductor"
+    ],
+    "mining_and_metals": [
+      "technology:silicon_photonics", "technology:co_packaged_optics",
+      "capability:high_speed_data_center_networking", "product:optical_transceiver",
+      "product:serdes"
+    ],
+    "finance_and_investment_vehicles": [
+      "infrastructure:data_center_power", "product:data_center_server"
+    ]
+  },
   "research_override_signal_ids": [
+    "technology:high_bandwidth_memory","technology:silicon_photonics","technology:co_packaged_optics",
+    "technology:quantum_computing","technology:robotics","technology:advanced_packaging",
+    "technology:power_semiconductor","technology:physical_ai","technology:full_self_driving",
+    "technology:low_earth_orbit","capability:high_speed_data_center_networking",
+    "capability:autonomous_perception",
+    "capability:satellite_communications","infrastructure:data_center_power",
     "product:graphics_processor","product:optical_transceiver","product:ethernet_switch",
     "product:serdes","product:space_system","product:ai_accelerator","product:custom_silicon",
     "product:data_center_server","product:lidar","product:power_semiconductor",
-    "product:digital_asset_platform"
+    "product:robotaxi_platform","product:autonomous_compute",
+    "product:humanoid_robot","product:autonomous_mobile_robot","product:leo_satellite",
+    "product:satellite_terminal"
   ]
 }

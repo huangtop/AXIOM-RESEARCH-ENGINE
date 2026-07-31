@@ -107,6 +107,11 @@ def build_classification_quality_audit(
             "gate_status_counts": gate_payload.get("summary", {}).get("status_counts", {}),
             "knowledge_status_counts": dict(sorted(Counter(str(row.get("status")) for row in knowledge_payload["records"]).items())),
             "research_universe_count": eligibility_payload.get("summary", {}).get("selected_research_company_count", 0),
+            "research_tier_counts": {
+                "active_intelligence": eligibility_payload.get("summary", {}).get("active_intelligence_company_count", 0),
+                "supply_chain": eligibility_payload.get("summary", {}).get("supply_chain_company_count", 0),
+                "deep_research": eligibility_payload.get("summary", {}).get("deep_research_company_count", 0),
+            },
             "flag_counts": dict(sorted(flag_counts.items())),
             "dimension_company_counts": dict(sorted(dimension_company_counts.items())),
             "dimension_breadth_company_counts": dict(sorted(multidimensional_counts.items(), key=lambda item: int(item[0]))),
