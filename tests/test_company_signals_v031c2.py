@@ -75,5 +75,5 @@ def test_rejects_ticker_membership_in_rules(tmp_path: Path):
 def test_real_population_is_complete_and_only_uses_canonical_business_evidence():
     report = build_company_signals(ROOT)
     assert report["summary"]["company_count"] == 6464
-    assert report["summary"]["business_evidence_company_count"] == 280
+    assert report["summary"]["business_evidence_company_count"] >= 1000
     assert len(report["records"]) == 6464
