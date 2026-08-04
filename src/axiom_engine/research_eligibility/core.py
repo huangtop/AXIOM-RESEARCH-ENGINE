@@ -363,7 +363,10 @@ def build_research_eligibility(
     }
     chain_ids = {row["company_id"] for row in chain_candidates[: int(limits["supply_chain"])]}
     deep_ids = {row["company_id"] for row in deep_candidates if row.get("deep_research_triggers")}
-    selected_ids = active_ids | chain_ids | deep_ids
+    # Research-page publication is evidence-qualified, not a scarce execution tier.
+    # Action limits control recurring news/ETF/supply-chain work only; they must not
+    # suppress otherwise eligible company research pages.
+    selected_ids = {row["company_id"] for row in candidates}
     for row in records:
         selected = row["company_id"] in selected_ids
         qualified = any(item["qualified"] for item in row["decisions"].values())
@@ -412,6 +415,7 @@ def build_research_eligibility(
             "theme_catalog_path": theme_catalog_path,
             "tier_limits": limits,
             "tier_minimum_scores": minimum_scores,
+            "research_page_activation_mode": "evidence_qualified_uncapped",
             "deep_research_activation_mode": "event_driven",
             "deep_research_trigger_types": ["sec_filing", "news", "etf_change"],
             "contains_ticker_membership": False,
