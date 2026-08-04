@@ -16,6 +16,35 @@ from axiom_engine.sec_business_evidence import (  # noqa: E402
 )
 
 
+def _resume_company_ids(root: Path, output_dir: Path) -> list[str]:
+    evidence_path = root / output_dir / "business_evidence.json"
+    relevance_path = root / "data/generated/research_relevance_gate/research_relevance_gate.json"
+    prior_evidence = (
+        json.loads(evidence_path.read_text(encoding="utf-8"))
+        if evidence_path.is_file()
+        else []
+    )
+    covered = {str(row.get("company_id") or "") for row in prior_evidence}
+    if not relevance_path.is_file():
+        return []
+    relevance = json.loads(relevance_path.read_text(encoding="utf-8"))
+    records = relevance.get("records") or []
+    priority = {"priority_candidate": 0, "evidence_required": 1}
+    candidates = [
+        row
+        for row in records
+        if row.get("status") in priority
+        and str(row.get("company_id") or "") not in covered
+    ]
+    candidates.sort(
+        key=lambda row: (
+            priority[str(row["status"])],
+            str(row.get("company_id") or ""),
+        )
+    )
+    return [str(row["company_id"]) for row in candidates]
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Extract verifiable Business sections from SEC annual filings.")
     parser.add_argument("--user-agent", default="")
@@ -33,20 +62,16 @@ def main() -> int:
     if args.resume and args.offset:
         parser.error("--resume and --offset cannot be combined")
     offset = args.offset
-    manifest_path = ROOT / args.output_dir / "manifest.json"
-    if args.resume and manifest_path.is_file():
-        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-        summary = manifest.get("summary") or {}
-        offset = int(summary.get("batch_offset") or 0) + int(
-            summary.get("filings_requested") or 0
-        )
+    company_ids = args.company_id
+    if args.resume:
+        company_ids = _resume_company_ids(ROOT, args.output_dir)
     report = build_sec_business_evidence(
         ROOT,
         allow_live=args.allow_live,
         user_agent=args.user_agent,
         limit=args.limit,
         offset=offset,
-        company_ids=args.company_id,
+        company_ids=company_ids,
         write_cache=args.write_cache,
         request_delay_seconds=args.delay,
     )
