@@ -42,6 +42,15 @@ def test_every_company_has_seven_model_slots_and_explicit_reasons():
                     assert model["missing_inputs"]
 
 
+def test_every_card_exposes_explicit_quarterly_history_contract():
+    payload = report()
+    for card in payload["cards"]:
+        history = card["financial_history"]
+        assert history["requested_quarter_count"] == 8
+        assert history["quarter_count"] <= 8
+        assert history["status"] in {"ready", "unavailable"}
+
+
 def test_unknown_or_missing_data_never_creates_a_fair_value():
     payload = report()
     card = next(card for card in payload["cards"] if card["valuation"]["calculated_model_count"] == 0)
