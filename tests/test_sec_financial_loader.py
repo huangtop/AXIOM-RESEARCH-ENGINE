@@ -40,6 +40,20 @@ def test_latest_annual_prefers_latest_filed():
     assert tag == "Revenues" and row["val"] == 12
 
 
+def test_latest_annual_chooses_newest_period_across_fallback_tags():
+    payload = {"facts": {"us-gaap": {
+        "RevenueFromContractWithCustomerExcludingAssessedTax": {"units": {"USD": [
+            {"form": "10-K", "fy": 2024, "fp": "FY", "start": "2024-01-01", "end": "2024-12-31", "filed": "2025-02-01", "val": 10, "accn": "a"}
+        ]}},
+        "Revenues": {"units": {"USD": [
+            {"form": "10-K", "fy": 2025, "fp": "FY", "start": "2025-01-01", "end": "2025-12-31", "filed": "2026-02-01", "val": 12, "accn": "b"}
+        ]}},
+    }}}
+    tag, row = _latest_annual(payload, METRICS["revenue"])
+    assert tag == "Revenues"
+    assert row["end"] == "2025-12-31"
+
+
 def test_latest_annual_accepts_missing_fy_for_annual_length_period():
     payload = {
         "facts": {
