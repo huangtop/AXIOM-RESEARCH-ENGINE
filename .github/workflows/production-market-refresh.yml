@@ -52,10 +52,12 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           echo "Working tree before staging:"
           git status --short
+          # The archive directory is intentionally ignored except for legacy
+          # tracked snapshots. Stage only modifications/deletions to tracked
+          # archive files; never attempt to add the ignored cache or report.
+          git add -u data/generated/provider_cache/yahoo/daily_close
           git add \
             data/generated/market \
-            data/generated/provider_cache/yahoo/daily_close \
-            data/generated/provider_cache/yahoo/daily_close_refresh_report.json \
             data/generated/full_market_coverage \
             data/generated/coverage_policy \
             data/generated/publication_gate
