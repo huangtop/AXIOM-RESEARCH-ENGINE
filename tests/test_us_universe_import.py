@@ -36,6 +36,16 @@ def test_same_cik_groups_multiple_listings_into_one_company() -> None:
     assert sum(item.primary_listing for item in bundle.securities) == 1
 
 
+def test_primary_listing_prefers_voting_class_a_over_non_voting_class_c() -> None:
+    bundle = transform_us_source_records([
+        record("GOOG", "NASDAQ", cik=1652044, name="Alphabet Inc. - Class C Capital Stock"),
+        record("GOOGL", "NASDAQ", cik=1652044, name="Alphabet Inc. - Class A Common Stock"),
+        record("GOOGM", "NASDAQ", cik=1652044, name="Alphabet Inc. - Depositary Shares representing Preferred Stock"),
+    ])
+    assert bundle.companies[0].primary_security_id == "security:NASDAQ-GOOGL"
+    assert next(item for item in bundle.securities if item.ticker == "GOOGL").primary_listing is True
+
+
 def test_missing_cik_uses_deterministic_listing_company_id() -> None:
     bundle = transform_us_source_records(
         [record("XYZ", "NYSE_AMERICAN", cik=None, name="XYZ Corp")]

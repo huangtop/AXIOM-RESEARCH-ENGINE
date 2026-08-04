@@ -72,6 +72,16 @@ def test_canonical_output_contains_all_cached_symbols(tmp_path):
     assert payload["symbols"]["NVDA"]["revenue_ttm"] == "500"
 
 
+def test_partial_refresh_preserves_symbols_already_in_canonical_output(tmp_path):
+    now = datetime(2026, 7, 27, tzinfo=timezone.utc)
+    output = tmp_path / "canonical.json"
+    output.write_text(json.dumps({"symbols": {"OLD": {"symbol": "OLD", "forward_eps": "1"}}}))
+    cache = YahooCompanySnapshotCache(tmp_path / "symbols", canonical_output_path=output, ttl_days=30)
+    refresh_yahoo_company_snapshots(["NEW"], fetcher=FakeFetcher(), cache=cache, now=now)
+    payload = json.loads(output.read_text())
+    assert sorted(payload["symbols"]) == ["NEW", "OLD"]
+
+
 def test_field_level_fallback_keeps_company_successful(tmp_path):
     now = datetime(2026, 7, 27, tzinfo=timezone.utc)
 

@@ -82,18 +82,18 @@ def _derived(value: Decimal | None, formula: str, source_ids: list[str], reason:
 
 
 def _quarterly_history(rows: list[Mapping[str, Any]], limit: int = 8) -> dict[str, Any]:
-    by_period: dict[tuple[int, str, str], dict[str, Any]] = {}
+    by_period: dict[tuple[str, str], dict[str, Any]] = {}
     for row in rows:
         fiscal_period = str(row.get("fiscal_period") or "").upper()
         if fiscal_period not in {"Q1", "Q2", "Q3", "Q4"}:
             continue
-        fiscal_year = int(row.get("fiscal_year") or 0)
         period_end = str(row.get("period_end") or "")
+        fiscal_year = int(period_end[:4] or 0)
         metric = str(row.get("metric") or "")
         if not fiscal_year or not period_end or not metric:
             continue
         period = by_period.setdefault(
-            (fiscal_year, fiscal_period, period_end),
+            (fiscal_period, period_end),
             {
                 "fiscal_year": fiscal_year,
                 "fiscal_period": fiscal_period,
