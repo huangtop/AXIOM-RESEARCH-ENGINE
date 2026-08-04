@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 from zipfile import ZipFile
 
@@ -10,9 +11,14 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def test_real_catalog_separates_market_publication_from_research_actions():
     report = build_publication_catalog(ROOT)
+    eligibility = json.loads(
+        (ROOT / "data/generated/research_eligibility/research_eligibility.json").read_text()
+    )
     by_ticker = {row["ticker"]: row for row in report["companies"]}
     assert report["summary"]["public_company_count"] == 5851
-    assert report["summary"]["frontier_research_count"] == 86
+    assert report["summary"]["frontier_research_count"] == eligibility["summary"][
+        "selected_research_company_count"
+    ]
     assert report["summary"]["scope_axis_counts"]["supply_chain_context"] == 1000
     assert report["summary"]["scope_axis_counts"]["news_ai"] == 68
     assert report["summary"]["scope_axis_counts"]["etf_exposure"] == 5851

@@ -107,6 +107,9 @@ def test_policy_rejects_ticker_membership(tmp_path: Path):
 
 def test_real_projection_preserves_key_identity_and_scope_contracts():
     report = build_coverage_policy(ROOT)
+    eligibility = json.loads(
+        (ROOT / "data/generated/research_eligibility/research_eligibility.json").read_text()
+    )
     by_ticker = {row["ticker"]: row for row in report["records"] if row.get("ticker")}
     assert report["summary"]["company_count"] == 6464
     assert report["summary"]["explicit_record_count"] < report["summary"]["company_count"]
@@ -114,7 +117,9 @@ def test_real_projection_preserves_key_identity_and_scope_contracts():
     assert by_ticker["TSLA"]["research_scope"] == "core"
     assert by_ticker["SKHY"]["research_scope"] == "candidate"
     assert report["summary"]["public_valuation_card_count"] == 5851
-    assert report["summary"]["research_page_count"] == 86
+    assert report["summary"]["research_page_count"] == eligibility["summary"][
+        "selected_research_company_count"
+    ]
     assert report["summary"]["supply_chain_context_count"] == 1000
     assert report["contract"]["etf_exposure_determines_tier"] is False
     assert report["contract"]["valuation_readiness_determines_research_scope"] is False
