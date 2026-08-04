@@ -81,12 +81,47 @@ def _derived(value: Decimal | None, formula: str, source_ids: list[str], reason:
     }
 
 
+def _quarterly_history(rows: list[Mapping[str, Any]], limit: int = 8) -> dict[str, Any]:
+    by_period: dict[tuple[int, str, str], dict[str, Any]] = {}
+    for row in rows:
+        fiscal_period = str(row.get("fiscal_period") or "").upper()
+        if fiscal_period not in {"Q1", "Q2", "Q3", "Q4"}:
+            continue
+        fiscal_year = int(row.get("fiscal_year") or 0)
+        period_end = str(row.get("period_end") or "")
+        metric = str(row.get("metric") or "")
+        if not fiscal_year or not period_end or not metric:
+            continue
+        period = by_period.setdefault(
+            (fiscal_year, fiscal_period, period_end),
+            {
+                "fiscal_year": fiscal_year,
+                "fiscal_period": fiscal_period,
+                "period_end": period_end,
+                "filed_at": row.get("filed_at"),
+                "form_type": row.get("form_type"),
+                "accession_number": row.get("accession_number"),
+                "metrics": {},
+            },
+        )
+        period["metrics"][metric] = _metric(row, source_id_field="financial_fact_id")
+    periods = sorted(by_period.values(), key=lambda row: str(row["period_end"]))[-limit:]
+    return {
+        "status": "ready" if periods else "unavailable",
+        "quarter_count": len(periods),
+        "requested_quarter_count": limit,
+        "periods": periods,
+        "reason_code": None if periods else "QUARTERLY_FINANCIAL_HISTORY_NOT_POPULATED",
+    }
+
+
 def build_full_market_coverage(
     root: Path,
     *,
     companies_path: str = "data/universe/companies.json",
     securities_path: str = "data/universe/securities.json",
     financial_path: str = "data/generated/canonical_financial_population/financial_facts.json",
+    quarterly_financial_path: str = "data/generated/canonical_financial_population/quarterly_index.json",
     market_path: str = "data/generated/market/previous_close_cache.json",
     estimate_path: str = "data/estimate_data/consensus_estimates.json",
     security_identity_path: str = "data/generated/security_identity/security_identity_normalization.json",
@@ -96,6 +131,7 @@ def build_full_market_coverage(
     companies = _load(root / companies_path)
     securities = _load(root / securities_path)
     financials = _load(root / financial_path, default=[])
+    quarterly_payload = _load(root / quarterly_financial_path, default={})
     market_payload = _load(root / market_path, default={"symbols": {}})
     estimates = _load(root / estimate_path, default=[])
     identity = _load(root / security_identity_path, default={"companies": [], "securities": []})
@@ -126,6 +162,8 @@ def build_full_market_coverage(
     financial_by_company: dict[str, list[Mapping[str, Any]]] = defaultdict(list)
     for row in financials:
         financial_by_company[str(row.get("company_id") or "")].append(row)
+    quarterly_files = quarterly_payload.get("company_id_to_file") if isinstance(quarterly_payload, Mapping) else {}
+    quarterly_files = quarterly_files if isinstance(quarterly_files, Mapping) else {}
     estimates_by_company: dict[str, list[Mapping[str, Any]]] = defaultdict(list)
     for row in estimates:
         estimates_by_company[str(row.get("company_id") or "")].append(row)
@@ -197,6 +235,11 @@ def build_full_market_coverage(
             "status": status,
             "market": market,
             "financials": fin,
+            "financial_history": _quarterly_history(
+                _load((root / quarterly_financial_path).parent / str(quarterly_files[company_id]), default=[])
+                if company_id in quarterly_files
+                else []
+            ),
             "estimates": est,
             "valuation": {"status": status, "calculated_model_count": calculated_count, "total_model_count": 7, "fair_value": format(sum(calculated_values) / len(calculated_values), "f") if calculated_values else None, "aggregation_version": "equal-weight-calculated-models.v031v.5", "reason_code": None if calculated_values else "NO_CALCULATED_MODELS", "models": models},
         }
