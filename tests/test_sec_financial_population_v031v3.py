@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from datetime import datetime, timezone
+from decimal import Decimal
 
 from axiom_engine.sec_financial_population import build_sec_financial_population, write_sec_financial_population
 
@@ -109,3 +110,23 @@ def test_population_retains_up_to_eight_discrete_quarters_for_eps_chart(tmp_path
     quarterly_file = output / index["company_id_to_file"]["company:1"]
     assert quarterly_file.is_file()
     assert len(json.loads(quarterly_file.read_text())) >= 8
+
+
+def test_population_derives_discrete_q2_cash_flow_from_ytd(tmp_path):
+    root = _root(tmp_path)
+    path = root / "data/generated/provider_cache/sec/companyfacts/CIK0000000001.json"
+    payload = json.loads(path.read_text())
+    def rows(q1, half):
+        return {"units": {"USD": [
+            {"val": q1, "start": "2026-01-01", "end": "2026-03-31", "filed": "2026-04-25", "form": "10-Q", "fy": 2026, "fp": "Q1", "accn": "q1"},
+            {"val": half, "start": "2026-01-01", "end": "2026-06-30", "filed": "2026-07-25", "form": "10-Q", "fy": 2026, "fp": "Q2", "accn": "q2"},
+        ]}}
+    payload["facts"]["us-gaap"]["NetCashProvidedByUsedInOperatingActivities"] = rows(45_790, 84_859)
+    payload["facts"]["us-gaap"]["PaymentsToAcquirePropertyPlantAndEquipment"] = rows(35_674, 80_598)
+    path.write_text(json.dumps(payload), encoding="utf-8")
+    report = build_sec_financial_population(root)
+    q2 = {row["metric"]: row for row in report["quarterly_financial_facts"] if row["period_end"] == "2026-06-30"}
+    assert q2["operating_cash_flow"]["value"] == "39069"
+    assert q2["capital_expenditures"]["value"] == "44924"
+    assert Decimal(q2["operating_cash_flow"]["value"]) - Decimal(q2["capital_expenditures"]["value"]) == Decimal("-5855")
+    assert q2["operating_cash_flow"]["source"]["period_selection"] == "ytd_less_prior_ytd"
