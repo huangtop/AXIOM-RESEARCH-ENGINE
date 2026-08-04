@@ -12,6 +12,7 @@ on:
     - cron: "20 22 * * 1-5"
 
 permissions:
+  actions: read
   contents: write
 
 concurrency:
@@ -19,7 +20,31 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Prove tracked ignored archives can be staged
+        run: |
+          probe="$(git ls-files data/generated/provider_cache/yahoo/daily_close | head -n 1)"
+          test -n "$probe"
+          test -n "$(git check-ignore --no-index "$probe")"
+          printf '\n' >> "$probe"
+          git add -u data/generated/provider_cache/yahoo/daily_close
+          if git diff --cached --quiet; then
+            echo "Preflight failed: tracked ignored archive was not staged."
+            exit 1
+          fi
+          git restore --staged "$probe"
+          git restore "$probe"
+          git diff --quiet
+          git diff --cached --quiet
+
   refresh:
+    needs: preflight
     runs-on: ubuntu-latest
     timeout-minutes: 150
     steps:
@@ -31,6 +56,16 @@ jobs:
           python-version: "3.11"
           cache: pip
       - run: pip install -e .[dev]
+      - name: Smoke test NVDA and GOOGL provider fetch
+        run: >-
+          python scripts/refresh_yahoo_daily_close.py
+          --symbols NVDA GOOGL
+          --archive-root "${{ runner.temp }}/market-smoke/archive"
+          --latest-cache "${{ runner.temp }}/market-smoke/previous_close.json"
+          --report "${{ runner.temp }}/market-smoke/report.json"
+          --delay 0
+          --checkpoint-size 2
+          --max-failure-rate 0
       - name: Refresh all eligible operating-company closes
         run: >-
           python scripts/refresh_yahoo_daily_close.py
@@ -46,27 +81,62 @@ jobs:
           python scripts/build_publication_catalog.py
       - name: Validate focused production contracts
         run: pytest -q tests/test_full_market_daily_close_population_v031v1.py tests/test_full_market_coverage_v031.py tests/test_publication_gate_v031f2.py
-      - name: Commit generated market artifacts
+      - name: Build recoverable market publication patch
+        id: patch
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          echo "Working tree before staging:"
-          git status --short
-          # The archive directory is intentionally ignored except for legacy
-          # tracked snapshots. Stage only modifications/deletions to tracked
-          # archive files; never attempt to add the ignored cache or report.
           git add -u data/generated/provider_cache/yahoo/daily_close
           git add \
             data/generated/market \
             data/generated/full_market_coverage \
             data/generated/coverage_policy \
             data/generated/publication_gate
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m "chore(data): refresh production daily market artifacts"
-          if ! git diff --quiet || ! git diff --cached --quiet; then
-            echo "Tracked changes remain after the market artifact commit:"
+          if ! git diff --quiet; then
+            echo "Tracked changes outside the staged publication scope:"
             git status --short
             exit 1
           fi
+          mkdir -p publication
+          git diff --cached --binary --full-index > publication/market-refresh.patch
+          test -s publication/market-refresh.patch
+          python -c 'import json,pathlib; p=json.loads(pathlib.Path("data/generated/market/previous_close_cache.json").read_text()); rows=p.get("symbols",{}); pathlib.Path("publication/manifest.json").write_text(json.dumps({"NVDA":rows.get("NVDA",{}).get("session_date"),"GOOGL":rows.get("GOOGL",{}).get("session_date")},sort_keys=True)+"\n")'
+          sha256sum publication/market-refresh.patch publication/manifest.json
+      - name: Preserve publication patch for retry
+        uses: actions/upload-artifact@v4
+        with:
+          name: market-refresh-publication-${{ github.run_id }}
+          path: publication/
+          if-no-files-found: error
+          retention-days: 7
+
+  publish:
+    needs: refresh
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: market-refresh-publication-${{ github.run_id }}
+          path: publication
+      - name: Apply and publish preserved market patch
+        run: |
+          test -s publication/market-refresh.patch
+          git apply --3way --index publication/market-refresh.patch
+          if ! git diff --quiet; then
+            echo "Unstaged tracked changes remain after applying publication patch:"
+            git status --short
+            exit 1
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore(data): refresh production daily market artifacts"
           git pull --rebase origin main
           git push origin HEAD:main
+      - name: Verify committed NVDA and GOOGL session dates
+        run: |
+          git fetch origin main
+          git show origin/main:data/generated/market/previous_close_cache.json > "${{ runner.temp }}/published-market.json"
+          python -c 'import json,pathlib,sys; expected=json.loads(pathlib.Path("publication/manifest.json").read_text()); actual=json.loads(pathlib.Path(sys.argv[1]).read_text()).get("symbols",{}); observed={k:actual.get(k,{}).get("session_date") for k in expected}; print({"expected":expected,"published":observed}); assert observed==expected' "${{ runner.temp }}/published-market.json"
