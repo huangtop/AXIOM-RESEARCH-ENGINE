@@ -8,6 +8,7 @@ from urllib.parse import quote
 from zipfile import ZIP_DEFLATED, ZipFile
 
 from axiom_engine.coverage_policy import CoveragePolicyNotFound, CoveragePolicyService, CoveragePublicationDenied
+from axiom_engine.full_market_coverage.core import build_full_market_coverage
 
 
 class PublicationGateError(RuntimeError):
@@ -25,6 +26,22 @@ def _filename(ticker: str) -> str:
     return quote(ticker, safe="._-") + ".json"
 
 
+def _valuation_cards(root: Path, valuation_path: str, valuation: Mapping[str, Any]):
+    cards = valuation.get("cards")
+    if isinstance(cards, list):
+        yield from cards
+        return
+    file_index = (valuation.get("indexes") or {}).get("company_id_to_file") or {}
+    base = (root / valuation_path).parent
+    for company_id, filename in sorted(file_index.items()):
+        path = base / str(filename)
+        if not path.is_file():
+            raise PublicationGateError(f"valuation artifact missing for {company_id}: {path}")
+        card = _load(path)
+        if isinstance(card, Mapping):
+            yield card
+
+
 def build_publication_catalog(
     root: Path,
     *,
@@ -36,16 +53,20 @@ def build_publication_catalog(
     if current.tzinfo is None or current.utcoffset() is None:
         raise ValueError("now must be timezone-aware")
     coverage = _load(root / coverage_path)
-    valuation = _load(root / valuation_path)
+    valuation_file = root / valuation_path
+    valuation = _load(valuation_file) if valuation_file.is_file() else build_full_market_coverage(root)
     if coverage.get("schema_version") != "coverage-policy-projection.v031f.2.1":
         raise PublicationGateError("V031F.2.1 Coverage Policy is required")
-    if valuation.get("schema_version") != "full-market-coverage.v031.0":
-        raise PublicationGateError("V031 full-market valuation is required")
+    if valuation.get("schema_version") not in {
+        "full-market-coverage.v031.0",
+        "full-market-valuation-index.v031g.1",
+    }:
+        raise PublicationGateError("V031 full-market valuation or V031G shard index is required")
 
     coverage_service = CoveragePolicyService(root=root, projection_path=root / coverage_path)
     records: list[dict[str, Any]] = []
     projections: dict[str, dict[str, Any]] = {}
-    for card in valuation.get("cards") or []:
+    for card in _valuation_cards(root, valuation_path, valuation):
         ticker = str((card.get("primary_security") or {}).get("ticker") or "").upper()
         if not ticker:
             continue
@@ -89,7 +110,15 @@ def build_publication_catalog(
     index = {row["ticker"]: _filename(row["ticker"]) for row in records}
     axis_counts = {
         axis: sum(bool((row.get("scope_axes") or {}).get(axis)) for row in records)
-        for axis in ("research_page", "news_ai", "etf_exposure", "etf_change_analysis", "supply_chain_analysis", "deep_research")
+        for axis in (
+            "research_page",
+            "news_ai",
+            "etf_exposure",
+            "etf_change_analysis",
+            "supply_chain_analysis",
+            "supply_chain_context",
+            "deep_research",
+        )
     }
     return {
         "schema_version": "publication-gate-catalog.v031f.2.1",

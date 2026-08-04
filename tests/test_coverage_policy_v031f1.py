@@ -41,8 +41,10 @@ def _fixture(tmp_path: Path) -> Path:
     records = []
     for name in ("core", "chain", "pending", "context", "fund"):
         decisions = {action: {"enabled": False} for action in ("news", "etf", "supply_chain", "deep_research")}
-        if name == "core": decisions["news"]["enabled"] = True
-        if name == "chain": decisions["supply_chain"]["enabled"] = True
+        if name == "core":
+            decisions["news"]["enabled"] = True
+        if name == "chain":
+            decisions["supply_chain"]["enabled"] = True
         records.append({
             "company_id": f"company:{name}",
             "research_universe_status": "eligible_not_selected" if name == "pending" else "not_eligible",
@@ -62,7 +64,8 @@ def test_coverage_tiers_are_derived_independently(tmp_path: Path):
     assert records["company:core"]["research_scope"] == "core"
     assert records["company:chain"]["research_scope"] == "coverage"
     assert records["company:pending"]["research_scope"] == "candidate"
-    assert "company:context" not in records
+    assert records["company:context"]["research_scope"] == "contextual"
+    assert records["company:context"]["scope_axes"]["supply_chain_context"] is True
     assert records["company:fund"]["product_scope"] == "excluded"
     assert report["summary"]["default_basic_market_company_count"] == 1
     assert report["contract"]["unlisted_operating_company_default_tier"] == "basic_market"
@@ -111,6 +114,7 @@ def test_real_projection_preserves_key_identity_and_scope_contracts():
     assert by_ticker["TSLA"]["research_scope"] == "core"
     assert by_ticker["SKHY"]["research_scope"] == "candidate"
     assert report["summary"]["public_valuation_card_count"] == 5851
-    assert report["summary"]["research_page_count"] == 80
+    assert report["summary"]["research_page_count"] == 86
+    assert report["summary"]["supply_chain_context_count"] == 1000
     assert report["contract"]["etf_exposure_determines_tier"] is False
     assert report["contract"]["valuation_readiness_determines_research_scope"] is False

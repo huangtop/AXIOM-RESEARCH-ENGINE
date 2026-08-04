@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import json
-from collections import Counter, defaultdict
+from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Mapping
@@ -46,6 +46,8 @@ def _validate_policy(policy: Mapping[str, Any]) -> None:
         raise CoveragePolicyError("sparse projection default must be basic_market")
     if not isinstance(emit_tiers, list) or not set(emit_tiers).issubset(TIERS) or "contextual" in emit_tiers:
         raise CoveragePolicyError("sparse projection emit tiers are invalid")
+    if int(projection.get("contextual_supply_chain_limit") or 0) < 1:
+        raise CoveragePolicyError("contextual supply-chain limit must be positive")
 
 
 def _enabled(record: Mapping[str, Any], actions: list[str]) -> bool:
@@ -113,7 +115,15 @@ def build_coverage_policy(
     securities = _load(root / securities_path, "securities")
     identity_payload = _load(root / identity_path, "security identity")
     research_payload = _load(root / research_path, "research eligibility")
-    valuation_payload = _load(root / valuation_path, "full-market valuation")
+    valuation_file = root / valuation_path
+    if valuation_file.is_file():
+        valuation_payload = _load(valuation_file, "full-market valuation")
+    else:
+        # Local import avoids a module cycle: full_market_coverage uses the
+        # published coverage service at request time.
+        from axiom_engine.full_market_coverage.core import build_full_market_coverage
+
+        valuation_payload = build_full_market_coverage(root)
     exposure_rows = _load(root / etf_exposure_path, "ETF exposure") if (root / etf_exposure_path).is_file() else []
     _validate_policy(policy)
     if not isinstance(companies, list) or not isinstance(securities, list):
@@ -121,9 +131,20 @@ def build_coverage_policy(
 
     identity_by_company = {str(row["company_id"]): row for row in identity_payload.get("companies") or []}
     research_by_company = {str(row["company_id"]): row for row in research_payload.get("records") or []}
+    valuation_cards = valuation_payload.get("cards")
+    if not isinstance(valuation_cards, list):
+        valuation_cards = []
+        base = valuation_file.parent
+        for company_id, filename in sorted(
+            ((valuation_payload.get("indexes") or {}).get("company_id_to_file") or {}).items()
+        ):
+            path = base / str(filename)
+            if not path.is_file():
+                raise CoveragePolicyError(f"valuation artifact missing for {company_id}: {path}")
+            valuation_cards.append(_load(path, f"valuation artifact {company_id}"))
     valuation_by_company = {
         str((row.get("company") or {}).get("company_id")): row
-        for row in valuation_payload.get("cards") or []
+        for row in valuation_cards
         if (row.get("company") or {}).get("company_id")
     }
     primary_security = {
@@ -133,6 +154,24 @@ def build_coverage_policy(
     exposure_count: Counter[str] = Counter(
         str(row.get("company_id")) for row in exposure_rows if row.get("company_id")
     )
+    contextual_statuses = set(policy["projection"].get("contextual_relevance_statuses") or [])
+    contextual_candidates = sorted(
+        (
+            research
+            for company_id, research in research_by_company.items()
+            if identity_by_company.get(company_id, {}).get("valuation_scope_status") == "included"
+            and (research.get("research_relevance") or {}).get("status") in contextual_statuses
+        ),
+        key=lambda row: (
+            0 if (row.get("research_relevance") or {}).get("status") == "priority_candidate" else 1,
+            -float(row.get("research_score") or 0),
+            str(row.get("company_id") or ""),
+        ),
+    )
+    contextual_ids = {
+        str(row["company_id"])
+        for row in contextual_candidates[: int(policy["projection"]["contextual_supply_chain_limit"])]
+    }
     records: list[dict[str, Any]] = []
     tier_counts: Counter[str] = Counter()
     valuation_scope_counts: Counter[str] = Counter()
@@ -157,6 +196,7 @@ def build_coverage_policy(
             "news_ai": actions["news"],
             "etf_change_analysis": actions["etf"],
             "supply_chain_analysis": actions["supply_chain"],
+            "supply_chain_context": company_id in contextual_ids or actions["supply_chain"],
             "deep_research": actions["deep_research"],
         }
         product_scope = "excluded" if not instrument_included else ("frontier_research" if scope_axes["research_page"] else "basic_market")
@@ -200,7 +240,12 @@ def build_coverage_policy(
 
     records.sort(key=lambda row: row["company_id"])
     emit_tiers = set(policy["projection"]["emit_research_tiers"])
-    emitted_records = [row for row in records if row["research_scope"] in emit_tiers]
+    emitted_records = [
+        row
+        for row in records
+        if row["research_scope"] in emit_tiers
+        or bool(row["scope_axes"].get("supply_chain_context"))
+    ]
     return {
         "schema_version": "coverage-policy-projection.v031f.2.1",
         "version": "V031F.2.1",
@@ -218,6 +263,7 @@ def build_coverage_policy(
             "news_ai_count": sum(bool(row["scope_axes"]["news_ai"]) for row in records),
             "etf_change_analysis_count": sum(bool(row["scope_axes"]["etf_change_analysis"]) for row in records),
             "supply_chain_analysis_count": sum(bool(row["scope_axes"]["supply_chain_analysis"]) for row in records),
+            "supply_chain_context_count": sum(bool(row["scope_axes"]["supply_chain_context"]) for row in records),
             "deep_research_count": sum(bool(row["scope_axes"]["deep_research"]) for row in records),
             "etf_exposed_company_count": sum(row["context"]["etf_exposure_count"] > 0 for row in records),
         },

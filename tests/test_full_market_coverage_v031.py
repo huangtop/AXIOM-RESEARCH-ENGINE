@@ -3,7 +3,11 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from axiom_engine.full_market_coverage import FullMarketCoverageService, build_full_market_coverage
+from axiom_engine.full_market_coverage import (
+    FullMarketCoverageService,
+    build_full_market_coverage,
+    write_full_market_coverage,
+)
 from axiom_engine.valuation_http import ValuationWSGIApp
 
 
@@ -80,3 +84,16 @@ def test_no_frontend_files_are_part_of_v031_implementation():
         "tests/test_full_market_coverage_v031.py",
     ]
     assert all(not path.startswith("frontend/") for path in paths)
+
+
+def test_writer_emits_lightweight_index_and_per_company_artifacts(tmp_path: Path):
+    payload = report()
+    output = tmp_path / "full_market_coverage.json"
+    write_full_market_coverage(payload, output)
+    index = json.loads(output.read_text())
+    assert index["schema_version"] == "full-market-valuation-index.v031g.1"
+    assert "cards" not in index
+    nvda_file = index["indexes"]["ticker_to_file"]["NVDA"]
+    nvda = json.loads((output.parent / nvda_file).read_text())
+    assert nvda["primary_security"]["ticker"] == "NVDA"
+    assert output.stat().st_size < 2_000_000

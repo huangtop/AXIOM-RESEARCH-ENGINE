@@ -102,7 +102,9 @@ class ValuationWSGIApp:
             return self._respond(start_response, HTTPStatus.NO_CONTENT, {})
         if method == "GET" and path == "/health":
             return self._respond(start_response, HTTPStatus.OK, {"status": "ok"})
-        company_suffixes = ("/valuation-card", "/research-policy", "/etf-exposure", "/etf-events")
+        # Research-policy has its own evidence-universe lookup and may be used
+        # with an isolated inference service before publication projection.
+        company_suffixes = ("/valuation-card", "/etf-exposure", "/etf-events")
         gated_symbol = None
         if method == "GET" and path.startswith("/v1/companies/") and path.endswith(company_suffixes):
             gated_symbol = path.removeprefix("/v1/companies/").rsplit("/", 1)[0].strip("/")

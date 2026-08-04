@@ -6,6 +6,7 @@ from datetime import datetime, timezone
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any, Mapping
+from urllib.parse import quote
 from zipfile import BadZipFile, ZipFile
 
 from axiom_engine.seven_model_valuation import calculate_seven_models
@@ -218,7 +219,43 @@ def build_full_market_coverage(
 
 def write_full_market_coverage(report: Mapping[str, Any], output: Path) -> None:
     output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(json.dumps(report, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+    company_root = output.parent / "per-company"
+    company_root.mkdir(parents=True, exist_ok=True)
+    ticker_to_file: dict[str, str] = {}
+    company_id_to_file: dict[str, str] = {}
+    for card in report.get("cards") or []:
+        company_id = str((card.get("company") or {}).get("company_id") or "")
+        ticker = str((card.get("primary_security") or {}).get("ticker") or "").upper()
+        if not company_id:
+            continue
+        filename = quote(company_id, safe="._-") + ".json"
+        path = company_root / filename
+        temporary = path.with_suffix(path.suffix + ".tmp")
+        temporary.write_text(
+            json.dumps(card, ensure_ascii=False, separators=(",", ":")) + "\n",
+            encoding="utf-8",
+        )
+        temporary.replace(path)
+        company_id_to_file[company_id] = f"per-company/{filename}"
+        if ticker:
+            ticker_to_file[ticker] = f"per-company/{filename}"
+
+    index = {
+        "schema_version": "full-market-valuation-index.v031g.1",
+        "version": "V031G.1",
+        "generated_at": report.get("generated_at"),
+        "summary": dict(report.get("summary") or {}),
+        "indexes": {
+            "ticker_to_file": dict(sorted(ticker_to_file.items())),
+            "company_id_to_file": dict(sorted(company_id_to_file.items())),
+        },
+    }
+    temporary = output.with_suffix(output.suffix + ".tmp")
+    temporary.write_text(
+        json.dumps(index, ensure_ascii=False, separators=(",", ":")) + "\n",
+        encoding="utf-8",
+    )
+    temporary.replace(output)
 
 
 class FullMarketCoverageService:
@@ -283,6 +320,18 @@ class FullMarketCoverageService:
                 if isinstance(card, Mapping):
                     return {**card, "coverage_policy": {"product_scope": projection.get("product_scope"), "research_scope": projection.get("research_scope"), "scope_axes": projection.get("scope_axes") or {}, "reason_codes": (projection.get("coverage_policy") or {}).get("reason_codes") or []}}
         payload = self._get_payload()
+        filename = payload.get("indexes", {}).get("ticker_to_file", {}).get(symbol)
+        if filename:
+            card_path = self.snapshot_path.parent / str(filename)
+            if not card_path.is_file():
+                raise FullMarketCoverageNotFound(
+                    f"valuation artifact missing for ticker {symbol}: {card_path}"
+                )
+            card = _load(card_path)
+            return {**card, "coverage_policy": {
+                "publication_tier": coverage.get("publication_tier"),
+                "reason_codes": coverage.get("reason_codes") or [],
+            }}
         position = payload.get("indexes", {}).get("ticker_to_position", {}).get(symbol)
         if position is None:
             raise FullMarketCoverageNotFound(f"ticker not found in full-market population: {symbol}")

@@ -1,10 +1,7 @@
-name: Daily Market Cache and Public Data
+name: Legacy Public Fixture Build
 
 on:
   workflow_dispatch:
-  schedule:
-    # 22:20 UTC, Monday-Friday. This runs once after the US regular session.
-    - cron: "20 22 * * 1-5"
 
 permissions:
   contents: write
@@ -28,9 +25,8 @@ jobs:
 
       - run: pip install -e .[dev]
 
-      # Network access happens here, once per scheduled run — never in Render.
-      # During the current validation phase, refresh only symbols configured in
-      # the canonical repository. Add more --symbol options as coverage grows.
+      # Retained for explicit fixture compatibility only. Production market
+      # population is scheduled by production-market-refresh.yml.
       - name: Refresh completed daily closes
         run: axiom refresh-closes
 
