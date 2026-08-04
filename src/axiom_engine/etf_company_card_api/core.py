@@ -64,6 +64,7 @@ class ETFCompanyCardService:
             "source": {
                 "etf_holdings": "ETF-ENGINE-V2 top_holdings_only via Canonical ETF Exposure",
                 "valuation": "AXIOM Full-Market Valuation",
+                "valuation_visibility": "AXIOM V031F.1 Coverage Policy",
                 "provider_generated_at": data["manifest"].get("source_snapshots", {}).get("canonical_etf_exposure", {}).get("provider_generated_at"),
                 "interpretation": "Portfolio weight is ETF portfolio exposure; valuation availability never determines ETF membership.",
             },

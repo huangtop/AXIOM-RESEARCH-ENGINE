@@ -9,6 +9,10 @@ from typing import Any, Mapping
 
 
 INSTRUMENT_RULES = (
+    ("exchange_traded_fund", (r"\bETF\b", r"\bexchange[- ]traded fund\b")),
+    ("exchange_traded_note", (r"\bETN\b", r"\bexchange[- ]traded notes?\b")),
+    ("commodity_trust", (r"\b(?:gold|silver|bitcoin|oil|commodity) trust\b", r"\bcommodity pool\b")),
+    ("investment_fund", (r"\bclosed[- ]end fund\b", r"\binvestment fund shares\b")),
     ("warrant", (r"\bwarrants?\b", r"\.W(?:S)?$")),
     ("subscription_right", (r"\brights?\b", r"\.R$")),
     ("unit", (r"\bunits?\b", r"\.U$")),
@@ -23,17 +27,39 @@ INSTRUMENT_RULES = (
     ),
 )
 
+NAME_ONLY_INSTRUMENT_TYPES = {
+    "exchange_traded_fund",
+    "exchange_traded_note",
+    "commodity_trust",
+    "investment_fund",
+}
+
 
 def _load(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
 def _classify(row: Mapping[str, Any]) -> tuple[str, str]:
+    declared_type = str(row.get("security_type") or "").strip().lower()
+    declared_non_company = {
+        "etf": "exchange_traded_fund",
+        "exchange_traded_fund": "exchange_traded_fund",
+        "etn": "exchange_traded_note",
+        "exchange_traded_note": "exchange_traded_note",
+        "fund": "investment_fund",
+        "closed_end_fund": "investment_fund",
+        "commodity": "commodity_trust",
+        "future": "futures_contract",
+        "futures": "futures_contract",
+    }
+    if declared_type in declared_non_company:
+        return declared_non_company[declared_type], "DECLARED_SECURITY_TYPE"
     name = str((row.get("metadata") or {}).get("security_name") or "")
     ticker = str(row.get("ticker") or "")
     text = f"{name} {ticker}"
     for instrument_type, patterns in INSTRUMENT_RULES:
-        if any(re.search(pattern, text, flags=re.IGNORECASE) for pattern in patterns):
+        searchable = name if instrument_type in NAME_ONLY_INSTRUMENT_TYPES else text
+        if any(re.search(pattern, searchable, flags=re.IGNORECASE) for pattern in patterns):
             return instrument_type, "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN"
     return "common_or_ordinary_equity", "NO_NON_COMMON_INSTRUMENT_SIGNAL"
 

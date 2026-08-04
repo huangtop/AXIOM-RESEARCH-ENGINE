@@ -1,0 +1,26 @@
+{
+  "schema_version": "coverage-policy-config.v031f.1",
+  "version": "V031F.1",
+  "principle": "Identity may cover the market, while research, valuation commitment, and publication remain independent evidence-driven decisions.",
+  "publication": {
+    "core": {"company_page": true, "valuation_card": true, "visibility": "public"},
+    "coverage": {"company_page": true, "valuation_card": true, "visibility": "public"},
+    "contextual": {"company_page": false, "valuation_card": false, "visibility": "embedded_only"},
+    "candidate": {"company_page": false, "valuation_card": false, "visibility": "internal_preview"},
+    "excluded": {"company_page": false, "valuation_card": false, "visibility": "none"}
+  },
+  "tier_derivation": {
+    "core_requires_any_enabled_action": ["news", "etf"],
+    "coverage_requires_any_enabled_action": ["supply_chain", "deep_research"],
+    "candidate_relevance_statuses": ["priority_candidate"],
+    "candidate_universe_statuses": ["eligible_not_selected"]
+  },
+  "projection": {
+    "default_unlisted_tier": "contextual",
+    "emit_tiers": ["core", "coverage", "candidate", "excluded"]
+  },
+  "manual_editorial_override": {
+    "enabled": false,
+    "ticker_membership_forbidden": true
+  }
+}

@@ -1,12 +1,16 @@
 {
   "schema_version": "research-eligibility-policy.v031c.4",
   "version": "V031C.4",
-  "research_universe": {"maximum_selected_companies": 300},
+  "research_universe": {
+    "frontier_research_target_range": [120, 200],
+    "contextual_supply_chain_target_range": [600, 1000],
+    "selection_mode": "evidence_ranked_actions"
+  },
   "score_weights": {"theme":0.65,"sector":0.15,"cluster":0.10,"supply_chain_role":0.05,"evidence_breadth":0.05},
   "decisions": {
     "news": {"minimum_theme_score":0.48,"minimum_sector_score":0.45},
     "etf": {"minimum_theme_score":0.58,"minimum_sector_score":0.50,"requires_active_common_equity":true},
     "supply_chain": {"minimum_theme_score":0.50,"minimum_sector_score":0.50,"minimum_role_or_cluster_score":0.55},
-    "deep_research": {"minimum_theme_score":0.68,"minimum_sector_score":0.55,"minimum_cluster_score":0.55,"minimum_evidence_count":1,"minimum_source_signal_count":2,"minimum_derived_dimensions":3}
+    "deep_research": {"minimum_theme_score":0.68,"minimum_sector_score":0.55,"minimum_cluster_score":0.55,"minimum_evidence_count":1,"minimum_source_signal_count":2,"minimum_derived_dimensions":3,"activation_mode":"event_driven","trigger_types":["sec_filing","news","etf_change"]}
   }
 }

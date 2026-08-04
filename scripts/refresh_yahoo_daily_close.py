@@ -34,6 +34,12 @@ def main() -> int:
     parser.add_argument("--timeout", type=float, default=15.0)
     parser.add_argument("--force", action="store_true", help="Refetch/write rows already present for the session.")
     parser.add_argument("--checkpoint-size", type=int, default=25)
+    parser.add_argument(
+        "--max-failure-rate",
+        type=float,
+        default=0.0,
+        help="Allow a bounded fraction of provider failures while retaining diagnostics.",
+    )
     parser.add_argument("--report", type=Path, default=Path("data/generated/provider_cache/yahoo/daily_close_refresh_report.json"))
     args = parser.parse_args()
 
@@ -47,6 +53,8 @@ def main() -> int:
         parser.error("provide --symbols, --symbols-file, or --universe-root")
     if args.offset < 0:
         parser.error("--offset cannot be negative")
+    if not 0 <= args.max_failure_rate <= 1:
+        parser.error("--max-failure-rate must be between zero and one")
     symbols = symbols[args.offset:]
     if args.limit is not None:
         if args.limit < 1:
@@ -81,7 +89,8 @@ def main() -> int:
     print(f"Archive: {report.archive.archive_root}")
     print(f"Latest cache: {report.archive.latest_cache_path}")
     print(f"Report: {args.report}")
-    return 0 if report.failed == 0 else 2
+    failure_rate = report.failed / report.requested if report.requested else 0.0
+    return 0 if failure_rate <= args.max_failure_rate else 2
 
 
 def load_symbols(path: Path) -> Iterable[str]:

@@ -1,0 +1,59 @@
+name: Evidence and Research Classification Refresh
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "40 11 * * 6"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: research-classification-refresh
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -e .[dev]
+      - name: Extend SEC business evidence checkpoint
+        run: >-
+          python scripts/build_sec_business_evidence.py
+          --allow-live
+          --write-cache
+          --write
+          --merge-existing
+          --resume
+          --limit 200
+          --user-agent "$SEC_USER_AGENT"
+      - name: Rebuild evidence-derived classifications and action gates
+        run: |
+          python scripts/build_company_signals.py
+          python scripts/build_knowledge_inference.py
+          python scripts/build_research_relevance_gate.py
+          python scripts/build_research_eligibility.py
+          python scripts/build_classification_quality_audit.py
+          python scripts/build_coverage_policy.py
+          python scripts/build_publication_catalog.py
+      - name: Validate classification and publication contracts
+        run: pytest -q tests/test_research_eligibility_v031c4.py tests/test_classification_quality_v031c5.py tests/test_coverage_policy_v031f1.py tests/test_publication_gate_v031f2.py
+      - name: Commit derived research artifacts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/generated/canonical_business_evidence data/generated/company_signals data/generated/knowledge_inference data/generated/research_relevance_gate data/generated/research_eligibility data/generated/classification_quality data/generated/coverage_policy data/generated/publication_gate
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "chore(data): refresh evidence-derived research classifications"
+          git pull --rebase origin main
+          git push origin HEAD:main
