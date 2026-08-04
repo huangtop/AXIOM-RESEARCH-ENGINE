@@ -102,7 +102,7 @@ def test_autonomous_theme_requires_ai_driving_evidence_not_generic_automaker(tmp
     assert record["decisions"]["news"]["qualified"] is True
 
 
-def test_research_rank_cap_is_automatic_not_ticker_membership(tmp_path: Path):
+def test_action_rank_cap_does_not_cap_evidence_qualified_research_pages(tmp_path: Path):
     root = _fixture(tmp_path)
     catalog_path = root / "config/research_theme_catalog.v031c.5.1.json"
     catalog = json.loads(catalog_path.read_text())
@@ -116,8 +116,14 @@ def test_research_rank_cap_is_automatic_not_ticker_membership(tmp_path: Path):
     _write(root, "data/generated/security_identity/security_identity_normalization.json", {"companies":[{"company_id":"company:1","valuation_scope_status":"included"},{"company_id":"company:3","valuation_scope_status":"included"}]})
     report = build_research_eligibility(root)
     assert report["summary"]["eligible_company_count"] == 2
-    assert report["summary"]["selected_research_company_count"] == 1
-    assert sum(row["research_universe_status"] == "eligible_not_selected" for row in report["records"]) == 1
+    assert report["summary"]["selected_research_company_count"] == 2
+    assert sum(row["research_universe_status"] == "selected" for row in report["records"]) == 2
+    assert not any(
+        row["research_universe_status"] == "eligible_not_selected"
+        for row in report["records"]
+    )
+    assert report["summary"]["active_intelligence_company_count"] == 1
+    assert report["policy"]["research_page_activation_mode"] == "evidence_qualified_uncapped"
 
 
 def test_tier_minimum_score_does_not_force_fill_active_limit(tmp_path: Path):
