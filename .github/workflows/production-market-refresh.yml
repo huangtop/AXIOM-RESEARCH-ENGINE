@@ -50,8 +50,21 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/generated/market data/generated/full_market_coverage data/generated/coverage_policy data/generated/publication_gate
+          echo "Working tree before staging:"
+          git status --short
+          git add \
+            data/generated/market \
+            data/generated/provider_cache/yahoo/daily_close \
+            data/generated/provider_cache/yahoo/daily_close_refresh_report.json \
+            data/generated/full_market_coverage \
+            data/generated/coverage_policy \
+            data/generated/publication_gate
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "chore(data): refresh production daily market artifacts"
+          if ! git diff --quiet || ! git diff --cached --quiet; then
+            echo "Tracked changes remain after the market artifact commit:"
+            git status --short
+            exit 1
+          fi
           git pull --rebase origin main
           git push origin HEAD:main

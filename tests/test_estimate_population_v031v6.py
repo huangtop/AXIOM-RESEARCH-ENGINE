@@ -23,3 +23,20 @@ def test_does_not_emit_missing_or_unresolved_estimates(tmp_path: Path):
     (tmp_path / "data/generated/company/yahoo_company_snapshot.json").write_text(json.dumps(snapshot))
     (tmp_path / "data/universe/securities.json").write_text(json.dumps([{"ticker": "AAA", "company_id": "c1", "security_id": "s1"}]))
     assert build_estimate_population(tmp_path)["estimates"] == []
+
+
+def test_incremental_refresh_preserves_other_company_estimates(tmp_path: Path):
+    snapshot = {"symbols": {"AAA": {"fetched_at": "2026-08-04", "currency": "USD", "forward_eps": "5"}}}
+    (tmp_path / "data/generated/company").mkdir(parents=True)
+    (tmp_path / "data/universe").mkdir(parents=True)
+    (tmp_path / "data/estimate_data").mkdir(parents=True)
+    (tmp_path / "data/generated/company/yahoo_company_snapshot.json").write_text(json.dumps(snapshot))
+    (tmp_path / "data/universe/securities.json").write_text(json.dumps([{"ticker": "AAA", "company_id": "company:1", "security_id": "security:1"}]))
+    (tmp_path / "data/estimate_data/consensus_estimates.json").write_text(json.dumps([
+        {"company_id": "company:OTHER", "metric": "forward_eps", "value": "9"},
+        {"company_id": "company:1", "metric": "forward_eps", "value": "1"},
+    ]))
+    rows = build_estimate_population(tmp_path)["estimates"]
+    by_key = {(row["company_id"], row["metric"]): row for row in rows}
+    assert by_key[("company:OTHER", "forward_eps")]["value"] == "9"
+    assert by_key[("company:1", "forward_eps")]["value"] == "5"
