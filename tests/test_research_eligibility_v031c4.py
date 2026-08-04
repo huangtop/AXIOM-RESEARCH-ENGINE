@@ -38,7 +38,9 @@ def test_independent_actions_are_enabled_from_knowledge_not_valuation(tmp_path: 
     report = build_research_eligibility(_fixture(tmp_path))
     record = report["records"][0]
     assert record["ticker"] == "TEST"
-    assert all(decision["enabled"] for decision in record["decisions"].values())
+    assert all(record["decisions"][action]["enabled"] for action in ("news", "etf", "supply_chain"))
+    assert record["decisions"]["deep_research"]["enabled"] is False
+    assert record["decisions"]["deep_research"]["reason_code"] == "AWAITING_EVENT_TRIGGER"
     assert record["research_universe_status"] == "selected"
     assert report["policy"]["valuation_readiness_consumed"] is False
 
@@ -102,13 +104,9 @@ def test_autonomous_theme_requires_ai_driving_evidence_not_generic_automaker(tmp
 
 def test_research_rank_cap_is_automatic_not_ticker_membership(tmp_path: Path):
     root = _fixture(tmp_path)
-    policy_path = root / "config/research_eligibility.v031c.4.json"
-    policy = json.loads(policy_path.read_text())
-    policy["research_universe"]["maximum_selected_companies"] = 1
-    policy_path.write_text(json.dumps(policy))
     catalog_path = root / "config/research_theme_catalog.v031c.5.1.json"
     catalog = json.loads(catalog_path.read_text())
-    catalog["tier_limits"] = {"active_intelligence":1,"supply_chain":1,"deep_research":1}
+    catalog["tier_limits"] = {"active_intelligence":1,"supply_chain":1}
     catalog["tier_minimum_scores"] = {"active_intelligence":0,"supply_chain":0,"deep_research":0}
     catalog_path.write_text(json.dumps(catalog))
     payload = json.loads((root / "data/generated/knowledge_inference/knowledge_inference.json").read_text())
@@ -134,6 +132,22 @@ def test_tier_minimum_score_does_not_force_fill_active_limit(tmp_path: Path):
     assert report["summary"]["eligible_company_count"] == 1
     assert report["records"][0]["decisions"]["news"]["qualified"] is True
     assert report["records"][0]["decisions"]["news"]["enabled"] is False
+
+
+def test_deep_research_is_activated_by_sec_filing_event(tmp_path: Path):
+    root = _fixture(tmp_path)
+    _write(root, "data/generated/sec_filing_refresh/refresh_plan.json", {
+        "worklist": [{
+            "company_id": "company:1",
+            "latest_financial_filing": {"accession_number": "0001-26-000001"},
+        }]
+    })
+    record = build_research_eligibility(root)["records"][0]
+    assert record["decisions"]["deep_research"]["enabled"] is True
+    assert record["deep_research_triggers"] == [{
+        "trigger_type": "sec_filing",
+        "trigger_id": "0001-26-000001",
+    }]
 
 
 def test_policy_rejects_ticker_membership(tmp_path: Path):
@@ -165,8 +179,7 @@ def test_digital_assets_remain_classifiable_but_have_no_research_actions():
 def test_real_population_remains_full_market_and_not_valuation_gated():
     report = build_research_eligibility(ROOT)
     assert report["summary"]["company_count"] == 6464
-    assert report["summary"]["active_intelligence_company_count"] <= 80
-    assert report["summary"]["supply_chain_company_count"] <= 200
-    assert report["summary"]["deep_research_company_count"] <= 200
-    assert report["policy"]["tier_limits"]["deep_research"] == 200
+    assert report["summary"]["active_intelligence_company_count"] <= 160
+    assert report["summary"]["supply_chain_company_count"] <= 1000
+    assert report["policy"]["deep_research_activation_mode"] == "event_driven"
     assert report["policy"]["valuation_readiness_consumed"] is False

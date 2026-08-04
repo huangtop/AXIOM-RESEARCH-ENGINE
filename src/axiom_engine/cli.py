@@ -28,7 +28,6 @@ from .real_100_estimate_loader import Real100EstimateError, build_real_100_estim
 
 from .real_100_estimate_loader import Real100EstimateError, build_real_100_estimate_template, build_real_100_estimates, validate_real_100_estimates
 
-from .valuation_engine import ValuationEngineError, build_valuations, validate_valuations
 from .market_data import MarketDataError, build_market_data, validate_market_data, write_template
 
 from .research_engine import ResearchEngineError, build_research, validate_research
@@ -356,6 +355,8 @@ def build_valuations_command(
     write: bool = typer.Option(False, "--write", help="Write canonical valuation bundle"),
     compact: bool = typer.Option(False, "--compact"),
 ) -> None:
+    from .valuation_engine import ValuationEngineError, build_valuations
+
     scenarios = tuple(scenario or ["bear", "base", "bull"])
     invalid = sorted(set(scenarios) - {"bear", "base", "bull"})
     if invalid:
@@ -386,6 +387,8 @@ def build_valuations_command(
 def validate_valuations_command(
     output_dir: str = typer.Option("data/valuation_data", "--output-dir"),
 ) -> None:
+    from .valuation_engine import ValuationEngineError, validate_valuations
+
     try:
         report = validate_valuations(output_dir)
     except ValuationEngineError as exc:

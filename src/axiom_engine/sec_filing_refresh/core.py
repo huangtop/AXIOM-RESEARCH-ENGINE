@@ -49,6 +49,7 @@ def build_sec_filing_refresh_plan(
     *,
     companies_path: str = "data/universe/companies.json",
     submissions_cache_dir: str = "data/generated/provider_cache/sec/submissions",
+    submissions_bulk_zip: str | None = None,
     financial_facts_path: str = "data/generated/canonical_financial_population/financial_facts.json",
     companyfacts_cache_dir: str = "data/generated/provider_cache/sec/companyfacts",
     companyfacts_bulk_zip: str = "data/onboarding/sec/companyfacts.zip",
@@ -69,6 +70,13 @@ def build_sec_filing_refresh_plan(
     worklist: list[dict[str, Any]] = []
     diagnostics: list[dict[str, Any]] = []
     cache_root = root / submissions_cache_dir
+    submissions_bulk_path = root / submissions_bulk_zip if submissions_bulk_zip else None
+    submissions_bulk = (
+        zipfile.ZipFile(submissions_bulk_path)
+        if submissions_bulk_path and submissions_bulk_path.is_file()
+        else None
+    )
+    submissions_bulk_names = set(submissions_bulk.namelist()) if submissions_bulk else set()
     companyfacts_root = root / companyfacts_cache_dir
     bulk_path = root / companyfacts_bulk_zip
     bulk = zipfile.ZipFile(bulk_path) if bulk_path.is_file() else None
@@ -77,10 +85,15 @@ def build_sec_filing_refresh_plan(
         company_id = str(company.get("company_id") or "")
         cik = str((company.get("metadata") or {}).get("cik") or "").zfill(10)
         cache_path = cache_root / f"CIK{cik}.json"
-        if not cik.strip("0") or not cache_path.is_file():
+        bulk_name = f"CIK{cik}.json"
+        if not cik.strip("0") or (not cache_path.is_file() and bulk_name not in submissions_bulk_names):
             diagnostics.append({"company_id": company_id, "reason_code": "SUBMISSIONS_CACHE_UNAVAILABLE"})
             continue
-        payload = _load(cache_path)
+        payload = (
+            _load(cache_path)
+            if cache_path.is_file()
+            else json.loads(submissions_bulk.read(bulk_name))
+        )
         filings = sorted(
             (row for row in _recent(payload) if _is_financial_trigger(row)),
             key=lambda row: (str(row.get("filingDate") or ""), str(row.get("accessionNumber") or "")),
@@ -100,7 +113,11 @@ def build_sec_filing_refresh_plan(
         reasons: list[str] = []
         if latest_accession and latest_accession not in consumed_accessions:
             reasons.append("NEW_FINANCIAL_FILING_ACCESSION")
-        cache_age_days = (current - datetime.fromtimestamp(cache_path.stat().st_mtime, tz=timezone.utc).date()).days
+        cache_age_days = (
+            (current - datetime.fromtimestamp(cache_path.stat().st_mtime, tz=timezone.utc).date()).days
+            if cache_path.is_file()
+            else 0
+        )
         if cache_age_days >= safety_refresh_days:
             reasons.append("SAFETY_TTL_EXPIRED")
         if reasons:
@@ -114,6 +131,8 @@ def build_sec_filing_refresh_plan(
             })
     if bulk is not None:
         bulk.close()
+    if submissions_bulk is not None:
+        submissions_bulk.close()
     return {
         "schema_version": "sec-filing-refresh-plan.v031c.1.1",
         "version": "V031C.1.1",
