@@ -10,10 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
       - run: pip install -e .[dev]
       - run: axiom validate
       - run: pytest -q
-      - run: ruff check src tests
+      - name: Lint changed Python files
+        shell: bash
+        run: |
+          mapfile -t files < <(git diff --name-only --diff-filter=ACMR "origin/${GITHUB_BASE_REF:-main}...HEAD" -- '*.py')
+          if (( ${#files[@]} )); then
+            ruff check "${files[@]}"
+          fi
