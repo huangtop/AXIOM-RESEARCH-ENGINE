@@ -6,8 +6,11 @@ from datetime import datetime, timezone
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any, Mapping
+from urllib.parse import quote
+from zipfile import BadZipFile, ZipFile
 
 from axiom_engine.seven_model_valuation import calculate_seven_models
+from axiom_engine.coverage_policy import CoveragePolicyService
 
 
 MODELS = ("dcf", "forward_pe", "peg", "forward_ps", "ev_ebitda", "forward_pb", "milestone")
@@ -216,14 +219,53 @@ def build_full_market_coverage(
 
 def write_full_market_coverage(report: Mapping[str, Any], output: Path) -> None:
     output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(json.dumps(report, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+    company_root = output.parent / "per-company"
+    company_root.mkdir(parents=True, exist_ok=True)
+    ticker_to_file: dict[str, str] = {}
+    company_id_to_file: dict[str, str] = {}
+    for card in report.get("cards") or []:
+        company_id = str((card.get("company") or {}).get("company_id") or "")
+        ticker = str((card.get("primary_security") or {}).get("ticker") or "").upper()
+        if not company_id:
+            continue
+        filename = quote(company_id, safe="._-") + ".json"
+        path = company_root / filename
+        temporary = path.with_suffix(path.suffix + ".tmp")
+        temporary.write_text(
+            json.dumps(card, ensure_ascii=False, separators=(",", ":")) + "\n",
+            encoding="utf-8",
+        )
+        temporary.replace(path)
+        company_id_to_file[company_id] = f"per-company/{filename}"
+        if ticker:
+            ticker_to_file[ticker] = f"per-company/{filename}"
+
+    index = {
+        "schema_version": "full-market-valuation-index.v031g.1",
+        "version": "V031G.1",
+        "generated_at": report.get("generated_at"),
+        "summary": dict(report.get("summary") or {}),
+        "indexes": {
+            "ticker_to_file": dict(sorted(ticker_to_file.items())),
+            "company_id_to_file": dict(sorted(company_id_to_file.items())),
+        },
+    }
+    temporary = output.with_suffix(output.suffix + ".tmp")
+    temporary.write_text(
+        json.dumps(index, ensure_ascii=False, separators=(",", ":")) + "\n",
+        encoding="utf-8",
+    )
+    temporary.replace(output)
 
 
 class FullMarketCoverageService:
-    def __init__(self, *, root: Path | None = None, snapshot_path: Path | None = None) -> None:
+    def __init__(self, *, root: Path | None = None, snapshot_path: Path | None = None, coverage_service: CoveragePolicyService | None = None, publication_root: Path | None = None) -> None:
         self.root = root or Path.cwd()
         self.snapshot_path = snapshot_path or self.root / "data/generated/full_market_coverage/full_market_coverage.json"
+        self.coverage_service = coverage_service or CoveragePolicyService(root=self.root)
+        self.publication_root = publication_root or self.root / "data/generated/publication_gate"
         self._payload: Mapping[str, Any] | None = None
+        self._catalog: Mapping[str, Any] | None = None
 
     def _get_payload(self) -> Mapping[str, Any]:
         if self._payload is None:
@@ -231,13 +273,69 @@ class FullMarketCoverageService:
         return self._payload
 
     def list(self) -> dict[str, Any]:
+        catalog_path = self.publication_root / "company_catalog.json"
+        if catalog_path.is_file():
+            if self._catalog is None:
+                self._catalog = _load(catalog_path)
+            if self._catalog.get("schema_version") == "publication-gate-catalog.v031f.2.1":
+                companies = [
+                    {"company_id": row["company_id"], "ticker": row["ticker"], "display_name": row.get("display_name"), "status": row.get("valuation_status")}
+                    for row in self._catalog.get("companies") or []
+                ]
+                return {"schema_version": "published-company-list.v031f.2.1", "version": "V031F.2.1", "summary": {"company_count": len(companies), "publication_gate": "coverage-policy.v031f.2.1", "source": "compact_publication_catalog"}, "companies": companies}
         payload = self._get_payload()
-        return {"schema_version": payload["schema_version"], "version": payload["version"], "summary": payload["summary"], "companies": [{"company_id": card["company"]["company_id"], "ticker": card["primary_security"]["ticker"], "display_name": card["company"]["display_name"], "status": card["status"]} for card in payload["cards"]]}
+        public_ids = self.coverage_service.public_company_ids()
+        companies = [
+            {"company_id": card["company"]["company_id"], "ticker": card["primary_security"]["ticker"], "display_name": card["company"]["display_name"], "status": card["status"]}
+            for card in payload["cards"] if card["company"]["company_id"] in public_ids
+        ]
+        summary = {
+            "company_count": len(companies),
+            "source_company_count": payload["summary"].get("company_count"),
+            "registry_company_count": payload["summary"].get("registry_company_count"),
+            "publication_gate": "coverage-policy.v031f.1",
+        }
+        return {"schema_version": "published-company-list.v031f.2", "version": "V031F.2", "summary": summary, "companies": companies}
 
     def get(self, ticker: str) -> Mapping[str, Any]:
         symbol = str(ticker or "").strip().upper()
+        coverage = self.coverage_service.require_public(symbol, capability="valuation_card")
+        catalog_path = self.publication_root / "company_catalog.json"
+        if catalog_path.is_file():
+            if self._catalog is None:
+                self._catalog = _load(catalog_path)
+            filename = (self._catalog.get("indexes") or {}).get("ticker_to_file", {}).get(symbol)
+            if filename:
+                loose_projection = self.publication_root / "companies" / filename
+                if loose_projection.is_file():
+                    projection = _load(loose_projection)
+                else:
+                    archive = self.publication_root / "company_projections.zip"
+                    try:
+                        with ZipFile(archive) as bundle:
+                            projection = json.loads(bundle.read(filename))
+                    except (OSError, KeyError, BadZipFile, json.JSONDecodeError) as exc:
+                        raise FullMarketCoverageError(f"cannot read company projection for {symbol}: {exc}") from exc
+                card = projection.get("valuation_card")
+                if isinstance(card, Mapping):
+                    return {**card, "coverage_policy": {"product_scope": projection.get("product_scope"), "research_scope": projection.get("research_scope"), "scope_axes": projection.get("scope_axes") or {}, "reason_codes": (projection.get("coverage_policy") or {}).get("reason_codes") or []}}
         payload = self._get_payload()
+        filename = payload.get("indexes", {}).get("ticker_to_file", {}).get(symbol)
+        if filename:
+            card_path = self.snapshot_path.parent / str(filename)
+            if not card_path.is_file():
+                raise FullMarketCoverageNotFound(
+                    f"valuation artifact missing for ticker {symbol}: {card_path}"
+                )
+            card = _load(card_path)
+            return {**card, "coverage_policy": {
+                "publication_tier": coverage.get("publication_tier"),
+                "reason_codes": coverage.get("reason_codes") or [],
+            }}
         position = payload.get("indexes", {}).get("ticker_to_position", {}).get(symbol)
         if position is None:
             raise FullMarketCoverageNotFound(f"ticker not found in full-market population: {symbol}")
-        return payload["cards"][position]
+        return {**payload["cards"][position], "coverage_policy": {
+            "publication_tier": coverage.get("publication_tier"),
+            "reason_codes": coverage.get("reason_codes") or [],
+        }}

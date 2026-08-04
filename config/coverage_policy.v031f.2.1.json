@@ -1,0 +1,33 @@
+{
+  "schema_version": "coverage-policy-config.v031f.2.1",
+  "version": "V031F.2.1",
+  "principle": "Operating-company publication, valuation, and research actions are independent scope axes.",
+  "scope_axes": {
+    "operating_company": {
+      "company_page": true,
+      "valuation_card": true,
+      "etf_exposure": true
+    },
+    "excluded_instrument": {
+      "company_page": false,
+      "valuation_card": false,
+      "etf_exposure": false
+    }
+  },
+  "research_tier_derivation": {
+    "core_requires_any_enabled_action": ["news", "etf"],
+    "coverage_requires_any_enabled_action": ["supply_chain", "deep_research"],
+    "candidate_relevance_statuses": ["priority_candidate"],
+    "candidate_universe_statuses": ["eligible_not_selected"]
+  },
+  "projection": {
+    "default_operating_company_tier": "basic_market",
+    "emit_research_tiers": ["core", "coverage", "candidate", "excluded"],
+    "contextual_supply_chain_limit": 1000,
+    "contextual_relevance_statuses": ["priority_candidate", "evidence_required"]
+  },
+  "manual_editorial_override": {
+    "enabled": false,
+    "ticker_membership_forbidden": true
+  }
+}

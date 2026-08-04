@@ -41,3 +41,10 @@ def test_old_legacy_route_is_removed():
     app = ValuationWSGIApp(StubService({}), StubService({}))
     status, _ = invoke(app, "/v1/valuations/legacy", {"symbol": "NVDA"})
     assert status.startswith("404")
+
+
+def test_production_valuation_route_accepts_basic_market_company():
+    app = ValuationWSGIApp(StubService({"endpoint_mode": "production"}), StubService({}))
+    status, payload = invoke(app, "/v1/valuations", {"symbol": "F"})
+    assert status.startswith("200")
+    assert payload["endpoint_mode"] == "production"

@@ -1,23 +1,27 @@
 {
   "schema_version": "security-identity-normalization.v031v.2",
   "version": "V031V.2",
-  "generated_at": "2026-07-28T08:57:39.391081+00:00",
+  "generated_at": "2026-07-31T10:56:50.483857+00:00",
   "summary": {
     "registry_company_count": 6464,
     "registry_security_count": 7451,
-    "valuation_company_count": 5876,
-    "excluded_company_count": 588,
+    "valuation_company_count": 5851,
+    "excluded_company_count": 613,
     "instrument_type_counts": {
-      "common_or_ordinary_equity": 6059,
+      "commodity_trust": 1,
+      "common_or_ordinary_equity": 6027,
+      "investment_fund": 32,
       "preferred_stock": 477,
       "subscription_right": 131,
-      "unit": 309,
+      "unit": 308,
       "warrant": 475
     },
     "excluded_company_reason_counts": {
-      "preferred_stock": 374,
+      "commodity_trust": 1,
+      "investment_fund": 25,
+      "preferred_stock": 375,
       "subscription_right": 35,
-      "unit": 77,
+      "unit": 76,
       "warrant": 102
     }
   },
@@ -1016,12 +1020,12 @@
     },
     {
       "company_id": "company:US-CIK0000027367",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-DXR"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0000027419",
@@ -2911,12 +2915,12 @@
     },
     {
       "company_id": "company:US-CIK0000081955",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-RAND"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0000082020",
@@ -7647,12 +7651,12 @@
     },
     {
       "company_id": "company:US-CIK0000825202",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-FUND"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0000825313",
@@ -9187,12 +9191,12 @@
     },
     {
       "company_id": "company:US-CIK0000880406",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-HERZ"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0000880631",
@@ -17059,12 +17063,12 @@
     },
     {
       "company_id": "company:US-CIK0001143513",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-GLAD"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0001144215",
@@ -17646,12 +17650,12 @@
     },
     {
       "company_id": "company:US-CIK0001171471",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-CHI"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0001171486",
@@ -18324,12 +18328,12 @@
     },
     {
       "company_id": "company:US-CIK0001222719",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-CHY"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0001222922",
@@ -18690,11 +18694,12 @@
       "valuation_scope_status": "included",
       "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
       "eligible_security_ids": [
-        "security:NASDAQ-OXSQ",
         "security:NASDAQ-OXSQG",
         "security:NASDAQ-OXSQH"
       ],
-      "excluded_security_ids": []
+      "excluded_security_ids": [
+        "security:NASDAQ-OXSQ"
+      ]
     },
     {
       "company_id": "company:US-CIK0001259708",
@@ -19068,12 +19073,12 @@
     },
     {
       "company_id": "company:US-CIK0001275214",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-CSQ"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0001275617",
@@ -19161,10 +19166,11 @@
       "valuation_scope_status": "included",
       "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
       "eligible_security_ids": [
-        "security:NASDAQ-MFIC",
         "security:NASDAQ-MFICL"
       ],
-      "excluded_security_ids": []
+      "excluded_security_ids": [
+        "security:NASDAQ-MFIC"
+      ]
     },
     {
       "company_id": "company:US-CIK0001278895",
@@ -19381,12 +19387,12 @@
     },
     {
       "company_id": "company:US-CIK0001285650",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-CGO"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0001285785",
@@ -19471,12 +19477,12 @@
     },
     {
       "company_id": "company:US-CIK0001287032",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-PSEC"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0001287098",
@@ -19516,12 +19522,12 @@
     },
     {
       "company_id": "company:US-CIK0001287750",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-ARCC"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0001287865",
@@ -21737,12 +21743,12 @@
     },
     {
       "company_id": "company:US-CIK0001370755",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-TCPC"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0001370946",
@@ -21809,12 +21815,12 @@
     },
     {
       "company_id": "company:US-CIK0001372807",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-BCIC"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0001372920",
@@ -22636,12 +22642,12 @@
     },
     {
       "company_id": "company:US-CIK0001396277",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-CHW"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0001396440",
@@ -23248,12 +23254,12 @@
     },
     {
       "company_id": "company:US-CIK0001414932",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-OCSL"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0001415404",
@@ -23302,12 +23308,12 @@
     },
     {
       "company_id": "company:US-CIK0001418076",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-SLRC"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0001418121",
@@ -25056,12 +25062,12 @@
     },
     {
       "company_id": "company:US-CIK0001476765",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-GBDC"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0001476840",
@@ -25405,11 +25411,12 @@
       "valuation_scope_status": "included",
       "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
       "eligible_security_ids": [
-        "security:NASDAQ-OFS",
         "security:NASDAQ-OFSSH",
         "security:NASDAQ-OFSSO"
       ],
-      "excluded_security_ids": []
+      "excluded_security_ids": [
+        "security:NASDAQ-OFS"
+      ]
     },
     {
       "company_id": "company:US-CIK0001487952",
@@ -25652,13 +25659,13 @@
       "valuation_scope_status": "included",
       "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
       "eligible_security_ids": [
-        "security:NASDAQ-OXLC",
         "security:NASDAQ-OXLCG",
         "security:NASDAQ-OXLCI",
         "security:NASDAQ-OXLCL",
         "security:NASDAQ-OXLCZ"
       ],
       "excluded_security_ids": [
+        "security:NASDAQ-OXLC",
         "security:NASDAQ-OXLCM",
         "security:NASDAQ-OXLCN",
         "security:NASDAQ-OXLCO"
@@ -26323,10 +26330,11 @@
       "valuation_scope_status": "included",
       "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
       "eligible_security_ids": [
-        "security:NASDAQ-NSLR",
         "security:NASDAQ-NSLRL"
       ],
-      "excluded_security_ids": []
+      "excluded_security_ids": [
+        "security:NASDAQ-NSLR"
+      ]
     },
     {
       "company_id": "company:US-CIK0001509646",
@@ -26449,12 +26457,12 @@
     },
     {
       "company_id": "company:US-CIK0001513363",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-FDUS"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0001513525",
@@ -27781,12 +27789,12 @@
     },
     {
       "company_id": "company:US-CIK0001544206",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-CGBD"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0001544227",
@@ -28039,10 +28047,11 @@
       "valuation_scope_status": "included",
       "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
       "eligible_security_ids": [
-        "security:NASDAQ-WHF",
         "security:NASDAQ-WHFCL"
       ],
-      "excluded_security_ids": []
+      "excluded_security_ids": [
+        "security:NASDAQ-WHF"
+      ]
     },
     {
       "company_id": "company:US-CIK0001552275",
@@ -29031,12 +29040,12 @@
     },
     {
       "company_id": "company:US-CIK0001578987",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-BANX"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0001579091",
@@ -30036,12 +30045,12 @@
     },
     {
       "company_id": "company:US-CIK0001602584",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-CCD"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0001602658",
@@ -30319,12 +30328,12 @@
     },
     {
       "company_id": "company:US-CIK0001608741",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-QQQX"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0001609065",
@@ -33009,12 +33018,13 @@
       "valuation_scope_status": "included",
       "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
       "eligible_security_ids": [
-        "security:NASDAQ-GECC",
         "security:NASDAQ-GECCG",
         "security:NASDAQ-GECCH",
         "security:NASDAQ-GECCI"
       ],
-      "excluded_security_ids": []
+      "excluded_security_ids": [
+        "security:NASDAQ-GECC"
+      ]
     },
     {
       "company_id": "company:US-CIK0001675149",
@@ -34811,12 +34821,11 @@
     },
     {
       "company_id": "company:US-CIK0001716951",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
-        "security:NASDAQ-OCCI"
-      ],
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
       "excluded_security_ids": [
+        "security:NASDAQ-OCCI",
         "security:NASDAQ-OCCIM",
         "security:NASDAQ-OCCIN"
       ]
@@ -34859,12 +34868,12 @@
     },
     {
       "company_id": "company:US-CIK0001717457",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-CPZ"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0001717547",
@@ -39970,12 +39979,12 @@
     },
     {
       "company_id": "company:US-CIK0001820378",
-      "valuation_scope_status": "included",
-      "reason_code": "COMMON_OR_ORDINARY_EQUITY_PRESENT",
-      "eligible_security_ids": [
+      "valuation_scope_status": "excluded",
+      "reason_code": "NON_COMPANY_INSTRUMENT_ONLY",
+      "eligible_security_ids": [],
+      "excluded_security_ids": [
         "security:NASDAQ-TBLD"
-      ],
-      "excluded_security_ids": []
+      ]
     },
     {
       "company_id": "company:US-CIK0001820721",
@@ -63835,9 +63844,9 @@
       "company_id": "company:US-CIK0001287750",
       "ticker": "ARCC",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -65642,9 +65651,9 @@
       "company_id": "company:US-CIK0001578987",
       "ticker": "BANX",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -65980,9 +65989,9 @@
       "company_id": "company:US-CIK0001372807",
       "ticker": "BCIC",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -69565,9 +69574,9 @@
       "company_id": "company:US-CIK0001602584",
       "ticker": "CCD",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -70397,9 +70406,9 @@
       "company_id": "company:US-CIK0001544206",
       "ticker": "CGBD",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -70488,9 +70497,9 @@
       "company_id": "company:US-CIK0001285650",
       "ticker": "CGO",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -70696,9 +70705,9 @@
       "company_id": "company:US-CIK0001171471",
       "ticker": "CHI",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -70943,9 +70952,9 @@
       "company_id": "company:US-CIK0001396277",
       "ticker": "CHW",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -70956,9 +70965,9 @@
       "company_id": "company:US-CIK0001222719",
       "ticker": "CHY",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -72307,9 +72316,9 @@
       "company_id": "company:US-CIK0001717457",
       "ticker": "CPZ",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -72970,9 +72979,9 @@
       "company_id": "company:US-CIK0001275214",
       "ticker": "CSQ",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -75426,9 +75435,9 @@
       "company_id": "company:US-CIK0000027367",
       "ticker": "DXR",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -77831,9 +77840,9 @@
       "company_id": "company:US-CIK0001513363",
       "ticker": "FDUS",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -79610,9 +79619,9 @@
       "company_id": "company:US-CIK0000825202",
       "ticker": "FUND",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -80039,9 +80048,9 @@
       "company_id": "company:US-CIK0001476765",
       "ticker": "GBDC",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -80299,9 +80308,9 @@
       "company_id": "company:US-CIK0001675033",
       "ticker": "GECC",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -80871,9 +80880,9 @@
       "company_id": "company:US-CIK0001143513",
       "ticker": "GLAD",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -82912,9 +82921,9 @@
       "company_id": "company:US-CIK0000880406",
       "ticker": "HERZ",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -91789,9 +91798,9 @@
       "company_id": "company:US-CIK0001278752",
       "ticker": "MFIC",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -95348,9 +95357,9 @@
       "company_id": "company:US-CIK0001509470",
       "ticker": "NSLR",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -96375,9 +96384,9 @@
       "company_id": "company:US-CIK0001716951",
       "ticker": "OCCI",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -96479,9 +96488,9 @@
       "company_id": "company:US-CIK0001414932",
       "ticker": "OCSL",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -96622,9 +96631,9 @@
       "company_id": "company:US-CIK0001487918",
       "ticker": "OFS",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -97895,9 +97904,9 @@
       "company_id": "company:US-CIK0001495222",
       "ticker": "OXLC",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -97999,9 +98008,9 @@
       "company_id": "company:US-CIK0001259429",
       "ticker": "OXSQ",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -100599,9 +100608,9 @@
       "company_id": "company:US-CIK0001287032",
       "ticker": "PSEC",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -101366,9 +101375,9 @@
       "company_id": "company:US-CIK0001608741",
       "ticker": "QQQX",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -101704,9 +101713,9 @@
       "company_id": "company:US-CIK0000081955",
       "ticker": "RAND",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -106019,9 +106028,9 @@
       "company_id": "company:US-CIK0001418076",
       "ticker": "SLRC",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -108670,9 +108679,9 @@
       "company_id": "company:US-CIK0001820378",
       "ticker": "TBLD",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -108787,9 +108796,9 @@
       "company_id": "company:US-CIK0001370755",
       "ticker": "TCPC",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -113336,9 +113345,9 @@
       "company_id": "company:US-CIK0001552198",
       "ticker": "WHF",
       "exchange": "NASDAQ",
-      "instrument_type": "common_or_ordinary_equity",
-      "valuation_eligible": true,
-      "reason_code": "NO_NON_COMMON_INSTRUMENT_SIGNAL",
+      "instrument_type": "investment_fund",
+      "valuation_eligible": false,
+      "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
         "nasdaq_trader:nasdaqlisted",
         "sec:company_tickers"
@@ -141585,7 +141594,7 @@
       "company_id": "company:US-CIK0001371782",
       "ticker": "MVO",
       "exchange": "NYSE",
-      "instrument_type": "unit",
+      "instrument_type": "commodity_trust",
       "valuation_eligible": false,
       "reason_code": "OFFICIAL_SECURITY_NAME_OR_SYMBOL_PATTERN",
       "source_record_ids": [
