@@ -224,6 +224,12 @@ class YahooCompanySnapshotCache:
 
     def rebuild_canonical_output(self, *, generated_at: datetime) -> int:
         symbols: dict[str, dict[str, object]] = {}
+        try:
+            existing = json.loads(self.canonical_output_path.read_text(encoding="utf-8"))
+            if isinstance(existing, Mapping) and isinstance(existing.get("symbols"), Mapping):
+                symbols.update({str(key): dict(value) for key, value in existing["symbols"].items() if isinstance(value, Mapping)})
+        except (FileNotFoundError, json.JSONDecodeError, OSError):
+            pass
         if self.symbol_cache_root.exists():
             for path in sorted(self.symbol_cache_root.glob("*.json")):
                 try:

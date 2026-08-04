@@ -13,6 +13,16 @@ from .us_universe_sources import USListingSourceRecord, USUniverseSourceError
 _EXCHANGE_PRIORITY = {"NASDAQ": 0, "NYSE": 1, "NYSE_AMERICAN": 2}
 
 
+def _primary_listing_rank(item: USListingSourceRecord) -> tuple[int, int, str]:
+    """Prefer voting common equity over non-voting and non-common share classes."""
+    name = item.security_name.lower()
+    non_common = bool(re.search(r"preferred|depositary|warrant|rights?|units?", name))
+    class_match = re.search(r"\bclass\s+([a-z])\b", name)
+    share_class = class_match.group(1) if class_match else ""
+    class_rank = 0 if share_class == "a" else 1 if not share_class else 2 + ord(share_class) - ord("b")
+    return (1 if non_common else 0, class_rank, item.ticker)
+
+
 @dataclass(frozen=True, slots=True)
 class USUniverseTransformReport:
     source_path: Path
@@ -78,7 +88,7 @@ def transform_us_source_records(
     for company_key in sorted(grouped):
         listings = sorted(
             grouped[company_key],
-            key=lambda item: (_EXCHANGE_PRIORITY.get(item.exchange, 99), item.ticker),
+            key=lambda item: (_EXCHANGE_PRIORITY.get(item.exchange, 99), *_primary_listing_rank(item)),
         )
         primary = listings[0]
         company_id = _company_id(primary)

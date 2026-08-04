@@ -33,6 +33,7 @@ def build_estimate_population(
     *,
     snapshot_path: str = "data/generated/company/yahoo_company_snapshot.json",
     securities_path: str = "data/universe/securities.json",
+    existing_path: str = "data/estimate_data/consensus_estimates.json",
 ) -> dict[str, Any]:
     snapshot = _load(root / snapshot_path)
     securities = _load(root / securities_path)
@@ -74,7 +75,16 @@ def build_estimate_population(
                 "source_path": snapshot_path,
                 "record_state": "provider_observation",
             })
-    rows.sort(key=lambda row: (str(row["company_id"]), str(row["metric"])))
+    existing_file = root / existing_path
+    existing = _load(existing_file) if existing_file.is_file() else []
+    if isinstance(existing, list):
+        replaced = {(str(row["company_id"]), str(row["metric"])) for row in rows}
+        rows.extend(
+            row for row in existing
+            if isinstance(row, Mapping)
+            and (str(row.get("company_id")), str(row.get("metric"))) not in replaced
+        )
+    rows.sort(key=lambda row: (str(row["company_id"]), str(row["metric"]), str(row.get("as_of_date") or "")))
     return {
         "schema_version": "canonical-estimate-population.v031v.6",
         "version": "V031V.6",
