@@ -21,6 +21,7 @@ def build_multiple_policy(
     *,
     benchmark_path: str = "data/generated/historical_multiple_benchmark/historical_multiple_benchmark.json",
     company_snapshot_path: str = "data/generated/company/yahoo_company_snapshot.json",
+    existing_policy_path: str = "data/knowledge/valuation_assumptions.json",
     minimum_confidence: str = "medium",
 ) -> dict[str, Any]:
     benchmark_file = root / benchmark_path
@@ -80,6 +81,13 @@ def build_multiple_policy(
         company["evidence_ids"].append(evidence_id)
         company["assumptions"][target] = value
         company["policy_version"] = "historical-median-over-analyst-consensus.v031v.6"
+    existing_file = root / existing_policy_path
+    existing = json.loads(existing_file.read_text(encoding="utf-8")) if existing_file.is_file() else []
+    if isinstance(existing, list):
+        for row in existing:
+            company_id = str(row.get("company_id") or "") if isinstance(row, Mapping) else ""
+            if company_id and company_id not in companies:
+                companies[company_id] = dict(row)
     return {
         "schema_version": "valuation-multiple-policy.v031v.6",
         "version": "V031V.6",

@@ -144,7 +144,10 @@ def _quarterly_facts(company_id: str, cik: str, payload: Mapping[str, Any], limi
             for row in _quarter_unit_rows(fact, str(spec["unit"])):
                 if row.get("val") is None:
                     continue
-                fiscal_year = int(row.get("fy") or 0)
+                # Companyfacts often attaches the current filing's `fy` to a
+                # comparative prior-year observation. The period end is the
+                # stable identity and prevents duplicate quarters.
+                fiscal_year = int(str(row.get("end") or "")[:4] or 0)
                 fiscal_period = str(row.get("fp") or "").upper()
                 if not fiscal_year or not row.get("start") or not row.get("end"):
                     continue
