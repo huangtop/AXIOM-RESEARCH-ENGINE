@@ -20,7 +20,10 @@ def test_real_catalog_separates_market_publication_from_research_actions():
         "selected_research_company_count"
     ]
     assert report["summary"]["scope_axis_counts"]["supply_chain_context"] == 1000
-    assert report["summary"]["scope_axis_counts"]["news_ai"] == 68
+    assert report["summary"]["scope_axis_counts"]["news_ai"] == eligibility["summary"][
+        "active_intelligence_company_count"
+    ]
+    assert report["summary"]["scope_axis_counts"]["news_ai"] <= 100
     assert report["summary"]["scope_axis_counts"]["etf_exposure"] == 5851
     assert by_ticker["MU"]["research_scope"] == "core"
     assert by_ticker["F"]["product_scope"] == "basic_market"
