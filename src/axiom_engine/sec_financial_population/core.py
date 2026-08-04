@@ -120,12 +120,24 @@ def _is_annual_duration(row: Mapping[str, Any]) -> bool:
     return 300 <= days <= 430
 
 
+def _duration_days(row: Mapping[str, Any]) -> int | None:
+    try:
+        return (date.fromisoformat(str(row["end"])) - date.fromisoformat(str(row["start"]))).days
+    except (KeyError, TypeError, ValueError):
+        return None
+
+
+def _observation_rank(row: Mapping[str, Any], tag_priority: int) -> tuple[str, str, int]:
+    return (str(row.get("filed") or ""), str(row.get("accn") or ""), -tag_priority)
+
+
 def _quarterly_facts(company_id: str, cik: str, payload: Mapping[str, Any], limit: int = 8) -> list[dict[str, Any]]:
     us_gaap = ((payload.get("facts") or {}).get("us-gaap") or {})
     selected: dict[tuple[str, int, str], tuple[str, Mapping[str, Any], Mapping[str, Any]]] = {}
     annual: dict[tuple[str, int], tuple[str, Mapping[str, Any], Mapping[str, Any]]] = {}
+    cumulative: dict[tuple[str, str, str], tuple[str, Mapping[str, Any], Mapping[str, Any], int]] = {}
     for metric, spec in QUARTERLY_METRICS.items():
-        for tag in spec["tags"]:
+        for tag_priority, tag in enumerate(spec["tags"]):
             fact = us_gaap.get(tag)
             if not isinstance(fact, Mapping):
                 continue
@@ -134,8 +146,14 @@ def _quarterly_facts(company_id: str, cik: str, payload: Mapping[str, Any], limi
                     continue
                 fiscal_year = int(row.get("fy") or 0)
                 fiscal_period = str(row.get("fp") or "").upper()
-                if not fiscal_year:
+                if not fiscal_year or not row.get("start") or not row.get("end"):
                     continue
+                days = _duration_days(row)
+                if days is not None and 121 <= days <= 300 and fiscal_period in {"Q2", "Q3"}:
+                    cumulative_key = (metric, str(row["start"]), str(row["end"]))
+                    old_cumulative = cumulative.get(cumulative_key)
+                    if old_cumulative is None or _observation_rank(row, tag_priority) > _observation_rank(old_cumulative[1], old_cumulative[3]):
+                        cumulative[cumulative_key] = (tag, row, spec, tag_priority)
                 if _is_annual_duration(row):
                     annual_key = (metric, fiscal_year)
                     old_annual = annual.get(annual_key)
@@ -151,7 +169,41 @@ def _quarterly_facts(company_id: str, cik: str, payload: Mapping[str, Any], limi
                 sort_key = (str(row.get("filed") or ""), str(row.get("accn") or ""))
                 old_key = (str((old or (None, {}))[1].get("filed") or ""), str((old or (None, {}))[1].get("accn") or ""))
                 if old is None or sort_key > old_key:
-                    selected[key] = (tag, row, spec)
+                        selected[key] = (tag, row, spec)
+    # Cash-flow statements in 10-Q filings are normally year-to-date. Convert them
+    # to discrete quarters so the UI never compares a six-month inflow with a
+    # three-month capital expenditure (or presents YTD as "current quarter").
+    by_metric_start = {}
+    for (metric, start, _), item in cumulative.items():
+        by_metric_start.setdefault((metric, start), []).append(item)
+    for (metric, start), items in by_metric_start.items():
+        items.sort(key=lambda item: str(item[1]["end"]))
+        prior_row = None
+        direct_q1 = [value for (name, _, period), value in selected.items() if name == metric and period == "Q1" and str(value[1].get("start")) == start]
+        if direct_q1:
+            prior_row = max(direct_q1, key=lambda value: str(value[1].get("filed") or ""))[1]
+        for tag, row, spec, _ in items:
+            if prior_row is None:
+                prior_row = row
+                continue
+            fiscal_period = str(row.get("fp") or "").upper()
+            fiscal_year = int(str(row["end"])[:4])
+            key = (metric, fiscal_year, fiscal_period)
+            try:
+                value = Decimal(str(row["val"])) - Decimal(str(prior_row["val"]))
+            except (KeyError, ValueError):
+                prior_row = row
+                continue
+            if key not in selected:
+                derived_row = dict(row)
+                derived_row.update({
+                    "val": value,
+                    "start": prior_row.get("end"),
+                    "_derivation_type": "ytd_less_prior_ytd",
+                    "_source_accessions": [value for value in (row.get("accn"), prior_row.get("accn")) if value],
+                })
+                selected[key] = (tag, derived_row, spec)
+            prior_row = row
     for (metric, fiscal_year), (tag, annual_row, spec) in annual.items():
         q4_key = (metric, fiscal_year, "Q4")
         quarter_keys = [(metric, fiscal_year, name) for name in ("Q1", "Q2", "Q3")]

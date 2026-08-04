@@ -222,15 +222,17 @@ def _row_sort_key(row: dict[str, Any]) -> tuple[str, str, str, str]:
 
 def _latest_annual(payload: dict[str, Any], spec: dict[str, Any]) -> tuple[str, dict[str, Any]] | None:
     us_gaap = payload.get("facts", {}).get("us-gaap", {})
-    for tag in spec["tags"]:
+    candidates: list[tuple[tuple[str, str, str, str], int, str, dict[str, Any]]] = []
+    for priority, tag in enumerate(spec["tags"]):
         fact = us_gaap.get(tag)
         if not fact:
             continue
         rows = _annual_rows(fact, spec)
-        if rows:
-            rows.sort(key=_row_sort_key, reverse=True)
-            return tag, rows[0]
-    return None
+        candidates.extend((_row_sort_key(row), -priority, tag, row) for row in rows)
+    if not candidates:
+        return None
+    _, _, tag, row = max(candidates, key=lambda item: (item[0][1], item[0][0], item[0][2], item[1]))
+    return tag, row
 
 
 def _latest_instant_for_tag(payload: dict[str, Any], tag: str) -> dict[str, Any] | None:
