@@ -189,10 +189,20 @@ def build_sec_business_evidence(
     if not isinstance(rows, list):
         raise SECBusinessEvidenceError("filing document manifest must be an array")
     source_filing_count = len(rows)
-    selected = set(company_ids or [])
+    selected_order = list(dict.fromkeys(company_ids or []))
+    selected = set(selected_order)
     if selected:
         rows = [row for row in rows if row.get("company_id") in selected]
-    rows = sorted(rows, key=lambda row: str(row.get("company_id") or ""))
+        rank = {company_id: index for index, company_id in enumerate(selected_order)}
+        rows = sorted(
+            rows,
+            key=lambda row: (
+                rank[str(row.get("company_id") or "")],
+                str(row.get("company_id") or ""),
+            ),
+        )
+    else:
+        rows = sorted(rows, key=lambda row: str(row.get("company_id") or ""))
     rows = rows[offset:]
     if limit is not None:
         rows = rows[:limit]

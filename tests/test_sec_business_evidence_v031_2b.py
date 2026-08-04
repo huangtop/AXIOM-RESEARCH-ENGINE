@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from axiom_engine.sec_business_evidence import build_sec_business_evidence, extract_business_section, write_sec_business_evidence
+from scripts.build_sec_business_evidence import _resume_company_ids
 
 
 NOW = datetime(2026, 7, 28, 12, tzinfo=timezone.utc)
@@ -85,6 +86,47 @@ def test_offset_supports_resumable_population_batches(tmp_path):
     report = build_sec_business_evidence(tmp_path, offset=1, limit=1, now=NOW)
     assert report["summary"]["filings_requested"] == 1
     assert report["diagnostics"][0]["company_id"] == "company:2"
+
+
+def test_selected_company_order_is_preserved_for_priority_batches(tmp_path):
+    _manifest(tmp_path)
+    manifest = tmp_path / "data/generated/canonical_company_evidence/filing_documents.json"
+    first = json.loads(manifest.read_text())[0]
+    second = {**first, "company_id": "company:2", "accession_number": "0002-26-000001"}
+    manifest.write_text(json.dumps([first, second]), encoding="utf-8")
+    report = build_sec_business_evidence(
+        tmp_path,
+        company_ids=["company:2", "company:1"],
+        limit=1,
+        now=NOW,
+    )
+    assert report["diagnostics"][0]["company_id"] == "company:2"
+
+
+def test_resume_targets_uncovered_priority_candidates_first(tmp_path):
+    output = tmp_path / "data/generated/canonical_business_evidence"
+    output.mkdir(parents=True)
+    (output / "business_evidence.json").write_text(
+        json.dumps([{"company_id": "company:covered"}]), encoding="utf-8"
+    )
+    relevance = tmp_path / "data/generated/research_relevance_gate/research_relevance_gate.json"
+    relevance.parent.mkdir(parents=True)
+    relevance.write_text(
+        json.dumps(
+            {
+                "records": [
+                    {"company_id": "company:required", "status": "evidence_required"},
+                    {"company_id": "company:priority", "status": "priority_candidate"},
+                    {"company_id": "company:covered", "status": "priority_candidate"},
+                    {"company_id": "company:excluded", "status": "deprioritized_non_research"},
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    assert _resume_company_ids(
+        tmp_path, Path("data/generated/canonical_business_evidence")
+    ) == ["company:priority", "company:required"]
 
 
 def test_live_fetcher_can_populate_cache_incrementally(tmp_path):
