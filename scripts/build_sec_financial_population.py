@@ -47,7 +47,11 @@ def main() -> int:
     company_ids = None
     if args.refresh_plan:
         plan = json.loads((ROOT / args.refresh_plan).read_text(encoding="utf-8"))
-        company_ids = [str(row["company_id"]) for row in plan.get("worklist") or []]
+        company_ids = [
+            str(row["company_id"])
+            for row in plan.get("worklist") or []
+            if row.get("requires_financial_refresh") is not False
+        ]
     report = build_sec_financial_population(
         ROOT, bulk_zip=args.bulk_zip, limit=args.limit, offset=args.offset,
         write_cache=args.write_cache, company_ids=company_ids,

@@ -26,7 +26,7 @@ def main() -> None:
     evidence = json.loads(evidence_path.read_text(encoding="utf-8")) if evidence_path.is_file() else []
     evidence_accessions = {str(row.get("accession_number") or "") for row in evidence}
     annual_forms = {"10-K", "10-K/A", "20-F", "20-F/A", "40-F", "40-F/A"}
-    deferred_annual = []
+    pending_annual = []
     processed_at = datetime.now(timezone.utc).isoformat()
     for company in plan.get("worklist") or []:
         for filing in company.get("pending_filings") or []:
@@ -34,17 +34,23 @@ def main() -> None:
             if not accession:
                 continue
             form = str(filing.get("form") or "").upper()
-            if form in annual_forms and accession not in evidence_accessions:
-                deferred_annual.append(accession)
-                continue
-            records[accession] = {
+            previous = records.get(accession, {})
+            record = {
+                **previous,
                 "accession_number": accession,
                 "company_id": company.get("company_id"),
                 "form": form,
                 "filing_date": filing.get("filing_date"),
                 "report_date": filing.get("report_date"),
-                "processed_at": processed_at,
             }
+            if filing.get("requires_financial_refresh") is not False:
+                record["financial_processed_at"] = processed_at
+            if form not in annual_forms or accession in evidence_accessions:
+                record["business_evidence_processed_at"] = processed_at
+            else:
+                record["business_evidence_processed_at"] = None
+                pending_annual.append(accession)
+            records[accession] = record
     payload = {
         "schema_version": "sec-accession-ledger.v031c.2",
         "updated_at": processed_at,
@@ -54,7 +60,7 @@ def main() -> None:
     temporary = ledger_path.with_suffix(".json.tmp")
     temporary.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     temporary.replace(ledger_path)
-    print({"processed_accession_count": len(records), "deferred_annual_evidence_accessions": deferred_annual})
+    print({"processed_accession_count": len(records), "pending_annual_evidence_accessions": pending_annual})
 
 
 if __name__ == "__main__":
