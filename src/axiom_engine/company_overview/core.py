@@ -6,6 +6,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Mapping
 
+from axiom_engine.business_evidence_store import load_business_evidence
+
 
 class CompanyOverviewError(RuntimeError):
     pass
@@ -34,7 +36,7 @@ def build_company_overviews(root: Path, *, now: datetime | None = None) -> dict[
     companies = _load(root / "data/universe/companies.json")
     securities = _load(root / "data/universe/securities.json")
     knowledge = _load(root / "data/generated/knowledge_inference/knowledge_inference.json")
-    evidence = _load(root / "data/generated/canonical_business_evidence/business_evidence.json")
+    evidence = load_business_evidence(root / "data/generated/canonical_business_evidence")
     policy = _load(root / "config/company_overview.v031c.6.json")
     if policy.get("schema_version") != "canonical-company-overview-policy.v031c.6":
         raise CompanyOverviewError("unsupported overview policy")
