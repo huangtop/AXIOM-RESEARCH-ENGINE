@@ -192,7 +192,8 @@ def build_coverage_policy(
         }
         scope_axes = {
             **base_axes,
-            "research_page": any(actions.values()),
+            "research_page": instrument_included
+            and research.get("research_universe_status") == "selected",
             "news_ai": actions["news"],
             "etf_change_analysis": actions["etf"],
             "supply_chain_analysis": actions["supply_chain"],

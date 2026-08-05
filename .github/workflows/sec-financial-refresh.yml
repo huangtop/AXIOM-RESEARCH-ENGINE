@@ -53,17 +53,19 @@ jobs:
           path = Path("data/generated/sec_filing_refresh/refresh_plan.json")
           payload = json.loads(path.read_text()) if path.is_file() else {}
           count = int((payload.get("summary") or {}).get("refresh_company_count") or 0)
+          financial_count = int((payload.get("summary") or {}).get("financial_refresh_company_count") or 0)
           annual_count = int((payload.get("summary") or {}).get("annual_evidence_refresh_company_count") or 0)
           force = os.environ.get("FORCE_REFRESH", "false").lower() == "true"
           with Path(os.environ["GITHUB_OUTPUT"]).open("a") as output:
               output.write(f"refresh_count={count}\n")
+              output.write(f"financial_count={financial_count}\n")
               output.write(f"should_refresh={'true' if force or count > 0 else 'false'}\n")
               output.write(f"annual_count={annual_count}\n")
               output.write(f"force={'true' if force else 'false'}\n")
           print({"refresh_company_count": count, "force": force})
           PY
       - name: Download Company Facts and retain quarterly history
-        if: steps.gate.outputs.refresh_count != '0'
+        if: steps.gate.outputs.force != 'true' && steps.gate.outputs.financial_count != '0'
         run: >-
           python scripts/build_sec_financial_population.py
           --download-bulk
@@ -73,7 +75,7 @@ jobs:
           --merge-existing
           --write
       - name: Force full Company Facts rebuild
-        if: steps.gate.outputs.force == 'true' && steps.gate.outputs.refresh_count == '0'
+        if: steps.gate.outputs.force == 'true'
         run: >-
           python scripts/build_sec_financial_population.py
           --download-bulk

@@ -51,6 +51,7 @@ def build_sec_filing_refresh_plan(
     submissions_cache_dir: str = "data/generated/provider_cache/sec/submissions",
     submissions_bulk_zip: str | None = None,
     financial_facts_path: str = "data/generated/canonical_financial_population/financial_facts.json",
+    quarterly_index_path: str = "data/generated/canonical_financial_population/quarterly_index.json",
     companyfacts_cache_dir: str = "data/generated/provider_cache/sec/companyfacts",
     companyfacts_bulk_zip: str = "data/onboarding/sec/companyfacts.zip",
     safety_refresh_days: int = 90,
@@ -65,10 +66,15 @@ def build_sec_filing_refresh_plan(
     facts = _load(root / financial_facts_path)
     ledger_file = root / accession_ledger_path
     ledger = _load(ledger_file) if ledger_file.is_file() else {"processed_accessions": []}
-    processed_accessions = {
-        str(row.get("accession_number") or "")
+    ledger_by_accession = {
+        str(row.get("accession_number") or ""): row
         for row in ledger.get("processed_accessions") or []
         if row.get("accession_number")
+    }
+    processed_accessions = {
+        accession
+        for accession, row in ledger_by_accession.items()
+        if row.get("financial_processed_at") or row.get("processed_at")
     }
     business_evidence_file = root / business_evidence_path
     business_evidence = _load(business_evidence_file) if business_evidence_file.is_file() else []
@@ -80,6 +86,17 @@ def build_sec_filing_refresh_plan(
         accession = str(fact.get("accession_number") or "")
         if company_id and accession:
             known_accessions.setdefault(company_id, set()).add(accession)
+    quarterly_index_file = root / quarterly_index_path
+    if quarterly_index_file.is_file():
+        quarterly_index = _load(quarterly_index_file).get("company_id_to_file") or {}
+        for company_id, filename in quarterly_index.items():
+            quarterly_file = quarterly_index_file.parent / str(filename)
+            if not quarterly_file.is_file():
+                continue
+            for fact in _load(quarterly_file):
+                accession = str(fact.get("accession_number") or "")
+                if accession:
+                    known_accessions.setdefault(str(company_id), set()).add(accession)
     worklist: list[dict[str, Any]] = []
     diagnostics: list[dict[str, Any]] = []
     cache_root = root / submissions_cache_dir
@@ -124,27 +141,38 @@ def build_sec_filing_refresh_plan(
         raw_accessions = _companyfacts_accessions(raw_payload)
         consumed_accessions = known_accessions.get(company_id, set()) | raw_accessions | processed_accessions
         reasons: list[str] = []
-        pending_filings = [
-            {
-                "form": row.get("form"),
-                "filing_date": row.get("filingDate"),
-                "report_date": row.get("reportDate"),
-                "accession_number": row.get("accessionNumber"),
-            }
-            # Only the newest financial filing establishes the daily frontier.
-            # Older history predates the ledger bootstrap and must not be replayed
-            # as thousands of false "new" events on the following day.
-            for row in filings[:1]
-            if row.get("accessionNumber") and (
-                str(row["accessionNumber"]) not in consumed_accessions
-                or (
-                    str(row.get("form") or "").upper() in annual_forms
-                    and str(row["accessionNumber"]) not in evidence_accessions
-                )
+        pending_filings = []
+        for row in filings[:1]:
+            accession = str(row.get("accessionNumber") or "")
+            if not accession:
+                continue
+            form = str(row.get("form") or "").upper()
+            ledger_row = ledger_by_accession.get(accession)
+            # Existing canonical facts establish the one-time baseline. Evidence
+            # retries are permitted only for accessions first observed by this
+            # ledger, never for the entire pre-ledger annual filing history.
+            requires_financial = accession not in consumed_accessions
+            requires_evidence = bool(
+                form in annual_forms
+                and ledger_row is not None
+                and not ledger_row.get("business_evidence_processed_at")
+                and accession not in evidence_accessions
             )
-        ]
-        if pending_filings:
+            if requires_financial and form in annual_forms:
+                requires_evidence = accession not in evidence_accessions
+            if requires_financial or requires_evidence:
+                pending_filings.append({
+                    "form": form,
+                    "filing_date": row.get("filingDate"),
+                    "report_date": row.get("reportDate"),
+                    "accession_number": accession,
+                    "requires_financial_refresh": requires_financial,
+                    "requires_business_evidence_refresh": requires_evidence,
+                })
+        if any(row["requires_financial_refresh"] for row in pending_filings):
             reasons.append("NEW_FINANCIAL_FILING_ACCESSION")
+        if any(row["requires_business_evidence_refresh"] for row in pending_filings):
+            reasons.append("ANNUAL_BUSINESS_EVIDENCE_PENDING")
         cache_age_days = (
             (current - datetime.fromtimestamp(cache_path.stat().st_mtime, tz=timezone.utc).date()).days
             if cache_path.is_file()
@@ -159,8 +187,11 @@ def build_sec_filing_refresh_plan(
                 "reason_codes": reasons,
                 "latest_financial_filing": {"form": (latest or {}).get("form"), "filing_date": (latest or {}).get("filingDate"), "report_date": (latest or {}).get("reportDate"), "accession_number": latest_accession or None},
                 "pending_filings": pending_filings,
+                "requires_financial_refresh": any(
+                    row["requires_financial_refresh"] for row in pending_filings
+                ) or "SAFETY_TTL_EXPIRED" in reasons,
                 "requires_business_evidence_refresh": any(
-                    str(row.get("form") or "").upper() in annual_forms
+                    row["requires_business_evidence_refresh"]
                     for row in pending_filings
                 ),
                 "known_financial_accession_count": len(consumed_accessions),
@@ -176,7 +207,7 @@ def build_sec_filing_refresh_plan(
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "as_of_date": current.isoformat(),
         "policy": {"submissions_metadata_poll": "daily", "financial_refresh_trigger": "latest_unprocessed_financial_filing_accession", "accession_ledger_path": accession_ledger_path, "annual_business_evidence_refresh": True, "historical_accession_replay": False, "safety_refresh_days": safety_refresh_days, "yahoo_earnings_calendar_role": "advisory_only"},
-        "summary": {"registry_company_count": len(companies), "refresh_company_count": len(worklist), "missing_submissions_cache_count": len(diagnostics), "new_filing_count": sum(len(row.get("pending_filings") or []) for row in worklist), "annual_evidence_refresh_company_count": sum(bool(row.get("requires_business_evidence_refresh")) for row in worklist), "safety_ttl_count": sum("SAFETY_TTL_EXPIRED" in row["reason_codes"] for row in worklist)},
+        "summary": {"registry_company_count": len(companies), "refresh_company_count": len(worklist), "financial_refresh_company_count": sum(bool(row.get("requires_financial_refresh")) for row in worklist), "missing_submissions_cache_count": len(diagnostics), "new_filing_count": sum(sum(bool(filing.get("requires_financial_refresh")) for filing in row.get("pending_filings") or []) for row in worklist), "annual_evidence_refresh_company_count": sum(bool(row.get("requires_business_evidence_refresh")) for row in worklist), "safety_ttl_count": sum("SAFETY_TTL_EXPIRED" in row["reason_codes"] for row in worklist)},
         "worklist": worklist,
         "diagnostics": diagnostics,
     }
