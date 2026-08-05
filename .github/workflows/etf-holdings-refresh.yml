@@ -1,0 +1,53 @@
+name: Daily ETF Holdings Refresh
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "45 23 * * 1-5"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-etf-holdings-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -e .[dev]
+      - name: Fetch immutable provider snapshot and build daily differences
+        run: |
+          python scripts/sync_etf_engine_cache.py --allow-live --force
+          python scripts/build_etf_identity_bridge.py
+          python scripts/build_etf_holdings_history.py
+      - name: Validate ETF history and event contracts
+        run: pytest -q tests/test_etf_holdings_history_v031e6.py tests/test_etf_change_api_v031e3.py tests/test_etf_holdings_refresh_workflow.py
+      - name: Commit daily ETF holdings and company changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git status --short
+          git add \
+            data/generated/canonical_etf_holdings_history \
+            data/generated/canonical_etf_change_events \
+            data/generated/event_triggers/etf_changes.json \
+            data/generated/etf_identity_bridge
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "chore(data): refresh daily ETF holdings changes"
+          if ! git diff --quiet || ! git diff --cached --quiet; then
+            echo "Tracked changes remain after ETF artifact commit:"
+            git status --short
+            exit 1
+          fi
+          git pull --rebase origin main
+          git push origin HEAD:main
