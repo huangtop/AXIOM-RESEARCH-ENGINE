@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sys
 import urllib.request
@@ -26,6 +27,8 @@ def main() -> int:
     parser.add_argument("--offset", type=int, default=0)
     parser.add_argument("--limit", type=int)
     parser.add_argument("--write", action="store_true")
+    parser.add_argument("--merge-existing", action="store_true")
+    parser.add_argument("--refresh-plan")
     args = parser.parse_args()
     if args.download_bulk:
         if not args.bulk_zip:
@@ -41,11 +44,20 @@ def main() -> int:
         with urllib.request.urlopen(request, timeout=300) as response:
             temporary.write_bytes(response.read())
         temporary.replace(args.bulk_zip)
+    company_ids = None
+    if args.refresh_plan:
+        plan = json.loads((ROOT / args.refresh_plan).read_text(encoding="utf-8"))
+        company_ids = [str(row["company_id"]) for row in plan.get("worklist") or []]
     report = build_sec_financial_population(
-        ROOT, bulk_zip=args.bulk_zip, limit=args.limit, offset=args.offset, write_cache=args.write_cache
+        ROOT, bulk_zip=args.bulk_zip, limit=args.limit, offset=args.offset,
+        write_cache=args.write_cache, company_ids=company_ids,
     )
     if args.write:
-        write_sec_financial_population(report, ROOT / "data/generated/canonical_financial_population")
+        write_sec_financial_population(
+            report,
+            ROOT / "data/generated/canonical_financial_population",
+            merge_existing=args.merge_existing,
+        )
     print(report["summary"])
     return 0
 

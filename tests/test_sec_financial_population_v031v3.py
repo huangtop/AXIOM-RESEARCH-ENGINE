@@ -130,3 +130,30 @@ def test_population_derives_discrete_q2_cash_flow_from_ytd(tmp_path):
     assert q2["capital_expenditures"]["value"] == "44924"
     assert Decimal(q2["operating_cash_flow"]["value"]) - Decimal(q2["capital_expenditures"]["value"]) == Decimal("-5855")
     assert q2["operating_cash_flow"]["source"]["period_selection"] == "ytd_less_prior_ytd"
+
+
+def test_comparative_row_does_not_replace_original_fiscal_identity(tmp_path):
+    root = _root(tmp_path)
+    path = root / "data/generated/provider_cache/sec/companyfacts/CIK0000000001.json"
+    payload = json.loads(path.read_text())
+    payload["facts"]["us-gaap"]["EarningsPerShareDiluted"] = {"units": {"USD/shares": [
+        {"val": 0.76, "start": "2025-01-27", "end": "2025-04-27", "filed": "2025-05-28", "form": "10-Q", "fy": 2026, "fp": "Q1", "accn": "original", "frame": "CY2025Q1"},
+        {"val": 0.76, "start": "2025-01-27", "end": "2025-04-27", "filed": "2026-05-20", "form": "10-Q", "fy": 2027, "fp": "Q1", "accn": "comparative", "frame": "CY2025Q1"},
+        {"val": 2.39, "start": "2026-01-26", "end": "2026-04-26", "filed": "2026-05-20", "form": "10-Q", "fy": 2027, "fp": "Q1", "accn": "current", "frame": "CY2026Q1"},
+    ]}}
+    path.write_text(json.dumps(payload), encoding="utf-8")
+    rows = [row for row in build_sec_financial_population(root)["quarterly_financial_facts"] if row["metric"] == "diluted_eps"]
+    assert [(row["fiscal_year"], row["period_end"], row["accession_number"]) for row in rows] == [
+        (2026, "2025-04-27", "comparative"), (2027, "2026-04-26", "current")
+    ]
+
+
+def test_partial_writer_keeps_unaffected_company_history(tmp_path):
+    output = tmp_path / "out"
+    output.mkdir()
+    (output / "financial_facts.json").write_text(json.dumps([{"company_id": "company:old", "metric": "revenue"}]))
+    (output / "quarterly_index.json").write_text(json.dumps({"company_id_to_file": {"company:old": "quarterly/old.json"}}))
+    report = build_sec_financial_population(_root(tmp_path), company_ids=["company:1"])
+    write_sec_financial_population(report, output, merge_existing=True)
+    assert "company:old" in {row["company_id"] for row in json.loads((output / "financial_facts.json").read_text())}
+    assert "company:old" in json.loads((output / "quarterly_index.json").read_text())["company_id_to_file"]

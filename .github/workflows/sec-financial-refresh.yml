@@ -53,20 +53,52 @@ jobs:
           path = Path("data/generated/sec_filing_refresh/refresh_plan.json")
           payload = json.loads(path.read_text()) if path.is_file() else {}
           count = int((payload.get("summary") or {}).get("refresh_company_count") or 0)
+          annual_count = int((payload.get("summary") or {}).get("annual_evidence_refresh_company_count") or 0)
           force = os.environ.get("FORCE_REFRESH", "false").lower() == "true"
           with Path(os.environ["GITHUB_OUTPUT"]).open("a") as output:
               output.write(f"refresh_count={count}\n")
               output.write(f"should_refresh={'true' if force or count > 0 else 'false'}\n")
+              output.write(f"annual_count={annual_count}\n")
+              output.write(f"force={'true' if force else 'false'}\n")
           print({"refresh_company_count": count, "force": force})
           PY
       - name: Download Company Facts and retain quarterly history
-        if: steps.gate.outputs.should_refresh == 'true'
+        if: steps.gate.outputs.refresh_count != '0'
+        run: >-
+          python scripts/build_sec_financial_population.py
+          --download-bulk
+          --bulk-zip data/onboarding/sec/companyfacts.zip
+          --user-agent "$SEC_USER_AGENT"
+          --refresh-plan data/generated/sec_filing_refresh/refresh_plan.json
+          --merge-existing
+          --write
+      - name: Force full Company Facts rebuild
+        if: steps.gate.outputs.force == 'true' && steps.gate.outputs.refresh_count == '0'
         run: >-
           python scripts/build_sec_financial_population.py
           --download-bulk
           --bulk-zip data/onboarding/sec/companyfacts.zip
           --user-agent "$SEC_USER_AGENT"
           --write
+      - name: Append Business evidence for newly filed annual reports
+        if: steps.gate.outputs.annual_count != '0'
+        run: >-
+          python scripts/build_sec_business_evidence.py
+          --allow-live
+          --write-cache
+          --write
+          --merge-existing
+          --refresh-plan data/generated/sec_filing_refresh/refresh_plan.json
+          --user-agent "$SEC_USER_AGENT"
+      - name: Rebuild classifications after new annual evidence
+        if: steps.gate.outputs.annual_count != '0'
+        run: |
+          python scripts/build_company_signals.py
+          python scripts/build_knowledge_inference.py
+          python scripts/build_research_relevance_gate.py
+          python scripts/build_research_eligibility.py
+          python scripts/build_classification_quality_audit.py
+          python scripts/build_company_overviews.py
       - name: Rebuild per-company valuation and publication artifacts
         if: steps.gate.outputs.should_refresh == 'true'
         run: |
@@ -78,15 +110,22 @@ jobs:
         run: >-
           pytest -q
           tests/test_sec_financial_population_v031v3.py
+          tests/test_sec_business_evidence_v031_2b.py
+          tests/test_company_signals_v031c2.py
+          tests/test_knowledge_inference_v031c3.py
+          tests/test_company_overview_v031c6.py
           tests/test_full_market_coverage_v031.py
           tests/test_coverage_policy_v031f1.py
           tests/test_publication_gate_v031f2.py
+      - name: Mark refreshed filing accessions as processed
+        if: steps.gate.outputs.should_refresh == 'true'
+        run: python scripts/mark_sec_accessions_processed.py
       - name: Commit refreshed financial and valuation artifacts
         if: steps.gate.outputs.should_refresh == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/generated/canonical_financial_population data/generated/full_market_coverage data/generated/coverage_policy data/generated/publication_gate
+          git add data/generated/canonical_financial_population data/generated/canonical_business_evidence data/generated/company_signals data/generated/knowledge_inference data/generated/research_relevance_gate data/generated/research_eligibility data/generated/classification_quality data/generated/company_overview data/generated/full_market_coverage data/generated/coverage_policy data/generated/publication_gate data/generated/sec_filing_refresh/accession_ledger.json
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "chore(data): refresh SEC quarterly financial artifacts"
           git pull --rebase origin main
