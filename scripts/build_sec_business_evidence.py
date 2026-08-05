@@ -68,6 +68,7 @@ def main() -> int:
     parser.add_argument("--offset", type=int, default=0)
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--company-id", action="append", default=[])
+    parser.add_argument("--refresh-plan")
     parser.add_argument("--delay", type=float, default=0.11)
     parser.add_argument("--output-dir", type=Path, default=Path("data/generated/canonical_business_evidence"))
     args = parser.parse_args()
@@ -75,6 +76,13 @@ def main() -> int:
         parser.error("--resume and --offset cannot be combined")
     offset = args.offset
     company_ids = args.company_id
+    if args.refresh_plan:
+        refresh = json.loads((ROOT / args.refresh_plan).read_text(encoding="utf-8"))
+        company_ids = [
+            str(row["company_id"])
+            for row in refresh.get("worklist") or []
+            if row.get("requires_business_evidence_refresh")
+        ]
     if args.resume:
         company_ids = _resume_company_ids(ROOT, args.output_dir)
     report = build_sec_business_evidence(

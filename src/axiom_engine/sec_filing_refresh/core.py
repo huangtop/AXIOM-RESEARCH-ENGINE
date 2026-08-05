@@ -54,6 +54,8 @@ def build_sec_filing_refresh_plan(
     companyfacts_cache_dir: str = "data/generated/provider_cache/sec/companyfacts",
     companyfacts_bulk_zip: str = "data/onboarding/sec/companyfacts.zip",
     safety_refresh_days: int = 90,
+    accession_ledger_path: str = "data/generated/sec_filing_refresh/accession_ledger.json",
+    business_evidence_path: str = "data/generated/canonical_business_evidence/business_evidence.json",
     as_of: date | None = None,
 ) -> dict[str, Any]:
     if safety_refresh_days < 1:
@@ -61,6 +63,17 @@ def build_sec_filing_refresh_plan(
     current = as_of or datetime.now(timezone.utc).date()
     companies = _load(root / companies_path)
     facts = _load(root / financial_facts_path)
+    ledger_file = root / accession_ledger_path
+    ledger = _load(ledger_file) if ledger_file.is_file() else {"processed_accessions": []}
+    processed_accessions = {
+        str(row.get("accession_number") or "")
+        for row in ledger.get("processed_accessions") or []
+        if row.get("accession_number")
+    }
+    business_evidence_file = root / business_evidence_path
+    business_evidence = _load(business_evidence_file) if business_evidence_file.is_file() else []
+    evidence_accessions = {str(row.get("accession_number") or "") for row in business_evidence}
+    annual_forms = {"10-K", "10-K/A", "20-F", "20-F/A", "40-F", "40-F/A"}
     known_accessions: dict[str, set[str]] = {}
     for fact in facts:
         company_id = str(fact.get("company_id") or "")
@@ -109,9 +122,28 @@ def build_sec_filing_refresh_plan(
         else:
             raw_payload = {}
         raw_accessions = _companyfacts_accessions(raw_payload)
-        consumed_accessions = known_accessions.get(company_id, set()) | raw_accessions
+        consumed_accessions = known_accessions.get(company_id, set()) | raw_accessions | processed_accessions
         reasons: list[str] = []
-        if latest_accession and latest_accession not in consumed_accessions:
+        pending_filings = [
+            {
+                "form": row.get("form"),
+                "filing_date": row.get("filingDate"),
+                "report_date": row.get("reportDate"),
+                "accession_number": row.get("accessionNumber"),
+            }
+            # Only the newest financial filing establishes the daily frontier.
+            # Older history predates the ledger bootstrap and must not be replayed
+            # as thousands of false "new" events on the following day.
+            for row in filings[:1]
+            if row.get("accessionNumber") and (
+                str(row["accessionNumber"]) not in consumed_accessions
+                or (
+                    str(row.get("form") or "").upper() in annual_forms
+                    and str(row["accessionNumber"]) not in evidence_accessions
+                )
+            )
+        ]
+        if pending_filings:
             reasons.append("NEW_FINANCIAL_FILING_ACCESSION")
         cache_age_days = (
             (current - datetime.fromtimestamp(cache_path.stat().st_mtime, tz=timezone.utc).date()).days
@@ -126,6 +158,11 @@ def build_sec_filing_refresh_plan(
                 "cik": cik,
                 "reason_codes": reasons,
                 "latest_financial_filing": {"form": (latest or {}).get("form"), "filing_date": (latest or {}).get("filingDate"), "report_date": (latest or {}).get("reportDate"), "accession_number": latest_accession or None},
+                "pending_filings": pending_filings,
+                "requires_business_evidence_refresh": any(
+                    str(row.get("form") or "").upper() in annual_forms
+                    for row in pending_filings
+                ),
                 "known_financial_accession_count": len(consumed_accessions),
                 "submissions_cache_age_days": cache_age_days,
             })
@@ -138,8 +175,8 @@ def build_sec_filing_refresh_plan(
         "version": "V031C.1.1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "as_of_date": current.isoformat(),
-        "policy": {"submissions_metadata_poll": "daily", "financial_refresh_trigger": "new_financial_filing_accession", "safety_refresh_days": safety_refresh_days, "yahoo_earnings_calendar_role": "advisory_only"},
-        "summary": {"registry_company_count": len(companies), "refresh_company_count": len(worklist), "missing_submissions_cache_count": len(diagnostics), "new_filing_count": sum("NEW_FINANCIAL_FILING_ACCESSION" in row["reason_codes"] for row in worklist), "safety_ttl_count": sum("SAFETY_TTL_EXPIRED" in row["reason_codes"] for row in worklist)},
+        "policy": {"submissions_metadata_poll": "daily", "financial_refresh_trigger": "latest_unprocessed_financial_filing_accession", "accession_ledger_path": accession_ledger_path, "annual_business_evidence_refresh": True, "historical_accession_replay": False, "safety_refresh_days": safety_refresh_days, "yahoo_earnings_calendar_role": "advisory_only"},
+        "summary": {"registry_company_count": len(companies), "refresh_company_count": len(worklist), "missing_submissions_cache_count": len(diagnostics), "new_filing_count": sum(len(row.get("pending_filings") or []) for row in worklist), "annual_evidence_refresh_company_count": sum(bool(row.get("requires_business_evidence_refresh")) for row in worklist), "safety_ttl_count": sum("SAFETY_TTL_EXPIRED" in row["reason_codes"] for row in worklist)},
         "worklist": worklist,
         "diagnostics": diagnostics,
     }
