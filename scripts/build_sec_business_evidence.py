@@ -14,16 +14,13 @@ from axiom_engine.sec_business_evidence import (  # noqa: E402
     build_sec_business_evidence,
     write_sec_business_evidence,
 )
+from axiom_engine.business_evidence_store import load_business_evidence  # noqa: E402
 
 
 def _resume_company_ids(root: Path, output_dir: Path) -> list[str]:
     evidence_path = root / output_dir / "business_evidence.json"
     relevance_path = root / "data/generated/research_relevance_gate/research_relevance_gate.json"
-    prior_evidence = (
-        json.loads(evidence_path.read_text(encoding="utf-8"))
-        if evidence_path.is_file()
-        else []
-    )
+    prior_evidence = load_business_evidence(evidence_path)
     covered = {str(row.get("company_id") or "") for row in prior_evidence}
     if not relevance_path.is_file():
         return []

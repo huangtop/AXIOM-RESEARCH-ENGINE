@@ -7,6 +7,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Mapping
 
+from axiom_engine.business_evidence_store import load_business_evidence
+
 
 class CompanySignalsError(RuntimeError):
     pass
@@ -68,7 +70,7 @@ def build_company_signals(
         raise ValueError("now must be timezone-aware")
     policy = _load(root / rules_path)
     companies = _load(root / companies_path)
-    evidence = _load(root / evidence_path)
+    evidence = load_business_evidence(root / evidence_path)
     rules = _validate_policy(policy)
     if not isinstance(companies, list) or not isinstance(evidence, list):
         raise CompanySignalsError("company and evidence inputs must be arrays")
