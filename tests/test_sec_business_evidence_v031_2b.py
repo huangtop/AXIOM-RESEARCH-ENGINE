@@ -129,6 +129,24 @@ def test_resume_targets_uncovered_priority_candidates_first(tmp_path):
     ) == ["company:priority", "company:required"]
 
 
+def test_resume_prioritizes_event_triggered_company_without_hardcoded_ticker(tmp_path):
+    output = tmp_path / "data/generated/canonical_business_evidence"
+    output.mkdir(parents=True)
+    (output / "business_evidence.json").write_text("[]", encoding="utf-8")
+    relevance = tmp_path / "data/generated/research_relevance_gate/research_relevance_gate.json"
+    relevance.parent.mkdir(parents=True)
+    relevance.write_text(json.dumps({"records": [
+        {"company_id": "company:first-by-id", "status": "priority_candidate"},
+        {"company_id": "company:event", "status": "priority_candidate"},
+    ]}), encoding="utf-8")
+    eligibility = tmp_path / "data/generated/research_eligibility/research_eligibility.json"
+    eligibility.parent.mkdir(parents=True)
+    eligibility.write_text(json.dumps({"records": [
+        {"company_id": "company:event", "deep_research_triggers": [{"trigger_type": "sec_filing"}]}
+    ]}), encoding="utf-8")
+    assert _resume_company_ids(tmp_path, Path("data/generated/canonical_business_evidence"))[0] == "company:event"
+
+
 def test_live_fetcher_can_populate_cache_incrementally(tmp_path):
     _manifest(tmp_path)
     calls = []
