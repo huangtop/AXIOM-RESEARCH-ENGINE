@@ -128,6 +128,17 @@ def test_service_resolves_goog_alias(tmp_path: Path):
     assert CompanyOverviewService(root=tmp_path).get("GOOG")["ticker"] == "GOOGL"
 
 
+def test_overview_can_limit_output_to_core_companies(tmp_path: Path):
+    _fixture(tmp_path)
+    report = build_company_overviews(
+        tmp_path,
+        company_ids={"company:alphabet"},
+        now=datetime(2026, 8, 6, tzinfo=timezone.utc),
+    )
+    assert [row["ticker"] for row in report["records"]] == ["GOOGL"]
+    assert report["summary"]["company_count"] == 1
+
+
 def test_http_exposes_canonical_company_overview(tmp_path: Path):
     _fixture(tmp_path)
     report = build_company_overviews(tmp_path)
