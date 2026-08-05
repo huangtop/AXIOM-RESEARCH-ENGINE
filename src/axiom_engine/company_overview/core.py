@@ -29,7 +29,12 @@ def _write(path: Path, payload: Any) -> None:
     os.replace(temporary, path)
 
 
-def build_company_overviews(root: Path, *, now: datetime | None = None) -> dict[str, Any]:
+def build_company_overviews(
+    root: Path,
+    *,
+    company_ids: set[str] | None = None,
+    now: datetime | None = None,
+) -> dict[str, Any]:
     current = now or datetime.now(timezone.utc)
     companies = _load(root / "data/universe/companies.json")
     securities = _load(root / "data/universe/securities.json")
@@ -53,6 +58,8 @@ def build_company_overviews(root: Path, *, now: datetime | None = None) -> dict[
     records = []
     for source in knowledge.get("records") or []:
         cid = str(source["company_id"])
+        if company_ids is not None and cid not in company_ids:
+            continue
         items = list(source.get("knowledge") or [])
         themes = sorted(
             (x for x in items if x.get("dimension") == "theme"),
