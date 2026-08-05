@@ -172,6 +172,18 @@ def test_writer_merges_resumable_batches_without_losing_prior_evidence(tmp_path)
     assert json.loads((output / "manifest.json").read_text())["summary"]["cumulative_company_count"] == 2
 
 
+def test_writer_retains_multiple_annual_accessions_for_same_company(tmp_path):
+    def report(evidence_id):
+        return {"schema_version": "sec-business-evidence.v031.2b", "version": "V031.2B", "generated_at": NOW.isoformat(), "summary": {}, "business_evidence": [{"business_evidence_id": evidence_id, "company_id": "company:1"}], "diagnostics": []}
+
+    output = tmp_path / "out"
+    write_sec_business_evidence(report("business-evidence:SEC:2025"), output)
+    write_sec_business_evidence(report("business-evidence:SEC:2026"), output, merge_existing=True)
+    assert {row["business_evidence_id"] for row in json.loads((output / "business_evidence.json").read_text())} == {
+        "business-evidence:SEC:2025", "business-evidence:SEC:2026"
+    }
+
+
 def test_40f_uses_attributable_annual_report_exhibit_fallback(tmp_path):
     _manifest(tmp_path)
     manifest = tmp_path / "data/generated/canonical_company_evidence/filing_documents.json"
