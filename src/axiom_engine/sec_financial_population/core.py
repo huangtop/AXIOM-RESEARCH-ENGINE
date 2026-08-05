@@ -50,13 +50,13 @@ def _load(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def _scope(root: Path) -> list[dict[str, str]]:
+def _scope(root: Path, company_ids: set[str] | None = None) -> list[dict[str, str]]:
     companies = _load(root / "data/universe/companies.json")
     identity = _load(root / "data/generated/security_identity/security_identity_normalization.json")
     included = {row["company_id"] for row in identity["companies"] if row["valuation_scope_status"] == "included"}
     output = []
     for row in companies:
-        if row["company_id"] not in included:
+        if row["company_id"] not in included or (company_ids is not None and row["company_id"] not in company_ids):
             continue
         cik = str((row.get("metadata") or {}).get("cik") or "").zfill(10)
         if cik.strip("0"):
@@ -128,13 +128,23 @@ def _duration_days(row: Mapping[str, Any]) -> int | None:
 
 
 def _observation_rank(row: Mapping[str, Any], tag_priority: int) -> tuple[str, str, int]:
+    # Later filings can restate comparative values (for example after a stock
+    # split), so keep the newest observation while deriving period identity from
+    # dates rather than the newer filing's misleading `fy` value.
     return (str(row.get("filed") or ""), str(row.get("accn") or ""), -tag_priority)
+
+
+def _filing_lag(row: Mapping[str, Any]) -> int:
+    try:
+        return max((date.fromisoformat(str(row["filed"])) - date.fromisoformat(str(row["end"]))).days, 0)
+    except (KeyError, TypeError, ValueError):
+        return 100_000
 
 
 def _quarterly_facts(company_id: str, cik: str, payload: Mapping[str, Any], limit: int = 8) -> list[dict[str, Any]]:
     us_gaap = ((payload.get("facts") or {}).get("us-gaap") or {})
     selected: dict[tuple[str, int, str], tuple[str, Mapping[str, Any], Mapping[str, Any]]] = {}
-    annual: dict[tuple[str, int], tuple[str, Mapping[str, Any], Mapping[str, Any]]] = {}
+    annual: dict[tuple[str, str], tuple[str, Mapping[str, Any], Mapping[str, Any]]] = {}
     cumulative: dict[tuple[str, str, str], tuple[str, Mapping[str, Any], Mapping[str, Any], int]] = {}
     for metric, spec in QUARTERLY_METRICS.items():
         for tag_priority, tag in enumerate(spec["tags"]):
@@ -144,9 +154,6 @@ def _quarterly_facts(company_id: str, cik: str, payload: Mapping[str, Any], limi
             for row in _quarter_unit_rows(fact, str(spec["unit"])):
                 if row.get("val") is None:
                     continue
-                # Companyfacts often attaches the current filing's `fy` to a
-                # comparative prior-year observation. The period end is the
-                # stable identity and prevents duplicate quarters.
                 fiscal_year = int(str(row.get("end") or "")[:4] or 0)
                 fiscal_period = str(row.get("fp") or "").upper()
                 if not fiscal_year or not row.get("start") or not row.get("end"):
@@ -158,21 +165,25 @@ def _quarterly_facts(company_id: str, cik: str, payload: Mapping[str, Any], limi
                     if old_cumulative is None or _observation_rank(row, tag_priority) > _observation_rank(old_cumulative[1], old_cumulative[3]):
                         cumulative[cumulative_key] = (tag, row, spec, tag_priority)
                 if _is_annual_duration(row):
-                    annual_key = (metric, fiscal_year)
+                    annual_key = (metric, str(row["end"]))
                     old_annual = annual.get(annual_key)
-                    sort_key = (str(row.get("filed") or ""), str(row.get("accn") or ""))
-                    old_key = (str((old_annual or (None, {}))[1].get("filed") or ""), str((old_annual or (None, {}))[1].get("accn") or ""))
-                    if old_annual is None or sort_key > old_key:
+                    if old_annual is None or _observation_rank(row, tag_priority) > _observation_rank(old_annual[1], tag_priority):
                         annual[annual_key] = (tag, row, spec)
                     continue
                 if not _is_discrete_quarter(row):
                     continue
                 key = (metric, fiscal_year, fiscal_period)
                 old = selected.get(key)
-                sort_key = (str(row.get("filed") or ""), str(row.get("accn") or ""))
-                old_key = (str((old or (None, {}))[1].get("filed") or ""), str((old or (None, {}))[1].get("accn") or ""))
-                if old is None or sort_key > old_key:
-                        selected[key] = (tag, row, spec)
+                identity_lag = _filing_lag(row)
+                identity_fy = int(row.get("fy") or fiscal_year)
+                if old is not None and int(old[1].get("_identity_lag") or _filing_lag(old[1])) <= identity_lag:
+                    identity_lag = int(old[1].get("_identity_lag") or _filing_lag(old[1]))
+                    identity_fy = int(old[1].get("_identity_fy") or old[1].get("fy") or fiscal_year)
+                if old is None or _observation_rank(row, tag_priority) > _observation_rank(old[1], tag_priority):
+                        selected_row = dict(row)
+                        selected_row["_identity_lag"] = identity_lag
+                        selected_row["_identity_fy"] = identity_fy
+                        selected[key] = (tag, selected_row, spec)
     # Cash-flow statements in 10-Q filings are normally year-to-date. Convert them
     # to discrete quarters so the UI never compares a six-month inflow with a
     # three-month capital expenditure (or presents YTD as "current quarter").
@@ -207,12 +218,29 @@ def _quarterly_facts(company_id: str, cik: str, payload: Mapping[str, Any], limi
                 })
                 selected[key] = (tag, derived_row, spec)
             prior_row = row
-    for (metric, fiscal_year), (tag, annual_row, spec) in annual.items():
+    for (metric, _), (tag, annual_row, spec) in annual.items():
+        fiscal_year = int(str(annual_row["end"])[:4])
         q4_key = (metric, fiscal_year, "Q4")
-        quarter_keys = [(metric, fiscal_year, name) for name in ("Q1", "Q2", "Q3")]
-        if q4_key in selected or any(key not in selected for key in quarter_keys):
+        candidates = {
+            period: sorted(
+                (
+                    (key, value)
+                    for key, value in selected.items()
+                    if key[0] == metric
+                    and key[2] == period
+                    and str(annual_row.get("start") or "") <= str(value[1].get("end") or "") < str(annual_row.get("end") or "")
+                ),
+                key=lambda item: str(item[1][1].get("end") or ""),
+            )
+            for period in ("Q1", "Q2", "Q3")
+        }
+        if q4_key in selected or any(not candidates[period] for period in ("Q1", "Q2", "Q3")):
             continue
-        quarter_rows = [selected[key][1] for key in quarter_keys]
+        quarter_rows = [candidates[period][-1][1][1] for period in ("Q1", "Q2", "Q3")]
+        normalized_fiscal_year = int(str(annual_row["end"])[:4])
+        for quarter_row in quarter_rows:
+            if isinstance(quarter_row, dict):
+                quarter_row["_normalized_fiscal_year"] = normalized_fiscal_year
         try:
             q4_value = Decimal(str(annual_row["val"])) - sum(
                 (Decimal(str(row["val"])) for row in quarter_rows), Decimal("0")
@@ -226,6 +254,7 @@ def _quarterly_facts(company_id: str, cik: str, payload: Mapping[str, Any], limi
             "start": None,
             "_derivation_type": "annual_less_q1_q2_q3",
             "_source_accessions": [row.get("accn") for row in [annual_row, *quarter_rows] if row.get("accn")],
+            "_normalized_fiscal_year": normalized_fiscal_year,
         })
         selected[q4_key] = (tag, derived_row, spec)
     period_ends = sorted({str(row.get("end")) for _, row, _ in selected.values() if row.get("end")})[-limit:]
@@ -244,7 +273,7 @@ def _quarterly_facts(company_id: str, cik: str, payload: Mapping[str, Any], limi
             "period_type": "duration",
             "period_start": row.get("start"),
             "period_end": row["end"],
-            "fiscal_year": fiscal_year,
+            "fiscal_year": int(row.get("_normalized_fiscal_year") or row.get("_identity_fy") or row.get("fy") or fiscal_year),
             "fiscal_period": fiscal_period,
             "statement": spec["statement"],
             "form_type": row.get("form"),
@@ -265,9 +294,10 @@ def build_sec_financial_population(
     write_cache: bool = False,
     cache_ttl_days: int = 90,
     now: datetime | None = None,
+    company_ids: list[str] | None = None,
 ) -> dict[str, Any]:
     current = now or datetime.now(timezone.utc)
-    scope = _scope(root)
+    scope = _scope(root, set(company_ids) if company_ids is not None else None)
     source_scope_count = len(scope)
     scope = scope[offset:]
     if limit is not None:
@@ -331,21 +361,34 @@ def build_sec_financial_population(
     }
 
 
-def write_sec_financial_population(report: Mapping[str, Any], output_dir: Path) -> None:
+def write_sec_financial_population(report: Mapping[str, Any], output_dir: Path, *, merge_existing: bool = False) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     quarterly_root = output_dir / "quarterly"
     quarterly_root.mkdir(parents=True, exist_ok=True)
+    facts = list(report["financial_facts"])
+    if merge_existing and (output_dir / "financial_facts.json").is_file():
+        refreshed = {str(row["company_id"]) for row in facts}
+        prior = _load(output_dir / "financial_facts.json")
+        facts = [row for row in prior if str(row.get("company_id")) not in refreshed] + facts
+        facts.sort(key=lambda row: (str(row.get("company_id")), str(row.get("metric"))))
     quarterly_by_company: dict[str, list[Mapping[str, Any]]] = {}
     for row in report["quarterly_financial_facts"]:
         quarterly_by_company.setdefault(str(row["company_id"]), []).append(row)
-    quarterly_index: dict[str, str] = {}
+    index_path = output_dir / "quarterly_index.json"
+    quarterly_index: dict[str, str] = (
+        dict((_load(index_path).get("company_id_to_file") or {}))
+        if merge_existing and index_path.is_file()
+        else {}
+    )
     for company_id, rows in sorted(quarterly_by_company.items()):
         filename = quote(company_id, safe="._-") + ".json"
         quarterly_index[company_id] = f"quarterly/{filename}"
         temporary = (quarterly_root / filename).with_suffix(".json.tmp")
         temporary.write_text(json.dumps(rows, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
         temporary.replace(quarterly_root / filename)
-    for name, payload in {"manifest.json": {key: report[key] for key in ("schema_version", "version", "generated_at", "summary")}, "financial_facts.json": report["financial_facts"], "quarterly_index.json": {"schema_version": "quarterly-financial-index.v031v.4", "company_count": len(quarterly_index), "company_id_to_file": quarterly_index}, "diagnostics.json": report["diagnostics"]}.items():
+    manifest = {key: report[key] for key in ("schema_version", "version", "generated_at", "summary")}
+    manifest["summary"] = dict(manifest["summary"], write_mode="merge_existing" if merge_existing else "replace")
+    for name, payload in {"manifest.json": manifest, "financial_facts.json": facts, "quarterly_index.json": {"schema_version": "quarterly-financial-index.v031v.4", "company_count": len(quarterly_index), "company_id_to_file": quarterly_index}, "diagnostics.json": report["diagnostics"]}.items():
         temporary = output_dir / f"{name}.tmp"
         temporary.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         temporary.replace(output_dir / name)
