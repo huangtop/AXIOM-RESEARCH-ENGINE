@@ -29,6 +29,17 @@ def _resume_company_ids(root: Path, output_dir: Path) -> list[str]:
         return []
     relevance = json.loads(relevance_path.read_text(encoding="utf-8"))
     records = relevance.get("records") or []
+    eligibility_path = root / "data/generated/research_eligibility/research_eligibility.json"
+    eligibility = (
+        json.loads(eligibility_path.read_text(encoding="utf-8"))
+        if eligibility_path.is_file()
+        else {"records": []}
+    )
+    event_triggered = {
+        str(row.get("company_id") or "")
+        for row in eligibility.get("records") or []
+        if row.get("deep_research_triggers")
+    }
     priority = {"priority_candidate": 0, "evidence_required": 1}
     candidates = [
         row
@@ -38,6 +49,7 @@ def _resume_company_ids(root: Path, output_dir: Path) -> list[str]:
     ]
     candidates.sort(
         key=lambda row: (
+            0 if str(row.get("company_id") or "") in event_triggered else 1,
             priority[str(row["status"])],
             str(row.get("company_id") or ""),
         )

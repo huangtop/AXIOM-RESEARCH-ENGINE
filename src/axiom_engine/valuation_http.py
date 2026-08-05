@@ -13,6 +13,7 @@ from axiom_engine.coverage_policy import (
     CoveragePolicyService,
     CoveragePublicationDenied,
 )
+from axiom_engine.company_overview import CompanyOverviewError, CompanyOverviewNotFound, CompanyOverviewService
 from axiom_engine.fair_value_snapshot import (
     FairValueSnapshotAPIError,
     FairValueSnapshotNotFound,
@@ -59,6 +60,7 @@ class ValuationWSGIApp:
         etf_company_card_service: ETFCompanyCardService | None = None,
         etf_detail_service: ETFDetailService | None = None,
         coverage_service: CoveragePolicyService | None = None,
+        company_overview_service: CompanyOverviewService | None = None,
     ) -> None:
         cached_close_provider = JsonCachedPreviousCloseProvider(PREVIOUS_CLOSE_CACHE)
         yahoo_close_provider = YahooPreviousCloseAdapter()
@@ -69,6 +71,7 @@ class ValuationWSGIApp:
         self.legacy_service = legacy_service or LegacyValuationAPIService(yahoo_close_provider)
         self.fair_value_service = fair_value_service or FairValueSnapshotService()
         self.coverage_service = coverage_service or CoveragePolicyService()
+        self.company_overview_service = company_overview_service or CompanyOverviewService()
         self.full_market_service = full_market_service or FullMarketCoverageService(coverage_service=self.coverage_service)
         self.theme_sector_service = theme_sector_service or ThemeSectorInferenceService()
         self.etf_exposure_service = etf_exposure_service or ETFExposureService()
@@ -93,6 +96,7 @@ class ValuationWSGIApp:
             or path.startswith("/v1/fair-values/")
             or (path.startswith("/v1/companies/") and path.endswith("/valuation-card"))
             or (path.startswith("/v1/companies/") and path.endswith("/research-policy"))
+            or (path.startswith("/v1/companies/") and path.endswith("/overview"))
             or (path.startswith("/v1/companies/") and path.endswith("/etf-exposure"))
             or (path.startswith("/v1/companies/") and path.endswith("/etf-events"))
             or (path.startswith("/v1/etfs/") and path.endswith("/changes"))
@@ -104,7 +108,7 @@ class ValuationWSGIApp:
             return self._respond(start_response, HTTPStatus.OK, {"status": "ok"})
         # Research-policy has its own evidence-universe lookup and may be used
         # with an isolated inference service before publication projection.
-        company_suffixes = ("/valuation-card", "/etf-exposure", "/etf-events")
+        company_suffixes = ("/valuation-card", "/etf-exposure", "/etf-events", "/overview")
         gated_symbol = None
         if method == "GET" and path.startswith("/v1/companies/") and path.endswith(company_suffixes):
             gated_symbol = path.removeprefix("/v1/companies/").rsplit("/", 1)[0].strip("/")
@@ -189,6 +193,14 @@ class ValuationWSGIApp:
                 return self._respond(start_response, HTTPStatus.NOT_FOUND, {"error": "company_not_found", "message": str(exc)})
             except FullMarketCoverageError as exc:
                 return self._respond(start_response, HTTPStatus.SERVICE_UNAVAILABLE, {"error": "full_market_coverage_unavailable", "message": str(exc)})
+        if method == "GET" and path.startswith("/v1/companies/") and path.endswith("/overview"):
+            symbol = path.removeprefix("/v1/companies/").removesuffix("/overview").strip("/")
+            try:
+                return self._respond(start_response, HTTPStatus.OK, dict(self.company_overview_service.get(symbol)))
+            except CompanyOverviewNotFound as exc:
+                return self._respond(start_response, HTTPStatus.NOT_FOUND, {"error": "company_not_found", "message": str(exc)})
+            except CompanyOverviewError as exc:
+                return self._respond(start_response, HTTPStatus.SERVICE_UNAVAILABLE, {"error": "company_overview_unavailable", "message": str(exc)})
         if method == "GET" and path.startswith("/v1/companies/") and path.endswith("/etf-exposure"):
             symbol = path.removeprefix("/v1/companies/").removesuffix("/etf-exposure").strip("/")
             try:
