@@ -55,7 +55,7 @@ def test_missing_companyfacts_is_diagnostic_not_zero(tmp_path):
     assert report["diagnostics"][0]["reason_code"] == "SEC_COMPANYFACTS_NOT_AVAILABLE"
 
 
-def test_population_retains_up_to_eight_discrete_quarters_for_eps_chart(tmp_path):
+def test_population_retains_up_to_six_direct_discrete_quarters_for_eps_chart(tmp_path):
     root = _root(tmp_path)
     path = root / "data/generated/provider_cache/sec/companyfacts/CIK0000000001.json"
     payload = json.loads(path.read_text())
@@ -99,20 +99,21 @@ def test_population_retains_up_to_eight_discrete_quarters_for_eps_chart(tmp_path
         row for row in report["quarterly_financial_facts"]
         if row["metric"] == "diluted_eps"
     ]
-    assert len(quarters) == 8
+    assert len(quarters) == 6
     assert quarters[-1]["fiscal_year"] == 2025
-    assert quarters[-1]["fiscal_period"] == "Q4"
-    assert quarters[-1]["value"] == "1.4"
-    assert quarters[-1]["source"]["period_selection"] == "annual_less_q1_q2_q3"
+    assert quarters[-1]["fiscal_period"] == "Q3"
+    assert quarters[-1]["value"] == "0.9"
+    assert quarters[-1]["source"]["period_selection"] == "discrete_quarter_60_to_120_days"
+    assert all(row["fiscal_period"] != "Q4" for row in quarters)
     output = root / "out"
     write_sec_financial_population(report, output)
     index = json.loads((output / "quarterly_index.json").read_text())
     quarterly_file = output / index["company_id_to_file"]["company:1"]
     assert quarterly_file.is_file()
-    assert len(json.loads(quarterly_file.read_text())) >= 8
+    assert len(json.loads(quarterly_file.read_text())) >= 6
 
 
-def test_population_derives_discrete_q2_cash_flow_from_ytd(tmp_path):
+def test_population_does_not_derive_discrete_q2_cash_flow_from_ytd(tmp_path):
     root = _root(tmp_path)
     path = root / "data/generated/provider_cache/sec/companyfacts/CIK0000000001.json"
     payload = json.loads(path.read_text())
@@ -125,11 +126,8 @@ def test_population_derives_discrete_q2_cash_flow_from_ytd(tmp_path):
     payload["facts"]["us-gaap"]["PaymentsToAcquirePropertyPlantAndEquipment"] = rows(35_674, 80_598)
     path.write_text(json.dumps(payload), encoding="utf-8")
     report = build_sec_financial_population(root)
-    q2 = {row["metric"]: row for row in report["quarterly_financial_facts"] if row["period_end"] == "2026-06-30"}
-    assert q2["operating_cash_flow"]["value"] == "39069"
-    assert q2["capital_expenditures"]["value"] == "44924"
-    assert Decimal(q2["operating_cash_flow"]["value"]) - Decimal(q2["capital_expenditures"]["value"]) == Decimal("-5855")
-    assert q2["operating_cash_flow"]["source"]["period_selection"] == "ytd_less_prior_ytd"
+    q2 = [row for row in report["quarterly_financial_facts"] if row["period_end"] == "2026-06-30"]
+    assert q2 == []
 
 
 def test_comparative_row_does_not_replace_original_fiscal_identity(tmp_path):
@@ -146,6 +144,36 @@ def test_comparative_row_does_not_replace_original_fiscal_identity(tmp_path):
     assert [(row["fiscal_year"], row["period_end"], row["accession_number"]) for row in rows] == [
         (2026, "2025-04-27", "comparative"), (2027, "2026-04-26", "current")
     ]
+
+
+def test_q4_derivation_never_subtracts_weighted_average_shares(tmp_path):
+    root = _root(tmp_path)
+    path = root / "data/generated/provider_cache/sec/companyfacts/CIK0000000001.json"
+    payload = json.loads(path.read_text())
+    payload["facts"]["us-gaap"]["WeightedAverageNumberOfDilutedSharesOutstanding"] = {
+        "units": {"shares": [
+            {"val": 100, "start": "2025-01-01", "end": "2025-03-31", "filed": "2025-04-20", "form": "10-Q", "fy": 2025, "fp": "Q1", "accn": "q1"},
+            {"val": 101, "start": "2025-04-01", "end": "2025-06-30", "filed": "2025-07-20", "form": "10-Q", "fy": 2025, "fp": "Q2", "accn": "q2"},
+            {"val": 102, "start": "2025-07-01", "end": "2025-09-30", "filed": "2025-10-20", "form": "10-Q", "fy": 2025, "fp": "Q3", "accn": "q3"},
+            {"val": 101, "start": "2025-01-01", "end": "2025-12-31", "filed": "2026-02-01", "form": "10-K", "fy": 2025, "fp": "FY", "accn": "fy"},
+        ]}
+    }
+    path.write_text(json.dumps(payload), encoding="utf-8")
+    shares = [row for row in build_sec_financial_population(root)["quarterly_financial_facts"] if row["metric"] == "diluted_shares_outstanding"]
+    assert all(row["fiscal_period"] != "Q4" for row in shares)
+    assert all(Decimal(row["value"]) > 0 for row in shares)
+
+
+def test_foreign_issuer_6k_discrete_quarter_is_retained(tmp_path):
+    root = _root(tmp_path)
+    path = root / "data/generated/provider_cache/sec/companyfacts/CIK0000000001.json"
+    payload = json.loads(path.read_text())
+    payload["facts"]["us-gaap"]["EarningsPerShareDiluted"] = {"units": {"USD/shares": [
+        {"val": 0.25, "start": "2026-04-01", "end": "2026-06-30", "filed": "2026-07-29", "form": "6-K", "fy": 2027, "fp": "Q1", "accn": "foreign-q1"}
+    ]}}
+    path.write_text(json.dumps(payload), encoding="utf-8")
+    eps = [row for row in build_sec_financial_population(root)["quarterly_financial_facts"] if row["metric"] == "diluted_eps"]
+    assert [(row["period_end"], row["value"], row["form_type"]) for row in eps] == [("2026-06-30", "0.25", "6-K")]
 
 
 def test_partial_writer_keeps_unaffected_company_history(tmp_path):
