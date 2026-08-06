@@ -9,11 +9,29 @@ eligibility = json.loads(
         encoding="utf-8"
     )
 )
-company_ids = {
+knowledge = json.loads(
+    (root / "data/generated/knowledge_inference/knowledge_inference.json").read_text(
+        encoding="utf-8"
+    )
+)
+selected_company_ids = {
     str(row["company_id"])
     for row in eligibility.get("records") or []
     if row.get("research_universe_status") == "selected"
 }
+evidence_classified_company_ids = {
+    str(row["company_id"])
+    for row in knowledge.get("records") or []
+    if any(
+        item.get("dimension") == "theme" and item.get("source_business_evidence_ids")
+        for item in row.get("knowledge") or []
+    )
+    and any(
+        item.get("dimension") == "sector" and item.get("source_business_evidence_ids")
+        for item in row.get("knowledge") or []
+    )
+}
+company_ids = selected_company_ids | evidence_classified_company_ids
 report = build_company_overviews(root, company_ids=company_ids)
 write_company_overviews(report, root / "data/generated/company_overview")
 print(report["summary"])
