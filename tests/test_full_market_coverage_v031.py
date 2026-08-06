@@ -126,7 +126,7 @@ def test_valuation_uses_independent_model_families_and_reports_disagreement():
     payload = report()
     googl = next(card for card in payload["cards"] if card["primary_security"]["ticker"] == "GOOGL")
     valuation = googl["valuation"]
-    assert valuation["aggregation_version"] == "confidence-weighted-model-families.v031v.6"
+    assert valuation["aggregation_version"] == "archetype-primary-model-family.v031v.7"
     assert valuation["aggregation"]["confidence"] == "low"
     assert valuation["aggregation"]["archetype"] == "profitable_growth"
     assert "HIGH_CAPEX_INTENSITY_DCF_EXCLUDED_FROM_AGGREGATION" in valuation["aggregation"]["archetype_reason_codes"]
@@ -134,6 +134,10 @@ def test_valuation_uses_independent_model_families_and_reports_disagreement():
     earnings = valuation["aggregation"]["families"]["forward_earnings"]
     dcf = valuation["aggregation"]["families"]["intrinsic_cash_flow"]
     assert earnings["model_names"] == ["forward_pe", "peg"]
+    assert valuation["aggregation"]["method"] == "archetype-primary-family"
+    assert valuation["aggregation"]["primary_family"] == "forward_earnings"
+    assert Decimal(valuation["fair_value"]) == Decimal(earnings["representative_fair_value"])
+    assert "intrinsic_cash_flow" not in valuation["aggregation"]["cross_check_families"]
     assert Decimal(dcf["weight"]) == 0
     assert dcf["included_in_aggregation"] is False
     assert dcf["exclusion_reason_code"] == "ARCHETYPE_MODEL_FAMILY_EXCLUDED"

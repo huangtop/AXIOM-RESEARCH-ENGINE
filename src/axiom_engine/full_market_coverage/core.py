@@ -243,7 +243,10 @@ def _aggregate_models(
     lower_cap, upper_cap = median * Decimal("0.50"), median * Decimal("2.00")
     winsorized = [(max(lower_cap, min(value, upper_cap)), weight) for value, weight in weighted_families]
     total_weight = sum((weight for _, weight in winsorized), Decimal("0"))
-    center = sum((value * weight for value, weight in winsorized), Decimal("0")) / total_weight
+    weighted_center = sum((value * weight for value, weight in winsorized), Decimal("0")) / total_weight
+    primary_family = "forward_earnings" if archetype == "profitable_growth" and "forward_earnings" in families else None
+    center = _number(families[primary_family]["representative_fair_value"]) if primary_family else weighted_center
+    center = center if center is not None else weighted_center
     minimum, maximum = min(raw_values), max(raw_values)
     disagreement_ratio = maximum / minimum if minimum > 0 else Decimal("999")
     confidence = "high" if disagreement_ratio <= Decimal("1.35") else "medium" if disagreement_ratio <= Decimal("2.00") else "low"
@@ -251,7 +254,10 @@ def _aggregate_models(
         "fair_value": format(center, "f"),
         "reason_code": None,
         "aggregation": {
-            "method": "confidence-weighted-family-winsorized-center",
+            "method": "archetype-primary-family" if primary_family else "confidence-weighted-family-winsorized-center",
+            "primary_family": primary_family,
+            "cross_check_families": [family for family in families if family != primary_family and families[family]["included_in_aggregation"]],
+            "weighted_cross_check_center": format(weighted_center, "f"),
             "archetype": archetype,
             "archetype_reason_codes": archetype_reasons,
             "family_count": len(weighted_families),
@@ -426,7 +432,7 @@ def build_full_market_coverage(
                 else []
             ),
             "estimates": est,
-            "valuation": {"status": status, "calculated_model_count": calculated_count, "total_model_count": 7, "fair_value": aggregate["fair_value"], "aggregation_version": "confidence-weighted-model-families.v031v.6", "reason_code": aggregate["reason_code"], "aggregation": aggregate["aggregation"], "model_diagnostics": aggregate["model_diagnostics"], "models": models},
+            "valuation": {"status": status, "calculated_model_count": calculated_count, "total_model_count": 7, "fair_value": aggregate["fair_value"], "aggregation_version": "archetype-primary-model-family.v031v.7", "reason_code": aggregate["reason_code"], "aggregation": aggregate["aggregation"], "model_diagnostics": aggregate["model_diagnostics"], "models": models},
         }
         position = len(cards)
         cards.append(card)
