@@ -128,6 +128,8 @@ def build_company_overviews(
             else "awaiting_business_evidence"
         )
         company = company_by_id.get(cid, {})
+        if not primary.get(cid):
+            continue
         records.append(
             {
                 "schema_version": "canonical-company-overview.v031c.6",
