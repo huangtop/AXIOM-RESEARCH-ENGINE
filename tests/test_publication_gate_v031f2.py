@@ -44,3 +44,18 @@ def test_per_company_archive_supports_single_ticker_lookup_without_snapshot(tmp_
     )
     assert service.get("NVDA")["primary_security"]["ticker"] == "NVDA"
     assert service._payload is None
+
+
+def test_publication_catalog_maps_secondary_share_class_to_primary_projection(tmp_path: Path):
+    report = build_publication_catalog(ROOT)
+    index = report["indexes"]["ticker_to_file"]
+    assert index["GOOG"] == index["GOOGL"] == "GOOGL.json"
+    assert "GOOGM" not in index
+    assert "GOOGN" not in index
+    output = tmp_path / "data/generated/publication_gate/company_catalog.json"
+    write_publication_catalog(report, output)
+    service = FullMarketCoverageService(root=ROOT, snapshot_path=tmp_path / "missing.json", publication_root=output.parent)
+    goog = service.get("GOOG")
+    googl = service.get("GOOGL")
+    assert goog["company"]["company_id"] == googl["company"]["company_id"]
+    assert goog["primary_security"]["ticker"] == "GOOGL"
