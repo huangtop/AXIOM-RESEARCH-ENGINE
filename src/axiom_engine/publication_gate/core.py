@@ -107,7 +107,15 @@ def build_publication_catalog(
         }
 
     records.sort(key=lambda row: str(row.get("ticker") or ""))
-    index = {row["ticker"]: _filename(row["ticker"]) for row in records}
+    index: dict[str, str] = {}
+    for ticker, projection in projections.items():
+        filename = _filename(ticker)
+        card = projection.get("valuation_card") or {}
+        for security in card.get("securities") or []:
+            alias = str(security.get("ticker") or "").upper()
+            if alias:
+                index[alias] = filename
+        index[ticker] = filename
     axis_counts = {
         axis: sum(bool((row.get("scope_axes") or {}).get(axis)) for row in records)
         for axis in (
