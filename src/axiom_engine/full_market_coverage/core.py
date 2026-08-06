@@ -24,7 +24,7 @@ MODEL_FAMILIES = {
     "milestone": "event_probability",
 }
 DEFAULT_FAMILY_WEIGHTS = {
-    "intrinsic_cash_flow": Decimal("0.75"),
+    "intrinsic_cash_flow": Decimal("0"),
     "forward_earnings": Decimal("1.00"),
     "forward_revenue": Decimal("0.75"),
     "enterprise_operations": Decimal("0.90"),
@@ -145,7 +145,7 @@ def _valuation_archetype(
     )
     if profitable_growth:
         weights = {
-            "intrinsic_cash_flow": Decimal("0") if capex_intensity is not None and capex_intensity >= Decimal("0.15") else Decimal("0.65"),
+            "intrinsic_cash_flow": Decimal("0"),
             "forward_earnings": Decimal("1.40"),
             "forward_revenue": Decimal("0.65"),
             "enterprise_operations": Decimal("0.85"),
@@ -153,12 +153,11 @@ def _valuation_archetype(
             "event_probability": Decimal("0.25"),
         }
         reasons = ["POSITIVE_FORWARD_EARNINGS", "NET_MARGIN_AT_LEAST_10_PERCENT", "POSITIVE_FREE_CASH_FLOW"]
-        if capex_intensity is not None and capex_intensity >= Decimal("0.15"):
-            reasons.append("HIGH_CAPEX_INTENSITY_DCF_EXCLUDED_FROM_AGGREGATION")
+        reasons.append("DCF_EXCLUDED_FROM_AGGREGATION_BY_PRODUCT_POLICY")
         return "profitable_growth", weights, reasons
     if net_income is not None and net_income <= 0:
         weights = dict(DEFAULT_FAMILY_WEIGHTS)
-        weights.update({"intrinsic_cash_flow": Decimal("0.25"), "forward_earnings": Decimal("0.20"), "forward_revenue": Decimal("1.20"), "balance_sheet": Decimal("0.35"), "event_probability": Decimal("0.90")})
+        weights.update({"forward_earnings": Decimal("0.20"), "forward_revenue": Decimal("1.20"), "balance_sheet": Decimal("0.35"), "event_probability": Decimal("0.90")})
         return "loss_making_or_pre_profit", weights, ["NON_POSITIVE_NET_INCOME"]
     return "general_operating_company", dict(DEFAULT_FAMILY_WEIGHTS), ["DEFAULT_OPERATING_COMPANY_PROFILE"]
 
