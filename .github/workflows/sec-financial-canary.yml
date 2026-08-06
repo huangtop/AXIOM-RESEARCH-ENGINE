@@ -1,0 +1,32 @@
+name: SEC Financial Canary (8 Companies)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -e .
+      - name: Require SEC identity
+        run: test -n "$SEC_USER_AGENT"
+      - name: Fetch only eight financial canaries
+        run: python scripts/fetch_sec_financial_canary.py --output /tmp/sec-financial-canary --user-agent "$SEC_USER_AGENT"
+      - name: Validate with production quarterly parser
+        run: python scripts/validate_sec_financial_canary.py --input /tmp/sec-financial-canary --report /tmp/sec-financial-canary/report.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sec-financial-canary
+          path: /tmp/sec-financial-canary
+          retention-days: 3
