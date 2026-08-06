@@ -41,15 +41,31 @@ def build_company_overviews(
     knowledge = _load(root / "data/generated/knowledge_inference/knowledge_inference.json")
     evidence = _load(root / "data/generated/canonical_business_evidence/business_evidence.json")
     policy = _load(root / "config/company_overview.v031c.6.json")
+    identity_path = root / "data/generated/security_identity/security_identity_normalization.json"
+    eligible_security_ids = None
+    if identity_path.is_file():
+        identity = _load(identity_path)
+        eligible_security_ids = {
+            str(row.get("security_id"))
+            for row in identity.get("securities") or []
+            if row.get("valuation_eligible") is True
+        }
     if policy.get("schema_version") != "canonical-company-overview-policy.v031c.6":
         raise CompanyOverviewError("unsupported overview policy")
     names = policy["display_names_zh_tw"]
+    curated_overrides = {
+        str(row["company_id"]): row
+        for row in policy.get("curated_overrides") or []
+        if row.get("company_id") and row.get("theme_id") and row.get("sector_id")
+    }
     company_by_id = {str(row["company_id"]): row for row in companies}
     primary = {}
     aliases: dict[str, list[str]] = {}
     for row in securities:
         cid, ticker = str(row.get("company_id") or ""), str(row.get("ticker") or "").upper()
         if not cid or not ticker or str(row.get("status") or "active").lower() != "active":
+            continue
+        if eligible_security_ids is not None and str(row.get("security_id") or "") not in eligible_security_ids:
             continue
         aliases.setdefault(cid, []).append(ticker)
         if row.get("primary_listing") is True or cid not in primary:
@@ -58,7 +74,8 @@ def build_company_overviews(
     records = []
     for source in knowledge.get("records") or []:
         cid = str(source["company_id"])
-        if company_ids is not None and cid not in company_ids:
+        override = curated_overrides.get(cid)
+        if company_ids is not None and cid not in company_ids and override is None:
             continue
         items = list(source.get("knowledge") or [])
         themes = sorted(
@@ -70,6 +87,19 @@ def build_company_overviews(
             key=lambda x: (-float(x.get("confidence") or 0), str(x.get("knowledge_id"))),
         )
         theme, sector = (themes[0] if themes else None), (sectors[0] if sectors else None)
+        if override is not None:
+            theme = {
+                "knowledge_id": override["theme_id"],
+                "canonical_name": override.get("theme_name") or override["theme_id"].split(":", 1)[-1],
+                "confidence": float(override.get("confidence") or 1),
+                "source_business_evidence_ids": [],
+            }
+            sector = {
+                "knowledge_id": override["sector_id"],
+                "canonical_name": override.get("sector_name") or override["sector_id"].split(":", 1)[-1],
+                "confidence": float(override.get("confidence") or 1),
+                "source_business_evidence_ids": [],
+            }
         source_ids = sorted(
             {
                 str(value)
@@ -90,7 +120,7 @@ def build_company_overviews(
         ]
         status = (
             "classified"
-            if theme and sector and sources
+            if override is not None or (theme and sector and sources)
             else "evidence_available_unclassified"
             if source.get("source_company_signal_status") != "business_evidence_unavailable"
             else "awaiting_business_evidence"
@@ -132,6 +162,7 @@ def build_company_overviews(
                     },
                 },
                 "evidence": sources,
+                **({"classification_source": "curated_core_override"} if override is not None else {}),
                 "reason_code": None
                 if status == "classified"
                 else "SEC_BUSINESS_EVIDENCE_PENDING"
