@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import gzip
 import json
 import re
 import urllib.request
@@ -21,13 +22,21 @@ CANARY_CIKS = {
 }
 
 
+def _decode_json(raw: bytes, content_encoding: str = "") -> dict:
+    if content_encoding.lower() == "gzip" or raw.startswith(b"\x1f\x8b"):
+        raw = gzip.decompress(raw)
+    return json.loads(raw.decode("utf-8-sig"))
+
+
 def _download(url: str, output: Path, user_agent: str) -> None:
     request = urllib.request.Request(
         url,
         headers={"User-Agent": user_agent, "Accept-Encoding": "gzip, deflate"},
     )
     with urllib.request.urlopen(request, timeout=60) as response:
-        payload = json.loads(response.read())
+        payload = _decode_json(
+            response.read(), str(response.headers.get("Content-Encoding") or "")
+        )
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(
         json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n",
