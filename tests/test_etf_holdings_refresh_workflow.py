@@ -13,3 +13,5 @@ def test_daily_etf_workflow_preserves_history_and_scopes_commit():
     assert "canonical_etf_change_events" in workflow
     assert "event_triggers/etf_changes.json" in workflow
     assert "news_pipeline" not in workflow
+    history = (ROOT / "src/axiom_engine/etf_holdings_history/core.py").read_text()
+    assert 'get("research_scope") != "core"' in history
