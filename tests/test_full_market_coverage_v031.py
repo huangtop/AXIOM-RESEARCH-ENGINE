@@ -128,7 +128,11 @@ def test_valuation_uses_independent_model_families_and_reports_disagreement():
     valuation = googl["valuation"]
     assert valuation["aggregation_version"] == "confidence-weighted-model-families.v031v.6"
     assert valuation["aggregation"]["confidence"] == "low"
+    assert valuation["aggregation"]["archetype"] == "profitable_growth"
+    assert "HIGH_CAPEX_INTENSITY_DCF_SENSITIVITY" in valuation["aggregation"]["archetype_reason_codes"]
     assert valuation["aggregation"]["range_low"] <= valuation["fair_value"] <= valuation["aggregation"]["range_high"]
     earnings = valuation["aggregation"]["families"]["forward_earnings"]
+    dcf = valuation["aggregation"]["families"]["intrinsic_cash_flow"]
     assert earnings["model_names"] == ["forward_pe", "peg"]
+    assert Decimal(earnings["weight"]) > Decimal(dcf["weight"])
     assert Decimal(valuation["model_diagnostics"]["forward_pe"]["effective_weight"]) + Decimal(valuation["model_diagnostics"]["peg"]["effective_weight"]) == Decimal(earnings["weight"])
