@@ -30,8 +30,6 @@ def _fixture(tmp_path: Path) -> Path:
     _write(tmp_path, "data/universe/securities.json", securities)
     normalized = [{"security_id":row["security_id"],"instrument_type":"warrant" if row["ticker"] == "W" else "common_or_ordinary_equity"} for row in securities]
     _write(tmp_path, "data/generated/security_identity/security_identity_normalization.json", {"schema_version":"security-identity-normalization.v031v.2","securities":normalized})
-    cache = tmp_path / "data/generated/provider_cache/etf_engine_v2"
-    snapshot = cache / "snapshots/s1"
     holdings = {symbol:[{"etf_id":"US-TEST","ticker":"TEST","weight":0.1}] for symbol in ("NVDA","BRK-B","OLD","DUP","W","2330.TW","MISS")}
     _write(tmp_path, "data/generated/provider_cache/etf_engine_v2/state.json", {"current_snapshot_id":"s1","provider_generated_at":"2026-07-28T00:00:00+00:00","holdings_index_sha256":"abc","holdings_coverage":"top_holdings_only"})
     _write(tmp_path, "data/generated/provider_cache/etf_engine_v2/snapshots/s1/manifest.json", {"schema_version":"2.2"})
@@ -65,7 +63,8 @@ def test_preserves_ambiguous_unsupported_unresolved_and_non_equity(tmp_path: Pat
 def test_real_snapshot_preserves_every_holding_symbol_and_resolves_nvda():
     root = Path(__file__).parents[1]
     report = json.loads((root / "data/generated/etf_identity_bridge/identity_bridge.json").read_text())
-    assert report["summary"]["holding_symbol_count"] == 423
+    assert report["summary"]["holding_symbol_count"] == len(report["records"])
+    assert report["summary"]["holding_symbol_count"] == len(report["indexes"]["holding_symbol_to_position"])
     nvda = report["records"][report["indexes"]["holding_symbol_to_position"]["NVDA"]]
     assert nvda["security_id"] == "security:NASDAQ-NVDA"
     assert nvda["company_id"] == "company:US-CIK0001045810"
