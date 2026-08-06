@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 from collections import Counter, defaultdict
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any, Mapping
@@ -14,6 +14,15 @@ from axiom_engine.coverage_policy import CoveragePolicyService
 
 
 MODELS = ("dcf", "forward_pe", "peg", "forward_ps", "ev_ebitda", "forward_pb", "milestone")
+MODEL_FAMILIES = {
+    "dcf": ("intrinsic_cash_flow", Decimal("0.75")),
+    "forward_pe": ("forward_earnings", Decimal("1.00")),
+    "peg": ("forward_earnings", Decimal("1.00")),
+    "forward_ps": ("forward_revenue", Decimal("0.75")),
+    "ev_ebitda": ("enterprise_operations", Decimal("0.90")),
+    "forward_pb": ("balance_sheet", Decimal("0.45")),
+    "milestone": ("event_probability", Decimal("1.00")),
+}
 
 
 class FullMarketCoverageError(RuntimeError):
@@ -78,6 +87,121 @@ def _derived(value: Decimal | None, formula: str, source_ids: list[str], reason:
         "reason_code": None if value is not None else reason,
         "formula_version": formula,
         "source_record_ids": source_ids,
+    }
+
+
+def _date(value: Any) -> date | None:
+    try:
+        return date.fromisoformat(str(value)[:10])
+    except (TypeError, ValueError):
+        return None
+
+
+def _weighted_quantile(rows: list[tuple[Decimal, Decimal]], quantile: Decimal) -> Decimal:
+    ordered = sorted(rows, key=lambda row: row[0])
+    total = sum((weight for _, weight in ordered), Decimal("0"))
+    threshold = total * quantile
+    cumulative = Decimal("0")
+    for value, weight in ordered:
+        cumulative += weight
+        if cumulative >= threshold:
+            return value
+    return ordered[-1][0]
+
+
+def _aggregate_models(
+    models: Mapping[str, Mapping[str, Any]],
+    financials: Mapping[str, Mapping[str, Any]],
+    estimates: Mapping[str, Mapping[str, Any]],
+) -> dict[str, Any]:
+    """Aggregate independent model families without using the market price.
+
+    Correlated models first share one family vote.  The family vote is then
+    adjusted for source freshness and generic-assumption risk before a lightly
+    winsorized weighted center is calculated.
+    """
+    dated_inputs: dict[str, date] = {}
+    for layer in (financials, estimates):
+        for name, payload in layer.items():
+            if isinstance(payload, Mapping):
+                observed = _date(payload.get("as_of_date"))
+                if observed:
+                    dated_inputs[name] = observed
+    reference_date = max(dated_inputs.values(), default=None)
+    family_models: dict[str, list[tuple[str, Decimal, Decimal]]] = defaultdict(list)
+    model_diagnostics: dict[str, dict[str, Any]] = {}
+    for name, model in models.items():
+        if model.get("status") != "calculated":
+            continue
+        value = _number(model.get("fair_value"))
+        if value is None or value <= 0:
+            continue
+        family, base_weight = MODEL_FAMILIES[name]
+        input_dates = [dated_inputs[input_name] for input_name in model.get("input_names") or [] if input_name in dated_inputs]
+        freshness = Decimal("1")
+        newest_input = max(input_dates, default=None)
+        if reference_date and newest_input:
+            age = (reference_date - newest_input).days
+            freshness = Decimal("0.45") if age > 550 else Decimal("0.65") if age > 370 else Decimal("0.80") if age > 185 else Decimal("1")
+        elif reference_date:
+            freshness = Decimal("0.70")
+        assumption_quality = Decimal("0.70") if str(model.get("assumption_source") or "").startswith("config/") else Decimal("1")
+        quality = freshness * assumption_quality
+        family_models[family].append((name, value, quality))
+        model_diagnostics[name] = {
+            "family": family,
+            "input_freshness_score": format(freshness, "f"),
+            "assumption_quality_score": format(assumption_quality, "f"),
+            "newest_dated_input": newest_input.isoformat() if newest_input else None,
+        }
+
+    families: dict[str, dict[str, Any]] = {}
+    weighted_families: list[tuple[Decimal, Decimal]] = []
+    for family, members in sorted(family_models.items()):
+        family_base = MODEL_FAMILIES[members[0][0]][1]
+        quality_total = sum((quality for _, _, quality in members), Decimal("0"))
+        representative = sum((value * quality for _, value, quality in members), Decimal("0")) / quality_total
+        family_quality = quality_total / Decimal(len(members))
+        weight = family_base * family_quality
+        weighted_families.append((representative, weight))
+        families[family] = {
+            "model_names": [name for name, _, _ in members],
+            "representative_fair_value": format(representative, "f"),
+            "weight": format(weight, "f"),
+        }
+        for name, _, quality in members:
+            model_diagnostics[name]["effective_weight"] = format(weight * quality / quality_total, "f")
+
+    if not weighted_families:
+        return {
+            "fair_value": None,
+            "reason_code": "NO_CALCULATED_MODELS",
+            "aggregation": None,
+            "model_diagnostics": model_diagnostics,
+        }
+
+    raw_values = [value for value, _ in weighted_families]
+    median = _weighted_quantile(weighted_families, Decimal("0.50"))
+    lower_cap, upper_cap = median * Decimal("0.50"), median * Decimal("2.00")
+    winsorized = [(max(lower_cap, min(value, upper_cap)), weight) for value, weight in weighted_families]
+    total_weight = sum((weight for _, weight in winsorized), Decimal("0"))
+    center = sum((value * weight for value, weight in winsorized), Decimal("0")) / total_weight
+    minimum, maximum = min(raw_values), max(raw_values)
+    disagreement_ratio = maximum / minimum if minimum > 0 else Decimal("999")
+    confidence = "high" if disagreement_ratio <= Decimal("1.35") else "medium" if disagreement_ratio <= Decimal("2.00") else "low"
+    return {
+        "fair_value": format(center, "f"),
+        "reason_code": None,
+        "aggregation": {
+            "method": "confidence-weighted-family-winsorized-center",
+            "family_count": len(weighted_families),
+            "confidence": confidence,
+            "disagreement_ratio": format(disagreement_ratio, ".4f"),
+            "range_low": format(_weighted_quantile(weighted_families, Decimal("0.20")), "f"),
+            "range_high": format(_weighted_quantile(weighted_families, Decimal("0.80")), "f"),
+            "families": families,
+        },
+        "model_diagnostics": model_diagnostics,
     }
 
 
@@ -222,6 +346,7 @@ def build_full_market_coverage(
             assumptions_by_company.get(company_id, {}),
             dcf_policy=dcf_policy,
         )
+        aggregate = _aggregate_models(models, fin, est)
         calculated_values = [Decimal(row["fair_value"]) for row in models.values() if row["status"] == "calculated"]
         calculated_count = len(calculated_values)
         model_counts.update(name for name, row in models.items() if row["status"] == "calculated")
@@ -241,7 +366,7 @@ def build_full_market_coverage(
                 else []
             ),
             "estimates": est,
-            "valuation": {"status": status, "calculated_model_count": calculated_count, "total_model_count": 7, "fair_value": format(sum(calculated_values) / len(calculated_values), "f") if calculated_values else None, "aggregation_version": "equal-weight-calculated-models.v031v.5", "reason_code": None if calculated_values else "NO_CALCULATED_MODELS", "models": models},
+            "valuation": {"status": status, "calculated_model_count": calculated_count, "total_model_count": 7, "fair_value": aggregate["fair_value"], "aggregation_version": "confidence-weighted-model-families.v031v.6", "reason_code": aggregate["reason_code"], "aggregation": aggregate["aggregation"], "model_diagnostics": aggregate["model_diagnostics"], "models": models},
         }
         position = len(cards)
         cards.append(card)
@@ -268,7 +393,6 @@ def write_full_market_coverage(report: Mapping[str, Any], output: Path) -> None:
     company_id_to_file: dict[str, str] = {}
     for card in report.get("cards") or []:
         company_id = str((card.get("company") or {}).get("company_id") or "")
-        ticker = str((card.get("primary_security") or {}).get("ticker") or "").upper()
         if not company_id:
             continue
         filename = quote(company_id, safe="._-") + ".json"
@@ -280,8 +404,10 @@ def write_full_market_coverage(report: Mapping[str, Any], output: Path) -> None:
         )
         temporary.replace(path)
         company_id_to_file[company_id] = f"per-company/{filename}"
-        if ticker:
-            ticker_to_file[ticker] = f"per-company/{filename}"
+        for security in card.get("securities") or []:
+            ticker = str(security.get("ticker") or "").upper()
+            if ticker:
+                ticker_to_file[ticker] = f"per-company/{filename}"
 
     index = {
         "schema_version": "full-market-valuation-index.v031g.1",
