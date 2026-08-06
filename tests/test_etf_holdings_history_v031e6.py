@@ -22,7 +22,7 @@ def _seed_static(root: Path) -> None:
         "records": [{"holding_symbol": "MU", "status": "resolved_exact", "security_id": "security:MU", "company_id": "company:MU"}]
     })
     _write(root / "data/generated/publication_gate/company_catalog.json", {
-        "companies": [{"company_id": "company:MU", "scope_axes": {"research_page": True}}]
+        "companies": [{"company_id": "company:MU", "research_scope": "core", "scope_axes": {"research_page": True}}]
     })
 
 
@@ -62,15 +62,16 @@ def test_daily_snapshots_diff_weights_shares_and_write_company_projection(tmp_pa
     assert {row["etf_ticker"] for row in company["fund_observations"]} >= {"QQQ", "DRAM"}
 
 
-def test_non_research_company_does_not_trigger_news_ai(tmp_path: Path):
+def test_non_core_company_is_excluded_from_daily_change_analysis(tmp_path: Path):
     _seed_static(tmp_path)
     _write(tmp_path / "data/generated/publication_gate/company_catalog.json", {"companies": []})
     _provider(tmp_path, "2026-08-03", 0.010, 100)
     build_etf_holdings_history(tmp_path)
     _provider(tmp_path, "2026-08-04", None, None)
     report = build_etf_holdings_history(tmp_path)
-    assert report["events"][0]["change_type"] == "EXITED_TOP_HOLDINGS"
+    assert report["events"] == []
     assert report["triggers"] == []
+    assert not (tmp_path / "data/generated/canonical_etf_change_events/per-company/MU.json").exists()
 
 
 def test_same_provider_snapshot_is_noop(tmp_path: Path):
