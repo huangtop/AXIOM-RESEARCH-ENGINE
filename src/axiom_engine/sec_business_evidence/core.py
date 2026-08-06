@@ -13,6 +13,8 @@ from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any, Callable, Iterable, Mapping
 
+from axiom_engine.business_evidence_store import load_business_evidence, write_business_evidence_shards
+
 
 SUPPORTED_FORMS = {"10-K", "10-K/A", "20-F", "20-F/A", "40-F", "40-F/A"}
 BLOCK_TAGS = {"p", "div", "br", "tr", "li", "h1", "h2", "h3", "h4", "h5", "h6"}
@@ -313,9 +315,8 @@ def write_sec_business_evidence(
     evidence = list(report["business_evidence"])
     diagnostics = list(report["diagnostics"])
     if merge_existing:
-        evidence_path = output_dir / "business_evidence.json"
         diagnostics_path = output_dir / "diagnostics.json"
-        prior_evidence = _load(evidence_path) if evidence_path.is_file() else []
+        prior_evidence = load_business_evidence(output_dir)
         prior_diagnostics = _load(diagnostics_path) if diagnostics_path.is_file() else []
         evidence = list({str(row["business_evidence_id"]): row for row in [*prior_evidence, *evidence]}.values())
         available_companies = {str(row.get("company_id")) for row in evidence}
@@ -332,9 +333,9 @@ def write_sec_business_evidence(
         "cumulative_company_count": len({str(row.get("company_id")) for row in evidence}),
         "write_mode": "merge_existing" if merge_existing else "replace",
     })
+    write_business_evidence_shards(evidence, output_dir)
     for filename, payload in {
         "manifest.json": {"schema_version": report["schema_version"], "version": report["version"], "generated_at": report["generated_at"], "summary": summary},
-        "business_evidence.json": evidence,
         "diagnostics.json": diagnostics,
     }.items():
         temporary = output_dir / f"{filename}.tmp"

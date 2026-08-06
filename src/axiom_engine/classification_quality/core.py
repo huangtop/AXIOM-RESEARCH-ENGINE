@@ -6,6 +6,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Mapping
 
+from axiom_engine.business_evidence_store import load_business_evidence
+
 
 class ClassificationQualityError(RuntimeError):
     pass
@@ -35,7 +37,7 @@ def build_classification_quality_audit(
     policy = _load(root / policy_path)
     if policy.get("schema_version") != "classification-quality-policy.v031c.5":
         raise ClassificationQualityError("unsupported classification quality policy")
-    evidence = _load(root / evidence_path)
+    evidence = load_business_evidence(root / evidence_path)
     signals_payload = _load(root / signals_path)
     knowledge_payload = _load(root / knowledge_path)
     gate_payload = _load(root / gate_path)
