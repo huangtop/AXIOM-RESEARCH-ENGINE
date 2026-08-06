@@ -170,6 +170,8 @@ def build_etf_holdings_history(root: Path, *, now: datetime | None = None) -> di
             share_ratio = 0.0 if delta_shares is None or not previous_shares else abs(delta_shares / previous_shares)
             material = change_type in {"ENTERED_TOP_HOLDINGS", "EXITED_TOP_HOLDINGS"} or abs(delta_weight) >= material_weight or share_ratio >= material_shares
             company_id = identity["company_id"]
+            if publication.get(company_id, {}).get("research_scope") != "core":
+                continue
             event_key = f"{date}|{etf_id}|{symbol}|{change_type}"
             event = {
                 "canonical_event_id": "etf-change:" + hashlib.sha256(event_key.encode()).hexdigest()[:24],
@@ -208,6 +210,8 @@ def build_etf_holdings_history(root: Path, *, now: datetime | None = None) -> di
         if not identity or not str(identity.get("status", "")).startswith("resolved_"):
             continue
         company_id = identity["company_id"]
+        if publication.get(company_id, {}).get("research_scope") != "core":
+            continue
         company_events = company_observations.get(company_id, [])
         status_rows = []
         for etf_id in sorted((set(funds) | set(previous_funds)) if company_events else focus_etfs):
