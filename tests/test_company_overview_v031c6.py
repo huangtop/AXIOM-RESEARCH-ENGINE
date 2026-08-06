@@ -139,6 +139,39 @@ def test_overview_can_limit_output_to_core_companies(tmp_path: Path):
     assert report["summary"]["company_count"] == 1
 
 
+def test_curated_core_override_is_published_without_rerunning_evidence(tmp_path: Path):
+    _fixture(tmp_path)
+    policy_path = tmp_path / "config/company_overview.v031c.6.json"
+    policy = json.loads(policy_path.read_text())
+    policy["curated_overrides"] = [{
+        "company_id": "company:alphabet",
+        "theme_id": "theme:artificial_intelligence",
+        "theme_name": "Artificial Intelligence",
+        "sector_id": "sector:cloud_infrastructure",
+        "sector_name": "Cloud Infrastructure",
+        "confidence": 1.0,
+    }]
+    policy["display_names_zh_tw"]["theme:artificial_intelligence"] = "人工智慧"
+    _w(tmp_path, "config/company_overview.v031c.6.json", policy)
+    _w(tmp_path, "data/generated/canonical_business_evidence/business_evidence.json", [])
+    _w(tmp_path, "data/generated/knowledge_inference/knowledge_inference.json", {
+        "records": [{
+            "company_id": "company:alphabet",
+            "source_company_signal_status": "business_evidence_unavailable",
+            "knowledge": [],
+        }]
+    })
+    report = build_company_overviews(tmp_path, company_ids=set())
+    row = report["records"][0]
+    assert row["status"] == "classified"
+    assert row["ticker"] == "GOOGL"
+    assert row["ticker_aliases"] == ["GOOG", "GOOGL"]
+    assert row["path"]["theme"]["display_name_zh_tw"] == "人工智慧"
+    assert row["path"]["sector"]["display_name_zh_tw"] == "雲端基礎設施與巨頭"
+    assert row["classification_source"] == "curated_core_override"
+    assert row["evidence"] == []
+
+
 def test_http_exposes_canonical_company_overview(tmp_path: Path):
     _fixture(tmp_path)
     report = build_company_overviews(tmp_path)
