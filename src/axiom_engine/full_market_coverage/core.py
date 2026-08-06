@@ -145,7 +145,7 @@ def _valuation_archetype(
     )
     if profitable_growth:
         weights = {
-            "intrinsic_cash_flow": Decimal("0.35") if capex_intensity is not None and capex_intensity >= Decimal("0.15") else Decimal("0.65"),
+            "intrinsic_cash_flow": Decimal("0") if capex_intensity is not None and capex_intensity >= Decimal("0.15") else Decimal("0.65"),
             "forward_earnings": Decimal("1.40"),
             "forward_revenue": Decimal("0.65"),
             "enterprise_operations": Decimal("0.85"),
@@ -154,7 +154,7 @@ def _valuation_archetype(
         }
         reasons = ["POSITIVE_FORWARD_EARNINGS", "NET_MARGIN_AT_LEAST_10_PERCENT", "POSITIVE_FREE_CASH_FLOW"]
         if capex_intensity is not None and capex_intensity >= Decimal("0.15"):
-            reasons.append("HIGH_CAPEX_INTENSITY_DCF_SENSITIVITY")
+            reasons.append("HIGH_CAPEX_INTENSITY_DCF_EXCLUDED_FROM_AGGREGATION")
         return "profitable_growth", weights, reasons
     if net_income is not None and net_income <= 0:
         weights = dict(DEFAULT_FAMILY_WEIGHTS)
@@ -218,11 +218,14 @@ def _aggregate_models(
         representative = sum((value * quality for _, value, quality in members), Decimal("0")) / quality_total
         family_quality = quality_total / Decimal(len(members))
         weight = family_base * family_quality
-        weighted_families.append((representative, weight))
+        if weight > 0:
+            weighted_families.append((representative, weight))
         families[family] = {
             "model_names": [name for name, _, _ in members],
             "representative_fair_value": format(representative, "f"),
             "weight": format(weight, "f"),
+            "included_in_aggregation": weight > 0,
+            "exclusion_reason_code": None if weight > 0 else "ARCHETYPE_MODEL_FAMILY_EXCLUDED",
         }
         for name, _, quality in members:
             model_diagnostics[name]["effective_weight"] = format(weight * quality / quality_total, "f")
