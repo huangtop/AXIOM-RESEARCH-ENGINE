@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from decimal import Decimal
 from pathlib import Path
 
 from axiom_engine.full_market_coverage import (
@@ -106,3 +107,34 @@ def test_writer_emits_lightweight_index_and_per_company_artifacts(tmp_path: Path
     nvda = json.loads((output.parent / nvda_file).read_text())
     assert nvda["primary_security"]["ticker"] == "NVDA"
     assert output.stat().st_size < 2_000_000
+
+
+def test_alphabet_share_classes_resolve_to_one_primary_company_artifact(tmp_path: Path):
+    payload = report()
+    output = tmp_path / "full_market_coverage.json"
+    write_full_market_coverage(payload, output)
+    index = json.loads(output.read_text())["indexes"]["ticker_to_file"]
+    assert index["GOOG"] == index["GOOGL"]
+    card = json.loads((output.parent / index["GOOG"]).read_text())
+    assert card["primary_security"]["ticker"] == "GOOGL"
+    assert card["company"]["company_id"] == "company:US-CIK0001652044"
+    assert "GOOGM" not in index
+    assert "GOOGN" not in index
+
+
+def test_valuation_uses_independent_model_families_and_reports_disagreement():
+    payload = report()
+    googl = next(card for card in payload["cards"] if card["primary_security"]["ticker"] == "GOOGL")
+    valuation = googl["valuation"]
+    assert valuation["aggregation_version"] == "confidence-weighted-model-families.v031v.6"
+    assert valuation["aggregation"]["confidence"] == "low"
+    assert valuation["aggregation"]["archetype"] == "profitable_growth"
+    assert "HIGH_CAPEX_INTENSITY_DCF_EXCLUDED_FROM_AGGREGATION" in valuation["aggregation"]["archetype_reason_codes"]
+    assert valuation["aggregation"]["range_low"] <= valuation["fair_value"] <= valuation["aggregation"]["range_high"]
+    earnings = valuation["aggregation"]["families"]["forward_earnings"]
+    dcf = valuation["aggregation"]["families"]["intrinsic_cash_flow"]
+    assert earnings["model_names"] == ["forward_pe", "peg"]
+    assert Decimal(dcf["weight"]) == 0
+    assert dcf["included_in_aggregation"] is False
+    assert dcf["exclusion_reason_code"] == "ARCHETYPE_MODEL_FAMILY_EXCLUDED"
+    assert Decimal(valuation["model_diagnostics"]["forward_pe"]["effective_weight"]) + Decimal(valuation["model_diagnostics"]["peg"]["effective_weight"]) == Decimal(earnings["weight"])
