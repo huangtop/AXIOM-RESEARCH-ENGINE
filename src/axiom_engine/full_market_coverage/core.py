@@ -15,13 +15,21 @@ from axiom_engine.coverage_policy import CoveragePolicyService
 
 MODELS = ("dcf", "forward_pe", "peg", "forward_ps", "ev_ebitda", "forward_pb", "milestone")
 MODEL_FAMILIES = {
-    "dcf": ("intrinsic_cash_flow", Decimal("0.75")),
-    "forward_pe": ("forward_earnings", Decimal("1.00")),
-    "peg": ("forward_earnings", Decimal("1.00")),
-    "forward_ps": ("forward_revenue", Decimal("0.75")),
-    "ev_ebitda": ("enterprise_operations", Decimal("0.90")),
-    "forward_pb": ("balance_sheet", Decimal("0.45")),
-    "milestone": ("event_probability", Decimal("1.00")),
+    "dcf": "intrinsic_cash_flow",
+    "forward_pe": "forward_earnings",
+    "peg": "forward_earnings",
+    "forward_ps": "forward_revenue",
+    "ev_ebitda": "enterprise_operations",
+    "forward_pb": "balance_sheet",
+    "milestone": "event_probability",
+}
+DEFAULT_FAMILY_WEIGHTS = {
+    "intrinsic_cash_flow": Decimal("0.75"),
+    "forward_earnings": Decimal("1.00"),
+    "forward_revenue": Decimal("0.75"),
+    "enterprise_operations": Decimal("0.90"),
+    "balance_sheet": Decimal("0.45"),
+    "event_probability": Decimal("1.00"),
 }
 
 
@@ -109,6 +117,52 @@ def _weighted_quantile(rows: list[tuple[Decimal, Decimal]], quantile: Decimal) -
     return ordered[-1][0]
 
 
+def _valuation_archetype(
+    financials: Mapping[str, Mapping[str, Any]],
+    estimates: Mapping[str, Mapping[str, Any]],
+) -> tuple[str, dict[str, Decimal], list[str]]:
+    def value(layer: Mapping[str, Mapping[str, Any]], name: str) -> Decimal | None:
+        payload = layer.get(name) or {}
+        return _number(payload.get("value"))
+
+    revenue = value(financials, "revenue")
+    net_income = value(financials, "net_income")
+    free_cash_flow = value(financials, "free_cash_flow")
+    capex = value(financials, "capital_expenditures")
+    forward_eps = value(estimates, "forward_eps")
+    forward_growth = value(estimates, "forward_eps_growth")
+    net_margin = net_income / revenue if revenue and net_income is not None else None
+    capex_intensity = abs(capex) / revenue if revenue and capex is not None else None
+    profitable_growth = bool(
+        net_margin is not None
+        and net_margin >= Decimal("0.10")
+        and free_cash_flow is not None
+        and free_cash_flow > 0
+        and forward_eps is not None
+        and forward_eps > 0
+        and forward_growth is not None
+        and forward_growth > 0
+    )
+    if profitable_growth:
+        weights = {
+            "intrinsic_cash_flow": Decimal("0.35") if capex_intensity is not None and capex_intensity >= Decimal("0.15") else Decimal("0.65"),
+            "forward_earnings": Decimal("1.40"),
+            "forward_revenue": Decimal("0.65"),
+            "enterprise_operations": Decimal("0.85"),
+            "balance_sheet": Decimal("0.20"),
+            "event_probability": Decimal("0.25"),
+        }
+        reasons = ["POSITIVE_FORWARD_EARNINGS", "NET_MARGIN_AT_LEAST_10_PERCENT", "POSITIVE_FREE_CASH_FLOW"]
+        if capex_intensity is not None and capex_intensity >= Decimal("0.15"):
+            reasons.append("HIGH_CAPEX_INTENSITY_DCF_SENSITIVITY")
+        return "profitable_growth", weights, reasons
+    if net_income is not None and net_income <= 0:
+        weights = dict(DEFAULT_FAMILY_WEIGHTS)
+        weights.update({"intrinsic_cash_flow": Decimal("0.25"), "forward_earnings": Decimal("0.20"), "forward_revenue": Decimal("1.20"), "balance_sheet": Decimal("0.35"), "event_probability": Decimal("0.90")})
+        return "loss_making_or_pre_profit", weights, ["NON_POSITIVE_NET_INCOME"]
+    return "general_operating_company", dict(DEFAULT_FAMILY_WEIGHTS), ["DEFAULT_OPERATING_COMPANY_PROFILE"]
+
+
 def _aggregate_models(
     models: Mapping[str, Mapping[str, Any]],
     financials: Mapping[str, Mapping[str, Any]],
@@ -128,6 +182,7 @@ def _aggregate_models(
                 if observed:
                     dated_inputs[name] = observed
     reference_date = max(dated_inputs.values(), default=None)
+    archetype, family_weights, archetype_reasons = _valuation_archetype(financials, estimates)
     family_models: dict[str, list[tuple[str, Decimal, Decimal]]] = defaultdict(list)
     model_diagnostics: dict[str, dict[str, Any]] = {}
     for name, model in models.items():
@@ -136,7 +191,7 @@ def _aggregate_models(
         value = _number(model.get("fair_value"))
         if value is None or value <= 0:
             continue
-        family, base_weight = MODEL_FAMILIES[name]
+        family = MODEL_FAMILIES[name]
         input_dates = [dated_inputs[input_name] for input_name in model.get("input_names") or [] if input_name in dated_inputs]
         freshness = Decimal("1")
         newest_input = max(input_dates, default=None)
@@ -158,7 +213,7 @@ def _aggregate_models(
     families: dict[str, dict[str, Any]] = {}
     weighted_families: list[tuple[Decimal, Decimal]] = []
     for family, members in sorted(family_models.items()):
-        family_base = MODEL_FAMILIES[members[0][0]][1]
+        family_base = family_weights[family]
         quality_total = sum((quality for _, _, quality in members), Decimal("0"))
         representative = sum((value * quality for _, value, quality in members), Decimal("0")) / quality_total
         family_quality = quality_total / Decimal(len(members))
@@ -194,6 +249,8 @@ def _aggregate_models(
         "reason_code": None,
         "aggregation": {
             "method": "confidence-weighted-family-winsorized-center",
+            "archetype": archetype,
+            "archetype_reason_codes": archetype_reasons,
             "family_count": len(weighted_families),
             "confidence": confidence,
             "disagreement_ratio": format(disagreement_ratio, ".4f"),
