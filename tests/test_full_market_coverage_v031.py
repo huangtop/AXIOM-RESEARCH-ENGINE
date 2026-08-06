@@ -129,7 +129,7 @@ def test_valuation_uses_independent_model_families_and_reports_disagreement():
     assert valuation["aggregation_version"] == "archetype-primary-model-family.v031v.7"
     assert valuation["aggregation"]["confidence"] == "low"
     assert valuation["aggregation"]["archetype"] == "profitable_growth"
-    assert "HIGH_CAPEX_INTENSITY_DCF_EXCLUDED_FROM_AGGREGATION" in valuation["aggregation"]["archetype_reason_codes"]
+    assert "DCF_EXCLUDED_FROM_AGGREGATION_BY_PRODUCT_POLICY" in valuation["aggregation"]["archetype_reason_codes"]
     assert valuation["aggregation"]["range_low"] <= valuation["fair_value"] <= valuation["aggregation"]["range_high"]
     earnings = valuation["aggregation"]["families"]["forward_earnings"]
     dcf = valuation["aggregation"]["families"]["intrinsic_cash_flow"]
@@ -142,3 +142,15 @@ def test_valuation_uses_independent_model_families_and_reports_disagreement():
     assert dcf["included_in_aggregation"] is False
     assert dcf["exclusion_reason_code"] == "ARCHETYPE_MODEL_FAMILY_EXCLUDED"
     assert Decimal(valuation["model_diagnostics"]["forward_pe"]["effective_weight"]) + Decimal(valuation["model_diagnostics"]["peg"]["effective_weight"]) == Decimal(earnings["weight"])
+
+
+def test_dcf_is_globally_diagnostic_only_and_does_not_reduce_nvda_confidence():
+    payload = report()
+    nvda = next(card for card in payload["cards"] if card["primary_security"]["ticker"] == "NVDA")
+    valuation = nvda["valuation"]
+    dcf = valuation["aggregation"]["families"]["intrinsic_cash_flow"]
+    assert dcf["included_in_aggregation"] is False
+    assert Decimal(dcf["weight"]) == 0
+    assert "intrinsic_cash_flow" not in valuation["aggregation"]["cross_check_families"]
+    assert valuation["aggregation"]["confidence"] == "high"
+    assert Decimal(valuation["fair_value"]) == Decimal(valuation["aggregation"]["families"]["forward_earnings"]["representative_fair_value"])
