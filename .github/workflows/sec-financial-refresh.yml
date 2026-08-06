@@ -83,7 +83,7 @@ jobs:
           --user-agent "$SEC_USER_AGENT"
           --write
       - name: Append Business evidence for newly filed annual reports
-        if: steps.gate.outputs.annual_count != '0'
+        if: steps.gate.outputs.force != 'true' && steps.gate.outputs.annual_count != '0'
         run: >-
           python scripts/build_sec_business_evidence.py
           --allow-live
@@ -93,7 +93,7 @@ jobs:
           --refresh-plan data/generated/sec_filing_refresh/refresh_plan.json
           --user-agent "$SEC_USER_AGENT"
       - name: Rebuild classifications after new annual evidence
-        if: steps.gate.outputs.annual_count != '0'
+        if: steps.gate.outputs.force != 'true' && steps.gate.outputs.annual_count != '0'
         run: |
           python scripts/build_company_signals.py
           python scripts/build_knowledge_inference.py
@@ -120,15 +120,35 @@ jobs:
           tests/test_coverage_policy_v031f1.py
           tests/test_publication_gate_v031f2.py
       - name: Mark refreshed filing accessions as processed
-        if: steps.gate.outputs.should_refresh == 'true'
+        if: steps.gate.outputs.force != 'true' && steps.gate.outputs.should_refresh == 'true'
         run: python scripts/mark_sec_accessions_processed.py
       - name: Commit refreshed financial and valuation artifacts
         if: steps.gate.outputs.should_refresh == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/generated/canonical_financial_population data/generated/canonical_business_evidence data/generated/company_signals data/generated/knowledge_inference data/generated/research_relevance_gate data/generated/research_eligibility data/generated/classification_quality data/generated/company_overview data/generated/full_market_coverage data/generated/coverage_policy data/generated/publication_gate data/generated/sec_filing_refresh/accession_ledger.json
+          git add data/generated/canonical_financial_population data/generated/full_market_coverage data/generated/coverage_policy data/generated/publication_gate
+          if [[ "${{ steps.gate.outputs.force }}" != "true" && "${{ steps.gate.outputs.annual_count }}" != "0" ]]; then
+            git add data/generated/canonical_business_evidence data/generated/company_signals data/generated/knowledge_inference data/generated/research_relevance_gate data/generated/research_eligibility data/generated/classification_quality data/generated/company_overview
+          fi
+          if [[ "${{ steps.gate.outputs.force }}" != "true" ]]; then
+            git add data/generated/sec_filing_refresh/accession_ledger.json
+          fi
           if git diff --cached --quiet; then exit 0; fi
+          python - <<'PY'
+          import subprocess
+          from pathlib import Path
+
+          limit = 95 * 1024 * 1024
+          staged = subprocess.check_output(
+              ["git", "diff", "--cached", "--name-only", "--diff-filter=ACMR", "-z"]
+          ).decode().split("\0")
+          oversized = [(name, Path(name).stat().st_size) for name in staged if name and Path(name).is_file() and Path(name).stat().st_size > limit]
+          if oversized:
+              for name, size in oversized:
+                  print(f"staged file exceeds 95 MiB guard: {name} ({size / 1024 / 1024:.2f} MiB)")
+              raise SystemExit(1)
+          PY
           git commit -m "chore(data): refresh SEC quarterly financial artifacts"
           git pull --rebase origin main
           git push origin HEAD:main
