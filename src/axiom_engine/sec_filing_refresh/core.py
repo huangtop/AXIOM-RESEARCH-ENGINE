@@ -6,6 +6,8 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any, Mapping
 
+from axiom_engine.business_evidence_store import load_business_evidence
+
 
 FINANCIAL_FORMS = {"10-K", "10-K/A", "10-Q", "10-Q/A", "20-F", "20-F/A", "40-F", "40-F/A"}
 
@@ -77,7 +79,7 @@ def build_sec_filing_refresh_plan(
         if row.get("financial_processed_at") or row.get("processed_at")
     }
     business_evidence_file = root / business_evidence_path
-    business_evidence = _load(business_evidence_file) if business_evidence_file.is_file() else []
+    business_evidence = load_business_evidence(business_evidence_file)
     evidence_accessions = {str(row.get("accession_number") or "") for row in business_evidence}
     annual_forms = {"10-K", "10-K/A", "20-F", "20-F/A", "40-F", "40-F/A"}
     known_accessions: dict[str, set[str]] = {}

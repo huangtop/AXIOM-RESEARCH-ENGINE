@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from axiom_engine.sec_business_evidence import build_sec_business_evidence, extract_business_section, write_sec_business_evidence
+from axiom_engine.business_evidence_store import load_business_evidence
 from scripts.build_sec_business_evidence import _resume_company_ids
 
 
@@ -168,7 +169,7 @@ def test_writer_merges_resumable_batches_without_losing_prior_evidence(tmp_path)
     output = tmp_path / "out"
     write_sec_business_evidence(report("company:1", "e1"), output)
     write_sec_business_evidence(report("company:2", "e2"), output, merge_existing=True)
-    assert {row["company_id"] for row in json.loads((output / "business_evidence.json").read_text())} == {"company:1", "company:2"}
+    assert {row["company_id"] for row in load_business_evidence(output)} == {"company:1", "company:2"}
     assert json.loads((output / "manifest.json").read_text())["summary"]["cumulative_company_count"] == 2
 
 
@@ -179,7 +180,7 @@ def test_writer_retains_multiple_annual_accessions_for_same_company(tmp_path):
     output = tmp_path / "out"
     write_sec_business_evidence(report("business-evidence:SEC:2025"), output)
     write_sec_business_evidence(report("business-evidence:SEC:2026"), output, merge_existing=True)
-    assert {row["business_evidence_id"] for row in json.loads((output / "business_evidence.json").read_text())} == {
+    assert {row["business_evidence_id"] for row in load_business_evidence(output)} == {
         "business-evidence:SEC:2025", "business-evidence:SEC:2026"
     }
 

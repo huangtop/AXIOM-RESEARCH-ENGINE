@@ -6,6 +6,8 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
+from axiom_engine.business_evidence_store import load_business_evidence
+
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Mark successfully refreshed SEC filing accessions as processed")
@@ -23,7 +25,7 @@ def main() -> None:
         if row.get("accession_number")
     }
     evidence_path = root / args.business_evidence
-    evidence = json.loads(evidence_path.read_text(encoding="utf-8")) if evidence_path.is_file() else []
+    evidence = load_business_evidence(evidence_path)
     evidence_accessions = {str(row.get("accession_number") or "") for row in evidence}
     annual_forms = {"10-K", "10-K/A", "20-F", "20-F/A", "40-F", "40-F/A"}
     pending_annual = []
