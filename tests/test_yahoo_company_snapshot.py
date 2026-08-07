@@ -62,6 +62,24 @@ def test_expired_cache_refetches(tmp_path):
     assert fetcher.calls == ["NVDA", "NVDA"]
 
 
+def test_committed_canonical_output_is_durable_ttl_checkpoint(tmp_path):
+    now = datetime(2026, 8, 7, tzinfo=timezone.utc)
+    output = tmp_path / "canonical.json"
+    output.write_text(json.dumps({"symbols": {"PLTR": {
+        "symbol": "PLTR",
+        "fetched_at": (now - timedelta(days=1)).isoformat(),
+        "forward_eps": "1.59",
+    }}}))
+    cache = YahooCompanySnapshotCache(tmp_path / "ignored-symbol-cache", canonical_output_path=output, ttl_days=30)
+    fetcher = FakeFetcher()
+
+    report = refresh_yahoo_company_snapshots(["PLTR"], fetcher=fetcher, cache=cache, now=now)
+
+    assert report.fetched == 0
+    assert report.skipped_cached_before_request == 1
+    assert fetcher.calls == []
+
+
 def test_canonical_output_contains_all_cached_symbols(tmp_path):
     now = datetime(2026, 7, 27, tzinfo=timezone.utc)
     output = tmp_path / "canonical.json"
