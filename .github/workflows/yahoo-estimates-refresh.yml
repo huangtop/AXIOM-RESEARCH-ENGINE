@@ -1,0 +1,94 @@
+name: Core Company Yahoo Estimates Refresh
+
+on:
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Refetch all core-company estimates regardless of the 30-day TTL
+        required: false
+        default: false
+        type: boolean
+  schedule:
+    - cron: "40 23 * * 6"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: core-company-yahoo-estimates-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -e .[dev]
+      - name: Build the published core-company ticker list
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          tickers = set()
+          for path in Path("data/generated/company_overview/per-company").glob("*.json"):
+              payload = json.loads(path.read_text())
+              ticker = str(payload.get("ticker") or "").strip().upper()
+              if ticker:
+                  tickers.add(ticker)
+          output = Path("/tmp/axiom-core-estimate-symbols.txt")
+          output.write_text("\n".join(sorted(tickers)) + "\n")
+          print(f"Core estimate universe: {len(tickers)} companies")
+          if not 120 <= len(tickers) <= 200:
+              raise SystemExit("core estimate universe must remain within the 120-200 research-company contract")
+          PY
+      - name: Refresh only missing or 30-day-stale core-company estimates
+        run: >-
+          python scripts/refresh_yahoo_company_snapshots.py
+          --symbols-file /tmp/axiom-core-estimate-symbols.txt
+          --ttl-days 30
+          --delay 0.5
+          ${{ inputs.force && '--force' || '' }}
+      - name: Rebuild estimate-driven valuation artifacts
+        run: |
+          python scripts/build_estimate_population_v031v6.py
+          python scripts/build_multiple_policy_v031v6.py
+          python scripts/build_full_market_coverage.py
+          python scripts/build_coverage_policy.py
+          python scripts/build_publication_catalog.py
+      - name: Validate estimates and valuation publication contracts
+        run: >-
+          pytest -q
+          tests/test_yahoo_company_snapshot.py
+          tests/test_estimate_population_v031v6.py
+          tests/test_multiple_policy_v031v6.py
+          tests/test_full_market_coverage_v031.py
+          tests/test_publication_gate_v031f2.py
+      - name: Commit refreshed estimate and valuation artifacts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/generated/company/yahoo_company_snapshot.json \
+            data/estimate_data/consensus_estimates.json \
+            data/knowledge/valuation_assumptions.json \
+            data/generated/full_market_coverage \
+            data/generated/coverage_policy \
+            data/generated/publication_gate
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "chore(data): refresh core-company Yahoo estimates"
+          if ! git diff --quiet || ! git diff --cached --quiet; then
+            echo "Tracked changes remain after the estimates artifact commit:"
+            git status --short
+            exit 1
+          fi
+          git pull --rebase origin main
+          git push origin HEAD:main
