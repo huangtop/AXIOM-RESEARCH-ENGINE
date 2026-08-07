@@ -200,7 +200,15 @@ class YahooCompanySnapshotCache:
         try:
             payload = json.loads(path.read_text(encoding="utf-8"))
         except (FileNotFoundError, json.JSONDecodeError, OSError):
-            return {}
+            # Per-symbol provider caches are intentionally ignored by git. On a
+            # fresh Actions runner, use the committed canonical snapshot as the
+            # durable TTL checkpoint instead of refetching every core company.
+            try:
+                canonical = json.loads(self.canonical_output_path.read_text(encoding="utf-8"))
+                symbols = canonical.get("symbols") if isinstance(canonical, Mapping) else None
+                payload = symbols.get(str(symbol).strip().upper()) if isinstance(symbols, Mapping) else None
+            except (FileNotFoundError, json.JSONDecodeError, OSError):
+                return {}
         return dict(payload) if isinstance(payload, Mapping) else {}
 
     def write_symbol(self, snapshot: YahooCompanySnapshot) -> None:
