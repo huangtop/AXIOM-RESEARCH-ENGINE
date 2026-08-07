@@ -31,7 +31,10 @@ jobs:
         with:
           python-version: "3.11"
           cache: pip
-      - run: pip install -e .[dev]
+      - name: Install test and Yahoo provider dependencies
+        run: pip install -e ".[dev,yahoo]"
+      - name: Verify Yahoo provider is available before the batch
+        run: python -c "import yfinance; print(yfinance.__version__)"
       - name: Build the published core-company ticker list
         run: |
           python - <<'PY'
