@@ -1,0 +1,52 @@
+name: Retry Market Artifact Publication
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: Failed market refresh run containing the preserved publication artifact
+        required: true
+        type: string
+
+permissions:
+  actions: read
+  contents: write
+
+concurrency:
+  group: production-daily-market-refresh
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: market-refresh-publication-${{ inputs.source_run_id }}
+          path: publication
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ inputs.source_run_id }}
+      - name: Apply and publish preserved market patch
+        run: |
+          test -s publication/market-refresh.patch
+          git apply --3way --index publication/market-refresh.patch
+          if ! git diff --quiet; then
+            echo "Unstaged tracked changes remain after applying publication patch:"
+            git status --short
+            exit 1
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore(data): publish preserved daily market artifacts"
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - name: Verify committed NVDA and GOOGL session dates
+        run: |
+          git fetch origin main
+          git show origin/main:data/generated/market/previous_close_cache.json > "${{ runner.temp }}/published-market.json"
+          python -c 'import json,pathlib,sys; expected=json.loads(pathlib.Path("publication/manifest.json").read_text()); actual=json.loads(pathlib.Path(sys.argv[1]).read_text()).get("symbols",{}); observed={k:actual.get(k,{}).get("session_date") for k in expected}; print({"expected":expected,"published":observed}); assert observed==expected' "${{ runner.temp }}/published-market.json"
