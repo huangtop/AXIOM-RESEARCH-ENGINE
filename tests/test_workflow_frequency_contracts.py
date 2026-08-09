@@ -8,11 +8,23 @@ def _workflow(name: str) -> str:
     return (ROOT / ".github/workflows" / name).read_text(encoding="utf-8")
 
 
-def test_classification_is_manual_only():
+def test_classification_refreshes_daily_in_batches_of_200():
     workflow = _workflow("research-classification-refresh.yml")
     assert "workflow_dispatch:" in workflow
-    assert "schedule:" not in workflow
-    assert "cron:" not in workflow
+    assert 'cron: "30 8 * * *"' in workflow
+    assert "--limit 200" in workflow
+
+
+def test_estimates_refresh_daily_in_batches_of_200():
+    workflow = _workflow("yahoo-estimates-refresh.yml")
+    assert 'cron: "30 11 * * *"' in workflow
+    assert "build_daily_estimate_worklist.py" in workflow
+    assert "--max-fetch 200" in workflow
+
+
+def test_sec_filing_planner_caps_daily_worklist_at_200():
+    workflow = _workflow("sec-filing-events.yml")
+    assert "--max-companies 200" in workflow
 
 
 def test_sec_financial_refresh_never_runs_classification_or_business_evidence():
