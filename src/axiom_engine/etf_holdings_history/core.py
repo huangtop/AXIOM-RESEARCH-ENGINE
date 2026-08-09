@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import shutil
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Mapping
@@ -110,8 +111,14 @@ def build_etf_holdings_history(root: Path, *, now: datetime | None = None) -> di
     if history_index.get("latest_date") == date and history_index.get("latest_manifest", {}).get("source_sha256") == digest:
         return {"snapshot": history_index["latest_manifest"], "summary": {"status": "unchanged", "baseline_only": False}, "events": [], "triggers": []}
     existing = _load(current_root / "manifest.json", {})
+    superseded_digest = None
     if existing and existing.get("source_sha256") != digest:
-        raise ETFHoldingsHistoryError(f"provider published multiple holdings payloads for {date}; refusing to overwrite")
+        # Providers may correct a top-holdings payload later on the same day.
+        # The dated slot represents the latest authoritative payload for that
+        # provider day; replace it atomically and retain the superseded digest
+        # in the manifest so the correction remains auditable.
+        superseded_digest = existing.get("source_sha256")
+        shutil.rmtree(current_root)
 
     fund_files: dict[str, str] = {}
     for etf_id, fund in sorted(funds.items()):
@@ -130,6 +137,7 @@ def build_etf_holdings_history(root: Path, *, now: datetime | None = None) -> di
         "provider_generated_at": generated_at,
         "source_snapshot_id": source["state"]["current_snapshot_id"],
         "source_sha256": digest,
+        "supersedes_source_sha256": superseded_digest,
         "coverage": "top_holdings_only",
         "fund_count": len(funds),
         "fund_files": fund_files,
