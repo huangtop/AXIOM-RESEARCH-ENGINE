@@ -80,3 +80,18 @@ def test_same_provider_snapshot_is_noop(tmp_path: Path):
     build_etf_holdings_history(tmp_path)
     report = build_etf_holdings_history(tmp_path)
     assert report["summary"]["status"] == "unchanged"
+
+
+def test_same_day_provider_correction_replaces_snapshot_and_records_digest(tmp_path: Path):
+    _seed_static(tmp_path)
+    _provider(tmp_path, "2026-08-03", 0.010, 100)
+    first = build_etf_holdings_history(tmp_path)
+    old_digest = first["snapshot"]["source_sha256"]
+
+    _provider(tmp_path, "2026-08-03", 0.012, 120)
+    corrected = build_etf_holdings_history(tmp_path)
+
+    assert corrected["snapshot"]["source_sha256"] != old_digest
+    assert corrected["snapshot"]["supersedes_source_sha256"] == old_digest
+    fund = json.loads((tmp_path / "data/generated/canonical_etf_holdings_history/snapshots/2026-08-03/funds/US-QQQ.json").read_text())
+    assert fund["holdings"][0]["weight"] == 0.012
