@@ -1,15 +1,15 @@
-name: Core Company Yahoo Estimates Refresh
+name: Daily Yahoo Estimates Refresh
 
 on:
   workflow_dispatch:
     inputs:
       force:
-        description: Refetch all core-company estimates regardless of the 30-day TTL
+        description: Refetch the selected daily batch regardless of the 30-day TTL
         required: false
         default: false
         type: boolean
   schedule:
-    - cron: "40 23 * * 6"
+    - cron: "30 11 * * *"
 
 permissions:
   contents: write
@@ -35,30 +35,20 @@ jobs:
         run: pip install -e ".[dev,yahoo]"
       - name: Verify Yahoo provider is available before the batch
         run: python -c "import yfinance; print(yfinance.__version__)"
-      - name: Build the published core-company ticker list
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-
-          tickers = set()
-          for path in Path("data/generated/company_overview/per-company").glob("*.json"):
-              payload = json.loads(path.read_text())
-              ticker = str(payload.get("ticker") or "").strip().upper()
-              if ticker:
-                  tickers.add(ticker)
-          output = Path("/tmp/axiom-core-estimate-symbols.txt")
-          output.write_text("\n".join(sorted(tickers)) + "\n")
-          print(f"Core estimate universe: {len(tickers)} companies")
-          if not 120 <= len(tickers) <= 200:
-              raise SystemExit("core estimate universe must remain within the 120-200 research-company contract")
-          PY
-      - name: Refresh only missing or 30-day-stale core-company estimates
+      - name: Capture valuation baseline
+        run: cp data/generated/full_market_coverage/full_market_coverage.json /tmp/axiom-valuation-before.json
+      - name: Build AI and technology prioritized daily estimate batch
+        run: >-
+          python scripts/build_daily_estimate_worklist.py
+          --limit 200
+          --output /tmp/axiom-daily-estimate-symbols.txt
+      - name: Refresh the daily missing or 30-day-stale estimate batch
         run: >-
           python scripts/refresh_yahoo_company_snapshots.py
-          --symbols-file /tmp/axiom-core-estimate-symbols.txt
+          --symbols-file /tmp/axiom-daily-estimate-symbols.txt
           --ttl-days 30
           --delay 0.5
+          --max-fetch 200
           ${{ inputs.force && '--force' || '' }}
       - name: Rebuild estimate-driven valuation artifacts
         run: |
@@ -87,7 +77,7 @@ jobs:
             data/generated/coverage_policy \
             data/generated/publication_gate
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "chore(data): refresh core-company Yahoo estimates"
+          git commit -m "chore(data): refresh daily Yahoo estimate batch"
           if ! git diff --quiet || ! git diff --cached --quiet; then
             echo "Tracked changes remain after the estimates artifact commit:"
             git status --short
@@ -95,3 +85,6 @@ jobs:
           fi
           git pull --rebase origin main
           git push origin HEAD:main
+      - name: Publish daily refresh summary
+        if: always()
+        run: python scripts/write_daily_refresh_summary.py --before /tmp/axiom-valuation-before.json
