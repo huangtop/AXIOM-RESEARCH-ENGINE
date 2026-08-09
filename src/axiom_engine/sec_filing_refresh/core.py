@@ -59,10 +59,14 @@ def build_sec_filing_refresh_plan(
     safety_refresh_days: int = 90,
     accession_ledger_path: str = "data/generated/sec_filing_refresh/accession_ledger.json",
     business_evidence_path: str = "data/generated/canonical_business_evidence/business_evidence.json",
+    coverage_policy_path: str = "data/generated/coverage_policy/coverage_policy.json",
+    max_worklist_companies: int | None = 200,
     as_of: date | None = None,
 ) -> dict[str, Any]:
     if safety_refresh_days < 1:
         raise ValueError("safety_refresh_days must be positive")
+    if max_worklist_companies is not None and max_worklist_companies < 1:
+        raise ValueError("max_worklist_companies must be positive")
     current = as_of or datetime.now(timezone.utc).date()
     companies = _load(root / companies_path)
     facts = _load(root / financial_facts_path)
@@ -81,6 +85,9 @@ def build_sec_filing_refresh_plan(
     business_evidence_file = root / business_evidence_path
     business_evidence = load_business_evidence(business_evidence_file)
     evidence_accessions = {str(row.get("accession_number") or "") for row in business_evidence}
+    coverage_file = root / coverage_policy_path
+    coverage_records = (_load(coverage_file).get("records") or []) if coverage_file.is_file() else []
+    coverage_by_company = {str(row.get("company_id") or ""): row for row in coverage_records}
     annual_forms = {"10-K", "10-K/A", "20-F", "20-F/A", "40-F", "40-F/A"}
     known_accessions: dict[str, set[str]] = {}
     for fact in facts:
@@ -199,6 +206,22 @@ def build_sec_filing_refresh_plan(
                 "known_financial_accession_count": len(consumed_accessions),
                 "submissions_cache_age_days": cache_age_days,
             })
+    def priority(row: Mapping[str, Any]) -> tuple[int, float, str]:
+        policy = coverage_by_company.get(str(row.get("company_id") or ""), {})
+        axes = policy.get("scope_axes") or {}
+        scope = str(policy.get("research_scope") or "contextual")
+        tier = 0 if axes.get("news_ai") else {"core": 1, "coverage": 2, "candidate": 3}.get(scope, 4)
+        score = float((policy.get("context") or {}).get("research_score") or 0)
+        return (tier, -score, str(row.get("company_id") or ""))
+
+    worklist.sort(key=priority)
+    detected_worklist = worklist
+    if max_worklist_companies is not None:
+        worklist = worklist[:max_worklist_companies]
+    for row in worklist:
+        tier, negative_score, _ = priority(row)
+        row["priority_tier"] = tier
+        row["research_score"] = -negative_score
     if bulk is not None:
         bulk.close()
     if submissions_bulk is not None:
@@ -208,8 +231,8 @@ def build_sec_filing_refresh_plan(
         "version": "V031C.1.1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "as_of_date": current.isoformat(),
-        "policy": {"submissions_metadata_poll": "daily", "financial_refresh_trigger": "latest_unprocessed_financial_filing_accession", "accession_ledger_path": accession_ledger_path, "annual_business_evidence_refresh": True, "historical_accession_replay": False, "safety_refresh_days": safety_refresh_days, "yahoo_earnings_calendar_role": "advisory_only"},
-        "summary": {"registry_company_count": len(companies), "refresh_company_count": len(worklist), "financial_refresh_company_count": sum(bool(row.get("requires_financial_refresh")) for row in worklist), "missing_submissions_cache_count": len(diagnostics), "new_filing_count": sum(sum(bool(filing.get("requires_financial_refresh")) for filing in row.get("pending_filings") or []) for row in worklist), "annual_evidence_refresh_company_count": sum(bool(row.get("requires_business_evidence_refresh")) for row in worklist), "safety_ttl_count": sum("SAFETY_TTL_EXPIRED" in row["reason_codes"] for row in worklist)},
+        "policy": {"submissions_metadata_poll": "daily", "financial_refresh_trigger": "latest_unprocessed_financial_filing_accession", "accession_ledger_path": accession_ledger_path, "annual_business_evidence_refresh": True, "historical_accession_replay": False, "safety_refresh_days": safety_refresh_days, "daily_company_limit": max_worklist_companies, "priority_order": "ai_technology_then_core_coverage_candidate_contextual", "yahoo_earnings_calendar_role": "advisory_only"},
+        "summary": {"registry_company_count": len(companies), "detected_refresh_company_count": len(detected_worklist), "refresh_company_count": len(worklist), "deferred_company_count": len(detected_worklist) - len(worklist), "financial_refresh_company_count": sum(bool(row.get("requires_financial_refresh")) for row in worklist), "missing_submissions_cache_count": len(diagnostics), "new_filing_count": sum(sum(bool(filing.get("requires_financial_refresh")) for filing in row.get("pending_filings") or []) for row in worklist), "annual_evidence_refresh_company_count": sum(bool(row.get("requires_business_evidence_refresh")) for row in worklist), "safety_ttl_count": sum("SAFETY_TTL_EXPIRED" in row["reason_codes"] for row in worklist)},
         "worklist": worklist,
         "diagnostics": diagnostics,
     }

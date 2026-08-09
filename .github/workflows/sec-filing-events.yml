@@ -40,6 +40,7 @@ jobs:
         run: >-
           python scripts/plan_sec_filing_refresh.py
           --submissions-bulk-zip data/onboarding/sec/submissions.zip
+          --max-companies 200
       - run: pytest -q tests/test_sec_filing_refresh_v031c11.py
       - name: Commit metadata and event plan
         run: |

@@ -8,6 +8,7 @@ from axiom_engine.sec_filing_refresh import build_sec_filing_refresh_plan, write
 def main() -> None:
     parser = argparse.ArgumentParser(description="Plan event-driven SEC filing refresh")
     parser.add_argument("--submissions-bulk-zip")
+    parser.add_argument("--max-companies", type=int, default=200)
     parser.add_argument(
         "--output",
         default="data/generated/sec_filing_refresh/refresh_plan.json",
@@ -17,6 +18,7 @@ def main() -> None:
     report = build_sec_filing_refresh_plan(
         root,
         submissions_bulk_zip=args.submissions_bulk_zip,
+        max_worklist_companies=args.max_companies,
     )
     write_sec_filing_refresh_plan(report, root / args.output)
     print(report["summary"])

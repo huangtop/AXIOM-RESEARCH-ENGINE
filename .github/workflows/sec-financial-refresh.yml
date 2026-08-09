@@ -38,6 +38,8 @@ jobs:
           python-version: "3.11"
           cache: pip
       - run: pip install -e .[dev]
+      - name: Capture valuation baseline
+        run: cp data/generated/full_market_coverage/full_market_coverage.json /tmp/axiom-valuation-before.json
       - name: Require SEC identity
         run: test -n "$SEC_USER_AGENT"
       - name: Inspect filing refresh worklist
@@ -124,3 +126,6 @@ jobs:
           git commit -m "chore(data): refresh SEC quarterly financial artifacts"
           git pull --rebase origin main
           git push origin HEAD:main
+      - name: Publish daily refresh summary
+        if: always()
+        run: python scripts/write_daily_refresh_summary.py --before /tmp/axiom-valuation-before.json
