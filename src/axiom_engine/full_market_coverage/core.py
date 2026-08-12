@@ -128,11 +128,9 @@ def _valuation_archetype(
     revenue = value(financials, "revenue")
     net_income = value(financials, "net_income")
     free_cash_flow = value(financials, "free_cash_flow")
-    capex = value(financials, "capital_expenditures")
     forward_eps = value(estimates, "forward_eps")
     forward_growth = value(estimates, "forward_eps_growth")
     net_margin = net_income / revenue if revenue and net_income is not None else None
-    capex_intensity = abs(capex) / revenue if revenue and capex is not None else None
     profitable_growth = bool(
         net_margin is not None
         and net_margin >= Decimal("0.10")
@@ -248,7 +246,16 @@ def _aggregate_models(
     center = center if center is not None else weighted_center
     minimum, maximum = min(raw_values), max(raw_values)
     disagreement_ratio = maximum / minimum if minimum > 0 else Decimal("999")
-    confidence = "high" if disagreement_ratio <= Decimal("1.35") else "medium" if disagreement_ratio <= Decimal("2.00") else "low"
+    independent_family_count = sum(
+        bool(row["included_in_aggregation"]) for row in families.values()
+    )
+    confidence = (
+        "high"
+        if independent_family_count >= 3 and disagreement_ratio <= Decimal("1.35")
+        else "medium"
+        if independent_family_count >= 2 and disagreement_ratio <= Decimal("2.00")
+        else "low"
+    )
     return {
         "fair_value": format(center, "f"),
         "reason_code": None,
@@ -259,7 +266,7 @@ def _aggregate_models(
             "weighted_cross_check_center": format(weighted_center, "f"),
             "archetype": archetype,
             "archetype_reason_codes": archetype_reasons,
-            "family_count": len(weighted_families),
+            "family_count": independent_family_count,
             "confidence": confidence,
             "disagreement_ratio": format(disagreement_ratio, ".4f"),
             "range_low": format(_weighted_quantile(weighted_families, Decimal("0.20")), "f"),
@@ -313,6 +320,7 @@ def build_full_market_coverage(
     quarterly_financial_path: str = "data/generated/canonical_financial_population/quarterly_index.json",
     market_path: str = "data/generated/market/previous_close_cache.json",
     estimate_path: str = "data/estimate_data/consensus_estimates.json",
+    explicit_estimate_path: str = "data/valuation/estimates.json",
     security_identity_path: str = "data/generated/security_identity/security_identity_normalization.json",
     valuation_assumptions_path: str = "data/knowledge/valuation_assumptions.json",
     dcf_policy_path: str = "config/fair_value_snapshot.v030.14.0.json",
@@ -323,11 +331,12 @@ def build_full_market_coverage(
     quarterly_payload = _load(root / quarterly_financial_path, default={})
     market_payload = _load(root / market_path, default={"symbols": {}})
     estimates = _load(root / estimate_path, default=[])
+    explicit_estimates = _load(root / explicit_estimate_path, default=[])
     identity = _load(root / security_identity_path, default={"companies": [], "securities": []})
     assumption_rows = _load(root / valuation_assumptions_path, default=[])
     dcf_policy_payload = _load(root / dcf_policy_path)
     dcf_policy = dcf_policy_payload.get("dcf", {})
-    if not all(isinstance(rows, list) for rows in (companies, securities, financials, estimates, assumption_rows)):
+    if not all(isinstance(rows, list) for rows in (companies, securities, financials, estimates, explicit_estimates, assumption_rows)):
         raise FullMarketCoverageError("population and canonical layers must contain arrays")
 
     scoped_company_ids = {
@@ -356,6 +365,19 @@ def build_full_market_coverage(
     estimates_by_company: dict[str, list[Mapping[str, Any]]] = defaultdict(list)
     for row in estimates:
         estimates_by_company[str(row.get("company_id") or "")].append(row)
+    explicit_metric_map = {
+        "diluted_eps": "forward_eps",
+        "growth_estimate": "forward_eps_growth",
+        "revenue": "forward_revenue",
+    }
+    explicit_estimates_by_symbol: dict[str, dict[str, Mapping[str, Any]]] = defaultdict(dict)
+    for row in explicit_estimates:
+        if row.get("scenario") != "base":
+            continue
+        metric = explicit_metric_map.get(str(row.get("metric") or ""))
+        symbol = str(row.get("company_id") or "").rsplit("-", 1)[-1].upper()
+        if metric and symbol:
+            explicit_estimates_by_symbol[symbol][metric] = row
     assumptions_by_company = {
         str(row.get("company_id")): row.get("assumptions") or {}
         for row in assumption_rows
@@ -394,6 +416,7 @@ def build_full_market_coverage(
         fin["free_cash_flow"] = _derived(ocf_value - abs(capex_value) if same_period and ocf_value is not None and capex_value is not None else None, "free_cash_flow.v031.0", fcf_ids, "FCF_PERIOD_MISMATCH" if ocf and capex else "FCF_INPUTS_UNAVAILABLE")
 
         latest_est = _latest(estimates_by_company.get(company_id, []), "metric")
+        latest_est.update(explicit_estimates_by_symbol.get(ticker, {}))
         est = {name: _metric(latest_est.get(name), source_id_field="estimate_id") for name in (
             "forward_eps", "forward_eps_growth", "forward_revenue", "forward_ebitda", "ebitda_ttm", "milestone_probability", "milestone_value",
         )}

@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import os
 from http import HTTPStatus
+from pathlib import Path
 from typing import Any, Callable, Iterable
 
 from axiom_engine.cached_close import JsonCachedPreviousCloseProvider
@@ -61,6 +63,7 @@ class ValuationWSGIApp:
         etf_detail_service: ETFDetailService | None = None,
         coverage_service: CoveragePolicyService | None = None,
         company_overview_service: CompanyOverviewService | None = None,
+        publication_root: Path | str = "data/generated/publication_gate",
     ) -> None:
         cached_close_provider = JsonCachedPreviousCloseProvider(PREVIOUS_CLOSE_CACHE)
         yahoo_close_provider = YahooPreviousCloseAdapter()
@@ -72,6 +75,7 @@ class ValuationWSGIApp:
         self.fair_value_service = fair_value_service or FairValueSnapshotService()
         self.coverage_service = coverage_service or CoveragePolicyService()
         self.company_overview_service = company_overview_service or CompanyOverviewService()
+        self.publication_root = Path(publication_root)
         self.full_market_service = full_market_service or FullMarketCoverageService(coverage_service=self.coverage_service)
         self.theme_sector_service = theme_sector_service or ThemeSectorInferenceService()
         self.etf_exposure_service = etf_exposure_service or ETFExposureService()
@@ -92,6 +96,7 @@ class ValuationWSGIApp:
                 "/v1/fair-values",
                 "/v1/companies",
                 "/v1/research-universe",
+                "/v1/publication/manifest.json",
             }
             or path.startswith("/v1/fair-values/")
             or (path.startswith("/v1/companies/") and path.endswith("/valuation-card"))
@@ -102,10 +107,28 @@ class ValuationWSGIApp:
             or (path.startswith("/v1/etfs/") and path.endswith("/changes"))
             or (path.startswith("/v1/etfs/") and path.endswith("/company-cards"))
             or (path.startswith("/v1/etfs/") and path.count("/") == 3)
+            or path.startswith("/v1/publication/companies/")
         ):
             return self._respond(start_response, HTTPStatus.NO_CONTENT, {})
         if method == "GET" and path == "/health":
             return self._respond(start_response, HTTPStatus.OK, {"status": "ok"})
+        if method == "GET" and path == "/v1/publication/manifest.json":
+            return self._publication_file(
+                environ,
+                start_response,
+                self.publication_root / "manifest.json",
+                cache_control="public, max-age=60, must-revalidate",
+            )
+        if method == "GET" and path.startswith("/v1/publication/companies/"):
+            filename = path.removeprefix("/v1/publication/companies/")
+            if not filename or "/" in filename or "\\" in filename or not filename.endswith(".json"):
+                return self._respond(start_response, HTTPStatus.NOT_FOUND, {"error": "not_found"})
+            return self._publication_file(
+                environ,
+                start_response,
+                self.publication_root / "companies" / filename,
+                cache_control="public, max-age=31536000, immutable",
+            )
         # Research-policy has its own evidence-universe lookup and may be used
         # with an isolated inference service before publication projection.
         company_suffixes = ("/valuation-card", "/etf-exposure", "/etf-events", "/overview")
@@ -302,6 +325,37 @@ class ValuationWSGIApp:
         return self._respond(start_response, HTTPStatus.OK, payload)
 
     @staticmethod
+    def _publication_file(
+        environ: dict[str, Any],
+        start_response: StartResponse,
+        path: Path,
+        *,
+        cache_control: str,
+    ) -> list[bytes]:
+        try:
+            body = path.read_bytes()
+        except OSError:
+            return ValuationWSGIApp._respond(
+                start_response, HTTPStatus.NOT_FOUND, {"error": "publication_file_not_found"}
+            )
+        etag = f'"{hashlib.sha256(body).hexdigest()}"'
+        headers = [
+            ("ETag", etag),
+            ("Cache-Control", cache_control),
+            ("Access-Control-Allow-Origin", os.getenv("AXIOM_CORS_ORIGIN", "*")),
+            ("Access-Control-Allow-Headers", "Content-Type, If-None-Match"),
+            ("Access-Control-Allow-Methods", "GET, OPTIONS"),
+        ]
+        if str(environ.get("HTTP_IF_NONE_MATCH") or "") == etag:
+            start_response(f"{HTTPStatus.NOT_MODIFIED.value} {HTTPStatus.NOT_MODIFIED.phrase}", headers)
+            return []
+        start_response(
+            f"{HTTPStatus.OK.value} {HTTPStatus.OK.phrase}",
+            [("Content-Type", "application/json; charset=utf-8"), ("Content-Length", str(len(body))), *headers],
+        )
+        return [body]
+
+    @staticmethod
     def _respond(
         start_response: StartResponse,
         status: HTTPStatus,
@@ -316,7 +370,7 @@ class ValuationWSGIApp:
                 ("Content-Length", str(len(body))),
                 ("Cache-Control", "no-store"),
                 ("Access-Control-Allow-Origin", allowed_origin),
-                ("Access-Control-Allow-Headers", "Content-Type"),
+                ("Access-Control-Allow-Headers", "Content-Type, If-None-Match"),
                 ("Access-Control-Allow-Methods", "POST, GET, OPTIONS"),
             ],
         )

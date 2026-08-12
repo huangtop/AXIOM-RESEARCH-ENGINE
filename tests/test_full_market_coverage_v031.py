@@ -133,7 +133,9 @@ def test_valuation_uses_independent_model_families_and_reports_disagreement():
     assert valuation["aggregation"]["range_low"] <= valuation["fair_value"] <= valuation["aggregation"]["range_high"]
     earnings = valuation["aggregation"]["families"]["forward_earnings"]
     dcf = valuation["aggregation"]["families"]["intrinsic_cash_flow"]
-    assert earnings["model_names"] == ["forward_pe", "peg"]
+    assert earnings["model_names"] == ["forward_pe"]
+    assert valuation["models"]["peg"]["status"] == "unavailable"
+    assert "target_peg" in valuation["models"]["peg"]["missing_inputs"]
     assert valuation["aggregation"]["method"] == "archetype-primary-family"
     assert valuation["aggregation"]["primary_family"] == "forward_earnings"
     assert Decimal(valuation["fair_value"]) == Decimal(earnings["representative_fair_value"])
@@ -141,7 +143,7 @@ def test_valuation_uses_independent_model_families_and_reports_disagreement():
     assert Decimal(dcf["weight"]) == 0
     assert dcf["included_in_aggregation"] is False
     assert dcf["exclusion_reason_code"] == "ARCHETYPE_MODEL_FAMILY_EXCLUDED"
-    assert Decimal(valuation["model_diagnostics"]["forward_pe"]["effective_weight"]) + Decimal(valuation["model_diagnostics"]["peg"]["effective_weight"]) == Decimal(earnings["weight"])
+    assert Decimal(valuation["model_diagnostics"]["forward_pe"]["effective_weight"]) == Decimal(earnings["weight"])
 
 
 def test_dcf_is_globally_diagnostic_only_and_does_not_reduce_nvda_confidence():
@@ -152,5 +154,5 @@ def test_dcf_is_globally_diagnostic_only_and_does_not_reduce_nvda_confidence():
     assert dcf["included_in_aggregation"] is False
     assert Decimal(dcf["weight"]) == 0
     assert "intrinsic_cash_flow" not in valuation["aggregation"]["cross_check_families"]
-    assert valuation["aggregation"]["confidence"] == "high"
+    assert valuation["aggregation"]["confidence"] == "low"
     assert Decimal(valuation["fair_value"]) == Decimal(valuation["aggregation"]["families"]["forward_earnings"]["representative_fair_value"])

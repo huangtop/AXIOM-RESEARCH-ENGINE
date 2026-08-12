@@ -31,8 +31,6 @@ def build_multiple_policy(
     threshold = CONFIDENCE[minimum_confidence]
     companies: dict[str, dict[str, Any]] = {}
     rejected: list[dict[str, Any]] = []
-    snapshot_file = root / company_snapshot_path
-    snapshot = json.loads(snapshot_file.read_text(encoding="utf-8")) if snapshot_file.is_file() else {"symbols": {}}
     securities_file = root / "data/universe/securities.json"
     securities = json.loads(securities_file.read_text(encoding="utf-8")) if securities_file.is_file() else []
     company_by_symbol = {str(row.get("ticker") or "").upper(): str(row.get("company_id")) for row in securities if row.get("ticker") and row.get("company_id")}
@@ -44,30 +42,41 @@ def build_multiple_policy(
             return None
         return result if result.is_finite() else None
 
-    for symbol, raw in (snapshot.get("symbols") or {}).items():
-        if not isinstance(raw, Mapping) or not raw.get("analyst_count") or int(raw["analyst_count"]) <= 0:
+    # Preserve explicit company/scenario assumptions as independent model inputs.
+    # Analyst target prices are deliberately excluded: reverse-engineering one
+    # target into several multiples forces those models to return the same value.
+    scenario_file = root / "data/valuation/valuation_scenarios.json"
+    assumption_file = root / "data/valuation/valuation_assumptions.json"
+    scenarios = json.loads(scenario_file.read_text(encoding="utf-8")) if scenario_file.is_file() else []
+    scenario_company = {
+        str(row.get("scenario_id")): str(row.get("company_id"))
+        for row in scenarios
+        if row.get("scenario_type") == "base"
+    }
+    key_map = {
+        "target_pe": "target_forward_pe",
+        "target_peg": "target_peg",
+        "target_ps": "target_forward_ps",
+        "target_pb": "target_forward_pb",
+        "target_ev_ebitda": "target_ev_ebitda",
+    }
+    explicit = json.loads(assumption_file.read_text(encoding="utf-8")) if assumption_file.is_file() else []
+    for row in explicit:
+        target_key = key_map.get(str(row.get("key") or ""))
+        legacy_company_id = scenario_company.get(str(row.get("scenario_id") or ""))
+        symbol = str(legacy_company_id or "").rsplit("-", 1)[-1].upper()
+        company_id = company_by_symbol.get(symbol)
+        value = number(row.get("value"))
+        if not target_key or not company_id or value is None or value <= 0:
             continue
-        company_id = company_by_symbol.get(str(symbol).upper())
-        target, eps, growth = number(raw.get("analyst_target_mean")), number(raw.get("forward_eps")), number(raw.get("forward_eps_growth"))
-        if eps is not None and eps == number(raw.get("trailing_eps")):
-            eps = None
-        revenue, shares = number(raw.get("forward_revenue")), number(raw.get("shares_outstanding"))
-        ebitda, debt, cash = number(raw.get("ebitda_ttm")), number(raw.get("total_debt")), number(raw.get("total_cash"))
-        close, current_pb = number(raw.get("previous_close")), number(raw.get("price_to_book"))
-        if not company_id or target is None or target <= 0:
-            continue
-        candidates = {
-            "target_forward_pe": target / eps if eps and eps > 0 else None,
-            "target_peg": target / eps / (growth * 100) if eps and eps > 0 and growth and growth > 0 else None,
-            "target_forward_ps": target * shares / revenue if shares and shares > 0 and revenue and revenue > 0 else None,
-            "target_ev_ebitda": (target * shares + debt - cash) / ebitda if shares and shares > 0 and ebitda and ebitda > 0 and debt is not None and cash is not None else None,
-            "target_forward_pb": target / (close / current_pb) if close and close > 0 and current_pb and current_pb > 0 else None,
-        }
-        usable = {key: float(value) for key, value in candidates.items() if value is not None and value > 0}
-        if not usable:
-            continue
-        evidence_id = f"yahoo-analyst-consensus:{str(symbol).upper()}:{raw.get('fetched_at') or raw.get('last_refresh')}"
-        companies[company_id] = {"company_id": company_id, "policy_version": "analyst-consensus-implied-multiple.v031v.6", "evidence_ids": [evidence_id], "assumptions": usable}
+        company = companies.setdefault(company_id, {
+            "company_id": company_id,
+            "policy_version": "explicit-base-scenario.v031v.7",
+            "evidence_ids": [],
+            "assumptions": {},
+        })
+        company["assumptions"][target_key] = float(value)
+        company["evidence_ids"].extend(str(value) for value in row.get("source_ref_ids") or [])
     for row in payload.get("benchmarks", []):
         method = row.get("method")
         target = METHOD_TO_ASSUMPTION.get(str(method))
@@ -86,14 +95,14 @@ def build_multiple_policy(
     if isinstance(existing, list):
         for row in existing:
             company_id = str(row.get("company_id") or "") if isinstance(row, Mapping) else ""
-            if company_id and company_id not in companies:
+            if company_id and company_id not in companies and row.get("policy_version") != "analyst-consensus-implied-multiple.v031v.6":
                 companies[company_id] = dict(row)
     return {
         "schema_version": "valuation-multiple-policy.v031v.6",
         "version": "V031V.6",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "source": benchmark_path,
-        "policy": {"minimum_confidence": minimum_confidence, "primary": "historical_median", "fallback": "analyst_consensus_target_implied_multiple", "current_spot_multiple_as_target": "forbidden", "milestone_policy": "requires_separate_verified_event_evidence"},
+        "policy": {"minimum_confidence": minimum_confidence, "primary": "historical_median", "fallback": "explicit_company_base_scenario_only", "analyst_target_as_multiple_source": "forbidden", "current_spot_multiple_as_target": "forbidden", "peg_policy": "requires_independent_company_or_profile_evidence", "milestone_policy": "requires_separate_verified_event_evidence"},
         "companies": sorted(companies.values(), key=lambda row: row["company_id"]),
         "summary": {"company_count": len(companies), "assumption_count": sum(len(row["assumptions"]) for row in companies.values()), "rejected_count": len(rejected)},
         "diagnostics": {"rejected": rejected},
