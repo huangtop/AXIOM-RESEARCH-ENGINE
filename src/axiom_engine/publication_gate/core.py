@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+import hashlib
+import os
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Mapping
@@ -93,7 +95,6 @@ def build_publication_catalog(
         projections[ticker] = {
             "schema_version": "company-page-projection.v031f.2.1",
             "version": "V031F.2.1",
-            "generated_at": current.isoformat(),
             "company_id": company_id,
             "ticker": ticker,
             "product_scope": decision.get("product_scope") or "basic_market",
@@ -154,6 +155,66 @@ def build_publication_catalog(
 def write_publication_catalog(report: Mapping[str, Any], output: Path) -> None:
     output.parent.mkdir(parents=True, exist_ok=True)
     projections = report.get("_company_projections") or {}
+    previous_manifest = _load(output.parent / "manifest.json") if (output.parent / "manifest.json").is_file() else {}
+    previous_by_company = {
+        str(row.get("company_id")): str(row.get("sha256"))
+        for row in (previous_manifest.get("companies") or {}).values()
+        if isinstance(row, Mapping) and row.get("company_id")
+    }
+    company_root = output.parent / "companies"
+    company_root.mkdir(parents=True, exist_ok=True)
+    company_entries: dict[str, dict[str, Any]] = {}
+    current_files: set[str] = set()
+    current_by_company: dict[str, str] = {}
+    for ticker, projection in sorted(projections.items()):
+        body = (json.dumps(projection, ensure_ascii=False, separators=(",", ":")) + "\n").encode()
+        digest = hashlib.sha256(body).hexdigest()
+        filename = f"{quote(str(ticker), safe='._-')}.{digest[:16]}.json"
+        path = company_root / filename
+        if not path.is_file() or path.read_bytes() != body:
+            temporary = path.with_suffix(path.suffix + ".tmp")
+            temporary.write_bytes(body)
+            os.replace(temporary, path)
+        company_id = str(projection.get("company_id") or "")
+        current_by_company[company_id] = digest
+        current_files.add(filename)
+        company_entries[str(ticker)] = {
+            "company_id": company_id,
+            "path": f"companies/{filename}",
+            "url": f"/v1/publication/companies/{filename}",
+            "sha256": digest,
+            "size_bytes": len(body),
+        }
+    for stale in company_root.glob("*.json"):
+        if stale.name not in current_files:
+            stale.unlink()
+    changed_company_ids = sorted(
+        company_id for company_id, digest in current_by_company.items()
+        if previous_by_company.get(company_id) != digest
+    )
+    removed_company_ids = sorted(set(previous_by_company) - set(current_by_company))
+    release_material = "\n".join(
+        f"{ticker}:{row['sha256']}" for ticker, row in sorted(company_entries.items())
+    )
+    release_id = hashlib.sha256(release_material.encode()).hexdigest()
+    manifest = {
+        "schema_version": "incremental-publication-manifest.v1",
+        "release_id": release_id,
+        "generated_at": report.get("generated_at"),
+        "company_count": len(company_entries),
+        "changed_company_ids": changed_company_ids,
+        "removed_company_ids": removed_company_ids,
+        "companies": company_entries,
+        "indexes": report.get("indexes") or {},
+        "cache_policy": {
+            "manifest": "public, max-age=60, must-revalidate",
+            "company_shards": "public, max-age=31536000, immutable",
+        },
+    }
+    manifest_path = output.parent / "manifest.json"
+    manifest_tmp = manifest_path.with_suffix(".json.tmp")
+    manifest_tmp.write_text(json.dumps(manifest, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+    os.replace(manifest_tmp, manifest_path)
     archive = output.parent / "company_projections.zip"
     temporary_archive = archive.with_suffix(".zip.tmp")
     with ZipFile(temporary_archive, "w", compression=ZIP_DEFLATED, compresslevel=9) as bundle:

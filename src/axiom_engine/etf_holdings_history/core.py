@@ -4,7 +4,7 @@ import hashlib
 import json
 import os
 import shutil
-from datetime import datetime, timezone
+from datetime import date as date_type, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -73,6 +73,28 @@ def _history_snapshots(root: Path, excluding: str) -> list[Path]:
     if not snapshots.is_dir():
         return []
     return sorted((path for path in snapshots.iterdir() if path.is_dir() and path.name != excluding), reverse=True)
+
+
+def _prune_snapshots(root: Path, *, latest_date: str, retention_days: int) -> list[str]:
+    if retention_days < 1:
+        raise ETFHoldingsHistoryError("history_retention_days must be positive")
+    try:
+        cutoff = date_type.fromisoformat(latest_date) - timedelta(days=retention_days - 1)
+    except ValueError as exc:
+        raise ETFHoldingsHistoryError("latest ETF snapshot date is invalid") from exc
+    removed: list[str] = []
+    snapshots = root / "snapshots"
+    for path in snapshots.iterdir() if snapshots.is_dir() else ():
+        if not path.is_dir():
+            continue
+        try:
+            snapshot_date = date_type.fromisoformat(path.name)
+        except ValueError:
+            continue
+        if snapshot_date < cutoff:
+            shutil.rmtree(path)
+            removed.append(path.name)
+    return sorted(removed)
 
 
 def _load_funds(snapshot_root: Path) -> dict[str, dict[str, Any]]:
@@ -152,6 +174,7 @@ def build_etf_holdings_history(root: Path, *, now: datetime | None = None) -> di
     catalog = _load(root / "data/generated/publication_gate/company_catalog.json", {"companies": []})
     publication = {str(row.get("company_id")): row for row in catalog.get("companies", [])}
     config = _load(root / "config/etf_holdings_refresh.v031e.6.json")
+    retention_days = int(config.get("history_retention_days", 90))
     material_weight = float(config["materiality"]["absolute_weight_change"])
     material_shares = float(config["materiality"]["relative_share_change"])
     focus_etfs = [f"US-{ticker}" for ticker in config.get("focus_etfs", [])]
@@ -265,5 +288,9 @@ def build_etf_holdings_history(root: Path, *, now: datetime | None = None) -> di
     _write(canonical_root / "coverage_audit.json", {"summary": summary, "diagnostics": diagnostics})
     _write(canonical_root / "manifest.json", {"schema_version": "canonical-etf-change-events.v031e.3", "version": "V031E.6", "generated_at": current_time.isoformat(), "source_snapshot": snapshot_manifest, "summary": summary})
     _write(root / "data/generated/event_triggers/etf_changes.json", {"schema_version": "axiom-event-triggers.v1", "generated_at": current_time.isoformat(), "trigger_type": "etf_change", "events": triggers})
-    _write(output / "index.json", {"schema_version": "canonical-etf-holdings-history-index.v031e.6", "latest_date": date, "previous_date": previous_root.name if previous_root else None, "snapshots": [date] + [path.name for path in previous_paths], "latest_manifest": snapshot_manifest})
+    pruned_snapshots = _prune_snapshots(output, latest_date=date, retention_days=retention_days)
+    retained_snapshots = [date] + [
+        path.name for path in _history_snapshots(output, date)
+    ]
+    _write(output / "index.json", {"schema_version": "canonical-etf-holdings-history-index.v031e.6", "latest_date": date, "previous_date": previous_root.name if previous_root else None, "snapshots": retained_snapshots, "history_retention_days": retention_days, "pruned_snapshots": pruned_snapshots, "latest_manifest": snapshot_manifest})
     return {"snapshot": snapshot_manifest, "summary": summary, "events": events, "triggers": triggers}

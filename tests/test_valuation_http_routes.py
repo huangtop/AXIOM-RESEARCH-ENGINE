@@ -23,6 +23,15 @@ def invoke(app, path, payload):
     return status[0], json.loads(response)
 
 
+def invoke_get(app, path, *, etag=None):
+    result = []
+    environ = {"REQUEST_METHOD": "GET", "PATH_INFO": path}
+    if etag:
+        environ["HTTP_IF_NONE_MATCH"] = etag
+    body = b"".join(app(environ, lambda status, headers: result.append((status, dict(headers)))))
+    return result[0], body
+
+
 def test_production_route_is_v1_valuations():
     app = ValuationWSGIApp(StubService({"endpoint_mode": "production"}), StubService({"endpoint_mode": "debug_only"}))
     status, payload = invoke(app, "/v1/valuations", {"symbol": "NVDA"})
@@ -48,3 +57,29 @@ def test_production_valuation_route_accepts_basic_market_company():
     status, payload = invoke(app, "/v1/valuations", {"symbol": "F"})
     assert status.startswith("200")
     assert payload["endpoint_mode"] == "production"
+
+
+def test_publication_files_use_etag_and_immutable_cache(tmp_path):
+    publication = tmp_path / "publication"
+    companies = publication / "companies"
+    companies.mkdir(parents=True)
+    (publication / "manifest.json").write_text('{"release_id":"abc"}\n')
+    (companies / "NVDA.abc.json").write_text('{"ticker":"NVDA"}\n')
+    app = ValuationWSGIApp(publication_root=publication)
+
+    (manifest_status, manifest_headers), _ = invoke_get(app, "/v1/publication/manifest.json")
+    assert manifest_status.startswith("200")
+    assert manifest_headers["Cache-Control"] == "public, max-age=60, must-revalidate"
+    etag = manifest_headers["ETag"]
+    (cached_status, _), cached_body = invoke_get(
+        app, "/v1/publication/manifest.json", etag=etag
+    )
+    assert cached_status.startswith("304")
+    assert cached_body == b""
+
+    (shard_status, shard_headers), shard_body = invoke_get(
+        app, "/v1/publication/companies/NVDA.abc.json"
+    )
+    assert shard_status.startswith("200")
+    assert shard_headers["Cache-Control"] == "public, max-age=31536000, immutable"
+    assert json.loads(shard_body)["ticker"] == "NVDA"
