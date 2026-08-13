@@ -390,7 +390,8 @@ def snapshot_and_diagnostic_from_info(
     previous_close = _first_decimal(info.get("previousClose"), fast.get("previousClose"), fast.get("previous_close"))
     implied_shares = _divide_decimal(market_cap, previous_close)
     shares = resolve("shares", [("info.sharesOutstanding", info.get("sharesOutstanding")), ("info.impliedSharesOutstanding", info.get("impliedSharesOutstanding")), ("market_cap/previous_close", implied_shares)], _decimal_text)
-    forward_eps = resolve("forward_eps", [("earnings_estimate.avg", _estimate_value(earnings, ("avg", "Average"))), ("info.forwardEps", info.get("forwardEps"))], _decimal_text)
+    forward_eps = resolve("forward_eps", [("earnings_estimate.+1y.avg", _estimate_value(earnings, ("avg", "Average"))), ("info.forwardEps", info.get("forwardEps"))], _decimal_text)
+    forward_eps_growth = resolve("forward_eps_growth", [("earnings_estimate.+1y.growth", _estimate_value(earnings, ("growth", "Growth"))), ("info.earningsGrowth", info.get("earningsGrowth"))], _decimal_text)
     revenue_ttm = resolve("revenue_ttm", [("info.totalRevenue", info.get("totalRevenue")), ("financials.Total Revenue", _financial_value(financials, ("Total Revenue", "TotalRevenue")))], _decimal_text)
     forward_revenue = resolve("forward_revenue", [("revenue_estimate.avg", _estimate_value(revenue_estimate, ("avg", "Average"))), ("calendar.revenueAverage", calendar.get("revenueAverage")), ("financials.Total Revenue", _financial_value(financials, ("Total Revenue", "TotalRevenue")))], _decimal_text)
 
@@ -428,7 +429,7 @@ def snapshot_and_diagnostic_from_info(
         total_debt=_decimal_text(info.get("totalDebt")),
         trailing_eps=_decimal_text(info.get("trailingEps")),
         forward_eps=forward_eps,
-        forward_eps_growth=_decimal_text(info.get("earningsGrowth")),
+        forward_eps_growth=forward_eps_growth,
         forward_revenue=forward_revenue,
         trailing_pe=_decimal_text(info.get("trailingPE")),
         forward_pe=_decimal_text(info.get("forwardPE")),
@@ -445,6 +446,7 @@ def snapshot_and_diagnostic_from_info(
         "market_cap": sources["market_cap"],
         "shares": sources["shares"],
         "forward_eps": sources["forward_eps"],
+        "forward_eps_growth": sources["forward_eps_growth"],
         "forward_revenue": sources["forward_revenue"],
         "revenue_ttm": sources["revenue_ttm"],
         "summary": sources["summary"],
@@ -496,7 +498,7 @@ def _as_mapping(value: object) -> dict[str, object]:
 def _estimate_value(payload: object, keys: tuple[str, ...]) -> object:
     if not isinstance(payload, Mapping):
         return None
-    preferred_rows = ("0y", "+1y", "current", "Current Year", "nextYear", "Next Year")
+    preferred_rows = ("+1y", "nextYear", "Next Year", "0y", "current", "Current Year")
     for row_name in preferred_rows:
         row = payload.get(row_name)
         if isinstance(row, Mapping):
