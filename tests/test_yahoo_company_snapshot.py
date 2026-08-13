@@ -40,6 +40,20 @@ def test_snapshot_normalizes_fields():
     assert row.forward_eps == "5.5"
 
 
+def test_forward_estimates_prefer_next_fiscal_year_over_current_year():
+    now = datetime(2026, 8, 13, tzinfo=timezone.utc)
+    row = snapshot_from_info("MU", {
+        "forwardEps": "73.44",
+        "earningsGrowth": "13.685",
+        "__earnings_estimate__": {
+            "0y": {"avg": "73.44", "growth": "13.685"},
+            "+1y": {"avg": "154.89", "growth": "0.4372"},
+        },
+    }, fetched_at=now)
+    assert row.forward_eps == "154.89"
+    assert row.forward_eps_growth == "0.4372"
+
+
 def test_cache_first_skips_before_provider_request(tmp_path):
     now = datetime(2026, 7, 27, tzinfo=timezone.utc)
     cache = YahooCompanySnapshotCache(tmp_path / "symbols", canonical_output_path=tmp_path / "canonical.json", ttl_days=30)

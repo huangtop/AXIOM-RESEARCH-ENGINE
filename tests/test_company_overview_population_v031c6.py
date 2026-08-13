@@ -38,3 +38,12 @@ def test_generated_overviews_publish_every_evidence_backed_theme_sector_path():
     assert len(published_company_ids) == index["summary"]["company_count"]
     assert index["summary"]["classified_count"] == index["summary"]["company_count"]
     assert index["summary"]["company_count"] >= 120
+
+
+def test_mu_uses_specific_ai_memory_path_instead_of_generic_semiconductors():
+    overview = json.loads(
+        (ROOT / "data/generated/company_overview/per-company/MU.json").read_text()
+    )
+    assert overview["path"]["theme"]["id"] == "theme:ai_infrastructure"
+    assert overview["path"]["sector"]["id"] == "sector:ai_memory"
+    assert overview["evidence"][0]["form"] == "10-K"
