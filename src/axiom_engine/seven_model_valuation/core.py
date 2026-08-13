@@ -104,7 +104,8 @@ def calculate_seven_models(
         return result
 
     forward_pe_value = product([forward_eps, target_pe])
-    peg_value = product([forward_eps, growth * 100 if growth is not None else None, target_peg])
+    peg_growth = growth if growth is not None and Decimal("0") < growth <= Decimal("1") else None
+    peg_value = product([forward_eps, peg_growth * 100 if peg_growth is not None else None, target_peg])
     forward_ps_value = forward_revenue / shares * target_ps if forward_revenue is not None and shares and target_ps is not None else None
     ev_value = ((ebitda * target_ev_ebitda) - debt + cash) / shares if ebitda is not None and target_ev_ebitda is not None and debt is not None and cash is not None and shares else None
     pb_value = book_value_per_share * target_pb if book_value_per_share is not None and target_pb is not None else None
@@ -113,7 +114,7 @@ def calculate_seven_models(
     return {
         "dcf": _result(dcf_value, "dcf-fair-value.v031v.5", ["free_cash_flow", "cash_and_cash_equivalents", "total_debt", "diluted_shares_outstanding", "growth_rate", "discount_rate", "terminal_growth"], dcf_missing, assumption_source="config/fair_value_snapshot.v030.14.0.json"),
         "forward_pe": _result(forward_pe_value, "forward-pe-fair-value.v031v.5", ["forward_eps", "target_forward_pe"], [name for name, value in (("forward_eps", forward_eps), ("target_forward_pe", target_pe)) if value is None], assumption_source="knowledge.valuation_assumptions"),
-        "peg": _result(peg_value, "peg-fair-value.v031v.5", ["forward_eps", "forward_eps_growth", "target_peg"], [name for name, value in (("forward_eps", forward_eps), ("forward_eps_growth", growth), ("target_peg", target_peg)) if value is None], assumption_source="knowledge.valuation_assumptions"),
+        "peg": _result(peg_value, "peg-fair-value.v031v.5", ["forward_eps", "forward_eps_growth", "target_peg"], [name for name, value in (("forward_eps", forward_eps), ("forward_eps_growth", peg_growth), ("target_peg", target_peg)) if value is None], assumption_source="knowledge.valuation_assumptions"),
         "forward_ps": _result(forward_ps_value, "forward-ps-fair-value.v031v.5", ["forward_revenue", "shares", "target_forward_ps"], [name for name, value in (("forward_revenue", forward_revenue), ("shares", shares), ("target_forward_ps", target_ps)) if value is None], assumption_source="knowledge.valuation_assumptions"),
         "ev_ebitda": _result(ev_value, "ev-ebitda-fair-value.v031v.6", ["forward_ebitda_or_ebitda_ttm", "cash", "debt", "shares", "target_ev_ebitda"], [name for name, value in (("forward_ebitda_or_ebitda_ttm", ebitda), ("cash", cash), ("debt", debt), ("shares", shares), ("target_ev_ebitda", target_ev_ebitda)) if value is None], assumption_source="knowledge.valuation_assumptions"),
         "forward_pb": _result(pb_value, "forward-pb-fair-value.v031v.5", ["book_value_per_share", "target_forward_pb"], [name for name, value in (("book_value_per_share", book_value_per_share), ("target_forward_pb", target_pb)) if value is None], assumption_source="knowledge.valuation_assumptions"),
