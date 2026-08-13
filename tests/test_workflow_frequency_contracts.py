@@ -20,6 +20,7 @@ def test_estimates_refresh_daily_in_batches_of_200():
     assert 'cron: "30 11 * * *"' in workflow
     assert "build_daily_estimate_worklist.py" in workflow
     assert "--max-fetch 200" in workflow
+    assert "inputs.force && '--force'" in workflow
 
 
 def test_sec_filing_planner_caps_daily_worklist_at_200():

@@ -300,6 +300,26 @@ def _aggregate_models(
     }
 
 
+def _apply_market_sanity_gate(aggregate: dict[str, Any], current_price: Decimal | None) -> None:
+    fair_value = _number(aggregate.get("fair_value"))
+    if fair_value is None or current_price is None or current_price <= 0:
+        return
+    ratio = fair_value / current_price
+    if Decimal("0.10") <= ratio <= Decimal("10"):
+        return
+    aggregation = aggregate.get("aggregation")
+    if isinstance(aggregation, dict):
+        aggregation["publication_gate"] = {
+            "status": "blocked",
+            "reason_code": "FAIR_VALUE_TO_MARKET_PRICE_EXTREME_OUTLIER",
+            "fair_value_to_market_ratio": format(ratio, ".4f"),
+            "permitted_ratio_low": "0.10",
+            "permitted_ratio_high": "10.00",
+        }
+    aggregate["fair_value"] = None
+    aggregate["reason_code"] = "FAIR_VALUE_TO_MARKET_PRICE_EXTREME_OUTLIER"
+
+
 def _quarterly_history(rows: list[Mapping[str, Any]], limit: int = 8) -> dict[str, Any]:
     by_period: dict[tuple[str, str], dict[str, Any]] = {}
     for row in rows:
@@ -508,6 +528,7 @@ def build_full_market_coverage(
             dcf_policy=dcf_policy,
         )
         aggregate = _aggregate_models(models, fin, est)
+        _apply_market_sanity_gate(aggregate, _number(market.get("current_price")))
         calculated_values = [Decimal(row["fair_value"]) for row in models.values() if row["status"] == "calculated"]
         calculated_count = len(calculated_values)
         model_counts.update(name for name, row in models.items() if row["status"] == "calculated")
