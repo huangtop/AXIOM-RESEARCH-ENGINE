@@ -12,6 +12,7 @@ def main() -> int:
     parser.add_argument("--limit", type=int, default=200)
     parser.add_argument("--ttl-days", type=int, default=30)
     parser.add_argument("--force", action="store_true", help="Include fresh companies so a full priority batch is actually refetched")
+    parser.add_argument("--priority-symbols", type=Path, help="JSON completion set placed ahead of the general daily queue")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     if args.limit < 1 or args.ttl_days < 1:
@@ -33,16 +34,24 @@ def main() -> int:
             return True
 
     candidates = []
+    catalog_symbols: set[str] = set()
     for company in catalog.get("companies") or []:
         symbol = str(company.get("ticker") or "").strip().upper()
         if not symbol or (not args.force and not needs_refresh(symbol)):
             continue
+        catalog_symbols.add(symbol)
         axes = company.get("scope_axes") or {}
         scope = str(company.get("research_scope") or "contextual")
         tech_tier = 0 if axes.get("news_ai") else {"core": 1, "coverage": 2, "candidate": 3}.get(scope, 4)
         valuation_tier = {"unavailable": 0, "partial": 1, "ready": 2}.get(str(company.get("valuation_status")), 3)
         candidates.append((tech_tier, valuation_tier, symbol))
-    symbols = [row[2] for row in sorted(candidates)[: args.limit]]
+    priority = set()
+    if args.priority_symbols:
+        priority = {str(value).upper() for value in json.loads(args.priority_symbols.read_text()).get("symbols") or []}
+        for symbol in sorted(priority - catalog_symbols):
+            if args.force or needs_refresh(symbol):
+                candidates.append((0, 0, symbol))
+    symbols = [row[2] for row in sorted(candidates, key=lambda row: (0 if row[2] in priority else 1, *row))[: args.limit]]
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text("\n".join(symbols) + ("\n" if symbols else ""), encoding="utf-8")
     print({"eligible_missing_or_stale": len(candidates), "selected": len(symbols), "limit": args.limit})

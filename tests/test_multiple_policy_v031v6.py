@@ -44,4 +44,4 @@ def test_analyst_consensus_target_does_not_duplicate_forward_pe_as_peg(tmp_path:
     report = build_multiple_policy(tmp_path)
     assert report["companies"] == []
     assert report["policy"]["analyst_target_as_multiple_source"] == "forbidden"
-    assert report["policy"]["peg_policy"] == "independent_ai_peer_profile_median"
+    assert report["policy"]["peg_policy"] == "independent_classified_peer_profile_median"

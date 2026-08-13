@@ -41,6 +41,7 @@ jobs:
         run: >-
           python scripts/build_daily_estimate_worklist.py
           --limit 200
+          --priority-symbols config/frontier_priority_symbols.v1.json
           --output /tmp/axiom-daily-estimate-symbols.txt
           ${{ inputs.force && '--force' || '' }}
       - name: Refresh the daily missing or 30-day-stale estimate batch
