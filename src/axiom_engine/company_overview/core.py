@@ -73,8 +73,23 @@ def build_company_overviews(
         if row.get("primary_listing") is True or cid not in primary:
             primary[cid] = ticker
     evidence_by_id = {str(row.get("business_evidence_id")): row for row in evidence}
+    evidence_by_company: dict[str, list[str]] = {}
+    for row in evidence:
+        if row.get("company_id") and row.get("business_evidence_id"):
+            evidence_by_company.setdefault(str(row["company_id"]), []).append(
+                str(row["business_evidence_id"])
+            )
     records = []
-    for source in knowledge.get("records") or []:
+    knowledge_records = {
+        str(row["company_id"]): row for row in knowledge.get("records") or [] if row.get("company_id")
+    }
+    for missing_id in curated_overrides.keys() - knowledge_records.keys():
+        knowledge_records[missing_id] = {
+            "company_id": missing_id,
+            "knowledge": [],
+            "source_company_signal_status": "signals_available",
+        }
+    for source in knowledge_records.values():
         cid = str(source["company_id"])
         override = curated_overrides.get(cid)
         if company_ids is not None and cid not in company_ids and override is None:
@@ -110,6 +125,8 @@ def build_company_overviews(
                 for value in item.get("source_business_evidence_ids") or []
             }
         )
+        if override is not None and not source_ids:
+            source_ids = sorted(evidence_by_company.get(cid, []))
         sources = [
             {
                 "business_evidence_id": eid,

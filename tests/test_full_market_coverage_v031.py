@@ -133,9 +133,8 @@ def test_valuation_uses_independent_model_families_and_reports_disagreement():
     assert valuation["aggregation"]["range_low"] <= valuation["fair_value"] <= valuation["aggregation"]["range_high"]
     earnings = valuation["aggregation"]["families"]["forward_earnings"]
     dcf = valuation["aggregation"]["families"]["intrinsic_cash_flow"]
-    assert earnings["model_names"] == ["forward_pe"]
-    assert valuation["models"]["peg"]["status"] == "unavailable"
-    assert "target_peg" in valuation["models"]["peg"]["missing_inputs"]
+    assert earnings["model_names"] == ["forward_pe", "peg"]
+    assert valuation["models"]["peg"]["status"] == "calculated"
     assert valuation["aggregation"]["method"] == "archetype-primary-family"
     assert valuation["aggregation"]["primary_family"] == "forward_earnings"
     assert Decimal(valuation["fair_value"]) == Decimal(earnings["representative_fair_value"])
@@ -143,7 +142,11 @@ def test_valuation_uses_independent_model_families_and_reports_disagreement():
     assert Decimal(dcf["weight"]) == 0
     assert dcf["included_in_aggregation"] is False
     assert dcf["exclusion_reason_code"] == "ARCHETYPE_MODEL_FAMILY_EXCLUDED"
-    assert Decimal(valuation["model_diagnostics"]["forward_pe"]["effective_weight"]) == Decimal(earnings["weight"])
+    earnings_weight = sum(
+        Decimal(valuation["model_diagnostics"][name]["effective_weight"])
+        for name in earnings["model_names"]
+    )
+    assert earnings_weight == Decimal(earnings["weight"])
 
 
 def test_dcf_is_globally_diagnostic_only_and_does_not_reduce_nvda_confidence():
@@ -156,3 +159,30 @@ def test_dcf_is_globally_diagnostic_only_and_does_not_reduce_nvda_confidence():
     assert "intrinsic_cash_flow" not in valuation["aggregation"]["cross_check_families"]
     assert valuation["aggregation"]["confidence"] == "low"
     assert Decimal(valuation["fair_value"]) == Decimal(valuation["aggregation"]["families"]["forward_earnings"]["representative_fair_value"])
+
+
+def test_ai_research_companies_have_a_calculated_valuation_model():
+    payload = report()
+    cards = {card["primary_security"]["ticker"]: card for card in payload["cards"]}
+    overview_dir = ROOT / "data/generated/company_overview/per-company"
+    ai_tickers = []
+    for path in overview_dir.glob("*.json"):
+        overview = json.loads(path.read_text())
+        theme_id = ((overview.get("path") or {}).get("theme") or {}).get("id")
+        if theme_id in {"theme:artificial_intelligence", "theme:ai_infrastructure"}:
+            ai_tickers.append(overview["ticker"])
+    missing = [ticker for ticker in ai_tickers if cards[ticker]["valuation"]["calculated_model_count"] == 0]
+    assert len(ai_tickers) == 342
+    assert missing == []
+
+
+def test_provider_fallbacks_are_labeled_without_analyst_target_derivation():
+    payload = report()
+    lite = next(card for card in payload["cards"] if card["primary_security"]["ticker"] == "LITE")
+    arbb = next(card for card in payload["cards"] if card["primary_security"]["ticker"] == "ARBB")
+    assert lite["status"] == "ready"
+    assert lite["valuation"]["models"]["forward_ps"]["status"] == "calculated"
+    assert "analyst_target" not in json.dumps(lite["valuation"])
+    assert arbb["financials"]["diluted_shares_outstanding"]["provenance"] == "yahoo_company_snapshot_fallback"
+    assert arbb["estimates"]["forward_revenue"]["is_proxy"] is True
+    assert arbb["valuation"]["models"]["forward_ps"]["status"] == "calculated"

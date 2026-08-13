@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import statistics
 from datetime import datetime, timezone
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
@@ -16,6 +17,118 @@ METHOD_TO_ASSUMPTION = {
 CONFIDENCE = {"none": 0, "low": 1, "medium": 2, "high": 3}
 
 
+def _ai_peer_assumptions(root: Path) -> tuple[dict[str, dict[str, Any]], dict[str, Any]]:
+    """Build cross-sectional AI peer medians without using analyst targets.
+
+    A company's own observed multiple is never used in its target.  Sector peers
+    are preferred; the broader AI universe is the fallback when fewer than three
+    valid sector peers exist.
+    """
+    overview_index = root / "data/generated/company_overview/index.json"
+    coverage_index = root / "data/generated/full_market_coverage/full_market_coverage.json"
+    if not overview_index.is_file() or not coverage_index.is_file():
+        return {}, {"company_count": 0, "reason": "peer_inputs_unavailable"}
+    overview = json.loads(overview_index.read_text(encoding="utf-8"))
+    coverage = json.loads(coverage_index.read_text(encoding="utf-8"))
+    ticker_files = overview.get("ticker_to_file") or {}
+    coverage_files = (coverage.get("indexes") or {}).get("ticker_to_file") or {}
+    profiles: dict[str, dict[str, Any]] = {}
+    for ticker, filename in ticker_files.items():
+        profile_path = overview_index.parent / str(filename)
+        if not profile_path.is_file():
+            profile_path = overview_index.parent / "per-company" / str(filename)
+        card_file = coverage_files.get(ticker)
+        card_path = coverage_index.parent / str(card_file) if card_file else None
+        if not profile_path.is_file() or card_path is None or not card_path.is_file():
+            continue
+        profile = json.loads(profile_path.read_text(encoding="utf-8"))
+        if ((profile.get("path") or {}).get("theme") or {}).get("id") not in {
+            "theme:artificial_intelligence", "theme:ai_infrastructure"
+        }:
+            continue
+        card = json.loads(card_path.read_text(encoding="utf-8"))
+        profiles[str(profile["company_id"])] = {
+            "ticker": ticker,
+            "sector": str((((profile.get("path") or {}).get("sector") or {}).get("id") or "sector:ai_unclassified")),
+            "card": card,
+        }
+
+    def value(layer: Mapping[str, Any], key: str) -> float | None:
+        try:
+            result = float(((layer.get(key) or {}).get("value")))
+        except (TypeError, ValueError):
+            return None
+        return result if result > 0 else None
+
+    observed: dict[str, dict[str, float]] = {}
+    bounds = {
+        "target_forward_pe": (1.0, 250.0),
+        "target_peg": (0.05, 5.0),
+        "target_forward_ps": (0.05, 100.0),
+        "target_ev_ebitda": (0.5, 100.0),
+        "target_forward_pb": (0.1, 100.0),
+    }
+    for company_id, profile in profiles.items():
+        card = profile["card"]
+        market, fin, est = card.get("market") or {}, card.get("financials") or {}, card.get("estimates") or {}
+        try:
+            price = float(market.get("current_price"))
+        except (TypeError, ValueError):
+            continue
+        eps, growth = value(est, "forward_eps"), value(est, "forward_eps_growth")
+        revenue, ebitda = value(est, "forward_revenue"), value(est, "forward_ebitda") or value(est, "ebitda_ttm")
+        shares, cash, debt = value(fin, "diluted_shares_outstanding"), value(fin, "cash_and_cash_equivalents"), value(fin, "total_debt")
+        bvps = value(fin, "book_value_per_share")
+        candidates: dict[str, float] = {}
+        if eps:
+            candidates["target_forward_pe"] = price / eps
+            if growth:
+                candidates["target_peg"] = price / eps / (growth * 100.0)
+        if shares and revenue:
+            candidates["target_forward_ps"] = price * shares / revenue
+        if shares and ebitda and cash is not None and debt is not None:
+            candidates["target_ev_ebitda"] = (price * shares + debt - cash) / ebitda
+        if bvps:
+            candidates["target_forward_pb"] = price / bvps
+        observed[company_id] = {
+            key: number for key, number in candidates.items()
+            if bounds[key][0] <= number <= bounds[key][1]
+        }
+
+    output: dict[str, dict[str, Any]] = {}
+    method_counts: dict[str, int] = {key: 0 for key in bounds}
+    for company_id, profile in profiles.items():
+        assumptions: dict[str, float] = {}
+        evidence_ids: list[str] = []
+        for key in bounds:
+            sector_peers = [
+                values[key] for peer_id, values in observed.items()
+                if peer_id != company_id and profiles[peer_id]["sector"] == profile["sector"] and key in values
+            ]
+            peers = sector_peers if len(sector_peers) >= 3 else [
+                values[key] for peer_id, values in observed.items() if peer_id != company_id and key in values
+            ]
+            if len(peers) < 3:
+                continue
+            assumptions[key] = statistics.median(peers)
+            scope = profile["sector"] if len(sector_peers) >= 3 else "theme:artificial_intelligence"
+            evidence_ids.append(f"ai-peer-median:{scope}:{key}:n{len(peers)}")
+            method_counts[key] += 1
+        if assumptions:
+            output[company_id] = {
+                "company_id": company_id,
+                "policy_version": "ai-peer-cross-sectional-median.v031v.8",
+                "evidence_ids": evidence_ids,
+                "assumptions": assumptions,
+            }
+    return output, {
+        "company_count": len(profiles),
+        "policy_company_count": len(output),
+        "observed_company_count": len(observed),
+        "assumption_company_counts": method_counts,
+    }
+
+
 def build_multiple_policy(
     root: Path,
     *,
@@ -29,7 +142,7 @@ def build_multiple_policy(
     if payload.get("schema_version") != "historical-multiple-benchmark.v030.13.3":
         raise ValueError("unsupported historical multiple benchmark")
     threshold = CONFIDENCE[minimum_confidence]
-    companies: dict[str, dict[str, Any]] = {}
+    companies, peer_summary = _ai_peer_assumptions(root)
     rejected: list[dict[str, Any]] = []
     securities_file = root / "data/universe/securities.json"
     securities = json.loads(securities_file.read_text(encoding="utf-8")) if securities_file.is_file() else []
@@ -90,21 +203,14 @@ def build_multiple_policy(
         company["evidence_ids"].append(evidence_id)
         company["assumptions"][target] = value
         company["policy_version"] = "historical-median-over-analyst-consensus.v031v.6"
-    existing_file = root / existing_policy_path
-    existing = json.loads(existing_file.read_text(encoding="utf-8")) if existing_file.is_file() else []
-    if isinstance(existing, list):
-        for row in existing:
-            company_id = str(row.get("company_id") or "") if isinstance(row, Mapping) else ""
-            if company_id and company_id not in companies and row.get("policy_version") != "analyst-consensus-implied-multiple.v031v.6":
-                companies[company_id] = dict(row)
     return {
         "schema_version": "valuation-multiple-policy.v031v.6",
         "version": "V031V.6",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "source": benchmark_path,
-        "policy": {"minimum_confidence": minimum_confidence, "primary": "historical_median", "fallback": "explicit_company_base_scenario_only", "analyst_target_as_multiple_source": "forbidden", "current_spot_multiple_as_target": "forbidden", "peg_policy": "requires_independent_company_or_profile_evidence", "milestone_policy": "requires_separate_verified_event_evidence"},
+        "policy": {"minimum_confidence": minimum_confidence, "primary": "historical_median", "fallback": "ai_sector_peer_median_then_explicit_company_base", "analyst_target_as_multiple_source": "forbidden", "current_spot_multiple_as_target": "forbidden", "own_current_spot_multiple_as_target": "forbidden", "peer_current_multiple_policy": "exclude_subject_company_and_require_at_least_three_peers", "peg_policy": "independent_ai_peer_profile_median", "milestone_policy": "requires_separate_verified_event_evidence"},
         "companies": sorted(companies.values(), key=lambda row: row["company_id"]),
-        "summary": {"company_count": len(companies), "assumption_count": sum(len(row["assumptions"]) for row in companies.values()), "rejected_count": len(rejected)},
+        "summary": {"company_count": len(companies), "assumption_count": sum(len(row["assumptions"]) for row in companies.values()), "rejected_count": len(rejected), "ai_peer_policy": peer_summary},
         "diagnostics": {"rejected": rejected},
     }
 

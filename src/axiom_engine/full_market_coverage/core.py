@@ -88,6 +88,29 @@ def _metric(row: Mapping[str, Any] | None, *, source_id_field: str) -> dict[str,
     }
 
 
+def _snapshot_metric(
+    row: Mapping[str, Any],
+    field: str,
+    *,
+    ticker: str,
+    unit: str | None = None,
+    currency: str | None = None,
+) -> dict[str, Any]:
+    value = _number(row.get(field))
+    if value is None:
+        return {"status": "unavailable", "value": None, "reason_code": "provider_metric_not_populated", "source_record_ids": []}
+    return {
+        "status": "ready",
+        "value": format(value, "f"),
+        "unit": unit,
+        "currency": currency,
+        "as_of_date": row.get("fetched_at") or row.get("last_refresh"),
+        "reason_code": None,
+        "source_record_ids": [f"yahoo-company-snapshot:{ticker}:{field}"],
+        "provenance": "yahoo_company_snapshot_fallback",
+    }
+
+
 def _derived(value: Decimal | None, formula: str, source_ids: list[str], reason: str) -> dict[str, Any]:
     return {
         "status": "ready" if value is not None else "unavailable",
@@ -322,6 +345,8 @@ def build_full_market_coverage(
     estimate_path: str = "data/estimate_data/consensus_estimates.json",
     explicit_estimate_path: str = "data/valuation/estimates.json",
     security_identity_path: str = "data/generated/security_identity/security_identity_normalization.json",
+    company_snapshot_path: str = "data/generated/company/yahoo_company_snapshot.json",
+    company_overview_path: str = "data/generated/company_overview/index.json",
     valuation_assumptions_path: str = "data/knowledge/valuation_assumptions.json",
     dcf_policy_path: str = "config/fair_value_snapshot.v030.14.0.json",
 ) -> dict[str, Any]:
@@ -333,6 +358,8 @@ def build_full_market_coverage(
     estimates = _load(root / estimate_path, default=[])
     explicit_estimates = _load(root / explicit_estimate_path, default=[])
     identity = _load(root / security_identity_path, default={"companies": [], "securities": []})
+    company_snapshot = _load(root / company_snapshot_path, default={"symbols": {}})
+    overview_index = _load(root / company_overview_path, default={"ticker_to_file": {}})
     assumption_rows = _load(root / valuation_assumptions_path, default=[])
     dcf_policy_payload = _load(root / dcf_policy_path)
     dcf_policy = dcf_policy_payload.get("dcf", {})
@@ -385,6 +412,15 @@ def build_full_market_coverage(
     }
     market_symbols = market_payload.get("symbols") if isinstance(market_payload, Mapping) else {}
     market_symbols = market_symbols if isinstance(market_symbols, Mapping) else {}
+    snapshot_symbols = company_snapshot.get("symbols") if isinstance(company_snapshot, Mapping) else {}
+    snapshot_symbols = snapshot_symbols if isinstance(snapshot_symbols, Mapping) else {}
+    ai_company_ids: set[str] = set()
+    overview_files = overview_index.get("ticker_to_file") if isinstance(overview_index, Mapping) else {}
+    for overview_file in set(overview_files.values()) if isinstance(overview_files, Mapping) else set():
+        overview = _load((root / company_overview_path).parent / "per-company" / str(overview_file), default={})
+        theme_id = (((overview.get("path") or {}).get("theme") or {}).get("id")) if isinstance(overview, Mapping) else None
+        if theme_id in {"theme:artificial_intelligence", "theme:ai_infrastructure"}:
+            ai_company_ids.add(str(overview.get("company_id") or ""))
 
     cards: list[dict[str, Any]] = []
     ticker_index: dict[str, int] = {}
@@ -404,9 +440,31 @@ def build_full_market_coverage(
         fin = {name: _metric(latest_fin.get(name), source_id_field="financial_fact_id") for name in (
             "revenue", "net_income", "operating_cash_flow", "capital_expenditures", "cash_and_cash_equivalents", "total_debt", "diluted_shares_outstanding", "ebitda", "book_value_per_share",
         )}
+        snapshot_row = snapshot_symbols.get(ticker) if ticker and company_id in ai_company_ids else None
+        snapshot_row = snapshot_row if isinstance(snapshot_row, Mapping) else {}
+        snapshot_currency = str(snapshot_row.get("currency") or primary.get("currency") or "") or None
+        fallback_fields = {
+            "revenue": ("revenue_ttm", "currency"),
+            "cash_and_cash_equivalents": ("total_cash", "currency"),
+            "total_debt": ("total_debt", "currency"),
+            "diluted_shares_outstanding": ("shares_outstanding", "shares"),
+            "ebitda": ("ebitda_ttm", "currency"),
+        }
+        if company_id in ai_company_ids:
+            for metric_name, (snapshot_field, unit_kind) in fallback_fields.items():
+                if fin[metric_name]["status"] == "ready":
+                    continue
+                fin[metric_name] = _snapshot_metric(
+                    snapshot_row,
+                    snapshot_field,
+                    ticker=ticker,
+                    unit="shares" if unit_kind == "shares" else None,
+                    currency=snapshot_currency if unit_kind == "currency" else None,
+                )
         net_income = _number((latest_fin.get("net_income") or {}).get("value"))
-        shares = _number((latest_fin.get("diluted_shares_outstanding") or {}).get("value"))
-        eps_ids = [str((latest_fin.get(name) or {}).get("financial_fact_id")) for name in ("net_income", "diluted_shares_outstanding") if (latest_fin.get(name) or {}).get("financial_fact_id")]
+        shares = _number(fin["diluted_shares_outstanding"].get("value"))
+        eps_ids = [str((latest_fin.get("net_income") or {}).get("financial_fact_id"))] if (latest_fin.get("net_income") or {}).get("financial_fact_id") else []
+        eps_ids.extend(str(value) for value in fin["diluted_shares_outstanding"].get("source_record_ids", []) if value not in eps_ids)
         fin["trailing_eps"] = _derived(net_income / shares if net_income is not None and shares and shares > 0 else None, "trailing_eps.v031.0", eps_ids, "EPS_INPUTS_UNAVAILABLE")
         ocf = latest_fin.get("operating_cash_flow") or {}
         capex = latest_fin.get("capital_expenditures") or {}
@@ -420,6 +478,21 @@ def build_full_market_coverage(
         est = {name: _metric(latest_est.get(name), source_id_field="estimate_id") for name in (
             "forward_eps", "forward_eps_growth", "forward_revenue", "forward_ebitda", "ebitda_ttm", "milestone_probability", "milestone_value",
         )}
+        forward_revenue = _number(est["forward_revenue"].get("value"))
+        trailing_revenue = _number(fin["revenue"].get("value"))
+        if company_id in ai_company_ids and (forward_revenue is None or forward_revenue <= 0) and trailing_revenue is not None and trailing_revenue > 0:
+            est["forward_revenue"] = {
+                "status": "ready",
+                "value": format(trailing_revenue, "f"),
+                "unit": fin["revenue"].get("unit"),
+                "currency": fin["revenue"].get("currency"),
+                "as_of_date": fin["revenue"].get("as_of_date"),
+                "reason_code": None,
+                "source_record_ids": list(fin["revenue"].get("source_record_ids", [])),
+                "provenance": "trailing_revenue_proxy_when_forward_consensus_unavailable",
+                "is_proxy": True,
+            }
+        company_assumptions = assumptions_by_company.get(company_id, {})
         market_row = market_symbols.get(ticker) if ticker else None
         market = {
             "status": "ready" if isinstance(market_row, Mapping) and _number(market_row.get("close")) is not None else "unavailable",
@@ -431,7 +504,7 @@ def build_full_market_coverage(
         models = calculate_seven_models(
             fin,
             est,
-            assumptions_by_company.get(company_id, {}),
+            company_assumptions,
             dcf_policy=dcf_policy,
         )
         aggregate = _aggregate_models(models, fin, est)
