@@ -11,6 +11,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Select the daily missing/stale Yahoo estimate batch")
     parser.add_argument("--limit", type=int, default=200)
     parser.add_argument("--ttl-days", type=int, default=30)
+    parser.add_argument("--force", action="store_true", help="Include fresh companies so a full priority batch is actually refetched")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     if args.limit < 1 or args.ttl_days < 1:
@@ -34,7 +35,7 @@ def main() -> int:
     candidates = []
     for company in catalog.get("companies") or []:
         symbol = str(company.get("ticker") or "").strip().upper()
-        if not symbol or not needs_refresh(symbol):
+        if not symbol or (not args.force and not needs_refresh(symbol)):
             continue
         axes = company.get("scope_axes") or {}
         scope = str(company.get("research_scope") or "contextual")

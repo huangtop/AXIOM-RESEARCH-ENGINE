@@ -186,3 +186,11 @@ def test_provider_fallbacks_are_labeled_without_analyst_target_derivation():
     assert arbb["financials"]["diluted_shares_outstanding"]["provenance"] == "yahoo_company_snapshot_fallback"
     assert arbb["estimates"]["forward_revenue"]["is_proxy"] is True
     assert arbb["valuation"]["models"]["forward_ps"]["status"] == "calculated"
+
+
+def test_extreme_model_to_market_outlier_cannot_publish_a_headline():
+    payload = report()
+    bttc = next(card for card in payload["cards"] if card["primary_security"]["ticker"] == "BTTC")
+    assert bttc["valuation"]["calculated_model_count"] >= 1
+    assert bttc["valuation"]["fair_value"] is None
+    assert bttc["valuation"]["reason_code"] == "FAIR_VALUE_TO_MARKET_PRICE_EXTREME_OUTLIER"
