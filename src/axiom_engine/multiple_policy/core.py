@@ -17,12 +17,12 @@ METHOD_TO_ASSUMPTION = {
 CONFIDENCE = {"none": 0, "low": 1, "medium": 2, "high": 3}
 
 
-def _ai_peer_assumptions(root: Path) -> tuple[dict[str, dict[str, Any]], dict[str, Any]]:
-    """Build cross-sectional AI peer medians without using analyst targets.
+def _peer_assumptions(root: Path) -> tuple[dict[str, dict[str, Any]], dict[str, Any]]:
+    """Build cross-sectional peer medians for every classified operating company.
 
     A company's own observed multiple is never used in its target.  Sector peers
-    are preferred; the broader AI universe is the fallback when fewer than three
-    valid sector peers exist.
+    are preferred, followed by theme peers and then the broader classified market
+    when fewer than three valid peers exist.
     """
     overview_index = root / "data/generated/company_overview/index.json"
     coverage_index = root / "data/generated/full_market_coverage/full_market_coverage.json"
@@ -42,14 +42,16 @@ def _ai_peer_assumptions(root: Path) -> tuple[dict[str, dict[str, Any]], dict[st
         if not profile_path.is_file() or card_path is None or not card_path.is_file():
             continue
         profile = json.loads(profile_path.read_text(encoding="utf-8"))
-        if ((profile.get("path") or {}).get("theme") or {}).get("id") not in {
-            "theme:artificial_intelligence", "theme:ai_infrastructure"
-        }:
+        path = profile.get("path") or {}
+        theme = str(((path.get("theme") or {}).get("id") or ""))
+        sector = str(((path.get("sector") or {}).get("id") or ""))
+        if profile.get("status") != "classified" or not theme or not sector:
             continue
         card = json.loads(card_path.read_text(encoding="utf-8"))
         profiles[str(profile["company_id"])] = {
             "ticker": ticker,
-            "sector": str((((profile.get("path") or {}).get("sector") or {}).get("id") or "sector:ai_unclassified")),
+            "theme": theme,
+            "sector": sector,
             "card": card,
         }
 
@@ -105,19 +107,26 @@ def _ai_peer_assumptions(root: Path) -> tuple[dict[str, dict[str, Any]], dict[st
                 values[key] for peer_id, values in observed.items()
                 if peer_id != company_id and profiles[peer_id]["sector"] == profile["sector"] and key in values
             ]
-            peers = sector_peers if len(sector_peers) >= 3 else [
-                values[key] for peer_id, values in observed.items() if peer_id != company_id and key in values
+            theme_peers = [
+                values[key] for peer_id, values in observed.items()
+                if peer_id != company_id and profiles[peer_id]["theme"] == profile["theme"] and key in values
             ]
+            if len(sector_peers) >= 3:
+                peers, scope = sector_peers, profile["sector"]
+            elif len(theme_peers) >= 3:
+                peers, scope = theme_peers, profile["theme"]
+            else:
+                peers = [values[key] for peer_id, values in observed.items() if peer_id != company_id and key in values]
+                scope = "classified-market"
             if len(peers) < 3:
                 continue
             assumptions[key] = statistics.median(peers)
-            scope = profile["sector"] if len(sector_peers) >= 3 else "theme:artificial_intelligence"
-            evidence_ids.append(f"ai-peer-median:{scope}:{key}:n{len(peers)}")
+            evidence_ids.append(f"peer-median:{scope}:{key}:n{len(peers)}")
             method_counts[key] += 1
         if assumptions:
             output[company_id] = {
                 "company_id": company_id,
-                "policy_version": "ai-peer-cross-sectional-median.v031v.8",
+                "policy_version": "classified-peer-cross-sectional-median.v031v.9",
                 "evidence_ids": evidence_ids,
                 "assumptions": assumptions,
             }
@@ -142,7 +151,7 @@ def build_multiple_policy(
     if payload.get("schema_version") != "historical-multiple-benchmark.v030.13.3":
         raise ValueError("unsupported historical multiple benchmark")
     threshold = CONFIDENCE[minimum_confidence]
-    companies, peer_summary = _ai_peer_assumptions(root)
+    companies, peer_summary = _peer_assumptions(root)
     rejected: list[dict[str, Any]] = []
     securities_file = root / "data/universe/securities.json"
     securities = json.loads(securities_file.read_text(encoding="utf-8")) if securities_file.is_file() else []
@@ -208,7 +217,7 @@ def build_multiple_policy(
         "version": "V031V.6",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "source": benchmark_path,
-        "policy": {"minimum_confidence": minimum_confidence, "primary": "historical_median", "fallback": "ai_sector_peer_median_then_explicit_company_base", "analyst_target_as_multiple_source": "forbidden", "current_spot_multiple_as_target": "forbidden", "own_current_spot_multiple_as_target": "forbidden", "peer_current_multiple_policy": "exclude_subject_company_and_require_at_least_three_peers", "peg_policy": "independent_ai_peer_profile_median", "milestone_policy": "requires_separate_verified_event_evidence"},
+        "policy": {"minimum_confidence": minimum_confidence, "primary": "historical_median", "fallback": "classified_sector_then_theme_then_market_peer_median_then_explicit_company_base", "analyst_target_as_multiple_source": "forbidden", "current_spot_multiple_as_target": "forbidden", "own_current_spot_multiple_as_target": "forbidden", "peer_current_multiple_policy": "exclude_subject_company_and_require_at_least_three_peers", "peg_policy": "independent_classified_peer_profile_median", "milestone_policy": "requires_separate_verified_event_evidence"},
         "companies": sorted(companies.values(), key=lambda row: row["company_id"]),
         "summary": {"company_count": len(companies), "assumption_count": sum(len(row["assumptions"]) for row in companies.values()), "rejected_count": len(rejected), "ai_peer_policy": peer_summary},
         "diagnostics": {"rejected": rejected},

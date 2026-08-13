@@ -26,6 +26,8 @@ jobs:
         with:
           python-version: "3.11"
           cache: pip
+      - name: Synchronize main before generating derived artifacts
+        run: git pull --ff-only origin main
       - run: pip install -e .[dev]
       - name: Capture valuation baseline
         run: cp data/generated/full_market_coverage/full_market_coverage.json /tmp/axiom-valuation-before.json
@@ -37,6 +39,7 @@ jobs:
           --write
           --merge-existing
           --resume
+          --priority-symbols config/frontier_priority_symbols.v1.json
           --limit 200
           --user-agent "$SEC_USER_AGENT"
       - name: Rebuild evidence-derived classifications and action gates

@@ -17,7 +17,7 @@ from axiom_engine.sec_business_evidence import (  # noqa: E402
 from axiom_engine.business_evidence_store import load_business_evidence  # noqa: E402
 
 
-def _resume_company_ids(root: Path, output_dir: Path) -> list[str]:
+def _resume_company_ids(root: Path, output_dir: Path, priority_symbols: Path | None = None) -> list[str]:
     evidence_path = root / output_dir / "business_evidence.json"
     relevance_path = root / "data/generated/research_relevance_gate/research_relevance_gate.json"
     prior_evidence = load_business_evidence(evidence_path)
@@ -44,8 +44,17 @@ def _resume_company_ids(root: Path, output_dir: Path) -> list[str]:
         if row.get("status") in priority
         and str(row.get("company_id") or "") not in covered
     ]
+    priority_ids: set[str] = set()
+    if priority_symbols:
+        symbols = {str(value).upper() for value in json.loads(priority_symbols.read_text()).get("symbols") or []}
+        securities = json.loads((root / "data/universe/securities.json").read_text(encoding="utf-8"))
+        priority_ids = {
+            str(row.get("company_id")) for row in securities
+            if str(row.get("ticker") or "").upper() in symbols
+        }
     candidates.sort(
         key=lambda row: (
+            0 if str(row.get("company_id") or "") in priority_ids else 1,
             0 if str(row.get("company_id") or "") in event_triggered else 1,
             priority[str(row["status"])],
             str(row.get("company_id") or ""),
@@ -66,6 +75,7 @@ def main() -> int:
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--company-id", action="append", default=[])
     parser.add_argument("--refresh-plan")
+    parser.add_argument("--priority-symbols", type=Path)
     parser.add_argument("--delay", type=float, default=0.11)
     parser.add_argument("--output-dir", type=Path, default=Path("data/generated/canonical_business_evidence"))
     args = parser.parse_args()
@@ -81,7 +91,7 @@ def main() -> int:
             if row.get("requires_business_evidence_refresh")
         ]
     if args.resume:
-        company_ids = _resume_company_ids(ROOT, args.output_dir)
+        company_ids = _resume_company_ids(ROOT, args.output_dir, args.priority_symbols)
     report = build_sec_business_evidence(
         ROOT,
         allow_live=args.allow_live,
