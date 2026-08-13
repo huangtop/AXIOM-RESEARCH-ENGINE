@@ -76,6 +76,11 @@ def test_publication_files_use_etag_and_immutable_cache(tmp_path):
     )
     assert cached_status.startswith("304")
     assert cached_body == b""
+    (weak_cached_status, _), weak_cached_body = invoke_get(
+        app, "/v1/publication/manifest.json", etag=f"W/{etag}"
+    )
+    assert weak_cached_status.startswith("304")
+    assert weak_cached_body == b""
 
     (shard_status, shard_headers), shard_body = invoke_get(
         app, "/v1/publication/companies/NVDA.abc.json"
