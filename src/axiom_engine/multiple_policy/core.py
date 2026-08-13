@@ -33,22 +33,23 @@ def _peer_assumptions(root: Path) -> tuple[dict[str, dict[str, Any]], dict[str, 
     ticker_files = overview.get("ticker_to_file") or {}
     coverage_files = (coverage.get("indexes") or {}).get("ticker_to_file") or {}
     profiles: dict[str, dict[str, Any]] = {}
-    for ticker, filename in ticker_files.items():
-        profile_path = overview_index.parent / str(filename)
-        if not profile_path.is_file():
+    for ticker, card_file in coverage_files.items():
+        filename = ticker_files.get(ticker)
+        profile_path = overview_index.parent / str(filename) if filename else None
+        if profile_path is not None and not profile_path.is_file():
             profile_path = overview_index.parent / "per-company" / str(filename)
-        card_file = coverage_files.get(ticker)
-        card_path = coverage_index.parent / str(card_file) if card_file else None
-        if not profile_path.is_file() or card_path is None or not card_path.is_file():
+        card_path = coverage_index.parent / str(card_file)
+        if not card_path.is_file():
             continue
-        profile = json.loads(profile_path.read_text(encoding="utf-8"))
+        profile = json.loads(profile_path.read_text(encoding="utf-8")) if profile_path is not None and profile_path.is_file() else {}
         path = profile.get("path") or {}
-        theme = str(((path.get("theme") or {}).get("id") or ""))
-        sector = str(((path.get("sector") or {}).get("id") or ""))
-        if profile.get("status") != "classified" or not theme or not sector:
-            continue
+        theme = str(((path.get("theme") or {}).get("id") or "theme:unclassified"))
+        sector = str(((path.get("sector") or {}).get("id") or "sector:unclassified"))
         card = json.loads(card_path.read_text(encoding="utf-8"))
-        profiles[str(profile["company_id"])] = {
+        company_id = str(card.get("company_id") or (card.get("company") or {}).get("company_id") or "")
+        if not company_id:
+            continue
+        profiles[company_id] = {
             "ticker": ticker,
             "theme": theme,
             "sector": sector,
@@ -111,13 +112,13 @@ def _peer_assumptions(root: Path) -> tuple[dict[str, dict[str, Any]], dict[str, 
                 values[key] for peer_id, values in observed.items()
                 if peer_id != company_id and profiles[peer_id]["theme"] == profile["theme"] and key in values
             ]
-            if len(sector_peers) >= 3:
+            if profile["sector"] != "sector:unclassified" and len(sector_peers) >= 3:
                 peers, scope = sector_peers, profile["sector"]
-            elif len(theme_peers) >= 3:
+            elif profile["theme"] != "theme:unclassified" and len(theme_peers) >= 3:
                 peers, scope = theme_peers, profile["theme"]
             else:
                 peers = [values[key] for peer_id, values in observed.items() if peer_id != company_id and key in values]
-                scope = "classified-market"
+                scope = "operating-market"
             if len(peers) < 3:
                 continue
             assumptions[key] = statistics.median(peers)
@@ -152,6 +153,23 @@ def build_multiple_policy(
         raise ValueError("unsupported historical multiple benchmark")
     threshold = CONFIDENCE[minimum_confidence]
     companies, peer_summary = _peer_assumptions(root)
+    existing_file = root / existing_policy_path
+    existing = json.loads(existing_file.read_text(encoding="utf-8")) if existing_file.is_file() else []
+    for prior in existing:
+        company_id = str(prior.get("company_id") or "")
+        assumptions = prior.get("assumptions") or {}
+        if not company_id or not assumptions:
+            continue
+        company = companies.setdefault(company_id, {
+            "company_id": company_id,
+            "policy_version": str(prior.get("policy_version") or "preserved-existing-policy.v031v.9"),
+            "evidence_ids": list(prior.get("evidence_ids") or []),
+            "assumptions": {},
+        })
+        # A refresh fills missing keys; it never silently rewrites an already
+        # published target multiple merely because today's stock price moved.
+        company["assumptions"].update(assumptions)
+        company["evidence_ids"] = sorted(set(company.get("evidence_ids") or []) | set(prior.get("evidence_ids") or []))
     rejected: list[dict[str, Any]] = []
     securities_file = root / "data/universe/securities.json"
     securities = json.loads(securities_file.read_text(encoding="utf-8")) if securities_file.is_file() else []
