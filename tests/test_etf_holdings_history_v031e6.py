@@ -15,6 +15,7 @@ def _write(path: Path, payload) -> None:
 
 def _seed_static(root: Path) -> None:
     _write(root / "config/etf_holdings_refresh.v031e.6.json", {
+        "history_retention_days": 90,
         "materiality": {"absolute_weight_change": 0.001, "relative_share_change": 0.05},
         "focus_etfs": ["QQQ", "DRAM"],
     })
@@ -95,3 +96,16 @@ def test_same_day_provider_correction_replaces_snapshot_and_records_digest(tmp_p
     assert corrected["snapshot"]["supersedes_source_sha256"] == old_digest
     fund = json.loads((tmp_path / "data/generated/canonical_etf_holdings_history/snapshots/2026-08-03/funds/US-QQQ.json").read_text())
     assert fund["holdings"][0]["weight"] == 0.012
+
+
+def test_snapshots_older_than_retention_window_are_pruned(tmp_path: Path):
+    _seed_static(tmp_path)
+    _provider(tmp_path, "2026-01-01", 0.010, 100)
+    build_etf_holdings_history(tmp_path)
+    _provider(tmp_path, "2026-04-02", 0.012, 120)
+    build_etf_holdings_history(tmp_path)
+    history = tmp_path / "data/generated/canonical_etf_holdings_history"
+    index = json.loads((history / "index.json").read_text())
+    assert not (history / "snapshots/2026-01-01").exists()
+    assert index["history_retention_days"] == 90
+    assert index["pruned_snapshots"] == ["2026-01-01"]
