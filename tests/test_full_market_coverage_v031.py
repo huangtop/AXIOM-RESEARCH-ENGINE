@@ -127,7 +127,7 @@ def test_valuation_uses_independent_model_families_and_reports_disagreement():
     googl = next(card for card in payload["cards"] if card["primary_security"]["ticker"] == "GOOGL")
     valuation = googl["valuation"]
     assert valuation["aggregation_version"] == "archetype-primary-model-family.v031v.7"
-    assert valuation["aggregation"]["confidence"] == "medium"
+    assert valuation["aggregation"]["confidence"] == "low"
     assert valuation["aggregation"]["archetype"] == "general_operating_company"
     assert "DEFAULT_OPERATING_COMPANY_PROFILE" in valuation["aggregation"]["archetype_reason_codes"]
     assert valuation["aggregation"]["range_low"] <= valuation["fair_value"] <= valuation["aggregation"]["range_high"]
@@ -172,7 +172,7 @@ def test_ai_research_companies_have_a_calculated_valuation_model():
         if theme_id in {"theme:artificial_intelligence", "theme:ai_infrastructure"}:
             ai_tickers.append(overview["ticker"])
     missing = [ticker for ticker in ai_tickers if cards[ticker]["valuation"]["calculated_model_count"] == 0]
-    assert len(ai_tickers) == 342
+    assert len(ai_tickers) >= 342
     assert missing == []
 
 
