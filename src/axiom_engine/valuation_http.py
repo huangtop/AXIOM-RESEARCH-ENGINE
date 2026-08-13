@@ -346,7 +346,11 @@ class ValuationWSGIApp:
             ("Access-Control-Allow-Headers", "Content-Type, If-None-Match"),
             ("Access-Control-Allow-Methods", "GET, OPTIONS"),
         ]
-        if str(environ.get("HTTP_IF_NONE_MATCH") or "") == etag:
+        if_none_match = str(environ.get("HTTP_IF_NONE_MATCH") or "")
+        validators = {
+            value.strip().removeprefix("W/") for value in if_none_match.split(",") if value.strip()
+        }
+        if "*" in validators or etag in validators:
             start_response(f"{HTTPStatus.NOT_MODIFIED.value} {HTTPStatus.NOT_MODIFIED.phrase}", headers)
             return []
         start_response(
