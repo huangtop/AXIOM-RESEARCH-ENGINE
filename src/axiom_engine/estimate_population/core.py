@@ -28,6 +28,20 @@ def _number(value: Any) -> str | None:
     return format(number, "f") if number.is_finite() else None
 
 
+def _per_share_inputs_are_consistent(raw: Mapping[str, Any]) -> bool:
+    try:
+        market_cap = Decimal(str(raw.get("market_cap")))
+        shares = Decimal(str(raw.get("shares_outstanding")))
+        forward_eps = Decimal(str(raw.get("forward_eps")))
+        forward_pe = Decimal(str(raw.get("forward_pe")))
+    except (InvalidOperation, TypeError, ValueError):
+        return True
+    if min(market_cap, shares, forward_eps, forward_pe) <= 0:
+        return True
+    ratio = (market_cap / shares) / (forward_eps * forward_pe)
+    return Decimal("0.50") <= ratio <= Decimal("2.00")
+
+
 def build_estimate_population(
     root: Path,
     *,
@@ -46,16 +60,25 @@ def build_estimate_population(
     }
     rows: list[dict[str, Any]] = []
     rejected: list[dict[str, str]] = []
+    observed_keys: set[tuple[str, str]] = set()
     for symbol, raw in sorted(symbols.items()):
         if not isinstance(raw, Mapping) or str(symbol).upper() not in identity:
             rejected.append({"symbol": str(symbol), "reason": "registry_identity_not_found"})
             continue
         company_id, security_id = identity[str(symbol).upper()]
         observed_at = raw.get("fetched_at") or raw.get("last_refresh")
+        per_share_consistent = _per_share_inputs_are_consistent(raw)
         for field, (metric, unit) in FIELD_METRICS.items():
+            observed_keys.add((str(company_id), metric))
             value = _number(raw.get(field))
             if field == "forward_eps" and value is not None and value == _number(raw.get("trailing_eps")):
                 value = None
+            if field in {"forward_eps", "forward_eps_growth"} and not per_share_consistent:
+                value = None
+                rejected.append({"symbol": str(symbol).upper(), "reason": f"{field}_per_share_basis_inconsistent"})
+            if field == "forward_eps_growth" and value is not None and Decimal(value) > Decimal("1"):
+                value = None
+                rejected.append({"symbol": str(symbol).upper(), "reason": "forward_eps_growth_above_sustainable_peg_bound"})
             if value is None:
                 continue
             record_key = f"{company_id}|{metric}|{observed_at}|yahoo_finance"
@@ -78,11 +101,10 @@ def build_estimate_population(
     existing_file = root / existing_path
     existing = _load(existing_file) if existing_file.is_file() else []
     if isinstance(existing, list):
-        replaced = {(str(row["company_id"]), str(row["metric"])) for row in rows}
         rows.extend(
             row for row in existing
             if isinstance(row, Mapping)
-            and (str(row.get("company_id")), str(row.get("metric"))) not in replaced
+            and (str(row.get("company_id")), str(row.get("metric"))) not in observed_keys
         )
     rows.sort(key=lambda row: (str(row["company_id"]), str(row["metric"]), str(row.get("as_of_date") or "")))
     return {

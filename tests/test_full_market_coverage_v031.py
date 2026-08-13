@@ -127,17 +127,17 @@ def test_valuation_uses_independent_model_families_and_reports_disagreement():
     googl = next(card for card in payload["cards"] if card["primary_security"]["ticker"] == "GOOGL")
     valuation = googl["valuation"]
     assert valuation["aggregation_version"] == "archetype-primary-model-family.v031v.7"
-    assert valuation["aggregation"]["confidence"] == "low"
-    assert valuation["aggregation"]["archetype"] == "profitable_growth"
-    assert "DCF_EXCLUDED_FROM_AGGREGATION_BY_PRODUCT_POLICY" in valuation["aggregation"]["archetype_reason_codes"]
+    assert valuation["aggregation"]["confidence"] == "medium"
+    assert valuation["aggregation"]["archetype"] == "general_operating_company"
+    assert "DEFAULT_OPERATING_COMPANY_PROFILE" in valuation["aggregation"]["archetype_reason_codes"]
     assert valuation["aggregation"]["range_low"] <= valuation["fair_value"] <= valuation["aggregation"]["range_high"]
     earnings = valuation["aggregation"]["families"]["forward_earnings"]
     dcf = valuation["aggregation"]["families"]["intrinsic_cash_flow"]
-    assert earnings["model_names"] == ["forward_pe", "peg"]
-    assert valuation["models"]["peg"]["status"] == "calculated"
-    assert valuation["aggregation"]["method"] == "archetype-primary-family"
-    assert valuation["aggregation"]["primary_family"] == "forward_earnings"
-    assert Decimal(valuation["fair_value"]) == Decimal(earnings["representative_fair_value"])
+    assert earnings["model_names"] == ["forward_pe"]
+    assert valuation["models"]["peg"]["status"] == "unavailable"
+    assert valuation["aggregation"]["method"] == "confidence-weighted-family-winsorized-center"
+    assert valuation["aggregation"]["primary_family"] is None
+    assert Decimal(valuation["fair_value"]) == Decimal(valuation["aggregation"]["weighted_cross_check_center"])
     assert "intrinsic_cash_flow" not in valuation["aggregation"]["cross_check_families"]
     assert Decimal(dcf["weight"]) == 0
     assert dcf["included_in_aggregation"] is False

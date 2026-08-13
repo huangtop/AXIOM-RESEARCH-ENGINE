@@ -37,3 +37,14 @@ def test_missing_estimates_and_knowledge_assumptions_remain_unavailable_not_fabr
     assert "target_forward_pe" in models["forward_pe"]["missing_inputs"]
     assert "cash_and_cash_equivalents" in models["dcf"]["missing_inputs"]
     assert models["forward_pe"]["assumption_source"] == "knowledge.valuation_assumptions"
+
+
+def test_peg_rejects_growth_above_sustainable_bound():
+    models = calculate_seven_models(
+        {},
+        {"forward_eps": metric(73), "forward_eps_growth": metric("13.685")},
+        {"target_peg": "0.55"},
+        dcf_policy={},
+    )
+    assert models["peg"]["status"] == "unavailable"
+    assert "forward_eps_growth" in models["peg"]["missing_inputs"]
