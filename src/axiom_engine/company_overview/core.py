@@ -17,6 +17,20 @@ class CompanyOverviewNotFound(CompanyOverviewError):
     pass
 
 
+AI_INFRASTRUCTURE_SECTOR_IDS = {
+    "sector:ai_compute",
+    "sector:ai_memory",
+    "sector:ai_networking",
+    "sector:ai_servers",
+}
+
+
+def _sector_rank(item: Mapping[str, Any]) -> tuple[int, float, str]:
+    knowledge_id = str(item.get("knowledge_id") or "")
+    specificity = 1 if knowledge_id in AI_INFRASTRUCTURE_SECTOR_IDS else 0
+    return (-specificity, -float(item.get("confidence") or 0), knowledge_id)
+
+
 def _load(path: Path) -> Any:
     try:
         return json.loads(path.read_text(encoding="utf-8"))
@@ -101,9 +115,14 @@ def build_company_overviews(
         )
         sectors = sorted(
             (x for x in items if x.get("dimension") == "sector"),
-            key=lambda x: (-float(x.get("confidence") or 0), str(x.get("knowledge_id"))),
+            key=_sector_rank,
         )
         theme, sector = (themes[0] if themes else None), (sectors[0] if sectors else None)
+        if sector and sector.get("knowledge_id") in AI_INFRASTRUCTURE_SECTOR_IDS:
+            theme = next(
+                (item for item in themes if item.get("knowledge_id") == "theme:ai_infrastructure"),
+                theme,
+            )
         if override is not None:
             theme = {
                 "knowledge_id": override["theme_id"],
