@@ -28,7 +28,7 @@ def test_milestone_and_peg_are_not_created_without_their_own_evidence(tmp_path: 
     assert report["companies"] == []
 
 
-def test_analyst_consensus_target_can_emit_five_implied_multiple_policies(tmp_path: Path):
+def test_analyst_consensus_target_does_not_duplicate_forward_pe_as_peg(tmp_path: Path):
     snapshot = {"symbols": {"AAA": {
         "fetched_at": "2026-07-28T00:00:00+00:00", "analyst_count": 10,
         "analyst_target_mean": "120", "forward_eps": "6", "forward_eps_growth": "0.2",
@@ -42,7 +42,6 @@ def test_analyst_consensus_target_can_emit_five_implied_multiple_policies(tmp_pa
     universe.mkdir(parents=True)
     (universe / "securities.json").write_text(json.dumps([{"ticker": "AAA", "company_id": "c1"}]))
     report = build_multiple_policy(tmp_path)
-    assumptions = report["companies"][0]["assumptions"]
-    assert set(assumptions) == {"target_forward_pe", "target_peg", "target_forward_ps", "target_ev_ebitda", "target_forward_pb"}
-    assert assumptions["target_forward_pe"] == 20
-    assert report["companies"][0]["evidence_ids"][0].startswith("yahoo-analyst-consensus:AAA:")
+    assert report["companies"] == []
+    assert report["policy"]["analyst_target_as_multiple_source"] == "forbidden"
+    assert report["policy"]["peg_policy"] == "requires_independent_company_or_profile_evidence"
