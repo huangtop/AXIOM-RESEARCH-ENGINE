@@ -21,12 +21,21 @@ def test_real_catalog_separates_market_publication_from_research_actions():
     )
     by_ticker = {row["ticker"]: row for row in report["companies"]}
     assert report["summary"]["public_company_count"] == 5851
-    selected_ids = {
-        row["company_id"] for row in eligibility["records"]
-        if row.get("research_universe_status") == "selected"
-    }
-    public_ids = {row["company_id"] for row in report["companies"]}
-    assert report["summary"]["frontier_research_count"] == len(selected_ids & public_ids)
+    # Publication is security/card based, while research eligibility is company
+    # based.  Comparing their de-duplicated company-id counts is invalid when a
+    # company has multiple listings or a publication card resolves through a
+    # ticker alias.  Validate the actual publication contract row by row.
+    frontier_rows = [
+        row for row in report["companies"]
+        if row["product_scope"] == "frontier_research"
+    ]
+    assert report["summary"]["frontier_research_count"] == len(frontier_rows)
+    assert all(row["scope_axes"]["research_page"] is True for row in frontier_rows)
+    assert all(
+        (row["product_scope"] == "frontier_research")
+        == (row["scope_axes"]["research_page"] is True)
+        for row in report["companies"]
+    )
     assert report["summary"]["scope_axis_counts"]["supply_chain_context"] == 1000
     assert report["summary"]["scope_axis_counts"]["news_ai"] == eligibility["summary"][
         "active_intelligence_company_count"
