@@ -1,0 +1,77 @@
+{
+  "schema_version": "axiom-company-analysis.v1",
+  "company_id": "company:US-CIK0001045810",
+  "ticker": "NVDA",
+  "display_name": "NVIDIA Corporation",
+  "as_of": "2026-02-25",
+  "classification": {
+    "theme": "人工智慧與核心科技",
+    "sector": "AI 核心算力",
+    "supply_chain_role": "無晶圓廠運算平台設計商與整合系統供應商"
+  },
+  "summary": "NVIDIA 是資料中心規模的 AI 基礎設施公司，以加速運算平台為核心，將晶片、網路、系統、軟體、演算法與服務整合為共同平台。其產品服務 AI 模型訓練與推論、資料分析、科學運算、機器人、3D 圖形及自動駕駛等高運算量工作負載。",
+  "business_model": {
+    "description": "公司採平台式商業模式，以共同的可程式化運算架構服務多個終端市場。價值不只來自 GPU，也來自整合式系統、網路、CUDA 軟體棧、函式庫、SDK、API、AI 模型與相關服務所形成的生態系。",
+    "revenue_drivers": [
+      "資料中心加速運算晶片與系統",
+      "AI 網路與高速互聯",
+      "企業及雲端 AI 軟體與服務",
+      "遊戲與專業視覺運算",
+      "汽車與邊緣運算平台"
+    ]
+  },
+  "offerings": [
+    {"name": "GPU 加速運算", "kind": "hardware", "description": "用於 AI 訓練、推論、科學運算、資料分析及圖形工作負載。"},
+    {"name": "資料中心系統", "kind": "system", "description": "把運算、網路、系統、軟體與演算法共同設計為資料中心規模平台。"},
+    {"name": "NVLink、InfiniBand 與 Ethernet", "kind": "networking", "description": "支援大規模 GPU 叢集的高速互聯與資料交換。"},
+    {"name": "CUDA 軟體平台", "kind": "software", "description": "包含開發平台、函式庫、框架、演算法、SDK 與 API。"},
+    {"name": "AI 與產業應用平台", "kind": "platform", "description": "支援生成式 AI、代理式 AI、機器人、汽車、醫療、電信與製造等應用。"}
+  ],
+  "value_chain": {
+    "upstream": [
+      {"label": "先進晶圓製造", "relationship": "製造依賴", "entities": ["TSMC", "Samsung"], "confidence": "sec_explicit"},
+      {"label": "高頻寬與圖形記憶體", "relationship": "零組件供應", "entities": ["SK hynix", "Micron", "Samsung"], "confidence": "sec_explicit"},
+      {"label": "先進封裝", "relationship": "製造與產能依賴", "entities": ["CoWoS"], "confidence": "sec_explicit"}
+    ],
+    "core": [
+      "GPU、CPU 與 DPU 運算",
+      "NVLink、InfiniBand 與 Ethernet 網路",
+      "資料中心系統與整合式 AI 基礎設施",
+      "CUDA 與領域軟體棧"
+    ],
+    "downstream": [
+      {"label": "雲端與超大規模資料中心", "relationship": "客戶類型／部署場景"},
+      {"label": "企業 AI 訓練與推論", "relationship": "工作負載"},
+      {"label": "醫療、電信、汽車與製造", "relationship": "終端產業"},
+      {"label": "機器人、3D 圖形與科學運算", "relationship": "應用市場"}
+    ]
+  },
+  "competitive_context": [
+    "通用與專用 AI 加速器的效能、成本及供應競爭",
+    "大型雲端業者自研晶片帶來的替代風險",
+    "軟體生態、開發工具及平台相容性的競爭",
+    "先進製程、HBM 與封裝產能對出貨能力的限制"
+  ],
+  "watch_items": [
+    "新架構量產與資料中心系統交付節奏",
+    "AI 推論相對訓練需求的成長組合",
+    "高速互聯與 Ethernet 平台滲透率",
+    "先進製程、HBM、封裝及系統供應能力",
+    "雲端客戶自研晶片與替代加速器競爭"
+  ],
+  "evidence": [
+    {
+      "evidence_id": "business-evidence:SEC-0001045810-26-000021",
+      "source_type": "sec_filing",
+      "form": "10-K",
+      "filing_date": "2026-02-25",
+      "section": "Item 1. Business",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+    }
+  ],
+  "provenance_policy": {
+    "facts": "僅採 SEC filing 明確陳述或可直接歸納的公司事實。",
+    "named_relationships": "只有 filing 明確點名的關係才列為 sec_explicit。",
+    "excluded": "未把潛在受惠者、未證實客戶或投資觀點寫成既定事實。"
+  }
+}

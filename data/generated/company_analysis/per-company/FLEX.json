@@ -1,0 +1,78 @@
+{
+  "schema_version": "axiom-company-analysis.v1",
+  "company_id": "company:US-CIK0000866374",
+  "ticker": "FLEX",
+  "display_name": "Flex Ltd.",
+  "as_of": "2026-05-20",
+  "classification": {
+    "theme": "先進製造",
+    "sector": "電子製造與供應鏈服務",
+    "supply_chain_role": "設計、製造、系統整合與全球供應鏈服務商"
+  },
+  "summary": "Flex 是全球端到端製造合作夥伴，提供設計與工程、供應鏈、製造、整合服務，以及電源與散熱產品。公司參與 AI 基礎設施的方式是製造整合、資料中心運算系統、機櫃電源及液冷，而不是自行設計 AI GPU。",
+  "business_model": {
+    "description": "公司以全球製造網路及工程能力承接客戶產品從設計、供應鏈、製造到交付管理的生命週期工作，服務技術型與受監管市場，並透過電源、冷卻及資料中心基礎設施擴大產品化收入。",
+    "revenue_drivers": [
+      "設計、工程與電子製造服務",
+      "全球採購與供應鏈管理",
+      "資料中心整合運算系統",
+      "高密度機櫃電源與液冷",
+      "醫療、工業、汽車與通訊製造"
+    ]
+  },
+  "offerings": [
+    {"name": "設計與工程", "kind": "service", "description": "協助客戶完成產品設計、工程導入與量產準備。"},
+    {"name": "供應鏈與製造", "kind": "manufacturing", "description": "提供全球採購、製造、品質及交付管理。"},
+    {"name": "整合運算系統", "kind": "system", "description": "支援高功率密度的雲端與數位基礎設施部署。"},
+    {"name": "電源與液冷", "kind": "infrastructure", "description": "支援高密度機櫃、板級運算及高功耗資料中心。"},
+    {"name": "受監管市場製造", "kind": "manufacturing", "description": "服務醫療、汽車、工業等要求精密、法規與可靠度的市場。"}
+  ],
+  "value_chain": {
+    "upstream": [
+      {"label": "電子零組件與材料供應商", "relationship": "全球採購與供應鏈依賴", "entities": [], "confidence": "sec_category"},
+      {"label": "電源、冷卻及機構零組件", "relationship": "系統製造投入", "entities": [], "confidence": "sec_category"}
+    ],
+    "core": [
+      "產品設計與工程導入",
+      "全球供應鏈管理",
+      "電子製造與系統整合",
+      "資料中心電源、散熱及液冷",
+      "履約、交付與產品生命週期服務"
+    ],
+    "downstream": [
+      {"label": "雲端與資料中心", "relationship": "終端市場"},
+      {"label": "高速網路、企業與衛星通訊", "relationship": "終端市場"},
+      {"label": "工業、能源與自動化", "relationship": "終端市場"},
+      {"label": "汽車與車用運算／電源電子", "relationship": "終端市場"},
+      {"label": "醫療設備與藥物輸送", "relationship": "受監管終端市場"}
+    ]
+  },
+  "competitive_context": [
+    "全球製造服務的價格、品質、規模與交付競爭",
+    "客戶需求波動、產品週期及產能利用率風險",
+    "供應鏈中斷、零組件短缺及地緣政治風險",
+    "資料中心電源與冷卻產品擴張的執行風險"
+  ],
+  "watch_items": [
+    "Cloud and Power Infrastructure 業務成長",
+    "AI 資料中心整合運算、電源與液冷需求",
+    "製造專案爬坡與產能利用率",
+    "受監管市場的客戶導入與長期專案穩定性",
+    "全球供應鏈與區域化製造布局"
+  ],
+  "evidence": [
+    {
+      "evidence_id": "business-evidence:SEC-0000866374-26-000012",
+      "source_type": "sec_filing",
+      "form": "10-K",
+      "filing_date": "2026-05-20",
+      "section": "Item 1. Business",
+      "url": "https://www.sec.gov/Archives/edgar/data/866374/000086637426000012/flex-20260331.htm"
+    }
+  ],
+  "provenance_policy": {
+    "facts": "僅採 SEC filing 明確陳述或可直接歸納的公司事實。",
+    "named_relationships": "filing 未點名的供應商或客戶不建立直接關係。",
+    "excluded": "不因公司製造 AI 設備就把它分類成 AI 核心算力。"
+  }
+}
