@@ -29,6 +29,12 @@ jobs:
       - name: Synchronize main before generating derived artifacts
         run: git pull --ff-only origin main
       - run: pip install -e .[dev]
+      - name: Smoke-test workflow and publication contracts
+        run: >-
+          pytest -q
+          tests/test_workflow_frequency_contracts.py
+          tests/test_coverage_policy_v031f1.py
+          tests/test_publication_gate_v031f2.py
       - name: Capture valuation baseline
         run: cp data/generated/full_market_coverage/full_market_coverage.json /tmp/axiom-valuation-before.json
       - name: Extend SEC business evidence checkpoint

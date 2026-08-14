@@ -16,6 +16,12 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install -e .[dev]
+      - name: Smoke-test workflow and publication contracts
+        run: >-
+          pytest -q
+          tests/test_workflow_frequency_contracts.py
+          tests/test_coverage_policy_v031f1.py
+          tests/test_publication_gate_v031f2.py
       - run: axiom validate
       - run: pytest -q
       - name: Lint changed Python files
