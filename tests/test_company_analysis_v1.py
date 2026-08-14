@@ -31,12 +31,13 @@ def test_generates_traceable_analysis_without_company_specific_policy():
     assert set(records) == set(IDS)
     for row in records.values():
         assert row["generation_mode"] == "deterministic_evidence_template"
-        assert row["sec_business"]["products_and_capabilities"]
+        assert row["offerings"]
+        assert row["value_chain"]["core"]
         assert row["symbol"]
         assert row["exchange"]
         assert "ticker" not in row
         assert "summary" not in row
-        assert "business_model" not in row
+        assert row["business_model"]["operating_capabilities"] is not None
         assert "competitive_context" not in row
         assert "watch_items" not in row
         assert "provenance_policy" not in row
@@ -51,7 +52,7 @@ def test_index_and_cli_use_symbol_vocabulary():
 
 def test_flex_is_manufacturing_and_not_ai_compute():
     flex = _records()["FLEX"]
-    text = " ".join(row["text"] for row in flex["value_chain"]["company_core"])
+    text = " ".join(row["text"] for row in flex["value_chain"]["core"])
     assert "電子製造" in text
     assert "GPU" not in text
     assert "製造" in flex["classification"]["supply_chain_role"]
@@ -59,15 +60,15 @@ def test_flex_is_manufacturing_and_not_ai_compute():
 
 def test_silc_sells_networking_infrastructure():
     silc = _records()["SILC"]
-    text = " ".join(row["text"] for row in silc["value_chain"]["company_core"])
+    text = " ".join(row["text"] for row in silc["value_chain"]["core"])
     assert "高效能網路與資料基礎設施" in text
     assert "AI 核心算力" not in text
 
 
 def test_nvda_has_gpu_and_data_center_in_evidence_backed_summary():
     nvda = _records()["NVDA"]
-    core = " ".join(row["text"] for row in nvda["value_chain"]["company_core"])
-    downstream = " ".join(row["text"] for row in nvda["value_chain"]["downstream_markets"])
+    core = " ".join(row["text"] for row in nvda["value_chain"]["core"])
+    downstream = " ".join(row["text"] for row in nvda["value_chain"]["downstream"])
     assert "GPU" in core
     assert "資料中心" in downstream
     assert nvda["classification"]["sector"] == "AI 核心算力"
@@ -86,7 +87,7 @@ def test_expands_to_ten_in_scope_technology_companies_without_ticker_rules():
     assert set(records) == TEN_TICKERS
     assert report["scope"]["contains_company_membership"] is False
     for row in records.values():
-        assert row["sec_business"]["products_and_capabilities"]
+        assert row["offerings"]
         overview = json.loads(
             (ROOT / "data/generated/company_overview/per-company" / f"{row['symbol']}.json").read_text()
         )
