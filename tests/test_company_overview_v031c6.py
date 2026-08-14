@@ -21,6 +21,11 @@ def _w(root: Path, name: str, payload):
 def _fixture(root: Path):
     _w(
         root,
+        "config/classification_quality.v031c.5.json",
+        {"theme_sector_compatibility": {"theme:space_economy": ["sector:space_systems"]}},
+    )
+    _w(
+        root,
         "config/company_overview.v031c.6.json",
         {
             "schema_version": "canonical-company-overview-policy.v031c.6",
@@ -137,6 +142,25 @@ def test_overview_can_limit_output_to_core_companies(tmp_path: Path):
     )
     assert [row["ticker"] for row in report["records"]] == ["GOOGL"]
     assert report["summary"]["company_count"] == 1
+
+
+def test_overview_prefers_strong_compatible_space_path_over_weak_ai_sector(tmp_path: Path):
+    _fixture(tmp_path)
+    knowledge_path = tmp_path / "data/generated/knowledge_inference/knowledge_inference.json"
+    payload = json.loads(knowledge_path.read_text())
+    row = payload["records"][0]
+    evidence = {"source_business_evidence_ids": ["e1"]}
+    row["knowledge"].extend([
+        {"knowledge_id": "theme:space_economy", "dimension": "theme", "canonical_name": "Space Economy", "confidence": 0.81, **evidence},
+        {"knowledge_id": "sector:space_systems", "dimension": "sector", "canonical_name": "Space Systems", "confidence": 0.84, **evidence},
+        {"knowledge_id": "sector:ai_compute", "dimension": "sector", "canonical_name": "AI Compute", "confidence": 0.51, **evidence},
+    ])
+    knowledge_path.write_text(json.dumps(payload))
+
+    overview = build_company_overviews(tmp_path)["records"][0]
+
+    assert overview["path"]["theme"]["id"] == "theme:space_economy"
+    assert overview["path"]["sector"]["id"] == "sector:space_systems"
 
 
 def test_writer_removes_stale_company_overviews(tmp_path: Path):

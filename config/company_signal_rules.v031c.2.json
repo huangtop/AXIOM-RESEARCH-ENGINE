@@ -7,7 +7,7 @@
     "maximum_context_characters": 240
   },
   "signals": [
-    {"signal_id":"technology:artificial_intelligence","dimension":"technology","canonical_name":"Artificial Intelligence","aliases":["artificial intelligence","machine learning","generative ai","ai accelerator","accelerated computing"],"excluded_context_patterns":["explor(?:e|es|ed|ing) the benefits? of (?:artificial intelligence|AI) for (?:our|the) business","support and invest in emerging technologies,? including (?:artificial intelligence|AI)"]},
+    {"signal_id":"technology:artificial_intelligence","dimension":"technology","canonical_name":"Artificial Intelligence","aliases":["artificial intelligence","machine learning","generative ai","ai accelerator","accelerated computing"],"excluded_context_patterns":["explor(?:e|es|ed|ing) the benefits? of (?:artificial intelligence|AI) for (?:our|the) business","support and invest in emerging technologies,? including (?:artificial intelligence|AI)","use of (?:artificial intelligence|AI).{0,100}(?:manufacturing|assembly|installation|testing)"]},
     {"signal_id":"technology:high_bandwidth_memory","dimension":"technology","canonical_name":"High Bandwidth Memory","aliases":["high bandwidth memory","hbm","hbm3","hbm3e","hbm4"]},
     {"signal_id":"technology:silicon_photonics","dimension":"technology","canonical_name":"Silicon Photonics","aliases":["silicon photonics","silicon photonic"]},
     {"signal_id":"technology:co_packaged_optics","dimension":"technology","canonical_name":"Co-Packaged Optics","aliases":["co-packaged optics","co packaged optics"]},
@@ -31,7 +31,7 @@
     {"signal_id":"supply_chain_role:service_provider","dimension":"supply_chain_role","canonical_name":"Service Provider","aliases":["provider of services","service provider","provides services"]},
     {"signal_id":"supply_chain_role:distributor","dimension":"supply_chain_role","canonical_name":"Distributor","aliases":["distributor of","distribution and sales","distributes products"]},
     {"signal_id":"capability:high_speed_data_center_networking","dimension":"capability","canonical_name":"High-Speed Data Center Networking","aliases":["ai networking","infiniband","data center interconnect","800g","1.6t"]},
-    {"signal_id":"infrastructure:data_center_power","dimension":"infrastructure","canonical_name":"Data Center Power Infrastructure","aliases":["data center power","power distribution unit","liquid cooling","data center cooling"]},
+    {"signal_id":"infrastructure:data_center_power","dimension":"infrastructure","canonical_name":"Data Center Power Infrastructure","aliases":["data center power","power distribution unit","liquid cooling","data center cooling"],"excluded_context_patterns":["(?:satellite|spacecraft).{0,160}power distribution unit","power distribution unit.{0,160}(?:satellite|spacecraft)"]},
     {"signal_id":"technology:blockchain","dimension":"technology","canonical_name":"Blockchain","aliases":["blockchain technology","distributed ledger","onchain","on-chain"]},
     {"signal_id":"technology:digital_assets","dimension":"technology","canonical_name":"Digital Assets","aliases":["digital assets","crypto assets","cryptocurrency","bitcoin","ethereum"],"excluded_context_patterns":["digital assets for (?:our|the) (?:music|media|content|catalog)","provide digital assets .{0,80} (?:streaming|downloads?|music|media|content)"]},
     {"signal_id":"technology:lidar","dimension":"technology","canonical_name":"LiDAR","aliases":["lidar","light detection and ranging"]},

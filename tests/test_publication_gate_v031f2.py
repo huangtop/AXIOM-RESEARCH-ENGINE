@@ -21,9 +21,12 @@ def test_real_catalog_separates_market_publication_from_research_actions():
     )
     by_ticker = {row["ticker"]: row for row in report["companies"]}
     assert report["summary"]["public_company_count"] == 5851
-    assert report["summary"]["frontier_research_count"] == eligibility["summary"][
-        "selected_research_company_count"
-    ]
+    selected_ids = {
+        row["company_id"] for row in eligibility["records"]
+        if row.get("research_universe_status") == "selected"
+    }
+    public_ids = {row["company_id"] for row in report["companies"]}
+    assert report["summary"]["frontier_research_count"] == len(selected_ids & public_ids)
     assert report["summary"]["scope_axis_counts"]["supply_chain_context"] == 1000
     assert report["summary"]["scope_axis_counts"]["news_ai"] == eligibility["summary"][
         "active_intelligence_company_count"
