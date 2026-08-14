@@ -48,6 +48,7 @@ jobs:
           --resume
           --priority-symbols config/frontier_priority_symbols.v1.json
           --limit 300
+          --delay 0.20
           --user-agent "$SEC_USER_AGENT"
       - name: Validate and publish SEC business evidence checkpoint
         run: |
