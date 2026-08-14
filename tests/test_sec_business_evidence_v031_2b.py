@@ -170,6 +170,36 @@ def test_resume_hard_includes_uncovered_priority_symbol_outside_relevance_candid
     ) == ["company:priority"]
 
 
+def test_resume_adds_market_wide_eligible_filers_and_skips_attempted_diagnostics(tmp_path):
+    output = tmp_path / "data/generated/canonical_business_evidence"
+    output.mkdir(parents=True)
+    (output / "business_evidence.json").write_text("[]", encoding="utf-8")
+    (output / "diagnostics.json").write_text(json.dumps([
+        {"company_id": "company:attempted", "reason_code": "BUSINESS_SECTION_BOUNDARY_NOT_FOUND"}
+    ]), encoding="utf-8")
+    relevance = tmp_path / "data/generated/research_relevance_gate/research_relevance_gate.json"
+    relevance.parent.mkdir(parents=True)
+    relevance.write_text(json.dumps({"records": []}), encoding="utf-8")
+    identity = tmp_path / "data/generated/security_identity/security_identity_normalization.json"
+    identity.parent.mkdir(parents=True)
+    identity.write_text(json.dumps({"securities": [
+        {"company_id": "company:new", "valuation_eligible": True},
+        {"company_id": "company:attempted", "valuation_eligible": True},
+        {"company_id": "company:excluded", "valuation_eligible": False},
+    ]}), encoding="utf-8")
+    filings = tmp_path / "data/generated/canonical_company_evidence/filing_documents.json"
+    filings.parent.mkdir(parents=True)
+    filings.write_text(json.dumps([
+        {"company_id": "company:new"},
+        {"company_id": "company:attempted"},
+        {"company_id": "company:excluded"},
+    ]), encoding="utf-8")
+
+    assert _resume_company_ids(
+        tmp_path, Path("data/generated/canonical_business_evidence")
+    ) == ["company:new"]
+
+
 def test_live_fetcher_can_populate_cache_incrementally(tmp_path):
     _manifest(tmp_path)
     calls = []

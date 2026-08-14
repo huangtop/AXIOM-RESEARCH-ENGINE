@@ -22,6 +22,17 @@ def _resume_company_ids(root: Path, output_dir: Path, priority_symbols: Path | N
     relevance_path = root / "data/generated/research_relevance_gate/research_relevance_gate.json"
     prior_evidence = load_business_evidence(evidence_path)
     covered = {str(row.get("company_id") or "") for row in prior_evidence}
+    diagnostics_path = root / output_dir / "diagnostics.json"
+    prior_diagnostics = (
+        json.loads(diagnostics_path.read_text(encoding="utf-8"))
+        if diagnostics_path.is_file()
+        else []
+    )
+    attempted = covered | {
+        str(row.get("company_id") or "")
+        for row in prior_diagnostics
+        if row.get("company_id")
+    }
     if not relevance_path.is_file():
         return []
     relevance = json.loads(relevance_path.read_text(encoding="utf-8"))
@@ -37,13 +48,37 @@ def _resume_company_ids(root: Path, output_dir: Path, priority_symbols: Path | N
         for row in eligibility.get("records") or []
         if row.get("deep_research_triggers")
     }
-    priority = {"priority_candidate": 0, "evidence_required": 1}
+    priority = {"priority_candidate": 0, "evidence_required": 1, "market_coverage": 2}
     candidates = [
         row
         for row in records
         if row.get("status") in priority
-        and str(row.get("company_id") or "") not in covered
+        and str(row.get("company_id") or "") not in attempted
     ]
+    # Evidence coverage is market-wide.  The relevance gate controls research
+    # actions, not whether an otherwise eligible public company gets a first
+    # evidence attempt.  Only enqueue companies that have a filing manifest;
+    # foreign/OTC identities without one are handled by their own providers.
+    identity_path = root / "data/generated/security_identity/security_identity_normalization.json"
+    filing_path = root / "data/generated/canonical_company_evidence/filing_documents.json"
+    market_actionable_ids: set[str] | None = None
+    if identity_path.is_file() and filing_path.is_file():
+        identity = json.loads(identity_path.read_text(encoding="utf-8"))
+        filing_rows = json.loads(filing_path.read_text(encoding="utf-8"))
+        eligible_ids = {
+            str(row.get("company_id"))
+            for row in identity.get("securities") or []
+            if row.get("valuation_eligible") is True and row.get("company_id")
+        }
+        filing_ids = {
+            str(row.get("company_id")) for row in filing_rows if row.get("company_id")
+        }
+        market_actionable_ids = eligible_ids & filing_ids
+        candidate_ids = {str(row.get("company_id") or "") for row in candidates}
+        candidates.extend(
+            {"company_id": company_id, "status": "market_coverage"}
+            for company_id in sorted((eligible_ids & filing_ids) - attempted - candidate_ids)
+        )
     priority_ids: set[str] = set()
     if priority_symbols:
         symbols = {str(value).upper() for value in json.loads(priority_symbols.read_text()).get("symbols") or []}
@@ -58,8 +93,13 @@ def _resume_company_ids(root: Path, output_dir: Path, priority_symbols: Path | N
         candidate_ids = {str(row.get("company_id") or "") for row in candidates}
         candidates.extend(
             {"company_id": company_id, "status": "evidence_required"}
-            for company_id in sorted(priority_ids - covered - candidate_ids)
+            for company_id in sorted(priority_ids - attempted - candidate_ids)
         )
+    if market_actionable_ids is not None:
+        candidates = [
+            row for row in candidates
+            if str(row.get("company_id") or "") in market_actionable_ids
+        ]
     candidates.sort(
         key=lambda row: (
             0 if str(row.get("company_id") or "") in priority_ids else 1,
