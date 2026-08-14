@@ -28,6 +28,8 @@ def test_reviewed_business_offering_cohort_is_inferred_without_company_rules():
         "ACN": ("theme:enterprise_software", "sector:it_consulting_services"),
         "INFY": ("theme:enterprise_software", "sector:it_consulting_services"),
         "CLPS": ("theme:enterprise_software", "sector:it_consulting_services"),
+        "VMAR": ("theme:travel_leisure", "sector:marine_recreation"),
+        "TIMB": ("theme:advanced_communications", "sector:telecom_infrastructure"),
     }
     securities = json.loads((ROOT / "data/universe/securities.json").read_text())
     ticker_by_company = {

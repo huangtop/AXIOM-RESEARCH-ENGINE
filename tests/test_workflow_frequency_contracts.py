@@ -20,6 +20,10 @@ def test_classification_refreshes_daily_in_batches_of_300():
 
 def test_ci_smoke_gate_runs_before_full_suite():
     workflow = _workflow("ci.yml")
+    assert (
+        "tests/test_full_market_coverage_v031.py::"
+        "test_ai_research_companies_have_a_calculated_valuation_model"
+    ) in workflow
     assert workflow.index("Smoke-test workflow and publication contracts") < workflow.index(
         "- run: pytest -q\n"
     )
