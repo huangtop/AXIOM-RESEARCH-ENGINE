@@ -90,6 +90,8 @@
     {"rule_id":"rule:sector-interconnect-components","output_id":"sector:interconnect_components","output_dimension":"sector","canonical_name":"Interconnect and Sensor Components","any_inputs":["product:interconnect_components"],"reliability":0.99},
     {"rule_id":"rule:theme-advanced-communications-components","output_id":"theme:advanced_communications","output_dimension":"theme","canonical_name":"Advanced Communications","any_inputs":["sector:interconnect_components"],"reliability":0.98},
     {"rule_id":"rule:sector-networking-infrastructure","output_id":"sector:ai_networking","output_dimension":"sector","canonical_name":"AI Networking","any_inputs":["product:networking_infrastructure"],"reliability":0.99},
-    {"rule_id":"rule:theme-advanced-semiconductors-general","output_id":"theme:advanced_semiconductors","output_dimension":"theme","canonical_name":"Advanced Semiconductors","any_inputs":["sector:semiconductors"],"reliability":0.98}
+    {"rule_id":"rule:theme-advanced-semiconductors-general","output_id":"theme:advanced_semiconductors","output_dimension":"theme","canonical_name":"Advanced Semiconductors","any_inputs":["sector:semiconductors"],"reliability":0.98},
+    {"rule_id":"rule:sector-marine-recreation","output_id":"sector:marine_recreation","output_dimension":"sector","canonical_name":"Marine Recreation","any_inputs":["product:recreational_boating"],"reliability":0.99},
+    {"rule_id":"rule:theme-travel-marine","output_id":"theme:travel_leisure","output_dimension":"theme","canonical_name":"Travel and Leisure","any_inputs":["sector:marine_recreation"],"reliability":0.99}
   ]
 }
