@@ -108,13 +108,28 @@ def test_excludes_company_when_supply_chain_decision_is_disabled(tmp_path: Path)
     assert report["records"] == []
 
 
-def test_excludes_legacy_lock_without_reviewed_evidence_source():
+def test_excludes_lock_without_a_reviewed_classification_source():
     securities = json.loads((ROOT / "data/universe/securities.json").read_text())
     company_ids = {
         str(row["company_id"])
         for row in securities
-        if str(row.get("ticker") or "").upper() == "VRT"
+        if str(row.get("ticker") or "").upper() == "JKS"
     }
     signals = build_company_signals(ROOT, company_ids=company_ids)
     report = build_company_analyses(ROOT, company_ids=company_ids, signals_payload=signals)
     assert report["records"] == []
+
+
+def test_published_index_contains_only_the_selected_technology_cohort():
+    index = json.loads((ROOT / "data/generated/company_analysis/index.json").read_text())
+    assert set(index["symbol_to_file"]) == TEN_TICKERS | {
+        "AAOI",
+        "AMD",
+        "AVGO",
+        "CRDO",
+        "LITE",
+        "MRVL",
+        "QCOM",
+        "RKLB",
+        "VSAT",
+    }

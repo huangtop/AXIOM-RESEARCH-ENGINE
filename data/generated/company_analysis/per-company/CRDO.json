@@ -1,0 +1,207 @@
+{
+  "schema_version": "axiom-company-analysis.v1",
+  "generation_mode": "deterministic_evidence_template",
+  "company_id": "company:US-CIK0001807794",
+  "symbol": "CRDO",
+  "exchange": "NASDAQ",
+  "display_name": "Credo Technology Group Holding Ltd",
+  "as_of": "2026-06-15",
+  "classification": {
+    "theme": "人工智慧與核心科技",
+    "sector": "AI 高速互聯",
+    "supply_chain_role": "產品設計與平台開發"
+  },
+  "business_model": {
+    "operating_capabilities": [
+      {
+        "text": "產品設計與平台開發",
+        "evidence_ids": [
+          "business-evidence:SEC-0001628280-26-043303"
+        ],
+        "signal_ids": [
+          "supply_chain_role:designer"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "高速資料中心網路",
+        "evidence_ids": [
+          "business-evidence:SEC-0001628280-26-043303"
+        ],
+        "signal_ids": [
+          "capability:high_speed_data_center_networking"
+        ],
+        "derivation": "evidence_signal"
+      }
+    ]
+  },
+  "offerings": [
+    {
+      "name": "高速 SerDes",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0001628280-26-043303"
+      ],
+      "signal_ids": [
+        "product:serdes"
+      ]
+    },
+    {
+      "name": "光收發模組",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0001628280-26-043303"
+      ],
+      "signal_ids": [
+        "product:optical_transceiver"
+      ]
+    },
+    {
+      "name": "半導體產品",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0001628280-26-043303"
+      ],
+      "signal_ids": [
+        "product:semiconductor"
+      ]
+    },
+    {
+      "name": "雲端運算基礎設施",
+      "kind": "infrastructure",
+      "evidence_ids": [
+        "business-evidence:SEC-0001628280-26-043303"
+      ],
+      "signal_ids": [
+        "infrastructure:cloud_computing"
+      ]
+    }
+  ],
+  "value_chain": {
+    "upstream": [],
+    "core": [
+      {
+        "text": "產品設計與平台開發",
+        "evidence_ids": [
+          "business-evidence:SEC-0001628280-26-043303"
+        ],
+        "signal_ids": [
+          "supply_chain_role:designer"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "高速 SerDes",
+        "evidence_ids": [
+          "business-evidence:SEC-0001628280-26-043303"
+        ],
+        "signal_ids": [
+          "product:serdes"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "光收發模組",
+        "evidence_ids": [
+          "business-evidence:SEC-0001628280-26-043303"
+        ],
+        "signal_ids": [
+          "product:optical_transceiver"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "半導體產品",
+        "evidence_ids": [
+          "business-evidence:SEC-0001628280-26-043303"
+        ],
+        "signal_ids": [
+          "product:semiconductor"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "高速資料中心網路",
+        "evidence_ids": [
+          "business-evidence:SEC-0001628280-26-043303"
+        ],
+        "signal_ids": [
+          "capability:high_speed_data_center_networking"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "雲端運算基礎設施",
+        "evidence_ids": [
+          "business-evidence:SEC-0001628280-26-043303"
+        ],
+        "signal_ids": [
+          "infrastructure:cloud_computing"
+        ],
+        "derivation": "evidence_signal"
+      }
+    ],
+    "infrastructure_delivery": [],
+    "downstream": [
+      {
+        "text": "雲端與資料中心",
+        "evidence_ids": [
+          "business-evidence:SEC-0001628280-26-043303"
+        ],
+        "signal_ids": [
+          "end_market:data_center"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "AI 基礎設施",
+        "evidence_ids": [
+          "business-evidence:SEC-0001628280-26-043303"
+        ],
+        "signal_ids": [
+          "end_market:ai_infrastructure"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "通訊設備",
+        "evidence_ids": [
+          "business-evidence:SEC-0001628280-26-043303"
+        ],
+        "signal_ids": [
+          "end_market:communications"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "工業應用",
+        "evidence_ids": [
+          "business-evidence:SEC-0001628280-26-043303"
+        ],
+        "signal_ids": [
+          "end_market:industrial"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "電信與通訊",
+        "evidence_ids": [
+          "business-evidence:SEC-0001628280-26-043303"
+        ],
+        "signal_ids": [
+          "end_market:telecommunications"
+        ],
+        "derivation": "evidence_signal"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "evidence_id": "business-evidence:SEC-0001628280-26-043303",
+      "source_type": "sec_filing",
+      "form": "10-K",
+      "filing_date": "2026-06-15",
+      "section": "Item 1. Business"
+    }
+  ]
+}

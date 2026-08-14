@@ -1,0 +1,218 @@
+{
+  "schema_version": "axiom-company-analysis.v1",
+  "generation_mode": "deterministic_evidence_template",
+  "company_id": "company:US-CIK0001158114",
+  "symbol": "AAOI",
+  "exchange": "NASDAQ",
+  "display_name": "Applied Optoelectronics, Inc.",
+  "as_of": "2026-02-26",
+  "classification": {
+    "theme": "人工智慧與核心科技",
+    "sector": "AI 高速互聯",
+    "supply_chain_role": "製造與量產與產品設計與平台開發"
+  },
+  "business_model": {
+    "operating_capabilities": [
+      {
+        "text": "製造與量產",
+        "evidence_ids": [
+          "business-evidence:SEC-0001437749-26-005875"
+        ],
+        "signal_ids": [
+          "supply_chain_role:manufacturer"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "產品設計與平台開發",
+        "evidence_ids": [
+          "business-evidence:SEC-0001437749-26-005875"
+        ],
+        "signal_ids": [
+          "supply_chain_role:designer"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "供應鏈管理",
+        "evidence_ids": [
+          "business-evidence:SEC-0001437749-26-005875"
+        ],
+        "signal_ids": [
+          "capability:supply_chain_management"
+        ],
+        "derivation": "evidence_signal"
+      }
+    ]
+  },
+  "offerings": [
+    {
+      "name": "光學與矽光子元件",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0001437749-26-005875"
+      ],
+      "signal_ids": [
+        "product:optical_components"
+      ]
+    },
+    {
+      "name": "光收發模組",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0001437749-26-005875"
+      ],
+      "signal_ids": [
+        "product:optical_transceiver"
+      ]
+    },
+    {
+      "name": "半導體產品",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0001437749-26-005875"
+      ],
+      "signal_ids": [
+        "product:semiconductor"
+      ]
+    }
+  ],
+  "value_chain": {
+    "upstream": [
+      {
+        "text": "電子零組件與 PCBA",
+        "evidence_ids": [
+          "business-evidence:SEC-0001437749-26-005875"
+        ],
+        "signal_ids": [
+          "input:electronic_components"
+        ],
+        "derivation": "evidence_signal"
+      }
+    ],
+    "core": [
+      {
+        "text": "製造與量產",
+        "evidence_ids": [
+          "business-evidence:SEC-0001437749-26-005875"
+        ],
+        "signal_ids": [
+          "supply_chain_role:manufacturer"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "產品設計與平台開發",
+        "evidence_ids": [
+          "business-evidence:SEC-0001437749-26-005875"
+        ],
+        "signal_ids": [
+          "supply_chain_role:designer"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "光學與矽光子元件",
+        "evidence_ids": [
+          "business-evidence:SEC-0001437749-26-005875"
+        ],
+        "signal_ids": [
+          "product:optical_components"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "光收發模組",
+        "evidence_ids": [
+          "business-evidence:SEC-0001437749-26-005875"
+        ],
+        "signal_ids": [
+          "product:optical_transceiver"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "半導體產品",
+        "evidence_ids": [
+          "business-evidence:SEC-0001437749-26-005875"
+        ],
+        "signal_ids": [
+          "product:semiconductor"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "供應鏈管理",
+        "evidence_ids": [
+          "business-evidence:SEC-0001437749-26-005875"
+        ],
+        "signal_ids": [
+          "capability:supply_chain_management"
+        ],
+        "derivation": "evidence_signal"
+      }
+    ],
+    "infrastructure_delivery": [],
+    "downstream": [
+      {
+        "text": "雲端與資料中心",
+        "evidence_ids": [
+          "business-evidence:SEC-0001437749-26-005875"
+        ],
+        "signal_ids": [
+          "end_market:data_center"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "通訊設備",
+        "evidence_ids": [
+          "business-evidence:SEC-0001437749-26-005875"
+        ],
+        "signal_ids": [
+          "end_market:communications"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "電信與通訊",
+        "evidence_ids": [
+          "business-evidence:SEC-0001437749-26-005875"
+        ],
+        "signal_ids": [
+          "end_market:telecommunications"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "航太與國防",
+        "evidence_ids": [
+          "business-evidence:SEC-0001437749-26-005875"
+        ],
+        "signal_ids": [
+          "end_market:aerospace_defense"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "工業應用",
+        "evidence_ids": [
+          "business-evidence:SEC-0001437749-26-005875"
+        ],
+        "signal_ids": [
+          "end_market:industrial"
+        ],
+        "derivation": "evidence_signal"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "evidence_id": "business-evidence:SEC-0001437749-26-005875",
+      "source_type": "sec_filing",
+      "form": "10-K",
+      "filing_date": "2026-02-26",
+      "section": "Item 1. Business"
+    }
+  ]
+}

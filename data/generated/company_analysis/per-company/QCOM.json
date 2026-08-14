@@ -1,0 +1,167 @@
+{
+  "schema_version": "axiom-company-analysis.v1",
+  "generation_mode": "deterministic_evidence_template",
+  "company_id": "company:US-CIK0000804328",
+  "symbol": "QCOM",
+  "exchange": "NASDAQ",
+  "display_name": "QUALCOMM Incorporated",
+  "as_of": "2025-11-05",
+  "classification": {
+    "theme": "人工智慧與核心科技",
+    "sector": "AI 核心算力",
+    "supply_chain_role": "待更多證據確認"
+  },
+  "business_model": {
+    "operating_capabilities": [
+      {
+        "text": "產品設計與工程",
+        "evidence_ids": [
+          "business-evidence:SEC-0000804328-25-000085"
+        ],
+        "signal_ids": [
+          "capability:design_engineering"
+        ],
+        "derivation": "evidence_signal"
+      }
+    ]
+  },
+  "offerings": [
+    {
+      "name": "半導體產品",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0000804328-25-000085"
+      ],
+      "signal_ids": [
+        "product:semiconductor"
+      ]
+    },
+    {
+      "name": "GPU 與圖形處理器",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0000804328-25-000085"
+      ],
+      "signal_ids": [
+        "product:graphics_processor"
+      ]
+    },
+    {
+      "name": "RF 與連接半導體",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0000804328-25-000085"
+      ],
+      "signal_ids": [
+        "product:rf_semiconductor"
+      ]
+    }
+  ],
+  "value_chain": {
+    "upstream": [],
+    "core": [
+      {
+        "text": "半導體產品",
+        "evidence_ids": [
+          "business-evidence:SEC-0000804328-25-000085"
+        ],
+        "signal_ids": [
+          "product:semiconductor"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "GPU 與圖形處理器",
+        "evidence_ids": [
+          "business-evidence:SEC-0000804328-25-000085"
+        ],
+        "signal_ids": [
+          "product:graphics_processor"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "RF 與連接半導體",
+        "evidence_ids": [
+          "business-evidence:SEC-0000804328-25-000085"
+        ],
+        "signal_ids": [
+          "product:rf_semiconductor"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "產品設計與工程",
+        "evidence_ids": [
+          "business-evidence:SEC-0000804328-25-000085"
+        ],
+        "signal_ids": [
+          "capability:design_engineering"
+        ],
+        "derivation": "evidence_signal"
+      }
+    ],
+    "infrastructure_delivery": [],
+    "downstream": [
+      {
+        "text": "汽車與車用電子",
+        "evidence_ids": [
+          "business-evidence:SEC-0000804328-25-000085"
+        ],
+        "signal_ids": [
+          "end_market:automotive"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "工業應用",
+        "evidence_ids": [
+          "business-evidence:SEC-0000804328-25-000085"
+        ],
+        "signal_ids": [
+          "end_market:industrial"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "通訊設備",
+        "evidence_ids": [
+          "business-evidence:SEC-0000804328-25-000085"
+        ],
+        "signal_ids": [
+          "end_market:communications"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "雲端與資料中心",
+        "evidence_ids": [
+          "business-evidence:SEC-0000804328-25-000085"
+        ],
+        "signal_ids": [
+          "end_market:data_center"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "醫療健康",
+        "evidence_ids": [
+          "business-evidence:SEC-0000804328-25-000085"
+        ],
+        "signal_ids": [
+          "end_market:healthcare"
+        ],
+        "derivation": "evidence_signal"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "evidence_id": "business-evidence:SEC-0000804328-25-000085",
+      "source_type": "sec_filing",
+      "form": "10-K",
+      "filing_date": "2025-11-05",
+      "section": "Item 1. Business"
+    }
+  ]
+}

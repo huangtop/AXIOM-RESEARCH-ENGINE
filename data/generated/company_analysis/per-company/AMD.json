@@ -1,0 +1,206 @@
+{
+  "schema_version": "axiom-company-analysis.v1",
+  "generation_mode": "deterministic_evidence_template",
+  "company_id": "company:US-CIK0000002488",
+  "symbol": "AMD",
+  "exchange": "NASDAQ",
+  "display_name": "Advanced Micro Devices, Inc.",
+  "as_of": "2026-02-04",
+  "classification": {
+    "theme": "人工智慧與核心科技",
+    "sector": "AI 核心算力",
+    "supply_chain_role": "待更多證據確認"
+  },
+  "business_model": {
+    "operating_capabilities": []
+  },
+  "offerings": [
+    {
+      "name": "GPU 與圖形處理器",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0000002488-26-000018"
+      ],
+      "signal_ids": [
+        "product:graphics_processor"
+      ]
+    },
+    {
+      "name": "半導體產品",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0000002488-26-000018"
+      ],
+      "signal_ids": [
+        "product:semiconductor"
+      ]
+    },
+    {
+      "name": "伺服器網路介面卡（NIC）",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0000002488-26-000018"
+      ],
+      "signal_ids": [
+        "product:server_network_interface_card"
+      ]
+    },
+    {
+      "name": "雲端運算基礎設施",
+      "kind": "infrastructure",
+      "evidence_ids": [
+        "business-evidence:SEC-0000002488-26-000018"
+      ],
+      "signal_ids": [
+        "infrastructure:cloud_computing"
+      ]
+    },
+    {
+      "name": "高效能網路與資料基礎設施",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0000002488-26-000018"
+      ],
+      "signal_ids": [
+        "product:networking_infrastructure"
+      ]
+    }
+  ],
+  "value_chain": {
+    "upstream": [],
+    "core": [
+      {
+        "text": "GPU 與圖形處理器",
+        "evidence_ids": [
+          "business-evidence:SEC-0000002488-26-000018"
+        ],
+        "signal_ids": [
+          "product:graphics_processor"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "半導體產品",
+        "evidence_ids": [
+          "business-evidence:SEC-0000002488-26-000018"
+        ],
+        "signal_ids": [
+          "product:semiconductor"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "伺服器網路介面卡（NIC）",
+        "evidence_ids": [
+          "business-evidence:SEC-0000002488-26-000018"
+        ],
+        "signal_ids": [
+          "product:server_network_interface_card"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "雲端運算基礎設施",
+        "evidence_ids": [
+          "business-evidence:SEC-0000002488-26-000018"
+        ],
+        "signal_ids": [
+          "infrastructure:cloud_computing"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "高效能網路與資料基礎設施",
+        "evidence_ids": [
+          "business-evidence:SEC-0000002488-26-000018"
+        ],
+        "signal_ids": [
+          "product:networking_infrastructure"
+        ],
+        "derivation": "evidence_signal"
+      }
+    ],
+    "infrastructure_delivery": [],
+    "downstream": [
+      {
+        "text": "雲端與資料中心",
+        "evidence_ids": [
+          "business-evidence:SEC-0000002488-26-000018"
+        ],
+        "signal_ids": [
+          "end_market:data_center"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "汽車與車用電子",
+        "evidence_ids": [
+          "business-evidence:SEC-0000002488-26-000018"
+        ],
+        "signal_ids": [
+          "end_market:automotive"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "工業應用",
+        "evidence_ids": [
+          "business-evidence:SEC-0000002488-26-000018"
+        ],
+        "signal_ids": [
+          "end_market:industrial"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "航太與國防",
+        "evidence_ids": [
+          "business-evidence:SEC-0000002488-26-000018"
+        ],
+        "signal_ids": [
+          "end_market:aerospace_defense"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "醫療健康",
+        "evidence_ids": [
+          "business-evidence:SEC-0000002488-26-000018"
+        ],
+        "signal_ids": [
+          "end_market:healthcare"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "通訊設備",
+        "evidence_ids": [
+          "business-evidence:SEC-0000002488-26-000018"
+        ],
+        "signal_ids": [
+          "end_market:communications"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "雲端服務",
+        "evidence_ids": [
+          "business-evidence:SEC-0000002488-26-000018"
+        ],
+        "signal_ids": [
+          "end_market:cloud"
+        ],
+        "derivation": "evidence_signal"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "evidence_id": "business-evidence:SEC-0000002488-26-000018",
+      "source_type": "sec_filing",
+      "form": "10-K",
+      "filing_date": "2026-02-04",
+      "section": "Item 1. Business"
+    }
+  ]
+}
