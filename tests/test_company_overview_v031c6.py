@@ -163,6 +163,31 @@ def test_overview_prefers_strong_compatible_space_path_over_weak_ai_sector(tmp_p
     assert overview["path"]["sector"]["id"] == "sector:space_systems"
 
 
+def test_product_derived_path_beats_customer_use_technology_path(tmp_path: Path):
+    _fixture(tmp_path)
+    quality_path = tmp_path / "config/classification_quality.v031c.5.json"
+    quality = json.loads(quality_path.read_text())
+    quality["theme_sector_compatibility"] = {
+        "theme:advanced_manufacturing": ["sector:semiconductor_equipment"],
+        "theme:ai_infrastructure": ["sector:ai_memory"],
+    }
+    quality_path.write_text(json.dumps(quality))
+    knowledge_path = tmp_path / "data/generated/knowledge_inference/knowledge_inference.json"
+    payload = json.loads(knowledge_path.read_text())
+    payload["records"][0]["knowledge"] = [
+        {"knowledge_id": "theme:advanced_manufacturing", "dimension": "theme", "canonical_name": "Advanced Manufacturing", "confidence": 0.8, "source_signal_ids": ["product:semiconductor_test_equipment"], "source_business_evidence_ids": ["e1"]},
+        {"knowledge_id": "sector:semiconductor_equipment", "dimension": "sector", "canonical_name": "Semiconductor Equipment", "confidence": 0.8, "source_signal_ids": ["product:semiconductor_test_equipment"], "source_business_evidence_ids": ["e1"]},
+        {"knowledge_id": "theme:ai_infrastructure", "dimension": "theme", "canonical_name": "AI Infrastructure", "confidence": 0.99, "source_signal_ids": ["technology:high_bandwidth_memory"], "source_business_evidence_ids": ["e1"]},
+        {"knowledge_id": "sector:ai_memory", "dimension": "sector", "canonical_name": "AI Memory", "confidence": 0.99, "source_signal_ids": ["technology:high_bandwidth_memory"], "source_business_evidence_ids": ["e1"]},
+    ]
+    knowledge_path.write_text(json.dumps(payload))
+
+    overview = build_company_overviews(tmp_path)["records"][0]
+
+    assert overview["path"]["theme"]["id"] == "theme:advanced_manufacturing"
+    assert overview["path"]["sector"]["id"] == "sector:semiconductor_equipment"
+
+
 def test_writer_removes_stale_company_overviews(tmp_path: Path):
     _fixture(tmp_path)
     output = tmp_path / "data/generated/company_overview"
@@ -174,6 +199,26 @@ def test_writer_removes_stale_company_overviews(tmp_path: Path):
 
     assert not stale.exists()
     assert (output / "per-company/GOOGL.json").is_file()
+
+
+def test_partial_writer_preserves_existing_company_overviews(tmp_path: Path):
+    _fixture(tmp_path)
+    output = tmp_path / "data/generated/company_overview"
+    _w(tmp_path, "data/generated/company_overview/per-company/KEEP.json", {"ticker": "KEEP"})
+    _w(
+        tmp_path,
+        "data/generated/company_overview/index.json",
+        {"ticker_to_file": {"KEEP": "KEEP.json"}, "summary": {"company_count": 2}},
+    )
+
+    report = build_company_overviews(tmp_path)
+    write_company_overviews(report, output, preserve_existing=True)
+
+    index = json.loads((output / "index.json").read_text())
+    assert (output / "per-company/KEEP.json").exists()
+    assert index["ticker_to_file"]["KEEP"] == "KEEP.json"
+    assert index["ticker_to_file"]["GOOGL"] == "GOOGL.json"
+    assert index["summary"] == {"company_count": 2}
 
 
 def test_curated_core_override_is_published_without_rerunning_evidence(tmp_path: Path):
@@ -265,6 +310,37 @@ def test_manual_override_can_replace_locked_classification(tmp_path: Path):
     assert row["path"]["theme"]["id"] == "theme:space_economy"
     assert row["path"]["sector"]["id"] == "sector:space_systems"
     assert row["classification_source"] == "curated_core_override"
+
+
+def test_shadow_inference_can_be_audited_without_changing_published_lock(tmp_path: Path):
+    _fixture(tmp_path)
+    first = build_company_overviews(tmp_path)
+    write_company_overviews(first, tmp_path / "data/generated/company_overview")
+    knowledge_path = tmp_path / "data/generated/knowledge_inference/knowledge_inference.json"
+    knowledge = json.loads(knowledge_path.read_text())
+    knowledge["records"][0]["knowledge"] = [
+        {
+            "knowledge_id": "theme:space_economy",
+            "dimension": "theme",
+            "canonical_name": "Space Economy",
+            "confidence": 1.0,
+            "source_business_evidence_ids": ["e1"],
+        },
+        {
+            "knowledge_id": "sector:space_systems",
+            "dimension": "sector",
+            "canonical_name": "Space Systems",
+            "confidence": 1.0,
+            "source_business_evidence_ids": ["e1"],
+        },
+    ]
+    knowledge_path.write_text(json.dumps(knowledge))
+
+    shadow = build_company_overviews(tmp_path, respect_existing_locks=False)["records"][0]
+    published = build_company_overviews(tmp_path)["records"][0]
+
+    assert shadow["path"]["theme"]["id"] == "theme:space_economy"
+    assert published["path"]["theme"]["id"] == "theme:ai_infrastructure"
 
 
 def test_http_exposes_canonical_company_overview(tmp_path: Path):

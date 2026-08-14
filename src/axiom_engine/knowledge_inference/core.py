@@ -53,6 +53,7 @@ def _combine(items: list[Mapping[str, Any]], reliability: float) -> float:
 def build_knowledge_inference(
     root: Path,
     *,
+    signals_payload: Mapping[str, Any] | None = None,
     policy_path: str = "config/knowledge_inference.v031c.3.json",
     signals_path: str = "data/generated/company_signals/company_signals.json",
     relevance_gate_path: str = "data/generated/research_relevance_gate/research_relevance_gate.json",
@@ -62,7 +63,7 @@ def build_knowledge_inference(
     if current.tzinfo is None or current.utcoffset() is None:
         raise ValueError("now must be timezone-aware")
     policy = _load(root / policy_path)
-    signals_payload = _load(root / signals_path)
+    signals_payload = signals_payload or _load(root / signals_path)
     gate_file = root / relevance_gate_path
     gate_payload = _load(gate_file) if gate_file.is_file() else {"records": []}
     gate_by_company = {
@@ -84,6 +85,7 @@ def build_knowledge_inference(
                 "dimension": signal["dimension"],
                 "canonical_name": signal["canonical_name"],
                 "confidence": signal["confidence"],
+                "primary_business_score": int(signal.get("primary_business_score") or 0),
                 "derivation_type": "observed_signal",
                 "source_signal_ids": [signal["signal_id"]],
                 "source_business_evidence_ids": signal["source_business_evidence_ids"],
@@ -118,6 +120,10 @@ def build_knowledge_inference(
                 confidence = _combine(inputs, float(rule["reliability"]))
                 evidence_ids = sorted({evidence_id for item in inputs for evidence_id in item["source_business_evidence_ids"]})
                 source_signal_ids = sorted({signal_id for item in inputs for signal_id in item["source_signal_ids"]})
+                primary_business_score = max(
+                    (int(item.get("primary_business_score") or 0) for item in inputs),
+                    default=0,
+                )
                 path = {
                     "rule_id": rule["rule_id"],
                     "input_knowledge_ids": sorted(item["knowledge_id"] for item in inputs),
@@ -133,6 +139,7 @@ def build_knowledge_inference(
                         "dimension": rule["output_dimension"],
                         "canonical_name": rule["canonical_name"],
                         "confidence": confidence,
+                        "primary_business_score": primary_business_score,
                         "derivation_type": "rule_inference",
                         "source_signal_ids": source_signal_ids,
                         "source_business_evidence_ids": evidence_ids,

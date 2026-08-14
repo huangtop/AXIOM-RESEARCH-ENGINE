@@ -31,6 +31,20 @@ def _sector_rank(item: Mapping[str, Any]) -> tuple[int, float, str]:
     return (-specificity, -float(item.get("confidence") or 0), knowledge_id)
 
 
+def _primary_business_score(item: Mapping[str, Any]) -> int:
+    """Rank what the company sells above technologies/end markets it mentions."""
+    if "primary_business_score" in item:
+        return int(item.get("primary_business_score") or 0)
+    source_ids = {str(value) for value in item.get("source_signal_ids") or []}
+    if any(value.startswith("product:") for value in source_ids):
+        return 2
+    if any(
+        value.startswith(("capability:", "infrastructure:")) for value in source_ids
+    ):
+        return 1
+    return 0
+
+
 def _load(path: Path) -> Any:
     try:
         return json.loads(path.read_text(encoding="utf-8"))
@@ -49,12 +63,17 @@ def build_company_overviews(
     root: Path,
     *,
     company_ids: set[str] | None = None,
+    knowledge_payload: Mapping[str, Any] | None = None,
+    respect_existing_locks: bool = True,
+    strict_company_scope: bool = False,
     now: datetime | None = None,
 ) -> dict[str, Any]:
     current = now or datetime.now(timezone.utc)
     companies = _load(root / "data/universe/companies.json")
     securities = _load(root / "data/universe/securities.json")
-    knowledge = _load(root / "data/generated/knowledge_inference/knowledge_inference.json")
+    knowledge = knowledge_payload or _load(
+        root / "data/generated/knowledge_inference/knowledge_inference.json"
+    )
     evidence = load_business_evidence(root / "data/generated/canonical_business_evidence")
     policy = _load(root / "config/company_overview.v031c.6.json")
     quality_path = root / "config/classification_quality.v031c.5.json"
@@ -83,7 +102,7 @@ def build_company_overviews(
     # only supported replacement path is an explicit curated override.
     locked_by_company: dict[str, dict[str, Any]] = {}
     existing_dir = root / "data/generated/company_overview/per-company"
-    if existing_dir.is_dir():
+    if respect_existing_locks and existing_dir.is_dir():
         for existing_path in existing_dir.glob("*.json"):
             try:
                 existing = _load(existing_path)
@@ -131,7 +150,11 @@ def build_company_overviews(
         cid = str(source["company_id"])
         override = curated_overrides.get(cid)
         locked = locked_by_company.get(cid) if override is None else None
-        if company_ids is not None and cid not in company_ids and override is None and locked is None:
+        if (
+            company_ids is not None
+            and cid not in company_ids
+            and (strict_company_scope or (override is None and locked is None))
+        ):
             continue
         items = list(source.get("knowledge") or [])
         themes = sorted(
@@ -154,6 +177,7 @@ def build_company_overviews(
             theme, sector = max(
                 compatible_pairs,
                 key=lambda pair: (
+                    _primary_business_score(pair[1]),
                     float(pair[0].get("confidence") or 0)
                     + float(pair[1].get("confidence") or 0),
                     float(pair[1].get("confidence") or 0),
@@ -199,7 +223,16 @@ def build_company_overviews(
         ]
         status = (
             "classified"
-            if override is not None or (theme and sector and sources)
+            if override is not None
+            or (
+                theme
+                and sector
+                and sources
+                and (
+                    "primary_business_score" not in sector
+                    or _primary_business_score(sector) > 0
+                )
+            )
             else "evidence_available_unclassified"
             if source.get("source_company_signal_status") != "business_evidence_unavailable"
             else "awaiting_business_evidence"
@@ -278,13 +311,15 @@ def build_company_overviews(
     }
 
 
-def write_company_overviews(report: Mapping[str, Any], output: Path) -> None:
+def write_company_overviews(
+    report: Mapping[str, Any], output: Path, *, preserve_existing: bool = False
+) -> None:
     files = {}
     per_company = output / "per-company"
     expected_filenames = {
         f"{row['ticker']}.json" for row in report["records"] if row.get("ticker")
     }
-    if per_company.is_dir():
+    if per_company.is_dir() and not preserve_existing:
         for stale in per_company.glob("*.json"):
             if stale.name not in expected_filenames:
                 stale.unlink()
@@ -296,15 +331,24 @@ def write_company_overviews(report: Mapping[str, Any], output: Path) -> None:
         for alias in row.get("ticker_aliases") or [ticker]:
             files[alias] = filename
         _write(per_company / filename, row)
-    _write(
-        output / "index.json",
-        {
-            "schema_version": report["schema_version"],
-            "generated_at": report["generated_at"],
-            "summary": report["summary"],
-            "ticker_to_file": files,
-        },
-    )
+    index_path = output / "index.json"
+    if preserve_existing and index_path.is_file():
+        existing_index = _load(index_path)
+        existing_files = dict(existing_index.get("ticker_to_file") or {})
+        existing_files.update(files)
+        existing_index["generated_at"] = report["generated_at"]
+        existing_index["ticker_to_file"] = existing_files
+        _write(index_path, existing_index)
+    else:
+        _write(
+            index_path,
+            {
+                "schema_version": report["schema_version"],
+                "generated_at": report["generated_at"],
+                "summary": report["summary"],
+                "ticker_to_file": files,
+            },
+        )
 
 
 class CompanyOverviewService:
