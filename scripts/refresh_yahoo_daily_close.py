@@ -40,7 +40,11 @@ def main() -> int:
         default=0.0,
         help="Allow a bounded fraction of provider failures while retaining diagnostics.",
     )
-    parser.add_argument("--report", type=Path, default=Path("data/generated/provider_cache/yahoo/daily_close_refresh_report.json"))
+    parser.add_argument(
+        "--report",
+        type=Path,
+        default=Path("data/generated/market/daily_close_refresh_report.json"),
+    )
     args = parser.parse_args()
 
     symbols = list(args.symbols)

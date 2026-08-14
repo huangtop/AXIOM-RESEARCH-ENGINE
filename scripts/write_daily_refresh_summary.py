@@ -23,7 +23,11 @@ def main() -> int:
     coverage = load(Path("data/generated/full_market_coverage/full_market_coverage.json")).get("summary") or {}
     before = (load(args.before).get("summary") or {}) if args.before else {}
     financial = load(Path("data/generated/canonical_financial_population/manifest.json")).get("summary") or {}
-    market = load(Path("data/generated/provider_cache/yahoo/daily_close_refresh_report.json"))
+    market = load(Path("data/generated/market/daily_close_refresh_report.json"))
+    if not market:
+        market = load(
+            Path("data/generated/provider_cache/yahoo/daily_close_refresh_report.json")
+        )
     estimate = load(Path("data/generated/provider_cache/yahoo/company_snapshot_refresh_report.json"))
     statuses = coverage.get("status_counts") or {}
     old_statuses = before.get("status_counts") or {}

@@ -40,6 +40,7 @@ jobs:
           --delay 0.25
           --checkpoint-size 50
           --max-failure-rate 0.03
+          --report data/generated/market/daily_close_refresh_report.json
           ${{ inputs.force && '--force' || '' }}
       - name: Rebuild valuation shards and publication catalog
         run: |

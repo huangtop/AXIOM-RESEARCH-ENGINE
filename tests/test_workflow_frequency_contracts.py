@@ -47,6 +47,13 @@ def test_business_evidence_is_checkpointed_before_classification_rebuild():
     assert "git add data/generated/canonical_business_evidence" in checkpoint_block
     derived_block = workflow[workflow.index("Commit derived research artifacts"):]
     assert "git add data/generated/canonical_business_evidence" not in derived_block
+    assert "--delay 0.20" in workflow
+
+
+def test_market_refresh_publishes_the_daily_close_refresh_report():
+    workflow = _workflow("production-market-refresh.yml")
+    assert "--report data/generated/market/daily_close_refresh_report.json" in workflow
+    assert "data/generated/market" in workflow
 
 
 def test_estimates_refresh_daily_in_batches_of_200():
