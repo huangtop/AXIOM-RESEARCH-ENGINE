@@ -168,10 +168,18 @@ def build_coverage_policy(
             str(row.get("company_id") or ""),
         ),
     )
+    contextual_limit = int(policy["projection"]["contextual_supply_chain_limit"])
+    # Enabled supply-chain companies are part of the context population, not
+    # additions beyond its cap. Seed them first and fill the remaining slots.
     contextual_ids = {
-        str(row["company_id"])
-        for row in contextual_candidates[: int(policy["projection"]["contextual_supply_chain_limit"])]
+        company_id
+        for company_id, research in research_by_company.items()
+        if bool(((research.get("decisions") or {}).get("supply_chain") or {}).get("enabled"))
     }
+    for candidate in contextual_candidates:
+        if len(contextual_ids) >= contextual_limit:
+            break
+        contextual_ids.add(str(candidate["company_id"]))
     records: list[dict[str, Any]] = []
     tier_counts: Counter[str] = Counter()
     valuation_scope_counts: Counter[str] = Counter()
