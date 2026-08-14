@@ -182,6 +182,10 @@ def build_multiple_policy(
             return None
         return result if result.is_finite() else None
 
+    def positive(value: Any) -> Decimal | None:
+        result = number(value)
+        return result if result is not None and result > 0 else None
+
     # Preserve explicit company/scenario assumptions as independent model inputs.
     # Analyst target prices are deliberately excluded: reverse-engineering one
     # target into several multiples forces those models to return the same value.
@@ -230,14 +234,71 @@ def build_multiple_policy(
         company["evidence_ids"].append(evidence_id)
         company["assumptions"][target] = value
         company["policy_version"] = "historical-median-over-analyst-consensus.v031v.6"
+
+    # Market roll-forward is the production default used by the original
+    # valuation module: apply the subject company's observable Yahoo multiple
+    # to forward fundamentals.  These are market-anchored scenarios, not an
+    # analyst target-price reverse engineering.  PEG, DCF, and milestone remain
+    # independent and are intentionally not populated here.
+    snapshot_file = root / company_snapshot_path
+    snapshot_payload = json.loads(snapshot_file.read_text(encoding="utf-8")) if snapshot_file.is_file() else {}
+    roll_forward_bounds = {
+        "target_forward_pe": (1.0, 500.0),
+        "target_forward_ps": (0.05, 100.0),
+        "target_ev_ebitda": (0.5, 250.0),
+        "target_forward_pb": (0.1, 100.0),
+    }
+    market_roll_forward_count = 0
+    for symbol, snapshot in (snapshot_payload.get("symbols") or {}).items():
+        if not isinstance(snapshot, Mapping):
+            continue
+        company_id = company_by_symbol.get(str(symbol).upper())
+        if not company_id:
+            continue
+        price = positive(snapshot.get("previous_close"))
+        shares = positive(snapshot.get("shares_outstanding"))
+        revenue_ttm = positive(snapshot.get("revenue_ttm"))
+        forward_eps = positive(snapshot.get("forward_eps"))
+        analyst_target = positive(snapshot.get("analyst_target_mean"))
+        consensus_target_pe = analyst_target / forward_eps if analyst_target and forward_eps else None
+        observed = {
+            # The legacy module's Target P/E is Yahoo consensus target divided
+            # by forward EPS.  Falling back to trailing P/E preserves a market
+            # roll-forward when consensus is unavailable.
+            "target_forward_pe": consensus_target_pe or positive(snapshot.get("trailing_pe")),
+            "target_forward_ps": (price * shares / revenue_ttm) if price and shares and revenue_ttm else None,
+            "target_ev_ebitda": positive(snapshot.get("enterprise_to_ebitda")),
+            "target_forward_pb": positive(snapshot.get("price_to_book")),
+        }
+        bounded = {
+            key: float(value)
+            for key, value in observed.items()
+            if value is not None and roll_forward_bounds[key][0] <= float(value) <= roll_forward_bounds[key][1]
+        }
+        if not bounded:
+            continue
+        company = companies.setdefault(company_id, {
+            "company_id": company_id,
+            "policy_version": "yahoo-market-roll-forward.v031v.10",
+            "evidence_ids": [],
+            "assumptions": {},
+        })
+        company["assumptions"].update(bounded)
+        fetched_at = str(snapshot.get("fetched_at") or snapshot.get("last_refresh") or "undated")
+        company["evidence_ids"] = sorted(set(company.get("evidence_ids") or []) | {
+            f"yahoo-market-multiple:{str(symbol).upper()}:{key}:{fetched_at}"
+            for key in bounded
+        })
+        company["policy_version"] = "yahoo-consensus-and-market-roll-forward.v031v.10"
+        market_roll_forward_count += 1
     return {
         "schema_version": "valuation-multiple-policy.v031v.6",
         "version": "V031V.6",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "source": benchmark_path,
-        "policy": {"minimum_confidence": minimum_confidence, "primary": "historical_median", "fallback": "classified_sector_then_theme_then_market_peer_median_then_explicit_company_base", "analyst_target_as_multiple_source": "forbidden", "current_spot_multiple_as_target": "forbidden", "own_current_spot_multiple_as_target": "forbidden", "peer_current_multiple_policy": "exclude_subject_company_and_require_at_least_three_peers", "peg_policy": "independent_classified_peer_profile_median", "milestone_policy": "requires_separate_verified_event_evidence"},
+        "policy": {"minimum_confidence": minimum_confidence, "primary": "yahoo_consensus_pe_and_subject_market_multiple_roll_forward", "fallback": "historical_then_classified_peer_median", "analyst_target_as_multiple_source": "allowed_for_forward_pe_consensus_scenario_only", "current_spot_multiple_as_target": "allowed_for_explicit_market_roll_forward_models", "own_current_spot_multiple_as_target": "allowed_with_yahoo_observation_provenance", "peer_current_multiple_policy": "fallback_only_exclude_subject_company_and_require_at_least_three_peers", "peg_policy": "independent_classified_peer_profile_median", "milestone_policy": "requires_separate_verified_event_evidence"},
         "companies": sorted(companies.values(), key=lambda row: row["company_id"]),
-        "summary": {"company_count": len(companies), "assumption_count": sum(len(row["assumptions"]) for row in companies.values()), "rejected_count": len(rejected), "ai_peer_policy": peer_summary},
+        "summary": {"company_count": len(companies), "assumption_count": sum(len(row["assumptions"]) for row in companies.values()), "market_roll_forward_company_count": market_roll_forward_count, "rejected_count": len(rejected), "ai_peer_policy": peer_summary},
         "diagnostics": {"rejected": rejected},
     }
 
