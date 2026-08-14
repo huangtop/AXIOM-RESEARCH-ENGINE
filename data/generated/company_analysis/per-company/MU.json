@@ -2,7 +2,8 @@
   "schema_version": "axiom-company-analysis.v1",
   "generation_mode": "deterministic_evidence_template",
   "company_id": "company:US-CIK0000723125",
-  "ticker": "MU",
+  "symbol": "MU",
+  "exchange": "NASDAQ",
   "display_name": "Micron Technology, Inc.",
   "as_of": "2025-10-03",
   "classification": {
@@ -10,34 +11,8 @@
     "sector": "AI 記憶體",
     "supply_chain_role": "製造與量產"
   },
-  "summary": {
-    "text": "Micron Technology, Inc.是AI 記憶體相關企業，主要提供半導體產品。公司以製造與量產參與雲端與資料中心與汽車與車用電子市場。",
-    "evidence_ids": [
-      "business-evidence:SEC-0000723125-25-000028"
-    ],
-    "signal_ids": [
-      "end_market:automotive",
-      "end_market:data_center",
-      "product:semiconductor",
-      "supply_chain_role:manufacturer"
-    ],
-    "derivation": "deterministic_template"
-  },
-  "business_model": {
-    "description": {
-      "text": "公司以製造與量產為核心，提供半導體產品，服務雲端與資料中心與汽車與車用電子客戶。",
-      "evidence_ids": [
-        "business-evidence:SEC-0000723125-25-000028"
-      ],
-      "signal_ids": [
-        "end_market:automotive",
-        "end_market:data_center",
-        "product:semiconductor",
-        "supply_chain_role:manufacturer"
-      ],
-      "derivation": "deterministic_template"
-    },
-    "revenue_drivers": [
+  "sec_business": {
+    "products_and_capabilities": [
       {
         "text": "半導體產品",
         "evidence_ids": [
@@ -46,29 +21,47 @@
         "signal_ids": [
           "product:semiconductor"
         ],
-        "derivation": "signal_translation"
+        "derivation": "evidence_signal"
       }
-    ]
-  },
-  "offerings": [
-    {
-      "name": "半導體產品",
-      "kind": "product",
-      "description": {
-        "text": "SEC 業務文件將半導體產品識別為公司的產品或核心能力。",
+    ],
+    "supply_chain_roles": [
+      {
+        "text": "製造與量產",
         "evidence_ids": [
           "business-evidence:SEC-0000723125-25-000028"
         ],
         "signal_ids": [
-          "product:semiconductor"
+          "supply_chain_role:manufacturer"
         ],
         "derivation": "evidence_signal"
       }
-    }
-  ],
+    ],
+    "end_markets": [
+      {
+        "text": "雲端與資料中心",
+        "evidence_ids": [
+          "business-evidence:SEC-0000723125-25-000028"
+        ],
+        "signal_ids": [
+          "end_market:data_center"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "汽車與車用電子",
+        "evidence_ids": [
+          "business-evidence:SEC-0000723125-25-000028"
+        ],
+        "signal_ids": [
+          "end_market:automotive"
+        ],
+        "derivation": "evidence_signal"
+      }
+    ]
+  },
   "value_chain": {
     "upstream": [],
-    "core": [
+    "company_core": [
       {
         "text": "製造與量產",
         "evidence_ids": [
@@ -90,44 +83,36 @@
         "derivation": "evidence_signal"
       }
     ],
-    "downstream": [
+    "downstream_markets": [
       {
-        "label": "雲端與資料中心",
-        "relationship": "終端市場",
+        "text": "雲端與資料中心",
         "evidence_ids": [
           "business-evidence:SEC-0000723125-25-000028"
         ],
         "signal_ids": [
           "end_market:data_center"
-        ]
+        ],
+        "derivation": "evidence_signal"
       },
       {
-        "label": "汽車與車用電子",
-        "relationship": "終端市場",
+        "text": "汽車與車用電子",
         "evidence_ids": [
           "business-evidence:SEC-0000723125-25-000028"
         ],
         "signal_ids": [
           "end_market:automotive"
-        ]
+        ],
+        "derivation": "evidence_signal"
       }
     ]
   },
-  "competitive_context": [],
-  "watch_items": [],
   "evidence": [
     {
       "evidence_id": "business-evidence:SEC-0000723125-25-000028",
       "source_type": "sec_filing",
       "form": "10-K",
       "filing_date": "2025-10-03",
-      "section": "Item 1. Business",
-      "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm"
+      "section": "Item 1. Business"
     }
-  ],
-  "provenance_policy": {
-    "facts": "內容由 SEC business evidence 的產品、能力、角色與終端市場 signals 依固定模板產生。",
-    "named_relationships": "目前不從關鍵字自動建立具名客戶或供應商關係。",
-    "excluded": "technology signal 不得單獨成為公司主要產品或公司定位。"
-  }
+  ]
 }

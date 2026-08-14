@@ -16,12 +16,12 @@ from axiom_engine.company_signals import build_company_signals  # noqa: E402
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build deterministic SEC-backed company analyses.")
-    parser.add_argument("--ticker", action="append", default=[])
+    parser.add_argument("--symbol", action="append", default=[])
     parser.add_argument("--write", action="store_true")
     args = parser.parse_args()
     company_ids = None
-    if args.ticker:
-        wanted = {str(value).upper() for value in args.ticker}
+    if args.symbol:
+        wanted = {str(value).upper() for value in args.symbol}
         securities = json.loads((ROOT / "data/universe/securities.json").read_text())
         company_ids = {str(row["company_id"]) for row in securities if str(row.get("ticker") or "").upper() in wanted}
     signals = build_company_signals(ROOT, company_ids=company_ids)
