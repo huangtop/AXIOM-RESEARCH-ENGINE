@@ -11,28 +11,8 @@
     "sector": "AI 核心算力",
     "supply_chain_role": "待更多證據確認"
   },
-  "sec_business": {
-    "products_and_capabilities": [
-      {
-        "text": "GPU 與圖形處理器",
-        "evidence_ids": [
-          "business-evidence:SEC-0001045810-26-000021"
-        ],
-        "signal_ids": [
-          "product:graphics_processor"
-        ],
-        "derivation": "evidence_signal"
-      },
-      {
-        "text": "半導體產品",
-        "evidence_ids": [
-          "business-evidence:SEC-0001045810-26-000021"
-        ],
-        "signal_ids": [
-          "product:semiconductor"
-        ],
-        "derivation": "evidence_signal"
-      },
+  "business_model": {
+    "operating_capabilities": [
       {
         "text": "高速資料中心網路",
         "evidence_ids": [
@@ -40,47 +20,46 @@
         ],
         "signal_ids": [
           "capability:high_speed_data_center_networking"
-        ],
-        "derivation": "evidence_signal"
-      },
-      {
-        "text": "資料中心伺服器與機櫃系統",
-        "evidence_ids": [
-          "business-evidence:SEC-0001045810-26-000021"
-        ],
-        "signal_ids": [
-          "product:data_center_server"
-        ],
-        "derivation": "evidence_signal"
-      }
-    ],
-    "supply_chain_roles": [],
-    "end_markets": [
-      {
-        "text": "雲端與資料中心",
-        "evidence_ids": [
-          "business-evidence:SEC-0001045810-26-000021"
-        ],
-        "signal_ids": [
-          "end_market:data_center"
-        ],
-        "derivation": "evidence_signal"
-      },
-      {
-        "text": "汽車與車用電子",
-        "evidence_ids": [
-          "business-evidence:SEC-0001045810-26-000021"
-        ],
-        "signal_ids": [
-          "end_market:automotive"
         ],
         "derivation": "evidence_signal"
       }
     ]
   },
+  "offerings": [
+    {
+      "name": "GPU 與圖形處理器",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0001045810-26-000021"
+      ],
+      "signal_ids": [
+        "product:graphics_processor"
+      ]
+    },
+    {
+      "name": "半導體產品",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0001045810-26-000021"
+      ],
+      "signal_ids": [
+        "product:semiconductor"
+      ]
+    },
+    {
+      "name": "資料中心伺服器與機櫃系統",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0001045810-26-000021"
+      ],
+      "signal_ids": [
+        "product:data_center_server"
+      ]
+    }
+  ],
   "value_chain": {
     "upstream": [],
-    "company_core": [
+    "core": [
       {
         "text": "GPU 與圖形處理器",
         "evidence_ids": [
@@ -122,7 +101,8 @@
         "derivation": "evidence_signal"
       }
     ],
-    "downstream_markets": [
+    "infrastructure_delivery": [],
+    "downstream": [
       {
         "text": "雲端與資料中心",
         "evidence_ids": [
@@ -140,6 +120,56 @@
         ],
         "signal_ids": [
           "end_market:automotive"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "醫療健康",
+        "evidence_ids": [
+          "business-evidence:SEC-0001045810-26-000021"
+        ],
+        "signal_ids": [
+          "end_market:healthcare"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "航太與國防",
+        "evidence_ids": [
+          "business-evidence:SEC-0001045810-26-000021"
+        ],
+        "signal_ids": [
+          "end_market:aerospace_defense"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "雲端服務",
+        "evidence_ids": [
+          "business-evidence:SEC-0001045810-26-000021"
+        ],
+        "signal_ids": [
+          "end_market:cloud"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "通訊設備",
+        "evidence_ids": [
+          "business-evidence:SEC-0001045810-26-000021"
+        ],
+        "signal_ids": [
+          "end_market:communications"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "電信與通訊",
+        "evidence_ids": [
+          "business-evidence:SEC-0001045810-26-000021"
+        ],
+        "signal_ids": [
+          "end_market:telecommunications"
         ],
         "derivation": "evidence_signal"
       }

@@ -11,30 +11,8 @@
     "sector": "AI 伺服器",
     "supply_chain_role": "製造與量產與產品設計與平台開發"
   },
-  "sec_business": {
-    "products_and_capabilities": [
-      {
-        "text": "資料中心電源、散熱與液冷",
-        "evidence_ids": [
-          "business-evidence:SEC-0001375365-25-000027"
-        ],
-        "signal_ids": [
-          "infrastructure:data_center_power"
-        ],
-        "derivation": "evidence_signal"
-      },
-      {
-        "text": "資料中心伺服器與機櫃系統",
-        "evidence_ids": [
-          "business-evidence:SEC-0001375365-25-000027"
-        ],
-        "signal_ids": [
-          "product:data_center_server"
-        ],
-        "derivation": "evidence_signal"
-      }
-    ],
-    "supply_chain_roles": [
+  "business_model": {
+    "operating_capabilities": [
       {
         "text": "製造與量產",
         "evidence_ids": [
@@ -52,26 +30,36 @@
         ],
         "signal_ids": [
           "supply_chain_role:designer"
-        ],
-        "derivation": "evidence_signal"
-      }
-    ],
-    "end_markets": [
-      {
-        "text": "雲端與資料中心",
-        "evidence_ids": [
-          "business-evidence:SEC-0001375365-25-000027"
-        ],
-        "signal_ids": [
-          "end_market:data_center"
         ],
         "derivation": "evidence_signal"
       }
     ]
   },
+  "offerings": [
+    {
+      "name": "資料中心電源、散熱與液冷",
+      "kind": "infrastructure",
+      "evidence_ids": [
+        "business-evidence:SEC-0001375365-25-000027"
+      ],
+      "signal_ids": [
+        "infrastructure:data_center_power"
+      ]
+    },
+    {
+      "name": "資料中心伺服器與機櫃系統",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0001375365-25-000027"
+      ],
+      "signal_ids": [
+        "product:data_center_server"
+      ]
+    }
+  ],
   "value_chain": {
     "upstream": [],
-    "company_core": [
+    "core": [
       {
         "text": "製造與量產",
         "evidence_ids": [
@@ -113,7 +101,8 @@
         "derivation": "evidence_signal"
       }
     ],
-    "downstream_markets": [
+    "infrastructure_delivery": [],
+    "downstream": [
       {
         "text": "雲端與資料中心",
         "evidence_ids": [
@@ -121,6 +110,26 @@
         ],
         "signal_ids": [
           "end_market:data_center"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "雲端服務",
+        "evidence_ids": [
+          "business-evidence:SEC-0001375365-25-000027"
+        ],
+        "signal_ids": [
+          "end_market:cloud"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "通訊設備",
+        "evidence_ids": [
+          "business-evidence:SEC-0001375365-25-000027"
+        ],
+        "signal_ids": [
+          "end_market:communications"
         ],
         "derivation": "evidence_signal"
       }

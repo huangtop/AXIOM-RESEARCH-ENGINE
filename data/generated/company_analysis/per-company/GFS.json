@@ -11,20 +11,8 @@
     "sector": "半導體",
     "supply_chain_role": "製造與量產"
   },
-  "sec_business": {
-    "products_and_capabilities": [
-      {
-        "text": "半導體產品",
-        "evidence_ids": [
-          "business-evidence:SEC-0001709048-26-000022"
-        ],
-        "signal_ids": [
-          "product:semiconductor"
-        ],
-        "derivation": "evidence_signal"
-      }
-    ],
-    "supply_chain_roles": [
+  "business_model": {
+    "operating_capabilities": [
       {
         "text": "製造與量產",
         "evidence_ids": [
@@ -32,46 +20,26 @@
         ],
         "signal_ids": [
           "supply_chain_role:manufacturer"
-        ],
-        "derivation": "evidence_signal"
-      }
-    ],
-    "end_markets": [
-      {
-        "text": "汽車與車用電子",
-        "evidence_ids": [
-          "business-evidence:SEC-0001709048-26-000022"
-        ],
-        "signal_ids": [
-          "end_market:automotive"
-        ],
-        "derivation": "evidence_signal"
-      },
-      {
-        "text": "雲端與資料中心",
-        "evidence_ids": [
-          "business-evidence:SEC-0001709048-26-000022"
-        ],
-        "signal_ids": [
-          "end_market:data_center"
-        ],
-        "derivation": "evidence_signal"
-      },
-      {
-        "text": "航太與國防",
-        "evidence_ids": [
-          "business-evidence:SEC-0001709048-26-000022"
-        ],
-        "signal_ids": [
-          "end_market:aerospace_defense"
         ],
         "derivation": "evidence_signal"
       }
     ]
   },
+  "offerings": [
+    {
+      "name": "半導體產品",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0001709048-26-000022"
+      ],
+      "signal_ids": [
+        "product:semiconductor"
+      ]
+    }
+  ],
   "value_chain": {
     "upstream": [],
-    "company_core": [
+    "core": [
       {
         "text": "製造與量產",
         "evidence_ids": [
@@ -93,7 +61,18 @@
         "derivation": "evidence_signal"
       }
     ],
-    "downstream_markets": [
+    "infrastructure_delivery": [],
+    "downstream": [
+      {
+        "text": "通訊設備",
+        "evidence_ids": [
+          "business-evidence:SEC-0001709048-26-000022"
+        ],
+        "signal_ids": [
+          "end_market:communications"
+        ],
+        "derivation": "evidence_signal"
+      },
       {
         "text": "汽車與車用電子",
         "evidence_ids": [
@@ -111,6 +90,16 @@
         ],
         "signal_ids": [
           "end_market:data_center"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "工業應用",
+        "evidence_ids": [
+          "business-evidence:SEC-0001709048-26-000022"
+        ],
+        "signal_ids": [
+          "end_market:industrial"
         ],
         "derivation": "evidence_signal"
       },

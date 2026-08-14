@@ -100,6 +100,7 @@ def build_company_analyses(
             overview_by_company[str(overview["company_id"])] = overview
 
     labels = policy["display_names_zh_tw"]
+    kinds = policy["kind_by_dimension"]
     records = []
     for company_id, source in sorted(signal_by_company.items()):
         if company_id not in scoped_company_ids:
@@ -172,9 +173,14 @@ def build_company_analyses(
             ],
             key=lambda row: (-int(row.get("occurrence_count") or 0), str(row["signal_id"])),
         )[:2]
+        upstream_inputs = sorted(
+            [signal for signal in signals if signal.get("dimension") == "upstream_input"],
+            key=lambda row: (-int(row.get("occurrence_count") or 0), str(row["signal_id"])),
+        )[: int(policy["maximum_offerings"])]
         offering_names = [labels.get(str(row["signal_id"]), str(row.get("canonical_name") or "")) for row in offering_signals]
         market_names = [labels.get(str(row["signal_id"]), str(row.get("canonical_name") or "")) for row in end_markets]
         role_names = [labels.get(str(row["signal_id"]), str(row.get("canonical_name") or "")) for row in roles]
+        upstream_names = [labels.get(str(row["signal_id"]), str(row.get("canonical_name") or "")) for row in upstream_inputs]
         display_name = str((companies.get(company_id) or {}).get("display_name") or (companies.get(company_id) or {}).get("legal_name") or symbol)
         display_name = re.sub(
             r"\s+(?:Common Stock|- Ordinary Shares?)$", "", display_name, flags=re.IGNORECASE
@@ -182,7 +188,7 @@ def build_company_analyses(
         sector = ((overview.get("path") or {}).get("sector") or {}).get("display_name_zh_tw") or "未分類產業"
         theme = ((overview.get("path") or {}).get("theme") or {}).get("display_name_zh_tw") or "未分類主題"
 
-        used_signals = list({str(row["signal_id"]): row for row in [*offering_signals, *end_markets, *roles]}.values())
+        used_signals = list({str(row["signal_id"]): row for row in [*offering_signals, *end_markets, *roles, *upstream_inputs]}.values())
         evidence_ids = _source_ids(used_signals)
         # A lock alone is not evidence confirmation.  The reviewed
         # classification and generated prose must share a source filing.
@@ -212,27 +218,43 @@ def build_company_analyses(
                 "sector": sector,
                 "supply_chain_role": _join_zh(role_names) or "待更多證據確認",
             },
-            "sec_business": {
-                "products_and_capabilities": [
+            "business_model": {
+                "operating_capabilities": [
                     _claim(name, [signal], "evidence_signal")
-                    for name, signal in zip(offering_names, offering_signals)
-                ],
-                "supply_chain_roles": [
-                    _claim(name, [signal], "evidence_signal")
-                    for name, signal in zip(role_names, roles)
-                ],
-                "end_markets": [
-                    _claim(name, [signal], "evidence_signal")
-                    for name, signal in zip(market_names, end_markets)
+                    for name, signal in zip(
+                        [*role_names, *[name for name, signal in zip(offering_names, offering_signals) if signal.get("dimension") == "capability"]],
+                        [*roles, *[signal for signal in offering_signals if signal.get("dimension") == "capability"]],
+                    )
                 ],
             },
+            "offerings": [
+                {
+                    "name": name,
+                    "kind": kinds.get(str(signal.get("dimension")), "offering"),
+                    "evidence_ids": _source_ids([signal]),
+                    "signal_ids": [str(signal["signal_id"])],
+                }
+                for name, signal in zip(offering_names, offering_signals)
+                if signal.get("dimension") != "capability"
+            ],
             "value_chain": {
-                "upstream": [],
-                "company_core": [
+                "upstream": [
                     _claim(name, [signal], "evidence_signal")
-                    for name, signal in zip([*role_names, *offering_names], [*roles, *offering_signals])
+                    for name, signal in zip(upstream_names, upstream_inputs)
                 ],
-                "downstream_markets": [
+                "core": [
+                    _claim(name, [signal], "evidence_signal")
+                    for name, signal in zip(
+                        [*role_names, *[name for name, signal in zip(offering_names, offering_signals) if signal.get("value_chain_stage") != "infrastructure_delivery"]],
+                        [*roles, *[signal for signal in offering_signals if signal.get("value_chain_stage") != "infrastructure_delivery"]],
+                    )
+                ],
+                "infrastructure_delivery": [
+                    _claim(name, [signal], "evidence_signal")
+                    for name, signal in zip(offering_names, offering_signals)
+                    if signal.get("value_chain_stage") == "infrastructure_delivery"
+                ],
+                "downstream": [
                     _claim(name, [signal], "evidence_signal")
                     for name, signal in zip(market_names, end_markets)
                 ],

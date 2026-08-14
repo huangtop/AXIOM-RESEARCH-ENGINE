@@ -22,7 +22,11 @@ def _load(path: Path) -> Any:
 
 
 def _pattern(alias: str) -> re.Pattern[str]:
-    escaped = re.escape(alias.strip()).replace(r"\ ", r"[\s\-/]+")
+    escaped = (
+        re.escape(alias.strip())
+        .replace(r"\-", r"[\-\u2010-\u2015]")
+        .replace(r"\ ", r"[\s\-/\u2010-\u2015]+")
+    )
     return re.compile(rf"(?<![A-Za-z0-9]){escaped}(?![A-Za-z0-9])", re.IGNORECASE)
 
 
@@ -57,7 +61,7 @@ def _is_company_offering(
     named_company_offering = any(
         name.lower() in prefix
         and re.search(
-            r"\b(?:is|are|designs?|develops?|manufactures?|markets?|sells?|offers?|provides?|supplies?|produces?)\b",
+            r"\b(?:is|are|designs?|develops?|manufactures?|markets?|sells?|offers?|provides?|supplies?|produces?|delivers?|delivering)\b",
             prefix[prefix.rfind(name.lower()) + len(name):],
         )
         for name in company_names
@@ -66,11 +70,16 @@ def _is_company_offering(
     return named_company_offering or bool(
         re.search(
             r"(?:\bwe\b|\bour company\b|\bthe company\b|\bbusiness\b).{0,100}"
-            r"(?:design|develop|manufactur|market|sell|offer|provide|supply|produce)",
+            r"(?:design|develop|manufactur|market|sell|offer|provide|supply|produce|deliver)",
             prefix,
         )
         or re.search(r"(?:supplier|provider|manufacturer|developer|operator) of", prefix)
         or re.search(r"(?:portfolio|suite|range|family) of", prefix)
+        or re.search(
+            r"\bour .{0,100}(?:portfolio|suite|services|capabilities|products|solutions)\b",
+            prefix,
+        )
+        or re.search(r"\bportfolio\s*,?\s*(?:including|includes?)\b", prefix)
         or re.search(r"\bwe are (?:an?|the)\b", prefix)
         or re.search(r"\bwe(?:['’]ve| have) grown into (?:an?|the)\b", prefix)
         or re.search(
@@ -223,6 +232,7 @@ def build_company_signals(
             extracted.append({
                 "signal_id": rule["signal_id"],
                 "dimension": rule["dimension"],
+                "value_chain_stage": rule.get("value_chain_stage"),
                 "canonical_name": rule["canonical_name"],
                 "confidence": confidence,
                 "occurrence_count": count,
