@@ -35,6 +35,8 @@ jobs:
           tests/test_workflow_frequency_contracts.py
           tests/test_coverage_policy_v031f1.py
           tests/test_publication_gate_v031f2.py
+          tests/test_company_overview_population_v031c6.py
+          tests/test_reviewed_classification_rules.py
           tests/test_full_market_coverage_v031.py::test_ai_research_companies_have_a_calculated_valuation_model
       - name: Capture valuation baseline
         run: cp data/generated/full_market_coverage/full_market_coverage.json /tmp/axiom-valuation-before.json

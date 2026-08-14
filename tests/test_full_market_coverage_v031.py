@@ -126,27 +126,18 @@ def test_valuation_uses_independent_model_families_and_reports_disagreement():
     payload = report()
     googl = next(card for card in payload["cards"] if card["primary_security"]["ticker"] == "GOOGL")
     valuation = googl["valuation"]
-    assert valuation["aggregation_version"] == "archetype-primary-model-family.v031v.7"
-    assert valuation["aggregation"]["confidence"] in {"low", "medium", "high"}
-    assert valuation["aggregation"]["archetype"] == "general_operating_company"
-    assert "DEFAULT_OPERATING_COMPANY_PROFILE" in valuation["aggregation"]["archetype_reason_codes"]
-    assert valuation["aggregation"]["range_low"] <= valuation["fair_value"] <= valuation["aggregation"]["range_high"]
-    earnings = valuation["aggregation"]["families"]["forward_earnings"]
-    dcf = valuation["aggregation"]["families"]["intrinsic_cash_flow"]
-    assert earnings["model_names"] == ["forward_pe"]
+    assert valuation["aggregation_version"] == "independent-model-family.v031v.8"
+    # GOOGL currently has only subject-market-anchored multiple scenarios and
+    # no independent PEG/milestone result.  Showing the scenarios is useful,
+    # but they must not manufacture an AXIOM center or reasonable range.
+    assert valuation["aggregation"] is None
+    assert valuation["fair_value"] is None
     assert valuation["models"]["peg"]["status"] == "unavailable"
-    assert valuation["aggregation"]["method"] == "confidence-weighted-family-winsorized-center"
-    assert valuation["aggregation"]["primary_family"] is None
-    assert Decimal(valuation["fair_value"]) == Decimal(valuation["aggregation"]["weighted_cross_check_center"])
-    assert "intrinsic_cash_flow" not in valuation["aggregation"]["cross_check_families"]
-    assert Decimal(dcf["weight"]) == 0
-    assert dcf["included_in_aggregation"] is False
-    assert dcf["exclusion_reason_code"] == "ARCHETYPE_MODEL_FAMILY_EXCLUDED"
-    earnings_weight = sum(
-        Decimal(valuation["model_diagnostics"][name]["effective_weight"])
-        for name in earnings["model_names"]
-    )
-    assert earnings_weight == Decimal(earnings["weight"])
+    for name in ("forward_pe", "forward_ps", "ev_ebitda", "forward_pb"):
+        diagnostic = valuation["model_diagnostics"].get(name)
+        if diagnostic:
+            assert diagnostic["aggregation_role"] == "market_anchored"
+            assert diagnostic["included_in_independent_aggregation"] is False
 
 
 def test_dcf_is_globally_diagnostic_only_and_does_not_reduce_nvda_confidence():
@@ -193,7 +184,10 @@ def test_provider_fallbacks_are_labeled_without_analyst_target_derivation():
     arbb = next(card for card in payload["cards"] if card["primary_security"]["ticker"] == "ARBB")
     assert lite["status"] == "ready"
     assert lite["valuation"]["models"]["forward_ps"]["status"] == "calculated"
-    assert "analyst_target" not in json.dumps(lite["valuation"])
+    assert "analyst_target" not in json.dumps(lite["valuation"]["models"])
+    consensus = lite["valuation"]["reference_values"]["analyst_consensus_target"]
+    assert consensus["aggregation_role"] == "external_reference"
+    assert consensus["included_in_independent_aggregation"] is False
     assert arbb["financials"]["diluted_shares_outstanding"]["provenance"] == "yahoo_company_snapshot_fallback"
     assert arbb["estimates"]["forward_revenue"]["is_proxy"] is True
     assert arbb["valuation"]["models"]["forward_ps"]["status"] == "calculated"

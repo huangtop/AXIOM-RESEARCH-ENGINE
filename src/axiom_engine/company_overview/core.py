@@ -45,6 +45,16 @@ def _primary_business_score(item: Mapping[str, Any]) -> int:
     return 0
 
 
+def _business_signal_kind_rank(item: Mapping[str, Any]) -> int:
+    """Prefer a sold product over an enabling capability or mentioned use."""
+    source_ids = {str(value) for value in item.get("source_signal_ids") or []}
+    if any(value.startswith("product:") for value in source_ids):
+        return 2
+    if any(value.startswith(("capability:", "infrastructure:")) for value in source_ids):
+        return 1
+    return 0
+
+
 def _load(path: Path) -> Any:
     try:
         return json.loads(path.read_text(encoding="utf-8"))
@@ -177,7 +187,9 @@ def build_company_overviews(
             theme, sector = max(
                 compatible_pairs,
                 key=lambda pair: (
+                    _primary_business_score(pair[0]),
                     _primary_business_score(pair[1]),
+                    _business_signal_kind_rank(pair[1]),
                     float(pair[0].get("confidence") or 0)
                     + float(pair[1].get("confidence") or 0),
                     float(pair[1].get("confidence") or 0),
@@ -303,6 +315,9 @@ def build_company_overviews(
         "summary": {
             "company_count": len(records),
             "classified_count": sum(r["status"] == "classified" for r in records),
+            "evidence_available_unclassified_count": sum(
+                r["status"] == "evidence_available_unclassified" for r in records
+            ),
             "awaiting_evidence_count": sum(
                 r["status"] == "awaiting_business_evidence" for r in records
             ),

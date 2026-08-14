@@ -45,12 +45,18 @@ def test_market_multiples_drive_roll_forward_without_using_analyst_target_for_pe
     report = build_multiple_policy(tmp_path)
     company = report["companies"][0]
     assert company["assumptions"] == {
-        "target_forward_pe": 20.0,
+        "target_forward_pe": 25.0,
         "target_forward_ps": 1.25,
         "target_ev_ebitda": 14.0,
         "target_forward_pb": 5.0,
     }
     assert "target_peg" not in company["assumptions"]
-    assert company["policy_version"] == "yahoo-consensus-and-market-roll-forward.v031v.10"
-    assert report["policy"]["analyst_target_as_multiple_source"] == "allowed_for_forward_pe_consensus_scenario_only"
+    assert company["policy_version"] == "yahoo-market-roll-forward-no-analyst-target.v031v.11"
+    assert company["assumption_roles"] == {
+        "target_forward_pe": "market_anchored",
+        "target_forward_ps": "market_anchored",
+        "target_ev_ebitda": "market_anchored",
+        "target_forward_pb": "market_anchored",
+    }
+    assert report["policy"]["analyst_target_as_multiple_source"] == "forbidden"
     assert report["policy"]["peg_policy"] == "independent_classified_peer_profile_median"
