@@ -1,7 +1,7 @@
 {
   "schema_version": "classification-quality-audit.v031c.5",
   "version": "V031C.5",
-  "generated_at": "2026-08-13T12:31:33.948723+00:00",
+  "generated_at": "2026-08-13T23:51:38.089831+00:00",
   "summary": {
     "company_count": 6464,
     "business_evidence_company_count": 2204,
@@ -12,9 +12,9 @@
       "priority_candidate": 791
     },
     "knowledge_status_counts": {
-      "business_evidence_unavailable": 1774,
-      "knowledge_available": 906,
-      "no_signals_detected": 127,
+      "business_evidence_unavailable": 1775,
+      "knowledge_available": 904,
+      "no_signals_detected": 128,
       "research_irrelevant": 3334,
       "signals_only": 323
     },
@@ -26,11 +26,11 @@
     },
     "flag_counts": {
       "INSUFFICIENT_DIMENSION_BREADTH": 122,
-      "LOW_CONFIDENCE_CLASSIFICATION": 501,
-      "NO_SIGNALS": 1902,
-      "OVERBROAD_AI_CLASSIFICATION": 373,
+      "LOW_CONFIDENCE_CLASSIFICATION": 499,
+      "NO_SIGNALS": 1903,
+      "OVERBROAD_AI_CLASSIFICATION": 371,
       "SIGNALS_WITHOUT_UPPER_CLASSIFICATION": 323,
-      "SINGLE_EVIDENCE_CLASSIFICATION": 906,
+      "SINGLE_EVIDENCE_CLASSIFICATION": 904,
       "THEME_SECTOR_CONFLICT": 13
     },
     "dimension_company_counts": {
@@ -39,16 +39,16 @@
       "end_market": 968,
       "infrastructure": 179,
       "product": 351,
-      "sector": 570,
+      "sector": 569,
       "supply_chain_role": 1165,
-      "technology": 1021,
-      "theme": 844
+      "technology": 1020,
+      "theme": 842
     },
     "dimension_breadth_company_counts": {
-      "0": 4695,
+      "0": 4696,
       "1": 533,
-      "2": 396,
-      "3": 212,
+      "2": 397,
+      "3": 210,
       "4": 204,
       "5": 134,
       "6": 148,
@@ -17471,27 +17471,8 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "LOW_CONFIDENCE_CLASSIFICATION",
-          "details": {
-            "knowledge_ids": [
-              "sector:digital_asset_infrastructure",
-              "theme:digital_assets"
-            ]
-          }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
+          "code": "NO_SIGNALS",
           "details": {}
-        },
-        {
-          "code": "SINGLE_EVIDENCE_CLASSIFICATION",
-          "details": {
-            "knowledge_ids": [
-              "sector:digital_asset_infrastructure",
-              "theme:artificial_intelligence",
-              "theme:digital_assets"
-            ]
-          }
         }
       ]
     },
@@ -29344,33 +29325,6 @@
         {
           "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
-        }
-      ]
-    },
-    {
-      "company_id": "company:US-CIK0001742518",
-      "gate_status": "deprioritized_non_research",
-      "research_universe_status": "not_eligible",
-      "flags": [
-        {
-          "code": "LOW_CONFIDENCE_CLASSIFICATION",
-          "details": {
-            "knowledge_ids": [
-              "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
-          "code": "SINGLE_EVIDENCE_CLASSIFICATION",
-          "details": {
-            "knowledge_ids": [
-              "theme:artificial_intelligence"
-            ]
-          }
         }
       ]
     },

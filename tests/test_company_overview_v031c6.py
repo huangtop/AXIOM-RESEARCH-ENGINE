@@ -139,6 +139,19 @@ def test_overview_can_limit_output_to_core_companies(tmp_path: Path):
     assert report["summary"]["company_count"] == 1
 
 
+def test_writer_removes_stale_company_overviews(tmp_path: Path):
+    _fixture(tmp_path)
+    output = tmp_path / "data/generated/company_overview"
+    stale = output / "per-company/STALE.json"
+    _w(tmp_path, "data/generated/company_overview/per-company/STALE.json", {"ticker": "STALE"})
+
+    report = build_company_overviews(tmp_path)
+    write_company_overviews(report, output)
+
+    assert not stale.exists()
+    assert (output / "per-company/GOOGL.json").is_file()
+
+
 def test_curated_core_override_is_published_without_rerunning_evidence(tmp_path: Path):
     _fixture(tmp_path)
     policy_path = tmp_path / "config/company_overview.v031c.6.json"

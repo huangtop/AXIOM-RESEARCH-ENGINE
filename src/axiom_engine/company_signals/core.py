@@ -53,6 +53,16 @@ def _validate_policy(policy: Mapping[str, Any]) -> list[Mapping[str, Any]]:
             raise CompanySignalsError(f"invalid or duplicate signal rule: {signal_id}")
         if forbidden_membership_keys.intersection(signal):
             raise CompanySignalsError(f"ticker/company membership is forbidden in signal rules: {signal_id}")
+        excluded_context_patterns = signal.get("excluded_context_patterns", [])
+        if not isinstance(excluded_context_patterns, list) or not all(
+            isinstance(pattern, str) and pattern.strip() for pattern in excluded_context_patterns
+        ):
+            raise CompanySignalsError(f"invalid excluded context patterns: {signal_id}")
+        try:
+            for pattern in excluded_context_patterns:
+                re.compile(pattern, re.IGNORECASE)
+        except re.error as exc:
+            raise CompanySignalsError(f"invalid excluded context pattern for {signal_id}: {exc}") from exc
         ids.add(signal_id)
     return signals
 
@@ -84,7 +94,11 @@ def build_company_signals(
     maximum_context = int(policy["matching"]["maximum_context_characters"])
     minimum_occurrences = int(policy["matching"]["minimum_occurrences"])
     compiled_rules = [
-        (rule, [(str(alias), _pattern(str(alias))) for alias in rule["aliases"]])
+        (
+            rule,
+            [(str(alias), _pattern(str(alias))) for alias in rule["aliases"]],
+            [re.compile(str(pattern), re.IGNORECASE) for pattern in rule.get("excluded_context_patterns", [])],
+        )
         for rule in rules
     ]
     records: list[dict[str, Any]] = []
@@ -99,7 +113,7 @@ def build_company_signals(
             reverse=True,
         )
         extracted: list[dict[str, Any]] = []
-        for rule, compiled_aliases in compiled_rules:
+        for rule, compiled_aliases, excluded_context_patterns in compiled_rules:
             occurrences: list[dict[str, Any]] = []
             aliases_hit: set[str] = set()
             source_ids: set[str] = set()
@@ -108,6 +122,9 @@ def build_company_signals(
                 text = str(source["text"])
                 for alias, pattern in compiled_aliases:
                     for match in pattern.finditer(text):
+                        match_context = str(_context(text, match.start(), match.end(), maximum_context)["context"])
+                        if any(pattern.search(match_context) for pattern in excluded_context_patterns):
+                            continue
                         count += 1
                         aliases_hit.add(alias)
                         source_ids.add(str(source["business_evidence_id"]))
