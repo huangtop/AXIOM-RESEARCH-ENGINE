@@ -76,12 +76,17 @@ def build_company_analyses(
 
     companies = {str(row["company_id"]): row for row in _load(root / "data/universe/companies.json")}
     securities = _load(root / "data/universe/securities.json")
-    ticker_by_company: dict[str, str] = {}
+    security_by_company: dict[str, dict[str, str]] = {}
     for row in securities:
         company_id = str(row.get("company_id") or "")
-        ticker = str(row.get("ticker") or "").upper()
-        if company_id and ticker and (row.get("primary_listing") is True or company_id not in ticker_by_company):
-            ticker_by_company[company_id] = ticker
+        symbol = str(row.get("ticker") or "").upper()
+        if company_id and symbol and (
+            row.get("primary_listing") is True or company_id not in security_by_company
+        ):
+            security_by_company[company_id] = {
+                "symbol": symbol,
+                "exchange": str(row.get("exchange") or "").upper(),
+            }
 
     signals_report = signals_payload or _load(root / "data/generated/company_signals/company_signals.json")
     signal_by_company = {str(row["company_id"]): row for row in signals_report.get("records") or []}
@@ -95,7 +100,6 @@ def build_company_analyses(
             overview_by_company[str(overview["company_id"])] = overview
 
     labels = policy["display_names_zh_tw"]
-    kinds = policy["kind_by_dimension"]
     records = []
     for company_id, source in sorted(signal_by_company.items()):
         if company_id not in scoped_company_ids:
@@ -103,8 +107,9 @@ def build_company_analyses(
         if company_ids is not None and company_id not in company_ids:
             continue
         overview = overview_by_company.get(company_id)
-        ticker = ticker_by_company.get(company_id)
-        if not overview or not ticker or source.get("status") != "signals_available":
+        security = security_by_company.get(company_id) or {}
+        symbol = security.get("symbol")
+        if not overview or not symbol or source.get("status") != "signals_available":
             continue
         lock = overview.get("classification_lock") or {}
         if policy["scope"].get("require_classification_lock") and (
@@ -170,22 +175,12 @@ def build_company_analyses(
         offering_names = [labels.get(str(row["signal_id"]), str(row.get("canonical_name") or "")) for row in offering_signals]
         market_names = [labels.get(str(row["signal_id"]), str(row.get("canonical_name") or "")) for row in end_markets]
         role_names = [labels.get(str(row["signal_id"]), str(row.get("canonical_name") or "")) for row in roles]
-        display_name = str((companies.get(company_id) or {}).get("display_name") or (companies.get(company_id) or {}).get("legal_name") or ticker)
+        display_name = str((companies.get(company_id) or {}).get("display_name") or (companies.get(company_id) or {}).get("legal_name") or symbol)
         display_name = re.sub(
             r"\s+(?:Common Stock|- Ordinary Shares?)$", "", display_name, flags=re.IGNORECASE
         ).strip()
         sector = ((overview.get("path") or {}).get("sector") or {}).get("display_name_zh_tw") or "未分類產業"
         theme = ((overview.get("path") or {}).get("theme") or {}).get("display_name_zh_tw") or "未分類主題"
-
-        summary_text = f"{display_name}是{sector}相關企業，主要提供{_join_zh(offering_names)}。"
-        if role_names and market_names:
-            summary_text += f"公司以{_join_zh(role_names)}參與{_join_zh(market_names)}市場。"
-        elif market_names:
-            summary_text += f"主要服務{_join_zh(market_names)}市場。"
-        elif role_names:
-            summary_text += f"公司在產業鏈中主要負責{_join_zh(role_names)}。"
-        business_text = f"公司以{_join_zh(role_names) or '產品與服務交付'}為核心，提供{_join_zh(offering_names)}"
-        business_text += f"，服務{_join_zh(market_names)}客戶。" if market_names else "。"
 
         used_signals = list({str(row["signal_id"]): row for row in [*offering_signals, *end_markets, *roles]}.values())
         evidence_ids = _source_ids(used_signals)
@@ -202,14 +197,14 @@ def build_company_analyses(
                 "form": row.get("form"),
                 "filing_date": row.get("filing_date"),
                 "section": "Item 1. Business" if str(row.get("form") or "").startswith("10-K") else "Item 4. Information on the Company",
-                "url": row.get("document_url"),
             })
         latest_date = max((str(row.get("filing_date") or "") for row in evidence_rows), default="")
         records.append({
             "schema_version": "axiom-company-analysis.v1",
             "generation_mode": "deterministic_evidence_template",
             "company_id": company_id,
-            "ticker": ticker,
+            "symbol": symbol,
+            "exchange": security.get("exchange"),
             "display_name": display_name,
             "as_of": latest_date,
             "classification": {
@@ -217,39 +212,32 @@ def build_company_analyses(
                 "sector": sector,
                 "supply_chain_role": _join_zh(role_names) or "待更多證據確認",
             },
-            "summary": _claim(summary_text, [*offering_signals, *end_markets, *roles], "deterministic_template"),
-            "business_model": {
-                "description": _claim(business_text, [*offering_signals, *end_markets, *roles], "deterministic_template"),
-                "revenue_drivers": [_claim(name, [signal], "signal_translation") for name, signal in zip(offering_names, offering_signals)],
-            },
-            "offerings": [
-                {
-                    "name": name,
-                    "kind": kinds.get(str(signal.get("dimension")), "offering"),
-                    "description": _claim(
-                        f"SEC 業務文件將{name}識別為公司的產品或核心能力。",
-                        [signal],
-                        "evidence_signal",
-                    ),
-                }
-                for name, signal in zip(offering_names, offering_signals)
-            ],
-            "value_chain": {
-                "upstream": [],
-                "core": [_claim(name, [signal], "evidence_signal") for name, signal in zip([*role_names, *offering_names], [*roles, *offering_signals])],
-                "downstream": [
-                    {"label": name, "relationship": "終端市場", "evidence_ids": _source_ids([signal]), "signal_ids": [signal["signal_id"]]}
+            "sec_business": {
+                "products_and_capabilities": [
+                    _claim(name, [signal], "evidence_signal")
+                    for name, signal in zip(offering_names, offering_signals)
+                ],
+                "supply_chain_roles": [
+                    _claim(name, [signal], "evidence_signal")
+                    for name, signal in zip(role_names, roles)
+                ],
+                "end_markets": [
+                    _claim(name, [signal], "evidence_signal")
                     for name, signal in zip(market_names, end_markets)
                 ],
             },
-            "competitive_context": [],
-            "watch_items": [],
-            "evidence": evidence_rows,
-            "provenance_policy": {
-                "facts": "內容由 SEC business evidence 的產品、能力、角色與終端市場 signals 依固定模板產生。",
-                "named_relationships": "目前不從關鍵字自動建立具名客戶或供應商關係。",
-                "excluded": "technology signal 不得單獨成為公司主要產品或公司定位。",
+            "value_chain": {
+                "upstream": [],
+                "company_core": [
+                    _claim(name, [signal], "evidence_signal")
+                    for name, signal in zip([*role_names, *offering_names], [*roles, *offering_signals])
+                ],
+                "downstream_markets": [
+                    _claim(name, [signal], "evidence_signal")
+                    for name, signal in zip(market_names, end_markets)
+                ],
             },
+            "evidence": evidence_rows,
         })
     return {
         "schema_version": "axiom-company-analysis-index.v1",
@@ -272,12 +260,12 @@ def build_company_analyses(
 def write_company_analyses(report: Mapping[str, Any], output: Path) -> None:
     files = {}
     for row in report.get("records") or []:
-        filename = f"{row['ticker']}.json"
-        files[str(row["ticker"])] = filename
+        filename = f"{row['symbol']}.json"
+        files[str(row["symbol"])] = filename
         _write(output / "per-company" / filename, row)
     _write(output / "index.json", {
         "schema_version": report["schema_version"],
         "generated_at": report["generated_at"],
         "summary": report["summary"],
-        "ticker_to_file": files,
+        "symbol_to_file": files,
     })
