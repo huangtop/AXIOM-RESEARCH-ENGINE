@@ -52,6 +52,14 @@ def _resume_company_ids(root: Path, output_dir: Path, priority_symbols: Path | N
             str(row.get("company_id")) for row in securities
             if str(row.get("ticker") or "").upper() in symbols
         }
+        # Priority coverage is a hard inclusion set, not merely a sort hint.
+        # Previously a company first had to pass the relevance gate, so missing
+        # evidence could prevent it from ever entering the evidence worklist.
+        candidate_ids = {str(row.get("company_id") or "") for row in candidates}
+        candidates.extend(
+            {"company_id": company_id, "status": "evidence_required"}
+            for company_id in sorted(priority_ids - covered - candidate_ids)
+        )
     candidates.sort(
         key=lambda row: (
             0 if str(row.get("company_id") or "") in priority_ids else 1,

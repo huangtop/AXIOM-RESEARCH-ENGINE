@@ -148,6 +148,28 @@ def test_resume_prioritizes_event_triggered_company_without_hardcoded_ticker(tmp
     assert _resume_company_ids(tmp_path, Path("data/generated/canonical_business_evidence"))[0] == "company:event"
 
 
+def test_resume_hard_includes_uncovered_priority_symbol_outside_relevance_candidates(tmp_path):
+    output = tmp_path / "data/generated/canonical_business_evidence"
+    output.mkdir(parents=True)
+    (output / "business_evidence.json").write_text("[]", encoding="utf-8")
+    relevance = tmp_path / "data/generated/research_relevance_gate/research_relevance_gate.json"
+    relevance.parent.mkdir(parents=True)
+    relevance.write_text(json.dumps({"records": [
+        {"company_id": "company:priority", "status": "deprioritized_non_research"}
+    ]}), encoding="utf-8")
+    universe = tmp_path / "data/universe"
+    universe.mkdir(parents=True)
+    (universe / "securities.json").write_text(json.dumps([
+        {"ticker": "AAA", "company_id": "company:priority"}
+    ]), encoding="utf-8")
+    priority = tmp_path / "priority.json"
+    priority.write_text(json.dumps({"symbols": ["AAA"]}), encoding="utf-8")
+
+    assert _resume_company_ids(
+        tmp_path, Path("data/generated/canonical_business_evidence"), priority
+    ) == ["company:priority"]
+
+
 def test_live_fetcher_can_populate_cache_incrementally(tmp_path):
     _manifest(tmp_path)
     calls = []
