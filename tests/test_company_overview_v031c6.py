@@ -209,6 +209,64 @@ def test_curated_core_override_is_published_without_rerunning_evidence(tmp_path:
     assert row["evidence"] == []
 
 
+def test_published_classification_is_locked_against_new_inference(tmp_path: Path):
+    _fixture(tmp_path)
+    first = build_company_overviews(tmp_path)
+    write_company_overviews(first, tmp_path / "data/generated/company_overview")
+
+    knowledge_path = tmp_path / "data/generated/knowledge_inference/knowledge_inference.json"
+    knowledge = json.loads(knowledge_path.read_text())
+    knowledge["records"][0]["knowledge"] = [
+        {
+            "knowledge_id": "theme:space_economy",
+            "dimension": "theme",
+            "canonical_name": "Space Economy",
+            "confidence": 1.0,
+            "source_business_evidence_ids": ["e1"],
+        },
+        {
+            "knowledge_id": "sector:space_systems",
+            "dimension": "sector",
+            "canonical_name": "Space Systems",
+            "confidence": 1.0,
+            "source_business_evidence_ids": ["e1"],
+        },
+    ]
+    knowledge_path.write_text(json.dumps(knowledge))
+
+    row = build_company_overviews(tmp_path)["records"][0]
+
+    assert row["path"]["theme"]["id"] == "theme:ai_infrastructure"
+    assert row["path"]["sector"]["id"] == "sector:cloud_infrastructure"
+    assert row["classification_lock"] == {
+        "status": "locked",
+        "update_mode": "manual_override_only",
+    }
+
+
+def test_manual_override_can_replace_locked_classification(tmp_path: Path):
+    _fixture(tmp_path)
+    first = build_company_overviews(tmp_path)
+    write_company_overviews(first, tmp_path / "data/generated/company_overview")
+    policy_path = tmp_path / "config/company_overview.v031c.6.json"
+    policy = json.loads(policy_path.read_text())
+    policy["curated_overrides"] = [{
+        "company_id": "company:alphabet",
+        "theme_id": "theme:space_economy",
+        "theme_name": "Space Economy",
+        "sector_id": "sector:space_systems",
+        "sector_name": "Space Systems",
+        "confidence": 1.0,
+    }]
+    policy_path.write_text(json.dumps(policy))
+
+    row = build_company_overviews(tmp_path)["records"][0]
+
+    assert row["path"]["theme"]["id"] == "theme:space_economy"
+    assert row["path"]["sector"]["id"] == "sector:space_systems"
+    assert row["classification_source"] == "curated_core_override"
+
+
 def test_http_exposes_canonical_company_overview(tmp_path: Path):
     _fixture(tmp_path)
     report = build_company_overviews(tmp_path)

@@ -77,6 +77,21 @@ def build_company_overviews(
         for row in policy.get("curated_overrides") or []
         if row.get("company_id") and row.get("theme_id") and row.get("sector_id")
     }
+    # A published classification is an approved boundary, not a cache of the
+    # latest inference result.  Automatic rebuilds may classify companies that
+    # are still empty, but may never revise an existing classified path.  The
+    # only supported replacement path is an explicit curated override.
+    locked_by_company: dict[str, dict[str, Any]] = {}
+    existing_dir = root / "data/generated/company_overview/per-company"
+    if existing_dir.is_dir():
+        for existing_path in existing_dir.glob("*.json"):
+            try:
+                existing = _load(existing_path)
+            except CompanyOverviewError:
+                continue
+            existing_company_id = str(existing.get("company_id") or "")
+            if existing_company_id and existing.get("status") == "classified":
+                locked_by_company[existing_company_id] = dict(existing)
     company_by_id = {str(row["company_id"]): row for row in companies}
     primary = {}
     aliases: dict[str, list[str]] = {}
@@ -106,10 +121,17 @@ def build_company_overviews(
             "knowledge": [],
             "source_company_signal_status": "signals_available",
         }
+    for locked_id in locked_by_company.keys() - knowledge_records.keys():
+        knowledge_records[locked_id] = {
+            "company_id": locked_id,
+            "knowledge": [],
+            "source_company_signal_status": "signals_available",
+        }
     for source in knowledge_records.values():
         cid = str(source["company_id"])
         override = curated_overrides.get(cid)
-        if company_ids is not None and cid not in company_ids and override is None:
+        locked = locked_by_company.get(cid) if override is None else None
+        if company_ids is not None and cid not in company_ids and override is None and locked is None:
             continue
         items = list(source.get("knowledge") or [])
         themes = sorted(
@@ -185,8 +207,7 @@ def build_company_overviews(
         company = company_by_id.get(cid, {})
         if not primary.get(cid):
             continue
-        records.append(
-            {
+        record = {
                 "schema_version": "canonical-company-overview.v031c.6",
                 "company_id": cid,
                 "ticker": primary.get(cid),
@@ -228,7 +249,20 @@ def build_company_overviews(
                 if status == "awaiting_business_evidence"
                 else "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH",
             }
-        )
+        if locked is not None:
+            record["status"] = "classified"
+            record["path"] = locked["path"]
+            record["evidence"] = list(locked.get("evidence") or [])
+            record["classification_source"] = locked.get(
+                "classification_source", "locked_published_classification"
+            )
+            record["reason_code"] = None
+        if record["status"] == "classified":
+            record["classification_lock"] = {
+                "status": "locked",
+                "update_mode": "manual_override_only",
+            }
+        records.append(record)
     records.sort(key=lambda row: str(row.get("ticker") or row["company_id"]))
     return {
         "schema_version": "canonical-company-overview-index.v031c.6",
