@@ -11,20 +11,8 @@
     "sector": "電子製造與供應鏈服務",
     "supply_chain_role": "製造與量產"
   },
-  "sec_business": {
-    "products_and_capabilities": [
-      {
-        "text": "設計、工程、供應鏈與電子製造服務",
-        "evidence_ids": [
-          "business-evidence:SEC-0001628280-25-045293"
-        ],
-        "signal_ids": [
-          "product:electronics_manufacturing_services"
-        ],
-        "derivation": "evidence_signal"
-      }
-    ],
-    "supply_chain_roles": [
+  "business_model": {
+    "operating_capabilities": [
       {
         "text": "製造與量產",
         "evidence_ids": [
@@ -32,36 +20,57 @@
         ],
         "signal_ids": [
           "supply_chain_role:manufacturer"
-        ],
-        "derivation": "evidence_signal"
-      }
-    ],
-    "end_markets": [
-      {
-        "text": "汽車與車用電子",
-        "evidence_ids": [
-          "business-evidence:SEC-0001628280-25-045293"
-        ],
-        "signal_ids": [
-          "end_market:automotive"
-        ],
-        "derivation": "evidence_signal"
-      },
-      {
-        "text": "雲端與資料中心",
-        "evidence_ids": [
-          "business-evidence:SEC-0001628280-25-045293"
-        ],
-        "signal_ids": [
-          "end_market:data_center"
         ],
         "derivation": "evidence_signal"
       }
     ]
   },
+  "offerings": [
+    {
+      "name": "設計、工程、供應鏈與電子製造服務",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0001628280-25-045293"
+      ],
+      "signal_ids": [
+        "product:electronics_manufacturing_services"
+      ]
+    },
+    {
+      "name": "資料中心伺服器與機櫃系統",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0001628280-25-045293"
+      ],
+      "signal_ids": [
+        "product:data_center_server"
+      ]
+    }
+  ],
   "value_chain": {
-    "upstream": [],
-    "company_core": [
+    "upstream": [
+      {
+        "text": "電子零組件與 PCBA",
+        "evidence_ids": [
+          "business-evidence:SEC-0001628280-25-045293"
+        ],
+        "signal_ids": [
+          "input:electronic_components"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "先進材料與全球採購資源",
+        "evidence_ids": [
+          "business-evidence:SEC-0001628280-25-045293"
+        ],
+        "signal_ids": [
+          "input:advanced_materials_sourcing"
+        ],
+        "derivation": "evidence_signal"
+      }
+    ],
+    "core": [
       {
         "text": "製造與量產",
         "evidence_ids": [
@@ -81,9 +90,20 @@
           "product:electronics_manufacturing_services"
         ],
         "derivation": "evidence_signal"
+      },
+      {
+        "text": "資料中心伺服器與機櫃系統",
+        "evidence_ids": [
+          "business-evidence:SEC-0001628280-25-045293"
+        ],
+        "signal_ids": [
+          "product:data_center_server"
+        ],
+        "derivation": "evidence_signal"
       }
     ],
-    "downstream_markets": [
+    "infrastructure_delivery": [],
+    "downstream": [
       {
         "text": "汽車與車用電子",
         "evidence_ids": [
@@ -95,12 +115,42 @@
         "derivation": "evidence_signal"
       },
       {
+        "text": "通訊設備",
+        "evidence_ids": [
+          "business-evidence:SEC-0001628280-25-045293"
+        ],
+        "signal_ids": [
+          "end_market:communications"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "醫療健康",
+        "evidence_ids": [
+          "business-evidence:SEC-0001628280-25-045293"
+        ],
+        "signal_ids": [
+          "end_market:healthcare"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
         "text": "雲端與資料中心",
         "evidence_ids": [
           "business-evidence:SEC-0001628280-25-045293"
         ],
         "signal_ids": [
           "end_market:data_center"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "工業應用",
+        "evidence_ids": [
+          "business-evidence:SEC-0001628280-25-045293"
+        ],
+        "signal_ids": [
+          "end_market:industrial"
         ],
         "derivation": "evidence_signal"
       }

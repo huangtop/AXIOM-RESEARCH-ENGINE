@@ -11,46 +11,34 @@
     "sector": "AI 伺服器",
     "supply_chain_role": "待更多證據確認"
   },
-  "sec_business": {
-    "products_and_capabilities": [
-      {
-        "text": "資料中心伺服器與機櫃系統",
-        "evidence_ids": [
-          "business-evidence:SEC-0001645590-25-000130"
-        ],
-        "signal_ids": [
-          "product:data_center_server"
-        ],
-        "derivation": "evidence_signal"
-      },
-      {
-        "text": "Ethernet 交換器",
-        "evidence_ids": [
-          "business-evidence:SEC-0001645590-25-000130"
-        ],
-        "signal_ids": [
-          "product:ethernet_switch"
-        ],
-        "derivation": "evidence_signal"
-      }
-    ],
-    "supply_chain_roles": [],
-    "end_markets": [
-      {
-        "text": "雲端與資料中心",
-        "evidence_ids": [
-          "business-evidence:SEC-0001645590-25-000130"
-        ],
-        "signal_ids": [
-          "end_market:data_center"
-        ],
-        "derivation": "evidence_signal"
-      }
-    ]
+  "business_model": {
+    "operating_capabilities": []
   },
+  "offerings": [
+    {
+      "name": "資料中心伺服器與機櫃系統",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0001645590-25-000130"
+      ],
+      "signal_ids": [
+        "product:data_center_server"
+      ]
+    },
+    {
+      "name": "Ethernet 交換器",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0001645590-25-000130"
+      ],
+      "signal_ids": [
+        "product:ethernet_switch"
+      ]
+    }
+  ],
   "value_chain": {
     "upstream": [],
-    "company_core": [
+    "core": [
       {
         "text": "資料中心伺服器與機櫃系統",
         "evidence_ids": [
@@ -72,7 +60,8 @@
         "derivation": "evidence_signal"
       }
     ],
-    "downstream_markets": [
+    "infrastructure_delivery": [],
+    "downstream": [
       {
         "text": "雲端與資料中心",
         "evidence_ids": [
@@ -80,6 +69,26 @@
         ],
         "signal_ids": [
           "end_market:data_center"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "通訊設備",
+        "evidence_ids": [
+          "business-evidence:SEC-0001645590-25-000130"
+        ],
+        "signal_ids": [
+          "end_market:communications"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "雲端服務",
+        "evidence_ids": [
+          "business-evidence:SEC-0001645590-25-000130"
+        ],
+        "signal_ids": [
+          "end_market:cloud"
         ],
         "derivation": "evidence_signal"
       }

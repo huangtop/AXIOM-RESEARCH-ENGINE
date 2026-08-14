@@ -11,46 +11,34 @@
     "sector": "半導體設備與測試",
     "supply_chain_role": "待更多證據確認"
   },
-  "sec_business": {
-    "products_and_capabilities": [
-      {
-        "text": "半導體產品",
-        "evidence_ids": [
-          "business-evidence:SEC-0001437749-26-004339"
-        ],
-        "signal_ids": [
-          "product:semiconductor"
-        ],
-        "derivation": "evidence_signal"
-      },
-      {
-        "text": "半導體測試與檢測設備",
-        "evidence_ids": [
-          "business-evidence:SEC-0001437749-26-004339"
-        ],
-        "signal_ids": [
-          "product:semiconductor_test_equipment"
-        ],
-        "derivation": "evidence_signal"
-      }
-    ],
-    "supply_chain_roles": [],
-    "end_markets": [
-      {
-        "text": "汽車與車用電子",
-        "evidence_ids": [
-          "business-evidence:SEC-0001437749-26-004339"
-        ],
-        "signal_ids": [
-          "end_market:automotive"
-        ],
-        "derivation": "evidence_signal"
-      }
-    ]
+  "business_model": {
+    "operating_capabilities": []
   },
+  "offerings": [
+    {
+      "name": "半導體產品",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0001437749-26-004339"
+      ],
+      "signal_ids": [
+        "product:semiconductor"
+      ]
+    },
+    {
+      "name": "半導體測試與檢測設備",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0001437749-26-004339"
+      ],
+      "signal_ids": [
+        "product:semiconductor_test_equipment"
+      ]
+    }
+  ],
   "value_chain": {
     "upstream": [],
-    "company_core": [
+    "core": [
       {
         "text": "半導體產品",
         "evidence_ids": [
@@ -72,7 +60,8 @@
         "derivation": "evidence_signal"
       }
     ],
-    "downstream_markets": [
+    "infrastructure_delivery": [],
+    "downstream": [
       {
         "text": "汽車與車用電子",
         "evidence_ids": [
@@ -80,6 +69,36 @@
         ],
         "signal_ids": [
           "end_market:automotive"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "工業應用",
+        "evidence_ids": [
+          "business-evidence:SEC-0001437749-26-004339"
+        ],
+        "signal_ids": [
+          "end_market:industrial"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "通訊設備",
+        "evidence_ids": [
+          "business-evidence:SEC-0001437749-26-004339"
+        ],
+        "signal_ids": [
+          "end_market:communications"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "雲端與資料中心",
+        "evidence_ids": [
+          "business-evidence:SEC-0001437749-26-004339"
+        ],
+        "signal_ids": [
+          "end_market:data_center"
         ],
         "derivation": "evidence_signal"
       }

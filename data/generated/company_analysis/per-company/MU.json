@@ -11,20 +11,8 @@
     "sector": "AI 記憶體",
     "supply_chain_role": "製造與量產"
   },
-  "sec_business": {
-    "products_and_capabilities": [
-      {
-        "text": "半導體產品",
-        "evidence_ids": [
-          "business-evidence:SEC-0000723125-25-000028"
-        ],
-        "signal_ids": [
-          "product:semiconductor"
-        ],
-        "derivation": "evidence_signal"
-      }
-    ],
-    "supply_chain_roles": [
+  "business_model": {
+    "operating_capabilities": [
       {
         "text": "製造與量產",
         "evidence_ids": [
@@ -34,34 +22,44 @@
           "supply_chain_role:manufacturer"
         ],
         "derivation": "evidence_signal"
-      }
-    ],
-    "end_markets": [
-      {
-        "text": "雲端與資料中心",
-        "evidence_ids": [
-          "business-evidence:SEC-0000723125-25-000028"
-        ],
-        "signal_ids": [
-          "end_market:data_center"
-        ],
-        "derivation": "evidence_signal"
       },
       {
-        "text": "汽車與車用電子",
+        "text": "系統整合",
         "evidence_ids": [
           "business-evidence:SEC-0000723125-25-000028"
         ],
         "signal_ids": [
-          "end_market:automotive"
+          "capability:systems_integration"
         ],
         "derivation": "evidence_signal"
       }
     ]
   },
+  "offerings": [
+    {
+      "name": "半導體產品",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0000723125-25-000028"
+      ],
+      "signal_ids": [
+        "product:semiconductor"
+      ]
+    },
+    {
+      "name": "Edge CPE 與智慧網路平台",
+      "kind": "product",
+      "evidence_ids": [
+        "business-evidence:SEC-0000723125-25-000028"
+      ],
+      "signal_ids": [
+        "product:edge_network_platform"
+      ]
+    }
+  ],
   "value_chain": {
     "upstream": [],
-    "company_core": [
+    "core": [
       {
         "text": "製造與量產",
         "evidence_ids": [
@@ -81,9 +79,30 @@
           "product:semiconductor"
         ],
         "derivation": "evidence_signal"
+      },
+      {
+        "text": "系統整合",
+        "evidence_ids": [
+          "business-evidence:SEC-0000723125-25-000028"
+        ],
+        "signal_ids": [
+          "capability:systems_integration"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "Edge CPE 與智慧網路平台",
+        "evidence_ids": [
+          "business-evidence:SEC-0000723125-25-000028"
+        ],
+        "signal_ids": [
+          "product:edge_network_platform"
+        ],
+        "derivation": "evidence_signal"
       }
     ],
-    "downstream_markets": [
+    "infrastructure_delivery": [],
+    "downstream": [
       {
         "text": "雲端與資料中心",
         "evidence_ids": [
@@ -101,6 +120,26 @@
         ],
         "signal_ids": [
           "end_market:automotive"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "工業應用",
+        "evidence_ids": [
+          "business-evidence:SEC-0000723125-25-000028"
+        ],
+        "signal_ids": [
+          "end_market:industrial"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "通訊設備",
+        "evidence_ids": [
+          "business-evidence:SEC-0000723125-25-000028"
+        ],
+        "signal_ids": [
+          "end_market:communications"
         ],
         "derivation": "evidence_signal"
       }
