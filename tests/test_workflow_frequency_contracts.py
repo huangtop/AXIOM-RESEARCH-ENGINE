@@ -13,6 +13,16 @@ def test_classification_refreshes_daily_in_batches_of_300():
     assert "workflow_dispatch:" in workflow
     assert 'cron: "30 8 * * *"' in workflow
     assert "--limit 300" in workflow
+    assert workflow.index("Smoke-test workflow and publication contracts") < workflow.index(
+        "Extend SEC business evidence checkpoint"
+    )
+
+
+def test_ci_smoke_gate_runs_before_full_suite():
+    workflow = _workflow("ci.yml")
+    assert workflow.index("Smoke-test workflow and publication contracts") < workflow.index(
+        "- run: pytest -q\n"
+    )
 
 
 def test_estimates_refresh_daily_in_batches_of_200():
