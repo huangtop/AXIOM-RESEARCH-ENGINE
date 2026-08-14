@@ -29,6 +29,26 @@ def test_ci_smoke_gate_runs_before_full_suite():
     )
 
 
+def test_generated_data_pushes_do_not_start_the_full_ci_suite():
+    workflow = _workflow("ci.yml")
+    assert 'paths-ignore:' in workflow
+    assert '"data/generated/**"' in workflow
+
+
+def test_business_evidence_is_checkpointed_before_classification_rebuild():
+    workflow = _workflow("research-classification-refresh.yml")
+    evidence = workflow.index("Extend SEC business evidence checkpoint")
+    checkpoint = workflow.index("Validate and publish SEC business evidence checkpoint")
+    rebuild = workflow.index("Rebuild evidence-derived classifications and action gates")
+    validation = workflow.index("Validate classification and publication contracts")
+    assert evidence < checkpoint < rebuild < validation
+    checkpoint_block = workflow[checkpoint:rebuild]
+    assert "tests/test_sec_business_evidence_v031_2b.py" in checkpoint_block
+    assert "git add data/generated/canonical_business_evidence" in checkpoint_block
+    derived_block = workflow[workflow.index("Commit derived research artifacts"):]
+    assert "git add data/generated/canonical_business_evidence" not in derived_block
+
+
 def test_estimates_refresh_daily_in_batches_of_200():
     workflow = _workflow("yahoo-estimates-refresh.yml")
     assert 'cron: "30 11 * * *"' in workflow

@@ -3,6 +3,8 @@ name: CI
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "data/generated/**"
   pull_request:
 
 jobs:
