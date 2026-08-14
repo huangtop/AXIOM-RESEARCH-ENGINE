@@ -1,5 +1,6 @@
 {
   "schema_version": "axiom-company-analysis.v1",
+  "generation_mode": "deterministic_evidence_template",
   "company_id": "company:US-CIK0000916793",
   "ticker": "SILC",
   "display_name": "Silicom Ltd",
@@ -7,54 +8,76 @@
   "classification": {
     "theme": "人工智慧與核心科技",
     "sector": "AI 高速互聯",
-    "supply_chain_role": "高效能網路介面與資料基礎設施設備供應商"
+    "supply_chain_role": "待更多證據確認"
   },
-  "summary": "Silicom 提供高效能網路與資料基礎設施解決方案，產品用於雲端、資料中心、電信、網路監控、資安與邊緣運算。公司不是 AI 核心算力晶片商；其 AI 關聯主要來自高速資料傳輸、Smart NIC 與基礎設施卸載需求。",
+  "summary": {
+    "text": "Silicom Ltd是AI 高速互聯相關企業，主要提供高效能網路與資料基礎設施。",
+    "evidence_ids": [
+      "business-evidence:SEC-0001178913-26-002258"
+    ],
+    "signal_ids": [
+      "product:networking_infrastructure"
+    ],
+    "derivation": "deterministic_template"
+  },
   "business_model": {
-    "description": "公司向 OEM、雲端業者、服務供應商與電信客戶提供網路介面卡、加速卡及客製化資料基礎設施產品，透過硬體設計、整合及長週期客戶專案取得收入。",
+    "description": {
+      "text": "公司以產品與服務交付為核心，提供高效能網路與資料基礎設施。",
+      "evidence_ids": [
+        "business-evidence:SEC-0001178913-26-002258"
+      ],
+      "signal_ids": [
+        "product:networking_infrastructure"
+      ],
+      "derivation": "deterministic_template"
+    },
     "revenue_drivers": [
-      "高效能網路介面與伺服器連接產品",
-      "FPGA Smart NIC 與基礎設施卸載",
-      "雲端、電信及邊緣資料處理設備",
-      "資安、監控及特定用途加速產品"
+      {
+        "text": "高效能網路與資料基礎設施",
+        "evidence_ids": [
+          "business-evidence:SEC-0001178913-26-002258"
+        ],
+        "signal_ids": [
+          "product:networking_infrastructure"
+        ],
+        "derivation": "signal_translation"
+      }
     ]
   },
   "offerings": [
-    {"name": "伺服器網路介面卡", "kind": "networking", "description": "連接伺服器、資料中心與高吞吐網路環境。"},
-    {"name": "FPGA Smart NIC", "kind": "accelerator", "description": "把特定網路與資料處理工作從主機 CPU 卸載。"},
-    {"name": "資料基礎設施加速產品", "kind": "infrastructure", "description": "支援雲端、電信、資安、監控與虛擬化工作負載。"},
-    {"name": "後量子密碼加速器", "kind": "security", "description": "面向需要新一代密碼運算能力的資料與網路基礎設施。"}
+    {
+      "name": "高效能網路與資料基礎設施",
+      "kind": "product",
+      "description": {
+        "text": "SEC 業務文件將高效能網路與資料基礎設施識別為公司的產品或核心能力。",
+        "evidence_ids": [
+          "business-evidence:SEC-0001178913-26-002258"
+        ],
+        "signal_ids": [
+          "product:networking_infrastructure"
+        ],
+        "derivation": "evidence_signal"
+      }
+    }
   ],
   "value_chain": {
-    "upstream": [
-      {"label": "x86 處理器與網路晶片", "relationship": "平台與零組件依賴", "entities": ["Intel"], "confidence": "sec_explicit"},
-      {"label": "FPGA", "relationship": "可程式化加速元件", "entities": ["Intel FPGA"], "confidence": "sec_explicit"}
-    ],
+    "upstream": [],
     "core": [
-      "網路介面與連接產品設計",
-      "FPGA Smart NIC 與資料處理卸載",
-      "客製化資料基礎設施平台",
-      "高效能網路與資安加速"
+      {
+        "text": "高效能網路與資料基礎設施",
+        "evidence_ids": [
+          "business-evidence:SEC-0001178913-26-002258"
+        ],
+        "signal_ids": [
+          "product:networking_infrastructure"
+        ],
+        "derivation": "evidence_signal"
+      }
     ],
-    "downstream": [
-      {"label": "雲端與資料中心業者", "relationship": "客戶類型"},
-      {"label": "電信與服務供應商", "relationship": "客戶類型"},
-      {"label": "OEM 系統商", "relationship": "銷售與整合通路"},
-      {"label": "資安、監控、邊緣及 AI 推論", "relationship": "應用市場"}
-    ]
+    "downstream": []
   },
-  "competitive_context": [
-    "客戶平台更新與專案導入週期較長",
-    "大型晶片商整合網路與卸載功能可能壓縮獨立產品空間",
-    "少數大型客戶與客製化專案造成的需求波動",
-    "雲端資本支出與資料中心架構變化"
-  ],
-  "watch_items": [
-    "Smart NIC 與資料處理卸載專案量產",
-    "AI 資料中心高速網路需求能否轉化為實際營收",
-    "電信與雲端客戶庫存及資本支出週期",
-    "新產品設計案轉量產的速度"
-  ],
+  "competitive_context": [],
+  "watch_items": [],
   "evidence": [
     {
       "evidence_id": "business-evidence:SEC-0001178913-26-002258",
@@ -66,8 +89,8 @@
     }
   ],
   "provenance_policy": {
-    "facts": "僅採 SEC filing 明確陳述或可直接歸納的公司事實。",
-    "named_relationships": "只有 filing 明確點名的關係才列為 sec_explicit。",
-    "excluded": "不因產品可用於 AI 就把公司分類成 AI 核心算力。"
+    "facts": "內容由 SEC business evidence 的產品、能力、角色與終端市場 signals 依固定模板產生。",
+    "named_relationships": "目前不從關鍵字自動建立具名客戶或供應商關係。",
+    "excluded": "technology signal 不得單獨成為公司主要產品或公司定位。"
   }
 }
