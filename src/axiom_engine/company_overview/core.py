@@ -57,6 +57,9 @@ def build_company_overviews(
     knowledge = _load(root / "data/generated/knowledge_inference/knowledge_inference.json")
     evidence = load_business_evidence(root / "data/generated/canonical_business_evidence")
     policy = _load(root / "config/company_overview.v031c.6.json")
+    quality_path = root / "config/classification_quality.v031c.5.json"
+    quality_policy = _load(quality_path) if quality_path.is_file() else {}
+    compatibility = quality_policy.get("theme_sector_compatibility") or {}
     identity_path = root / "data/generated/security_identity/security_identity_normalization.json"
     eligible_security_ids = None
     if identity_path.is_file():
@@ -118,6 +121,22 @@ def build_company_overviews(
             key=_sector_rank,
         )
         theme, sector = (themes[0] if themes else None), (sectors[0] if sectors else None)
+        compatible_pairs = [
+            (candidate_theme, candidate_sector)
+            for candidate_theme in themes
+            for candidate_sector in sectors
+            if candidate_sector.get("knowledge_id")
+            in compatibility.get(str(candidate_theme.get("knowledge_id")), [])
+        ]
+        if compatible_pairs:
+            theme, sector = max(
+                compatible_pairs,
+                key=lambda pair: (
+                    float(pair[0].get("confidence") or 0)
+                    + float(pair[1].get("confidence") or 0),
+                    float(pair[1].get("confidence") or 0),
+                ),
+            )
         if sector and sector.get("knowledge_id") in AI_INFRASTRUCTURE_SECTOR_IDS:
             theme = next(
                 (item for item in themes if item.get("knowledge_id") == "theme:ai_infrastructure"),
