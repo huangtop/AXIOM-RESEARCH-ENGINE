@@ -2,7 +2,8 @@
   "schema_version": "axiom-company-analysis.v1",
   "generation_mode": "deterministic_evidence_template",
   "company_id": "company:US-CIK0000916793",
-  "ticker": "SILC",
+  "symbol": "SILC",
+  "exchange": "NASDAQ",
   "display_name": "Silicom Ltd",
   "as_of": "2026-04-28",
   "classification": {
@@ -10,28 +11,8 @@
     "sector": "AI 高速互聯",
     "supply_chain_role": "待更多證據確認"
   },
-  "summary": {
-    "text": "Silicom Ltd是AI 高速互聯相關企業，主要提供高效能網路與資料基礎設施。",
-    "evidence_ids": [
-      "business-evidence:SEC-0001178913-26-002258"
-    ],
-    "signal_ids": [
-      "product:networking_infrastructure"
-    ],
-    "derivation": "deterministic_template"
-  },
-  "business_model": {
-    "description": {
-      "text": "公司以產品與服務交付為核心，提供高效能網路與資料基礎設施。",
-      "evidence_ids": [
-        "business-evidence:SEC-0001178913-26-002258"
-      ],
-      "signal_ids": [
-        "product:networking_infrastructure"
-      ],
-      "derivation": "deterministic_template"
-    },
-    "revenue_drivers": [
+  "sec_business": {
+    "products_and_capabilities": [
       {
         "text": "高效能網路與資料基礎設施",
         "evidence_ids": [
@@ -40,29 +21,15 @@
         "signal_ids": [
           "product:networking_infrastructure"
         ],
-        "derivation": "signal_translation"
-      }
-    ]
-  },
-  "offerings": [
-    {
-      "name": "高效能網路與資料基礎設施",
-      "kind": "product",
-      "description": {
-        "text": "SEC 業務文件將高效能網路與資料基礎設施識別為公司的產品或核心能力。",
-        "evidence_ids": [
-          "business-evidence:SEC-0001178913-26-002258"
-        ],
-        "signal_ids": [
-          "product:networking_infrastructure"
-        ],
         "derivation": "evidence_signal"
       }
-    }
-  ],
+    ],
+    "supply_chain_roles": [],
+    "end_markets": []
+  },
   "value_chain": {
     "upstream": [],
-    "core": [
+    "company_core": [
       {
         "text": "高效能網路與資料基礎設施",
         "evidence_ids": [
@@ -74,23 +41,15 @@
         "derivation": "evidence_signal"
       }
     ],
-    "downstream": []
+    "downstream_markets": []
   },
-  "competitive_context": [],
-  "watch_items": [],
   "evidence": [
     {
       "evidence_id": "business-evidence:SEC-0001178913-26-002258",
       "source_type": "sec_filing",
       "form": "20-F",
       "filing_date": "2026-04-28",
-      "section": "Item 4. Information on the Company",
-      "url": "https://www.sec.gov/Archives/edgar/data/916793/000117891326002258/zk2635063.htm"
+      "section": "Item 4. Information on the Company"
     }
-  ],
-  "provenance_policy": {
-    "facts": "內容由 SEC business evidence 的產品、能力、角色與終端市場 signals 依固定模板產生。",
-    "named_relationships": "目前不從關鍵字自動建立具名客戶或供應商關係。",
-    "excluded": "technology signal 不得單獨成為公司主要產品或公司定位。"
-  }
+  ]
 }

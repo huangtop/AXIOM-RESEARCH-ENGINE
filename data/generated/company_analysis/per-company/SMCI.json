@@ -2,7 +2,8 @@
   "schema_version": "axiom-company-analysis.v1",
   "generation_mode": "deterministic_evidence_template",
   "company_id": "company:US-CIK0001375365",
-  "ticker": "SMCI",
+  "symbol": "SMCI",
+  "exchange": "NASDAQ",
   "display_name": "Super Micro Computer, Inc.",
   "as_of": "2025-08-28",
   "classification": {
@@ -10,36 +11,8 @@
     "sector": "AI 伺服器",
     "supply_chain_role": "製造與量產與產品設計與平台開發"
   },
-  "summary": {
-    "text": "Super Micro Computer, Inc.是AI 伺服器相關企業，主要提供資料中心電源、散熱與液冷與資料中心伺服器與機櫃系統。公司以製造與量產與產品設計與平台開發參與雲端與資料中心市場。",
-    "evidence_ids": [
-      "business-evidence:SEC-0001375365-25-000027"
-    ],
-    "signal_ids": [
-      "end_market:data_center",
-      "infrastructure:data_center_power",
-      "product:data_center_server",
-      "supply_chain_role:designer",
-      "supply_chain_role:manufacturer"
-    ],
-    "derivation": "deterministic_template"
-  },
-  "business_model": {
-    "description": {
-      "text": "公司以製造與量產與產品設計與平台開發為核心，提供資料中心電源、散熱與液冷與資料中心伺服器與機櫃系統，服務雲端與資料中心客戶。",
-      "evidence_ids": [
-        "business-evidence:SEC-0001375365-25-000027"
-      ],
-      "signal_ids": [
-        "end_market:data_center",
-        "infrastructure:data_center_power",
-        "product:data_center_server",
-        "supply_chain_role:designer",
-        "supply_chain_role:manufacturer"
-      ],
-      "derivation": "deterministic_template"
-    },
-    "revenue_drivers": [
+  "sec_business": {
+    "products_and_capabilities": [
       {
         "text": "資料中心電源、散熱與液冷",
         "evidence_ids": [
@@ -48,7 +21,7 @@
         "signal_ids": [
           "infrastructure:data_center_power"
         ],
-        "derivation": "signal_translation"
+        "derivation": "evidence_signal"
       },
       {
         "text": "資料中心伺服器與機櫃系統",
@@ -58,43 +31,47 @@
         "signal_ids": [
           "product:data_center_server"
         ],
-        "derivation": "signal_translation"
+        "derivation": "evidence_signal"
+      }
+    ],
+    "supply_chain_roles": [
+      {
+        "text": "製造與量產",
+        "evidence_ids": [
+          "business-evidence:SEC-0001375365-25-000027"
+        ],
+        "signal_ids": [
+          "supply_chain_role:manufacturer"
+        ],
+        "derivation": "evidence_signal"
+      },
+      {
+        "text": "產品設計與平台開發",
+        "evidence_ids": [
+          "business-evidence:SEC-0001375365-25-000027"
+        ],
+        "signal_ids": [
+          "supply_chain_role:designer"
+        ],
+        "derivation": "evidence_signal"
+      }
+    ],
+    "end_markets": [
+      {
+        "text": "雲端與資料中心",
+        "evidence_ids": [
+          "business-evidence:SEC-0001375365-25-000027"
+        ],
+        "signal_ids": [
+          "end_market:data_center"
+        ],
+        "derivation": "evidence_signal"
       }
     ]
   },
-  "offerings": [
-    {
-      "name": "資料中心電源、散熱與液冷",
-      "kind": "infrastructure",
-      "description": {
-        "text": "SEC 業務文件將資料中心電源、散熱與液冷識別為公司的產品或核心能力。",
-        "evidence_ids": [
-          "business-evidence:SEC-0001375365-25-000027"
-        ],
-        "signal_ids": [
-          "infrastructure:data_center_power"
-        ],
-        "derivation": "evidence_signal"
-      }
-    },
-    {
-      "name": "資料中心伺服器與機櫃系統",
-      "kind": "product",
-      "description": {
-        "text": "SEC 業務文件將資料中心伺服器與機櫃系統識別為公司的產品或核心能力。",
-        "evidence_ids": [
-          "business-evidence:SEC-0001375365-25-000027"
-        ],
-        "signal_ids": [
-          "product:data_center_server"
-        ],
-        "derivation": "evidence_signal"
-      }
-    }
-  ],
   "value_chain": {
     "upstream": [],
-    "core": [
+    "company_core": [
       {
         "text": "製造與量產",
         "evidence_ids": [
@@ -136,34 +113,26 @@
         "derivation": "evidence_signal"
       }
     ],
-    "downstream": [
+    "downstream_markets": [
       {
-        "label": "雲端與資料中心",
-        "relationship": "終端市場",
+        "text": "雲端與資料中心",
         "evidence_ids": [
           "business-evidence:SEC-0001375365-25-000027"
         ],
         "signal_ids": [
           "end_market:data_center"
-        ]
+        ],
+        "derivation": "evidence_signal"
       }
     ]
   },
-  "competitive_context": [],
-  "watch_items": [],
   "evidence": [
     {
       "evidence_id": "business-evidence:SEC-0001375365-25-000027",
       "source_type": "sec_filing",
       "form": "10-K",
       "filing_date": "2025-08-28",
-      "section": "Item 1. Business",
-      "url": "https://www.sec.gov/Archives/edgar/data/1375365/000137536525000027/smci-20250630.htm"
+      "section": "Item 1. Business"
     }
-  ],
-  "provenance_policy": {
-    "facts": "內容由 SEC business evidence 的產品、能力、角色與終端市場 signals 依固定模板產生。",
-    "named_relationships": "目前不從關鍵字自動建立具名客戶或供應商關係。",
-    "excluded": "technology signal 不得單獨成為公司主要產品或公司定位。"
-  }
+  ]
 }
