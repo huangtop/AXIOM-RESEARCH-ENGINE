@@ -49,6 +49,11 @@ def _is_company_offering(
     # not a sentence boundary and must not detach an offering verb from its
     # product phrase.
     prefix = re.split(r"[.!?;]", prefix)[-1]
+    if re.search(
+        r"\b(?:costs? (?:of|from)|purchases?|procures?|sources?|suppliers?|dependent on|dependence on)\b",
+        prefix,
+    ):
+        return False
     named_company_offering = any(
         name.lower() in prefix
         and re.search(
@@ -73,6 +78,10 @@ def _is_company_offering(
             prefix,
         )
         or re.search(r"\b(?:our )?business (?:primarily )?(?:comprises|consists of|focuses on|is engaged in)", prefix)
+        or re.search(r"\bour\s*$", prefix)
+        or re.search(r"\bour .{0,100}(?:offerings|products|platforms|solutions) (?:include|comprise|consist of)", prefix)
+        or re.search(r"\bour .{0,100}capabilities .{0,40}(?:include|comprise|consist of)", prefix)
+        or re.search(r"\b(?:our )?platform (?:includes|comprises|consists of)", prefix)
     )
 
 
@@ -190,8 +199,13 @@ def build_company_signals(
                         if any(pattern.search(match_context) for pattern in excluded_context_patterns):
                             continue
                         count += 1
-                        if rule.get("dimension") == "product" and _is_company_offering(
+                        if rule.get("dimension") in {"product", "capability", "infrastructure"} and _is_company_offering(
                             text, match.start(), company_names
+                        ):
+                            offering_count += 1
+                        elif rule.get("dimension") == "supply_chain_role" and (
+                            alias.lower().startswith(("we ", "our "))
+                            or "manufacturing partner" in alias.lower()
                         ):
                             offering_count += 1
                         aliases_hit.add(alias)
