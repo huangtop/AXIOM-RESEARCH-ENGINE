@@ -70,6 +70,31 @@ def test_excludes_incidental_ai_adoption_and_media_asset_contexts(tmp_path: Path
     assert "technology:digital_assets" not in signal_ids
 
 
+def test_legal_company_name_followed_by_offering_verb_marks_primary_business(tmp_path: Path):
+    root = _fixture(tmp_path)
+    companies_path = root / "data/universe/companies.json"
+    companies = json.loads(companies_path.read_text())
+    companies[0]["legal_name"] = "Example Consulting Limited"
+    companies_path.write_text(json.dumps(companies))
+    evidence_path = root / "data/generated/canonical_business_evidence/business_evidence.json"
+    evidence = json.loads(evidence_path.read_text())
+    evidence[0]["text"] = (
+        "Example Consulting Limited provides AI-first business consulting and "
+        "technology services to global enterprises."
+    )
+    evidence_path.write_text(json.dumps(evidence))
+
+    report = build_company_signals(root)
+    signal = next(
+        row
+        for row in report["records"][0]["signals"]
+        if row["signal_id"] == "product:it_consulting_services"
+    )
+
+    assert signal["offering_occurrence_count"] >= 1
+    assert signal["primary_business_score"] == 3
+
+
 def test_rejects_duplicate_signal_rules(tmp_path: Path):
     root = _fixture(tmp_path)
     policy_path = root / "config/company_signal_rules.v031c.2.json"

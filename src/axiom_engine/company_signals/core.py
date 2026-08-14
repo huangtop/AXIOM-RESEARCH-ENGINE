@@ -38,6 +38,44 @@ def _context(text: str, start: int, end: int, maximum: int) -> dict[str, Any]:
     }
 
 
+def _is_company_offering(
+    text: str, match_start: int, company_names: tuple[str, ...] = ()
+) -> bool:
+    """Distinguish what the company offers from customer/end-market uses."""
+    prefix = text[max(0, match_start - 180):match_start].lower()
+    # An offering verb from a previous sentence must not attach to a later
+    # customer-use or end-market noun.
+    # SEC HTML extraction preserves visual line wraps. A newline is therefore
+    # not a sentence boundary and must not detach an offering verb from its
+    # product phrase.
+    prefix = re.split(r"[.!?;]", prefix)[-1]
+    named_company_offering = any(
+        name.lower() in prefix
+        and re.search(
+            r"\b(?:is|are|designs?|develops?|manufactures?|markets?|sells?|offers?|provides?|supplies?|produces?)\b",
+            prefix[prefix.rfind(name.lower()) + len(name):],
+        )
+        for name in company_names
+        if name.strip()
+    )
+    return named_company_offering or bool(
+        re.search(
+            r"(?:\bwe\b|\bour company\b|\bthe company\b|\bbusiness\b).{0,100}"
+            r"(?:design|develop|manufactur|market|sell|offer|provide|supply|produce)",
+            prefix,
+        )
+        or re.search(r"(?:supplier|provider|manufacturer|developer|operator) of", prefix)
+        or re.search(r"(?:portfolio|suite|range|family) of", prefix)
+        or re.search(r"\bwe are (?:an?|the)\b", prefix)
+        or re.search(r"\bwe(?:['’]ve| have) grown into (?:an?|the)\b", prefix)
+        or re.search(
+            r"\bwe(?:['’]ve| have).{0,100}\b(?:provider|manufacturer|foundry|operator)\b",
+            prefix,
+        )
+        or re.search(r"\b(?:our )?business (?:primarily )?(?:comprises|consists of|focuses on|is engaged in)", prefix)
+    )
+
+
 def _validate_policy(policy: Mapping[str, Any]) -> list[Mapping[str, Any]]:
     if policy.get("schema_version") != "company-signal-rules.v031c.2":
         raise CompanySignalsError("unsupported company signal policy")
@@ -70,6 +108,7 @@ def _validate_policy(policy: Mapping[str, Any]) -> list[Mapping[str, Any]]:
 def build_company_signals(
     root: Path,
     *,
+    company_ids: set[str] | None = None,
     rules_path: str = "config/company_signal_rules.v031c.2.json",
     companies_path: str = "data/universe/companies.json",
     evidence_path: str = "data/generated/canonical_business_evidence/business_evidence.json",
@@ -80,6 +119,10 @@ def build_company_signals(
         raise ValueError("now must be timezone-aware")
     policy = _load(root / rules_path)
     companies = _load(root / companies_path)
+    if company_ids is not None:
+        companies = [
+            row for row in companies if str(row.get("company_id") or "") in company_ids
+        ]
     evidence = load_business_evidence(root / evidence_path)
     rules = _validate_policy(policy)
     if not isinstance(companies, list) or not isinstance(evidence, list):
@@ -107,6 +150,26 @@ def build_company_signals(
 
     for company in sorted(companies, key=lambda row: str(row.get("company_id") or "")):
         company_id = str(company.get("company_id") or "")
+        full_company_names = {
+            str(company.get(key) or "").strip()
+            for key in ("legal_name", "display_name")
+            if str(company.get(key) or "").strip()
+        }
+        # Filing names and security-master names commonly differ only by legal
+        # suffixes (for example, "Infosys Ltd" vs "Infosys Limited").  Use a
+        # sufficiently specific root as an identity alias; never use tickers.
+        company_name_roots = {
+            re.sub(
+                r"\b(?:incorporated|inc|corporation|corp|limited|ltd|plc|holdings?)\b.*$",
+                "",
+                name,
+                flags=re.IGNORECASE,
+            ).strip(" ,.-")
+            for name in full_company_names
+        }
+        company_names = tuple(
+            sorted(full_company_names | {name for name in company_name_roots if len(name) >= 4})
+        )
         source_rows = sorted(
             evidence_by_company.get(company_id, []),
             key=lambda row: (str(row.get("filing_date") or ""), str(row.get("business_evidence_id") or "")),
@@ -118,6 +181,7 @@ def build_company_signals(
             aliases_hit: set[str] = set()
             source_ids: set[str] = set()
             count = 0
+            offering_count = 0
             for source in source_rows:
                 text = str(source["text"])
                 for alias, pattern in compiled_aliases:
@@ -126,6 +190,10 @@ def build_company_signals(
                         if any(pattern.search(match_context) for pattern in excluded_context_patterns):
                             continue
                         count += 1
+                        if rule.get("dimension") == "product" and _is_company_offering(
+                            text, match.start(), company_names
+                        ):
+                            offering_count += 1
                         aliases_hit.add(alias)
                         source_ids.add(str(source["business_evidence_id"]))
                         if len(occurrences) < maximum_locations:
@@ -144,6 +212,10 @@ def build_company_signals(
                 "canonical_name": rule["canonical_name"],
                 "confidence": confidence,
                 "occurrence_count": count,
+                "offering_occurrence_count": offering_count,
+                "primary_business_score": 3
+                if offering_count
+                else 0,
                 "matched_aliases": sorted(aliases_hit),
                 "source_business_evidence_ids": sorted(source_ids),
                 "locations": occurrences,
