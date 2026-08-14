@@ -52,6 +52,24 @@ def test_preserves_company_with_unavailable_business_evidence(tmp_path: Path):
     }
 
 
+def test_excludes_incidental_ai_adoption_and_media_asset_contexts(tmp_path: Path):
+    root = _fixture(tmp_path)
+    evidence_path = root / "data/generated/canonical_business_evidence/business_evidence.json"
+    evidence = json.loads(evidence_path.read_text())
+    evidence[0]["text"] = (
+        "We are exploring the benefits of AI for our business with generative AI partners. "
+        "We support and invest in emerging technologies, including artificial intelligence. "
+        "We provide digital assets for our music to streaming services and downloads."
+    )
+    evidence_path.write_text(json.dumps(evidence))
+
+    report = build_company_signals(root)
+    signal_ids = {row["signal_id"] for row in report["records"][0]["signals"]}
+
+    assert "technology:artificial_intelligence" not in signal_ids
+    assert "technology:digital_assets" not in signal_ids
+
+
 def test_rejects_duplicate_signal_rules(tmp_path: Path):
     root = _fixture(tmp_path)
     policy_path = root / "config/company_signal_rules.v031c.2.json"

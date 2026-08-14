@@ -227,6 +227,14 @@ def build_company_overviews(
 
 def write_company_overviews(report: Mapping[str, Any], output: Path) -> None:
     files = {}
+    per_company = output / "per-company"
+    expected_filenames = {
+        f"{row['ticker']}.json" for row in report["records"] if row.get("ticker")
+    }
+    if per_company.is_dir():
+        for stale in per_company.glob("*.json"):
+            if stale.name not in expected_filenames:
+                stale.unlink()
     for row in report["records"]:
         ticker = row.get("ticker")
         if not ticker:
@@ -234,7 +242,7 @@ def write_company_overviews(report: Mapping[str, Any], output: Path) -> None:
         filename = f"{ticker}.json"
         for alias in row.get("ticker_aliases") or [ticker]:
             files[alias] = filename
-        _write(output / "per-company" / filename, row)
+        _write(per_company / filename, row)
     _write(
         output / "index.json",
         {
