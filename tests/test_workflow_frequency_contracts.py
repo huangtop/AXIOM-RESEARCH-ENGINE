@@ -8,11 +8,11 @@ def _workflow(name: str) -> str:
     return (ROOT / ".github/workflows" / name).read_text(encoding="utf-8")
 
 
-def test_classification_refreshes_daily_in_batches_of_200():
+def test_classification_refreshes_daily_in_batches_of_300():
     workflow = _workflow("research-classification-refresh.yml")
     assert "workflow_dispatch:" in workflow
     assert 'cron: "30 8 * * *"' in workflow
-    assert "--limit 200" in workflow
+    assert "--limit 300" in workflow
 
 
 def test_estimates_refresh_daily_in_batches_of_200():
