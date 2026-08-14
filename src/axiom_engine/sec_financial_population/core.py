@@ -284,6 +284,27 @@ def write_sec_financial_population(report: Mapping[str, Any], output_dir: Path, 
         prior = _load(output_dir / "financial_facts.json")
         facts = [row for row in prior if str(row.get("company_id")) not in refreshed] + facts
         facts.sort(key=lambda row: (str(row.get("company_id")), str(row.get("metric"))))
+    # This file is the current valuation snapshot, not an archive.  Do not keep
+    # an isolated metric years after the same company has filed newer facts;
+    # stale values (for example a 2021 debt value beside 2025 statements) are
+    # unsafe inputs and only add dead weight.  Quarterly history remains in its
+    # bounded per-company files below.
+    newest_by_company: dict[str, date] = {}
+    for row in facts:
+        try:
+            observed = date.fromisoformat(str(row.get("period_end"))[:10])
+        except ValueError:
+            continue
+        company_id = str(row.get("company_id") or "")
+        if company_id and observed > newest_by_company.get(company_id, date.min):
+            newest_by_company[company_id] = observed
+    facts = [
+        row for row in facts
+        if not (company_id := str(row.get("company_id") or ""))
+        or company_id not in newest_by_company
+        or not str(row.get("period_end") or "")
+        or (newest_by_company[company_id] - date.fromisoformat(str(row["period_end"])[:10])).days <= 550
+    ]
     quarterly_by_company: dict[str, list[Mapping[str, Any]]] = {}
     for row in report["quarterly_financial_facts"]:
         quarterly_by_company.setdefault(str(row["company_id"]), []).append(row)

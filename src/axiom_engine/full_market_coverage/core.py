@@ -187,6 +187,7 @@ def _aggregate_models(
     models: Mapping[str, Mapping[str, Any]],
     financials: Mapping[str, Mapping[str, Any]],
     estimates: Mapping[str, Mapping[str, Any]],
+    assumption_roles: Mapping[str, str] | None = None,
 ) -> dict[str, Any]:
     """Aggregate independent model families without using the market price.
 
@@ -205,6 +206,14 @@ def _aggregate_models(
     archetype, family_weights, archetype_reasons = _valuation_archetype(financials, estimates)
     family_models: dict[str, list[tuple[str, Decimal, Decimal]]] = defaultdict(list)
     model_diagnostics: dict[str, dict[str, Any]] = {}
+    assumption_roles = assumption_roles or {}
+    model_assumption_keys = {
+        "forward_pe": "target_forward_pe",
+        "forward_ps": "target_forward_ps",
+        "ev_ebitda": "target_ev_ebitda",
+        "forward_pb": "target_forward_pb",
+        "peg": "target_peg",
+    }
     for name, model in models.items():
         if model.get("status") != "calculated":
             continue
@@ -222,13 +231,19 @@ def _aggregate_models(
             freshness = Decimal("0.70")
         assumption_quality = Decimal("0.70") if str(model.get("assumption_source") or "").startswith("config/") else Decimal("1")
         quality = freshness * assumption_quality
-        family_models[family].append((name, value, quality))
+        role = assumption_roles.get(model_assumption_keys.get(name, ""), "independent")
+        if role != "market_anchored":
+            family_models[family].append((name, value, quality))
         model_diagnostics[name] = {
             "family": family,
             "input_freshness_score": format(freshness, "f"),
             "assumption_quality_score": format(assumption_quality, "f"),
             "newest_dated_input": newest_input.isoformat() if newest_input else None,
+            "aggregation_role": role,
+            "included_in_independent_aggregation": role != "market_anchored",
         }
+        if role == "market_anchored":
+            model_diagnostics[name]["exclusion_reason_code"] = "MARKET_ANCHORED_NOT_INDEPENDENT"
 
     families: dict[str, dict[str, Any]] = {}
     weighted_families: list[tuple[Decimal, Decimal]] = []
@@ -292,8 +307,8 @@ def _aggregate_models(
             "family_count": independent_family_count,
             "confidence": confidence,
             "disagreement_ratio": format(disagreement_ratio, ".4f"),
-            "range_low": format(_weighted_quantile(weighted_families, Decimal("0.20")), "f"),
-            "range_high": format(_weighted_quantile(weighted_families, Decimal("0.80")), "f"),
+            "range_low": format(_weighted_quantile(weighted_families, Decimal("0.20")), "f") if independent_family_count >= 2 else None,
+            "range_high": format(_weighted_quantile(weighted_families, Decimal("0.80")), "f") if independent_family_count >= 2 else None,
             "families": families,
         },
         "model_diagnostics": model_diagnostics,
@@ -425,8 +440,8 @@ def build_full_market_coverage(
         symbol = str(row.get("company_id") or "").rsplit("-", 1)[-1].upper()
         if metric and symbol:
             explicit_estimates_by_symbol[symbol][metric] = row
-    assumptions_by_company = {
-        str(row.get("company_id")): row.get("assumptions") or {}
+    assumption_rows_by_company = {
+        str(row.get("company_id")): row
         for row in assumption_rows
         if row.get("company_id") and row.get("evidence_ids")
     }
@@ -457,6 +472,16 @@ def build_full_market_coverage(
         ticker = str(primary.get("ticker") or "").upper()
 
         latest_fin = _latest(financial_by_company.get(company_id, []), "metric")
+        newest_financial_date = max(
+            (_date(row.get("period_end")) for row in latest_fin.values()),
+            default=None,
+        )
+        if newest_financial_date:
+            latest_fin = {
+                name: row for name, row in latest_fin.items()
+                if (observed := _date(row.get("period_end"))) is not None
+                and (newest_financial_date - observed).days <= 550
+            }
         fin = {name: _metric(latest_fin.get(name), source_id_field="financial_fact_id") for name in (
             "revenue", "net_income", "operating_cash_flow", "capital_expenditures", "cash_and_cash_equivalents", "total_debt", "diluted_shares_outstanding", "ebitda", "book_value_per_share",
         )}
@@ -512,7 +537,9 @@ def build_full_market_coverage(
                 "provenance": "trailing_revenue_proxy_when_forward_consensus_unavailable",
                 "is_proxy": True,
             }
-        company_assumptions = assumptions_by_company.get(company_id, {})
+        company_assumption_row = assumption_rows_by_company.get(company_id, {})
+        company_assumptions = company_assumption_row.get("assumptions") or {}
+        company_assumption_roles = company_assumption_row.get("assumption_roles") or {}
         market_row = market_symbols.get(ticker) if ticker else None
         market = {
             "status": "ready" if isinstance(market_row, Mapping) and _number(market_row.get("close")) is not None else "unavailable",
@@ -527,13 +554,25 @@ def build_full_market_coverage(
             company_assumptions,
             dcf_policy=dcf_policy,
         )
-        aggregate = _aggregate_models(models, fin, est)
+        aggregate = _aggregate_models(models, fin, est, company_assumption_roles)
         _apply_market_sanity_gate(aggregate, _number(market.get("current_price")))
         calculated_values = [Decimal(row["fair_value"]) for row in models.values() if row["status"] == "calculated"]
         calculated_count = len(calculated_values)
         model_counts.update(name for name, row in models.items() if row["status"] == "calculated")
         status = "ready" if calculated_count >= 2 else "partial" if calculated_count == 1 else "unavailable"
         status_counts[status] += 1
+        analyst_target = _snapshot_metric(
+            snapshot_row,
+            "analyst_target_mean",
+            ticker=ticker,
+            unit="currency_per_share",
+            currency=snapshot_currency,
+        )
+        analyst_target.update({
+            "label": "analyst_consensus_target",
+            "aggregation_role": "external_reference",
+            "included_in_independent_aggregation": False,
+        })
         card = {
             "schema_version": "full-market-valuation-card.v031.0",
             "company": {"company_id": company_id, "display_name": company.get("display_name"), "legal_name": company.get("legal_name"), "country": company.get("country"), "business_summary": None, "business_summary_reason_code": "CANONICAL_BUSINESS_SUMMARY_NOT_POPULATED"},
@@ -548,7 +587,7 @@ def build_full_market_coverage(
                 else []
             ),
             "estimates": est,
-            "valuation": {"status": status, "calculated_model_count": calculated_count, "total_model_count": 7, "fair_value": aggregate["fair_value"], "aggregation_version": "archetype-primary-model-family.v031v.7", "reason_code": aggregate["reason_code"], "aggregation": aggregate["aggregation"], "model_diagnostics": aggregate["model_diagnostics"], "models": models},
+            "valuation": {"status": status, "calculated_model_count": calculated_count, "total_model_count": 7, "fair_value": aggregate["fair_value"], "aggregation_version": "independent-model-family.v031v.8", "reason_code": aggregate["reason_code"], "aggregation": aggregate["aggregation"], "reference_values": {"analyst_consensus_target": analyst_target}, "model_diagnostics": aggregate["model_diagnostics"], "models": models},
         }
         position = len(cards)
         cards.append(card)

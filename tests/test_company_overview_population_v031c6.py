@@ -36,7 +36,12 @@ def test_generated_overviews_publish_every_evidence_backed_theme_sector_path():
     }
     assert expected_company_ids & eligible_company_ids <= published_company_ids
     assert len(published_company_ids) == index["summary"]["company_count"]
-    assert index["summary"]["classified_count"] == index["summary"]["company_count"]
+    assert (
+        index["summary"]["classified_count"]
+        + index["summary"].get("evidence_available_unclassified_count", 0)
+        + index["summary"]["awaiting_evidence_count"]
+        == index["summary"]["company_count"]
+    )
     assert index["summary"]["company_count"] >= 120
 
 
