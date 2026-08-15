@@ -54,6 +54,13 @@ def test_market_refresh_publishes_the_daily_close_refresh_report():
     workflow = _workflow("production-market-refresh.yml")
     assert "--report data/generated/market/daily_close_refresh_report.json" in workflow
     assert "data/generated/market" in workflow
+    assert "Synchronize main before the expensive provider refresh" in workflow
+    assert "publish_daily_market_refresh.sh" in workflow
+    publisher = (ROOT / "scripts/publish_daily_market_refresh.sh").read_text(encoding="utf-8")
+    assert "git pull --rebase" not in publisher
+    assert "git reset --hard origin/main" in publisher
+    assert "for attempt in 1 2 3" in publisher
+    assert "restore_market_inputs" in publisher
 
 
 def test_estimates_refresh_daily_in_batches_of_200():
