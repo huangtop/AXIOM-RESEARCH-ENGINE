@@ -22,17 +22,22 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     timeout-minutes: 150
+
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: pip
+
       - run: pip install -e .[dev]
+
       - name: Capture valuation baseline
         run: cp data/generated/full_market_coverage/full_market_coverage.json /tmp/axiom-valuation-before.json
+
       - name: Refresh all eligible operating-company closes
         run: >-
           python scripts/refresh_yahoo_daily_close.py
@@ -41,38 +46,51 @@ jobs:
           --checkpoint-size 50
           --max-failure-rate 0.03
           --report data/generated/market/daily_close_refresh_report.json
-          ${{ inputs.force && '--force' || '' }}
+          ${{ github.event_name == 'schedule' && '--force' || (inputs.force && '--force' || '') }}
+
       - name: Rebuild valuation shards and publication catalog
         run: |
           python scripts/build_full_market_coverage.py
           python scripts/build_coverage_policy.py
           python scripts/build_publication_catalog.py
+
       - name: Validate focused production contracts
         run: pytest -q tests/test_full_market_daily_close_population_v031v1.py tests/test_full_market_coverage_v031.py tests/test_publication_gate_v031f2.py
+
       - name: Commit generated market artifacts
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           echo "Working tree before staging:"
           git status --short
+
           # The archive directory is intentionally ignored except for legacy
           # tracked snapshots. Stage only modifications/deletions to tracked
           # archive files; never attempt to add the ignored cache or report.
           git add -u data/generated/provider_cache/yahoo/daily_close
+
           git add \
             data/generated/market \
             data/generated/full_market_coverage \
             data/generated/coverage_policy \
             data/generated/publication_gate
-          if git diff --cached --quiet; then exit 0; fi
+
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+
           git commit -m "chore(data): refresh production daily market artifacts"
+
           if ! git diff --quiet || ! git diff --cached --quiet; then
             echo "Tracked changes remain after the market artifact commit:"
             git status --short
             exit 1
           fi
+
           git pull --rebase origin main
           git push origin HEAD:main
+
       - name: Publish daily refresh summary
         if: always()
         run: python scripts/write_daily_refresh_summary.py --before /tmp/axiom-valuation-before.json
