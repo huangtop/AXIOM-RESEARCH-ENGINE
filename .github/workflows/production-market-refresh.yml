@@ -35,6 +35,9 @@ jobs:
 
       - run: pip install -e .[dev]
 
+      - name: Synchronize main before the expensive provider refresh
+        run: git pull --ff-only origin main
+
       - name: Capture valuation baseline
         run: cp data/generated/full_market_coverage/full_market_coverage.json /tmp/axiom-valuation-before.json
 
@@ -58,38 +61,7 @@ jobs:
         run: pytest -q tests/test_full_market_daily_close_population_v031v1.py tests/test_full_market_coverage_v031.py tests/test_publication_gate_v031f2.py
 
       - name: Commit generated market artifacts
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          echo "Working tree before staging:"
-          git status --short
-
-          # The archive directory is intentionally ignored except for legacy
-          # tracked snapshots. Stage only modifications/deletions to tracked
-          # archive files; never attempt to add the ignored cache or report.
-          git add -u data/generated/provider_cache/yahoo/daily_close
-
-          git add \
-            data/generated/market \
-            data/generated/full_market_coverage \
-            data/generated/coverage_policy \
-            data/generated/publication_gate
-
-          if git diff --cached --quiet; then
-            exit 0
-          fi
-
-          git commit -m "chore(data): refresh production daily market artifacts"
-
-          if ! git diff --quiet || ! git diff --cached --quiet; then
-            echo "Tracked changes remain after the market artifact commit:"
-            git status --short
-            exit 1
-          fi
-
-          git pull --rebase origin main
-          git push origin HEAD:main
+        run: bash scripts/publish_daily_market_refresh.sh
 
       - name: Publish daily refresh summary
         if: always()
