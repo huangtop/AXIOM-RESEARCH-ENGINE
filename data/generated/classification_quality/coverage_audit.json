@@ -1,11 +1,11 @@
 {
   "schema_version": "classification-quality-audit.v031c.5",
   "version": "V031C.5",
-  "generated_at": "2026-08-14T14:53:30.973555+00:00",
+  "generated_at": "2026-08-15T09:17:28.491593+00:00",
   "summary": {
     "company_count": 6464,
-    "business_evidence_company_count": 3257,
-    "business_evidence_coverage_ratio": 0.503868,
+    "business_evidence_company_count": 3533,
+    "business_evidence_coverage_ratio": 0.546566,
     "gate_status_counts": {
       "deprioritized_non_research": 3328,
       "evidence_required": 2339,
@@ -13,48 +13,50 @@
     },
     "knowledge_status_counts": {
       "business_evidence_unavailable": 1066,
-      "knowledge_available": 1359,
-      "no_signals_detected": 239,
-      "research_irrelevant": 3332,
-      "signals_only": 468
+      "knowledge_available": 1362,
+      "no_signals_detected": 87,
+      "research_irrelevant": 3328,
+      "signals_only": 621
     },
-    "research_universe_count": 424,
+    "research_universe_count": 429,
     "research_tier_counts": {
       "active_intelligence": 160,
-      "supply_chain": 386,
+      "supply_chain": 392,
       "deep_research": 5
     },
     "flag_counts": {
-      "INSUFFICIENT_DIMENSION_BREADTH": 140,
-      "LOW_CONFIDENCE_CLASSIFICATION": 855,
-      "NO_SIGNALS": 1306,
-      "OVERBROAD_AI_CLASSIFICATION": 400,
-      "SIGNALS_WITHOUT_UPPER_CLASSIFICATION": 468,
-      "SINGLE_EVIDENCE_CLASSIFICATION": 1359,
-      "THEME_SECTOR_CONFLICT": 795
+      "INSUFFICIENT_DIMENSION_BREADTH": 33,
+      "LOW_CONFIDENCE_CLASSIFICATION": 861,
+      "NO_SIGNALS": 1153,
+      "OVERBROAD_AI_CLASSIFICATION": 334,
+      "SIGNALS_WITHOUT_UPPER_CLASSIFICATION": 621,
+      "SINGLE_EVIDENCE_CLASSIFICATION": 1362,
+      "THEME_SECTOR_CONFLICT": 796
     },
     "dimension_company_counts": {
-      "capability": 206,
+      "capability": 648,
       "cluster": 186,
-      "end_market": 1319,
-      "infrastructure": 228,
-      "product": 915,
-      "sector": 992,
-      "supply_chain_role": 1736,
-      "technology": 1453,
-      "theme": 1359
+      "end_market": 2980,
+      "infrastructure": 231,
+      "product": 966,
+      "sector": 995,
+      "supply_chain_role": 1882,
+      "technology": 1530,
+      "theme": 1362,
+      "upstream_input": 223
     },
     "dimension_breadth_company_counts": {
-      "0": 3843,
-      "1": 747,
-      "2": 537,
-      "3": 269,
-      "4": 314,
-      "5": 296,
-      "6": 270,
-      "7": 114,
-      "8": 54,
-      "9": 20
+      "0": 3191,
+      "1": 693,
+      "2": 822,
+      "3": 495,
+      "4": 299,
+      "5": 307,
+      "6": 320,
+      "7": 205,
+      "8": 96,
+      "9": 33,
+      "10": 3
     }
   },
   "diagnostics": [
@@ -209,7 +211,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -508,7 +510,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -739,7 +741,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -972,7 +974,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -1438,7 +1440,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -1635,7 +1637,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -1646,7 +1648,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -1751,10 +1753,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -1808,23 +1806,10 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -1943,10 +1928,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -1977,10 +1958,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -2069,23 +2046,10 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -2290,10 +2254,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -2356,7 +2316,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -2442,7 +2402,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -2677,15 +2637,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -2790,7 +2741,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -3088,15 +3039,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -3384,7 +3326,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -4019,15 +3961,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -4218,7 +4151,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -4405,15 +4338,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -4618,10 +4542,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -4894,23 +4814,10 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -5091,7 +4998,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -5562,7 +5469,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -5687,7 +5594,6 @@
               "sector:ai_compute",
               "sector:ai_memory",
               "sector:autonomous_driving",
-              "sector:cloud_infrastructure",
               "sector:semiconductors",
               "theme:advanced_semiconductors",
               "theme:ai_infrastructure",
@@ -5903,7 +5809,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -6034,10 +5940,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -6094,10 +5996,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -6113,7 +6011,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -6135,7 +6033,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -6266,10 +6164,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -6873,15 +6767,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -7043,7 +6928,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -7467,15 +7352,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -7579,7 +7455,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -7780,15 +7656,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -7798,7 +7665,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -8226,7 +8093,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -8281,15 +8148,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -8565,10 +8423,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -9088,15 +8942,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -9188,15 +9033,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -9530,7 +9366,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -9538,13 +9374,14 @@
     {
       "company_id": "company:US-CIK0000863436",
       "gate_status": "priority_candidate",
-      "research_universe_status": "not_eligible",
+      "research_universe_status": "selected",
       "flags": [
         {
           "code": "LOW_CONFIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
               "sector:semiconductors",
+              "theme:artificial_intelligence",
               "theme:advanced_semiconductors"
             ]
           }
@@ -9553,10 +9390,13 @@
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
+              "sector:data_center_power",
               "sector:electronics_manufacturing_services",
               "sector:semiconductors",
               "theme:advanced_manufacturing",
-              "theme:advanced_semiconductors"
+              "theme:advanced_semiconductors",
+              "theme:ai_infrastructure",
+              "theme:artificial_intelligence"
             ]
           }
         }
@@ -9605,10 +9445,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -9888,7 +9724,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -9990,15 +9826,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -10125,7 +9952,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -10284,7 +10111,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -10317,7 +10144,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -10512,7 +10339,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -10717,15 +10544,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -11143,15 +10961,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -11417,6 +11226,7 @@
             "knowledge_ids": [
               "cluster:lidar_sensing",
               "sector:quantum_computing",
+              "sector:data_center_power",
               "sector:semiconductors",
               "sector:autonomous_driving",
               "theme:quantum_computing",
@@ -11445,6 +11255,7 @@
               "sector:ai_networking",
               "sector:autonomous_driving",
               "sector:cloud_infrastructure",
+              "sector:data_center_power",
               "sector:electronics_manufacturing_services",
               "sector:quantum_computing",
               "sector:semiconductors",
@@ -11543,10 +11354,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -11584,7 +11391,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -11655,7 +11462,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -11674,14 +11481,17 @@
     {
       "company_id": "company:US-CIK0000908255",
       "gate_status": "evidence_required",
-      "research_universe_status": "not_eligible",
+      "research_universe_status": "selected",
       "flags": [
         {
           "code": "LOW_CONFIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
+              "sector:data_center_power",
               "sector:semiconductors",
-              "theme:advanced_semiconductors"
+              "theme:ai_infrastructure",
+              "theme:advanced_semiconductors",
+              "theme:artificial_intelligence"
             ]
           }
         },
@@ -11689,8 +11499,11 @@
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
+              "sector:data_center_power",
               "sector:semiconductors",
-              "theme:advanced_semiconductors"
+              "theme:advanced_semiconductors",
+              "theme:ai_infrastructure",
+              "theme:artificial_intelligence"
             ]
           }
         }
@@ -11848,7 +11661,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -11925,7 +11738,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -12079,7 +11892,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -12217,7 +12030,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -12361,7 +12174,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -12674,15 +12487,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -12791,15 +12595,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -13065,7 +12860,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -13208,15 +13003,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -13226,7 +13012,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -13386,7 +13172,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -14287,7 +14073,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -14769,10 +14555,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -14788,7 +14570,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -15062,6 +14844,14 @@
       "research_universe_status": "selected",
       "flags": [
         {
+          "code": "LOW_CONFIDENCE_CLASSIFICATION",
+          "details": {
+            "knowledge_ids": [
+              "sector:data_center_power"
+            ]
+          }
+        },
+        {
           "code": "THEME_SECTOR_CONFLICT",
           "details": {
             "conflicts": {
@@ -15083,6 +14873,7 @@
               "sector:ai_memory",
               "sector:ai_networking",
               "sector:autonomous_driving",
+              "sector:data_center_power",
               "sector:power_semiconductors",
               "sector:semiconductors",
               "theme:advanced_communications",
@@ -15202,10 +14993,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -15260,6 +15047,7 @@
               "cluster:optical_interconnect",
               "sector:interconnect_components",
               "sector:it_consulting_services",
+              "sector:data_center_power",
               "sector:ai_servers",
               "sector:digital_asset_infrastructure",
               "theme:enterprise_software",
@@ -15279,6 +15067,7 @@
               "sector:ai_networking",
               "sector:ai_servers",
               "sector:autonomous_driving",
+              "sector:data_center_power",
               "sector:digital_asset_infrastructure",
               "sector:interconnect_components",
               "sector:it_consulting_services",
@@ -15529,15 +15318,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -15616,10 +15396,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -15847,7 +15623,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -15901,7 +15677,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -15945,15 +15721,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -16375,10 +16142,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -16415,12 +16178,10 @@
           "code": "LOW_CONFIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
-              "sector:cybersecurity",
               "sector:quantum_computing",
               "sector:cloud_infrastructure",
               "theme:advanced_semiconductors",
               "theme:quantum_computing",
-              "theme:cybersecurity",
               "theme:ai_infrastructure"
             ]
           }
@@ -16527,7 +16288,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -16651,15 +16412,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -17019,8 +16771,7 @@
           "code": "LOW_CONFIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
-              "cluster:accelerator_silicon",
-              "sector:data_center_power"
+              "cluster:accelerator_silicon"
             ]
           }
         },
@@ -17074,15 +16825,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -17180,23 +16922,10 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -17295,10 +17024,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -17410,15 +17135,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -17639,23 +17355,10 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -17979,15 +17682,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -18175,15 +17869,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -18727,6 +18412,40 @@
       ]
     },
     {
+      "company_id": "company:US-CIK0001120193",
+      "gate_status": "priority_candidate",
+      "research_universe_status": "selected",
+      "flags": [
+        {
+          "code": "LOW_CONFIDENCE_CLASSIFICATION",
+          "details": {
+            "knowledge_ids": [
+              "sector:financial_technology",
+              "sector:data_center_power",
+              "sector:cloud_infrastructure",
+              "theme:financial_services_technology",
+              "theme:ai_infrastructure"
+            ]
+          }
+        },
+        {
+          "code": "SINGLE_EVIDENCE_CLASSIFICATION",
+          "details": {
+            "knowledge_ids": [
+              "sector:cloud_infrastructure",
+              "sector:data_center_power",
+              "sector:digital_asset_infrastructure",
+              "sector:financial_technology",
+              "theme:ai_infrastructure",
+              "theme:artificial_intelligence",
+              "theme:digital_assets",
+              "theme:financial_services_technology"
+            ]
+          }
+        }
+      ]
+    },
+    {
       "company_id": "company:US-CIK0001120914",
       "gate_status": "priority_candidate",
       "research_universe_status": "not_eligible",
@@ -18791,15 +18510,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -19084,6 +18794,7 @@
           "details": {
             "knowledge_ids": [
               "cluster:physical_ai_robots",
+              "sector:data_infrastructure",
               "sector:quantum_computing",
               "sector:physical_ai_systems",
               "sector:cloud_infrastructure",
@@ -19100,6 +18811,7 @@
               "cluster:physical_ai_robots",
               "sector:ai_compute",
               "sector:cloud_infrastructure",
+              "sector:data_infrastructure",
               "sector:physical_ai_systems",
               "sector:quantum_computing",
               "sector:semiconductors",
@@ -19380,6 +19092,7 @@
           "code": "LOW_CONFIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
+              "theme:ai_infrastructure",
               "theme:artificial_intelligence"
             ]
           }
@@ -19451,7 +19164,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -19517,15 +19230,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -19686,7 +19390,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -20139,7 +19843,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -20332,7 +20036,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -20403,15 +20107,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -20535,15 +20230,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -20622,15 +20308,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -20687,15 +20364,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -21039,10 +20707,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -21157,15 +20821,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -21326,15 +20981,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -21847,7 +21493,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -22027,7 +21673,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -22082,7 +21728,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -22099,8 +21745,7 @@
               "cluster:high_bandwidth_memory",
               "sector:interconnect_components",
               "sector:ai_memory",
-              "sector:data_center_power",
-              "sector:cloud_infrastructure"
+              "sector:data_center_power"
             ]
           }
         },
@@ -22112,7 +21757,6 @@
               "cluster:optical_interconnect",
               "sector:ai_memory",
               "sector:ai_networking",
-              "sector:cloud_infrastructure",
               "sector:data_center_power",
               "sector:interconnect_components",
               "sector:semiconductors",
@@ -22239,23 +21883,10 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -22640,7 +22271,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -22876,7 +22507,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -22934,10 +22565,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -22960,7 +22587,6 @@
               "sector:ai_compute",
               "sector:ai_servers",
               "sector:semiconductors",
-              "theme:ai_infrastructure",
               "theme:advanced_semiconductors"
             ]
           }
@@ -22972,6 +22598,7 @@
               "cluster:accelerator_silicon",
               "sector:ai_compute",
               "sector:ai_servers",
+              "sector:data_center_power",
               "sector:it_consulting_services",
               "sector:semiconductors",
               "theme:advanced_semiconductors",
@@ -23047,7 +22674,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -23420,12 +23047,37 @@
       ]
     },
     {
+      "company_id": "company:US-CIK0001329606",
+      "gate_status": "priority_candidate",
+      "research_universe_status": "not_eligible",
+      "flags": [
+        {
+          "code": "LOW_CONFIDENCE_CLASSIFICATION",
+          "details": {
+            "knowledge_ids": [
+              "sector:semiconductors"
+            ]
+          }
+        },
+        {
+          "code": "SINGLE_EVIDENCE_CLASSIFICATION",
+          "details": {
+            "knowledge_ids": [
+              "sector:power_semiconductors",
+              "sector:semiconductors",
+              "theme:advanced_semiconductors"
+            ]
+          }
+        }
+      ]
+    },
+    {
       "company_id": "company:US-CIK0001331284",
       "gate_status": "evidence_required",
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -23458,7 +23110,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -23502,15 +23154,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -23689,10 +23332,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -23832,7 +23471,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -23921,7 +23560,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -23990,7 +23629,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -24224,10 +23863,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -24470,15 +24105,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -24619,12 +24245,55 @@
       ]
     },
     {
+      "company_id": "company:US-CIK0001368622",
+      "gate_status": "priority_candidate",
+      "research_universe_status": "selected",
+      "flags": [
+        {
+          "code": "LOW_CONFIDENCE_CLASSIFICATION",
+          "details": {
+            "knowledge_ids": [
+              "sector:leo_satellites"
+            ]
+          }
+        },
+        {
+          "code": "THEME_SECTOR_CONFLICT",
+          "details": {
+            "conflicts": {
+              "theme:artificial_intelligence": [
+                "sector:ai_compute",
+                "sector:ai_memory",
+                "sector:ai_networking",
+                "sector:ai_servers",
+                "sector:cloud_infrastructure",
+                "sector:data_center_power",
+                "sector:physical_ai_systems",
+                "sector:ai_data_services"
+              ]
+            }
+          }
+        },
+        {
+          "code": "SINGLE_EVIDENCE_CLASSIFICATION",
+          "details": {
+            "knowledge_ids": [
+              "sector:leo_satellites",
+              "sector:space_systems",
+              "theme:artificial_intelligence",
+              "theme:space_economy"
+            ]
+          }
+        }
+      ]
+    },
+    {
       "company_id": "company:US-CIK0001369241",
       "gate_status": "evidence_required",
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -24697,15 +24366,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -24809,15 +24469,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -25207,15 +24858,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -25342,10 +24984,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -25551,7 +25189,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -25670,7 +25308,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -25770,10 +25408,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -26367,7 +26001,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -26455,7 +26089,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -26908,7 +26542,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -27135,7 +26769,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -27190,15 +26824,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -27274,7 +26899,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -27380,10 +27005,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -27454,7 +27075,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -28037,7 +27658,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -28073,15 +27694,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -28290,15 +27902,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -28907,7 +28510,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -29042,7 +28645,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -29122,7 +28725,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -29141,13 +28744,24 @@
     {
       "company_id": "company:US-CIK0001481513",
       "gate_status": "priority_candidate",
-      "research_universe_status": "not_eligible",
+      "research_universe_status": "selected",
       "flags": [
+        {
+          "code": "LOW_CONFIDENCE_CLASSIFICATION",
+          "details": {
+            "knowledge_ids": [
+              "theme:artificial_intelligence"
+            ]
+          }
+        },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
+              "sector:data_center_power",
               "sector:solar_technology",
+              "theme:ai_infrastructure",
+              "theme:artificial_intelligence",
               "theme:clean_energy"
             ]
           }
@@ -29230,7 +28844,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -29589,10 +29203,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -29682,7 +29292,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -29825,7 +29435,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -29972,10 +29582,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -30183,15 +29789,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -30831,15 +30428,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -30942,30 +30530,24 @@
     {
       "company_id": "company:US-CIK0001519472",
       "gate_status": "evidence_required",
-      "research_universe_status": "not_eligible",
+      "research_universe_status": "selected",
       "flags": [
         {
-          "code": "THEME_SECTOR_CONFLICT",
+          "code": "LOW_CONFIDENCE_CLASSIFICATION",
           "details": {
-            "conflicts": {
-              "theme:artificial_intelligence": [
-                "sector:ai_compute",
-                "sector:ai_memory",
-                "sector:ai_networking",
-                "sector:ai_servers",
-                "sector:cloud_infrastructure",
-                "sector:data_center_power",
-                "sector:physical_ai_systems",
-                "sector:ai_data_services"
-              ]
-            }
+            "knowledge_ids": [
+              "sector:data_center_power",
+              "theme:ai_infrastructure"
+            ]
           }
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
+              "sector:data_center_power",
               "sector:solar_technology",
+              "theme:ai_infrastructure",
               "theme:artificial_intelligence",
               "theme:clean_energy"
             ]
@@ -31015,7 +30597,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -31189,7 +30771,6 @@
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
-              "sector:cloud_infrastructure",
               "sector:cybersecurity",
               "sector:data_center_power",
               "theme:ai_infrastructure",
@@ -31737,7 +31318,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -31979,7 +31560,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -32167,15 +31748,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -32255,15 +31827,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -32479,7 +32042,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -32631,23 +32194,10 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -32802,7 +32352,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -32875,10 +32425,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -33104,10 +32650,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -33427,7 +32969,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -33453,10 +32995,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -33707,7 +33245,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -33718,7 +33256,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -33783,15 +33321,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -34044,7 +33573,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -34352,7 +33881,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -34784,15 +34313,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -34846,7 +34366,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -35272,15 +34792,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -35744,15 +35255,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -35789,15 +35291,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -35832,23 +35325,10 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -36048,15 +35528,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -36179,14 +35650,6 @@
       "research_universe_status": "selected",
       "flags": [
         {
-          "code": "LOW_CONFIDENCE_CLASSIFICATION",
-          "details": {
-            "knowledge_ids": [
-              "sector:cloud_infrastructure"
-            ]
-          }
-        },
-        {
           "code": "THEME_SECTOR_CONFLICT",
           "details": {
             "conflicts": {
@@ -36204,7 +35667,6 @@
             "knowledge_ids": [
               "cluster:optical_interconnect",
               "sector:ai_networking",
-              "sector:cloud_infrastructure",
               "sector:semiconductors",
               "theme:advanced_communications",
               "theme:advanced_semiconductors",
@@ -36236,10 +35698,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -36282,15 +35740,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -36383,7 +35832,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -36554,15 +36003,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -36616,7 +36056,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -36673,15 +36113,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -36909,10 +36340,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -37166,7 +36593,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -37287,7 +36714,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -37309,7 +36736,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -37348,10 +36775,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -37382,10 +36805,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -37676,10 +37095,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -37951,15 +37366,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -38005,10 +37411,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -38185,15 +37587,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -38214,10 +37607,19 @@
       "research_universe_status": "selected",
       "flags": [
         {
+          "code": "LOW_CONFIDENCE_CLASSIFICATION",
+          "details": {
+            "knowledge_ids": [
+              "sector:cloud_infrastructure"
+            ]
+          }
+        },
+        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
               "sector:cloud_infrastructure",
+              "sector:data_center_power",
               "theme:ai_infrastructure",
               "theme:artificial_intelligence"
             ]
@@ -38312,7 +37714,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -38441,7 +37843,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -38683,10 +38085,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -38727,7 +38125,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -38806,7 +38204,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -38902,7 +38300,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -38964,10 +38362,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -39198,7 +38592,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -39242,15 +38636,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -39345,15 +38730,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -39363,7 +38739,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -39446,7 +38822,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -40278,7 +39654,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -40289,7 +39665,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -40303,8 +39679,6 @@
           "code": "LOW_CONFIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
-              "sector:data_center_power",
-              "theme:ai_infrastructure",
               "theme:artificial_intelligence"
             ]
           }
@@ -40390,7 +39764,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -40416,10 +39790,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -40900,7 +40270,8 @@
               "cluster:high_bandwidth_memory",
               "sector:rf_semiconductors",
               "sector:ai_memory",
-              "sector:ai_servers"
+              "sector:ai_servers",
+              "sector:cloud_infrastructure"
             ]
           }
         },
@@ -40935,7 +40306,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -41044,6 +40415,14 @@
       "research_universe_status": "selected",
       "flags": [
         {
+          "code": "LOW_CONFIDENCE_CLASSIFICATION",
+          "details": {
+            "knowledge_ids": [
+              "sector:cloud_infrastructure"
+            ]
+          }
+        },
+        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -41102,7 +40481,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -41401,7 +40780,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -41523,16 +40902,14 @@
     {
       "company_id": "company:US-CIK0001743725",
       "gate_status": "priority_candidate",
-      "research_universe_status": "selected",
+      "research_universe_status": "not_eligible",
       "flags": [
         {
           "code": "LOW_CONFIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
               "sector:it_consulting_services",
-              "sector:cloud_infrastructure",
-              "theme:enterprise_software",
-              "theme:ai_infrastructure"
+              "theme:enterprise_software"
             ]
           }
         },
@@ -41541,10 +40918,8 @@
           "details": {
             "knowledge_ids": [
               "cluster:physical_ai_robots",
-              "sector:cloud_infrastructure",
               "sector:it_consulting_services",
               "sector:physical_ai_systems",
-              "theme:ai_infrastructure",
               "theme:artificial_intelligence",
               "theme:enterprise_software",
               "theme:physical_ai"
@@ -41862,7 +41237,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -42429,7 +41804,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -42623,15 +41998,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -42911,23 +42277,10 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -42950,7 +42303,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -43019,7 +42372,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -43918,7 +43271,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -44298,15 +43651,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -44455,7 +43799,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -44481,10 +43825,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -44847,15 +44187,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -44892,15 +44223,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -44935,15 +44257,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -45149,10 +44462,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -45323,15 +44632,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -45598,15 +44898,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -45830,8 +45121,6 @@
           "code": "LOW_CONFIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
-              "sector:data_center_power",
-              "theme:ai_infrastructure",
               "theme:artificial_intelligence"
             ]
           }
@@ -45978,7 +45267,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -46225,7 +45514,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -46636,15 +45925,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -46736,15 +46016,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -46787,15 +46058,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -46851,7 +46113,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -47153,15 +46415,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -47342,15 +46595,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -47426,15 +46670,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -47513,15 +46748,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -47548,23 +46774,10 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -47893,15 +47106,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -48074,7 +47278,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -48170,15 +47374,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -48743,23 +47938,10 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -48804,15 +47986,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -49379,7 +48552,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -49438,10 +48611,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -49534,7 +48703,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -49567,7 +48736,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -49799,15 +48968,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -50010,10 +49170,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -50133,15 +49289,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -50479,10 +49626,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -50735,15 +49878,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -51085,7 +50219,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -51107,7 +50241,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -51118,7 +50252,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -51305,15 +50439,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -51540,15 +50665,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -51569,7 +50685,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -51721,15 +50837,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -51765,10 +50872,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -51786,7 +50889,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -51871,13 +50974,28 @@
           }
         },
         {
+          "code": "THEME_SECTOR_CONFLICT",
+          "details": {
+            "conflicts": {
+              "theme:artificial_intelligence": [
+                "sector:ai_compute",
+                "sector:ai_memory",
+                "sector:ai_networking",
+                "sector:ai_servers",
+                "sector:cloud_infrastructure",
+                "sector:data_center_power",
+                "sector:physical_ai_systems",
+                "sector:ai_data_services"
+              ]
+            }
+          }
+        },
+        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
-              "sector:cloud_infrastructure",
               "sector:cybersecurity",
               "sector:quantum_computing",
-              "theme:ai_infrastructure",
               "theme:artificial_intelligence",
               "theme:cybersecurity",
               "theme:quantum_computing"
@@ -52278,7 +51396,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -52613,7 +51731,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -52780,15 +51898,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -53016,23 +52125,10 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -53080,15 +52176,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -53154,7 +52241,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -53608,15 +52695,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -54103,15 +53181,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -54221,7 +53290,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -54325,7 +53394,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -54351,10 +53420,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -54482,7 +53547,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -54743,10 +53808,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -54827,7 +53888,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -55352,7 +54413,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -55425,10 +54486,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -55734,7 +54791,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -55745,7 +54802,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -55878,15 +54935,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -56171,7 +55219,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -56472,10 +55520,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -56836,8 +55880,6 @@
           "code": "LOW_CONFIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
-              "sector:data_center_power",
-              "theme:ai_infrastructure",
               "theme:artificial_intelligence"
             ]
           }
@@ -56995,23 +56037,10 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -57149,15 +56178,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -57723,7 +56743,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -57918,15 +56938,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -58023,7 +57034,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -58131,7 +57142,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -58169,10 +57180,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -58201,7 +57208,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -58554,10 +57561,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -58600,7 +57603,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -58634,10 +57637,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -58688,15 +57687,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -58804,16 +57794,6 @@
       "gate_status": "priority_candidate",
       "research_universe_status": "selected",
       "flags": [
-        {
-          "code": "LOW_CONFIDENCE_CLASSIFICATION",
-          "details": {
-            "knowledge_ids": [
-              "sector:data_center_power",
-              "theme:ai_infrastructure",
-              "theme:artificial_intelligence"
-            ]
-          }
-        },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
@@ -58939,7 +57919,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -59008,7 +57988,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -59019,7 +57999,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -59159,7 +58139,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -59181,7 +58161,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -59318,7 +58298,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -59423,7 +58403,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -59469,15 +58449,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -59506,7 +58477,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -59596,15 +58567,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -59707,7 +58669,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -59765,23 +58727,10 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -59793,7 +58742,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -59978,15 +58927,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -60275,7 +59215,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -60363,10 +59303,6 @@
           }
         },
         {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
-        },
-        {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
           "details": {
             "knowledge_ids": [
@@ -60382,7 +59318,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -60451,7 +59387,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -60595,15 +59531,6 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
-            ]
-          }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
             ]
           }
         }
@@ -60881,15 +59808,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -61017,15 +59935,6 @@
               "theme:artificial_intelligence"
             ]
           }
-        },
-        {
-          "code": "INSUFFICIENT_DIMENSION_BREADTH",
-          "details": {
-            "dimensions": [
-              "technology",
-              "theme"
-            ]
-          }
         }
       ]
     },
@@ -61085,7 +59994,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -61118,7 +60027,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
@@ -61153,10 +60062,6 @@
               ]
             }
           }
-        },
-        {
-          "code": "OVERBROAD_AI_CLASSIFICATION",
-          "details": {}
         },
         {
           "code": "SINGLE_EVIDENCE_CLASSIFICATION",
@@ -61305,7 +60210,7 @@
       "research_universe_status": "not_eligible",
       "flags": [
         {
-          "code": "NO_SIGNALS",
+          "code": "SIGNALS_WITHOUT_UPPER_CLASSIFICATION",
           "details": {}
         }
       ]
