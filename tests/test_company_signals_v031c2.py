@@ -171,3 +171,30 @@ def test_real_population_is_complete_and_only_uses_canonical_business_evidence()
     assert report["summary"]["company_count"] == 6464
     assert report["summary"]["business_evidence_company_count"] >= 1000
     assert len(report["records"]) == 6464
+
+def test_product_heading_can_establish_company_offering(tmp_path: Path):
+    root = _fixture(tmp_path)
+
+    evidence_path = (
+        root
+        / "data/generated/canonical_business_evidence/business_evidence.json"
+    )
+    evidence = json.loads(evidence_path.read_text())
+
+    evidence[0]["text"] = (
+        "DRAM: DRAM products are dynamic random access memory "
+        "semiconductor devices."
+    )
+    evidence_path.write_text(json.dumps(evidence))
+
+    report = build_company_signals(root)
+    record = report["records"][0]
+
+    dram_signal = next(
+        row
+        for row in record["signals"]
+        if row["signal_id"] == "product:dram"
+    )
+
+    assert dram_signal["offering_occurrence_count"] >= 1
+    assert dram_signal["primary_business_score"] == 3
