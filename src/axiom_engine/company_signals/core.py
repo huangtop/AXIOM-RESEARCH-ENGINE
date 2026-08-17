@@ -43,20 +43,18 @@ def _context(text: str, start: int, end: int, maximum: int) -> dict[str, Any]:
 
 
 def _is_company_offering(
-    text: str, match_start: int, company_names: tuple[str, ...] = ()
+    text: str,
+    match_start: int,
+    company_names: tuple[str, ...] = (),
+    matched_alias: str = "",
 ) -> bool:
     """Distinguish company-owned offerings from customer, application, and end-market uses."""
     prefix = text[max(0, match_start - 180):match_start].lower()
 
-    # An offering verb from a previous sentence must not attach to a later
-    # customer-use or end-market noun.
-    #
-    # SEC HTML extraction preserves visual line wraps, so newline is not
-    # treated as a sentence boundary here.
+    # Keep only the current sentence-like segment.
     prefix = re.split(r"[.!?;]", prefix)[-1]
 
-    # Procurement / dependency language describes inputs or counterparties,
-    # not products or capabilities that the company itself offers.
+    # Procurement / dependency language is not a company offering.
     if re.search(
         r"\b(?:"
         r"costs? (?:of|from)|"
@@ -71,19 +69,7 @@ def _is_company_offering(
     ):
         return False
 
-    # The matched noun may be an application, customer device, deployment
-    # target, or end market rather than something the company sells.
-    #
-    # Examples that must NOT promote X to a company offering:
-    #
-    #   our products enable X
-    #   our solutions support X
-    #   our products power X
-    #   solutions designed for X
-    #   products sold into X
-    #
-    # Only inspect the relation immediately before the match so an older
-    # offering verb earlier in the sentence cannot incorrectly own X.
+    # Application / customer / deployment target is not the thing the company sells.
     relation_tail = prefix[-140:]
     if re.search(
         r"\b(?:"
@@ -101,24 +87,49 @@ def _is_company_offering(
         relation_tail,
     ):
         return False
-    
-    # SEC Item 1 product sections often define owned products using a
-    # heading-style pattern rather than an explicit "we sell/provide" verb:
+
+    # SEC product-section headings can establish ownership:
     #
     #   DRAM: DRAM products are ...
     #   NAND: NAND products are ...
-    #   Solid State Drives ("SSDs"): SSD storage products incorporate ...
+    #   Solid State Drives ("SSDs"): SSD storage products ...
     #
-    # Treat this as an owned offering only when the matched phrase itself
-    # is immediately preceded by a short product heading or colon-delimited
-    # label, rather than broad surrounding prose.
+    # But generic headings must NOT:
+    #
+    #   Customers: SSDs are used ...
+    #   Suppliers: DRAM products ...
+    #
+    # Therefore require lexical overlap between the heading and matched alias.
     heading_tail = prefix[-100:]
-    if re.search(
+    heading_match = re.search(
         r"(?:^|[.!?;])\s*"
-        r"[A-Za-z0-9()\"'&/\-\s]{1,60}:\s*$",
+        r"([A-Za-z0-9()\"'&/\-\s]{1,60}):\s*$",
         heading_tail,
-    ):
-        return True
+    )
+
+    if heading_match and matched_alias:
+        heading_text = heading_match.group(1).lower()
+        alias_text = matched_alias.lower()
+
+        def normalize_token(token: str) -> str:
+            if token.endswith("s") and len(token) > 3:
+                return token[:-1]
+            return token
+
+        heading_tokens = {
+            normalize_token(token)
+            for token in re.findall(r"[a-z0-9]+", heading_text)
+            if len(token) >= 3
+        }
+
+        alias_tokens = {
+            normalize_token(token)
+            for token in re.findall(r"[a-z0-9]+", alias_text)
+            if len(token) >= 3
+        }
+
+        if heading_tokens & alias_tokens:
+            return True
 
     named_company_offering = any(
         name.lower() in prefix
@@ -313,7 +324,10 @@ def build_company_signals(
                             continue
                         count += 1
                         if rule.get("dimension") in {"product", "capability", "infrastructure"} and _is_company_offering(
-                            text, match.start(), company_names
+                            text,
+                            match.start(),
+                            company_names,
+                            alias,
                         ):
                             offering_count += 1
                         elif rule.get("dimension") == "supply_chain_role" and (
