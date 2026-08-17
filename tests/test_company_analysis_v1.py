@@ -22,6 +22,36 @@ def _records():
     report = build_company_analyses(ROOT, company_ids=company_ids, signals_payload=signals)
     return {row["symbol"]: row for row in report["records"]}
 
+def _record_for_symbol(symbol: str):
+    securities = json.loads(
+        (ROOT / "data/universe/securities.json").read_text()
+    )
+
+    company_ids = {
+        str(row["company_id"])
+        for row in securities
+        if str(row.get("ticker") or "").upper() == symbol.upper()
+    }
+
+    assert len(company_ids) == 1
+
+    signals = build_company_signals(
+        ROOT,
+        company_ids=company_ids,
+    )
+    report = build_company_analyses(
+        ROOT,
+        company_ids=company_ids,
+        signals_payload=signals,
+    )
+
+    records = {
+        row["symbol"]: row
+        for row in report["records"]
+    }
+
+    assert symbol.upper() in records
+    return records[symbol.upper()]
 
 def test_generates_traceable_analysis_without_company_specific_policy():
     policy = json.loads((ROOT / "config/company_analysis.v1.json").read_text())
@@ -64,6 +94,48 @@ def test_silc_sells_networking_infrastructure():
     assert "高效能網路與資料基礎設施" in text
     assert "AI 核心算力" not in text
 
+def test_micron_does_not_promote_application_targets_to_core_offerings():
+    mu = _record_for_symbol("MU")
+
+    core = {
+        row["text"]
+        for row in mu["value_chain"]["core"]
+    }
+    offerings = {
+        row["name"]
+        for row in mu["offerings"]
+    }
+    capabilities = {
+        row["text"]
+        for row in mu["business_model"]["operating_capabilities"]
+    }
+    downstream = {
+        row["text"]
+        for row in mu["value_chain"]["downstream"]
+    }
+
+    assert "Edge CPE 與智慧網路平台" not in core
+    assert "Edge CPE 與智慧網路平台" not in offerings
+
+    assert "系統整合" not in core
+    assert "系統整合" not in capabilities
+
+    assert {
+        "DRAM 記憶體",
+        "HBM 高頻寬記憶體",
+        "NAND Flash 快閃記憶體",
+        "NOR Flash 快閃記憶體",
+        "SSD 固態硬碟",
+        "Managed NAND 儲存方案",
+        "多晶片封裝（MCP）",
+    } <= offerings
+
+    assert {
+        "雲端與資料中心",
+        "汽車與車用電子",
+        "工業應用",
+        "通訊設備",
+    } <= downstream
 
 def test_nvda_has_gpu_and_data_center_in_evidence_backed_summary():
     nvda = _records()["NVDA"]
