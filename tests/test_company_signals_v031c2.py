@@ -198,3 +198,30 @@ def test_product_heading_can_establish_company_offering(tmp_path: Path):
 
     assert dram_signal["offering_occurrence_count"] >= 1
     assert dram_signal["primary_business_score"] == 3
+
+def test_non_product_heading_does_not_establish_company_offering(tmp_path: Path):
+    root = _fixture(tmp_path)
+
+    evidence_path = (
+        root
+        / "data/generated/canonical_business_evidence/business_evidence.json"
+    )
+    evidence = json.loads(evidence_path.read_text())
+
+    evidence[0]["text"] = (
+        "Customers: SSDs are increasingly used in enterprise "
+        "and data center applications."
+    )
+    evidence_path.write_text(json.dumps(evidence))
+
+    report = build_company_signals(root)
+    record = report["records"][0]
+
+    ssd_signal = next(
+        row
+        for row in record["signals"]
+        if row["signal_id"] == "product:ssd"
+    )
+
+    assert ssd_signal["offering_occurrence_count"] == 0
+    assert ssd_signal["primary_business_score"] == 0
