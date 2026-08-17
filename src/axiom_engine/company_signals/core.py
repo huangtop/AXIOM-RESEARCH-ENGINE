@@ -101,7 +101,8 @@ def _is_company_offering(
         relation_tail,
     ):
         return False
-        # SEC Item 1 product sections often define owned products using a
+    
+    # SEC Item 1 product sections often define owned products using a
     # heading-style pattern rather than an explicit "we sell/provide" verb:
     #
     #   DRAM: DRAM products are ...
@@ -118,7 +119,7 @@ def _is_company_offering(
         heading_tail,
     ):
         return True
-    
+
     named_company_offering = any(
         name.lower() in prefix
         and re.search(
