@@ -224,3 +224,133 @@ def test_v2631_preserves_real_end_markets():
             )
             is True
         )
+
+# === V2.6.3.3 MARKET RECALL PROMOTION TIER 1 ===
+
+
+def test_v2633_extracts_primary_markets():
+    text = (
+        "Our primary markets include aerospace, "
+        "defense and healthcare."
+    )
+
+    values, evidence = _extract_generic_markets(
+        text
+    )
+
+    assert "Aerospace" in values
+    assert "Defense" in values
+    assert "Healthcare" in values
+    assert evidence
+
+
+def test_v2633_extracts_principal_markets():
+    text = (
+        "Principal markets consist of automotive, "
+        "industrial automation and energy."
+    )
+
+    values, _ = _extract_generic_markets(
+        text
+    )
+
+    assert "Automotive" in values
+    assert "Industrial Automation" in values
+    assert "Energy" in values
+
+
+def test_v2633_extracts_generic_market_list():
+    text = (
+        "Markets include data center, "
+        "telecommunications and industrial."
+    )
+
+    values, _ = _extract_generic_markets(
+        text
+    )
+
+    assert "Data Center" in values
+    assert "Telecom" in values
+    assert "Industrial" in values
+
+
+def test_v2633_extracts_market_such_as_list():
+    text = (
+        "We participate in markets such as "
+        "automotive, healthcare and aerospace."
+    )
+
+    values, _ = _extract_generic_markets(
+        text
+    )
+
+    assert "Automotive" in values
+    assert "Healthcare" in values
+    assert "Aerospace" in values
+
+
+def test_v2633_extracts_industry_list():
+    text = (
+        "Industries include medical devices, "
+        "industrial automation and energy."
+    )
+
+    values, _ = _extract_generic_markets(
+        text
+    )
+
+    assert "Medical Devices" in values
+    assert "Industrial Automation" in values
+    assert "Energy" in values
+
+
+def test_v2633_extracts_serves_industries_without_we_prefix():
+    text = (
+        "The company serves the automotive, "
+        "industrial and healthcare industries."
+    )
+
+    values, _ = _extract_generic_markets(
+        text
+    )
+
+    assert "Automotive" in values
+    assert "Industrial" in values
+    assert "Healthcare" in values
+
+
+def test_v2633_does_not_promote_internal_segment_lists():
+    texts = [
+        (
+            "Our reportable segments include "
+            "Cloud, Consumer and Other."
+        ),
+        (
+            "Our operating segments include "
+            "North America and International."
+        ),
+        (
+            "Business segments include "
+            "Products and Services."
+        ),
+    ]
+
+    for text in texts:
+        values, _ = _extract_generic_markets(
+            text
+        )
+
+        assert values == []
+
+
+def test_v2633_preserves_market_context_guard():
+    text = (
+        "Markets include CPUs, CUDA, "
+        "DRAM modules and South Korea."
+    )
+
+    values, _ = _extract_generic_markets(
+        text
+    )
+
+    assert values == []
