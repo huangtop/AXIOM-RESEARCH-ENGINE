@@ -1,5 +1,7 @@
+import json
 from pathlib import Path
 import pytest
+
 from axiom_engine.company_profile_v2 import (
     build_company_profile_v2,
 )
@@ -153,4 +155,169 @@ def test_nvda_uses_same_generic_extractor():
     assert (
         row["evidence"][0]["form"]
         == "10-K"
+    )
+
+def test_v22_has_per_value_provenance():
+    row = _aaoi()
+
+    assert (
+        row["schema_version"]
+        == "axiom-company-profile.v2.2"
+    )
+
+    provenance = row[
+        "value_provenance"
+    ]
+
+    assert provenance["markets"]
+
+    by_value = {
+        item["value"]: item
+        for item
+        in provenance["markets"]
+    }
+
+    assert "CATV" in by_value
+    assert "Internet Data Center" in by_value
+
+    catv = by_value["CATV"]
+
+    assert catv["evidence"] is not None
+    assert (
+        catv["evidence"]
+        ["business_evidence_id"]
+        == row["evidence"][0]
+        ["business_evidence_id"]
+    )
+    assert catv["evidence"]["quote"]
+
+
+def test_v22_provenance_span_is_exact_source_text():
+    row = _aaoi()
+
+    company_id = row["company_id"]
+
+    index = json.loads(
+        (
+            ROOT
+            / "data/generated/canonical_business_evidence/index.json"
+        ).read_text()
+    )
+
+    rel = (
+        index["company_id_to_file"]
+        [company_id]
+    )
+
+    evidence_rows = json.loads(
+        (
+            ROOT
+            / "data/generated/canonical_business_evidence"
+            / rel
+        ).read_text()
+    )
+
+    raw_text = evidence_rows[0]["text"]
+
+    catv = next(
+        item
+        for item
+        in row[
+            "value_provenance"
+        ]["markets"]
+        if item["value"] == "CATV"
+    )
+
+    evidence = catv["evidence"]
+
+    start = evidence[
+        "evidence_start_character"
+    ]
+    end = evidence[
+        "evidence_end_character"
+    ]
+
+    assert raw_text[start:end] == (
+        evidence["quote"]
+    )
+
+
+def test_v22_normalized_location_keeps_original_quote():
+    row = _aaoi()
+
+    locations = {
+        item["value"]: item
+        for item
+        in row[
+            "value_provenance"
+        ][
+            "manufacturing"
+        ][
+            "locations"
+        ]
+    }
+
+    us = locations[
+        "United States"
+    ]
+
+    assert us["evidence"] is not None
+
+    quote = us[
+        "evidence"
+    ][
+        "quote"
+    ]
+
+    assert (
+        "U.S." in quote
+        or "United States" in quote
+    )
+
+    assert "Taiwan" in quote
+    assert "China" in quote
+
+
+def test_v22_financial_values_have_source_provenance():
+    row = _aaoi()
+
+    financial = row[
+        "value_provenance"
+    ][
+        "financial_snapshot"
+    ]
+
+    revenue = financial[
+        "revenue"
+    ]
+
+    assert revenue["value"] == (
+        455_700_000
+    )
+
+    assert revenue[
+        "evidence"
+    ] is not None
+
+    assert "$455.7 million" in (
+        revenue[
+            "evidence"
+        ][
+            "quote"
+        ]
+    )
+
+    mix = financial[
+        "revenue_mix"
+    ]
+
+    assert (
+        mix["CATV"]["value"]
+        == pytest.approx(0.538)
+    )
+
+    assert (
+        mix["Internet Data Center"]
+        ["value"]
+        == pytest.approx(0.429)
     )
