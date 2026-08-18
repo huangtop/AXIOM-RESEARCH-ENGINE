@@ -43,54 +43,181 @@ def _context(text: str, start: int, end: int, maximum: int) -> dict[str, Any]:
 
 
 def _is_company_offering(
-    text: str, match_start: int, company_names: tuple[str, ...] = ()
+    text: str,
+    match_start: int,
+    company_names: tuple[str, ...] = (),
+    matched_alias: str = "",
 ) -> bool:
-    """Distinguish what the company offers from customer/end-market uses."""
+    """Distinguish company-owned offerings from customer, application, and end-market uses."""
     prefix = text[max(0, match_start - 180):match_start].lower()
-    # An offering verb from a previous sentence must not attach to a later
-    # customer-use or end-market noun.
-    # SEC HTML extraction preserves visual line wraps. A newline is therefore
-    # not a sentence boundary and must not detach an offering verb from its
-    # product phrase.
+
+    # Keep only the current sentence-like segment.
     prefix = re.split(r"[.!?;]", prefix)[-1]
+
+    # Procurement / dependency language is not a company offering.
     if re.search(
-        r"\b(?:costs? (?:of|from)|purchases?|procures?|sources?|suppliers?|dependent on|dependence on)\b",
+        r"\b(?:"
+        r"costs? (?:of|from)|"
+        r"purchases?|"
+        r"procures?|"
+        r"sources?|"
+        r"suppliers?|"
+        r"dependent on|"
+        r"dependence on"
+        r")\b",
         prefix,
     ):
         return False
+
+    # Application / customer / deployment target is not the thing the company sells.
+    relation_tail = prefix[-140:]
+    if re.search(
+        r"\b(?:"
+        r"enable(?:s|d|ing)?|"
+        r"support(?:s|ed|ing)?|"
+        r"power(?:s|ed|ing)?|"
+        r"target(?:s|ed|ing)?|"
+        r"serve(?:s|d|ing)?|"
+        r"sold\s+into|"
+        r"designed\s+for|"
+        r"used\s+in|"
+        r"deployed\s+in"
+        r")\b"
+        r"[^.!?;]{0,100}$",
+        relation_tail,
+    ):
+        return False
+
+    # SEC product-section headings can establish ownership:
+    #
+    #   DRAM: DRAM products are ...
+    #   NAND: NAND products are ...
+    #   Solid State Drives ("SSDs"): SSD storage products ...
+    #
+    # But generic headings must NOT:
+    #
+    #   Customers: SSDs are used ...
+    #   Suppliers: DRAM products ...
+    #
+    # Therefore require lexical overlap between the heading and matched alias.
+    heading_tail = prefix[-100:]
+    heading_match = re.search(
+        r"(?:^|[.!?;])\s*"
+        r"([A-Za-z0-9()\"'&/\-\s]{1,60}):\s*$",
+        heading_tail,
+    )
+
+    if heading_match and matched_alias:
+        heading_text = heading_match.group(1).lower()
+        alias_text = matched_alias.lower()
+
+        def normalize_token(token: str) -> str:
+            if token.endswith("s") and len(token) > 3:
+                return token[:-1]
+            return token
+
+        heading_tokens = {
+            normalize_token(token)
+            for token in re.findall(r"[a-z0-9]+", heading_text)
+            if len(token) >= 3
+        }
+
+        alias_tokens = {
+            normalize_token(token)
+            for token in re.findall(r"[a-z0-9]+", alias_text)
+            if len(token) >= 3
+        }
+
+        if heading_tokens & alias_tokens:
+            return True
+
     named_company_offering = any(
         name.lower() in prefix
         and re.search(
-            r"\b(?:is|are|designs?|develops?|manufactures?|markets?|sells?|offers?|provides?|supplies?|produces?|delivers?|delivering)\b",
+            r"\b(?:"
+            r"is|are|"
+            r"designs?|"
+            r"develops?|"
+            r"manufactures?|"
+            r"markets?|"
+            r"sells?|"
+            r"offers?|"
+            r"provides?|"
+            r"supplies?|"
+            r"produces?|"
+            r"delivers?|"
+            r"delivering"
+            r")\b",
             prefix[prefix.rfind(name.lower()) + len(name):],
         )
         for name in company_names
         if name.strip()
     )
+
     return named_company_offering or bool(
         re.search(
             r"(?:\bwe\b|\bour company\b|\bthe company\b|\bbusiness\b).{0,100}"
             r"(?:design|develop|manufactur|market|sell|offer|provide|supply|produce|deliver)",
             prefix,
         )
-        or re.search(r"(?:supplier|provider|manufacturer|developer|operator) of", prefix)
-        or re.search(r"(?:portfolio|suite|range|family) of", prefix)
         or re.search(
-            r"\bour .{0,100}(?:portfolio|suite|services|capabilities|products|solutions)\b",
+            r"(?:supplier|provider|manufacturer|developer|operator) of",
             prefix,
         )
-        or re.search(r"\bportfolio\s*,?\s*(?:including|includes?)\b", prefix)
-        or re.search(r"\bwe are (?:an?|the)\b", prefix)
-        or re.search(r"\bwe(?:['’]ve| have) grown into (?:an?|the)\b", prefix)
         or re.search(
-            r"\bwe(?:['’]ve| have).{0,100}\b(?:provider|manufacturer|foundry|operator)\b",
+            r"(?:portfolio|suite|range|family) of",
             prefix,
         )
-        or re.search(r"\b(?:our )?business (?:primarily )?(?:comprises|consists of|focuses on|is engaged in)", prefix)
-        or re.search(r"\bour\s*$", prefix)
-        or re.search(r"\bour .{0,100}(?:offerings|products|platforms|solutions) (?:include|comprise|consist of)", prefix)
-        or re.search(r"\bour .{0,100}capabilities .{0,40}(?:include|comprise|consist of)", prefix)
-        or re.search(r"\b(?:our )?platform (?:includes|comprises|consists of)", prefix)
+        or re.search(
+            r"\bportfolio\s*,?\s*(?:including|includes?)\b",
+            prefix,
+        )
+        or re.search(
+            r"\bwe (?:introduced|launched|developed|created) "
+            r"(?:our |the )?"
+            r"[a-z0-9&/\- ]{0,60}$",
+            prefix,
+        )
+        or re.search(
+            r"\bour (?:invention|introduction|development|creation) of "
+            r"(?:the )?"
+            r"[a-z0-9&/\- ]{0,60}$",
+            prefix,
+        )
+        or re.search(
+            r"\bwe are (?:an?|the)\b",
+            prefix,
+        )
+        or re.search(
+            r"\bwe(?:['’]ve| have) grown into (?:an?|the)\b",
+            prefix,
+        )
+        or re.search(
+            r"\bwe(?:['’]ve| have).{0,100}\b"
+            r"(?:provider|manufacturer|foundry|operator)\b",
+            prefix,
+        )
+        or re.search(
+            r"\b(?:our )?business (?:primarily )?"
+            r"(?:comprises|consists of|focuses on|is engaged in)",
+            prefix,
+        )
+        or re.search(
+            r"\bour .{0,100}"
+            r"(?:offerings|products|platforms|solutions) "
+            r"(?:include|includes|comprise|comprises|consist of)",
+            prefix,
+        )
+        or re.search(
+            r"\bour .{0,100}capabilities .{0,40}"
+            r"(?:include|includes|comprise|comprises|consist of)",
+            prefix,
+        )
+        or re.search(
+            r"\b(?:our )?platform "
+            r"(?:includes|comprises|consists of)",
+            prefix,
+        )
     )
 
 
@@ -209,7 +336,10 @@ def build_company_signals(
                             continue
                         count += 1
                         if rule.get("dimension") in {"product", "capability", "infrastructure"} and _is_company_offering(
-                            text, match.start(), company_names
+                            text,
+                            match.start(),
+                            company_names,
+                            alias,
                         ):
                             offering_count += 1
                         elif rule.get("dimension") == "supply_chain_role" and (
