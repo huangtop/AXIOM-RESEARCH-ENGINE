@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any, Mapping
 
 from axiom_engine.business_evidence_store import load_business_evidence
+from axiom_engine.company_analysis.profile_v2 import build_company_profile_v2
 
 
 class CompanyAnalysisError(RuntimeError):
@@ -210,6 +211,10 @@ def build_company_analyses(
             "generation_mode": "deterministic_evidence_template",
             "company_id": company_id,
             "symbol": symbol,
+            "company_profile_v2": build_company_profile_v2(
+                company_id,
+                evidence,
+            ),
             "exchange": security.get("exchange"),
             "display_name": display_name,
             "as_of": latest_date,

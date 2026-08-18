@@ -173,6 +173,18 @@ def _is_company_offering(
             prefix,
         )
         or re.search(
+            r"\bwe (?:introduced|launched|developed|created) "
+            r"(?:our |the )?"
+            r"[a-z0-9&/\- ]{0,60}$",
+            prefix,
+        )
+        or re.search(
+            r"\bour (?:invention|introduction|development|creation) of "
+            r"(?:the )?"
+            r"[a-z0-9&/\- ]{0,60}$",
+            prefix,
+        )
+        or re.search(
             r"\bwe are (?:an?|the)\b",
             prefix,
         )
