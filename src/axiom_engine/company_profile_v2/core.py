@@ -78,6 +78,7 @@ def _latest_business_evidence(
 def _clean_text(text: str) -> str:
     text = text.replace("\r\n", "\n").replace("\r", "\n")
     text = text.replace("\u00a0", " ")
+    text = text.replace("\ufeff", "")
     text = re.sub(
         r"\n\d+\nTable of Contents\n",
         "\n",
@@ -195,7 +196,7 @@ def _split_list_phrase(value: str) -> list[str]:
         item = item.strip(" .;:-")
 
         item = re.sub(
-            r"^(?:a|an|the|our|their)\s+",
+            r"^(?:a|an|the|our|their|including)\s+",
             "",
             item,
             flags=re.IGNORECASE,
@@ -346,10 +347,11 @@ def _extract_product_stack(
     values: list[str] = []
     evidence: list[str] = []
 
+    # Prefer explicit integration-level descriptions. Avoid generic "from X to Y"
+    # patterns because they pull unrelated prose into the product stack.
     patterns = [
         r"levels? of integration,\s*from\s+(.+?)\.",
-        r"ranging from\s+(.+?)\.",
-        r"from\s+(.+?)\s+to\s+complete\s+(.+?)\.",
+        r"design and manufacture a range of [^.]+?from\s+(.+?)\.",
     ]
 
     for pattern in patterns:
@@ -358,17 +360,21 @@ def _extract_product_stack(
             text,
             flags=re.IGNORECASE,
         ):
-            raw = " ".join(
-                value
-                for value in match.groups()
-                if value
+            raw = match.group(1)
+
+            # Normalize "modules to complete turn-key equipment" into two levels.
+            raw = re.sub(
+                r"\bmodules\s+to\s+complete\s+",
+                "modules, complete ",
+                raw,
+                flags=re.IGNORECASE,
             )
 
             values.extend(_split_list_phrase(raw))
             evidence.append(match.group(0))
 
     building_blocks = re.search(
-        r"(?:building blocks?|foundation(?:al)? products?) of\s+([^.]+)",
+        r"fundamental building blocks of\s+([^.]+)",
         text,
         flags=re.IGNORECASE,
     )
@@ -380,8 +386,44 @@ def _extract_product_stack(
         )
         evidence.append(building_blocks.group(0))
 
-    return _dedupe(values), evidence
+    blocked_exact = {
+        "we design",
+        "assembly",
+        "laser design",
+        "fabrication optical system design",
+    }
 
+    cleaned = []
+
+    for value in _dedupe(values):
+        lower = value.lower()
+
+        if lower in blocked_exact:
+            continue
+
+        if len(value.split()) > 6:
+            continue
+
+        if any(
+            phrase in lower
+            for phrase in (
+                "foundational products",
+                "from these",
+                "we design",
+            )
+        ):
+            continue
+
+        replacements = {
+            "complete turn-key equipment": "turn-key equipment",
+            "complete turnkey equipment": "turn-key equipment",
+        }
+
+        cleaned.append(
+            replacements.get(lower, value)
+        )
+
+    return _dedupe(cleaned), evidence
 
 def _market_aliases(label: str) -> list[str]:
     aliases = [label.lower()]
@@ -431,6 +473,7 @@ def _extract_products_from_paragraph(
         r"\bproducts?[^.]{0,80}?\binclude\s+(.+?)\.",
         r"\bofferings? include\s+(.+?)\.",
         r"\bconsists? of\s+(.+?)\.",
+        r"\bsales of\s+(.+?)\s+have contributed",
     ]
 
     for pattern in patterns:
@@ -485,7 +528,36 @@ def _extract_products_from_paragraph(
 
     products.extend(alias_matches)
 
-    return _dedupe(products)
+    blocked_phrases = (
+        "rapid product development",
+        "fast response",
+        "greater control",
+        "manufacturing costs",
+        "backhaul of cellular",
+        "oil",
+        "gas exploration",
+        "aerospace",
+        "defense",
+        "industrial robotics",
+    )
+
+    cleaned = []
+
+    for product in _dedupe(products):
+        lower = product.lower()
+
+        if any(
+            phrase in lower
+            for phrase in blocked_phrases
+        ):
+            continue
+
+        if len(product.split()) > 7:
+            continue
+
+        cleaned.append(product)
+
+    return cleaned
 
 
 def _extract_market_products(
@@ -504,9 +576,28 @@ def _extract_market_products(
         for paragraph in paragraphs:
             lowered = paragraph.lower()
 
-            if any(
+            if not any(
                 alias in lowered
                 for alias in aliases
+            ):
+                continue
+
+            # Keep only paragraphs that explicitly describe products, offerings,
+            # or customers for the market. This reduces cross-market pollution.
+            if any(
+                token in lowered
+                for token in (
+                    "we supply",
+                    "our products",
+                    "products for",
+                    "offerings include",
+                    "customers in this market",
+                    "customers in this segment",
+                    "platform consists of",
+                    "systems include",
+                    "networking offerings include",
+                    "sales of",
+                )
             ):
                 matched_paragraphs.append(paragraph)
 
@@ -519,14 +610,33 @@ def _extract_market_products(
                 )
             )
 
+        filtered = []
+
+        for product in _dedupe(products):
+            lower = product.lower()
+
+            # 5G references in AAOI describe telecom demand rather than products
+            # sold into the data-center/CATV/FTTH markets.
+            if (
+                market.lower()
+                in {
+                    "internet data center",
+                    "catv",
+                    "ftth",
+                }
+                and "5g" in lower
+            ):
+                continue
+
+            filtered.append(product)
+
         key = _slug(market)
 
-        if products:
-            output[key] = _dedupe(products)
+        if filtered:
+            output[key] = _dedupe(filtered)
             field_evidence[key] = matched_paragraphs[:6]
 
     return output, field_evidence
-
 
 def _extract_core_technologies(
     text: str,
@@ -540,7 +650,19 @@ def _extract_core_technologies(
         r"\([\"“]([A-Z0-9-]{2,12})[\"”]\)"
     )
 
+    blocked_acronyms = {
+        "5G",
+        "PRC",
+        "US",
+        "U.S",
+    }
+
     for match in acronym_pattern.finditer(text):
+        acronym = match.group(2).upper()
+
+        if acronym in blocked_acronyms:
+            continue
+
         start = max(0, match.start() - 160)
         end = min(len(text), match.end() + 160)
         context = text[start:end].lower()
@@ -596,7 +718,6 @@ def _extract_core_technologies(
             evidence.append(match.group(0))
 
     return _dedupe(technologies), evidence
-
 
 def _extract_manufacturing(
     text: str,
@@ -716,8 +837,71 @@ def _extract_customer_types(
             )
             evidence.append(match.group(0))
 
-    return _dedupe(customers), evidence
+    # Normalize only customer types explicitly present in filing text.
+    # These are evidence-surface aliases, not ontology classifications.
+    literal_customer_patterns = [
+        (
+            r'hyperscale[^.]{0,40}?data center operators',
+            "hyperscale data center operators",
+        ),
+        (
+            r'CATV multiple system operators',
+            "CATV MSOs",
+        ),
+        (
+            r'\bMSO customers\b',
+            "CATV MSOs",
+        ),
+        (
+            r'network equipment manufacturers',
+            "network equipment manufacturers",
+        ),
+        (
+            r'manufacturers of optical transceivers',
+            "optical transceiver manufacturers",
+        ),
+        (
+            r'CATV equipment vendors',
+            "CATV equipment vendors",
+        ),
+        (
+            r'cloud providers',
+            "cloud providers",
+        ),
+        (
+            r'AI model makers',
+            "AI model makers",
+        ),
+        (
+            r'original equipment manufacturers',
+            "OEMs",
+        ),
+        (
+            r'original device manufacturers',
+            "ODMs",
+        ),
+        (
+            r'system integrators',
+            "system integrators",
+        ),
+        (
+            r'distributors',
+            "distributors",
+        ),
+    ]
 
+    for pattern, label in literal_customer_patterns:
+        match = re.search(
+            pattern,
+            text,
+            flags=re.IGNORECASE,
+        )
+
+        if match:
+            customers.append(label)
+            evidence.append(match.group(0))
+
+    return _dedupe(customers), evidence
 
 def _extract_ai_exposure(
     text: str,
@@ -728,7 +912,10 @@ def _extract_ai_exposure(
         lower = sentence.lower()
 
         if (
-            ("artificial intelligence" in lower or re.search(r"\bAI\b", sentence))
+            (
+                "artificial intelligence" in lower
+                or re.search(r"\bAI\b", sentence)
+            )
             and any(
                 token in lower
                 for token in (
@@ -769,6 +956,15 @@ def _extract_ai_exposure(
 
     summary = candidates[0][1]
 
+    # SEC extraction may concatenate the next bullet heading to the sentence.
+    # Keep only the AI-related statement.
+    summary = re.split(
+        r"\s+[‑–—-]\s+Trends in the ",
+        summary,
+        maxsplit=1,
+        flags=re.IGNORECASE,
+    )[0].strip()
+
     # Normalize speed notation for stable API presentation.
     summary = re.sub(
         r"(\d+)\s+Gbps",
@@ -780,8 +976,7 @@ def _extract_ai_exposure(
     return {
         "type": "direct_company_disclosure",
         "summary": summary,
-    }, [candidates[0][1]]
-
+    }, [summary]
 
 def _extract_competitive_advantages(
     text: str,
@@ -796,11 +991,26 @@ def _extract_competitive_advantages(
         return [], []
 
     section = match.group(1)
-    parts = re.split(r"\n[-•\-]\s*\n?", section)
+
+    # SEC text uses several bullet characters. Split on all common forms.
+    parts = re.split(
+        r"(?:^|\n)\s*[‑–—•-]\s*",
+        section,
+    )
 
     strengths = []
 
     for part in parts:
+        part = part.strip()
+
+        if not part:
+            continue
+
+        if part.lower().startswith(
+            "our key competitive strengths include"
+        ):
+            continue
+
         sentences = _sentences(part)
 
         if not sentences:
@@ -808,11 +1018,21 @@ def _extract_competitive_advantages(
 
         first = sentences[0].strip()
 
-        if len(first) <= 280:
+        # Filing bullets often use "Heading. Explanation...".
+        # Keep the heading rather than the whole explanatory paragraph.
+        heading_match = re.match(
+            r"^([^.!?]{5,140})\.\s+",
+            first,
+        )
+
+        if heading_match:
+            strengths.append(
+                heading_match.group(1).strip()
+            )
+        elif len(first) <= 280:
             strengths.append(first)
 
     return _dedupe(strengths), [section[:5000]]
-
 
 def _extract_surface_demand_drivers(
     text: str,
@@ -1170,7 +1390,7 @@ def build_company_profile_v2(
 
     profile = {
         "schema_version":
-            "axiom-company-profile.v2.2",
+            "axiom-company-profile.v2.3",
         "generation_mode":
             "evidence_first_generic_extractor",
 
@@ -1228,7 +1448,7 @@ def build_company_profile_v2(
             _evidence_metadata(evidence)
         ],
     }
-    
+
     profile["value_provenance"] = (
         build_value_provenance(
             profile=profile,
