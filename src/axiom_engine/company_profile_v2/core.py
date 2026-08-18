@@ -583,15 +583,18 @@ def _extract_generic_markets(
     evidence: list[str] = []
 
     patterns = [
-        r"\bour end[- ]markets?\s+(?:include|are|consist of)\s+(.+?)(?:\.|;)",
-        r"\bend[- ]markets?\s+(?:include|are|consist of)\s+(.+?)(?:\.|;)",
-        r"\btarget markets?\s+(?:include|are|consist of)\s+(.+?)(?:\.|;)",
-        r"\bserved markets?\s+(?:include|are|consist of)\s+(.+?)(?:\.|;)",
+        # ---------------------------------
+        # V2.6.3 baseline explicit wording
+        # ---------------------------------
+        r"\bour end[- ]markets?\s+(?:include|includes|are|consist of)\s+(.+?)(?:\.|;)",
+        r"\bend[- ]markets?\s+(?:include|includes|are|consist of)\s+(.+?)(?:\.|;)",
+        r"\btarget markets?\s+(?:include|includes|are|consist of)\s+(.+?)(?:\.|;)",
+        r"\bserved markets?\s+(?:include|includes|are|consist of)\s+(.+?)(?:\.|;)",
 
-        r"\bmarkets? we serve include\s+(.+?)(?:\.|;)",
-        r"\bindustries we serve include\s+(.+?)(?:\.|;)",
-        r"\bserved industries include\s+(.+?)(?:\.|;)",
-        r"\bverticals we serve include\s+(.+?)(?:\.|;)",
+        r"\bmarkets? we serve\s+(?:include|includes|are|consist of)\s+(.+?)(?:\.|;)",
+        r"\bindustries we serve\s+(?:include|includes|are|consist of)\s+(.+?)(?:\.|;)",
+        r"\bserved industries\s+(?:include|includes|are|consist of)\s+(.+?)(?:\.|;)",
+        r"\bverticals we serve\s+(?:include|includes|are|consist of)\s+(.+?)(?:\.|;)",
 
         r"\bwe serve\s+(?:customers in\s+)?(?:the\s+)?(.+?)\s+industr(?:y|ies)(?:\.|;)",
         r"\bwe serve\s+(?:the\s+)?(.+?)\s+markets?(?:\.|;)",
@@ -600,6 +603,38 @@ def _extract_generic_markets(
 
         r"\bour products are used in\s+(.+?)\s+applications?(?:\.|;)",
         r"\bour products serve\s+(.+?)\s+applications?(?:\.|;)",
+
+        # ---------------------------------
+        # V2.6.3.3 Tier 1 recall promotion
+        # Low-risk census families only:
+        # explicit_end_market
+        # serve_industry_market
+        # market_list
+        # industry_list
+        # ---------------------------------
+
+        # Explicit primary / principal market disclosure.
+        r"\bprimary markets?\s+(?:include|includes|are|consist of)\s+(.+?)(?:\.|;)",
+        r"\bprincipal markets?\s+(?:include|includes|are|consist of)\s+(.+?)(?:\.|;)",
+
+        # Generic but explicit market lists.
+        r"\bmarkets?\s+(?:include|includes|consist of)\s+(.+?)(?:\.|;)",
+        r"\bmarkets?\s+such as\s+(.+?)(?:\.|;)",
+        r"\bmarket segments?\s+(?:include|includes|consist of)\s+(.+?)(?:\.|;)",
+        r"\bmarket sectors?\s+(?:include|includes|consist of)\s+(.+?)(?:\.|;)",
+
+        # Generic but explicit industry / sector / vertical lists.
+        r"\bindustries\s+(?:include|includes|consist of)\s+(.+?)(?:\.|;)",
+        r"\bindustries\s+such as\s+(.+?)(?:\.|;)",
+        r"\bindustry sectors?\s+(?:include|includes|consist of)\s+(.+?)(?:\.|;)",
+        r"\bsectors?\s+(?:include|includes|consist of)\s+(.+?)(?:\.|;)",
+        r"\bverticals?\s+(?:include|includes|consist of)\s+(.+?)(?:\.|;)",
+
+        # Company-served industries / sectors / verticals.
+        # Keep the capture bounded by the explicit industry head noun.
+        r"\b(?:serve|serves|served|serving)\s+(?:customers?\s+in\s+)?(?:the\s+)?(.+?)\s+industr(?:y|ies)(?:\.|;)",
+        r"\b(?:serve|serves|served|serving)\s+(?:customers?\s+in\s+)?(?:the\s+)?(.+?)\s+sectors?(?:\.|;)",
+        r"\b(?:serve|serves|served|serving)\s+(?:customers?\s+in\s+)?(?:the\s+)?(.+?)\s+verticals?(?:\.|;)",
     ]
 
     for sentence in _sentences(text):
@@ -615,6 +650,17 @@ def _extract_generic_markets(
                 "compensation",
                 "benefits",
                 "risk factors",
+
+                # V2.6.3.3 Tier 1:
+                # do not confuse internal reportable/business
+                # segment lists with external end markets.
+                "reportable segment",
+                "reportable segments",
+                "operating segment",
+                "operating segments",
+                "business segment",
+                "business segments",
+                "segment reporting",
             )
         ):
             continue
