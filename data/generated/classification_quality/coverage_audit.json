@@ -1,61 +1,61 @@
 {
   "schema_version": "classification-quality-audit.v031c.5",
   "version": "V031C.5",
-  "generated_at": "2026-08-17T09:18:46.704167+00:00",
+  "generated_at": "2026-08-18T09:38:33.213061+00:00",
   "summary": {
     "company_count": 6464,
-    "business_evidence_company_count": 4083,
-    "business_evidence_coverage_ratio": 0.631652,
+    "business_evidence_company_count": 4357,
+    "business_evidence_coverage_ratio": 0.674041,
     "gate_status_counts": {
-      "deprioritized_non_research": 3325,
+      "deprioritized_non_research": 3319,
       "evidence_required": 2340,
-      "priority_candidate": 799
+      "priority_candidate": 805
     },
     "knowledge_status_counts": {
       "business_evidence_unavailable": 1065,
-      "knowledge_available": 1363,
+      "knowledge_available": 1365,
       "no_signals_detected": 87,
-      "research_irrelevant": 3327,
+      "research_irrelevant": 3325,
       "signals_only": 622
     },
-    "research_universe_count": 430,
+    "research_universe_count": 432,
     "research_tier_counts": {
       "active_intelligence": 160,
-      "supply_chain": 393,
-      "deep_research": 5
+      "supply_chain": 395,
+      "deep_research": 7
     },
     "flag_counts": {
       "INSUFFICIENT_DIMENSION_BREADTH": 33,
-      "LOW_CONFIDENCE_CLASSIFICATION": 861,
+      "LOW_CONFIDENCE_CLASSIFICATION": 863,
       "NO_SIGNALS": 1152,
       "OVERBROAD_AI_CLASSIFICATION": 334,
       "SIGNALS_WITHOUT_UPPER_CLASSIFICATION": 622,
-      "SINGLE_EVIDENCE_CLASSIFICATION": 1363,
+      "SINGLE_EVIDENCE_CLASSIFICATION": 1365,
       "THEME_SECTOR_CONFLICT": 796
     },
     "dimension_company_counts": {
-      "capability": 703,
-      "cluster": 186,
-      "end_market": 3446,
-      "infrastructure": 243,
-      "product": 1046,
-      "sector": 996,
-      "supply_chain_role": 2146,
-      "technology": 1704,
-      "theme": 1363,
-      "upstream_input": 232
+      "capability": 749,
+      "cluster": 188,
+      "end_market": 3694,
+      "infrastructure": 249,
+      "product": 1096,
+      "sector": 998,
+      "supply_chain_role": 2308,
+      "technology": 1809,
+      "theme": 1365,
+      "upstream_input": 241
     },
     "dimension_breadth_company_counts": {
-      "0": 2690,
-      "1": 854,
-      "2": 1020,
-      "3": 585,
-      "4": 330,
-      "5": 323,
-      "6": 324,
+      "0": 2422,
+      "1": 920,
+      "2": 1120,
+      "3": 648,
+      "4": 358,
+      "5": 329,
+      "6": 327,
       "7": 206,
-      "8": 96,
-      "9": 33,
+      "8": 97,
+      "9": 34,
       "10": 3
     }
   },
@@ -39134,6 +39134,41 @@
       ]
     },
     {
+      "company_id": "company:US-CIK0001710350",
+      "gate_status": "priority_candidate",
+      "research_universe_status": "selected",
+      "flags": [
+        {
+          "code": "LOW_CONFIDENCE_CLASSIFICATION",
+          "details": {
+            "knowledge_ids": [
+              "sector:cloud_infrastructure"
+            ]
+          }
+        },
+        {
+          "code": "SINGLE_EVIDENCE_CLASSIFICATION",
+          "details": {
+            "knowledge_ids": [
+              "cluster:accelerator_silicon",
+              "cluster:custom_accelerator_silicon",
+              "sector:ai_compute",
+              "sector:ai_servers",
+              "sector:cloud_infrastructure",
+              "sector:cybersecurity",
+              "sector:digital_asset_infrastructure",
+              "sector:semiconductors",
+              "theme:advanced_semiconductors",
+              "theme:ai_infrastructure",
+              "theme:artificial_intelligence",
+              "theme:cybersecurity",
+              "theme:digital_assets"
+            ]
+          }
+        }
+      ]
+    },
+    {
       "company_id": "company:US-CIK0001710366",
       "gate_status": "evidence_required",
       "research_universe_status": "not_eligible",
@@ -39796,6 +39831,38 @@
           "details": {
             "knowledge_ids": [
               "theme:artificial_intelligence"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "company_id": "company:US-CIK0001720424",
+      "gate_status": "priority_candidate",
+      "research_universe_status": "selected",
+      "flags": [
+        {
+          "code": "LOW_CONFIDENCE_CLASSIFICATION",
+          "details": {
+            "knowledge_ids": [
+              "sector:data_center_power"
+            ]
+          }
+        },
+        {
+          "code": "SINGLE_EVIDENCE_CLASSIFICATION",
+          "details": {
+            "knowledge_ids": [
+              "cluster:accelerator_silicon",
+              "sector:ai_compute",
+              "sector:ai_servers",
+              "sector:data_center_power",
+              "sector:digital_asset_infrastructure",
+              "sector:semiconductors",
+              "theme:advanced_semiconductors",
+              "theme:ai_infrastructure",
+              "theme:artificial_intelligence",
+              "theme:digital_assets"
             ]
           }
         }
