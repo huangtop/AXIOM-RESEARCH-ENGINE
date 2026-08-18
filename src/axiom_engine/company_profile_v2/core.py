@@ -254,12 +254,418 @@ def _extract_one_line_business(
 
     return None, None
 
+# === V2.6.3 GENERIC MARKET / END-MARKET EXTRACTION ===
+
+_MARKET_BLOCKED_EXACT = {
+    "united states",
+    "u.s.",
+    "us",
+    "china",
+    "japan",
+    "india",
+    "canada",
+    "mexico",
+    "europe",
+    "asia",
+    "australia",
+    "south america",
+    "north america",
+    "latin america",
+    "central america",
+    "caribbean",
+    "south korea",
+    "new zealand",
+
+    "markets",
+    "market",
+    "industries",
+    "industry",
+    "applications",
+    "application",
+    "customers",
+    "customer",
+    "products",
+    "services",
+    "solutions",
+    "business",
+}
+
+_MARKET_BLOCKED_PREFIXES = (
+    "our products",
+    "our services",
+    "our customers",
+    "customers include",
+    "customers such as",
+    "we sell",
+    "we offer",
+    "we provide",
+    "we manufacture",
+    "we develop",
+    "we design",
+    "demand for",
+    "growth in",
+    "increase in",
+    "investment in",
+)
+
+_MARKET_BLOCKED_CONTAINS = (
+    " distributors",
+    " retailers",
+    " resellers",
+    " sales representatives",
+    " channel partners",
+    " employees",
+    " suppliers",
+    " revenue",
+    " gross margin",
+    " operating income",
+)
+
+# === V2.6.3.1 MARKET CONTEXT GUARD ===
+
+_MARKET_NON_MARKET_EXACT = {
+    # Generic fragments / actors
+    "diverse",
+    "partners",
+    "partner",
+    "developers",
+    "developer",
+
+    # Product / technology nouns
+    "cpu",
+    "cpus",
+    "gpu",
+    "gpus",
+    "cuda",
+    "dram",
+    "nand",
+    "hbm",
+    "dimm",
+    "dimms",
+    "memory modules",
+}
+
+_MARKET_PRODUCT_TERMS = (
+    " cpu",
+    " cpus",
+    " gpu",
+    " gpus",
+    " cuda",
+    " dram",
+    " nand",
+    " hbm",
+    " dimm",
+    " dimms",
+    " memory module",
+    " memory modules",
+    " semiconductor",
+    " semiconductors",
+    " processor",
+    " processors",
+    " chipset",
+    " chipsets",
+    " accelerator",
+    " accelerators",
+    " software",
+    " hardware",
+)
+
+_MARKET_PRODUCT_SUFFIXES = (
+    " module",
+    " modules",
+    " solution",
+    " solutions",
+    " product",
+    " products",
+    " technology",
+    " technologies",
+    " platform",
+    " platforms",
+)
+
+_MARKET_FRAGMENT_PREFIXES = (
+    "driven by ",
+    "by ",
+    "from ",
+    "through ",
+    "using ",
+    "based on ",
+    "enabled by ",
+    "supported by ",
+)
+
+_MARKET_FRAGMENT_CONTAINS = (
+    " third-party ",
+    " third party ",
+    " fundamental building blocks",
+    " demand across ",
+    " demand for ",
+)
+
+
+def _clean_market_candidate(
+    value: str,
+) -> str:
+    value = re.sub(
+        r"\s+",
+        " ",
+        str(value or ""),
+    ).strip(" ,.;:-")
+
+    value = re.sub(
+        r"^(?:"
+        r"the |our |global |worldwide |"
+        r"large |major |primary |principal |"
+        r"key |target |served "
+        r")",
+        "",
+        value,
+        flags=re.IGNORECASE,
+    )
+
+    value = re.sub(
+        r"\s+(?:"
+        r"end[- ]markets?|markets?|industries|"
+        r"industry|sectors?|verticals?"
+        r")$",
+        "",
+        value,
+        flags=re.IGNORECASE,
+    ).strip(" ,.;:-")
+
+    return value
+
+
+def _market_candidate_allowed(
+    value: str,
+) -> bool:
+    candidate = _clean_market_candidate(
+        value
+    )
+
+    if not candidate:
+        return False
+
+    lower = candidate.casefold()
+
+    # Existing V2.6.3 hard rejects.
+    if lower in _MARKET_BLOCKED_EXACT:
+        return False
+
+    # V2.6.3.1:
+    # reject generic actors, technologies,
+    # products and obvious prose fragments.
+    if lower in _MARKET_NON_MARKET_EXACT:
+        return False
+
+    if lower.startswith(
+        _MARKET_FRAGMENT_PREFIXES
+    ):
+        return False
+
+    padded = f" {lower} "
+
+    if any(
+        fragment in padded
+        for fragment in _MARKET_FRAGMENT_CONTAINS
+    ):
+        return False
+
+    if lower.endswith(
+        _MARKET_PRODUCT_SUFFIXES
+    ):
+        return False
+
+    if any(
+        product_term in padded
+        for product_term in _MARKET_PRODUCT_TERMS
+    ):
+        return False
+
+    # Existing V2.6.3 contextual rejects.
+    if lower.startswith(
+        _MARKET_BLOCKED_PREFIXES
+    ):
+        return False
+
+    if any(
+        blocked in padded
+        for blocked in _MARKET_BLOCKED_CONTAINS
+    ):
+        return False
+
+    # Avoid long prose fragments.
+    if len(candidate.split()) > 8:
+        return False
+
+    if re.search(
+        r"\b(?:"
+        r"we|our|which|that|who|"
+        r"because|while|where|when"
+        r")\b",
+        lower,
+    ):
+        return False
+
+    if re.search(
+        r"^(?:"
+        r"is|are|was|were|"
+        r"providing|serving|selling|"
+        r"used|using|supporting"
+        r")\b",
+        lower,
+    ):
+        return False
+
+    return True
+
+
+def _split_market_phrase(
+    value: str,
+) -> list[str]:
+    value = re.sub(
+        r"\([^)]{0,80}\)",
+        "",
+        value,
+    )
+
+    value = value.replace(
+        ";",
+        ",",
+    )
+
+    value = re.sub(
+        r"\s+as well as\s+",
+        ", ",
+        value,
+        flags=re.IGNORECASE,
+    )
+
+    value = re.sub(
+        r"\s+(?:and|or)\s+",
+        ", ",
+        value,
+        flags=re.IGNORECASE,
+    )
+
+    output = []
+
+    for raw in value.split(","):
+        candidate = re.sub(
+            r"^(?:including|such as)\s+",
+            "",
+            raw.strip(),
+            flags=re.IGNORECASE,
+        )
+
+        candidate = _clean_market_candidate(
+            candidate
+        )
+
+        if not _market_candidate_allowed(
+            candidate
+        ):
+            continue
+
+        output.append(
+            _canonical_market_label(
+                candidate
+            )
+        )
+
+    return _dedupe(output)
+
+
+def _extract_generic_markets(
+    text: str,
+) -> tuple[list[str], list[str]]:
+    markets: list[str] = []
+    evidence: list[str] = []
+
+    patterns = [
+        r"\bour end[- ]markets?\s+(?:include|are|consist of)\s+(.+?)(?:\.|;)",
+        r"\bend[- ]markets?\s+(?:include|are|consist of)\s+(.+?)(?:\.|;)",
+        r"\btarget markets?\s+(?:include|are|consist of)\s+(.+?)(?:\.|;)",
+        r"\bserved markets?\s+(?:include|are|consist of)\s+(.+?)(?:\.|;)",
+
+        r"\bmarkets? we serve include\s+(.+?)(?:\.|;)",
+        r"\bindustries we serve include\s+(.+?)(?:\.|;)",
+        r"\bserved industries include\s+(.+?)(?:\.|;)",
+        r"\bverticals we serve include\s+(.+?)(?:\.|;)",
+
+        r"\bwe serve\s+(?:customers in\s+)?(?:the\s+)?(.+?)\s+industr(?:y|ies)(?:\.|;)",
+        r"\bwe serve\s+(?:the\s+)?(.+?)\s+markets?(?:\.|;)",
+        r"\bwe operate in\s+(?:the\s+)?(.+?)\s+markets?(?:\.|;)",
+        r"\bwe participate in\s+(?:the\s+)?(.+?)\s+markets?(?:\.|;)",
+
+        r"\bour products are used in\s+(.+?)\s+applications?(?:\.|;)",
+        r"\bour products serve\s+(.+?)\s+applications?(?:\.|;)",
+    ]
+
+    for sentence in _sentences(text):
+        lower = sentence.lower()
+
+        if any(
+            blocked in lower
+            for blocked in (
+                "geographic market",
+                "geographic markets",
+                "sales offices",
+                "employees",
+                "compensation",
+                "benefits",
+                "risk factors",
+            )
+        ):
+            continue
+
+        for pattern in patterns:
+            for match in re.finditer(
+                pattern,
+                sentence,
+                flags=re.IGNORECASE,
+            ):
+                candidates = _split_market_phrase(
+                    match.group(1)
+                )
+
+                if not candidates:
+                    continue
+
+                markets.extend(candidates)
+
+                evidence.append(
+                    re.sub(
+                        r"\s+",
+                        " ",
+                        match.group(0),
+                    ).strip()
+                )
+
+    return (
+        _dedupe(markets),
+        _dedupe(evidence),
+    )
 
 def _extract_markets(
     text: str,
 ) -> tuple[list[str], list[str]]:
     markets: list[str] = []
     evidence: list[str] = []
+
+    # V2.6.3 generic market extraction.
+    generic_markets, generic_evidence = (
+        _extract_generic_markets(
+            text
+        )
+    )
+
+    markets.extend(
+        generic_markets
+    )
+    evidence.extend(
+        generic_evidence
+    )
 
     opening = text[:10000]
 
@@ -343,7 +749,10 @@ def _extract_markets(
 
         evidence.append(section[:3000])
 
-    return _dedupe(markets), evidence
+    return (
+        _dedupe(markets),
+        _dedupe(evidence),
+    )
 
 
 def _clean_offering_phrase(
