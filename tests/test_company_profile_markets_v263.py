@@ -354,3 +354,265 @@ def test_v2633_preserves_market_context_guard():
     )
 
     assert values == []
+
+# === V2.6.3.4 MARKET RECALL PROMOTION TIER 2 ===
+
+
+def test_v2634_extracts_customer_industry_context():
+    text = (
+        "Our customers in automotive, industrial "
+        "and healthcare markets rely on our products."
+    )
+
+    values, _ = _extract_generic_markets(text)
+
+    assert "Automotive" in values
+    assert "Industrial" in values
+    assert "Healthcare" in values
+
+
+def test_v2634_extracts_participate_market_context():
+    text = (
+        "We participate in data center, "
+        "telecommunications and automotive markets."
+    )
+
+    values, _ = _extract_generic_markets(text)
+
+    assert "Data Center" in values
+    assert "Telecom" in values
+    assert "Automotive" in values
+
+
+def test_v2634_extracts_operate_industry_context():
+    text = (
+        "The company operates in aerospace, "
+        "defense and healthcare industries."
+    )
+
+    values, _ = _extract_generic_markets(text)
+
+    assert "Aerospace" in values
+    assert "Defense" in values
+    assert "Healthcare" in values
+
+
+def test_v2634_extracts_sold_into_external_markets():
+    text = (
+        "Our products are sold into automotive, "
+        "industrial and data center markets."
+    )
+
+    values, _ = _extract_generic_markets(text)
+
+    assert "Automotive" in values
+    assert "Industrial" in values
+    assert "Data Center" in values
+
+
+def test_v2634_extracts_deployed_across_external_markets():
+    text = (
+        "Our solutions are deployed across healthcare, "
+        "aerospace and telecommunications markets."
+    )
+
+    values, _ = _extract_generic_markets(text)
+
+    assert "Healthcare" in values
+    assert "Aerospace" in values
+    assert "Telecom" in values
+
+
+def test_v2634_rejects_customer_types_and_channels():
+    texts = [
+        "Our customers in OEMs, distributors and resellers markets rely on us.",
+        "Our products are sold through distributors and channel partners.",
+    ]
+
+    for text in texts:
+        values, _ = _extract_generic_markets(text)
+        assert values == []
+
+
+def test_v2634_rejects_geography_as_market():
+    text = (
+        "Our products are sold into United States, "
+        "Europe and China markets."
+    )
+
+    values, _ = _extract_generic_markets(text)
+
+    assert values == []
+
+
+def test_v2634_rejects_demand_and_product_technology():
+    texts = [
+        "We participate in AI demand, bandwidth growth and investment markets.",
+        "The company operates in CPU, GPU and DRAM markets.",
+    ]
+
+    for text in texts:
+        values, _ = _extract_generic_markets(text)
+        assert values == []
+
+
+def test_v2634_preserves_v2631_precision_examples():
+    rejected = [
+        "Diverse",
+        "Partners",
+        "By Third-Party Developers",
+        "CPUs",
+        "CUDA",
+        "High-Capacity Dual In-Line Memory Modules",
+        "Low-Power Server DRAM Solutions",
+        "Driven By Server Demand Across The Cloud",
+        "Networking Technologies As The Fundamental Building Blocks",
+    ]
+
+    for value in rejected:
+        assert _market_candidate_allowed(value) is False
+
+# === V2.6.3.4.1 TIER 2 SEMANTIC CLEANUP ===
+
+
+def test_v26341_rejects_smoke_fragment_this():
+    assert _market_candidate_allowed("This") is False
+
+
+def test_v26341_rejects_competitive_factor_noise():
+    rejected = [
+        "Cost Position",
+        "Price",
+        "Reliability Of Bauxite Supply",
+        "Quality",
+        "Proximity To Customers",
+        "Design",
+        "Test",
+        "Measurement",
+        "Emulation",
+        "Prototyping",
+    ]
+
+    for value in rejected:
+        assert _market_candidate_allowed(value) is False
+
+
+def test_v26341_rejects_geography_only_candidates():
+    rejected = [
+        "Brazil",
+        "United States",
+        "Europe",
+        "China",
+        "Japan",
+        "South Korea",
+    ]
+
+    for value in rejected:
+        assert _market_candidate_allowed(value) is False
+
+
+def test_v26341_rejects_product_and_service_noise():
+    rejected = [
+        "Laptop PCs",
+        "SoCs",
+        "Audio",
+        "Video",
+        "Development Services For Game Consoles",
+        "A Provider Of Communications Test",
+        "Optical Products For The Telecommunications",
+        "A Very Wide Range Of",
+    ]
+
+    for value in rejected:
+        assert _market_candidate_allowed(value) is False
+
+
+def test_v26341_preserves_real_external_markets():
+    allowed = [
+        "Automotive",
+        "Industrial",
+        "Healthcare",
+        "Storage",
+        "Aerospace",
+        "Defense",
+        "Communications Infrastructure",
+        "Data Center",
+        "Wireless",
+        "Wireline Infrastructure",
+        "Optical Networks",
+        "Satellite Communications",
+        "Data Center Interconnect",
+        "Automotive Aftermarket",
+    ]
+
+    for value in allowed:
+        assert _market_candidate_allowed(value) is True
+
+
+def test_v26341_rejects_known_pollution_sentence_outputs():
+    texts = [
+        "Markets include Cost Position, Price, Quality and Brazil.",
+        "Markets include Laptop PCs, SoCs, Audio and Video.",
+        "Markets include Test, Measurement, Emulation and Prototyping.",
+    ]
+
+    for text in texts:
+        values, _ = _extract_generic_markets(text)
+        assert values == []
+
+# === V2.6.3.4.2 MARKET ENTITY / FRAGMENT CLEANUP ===
+
+
+def test_v26342_rejects_observed_named_entity():
+    assert _market_candidate_allowed("Rio Tinto") is False
+
+
+def test_v26342_rejects_observed_sentence_fragment():
+    assert _market_candidate_allowed("Both The Professional") is False
+
+
+def test_v26342_rejects_capability_description():
+    assert _market_candidate_allowed(
+        "Networking With Integrated AI Processing Capabilities"
+    ) is False
+
+
+def test_v26342_rejects_overbroad_vision_candidate():
+    assert _market_candidate_allowed("Vision") is False
+
+
+def test_v26342_canonicalizes_automotive_aftermarket():
+    text = (
+        "Markets include both the professional "
+        "and DIY markets of the automotive aftermarket."
+    )
+    values, _ = _extract_generic_markets(text)
+    assert "Automotive Aftermarket" in values
+    assert "Both The Professional" not in values
+    assert "Diy Markets Of The Automotive Aftermarket" not in values
+
+
+def test_v26342_canonicalizes_data_center_plural():
+    text = (
+        "Markets include Data Centers, Gaming and Automotive. "
+        "End-markets include Data Center and Industrial."
+    )
+    values, _ = _extract_generic_markets(text)
+    assert values.count("Data Center") == 1
+    assert "Data Centers" not in values
+    assert "Gaming" in values
+    assert "Automotive" in values
+    assert "Industrial" in values
+
+
+def test_v26342_preserves_facility_verticals():
+    allowed = [
+        "Hospitals",
+        "Schools",
+        "Data Center",
+        "Warehouses",
+        "Manufacturing Facilities",
+        "Broadcasting",
+    ]
+    for value in allowed:
+        assert _market_candidate_allowed(value) is True

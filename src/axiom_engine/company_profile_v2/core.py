@@ -171,6 +171,8 @@ def _canonical_market_label(value: str) -> str:
     special = {
         "internet data center": "Internet Data Center",
         "data center": "Data Center",
+        "data centers": "Data Center",
+        "automotive aftermarket": "Automotive Aftermarket",
         "professional visualization": "Professional Visualization",
         "fiber-to-the-home": "FTTH",
         "telecommunications": "Telecom",
@@ -403,6 +405,91 @@ _MARKET_FRAGMENT_CONTAINS = (
 )
 
 
+# === V2.6.3.4.1 TIER 2 SEMANTIC CLEANUP ===
+
+_MARKET_TIER2_BLOCKED_EXACT = {
+    # Demonstratives / fragments
+    "this",
+    "that",
+    "these",
+    "those",
+    "other",
+    "others",
+    "end",
+
+    # Competitive-factor / commercial-noise nouns
+    "cost position",
+    "price",
+    "quality",
+    "reliability of bauxite supply",
+    "proximity to customers",
+    "design",
+    "test",
+    "measurement",
+    "emulation",
+    "prototyping",
+
+    # Product / technology nouns that appeared in Tier 2 smoke
+    "laptop pcs",
+    "pcs",
+    "socs",
+    "audio",
+    "video",
+
+    # V2.6.3.4.2 observed entity / fragment pollution
+    "rio tinto",
+    "both the professional",
+    "vision",
+}
+
+_MARKET_TIER2_BLOCKED_PREFIXES = (
+    "a very wide range of",
+    "wide range of",
+    "a provider of",
+    "provider of",
+    "development services for",
+    "services for",
+    "among other",
+    "including other",
+)
+
+_MARKET_TIER2_BLOCKED_CONTAINS = (
+    " game consoles",
+    " cloud gaming service",
+    " cloud gaming services",
+    " development services",
+    " optical products",
+    " test equipment",
+    " communications test",
+    " processing capabilities",
+    " integrated ai processing capabilities",
+)
+
+_MARKET_TIER2_GEOGRAPHY_TERMS = (
+    "brazil",
+    "united states",
+    "u.s.",
+    "usa",
+    "canada",
+    "mexico",
+    "china",
+    "japan",
+    "south korea",
+    "new zealand",
+    "india",
+    "australia",
+    "europe",
+    "asia",
+    "north america",
+    "south america",
+    "latin america",
+    "central america",
+    "caribbean",
+    "middle east",
+    "africa",
+)
+
+
 def _clean_market_candidate(
     value: str,
 ) -> str:
@@ -517,6 +604,61 @@ def _market_candidate_allowed(
     ):
         return False
 
+    # V2.6.3.4 Tier 2 semantic guard.
+    # These are actors/channels/geographies/demand/product technology,
+    # not external end markets.
+    if re.search(
+        r"\b(?:"
+        r"oems?|distributors?|resellers?|retailers?|"
+        r"channel partners?|sales representatives?|"
+        r"employees?|workforce|"
+        r"united states|south korea|new zealand|"
+        r"north america|latin america|asia pacific|"
+        r"europe|china|japan|"
+        r"demand|growth|investment|bandwidth|"
+        r"cpus?|gpus?|cuda|dram|nand|hbm|dimms?|"
+        r"processors?|chipsets?|semiconductors?"
+        r")\b",
+        lower,
+    ):
+        return False
+
+    # V2.6.3.4.1 Tier 2 semantic cleanup.
+    if lower in _MARKET_TIER2_BLOCKED_EXACT:
+        return False
+
+    if lower.startswith(
+        _MARKET_TIER2_BLOCKED_PREFIXES
+    ):
+        return False
+
+    padded_tier2 = f" {lower} "
+
+    if any(
+        blocked in padded_tier2
+        for blocked in _MARKET_TIER2_BLOCKED_CONTAINS
+    ):
+        return False
+
+    # Reject geography-only candidates. We intentionally do not reject
+    # phrases merely because they contain a geographic adjective in a
+    # legitimate external market name; the exact candidate must match
+    # the geography term.
+    if lower in _MARKET_TIER2_GEOGRAPHY_TERMS:
+        return False
+
+    # Reject obvious trailing prose fragments left by broad Tier 2
+    # sentence captures.
+    if re.search(
+        r"\b(?:"
+        r"among other countries|"
+        r"rely on our products|"
+        r"as the fundamental building blocks"
+        r")$",
+        lower,
+    ):
+        return False
+
     return True
 
 
@@ -558,9 +700,29 @@ def _split_market_phrase(
             flags=re.IGNORECASE,
         )
 
+        candidate = re.sub(
+            r"^(?:"
+            r"this|that|these|those|"
+            r"among other countries|"
+            r"a very wide range of"
+            r")\s*",
+            "",
+            candidate,
+            flags=re.IGNORECASE,
+        )
+
         candidate = _clean_market_candidate(
             candidate
         )
+
+        # V2.6.3.4.2: collapse audience/channel framing
+        # around the actual external market.
+        if re.search(
+            r"\bautomotive aftermarket\b",
+            candidate,
+            flags=re.IGNORECASE,
+        ):
+            candidate = "Automotive Aftermarket"
 
         if not _market_candidate_allowed(
             candidate
@@ -635,6 +797,29 @@ def _extract_generic_markets(
         r"\b(?:serve|serves|served|serving)\s+(?:customers?\s+in\s+)?(?:the\s+)?(.+?)\s+industr(?:y|ies)(?:\.|;)",
         r"\b(?:serve|serves|served|serving)\s+(?:customers?\s+in\s+)?(?:the\s+)?(.+?)\s+sectors?(?:\.|;)",
         r"\b(?:serve|serves|served|serving)\s+(?:customers?\s+in\s+)?(?:the\s+)?(.+?)\s+verticals?(?:\.|;)",
+
+        # ---------------------------------
+        # V2.6.3.4 Tier 2 recall promotion
+        # Guarded census families:
+        # customer_industry_context
+        # participate_operate
+        # sold_into_deployed
+        # ---------------------------------
+
+        # Customer industry / market context.
+        r"\bcustomers?\s+in\s+(?:the\s+)?(.+?)\s+(?:markets?|industr(?:y|ies)|sectors?|verticals?)\b",
+        r"\bcustomer base\s+(?:includes|include|consists of|is concentrated in)\s+(?:the\s+)?(.+?)\s+(?:markets?|industr(?:y|ies)|sectors?|verticals?)\b",
+
+        # Participation / operation explicitly bounded by a market noun.
+        r"\b(?:we|the company)\s+(?:participate|participates|participated|participating)\s+in\s+(?:the\s+)?(.+?)\s+markets?(?:\.|;)",
+        r"\b(?:we|the company)\s+(?:operate|operates|operated|operating)\s+in\s+(?:the\s+)?(.+?)\s+(?:markets?|industr(?:y|ies)|sectors?|verticals?)(?:\.|;)",
+
+        # Sold/deployed/used into explicitly named external markets,
+        # industries, sectors or verticals. Do not promote bare channel
+        # or geography statements.
+        r"\b(?:our products|our solutions|our services|products|solutions|services)\s+(?:are\s+)?sold into\s+(?:the\s+)?(.+?)\s+(?:markets?|industr(?:y|ies)|sectors?|verticals?)(?:\.|;)",
+        r"\b(?:our products|our solutions|our services|products|solutions|services)\s+(?:are\s+)?deployed (?:in|across)\s+(?:the\s+)?(.+?)\s+(?:markets?|industr(?:y|ies)|sectors?|verticals?)(?:\.|;)",
+        r"\b(?:our products|our solutions|our services|products|solutions|services)\s+(?:are\s+)?used across\s+(?:the\s+)?(.+?)\s+(?:markets?|industr(?:y|ies)|sectors?|verticals?)(?:\.|;)",
     ]
 
     for sentence in _sentences(text):
@@ -661,6 +846,20 @@ def _extract_generic_markets(
                 "business segment",
                 "business segments",
                 "segment reporting",
+
+                # V2.6.3.4 Tier 2 context guard:
+                # reject channel/customer-type, geography, demand,
+                # employee and obvious product-technology sentences
+                # before candidate splitting.
+                "sold through",
+                "distributed through",
+                "distribution partners",
+                "channel partners",
+                "sales representatives",
+                "employees",
+                "workforce",
+                "compensation",
+                "benefits",
             )
         ):
             continue
