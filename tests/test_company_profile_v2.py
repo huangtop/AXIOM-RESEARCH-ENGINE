@@ -19,7 +19,7 @@ def test_aaoi_v2_is_evidence_first():
     row = _aaoi()
 
     assert row["symbol"] == "AAOI"
-    assert row["generation_mode"] == "evidence_first_deterministic"
+    assert row["generation_mode"] == "evidence_first_generic_extractor"
 
     assert "classification" not in row
     assert "theme" not in row
@@ -100,3 +100,57 @@ def test_aaoi_preserves_2025_financial_facts():
 
     assert facts["customer_concentration"]["Digicomm"] == pytest.approx(0.531)
     assert facts["customer_concentration"]["Microsoft"] == pytest.approx(0.288)
+
+def test_v21_core_has_no_company_specific_rules():
+    source = (
+        ROOT
+        / "src/axiom_engine/company_profile_v2/core.py"
+    ).read_text()
+
+    forbidden = [
+        "Applied Optoelectronics",
+        "JinkoSolar",
+        'symbol == "AAOI"',
+        "symbol == 'AAOI'",
+        'symbol == "NVDA"',
+        "company:US-CIK0001158114",
+    ]
+
+    for value in forbidden:
+        assert value not in source
+
+
+def test_nvda_uses_same_generic_extractor():
+    row = build_company_profile_v2(
+        ROOT,
+        symbol="NVDA",
+    )
+
+    assert row["symbol"] == "NVDA"
+
+    assert row["generation_mode"] == (
+        "evidence_first_generic_extractor"
+    )
+
+    summary = (
+        row["company_summary"]
+        ["one_line_business"]
+        or ""
+    )
+
+    assert "accelerated computing" in summary.lower()
+
+    markets = set(row["markets"])
+
+    assert {
+        "Data Center",
+        "Gaming",
+        "Professional Visualization",
+        "Automotive",
+    }.issubset(markets)
+
+    assert row["evidence"]
+    assert (
+        row["evidence"][0]["form"]
+        == "10-K"
+    )
