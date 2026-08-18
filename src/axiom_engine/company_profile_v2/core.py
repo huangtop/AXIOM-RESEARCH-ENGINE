@@ -56,17 +56,22 @@ def _latest_business_evidence(
     rows: list[dict[str, Any]],
     symbol: str,
 ) -> dict[str, Any]:
+    supported_business_sections = {
+        "item_1_business",
+        "item_4_company_information",
+    }
+
     candidates = [
         row
         for row in rows
-        if row.get("section_type") == "item_1_business"
+        if row.get("section_type") in supported_business_sections
         and isinstance(row.get("text"), str)
         and row["text"].strip()
     ]
 
     if not candidates:
         raise CompanyProfileV2Error(
-            f"no Item 1 Business text for {symbol}"
+            f"no supported business section for {symbol}"
         )
 
     return max(

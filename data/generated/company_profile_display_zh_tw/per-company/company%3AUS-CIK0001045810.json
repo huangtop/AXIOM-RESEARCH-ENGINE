@@ -1,25 +1,103 @@
 {
-  "schema_version": "axiom-company-profile.v2.3",
-  "generation_mode": "evidence_first_generic_extractor",
+  "schema_version": "axiom-company-profile-display.zh-tw.v2.4",
+  "generation_mode": "reuse_existing_display_names_zh_tw",
   "company_id": "company:US-CIK0001045810",
   "symbol": "NVDA",
-  "exchange": "NASDAQ",
-  "as_of": "2026-02-25",
-  "company_summary": {
-    "one_line_business": "NVIDIA pioneered accelerated computing to help solve the most challenging computational problems."
-  },
-  "markets": [
-    "Data Center",
-    "Gaming",
-    "Professional Visualization",
-    "Automotive"
-  ],
-  "product_stack": [],
-  "market_products": {
-    "data_center": [
+  "canonical_schema_version": "axiom-company-profile.v2.3",
+  "display": {
+    "locale": "zh-TW",
+    "symbol": "NVDA",
+    "as_of": "2026-02-25",
+    "company_summary": {
+      "one_line_business": "加速運算與 AI 基礎設施平台供應商"
+    },
+    "markets": [
+      "雲端與資料中心",
+      "遊戲",
+      "專業視覺化",
+      "汽車"
+    ],
+    "product_stack": [],
+    "market_products": {
+      "雲端與資料中心": [
+        "data center compute",
+        "subsystems",
+        "模組",
+        "along with software",
+        "services",
+        "NVLink interconnects",
+        "switches",
+        "end-to-end platforms for InfiniBand",
+        "Ethernet",
+        "consisting of network adapters",
+        "cables",
+        "DPUs",
+        "switch chips",
+        "systems",
+        "software"
+      ],
+      "遊戲": [
+        "GeForce RTX GPUs for gaming desktop",
+        "laptop PCs",
+        "GeForce NOW cloud gaming service",
+        "SoCs",
+        "development services for game consoles"
+      ]
+    },
+    "core_technologies": [],
+    "manufacturing": {
+      "model": [],
+      "locations": [],
+      "critical_assets": []
+    },
+    "customer_types": [
+      "all major public",
+      "private cloud providers",
+      "AI model makers",
+      "enterprises",
+      "startups",
+      "public sector entities",
+      "cloud providers",
+      "OEMs",
+      "ODMs",
+      "system integrators",
+      "distributors"
+    ],
+    "ai_exposure": {
+      "type": "direct_company_disclosure",
+      "summary": "Data Center The NVIDIA Data Center platform is focused on accelerating compute-intensive workloads, such as AI, data processing, graphics, robotics, and scientific computing, delivering superior total cost of ownership relative to conventional CPU-only approaches."
+    },
+    "competitive_advantages": [],
+    "demand_drivers": [
+      "人工智慧（AI）",
+      "頻寬需求成長",
+      "高效能運算（HPC）",
+      "生成式 AI",
+      "代理型 AI",
+      "機器人"
+    ],
+    "strategy_changes": [
+      {
+        "year": 2023,
+        "change": "In 2023, we introduced our first data center CPU, Grace, built for giant-scale AI and high-performance computing, or HPC."
+      },
+      {
+        "year": 2024,
+        "change": "In 2024, we launched the NVIDIA Blackwell architecture – connecting 36 Grace CPUs and 72 Blackwell GPUs in a data center scale, liquid-cooled design – for real-time trillion-parameter inference and training."
+      }
+    ],
+    "financial_snapshot": {
+      "fiscal_year": 2025,
+      "revenue": null,
+      "gross_margin": null,
+      "net_loss": null,
+      "revenue_mix": {},
+      "customer_concentration": {}
+    },
+    "offerings": [
       "data center compute",
       "subsystems",
-      "modules",
+      "模組",
       "along with software",
       "services",
       "NVLink interconnects",
@@ -31,125 +109,20 @@
       "DPUs",
       "switch chips",
       "systems",
-      "software"
-    ],
-    "gaming": [
+      "software",
       "GeForce RTX GPUs for gaming desktop",
       "laptop PCs",
       "GeForce NOW cloud gaming service",
       "SoCs",
       "development services for game consoles"
-    ]
+    ],
+    "offerings_source": "v2_direct",
+    "markets_source": "v2_direct",
+    "operating_capabilities": [
+      "高速資料中心網路"
+    ],
+    "operating_capabilities_source": "company_analysis_v1_fallback"
   },
-  "core_technologies": [],
-  "manufacturing": {
-    "model": [],
-    "locations": [],
-    "critical_assets": []
-  },
-  "customer_types": [
-    "all major public",
-    "private cloud providers",
-    "AI model makers",
-    "enterprises",
-    "startups",
-    "public sector entities",
-    "cloud providers",
-    "OEMs",
-    "ODMs",
-    "system integrators",
-    "distributors"
-  ],
-  "ai_exposure": {
-    "type": "direct_company_disclosure",
-    "summary": "Data Center The NVIDIA Data Center platform is focused on accelerating compute-intensive workloads, such as AI, data processing, graphics, robotics, and scientific computing, delivering superior total cost of ownership relative to conventional CPU-only approaches."
-  },
-  "competitive_advantages": [],
-  "demand_drivers": [
-    "AI",
-    "bandwidth growth",
-    "HPC",
-    "generative AI",
-    "agentic AI",
-    "robotics"
-  ],
-  "strategy_changes": [
-    {
-      "year": 2023,
-      "change": "In 2023, we introduced our first data center CPU, Grace, built for giant-scale AI and high-performance computing, or HPC."
-    },
-    {
-      "year": 2024,
-      "change": "In 2024, we launched the NVIDIA Blackwell architecture – connecting 36 Grace CPUs and 72 Blackwell GPUs in a data center scale, liquid-cooled design – for real-time trillion-parameter inference and training."
-    }
-  ],
-  "financial_snapshot": {
-    "fiscal_year": 2025,
-    "revenue": null,
-    "gross_margin": null,
-    "net_loss": null,
-    "revenue_mix": {},
-    "customer_concentration": {}
-  },
-  "field_evidence": {
-    "company_summary.one_line_business": [
-      "NVIDIA pioneered accelerated computing to help solve the most challenging computational problems. NVIDIA is now a data center scale AI infrastructure company reshaping all industries."
-    ],
-    "markets": [
-      "We specialize in markets where our computing and AI infrastructure platforms can provide tremendous acceleration for applications. These platforms incorporate processors, interconnects, software, algorithms, systems, and services to deliver unique value. Our platforms address four large markets where our expertise is critical: Data Center, Gaming, Professional Visualization, and Automotive.\nData Center\nThe NVIDIA Data Center platform is focused on accelerating compute-intensive workloads, such as AI, data processing, graphics, robotics, and scientific computing, delivering superior total cost of ownership relative to conventional CPU-only approaches. It is deployed in cloud, hyperscale, on-premises and edge data centers. The platform consists of data center compute and networking infrastructure offerings typically delivered to customers as rack-scale systems, subsystems, or modules, along with software and services.\nOur Data Center infrastructure systems include supercomputing platforms and servers, bringing together our higher performance, energy efficient GPUs, CPUs, interconnects, and fully optimized AI and HPC software stacks. In addition, they include a growing body of acceleration libraries, AI models and training data sets, APIs, SDKs, and domain-specific application frameworks.\nOur networking offerings include NVLink interconnects and switches, end-to-end platforms for InfiniBand and Ethernet, consisting of network adapters, cables, DPUs, switch chips and systems, as well as software. This has enabled us to architect data center-scale computing platforms that can interconnect up to hundreds of thousands of compute nodes with high-performance networking. Fueled by an expansion in AI and HPC workloads, the data center has become the new unit of computing, with networking as an integral part. In fiscal year 2026, we introduced NVIDIA NVLink Fusion to enable hyperscalers and custom ASIC designers to integrate custom CPUs and XPUs with our platform.\nOur customers include all major public and private cloud providers, AI model makers, enterprises and startups, and public sector entities. We work with industry leaders to help build or transform their applications and data center infrastructure. Some of our direct customers include original equipment manufacturers, or OEMs, original device manufacturers, or\nODMs, system integrators and distributors which we partner with to help bring our products to market. We also have partnerships in automotive, healthcare, financial services, manufacturing, retail, and technology among others, to accelerate the adoption of AI.\nAt the foundation of the NVIDIA accelerated computing platform are our GPUs, which excel at parallel workloads such as the training and inferencing of neural networks. These Data Center systems are extreme co-designed with the GPU, CPU, NVLink switch, DPU, NIC, and scale-out networking along with software stacks and algorithms to deliver data center-scale computing solutions.\nWhile our ap"
-    ],
-    "product_stack": [],
-    "market_products": {
-      "data_center": [
-        "The NVIDIA Data Center platform is focused on accelerating compute-intensive workloads, such as AI, data processing, graphics, robotics, and scientific computing, delivering superior total cost of ownership relative to conventional CPU-only approaches. It is deployed in cloud, hyperscale, on-premises and edge data centers. The platform consists of data center compute and networking infrastructure offerings typically delivered to customers as rack-scale systems, subsystems, or modules, along with software and services.",
-        "Our Data Center infrastructure systems include supercomputing platforms and servers, bringing together our higher performance, energy efficient GPUs, CPUs, interconnects, and fully optimized AI and HPC software stacks. In addition, they include a growing body of acceleration libraries, AI models and training data sets, APIs, SDKs, and domain-specific application frameworks.",
-        "Our networking offerings include NVLink interconnects and switches, end-to-end platforms for InfiniBand and Ethernet, consisting of network adapters, cables, DPUs, switch chips and systems, as well as software. This has enabled us to architect data center-scale computing platforms that can interconnect up to hundreds of thousands of compute nodes with high-performance networking. Fueled by an expansion in AI and HPC workloads, the data center has become the new unit of computing, with networking as an integral part. In fiscal year 2026, we introduced NVIDIA NVLink Fusion to enable hyperscalers and custom ASIC designers to integrate custom CPUs and XPUs with our platform."
-      ],
-      "gaming": [
-        "Our products for the gaming market include GeForce RTX GPUs for gaming desktop and laptop PCs, GeForce NOW cloud gaming service, as well as SoCs and development services for game consoles.",
-        "•suppliers of hardware and software for SoC products that are used in servers or embedded into automobiles, autonomous machines, and gaming devices, such as Ambarella, Inc., AMD, Broadcom, Intel, Qualcomm Incorporated, Renesas Electronics Corporation, and Samsung, or companies with internal teams designing SoC products for their own products and services, such as Tesla, Inc.; and"
-      ]
-    },
-    "core_technologies": [],
-    "manufacturing": [],
-    "customer_types": [
-      "Our customers include all major public and private cloud providers, AI model makers, enterprises and startups, and public sector entities.",
-      "cloud providers",
-      "AI model makers",
-      "original equipment manufacturers",
-      "original device manufacturers",
-      "system integrators",
-      "distributors"
-    ],
-    "ai_exposure": [
-      "Data Center The NVIDIA Data Center platform is focused on accelerating compute-intensive workloads, such as AI, data processing, graphics, robotics, and scientific computing, delivering superior total cost of ownership relative to conventional CPU-only approaches."
-    ],
-    "competitive_advantages": [],
-    "demand_drivers": [
-      "tem 1. Business Our Company NVIDIA pioneered accelerated computing to help solve the most challenging computational problems. NVIDIA is now a data center scale AI infrastructure company reshaping all industries. Our technology stack includes the foundational NVIDIA CUDA development platform that runs on all NVIDIA GPUs, as well as hundreds of domain-specific software libraries, f",
-      "5 countries, or to companies headquartered or with an ultimate parent therein, of our H20 integrated circuits and any other circuits achieving the H20’s memory bandwidth, interconnect bandwidth, or combination thereof. As a result of these requirements, we incurred a $4.5 billion charge in the first quarter of fiscal year 2026 associated with H20 for excess inventory and purchase obliga",
-      "ing system for enterprise AI applications. In 2023, we introduced our first data center CPU, Grace, built for giant-scale AI and high-performance computing, or HPC. In 2024, we launched the NVIDIA Blackwell architecture – connecting 36 Grace CPUs and 72 Blackwell GPUs in a data center scale, liquid-cooled design – for real-time trillion-parameter inference and training. In fiscal",
-      "thousands of enterprises to deliver services and products that would have been immensely difficult or even impossible with traditional coding. Examples include generative AI, which can create new content such as text, code, images, audio, video, molecule structures, and recommendation systems; and agentic AI where systems of AI models work in concert to automatically complete a task. NVIDIA",
-      "ng. Examples include generative AI, which can create new content such as text, code, images, audio, video, molecule structures, and recommendation systems; and agentic AI where systems of AI models work in concert to automatically complete a task. NVIDIA has a platform strategy, bringing together hardware, systems, software, algorithms, libraries, AI models and training data sets, and se",
-      "d computing for computationally intensive workloads such as artificial intelligence, or AI, model training and inference, data analytics, scientific computing, robotics, and 3D graphics, with vertical-specific optimizations to address industries ranging from healthcare and telecom to automotive and manufacturing. Introduced with the Blackwell architecture, our data-center-scale offerin"
-    ],
-    "strategy_changes": [
-      "In 2023, we introduced our first data center CPU, Grace, built for giant-scale AI and high-performance computing, or HPC.",
-      "In 2024, we launched the NVIDIA Blackwell architecture – connecting 36 Grace CPUs and 72 Blackwell GPUs in a data center scale, liquid-cooled design – for real-time trillion-parameter inference and training."
-    ],
-    "financial_snapshot": []
-  },
-  "evidence": [
-    {
-      "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-      "form": "10-K",
-      "accession_number": "0001045810-26-000021",
-      "filing_date": "2026-02-25",
-      "section_type": "item_1_business",
-      "document_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
-      "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-    }
-  ],
   "value_provenance": {
     "company_summary.one_line_business": {
       "value": "NVIDIA pioneered accelerated computing to help solve the most challenging computational problems.",
@@ -958,5 +931,28 @@
       "revenue_mix": {},
       "customer_concentration": {}
     }
+  },
+  "evidence": [
+    {
+      "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
+      "form": "10-K",
+      "accession_number": "0001045810-26-000021",
+      "filing_date": "2026-02-25",
+      "section_type": "item_1_business",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+      "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
+    }
+  ],
+  "production_enrichment": {
+    "schema_version": "axiom-company-profile-enrichment.v2.5.1",
+    "mode": "direct_first_legacy_evidence_fallback",
+    "legacy_source_used": true,
+    "fallback_dimensions": [
+      "operating_capabilities"
+    ],
+    "source_schema_version": "axiom-company-analysis.v1",
+    "evidence_ids": [
+      "business-evidence:SEC-0001045810-26-000021"
+    ]
   }
 }
