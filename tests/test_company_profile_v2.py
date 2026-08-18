@@ -162,7 +162,7 @@ def test_v22_has_per_value_provenance():
 
     assert (
         row["schema_version"]
-        == "axiom-company-profile.v2.2"
+        == "axiom-company-profile.v2.3"
     )
 
     provenance = row[
@@ -321,3 +321,102 @@ def test_v22_financial_values_have_source_provenance():
         ["value"]
         == pytest.approx(0.429)
     )
+
+def test_v23_profile_is_production_ready():
+    row = _aaoi()
+
+    assert (
+        row["schema_version"]
+        == "axiom-company-profile.v2.3"
+    )
+
+    required = {
+        "company_summary",
+        "markets",
+        "product_stack",
+        "market_products",
+        "core_technologies",
+        "manufacturing",
+        "customer_types",
+        "ai_exposure",
+        "competitive_advantages",
+        "demand_drivers",
+        "strategy_changes",
+        "financial_snapshot",
+        "value_provenance",
+        "evidence",
+    }
+
+    assert required.issubset(
+        row.keys()
+    )
+
+
+def test_v23_aaoi_has_frontend_minimum_profile():
+    row = _aaoi()
+
+    assert row[
+        "company_summary"
+    ][
+        "one_line_business"
+    ]
+
+    assert len(
+        row["markets"]
+    ) >= 3
+
+    assert row[
+        "market_products"
+    ]
+
+    assert row[
+        "core_technologies"
+    ]
+
+    assert row[
+        "manufacturing"
+    ][
+        "locations"
+    ]
+
+    assert row[
+        "customer_types"
+    ]
+
+    assert row[
+        "ai_exposure"
+    ]
+
+    assert row[
+        "financial_snapshot"
+    ][
+        "revenue"
+    ] is not None
+
+
+def test_v23_nvda_has_frontend_minimum_profile():
+    row = build_company_profile_v2(
+        ROOT,
+        symbol="NVDA",
+    )
+
+    assert row[
+        "company_summary"
+    ][
+        "one_line_business"
+    ]
+
+    assert {
+        "Data Center",
+        "Gaming",
+        "Professional Visualization",
+        "Automotive",
+    }.issubset(
+        set(row["markets"])
+    )
+
+    assert row[
+        "value_provenance"
+    ][
+        "markets"
+    ]
