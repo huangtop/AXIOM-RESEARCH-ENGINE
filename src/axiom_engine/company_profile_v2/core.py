@@ -4,6 +4,7 @@ import json
 import re
 from pathlib import Path
 from typing import Any
+from .provenance import build_value_provenance
 
 
 class CompanyProfileV2Error(RuntimeError):
@@ -653,7 +654,7 @@ def _extract_manufacturing(
                 normalized,
                 normalized,
             )
-            
+
             if len(normalized.split()) <= 5:
                 locations.append(normalized)
 
@@ -1167,9 +1168,9 @@ def build_company_profile_v2(
             financial_evidence,
     }
 
-    return {
+    profile = {
         "schema_version":
-            "axiom-company-profile.v2.1",
+            "axiom-company-profile.v2.2",
         "generation_mode":
             "evidence_first_generic_extractor",
 
@@ -1227,3 +1228,15 @@ def build_company_profile_v2(
             _evidence_metadata(evidence)
         ],
     }
+    
+    profile["value_provenance"] = (
+        build_value_provenance(
+            profile=profile,
+            raw_text=str(
+                evidence["text"]
+            ),
+            evidence=evidence,
+        )
+    )
+
+    return profile
