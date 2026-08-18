@@ -104,6 +104,57 @@ def test_rejects_duplicate_signal_rules(tmp_path: Path):
     with pytest.raises(CompanySignalsError, match="duplicate"):
         build_company_signals(root)
 
+def test_application_target_is_not_promoted_to_company_offering(tmp_path: Path):
+    root = _fixture(tmp_path)
+
+    evidence_path = (
+        root
+        / "data/generated/canonical_business_evidence/business_evidence.json"
+    )
+    evidence = json.loads(evidence_path.read_text())
+
+    evidence[0]["text"] = (
+        "Our embedded memory and storage solutions enable intelligent "
+        "edge devices in the consumer products market."
+    )
+    evidence_path.write_text(json.dumps(evidence))
+
+    report = build_company_signals(root)
+    record = report["records"][0]
+
+    edge_signal = next(
+        row
+        for row in record["signals"]
+        if row["signal_id"] == "product:edge_network_platform"
+    )
+
+    assert edge_signal["occurrence_count"] >= 1
+    assert edge_signal["offering_occurrence_count"] == 0
+    assert edge_signal["primary_business_score"] == 0
+
+
+def test_system_level_solutions_do_not_imply_systems_integration(tmp_path: Path):
+    root = _fixture(tmp_path)
+
+    evidence_path = (
+        root
+        / "data/generated/canonical_business_evidence/business_evidence.json"
+    )
+    evidence = json.loads(evidence_path.read_text())
+
+    evidence[0]["text"] = (
+        "Many of our system-level solutions combine NAND, a controller, "
+        "firmware, and in some cases DRAM."
+    )
+    evidence_path.write_text(json.dumps(evidence))
+
+    report = build_company_signals(root)
+    signal_ids = {
+        row["signal_id"]
+        for row in report["records"][0]["signals"]
+    }
+
+    assert "capability:systems_integration" not in signal_ids
 
 def test_rejects_ticker_membership_in_rules(tmp_path: Path):
     root = _fixture(tmp_path)
@@ -120,3 +171,57 @@ def test_real_population_is_complete_and_only_uses_canonical_business_evidence()
     assert report["summary"]["company_count"] == 6464
     assert report["summary"]["business_evidence_company_count"] >= 1000
     assert len(report["records"]) == 6464
+
+def test_product_heading_can_establish_company_offering(tmp_path: Path):
+    root = _fixture(tmp_path)
+
+    evidence_path = (
+        root
+        / "data/generated/canonical_business_evidence/business_evidence.json"
+    )
+    evidence = json.loads(evidence_path.read_text())
+
+    evidence[0]["text"] = (
+        "DRAM: DRAM products are dynamic random access memory "
+        "semiconductor devices."
+    )
+    evidence_path.write_text(json.dumps(evidence))
+
+    report = build_company_signals(root)
+    record = report["records"][0]
+
+    dram_signal = next(
+        row
+        for row in record["signals"]
+        if row["signal_id"] == "product:dram"
+    )
+
+    assert dram_signal["offering_occurrence_count"] >= 1
+    assert dram_signal["primary_business_score"] == 3
+
+def test_non_product_heading_does_not_establish_company_offering(tmp_path: Path):
+    root = _fixture(tmp_path)
+
+    evidence_path = (
+        root
+        / "data/generated/canonical_business_evidence/business_evidence.json"
+    )
+    evidence = json.loads(evidence_path.read_text())
+
+    evidence[0]["text"] = (
+        "Customers: SSDs are increasingly used in enterprise "
+        "and data center applications."
+    )
+    evidence_path.write_text(json.dumps(evidence))
+
+    report = build_company_signals(root)
+    record = report["records"][0]
+
+    ssd_signal = next(
+        row
+        for row in record["signals"]
+        if row["signal_id"] == "product:ssd"
+    )
+
+    assert ssd_signal["offering_occurrence_count"] == 0
+    assert ssd_signal["primary_business_score"] == 0

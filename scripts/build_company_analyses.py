@@ -27,7 +27,17 @@ def main() -> int:
     signals = build_company_signals(ROOT, company_ids=company_ids)
     report = build_company_analyses(ROOT, company_ids=company_ids, signals_payload=signals)
     if args.write:
-        write_company_analyses(report, ROOT / "data/generated/company_analysis")
+        if args.symbol:
+            raise SystemExit(
+                "--write cannot be combined with --symbol because a partial build "
+                "would replace the published company_analysis index. "
+                "Run without --symbol to publish the full cohort."
+            )
+
+        write_company_analyses(
+            report,
+            ROOT / "data/generated/company_analysis",
+        )
     print(json.dumps(report["summary"], ensure_ascii=False))
     return 0
 
