@@ -21,6 +21,7 @@ LEGACY_PUBLISHED_INDEX = Path("data/generated/company_analysis/index.json")
 BUSINESS_EVIDENCE_INDEX = Path(
     "data/generated/canonical_business_evidence/index.json"
 )
+CENSUS_OUTPUT = CANONICAL_OUTPUT / "full_market_census.json"
 
 
 def _load_json(path: Path) -> Any:
@@ -32,96 +33,44 @@ def _load_json(path: Path) -> Any:
         ) from exc
 
 
-def _write_json(
-    path: Path,
-    payload: Any,
-) -> None:
-    path.parent.mkdir(
-        parents=True,
-        exist_ok=True,
-    )
-
-    temporary = path.with_name(
-        f".{path.name}.{os.getpid()}.tmp"
-    )
-
+def _write_json(path: Path, payload: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(f".{path.name}.{os.getpid()}.tmp")
     temporary.write_text(
-        json.dumps(
-            payload,
-            ensure_ascii=False,
-            indent=2,
-        )
-        + "\n",
+        json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
-
-    os.replace(
-        temporary,
-        path,
-    )
+    os.replace(temporary, path)
 
 
-def _filename(
-    company_id: str,
-) -> str:
-    return (
-        quote(
-            company_id,
-            safe="",
-        )
-        + ".json"
-    )
+def _filename(company_id: str) -> str:
+    return quote(company_id, safe="") + ".json"
 
 
-def _primary_symbol_by_company(
-    root: Path,
-) -> dict[str, str]:
-    securities = _load_json(
-        root / "data/universe/securities.json"
-    )
-
+def _primary_symbol_by_company(root: Path) -> dict[str, str]:
+    securities = _load_json(root / "data/universe/securities.json")
     output: dict[str, str] = {}
 
     for row in securities:
-        company_id = str(
-            row.get("company_id")
-            or ""
-        )
-
-        symbol = str(
-            row.get("ticker")
-            or ""
-        ).strip().upper()
+        company_id = str(row.get("company_id") or "")
+        symbol = str(row.get("ticker") or "").strip().upper()
 
         if not company_id or not symbol:
             continue
 
-        if (
-            row.get("primary_listing") is True
-            or company_id not in output
-        ):
+        if row.get("primary_listing") is True or company_id not in output:
             output[company_id] = symbol
 
     return output
 
 
-def _published_symbols(
-    root: Path,
-) -> list[str]:
-    payload = _load_json(
-        root
-        / LEGACY_PUBLISHED_INDEX
-    )
-
-    symbols = (
-        payload.get("symbol_to_file")
-        or {}
-    )
+def _published_symbols(root: Path) -> list[str]:
+    payload = _load_json(root / LEGACY_PUBLISHED_INDEX)
+    symbols = payload.get("symbol_to_file") or {}
 
     if not isinstance(symbols, dict):
         raise CompanyProfileBatchError(
-            "legacy company_analysis index "
-            "has no symbol_to_file mapping"
+            "legacy company_analysis index has no symbol_to_file mapping"
         )
 
     return sorted(
@@ -131,35 +80,34 @@ def _published_symbols(
     )
 
 
-def _evidence_symbols(
-    root: Path,
-) -> list[str]:
-    index = _load_json(
-        root
-        / BUSINESS_EVIDENCE_INDEX
-    )
+def _evidence_company_ids(root: Path) -> list[str]:
+    index = _load_json(root / BUSINESS_EVIDENCE_INDEX)
+    mapping = index.get("company_id_to_file") or {}
 
-    company_ids = set(
-        str(value)
-        for value in (
-            index.get(
-                "company_id_to_file"
-            )
-            or {}
-        )
-        if str(value)
-    )
-
-    primary = (
-        _primary_symbol_by_company(
-            root
-        )
-    )
+    if isinstance(mapping, dict):
+        values = mapping.keys()
+    else:
+        values = mapping
 
     return sorted(
-        primary[company_id]
-        for company_id in company_ids
-        if company_id in primary
+        {
+            str(value)
+            for value in values
+            if str(value)
+        }
+    )
+
+
+def _evidence_symbols(root: Path) -> list[str]:
+    company_ids = set(_evidence_company_ids(root))
+    primary = _primary_symbol_by_company(root)
+
+    return sorted(
+        {
+            primary[company_id]
+            for company_id in company_ids
+            if company_id in primary
+        }
     )
 
 
@@ -172,10 +120,7 @@ def resolve_batch_symbols(
     explicit = sorted(
         {
             str(symbol).strip().upper()
-            for symbol in (
-                symbols
-                or []
-            )
+            for symbol in (symbols or [])
             if str(symbol).strip()
         }
     )
@@ -194,147 +139,47 @@ def resolve_batch_symbols(
     )
 
 
-def _has_text(
-    value: Any,
-) -> bool:
-    return (
-        isinstance(value, str)
-        and bool(value.strip())
-    )
+def _has_text(value: Any) -> bool:
+    return isinstance(value, str) and bool(value.strip())
 
 
 def _profile_coverage(
     profile: Mapping[str, Any],
 ) -> dict[str, bool]:
-    summary = (
-        profile.get(
-            "company_summary"
-        )
-        or {}
-    )
-
-    financial = (
-        profile.get(
-            "financial_snapshot"
-        )
-        or {}
-    )
-
-    manufacturing = (
-        profile.get(
-            "manufacturing"
-        )
-        or {}
-    )
+    summary = profile.get("company_summary") or {}
+    financial = profile.get("financial_snapshot") or {}
+    manufacturing = profile.get("manufacturing") or {}
 
     return {
-        "company_summary":
-            _has_text(
-                summary.get(
-                    "one_line_business"
-                )
-            ),
-
-        "markets":
-            bool(
-                profile.get(
-                    "markets"
-                )
-            ),
-
-        "product_stack":
-            bool(
-                profile.get(
-                    "product_stack"
-                )
-            ),
-
-        "market_products":
-            bool(
-                profile.get(
-                    "market_products"
-                )
-            ),
-
-        "core_technologies":
-            bool(
-                profile.get(
-                    "core_technologies"
-                )
-            ),
-
-        "manufacturing":
-            bool(
-                manufacturing.get(
-                    "model"
-                )
-                or manufacturing.get(
-                    "locations"
-                )
-                or manufacturing.get(
-                    "critical_assets"
-                )
-            ),
-
-        "customer_types":
-            bool(
-                profile.get(
-                    "customer_types"
-                )
-            ),
-
-        "ai_exposure":
-            bool(
-                profile.get(
-                    "ai_exposure"
-                )
-            ),
-
-        "competitive_advantages":
-            bool(
-                profile.get(
-                    "competitive_advantages"
-                )
-            ),
-
-        "demand_drivers":
-            bool(
-                profile.get(
-                    "demand_drivers"
-                )
-            ),
-
-        "strategy_changes":
-            bool(
-                profile.get(
-                    "strategy_changes"
-                )
-            ),
-
-        "financial_snapshot":
-            any(
-                financial.get(key)
-                is not None
-                for key in (
-                    "revenue",
-                    "gross_margin",
-                    "net_loss",
-                )
-            ),
-
-        "value_provenance":
-            bool(
-                profile.get(
-                    "value_provenance"
-                )
-            ),
-
-        "evidence":
-            bool(
-                profile.get(
-                    "evidence"
-                )
-            ),
+        "company_summary": _has_text(
+            summary.get("one_line_business")
+        ),
+        "markets": bool(profile.get("markets")),
+        "product_stack": bool(profile.get("product_stack")),
+        "market_products": bool(profile.get("market_products")),
+        "core_technologies": bool(profile.get("core_technologies")),
+        "manufacturing": bool(
+            manufacturing.get("model")
+            or manufacturing.get("locations")
+            or manufacturing.get("critical_assets")
+        ),
+        "customer_types": bool(profile.get("customer_types")),
+        "ai_exposure": bool(profile.get("ai_exposure")),
+        "competitive_advantages": bool(
+            profile.get("competitive_advantages")
+        ),
+        "demand_drivers": bool(profile.get("demand_drivers")),
+        "strategy_changes": bool(profile.get("strategy_changes")),
+        "financial_snapshot": any(
+            financial.get(key) is not None
+            for key in (
+                "revenue",
+                "gross_margin",
+                "net_loss",
+            )
+        ),
+        "value_provenance": bool(profile.get("value_provenance")),
+        "evidence": bool(profile.get("evidence")),
     }
 
 
@@ -343,7 +188,7 @@ def _production_ready(
     display: Mapping[str, Any],
 ) -> tuple[bool, list[str]]:
     coverage = _profile_coverage(profile)
-    reasons = []
+    reasons: list[str] = []
 
     if not coverage["company_summary"]:
         reasons.append("missing_company_summary")
@@ -356,6 +201,7 @@ def _production_ready(
         reasons.append("ontology_leaked_into_profile")
 
     display_payload = display.get("display") or {}
+
     if display_payload.get("locale") != "zh-TW":
         reasons.append("missing_zh_tw_display")
     if not display_payload.get("offerings"):
@@ -389,33 +235,18 @@ def _coverage_summary(
     ]
 
     count = len(records)
-
     coverage: dict[str, Any] = {}
 
     for field in fields:
         covered = sum(
-            bool(
-                (
-                    row.get(
-                        "coverage"
-                    )
-                    or {}
-                ).get(field)
-            )
+            bool((row.get("coverage") or {}).get(field))
             for row in records
         )
 
         coverage[field] = {
-            "covered_company_count":
-                covered,
-            "total_company_count":
-                count,
-            "coverage":
-                (
-                    covered / count
-                    if count
-                    else 0.0
-                ),
+            "covered_company_count": covered,
+            "total_company_count": count,
+            "coverage": covered / count if count else 0.0,
         }
 
     return coverage
@@ -440,18 +271,14 @@ def build_company_profile_batch(
 
     for symbol in targets:
         try:
-            profile = (
-                build_company_profile_v2(
-                    root,
-                    symbol=symbol,
-                )
+            profile = build_company_profile_v2(
+                root,
+                symbol=symbol,
             )
 
-            display = (
-                build_company_profile_display_zh_tw(
-                    root,
-                    profile=profile,
-                )
+            display = build_company_profile_display_zh_tw(
+                root,
+                profile=profile,
             )
 
             display = enrich_company_profile_display(
@@ -462,21 +289,16 @@ def build_company_profile_batch(
         except Exception as exc:
             failures.append(
                 {
-                    "symbol":
-                        symbol,
-                    "error_type":
-                        type(exc).__name__,
-                    "error":
-                        str(exc),
+                    "symbol": symbol,
+                    "error_type": type(exc).__name__,
+                    "error": str(exc),
                 }
             )
             continue
 
-        ready, reasons = (
-            _production_ready(
-                profile,
-                display,
-            )
+        ready, reasons = _production_ready(
+            profile,
+            display,
         )
 
         coverage = _profile_coverage(profile)
@@ -490,95 +312,49 @@ def build_company_profile_batch(
 
         records.append(
             {
-                "symbol":
-                    symbol,
-                "company_id":
-                    profile.get(
-                        "company_id"
-                    ),
-                "canonical_schema_version":
-                    profile.get(
-                        "schema_version"
-                    ),
-                "display_schema_version":
-                    display.get(
-                        "schema_version"
-                    ),
-                "production_ready":
-                    ready,
-                "readiness_reasons":
-                    reasons,
-                "coverage":
-                    coverage,
+                "symbol": symbol,
+                "company_id": profile.get("company_id"),
+                "canonical_schema_version": profile.get(
+                    "schema_version"
+                ),
+                "display_schema_version": display.get(
+                    "schema_version"
+                ),
+                "production_ready": ready,
+                "readiness_reasons": reasons,
+                "coverage": coverage,
             }
         )
 
-        canonical_profiles.append(
-            profile
-        )
-
-        display_profiles.append(
-            display
-        )
+        canonical_profiles.append(profile)
+        display_profiles.append(display)
 
     ready_count = sum(
-        bool(
-            row.get(
-                "production_ready"
-            )
-        )
+        bool(row.get("production_ready"))
         for row in records
     )
 
     return {
-        "schema_version":
-            "axiom-company-profile-batch.v2.5",
-
-        "generation_mode":
-            "generic_evidence_batch",
-
-        "scope":
-            scope,
-
-        "target_symbols":
-            targets,
-
+        "schema_version": "axiom-company-profile-batch.v2.5",
+        "generation_mode": "generic_evidence_batch",
+        "scope": scope,
+        "target_symbols": targets,
         "summary": {
-            "target_company_count":
-                len(targets),
-            "generated_company_count":
-                len(records),
-            "failed_company_count":
-                len(failures),
-            "production_ready_count":
-                ready_count,
-            "complete":
-                (
-                    len(records)
-                    == len(targets)
-                    and not failures
-                    and ready_count
-                    == len(targets)
-                ),
-        },
-
-        "coverage":
-            _coverage_summary(
-                records
+            "target_company_count": len(targets),
+            "generated_company_count": len(records),
+            "failed_company_count": len(failures),
+            "production_ready_count": ready_count,
+            "complete": (
+                len(records) == len(targets)
+                and not failures
+                and ready_count == len(targets)
             ),
-
-        "records":
-            records,
-
-        "failures":
-            failures,
-
-        # Internal write payloads. The CLI removes
-        # these from the printed report.
-        "_canonical_profiles":
-            canonical_profiles,
-        "_display_profiles":
-            display_profiles,
+        },
+        "coverage": _coverage_summary(records),
+        "records": records,
+        "failures": failures,
+        "_canonical_profiles": canonical_profiles,
+        "_display_profiles": display_profiles,
     }
 
 
@@ -591,54 +367,23 @@ def _index_for_profiles(
     company_id_to_file = {}
 
     for profile in profiles:
-        company_id = str(
-            profile["company_id"]
-        )
-
-        symbol = str(
-            profile["symbol"]
-        ).upper()
-
+        company_id = str(profile["company_id"])
+        symbol = str(profile["symbol"]).upper()
         relative = str(
-            Path(
-                "per-company"
-            )
-            / _filename(
-                company_id
-            )
+            Path("per-company") / _filename(company_id)
         )
 
-        symbol_to_file[
-            symbol
-        ] = relative
-
-        company_id_to_file[
-            company_id
-        ] = relative
+        symbol_to_file[symbol] = relative
+        company_id_to_file[company_id] = relative
 
     return {
-        "schema_version":
-            schema_version,
-        "symbol_to_file":
-            dict(
-                sorted(
-                    symbol_to_file.items()
-                )
-            ),
-        "company_id_to_file":
-            dict(
-                sorted(
-                    company_id_to_file.items()
-                )
-            ),
-        "symbols":
-            sorted(
-                symbol_to_file
-            ),
-        "company_count":
-            len(
-                company_id_to_file
-            ),
+        "schema_version": schema_version,
+        "symbol_to_file": dict(sorted(symbol_to_file.items())),
+        "company_id_to_file": dict(
+            sorted(company_id_to_file.items())
+        ),
+        "symbols": sorted(symbol_to_file),
+        "company_count": len(company_id_to_file),
     }
 
 
@@ -647,14 +392,9 @@ def _prune_per_company(
     *,
     expected: set[str],
 ) -> None:
-    root.mkdir(
-        parents=True,
-        exist_ok=True,
-    )
+    root.mkdir(parents=True, exist_ok=True)
 
-    for path in root.glob(
-        "*.json"
-    ):
+    for path in root.glob("*.json"):
         if path.name not in expected:
             path.unlink()
 
@@ -665,73 +405,38 @@ def write_company_profile_batch(
     *,
     allow_partial: bool = False,
 ) -> dict[str, Any]:
-    summary = (
-        report.get("summary")
-        or {}
-    )
+    summary = report.get("summary") or {}
 
-    if (
-        not allow_partial
-        and not summary.get(
-            "complete"
-        )
-    ):
+    if not allow_partial and not summary.get("complete"):
         raise CompanyProfileBatchError(
-            "batch is incomplete; production outputs "
-            "were not modified"
+            "batch is incomplete; production outputs were not modified"
         )
 
     canonical_profiles = list(
-        report.get(
-            "_canonical_profiles"
-        )
-        or []
+        report.get("_canonical_profiles") or []
     )
-
     display_profiles = list(
-        report.get(
-            "_display_profiles"
-        )
-        or []
+        report.get("_display_profiles") or []
     )
 
-    canonical_output = (
-        root
-        / CANONICAL_OUTPUT
-    )
-
-    display_output = (
-        root
-        / DISPLAY_OUTPUT
-    )
+    canonical_output = root / CANONICAL_OUTPUT
+    display_output = root / DISPLAY_OUTPUT
 
     expected_canonical = {
-        _filename(
-            str(
-                row["company_id"]
-            )
-        )
+        _filename(str(row["company_id"]))
         for row in canonical_profiles
     }
-
     expected_display = {
-        _filename(
-            str(
-                row["company_id"]
-            )
-        )
+        _filename(str(row["company_id"]))
         for row in display_profiles
     }
 
     _prune_per_company(
-        canonical_output
-        / "per-company",
+        canonical_output / "per-company",
         expected=expected_canonical,
     )
-
     _prune_per_company(
-        display_output
-        / "per-company",
+        display_output / "per-company",
         expected=expected_display,
     )
 
@@ -739,13 +444,7 @@ def write_company_profile_batch(
         _write_json(
             canonical_output
             / "per-company"
-            / _filename(
-                str(
-                    profile[
-                        "company_id"
-                    ]
-                )
-            ),
+            / _filename(str(profile["company_id"])),
             profile,
         )
 
@@ -753,130 +452,331 @@ def write_company_profile_batch(
         _write_json(
             display_output
             / "per-company"
-            / _filename(
-                str(
-                    display[
-                        "company_id"
-                    ]
-                )
-            ),
+            / _filename(str(display["company_id"])),
             display,
         )
 
-    canonical_index = (
-        _index_for_profiles(
-            canonical_profiles,
-            schema_version=(
-                "axiom-company-profile-index.v2.5"
-            ),
-        )
+    canonical_index = _index_for_profiles(
+        canonical_profiles,
+        schema_version="axiom-company-profile-index.v2.5",
     )
-
-    display_index = (
-        _index_for_profiles(
-            display_profiles,
-            schema_version=(
-                "axiom-company-profile-display-index."
-                "zh-tw.v2.5"
-            ),
-        )
+    display_index = _index_for_profiles(
+        display_profiles,
+        schema_version=(
+            "axiom-company-profile-display-index.zh-tw.v2.5"
+        ),
     )
 
     _write_json(
-        canonical_output
-        / "index.json",
+        canonical_output / "index.json",
         canonical_index,
     )
-
     _write_json(
-        display_output
-        / "index.json",
+        display_output / "index.json",
         display_index,
     )
 
     public_report = {
         key: value
-        for key, value
-        in report.items()
-        if not str(key).startswith(
-            "_"
-        )
+        for key, value in report.items()
+        if not str(key).startswith("_")
     }
 
     _write_json(
-        canonical_output
-        / "production_readiness.json",
+        canonical_output / "production_readiness.json",
         public_report,
     )
 
     migration = {
-        "schema_version":
-            "axiom-company-profile-migration.v2.5",
-
-        "source":
-            str(
-                LEGACY_PUBLISHED_INDEX
-            ),
-
-        "target_canonical_index":
-            str(
-                CANONICAL_OUTPUT
-                / "index.json"
-            ),
-
-        "target_zh_tw_index":
-            str(
-                DISPLAY_OUTPUT
-                / "index.json"
-            ),
-
-        "symbols":
-            canonical_index[
-                "symbols"
-            ],
-
-        "company_count":
-            canonical_index[
-                "company_count"
-            ],
-
-        "complete":
-            bool(
-                summary.get(
-                    "complete"
-                )
-            ),
+        "schema_version": "axiom-company-profile-migration.v2.5",
+        "source": str(LEGACY_PUBLISHED_INDEX),
+        "target_canonical_index": str(
+            CANONICAL_OUTPUT / "index.json"
+        ),
+        "target_zh_tw_index": str(
+            DISPLAY_OUTPUT / "index.json"
+        ),
+        "symbols": canonical_index["symbols"],
+        "company_count": canonical_index["company_count"],
+        "complete": bool(summary.get("complete")),
     }
 
     _write_json(
-        canonical_output
-        / "migration_manifest.json",
+        canonical_output / "migration_manifest.json",
         migration,
     )
 
     return {
-        "canonical_index":
-            str(
-                CANONICAL_OUTPUT
-                / "index.json"
-            ),
-        "display_index":
-            str(
-                DISPLAY_OUTPUT
-                / "index.json"
-            ),
-        "readiness_report":
-            str(
-                CANONICAL_OUTPUT
-                / "production_readiness.json"
-            ),
-        "migration_manifest":
-            str(
-                CANONICAL_OUTPUT
-                / "migration_manifest.json"
-            ),
-        "company_count":
-            canonical_index[
-                "company_count"
-            ],
+        "canonical_index": str(
+            CANONICAL_OUTPUT / "index.json"
+        ),
+        "display_index": str(
+            DISPLAY_OUTPUT / "index.json"
+        ),
+        "readiness_report": str(
+            CANONICAL_OUTPUT / "production_readiness.json"
+        ),
+        "migration_manifest": str(
+            CANONICAL_OUTPUT / "migration_manifest.json"
+        ),
+        "company_count": canonical_index["company_count"],
     }
+
+
+# === V2.6 FULL MARKET COMPANY PROFILE CENSUS ===
+
+def evidence_scope_inventory(
+    root: Path,
+) -> dict[str, Any]:
+    company_ids = _evidence_company_ids(root)
+    primary = _primary_symbol_by_company(root)
+
+    mapped = {
+        company_id: primary[company_id]
+        for company_id in company_ids
+        if company_id in primary
+    }
+
+    unresolved = [
+        company_id
+        for company_id in company_ids
+        if company_id not in primary
+    ]
+
+    symbol_to_company_ids: dict[str, list[str]] = {}
+
+    for company_id, symbol in mapped.items():
+        symbol_to_company_ids.setdefault(
+            symbol,
+            [],
+        ).append(company_id)
+
+    duplicate_symbols = {
+        symbol: ids
+        for symbol, ids in symbol_to_company_ids.items()
+        if len(ids) > 1
+    }
+
+    return {
+        "evidence_company_count": len(company_ids),
+        "mapped_company_count": len(mapped),
+        "resolved_unique_symbol_count": len(
+            symbol_to_company_ids
+        ),
+        "unresolved_company_count": len(unresolved),
+        "duplicate_symbol_count": len(duplicate_symbols),
+        "unresolved_company_ids": unresolved,
+        "duplicate_symbols": dict(
+            sorted(duplicate_symbols.items())
+        ),
+    }
+
+
+def _count_values(
+    values: Iterable[str],
+) -> dict[str, int]:
+    counts: dict[str, int] = {}
+
+    for value in values:
+        key = str(value).strip() or "unknown"
+        counts[key] = counts.get(key, 0) + 1
+
+    return dict(
+        sorted(
+            counts.items(),
+            key=lambda row: (-row[1], row[0]),
+        )
+    )
+
+
+def _build_census_report(
+    *,
+    inventory: Mapping[str, Any],
+    targets: list[str],
+    records: list[Mapping[str, Any]],
+    failures: list[Mapping[str, Any]],
+    complete: bool,
+) -> dict[str, Any]:
+    production_ready = [
+        row
+        for row in records
+        if row.get("production_ready")
+    ]
+
+    not_production_ready = [
+        row
+        for row in records
+        if not row.get("production_ready")
+    ]
+
+    readiness_reasons = _count_values(
+        reason
+        for row in not_production_ready
+        for reason in (
+            row.get("readiness_reasons")
+            or []
+        )
+    )
+
+    failure_types = _count_values(
+        str(row.get("error_type") or "unknown")
+        for row in failures
+    )
+
+    failure_messages = _count_values(
+        str(row.get("error") or "unknown")
+        for row in failures
+    )
+
+    return {
+        "schema_version": "axiom-company-profile-census.v2.6",
+        "generation_mode": "full_market_evidence_census",
+        "scope": "evidence",
+        "inventory": dict(inventory),
+        "summary": {
+            "evidence_company_count": inventory.get(
+                "evidence_company_count",
+                0,
+            ),
+            "resolved_unique_symbol_count": inventory.get(
+                "resolved_unique_symbol_count",
+                0,
+            ),
+            "attempted_company_count": len(targets),
+            "generated_company_count": len(records),
+            "build_failed_company_count": len(failures),
+            "production_ready_count": len(production_ready),
+            "not_production_ready_count": len(
+                not_production_ready
+            ),
+            "complete": bool(complete),
+        },
+        "failure_reasons": failure_types,
+        "failure_messages": failure_messages,
+        "readiness_reasons": readiness_reasons,
+        "coverage": _coverage_summary(records),
+        "publishable_symbols": sorted(
+            str(row.get("symbol"))
+            for row in production_ready
+            if row.get("symbol")
+        ),
+        "not_production_ready": [
+            {
+                "symbol": row.get("symbol"),
+                "company_id": row.get("company_id"),
+                "readiness_reasons": (
+                    row.get("readiness_reasons")
+                    or []
+                ),
+                "coverage": row.get("coverage") or {},
+            }
+            for row in not_production_ready
+        ],
+        "failures": list(failures),
+        "records": list(records),
+    }
+
+
+def build_company_profile_census(
+    root: Path,
+    *,
+    symbols: Iterable[str] | None = None,
+    checkpoint_every: int = 100,
+    checkpoint_path: Path | None = None,
+    progress_callback: Any = None,
+) -> dict[str, Any]:
+    inventory = evidence_scope_inventory(root)
+
+    if symbols:
+        targets = sorted(
+            {
+                str(symbol).strip().upper()
+                for symbol in symbols
+                if str(symbol).strip()
+            }
+        )
+    else:
+        targets = resolve_batch_symbols(
+            root,
+            scope="evidence",
+        )
+
+    records: list[Mapping[str, Any]] = []
+    failures: list[Mapping[str, Any]] = []
+    total = len(targets)
+
+    for position, symbol in enumerate(
+        targets,
+        start=1,
+    ):
+        one = build_company_profile_batch(
+            root,
+            symbols=[symbol],
+        )
+
+        records.extend(one.get("records") or [])
+        failures.extend(one.get("failures") or [])
+
+        if progress_callback is not None:
+            progress_callback(
+                position,
+                total,
+                symbol,
+                len(records),
+                len(failures),
+            )
+
+        should_checkpoint = (
+            checkpoint_path is not None
+            and checkpoint_every > 0
+            and (
+                position % checkpoint_every == 0
+                or position == total
+            )
+        )
+
+        if should_checkpoint:
+            partial = _build_census_report(
+                inventory=inventory,
+                targets=targets,
+                records=records,
+                failures=failures,
+                complete=(position == total),
+            )
+            partial["progress"] = {
+                "processed_company_count": position,
+                "target_company_count": total,
+                "last_symbol": symbol,
+            }
+            _write_json(
+                checkpoint_path,
+                partial,
+            )
+
+    return _build_census_report(
+        inventory=inventory,
+        targets=targets,
+        records=records,
+        failures=failures,
+        complete=True,
+    )
+
+
+def write_company_profile_census(
+    root: Path,
+    report: Mapping[str, Any],
+    *,
+    output_path: Path | None = None,
+) -> Path:
+    target = (
+        output_path
+        if output_path is not None
+        else root / CENSUS_OUTPUT
+    )
+
+    _write_json(
+        target,
+        dict(report),
+    )
+
+    return target
