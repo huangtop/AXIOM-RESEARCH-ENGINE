@@ -346,17 +346,1196 @@ def _extract_markets(
     return _dedupe(markets), evidence
 
 
-def _extract_product_stack(
+def _clean_offering_phrase(
+    value: str,
+) -> str:
+    value = re.sub(
+        r"\s+",
+        " ",
+        value,
+    ).strip(
+        " ,.;:-"
+    )
+
+    value = re.sub(
+        r"^(?:"
+        r"a |an |the |our |"
+        r"a range of |"
+        r"a broad range of |"
+        r"a broad portfolio of |"
+        r"a portfolio of |"
+        r"a variety of |"
+        r"various |"
+        r"multiple "
+        r")",
+        "",
+        value,
+        flags=re.IGNORECASE,
+    )
+
+    value = re.sub(
+        r"^(?:products?|services?|solutions?|offerings?)\s+"
+        r"(?:including|include|consisting of|consist of)\s+",
+        "",
+        value,
+        flags=re.IGNORECASE,
+    )
+
+    return value.strip(
+        " ,.;:-"
+    )
+
+
+def _valid_offering(
+    value: str,
+) -> bool:
+    value = _clean_offering_phrase(
+        value
+    )
+
+    if not value:
+        return False
+
+    words = value.split()
+
+    if (
+        len(words) < 1
+        or len(words) > 10
+    ):
+        return False
+
+    lower = value.lower()
+
+    blocked_exact = {
+        "products",
+        "product",
+        "services",
+        "service",
+        "solutions",
+        "solution",
+        "offerings",
+        "offering",
+        "platform",
+        "platforms",
+        "technology",
+        "technologies",
+        "customers",
+        "markets",
+        "businesses",
+        "business",
+        "operations",
+        "capabilities",
+    }
+
+    if lower in blocked_exact:
+        return False
+
+    blocked_phrases = (
+        "our customers",
+        "our business",
+        "our market",
+        "our markets",
+        "our operations",
+        "our strategy",
+        "our employees",
+        "our facilities",
+        "our intellectual property",
+        "research and development",
+        "sales and marketing",
+        "general and administrative",
+        "manufacturing costs",
+        "operating expenses",
+        "competitive advantage",
+        "customer demand",
+        "market demand",
+        "supply chain",
+        "raw materials",
+        "working capital",
+        "cash flows",
+        "capital expenditures",
+    )
+
+    if any(
+        phrase in lower
+        for phrase in blocked_phrases
+    ):
+        return False
+
+    # Avoid collecting complete prose clauses
+    # as product names.
+    clause_tokens = (
+        " we ",
+        " our ",
+        " which ",
+        " that ",
+        " because ",
+        " while ",
+        " where ",
+        " when ",
+    )
+
+    padded = (
+        " "
+        + lower
+        + " "
+    )
+
+    if any(
+        token in padded
+        for token in clause_tokens
+    ):
+        return False
+
+    return True
+
+def _offering_context_allowed(
     text: str,
-) -> tuple[list[str], list[str]]:
+) -> bool:
+    """
+    V2.6.2.1 context gate.
+
+    Accept only sentences/clauses that are
+    plausibly describing products, services,
+    platforms, systems, solutions, or what the
+    company commercially provides.
+
+    Reject HR, investor relations, distribution,
+    warranty, ESG and other non-offering prose.
+    """
+
+    lower = re.sub(
+        r"\s+",
+        " ",
+        text,
+    ).strip().lower()
+
+    if not lower:
+        return False
+
+    blocked_context = (
+        # Employees / HR / benefits
+        "employee assistance",
+        "employees with",
+        "employee benefits",
+        "team members",
+        "mental health",
+        "counseling",
+        "fitness center",
+        "wellness",
+        "healthy habits",
+        "financial education",
+        "career development",
+        "advance their careers",
+        "competitive salaries",
+        "equity ownership",
+
+        # Investor relations / SEC
+        "sec filing",
+        "sec filings",
+        "investor event",
+        "investor events",
+        "press release",
+        "press releases",
+        "earnings release",
+        "earnings releases",
+        "notifications of news",
+
+        # ESG / volunteering
+        "company-matched donations",
+        "matched donations",
+        "volunteering",
+        "volunteer their time",
+        "community engagement",
+
+        # Distribution / channel
+        "direct sales force",
+        "independent distributors",
+        "through distributors",
+        "distribution partners",
+        "sales representatives",
+        "manufacturers' representatives",
+        "manufacturer representatives",
+        "channel partners",
+        "direct marketing",
+        "co-marketing",
+        "electronic commerce",
+        "web-based customer-direct sales channel",
+
+        # Warranty / support terms
+        "limited warranties",
+        "warranty",
+        "three-year",
+        "support program",
+
+        # Corporate boilerplate
+        "our employees",
+        "our people",
+        "human capital",
+        "compensation",
+        "benefits program",
+        "corporate governance",
+        "risk factors",
+        "intellectual property protection",
+
+        "major end markets",
+        "end markets:",
+        "markets we serve",
+        "geographic markets",
+    )
+
+    if any(
+        phrase in lower
+        for phrase in blocked_context
+    ):
+        return False
+
+    # Strong positive commercial context.
+    positive_context = (
+        "our products",
+        "our services",
+        "our solutions",
+        "our offerings",
+        "our portfolio",
+        "our platform",
+        "our platforms",
+        "our systems",
+        "we offer",
+        "we provide",
+        "we sell",
+        "we manufacture",
+        "we develop",
+        "we design",
+        "we market",
+        "products include",
+        "services include",
+        "solutions include",
+        "offerings include",
+        "portfolio includes",
+        "platform consists of",
+        "platform includes",
+        "systems include",
+        "principal products",
+        "product lines",
+        "product families",
+    )
+
+    return any(
+        phrase in lower
+        for phrase in positive_context
+    )
+
+_SINGLE_TOKEN_OFFERING_NOUNS = {
+    "software",
+    "hardware",
+    "instruments",
+    "consumables",
+    "reagents",
+    "kits",
+    "filters",
+    "components",
+    "modules",
+    "wafers",
+    "processors",
+    "controllers",
+    "sensors",
+    "transceivers",
+    "amplifiers",
+    "switches",
+    "routers",
+    "servers",
+    "storage",
+    "ssds",
+
+    # V2.6.2.2 common compute/network
+    # product nouns.
+    "accelerator",
+    "accelerators",
+    "adapter",
+    "adapters",
+    "cpu",
+    "cpus",
+    "gpu",
+    "gpus",
+    "dpu",
+    "dpus",
+    "nic",
+    "nics",
+    "fpga",
+    "fpgas",
+    "chip",
+    "chips",
+    "chipset",
+    "chipsets",
+    "semiconductor",
+    "semiconductors",
+    "memory",
+    "dram",
+    "nand",
+    "hbm",
+}
+
+_FRAGMENT_STARTS = (
+    "for ",
+    "to ",
+    "with ",
+    "through ",
+    "via ",
+    "under ",
+    "from ",
+    "by ",
+    "in ",
+    "on ",
+    "at ",
+    "following ",
+    "including ",
+    "which ",
+    "that ",
+    "who ",
+)
+
+_FRAGMENT_EXACT = {
+    "fast",
+    "complete",
+    "designed",
+    "implemented",
+    "simulate",
+    "inferencing",
+    "write",
+    "protect data",
+    "mostly",
+    "operational",
+    "educational",
+    "priorities",
+    "in 2025",
+    "inc",
+}
+
+_FRAGMENT_ENDINGS = (
+    " end market",
+    " end markets",
+    " customers",
+    " manufacturers",
+    " distributors",
+    " suppliers",
+    " deployments",
+    " applications",
+    " capabilities",
+)
+
+_PRODUCT_HEAD_WORDS = (
+    " product",
+    " products",
+    " service",
+    " services",
+    " software",
+    " hardware",
+    " solution",
+    " solutions",
+    " system",
+    " systems",
+    " platform",
+    " platforms",
+    " module",
+    " modules",
+    " device",
+    " devices",
+    " processor",
+    " processors",
+    " accelerator",
+    " accelerators",
+    " controller",
+    " controllers",
+    " sensor",
+    " sensors",
+    " chip",
+    " chips",
+    " chipset",
+    " chipsets",
+    " semiconductor",
+    " semiconductors",
+    " fpga",
+    " fpgas",
+    " cpu",
+    " cpus",
+    " gpu",
+    " gpus",
+    " dpu",
+    " dpus",
+    " nic",
+    " nics",
+    " ssd",
+    " ssds",
+    " memory",
+    " nand",
+    " dram",
+    " hbm",
+    " wafer",
+    " wafers",
+    " filter",
+    " filters",
+    " transceiver",
+    " transceivers",
+    " instrument",
+    " instruments",
+    " consumable",
+    " consumables",
+    " reagent",
+    " reagents",
+    " kit",
+    " kits",
+    " coil",
+    " coils",
+    " heat pump",
+    " heat pumps",
+    " unit",
+    " units",
+)
+
+
+def _strip_offering_tail(
+    value: str,
+) -> str:
+    value = re.sub(
+        r"\s+",
+        " ",
+        value,
+    ).strip(" ,.;:-")
+
+    # Cut obvious use/customer/acquisition tails.
+    tail_patterns = [
+        r"\s+to\s+(?:customers?|aib manufacturers|oems|odms)\b.*$",
+        r"\s+for\s+(?:entry level|customers?|use in|use by)\b.*$",
+        r"\s+with\s+the acquisition\b.*$",
+        r"\s+through\s+(?:distributors|channel partners)\b.*$",
+        r"\s+who\s+in turn\b.*$",
+        r"\s+which\s+(?:enable|provide|support)\b.*$",
+        r"\s+that\s+(?:enable|provide|support)\b.*$",
+    ]
+
+    for pattern in tail_patterns:
+        value = re.sub(
+            pattern,
+            "",
+            value,
+            flags=re.IGNORECASE,
+        ).strip(" ,.;:-")
+
+    return value
+
+
+def _looks_like_descriptor_chain(
+    parts: list[str],
+) -> bool:
+    """
+    Preserve:
+        high-speed,
+        high-bandwidth,
+        low-latency networking solutions
+
+    as one offering phrase instead of three
+    broken candidates.
+    """
+
+    if len(parts) < 2:
+        return False
+
+    descriptors = parts[:-1]
+    final = parts[-1].lower()
+
+    if not any(
+        token in f" {final}"
+        for token in _PRODUCT_HEAD_WORDS
+    ):
+        return False
+
+    for raw in descriptors:
+        value = raw.strip().lower()
+
+        if not value:
+            return False
+
+        words = value.split()
+
+        if len(words) > 3:
+            return False
+
+        if not (
+            "-" in value
+            or value.startswith(
+                (
+                    "high ",
+                    "low ",
+                    "ultra ",
+                    "advanced ",
+                    "secure ",
+                    "integrated ",
+                )
+            )
+        ):
+            return False
+
+    return True
+
+# === V2.6.2.3 OFFERING SEMANTIC GUARD ===
+
+_NON_OFFERING_EXACT = {
+    # Generic / incomplete fragments
+    "is action-oriented",
+    "two types of platforms",
+    "family of high performance",
+    "product families with secure",
+    "open models",
+    "customer experience",
+
+    # Markets / customer groups
+    "service provider",
+    "service providers",
+    "mobility service providers",
+    "enterprise networks",
+    "storage markets",
+
+    # Geography fragments
+    "south america",
+    "south korea",
+    "new zealand",
+    "north america",
+    "central america",
+    "latin america",
+    "europe",
+    "asia",
+    "china",
+    "japan",
+    "india",
+    "australia",
+    "mexico",
+    "canada",
+    "qatar",
+    "caribbean",
+}
+
+_NON_OFFERING_PREFIXES = (
+    # Action / sentence fragments
+    "addressing ",
+    "designed ",
+    "implemented ",
+    "execute ",
+    "enabling ",
+    "mostly ",
+    "directly to ",
+    "sold to ",
+    "provided to ",
+    "used by ",
+    "used in ",
+
+    # Customer / market framing
+    "customers ",
+    "customer ",
+    "pharmaceutical customers ",
+    "for customers ",
+    "for the ",
+    "in the ",
+    "into the ",
+)
+
+_NON_OFFERING_CONTAINS = (
+    # Customer groups / channels
+    " customers ",
+    " customer base",
+    " service providers",
+    " telcos",
+    " distributors",
+    " channel partners",
+    " manufacturers who",
+    " suppliers",
+
+    # Capability rather than offering
+    " manufacturing capabilities",
+    " technical capabilities",
+    " engineering capabilities",
+    " expertise",
+
+    # Market / geographic framing
+    " end markets",
+    " geographic markets",
+    " storage markets",
+    " market segments",
+
+    # Employment / corporate
+    " employees ",
+    " team members ",
+)
+
+_NON_OFFERING_SUFFIXES = (
+    # Clearly incomplete fragments
+    " with",
+    " with secure",
+    " of high performance",
+    " to train",
+    " to load",
+
+    # Market / customer classes
+    " markets",
+    " market",
+    " customers",
+    " providers",
+    " suppliers",
+    " manufacturers",
+
+    # Capability labels
+    " expertise",
+    " capabilities",
+)
+
+_ACTION_FRAGMENT_RE = re.compile(
+    r"^(?:"
+    r"is|are|was|were|"
+    r"addressing|enabling|executing|"
+    r"designed|implemented|providing|"
+    r"supporting|helping|allowing|"
+    r"used|using"
+    r")\b",
+    flags=re.IGNORECASE,
+)
+
+_GENERIC_QUANTITY_FRAGMENT_RE = re.compile(
+    r"^(?:"
+    r"(?:one|two|three|four|five|six|seven|eight|nine|ten)"
+    r"|several|multiple|various"
+    r")\s+"
+    r"(?:types?|kinds?|families?|categories?)\s+of\b",
+    flags=re.IGNORECASE,
+)
+
+
+def _semantic_offering_guard(
+    value: str,
+) -> bool:
+    """
+    Final V2.6.2.3 semantic hygiene gate.
+
+    This does not discover new offerings.
+    It only rejects candidates that are
+    structurally much more likely to be:
+
+    - customers
+    - markets
+    - geographies
+    - capabilities
+    - actions
+    - incomplete prose fragments
+    """
+
+    candidate = re.sub(
+        r"\s+",
+        " ",
+        str(value or ""),
+    ).strip(" ,.;:-")
+
+    if not candidate:
+        return False
+
+    lower = candidate.casefold()
+
+    if lower in _NON_OFFERING_EXACT:
+        return False
+
+    if lower.startswith(
+        _NON_OFFERING_PREFIXES
+    ):
+        return False
+
+    if lower.endswith(
+        _NON_OFFERING_SUFFIXES
+    ):
+        return False
+
+    padded = (
+        " "
+        + lower
+        + " "
+    )
+
+    if any(
+        phrase in padded
+        for phrase in _NON_OFFERING_CONTAINS
+    ):
+        return False
+
+    if _ACTION_FRAGMENT_RE.search(
+        candidate
+    ):
+        return False
+
+    if _GENERIC_QUANTITY_FRAGMENT_RE.search(
+        candidate
+    ):
+        return False
+
+    # Reject sentence fragments ending in
+    # weak connective/prepositional words.
+    if re.search(
+        r"\b(?:"
+        r"for|to|with|by|from|via|"
+        r"including|such as|"
+        r"both|their|our"
+        r")$",
+        lower,
+    ):
+        return False
+
+    return True
+
+def _offering_candidate_allowed(
+    value: str,
+) -> bool:
+    candidate = _strip_offering_tail(
+        _clean_offering_phrase(
+            value
+        )
+    )
+    candidate = re.sub(
+        r"^(?:and|or)\s+",
+        "",
+        candidate,
+        flags=re.IGNORECASE,
+    ).strip()
+
+    if not _valid_offering(
+        candidate
+    ):
+        return False
+
+    lower = candidate.lower()
+
+    if lower in _FRAGMENT_EXACT:
+        return False
+
+    if lower.startswith(
+        _FRAGMENT_STARTS
+    ):
+        return False
+
+    if lower.endswith(
+        _FRAGMENT_ENDINGS
+    ):
+        return False
+
+    blocked_candidate_phrases = (
+        # Sales / distribution
+        "distributor",
+        "distributors",
+        "sales representative",
+        "sales representatives",
+        "direct sales",
+        "sales force",
+        "channel partner",
+        "channel partners",
+        "retailers",
+        "resellers",
+        "sub distributors",
+        "marketing programs",
+
+        # Employees / HR
+        "employees",
+        "team members",
+        "mental health",
+        "fitness centers",
+        "wellness spaces",
+        "health clinics",
+        "financial education",
+        "career",
+        "salaries",
+        "bonuses",
+
+        # Investor / SEC
+        "sec filings",
+        "investor events",
+        "press releases",
+        "earnings releases",
+        "notifications of news",
+
+        # ESG
+        "donations",
+        "volunteering",
+
+        # Warranty
+        "warranties",
+        "warranty",
+
+        # Customer populations
+        "system integrators",
+        "cloud providers",
+        "tier-1 suppliers",
+
+        # Corporate-event fragments
+        "acquisition of",
+        "merger with",
+
+        # Market framing
+        "end markets:",
+        "major end markets",
+    )
+
+    if any(
+        phrase in lower
+        for phrase in blocked_candidate_phrases
+    ):
+        return False
+
+    words = candidate.split()
+
+    # A single bare token is dangerous unless
+    # it is clearly a product noun.
+    if len(words) == 1:
+        normalized = lower.strip("()[]{}.,;:")
+
+        if normalized not in _SINGLE_TOKEN_OFFERING_NOUNS:
+            # Keep recognizable acronyms/product forms.
+            if not (
+                re.fullmatch(
+                    r"[A-Z0-9-]{2,12}",
+                    candidate,
+                )
+                or normalized.endswith(
+                    (
+                        "ware",
+                        "chip",
+                        "chips",
+                        "sensor",
+                        "sensors",
+                        "module",
+                        "modules",
+                    )
+                )
+            ):
+                return False
+    if not _semantic_offering_guard(
+        candidate
+    ):
+        return False
+    return True
+
+def _split_offering_phrase(
+    value: str,
+) -> list[str]:
+    value = _strip_offering_tail(
+        _clean_offering_phrase(
+            value
+        )
+    )
+
+    value = value.replace(
+        ";",
+        ",",
+    )
+
+    value = re.sub(
+        r"\s+as well as\s+",
+        ", ",
+        value,
+        flags=re.IGNORECASE,
+    )
+
+    raw_parts = [
+        part.strip()
+        for part in value.split(",")
+        if part.strip()
+    ]
+
+    # Preserve adjective chains:
+    #
+    # high-speed,
+    # high-bandwidth,
+    # low-latency networking solutions
+    #
+    if _looks_like_descriptor_chain(
+        raw_parts
+    ):
+        combined = re.sub(
+            r"\s+",
+            " ",
+            ", ".join(raw_parts),
+        ).strip()
+
+        return (
+            [combined]
+            if _offering_candidate_allowed(
+                combined
+            )
+            else []
+        )
+
+    # Only normalize the final conjunction when
+    # this is already clearly a comma-separated list.
+    normalized_parts = []
+
+    for raw in raw_parts:
+        subparts = re.split(
+            r"\s+(?:and|or)\s+",
+            raw,
+            maxsplit=1,
+            flags=re.IGNORECASE,
+        )
+
+        if (
+            len(raw_parts) > 1
+            and len(subparts) == 2
+            and all(
+                len(part.split()) <= 8
+                for part in subparts
+            )
+        ):
+            normalized_parts.extend(
+                subparts
+            )
+        else:
+            normalized_parts.append(
+                raw
+            )
+
+    output = []
+
+    for raw in normalized_parts:
+        candidate = re.sub(
+            r"^(?:"
+            r"including|"
+            r"such as|"
+            r"and|"
+            r"or"
+            r")\s+",
+            "",
+            raw.strip(),
+            flags=re.IGNORECASE,
+        )
+
+        candidate = _strip_offering_tail(
+            candidate
+        )
+
+        if not _offering_candidate_allowed(
+            candidate
+        ):
+            continue
+
+        output.append(
+            candidate
+        )
+
+    return _dedupe(
+        output
+    )
+
+
+def _extract_generic_offerings(
+    text: str,
+) -> tuple[
+    list[str],
+    list[str],
+]:
+    """
+    V2.6.2.1 Generic Offering Extraction
+    with Offering Context Gate.
+
+    Precision-first:
+    - require commercial/product context
+    - reject HR / IR / distribution / warranty / ESG
+    - preserve filing-native wording
+    """
+
     values: list[str] = []
     evidence: list[str] = []
 
-    # Prefer explicit integration-level descriptions. Avoid generic "from X to Y"
-    # patterns because they pull unrelated prose into the product stack.
     patterns = [
-        r"levels? of integration,\s*from\s+(.+?)\.",
-        r"design and manufacture a range of [^.]+?from\s+(.+?)\.",
+        # Explicit product/service lists.
+        r"\bour products and services include\s+(.+?)(?:\.|;)",
+        r"\bour products include\s+(.+?)(?:\.|;)",
+        r"\bour services include\s+(.+?)(?:\.|;)",
+        r"\bour solutions include\s+(.+?)(?:\.|;)",
+        r"\bour offerings include\s+(.+?)(?:\.|;)",
+        r"\bour product offerings include\s+(.+?)(?:\.|;)",
+        r"\bour portfolio includes\s+(.+?)(?:\.|;)",
+        r"\bour product portfolio includes\s+(.+?)(?:\.|;)",
+        r"\bprincipal products include\s+(.+?)(?:\.|;)",
+        r"\bprincipal products are\s+(.+?)(?:\.|;)",
+
+        # Commercial verbs.
+        r"\bwe offer\s+(.+?)(?:\.|;)",
+        r"\bwe provide\s+(.+?)(?:\.|;)",
+        r"\bwe sell\s+(.+?)(?:\.|;)",
+        r"\bwe market\s+(.+?)(?:\.|;)",
+        r"\bwe manufacture and sell\s+(.+?)(?:\.|;)",
+        r"\bwe develop and sell\s+(.+?)(?:\.|;)",
+        r"\bwe design and sell\s+(.+?)(?:\.|;)",
+        r"\bwe design, develop and sell\s+(.+?)(?:\.|;)",
+        r"\bwe design, manufacture and sell\s+(.+?)(?:\.|;)",
+        r"\bwe design, develop, manufacture and sell\s+(.+?)(?:\.|;)",
+
+        # Platform/system structures.
+        r"\bour platform consists of\s+(.+?)(?:\.|;)",
+        r"\bour platform includes\s+(.+?)(?:\.|;)",
+        r"\bour platforms include\s+(.+?)(?:\.|;)",
+        r"\bour systems include\s+(.+?)(?:\.|;)",
+
+        # Generic product line wording.
+        r"\bour product lines include\s+(.+?)(?:\.|;)",
+        r"\bour product families include\s+(.+?)(?:\.|;)",
+        r"\bwe offer a range of\s+(.+?)(?:\.|;)",
+        r"\bwe provide a range of\s+(.+?)(?:\.|;)",
+    ]
+
+    # Sentence-level scan.
+    for sentence in _sentences(
+        text
+    ):
+        if not _offering_context_allowed(
+            sentence
+        ):
+            continue
+
+        for pattern in patterns:
+            for match in re.finditer(
+                pattern,
+                sentence,
+                flags=re.IGNORECASE,
+            ):
+                phrase = (
+                    match.group(1)
+                )
+
+                candidates = (
+                    _split_offering_phrase(
+                        phrase
+                    )
+                )
+
+                if not candidates:
+                    continue
+
+                values.extend(
+                    candidates
+                )
+
+                evidence.append(
+                    re.sub(
+                        r"\s+",
+                        " ",
+                        match.group(0),
+                    ).strip()
+                )
+
+    # Section-level scan, but still guarded.
+    heading_pattern = re.compile(
+        r"(?:^|\n)"
+        r"(?:Our )?"
+        r"(?:Products(?: and Services)?|"
+        r"Products & Services|"
+        r"Services|"
+        r"Solutions|"
+        r"Product Portfolio|"
+        r"Product Offerings)"
+        r"\s*\n"
+        r"(.{20,2200}?)"
+        r"(?=\n[A-Z][^\n]{0,80}\n|\Z)",
+        flags=(
+            re.IGNORECASE
+            | re.DOTALL
+        ),
+    )
+
+    for match in (
+        heading_pattern.finditer(
+            text
+        )
+    ):
+        section = (
+            match.group(1)
+        )
+
+        for sentence in (
+            _sentences(
+                section
+            )[:10]
+        ):
+            if not _offering_context_allowed(
+                sentence
+            ):
+                continue
+
+            for pattern in patterns:
+                sub_match = re.search(
+                    pattern,
+                    sentence,
+                    flags=re.IGNORECASE,
+                )
+
+                if not sub_match:
+                    continue
+
+                candidates = (
+                    _split_offering_phrase(
+                        sub_match.group(1)
+                    )
+                )
+
+                if candidates:
+                    values.extend(
+                        candidates
+                    )
+
+                    evidence.append(
+                        sentence
+                    )
+
+    return (
+        _dedupe(values),
+        _dedupe(evidence),
+    )
+
+def _extract_product_stack(
+    text: str,
+) -> tuple[
+    list[str],
+    list[str],
+]:
+    values: list[str] = []
+    evidence: list[str] = []
+
+    # ---------------------------------
+    # V2.6.2 generic filing-native
+    # offering extraction.
+    # ---------------------------------
+
+    (
+        generic_values,
+        generic_evidence,
+    ) = _extract_generic_offerings(
+        text
+    )
+
+    values.extend(
+        generic_values
+    )
+
+    evidence.extend(
+        generic_evidence
+    )
+
+    # ---------------------------------
+    # Preserve validated V2.3 special
+    # patterns used by AAOI/reference
+    # companies.
+    # ---------------------------------
+
+    patterns = [
+        (
+            r"levels? of integration,"
+            r"\s*from\s+(.+?)\."
+        ),
+        (
+            r"design and manufacture "
+            r"a range of [^.]+?"
+            r"from\s+(.+?)\."
+        ),
     ]
 
     for pattern in patterns:
@@ -365,48 +1544,98 @@ def _extract_product_stack(
             text,
             flags=re.IGNORECASE,
         ):
-            raw = match.group(1)
+            raw = (
+                match.group(1)
+            )
 
-            # Normalize "modules to complete turn-key equipment" into two levels.
             raw = re.sub(
-                r"\bmodules\s+to\s+complete\s+",
+                r"\bmodules\s+to\s+"
+                r"complete\s+",
                 "modules, complete ",
                 raw,
                 flags=re.IGNORECASE,
             )
 
-            values.extend(_split_list_phrase(raw))
-            evidence.append(match.group(0))
+            values.extend(
+                _split_list_phrase(
+                    raw
+                )
+            )
+
+            evidence.append(
+                match.group(0)
+            )
 
     building_blocks = re.search(
-        r"fundamental building blocks of\s+([^.]+)",
+        r"fundamental building "
+        r"blocks of\s+([^.]+)",
         text,
         flags=re.IGNORECASE,
     )
 
     if building_blocks:
         values = (
-            _split_list_phrase(building_blocks.group(1))
+            _split_list_phrase(
+                building_blocks.group(1)
+            )
             + values
         )
-        evidence.append(building_blocks.group(0))
+
+        evidence.append(
+            building_blocks.group(0)
+        )
 
     blocked_exact = {
         "we design",
         "assembly",
         "laser design",
-        "fabrication optical system design",
+        (
+            "fabrication optical "
+            "system design"
+        ),
+    }
+
+    replacements = {
+        (
+            "complete turn-key "
+            "equipment"
+        ):
+            "turn-key equipment",
+
+        (
+            "complete turnkey "
+            "equipment"
+        ):
+            "turn-key equipment",
     }
 
     cleaned = []
 
-    for value in _dedupe(values):
-        lower = value.lower()
+    for value in _dedupe(
+        values
+    ):
+        value = (
+            _clean_offering_phrase(
+                value
+            )
+        )
 
-        if lower in blocked_exact:
+        lower = (
+            value.lower()
+        )
+
+        if (
+            lower
+            in blocked_exact
+        ):
             continue
 
-        if len(value.split()) > 6:
+        if (
+            len(
+                value.split()
+            )
+            > 10
+        ):
             continue
 
         if any(
@@ -419,16 +1648,26 @@ def _extract_product_stack(
         ):
             continue
 
-        replacements = {
-            "complete turn-key equipment": "turn-key equipment",
-            "complete turnkey equipment": "turn-key equipment",
-        }
-
-        cleaned.append(
-            replacements.get(lower, value)
+        value = replacements.get(
+            lower,
+            value,
         )
 
-    return _dedupe(cleaned), evidence
+        if not _valid_offering(
+            value
+        ):
+            continue
+
+        cleaned.append(
+            value
+        )
+
+    return (
+        _dedupe(cleaned),
+        _dedupe(evidence),
+    )
+
+
 
 def _market_aliases(label: str) -> list[str]:
     aliases = [label.lower()]
