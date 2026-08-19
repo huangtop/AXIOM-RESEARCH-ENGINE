@@ -100,6 +100,31 @@
     "taxonomy_layer": "axiom_theme_sector",
     "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
   },
+  "routing": {
+    "status": "routed",
+    "source": "locked_primary_business",
+    "primary_business_category_id": "mining_and_metals",
+    "thematic": {
+      "status": "evidence_required",
+      "domain": "real_assets_and_infrastructure",
+      "requires_thematic_evidence": true,
+      "auto_publish_from_primary_business": false,
+      "reason_code": "PRIMARY_BUSINESS_IS_GATE_NOT_THEME_EVIDENCE"
+    },
+    "valuation": {
+      "status": "routed",
+      "archetype": "asset_heavy_operating_company",
+      "preferred_model_families": [
+        "enterprise_operations",
+        "forward_earnings",
+        "balance_sheet"
+      ],
+      "deprioritized_model_families": [
+        "event_probability"
+      ],
+      "reason_code": "LOCKED_PRIMARY_BUSINESS_ASSET_HEAVY"
+    }
+  },
   "path": {
     "theme": null,
     "sector": null,

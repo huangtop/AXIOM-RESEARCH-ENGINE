@@ -221,6 +221,31 @@
     "taxonomy_layer": "axiom_theme_sector",
     "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
   },
+  "routing": {
+    "status": "routed",
+    "source": "locked_primary_business",
+    "primary_business_category_id": "pharmaceuticals_and_biotechnology",
+    "thematic": {
+      "status": "evidence_required",
+      "domain": "healthcare",
+      "requires_thematic_evidence": true,
+      "auto_publish_from_primary_business": false,
+      "reason_code": "PRIMARY_BUSINESS_IS_GATE_NOT_THEME_EVIDENCE"
+    },
+    "valuation": {
+      "status": "routed",
+      "archetype": "biopharma",
+      "preferred_model_families": [
+        "event_probability",
+        "forward_revenue",
+        "forward_earnings"
+      ],
+      "deprioritized_model_families": [
+        "balance_sheet"
+      ],
+      "reason_code": "LOCKED_PRIMARY_BUSINESS_BIOPHARMA"
+    }
+  },
   "path": {
     "theme": {
       "id": "theme:artificial_intelligence",
