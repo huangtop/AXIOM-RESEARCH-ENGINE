@@ -1909,6 +1909,177 @@ def write_company_overviews(
         )
 
 
+
+FRONTEND_THEME_DISPLAY_NAMES_ZH_TW = {
+    "technology": "科技與核心技術",
+    "healthcare": "健康科技",
+    "financial_services": "金融服務",
+    "investment_vehicle": "投資與資產管理",
+    "real_assets_and_infrastructure": "實體資產與基礎設施",
+    "industrial": "先進製造與工業",
+    "consumer": "消費科技與服務",
+    "general_business": "企業與專業服務",
+}
+
+FRONTEND_PRIMARY_BUSINESS_CATEGORY_NAMES_ZH_TW = {
+    "pharmaceuticals_and_biotechnology": "製藥與生物科技",
+    "manufacturing_other": "製造業",
+    "software_and_data_services": "軟體與資料服務",
+    "investment_holding_and_vehicles": "投資控股與投資工具",
+    "commercial_banking": "商業銀行",
+    "investment_fund": "投資基金",
+    "retail": "零售",
+    "mining_and_metals": "礦業與金屬",
+    "business_services": "企業服務",
+    "medical_devices_and_diagnostics": "醫療器材與診斷",
+    "credit_and_lending": "信貸與放款",
+    "transportation": "運輸",
+    "utilities": "公用事業",
+    "semiconductors_and_electronic_components": "半導體與電子元件",
+    "oil_and_gas": "石油與天然氣",
+    "insurance": "保險",
+    "wholesale_distribution": "批發與通路",
+    "services_other": "服務業",
+    "consumer_staples": "民生消費",
+    "securities_and_investment_services": "證券與投資服務",
+    "electrical_and_electronic_equipment": "電機與電子設備",
+    "telecommunications": "電信",
+    "healthcare_services": "醫療服務",
+    "construction": "營建",
+    "professional_services": "專業服務",
+    "real_estate": "不動產",
+    "computing_hardware": "運算硬體",
+    "aerospace_and_defense": "航太與國防",
+    "investment_trust": "投資信託",
+    "other_or_unclassified": "其他產業",
+    "education_services": "教育服務",
+    "communications_equipment": "通訊設備",
+    "apparel_and_footwear": "服飾與鞋類",
+    "sensing_and_instrumentation": "感測與儀器",
+    "finance_insurance_real_estate_other": "金融保險與不動產",
+    "restaurants_and_hospitality": "餐飲與旅宿",
+    "automobile_manufacturing": "汽車製造",
+    "agriculture_forestry_fishing": "農林漁業",
+    "real_estate_investment_trust": "不動產投資信託",
+    "business_development_company": "企業發展公司",
+    "blank_check_company": "特殊目的收購公司",
+    "royalty_trust": "權利金信託",
+}
+
+
+def _frontend_locked_classification_projection(
+    row: Mapping[str, Any],
+) -> dict[str, Any]:
+    """
+    Preserve every evidence-backed thematic path exactly as published.
+
+    For a company whose Primary Business is already production-locked but
+    whose AXIOM theme/sector path is still absent, project a conservative
+    display-only Theme -> Sector path from the locked Primary Business
+    routing layer.  The canonical artifact remains unchanged on disk; this
+    projection exists only in CompanyOverviewService API responses so the
+    existing WordPress Theme -> Sector -> Ticker UI can consume the whole
+    locked population immediately.
+    """
+    output = dict(row)
+
+    path = row.get("path") or {}
+    theme = path.get("theme") if isinstance(path, Mapping) else None
+    sector = path.get("sector") if isinstance(path, Mapping) else None
+
+    # Existing published thematic classification always wins.  NVDA / MU /
+    # SNDK / AMD and all other currently published paths remain untouched.
+    if (
+        row.get("status") == "classified"
+        and isinstance(theme, Mapping)
+        and isinstance(sector, Mapping)
+    ):
+        return output
+
+    primary_lock = row.get("primary_business_lock") or {}
+    routing = row.get("routing") or {}
+
+    if (
+        primary_lock.get("status") != "locked"
+        or routing.get("status") != "routed"
+    ):
+        return output
+
+    thematic_routing = routing.get("thematic") or {}
+    valuation_routing = routing.get("valuation") or {}
+    primary_business = row.get("primary_business") or {}
+    category = primary_business.get("category") or {}
+
+    domain = str(thematic_routing.get("domain") or "general_business")
+    category_id = str(category.get("id") or "")
+    category_name = str(category.get("name") or "").strip()
+
+    theme_display = FRONTEND_THEME_DISPLAY_NAMES_ZH_TW.get(
+        domain,
+        "企業與專業服務",
+    )
+
+    sector_display = (
+        FRONTEND_PRIMARY_BUSINESS_CATEGORY_NAMES_ZH_TW.get(category_id)
+        or category_name
+        or {
+            "investment_vehicle": "投資與資產管理",
+            "financial_institution": "金融服務",
+            "biopharma": "製藥與生物科技",
+            "real_estate": "不動產",
+            "asset_heavy_operating_company": "實體資產與營運",
+            "technology_operating_company": "科技營運",
+            "general_operating_company": "一般營運公司",
+        }.get(
+            str(valuation_routing.get("archetype") or ""),
+            "一般營運公司",
+        )
+    )
+
+    output["status"] = "classified"
+
+    output["path"] = {
+        "theme": {
+            "id": f"frontend-domain:{domain}",
+            "name": domain,
+            "display_name_zh_tw": theme_display,
+            "confidence": None,
+        },
+        "sector": {
+            "id": (
+                f"primary-business:{category_id}"
+                if category_id
+                else "primary-business:general_operating_company"
+            ),
+            "name": category_name or sector_display,
+            "display_name_zh_tw": sector_display,
+            "confidence": None,
+        },
+        "company": dict(
+            path.get("company")
+            if isinstance(path, Mapping)
+            and isinstance(path.get("company"), Mapping)
+            else {
+                "company_id": row.get("company_id"),
+                "ticker": row.get("ticker"),
+                "display_name": row.get("display_name"),
+            }
+        ),
+    }
+
+    output["classification_source"] = (
+        row.get("classification_source")
+        or "locked_primary_business_frontend_projection"
+    )
+
+    output["frontend_projection"] = {
+        "status": "ready",
+        "source": "locked_primary_business",
+        "canonical_thematic_path_preserved": False,
+        "display_path_mode": "theme_sector_ticker",
+    }
+    return output
+
 class CompanyOverviewService:
     def __init__(
         self,
@@ -1943,8 +2114,12 @@ class CompanyOverviewService:
                 f"company overview not found: {symbol}"
             )
 
-        return _load(
+        row = _load(
             self.root
             / "data/generated/company_overview/per-company"
             / filename
+        )
+
+        return _frontend_locked_classification_projection(
+            row
         )
