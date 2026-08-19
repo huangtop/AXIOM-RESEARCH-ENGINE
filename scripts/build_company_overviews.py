@@ -335,7 +335,7 @@ def main() -> int:
 
     report = build_company_overviews(
         ROOT,
-        respect_existing_locks=False,
+        respect_existing_locks=True,
         reclassify_primary_business=False,
     )
 
