@@ -632,6 +632,12 @@ def build_knowledge_inference(
                         "status"
                     ]
                 ),
+                "primary_business_evidence": list(
+                    company.get(
+                        "primary_offering_evidence"
+                    )
+                    or []
+                ),
                 "relevance_gate_status": (
                     (
                         gate
@@ -676,6 +682,15 @@ def build_knowledge_inference(
             "signals_only_company_count": sum(
                 row["status"]
                 == "signals_only"
+                for row
+                in output_records
+            ),
+            "primary_business_evidence_company_count": sum(
+                bool(
+                    row.get(
+                        "primary_business_evidence"
+                    )
+                )
                 for row
                 in output_records
             ),
