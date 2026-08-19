@@ -331,11 +331,12 @@ def _print_publication_diagnostics(
 
 
 def main() -> int:
-    print("PATCH: overview-publication-diagnostics-v1")
+    print("PATCH: primary-business-production-lock")
 
     report = build_company_overviews(
         ROOT,
         respect_existing_locks=False,
+        reclassify_primary_business=False,
     )
 
     write_company_overviews(
@@ -364,6 +365,41 @@ def main() -> int:
     )
 
     print(
+        "Primary business available:      "
+        f"{summary.get('primary_business_available_count', 0)}"
+    )
+
+    print(
+        "Primary business verified:       "
+        f"{summary.get('primary_business_verified_count', 0)}"
+    )
+
+    print(
+        "Primary business official only:  "
+        f"{summary.get('primary_business_official_only_count', 0)}"
+    )
+
+    print(
+        "Primary business offering only:  "
+        f"{summary.get('primary_business_offering_only_count', 0)}"
+    )
+
+    print(
+        "Primary business unavailable:    "
+        f"{summary.get('primary_business_unavailable_count', 0)}"
+    )
+
+    print(
+        "Primary business locked:         "
+        f"{summary.get('primary_business_locked_count', 0)}"
+    )
+
+    print(
+        "Primary business unlocked:       "
+        f"{summary.get('primary_business_unlocked_count', 0)}"
+    )
+
+    print(
         "Evidence available, unclassified:"
         f" {summary['evidence_available_unclassified_count']}"
     )
@@ -376,6 +412,37 @@ def main() -> int:
     print(
         "Output: data/generated/company_overview"
     )
+
+    print()
+    print("Primary business divisions:")
+    for division, count in (
+        summary.get(
+            "primary_business_division_counts",
+            {},
+        )
+    ).items():
+        print(
+            f"  {division:<40}"
+            f"{int(count):>6}"
+        )
+
+    print()
+    print("Primary business categories:")
+    category_counts = summary.get(
+        "primary_business_category_counts",
+        {},
+    )
+    for category, count in sorted(
+        category_counts.items(),
+        key=lambda item: (
+            -int(item[1]),
+            item[0],
+        ),
+    ):
+        print(
+            f"  {category:<48}"
+            f"{int(count):>6}"
+        )
 
     _print_publication_diagnostics(
         report

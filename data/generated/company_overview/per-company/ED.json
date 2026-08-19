@@ -7,6 +7,79 @@
   ],
   "display_name": "Consolidated Edison, Inc. Common Stock",
   "status": "evidence_available_unclassified",
+  "official_industry": {
+    "classification_id": "classification:SEC-SIC-0001047862-4931",
+    "scheme": "SEC_SIC",
+    "code": "4931",
+    "label": "Electric & Other Services Combined",
+    "authority": "U.S. Securities and Exchange Commission",
+    "observed_at": "2026-08-19T10:24:45.834543+00:00",
+    "provenance_ids": [
+      "provenance:SEC-SUBMISSIONS-0001047862-32fbe9bfde7c12c4"
+    ]
+  },
+  "primary_business": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "transport_communications_utilities",
+      "name": "Transportation, Communications and Utilities"
+    },
+    "category": {
+      "id": "utilities",
+      "name": "Utilities",
+      "source": "SEC_SIC",
+      "source_code": "4931"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0001047862-4931",
+      "scheme": "SEC_SIC",
+      "code": "4931",
+      "label": "Electric & Other Services Combined",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-19T10:24:45.834543+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0001047862-32fbe9bfde7c12c4"
+      ]
+    },
+    "offering_roles": [
+      "operator_business",
+      "service"
+    ],
+    "offering_evidence_count": 2,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0001047862-26-000031",
+        "provenance_id": "provenance:SEC-FILING-0001047862-26-000031-40ca43427b44c5bb",
+        "accession_number": "0001047862-26-000031",
+        "filing_date": "2026-02-19",
+        "offering_role": "operator_business",
+        "confidence": 0.92,
+        "statement": "The company owns a natural gas liquefaction facility and storage tank at its Astoria property in Queens, New York with a capacity of approximately 1 Bcf.",
+        "start_character": 35412,
+        "end_character": 35565
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001047862-26-000031",
+        "provenance_id": "provenance:SEC-FILING-0001047862-26-000031-40ca43427b44c5bb",
+        "accession_number": "0001047862-26-000031",
+        "filing_date": "2026-02-19",
+        "offering_role": "service",
+        "confidence": 0.88,
+        "statement": "(ii) review, at least every five years, an electric and gas utility’s capability to provide safe, adequate and reliable service, order the utility to comply with additional and more stringent terms of service than existed prior to the review, assess the continued operation of the utility as the provider of electric service in its service territory and propose, and act upon, such measures as are necessary to ensure safe and adequate service;",
+        "start_character": 5474,
+        "end_character": 5918
+      }
+    ]
+  },
+  "primary_business_lock": {
+    "status": "locked",
+    "update_mode": "manual_reclassification_only",
+    "classification_scope": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE"
+  },
   "path": {
     "theme": null,
     "sector": null,

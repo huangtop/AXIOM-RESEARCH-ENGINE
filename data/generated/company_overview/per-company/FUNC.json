@@ -7,6 +7,79 @@
   ],
   "display_name": "First United Corporation",
   "status": "evidence_available_unclassified",
+  "official_industry": {
+    "classification_id": "classification:SEC-SIC-0000763907-6021",
+    "scheme": "SEC_SIC",
+    "code": "6021",
+    "label": "National Commercial Banks",
+    "authority": "U.S. Securities and Exchange Commission",
+    "observed_at": "2026-08-19T10:24:45.834543+00:00",
+    "provenance_ids": [
+      "provenance:SEC-SUBMISSIONS-0000763907-ebc6592d8d6e6d05"
+    ]
+  },
+  "primary_business": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "finance_insurance_real_estate",
+      "name": "Finance, Insurance and Real Estate"
+    },
+    "category": {
+      "id": "commercial_banking",
+      "name": "Commercial Banking",
+      "source": "SEC_SIC",
+      "source_code": "6021"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0000763907-6021",
+      "scheme": "SEC_SIC",
+      "code": "6021",
+      "label": "National Commercial Banks",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-19T10:24:45.834543+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0000763907-ebc6592d8d6e6d05"
+      ]
+    },
+    "offering_roles": [
+      "operator_business",
+      "service"
+    ],
+    "offering_evidence_count": 2,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0001104659-26-025836",
+        "provenance_id": "provenance:SEC-FILING-0001104659-26-025836-b9a92205ba6c9bac",
+        "accession_number": "0001104659-26-025836",
+        "filing_date": "2026-03-10",
+        "offering_role": "service",
+        "confidence": 0.96,
+        "statement": "In those instances in which we are unable to accommodate customers’ needs, we attempt to arrange for those services to be provided by other financial services providers with which we have a relationship.",
+        "start_character": 10424,
+        "end_character": 10627
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001104659-26-025836",
+        "provenance_id": "provenance:SEC-FILING-0001104659-26-025836-b9a92205ba6c9bac",
+        "accession_number": "0001104659-26-025836",
+        "filing_date": "2026-03-10",
+        "offering_role": "operator_business",
+        "confidence": 0.92,
+        "statement": "For further information about competition in our market areas, see the Risk Factor entitled “We operate in a competitive environment, and our inability to effectively compete could adversely and materially impact our financial condition and results of operations” in Item 1A of Part I of this annual report.",
+        "start_character": 15109,
+        "end_character": 15416
+      }
+    ]
+  },
+  "primary_business_lock": {
+    "status": "locked",
+    "update_mode": "manual_reclassification_only",
+    "classification_scope": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE"
+  },
   "path": {
     "theme": null,
     "sector": null,
