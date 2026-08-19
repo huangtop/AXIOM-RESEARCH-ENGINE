@@ -331,7 +331,7 @@ def _print_publication_diagnostics(
 
 
 def main() -> int:
-    print("PATCH: primary-business-production-lock")
+    print("PATCH: full-market-classification-contract-v1")
 
     report = build_company_overviews(
         ROOT,
@@ -360,8 +360,28 @@ def main() -> int:
     )
 
     print(
-        "Classified:                      "
+        "Legacy thematic classified:       "
         f"{summary['classified_count']}"
+    )
+
+    print(
+        "Market classified + locked:       "
+        f"{summary.get('market_classified_count', 0)}"
+    )
+
+    print(
+        "Market classification pending:    "
+        f"{summary.get('market_classification_pending_count', 0)}"
+    )
+
+    print(
+        "Thematic classified:              "
+        f"{summary.get('thematic_classified_count', 0)}"
+    )
+
+    print(
+        "Thematic unclassified:            "
+        f"{summary.get('thematic_unclassified_count', 0)}"
     )
 
     print(
