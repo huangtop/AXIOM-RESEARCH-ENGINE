@@ -1062,6 +1062,27 @@ def build_company_overviews(
             "official_industry": official_industry,
             "primary_business": primary_business,
             "primary_business_lock": primary_business_lock,
+            "market_classification": {
+                "status": (
+                    "classified"
+                    if primary_business_lock.get("status") == "locked"
+                    else "pending"
+                ),
+                "taxonomy_layer": "primary_business",
+                "lock_status": primary_business_lock.get("status"),
+                "update_mode": primary_business_lock.get("update_mode"),
+                "division": primary_business.get("division"),
+                "category": primary_business.get("category"),
+                "industry": primary_business.get("industry"),
+            },
+            "thematic_classification": {
+                "status": (
+                    "classified"
+                    if status == "classified"
+                    else "unclassified"
+                ),
+                "taxonomy_layer": "axiom_theme_sector",
+            },
             **(
                 {
                     "primary_business_shadow_candidate": (
@@ -1153,6 +1174,20 @@ def build_company_overviews(
                 primary_business_lock
             )
 
+        record["thematic_classification"] = {
+            "status": (
+                "classified"
+                if record["status"] == "classified"
+                else "unclassified"
+            ),
+            "taxonomy_layer": "axiom_theme_sector",
+            "reason_code": (
+                None
+                if record["status"] == "classified"
+                else record.get("reason_code")
+            ),
+        }
+
         if record["status"] == "classified":
             record["classification_lock"] = {
                 "status": "locked",
@@ -1175,6 +1210,38 @@ def build_company_overviews(
             "company_count": len(records),
             "classified_count": sum(
                 row["status"] == "classified"
+                for row in records
+            ),
+            "market_classified_count": sum(
+                (
+                    row.get("market_classification")
+                    or {}
+                ).get("status")
+                == "classified"
+                for row in records
+            ),
+            "market_classification_pending_count": sum(
+                (
+                    row.get("market_classification")
+                    or {}
+                ).get("status")
+                != "classified"
+                for row in records
+            ),
+            "thematic_classified_count": sum(
+                (
+                    row.get("thematic_classification")
+                    or {}
+                ).get("status")
+                == "classified"
+                for row in records
+            ),
+            "thematic_unclassified_count": sum(
+                (
+                    row.get("thematic_classification")
+                    or {}
+                ).get("status")
+                != "classified"
                 for row in records
             ),
             "official_industry_count": sum(
