@@ -3,95 +3,948 @@
   "version": "V031C.3",
   "maximum_iterations": 8,
   "rules": [
-    {"rule_id":"rule:sector-ai-compute","output_id":"sector:ai_compute","output_dimension":"sector","canonical_name":"AI Compute","any_inputs":["product:graphics_processor"],"reliability":0.94},
-    {"rule_id":"rule:cluster-accelerator-silicon","output_id":"cluster:accelerator_silicon","output_dimension":"cluster","canonical_name":"Accelerator Silicon","any_inputs":["product:graphics_processor"],"reliability":0.96},
-    {"rule_id":"rule:sector-ai-networking","output_id":"sector:ai_networking","output_dimension":"sector","canonical_name":"AI Networking","any_inputs":["capability:high_speed_data_center_networking","technology:silicon_photonics","technology:co_packaged_optics","product:optical_transceiver","product:ethernet_switch","product:serdes"],"reliability":0.90},
-    {"rule_id":"rule:cluster-optical-interconnect","output_id":"cluster:optical_interconnect","output_dimension":"cluster","canonical_name":"Optical Interconnect","any_inputs":["technology:silicon_photonics","technology:co_packaged_optics","product:optical_transceiver"],"reliability":0.94},
-    {"rule_id":"rule:cluster-networking-silicon","output_id":"cluster:networking_silicon","output_dimension":"cluster","canonical_name":"Networking Silicon","any_inputs":["product:ethernet_switch","product:serdes"],"reliability":0.94},
-    {"rule_id":"rule:sector-ai-memory","output_id":"sector:ai_memory","output_dimension":"sector","canonical_name":"AI Memory","any_inputs":["technology:high_bandwidth_memory"],"reliability":0.98},
-    {"rule_id":"rule:cluster-hbm","output_id":"cluster:high_bandwidth_memory","output_dimension":"cluster","canonical_name":"High Bandwidth Memory","any_inputs":["technology:high_bandwidth_memory"],"reliability":0.99},
-    {"rule_id":"rule:sector-data-center-power","output_id":"sector:data_center_power","output_dimension":"sector","canonical_name":"Data Center Power and Cooling","any_inputs":["infrastructure:data_center_power"],"reliability":0.95},
-    {"rule_id":"rule:sector-semiconductors","output_id":"sector:semiconductors","output_dimension":"sector","canonical_name":"Semiconductors","any_inputs":["product:semiconductor","product:graphics_processor","technology:high_bandwidth_memory","technology:advanced_packaging"],"reliability":0.88},
-    {"rule_id":"rule:theme-ai-infrastructure","output_id":"theme:ai_infrastructure","output_dimension":"theme","canonical_name":"AI Infrastructure","any_inputs":["sector:ai_compute","sector:ai_networking","sector:ai_memory","sector:data_center_power"],"reliability":0.95},
-    {"rule_id":"rule:theme-artificial-intelligence","output_id":"theme:artificial_intelligence","output_dimension":"theme","canonical_name":"Artificial Intelligence","any_inputs":["technology:artificial_intelligence","theme:ai_infrastructure"],"reliability":0.88},
-    {"rule_id":"rule:sector-quantum-computing","output_id":"sector:quantum_computing","output_dimension":"sector","canonical_name":"Quantum Computing","any_inputs":["technology:quantum_computing"],"reliability":0.98},
-    {"rule_id":"rule:theme-quantum","output_id":"theme:quantum_computing","output_dimension":"theme","canonical_name":"Quantum Computing","any_inputs":["sector:quantum_computing"],"reliability":0.98},
-    {"rule_id":"rule:sector-robotics","output_id":"sector:robotics_automation","output_dimension":"sector","canonical_name":"Robotics and Automation","any_inputs":["technology:robotics"],"reliability":0.96},
-    {"rule_id":"rule:theme-robotics","output_id":"theme:robotics","output_dimension":"theme","canonical_name":"Robotics","any_inputs":["sector:robotics_automation"],"reliability":0.97},
-    {"rule_id":"rule:sector-autonomous-driving","output_id":"sector:autonomous_driving","output_dimension":"sector","canonical_name":"Autonomous Driving","any_inputs":["technology:autonomous_driving"],"reliability":0.97},
-    {"rule_id":"rule:theme-autonomous-vehicles","output_id":"theme:autonomous_vehicles","output_dimension":"theme","canonical_name":"Autonomous Vehicles","any_inputs":["sector:autonomous_driving"],"reliability":0.97},
-    {"rule_id":"rule:sector-space-systems","output_id":"sector:space_systems","output_dimension":"sector","canonical_name":"Space Systems","any_inputs":["product:space_system"],"reliability":0.96},
-    {"rule_id":"rule:theme-space-economy","output_id":"theme:space_economy","output_dimension":"theme","canonical_name":"Space Economy","any_inputs":["sector:space_systems"],"reliability":0.97},
-    {"rule_id":"rule:sector-digital-assets","output_id":"sector:digital_asset_infrastructure","output_dimension":"sector","canonical_name":"Digital Asset Infrastructure","any_inputs":["technology:blockchain","technology:digital_assets","product:digital_asset_platform"],"reliability":0.94},
-    {"rule_id":"rule:cluster-crypto-platforms","output_id":"cluster:crypto_platforms","output_dimension":"cluster","canonical_name":"Crypto Platforms","any_inputs":["product:digital_asset_platform"],"reliability":0.96},
-    {"rule_id":"rule:theme-digital-assets","output_id":"theme:digital_assets","output_dimension":"theme","canonical_name":"Digital Assets","any_inputs":["sector:digital_asset_infrastructure"],"reliability":0.96},
-    {"rule_id":"rule:sector-ai-accelerators","output_id":"sector:ai_compute","output_dimension":"sector","canonical_name":"AI Compute","any_inputs":["product:ai_accelerator"],"reliability":0.93},
-    {"rule_id":"rule:sector-custom-ai-accelerators","output_id":"sector:ai_compute","output_dimension":"sector","canonical_name":"AI Compute","any_inputs":["product:custom_silicon"],"all_inputs":["technology:artificial_intelligence"],"reliability":0.93},
-    {"rule_id":"rule:cluster-custom-accelerator","output_id":"cluster:custom_accelerator_silicon","output_dimension":"cluster","canonical_name":"Custom Accelerator Silicon","any_inputs":["product:custom_silicon"],"all_inputs":["technology:artificial_intelligence"],"reliability":0.93},
-    {"rule_id":"rule:sector-ai-servers","output_id":"sector:ai_servers","output_dimension":"sector","canonical_name":"AI Servers","any_inputs":["product:data_center_server"],"reliability":0.94},
-    {"rule_id":"rule:theme-ai-infrastructure-servers","output_id":"theme:ai_infrastructure","output_dimension":"theme","canonical_name":"AI Infrastructure","any_inputs":["sector:ai_servers"],"reliability":0.94},
-    {"rule_id":"rule:sector-cloud-infrastructure","output_id":"sector:cloud_infrastructure","output_dimension":"sector","canonical_name":"Cloud Infrastructure","any_inputs":["infrastructure:cloud_computing"],"reliability":0.91},
-    {"rule_id":"rule:theme-ai-infrastructure-cloud","output_id":"theme:ai_infrastructure","output_dimension":"theme","canonical_name":"AI Infrastructure","any_inputs":["sector:cloud_infrastructure"],"reliability":0.88},
-    {"rule_id":"rule:cluster-lidar","output_id":"cluster:lidar_sensing","output_dimension":"cluster","canonical_name":"LiDAR Sensing","any_inputs":["technology:lidar","product:lidar"],"reliability":0.96},
-    {"rule_id":"rule:sector-autonomous-sensing","output_id":"sector:autonomous_driving","output_dimension":"sector","canonical_name":"Autonomous Driving","any_inputs":["cluster:lidar_sensing"],"reliability":0.91},
-    {"rule_id":"rule:sector-power-semiconductors","output_id":"sector:power_semiconductors","output_dimension":"sector","canonical_name":"Power Semiconductors","any_inputs":["technology:power_semiconductor","product:power_semiconductor"],"reliability":0.95},
-    {"rule_id":"rule:theme-advanced-semiconductors-power","output_id":"theme:advanced_semiconductors","output_dimension":"theme","canonical_name":"Advanced Semiconductors","any_inputs":["sector:power_semiconductors"],"reliability":0.96},
-    {"rule_id":"rule:theme-ai-power","output_id":"theme:ai_infrastructure","output_dimension":"theme","canonical_name":"AI Infrastructure","any_inputs":["sector:power_semiconductors"],"all_inputs":["end_market:data_center"],"reliability":0.86},
-    {"rule_id":"rule:sector-cybersecurity","output_id":"sector:cybersecurity","output_dimension":"sector","canonical_name":"Cybersecurity","any_inputs":["capability:cybersecurity"],"reliability":0.96},
-    {"rule_id":"rule:theme-cybersecurity","output_id":"theme:cybersecurity","output_dimension":"theme","canonical_name":"Cybersecurity","any_inputs":["sector:cybersecurity"],"reliability":0.96},
-    {"rule_id":"rule:cluster-physical-ai-robots","output_id":"cluster:physical_ai_robots","output_dimension":"cluster","canonical_name":"Physical AI Robots","any_inputs":["technology:physical_ai","product:humanoid_robot","product:autonomous_mobile_robot","product:robot_actuator"],"reliability":0.96},
-    {"rule_id":"rule:sector-physical-ai","output_id":"sector:physical_ai_systems","output_dimension":"sector","canonical_name":"Physical AI Systems","any_inputs":["cluster:physical_ai_robots","capability:autonomous_perception"],"reliability":0.96},
-    {"rule_id":"rule:theme-physical-ai","output_id":"theme:physical_ai","output_dimension":"theme","canonical_name":"Physical AI","any_inputs":["sector:physical_ai_systems"],"reliability":0.98},
-    {"rule_id":"rule:sector-ai-autonomous-vehicles","output_id":"sector:autonomous_driving","output_dimension":"sector","canonical_name":"AI Autonomous Driving","any_inputs":["technology:full_self_driving","product:robotaxi_platform","product:autonomous_compute","capability:autonomous_perception"],"reliability":0.98},
-    {"rule_id":"rule:cluster-ai-autonomous-platform","output_id":"cluster:ai_autonomous_platform","output_dimension":"cluster","canonical_name":"AI Autonomous Platform","any_inputs":["technology:full_self_driving","product:robotaxi_platform","product:autonomous_compute"],"reliability":0.97},
-    {"rule_id":"rule:sector-leo-satellites","output_id":"sector:leo_satellites","output_dimension":"sector","canonical_name":"LEO Satellites","any_inputs":["technology:low_earth_orbit","product:leo_satellite"],"reliability":0.98},
-    {"rule_id":"rule:sector-satellite-communications","output_id":"sector:satellite_communications","output_dimension":"sector","canonical_name":"Satellite Communications","any_inputs":["product:satellite_terminal","capability:satellite_communications"],"reliability":0.97},
-    {"rule_id":"rule:theme-space-leo","output_id":"theme:space_economy","output_dimension":"theme","canonical_name":"Space and LEO Economy","any_inputs":["sector:leo_satellites","sector:satellite_communications"],"reliability":0.98},
-    {"rule_id":"rule:theme-advanced-communications-satellite","output_id":"theme:advanced_communications","output_dimension":"theme","canonical_name":"Advanced Communications","any_inputs":["sector:satellite_communications"],"reliability":0.96},
-    {"rule_id":"rule:theme-advanced-communications-networking","output_id":"theme:advanced_communications","output_dimension":"theme","canonical_name":"Advanced Communications","any_inputs":["sector:ai_networking"],"reliability":0.92},
-    {"rule_id":"rule:sector-digital-assets-infrastructure","output_id":"sector:digital_asset_infrastructure","output_dimension":"sector","canonical_name":"Digital Asset Infrastructure","any_inputs":["capability:digital_asset_infrastructure"],"reliability":0.98},
-    {"rule_id":"rule:sector-semiconductor-equipment","output_id":"sector:semiconductor_equipment","output_dimension":"sector","canonical_name":"Semiconductor Equipment","any_inputs":["product:semiconductor_test_equipment"],"reliability":0.99},
-    {"rule_id":"rule:theme-advanced-manufacturing","output_id":"theme:advanced_manufacturing","output_dimension":"theme","canonical_name":"Advanced Manufacturing","any_inputs":["sector:semiconductor_equipment"],"reliability":0.99},
-    {"rule_id":"rule:sector-display-technology","output_id":"sector:display_technology","output_dimension":"sector","canonical_name":"Display Technology","any_inputs":["product:display_panel"],"reliability":0.99},
-    {"rule_id":"rule:theme-consumer-display","output_id":"theme:consumer_technology","output_dimension":"theme","canonical_name":"Consumer Technology","any_inputs":["sector:display_technology"],"reliability":0.98},
-    {"rule_id":"rule:sector-rf-semiconductors","output_id":"sector:rf_semiconductors","output_dimension":"sector","canonical_name":"RF and Connectivity Semiconductors","any_inputs":["product:rf_semiconductor"],"reliability":0.99},
-    {"rule_id":"rule:theme-advanced-communications-rf","output_id":"theme:advanced_communications","output_dimension":"theme","canonical_name":"Advanced Communications","any_inputs":["sector:rf_semiconductors"],"reliability":0.98},
-    {"rule_id":"rule:sector-cruise-lines","output_id":"sector:cruise_lines","output_dimension":"sector","canonical_name":"Cruise Lines","any_inputs":["product:cruise_vacation"],"reliability":0.99},
-    {"rule_id":"rule:theme-travel-leisure","output_id":"theme:travel_leisure","output_dimension":"theme","canonical_name":"Travel and Leisure","any_inputs":["sector:cruise_lines"],"reliability":0.99},
-    {"rule_id":"rule:sector-financial-technology","output_id":"sector:financial_technology","output_dimension":"sector","canonical_name":"Financial Technology","any_inputs":["product:financial_technology"],"reliability":0.99},
-    {"rule_id":"rule:theme-financial-technology","output_id":"theme:financial_services_technology","output_dimension":"theme","canonical_name":"Financial Services Technology","any_inputs":["sector:financial_technology"],"reliability":0.99},
-    {"rule_id":"rule:sector-education-technology","output_id":"sector:education_technology","output_dimension":"sector","canonical_name":"Education Technology","any_inputs":["product:education_platform"],"reliability":0.99},
-    {"rule_id":"rule:theme-education-technology","output_id":"theme:education_technology","output_dimension":"theme","canonical_name":"Education Technology","any_inputs":["sector:education_technology"],"reliability":0.99},
-    {"rule_id":"rule:sector-telecom-infrastructure","output_id":"sector:telecom_infrastructure","output_dimension":"sector","canonical_name":"Telecommunications Infrastructure","any_inputs":["product:telecom_infrastructure"],"reliability":0.99},
-    {"rule_id":"rule:theme-advanced-communications-telecom","output_id":"theme:advanced_communications","output_dimension":"theme","canonical_name":"Advanced Communications","any_inputs":["sector:telecom_infrastructure"],"reliability":0.98},
-    {"rule_id":"rule:sector-identity-security","output_id":"sector:cybersecurity","output_dimension":"sector","canonical_name":"Cybersecurity","any_inputs":["product:identity_security"],"reliability":0.99},
-    {"rule_id":"rule:sector-ai-precision-medicine","output_id":"sector:ai_precision_medicine","output_dimension":"sector","canonical_name":"AI Precision Medicine","any_inputs":["product:ai_precision_medicine"],"reliability":0.99},
-    {"rule_id":"rule:theme-health-technology","output_id":"theme:health_technology","output_dimension":"theme","canonical_name":"Health Technology","any_inputs":["sector:ai_precision_medicine"],"reliability":0.99},
-    {"rule_id":"rule:sector-solar-technology","output_id":"sector:solar_technology","output_dimension":"sector","canonical_name":"Solar Technology","any_inputs":["product:solar_photovoltaic"],"reliability":0.99},
-    {"rule_id":"rule:theme-clean-energy","output_id":"theme:clean_energy","output_dimension":"theme","canonical_name":"Clean Energy","any_inputs":["sector:solar_technology"],"reliability":0.99},
-    {"rule_id":"rule:sector-industrial-instruments","output_id":"sector:industrial_instruments","output_dimension":"sector","canonical_name":"Industrial Instruments","any_inputs":["product:electronic_instruments"],"reliability":0.99},
-    {"rule_id":"rule:theme-industrial-technology","output_id":"theme:industrial_technology","output_dimension":"theme","canonical_name":"Industrial Technology","any_inputs":["sector:industrial_instruments"],"reliability":0.99},
-    {"rule_id":"rule:sector-advertising-technology","output_id":"sector:advertising_technology","output_dimension":"sector","canonical_name":"Advertising Technology","any_inputs":["product:advertising_technology"],"reliability":0.99},
-    {"rule_id":"rule:theme-digital-media-technology","output_id":"theme:digital_media_technology","output_dimension":"theme","canonical_name":"Digital Media Technology","any_inputs":["sector:advertising_technology"],"reliability":0.99},
-    {"rule_id":"rule:sector-edge-ai-semiconductors","output_id":"sector:edge_ai_semiconductors","output_dimension":"sector","canonical_name":"Edge AI Semiconductors","any_inputs":["product:edge_ai_semiconductor"],"reliability":0.99},
-    {"rule_id":"rule:theme-ai-infrastructure-edge","output_id":"theme:ai_infrastructure","output_dimension":"theme","canonical_name":"AI Infrastructure","any_inputs":["sector:edge_ai_semiconductors"],"reliability":0.98},
-    {"rule_id":"rule:sector-commerce-enablement","output_id":"sector:commerce_enablement","output_dimension":"sector","canonical_name":"Commerce Enablement","any_inputs":["product:commerce_enablement"],"reliability":0.99},
-    {"rule_id":"rule:theme-commerce-technology","output_id":"theme:commerce_technology","output_dimension":"theme","canonical_name":"Commerce Technology","any_inputs":["sector:commerce_enablement"],"reliability":0.99},
-    {"rule_id":"rule:sector-electronics-manufacturing","output_id":"sector:electronics_manufacturing_services","output_dimension":"sector","canonical_name":"Electronics Manufacturing Services","any_inputs":["product:electronics_manufacturing_services"],"reliability":0.99},
-    {"rule_id":"rule:theme-advanced-manufacturing-ems","output_id":"theme:advanced_manufacturing","output_dimension":"theme","canonical_name":"Advanced Manufacturing","any_inputs":["sector:electronics_manufacturing_services"],"reliability":0.99},
-    {"rule_id":"rule:sector-data-infrastructure","output_id":"sector:data_infrastructure","output_dimension":"sector","canonical_name":"Data Infrastructure","any_inputs":["product:intelligent_data_infrastructure"],"reliability":0.99},
-    {"rule_id":"rule:theme-cloud-data-infrastructure","output_id":"theme:ai_infrastructure","output_dimension":"theme","canonical_name":"AI Infrastructure","any_inputs":["sector:data_infrastructure"],"reliability":0.96},
-    {"rule_id":"rule:sector-ai-data-services","output_id":"sector:ai_data_services","output_dimension":"sector","canonical_name":"AI Data Services","any_inputs":["product:ai_data_services"],"reliability":0.99},
-    {"rule_id":"rule:theme-artificial-intelligence-data","output_id":"theme:artificial_intelligence","output_dimension":"theme","canonical_name":"Artificial Intelligence","any_inputs":["sector:ai_data_services"],"reliability":0.99},
-    {"rule_id":"rule:sector-enterprise-content-management","output_id":"sector:enterprise_content_management","output_dimension":"sector","canonical_name":"Enterprise Content Management","any_inputs":["product:enterprise_content_management"],"reliability":0.99},
-    {"rule_id":"rule:theme-enterprise-software","output_id":"theme:enterprise_software","output_dimension":"theme","canonical_name":"Enterprise Software","any_inputs":["sector:enterprise_content_management"],"reliability":0.99},
-    {"rule_id":"rule:sector-it-consulting","output_id":"sector:it_consulting_services","output_dimension":"sector","canonical_name":"IT Consulting Services","any_inputs":["product:it_consulting_services"],"reliability":0.99},
-    {"rule_id":"rule:theme-enterprise-services","output_id":"theme:enterprise_software","output_dimension":"theme","canonical_name":"Enterprise Software and Services","any_inputs":["sector:it_consulting_services"],"reliability":0.98},
-    {"rule_id":"rule:sector-interconnect-components","output_id":"sector:interconnect_components","output_dimension":"sector","canonical_name":"Interconnect and Sensor Components","any_inputs":["product:interconnect_components"],"reliability":0.99},
-    {"rule_id":"rule:theme-advanced-communications-components","output_id":"theme:advanced_communications","output_dimension":"theme","canonical_name":"Advanced Communications","any_inputs":["sector:interconnect_components"],"reliability":0.98},
-    {"rule_id":"rule:sector-networking-infrastructure","output_id":"sector:ai_networking","output_dimension":"sector","canonical_name":"AI Networking","any_inputs":["product:networking_infrastructure"],"reliability":0.99},
-    {"rule_id":"rule:theme-advanced-semiconductors-general","output_id":"theme:advanced_semiconductors","output_dimension":"theme","canonical_name":"Advanced Semiconductors","any_inputs":["sector:semiconductors"],"reliability":0.98},
-    {"rule_id":"rule:sector-marine-recreation","output_id":"sector:marine_recreation","output_dimension":"sector","canonical_name":"Marine Recreation","any_inputs":["product:recreational_boating"],"reliability":0.99},
-    {"rule_id":"rule:theme-travel-marine","output_id":"theme:travel_leisure","output_dimension":"theme","canonical_name":"Travel and Leisure","any_inputs":["sector:marine_recreation"],"reliability":0.99}
+    {
+      "rule_id": "rule:sector-ai-compute",
+      "output_id": "sector:ai_compute",
+      "output_dimension": "sector",
+      "canonical_name": "AI Compute",
+      "any_inputs": [
+        "product:graphics_processor"
+      ],
+      "reliability": 0.94
+    },
+    {
+      "rule_id": "rule:cluster-accelerator-silicon",
+      "output_id": "cluster:accelerator_silicon",
+      "output_dimension": "cluster",
+      "canonical_name": "Accelerator Silicon",
+      "any_inputs": [
+        "product:graphics_processor"
+      ],
+      "reliability": 0.96
+    },
+    {
+      "rule_id": "rule:sector-ai-networking",
+      "output_id": "sector:ai_networking",
+      "output_dimension": "sector",
+      "canonical_name": "AI Networking",
+      "any_inputs": [
+        "capability:high_speed_data_center_networking",
+        "technology:silicon_photonics",
+        "technology:co_packaged_optics",
+        "product:optical_transceiver",
+        "product:ethernet_switch",
+        "product:serdes"
+      ],
+      "reliability": 0.9
+    },
+    {
+      "rule_id": "rule:cluster-optical-interconnect",
+      "output_id": "cluster:optical_interconnect",
+      "output_dimension": "cluster",
+      "canonical_name": "Optical Interconnect",
+      "any_inputs": [
+        "technology:silicon_photonics",
+        "technology:co_packaged_optics",
+        "product:optical_transceiver"
+      ],
+      "reliability": 0.94
+    },
+    {
+      "rule_id": "rule:cluster-networking-silicon",
+      "output_id": "cluster:networking_silicon",
+      "output_dimension": "cluster",
+      "canonical_name": "Networking Silicon",
+      "any_inputs": [
+        "product:ethernet_switch",
+        "product:serdes"
+      ],
+      "reliability": 0.94
+    },
+    {
+      "rule_id": "rule:sector-ai-memory",
+      "output_id": "sector:ai_memory",
+      "output_dimension": "sector",
+      "canonical_name": "AI Memory",
+      "any_inputs": [
+        "technology:high_bandwidth_memory"
+      ],
+      "reliability": 0.98
+    },
+    {
+      "rule_id": "rule:cluster-hbm",
+      "output_id": "cluster:high_bandwidth_memory",
+      "output_dimension": "cluster",
+      "canonical_name": "High Bandwidth Memory",
+      "any_inputs": [
+        "technology:high_bandwidth_memory"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:sector-data-center-power",
+      "output_id": "sector:data_center_power",
+      "output_dimension": "sector",
+      "canonical_name": "Data Center Power and Cooling",
+      "any_inputs": [
+        "infrastructure:data_center_power"
+      ],
+      "reliability": 0.95
+    },
+    {
+      "rule_id": "rule:sector-semiconductors",
+      "output_id": "sector:semiconductors",
+      "output_dimension": "sector",
+      "canonical_name": "Semiconductors",
+      "any_inputs": [
+        "product:semiconductor",
+        "product:graphics_processor",
+        "technology:high_bandwidth_memory",
+        "technology:advanced_packaging"
+      ],
+      "reliability": 0.88
+    },
+    {
+      "rule_id": "rule:theme-ai-infrastructure",
+      "output_id": "theme:ai_infrastructure",
+      "output_dimension": "theme",
+      "canonical_name": "AI Infrastructure",
+      "any_inputs": [
+        "sector:ai_compute",
+        "sector:ai_networking",
+        "sector:ai_memory",
+        "sector:data_center_power"
+      ],
+      "reliability": 0.95
+    },
+    {
+      "rule_id": "rule:theme-artificial-intelligence",
+      "output_id": "theme:artificial_intelligence",
+      "output_dimension": "theme",
+      "canonical_name": "Artificial Intelligence",
+      "any_inputs": [
+        "technology:artificial_intelligence",
+        "theme:ai_infrastructure"
+      ],
+      "reliability": 0.88
+    },
+    {
+      "rule_id": "rule:sector-quantum-computing",
+      "output_id": "sector:quantum_computing",
+      "output_dimension": "sector",
+      "canonical_name": "Quantum Computing",
+      "any_inputs": [
+        "technology:quantum_computing"
+      ],
+      "reliability": 0.98
+    },
+    {
+      "rule_id": "rule:theme-quantum",
+      "output_id": "theme:quantum_computing",
+      "output_dimension": "theme",
+      "canonical_name": "Quantum Computing",
+      "any_inputs": [
+        "sector:quantum_computing"
+      ],
+      "reliability": 0.98
+    },
+    {
+      "rule_id": "rule:sector-robotics",
+      "output_id": "sector:robotics_automation",
+      "output_dimension": "sector",
+      "canonical_name": "Robotics and Automation",
+      "any_inputs": [
+        "technology:robotics"
+      ],
+      "reliability": 0.96
+    },
+    {
+      "rule_id": "rule:theme-robotics",
+      "output_id": "theme:robotics",
+      "output_dimension": "theme",
+      "canonical_name": "Robotics",
+      "any_inputs": [
+        "sector:robotics_automation"
+      ],
+      "reliability": 0.97
+    },
+    {
+      "rule_id": "rule:sector-autonomous-driving",
+      "output_id": "sector:autonomous_driving",
+      "output_dimension": "sector",
+      "canonical_name": "Autonomous Driving",
+      "any_inputs": [
+        "technology:autonomous_driving"
+      ],
+      "reliability": 0.97
+    },
+    {
+      "rule_id": "rule:theme-autonomous-vehicles",
+      "output_id": "theme:autonomous_vehicles",
+      "output_dimension": "theme",
+      "canonical_name": "Autonomous Vehicles",
+      "any_inputs": [
+        "sector:autonomous_driving"
+      ],
+      "reliability": 0.97
+    },
+    {
+      "rule_id": "rule:sector-space-systems",
+      "output_id": "sector:space_systems",
+      "output_dimension": "sector",
+      "canonical_name": "Space Systems",
+      "any_inputs": [
+        "product:space_system"
+      ],
+      "reliability": 0.96
+    },
+    {
+      "rule_id": "rule:theme-space-economy",
+      "output_id": "theme:space_economy",
+      "output_dimension": "theme",
+      "canonical_name": "Space Economy",
+      "any_inputs": [
+        "sector:space_systems"
+      ],
+      "reliability": 0.97
+    },
+    {
+      "rule_id": "rule:sector-digital-assets",
+      "output_id": "sector:digital_asset_infrastructure",
+      "output_dimension": "sector",
+      "canonical_name": "Digital Asset Infrastructure",
+      "any_inputs": [
+        "technology:blockchain",
+        "technology:digital_assets",
+        "product:digital_asset_platform"
+      ],
+      "reliability": 0.94
+    },
+    {
+      "rule_id": "rule:cluster-crypto-platforms",
+      "output_id": "cluster:crypto_platforms",
+      "output_dimension": "cluster",
+      "canonical_name": "Crypto Platforms",
+      "any_inputs": [
+        "product:digital_asset_platform"
+      ],
+      "reliability": 0.96
+    },
+    {
+      "rule_id": "rule:theme-digital-assets",
+      "output_id": "theme:digital_assets",
+      "output_dimension": "theme",
+      "canonical_name": "Digital Assets",
+      "any_inputs": [
+        "sector:digital_asset_infrastructure"
+      ],
+      "reliability": 0.96
+    },
+    {
+      "rule_id": "rule:sector-ai-accelerators",
+      "output_id": "sector:ai_compute",
+      "output_dimension": "sector",
+      "canonical_name": "AI Compute",
+      "any_inputs": [
+        "product:ai_accelerator"
+      ],
+      "reliability": 0.93
+    },
+    {
+      "rule_id": "rule:sector-custom-ai-accelerators",
+      "output_id": "sector:ai_compute",
+      "output_dimension": "sector",
+      "canonical_name": "AI Compute",
+      "any_inputs": [
+        "product:custom_silicon"
+      ],
+      "all_inputs": [
+        "technology:artificial_intelligence"
+      ],
+      "reliability": 0.93
+    },
+    {
+      "rule_id": "rule:cluster-custom-accelerator",
+      "output_id": "cluster:custom_accelerator_silicon",
+      "output_dimension": "cluster",
+      "canonical_name": "Custom Accelerator Silicon",
+      "any_inputs": [
+        "product:custom_silicon"
+      ],
+      "all_inputs": [
+        "technology:artificial_intelligence"
+      ],
+      "reliability": 0.93
+    },
+    {
+      "rule_id": "rule:sector-ai-servers",
+      "output_id": "sector:ai_servers",
+      "output_dimension": "sector",
+      "canonical_name": "AI Servers",
+      "any_inputs": [
+        "product:data_center_server"
+      ],
+      "reliability": 0.94
+    },
+    {
+      "rule_id": "rule:theme-ai-infrastructure-servers",
+      "output_id": "theme:ai_infrastructure",
+      "output_dimension": "theme",
+      "canonical_name": "AI Infrastructure",
+      "any_inputs": [
+        "sector:ai_servers"
+      ],
+      "reliability": 0.94
+    },
+    {
+      "rule_id": "rule:sector-cloud-infrastructure",
+      "output_id": "sector:cloud_infrastructure",
+      "output_dimension": "sector",
+      "canonical_name": "Cloud Infrastructure",
+      "any_inputs": [
+        "infrastructure:cloud_computing"
+      ],
+      "reliability": 0.91
+    },
+    {
+      "rule_id": "rule:theme-ai-infrastructure-cloud",
+      "output_id": "theme:ai_infrastructure",
+      "output_dimension": "theme",
+      "canonical_name": "AI Infrastructure",
+      "any_inputs": [
+        "sector:cloud_infrastructure"
+      ],
+      "reliability": 0.88
+    },
+    {
+      "rule_id": "rule:cluster-lidar",
+      "output_id": "cluster:lidar_sensing",
+      "output_dimension": "cluster",
+      "canonical_name": "LiDAR Sensing",
+      "any_inputs": [
+        "technology:lidar",
+        "product:lidar"
+      ],
+      "reliability": 0.96
+    },
+    {
+      "rule_id": "rule:sector-autonomous-sensing",
+      "output_id": "sector:autonomous_driving",
+      "output_dimension": "sector",
+      "canonical_name": "Autonomous Driving",
+      "any_inputs": [
+        "cluster:lidar_sensing"
+      ],
+      "reliability": 0.91
+    },
+    {
+      "rule_id": "rule:sector-power-semiconductors",
+      "output_id": "sector:power_semiconductors",
+      "output_dimension": "sector",
+      "canonical_name": "Power Semiconductors",
+      "any_inputs": [
+        "technology:power_semiconductor",
+        "product:power_semiconductor"
+      ],
+      "reliability": 0.95
+    },
+    {
+      "rule_id": "rule:theme-advanced-semiconductors-power",
+      "output_id": "theme:advanced_semiconductors",
+      "output_dimension": "theme",
+      "canonical_name": "Advanced Semiconductors",
+      "any_inputs": [
+        "sector:power_semiconductors"
+      ],
+      "reliability": 0.96
+    },
+    {
+      "rule_id": "rule:theme-ai-power",
+      "output_id": "theme:ai_infrastructure",
+      "output_dimension": "theme",
+      "canonical_name": "AI Infrastructure",
+      "any_inputs": [
+        "sector:power_semiconductors"
+      ],
+      "all_inputs": [
+        "end_market:data_center"
+      ],
+      "reliability": 0.86
+    },
+    {
+      "rule_id": "rule:sector-cybersecurity",
+      "output_id": "sector:cybersecurity",
+      "output_dimension": "sector",
+      "canonical_name": "Cybersecurity",
+      "any_inputs": [
+        "capability:cybersecurity"
+      ],
+      "reliability": 0.96
+    },
+    {
+      "rule_id": "rule:theme-cybersecurity",
+      "output_id": "theme:cybersecurity",
+      "output_dimension": "theme",
+      "canonical_name": "Cybersecurity",
+      "any_inputs": [
+        "sector:cybersecurity"
+      ],
+      "reliability": 0.96
+    },
+    {
+      "rule_id": "rule:cluster-physical-ai-robots",
+      "output_id": "cluster:physical_ai_robots",
+      "output_dimension": "cluster",
+      "canonical_name": "Physical AI Robots",
+      "any_inputs": [
+        "technology:physical_ai",
+        "product:humanoid_robot",
+        "product:autonomous_mobile_robot",
+        "product:robot_actuator"
+      ],
+      "reliability": 0.96
+    },
+    {
+      "rule_id": "rule:sector-physical-ai",
+      "output_id": "sector:physical_ai_systems",
+      "output_dimension": "sector",
+      "canonical_name": "Physical AI Systems",
+      "any_inputs": [
+        "cluster:physical_ai_robots",
+        "capability:autonomous_perception"
+      ],
+      "reliability": 0.96
+    },
+    {
+      "rule_id": "rule:theme-physical-ai",
+      "output_id": "theme:physical_ai",
+      "output_dimension": "theme",
+      "canonical_name": "Physical AI",
+      "any_inputs": [
+        "sector:physical_ai_systems"
+      ],
+      "reliability": 0.98
+    },
+    {
+      "rule_id": "rule:sector-ai-autonomous-vehicles",
+      "output_id": "sector:autonomous_driving",
+      "output_dimension": "sector",
+      "canonical_name": "AI Autonomous Driving",
+      "any_inputs": [
+        "technology:full_self_driving",
+        "product:robotaxi_platform",
+        "product:autonomous_compute",
+        "capability:autonomous_perception"
+      ],
+      "reliability": 0.98
+    },
+    {
+      "rule_id": "rule:cluster-ai-autonomous-platform",
+      "output_id": "cluster:ai_autonomous_platform",
+      "output_dimension": "cluster",
+      "canonical_name": "AI Autonomous Platform",
+      "any_inputs": [
+        "technology:full_self_driving",
+        "product:robotaxi_platform",
+        "product:autonomous_compute"
+      ],
+      "reliability": 0.97
+    },
+    {
+      "rule_id": "rule:sector-leo-satellites",
+      "output_id": "sector:leo_satellites",
+      "output_dimension": "sector",
+      "canonical_name": "LEO Satellites",
+      "any_inputs": [
+        "technology:low_earth_orbit",
+        "product:leo_satellite"
+      ],
+      "reliability": 0.98
+    },
+    {
+      "rule_id": "rule:sector-satellite-communications",
+      "output_id": "sector:satellite_communications",
+      "output_dimension": "sector",
+      "canonical_name": "Satellite Communications",
+      "any_inputs": [
+        "product:satellite_terminal",
+        "capability:satellite_communications"
+      ],
+      "reliability": 0.97
+    },
+    {
+      "rule_id": "rule:theme-space-leo",
+      "output_id": "theme:space_economy",
+      "output_dimension": "theme",
+      "canonical_name": "Space and LEO Economy",
+      "any_inputs": [
+        "sector:leo_satellites",
+        "sector:satellite_communications"
+      ],
+      "reliability": 0.98
+    },
+    {
+      "rule_id": "rule:theme-advanced-communications-satellite",
+      "output_id": "theme:advanced_communications",
+      "output_dimension": "theme",
+      "canonical_name": "Advanced Communications",
+      "any_inputs": [
+        "sector:satellite_communications"
+      ],
+      "reliability": 0.96
+    },
+    {
+      "rule_id": "rule:theme-advanced-communications-networking",
+      "output_id": "theme:advanced_communications",
+      "output_dimension": "theme",
+      "canonical_name": "Advanced Communications",
+      "any_inputs": [
+        "sector:ai_networking"
+      ],
+      "reliability": 0.92
+    },
+    {
+      "rule_id": "rule:sector-digital-assets-infrastructure",
+      "output_id": "sector:digital_asset_infrastructure",
+      "output_dimension": "sector",
+      "canonical_name": "Digital Asset Infrastructure",
+      "any_inputs": [
+        "capability:digital_asset_infrastructure"
+      ],
+      "reliability": 0.98
+    },
+    {
+      "rule_id": "rule:sector-semiconductor-equipment",
+      "output_id": "sector:semiconductor_equipment",
+      "output_dimension": "sector",
+      "canonical_name": "Semiconductor Equipment",
+      "any_inputs": [
+        "product:semiconductor_test_equipment"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:theme-advanced-manufacturing",
+      "output_id": "theme:advanced_manufacturing",
+      "output_dimension": "theme",
+      "canonical_name": "Advanced Manufacturing",
+      "any_inputs": [
+        "sector:semiconductor_equipment"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:sector-display-technology",
+      "output_id": "sector:display_technology",
+      "output_dimension": "sector",
+      "canonical_name": "Display Technology",
+      "any_inputs": [
+        "product:display_panel"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:theme-consumer-display",
+      "output_id": "theme:consumer_technology",
+      "output_dimension": "theme",
+      "canonical_name": "Consumer Technology",
+      "any_inputs": [
+        "sector:display_technology"
+      ],
+      "reliability": 0.98
+    },
+    {
+      "rule_id": "rule:sector-rf-semiconductors",
+      "output_id": "sector:rf_semiconductors",
+      "output_dimension": "sector",
+      "canonical_name": "RF and Connectivity Semiconductors",
+      "any_inputs": [
+        "product:rf_semiconductor"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:theme-advanced-communications-rf",
+      "output_id": "theme:advanced_communications",
+      "output_dimension": "theme",
+      "canonical_name": "Advanced Communications",
+      "any_inputs": [
+        "sector:rf_semiconductors"
+      ],
+      "reliability": 0.98
+    },
+    {
+      "rule_id": "rule:sector-cruise-lines",
+      "output_id": "sector:cruise_lines",
+      "output_dimension": "sector",
+      "canonical_name": "Cruise Lines",
+      "any_inputs": [
+        "product:cruise_vacation"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:theme-travel-leisure",
+      "output_id": "theme:travel_leisure",
+      "output_dimension": "theme",
+      "canonical_name": "Travel and Leisure",
+      "any_inputs": [
+        "sector:cruise_lines"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:sector-financial-technology",
+      "output_id": "sector:financial_technology",
+      "output_dimension": "sector",
+      "canonical_name": "Financial Technology",
+      "any_inputs": [
+        "product:financial_technology"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:theme-financial-technology",
+      "output_id": "theme:financial_services_technology",
+      "output_dimension": "theme",
+      "canonical_name": "Financial Services Technology",
+      "any_inputs": [
+        "sector:financial_technology"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:sector-education-technology",
+      "output_id": "sector:education_technology",
+      "output_dimension": "sector",
+      "canonical_name": "Education Technology",
+      "any_inputs": [
+        "product:education_platform"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:theme-education-technology",
+      "output_id": "theme:education_technology",
+      "output_dimension": "theme",
+      "canonical_name": "Education Technology",
+      "any_inputs": [
+        "sector:education_technology"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:sector-telecom-infrastructure",
+      "output_id": "sector:telecom_infrastructure",
+      "output_dimension": "sector",
+      "canonical_name": "Telecommunications Infrastructure",
+      "any_inputs": [
+        "product:telecom_infrastructure"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:theme-advanced-communications-telecom",
+      "output_id": "theme:advanced_communications",
+      "output_dimension": "theme",
+      "canonical_name": "Advanced Communications",
+      "any_inputs": [
+        "sector:telecom_infrastructure"
+      ],
+      "reliability": 0.98
+    },
+    {
+      "rule_id": "rule:sector-identity-security",
+      "output_id": "sector:cybersecurity",
+      "output_dimension": "sector",
+      "canonical_name": "Cybersecurity",
+      "any_inputs": [
+        "product:identity_security"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:sector-ai-precision-medicine",
+      "output_id": "sector:ai_precision_medicine",
+      "output_dimension": "sector",
+      "canonical_name": "AI Precision Medicine",
+      "any_inputs": [
+        "product:ai_precision_medicine"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:theme-health-technology",
+      "output_id": "theme:health_technology",
+      "output_dimension": "theme",
+      "canonical_name": "Health Technology",
+      "any_inputs": [
+        "sector:ai_precision_medicine"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:sector-solar-technology",
+      "output_id": "sector:solar_technology",
+      "output_dimension": "sector",
+      "canonical_name": "Solar Technology",
+      "any_inputs": [
+        "product:solar_photovoltaic"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:theme-clean-energy",
+      "output_id": "theme:clean_energy",
+      "output_dimension": "theme",
+      "canonical_name": "Clean Energy",
+      "any_inputs": [
+        "sector:solar_technology"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:sector-industrial-instruments",
+      "output_id": "sector:industrial_instruments",
+      "output_dimension": "sector",
+      "canonical_name": "Industrial Instruments",
+      "any_inputs": [
+        "product:electronic_instruments"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:theme-industrial-technology",
+      "output_id": "theme:industrial_technology",
+      "output_dimension": "theme",
+      "canonical_name": "Industrial Technology",
+      "any_inputs": [
+        "sector:industrial_instruments"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:sector-advertising-technology",
+      "output_id": "sector:advertising_technology",
+      "output_dimension": "sector",
+      "canonical_name": "Advertising Technology",
+      "any_inputs": [
+        "product:advertising_technology"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:theme-digital-media-technology",
+      "output_id": "theme:digital_media_technology",
+      "output_dimension": "theme",
+      "canonical_name": "Digital Media Technology",
+      "any_inputs": [
+        "sector:advertising_technology"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:sector-edge-ai-semiconductors",
+      "output_id": "sector:edge_ai_semiconductors",
+      "output_dimension": "sector",
+      "canonical_name": "Edge AI Semiconductors",
+      "any_inputs": [
+        "product:edge_ai_semiconductor"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:theme-ai-infrastructure-edge",
+      "output_id": "theme:ai_infrastructure",
+      "output_dimension": "theme",
+      "canonical_name": "AI Infrastructure",
+      "any_inputs": [
+        "sector:edge_ai_semiconductors"
+      ],
+      "reliability": 0.98
+    },
+    {
+      "rule_id": "rule:sector-commerce-enablement",
+      "output_id": "sector:commerce_enablement",
+      "output_dimension": "sector",
+      "canonical_name": "Commerce Enablement",
+      "any_inputs": [
+        "product:commerce_enablement"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:theme-commerce-technology",
+      "output_id": "theme:commerce_technology",
+      "output_dimension": "theme",
+      "canonical_name": "Commerce Technology",
+      "any_inputs": [
+        "sector:commerce_enablement"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:sector-electronics-manufacturing",
+      "output_id": "sector:electronics_manufacturing_services",
+      "output_dimension": "sector",
+      "canonical_name": "Electronics Manufacturing Services",
+      "any_inputs": [
+        "product:electronics_manufacturing_services"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:theme-advanced-manufacturing-ems",
+      "output_id": "theme:advanced_manufacturing",
+      "output_dimension": "theme",
+      "canonical_name": "Advanced Manufacturing",
+      "any_inputs": [
+        "sector:electronics_manufacturing_services"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:sector-data-infrastructure",
+      "output_id": "sector:data_infrastructure",
+      "output_dimension": "sector",
+      "canonical_name": "Data Infrastructure",
+      "any_inputs": [
+        "product:intelligent_data_infrastructure",
+        "product:nand_flash",
+        "product:ssd",
+        "product:managed_nand"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:theme-cloud-data-infrastructure",
+      "output_id": "theme:ai_infrastructure",
+      "output_dimension": "theme",
+      "canonical_name": "AI Infrastructure",
+      "any_inputs": [
+        "sector:data_infrastructure"
+      ],
+      "reliability": 0.96
+    },
+    {
+      "rule_id": "rule:sector-ai-data-services",
+      "output_id": "sector:ai_data_services",
+      "output_dimension": "sector",
+      "canonical_name": "AI Data Services",
+      "any_inputs": [
+        "product:ai_data_services"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:theme-artificial-intelligence-data",
+      "output_id": "theme:artificial_intelligence",
+      "output_dimension": "theme",
+      "canonical_name": "Artificial Intelligence",
+      "any_inputs": [
+        "sector:ai_data_services"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:sector-enterprise-content-management",
+      "output_id": "sector:enterprise_content_management",
+      "output_dimension": "sector",
+      "canonical_name": "Enterprise Content Management",
+      "any_inputs": [
+        "product:enterprise_content_management"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:theme-enterprise-software",
+      "output_id": "theme:enterprise_software",
+      "output_dimension": "theme",
+      "canonical_name": "Enterprise Software",
+      "any_inputs": [
+        "sector:enterprise_content_management"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:sector-it-consulting",
+      "output_id": "sector:it_consulting_services",
+      "output_dimension": "sector",
+      "canonical_name": "IT Consulting Services",
+      "any_inputs": [
+        "product:it_consulting_services"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:theme-enterprise-services",
+      "output_id": "theme:enterprise_software",
+      "output_dimension": "theme",
+      "canonical_name": "Enterprise Software and Services",
+      "any_inputs": [
+        "sector:it_consulting_services"
+      ],
+      "reliability": 0.98
+    },
+    {
+      "rule_id": "rule:sector-interconnect-components",
+      "output_id": "sector:interconnect_components",
+      "output_dimension": "sector",
+      "canonical_name": "Interconnect and Sensor Components",
+      "any_inputs": [
+        "product:interconnect_components"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:theme-advanced-communications-components",
+      "output_id": "theme:advanced_communications",
+      "output_dimension": "theme",
+      "canonical_name": "Advanced Communications",
+      "any_inputs": [
+        "sector:interconnect_components"
+      ],
+      "reliability": 0.98
+    },
+    {
+      "rule_id": "rule:sector-networking-infrastructure",
+      "output_id": "sector:ai_networking",
+      "output_dimension": "sector",
+      "canonical_name": "AI Networking",
+      "any_inputs": [
+        "product:networking_infrastructure"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:theme-advanced-semiconductors-general",
+      "output_id": "theme:advanced_semiconductors",
+      "output_dimension": "theme",
+      "canonical_name": "Advanced Semiconductors",
+      "any_inputs": [
+        "sector:semiconductors"
+      ],
+      "reliability": 0.98
+    },
+    {
+      "rule_id": "rule:sector-marine-recreation",
+      "output_id": "sector:marine_recreation",
+      "output_dimension": "sector",
+      "canonical_name": "Marine Recreation",
+      "any_inputs": [
+        "product:recreational_boating"
+      ],
+      "reliability": 0.99
+    },
+    {
+      "rule_id": "rule:theme-travel-marine",
+      "output_id": "theme:travel_leisure",
+      "output_dimension": "theme",
+      "canonical_name": "Travel and Leisure",
+      "any_inputs": [
+        "sector:marine_recreation"
+      ],
+      "reliability": 0.99
+    }
   ]
 }

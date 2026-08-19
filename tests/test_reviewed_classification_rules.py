@@ -30,6 +30,7 @@ def test_reviewed_business_offering_cohort_is_inferred_without_company_rules():
         "CLPS": ("theme:enterprise_software", "sector:it_consulting_services"),
         "VMAR": ("theme:travel_leisure", "sector:marine_recreation"),
         "TIMB": ("theme:advanced_communications", "sector:telecom_infrastructure"),
+        "SNDK": ("theme:ai_infrastructure", "sector:data_infrastructure"),
     }
     securities = json.loads((ROOT / "data/universe/securities.json").read_text())
     ticker_by_company = {
@@ -55,7 +56,10 @@ def test_reviewed_business_offering_cohort_is_inferred_without_company_rules():
         ticker = str(row.get("ticker") or "")
         if ticker not in expected:
             continue
-        actual[ticker] = (row["path"]["theme"]["id"], row["path"]["sector"]["id"])
+        actual[ticker] = (
+            row["path"]["theme"]["id"],
+            row["path"]["sector"]["id"],
+        )
         sector = next(
             item
             for item in knowledge_by_company[row["company_id"]]["knowledge"]
