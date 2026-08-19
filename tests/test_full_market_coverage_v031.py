@@ -197,3 +197,34 @@ def test_extreme_model_to_market_outlier_cannot_publish_a_headline():
     assert outliers
     assert all(card["valuation"]["calculated_model_count"] >= 1 for card in outliers)
     assert all(card["valuation"]["fair_value"] is None for card in outliers)
+
+
+def test_locked_primary_business_routing_reaches_valuation_aggregation():
+    payload = report()
+    routed = [
+        card for card in payload["cards"]
+        if (card.get("valuation") or {}).get("routing", {}).get("status") == "routed"
+    ]
+    assert routed
+    assert payload["summary"]["primary_business_routing_applied_count"] > 0
+    assert payload["summary"]["primary_business_routing_pending_count"] < payload["summary"]["company_count"]
+
+    archetypes = {
+        card["valuation"]["routing"].get("archetype")
+        for card in routed
+    }
+    assert "financial_institution" in archetypes
+    assert "biopharma" in archetypes
+    assert "technology_operating_company" in archetypes
+    assert "investment_vehicle" in archetypes
+
+    aggregated = [
+        card for card in routed
+        if card["valuation"].get("aggregation") is not None
+        and card["valuation"]["routing"].get("aggregation_applied") is True
+    ]
+    assert aggregated
+    for card in aggregated:
+        aggregation = card["valuation"]["aggregation"]
+        assert aggregation["routing_source"] == "locked_primary_business"
+        assert aggregation["business_archetype"] == card["valuation"]["routing"]["archetype"]

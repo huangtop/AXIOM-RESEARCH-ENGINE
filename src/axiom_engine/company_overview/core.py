@@ -540,6 +540,158 @@ def _sic_primary_business_category(
         "source_code": text,
     }
 
+
+def _identity_primary_business_fallback(
+    company: Mapping[str, Any],
+) -> dict[str, Any] | None:
+    """
+    Conservative fallback for entities that have neither SEC SIC nor
+    extracted primary-offering evidence.
+
+    This is intentionally narrow. It classifies only business/entity types
+    that are explicit in the canonical legal/display name, so a missing SEC
+    filing does not leave obvious listed investment vehicles permanently
+    pending. It must never override SIC or offering-derived classification.
+    """
+    legal_name = str(company.get("legal_name") or "").strip()
+    display_name = str(company.get("display_name") or "").strip()
+    text = f"{legal_name} {display_name}".lower()
+
+    def result(
+        category_id: str,
+        category_name: str,
+        *,
+        division_id: str,
+        division_name: str,
+        identity_type: str,
+    ) -> dict[str, Any]:
+        return {
+            "status": "identity_only",
+            "taxonomy_layer": "primary_business",
+            "classification_source": "CANONICAL_COMPANY_IDENTITY",
+            "division": {
+                "id": division_id,
+                "name": division_name,
+            },
+            "category": {
+                "id": category_id,
+                "name": category_name,
+                "source": "CANONICAL_COMPANY_IDENTITY",
+                "source_code": identity_type,
+            },
+            "category_evidence_status": "canonical_identity_only",
+            "industry": {
+                "classification_id": None,
+                "scheme": "CANONICAL_COMPANY_IDENTITY",
+                "code": identity_type,
+                "label": category_name,
+                "authority": "AXIOM canonical company registry",
+                "observed_at": None,
+                "provenance_ids": [],
+            },
+            "offering_roles": [],
+            "offering_evidence_count": 0,
+            "offering_evidence": [],
+        }
+
+    if (
+        "business development company" in text
+        or " business development corp" in text
+        or " bdc " in f" {text} "
+    ):
+        return result(
+            "business_development_company",
+            "Business Development Company",
+            division_id="finance_insurance_real_estate",
+            division_name="Finance, Insurance and Real Estate",
+            identity_type="BUSINESS_DEVELOPMENT_COMPANY",
+        )
+
+    if (
+        "blank check" in text
+        or "acquisition corp" in text
+        or "acquisition corporation" in text
+        or "acquisition company" in text
+        or "acquisition co." in text
+    ):
+        return result(
+            "blank_check_company",
+            "Blank Check / Acquisition Company",
+            division_id="finance_insurance_real_estate",
+            division_name="Finance, Insurance and Real Estate",
+            identity_type="BLANK_CHECK_COMPANY",
+        )
+
+    if "royalty trust" in text:
+        return result(
+            "royalty_trust",
+            "Royalty Trust",
+            division_id="finance_insurance_real_estate",
+            division_name="Finance, Insurance and Real Estate",
+            identity_type="ROYALTY_TRUST",
+        )
+
+    if (
+        "real estate investment trust" in text
+        or " reit " in f" {text} "
+    ):
+        return result(
+            "real_estate_investment_trust",
+            "Real Estate Investment Trust",
+            division_id="finance_insurance_real_estate",
+            division_name="Finance, Insurance and Real Estate",
+            identity_type="REAL_ESTATE_INVESTMENT_TRUST",
+        )
+
+    fund_markers = (
+        " fund",
+        "fund ",
+        "fund,",
+        "fund.",
+        "portfolio",
+    )
+    if any(marker in text for marker in fund_markers):
+        return result(
+            "investment_fund",
+            "Investment Fund",
+            division_id="finance_insurance_real_estate",
+            division_name="Finance, Insurance and Real Estate",
+            identity_type="INVESTMENT_FUND",
+        )
+
+    trust_context = (
+        "investment",
+        "income",
+        "municipal",
+        "securities",
+        "preferred",
+        "equity",
+        "bond",
+        "credit",
+        "yield",
+        "floating rate",
+        "convertible",
+        "opportunity",
+        "strategy",
+        "value",
+        "growth",
+        "assets",
+        "capital",
+    )
+    if " trust" in text and any(
+        marker in text
+        for marker in trust_context
+    ):
+        return result(
+            "investment_trust",
+            "Investment Trust",
+            division_id="finance_insurance_real_estate",
+            division_name="Finance, Insurance and Real Estate",
+            identity_type="INVESTMENT_TRUST",
+        )
+
+    return None
+
 def _primary_business_record(
     official_industry: Mapping[str, Any] | None,
     offering_evidence: list[Mapping[str, Any]],
@@ -619,6 +771,277 @@ def _primary_business_record(
         "offering_roles": roles,
         "offering_evidence_count": len(offerings),
         "offering_evidence": offerings,
+    }
+
+
+def _routing_from_locked_primary_business(
+    primary_business: Mapping[str, Any],
+    primary_business_lock: Mapping[str, Any],
+) -> dict[str, Any]:
+    """
+    Derive stable routing metadata from the locked Primary Business layer.
+
+    This does NOT publish AXIOM theme/sector from SIC alone.  Primary Business
+    is an authority/gating layer: thematic publication still requires thematic
+    evidence.  Valuation routing may safely use the business category as an
+    archetype because model-family suitability is a business-model property.
+    """
+    lock_status = str(primary_business_lock.get("status") or "")
+    category = (
+        primary_business.get("category")
+        if isinstance(primary_business.get("category"), Mapping)
+        else {}
+    )
+    category_id = str((category or {}).get("id") or "")
+
+    if lock_status != "locked":
+        return {
+            "status": "pending_primary_business",
+            "source": None,
+            "thematic": {
+                "status": "pending_primary_business",
+                "domain": None,
+                "requires_thematic_evidence": True,
+                "auto_publish_from_primary_business": False,
+            },
+            "valuation": {
+                "status": "pending_primary_business",
+                "archetype": None,
+                "preferred_model_families": [],
+                "deprioritized_model_families": [],
+            },
+        }
+
+    if not category_id:
+        return {
+            "status": "routed",
+            "source": "locked_primary_business",
+            "primary_business_category_id": None,
+            "thematic": {
+                "status": "evidence_required",
+                "domain": "general_business",
+                "requires_thematic_evidence": True,
+                "auto_publish_from_primary_business": False,
+                "reason_code": (
+                    "LOCKED_PRIMARY_BUSINESS_CATEGORY_UNRESOLVED"
+                ),
+            },
+            "valuation": {
+                "status": "routed",
+                "archetype": "general_operating_company",
+                "preferred_model_families": [
+                    "forward_earnings",
+                    "enterprise_operations",
+                    "forward_revenue",
+                ],
+                "deprioritized_model_families": [
+                    "event_probability",
+                ],
+                "reason_code": (
+                    "LOCKED_PRIMARY_BUSINESS_CATEGORY_UNRESOLVED"
+                ),
+            },
+        }
+
+    technology = {
+        "software_and_data_services",
+        "computing_hardware",
+        "semiconductors_and_electronic_components",
+        "communications_equipment",
+        "electrical_and_electronic_equipment",
+        "sensing_and_instrumentation",
+    }
+    healthcare = {
+        "pharmaceuticals_and_biotechnology",
+        "medical_devices_and_diagnostics",
+        "healthcare_services",
+    }
+    financial = {
+        "commercial_banking",
+        "insurance",
+        "securities_and_investment_services",
+        "credit_and_lending",
+    }
+    investment_vehicle = {
+        "investment_holding_and_vehicles",
+        "investment_fund",
+        "investment_trust",
+        "business_development_company",
+        "royalty_trust",
+    }
+    real_assets = {
+        "real_estate",
+        "real_estate_investment_trust",
+        "utilities",
+        "transportation",
+        "telecommunications",
+        "oil_and_gas",
+        "mining_and_metals",
+    }
+    industrial = {
+        "manufacturing_other",
+        "aerospace_and_defense",
+        "automobile_manufacturing",
+        "construction",
+        "wholesale_distribution",
+    }
+    consumer = {
+        "retail",
+        "restaurants_and_hospitality",
+        "consumer_staples",
+        "apparel_and_footwear",
+        "education_services",
+    }
+
+    if category_id in technology:
+        thematic_domain = "technology"
+    elif category_id in healthcare:
+        thematic_domain = "healthcare"
+    elif category_id in financial:
+        thematic_domain = "financial_services"
+    elif category_id in investment_vehicle:
+        thematic_domain = "investment_vehicle"
+    elif category_id in real_assets:
+        thematic_domain = "real_assets_and_infrastructure"
+    elif category_id in industrial:
+        thematic_domain = "industrial"
+    elif category_id in consumer:
+        thematic_domain = "consumer"
+    else:
+        thematic_domain = "general_business"
+
+    if category_id in investment_vehicle:
+        valuation = {
+            "status": "routed",
+            "archetype": "investment_vehicle",
+            "preferred_model_families": [
+                "balance_sheet",
+            ],
+            "deprioritized_model_families": [
+                "forward_revenue",
+                "enterprise_operations",
+                "event_probability",
+                "intrinsic_cash_flow",
+            ],
+            "reason_code": "LOCKED_PRIMARY_BUSINESS_INVESTMENT_VEHICLE",
+        }
+    elif category_id in {
+        "commercial_banking",
+        "credit_and_lending",
+        "insurance",
+        "securities_and_investment_services",
+    }:
+        valuation = {
+            "status": "routed",
+            "archetype": "financial_institution",
+            "preferred_model_families": [
+                "balance_sheet",
+                "forward_earnings",
+            ],
+            "deprioritized_model_families": [
+                "forward_revenue",
+                "enterprise_operations",
+                "event_probability",
+            ],
+            "reason_code": "LOCKED_PRIMARY_BUSINESS_FINANCIAL_INSTITUTION",
+        }
+    elif category_id == "pharmaceuticals_and_biotechnology":
+        valuation = {
+            "status": "routed",
+            "archetype": "biopharma",
+            "preferred_model_families": [
+                "event_probability",
+                "forward_revenue",
+                "forward_earnings",
+            ],
+            "deprioritized_model_families": [
+                "balance_sheet",
+            ],
+            "reason_code": "LOCKED_PRIMARY_BUSINESS_BIOPHARMA",
+        }
+    elif category_id in {
+        "real_estate",
+        "real_estate_investment_trust",
+    }:
+        valuation = {
+            "status": "routed",
+            "archetype": "real_estate",
+            "preferred_model_families": [
+                "balance_sheet",
+                "forward_earnings",
+                "enterprise_operations",
+            ],
+            "deprioritized_model_families": [
+                "event_probability",
+            ],
+            "reason_code": "LOCKED_PRIMARY_BUSINESS_REAL_ESTATE",
+        }
+    elif category_id in {
+        "utilities",
+        "transportation",
+        "telecommunications",
+        "oil_and_gas",
+        "mining_and_metals",
+        "manufacturing_other",
+        "aerospace_and_defense",
+        "automobile_manufacturing",
+        "construction",
+        "wholesale_distribution",
+    }:
+        valuation = {
+            "status": "routed",
+            "archetype": "asset_heavy_operating_company",
+            "preferred_model_families": [
+                "enterprise_operations",
+                "forward_earnings",
+                "balance_sheet",
+            ],
+            "deprioritized_model_families": [
+                "event_probability",
+            ],
+            "reason_code": "LOCKED_PRIMARY_BUSINESS_ASSET_HEAVY",
+        }
+    elif category_id in technology:
+        valuation = {
+            "status": "routed",
+            "archetype": "technology_operating_company",
+            "preferred_model_families": [
+                "forward_earnings",
+                "forward_revenue",
+                "enterprise_operations",
+            ],
+            "deprioritized_model_families": [
+                "event_probability",
+            ],
+            "reason_code": "LOCKED_PRIMARY_BUSINESS_TECHNOLOGY",
+        }
+    else:
+        valuation = {
+            "status": "routed",
+            "archetype": "general_operating_company",
+            "preferred_model_families": [
+                "forward_earnings",
+                "enterprise_operations",
+                "forward_revenue",
+            ],
+            "deprioritized_model_families": [
+                "event_probability",
+            ],
+            "reason_code": "LOCKED_PRIMARY_BUSINESS_GENERAL_OPERATING",
+        }
+
+    return {
+        "status": "routed",
+        "source": "locked_primary_business",
+        "primary_business_category_id": category_id,
+        "thematic": {
+            "status": "evidence_required",
+            "domain": thematic_domain,
+            "requires_thematic_evidence": True,
+            "auto_publish_from_primary_business": False,
+            "reason_code": "PRIMARY_BUSINESS_IS_GATE_NOT_THEME_EVIDENCE",
+        },
+        "valuation": valuation,
     }
 
 def build_company_overviews(
@@ -993,6 +1416,13 @@ def build_company_overviews(
             ),
         )
 
+        if primary_business_candidate.get("status") == "unavailable":
+            identity_fallback = _identity_primary_business_fallback(
+                company
+            )
+            if identity_fallback is not None:
+                primary_business_candidate = identity_fallback
+
         existing_primary_business_lock = (
             primary_business_locked_by_company.get(
                 cid
@@ -1083,6 +1513,10 @@ def build_company_overviews(
                 ),
                 "taxonomy_layer": "axiom_theme_sector",
             },
+            "routing": _routing_from_locked_primary_business(
+                primary_business,
+                primary_business_lock,
+            ),
             **(
                 {
                     "primary_business_shadow_candidate": (
@@ -1187,6 +1621,10 @@ def build_company_overviews(
                 else record.get("reason_code")
             ),
         }
+        record["routing"] = _routing_from_locked_primary_business(
+            record.get("primary_business") or {},
+            record.get("primary_business_lock") or {},
+        )
 
         if record["status"] == "classified":
             record["classification_lock"] = {
@@ -1244,6 +1682,56 @@ def build_company_overviews(
                 != "classified"
                 for row in records
             ),
+            "routing_ready_count": sum(
+                (
+                    row.get("routing")
+                    or {}
+                ).get("status")
+                == "routed"
+                for row in records
+            ),
+            "routing_pending_count": sum(
+                (
+                    row.get("routing")
+                    or {}
+                ).get("status")
+                != "routed"
+                for row in records
+            ),
+            "valuation_archetype_counts": dict(
+                sorted(
+                    Counter(
+                        str(
+                            (
+                                (
+                                    row.get("routing")
+                                    or {}
+                                ).get("valuation")
+                                or {}
+                            ).get("archetype")
+                            or "pending"
+                        )
+                        for row in records
+                    ).items()
+                )
+            ),
+            "thematic_domain_counts": dict(
+                sorted(
+                    Counter(
+                        str(
+                            (
+                                (
+                                    row.get("routing")
+                                    or {}
+                                ).get("thematic")
+                                or {}
+                            ).get("domain")
+                            or "pending"
+                        )
+                        for row in records
+                    ).items()
+                )
+            ),
             "official_industry_count": sum(
                 row.get("official_industry") is not None
                 for row in records
@@ -1278,6 +1766,14 @@ def build_company_overviews(
                     or {}
                 ).get("status")
                 == "offering_only"
+                for row in records
+            ),
+            "primary_business_identity_only_count": sum(
+                (
+                    row.get("primary_business")
+                    or {}
+                ).get("status")
+                == "identity_only"
                 for row in records
             ),
             "primary_business_unavailable_count": sum(

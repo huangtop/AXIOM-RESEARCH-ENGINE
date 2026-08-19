@@ -331,7 +331,7 @@ def _print_publication_diagnostics(
 
 
 def main() -> int:
-    print("PATCH: full-market-classification-contract-v1")
+    print("PATCH: locked-primary-business-routing-v1.1")
 
     report = build_company_overviews(
         ROOT,
@@ -385,6 +385,16 @@ def main() -> int:
     )
 
     print(
+        "Primary-business routing ready:   "
+        f"{summary.get('routing_ready_count', 0)}"
+    )
+
+    print(
+        "Primary-business routing pending: "
+        f"{summary.get('routing_pending_count', 0)}"
+    )
+
+    print(
         "Primary business available:      "
         f"{summary.get('primary_business_available_count', 0)}"
     )
@@ -402,6 +412,11 @@ def main() -> int:
     print(
         "Primary business offering only:  "
         f"{summary.get('primary_business_offering_only_count', 0)}"
+    )
+
+    print(
+        "Primary business identity only:  "
+        f"{summary.get('primary_business_identity_only_count', 0)}"
     )
 
     print(
@@ -432,6 +447,22 @@ def main() -> int:
     print(
         "Output: data/generated/company_overview"
     )
+
+    print()
+    print("Valuation routing archetypes:")
+    for archetype, count in sorted(
+        summary.get("valuation_archetype_counts", {}).items(),
+        key=lambda item: (-int(item[1]), item[0]),
+    ):
+        print(f"  {archetype:<48}{int(count):>6}")
+
+    print()
+    print("Thematic routing domains:")
+    for domain, count in sorted(
+        summary.get("thematic_domain_counts", {}).items(),
+        key=lambda item: (-int(item[1]), item[0]),
+    ):
+        print(f"  {domain:<48}{int(count):>6}")
 
     print()
     print("Primary business divisions:")

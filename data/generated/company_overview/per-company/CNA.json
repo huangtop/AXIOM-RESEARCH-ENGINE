@@ -168,6 +168,32 @@
     "taxonomy_layer": "axiom_theme_sector",
     "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
   },
+  "routing": {
+    "status": "routed",
+    "source": "locked_primary_business",
+    "primary_business_category_id": "insurance",
+    "thematic": {
+      "status": "evidence_required",
+      "domain": "financial_services",
+      "requires_thematic_evidence": true,
+      "auto_publish_from_primary_business": false,
+      "reason_code": "PRIMARY_BUSINESS_IS_GATE_NOT_THEME_EVIDENCE"
+    },
+    "valuation": {
+      "status": "routed",
+      "archetype": "financial_institution",
+      "preferred_model_families": [
+        "balance_sheet",
+        "forward_earnings"
+      ],
+      "deprioritized_model_families": [
+        "forward_revenue",
+        "enterprise_operations",
+        "event_probability"
+      ],
+      "reason_code": "LOCKED_PRIMARY_BUSINESS_FINANCIAL_INSTITUTION"
+    }
+  },
   "path": {
     "theme": {
       "id": "theme:artificial_intelligence",

@@ -157,6 +157,31 @@
     "taxonomy_layer": "axiom_theme_sector",
     "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
   },
+  "routing": {
+    "status": "routed",
+    "source": "locked_primary_business",
+    "primary_business_category_id": "finance_insurance_real_estate_other",
+    "thematic": {
+      "status": "evidence_required",
+      "domain": "general_business",
+      "requires_thematic_evidence": true,
+      "auto_publish_from_primary_business": false,
+      "reason_code": "PRIMARY_BUSINESS_IS_GATE_NOT_THEME_EVIDENCE"
+    },
+    "valuation": {
+      "status": "routed",
+      "archetype": "general_operating_company",
+      "preferred_model_families": [
+        "forward_earnings",
+        "enterprise_operations",
+        "forward_revenue"
+      ],
+      "deprioritized_model_families": [
+        "event_probability"
+      ],
+      "reason_code": "LOCKED_PRIMARY_BUSINESS_GENERAL_OPERATING"
+    }
+  },
   "path": {
     "theme": null,
     "sector": null,

@@ -9,36 +9,94 @@
   "status": "awaiting_business_evidence",
   "official_industry": null,
   "primary_business": {
-    "status": "unavailable",
+    "status": "identity_only",
     "taxonomy_layer": "primary_business",
-    "classification_source": null,
-    "division": null,
-    "category": null,
-    "category_evidence_status": "unavailable",
-    "industry": null,
+    "classification_source": "CANONICAL_COMPANY_IDENTITY",
+    "division": {
+      "id": "finance_insurance_real_estate",
+      "name": "Finance, Insurance and Real Estate"
+    },
+    "category": {
+      "id": "investment_trust",
+      "name": "Investment Trust",
+      "source": "CANONICAL_COMPANY_IDENTITY",
+      "source_code": "INVESTMENT_TRUST"
+    },
+    "category_evidence_status": "canonical_identity_only",
+    "industry": {
+      "classification_id": null,
+      "scheme": "CANONICAL_COMPANY_IDENTITY",
+      "code": "INVESTMENT_TRUST",
+      "label": "Investment Trust",
+      "authority": "AXIOM canonical company registry",
+      "observed_at": null,
+      "provenance_ids": []
+    },
     "offering_roles": [],
     "offering_evidence_count": 0,
     "offering_evidence": []
   },
   "primary_business_lock": {
-    "status": "unlocked",
-    "update_mode": "automatic_when_evidence_available",
+    "status": "locked",
+    "update_mode": "manual_reclassification_only",
     "classification_scope": "primary_business",
-    "classification_source": null
+    "classification_source": "CANONICAL_COMPANY_IDENTITY"
   },
   "market_classification": {
-    "status": "pending",
+    "status": "classified",
     "taxonomy_layer": "primary_business",
-    "lock_status": "unlocked",
-    "update_mode": "automatic_when_evidence_available",
-    "division": null,
-    "category": null,
-    "industry": null
+    "lock_status": "locked",
+    "update_mode": "manual_reclassification_only",
+    "division": {
+      "id": "finance_insurance_real_estate",
+      "name": "Finance, Insurance and Real Estate"
+    },
+    "category": {
+      "id": "investment_trust",
+      "name": "Investment Trust",
+      "source": "CANONICAL_COMPANY_IDENTITY",
+      "source_code": "INVESTMENT_TRUST"
+    },
+    "industry": {
+      "classification_id": null,
+      "scheme": "CANONICAL_COMPANY_IDENTITY",
+      "code": "INVESTMENT_TRUST",
+      "label": "Investment Trust",
+      "authority": "AXIOM canonical company registry",
+      "observed_at": null,
+      "provenance_ids": []
+    }
   },
   "thematic_classification": {
     "status": "unclassified",
     "taxonomy_layer": "axiom_theme_sector",
     "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+  },
+  "routing": {
+    "status": "routed",
+    "source": "locked_primary_business",
+    "primary_business_category_id": "investment_trust",
+    "thematic": {
+      "status": "evidence_required",
+      "domain": "investment_vehicle",
+      "requires_thematic_evidence": true,
+      "auto_publish_from_primary_business": false,
+      "reason_code": "PRIMARY_BUSINESS_IS_GATE_NOT_THEME_EVIDENCE"
+    },
+    "valuation": {
+      "status": "routed",
+      "archetype": "investment_vehicle",
+      "preferred_model_families": [
+        "balance_sheet"
+      ],
+      "deprioritized_model_families": [
+        "forward_revenue",
+        "enterprise_operations",
+        "event_probability",
+        "intrinsic_cash_flow"
+      ],
+      "reason_code": "LOCKED_PRIMARY_BUSINESS_INVESTMENT_VEHICLE"
+    }
   },
   "path": {
     "theme": null,
