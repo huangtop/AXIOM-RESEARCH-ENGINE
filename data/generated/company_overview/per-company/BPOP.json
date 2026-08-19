@@ -8,6 +8,79 @@
   ],
   "display_name": "Popular, Inc.",
   "status": "evidence_available_unclassified",
+  "official_industry": {
+    "classification_id": "classification:SEC-SIC-0000763901-6022",
+    "scheme": "SEC_SIC",
+    "code": "6022",
+    "label": "State Commercial Banks",
+    "authority": "U.S. Securities and Exchange Commission",
+    "observed_at": "2026-08-19T10:24:45.834543+00:00",
+    "provenance_ids": [
+      "provenance:SEC-SUBMISSIONS-0000763901-cb05d6da31fff0e1"
+    ]
+  },
+  "primary_business": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "finance_insurance_real_estate",
+      "name": "Finance, Insurance and Real Estate"
+    },
+    "category": {
+      "id": "commercial_banking",
+      "name": "Commercial Banking",
+      "source": "SEC_SIC",
+      "source_code": "6022"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0000763901-6022",
+      "scheme": "SEC_SIC",
+      "code": "6022",
+      "label": "State Commercial Banks",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-19T10:24:45.834543+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0000763901-cb05d6da31fff0e1"
+      ]
+    },
+    "offering_roles": [
+      "operator_business",
+      "product"
+    ],
+    "offering_evidence_count": 2,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0001193125-26-085756",
+        "provenance_id": "provenance:SEC-FILING-0001193125-26-085756-cdbea9a09410215a",
+        "accession_number": "0001193125-26-085756",
+        "filing_date": "2026-03-02",
+        "offering_role": "product",
+        "confidence": 0.92,
+        "statement": "We operate in two principal markets:",
+        "start_character": 771,
+        "end_character": 807
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001193125-26-085756",
+        "provenance_id": "provenance:SEC-FILING-0001193125-26-085756-cdbea9a09410215a",
+        "accession_number": "0001193125-26-085756",
+        "filing_date": "2026-03-02",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "We are subject to examination and",
+        "start_character": 65111,
+        "end_character": 65144
+      }
+    ]
+  },
+  "primary_business_lock": {
+    "status": "locked",
+    "update_mode": "manual_reclassification_only",
+    "classification_scope": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE"
+  },
   "path": {
     "theme": null,
     "sector": null,

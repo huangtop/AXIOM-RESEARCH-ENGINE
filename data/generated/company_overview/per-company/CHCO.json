@@ -7,6 +7,90 @@
   ],
   "display_name": "City Holding Company",
   "status": "evidence_available_unclassified",
+  "official_industry": {
+    "classification_id": "classification:SEC-SIC-0000726854-6021",
+    "scheme": "SEC_SIC",
+    "code": "6021",
+    "label": "National Commercial Banks",
+    "authority": "U.S. Securities and Exchange Commission",
+    "observed_at": "2026-08-19T10:24:45.834543+00:00",
+    "provenance_ids": [
+      "provenance:SEC-SUBMISSIONS-0000726854-7a81400764925698"
+    ]
+  },
+  "primary_business": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "finance_insurance_real_estate",
+      "name": "Finance, Insurance and Real Estate"
+    },
+    "category": {
+      "id": "commercial_banking",
+      "name": "Commercial Banking",
+      "source": "SEC_SIC",
+      "source_code": "6021"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0000726854-6021",
+      "scheme": "SEC_SIC",
+      "code": "6021",
+      "label": "National Commercial Banks",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-19T10:24:45.834543+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0000726854-7a81400764925698"
+      ]
+    },
+    "offering_roles": [
+      "operator_business",
+      "product"
+    ],
+    "offering_evidence_count": 3,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0000726854-26-000062",
+        "provenance_id": "provenance:SEC-FILING-0000726854-26-000062-3ca765477459acc7",
+        "accession_number": "0000726854-26-000062",
+        "filing_date": "2026-02-25",
+        "offering_role": "operator_business",
+        "confidence": 0.96,
+        "statement": "The Company manages the risk associated with consumer loans by monitoring factors such as portfolio size and growth, internal lending policies, and pertinent economic conditions.",
+        "start_character": 10860,
+        "end_character": 11038
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0000726854-26-000062",
+        "provenance_id": "provenance:SEC-FILING-0000726854-26-000062-3ca765477459acc7",
+        "accession_number": "0000726854-26-000062",
+        "filing_date": "2026-02-25",
+        "offering_role": "product",
+        "confidence": 0.92,
+        "statement": "Employee Development: We invest in the growth and development of our employees by providing various on-site and off-site training opportunities for them.",
+        "start_character": 19151,
+        "end_character": 19304
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0000726854-26-000062",
+        "provenance_id": "provenance:SEC-FILING-0000726854-26-000062-3ca765477459acc7",
+        "accession_number": "0000726854-26-000062",
+        "filing_date": "2026-02-25",
+        "offering_role": "operator_business",
+        "confidence": 0.92,
+        "statement": "We care about our employees and provide not only competitive compensation and benefit packages, but a work environment our employees characterize as \"family.\" We are committed to integrity and the highest ethical standards in regard to how we treat both our customers and our employees.",
+        "start_character": 16765,
+        "end_character": 17051
+      }
+    ]
+  },
+  "primary_business_lock": {
+    "status": "locked",
+    "update_mode": "manual_reclassification_only",
+    "classification_scope": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE"
+  },
   "path": {
     "theme": {
       "id": "theme:digital_assets",
