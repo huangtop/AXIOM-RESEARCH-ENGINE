@@ -6,7 +6,7 @@
     "INAC"
   ],
   "display_name": "Indigo Acquisition Corp.",
-  "status": "awaiting_business_evidence",
+  "status": "evidence_available_unclassified",
   "official_industry": {
     "classification_id": "classification:SEC-SIC-0002063816-6770",
     "scheme": "SEC_SIC",
@@ -84,7 +84,7 @@
   "thematic_classification": {
     "status": "unclassified",
     "taxonomy_layer": "axiom_theme_sector",
-    "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+    "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
   },
   "routing": {
     "status": "routed",
@@ -112,6 +112,117 @@
       "reason_code": "LOCKED_PRIMARY_BUSINESS_INVESTMENT_VEHICLE"
     }
   },
+  "primary_business_shadow_candidate": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "finance_insurance_real_estate",
+      "name": "Finance, Insurance and Real Estate"
+    },
+    "category": {
+      "id": "investment_holding_and_vehicles",
+      "name": "Investment Holding and Vehicles",
+      "source": "SEC_SIC",
+      "source_code": "6770"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0002063816-6770",
+      "scheme": "SEC_SIC",
+      "code": "6770",
+      "label": "Blank Checks",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-19T10:24:45.834543+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0002063816-09588a5668019a6e"
+      ]
+    },
+    "offering_roles": [
+      "operator_business",
+      "product"
+    ],
+    "offering_evidence_count": 7,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-034278",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-034278-705a739178e7ef3d",
+        "accession_number": "0001213900-26-034278",
+        "filing_date": "2026-03-26",
+        "offering_role": "operator_business",
+        "confidence": 0.96,
+        "statement": "subject us to negative economic, competitive, and regulatory developments, any or all of which may have a substantial adverse impact on the particular industry in which we operate after our initial Business Combination, and",
+        "start_character": 14752,
+        "end_character": 14975
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-034278",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-034278-705a739178e7ef3d",
+        "accession_number": "0001213900-26-034278",
+        "filing_date": "2026-03-26",
+        "offering_role": "product",
+        "confidence": 0.9,
+        "statement": "LLC (“Nasdaq”) listing rules require that we must complete one or more Business Combinations having an aggregate fair market",
+        "start_character": 10185,
+        "end_character": 10309
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-034278",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-034278-705a739178e7ef3d",
+        "accession_number": "0001213900-26-034278",
+        "filing_date": "2026-03-26",
+        "offering_role": "operator_business",
+        "confidence": 0.9,
+        "statement": "Shares in connection with our initial business combination will indicate whether we are requiring Public Shareholders to satisfy such",
+        "start_character": 26635,
+        "end_character": 26768
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-034278",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-034278-705a739178e7ef3d",
+        "accession_number": "0001213900-26-034278",
+        "filing_date": "2026-03-26",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "If we are unable to complete",
+        "start_character": 30952,
+        "end_character": 30980
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-034278",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-034278-705a739178e7ef3d",
+        "accession_number": "0001213900-26-034278",
+        "filing_date": "2026-03-26",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "We are a blank check",
+        "start_character": 17,
+        "end_character": 37
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-034278",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-034278-705a739178e7ef3d",
+        "accession_number": "0001213900-26-034278",
+        "filing_date": "2026-03-26",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "We are not limited to",
+        "start_character": 4236,
+        "end_character": 4257
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-034278",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-034278-705a739178e7ef3d",
+        "accession_number": "0001213900-26-034278",
+        "filing_date": "2026-03-26",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "We are not prohibited",
+        "start_character": 9564,
+        "end_character": 9585
+      }
+    ]
+  },
   "path": {
     "theme": null,
     "sector": null,
@@ -122,5 +233,5 @@
     }
   },
   "evidence": [],
-  "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+  "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
 }

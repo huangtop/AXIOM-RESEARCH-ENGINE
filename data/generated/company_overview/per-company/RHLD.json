@@ -6,7 +6,7 @@
     "RHLD"
   ],
   "display_name": "Resolute Holdings Management Common Stock",
-  "status": "awaiting_business_evidence",
+  "status": "evidence_available_unclassified",
   "official_industry": {
     "classification_id": "classification:SEC-SIC-0002039497-6199",
     "scheme": "SEC_SIC",
@@ -84,7 +84,7 @@
   "thematic_classification": {
     "status": "unclassified",
     "taxonomy_layer": "axiom_theme_sector",
-    "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+    "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
   },
   "routing": {
     "status": "routed",
@@ -112,6 +112,50 @@
       "reason_code": "LOCKED_PRIMARY_BUSINESS_FINANCIAL_INSTITUTION"
     }
   },
+  "primary_business_shadow_candidate": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "finance_insurance_real_estate",
+      "name": "Finance, Insurance and Real Estate"
+    },
+    "category": {
+      "id": "credit_and_lending",
+      "name": "Credit and Lending",
+      "source": "SEC_SIC",
+      "source_code": "6199"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0002039497-6199",
+      "scheme": "SEC_SIC",
+      "code": "6199",
+      "label": "Finance Services",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-19T10:24:45.834543+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0002039497-5c8a0e9bf441081f"
+      ]
+    },
+    "offering_roles": [
+      "product"
+    ],
+    "offering_evidence_count": 1,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0001104659-26-027050",
+        "provenance_id": "provenance:SEC-FILING-0001104659-26-027050-5b995dcdb44380d1",
+        "accession_number": "0001104659-26-027050",
+        "filing_date": "2026-03-12",
+        "offering_role": "product",
+        "confidence": 0.88,
+        "statement": "Husky, founded in 1953, and headquartered in Bolton, Ontario, is the leading global manufacturer of highly engineered injection molding equipment and aftermarket tooling and services.",
+        "start_character": 3065,
+        "end_character": 3248
+      }
+    ]
+  },
   "path": {
     "theme": null,
     "sector": null,
@@ -122,5 +166,5 @@
     }
   },
   "evidence": [],
-  "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+  "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
 }

@@ -6,7 +6,7 @@
     "PBM"
   ],
   "display_name": "Psyence Biomedical Ltd. - Common Shares",
-  "status": "awaiting_business_evidence",
+  "status": "evidence_available_unclassified",
   "official_industry": {
     "classification_id": "classification:SEC-SIC-0001985062-2834",
     "scheme": "SEC_SIC",
@@ -84,7 +84,7 @@
   "thematic_classification": {
     "status": "unclassified",
     "taxonomy_layer": "axiom_theme_sector",
-    "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+    "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
   },
   "routing": {
     "status": "routed",
@@ -111,6 +111,73 @@
       "reason_code": "LOCKED_PRIMARY_BUSINESS_BIOPHARMA"
     }
   },
+  "primary_business_shadow_candidate": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "manufacturing",
+      "name": "Manufacturing"
+    },
+    "category": {
+      "id": "pharmaceuticals_and_biotechnology",
+      "name": "Pharmaceuticals and Biotechnology",
+      "source": "SEC_SIC",
+      "source_code": "2834"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0001985062-2834",
+      "scheme": "SEC_SIC",
+      "code": "2834",
+      "label": "Pharmaceutical Preparations",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-19T10:24:45.834543+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0001985062-17f9c48f7cb0485b"
+      ]
+    },
+    "offering_roles": [
+      "operator_business",
+      "product"
+    ],
+    "offering_evidence_count": 3,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-070607",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-070607-09c298c8b60ed76b",
+        "accession_number": "0001213900-26-070607",
+        "filing_date": "2026-06-22",
+        "offering_role": "product",
+        "confidence": 0.9,
+        "statement": "We must ensure that all promotion and marketing, distribution, and labeling of any pharmaceutical products comply",
+        "start_character": 69779,
+        "end_character": 69892
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-070607",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-070607-09c298c8b60ed76b",
+        "accession_number": "0001213900-26-070607",
+        "filing_date": "2026-06-22",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "Additionally, even if we are granted an accelerated",
+        "start_character": 31080,
+        "end_character": 31131
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-070607",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-070607-09c298c8b60ed76b",
+        "accession_number": "0001213900-26-070607",
+        "filing_date": "2026-06-22",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "We are dedicated to addressing unmet mental health needs and",
+        "start_character": 9536,
+        "end_character": 9596
+      }
+    ]
+  },
   "path": {
     "theme": null,
     "sector": null,
@@ -121,5 +188,5 @@
     }
   },
   "evidence": [],
-  "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+  "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
 }

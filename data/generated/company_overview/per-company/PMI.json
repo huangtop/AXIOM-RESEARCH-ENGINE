@@ -6,7 +6,7 @@
     "PMI"
   ],
   "display_name": "Picard Medical, Inc. Common Stock",
-  "status": "awaiting_business_evidence",
+  "status": "evidence_available_unclassified",
   "official_industry": {
     "classification_id": "classification:SEC-SIC-0002030617-3841",
     "scheme": "SEC_SIC",
@@ -84,7 +84,7 @@
   "thematic_classification": {
     "status": "unclassified",
     "taxonomy_layer": "axiom_theme_sector",
-    "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+    "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
   },
   "routing": {
     "status": "routed",
@@ -111,6 +111,50 @@
       "reason_code": "LOCKED_PRIMARY_BUSINESS_GENERAL_OPERATING"
     }
   },
+  "primary_business_shadow_candidate": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "manufacturing",
+      "name": "Manufacturing"
+    },
+    "category": {
+      "id": "medical_devices_and_diagnostics",
+      "name": "Medical Devices and Diagnostics",
+      "source": "SEC_SIC",
+      "source_code": "3841"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0002030617-3841",
+      "scheme": "SEC_SIC",
+      "code": "3841",
+      "label": "Surgical & Medical Instruments & Apparatus",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-19T10:24:45.834543+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0002030617-6f6d0b0c9c5b80a7"
+      ]
+    },
+    "offering_roles": [
+      "product"
+    ],
+    "offering_evidence_count": 1,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0001437749-26-010133",
+        "provenance_id": "provenance:SEC-FILING-0001437749-26-010133-b0f813cf3c6d4bdd",
+        "accession_number": "0001437749-26-010133",
+        "filing_date": "2026-03-30",
+        "offering_role": "product",
+        "confidence": 0.84,
+        "statement": "Copeland reported owning equity in SynCardia Systems, the manufacturer of the CardioWest Total Artificial Heart.",
+        "start_character": 29288,
+        "end_character": 29400
+      }
+    ]
+  },
   "path": {
     "theme": null,
     "sector": null,
@@ -121,5 +165,5 @@
     }
   },
   "evidence": [],
-  "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+  "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
 }

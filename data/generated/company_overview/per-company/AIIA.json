@@ -6,7 +6,7 @@
     "AIIA"
   ],
   "display_name": "AI Infrastructure Acquisition Corp. Class A Ordinary Shares",
-  "status": "awaiting_business_evidence",
+  "status": "evidence_available_unclassified",
   "official_industry": {
     "classification_id": "classification:SEC-SIC-0002073553-6770",
     "scheme": "SEC_SIC",
@@ -84,7 +84,7 @@
   "thematic_classification": {
     "status": "unclassified",
     "taxonomy_layer": "axiom_theme_sector",
-    "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+    "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
   },
   "routing": {
     "status": "routed",
@@ -112,15 +112,77 @@
       "reason_code": "LOCKED_PRIMARY_BUSINESS_INVESTMENT_VEHICLE"
     }
   },
+  "primary_business_shadow_candidate": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "finance_insurance_real_estate",
+      "name": "Finance, Insurance and Real Estate"
+    },
+    "category": {
+      "id": "investment_holding_and_vehicles",
+      "name": "Investment Holding and Vehicles",
+      "source": "SEC_SIC",
+      "source_code": "6770"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0002073553-6770",
+      "scheme": "SEC_SIC",
+      "code": "6770",
+      "label": "Blank Checks",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-19T10:24:45.834543+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0002073553-156dbad2b880a37f"
+      ]
+    },
+    "offering_roles": [
+      "product"
+    ],
+    "offering_evidence_count": 1,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0001493152-26-011988",
+        "provenance_id": "provenance:SEC-FILING-0001493152-26-011988-5aef3619b225df3e",
+        "accession_number": "0001493152-26-011988",
+        "filing_date": "2026-03-20",
+        "offering_role": "product",
+        "confidence": 0.9,
+        "statement": "We will seek to acquire a business that has a defensible position within a target market as a result",
+        "start_character": 14064,
+        "end_character": 14164
+      }
+    ]
+  },
   "path": {
-    "theme": null,
-    "sector": null,
+    "theme": {
+      "id": "theme:advanced_semiconductors",
+      "name": "Advanced Semiconductors",
+      "display_name_zh_tw": "先進半導體",
+      "confidence": 0.6123
+    },
+    "sector": {
+      "id": "sector:semiconductors",
+      "name": "Semiconductors",
+      "display_name_zh_tw": "半導體",
+      "confidence": 0.6248
+    },
     "company": {
       "company_id": "company:US-CIK0002073553",
       "ticker": "AIIA",
       "display_name": "AI Infrastructure Acquisition Corp. Class A Ordinary Shares"
     }
   },
-  "evidence": [],
-  "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+  "evidence": [
+    {
+      "business_evidence_id": "business-evidence:SEC-0001493152-26-011988",
+      "form": "10-K",
+      "filing_date": "2026-03-20",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/2073553/000149315226011988/form10-k.htm",
+      "text_sha256": "cd85dc8924c7a2bf5e96708f73bd9172848cd72a4851adb354abf3b7b7e8b81d"
+    }
+  ],
+  "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
 }

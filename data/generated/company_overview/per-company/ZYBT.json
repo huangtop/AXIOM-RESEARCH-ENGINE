@@ -6,7 +6,7 @@
     "ZYBT"
   ],
   "display_name": "Zhengye Biotechnology Holding Limited - Class A Ordinary Shares",
-  "status": "awaiting_business_evidence",
+  "status": "evidence_available_unclassified",
   "official_industry": {
     "classification_id": "classification:SEC-SIC-0001975641-2834",
     "scheme": "SEC_SIC",
@@ -84,7 +84,7 @@
   "thematic_classification": {
     "status": "unclassified",
     "taxonomy_layer": "axiom_theme_sector",
-    "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+    "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
   },
   "routing": {
     "status": "routed",
@@ -111,15 +111,122 @@
       "reason_code": "LOCKED_PRIMARY_BUSINESS_BIOPHARMA"
     }
   },
+  "primary_business_shadow_candidate": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "manufacturing",
+      "name": "Manufacturing"
+    },
+    "category": {
+      "id": "pharmaceuticals_and_biotechnology",
+      "name": "Pharmaceuticals and Biotechnology",
+      "source": "SEC_SIC",
+      "source_code": "2834"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0001975641-2834",
+      "scheme": "SEC_SIC",
+      "code": "2834",
+      "label": "Pharmaceutical Preparations",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-19T10:24:45.834543+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0001975641-fae64c65c6e84c2f"
+      ]
+    },
+    "offering_roles": [
+      "operator_business",
+      "product"
+    ],
+    "offering_evidence_count": 5,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-048584",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-048584-b382ff5ba94a7195",
+        "accession_number": "0001213900-26-048584",
+        "filing_date": "2026-04-28",
+        "offering_role": "product",
+        "confidence": 0.92,
+        "statement": "We believe that the operating entity has developed a sophisticated quality control management",
+        "start_character": 87012,
+        "end_character": 87105
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-048584",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-048584-b382ff5ba94a7195",
+        "accession_number": "0001213900-26-048584",
+        "filing_date": "2026-04-28",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "of the date of this annual report, except as disclosed in this annual report, we are not aware of any warning, investigations, prosecutions,",
+        "start_character": 106073,
+        "end_character": 106213
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-048584",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-048584-b382ff5ba94a7195",
+        "accession_number": "0001213900-26-048584",
+        "filing_date": "2026-04-28",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "we are registering for sale, including that it could cause the value of such securities to significantly decline or become worthless.”",
+        "start_character": 3264,
+        "end_character": 3398
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-048584",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-048584-b382ff5ba94a7195",
+        "accession_number": "0001213900-26-048584",
+        "filing_date": "2026-04-28",
+        "offering_role": "product",
+        "confidence": 0.84,
+        "statement": "a manufacturer of veterinary vaccines, the operating entity production activities are governed by PRC laws and regulations, including",
+        "start_character": 104616,
+        "end_character": 104749
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-048584",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-048584-b382ff5ba94a7195",
+        "accession_number": "0001213900-26-048584",
+        "filing_date": "2026-04-28",
+        "offering_role": "product",
+        "confidence": 0.84,
+        "statement": "mission is to become a world-leading manufacturer of veterinary vaccines and to provide reliable veterinary vaccines to the world.",
+        "start_character": 11835,
+        "end_character": 11965
+      }
+    ]
+  },
   "path": {
-    "theme": null,
-    "sector": null,
+    "theme": {
+      "id": "theme:enterprise_software",
+      "name": "Enterprise Software and Services",
+      "display_name_zh_tw": "企業軟體與服務",
+      "confidence": 0.5336
+    },
+    "sector": {
+      "id": "sector:it_consulting_services",
+      "name": "IT Consulting Services",
+      "display_name_zh_tw": "IT 顧問與數位轉型服務",
+      "confidence": 0.5445
+    },
     "company": {
       "company_id": "company:US-CIK0001975641",
       "ticker": "ZYBT",
       "display_name": "Zhengye Biotechnology Holding Limited - Class A Ordinary Shares"
     }
   },
-  "evidence": [],
-  "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+  "evidence": [
+    {
+      "business_evidence_id": "business-evidence:SEC-0001213900-26-048584",
+      "form": "20-F",
+      "filing_date": "2026-04-28",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/1975641/000121390026048584/ea0287565-20f_zhengye.htm",
+      "text_sha256": "83e9cf7e9a94aa2f3f3dfd677852c717032a13e59c2f679d0c0acad72f92f912"
+    }
+  ],
+  "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
 }

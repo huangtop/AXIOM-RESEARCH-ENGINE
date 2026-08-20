@@ -6,7 +6,7 @@
     "XXI"
   ],
   "display_name": "Twenty One Capital, Inc. Class A Common Stock",
-  "status": "awaiting_business_evidence",
+  "status": "evidence_available_unclassified",
   "official_industry": {
     "classification_id": "classification:SEC-SIC-0002070457-6199",
     "scheme": "SEC_SIC",
@@ -84,7 +84,7 @@
   "thematic_classification": {
     "status": "unclassified",
     "taxonomy_layer": "axiom_theme_sector",
-    "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+    "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
   },
   "routing": {
     "status": "routed",
@@ -112,15 +112,123 @@
       "reason_code": "LOCKED_PRIMARY_BUSINESS_FINANCIAL_INSTITUTION"
     }
   },
+  "primary_business_shadow_candidate": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "finance_insurance_real_estate",
+      "name": "Finance, Insurance and Real Estate"
+    },
+    "category": {
+      "id": "credit_and_lending",
+      "name": "Credit and Lending",
+      "source": "SEC_SIC",
+      "source_code": "6199"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0002070457-6199",
+      "scheme": "SEC_SIC",
+      "code": "6199",
+      "label": "Finance Services",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-19T10:24:45.834543+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0002070457-e973acf27d96f37e"
+      ]
+    },
+    "offering_roles": [
+      "operator_business",
+      "product",
+      "service"
+    ],
+    "offering_evidence_count": 5,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-037460",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-037460-510368fe1793b8e2",
+        "accession_number": "0001213900-26-037460",
+        "filing_date": "2026-03-31",
+        "offering_role": "service",
+        "confidence": 0.96,
+        "statement": "network continues to materially increase, we anticipate that service providers may expand the currently available range of services and",
+        "start_character": 89386,
+        "end_character": 89521
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-037460",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-037460-510368fe1793b8e2",
+        "accession_number": "0001213900-26-037460",
+        "filing_date": "2026-03-31",
+        "offering_role": "product",
+        "confidence": 0.92,
+        "statement": "Additionally, we will be required to develop",
+        "start_character": 78133,
+        "end_character": 78177
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-037460",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-037460-510368fe1793b8e2",
+        "accession_number": "0001213900-26-037460",
+        "filing_date": "2026-03-31",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "As a result, the primary counterparty risk we are exposed to with respect to our Bitcoin is performance obligations",
+        "start_character": 55242,
+        "end_character": 55357
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-037460",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-037460-510368fe1793b8e2",
+        "accession_number": "0001213900-26-037460",
+        "filing_date": "2026-03-31",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "We are also contractually entitled to",
+        "start_character": 57293,
+        "end_character": 57330
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-037460",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-037460-510368fe1793b8e2",
+        "accession_number": "0001213900-26-037460",
+        "filing_date": "2026-03-31",
+        "offering_role": "product",
+        "confidence": 0.86,
+        "statement": "diligence when we believe it is warranted by market circumstances or otherwise.",
+        "start_character": 57460,
+        "end_character": 57539
+      }
+    ]
+  },
   "path": {
-    "theme": null,
-    "sector": null,
+    "theme": {
+      "id": "theme:education_technology",
+      "name": "Education Technology",
+      "display_name_zh_tw": "教育科技",
+      "confidence": 0.5391
+    },
+    "sector": {
+      "id": "sector:education_technology",
+      "name": "Education Technology",
+      "display_name_zh_tw": "線上教育平台",
+      "confidence": 0.5445
+    },
     "company": {
       "company_id": "company:US-CIK0002070457",
       "ticker": "XXI",
       "display_name": "Twenty One Capital, Inc. Class A Common Stock"
     }
   },
-  "evidence": [],
-  "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+  "evidence": [
+    {
+      "business_evidence_id": "business-evidence:SEC-0001213900-26-037460",
+      "form": "10-K",
+      "filing_date": "2026-03-31",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/2070457/000121390026037460/ea0280065-10k_twenty.htm",
+      "text_sha256": "e1572ec22fe20012e3ab0520be3c2828526a80b6861942ea81034a3319f20f6f"
+    }
+  ],
+  "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
 }

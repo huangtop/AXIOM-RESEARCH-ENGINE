@@ -6,7 +6,7 @@
     "CURB"
   ],
   "display_name": "Curbline Properties Corp. Common Stock",
-  "status": "awaiting_business_evidence",
+  "status": "evidence_available_unclassified",
   "official_industry": {
     "classification_id": "classification:SEC-SIC-0002027317-6500",
     "scheme": "SEC_SIC",
@@ -84,7 +84,7 @@
   "thematic_classification": {
     "status": "unclassified",
     "taxonomy_layer": "axiom_theme_sector",
-    "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+    "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
   },
   "routing": {
     "status": "routed",
@@ -111,6 +111,50 @@
       "reason_code": "LOCKED_PRIMARY_BUSINESS_REAL_ESTATE"
     }
   },
+  "primary_business_shadow_candidate": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "finance_insurance_real_estate",
+      "name": "Finance, Insurance and Real Estate"
+    },
+    "category": {
+      "id": "real_estate",
+      "name": "Real Estate",
+      "source": "SEC_SIC",
+      "source_code": "6500"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0002027317-6500",
+      "scheme": "SEC_SIC",
+      "code": "6500",
+      "label": "Real Estate",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-19T10:24:45.834543+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0002027317-64b9066396d26e20"
+      ]
+    },
+    "offering_roles": [
+      "operator_business"
+    ],
+    "offering_evidence_count": 1,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0001193125-26-043647",
+        "provenance_id": "provenance:SEC-FILING-0001193125-26-043647-20d8696b6e440db6",
+        "accession_number": "0001193125-26-043647",
+        "filing_date": "2026-02-10",
+        "offering_role": "operator_business",
+        "confidence": 0.92,
+        "statement": "The Company operates through an umbrella partnership, commonly referred to as an “UPREIT” structure, in which substantially all of the Company’s properties and assets are held through a subsidiary, Curbline Properties LP, a Delaware limited partnership (the “Operating Partnership”).",
+        "start_character": 4341,
+        "end_character": 4624
+      }
+    ]
+  },
   "path": {
     "theme": null,
     "sector": null,
@@ -121,5 +165,5 @@
     }
   },
   "evidence": [],
-  "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+  "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
 }
