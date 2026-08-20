@@ -6,7 +6,7 @@
     "BLK"
   ],
   "display_name": "BlackRock, Inc. Common Stock",
-  "status": "awaiting_business_evidence",
+  "status": "evidence_available_unclassified",
   "official_industry": {
     "classification_id": "classification:SEC-SIC-0002012383-6211",
     "scheme": "SEC_SIC",
@@ -84,7 +84,7 @@
   "thematic_classification": {
     "status": "unclassified",
     "taxonomy_layer": "axiom_theme_sector",
-    "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+    "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
   },
   "routing": {
     "status": "routed",
@@ -112,15 +112,165 @@
       "reason_code": "LOCKED_PRIMARY_BUSINESS_FINANCIAL_INSTITUTION"
     }
   },
+  "primary_business_shadow_candidate": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "finance_insurance_real_estate",
+      "name": "Finance, Insurance and Real Estate"
+    },
+    "category": {
+      "id": "securities_and_investment_services",
+      "name": "Securities and Investment Services",
+      "source": "SEC_SIC",
+      "source_code": "6211"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0002012383-6211",
+      "scheme": "SEC_SIC",
+      "code": "6211",
+      "label": "Security Brokers, Dealers & Flotation Companies",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-19T10:24:45.834543+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0002012383-40f52eb6d5d213a2"
+      ]
+    },
+    "offering_roles": [
+      "operator_business"
+    ],
+    "offering_evidence_count": 9,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0001193125-26-071966",
+        "provenance_id": "provenance:SEC-FILING-0001193125-26-071966-ae1e60a7e01f21e4",
+        "accession_number": "0001193125-26-071966",
+        "filing_date": "2026-02-25",
+        "offering_role": "operator_business",
+        "confidence": 0.96,
+        "statement": "Assets managed for other taxable institutions, including corporations, banks and third-party fund sponsors for which the Company provides sub-advisory services, totaled $1.2 trillion, or 19%, of long-term institutional AUM at year-end.",
+        "start_character": 26940,
+        "end_character": 27175
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001193125-26-071966",
+        "provenance_id": "provenance:SEC-FILING-0001193125-26-071966-ae1e60a7e01f21e4",
+        "accession_number": "0001193125-26-071966",
+        "filing_date": "2026-02-25",
+        "offering_role": "operator_business",
+        "confidence": 0.96,
+        "statement": "Similarly, the Company manages assets in products and accounts that have investment objectives which may conform to tax positions adopted by BlackRock or to specific tax rules.",
+        "start_character": 73835,
+        "end_character": 74011
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001193125-26-071966",
+        "provenance_id": "provenance:SEC-FILING-0001193125-26-071966-ae1e60a7e01f21e4",
+        "accession_number": "0001193125-26-071966",
+        "filing_date": "2026-02-25",
+        "offering_role": "operator_business",
+        "confidence": 0.96,
+        "statement": "The Company provides comprehensive healthcare and mental-health benefits to eligible employees, including medical, dental and vision coverage, health savings and spending accounts, counseling services, an employee assistance program and access to telemedicine services, where available.",
+        "start_character": 62223,
+        "end_character": 62509
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001193125-26-071966",
+        "provenance_id": "provenance:SEC-FILING-0001193125-26-071966-ae1e60a7e01f21e4",
+        "accession_number": "0001193125-26-071966",
+        "filing_date": "2026-02-25",
+        "offering_role": "operator_business",
+        "confidence": 0.92,
+        "statement": "BlackRock’s culture is underpinned by five core principles that unify its workforce and guide how it interacts with its employees, its clients, the communities in which it operates and its other stakeholders: (1) We are a fiduciary to our clients;",
+        "start_character": 57003,
+        "end_character": 57250
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001193125-26-071966",
+        "provenance_id": "provenance:SEC-FILING-0001193125-26-071966-ae1e60a7e01f21e4",
+        "accession_number": "0001193125-26-071966",
+        "filing_date": "2026-02-25",
+        "offering_role": "operator_business",
+        "confidence": 0.92,
+        "statement": "In addition, the Company manages $105 billion in liquid credit strategies which is included in active fixed income.",
+        "start_character": 40649,
+        "end_character": 40764
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001193125-26-071966",
+        "provenance_id": "provenance:SEC-FILING-0001193125-26-071966-ae1e60a7e01f21e4",
+        "accession_number": "0001193125-26-071966",
+        "filing_date": "2026-02-25",
+        "offering_role": "operator_business",
+        "confidence": 0.92,
+        "statement": "The Company offers both index-tracking ETFs, which seek to replicate the performance of a specific index, and active ETFs.",
+        "start_character": 20210,
+        "end_character": 20332
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001193125-26-071966",
+        "provenance_id": "provenance:SEC-FILING-0001193125-26-071966-ae1e60a7e01f21e4",
+        "accession_number": "0001193125-26-071966",
+        "filing_date": "2026-02-25",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "(2) We are One BlackRock (1BLK);",
+        "start_character": 57251,
+        "end_character": 57283
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001193125-26-071966",
+        "provenance_id": "provenance:SEC-FILING-0001193125-26-071966-ae1e60a7e01f21e4",
+        "accession_number": "0001193125-26-071966",
+        "filing_date": "2026-02-25",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "(3) We are passionate about performance;",
+        "start_character": 57284,
+        "end_character": 57324
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001193125-26-071966",
+        "provenance_id": "provenance:SEC-FILING-0001193125-26-071966-ae1e60a7e01f21e4",
+        "accession_number": "0001193125-26-071966",
+        "filing_date": "2026-02-25",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "and (5) We are committed to a better future.",
+        "start_character": 57358,
+        "end_character": 57402
+      }
+    ]
+  },
   "path": {
-    "theme": null,
-    "sector": null,
+    "theme": {
+      "id": "theme:digital_assets",
+      "name": "Digital Assets",
+      "display_name_zh_tw": "數位資產基礎設施",
+      "confidence": 0.7851
+    },
+    "sector": {
+      "id": "sector:digital_asset_infrastructure",
+      "name": "Digital Asset Infrastructure",
+      "display_name_zh_tw": "數位資產基礎設施",
+      "confidence": 0.8178
+    },
     "company": {
       "company_id": "company:US-CIK0002012383",
       "ticker": "BLK",
       "display_name": "BlackRock, Inc. Common Stock"
     }
   },
-  "evidence": [],
-  "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+  "evidence": [
+    {
+      "business_evidence_id": "business-evidence:SEC-0001193125-26-071966",
+      "form": "10-K",
+      "filing_date": "2026-02-25",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/2012383/000119312526071966/blk-20251231.htm",
+      "text_sha256": "a192058865752ed3b36c7fb3140558d8e89b84574290a11790fb0176bc199472"
+    }
+  ],
+  "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
 }
