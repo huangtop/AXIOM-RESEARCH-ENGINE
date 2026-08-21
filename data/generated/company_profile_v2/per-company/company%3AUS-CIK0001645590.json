@@ -12,7 +12,6 @@
   "product_stack": [
     "for high performance graphics and accelerated processing units",
     "Wireless LAN",
-    "Corporate Controller",
     "versatile HPE ProLiant Rack",
     "leveraging the same AI platform as our wireless",
     "wired switching portfolio"
@@ -644,5 +643,18 @@
     "discovered_product_count": 6,
     "final_product_count": 6,
     "removed_market_product_pollution": true
+  },
+  "product_stack_sanitizer": {
+    "version": "v2.6.6.2a",
+    "mode": "deterministic_production_boundary",
+    "before_count": 6,
+    "after_count": 5,
+    "removed_count": 1,
+    "removed": [
+      {
+        "value": "Corporate Controller",
+        "reason": "GENERIC_NON_PRODUCT_TEXT"
+      }
+    ]
   }
 }

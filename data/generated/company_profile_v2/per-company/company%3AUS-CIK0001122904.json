@@ -20,7 +20,6 @@
     "Unmanaged and Easy Smart Ethernet Switches",
     "NETGEAR Engage Controller",
     "Easy Smart Ethernet Switches",
-    "Corporate Controller",
     "AT&T",
     "cloud software",
     "Ingram Micro"
@@ -472,5 +471,18 @@
     "discovered_product_count": 10,
     "final_product_count": 11,
     "removed_market_product_pollution": true
+  },
+  "product_stack_sanitizer": {
+    "version": "v2.6.6.2a",
+    "mode": "deterministic_production_boundary",
+    "before_count": 11,
+    "after_count": 10,
+    "removed_count": 1,
+    "removed": [
+      {
+        "value": "Corporate Controller",
+        "reason": "GENERIC_NON_PRODUCT_TEXT"
+      }
+    ]
   }
 }

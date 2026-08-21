@@ -16,7 +16,6 @@
     "Managed Service Providers (“MSPs”)",
     "subscription-based managed Wi-Fi",
     "solution-specific Edge AI (e",
-    "including the monthly rental fees for STAX-5G product together with VeeaCloud management",
     "as just a cybersecurity software",
     "turnkey subscription-based “cellular-like” Wi-Fi",
     "security sensors",
@@ -352,5 +351,18 @@
     "discovered_product_count": 11,
     "final_product_count": 11,
     "removed_market_product_pollution": true
+  },
+  "product_stack_sanitizer": {
+    "version": "v2.6.6.2a",
+    "mode": "deterministic_production_boundary",
+    "before_count": 11,
+    "after_count": 10,
+    "removed_count": 1,
+    "removed": [
+      {
+        "value": "including the monthly rental fees for STAX-5G product together with VeeaCloud management",
+        "reason": "DANGLING_CLAUSE"
+      }
+    ]
   }
 }
