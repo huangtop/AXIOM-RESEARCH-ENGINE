@@ -7,17 +7,7 @@
   ],
   "display_name": "Ellsworth Growth and Income Fund Ltd.",
   "status": "awaiting_business_evidence",
-  "official_industry": {
-    "classification_id": "classification:SEC-SIC-0000793040-0000",
-    "scheme": "SEC_SIC",
-    "code": "0000",
-    "label": null,
-    "authority": "U.S. Securities and Exchange Commission",
-    "observed_at": "2026-08-19T10:24:45.834543+00:00",
-    "provenance_ids": [
-      "provenance:SEC-SUBMISSIONS-0000793040-fbd77ee2264ffab1"
-    ]
-  },
+  "official_industry": null,
   "primary_business": {
     "status": "official_only",
     "taxonomy_layer": "primary_business",
@@ -110,6 +100,34 @@
       ],
       "reason_code": "LOCKED_PRIMARY_BUSINESS_GENERAL_OPERATING"
     }
+  },
+  "primary_business_shadow_candidate": {
+    "status": "identity_only",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "CANONICAL_COMPANY_IDENTITY",
+    "division": {
+      "id": "finance_insurance_real_estate",
+      "name": "Finance, Insurance and Real Estate"
+    },
+    "category": {
+      "id": "investment_fund",
+      "name": "Investment Fund",
+      "source": "CANONICAL_COMPANY_IDENTITY",
+      "source_code": "INVESTMENT_FUND"
+    },
+    "category_evidence_status": "canonical_identity_only",
+    "industry": {
+      "classification_id": null,
+      "scheme": "CANONICAL_COMPANY_IDENTITY",
+      "code": "INVESTMENT_FUND",
+      "label": "Investment Fund",
+      "authority": "AXIOM canonical company registry",
+      "observed_at": null,
+      "provenance_ids": []
+    },
+    "offering_roles": [],
+    "offering_evidence_count": 0,
+    "offering_evidence": []
   },
   "path": {
     "theme": null,

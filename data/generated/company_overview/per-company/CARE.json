@@ -13,7 +13,7 @@
     "code": "6021",
     "label": "National Commercial Banks",
     "authority": "U.S. Securities and Exchange Commission",
-    "observed_at": "2026-08-19T10:24:45.834543+00:00",
+    "observed_at": "2026-08-20T10:25:11.237289+00:00",
     "provenance_ids": [
       "provenance:SEC-SUBMISSIONS-0001829576-a59b8e71715ded3f"
     ]
@@ -136,6 +136,61 @@
       ],
       "reason_code": "LOCKED_PRIMARY_BUSINESS_FINANCIAL_INSTITUTION"
     }
+  },
+  "primary_business_shadow_candidate": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "finance_insurance_real_estate",
+      "name": "Finance, Insurance and Real Estate"
+    },
+    "category": {
+      "id": "commercial_banking",
+      "name": "Commercial Banking",
+      "source": "SEC_SIC",
+      "source_code": "6021"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0001829576-6021",
+      "scheme": "SEC_SIC",
+      "code": "6021",
+      "label": "National Commercial Banks",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-20T10:25:11.237289+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0001829576-a59b8e71715ded3f"
+      ]
+    },
+    "offering_roles": [
+      "operator_business"
+    ],
+    "offering_evidence_count": 2,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0001829576-26-000018",
+        "provenance_id": "provenance:SEC-FILING-0001829576-26-000018-a08f1868554cd53b",
+        "accession_number": "0001829576-26-000018",
+        "filing_date": "2026-03-05",
+        "offering_role": "operator_business",
+        "confidence": 0.96,
+        "statement": "The Company provides a full range of commercial banking, consumer banking, mortgage and services through the Bank.",
+        "start_character": 1104,
+        "end_character": 1218
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001829576-26-000018",
+        "provenance_id": "provenance:SEC-FILING-0001829576-26-000018-a08f1868554cd53b",
+        "accession_number": "0001829576-26-000018",
+        "filing_date": "2026-03-05",
+        "offering_role": "operator_business",
+        "confidence": 0.92,
+        "statement": "The Company operates in an environment of ongoing regulatory change.",
+        "start_character": 18051,
+        "end_character": 18119
+      }
+    ]
   },
   "path": {
     "theme": null,

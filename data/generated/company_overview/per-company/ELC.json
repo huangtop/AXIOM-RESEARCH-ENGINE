@@ -6,14 +6,14 @@
     "ELC"
   ],
   "display_name": "Entergy Louisiana, Inc. Collateral Trust Mortgage Bonds, 4.875 % Series due September 1, 2066",
-  "status": "evidence_available_unclassified",
+  "status": "awaiting_business_evidence",
   "official_industry": {
     "classification_id": "classification:SEC-SIC-0001348952-4911",
     "scheme": "SEC_SIC",
     "code": "4911",
     "label": "Electric Services",
     "authority": "U.S. Securities and Exchange Commission",
-    "observed_at": "2026-08-19T10:24:45.834543+00:00",
+    "observed_at": "2026-08-20T10:25:11.237289+00:00",
     "provenance_ids": [
       "provenance:SEC-SUBMISSIONS-0001348952-75ed7941409ce4e5"
     ]
@@ -84,7 +84,7 @@
   "thematic_classification": {
     "status": "unclassified",
     "taxonomy_layer": "axiom_theme_sector",
-    "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
+    "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
   },
   "routing": {
     "status": "routed",
@@ -111,13 +111,38 @@
       "reason_code": "LOCKED_PRIMARY_BUSINESS_ASSET_HEAVY"
     }
   },
-  "path": {
-    "theme": {
-      "id": "theme:artificial_intelligence",
-      "name": "Artificial Intelligence",
-      "display_name_zh_tw": "人工智慧",
-      "confidence": 0.484
+  "primary_business_shadow_candidate": {
+    "status": "official_only",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC",
+    "division": {
+      "id": "transport_communications_utilities",
+      "name": "Transportation, Communications and Utilities"
     },
+    "category": {
+      "id": "utilities",
+      "name": "Utilities",
+      "source": "SEC_SIC",
+      "source_code": "4911"
+    },
+    "category_evidence_status": "official_only",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0001348952-4911",
+      "scheme": "SEC_SIC",
+      "code": "4911",
+      "label": "Electric Services",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-20T10:25:11.237289+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0001348952-75ed7941409ce4e5"
+      ]
+    },
+    "offering_roles": [],
+    "offering_evidence_count": 0,
+    "offering_evidence": []
+  },
+  "path": {
+    "theme": null,
     "sector": null,
     "company": {
       "company_id": "company:US-CIK0001348952",
@@ -125,14 +150,6 @@
       "display_name": "Entergy Louisiana, Inc. Collateral Trust Mortgage Bonds, 4.875 % Series due September 1, 2066"
     }
   },
-  "evidence": [
-    {
-      "business_evidence_id": "business-evidence:SEC-0000065984-26-000174",
-      "form": "10-K",
-      "filing_date": "2026-02-19",
-      "document_url": "https://www.sec.gov/Archives/edgar/data/1348952/000006598426000174/etr-20251231.htm",
-      "text_sha256": "c92561a503b5d5ca0cf5da510d67b3195b30dd7adf442c0c18b90c502dfdab7f"
-    }
-  ],
-  "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
+  "evidence": [],
+  "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
 }

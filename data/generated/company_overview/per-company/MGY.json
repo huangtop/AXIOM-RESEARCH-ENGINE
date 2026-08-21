@@ -13,7 +13,7 @@
     "code": "1311",
     "label": "Crude Petroleum & Natural Gas",
     "authority": "U.S. Securities and Exchange Commission",
-    "observed_at": "2026-08-19T10:24:45.834543+00:00",
+    "observed_at": "2026-08-20T10:25:11.237289+00:00",
     "provenance_ids": [
       "provenance:SEC-SUBMISSIONS-0001698990-685de5cea0941dbe"
     ]
@@ -135,6 +135,61 @@
       ],
       "reason_code": "LOCKED_PRIMARY_BUSINESS_ASSET_HEAVY"
     }
+  },
+  "primary_business_shadow_candidate": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "mining",
+      "name": "Mining"
+    },
+    "category": {
+      "id": "oil_and_gas",
+      "name": "Oil and Gas",
+      "source": "SEC_SIC",
+      "source_code": "1311"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0001698990-1311",
+      "scheme": "SEC_SIC",
+      "code": "1311",
+      "label": "Crude Petroleum & Natural Gas",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-20T10:25:11.237289+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0001698990-685de5cea0941dbe"
+      ]
+    },
+    "offering_roles": [
+      "operator_business"
+    ],
+    "offering_evidence_count": 2,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0001698990-26-000005",
+        "provenance_id": "provenance:SEC-FILING-0001698990-26-000005-deddf0d130312443",
+        "accession_number": "0001698990-26-000005",
+        "filing_date": "2026-02-12",
+        "offering_role": "operator_business",
+        "confidence": 0.96,
+        "statement": "As the managing member of Magnolia LLC, the Company operates and controls all of the business and affairs of Magnolia LLC and, through Magnolia LLC and its subsidiaries, conducts business.",
+        "start_character": 1016,
+        "end_character": 1204
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001698990-26-000005",
+        "provenance_id": "provenance:SEC-FILING-0001698990-26-000005-deddf0d130312443",
+        "accession_number": "0001698990-26-000005",
+        "filing_date": "2026-02-12",
+        "offering_role": "operator_business",
+        "confidence": 0.92,
+        "statement": "The Company operates in one reportable segment engaged in the acquisition, development, exploration, and production of oil and natural gas properties located in the United States.",
+        "start_character": 3618,
+        "end_character": 3797
+      }
+    ]
   },
   "path": {
     "theme": null,

@@ -6,14 +6,14 @@
     "GPJA"
   ],
   "display_name": "Georgia Power Company Series 2017A 5.00% Junior Subordinated Notes due October 1, 2077",
-  "status": "evidence_available_unclassified",
+  "status": "awaiting_business_evidence",
   "official_industry": {
     "classification_id": "classification:SEC-SIC-0000041091-4911",
     "scheme": "SEC_SIC",
     "code": "4911",
     "label": "Electric Services",
     "authority": "U.S. Securities and Exchange Commission",
-    "observed_at": "2026-08-19T10:24:45.834543+00:00",
+    "observed_at": "2026-08-20T10:25:11.237289+00:00",
     "provenance_ids": [
       "provenance:SEC-SUBMISSIONS-0000041091-441ef6182a1b89fa"
     ]
@@ -84,7 +84,7 @@
   "thematic_classification": {
     "status": "unclassified",
     "taxonomy_layer": "axiom_theme_sector",
-    "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
+    "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
   },
   "routing": {
     "status": "routed",
@@ -111,6 +111,36 @@
       "reason_code": "LOCKED_PRIMARY_BUSINESS_ASSET_HEAVY"
     }
   },
+  "primary_business_shadow_candidate": {
+    "status": "official_only",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC",
+    "division": {
+      "id": "transport_communications_utilities",
+      "name": "Transportation, Communications and Utilities"
+    },
+    "category": {
+      "id": "utilities",
+      "name": "Utilities",
+      "source": "SEC_SIC",
+      "source_code": "4911"
+    },
+    "category_evidence_status": "official_only",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0000041091-4911",
+      "scheme": "SEC_SIC",
+      "code": "4911",
+      "label": "Electric Services",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-20T10:25:11.237289+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0000041091-441ef6182a1b89fa"
+      ]
+    },
+    "offering_roles": [],
+    "offering_evidence_count": 0,
+    "offering_evidence": []
+  },
   "path": {
     "theme": null,
     "sector": null,
@@ -121,5 +151,5 @@
     }
   },
   "evidence": [],
-  "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
+  "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
 }

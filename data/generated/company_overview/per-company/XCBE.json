@@ -6,14 +6,14 @@
     "XCBE"
   ],
   "display_name": "X3 Acquisition Corp. Ltd. - Class A Ordinary Shares",
-  "status": "awaiting_business_evidence",
+  "status": "evidence_available_unclassified",
   "official_industry": {
     "classification_id": "classification:SEC-SIC-0002083493-6770",
     "scheme": "SEC_SIC",
     "code": "6770",
     "label": "Blank Checks",
     "authority": "U.S. Securities and Exchange Commission",
-    "observed_at": "2026-08-19T10:24:45.834543+00:00",
+    "observed_at": "2026-08-20T10:25:11.237289+00:00",
     "provenance_ids": [
       "provenance:SEC-SUBMISSIONS-0002083493-296ac449a4723632"
     ]
@@ -84,7 +84,7 @@
   "thematic_classification": {
     "status": "unclassified",
     "taxonomy_layer": "axiom_theme_sector",
-    "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+    "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
   },
   "routing": {
     "status": "routed",
@@ -112,6 +112,84 @@
       "reason_code": "LOCKED_PRIMARY_BUSINESS_INVESTMENT_VEHICLE"
     }
   },
+  "primary_business_shadow_candidate": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "finance_insurance_real_estate",
+      "name": "Finance, Insurance and Real Estate"
+    },
+    "category": {
+      "id": "investment_holding_and_vehicles",
+      "name": "Investment Holding and Vehicles",
+      "source": "SEC_SIC",
+      "source_code": "6770"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0002083493-6770",
+      "scheme": "SEC_SIC",
+      "code": "6770",
+      "label": "Blank Checks",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-20T10:25:11.237289+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0002083493-296ac449a4723632"
+      ]
+    },
+    "offering_roles": [
+      "operator_business",
+      "product"
+    ],
+    "offering_evidence_count": 4,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0001493152-26-012685",
+        "provenance_id": "provenance:SEC-FILING-0001493152-26-012685-493f9a82d3b0d143",
+        "accession_number": "0001493152-26-012685",
+        "filing_date": "2026-03-25",
+        "offering_role": "operator_business",
+        "confidence": 0.9,
+        "statement": "If we are unable to complete our initial business combination within the completion window, we will redeem",
+        "start_character": 5397,
+        "end_character": 5503
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001493152-26-012685",
+        "provenance_id": "provenance:SEC-FILING-0001493152-26-012685-493f9a82d3b0d143",
+        "accession_number": "0001493152-26-012685",
+        "filing_date": "2026-03-25",
+        "offering_role": "product",
+        "confidence": 0.9,
+        "statement": "We believe our team’s deep expertise in financial services, capital markets, and operational",
+        "start_character": 8307,
+        "end_character": 8399
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001493152-26-012685",
+        "provenance_id": "provenance:SEC-FILING-0001493152-26-012685-493f9a82d3b0d143",
+        "accession_number": "0001493152-26-012685",
+        "filing_date": "2026-03-25",
+        "offering_role": "product",
+        "confidence": 0.9,
+        "statement": "rules require that we must complete one or more business combinations having an aggregate fair market value of at least 80% of the value",
+        "start_character": 12211,
+        "end_character": 12347
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001493152-26-012685",
+        "provenance_id": "provenance:SEC-FILING-0001493152-26-012685-493f9a82d3b0d143",
+        "accession_number": "0001493152-26-012685",
+        "filing_date": "2026-03-25",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "We are not required to obtain such an opinion in any other context.",
+        "start_character": 16596,
+        "end_character": 16663
+      }
+    ]
+  },
   "path": {
     "theme": null,
     "sector": null,
@@ -122,5 +200,5 @@
     }
   },
   "evidence": [],
-  "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+  "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
 }

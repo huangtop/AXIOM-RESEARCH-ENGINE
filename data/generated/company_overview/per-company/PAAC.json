@@ -6,14 +6,14 @@
     "PAAC"
   ],
   "display_name": "Proem Acquisition Corp I",
-  "status": "awaiting_business_evidence",
+  "status": "evidence_available_unclassified",
   "official_industry": {
     "classification_id": "classification:SEC-SIC-0002087446-6770",
     "scheme": "SEC_SIC",
     "code": "6770",
     "label": "Blank Checks",
     "authority": "U.S. Securities and Exchange Commission",
-    "observed_at": "2026-08-19T10:24:45.834543+00:00",
+    "observed_at": "2026-08-20T10:25:11.237289+00:00",
     "provenance_ids": [
       "provenance:SEC-SUBMISSIONS-0002087446-0d9ece70e35338c6"
     ]
@@ -84,7 +84,7 @@
   "thematic_classification": {
     "status": "unclassified",
     "taxonomy_layer": "axiom_theme_sector",
-    "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+    "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
   },
   "routing": {
     "status": "routed",
@@ -112,8 +112,135 @@
       "reason_code": "LOCKED_PRIMARY_BUSINESS_INVESTMENT_VEHICLE"
     }
   },
+  "primary_business_shadow_candidate": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "finance_insurance_real_estate",
+      "name": "Finance, Insurance and Real Estate"
+    },
+    "category": {
+      "id": "investment_holding_and_vehicles",
+      "name": "Investment Holding and Vehicles",
+      "source": "SEC_SIC",
+      "source_code": "6770"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0002087446-6770",
+      "scheme": "SEC_SIC",
+      "code": "6770",
+      "label": "Blank Checks",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-20T10:25:11.237289+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0002087446-0d9ece70e35338c6"
+      ]
+    },
+    "offering_roles": [
+      "operator_business",
+      "product"
+    ],
+    "offering_evidence_count": 8,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-034861",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-034861-622fdd96cee91f77",
+        "accession_number": "0001213900-26-034861",
+        "filing_date": "2026-03-26",
+        "offering_role": "operator_business",
+        "confidence": 0.9,
+        "statement": "If we are unable to complete our initial business",
+        "start_character": 17723,
+        "end_character": 17772
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-034861",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-034861-622fdd96cee91f77",
+        "accession_number": "0001213900-26-034861",
+        "filing_date": "2026-03-26",
+        "offering_role": "operator_business",
+        "confidence": 0.9,
+        "statement": "We are focused on companies that leverage cutting-edge technology or novel business models to challenge incumbents",
+        "start_character": 11136,
+        "end_character": 11250
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-034861",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-034861-622fdd96cee91f77",
+        "accession_number": "0001213900-26-034861",
+        "filing_date": "2026-03-26",
+        "offering_role": "operator_business",
+        "confidence": 0.9,
+        "statement": "business combination and we are obligated to pay cash for our ordinary shares, these payments will reduce the resources available to us",
+        "start_character": 30321,
+        "end_character": 30456
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-034861",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-034861-622fdd96cee91f77",
+        "accession_number": "0001213900-26-034861",
+        "filing_date": "2026-03-26",
+        "offering_role": "product",
+        "confidence": 0.9,
+        "statement": "rules require that we must complete one or more business combinations having an aggregate fair market value of at least 80% of the value",
+        "start_character": 18813,
+        "end_character": 18949
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-034861",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-034861-622fdd96cee91f77",
+        "accession_number": "0001213900-26-034861",
+        "filing_date": "2026-03-26",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "(b) in which we have total annual gross revenue of at least $1.235 billion, or (c) in which we are deemed to be a large accelerated filer,",
+        "start_character": 27773,
+        "end_character": 27911
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-034861",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-034861-622fdd96cee91f77",
+        "accession_number": "0001213900-26-034861",
+        "filing_date": "2026-03-26",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "As such, we are eligible to",
+        "start_character": 26245,
+        "end_character": 26272
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-034861",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-034861-622fdd96cee91f77",
+        "accession_number": "0001213900-26-034861",
+        "filing_date": "2026-03-26",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "We are not presently engaged in, and we will not engage",
+        "start_character": 14474,
+        "end_character": 14529
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001213900-26-034861",
+        "provenance_id": "provenance:SEC-FILING-0001213900-26-034861-622fdd96cee91f77",
+        "accession_number": "0001213900-26-034861",
+        "filing_date": "2026-03-26",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "we are a “smaller reporting company” as defined in Item 10(f)(1) of Regulation S-K.",
+        "start_character": 28298,
+        "end_character": 28381
+      }
+    ]
+  },
   "path": {
-    "theme": null,
+    "theme": {
+      "id": "theme:artificial_intelligence",
+      "name": "Artificial Intelligence",
+      "display_name_zh_tw": "人工智慧",
+      "confidence": 0.5544
+    },
     "sector": null,
     "company": {
       "company_id": "company:US-CIK0002087446",
@@ -121,6 +248,14 @@
       "display_name": "Proem Acquisition Corp I"
     }
   },
-  "evidence": [],
-  "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+  "evidence": [
+    {
+      "business_evidence_id": "business-evidence:SEC-0001213900-26-034861",
+      "form": "10-K",
+      "filing_date": "2026-03-26",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/2087446/000121390026034861/ea0281107-10k_proem1.htm",
+      "text_sha256": "412fbd07bd7db40e13b8cebad337b3f41966edbc8b2378517742fce9bafc29ca"
+    }
+  ],
+  "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
 }
