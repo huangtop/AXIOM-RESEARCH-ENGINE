@@ -569,3 +569,204 @@ def test_translation_plan_never_calls_openai(monkeypatch):
 
     assert plan["openai_used"] is False
     assert plan["planned_count"] == 0
+
+
+def test_translation_repair_prompt_preserves_array_cardinality_rule():
+    module = _load_script()
+
+    source = {
+        "markets": [
+            "Data Center and AI",
+            "Automotive/Industrial",
+        ]
+    }
+
+    prompt = module._build_translation_repair_prompt(
+        symbol="TEST",
+        source=source,
+        validation_error=(
+            "translation item-count mismatch at $.markets: "
+            "source=2 translated=3"
+        ),
+        attempt=2,
+    )
+
+    assert "$.markets: array length=2" in prompt
+    assert "只能對應一個輸出 item" in prompt
+    assert "斜線" in prompt
+    assert "and" in prompt
+
+
+def test_openai_translation_retries_shape_mismatch_then_passes(
+    monkeypatch,
+    tmp_path,
+):
+    module = _load_script()
+
+    monkeypatch.setattr(
+        module,
+        "OPENAI_CACHE_ROOT",
+        tmp_path,
+    )
+
+    monkeypatch.setenv(
+        "OPENAI_API_KEY",
+        "test-key",
+    )
+
+    source = {
+        "markets": [
+            "Data Center and AI",
+            "Automotive/Industrial",
+        ]
+    }
+
+    calls = []
+
+    class FakeClient:
+        pass
+
+    def fake_request(
+        *,
+        client,
+        model,
+        prompt,
+    ):
+        calls.append(prompt)
+
+        if len(calls) == 1:
+            return {
+                "markets": [
+                    "資料中心",
+                    "人工智慧",
+                    "汽車／工業",
+                ]
+            }
+
+        return {
+            "markets": [
+                "資料中心與人工智慧",
+                "汽車／工業",
+            ]
+        }
+
+    class FakeOpenAI:
+        def __new__(cls):
+            return FakeClient()
+
+    import types
+    fake_module = types.SimpleNamespace(
+        OpenAI=FakeOpenAI
+    )
+
+    monkeypatch.setitem(
+        __import__("sys").modules,
+        "openai",
+        fake_module,
+    )
+
+    monkeypatch.setattr(
+        module,
+        "_request_openai_translation",
+        fake_request,
+    )
+
+    translated, result_source = (
+        module._translate_with_openai(
+            model="gpt-4.1-mini",
+            symbol="TEST",
+            source=source,
+        )
+    )
+
+    assert len(calls) == 2
+    assert translated["markets"] == [
+        "資料中心與人工智慧",
+        "汽車／工業",
+    ]
+    assert result_source == "API_REPAIR_2"
+
+
+def test_translation_array_lock_roundtrip_preserves_cardinality():
+    module = _load_script()
+
+    source = {
+        "markets": [
+            "Data Center and AI",
+            "Automotive/Industrial",
+        ],
+        "nested": {
+            "items": [
+                {"name": "A"},
+                {"name": "B"},
+            ]
+        },
+    }
+
+    locked = module._lock_translation_arrays(
+        source
+    )
+
+    assert locked["markets"] == {
+        "__axiom_array__": {
+            "0": "Data Center and AI",
+            "1": "Automotive/Industrial",
+        }
+    }
+
+    restored = (
+        module._unlock_translation_arrays(
+            locked
+        )
+    )
+
+    assert restored == source
+    assert len(restored["markets"]) == 2
+    assert len(
+        restored["nested"]["items"]
+    ) == 2
+
+
+def test_locked_translation_rejects_changed_array_keys():
+    module = _load_script()
+
+    broken = {
+        "__axiom_array__": {
+            "0": "A",
+            "1": "B",
+            "2": "C",
+        }
+    }
+
+    restored = (
+        module._unlock_translation_arrays(
+            broken
+        )
+    )
+
+    assert restored == [
+        "A",
+        "B",
+        "C",
+    ]
+
+
+def test_locked_translation_prompt_contains_array_guard():
+    module = _load_script()
+
+    prompt = (
+        module._build_locked_translation_prompt(
+            symbol="TEST",
+            source={
+                "markets": [
+                    "Data Center and AI",
+                    "Automotive/Industrial",
+                ]
+            },
+        )
+    )
+
+    assert "__axiom_array__" in prompt
+    assert '"0":"Data Center and AI"' in prompt
+    assert '"1":"Automotive/Industrial"' in prompt
+    assert "絕對不可翻譯或變更" in prompt
