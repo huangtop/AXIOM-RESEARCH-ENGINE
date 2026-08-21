@@ -536,6 +536,402 @@ def _assert_product_handoff(
         )
 
 
+TRANSLATION_CENSUS_SURFACE_FIELDS = (
+    "company_summary",
+    "product_stack",
+    "market_products",
+    "markets",
+    "customer_types",
+    "core_technologies",
+    "ai_exposure",
+    "demand_drivers",
+    "strategy_changes",
+)
+
+
+def _surface_value_present(
+    value: object,
+) -> bool:
+    if value is None:
+        return False
+
+    if isinstance(
+        value,
+        str,
+    ):
+        return bool(
+            value.strip()
+        )
+
+    if isinstance(
+        value,
+        (list, dict),
+    ):
+        return bool(
+            value
+        )
+
+    return True
+
+
+def _translation_readiness_row(
+    symbol: str,
+) -> dict:
+    normalized_symbol = (
+        str(symbol)
+        .strip()
+        .upper()
+    )
+
+    try:
+        profile = (
+            _load_canonical_profile(
+                normalized_symbol
+            )
+        )
+        source = (
+            _extract_translation_surface(
+                profile
+            )
+        )
+        _assert_product_handoff(
+            profile=profile,
+            translation_source=source,
+        )
+    except Exception as exc:
+        return {
+            "symbol": normalized_symbol,
+            "status": "FAIL",
+            "reasons": [
+                "CANONICAL_OR_HANDOFF_ERROR",
+            ],
+            "error": str(exc),
+            "canonical_product_count": None,
+            "translation_product_count": None,
+            "populated_surface_count": 0,
+            "populated_surface_fields": [],
+        }
+
+    canonical_products = [
+        str(value).strip()
+        for value in (
+            profile.get("product_stack")
+            or []
+        )
+        if str(value).strip()
+    ]
+
+    source_products = (
+        source.get("product_stack")
+        or []
+    )
+
+    populated_fields = [
+        field
+        for field in TRANSLATION_CENSUS_SURFACE_FIELDS
+        if _surface_value_present(
+            source.get(field)
+        )
+    ]
+
+    reasons = []
+
+    if not source.get("company_summary"):
+        reasons.append(
+            "EMPTY_COMPANY_SUMMARY"
+        )
+
+    if not source_products:
+        reasons.append(
+            "EMPTY_PRODUCT_STACK"
+        )
+
+    semantic_context_fields = {
+        "market_products",
+        "markets",
+        "customer_types",
+        "core_technologies",
+        "ai_exposure",
+        "demand_drivers",
+        "strategy_changes",
+    }
+
+    populated_context = [
+        field
+        for field in populated_fields
+        if field in semantic_context_fields
+    ]
+
+    if not populated_context:
+        reasons.append(
+            "NO_SEMANTIC_CONTEXT"
+        )
+
+    if (
+        len(source_products)
+        != len(canonical_products)
+    ):
+        return {
+            "symbol": normalized_symbol,
+            "company_id": profile.get(
+                "company_id"
+            ),
+            "status": "FAIL",
+            "reasons": [
+                "PRODUCT_CARDINALITY_MISMATCH",
+            ],
+            "canonical_product_count": len(
+                canonical_products
+            ),
+            "translation_product_count": len(
+                source_products
+            ),
+            "populated_surface_count": len(
+                populated_fields
+            ),
+            "populated_surface_fields": populated_fields,
+        }
+
+    status = (
+        "READY"
+        if not reasons
+        else "REVIEW"
+    )
+
+    return {
+        "symbol": normalized_symbol,
+        "company_id": profile.get(
+            "company_id"
+        ),
+        "status": status,
+        "reasons": reasons,
+        "canonical_product_count": len(
+            canonical_products
+        ),
+        "translation_product_count": len(
+            source_products
+        ),
+        "product_cardinality_match": True,
+        "canonical_handoff":
+            "read_back_verified",
+        "populated_surface_count": len(
+            populated_fields
+        ),
+        "populated_surface_fields": populated_fields,
+        "semantic_context_count": len(
+            populated_context
+        ),
+    }
+
+
+def _translation_production_census() -> dict:
+    index = _canonical_index()
+
+    symbols = sorted(
+        {
+            str(symbol)
+            .strip()
+            .upper()
+            for symbol in (
+                index.get("symbol_to_file")
+                or {}
+            )
+            if str(symbol).strip()
+        }
+    )
+
+    rows = [
+        _translation_readiness_row(
+            symbol
+        )
+        for symbol in symbols
+    ]
+
+    counts = {
+        "READY": 0,
+        "REVIEW": 0,
+        "FAIL": 0,
+    }
+
+    for row in rows:
+        status = row.get("status")
+        if status in counts:
+            counts[status] += 1
+
+    reason_counts = {}
+
+    for row in rows:
+        for reason in (
+            row.get("reasons")
+            or []
+        ):
+            reason_counts[reason] = (
+                reason_counts.get(
+                    reason,
+                    0,
+                )
+                + 1
+            )
+
+    attention_rows = [
+        row
+        for row in rows
+        if row.get("status")
+        != "READY"
+    ]
+
+    return {
+        "schema_version":
+            "axiom-company-profile-translation-production-census.v2.6.5.8",
+        "mode":
+            "zero_api_canonical_readback",
+        "openai_used":
+            False,
+        "canonical_company_count":
+            len(symbols),
+        "summary": {
+            "total": len(rows),
+            "ready": counts["READY"],
+            "review": counts["REVIEW"],
+            "fail": counts["FAIL"],
+            "ready_rate": (
+                round(
+                    counts["READY"]
+                    / len(rows),
+                    4,
+                )
+                if rows
+                else 0.0
+            ),
+            "usable_rate": (
+                round(
+                    (
+                        counts["READY"]
+                        + counts["REVIEW"]
+                    )
+                    / len(rows),
+                    4,
+                )
+                if rows
+                else 0.0
+            ),
+        },
+        "reason_counts":
+            dict(
+                sorted(
+                    reason_counts.items(),
+                    key=lambda item: (
+                        -item[1],
+                        item[0],
+                    ),
+                )
+            ),
+        "attention_rows":
+            attention_rows,
+        "rows":
+            rows,
+    }
+
+
+def _translation_census_one_screen(
+    census: dict,
+) -> str:
+    summary = (
+        census.get("summary")
+        or {}
+    )
+
+    lines = [
+        "=== V2.6.5.8 Translation Production Census ===",
+        "",
+        (
+            f"Canonical companies  "
+            f"{summary.get('total', 0):>4}"
+        ),
+        (
+            f"READY                "
+            f"{summary.get('ready', 0):>4}"
+        ),
+        (
+            f"REVIEW               "
+            f"{summary.get('review', 0):>4}"
+        ),
+        (
+            f"FAIL                 "
+            f"{summary.get('fail', 0):>4}"
+        ),
+        (
+            f"Ready rate           "
+            f"{summary.get('ready_rate', 0.0) * 100:.1f}%"
+        ),
+        (
+            f"Usable rate          "
+            f"{summary.get('usable_rate', 0.0) * 100:.1f}%"
+        ),
+        "",
+        "Top readiness reasons",
+    ]
+
+    reason_counts = (
+        census.get("reason_counts")
+        or {}
+    )
+
+    if reason_counts:
+        for reason, count in list(
+            reason_counts.items()
+        )[:12]:
+            lines.append(
+                f"  {reason:<32} {count:>4}"
+            )
+    else:
+        lines.append("  -")
+
+    attention = (
+        census.get("attention_rows")
+        or []
+    )
+
+    if attention:
+        lines.extend(
+            [
+                "",
+                "Attention",
+            ]
+        )
+
+        for row in attention[:40]:
+            reasons = (
+                ", ".join(
+                    row.get("reasons")
+                    or []
+                )
+                or "-"
+            )
+
+            lines.append(
+                (
+                    f"  {row.get('symbol', ''):<6} "
+                    f"{row.get('status', ''):<7} "
+                    f"products="
+                    f"{row.get('translation_product_count')} "
+                    f"surface="
+                    f"{row.get('populated_surface_count', 0)} "
+                    f"{reasons}"
+                )
+            )
+
+        if len(attention) > 40:
+            lines.append(
+                (
+                    f"  ... "
+                    f"{len(attention) - 40} more"
+                )
+            )
+
+    return "\n".join(lines)
+
+
 def _build_translation_prompt(
     *,
     symbol: str,
@@ -1044,7 +1440,59 @@ def main() -> int:
         ),
     )
 
+    parser.add_argument(
+        "--translation-census",
+        action="store_true",
+        help=(
+            "Run a zero-API translation readiness census over every "
+            "production canonical profile."
+        ),
+    )
+
+    parser.add_argument(
+        "--translation-census-json",
+        action="store_true",
+        help=(
+            "With --translation-census, print full machine-readable JSON."
+        ),
+    )
+
     args = parser.parse_args()
+
+    if args.translation_census:
+        census = (
+            _translation_production_census()
+        )
+
+        if args.translation_census_json:
+            print(
+                json.dumps(
+                    census,
+                    ensure_ascii=False,
+                    indent=2,
+                )
+            )
+        else:
+            print(
+                _translation_census_one_screen(
+                    census
+                )
+            )
+
+        return (
+            1
+            if (
+                census.get(
+                    "summary",
+                    {},
+                ).get(
+                    "fail",
+                    0,
+                )
+                > 0
+            )
+            else 0
+        )
 
     explicit_symbols = []
 

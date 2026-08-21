@@ -239,3 +239,134 @@ def test_v2658_empty_product_stack_fails_promotion():
     )
     assert gate["status"] == "FAIL"
     assert "EMPTY_PRODUCT_STACK" in gate["issue_types"]
+
+
+def test_translation_readiness_row_ready_for_complete_surface(monkeypatch):
+    module = _load_script()
+
+    profile = {
+        "symbol": "TEST",
+        "company_id": "company:test",
+        "company_summary": {
+            "one_line_business": "Example company"
+        },
+        "product_stack": ["Product A"],
+        "market_products": {},
+        "markets": ["Data Center"],
+        "customer_types": [],
+        "core_technologies": [],
+        "ai_exposure": None,
+        "demand_drivers": [],
+        "strategy_changes": [],
+    }
+
+    monkeypatch.setattr(
+        module,
+        "_load_canonical_profile",
+        lambda symbol: profile,
+    )
+
+    row = module._translation_readiness_row(
+        "TEST"
+    )
+
+    assert row["status"] == "READY"
+    assert row["canonical_handoff"] == "read_back_verified"
+    assert row["canonical_product_count"] == 1
+    assert row["translation_product_count"] == 1
+    assert row["product_cardinality_match"] is True
+
+
+def test_translation_readiness_row_reviews_empty_product_stack(monkeypatch):
+    module = _load_script()
+
+    profile = {
+        "symbol": "TEST",
+        "company_id": "company:test",
+        "company_summary": {
+            "one_line_business": "Example company"
+        },
+        "product_stack": [],
+        "market_products": {},
+        "markets": ["Data Center"],
+        "customer_types": [],
+        "core_technologies": [],
+        "ai_exposure": None,
+        "demand_drivers": [],
+        "strategy_changes": [],
+    }
+
+    monkeypatch.setattr(
+        module,
+        "_load_canonical_profile",
+        lambda symbol: profile,
+    )
+
+    row = module._translation_readiness_row(
+        "TEST"
+    )
+
+    assert row["status"] == "REVIEW"
+    assert "EMPTY_PRODUCT_STACK" in row["reasons"]
+
+
+def test_translation_production_census_never_calls_openai(monkeypatch):
+    module = _load_script()
+
+    monkeypatch.setattr(
+        module,
+        "_canonical_index",
+        lambda: {
+            "symbol_to_file": {
+                "AAA": "per-company/a.json",
+                "BBB": "per-company/b.json",
+            }
+        },
+    )
+
+    rows = {
+        "AAA": {
+            "symbol": "AAA",
+            "status": "READY",
+            "reasons": [],
+        },
+        "BBB": {
+            "symbol": "BBB",
+            "status": "REVIEW",
+            "reasons": [
+                "EMPTY_PRODUCT_STACK",
+            ],
+        },
+    }
+
+    monkeypatch.setattr(
+        module,
+        "_translation_readiness_row",
+        lambda symbol: rows[symbol],
+    )
+
+    def forbidden_openai(**kwargs):
+        raise AssertionError(
+            "translation census touched OpenAI"
+        )
+
+    monkeypatch.setattr(
+        module,
+        "_translate_with_openai",
+        forbidden_openai,
+    )
+
+    census = module._translation_production_census()
+
+    assert census["openai_used"] is False
+    assert census["summary"] == {
+        "total": 2,
+        "ready": 1,
+        "review": 1,
+        "fail": 0,
+        "ready_rate": 0.5,
+        "usable_rate": 1.0,
+    }
+    assert census["reason_counts"] == {
+        "EMPTY_PRODUCT_STACK": 1,
+    }
