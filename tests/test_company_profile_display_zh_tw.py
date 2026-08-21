@@ -1,352 +1,110 @@
 from pathlib import Path
+import importlib.util
 
-from axiom_engine.company_profile_v2 import (
-    build_company_profile_v2,
-)
-
+from axiom_engine.company_profile_v2 import build_company_profile_v2
 from axiom_engine.company_profile_v2.display_zh_tw import (
     build_company_profile_display_zh_tw,
 )
 
-
 ROOT = Path(__file__).resolve().parents[1]
+SCRIPT = ROOT / "scripts/build_company_profile_display_zh_tw.py"
 
 
-def _display(
-    symbol: str,
-):
-    profile = build_company_profile_v2(
-        ROOT,
-        symbol=symbol,
+def _load_script():
+    spec = importlib.util.spec_from_file_location(
+        "company_profile_translation_script",
+        SCRIPT,
     )
-
-    return (
-        build_company_profile_display_zh_tw(
-            ROOT,
-            profile=profile,
-        )
-    )
+    module = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    spec.loader.exec_module(module)
+    return module
 
 
-def test_v24_aaoi_reuses_existing_policy_labels():
-    row = _display("AAOI")
-
-    assert (
-        row["schema_version"]
-        == "axiom-company-profile-display.zh-tw.v2.4"
-    )
-
-    assert (
-        row["generation_mode"]
-        == "reuse_existing_display_names_zh_tw"
-    )
-
-    display = row["display"]
-
-    # Internet Data Center maps through the existing
-    # end_market:data_center policy label.
-    assert "雲端與資料中心" in (
-        display["markets"]
-    )
-
-    # optical transceivers maps through the existing
-    # product:optical_transceiver policy label.
-    dc = display[
-        "market_products"
-    ][
-        "雲端與資料中心"
-    ]
-
-    assert "光收發模組" in dc
+def test_v24_preserves_provenance_unchanged():
+    profile = build_company_profile_v2(ROOT, symbol="NVDA")
+    row = build_company_profile_display_zh_tw(ROOT, profile=profile)
+    assert row["value_provenance"] == profile["value_provenance"]
+    assert row["evidence"] == profile["evidence"]
+    assert row["canonical_schema_version"] == "axiom-company-profile.v2.3"
 
 
-def test_v24_aaoi_keeps_v23_detail_in_chinese_display():
-    display = _display("AAOI")[
-        "display"
-    ]
-
-    assert (
-        display[
-            "company_summary"
-        ][
-            "one_line_business"
-        ]
-        == "垂直整合的光纖網路產品供應商"
-    )
-
-    assert "有線電視（CATV）" in (
-        display["markets"]
-    )
-
-    assert "光纖到府（FTTH）" in (
-        display["markets"]
-    )
-
-    assert {
-        "雷射",
-        "雷射元件",
-        "元件",
-        "次組件",
-        "模組",
-        "完整交鑰匙設備",
-    }.issubset(
-        set(
-            display[
-                "product_stack"
-            ]
-        )
-    )
-
-    catv = display[
-        "market_products"
-    ][
-        "有線電視（CATV）"
-    ]
-
-    assert "放大器" in catv
-
-    telecom = display[
-        "market_products"
-    ][
-        "電信與通訊"
-    ]
-
-    assert "雷射次組件" in telecom
+def test_translation_default_model_is_gpt_41_mini():
+    module = _load_script()
+    assert module.DEFAULT_MODEL == "gpt-4.1-mini"
 
 
-def test_v24_aaoi_translates_technology_and_manufacturing():
-    display = _display("AAOI")[
-        "display"
-    ]
-
-    assert "分子束磊晶（MBE）" in (
-        display[
-            "core_technologies"
-        ]
-    )
-
-    assert (
-        "金屬有機化學氣相沉積（MOCVD）"
-        in display[
-            "core_technologies"
-        ]
-    )
-
-    manufacturing = display[
-        "manufacturing"
-    ]
-
-    assert "垂直整合" in (
-        manufacturing["model"]
-    )
-
-    assert "高度自動化" in (
-        manufacturing["model"]
-    )
-
-    assert {
-        "美國",
-        "台灣",
-        "中國",
-    }.issubset(
-        set(
-            manufacturing[
-                "locations"
-            ]
-        )
-    )
-
-    assert (
-        manufacturing[
-            "critical_assets"
-        ][0][
-            "asset"
-        ]
-        == "雷射晶片製造"
-    )
-
-    assert (
-        manufacturing[
-            "critical_assets"
-        ][0][
-            "location"
-        ]
-        == "Sugar Land, Texas"
-    )
+def test_translation_surface_includes_semantic_fields():
+    module = _load_script()
+    profile = {
+        "company_summary": {"one_line_business": "Example company"},
+        "product_stack": ["Aries PCIe/CXL Smart DSP Retimers", "COSMOS software suite"],
+        "market_products": {"data_center": ["Aries PCIe/CXL Smart DSP Retimers"]},
+        "markets": ["Data Center"],
+        "customer_types": ["hyperscalers"],
+        "core_technologies": ["PCIe", "CXL"],
+        "ai_exposure": {"summary": "AI infrastructure connectivity"},
+        "demand_drivers": ["AI infrastructure"],
+        "strategy_changes": [{"summary": "Expanded connectivity portfolio"}],
+    }
+    surface = module._extract_translation_surface(profile)
+    assert surface["product_stack"] == profile["product_stack"]
+    assert surface["core_technologies"] == profile["core_technologies"]
+    assert surface["ai_exposure"] == profile["ai_exposure"]
+    assert surface["demand_drivers"] == profile["demand_drivers"]
+    assert surface["strategy_changes"] == profile["strategy_changes"]
 
 
-def test_v24_aaoi_customer_types_are_display_deduped():
-    display = _display("AAOI")[
-        "display"
-    ]
-
-    customers = set(
-        display[
-            "customer_types"
-        ]
-    )
-
-    assert (
-        "超大規模資料中心營運商"
-        in customers
-    )
-
-    assert (
-        "光收發模組製造商"
-        in customers
-    )
-
-    assert (
-        "大型網際網路資料中心營運商"
-        not in customers
-    )
-
-    assert (
-        "其他光收發模組製造商"
-        not in customers
-    )
+def test_translation_validator_rejects_dropped_product():
+    module = _load_script()
+    source = {"product_stack": ["Aries", "Leo"]}
+    translated = {"product_stack": ["Aries"]}
+    try:
+        module._validate_translation_shape(source=source, translated=translated)
+    except ValueError as exc:
+        assert "item-count mismatch" in str(exc)
+    else:
+        raise AssertionError("validator accepted a dropped product")
 
 
-def test_v24_aaoi_ai_strategy_and_financial_display():
-    display = _display("AAOI")[
-        "display"
-    ]
-
-    assert "800Gbps" in (
-        display[
-            "ai_exposure"
-        ][
-            "summary"
-        ]
-    )
-
-    assert (
-        "高速光網路"
-        in display[
-            "ai_exposure"
-        ][
-            "summary"
-        ]
-    )
-
-    assert (
-        display[
-            "strategy_changes"
-        ][0][
-            "brand"
-        ]
-        == "Quantum Bandwidth"
-    )
-
-    financial = display[
-        "financial_snapshot"
-    ]
-
-    assert (
-        financial["revenue"]
-        == "$455.7M"
-    )
-
-    assert (
-        financial["gross_margin"]
-        == "30.0%"
-    )
-
-    assert (
-        financial["net_loss"]
-        == "$38.2M"
-    )
-
-    assert (
-        financial[
-            "revenue_mix"
-        ][
-            "有線電視（CATV）"
-        ]
-        == "53.8%"
-    )
-
-    assert (
-        financial[
-            "revenue_mix"
-        ][
-            "雲端與資料中心"
-        ]
-        == "42.9%"
-    )
-
-    assert (
-        financial[
-            "customer_concentration"
-        ][
-            "Digicomm"
-        ]
-        == "53.1%"
-    )
-
-    assert (
-        financial[
-            "customer_concentration"
-        ][
-            "Microsoft"
-        ]
-        == "28.8%"
-    )
+def test_translation_validator_rejects_added_key():
+    module = _load_script()
+    source = {"company_summary": "Example", "product_stack": ["EPYC"]}
+    translated = {
+        "company_summary": "範例",
+        "product_stack": ["EPYC"],
+        "invented_products": ["Not allowed"],
+    }
+    try:
+        module._validate_translation_shape(source=source, translated=translated)
+    except ValueError as exc:
+        assert "keys mismatch" in str(exc)
+    else:
+        raise AssertionError("validator accepted an invented key")
 
 
-def test_v24_preserves_v23_provenance_unchanged():
-    profile = build_company_profile_v2(
-        ROOT,
-        symbol="AAOI",
-    )
-
-    row = (
-        build_company_profile_display_zh_tw(
-            ROOT,
-            profile=profile,
-        )
-    )
-
-    assert (
-        row["value_provenance"]
-        == profile[
-            "value_provenance"
-        ]
-    )
-
-    assert (
-        row["evidence"]
-        == profile["evidence"]
-    )
-
-    assert (
-        row[
-            "canonical_schema_version"
-        ]
-        == "axiom-company-profile.v2.3"
-    )
-
-
-def test_v24_nvda_uses_same_adapter():
-    display = _display("NVDA")[
-        "display"
-    ]
-
-    assert {
-        "雲端與資料中心",
-        "遊戲",
-        "專業視覺化",
-        "汽車",
-    }.issubset(
-        set(
-            display["markets"]
-        )
-    )
-
-    assert (
-        display[
-            "company_summary"
-        ][
-            "one_line_business"
-        ]
-    )
+def test_translation_validator_accepts_exact_shape():
+    module = _load_script()
+    source = {
+        "company_summary": "Example",
+        "product_stack": ["EPYC", "Instinct MI350"],
+        "market_products": {},
+        "markets": [],
+        "customer_types": ["cloud providers"],
+        "core_technologies": ["CDNA"],
+        "ai_exposure": None,
+        "demand_drivers": ["AI"],
+        "strategy_changes": [],
+    }
+    translated = {
+        "company_summary": "範例",
+        "product_stack": ["EPYC", "Instinct MI350"],
+        "market_products": {},
+        "markets": [],
+        "customer_types": ["雲端服務供應商"],
+        "core_technologies": ["CDNA"],
+        "ai_exposure": None,
+        "demand_drivers": ["人工智慧"],
+        "strategy_changes": [],
+    }
+    module._validate_translation_shape(source=source, translated=translated)

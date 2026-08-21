@@ -40,7 +40,7 @@ TRANSLATION_CENSUS = (
     / "translation_universe_census_v2640.json"
 )
 
-DEFAULT_MODEL = "gpt-4.1-nano"
+DEFAULT_MODEL = "gpt-4.1-mini"
 
 OPENAI_CACHE_ROOT = (
     OUTPUT_ROOT / ".openai_cache"
@@ -327,6 +327,14 @@ def _extract_translation_surface(
             markets,
         "customer_types":
             customer_types,
+        "core_technologies":
+            profile.get("core_technologies") or [],
+        "ai_exposure":
+            profile.get("ai_exposure"),
+        "demand_drivers":
+            profile.get("demand_drivers") or [],
+        "strategy_changes":
+            profile.get("strategy_changes") or [],
     }
 
 
@@ -347,7 +355,11 @@ def _build_translation_prompt(
         "5. 不要提供投資建議、估值、評論、摘要、解釋或 Markdown。\n"
         "6. 如果來源 fragment 明顯像 SEC 法律文字、客戶名稱、"
         "競爭者名稱或不完整片段，只忠實翻譯，不要美化成新的產品或市場事實。\n"
-        "7. 只回傳 JSON。\n\n"
+        "7. 陣列項目數與順序必須和來源完全一致，不得合併、刪除或新增項目。\n"
+        "8. 品牌、產品家族、型號、技術標準與商標必須保留原文拼寫；"
+        "例如 Aries、Leo、Scorpio、COSMOS、EPYC、Instinct、Ryzen、Radeon、"
+        "Pensando、PCIe、CXL、Ethernet。\n"
+        "9. 只回傳 JSON。\n\n"
         f"SYMBOL: {symbol}\n"
         "SOURCE_JSON:\n"
         + json.dumps(
@@ -385,6 +397,82 @@ def _translation_cache_key(
         f"{safe_model}__"
         f"{digest}.json"
     )
+
+
+
+def _validate_translation_shape(
+    *,
+    source: object,
+    translated: object,
+    path: str = "$",
+) -> None:
+    """Translation may change strings, never the JSON structure/cardinality."""
+    if source is None:
+        if translated is not None:
+            raise ValueError(
+                f"translation shape mismatch at {path}: expected null"
+            )
+        return
+
+    if isinstance(source, dict):
+        if not isinstance(translated, dict):
+            raise ValueError(
+                f"translation shape mismatch at {path}: expected object"
+            )
+        if set(translated) != set(source):
+            missing = sorted(set(source) - set(translated))
+            extra = sorted(set(translated) - set(source))
+            raise ValueError(
+                f"translation keys mismatch at {path}: "
+                f"missing={missing} extra={extra}"
+            )
+        for key, value in source.items():
+            _validate_translation_shape(
+                source=value,
+                translated=translated[key],
+                path=f"{path}.{key}",
+            )
+        return
+
+    if isinstance(source, list):
+        if not isinstance(translated, list):
+            raise ValueError(
+                f"translation shape mismatch at {path}: expected array"
+            )
+        if len(translated) != len(source):
+            raise ValueError(
+                f"translation item-count mismatch at {path}: "
+                f"source={len(source)} translated={len(translated)}"
+            )
+        for index, value in enumerate(source):
+            _validate_translation_shape(
+                source=value,
+                translated=translated[index],
+                path=f"{path}[{index}]",
+            )
+        return
+
+    if isinstance(source, bool):
+        if not isinstance(translated, bool):
+            raise ValueError(
+                f"translation type mismatch at {path}: expected bool"
+            )
+        return
+
+    if isinstance(source, (int, float)):
+        if (
+            not isinstance(translated, (int, float))
+            or isinstance(translated, bool)
+        ):
+            raise ValueError(
+                f"translation type mismatch at {path}: expected number"
+            )
+        return
+
+    if not isinstance(translated, str):
+        raise ValueError(
+            f"translation type mismatch at {path}: expected string"
+        )
 
 
 def _load_translation_cache(
@@ -425,6 +513,14 @@ def _load_translation_cache(
         translated,
         dict,
     ):
+        return None
+
+    try:
+        _validate_translation_shape(
+            source=source,
+            translated=translated,
+        )
+    except ValueError:
         return None
 
     return translated
@@ -520,14 +616,10 @@ def _translate_with_openai(
             "OpenAI output is not a JSON object"
         )
 
-    if set(
-        translated.keys()
-    ) != set(
-        source.keys()
-    ):
-        raise ValueError(
-            "OpenAI output keys do not match source keys"
-        )
+    _validate_translation_shape(
+        source=source,
+        translated=translated,
+    )
 
     _write_translation_cache(
         model=model,
@@ -576,6 +668,7 @@ def _build_openai_payload(
         "model": model,
         "mode": "company_profile_translation_only",
         "result_source": translation_source,
+        "validation": "exact_json_shape_and_array_cardinality",
     }
 
     payload[
