@@ -636,18 +636,22 @@ def test_openai_translation_retries_shape_mismatch_then_passes(
 
         if len(calls) == 1:
             return {
-                "markets": [
-                    "資料中心",
-                    "人工智慧",
-                    "汽車／工業",
-                ]
+                "markets": {
+                    "__axiom_array__": {
+                        "0": "資料中心",
+                        "1": "人工智慧",
+                        "2": "汽車／工業",
+                    }
+                }
             }
 
         return {
-            "markets": [
-                "資料中心與人工智慧",
-                "汽車／工業",
-            ]
+            "markets": {
+                "__axiom_array__": {
+                    "0": "資料中心與人工智慧",
+                    "1": "汽車／工業",
+                }
+            }
         }
 
     class FakeOpenAI:
@@ -684,7 +688,7 @@ def test_openai_translation_retries_shape_mismatch_then_passes(
         "資料中心與人工智慧",
         "汽車／工業",
     ]
-    assert result_source == "API_REPAIR_2"
+    assert result_source == "API_LOCKED_REPAIR_2"
 
 
 def test_translation_array_lock_roundtrip_preserves_cardinality():
@@ -770,3 +774,535 @@ def test_locked_translation_prompt_contains_array_guard():
     assert '"0":"Data Center and AI"' in prompt
     assert '"1":"Automotive/Industrial"' in prompt
     assert "絕對不可翻譯或變更" in prompt
+
+
+def test_v2660_summary_selector_rejects_aapl_ip_personnel_sentence():
+    module = _load_profile_script()
+
+    text = (
+        "Although the Company believes the ownership of such intellectual "
+        "property rights is an important factor in differentiating its business "
+        "and that its success does depend in part on such ownership, the Company "
+        "relies primarily on the innovative skills, technical competence and "
+        "marketing abilities of its personnel. "
+        "The Company designs, manufactures and markets smartphones, personal "
+        "computers, tablets, wearables and accessories, and sells related services."
+    )
+
+    result = module._select_company_summary(
+        text
+    )
+
+    assert result["selected"].startswith(
+        "The Company designs, manufactures and markets"
+    )
+    assert "IP_OR_PERSONNEL" not in result["reasons"]
+
+
+def test_v2660_summary_selector_rejects_segment_only_summary():
+    module = _load_profile_script()
+
+    text = (
+        "Applied Global Services Our AGS segment provides services, spares and "
+        "factory automation software to customer fabrication plants globally. "
+        "Applied Materials is a leader in materials engineering solutions used "
+        "to produce virtually every new chip and advanced display in the world."
+    )
+
+    result = module._select_company_summary(
+        text
+    )
+
+    assert result["selected"].startswith(
+        "Applied Materials is a leader"
+    )
+
+
+def test_v2660_summary_selector_rejects_founders_letter():
+    module = _load_profile_script()
+
+    text = (
+        "As our founders Larry and Sergey wrote in the original founders' letter, "
+        "\"Google is not a conventional company.\" "
+        "Google offers products and platforms including Search, YouTube, Android, "
+        "Chrome, Maps, Play, devices and Google Cloud."
+    )
+
+    result = module._select_company_summary(
+        text
+    )
+
+    assert result["selected"].startswith(
+        "Google offers products and platforms"
+    )
+
+
+def test_v2660_summary_selector_rejects_incorporation_boilerplate():
+    module = _load_profile_script()
+
+    text = (
+        "Business Incorporated in 1980, Lam Research Corporation is a Delaware "
+        "corporation, headquartered in Fremont, California. "
+        "Lam Research supplies wafer fabrication equipment and services to the "
+        "semiconductor industry."
+    )
+
+    result = module._select_company_summary(
+        text
+    )
+
+    assert result["selected"].startswith(
+        "Lam Research supplies wafer fabrication equipment"
+    )
+
+
+def test_v2660_summary_selector_rejects_competitive_advantage():
+    module = _load_profile_script()
+
+    text = (
+        "We believe that our scale and capacity, particularly for advanced "
+        "technologies, is a major competitive advantage. "
+        "TSMC manufactures semiconductors for customers using a broad portfolio "
+        "of advanced and specialty process technologies."
+    )
+
+    result = module._select_company_summary(
+        text
+    )
+
+    assert result["selected"].startswith(
+        "TSMC manufactures semiconductors"
+    )
+
+
+def test_v2660_summary_selector_strips_section_heading():
+    module = _load_profile_script()
+
+    value = (
+        "BUSINESS Company Overview, Strategy and Mission "
+        "Analog Devices, Inc. is a global semiconductor leader dedicated to "
+        "solving customers' most complex engineering challenges."
+    )
+
+    clean = module._strip_summary_heading(
+        value
+    )
+
+    assert clean.startswith(
+        "Analog Devices, Inc. is a global semiconductor leader"
+    )
+
+
+def test_v2660_summary_selector_downranks_strategy_only_anet_sentence():
+    module = _load_profile_script()
+
+    text = (
+        "Our Centers of Data strategy is a fundamental pivot from legacy "
+        "networking approaches to a unified data-driven approach. "
+        "Arista Networks is an industry leader in data-driven, client-to-cloud "
+        "networking for large data center, campus and routing environments."
+    )
+
+    result = module._select_company_summary(
+        text
+    )
+
+    assert result["selected"].startswith(
+        "Arista Networks is an industry leader"
+    )
+
+
+def test_v2660_summary_selector_integration_uses_core_helpers(monkeypatch):
+    module = _load_profile_script()
+
+    report = {
+        "_canonical_profiles": [
+            {
+                "symbol": "TEST",
+                "company_id": "company:test",
+                "company_summary": {
+                    "one_line_business": "Bad legacy summary."
+                },
+                "field_evidence": {},
+                "value_provenance": {},
+            }
+        ]
+    }
+
+    monkeypatch.setattr(
+        module,
+        "_core_load_business_evidence",
+        lambda root, company_id: [
+            {
+                "business_evidence_id": "e1",
+                "form": "10-K",
+                "accession_number": "1",
+                "filing_date": "2025-01-01",
+                "section_type": "item_1_business",
+                "document_url": None,
+                "text_sha256": "x",
+                "text": (
+                    "TEST Corporation provides semiconductor products "
+                    "and software solutions to data center customers."
+                ),
+            }
+        ],
+    )
+
+    monkeypatch.setattr(
+        module,
+        "_core_latest_business_evidence",
+        lambda rows, symbol: rows[0],
+    )
+
+    monkeypatch.setattr(
+        module,
+        "_core_clean_text",
+        lambda text: text,
+    )
+
+    monkeypatch.setattr(
+        module,
+        "_core_build_value_provenance",
+        lambda **kwargs: {
+            "company_summary.one_line_business": {
+                "value": kwargs["profile"]["company_summary"][
+                    "one_line_business"
+                ],
+                "evidence": None,
+            }
+        },
+    )
+
+    rows = module._apply_company_summary_semantic_selector(
+        report
+    )
+
+    assert rows[0]["status"] == "REPLACE"
+    assert rows[0]["selected_summary"].startswith(
+        "TEST Corporation provides semiconductor products"
+    )
+    assert (
+        report["_canonical_profiles"][0]["company_summary"][
+            "one_line_business"
+        ]
+        == rows[0]["selected_summary"]
+    )
+
+
+def test_v2661_challenger_keeps_good_vrt_summary():
+    module = _load_profile_script()
+
+    existing = (
+        "Vertiv is a global leader in critical digital infrastructure "
+        "for applications in data centers, communication networks, and "
+        "commercial and industrial environments."
+    )
+
+    text = (
+        "Over the next decade, Emerson Network Power expanded through "
+        "acquisitions of Avansys, Marconi and Avocent. "
+        + existing
+    )
+
+    result = module._challenge_company_summary(
+        existing_summary=existing,
+        text=text,
+    )
+
+    assert result["decision"] == "KEEP"
+    assert result["selected_summary"] == existing
+
+
+def test_v2661_challenger_replaces_founders_letter_with_google_business_model():
+    module = _load_profile_script()
+
+    existing = (
+        "As our founders Larry and Sergey wrote in the original founders' "
+        'letter, "Google is not a conventional company.'
+    )
+
+    text = (
+        existing
+        + " At the foundation of our full-stack approach is our "
+        "AI-optimized infrastructure — a key differentiator enabling us "
+        "to power our own products, such as Search and YouTube, and "
+        "support the services we provide to our Google Cloud customers."
+    )
+
+    result = module._challenge_company_summary(
+        existing_summary=existing,
+        text=text,
+    )
+
+    assert result["decision"] == "REPLACE"
+    assert "AI-optimized infrastructure" in result["selected_summary"]
+
+
+def test_v2661_challenger_cleans_adi_heading_without_unnecessary_replace():
+    module = _load_profile_script()
+
+    existing = (
+        "BUSINESS Company Overview, Strategy and Mission "
+        "Analog Devices, Inc. is a global semiconductor leader dedicated "
+        "to solving customers' most complex engineering challenges."
+    )
+
+    text = (
+        existing
+        + " These include devices that shape signals for transmission."
+    )
+
+    result = module._challenge_company_summary(
+        existing_summary=existing,
+        text=text,
+    )
+
+    assert result["decision"] in {"CLEAN", "KEEP"}
+    assert result["selected_summary"].startswith(
+        "Analog Devices, Inc. is a global semiconductor leader"
+    )
+
+
+def test_v2661_challenger_keeps_good_cadence_identity_over_pillar_detail():
+    module = _load_profile_script()
+
+    existing = (
+        "Cadence is a global technology leader that develops computational, "
+        "AI-driven software, accelerated hardware, and silicon intellectual "
+        "property products and solutions."
+    )
+
+    text = (
+        existing
+        + " Design Excellence: This pillar leverages our core expertise in "
+        "AI-driven computational software and accelerated computing to deliver "
+        "electronic design and verification products."
+    )
+
+    result = module._challenge_company_summary(
+        existing_summary=existing,
+        text=text,
+    )
+
+    assert result["decision"] == "KEEP"
+    assert result["selected_summary"] == existing
+
+
+def test_v2661_challenger_replaces_incorporation_with_lam_identity():
+    module = _load_profile_script()
+
+    existing = (
+        "Business Incorporated in 1980, Lam Research Corporation is a "
+        "Delaware corporation, headquartered in Fremont, California."
+    )
+
+    text = (
+        existing
+        + " We are a global supplier of innovative wafer fabrication "
+        "equipment and services to the semiconductor industry."
+    )
+
+    result = module._challenge_company_summary(
+        existing_summary=existing,
+        text=text,
+    )
+
+    assert result["decision"] == "REPLACE"
+    assert result["selected_summary"].startswith(
+        "We are a global supplier of innovative wafer fabrication equipment"
+    )
+
+
+def test_v2661a_ip_product_language_does_not_make_good_summary_hard_bad():
+    module = _load_profile_script()
+    result = module._summary_quality_score(
+        "Cadence is a global technology leader that develops computational, "
+        "AI-driven software, accelerated hardware, and silicon intellectual "
+        "property products and solutions."
+    )
+    assert "IP_OR_PERSONNEL" in result["reasons"]
+    assert result["hard_bad"] is False
+
+
+def test_v2661a_detail_candidate_cannot_auto_replace_bad_incumbent():
+    module = _load_profile_script()
+    existing = (
+        "We believe that our scale and capacity, particularly for advanced "
+        "technologies, is a major competitive advantage."
+    )
+    text = (
+        existing
+        + " Furthermore, for both premium and mainstream product applications, "
+        "we offer specialty technologies including RF, sensors, display chips, "
+        "and advanced packaging services."
+    )
+    result = module._challenge_company_summary(
+        existing_summary=existing,
+        text=text,
+    )
+    assert result["decision"] == "REVIEW"
+    assert result["candidate_eligible"] is False
+    assert "PRODUCT_OR_APPLICATION_DETAIL" in result["candidate_blockers"]
+
+
+def test_v2661a_customer_description_cannot_replace_incorporation_boilerplate():
+    module = _load_profile_script()
+    existing = (
+        "Business Incorporated in 1980, Lam Research Corporation is a Delaware "
+        "corporation, headquartered in Fremont, California."
+    )
+    text = (
+        existing
+        + " Our customer base includes leading semiconductor memory, foundry, "
+        "and integrated device manufacturers that make DRAM and logic devices."
+    )
+    result = module._challenge_company_summary(
+        existing_summary=existing,
+        text=text,
+    )
+    assert result["decision"] == "REVIEW"
+    assert result["candidate_eligible"] is False
+    assert "CUSTOMER_DESCRIPTION" in result["candidate_blockers"]
+
+
+def test_v2661b_good_existing_protects_adi_from_filing_prose():
+    module = _load_profile_script()
+
+    existing = (
+        "BUSINESS Company Overview, Strategy and Mission "
+        "Analog Devices, Inc. is a global semiconductor leader dedicated "
+        "to solving customers' most complex engineering challenges."
+    )
+
+    text = (
+        existing
+        + " These include devices that shape the signal for transmission "
+        "over the medium or reconstruct the received signal after transmission "
+        "to recover the intended signal integrity. "
+        "•Software, Digital Platforms and Artificial Intelligence—As part of "
+        "our evolution from a component supplier to a full-system and solutions "
+        "provider, we introduced CodeFusion Studio 2.0."
+    )
+
+    result = module._challenge_company_summary(
+        existing_summary=existing,
+        text=text,
+    )
+
+    assert result["decision"] in {"CLEAN", "KEEP"}
+    assert result["selected_summary"].startswith(
+        "Analog Devices, Inc. is a global semiconductor leader"
+    )
+    assert result["good_existing"] is True
+
+
+def test_v2661b_eligibility_diagnostics_block_customer_description():
+    module = _load_profile_script()
+
+    candidate_eval = module._summary_quality_score(
+        (
+            "Our customer base includes leading semiconductor memory, "
+            "foundry, and integrated device manufacturers."
+        ),
+        position=0,
+    )
+
+    result = module._candidate_summary_eligibility(
+        candidate_eval
+    )
+
+    assert result["eligible"] is False
+    assert "CUSTOMER_DESCRIPTION" in result["blockers"]
+
+
+def test_v2661b_eligibility_diagnostics_block_product_detail():
+    module = _load_profile_script()
+
+    candidate_eval = module._summary_quality_score(
+        (
+            "Furthermore, for both premium and mainstream product "
+            "applications, we offer specialty technologies including RF, "
+            "sensors, display chips and advanced packaging services."
+        ),
+        position=0,
+    )
+
+    result = module._candidate_summary_eligibility(
+        candidate_eval
+    )
+
+    assert result["eligible"] is False
+    assert "PRODUCT_OR_APPLICATION_DETAIL" in result["blockers"]
+
+
+def test_v2661b_vrt_keep_still_holds():
+    module = _load_profile_script()
+
+    existing = (
+        "Vertiv is a global leader in critical digital infrastructure "
+        "for applications in data centers, communication networks, and "
+        "commercial and industrial environments."
+    )
+
+    text = (
+        "Over the next decade, Emerson Network Power expanded through "
+        "acquisitions of Avansys, Marconi and Avocent. "
+        + existing
+    )
+
+    result = module._challenge_company_summary(
+        existing_summary=existing,
+        text=text,
+    )
+
+    assert result["decision"] == "KEEP"
+    assert result["selected_summary"] == existing
+
+
+def test_v2661c_selector_function_restored_and_callable():
+    module = _load_profile_script()
+
+    assert hasattr(
+        module,
+        "_select_company_summary",
+    )
+
+    result = module._select_company_summary(
+        (
+            "As our founders Larry and Sergey wrote in the original "
+            "founders' letter, \"Google is not a conventional company.\" "
+            "Google offers products and platforms including Search, "
+            "YouTube, Android, Chrome, Maps, Play, devices and Google Cloud."
+        )
+    )
+
+    assert result["selected"] is not None
+    assert result["selected"].startswith(
+        "Google offers products and platforms"
+    )
+
+
+def test_v2661c_challenger_still_exposes_eligibility_diagnostics():
+    module = _load_profile_script()
+
+    existing = (
+        "We believe that our scale and capacity, particularly for advanced "
+        "technologies, is a major competitive advantage."
+    )
+
+    text = (
+        existing
+        + " Furthermore, for both premium and mainstream product applications, "
+        "we offer specialty technologies including RF, sensors, display chips, "
+        "and advanced packaging services."
+    )
+
+    result = module._challenge_company_summary(
+        existing_summary=existing,
+        text=text,
+    )
+
+    assert "candidate_eligible" in result
+    assert "candidate_eligibility_reason" in result
+    assert "candidate_blockers" in result

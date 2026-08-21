@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-V2.6.5.8 — Production Promotion Quality Gate
+V2.6.6.0 — Company Summary Semantic Selector + Production Promotion Gate
 
 This file intentionally freezes the V2.6.5.7 extractor implementation at the
 known-good repository commit fa9f64c341eda97e457c4178686b6409b12dae33 and
@@ -26,6 +26,15 @@ import sys
 from urllib.parse import quote
 from pathlib import Path
 from typing import Any
+
+from axiom_engine.company_profile_v2.core import (
+    _clean_text as _core_clean_text,
+    _latest_business_evidence as _core_latest_business_evidence,
+    _load_business_evidence as _core_load_business_evidence,
+)
+from axiom_engine.company_profile_v2.provenance import (
+    build_value_provenance as _core_build_value_provenance,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -122,6 +131,1101 @@ for _name, _value in _V2657.items():
     if _name.startswith("__"):
         continue
     globals()[_name] = _value
+
+
+# === V2.6.6.0 COMPANY SUMMARY SEMANTIC SELECTOR ===========================
+
+SUMMARY_SELECTOR_VERSION = "v2.6.6.1c"
+
+_SUMMARY_HEADING_PREFIX_RE = re.compile(
+    r"^(?:"
+    r"BUSINESS\s+|"
+    r"ITEM\s+1\.?\s+BUSINESS\s+|"
+    r"COMPANY\s+OVERVIEW(?:,\s*STRATEGY\s+AND\s+MISSION)?\s+|"
+    r"OVERVIEW\s+|"
+    r"OUR\s+BUSINESS\s+"
+    r")+",
+    flags=re.IGNORECASE,
+)
+
+_SUMMARY_STRONG_IDENTITY_RE = re.compile(
+    r"\b(?:"
+    r"we\s+(?:are|design|develop|manufacture|market|provide|offer|supply|deliver|operate|sell)|"
+    r"the\s+company\s+(?:is|designs|develops|manufactures|markets|provides|offers|supplies|delivers|operates|sells)|"
+    r"[A-Z][A-Za-z0-9&.' -]{1,80}\s+(?:"
+    r"is\s+(?:a|an)\s+|"
+    r"designs?|develops?|manufactures?|markets?|provides?|offers?|supplies|delivers?|operates?|sells"
+    r")"
+    r")",
+    flags=re.IGNORECASE,
+)
+
+_SUMMARY_BUSINESS_NOUN_RE = re.compile(
+    r"\b(?:"
+    r"semiconductor|software|hardware|platform|products?|services?|solutions?|"
+    r"systems?|infrastructure|technology|technologies|memory|storage|network|"
+    r"networking|equipment|devices?|processors?|manufacturing|foundry|cloud|"
+    r"data\s+center|artificial\s+intelligence|AI|electronics|connectivity"
+    r")\b",
+    flags=re.IGNORECASE,
+)
+
+_SUMMARY_BAD_PATTERNS = (
+    (
+        "INCORPORATION_OR_HEADQUARTERS",
+        re.compile(
+            r"\b(?:"
+            r"incorporated\s+in|"
+            r"Delaware\s+corporation|"
+            r"headquartered\s+in|"
+            r"headquarters?\s+(?:is|are|in)"
+            r")\b",
+            flags=re.IGNORECASE,
+        ),
+        -90,
+    ),
+    (
+        "COMPETITIVE_ADVANTAGE",
+        re.compile(
+            r"\b(?:"
+            r"competitive\s+advantage|"
+            r"we\s+believe\s+that\s+our\s+(?:scale|capacity|technology|position)|"
+            r"differentiating\s+its\s+business"
+            r")\b",
+            flags=re.IGNORECASE,
+        ),
+        -100,
+    ),
+    (
+        "IP_OR_PERSONNEL",
+        re.compile(
+            r"\b(?:"
+            r"intellectual\s+property|patents?|trademarks?|"
+            r"innovative\s+skills|technical\s+competence|"
+            r"marketing\s+abilities\s+of\s+(?:its|our)\s+personnel"
+            r")\b",
+            flags=re.IGNORECASE,
+        ),
+        -100,
+    ),
+    (
+        "FOUNDERS_LETTER",
+        re.compile(
+            r"\b(?:"
+            r"founders?'?\s+letter|"
+            r"our\s+founders?|"
+            r"not\s+a\s+conventional\s+company"
+            r")\b",
+            flags=re.IGNORECASE,
+        ),
+        -100,
+    ),
+    (
+        "SEGMENT_ONLY",
+        re.compile(
+            r"\bour\s+[A-Z0-9][A-Za-z0-9& -]{0,40}\s+segment\b",
+            flags=re.IGNORECASE,
+        ),
+        -85,
+    ),
+    (
+        "STRATEGY_ONLY",
+        re.compile(
+            r"\b(?:"
+            r"our\s+.+?\s+strategy\s+is|"
+            r"strategic\s+priority|"
+            r"fundamental\s+pivot"
+            r")\b",
+            flags=re.IGNORECASE,
+        ),
+        -65,
+    ),
+    (
+        "MISSION_ONLY",
+        re.compile(
+            r"^\s*(?:our\s+)?mission\s+is\b",
+            flags=re.IGNORECASE,
+        ),
+        -25,
+    ),
+    (
+        "LEGAL_OR_FINANCIAL",
+        re.compile(
+            r"\b(?:"
+            r"form\s+10-k|fiscal\s+year|net\s+sales|revenue|"
+            r"securities|litigation|risk\s+factors?"
+            r")\b",
+            flags=re.IGNORECASE,
+        ),
+        -55,
+    ),
+)
+
+
+def _strip_summary_heading(
+    value: str,
+) -> str:
+    text = re.sub(
+        r"\s+",
+        " ",
+        str(value or ""),
+    ).strip()
+
+    previous = None
+
+    while (
+        text
+        and text != previous
+    ):
+        previous = text
+        text = _SUMMARY_HEADING_PREFIX_RE.sub(
+            "",
+            text,
+            count=1,
+        ).strip(" :-—")
+
+    return text
+
+
+def _summary_sentences(
+    text: str,
+) -> list[str]:
+    clean = re.sub(
+        r"\s+",
+        " ",
+        str(text or ""),
+    ).strip()
+
+    if not clean:
+        return []
+
+    clean = re.sub(
+        r'([.!?])(["”’\'])\s+(?=[A-Z0-9])',
+        r"\1\2\n",
+        clean,
+    )
+
+    raw_sentences = []
+
+    for chunk in clean.splitlines():
+        raw_sentences.extend(
+            re.split(
+                r"(?<=[.!?])\s+(?=[A-Z0-9])",
+                chunk,
+            )
+        )
+
+    output = []
+
+    for raw in raw_sentences:
+        sentence = _strip_summary_heading(
+            raw
+        )
+
+        sentence = sentence.strip()
+
+        if not sentence:
+            continue
+
+        output.append(
+            sentence
+        )
+
+    return output
+
+
+def _summary_sentence_score(
+    sentence: str,
+    *,
+    position: int,
+) -> tuple[int, list[str]]:
+    text = _strip_summary_heading(
+        sentence
+    )
+
+    words = text.split()
+
+    if len(words) < 7:
+        return (
+            -999,
+            ["TOO_SHORT"],
+        )
+
+    if len(words) > 90:
+        return (
+            -999,
+            ["TOO_LONG"],
+        )
+
+    score = 0
+    reasons = []
+
+    if _SUMMARY_STRONG_IDENTITY_RE.search(
+        text
+    ):
+        score += 80
+        reasons.append(
+            "BUSINESS_IDENTITY"
+        )
+
+    business_terms = len(
+        {
+            match.group(0).casefold()
+            for match in _SUMMARY_BUSINESS_NOUN_RE.finditer(
+                text
+            )
+        }
+    )
+
+    if business_terms:
+        score += min(
+            35,
+            business_terms * 7,
+        )
+        reasons.append(
+            "BUSINESS_TERMS"
+        )
+
+    if re.search(
+        r"\b(?:"
+        r"leader|leading|provider|supplier|developer|manufacturer|"
+        r"designs?|develops?|manufactures?|markets?|provides?|offers?|"
+        r"supplies|delivers?|operates?|sells"
+        r")\b",
+        text,
+        flags=re.IGNORECASE,
+    ):
+        score += 20
+        reasons.append(
+            "OPERATING_VERB"
+        )
+
+    if position < 20:
+        score += max(
+            0,
+            12 - position // 2,
+        )
+
+    for (
+        reason,
+        pattern,
+        penalty,
+    ) in _SUMMARY_BAD_PATTERNS:
+        if pattern.search(
+            text
+        ):
+            score += penalty
+            reasons.append(
+                reason
+            )
+
+    if re.search(
+        r"^\s*(?:although|while|because|however|therefore)\b",
+        text,
+        flags=re.IGNORECASE,
+    ):
+        score -= 25
+        reasons.append(
+            "DEPENDENT_OR_TRANSITIONAL"
+        )
+
+    return (
+        score,
+        reasons,
+    )
+
+
+_SUMMARY_HARD_BAD_REASONS = {
+    "INCORPORATION_OR_HEADQUARTERS",
+    "COMPETITIVE_ADVANTAGE",
+    "FOUNDERS_LETTER",
+    "SEGMENT_ONLY",
+    "LEGAL_OR_FINANCIAL",
+}
+
+# These reasons describe a sentence that may be useful evidence, but is not
+# eligible to become the one-line company identity on its own.  In V2.6.6.1a
+# a weak incumbent can open a challenge, but it cannot waive this floor.
+_SUMMARY_CHALLENGER_DISQUALIFIERS = {
+    "COMPANY_HISTORY",
+    "CUSTOMER_DESCRIPTION",
+    "PRODUCT_OR_APPLICATION_DETAIL",
+    "PILLAR_OR_SECTION_DETAIL",
+    "SEGMENT_DETAIL",
+    "SEGMENT_ONLY",
+    "LEGAL_OR_FINANCIAL",
+    "INCORPORATION_OR_HEADQUARTERS",
+    "COMPETITIVE_ADVANTAGE",
+    "FOUNDERS_LETTER",
+}
+
+_SUMMARY_DETAIL_PATTERNS = (
+    (
+        "COMPANY_HISTORY",
+        re.compile(
+            r"\b(?:"
+            r"over\s+the\s+next\s+decade|"
+            r"expanded\s+through\s+acquisitions?|"
+            r"founded\s+in|"
+            r"formerly\s+known\s+as"
+            r")\b",
+            flags=re.IGNORECASE,
+        ),
+        -95,
+    ),
+    (
+        "CUSTOMER_DESCRIPTION",
+        re.compile(
+            r"^\s*(?:"
+            r"our\s+customer\s+base\s+includes|"
+            r"our\s+customers?\s+include"
+            r")\b",
+            flags=re.IGNORECASE,
+        ),
+        -55,
+    ),
+    (
+        "PRODUCT_OR_APPLICATION_DETAIL",
+        re.compile(
+            r"\b(?:"
+            r"our\s+key\s+product\s+lines\s+include|"
+            r"our\s+solutions\s+are\s+deployed\s+in|"
+            r"our\s+offerings\s+include|"
+            r"applications?\s+such\s+as|"
+            r"for\s+both\s+premium\s+and\s+mainstream\s+product\s+applications|"
+            r"provides?\s+customers?\s+with\s+comprehensive\s+specialty\s+technologies"
+            r")\b",
+            flags=re.IGNORECASE,
+        ),
+        -45,
+    ),
+    (
+        "PILLAR_OR_SECTION_DETAIL",
+        re.compile(
+            r"^\s*(?:"
+            r"design\s+excellence:|"
+            r"system\s+innovation:|"
+            r"core\s+EDA\b|"
+            r"products?\s+by\s+business\s+unit\b|"
+            r"custom\s+ASICs\b|"
+            r"processors?\b"
+            r")",
+            flags=re.IGNORECASE,
+        ),
+        -75,
+    ),
+    (
+        "SEGMENT_DETAIL",
+        re.compile(
+            r"\b(?:"
+            r"AGS\s+segment|"
+            r"semiconductor\s+systems\s+segment|"
+            r"reportable\s+segments?"
+            r")\b",
+            flags=re.IGNORECASE,
+        ),
+        -80,
+    ),
+)
+
+_SUMMARY_COMPANY_LEVEL_RE = re.compile(
+    r"\b(?:"
+    r"global\s+(?:technology|semiconductor|industry|infrastructure)\s+leader|"
+    r"leading\s+supplier|"
+    r"global\s+supplier|"
+    r"provider\s+of\s+(?:total\s+IT|critical\s+digital|technology|semiconductor)|"
+    r"leader\s+in\s+the\s+global\s+technology\s+industry|"
+    r"industry\s+leader\s+in|"
+    r"we\s+are\s+(?:an?\s+)?(?:global\s+)?(?:leader|provider|supplier)|"
+    r"is\s+(?:a|an)\s+(?:global\s+)?(?:leader|provider|supplier)"
+    r")\b",
+    flags=re.IGNORECASE,
+)
+
+_SUMMARY_PLATFORM_OR_BUSINESS_MODEL_RE = re.compile(
+    r"\b(?:"
+    r"full-stack\s+approach|"
+    r"platform\s+(?:delivers|provides|enables|supports)|"
+    r"AI-optimized\s+infrastructure|"
+    r"critical\s+digital\s+infrastructure|"
+    r"data\s+infrastructure\s+semiconductor\s+solutions|"
+    r"memory\s+and\s+storage\s+solutions|"
+    r"network-as-a-service|"
+    r"materials\s+engineering\s+solutions|"
+    r"wafer\s+fabrication\s+equipment\s+and\s+services"
+    r")\b",
+    flags=re.IGNORECASE,
+)
+
+
+def _summary_quality_score(
+    sentence: str,
+    *,
+    position: int = 0,
+) -> dict:
+    score, reasons = _summary_sentence_score(
+        sentence,
+        position=position,
+    )
+
+    text = _strip_summary_heading(
+        sentence
+    )
+
+    detail_reasons = []
+
+    for (
+        reason,
+        pattern,
+        penalty,
+    ) in _SUMMARY_DETAIL_PATTERNS:
+        if pattern.search(text):
+            score += penalty
+            reasons.append(reason)
+            detail_reasons.append(reason)
+
+    if _SUMMARY_COMPANY_LEVEL_RE.search(text):
+        score += 45
+        reasons.append("COMPANY_LEVEL_SCOPE")
+
+    if _SUMMARY_PLATFORM_OR_BUSINESS_MODEL_RE.search(text):
+        score += 30
+        reasons.append("BUSINESS_MODEL_OR_PLATFORM")
+
+    hard_bad = bool(
+        _SUMMARY_HARD_BAD_REASONS
+        & set(reasons)
+    )
+
+    return {
+        "sentence": text,
+        "score": score,
+        "reasons": reasons,
+        "hard_bad": hard_bad,
+        "detail_reasons": detail_reasons,
+    }
+
+
+def _summary_challenger_eligibility(
+    evaluation: dict,
+) -> dict:
+    reasons = set(
+        evaluation.get("reasons")
+        or []
+    )
+
+    blockers = sorted(
+        reasons
+        & _SUMMARY_CHALLENGER_DISQUALIFIERS
+    )
+
+    has_identity = (
+        "BUSINESS_IDENTITY" in reasons
+    )
+    has_business_terms = (
+        "BUSINESS_TERMS" in reasons
+    )
+    has_operating_verb = (
+        "OPERATING_VERB" in reasons
+    )
+    has_company_scope = (
+        "COMPANY_LEVEL_SCOPE" in reasons
+        or "BUSINESS_MODEL_OR_PLATFORM" in reasons
+    )
+
+    semantic_floor = (
+        has_identity
+        and has_business_terms
+        and has_operating_verb
+    ) or (
+        has_company_scope
+        and has_business_terms
+        and has_operating_verb
+    )
+
+    eligible = (
+        not blockers
+        and not evaluation.get("hard_bad")
+        and semantic_floor
+    )
+
+    if blockers:
+        reason = "DETAIL_OR_BOILERPLATE"
+    elif evaluation.get("hard_bad"):
+        reason = "HARD_BAD"
+    elif not semantic_floor:
+        reason = "NO_COMPANY_LEVEL_SEMANTIC_FLOOR"
+    else:
+        reason = "ELIGIBLE"
+
+    return {
+        "eligible": eligible,
+        "reason": reason,
+        "blockers": blockers,
+        "semantic_floor": semantic_floor,
+    }
+
+
+_SUMMARY_GOOD_EXISTING_MIN_SCORE = 80
+_SUMMARY_GOOD_EXISTING_DELTA = 70
+
+_SUMMARY_CANDIDATE_FILING_PROSE_RE = re.compile(
+    r"(?:"
+    r"^\s*(?:these|those|this|such)\s+(?:include|includes|are)\b|"
+    r"•|"
+    r"\b(?:"
+    r"as\s+part\s+of\s+our\s+evolution|"
+    r"designed\s+to\s+support|"
+    r"applications?\s+such\s+as"
+    r")\b"
+    r")",
+    flags=re.IGNORECASE,
+)
+
+
+def _candidate_summary_eligibility(
+    candidate_eval: dict,
+) -> dict:
+    reasons = list(
+        candidate_eval.get("reasons")
+        or []
+    )
+
+    blockers = []
+
+    blocker_reasons = {
+        "COMPANY_HISTORY",
+        "CUSTOMER_DESCRIPTION",
+        "PRODUCT_OR_APPLICATION_DETAIL",
+        "PILLAR_OR_SECTION_DETAIL",
+        "SEGMENT_DETAIL",
+    }
+
+    for reason in reasons:
+        if reason in blocker_reasons:
+            blockers.append(reason)
+
+    sentence = str(
+        candidate_eval.get("sentence")
+        or ""
+    )
+
+    if _SUMMARY_CANDIDATE_FILING_PROSE_RE.search(
+        sentence
+    ):
+        blockers.append(
+            "FILING_PROSE_OR_BULLET"
+        )
+
+    if candidate_eval.get("hard_bad"):
+        blockers.append(
+            "HARD_BAD_CANDIDATE"
+        )
+
+    blockers = sorted(
+        set(blockers)
+    )
+
+    company_level = (
+        "COMPANY_LEVEL_SCOPE" in reasons
+        or "BUSINESS_MODEL_OR_PLATFORM" in reasons
+    )
+
+    if blockers:
+        return {
+            "eligible": False,
+            "reason": "BLOCKED_DETAIL_OR_FILING_PROSE",
+            "blockers": blockers,
+            "company_level": company_level,
+        }
+
+    if not (
+        "BUSINESS_IDENTITY" in reasons
+        and (
+            "OPERATING_VERB" in reasons
+            or company_level
+        )
+    ):
+        return {
+            "eligible": False,
+            "reason": "INSUFFICIENT_COMPANY_LEVEL_IDENTITY",
+            "blockers": [
+                "INSUFFICIENT_COMPANY_LEVEL_IDENTITY"
+            ],
+            "company_level": company_level,
+        }
+
+    return {
+        "eligible": True,
+        "reason": "ELIGIBLE",
+        "blockers": [],
+        "company_level": company_level,
+    }
+
+
+def _good_existing_summary(
+    existing_eval: dict,
+) -> bool:
+    reasons = set(
+        existing_eval.get("reasons")
+        or []
+    )
+
+    if existing_eval.get("hard_bad"):
+        return False
+
+    if (
+        existing_eval.get("score", -999)
+        < _SUMMARY_GOOD_EXISTING_MIN_SCORE
+    ):
+        return False
+
+    return (
+        "COMPANY_LEVEL_SCOPE" in reasons
+        or "BUSINESS_MODEL_OR_PLATFORM" in reasons
+    )
+
+
+def _select_company_summary(
+    text: str,
+) -> dict:
+    candidates = []
+
+    for position, sentence in enumerate(
+        _summary_sentences(
+            text
+        )
+    ):
+        score, reasons = (
+            _summary_sentence_score(
+                sentence,
+                position=position,
+            )
+        )
+
+        candidates.append(
+            {
+                "sentence": sentence,
+                "score": score,
+                "position": position,
+                "reasons": reasons,
+            }
+        )
+
+    hard_block_reasons = {
+        "INCORPORATION_OR_HEADQUARTERS",
+        "COMPETITIVE_ADVANTAGE",
+        "IP_OR_PERSONNEL",
+        "FOUNDERS_LETTER",
+        "SEGMENT_ONLY",
+        "LEGAL_OR_FINANCIAL",
+    }
+
+    eligible = [
+        row
+        for row in candidates
+        if row["score"] > 0
+        and not (
+            hard_block_reasons
+            & set(row["reasons"])
+        )
+        and (
+            "BUSINESS_IDENTITY"
+            in row["reasons"]
+            or (
+                "OPERATING_VERB"
+                in row["reasons"]
+                and "BUSINESS_TERMS"
+                in row["reasons"]
+            )
+        )
+    ]
+
+    if not eligible:
+        return {
+            "selected": None,
+            "score": None,
+            "position": None,
+            "reasons": [
+                "NO_SEMANTIC_SUMMARY_CANDIDATE"
+            ],
+            "top_candidates": sorted(
+                candidates,
+                key=lambda row: (
+                    -row["score"],
+                    row["position"],
+                ),
+            )[:5],
+        }
+
+    selected = max(
+        eligible,
+        key=lambda row: (
+            row["score"],
+            -row["position"],
+        ),
+    )
+
+    return {
+        "selected":
+            selected["sentence"],
+        "score":
+            selected["score"],
+        "position":
+            selected["position"],
+        "reasons":
+            selected["reasons"],
+        "top_candidates":
+            sorted(
+                candidates,
+                key=lambda row: (
+                    -row["score"],
+                    row["position"],
+                ),
+            )[:5],
+    }
+
+
+def _challenge_company_summary(
+    *,
+    existing_summary: str,
+    text: str,
+) -> dict:
+    existing_clean = _strip_summary_heading(
+        existing_summary
+    )
+
+    existing_eval = _summary_quality_score(
+        existing_clean,
+        position=0,
+    )
+
+    selection = _select_company_summary(
+        text
+    )
+
+    candidate = selection.get("selected")
+
+    if not candidate:
+        decision = (
+            "CLEAN"
+            if (
+                existing_clean
+                and existing_clean != existing_summary
+            )
+            else (
+                "KEEP"
+                if existing_clean
+                else "REVIEW"
+            )
+        )
+
+        return {
+            "decision": decision,
+            "selected_summary": (
+                existing_clean
+                if decision in {"KEEP", "CLEAN"}
+                else None
+            ),
+            "existing_score": existing_eval["score"],
+            "candidate_score": None,
+            "score_delta": None,
+            "existing_reasons": existing_eval["reasons"],
+            "candidate_reasons": [],
+            "candidate_eligible": False,
+            "candidate_eligibility_reason": "NO_CANDIDATE",
+            "candidate_blockers": ["NO_CANDIDATE"],
+            "good_existing": _good_existing_summary(
+                existing_eval
+            ),
+            "top_candidates": (
+                selection.get("top_candidates")
+                or []
+            ),
+        }
+
+    candidate_eval = _summary_quality_score(
+        candidate,
+        position=int(
+            selection.get("position")
+            or 0
+        ),
+    )
+
+    eligibility = _candidate_summary_eligibility(
+        candidate_eval
+    )
+
+    delta = (
+        candidate_eval["score"]
+        - existing_eval["score"]
+    )
+
+    good_existing = _good_existing_summary(
+        existing_eval
+    )
+
+    if existing_eval["hard_bad"]:
+        decision = (
+            "REPLACE"
+            if eligibility["eligible"]
+            else "REVIEW"
+        )
+    elif (
+        existing_clean != existing_summary
+        and (
+            good_existing
+            or not eligibility["eligible"]
+            or delta < _SUMMARY_GOOD_EXISTING_DELTA
+        )
+    ):
+        decision = "CLEAN"
+    elif good_existing:
+        decision = (
+            "REPLACE"
+            if (
+                eligibility["eligible"]
+                and delta >= _SUMMARY_GOOD_EXISTING_DELTA
+            )
+            else "KEEP"
+        )
+    elif (
+        eligibility["eligible"]
+        and delta >= 35
+    ):
+        decision = "REPLACE"
+    else:
+        decision = (
+            "KEEP"
+            if existing_clean
+            else "REVIEW"
+        )
+
+    if decision == "REPLACE":
+        selected_summary = candidate_eval["sentence"]
+    elif decision in {"KEEP", "CLEAN"}:
+        selected_summary = existing_clean
+    else:
+        selected_summary = None
+
+    return {
+        "decision": decision,
+        "selected_summary": selected_summary,
+        "existing_score": existing_eval["score"],
+        "candidate_score": candidate_eval["score"],
+        "score_delta": delta,
+        "existing_reasons": existing_eval["reasons"],
+        "candidate_reasons": candidate_eval["reasons"],
+        "candidate_eligible": eligibility["eligible"],
+        "candidate_eligibility_reason": eligibility["reason"],
+        "candidate_blockers": eligibility["blockers"],
+        "good_existing": good_existing,
+        "top_candidates": (
+            selection.get("top_candidates")
+            or []
+        ),
+    }
+
+
+def _apply_company_summary_semantic_selector(
+    report: dict,
+) -> list[dict]:
+    diagnostics = []
+
+    profiles = (
+        report.get("_canonical_profiles")
+        or []
+    )
+
+    for profile in profiles:
+        symbol = str(
+            profile.get("symbol")
+            or ""
+        ).strip().upper()
+
+        company_id = str(
+            profile.get("company_id")
+            or ""
+        ).strip()
+
+        old_summary = str(
+            (
+                profile.get("company_summary")
+                or {}
+            ).get("one_line_business")
+            or ""
+        ).strip()
+
+        try:
+            evidence_rows = _core_load_business_evidence(
+                ROOT,
+                company_id,
+            )
+
+            evidence = _core_latest_business_evidence(
+                evidence_rows,
+                symbol,
+            )
+
+            raw_text = str(
+                evidence.get("text")
+                or ""
+            )
+
+            clean_text = _core_clean_text(
+                raw_text
+            )
+
+            challenge = _challenge_company_summary(
+                existing_summary=old_summary,
+                text=clean_text,
+            )
+
+        except Exception as exc:
+            diagnostics.append(
+                {
+                    "symbol": symbol,
+                    "old_summary": old_summary,
+                    "selected_summary": None,
+                    "decision": "ERROR",
+                    "changed": False,
+                    "status": "ERROR",
+                    "error": str(exc),
+                }
+            )
+            continue
+
+        decision = challenge["decision"]
+        selected = challenge.get(
+            "selected_summary"
+        )
+
+        changed = bool(
+            selected
+            and selected != old_summary
+        )
+
+        if (
+            selected
+            and decision in {
+                "REPLACE",
+                "CLEAN",
+                "KEEP",
+            }
+        ):
+            profile.setdefault(
+                "company_summary",
+                {},
+            )["one_line_business"] = selected
+
+            profile.setdefault(
+                "field_evidence",
+                {},
+            )[
+                "company_summary.one_line_business"
+            ] = [selected]
+
+            profile["value_provenance"] = (
+                _core_build_value_provenance(
+                    profile=profile,
+                    raw_text=raw_text,
+                    evidence=evidence,
+                )
+            )
+
+            profile["company_summary_selector"] = {
+                "version": SUMMARY_SELECTOR_VERSION,
+                "mode": "conservative_sec_item1_challenger",
+                "decision": decision,
+                "existing_score": challenge.get("existing_score"),
+                "candidate_score": challenge.get("candidate_score"),
+                "score_delta": challenge.get("score_delta"),
+                "existing_reasons": challenge.get("existing_reasons"),
+                "candidate_reasons": challenge.get("candidate_reasons"),
+                "candidate_eligible": challenge.get("candidate_eligible"),
+                "candidate_eligibility_reason": challenge.get(
+                    "candidate_eligibility_reason"
+                ),
+                "candidate_blockers": challenge.get("candidate_blockers"),
+                "good_existing": challenge.get("good_existing"),
+            }
+
+        diagnostics.append(
+            {
+                "symbol": symbol,
+                "old_summary": old_summary,
+                "selected_summary": selected,
+                "decision": decision,
+                "changed": changed,
+                "status": decision,
+                "error": None,
+                "existing_score": challenge.get("existing_score"),
+                "candidate_score": challenge.get("candidate_score"),
+                "score_delta": challenge.get("score_delta"),
+                "existing_reasons": challenge.get("existing_reasons"),
+                "candidate_reasons": challenge.get("candidate_reasons"),
+                "candidate_eligible": challenge.get("candidate_eligible"),
+                "candidate_eligibility_reason": challenge.get(
+                    "candidate_eligibility_reason"
+                ),
+                "candidate_blockers": challenge.get("candidate_blockers"),
+                "good_existing": challenge.get("good_existing"),
+                "top_candidates": challenge.get("top_candidates"),
+            }
+        )
+
+    report["_summary_selector_diagnostics"] = diagnostics
+    return diagnostics
+
+
+def _summary_diagnostics_payload(
+    report: dict,
+) -> dict:
+    rows = (
+        report.get(
+            "_summary_selector_diagnostics"
+        )
+        or []
+    )
+
+    decision_counts = {}
+
+    for row in rows:
+        decision = str(
+            row.get("decision")
+            or row.get("status")
+            or "UNKNOWN"
+        )
+
+        decision_counts[decision] = (
+            decision_counts.get(
+                decision,
+                0,
+            )
+            + 1
+        )
+
+    return {
+        "selector_version": SUMMARY_SELECTOR_VERSION,
+        "company_count": len(rows),
+        "selected_count": sum(
+            1
+            for row in rows
+            if row.get("selected_summary")
+        ),
+        "changed_count": sum(
+            1
+            for row in rows
+            if row.get("changed")
+        ),
+        "decision_counts": dict(
+            sorted(
+                decision_counts.items()
+            )
+        ),
+        "rows": rows,
+    }
+
 
 
 # === V2.6.5.8 PRODUCTION PROMOTION QUALITY GATE ============================
@@ -996,6 +2100,15 @@ def main() -> int:
     parser.add_argument("--census-snapshot", help="Existing V2.6.5.7 strategic product census JSON")
     parser.add_argument("--promote-from-snapshot", action="store_true", help="Rebuild only snapshot PROMOTE symbols and revalidate")
     parser.add_argument("--promotion-limit", type=int, help="Optional canary limit for safe promotion")
+    parser.add_argument(
+        "--summary-diagnostics",
+        action="store_true",
+        help=(
+            "Print V2.6.6.0 old/new company summary selection diagnostics "
+            "for explicitly requested symbols. No write is performed."
+        ),
+    )
+
     args = parser.parse_args()
 
     if args.promote_from_snapshot:
@@ -1014,9 +2127,18 @@ def main() -> int:
 
     explicit_symbols = [str(s).strip().upper() for s in args.symbol if str(s).strip()]
     if explicit_symbols:
-        report = build_company_profile_batch(ROOT, scope="evidence", symbols=explicit_symbols)
+        report = build_company_profile_batch(
+            ROOT,
+            scope="evidence",
+            symbols=explicit_symbols,
+        )
         report["_requested_scope"] = args.scope
-        _apply_product_recall(report)
+        _apply_product_recall(
+            report
+        )
+        _apply_company_summary_semantic_selector(
+            report
+        )
     elif args.scope == "strategic":
         try:
             report = _report_from_snapshot(_resolve_snapshot_path(args.census_snapshot))
@@ -1028,7 +2150,39 @@ def main() -> int:
         report["_requested_scope"] = args.scope
         _apply_product_recall(report)
 
-    report["promotion_gate"] = _production_promotion_gate(report, sample_limit=max(1,args.diagnostic_limit))
+    report["promotion_gate"] = _production_promotion_gate(
+        report,
+        sample_limit=max(
+            1,
+            args.diagnostic_limit,
+        ),
+    )
+
+    if args.summary_diagnostics:
+        if not explicit_symbols:
+            print(
+                json.dumps(
+                    {
+                        "status": "blocked",
+                        "error": "--summary-diagnostics requires explicit --symbol values",
+                    },
+                    ensure_ascii=False,
+                    indent=2,
+                )
+            )
+            return 2
+
+        print(
+            json.dumps(
+                _summary_diagnostics_payload(
+                    report
+                ),
+                ensure_ascii=False,
+                indent=2,
+            )
+        )
+        return 0
+
     if args.one_screen or (args.scope == "strategic" and not explicit_symbols and not args.full_report):
         print(_one_screen_promotion_summary(report))
     elif args.full_report:
