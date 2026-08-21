@@ -1566,7 +1566,9 @@ def _build_translation_prompt(
         "5. 不要提供投資建議、估值、評論、摘要、解釋或 Markdown。\n"
         "6. 如果來源 fragment 明顯像 SEC 法律文字、客戶名稱、"
         "競爭者名稱或不完整片段，只忠實翻譯，不要美化成新的產品或市場事實。\n"
-        "7. 陣列項目數與順序必須和來源完全一致，不得合併、刪除或新增項目。\n"
+        "7. 陣列項目數與順序必須和來源完全一致，不得合併、刪除或新增項目。"
+        "每一個來源 array item 必須對應且只能對應一個輸出 array item；"
+        "即使來源 item 內含逗號、斜線、and、&、括號、冒號或多個名詞，也不得拆成多項。\n"
         "8. 品牌、產品家族、型號、技術標準與商標必須保留原文拼寫；"
         "例如 Aries、Leo、Scorpio、COSMOS、EPYC、Instinct、Ryzen、Radeon、"
         "Pensando、PCIe、CXL、Ethernet。\n"
@@ -1769,6 +1771,305 @@ def _write_translation_cache(
     return path
 
 
+_ARRAY_LOCK_KEY = "__axiom_array__"
+
+
+def _lock_translation_arrays(
+    value: object,
+) -> object:
+    """
+    Convert every JSON array into an indexed object before sending it to the
+    model. The model can translate values, but it cannot legally change array
+    cardinality without also changing object keys, which exact-shape validation
+    rejects.
+    """
+    if isinstance(
+        value,
+        list,
+    ):
+        return {
+            _ARRAY_LOCK_KEY: {
+                str(index):
+                    _lock_translation_arrays(
+                        child
+                    )
+                for index, child
+                in enumerate(
+                    value
+                )
+            }
+        }
+
+    if isinstance(
+        value,
+        dict,
+    ):
+        return {
+            str(key):
+                _lock_translation_arrays(
+                    child
+                )
+            for key, child
+            in value.items()
+        }
+
+    return value
+
+
+def _unlock_translation_arrays(
+    value: object,
+) -> object:
+    if isinstance(
+        value,
+        dict,
+    ):
+        if (
+            set(value)
+            == {
+                _ARRAY_LOCK_KEY
+            }
+            and isinstance(
+                value[
+                    _ARRAY_LOCK_KEY
+                ],
+                dict,
+            )
+        ):
+            indexed = value[
+                _ARRAY_LOCK_KEY
+            ]
+
+            keys = list(
+                indexed.keys()
+            )
+
+            expected = [
+                str(index)
+                for index
+                in range(
+                    len(
+                        indexed
+                    )
+                )
+            ]
+
+            if keys != expected:
+                raise ValueError(
+                    "translation array lock keys mismatch: "
+                    f"expected={expected} actual={keys}"
+                )
+
+            return [
+                _unlock_translation_arrays(
+                    indexed[
+                        str(index)
+                    ]
+                )
+                for index
+                in range(
+                    len(
+                        indexed
+                    )
+                )
+            ]
+
+        return {
+            str(key):
+                _unlock_translation_arrays(
+                    child
+                )
+            for key, child
+            in value.items()
+        }
+
+    return value
+
+
+def _build_locked_translation_prompt(
+    *,
+    symbol: str,
+    source: dict,
+) -> str:
+    locked = _lock_translation_arrays(
+        source
+    )
+
+    return (
+        "你是美股研究資料的繁體中文翻譯器。"
+        "請把 LOCKED_SOURCE_JSON 中的英文值翻成台灣繁體中文。\n"
+        "這份 JSON 已把所有 array 轉成 indexed object，以強制保持 cardinality。\n"
+        "硬性規則：\n"
+        "1. 只能翻譯 value，不得修改、增加、刪除、重新排序任何 key。\n"
+        "2. __axiom_array__、其下的數字 keys 0,1,2... 都是結構 key，絕對不可翻譯或變更。\n"
+        "3. 每個來源 value 只能產生一個對應 value，不得拆分或合併。\n"
+        "4. 公司名、品牌、產品家族、型號、技術標準與商標保留原文；"
+        "其餘忠實翻成自然、專業的台灣繁體中文。\n"
+        "5. null、空 object、空 array wrapper 維持原樣。\n"
+        "6. 不得新增、推論、補齊任何公司事實。\n"
+        "7. 只回傳 JSON，不要 Markdown。\n\n"
+        f"SYMBOL: {symbol}\n"
+        "LOCKED_SOURCE_JSON:\n"
+        + json.dumps(
+            locked,
+            ensure_ascii=False,
+            separators=(",", ":"),
+        )
+    )
+
+
+def _translation_shape_manifest(
+    value: object,
+    *,
+    path: str = "$",
+) -> list[str]:
+    rows = []
+
+    if isinstance(
+        value,
+        dict,
+    ):
+        rows.append(
+            (
+                f"{path}: object keys="
+                + json.dumps(
+                    list(
+                        value.keys()
+                    ),
+                    ensure_ascii=False,
+                )
+            )
+        )
+
+        for key, child in (
+            value.items()
+        ):
+            rows.extend(
+                _translation_shape_manifest(
+                    child,
+                    path=f"{path}.{key}",
+                )
+            )
+
+        return rows
+
+    if isinstance(
+        value,
+        list,
+    ):
+        rows.append(
+            f"{path}: array length={len(value)}"
+        )
+
+        for index, child in enumerate(
+            value
+        ):
+            if isinstance(
+                child,
+                (dict, list),
+            ):
+                rows.extend(
+                    _translation_shape_manifest(
+                        child,
+                        path=f"{path}[{index}]",
+                    )
+                )
+
+        return rows
+
+    return rows
+
+
+def _build_translation_repair_prompt(
+    *,
+    symbol: str,
+    source: dict,
+    validation_error: str,
+    attempt: int,
+) -> str:
+    manifest = "\n".join(
+        _translation_shape_manifest(
+            source
+        )
+    )
+
+    return (
+        "上一個翻譯輸出未通過 JSON shape/cardinality 驗證，"
+        "請重新從 SOURCE_JSON 產生完整翻譯，不要修改或沿用上一個錯誤輸出。\n"
+        f"SYMBOL: {symbol}\n"
+        f"REPAIR_ATTEMPT: {attempt}\n"
+        f"VALIDATION_ERROR: {validation_error}\n\n"
+        "硬性規則：\n"
+        "1. 輸出 JSON 的 keys、巢狀結構、null、object、array 必須和來源完全相同。\n"
+        "2. 每個 array 的長度必須和來源完全相同。\n"
+        "3. 每一個來源 array item 必須對應且只能對應一個輸出 item。\n"
+        "4. 絕對不可因逗號、斜線、and、&、括號、冒號、破折號或多個名詞，"
+        "把一個來源 item 拆成兩個以上輸出 items。\n"
+        "5. 不得合併兩個來源 items，也不得新增、刪除、排序 array items。\n"
+        "6. 品牌、型號、技術標準與商標保留原文，其餘忠實翻成台灣繁體中文。\n"
+        "7. 只回傳 JSON，不要 Markdown。\n\n"
+        "REQUIRED_SHAPE:\n"
+        f"{manifest}\n\n"
+        "SOURCE_JSON:\n"
+        + json.dumps(
+            source,
+            ensure_ascii=False,
+            separators=(",", ":"),
+        )
+    )
+
+
+def _parse_openai_translation_text(
+    text: str,
+) -> dict:
+    clean = str(
+        text
+        or ""
+    ).strip()
+
+    if clean.startswith(
+        "```"
+    ):
+        clean = clean.strip(
+            "`"
+        )
+        if clean.startswith(
+            "json"
+        ):
+            clean = clean[
+                4:
+            ].lstrip()
+
+    translated = json.loads(
+        clean
+    )
+
+    if not isinstance(
+        translated,
+        dict,
+    ):
+        raise ValueError(
+            "OpenAI output is not a JSON object"
+        )
+
+    return translated
+
+
+def _request_openai_translation(
+    *,
+    client,
+    model: str,
+    prompt: str,
+) -> dict:
+    response = client.responses.create(
+        model=model,
+        input=prompt,
+    )
+
+    return _parse_openai_translation_text(
+        response.output_text
+    )
+
+
 def _translate_with_openai(
     *,
     model: str,
@@ -1795,49 +2096,115 @@ def _translate_with_openai(
 
     client = OpenAI()
 
-    response = client.responses.create(
-        model=model,
-        input=_build_translation_prompt(
+    locked_source = (
+        _lock_translation_arrays(
+            source
+        )
+    )
+
+    max_attempts = 3
+    last_error = None
+
+    for attempt in range(
+        1,
+        max_attempts + 1,
+    ):
+        if attempt == 1:
+            prompt = (
+                _build_locked_translation_prompt(
+                    symbol=symbol,
+                    source=source,
+                )
+            )
+        else:
+            manifest = "\n".join(
+                _translation_shape_manifest(
+                    locked_source
+                )
+            )
+
+            prompt = (
+                "上一個翻譯輸出未通過 exact JSON shape 驗證。"
+                "請重新翻譯 LOCKED_SOURCE_JSON。\n"
+                f"SYMBOL: {symbol}\n"
+                f"REPAIR_ATTEMPT: {attempt}\n"
+                f"VALIDATION_ERROR: {last_error}\n\n"
+                "硬性規則：\n"
+                "1. 所有 object keys 必須與來源完全一致。\n"
+                "2. __axiom_array__ 及其數字 keys 是鎖定的 array 結構，絕對不可修改。\n"
+                "3. 只能翻譯 leaf string values。\n"
+                "4. 不得新增、刪除、拆分、合併、排序任何項目。\n"
+                "5. 只回傳 JSON。\n\n"
+                "REQUIRED_LOCKED_SHAPE:\n"
+                f"{manifest}\n\n"
+                "LOCKED_SOURCE_JSON:\n"
+                + json.dumps(
+                    locked_source,
+                    ensure_ascii=False,
+                    separators=(",", ":"),
+                )
+            )
+
+        try:
+            locked_translated = (
+                _request_openai_translation(
+                    client=client,
+                    model=model,
+                    prompt=prompt,
+                )
+            )
+
+            _validate_translation_shape(
+                source=locked_source,
+                translated=locked_translated,
+            )
+
+            translated = (
+                _unlock_translation_arrays(
+                    locked_translated
+                )
+            )
+
+            _validate_translation_shape(
+                source=source,
+                translated=translated,
+            )
+
+        except (
+            ValueError,
+            json.JSONDecodeError,
+        ) as exc:
+            last_error = exc
+
+            if attempt >= max_attempts:
+                raise ValueError(
+                    f"{symbol}: OpenAI translation failed locked exact-shape "
+                    f"validation after {max_attempts} attempts: {exc}"
+                ) from exc
+
+            continue
+
+        _write_translation_cache(
+            model=model,
             symbol=symbol,
             source=source,
-        ),
-    )
-
-    text = str(
-        response.output_text
-        or ""
-    ).strip()
-
-    if text.startswith("```"):
-        text = text.strip("`")
-        if text.startswith("json"):
-            text = text[4:].lstrip()
-
-    translated = json.loads(
-        text
-    )
-
-    if not isinstance(
-        translated,
-        dict,
-    ):
-        raise ValueError(
-            "OpenAI output is not a JSON object"
+            translation=translated,
         )
 
-    _validate_translation_shape(
-        source=source,
-        translated=translated,
-    )
+        result_source = (
+            "API_LOCKED"
+            if attempt == 1
+            else f"API_LOCKED_REPAIR_{attempt}"
+        )
 
-    _write_translation_cache(
-        model=model,
-        symbol=symbol,
-        source=source,
-        translation=translated,
-    )
+        return (
+            translated,
+            result_source,
+        )
 
-    return translated, "API"
+    raise RuntimeError(
+        f"{symbol}: unreachable locked translation retry state"
+    )
 
 
 def _build_payload_from_canonical(
@@ -2176,14 +2543,35 @@ def main() -> int:
         )
 
     results = []
+    failures = []
 
     for symbol in symbols:
-        result = _run_one(
-            symbol=symbol,
-            use_openai=args.openai,
-            model=args.model,
-            write=args.write,
-        )
+        try:
+            result = _run_one(
+                symbol=symbol,
+                use_openai=args.openai,
+                model=args.model,
+                write=args.write,
+            )
+        except Exception as exc:
+            if len(symbols) == 1:
+                raise
+
+            failure = {
+                "status": "failed",
+                "symbol": symbol,
+                "error": str(exc),
+            }
+            failures.append(
+                failure
+            )
+            print(
+                json.dumps(
+                    failure,
+                    ensure_ascii=False,
+                )
+            )
+            continue
 
         results.append(
             result
@@ -2260,6 +2648,23 @@ def main() -> int:
                     indent=2,
                 )
             )
+
+    if failures:
+        print(
+            json.dumps(
+                {
+                    "batch_status": "partial_failure",
+                    "success_count": len(results),
+                    "failure_count": len(failures),
+                    "failed_symbols": [
+                        row["symbol"]
+                        for row in failures
+                    ],
+                },
+                ensure_ascii=False,
+            )
+        )
+        return 1
 
     return 0
 
