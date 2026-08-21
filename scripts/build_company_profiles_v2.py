@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-V2.6.6.0 — Company Summary Semantic Selector + Production Promotion Gate
+V2.6.6.2 — Product Stack Production Sanitizer + Company Summary Semantic Selector
 
 This file intentionally freezes the V2.6.5.7 extractor implementation at the
 known-good repository commit fa9f64c341eda97e457c4178686b6409b12dae33 and
@@ -8,7 +8,7 @@ overlays promotion-only quality logic.
 
 Important:
 - extractor semantics are not changed here;
-- product_stack is never rewritten by the promotion gate;
+- extractor product_stack is never rewritten; production writes pass through a deterministic sanitizer;
 - PROMOTE / REVIEW / FAIL controls production promotion only;
 - OpenAI is not used by this script.
 
@@ -1228,6 +1228,389 @@ def _summary_diagnostics_payload(
 
 
 
+# === V2.6.6.2 PRODUCT STACK PRODUCTION SANITIZER ==========================
+
+PRODUCT_SANITIZER_VERSION = "v2.6.6.2a"
+
+_PRODUCT_SANITIZER_EXACT_RE = re.compile(
+    r"^(?:"
+    r"form\s+10-k|"
+    r"geographic\s+information|"
+    r"software-defined"
+    r")$",
+    flags=re.IGNORECASE,
+)
+
+_PRODUCT_SANITIZER_FINANCIAL_NOTE_RE = re.compile(
+    r"(?:"
+    r"\bsee\s+note\s+\d+\b|"
+    r"\bnotes?\s+to\s+(?:the\s+)?consolidated\s+financial\s+statements\b|"
+    r"\bfinancial\s+statements?\s+contained\s+in\s+part\s+[ivx]+\b|"
+    r"\bpart\s+[ivx]+\b.*\bfinancial\s+statements?\b"
+    r")",
+    flags=re.IGNORECASE,
+)
+
+_PRODUCT_SANITIZER_HR_OR_FACILITY_RE = re.compile(
+    r"(?:"
+    r"\bhealth\s+clinics?\b|"
+    r"\bemployee\s+health\b|"
+    r"\bworkplace\s+health\b"
+    r")",
+    flags=re.IGNORECASE,
+)
+
+_PRODUCT_SANITIZER_DANGLING_PREFIX_RE = re.compile(
+    r"^(?:"
+    r"including\s+|"
+    r"other\s+software\s+available\s+on\s+commercially\s+reasonable\s+terms$"
+    r")",
+    flags=re.IGNORECASE,
+)
+
+_PRODUCT_SANITIZER_TRUNCATED_RE = re.compile(
+    r"(?:"
+    r"\bsolutions?\s+that\s+span\s+primary$|"
+    r"\bspan\s+primary$"
+    r")",
+    flags=re.IGNORECASE,
+)
+
+_PRODUCT_SANITIZER_SECTION_FRAGMENT_RE = re.compile(
+    r"^(?:"
+    r"mixed\s+signal\s*[—-]\s*we\s+are\s+|"
+    r"products?\s+by\s+business\s+unit\b"
+    r")",
+    flags=re.IGNORECASE,
+)
+
+
+_PRODUCT_SANITIZER_REGULATORY_RE = re.compile(
+    r"(?:"
+    r"\b(?:authorization|restriction|registration|evaluation)\s+of\s+chemicals\b|"
+    r"\bSVHC\s+Substances\s+Directive\b|"
+    r"\bRoHS\b.*\bDirective\b|"
+    r"\bREACH\b.*\bDirective\b"
+    r")",
+    flags=re.IGNORECASE,
+)
+
+_PRODUCT_SANITIZER_REVENUE_PROSE_RE = re.compile(
+    r"(?:"
+    r"^\s*revenue\s+from\s+|"
+    r"\blicensing\s+our\s+software\b"
+    r")",
+    flags=re.IGNORECASE,
+)
+
+_PRODUCT_SANITIZER_LOCATION_ONLY_RE = re.compile(
+    r"^(?:"
+    r"Hong\s+Kong|"
+    r"those\s+in\s+the\s+Middle\s+East"
+    r")$",
+    flags=re.IGNORECASE,
+)
+
+_PRODUCT_SANITIZER_GENERIC_NON_PRODUCT_RE = re.compile(
+    r"^(?:"
+    r"strong\s+third-party\s+software|"
+    r"consumer\s+electronics|"
+    r"corporate\s+controller"
+    r")$",
+    flags=re.IGNORECASE,
+)
+
+
+def _product_sanitizer_reason(
+    value: object,
+) -> str | None:
+    text = re.sub(
+        r"\s+",
+        " ",
+        str(value or ""),
+    ).strip()
+
+    if not text:
+        return "EMPTY_VALUE"
+
+    if _PRODUCT_SANITIZER_EXACT_RE.fullmatch(
+        text
+    ):
+        return "NON_PRODUCT_DOCUMENT_OR_FRAGMENT"
+
+    if _PRODUCT_SANITIZER_FINANCIAL_NOTE_RE.search(
+        text
+    ):
+        return "FINANCIAL_STATEMENT_NOTE"
+
+    if _PRODUCT_SANITIZER_HR_OR_FACILITY_RE.search(
+        text
+    ):
+        return "HR_OR_FACILITY_TEXT"
+
+    if _PRODUCT_SANITIZER_DANGLING_PREFIX_RE.search(
+        text
+    ):
+        return "DANGLING_CLAUSE"
+
+    if _PRODUCT_SANITIZER_TRUNCATED_RE.search(
+        text
+    ):
+        return "TRUNCATED_FRAGMENT"
+
+    if _PRODUCT_SANITIZER_SECTION_FRAGMENT_RE.search(
+        text
+    ):
+        return "SECTION_PROSE_FRAGMENT"
+
+    if _PRODUCT_SANITIZER_REGULATORY_RE.search(
+        text
+    ):
+        return "REGULATORY_OR_COMPLIANCE_TEXT"
+
+    if _PRODUCT_SANITIZER_REVENUE_PROSE_RE.search(
+        text
+    ):
+        return "REVENUE_OR_LICENSING_PROSE"
+
+    if _PRODUCT_SANITIZER_LOCATION_ONLY_RE.fullmatch(
+        text
+    ):
+        return "GEOGRAPHY_TEXT"
+
+    if _PRODUCT_SANITIZER_GENERIC_NON_PRODUCT_RE.fullmatch(
+        text
+    ):
+        return "GENERIC_NON_PRODUCT_TEXT"
+
+    return None
+
+
+def _sanitize_product_stack_values(
+    products: list[object],
+) -> dict:
+    kept = []
+    removed = []
+    seen = set()
+
+    for raw_value in products:
+        text = re.sub(
+            r"\s+",
+            " ",
+            str(raw_value or ""),
+        ).strip()
+
+        reason = _product_sanitizer_reason(
+            text
+        )
+
+        if reason:
+            removed.append(
+                {
+                    "value": text,
+                    "reason": reason,
+                }
+            )
+            continue
+
+        dedupe_key = text.casefold()
+
+        if dedupe_key in seen:
+            removed.append(
+                {
+                    "value": text,
+                    "reason": "EXACT_DUPLICATE",
+                }
+            )
+            continue
+
+        seen.add(
+            dedupe_key
+        )
+        kept.append(
+            text
+        )
+
+    return {
+        "kept": kept,
+        "removed": removed,
+        "before_count": len(products),
+        "after_count": len(kept),
+        "removed_count": len(removed),
+    }
+
+
+def _sanitize_profile_for_production(
+    profile: dict,
+) -> tuple[dict, dict]:
+    sanitized = json.loads(
+        json.dumps(
+            profile,
+            ensure_ascii=False,
+        )
+    )
+
+    products = sanitized.get(
+        "product_stack"
+    )
+
+    if not isinstance(
+        products,
+        list,
+    ):
+        products = []
+
+    result = _sanitize_product_stack_values(
+        products
+    )
+
+    sanitized[
+        "product_stack"
+    ] = result[
+        "kept"
+    ]
+
+    sanitized[
+        "product_stack_sanitizer"
+    ] = {
+        "version":
+            PRODUCT_SANITIZER_VERSION,
+        "mode":
+            "deterministic_production_boundary",
+        "before_count":
+            result[
+                "before_count"
+            ],
+        "after_count":
+            result[
+                "after_count"
+            ],
+        "removed_count":
+            result[
+                "removed_count"
+            ],
+        "removed":
+            result[
+                "removed"
+            ],
+    }
+
+    return (
+        sanitized,
+        result,
+    )
+
+
+def _product_sanitizer_diagnostics(
+    profiles: list[dict],
+) -> dict:
+    rows = []
+
+    for profile in profiles:
+        sanitized, result = (
+            _sanitize_profile_for_production(
+                profile
+            )
+        )
+
+        rows.append(
+            {
+                "symbol":
+                    str(
+                        profile.get(
+                            "symbol"
+                        )
+                        or ""
+                    ).strip().upper(),
+                "before_count":
+                    result[
+                        "before_count"
+                    ],
+                "after_count":
+                    result[
+                        "after_count"
+                    ],
+                "removed_count":
+                    result[
+                        "removed_count"
+                    ],
+                "removed":
+                    result[
+                        "removed"
+                    ],
+                "blocked_empty_after_sanitize":
+                    (
+                        result[
+                            "before_count"
+                        ] > 0
+                        and result[
+                            "after_count"
+                        ] == 0
+                    ),
+                "status":
+                    (
+                        "BLOCKED_EMPTY_AFTER_SANITIZE"
+                        if (
+                            result[
+                                "before_count"
+                            ] > 0
+                            and result[
+                                "after_count"
+                            ] == 0
+                        )
+                        else (
+                            "CHANGED"
+                            if result[
+                                "removed_count"
+                            ] > 0
+                            else "UNCHANGED"
+                        )
+                    ),
+                "final_product_stack":
+                    sanitized.get(
+                        "product_stack"
+                    )
+                    or [],
+            }
+        )
+
+    return {
+        "sanitizer_version":
+            PRODUCT_SANITIZER_VERSION,
+        "company_count":
+            len(
+                rows
+            ),
+        "blocked_empty_company_count":
+            sum(
+                1
+                for row in rows
+                if row.get(
+                    "blocked_empty_after_sanitize"
+                )
+            ),
+        "changed_company_count":
+            sum(
+                1
+                for row in rows
+                if row[
+                    "removed_count"
+                ]
+                > 0
+            ),
+        "removed_item_count":
+            sum(
+                row[
+                    "removed_count"
+                ]
+                for row in rows
+            ),
+        "rows":
+            rows,
+    }
+
+
+
 # === V2.6.5.8 PRODUCTION PROMOTION QUALITY GATE ============================
 
 PROMOTION_GATE_VERSION = "v2.6.5.8"
@@ -2003,45 +2386,260 @@ def _write_json_atomic(path: Path, payload: object) -> None:
     tmp.replace(path)
 
 
-def _safe_upsert_canonical_profiles(profiles: list[dict]) -> dict:
+def _safe_upsert_canonical_profiles(
+    profiles: list[dict],
+) -> dict:
     index = _canonical_index_payload()
-    symbol_to_file = dict(index.get("symbol_to_file") or {})
-    company_id_to_file = dict(index.get("company_id_to_file") or {})
-    before_symbols = set(symbol_to_file)
-    before_company_ids = set(company_id_to_file)
+
+    symbol_to_file = dict(
+        index.get(
+            "symbol_to_file"
+        )
+        or {}
+    )
+
+    company_id_to_file = dict(
+        index.get(
+            "company_id_to_file"
+        )
+        or {}
+    )
+
+    before_symbols = set(
+        symbol_to_file
+    )
+
+    before_company_ids = set(
+        company_id_to_file
+    )
+
     written = []
-    for profile in profiles:
-        symbol = str(profile.get("symbol") or "").strip().upper()
-        company_id = str(profile.get("company_id") or "").strip()
-        products = profile.get("product_stack") or []
+
+    for raw_profile in profiles:
+        profile, sanitizer = (
+            _sanitize_profile_for_production(
+                raw_profile
+            )
+        )
+
+        symbol = str(
+            profile.get(
+                "symbol"
+            )
+            or ""
+        ).strip().upper()
+
+        company_id = str(
+            profile.get(
+                "company_id"
+            )
+            or ""
+        ).strip()
+
+        products = (
+            profile.get(
+                "product_stack"
+            )
+            or []
+        )
+
         if not symbol or not company_id:
-            raise ValueError("safe promotion profile requires symbol and company_id")
-        if not isinstance(products, list) or not products:
-            raise ValueError(f"{symbol}: safe promotion refuses empty product_stack")
-        rel = Path("per-company") / (quote(company_id, safe="") + ".json")
-        target = CANONICAL_ROOT / rel
-        _write_json_atomic(target, profile)
-        readback = json.loads(target.read_text(encoding="utf-8"))
-        if readback.get("product_stack") != profile.get("product_stack"):
-            raise ValueError(f"{symbol}: canonical product_stack read-back mismatch")
-        symbol_to_file[symbol] = str(rel)
-        company_id_to_file[company_id] = str(rel)
-        written.append({"symbol":symbol,"company_id":company_id,"relative_path":str(rel),"product_stack_count":len(products)})
-    if not before_symbols <= set(symbol_to_file):
-        raise ValueError("safe promotion invariant failed: existing symbol index entry lost")
-    if not before_company_ids <= set(company_id_to_file):
-        raise ValueError("safe promotion invariant failed: existing company index entry lost")
-    index["symbol_to_file"] = dict(sorted(symbol_to_file.items()))
-    index["company_id_to_file"] = dict(sorted(company_id_to_file.items()))
-    index["symbols"] = sorted(symbol_to_file)
-    index["company_count"] = len(company_id_to_file)
-    _write_json_atomic(CANONICAL_ROOT / "index.json", index)
+            raise ValueError(
+                "safe promotion profile requires symbol and company_id"
+            )
+
+        if (
+            not isinstance(
+                products,
+                list,
+            )
+            or not products
+        ):
+            raise ValueError(
+                f"{symbol}: product sanitizer refuses empty production product_stack "
+                f"(before={sanitizer['before_count']} removed={sanitizer['removed_count']})"
+            )
+
+        rel = (
+            Path(
+                "per-company"
+            )
+            / (
+                quote(
+                    company_id,
+                    safe="",
+                )
+                + ".json"
+            )
+        )
+
+        target = (
+            CANONICAL_ROOT
+            / rel
+        )
+
+        _write_json_atomic(
+            target,
+            profile,
+        )
+
+        readback = json.loads(
+            target.read_text(
+                encoding="utf-8"
+            )
+        )
+
+        if (
+            readback.get(
+                "product_stack"
+            )
+            != profile.get(
+                "product_stack"
+            )
+        ):
+            raise ValueError(
+                f"{symbol}: canonical product_stack read-back mismatch"
+            )
+
+        readback_sanitizer = (
+            readback.get(
+                "product_stack_sanitizer"
+            )
+            or {}
+        )
+
+        if (
+            readback_sanitizer.get(
+                "version"
+            )
+            != PRODUCT_SANITIZER_VERSION
+        ):
+            raise ValueError(
+                f"{symbol}: product sanitizer metadata read-back mismatch"
+            )
+
+        symbol_to_file[
+            symbol
+        ] = str(
+            rel
+        )
+
+        company_id_to_file[
+            company_id
+        ] = str(
+            rel
+        )
+
+        written.append(
+            {
+                "symbol":
+                    symbol,
+                "company_id":
+                    company_id,
+                "relative_path":
+                    str(
+                        rel
+                    ),
+                "product_stack_count":
+                    len(
+                        products
+                    ),
+                "sanitizer_removed_count":
+                    sanitizer[
+                        "removed_count"
+                    ],
+                "sanitizer_removed":
+                    sanitizer[
+                        "removed"
+                    ],
+            }
+        )
+
+    if not (
+        before_symbols
+        <= set(
+            symbol_to_file
+        )
+    ):
+        raise ValueError(
+            "safe promotion invariant failed: existing symbol index entry lost"
+        )
+
+    if not (
+        before_company_ids
+        <= set(
+            company_id_to_file
+        )
+    ):
+        raise ValueError(
+            "safe promotion invariant failed: existing company index entry lost"
+        )
+
+    index[
+        "symbol_to_file"
+    ] = dict(
+        sorted(
+            symbol_to_file.items()
+        )
+    )
+
+    index[
+        "company_id_to_file"
+    ] = dict(
+        sorted(
+            company_id_to_file.items()
+        )
+    )
+
+    index[
+        "symbols"
+    ] = sorted(
+        symbol_to_file
+    )
+
+    index[
+        "company_count"
+    ] = len(
+        company_id_to_file
+    )
+
+    _write_json_atomic(
+        CANONICAL_ROOT
+        / "index.json",
+        index,
+    )
+
     return {
-        "written_count": len(written),
-        "company_count_before": len(before_company_ids),
-        "company_count_after": len(company_id_to_file),
-        "preserved_existing_symbols": before_symbols <= set(index["symbol_to_file"]),
-        "written": written,
+        "sanitizer_version":
+            PRODUCT_SANITIZER_VERSION,
+        "written_count":
+            len(
+                written
+            ),
+        "company_count_before":
+            len(
+                before_company_ids
+            ),
+        "company_count_after":
+            len(
+                company_id_to_file
+            ),
+        "preserved_existing_symbols":
+            before_symbols
+            <= set(
+                index[
+                    "symbol_to_file"
+                ]
+            ),
+        "sanitizer_removed_item_count":
+            sum(
+                row[
+                    "sanitizer_removed_count"
+                ]
+                for row in written
+            ),
+        "written":
+            written,
     }
 
 
@@ -2109,6 +2707,15 @@ def main() -> int:
         ),
     )
 
+    parser.add_argument(
+        "--product-sanitizer-diagnostics",
+        action="store_true",
+        help=(
+            "Print V2.6.6.2 production-boundary product sanitizer diagnostics "
+            "for explicitly requested symbols. No write is performed."
+        ),
+    )
+
     args = parser.parse_args()
 
     if args.promote_from_snapshot:
@@ -2157,6 +2764,37 @@ def main() -> int:
             args.diagnostic_limit,
         ),
     )
+
+    if args.product_sanitizer_diagnostics:
+        if not explicit_symbols:
+            print(
+                json.dumps(
+                    {
+                        "status": "blocked",
+                        "error": (
+                            "--product-sanitizer-diagnostics requires "
+                            "explicit --symbol values"
+                        ),
+                    },
+                    ensure_ascii=False,
+                    indent=2,
+                )
+            )
+            return 2
+
+        print(
+            json.dumps(
+                _product_sanitizer_diagnostics(
+                    report.get(
+                        "_canonical_profiles"
+                    )
+                    or []
+                ),
+                ensure_ascii=False,
+                indent=2,
+            )
+        )
+        return 0
 
     if args.summary_diagnostics:
         if not explicit_symbols:

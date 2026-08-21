@@ -1,3 +1,5 @@
+import pytest
+import json
 from pathlib import Path
 import importlib.util
 
@@ -1306,3 +1308,301 @@ def test_v2661c_challenger_still_exposes_eligibility_diagnostics():
     assert "candidate_eligible" in result
     assert "candidate_eligibility_reason" in result
     assert "candidate_blockers" in result
+
+
+def test_v2662_sanitizer_drops_financial_note_pollution():
+    module = _load_profile_script()
+
+    result = module._sanitize_product_stack_values(
+        [
+            "broadband switches suitable for radio",
+            "hearing health) See Note 4",
+            "Geographic Information",
+            (
+                "of the Notes to Consolidated Financial Statements "
+                "contained in Part II"
+            ),
+            "other high-performance sensors",
+        ]
+    )
+
+    assert result["kept"] == [
+        "broadband switches suitable for radio",
+        "other high-performance sensors",
+    ]
+
+    reasons = {
+        row["reason"]
+        for row in result["removed"]
+    }
+
+    assert "FINANCIAL_STATEMENT_NOTE" in reasons
+    assert "NON_PRODUCT_DOCUMENT_OR_FRAGMENT" in reasons
+
+
+def test_v2662_sanitizer_drops_hr_facility_pollution():
+    module = _load_profile_script()
+
+    result = module._sanitize_product_stack_values(
+        [
+            "PCIe Gen6 SSDs",
+            "health clinics at certain Micron sites",
+            "DDR5",
+        ]
+    )
+
+    assert result["kept"] == [
+        "PCIe Gen6 SSDs",
+        "DDR5",
+    ]
+    assert result["removed"][0]["reason"] == "HR_OR_FACILITY_TEXT"
+
+
+def test_v2662_sanitizer_drops_form_10k():
+    module = _load_profile_script()
+
+    result = module._sanitize_product_stack_values(
+        [
+            "Form 10-K",
+            "SuperDoctor 5",
+        ]
+    )
+
+    assert result["kept"] == [
+        "SuperDoctor 5",
+    ]
+
+
+def test_v2662_sanitizer_drops_dell_truncated_fragments():
+    module = _load_profile_script()
+
+    result = module._sanitize_product_stack_values(
+        [
+            (
+                "modern and traditional storage solutions "
+                "that span primary"
+            ),
+            "software-defined",
+        ]
+    )
+
+    assert result["kept"] == []
+    assert {
+        row["reason"]
+        for row in result["removed"]
+    } == {
+        "TRUNCATED_FRAGMENT",
+        "NON_PRODUCT_DOCUMENT_OR_FRAGMENT",
+    }
+
+
+def test_v2662_sanitizer_preserves_named_products():
+    module = _load_profile_script()
+
+    products = [
+        "OCTEON DPUs",
+        "PCIe and CXL Switches",
+        "Allegro X",
+        "OrCAD X platforms for PCB",
+        "Google Gemini",
+        "Google Maps",
+        "low/medium voltage switchgear",
+        "critical digital infrastructure software",
+    ]
+
+    result = module._sanitize_product_stack_values(
+        products
+    )
+
+    assert result["kept"] == products
+    assert result["removed"] == []
+
+
+def test_v2662_safe_upsert_sanitizes_only_production_copy(
+    monkeypatch,
+    tmp_path,
+):
+    module = _load_profile_script()
+
+    monkeypatch.setattr(
+        module,
+        "CANONICAL_ROOT",
+        tmp_path,
+    )
+
+    profile = {
+        "symbol": "TEST",
+        "company_id": "company:test",
+        "product_stack": [
+            "Form 10-K",
+            "OCTEON DPUs",
+        ],
+    }
+
+    original = json.loads(
+        json.dumps(
+            profile
+        )
+    )
+
+    result = module._safe_upsert_canonical_profiles(
+        [
+            profile
+        ]
+    )
+
+    assert profile == original
+    assert result["written_count"] == 1
+    assert result["sanitizer_removed_item_count"] == 1
+
+    rel = (
+        result[
+            "written"
+        ][0][
+            "relative_path"
+        ]
+    )
+
+    written = json.loads(
+        (
+            tmp_path
+            / rel
+        ).read_text(
+            encoding="utf-8"
+        )
+    )
+
+    assert written["product_stack"] == [
+        "OCTEON DPUs",
+    ]
+    assert (
+        written[
+            "product_stack_sanitizer"
+        ][
+            "version"
+        ]
+        == "v2.6.6.2a"
+    )
+
+
+def test_v2662_sanitizer_refuses_empty_production_stack(
+    monkeypatch,
+    tmp_path,
+):
+    module = _load_profile_script()
+
+    monkeypatch.setattr(
+        module,
+        "CANONICAL_ROOT",
+        tmp_path,
+    )
+
+    with pytest.raises(
+        ValueError,
+        match="refuses empty production product_stack",
+    ):
+        module._safe_upsert_canonical_profiles(
+            [
+                {
+                    "symbol": "TEST",
+                    "company_id": "company:test",
+                    "product_stack": [
+                        "Form 10-K",
+                        "Geographic Information",
+                    ],
+                }
+            ]
+        )
+
+
+def test_v2662a_preserves_valid_covering_product_family():
+    module = _load_profile_script()
+
+    products = [
+        (
+            "a broad portfolio of high-performance RF and microwave ICs "
+            "covering the entire RF signal chain"
+        ),
+        "microwave ICs covering the entire RF signal chain",
+    ]
+
+    result = module._sanitize_product_stack_values(
+        products
+    )
+
+    assert result["kept"] == products
+    assert result["removed"] == []
+
+
+def test_v2662a_preserves_named_product_after_such_as():
+    module = _load_profile_script()
+
+    result = module._sanitize_product_stack_values(
+        [
+            "such as YouTube TV",
+            "YouTube Music",
+        ]
+    )
+
+    assert result["kept"] == [
+        "such as YouTube TV",
+        "YouTube Music",
+    ]
+
+
+def test_v2662a_drops_high_precision_known_pollution():
+    module = _load_profile_script()
+
+    result = module._sanitize_product_stack_values(
+        [
+            "Authorization of Chemicals SVHC Substances Directive",
+            "revenue from licensing our software",
+            "Hong Kong",
+            "those in the Middle East",
+            "strong third-party software",
+            "consumer electronics",
+            "Corporate Controller",
+            "OCTEON DPUs",
+        ]
+    )
+
+    assert result["kept"] == [
+        "OCTEON DPUs",
+    ]
+
+    reasons = {
+        row["reason"]
+        for row in result["removed"]
+    }
+
+    assert "REGULATORY_OR_COMPLIANCE_TEXT" in reasons
+    assert "REVENUE_OR_LICENSING_PROSE" in reasons
+    assert "GEOGRAPHY_TEXT" in reasons
+    assert "GENERIC_NON_PRODUCT_TEXT" in reasons
+
+
+def test_v2662a_diagnostics_marks_empty_stack_blocked():
+    module = _load_profile_script()
+
+    payload = module._product_sanitizer_diagnostics(
+        [
+            {
+                "symbol": "DELL",
+                "product_stack": [
+                    (
+                        "modern and traditional storage solutions "
+                        "that span primary"
+                    ),
+                    "software-defined",
+                ],
+            }
+        ]
+    )
+
+    assert payload["blocked_empty_company_count"] == 1
+    assert payload["rows"][0]["status"] == (
+        "BLOCKED_EMPTY_AFTER_SANITIZE"
+    )
+    assert payload["rows"][0][
+        "blocked_empty_after_sanitize"
+    ] is True

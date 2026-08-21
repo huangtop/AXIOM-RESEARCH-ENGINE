@@ -20,9 +20,7 @@
     "related services that accelerate the semiconductor design process",
     "software or other IP licensed from third parties",
     "Universal Accelerator",
-    "Corporate Controller",
     "silicon photonics",
-    "consumer electronics",
     "Allegro X",
     "OrCAD X platforms for PCB",
     "Sigrity X for signal",
@@ -31,7 +29,6 @@
     "Clarity™ 3D Solver for electromagnetic",
     "power electronics analysis",
     "Integrity™ 3D-IC solution for advanced 3D-IC",
-    "revenue from licensing our software",
     "semiconductor IP",
     "controllers",
     "OrCAD® family of offerings",
@@ -1081,5 +1078,26 @@
       "PILLAR_OR_SECTION_DETAIL"
     ],
     "good_existing": true
+  },
+  "product_stack_sanitizer": {
+    "version": "v2.6.6.2a",
+    "mode": "deterministic_production_boundary",
+    "before_count": 21,
+    "after_count": 18,
+    "removed_count": 3,
+    "removed": [
+      {
+        "value": "Corporate Controller",
+        "reason": "GENERIC_NON_PRODUCT_TEXT"
+      },
+      {
+        "value": "consumer electronics",
+        "reason": "GENERIC_NON_PRODUCT_TEXT"
+      },
+      {
+        "value": "revenue from licensing our software",
+        "reason": "REVENUE_OR_LICENSING_PROSE"
+      }
+    ]
   }
 }
