@@ -11,7 +11,6 @@
   "markets": [],
   "product_stack": [
     "a broad range of Compute SoM and System-in-Package solutions",
-    "Corporate Controller",
     "broad range of Compute SoM",
     "System-in-Package (“SiP”) solutions",
     "switching or gateway functionalities as well as telematics",
@@ -364,5 +363,18 @@
     "discovered_product_count": 10,
     "final_product_count": 10,
     "removed_market_product_pollution": true
+  },
+  "product_stack_sanitizer": {
+    "version": "v2.6.6.2a",
+    "mode": "deterministic_production_boundary",
+    "before_count": 10,
+    "after_count": 9,
+    "removed_count": 1,
+    "removed": [
+      {
+        "value": "Corporate Controller",
+        "reason": "GENERIC_NON_PRODUCT_TEXT"
+      }
+    ]
   }
 }

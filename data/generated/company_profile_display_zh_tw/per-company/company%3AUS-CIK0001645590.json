@@ -11,12 +11,14 @@
     "company_summary": {
       "one_line_business": "Business Hewlett Packard Enterprise is a global technology leader focused on developing intelligent solutions that allow customers to capture, analyze and act upon data seamlessly from edge to cloud."
     },
-    "markets": [
-      "雲端與資料中心",
-      "通訊設備",
-      "雲端服務"
+    "markets": [],
+    "product_stack": [
+      "for high performance graphics and accelerated processing units",
+      "Wireless LAN",
+      "versatile HPE ProLiant Rack",
+      "leveraging the same AI platform as our wireless",
+      "wired switching portfolio"
     ],
-    "product_stack": [],
     "market_products": {},
     "core_technologies": [],
     "manufacturing": {
@@ -66,15 +68,7 @@
       "net_loss": null,
       "revenue_mix": {},
       "customer_concentration": {}
-    },
-    "offerings": [
-      "資料中心伺服器與機櫃系統",
-      "Ethernet 交換器"
-    ],
-    "offerings_source": "company_analysis_v1_fallback",
-    "markets_source": "company_analysis_v1_fallback",
-    "operating_capabilities": [],
-    "operating_capabilities_source": null
+    }
   },
   "value_provenance": {
     "company_summary.one_line_business": {
@@ -82,7 +76,62 @@
       "evidence": null
     },
     "markets": [],
-    "product_stack": [],
+    "product_stack": [
+      {
+        "value": "hardware products",
+        "evidence": {
+          "business_evidence_id": "business-evidence:SEC-0001645590-25-000130",
+          "form": "10-K",
+          "accession_number": "0001645590-25-000130",
+          "filing_date": "2025-12-18",
+          "section_type": "item_1_business",
+          "quote": "Our solutions include hardware products, such as Wi-Fi and private cellular access points; QFX, EX, and CX switches; MX and PTX routers; and gateways.",
+          "evidence_start_character": 9604,
+          "evidence_end_character": 9754,
+          "document_start_character": 119633,
+          "document_end_character": 119783,
+          "matched_start_character": 9626,
+          "matched_end_character": 9643,
+          "text_sha256": "c56eb17d917a5807877eabc6fc665124a4073bf862e67b71298905341b9b82d4"
+        }
+      },
+      {
+        "value": "private cellular access points",
+        "evidence": {
+          "business_evidence_id": "business-evidence:SEC-0001645590-25-000130",
+          "form": "10-K",
+          "accession_number": "0001645590-25-000130",
+          "filing_date": "2025-12-18",
+          "section_type": "item_1_business",
+          "quote": "Our solutions include hardware products, such as Wi-Fi and private cellular access points; QFX, EX, and CX switches; MX and PTX routers; and gateways.",
+          "evidence_start_character": 9604,
+          "evidence_end_character": 9754,
+          "document_start_character": 119633,
+          "document_end_character": 119783,
+          "matched_start_character": 9663,
+          "matched_end_character": 9693,
+          "text_sha256": "c56eb17d917a5807877eabc6fc665124a4073bf862e67b71298905341b9b82d4"
+        }
+      },
+      {
+        "value": "services through a channel-only model in the remaining countries",
+        "evidence": {
+          "business_evidence_id": "business-evidence:SEC-0001645590-25-000130",
+          "form": "10-K",
+          "accession_number": "0001645590-25-000130",
+          "filing_date": "2025-12-18",
+          "section_type": "item_1_business",
+          "quote": "This has resulted in a combined go-to-market model, in which we have a direct sales presence in a number of countries, while we sell and deliver our products, solutions, and services through a channel-only model in the remaining countries.",
+          "evidence_start_character": 19659,
+          "evidence_end_character": 19898,
+          "document_start_character": 129688,
+          "document_end_character": 129927,
+          "matched_start_character": 19833,
+          "matched_end_character": 19897,
+          "text_sha256": "c56eb17d917a5807877eabc6fc665124a4073bf862e67b71298905341b9b82d4"
+        }
+      }
+    ],
     "market_products": {},
     "core_technologies": [],
     "manufacturing": {
@@ -553,17 +602,64 @@
       "text_sha256": "c56eb17d917a5807877eabc6fc665124a4073bf862e67b71298905341b9b82d4"
     }
   ],
-  "production_enrichment": {
-    "schema_version": "axiom-company-profile-enrichment.v2.5.1",
-    "mode": "direct_first_legacy_evidence_fallback",
-    "legacy_source_used": true,
-    "fallback_dimensions": [
-      "offerings",
-      "markets"
+  "translation_engine": {
+    "provider": "openai",
+    "model": "gpt-4.1-mini",
+    "mode": "company_profile_translation_only",
+    "result_source": "API_LOCKED",
+    "validation": "exact_json_shape_and_array_cardinality",
+    "canonical_handoff": "read_back_verified"
+  },
+  "translation_source": {
+    "company_summary": "Business Hewlett Packard Enterprise is a global technology leader focused on developing intelligent solutions that allow customers to capture, analyze and act upon data seamlessly from edge to cloud.",
+    "product_stack": [
+      "for high performance graphics and accelerated processing units",
+      "Wireless LAN",
+      "versatile HPE ProLiant Rack",
+      "leveraging the same AI platform as our wireless",
+      "wired switching portfolio"
     ],
-    "source_schema_version": "axiom-company-analysis.v1",
-    "evidence_ids": [
-      "business-evidence:SEC-0001645590-25-000130"
-    ]
+    "market_products": {},
+    "markets": [],
+    "customer_types": [
+      "OEMs"
+    ],
+    "core_technologies": [],
+    "ai_exposure": {
+      "type": "direct_company_disclosure",
+      "summary": "AI systems demand in the midst of persisting data center space availability constraints continued to drive significant AI backlog."
+    },
+    "demand_drivers": [
+      "AI",
+      "5G",
+      "generative AI"
+    ],
+    "strategy_changes": []
+  },
+  "translation_zh_tw": {
+    "company_summary": "Hewlett Packard Enterprise 是全球科技領導者，專注於開發智慧解決方案，使客戶能從邊緣到雲端無縫擷取、分析並應用數據。",
+    "product_stack": [
+      "用於高效能圖形和加速處理單元",
+      "無線區域網路",
+      "多功能 HPE ProLiant 機架",
+      "利用與我們無線設備相同的 AI 平台",
+      "有線交換組合"
+    ],
+    "market_products": {},
+    "markets": [],
+    "customer_types": [
+      "原始設備製造商 (OEM)"
+    ],
+    "core_technologies": [],
+    "ai_exposure": {
+      "type": "direct_company_disclosure",
+      "summary": "在資料中心空間持續受限的情況下，對 AI 系統的需求持續推動大量 AI 積壓訂單。"
+    },
+    "demand_drivers": [
+      "人工智慧 (AI)",
+      "5G",
+      "生成式人工智慧"
+    ],
+    "strategy_changes": []
   }
 }

@@ -11,14 +11,27 @@
     "company_summary": {
       "one_line_business": "We are an industry-leading provider of high-performance networking"
     },
-    "markets": [
-      "AI 推論基礎設施",
-      "雲端服務",
-      "網路安全",
-      "雲端與資料中心",
-      "電信與通訊"
+    "markets": [],
+    "product_stack": [
+      "FPGA-based smart cards",
+      "Post Quantum Cryptography hardware accelerators",
+      "white label switches",
+      "Edge CPEs",
+      "Packet Capturing",
+      "AI Inference",
+      "High Frequency Trading",
+      "Cyber Security",
+      "Application Delivery applications",
+      "Service providers and Telcos deploying CPEs/Edge for SD-WAN",
+      "SASE and NFV",
+      "disaggregated networking solutions such as White-Label Switches",
+      "Emerging AI chip companies",
+      "infrastructure providers requiring specialized hardware acceleration for AI Inference",
+      "Intelligent Bypass Switches",
+      "FPGA Smart NIC",
+      "inference-optimized FPGA-based solutions",
+      "hardware-based accelerator solutions for PQC"
     ],
-    "product_stack": [],
     "market_products": {},
     "core_technologies": [],
     "manufacturing": {
@@ -52,20 +65,7 @@
       "net_loss": null,
       "revenue_mix": {},
       "customer_concentration": {}
-    },
-    "offerings": [
-      "Edge CPE 與智慧網路平台",
-      "伺服器網路介面卡（NIC）",
-      "FPGA 智慧網路卡",
-      "硬體卸載與加速卡",
-      "高效能網路與資料基礎設施",
-      "白牌網路交換器",
-      "PQC 硬體加速器"
-    ],
-    "offerings_source": "company_analysis_v1_fallback",
-    "markets_source": "company_analysis_v1_fallback",
-    "operating_capabilities": [],
-    "operating_capabilities_source": null
+    }
   },
   "value_provenance": {
     "company_summary.one_line_business": {
@@ -87,7 +87,66 @@
       }
     },
     "markets": [],
-    "product_stack": [],
+    "product_stack": [
+      {
+        "value": "inference-optimized FPGA-based solutions",
+        "evidence": null
+      },
+      {
+        "value": "hardware-based accelerator solutions for PQC",
+        "evidence": {
+          "business_evidence_id": "business-evidence:SEC-0001178913-26-002258",
+          "form": "20-F",
+          "accession_number": "0001178913-26-002258",
+          "filing_date": "2026-04-28",
+          "section_type": "item_4_company_information",
+          "quote": "We provide hardware-based accelerator solutions for PQC.",
+          "evidence_start_character": 6024,
+          "evidence_end_character": 6080,
+          "document_start_character": 122383,
+          "document_end_character": 122439,
+          "matched_start_character": 6035,
+          "matched_end_character": 6079,
+          "text_sha256": "33e0cc364f23f290fda183fe8c1ebeff4eb60b1edea735edd89dba3da94f3e09"
+        }
+      },
+      {
+        "value": "data compression tasks",
+        "evidence": {
+          "business_evidence_id": "business-evidence:SEC-0001178913-26-002258",
+          "form": "20-F",
+          "accession_number": "0001178913-26-002258",
+          "filing_date": "2026-04-28",
+          "section_type": "item_4_company_information",
+          "quote": "Offload & Acceleration: We offer high-performance cards that independently execute encryption and data compression tasks, which",
+          "evidence_start_character": 7781,
+          "evidence_end_character": 7908,
+          "document_start_character": 124140,
+          "document_end_character": 124267,
+          "matched_start_character": 7879,
+          "matched_end_character": 7901,
+          "text_sha256": "33e0cc364f23f290fda183fe8c1ebeff4eb60b1edea735edd89dba3da94f3e09"
+        }
+      },
+      {
+        "value": "super low latency networking products",
+        "evidence": {
+          "business_evidence_id": "business-evidence:SEC-0001178913-26-002258",
+          "form": "20-F",
+          "accession_number": "0001178913-26-002258",
+          "filing_date": "2026-04-28",
+          "section_type": "item_4_company_information",
+          "quote": "For HFT, we provide super low latency networking products,",
+          "evidence_start_character": 8201,
+          "evidence_end_character": 8259,
+          "document_start_character": 124560,
+          "document_end_character": 124618,
+          "matched_start_character": 8221,
+          "matched_end_character": 8258,
+          "text_sha256": "33e0cc364f23f290fda183fe8c1ebeff4eb60b1edea735edd89dba3da94f3e09"
+        }
+      }
+    ],
     "market_products": {},
     "core_technologies": [],
     "manufacturing": {
@@ -273,17 +332,92 @@
       "text_sha256": "33e0cc364f23f290fda183fe8c1ebeff4eb60b1edea735edd89dba3da94f3e09"
     }
   ],
-  "production_enrichment": {
-    "schema_version": "axiom-company-profile-enrichment.v2.5.1",
-    "mode": "direct_first_legacy_evidence_fallback",
-    "legacy_source_used": true,
-    "fallback_dimensions": [
-      "offerings",
-      "markets"
+  "translation_engine": {
+    "provider": "openai",
+    "model": "gpt-4.1-mini",
+    "mode": "company_profile_translation_only",
+    "result_source": "API_LOCKED",
+    "validation": "exact_json_shape_and_array_cardinality",
+    "canonical_handoff": "read_back_verified"
+  },
+  "translation_source": {
+    "company_summary": "We are an industry-leading provider of high-performance networking",
+    "product_stack": [
+      "FPGA-based smart cards",
+      "Post Quantum Cryptography hardware accelerators",
+      "white label switches",
+      "Edge CPEs",
+      "Packet Capturing",
+      "AI Inference",
+      "High Frequency Trading",
+      "Cyber Security",
+      "Application Delivery applications",
+      "Service providers and Telcos deploying CPEs/Edge for SD-WAN",
+      "SASE and NFV",
+      "disaggregated networking solutions such as White-Label Switches",
+      "Emerging AI chip companies",
+      "infrastructure providers requiring specialized hardware acceleration for AI Inference",
+      "Intelligent Bypass Switches",
+      "FPGA Smart NIC",
+      "inference-optimized FPGA-based solutions",
+      "hardware-based accelerator solutions for PQC"
     ],
-    "source_schema_version": "axiom-company-analysis.v1",
-    "evidence_ids": [
-      "business-evidence:SEC-0001178913-26-002258"
-    ]
+    "market_products": {},
+    "markets": [],
+    "customer_types": [
+      "OEMs",
+      "distributors"
+    ],
+    "core_technologies": [],
+    "ai_exposure": {
+      "type": "direct_company_disclosure",
+      "summary": "Our innovations empower high-demand workloads across Artificial Intelligence (AI) inference, SD-WAN, SASE, cyber security, fabric switching, NFV, and more."
+    },
+    "demand_drivers": [
+      "AI",
+      "cloud computing",
+      "bandwidth growth"
+    ],
+    "strategy_changes": []
+  },
+  "translation_zh_tw": {
+    "company_summary": "我們是業界領先的高效能網路解決方案供應商",
+    "product_stack": [
+      "基於 FPGA 的智慧卡",
+      "後量子密碼學硬體加速器",
+      "白牌交換器",
+      "邊緣客戶終端設備 (Edge CPE)",
+      "封包擷取",
+      "人工智慧推論",
+      "高頻交易",
+      "網路安全",
+      "應用程式傳遞應用",
+      "部署 CPE/Edge 用於 SD-WAN 的電信服務提供商",
+      "SASE 與 NFV",
+      "分散式網路解決方案，如白牌交換器",
+      "新興人工智慧晶片公司",
+      "需要專用硬體加速 AI 推論的基礎建設供應商",
+      "智慧旁通交換器",
+      "FPGA 智慧網路介面卡 (Smart NIC)",
+      "針對推論優化的 FPGA 解決方案",
+      "用於 PQC 的硬體加速解決方案"
+    ],
+    "market_products": {},
+    "markets": [],
+    "customer_types": [
+      "原始設備製造商 (OEM)",
+      "經銷商"
+    ],
+    "core_technologies": [],
+    "ai_exposure": {
+      "type": "direct_company_disclosure",
+      "summary": "我們的創新技術支持涵蓋人工智慧(AI)推論、SD-WAN、SASE、網路安全、架構交換、NFV 等多種高需求工作負載。"
+    },
+    "demand_drivers": [
+      "人工智慧 (AI)",
+      "雲端運算",
+      "頻寬成長"
+    ],
+    "strategy_changes": []
   }
 }

@@ -121,29 +121,7 @@
         "Digicomm": "53.1%",
         "Microsoft": "28.8%"
       }
-    },
-    "offerings": [
-      "光收發模組",
-      "雷射",
-      "次組件",
-      "光引擎",
-      "發射器",
-      "收發模組",
-      "完整交鑰匙設備",
-      "前端設備",
-      "光節點設備",
-      "分配設備",
-      "放大器",
-      "雷射次組件"
-    ],
-    "offerings_source": "v2_direct",
-    "markets_source": "v2_direct",
-    "operating_capabilities": [
-      "製造與量產",
-      "產品設計與平台開發",
-      "供應鏈管理"
-    ],
-    "operating_capabilities_source": "company_analysis_v1_fallback"
+    }
   },
   "value_provenance": {
     "company_summary.one_line_business": {
@@ -1330,16 +1308,166 @@
       "text_sha256": "fba7bef2dc65ca8bf98c6b94bb71f52e15455628dc37532b972213402edbf041"
     }
   ],
-  "production_enrichment": {
-    "schema_version": "axiom-company-profile-enrichment.v2.5.1",
-    "mode": "direct_first_legacy_evidence_fallback",
-    "legacy_source_used": true,
-    "fallback_dimensions": [
-      "operating_capabilities"
+  "translation_engine": {
+    "provider": "openai",
+    "model": "gpt-4.1-mini",
+    "mode": "company_profile_translation_only",
+    "result_source": "API_LOCKED_REPAIR_2",
+    "validation": "exact_json_shape_and_array_cardinality",
+    "canonical_handoff": "read_back_verified"
+  },
+  "translation_source": {
+    "company_summary": "Applied Optoelectronics, Inc. (the \"Company\" or \"AOI\") is a leading, vertically integrated provider of fiber-optic networking products, primarily for four networking end-markets: internet data center, cable television (\"CATV\"), telecommunications, (\"telecom\"), and fiber-to-the-home (\"FTTH\").",
+    "product_stack": [
+      "lasers",
+      "laser components",
+      "components",
+      "subassemblies",
+      "modules",
+      "turn-key equipment"
     ],
-    "source_schema_version": "axiom-company-analysis.v1",
-    "evidence_ids": [
-      "business-evidence:SEC-0001437749-26-005875"
+    "market_products": {
+      "internet_data_center": [
+        "optical transceivers",
+        "lasers",
+        "subassemblies",
+        "light engines"
+      ],
+      "catv": [
+        "lasers",
+        "transmitters",
+        "transceivers",
+        "turn-key equipment",
+        "headend",
+        "node",
+        "distribution equipment",
+        "amplifiers"
+      ],
+      "telecom": [
+        "lasers",
+        "laser subassemblies",
+        "transceivers"
+      ]
+    },
+    "markets": [
+      "Internet Data Center",
+      "CATV",
+      "Telecom",
+      "FTTH"
+    ],
+    "customer_types": [
+      "large internet-based data center operators",
+      "network equipment manufacturers",
+      "other manufacturers of optical transceivers",
+      "hyperscale data center operators",
+      "CATV MSOs",
+      "optical transceiver manufacturers",
+      "CATV equipment vendors"
+    ],
+    "core_technologies": [
+      "Molecular Beam Epitaxy (MBE)",
+      "Metal Organic Chemical Vapor Deposition (MOCVD)",
+      "high-speed optical",
+      "mixed-signal semiconductor",
+      "mechanical engineering"
+    ],
+    "ai_exposure": {
+      "type": "direct_company_disclosure",
+      "summary": "The leading-edge AI applications require significantly more compute capacity and bandwidth, driving the need for faster (800Gbps and higher) and innovative optical networking solutions to support the intra-data center connectivity needs."
+    },
+    "demand_drivers": [
+      "AI",
+      "DOCSIS 4.0",
+      "5G",
+      "PON",
+      "cloud computing",
+      "bandwidth growth",
+      "800Gbps+ optical networking",
+      "robotics"
+    ],
+    "strategy_changes": [
+      {
+        "year": 2023,
+        "change": "In 2023, we began offering many of our CATV products directly to MSO customers, under Quantum Bandwidth™ brand name.",
+        "brand": "Quantum Bandwidth"
+      }
+    ]
+  },
+  "translation_zh_tw": {
+    "company_summary": "應用光電子公司（\"公司\"或\"AOI\"）是一家領先的縱向整合光纖網路產品供應商，主要服務四大網路終端市場：互聯網資料中心、有線電視（\"CATV\"）、電信（\"telecom\"）及光纖到戶（\"FTTH\"）。",
+    "product_stack": [
+      "雷射",
+      "雷射元件",
+      "元件",
+      "子組件",
+      "模組",
+      "交鑰匙設備"
+    ],
+    "market_products": {
+      "internet_data_center": [
+        "光學收發器",
+        "雷射",
+        "子組件",
+        "光引擎"
+      ],
+      "catv": [
+        "雷射",
+        "發射器",
+        "收發器",
+        "交鑰匙設備",
+        "總部設備",
+        "節點",
+        "分配設備",
+        "放大器"
+      ],
+      "telecom": [
+        "雷射",
+        "雷射子組件",
+        "收發器"
+      ]
+    },
+    "markets": [
+      "互聯網資料中心",
+      "有線電視",
+      "電信",
+      "光纖到戶"
+    ],
+    "customer_types": [
+      "大型互聯網資料中心營運商",
+      "網路設備製造商",
+      "其他光學收發器製造商",
+      "超大規模資料中心營運商",
+      "有線電視多系統營運商",
+      "光學收發器製造商",
+      "有線電視設備供應商"
+    ],
+    "core_technologies": [
+      "分子束外延（MBE）",
+      "金屬有機化學氣相沉積（MOCVD）",
+      "高速光學",
+      "混合訊號半導體",
+      "機械工程"
+    ],
+    "ai_exposure": {
+      "type": "direct_company_disclosure",
+      "summary": "領先的人工智慧應用需要顯著更多的計算容量與頻寬，推動對更高速（800Gbps及以上）且創新的光學網路解決方案的需求，以支援資料中心內部連接需求。"
+    },
+    "demand_drivers": [
+      "人工智慧",
+      "DOCSIS 4.0",
+      "5G",
+      "PON",
+      "雲端運算",
+      "頻寬成長",
+      "800Gbps以上光學網路",
+      "機器人學"
+    ],
+    "strategy_changes": [
+      {
+        "year": 2023,
+        "change": "2023年，我們開始以Quantum Bandwidth™品牌名稱，直接向MSO客戶提供多項CATV產品。",
+        "brand": "Quantum Bandwidth"
+      }
     ]
   }
 }

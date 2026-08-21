@@ -12,7 +12,6 @@
   "product_stack": [
     "10 Table of Contents retailers",
     "software developers",
-    "Corporate Controller",
     "flexibility without the friction of switching between workflows",
     "platforms",
     "Substance 3D Stager",
@@ -588,5 +587,18 @@
     "discovered_product_count": 19,
     "final_product_count": 23,
     "removed_market_product_pollution": true
+  },
+  "product_stack_sanitizer": {
+    "version": "v2.6.6.2a",
+    "mode": "deterministic_production_boundary",
+    "before_count": 23,
+    "after_count": 22,
+    "removed_count": 1,
+    "removed": [
+      {
+        "value": "Corporate Controller",
+        "reason": "GENERIC_NON_PRODUCT_TEXT"
+      }
+    ]
   }
 }
