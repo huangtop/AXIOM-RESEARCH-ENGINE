@@ -370,3 +370,202 @@ def test_translation_production_census_never_calls_openai(monkeypatch):
     assert census["reason_counts"] == {
         "EMPTY_PRODUCT_STACK": 1,
     }
+
+
+def test_translation_plan_token_estimate_is_deterministic():
+    module = _load_script()
+
+    assert (
+        module._estimate_input_tokens_from_characters(
+            350
+        )
+        == 100
+    )
+    assert (
+        module._estimate_input_tokens_from_characters(
+            351
+        )
+        == 101
+    )
+
+
+def test_translation_plan_excludes_review_and_fail(monkeypatch):
+    module = _load_script()
+
+    census = {
+        "canonical_company_count": 3,
+        "summary": {
+            "ready": 1,
+        },
+        "rows": [
+            {
+                "symbol": "AAA",
+                "status": "READY",
+                "reasons": [],
+                "translation_product_count": 1,
+                "canonical_handoff": "read_back_verified",
+            },
+            {
+                "symbol": "BBB",
+                "status": "REVIEW",
+                "reasons": ["EMPTY_PRODUCT_STACK"],
+                "translation_product_count": 0,
+            },
+            {
+                "symbol": "CCC",
+                "status": "FAIL",
+                "reasons": ["CANONICAL_OR_HANDOFF_ERROR"],
+                "translation_product_count": None,
+            },
+        ],
+    }
+
+    profile = {
+        "symbol": "AAA",
+        "company_id": "company:aaa",
+        "company_summary": {
+            "one_line_business": "Example"
+        },
+        "product_stack": ["Product A"],
+        "market_products": {},
+        "markets": ["Data Center"],
+        "customer_types": [],
+        "core_technologies": [],
+        "ai_exposure": None,
+        "demand_drivers": [],
+        "strategy_changes": [],
+    }
+
+    monkeypatch.setattr(
+        module,
+        "_translation_production_census",
+        lambda: census,
+    )
+
+    monkeypatch.setattr(
+        module,
+        "_translation_candidate_metadata_map",
+        lambda: {},
+    )
+
+    monkeypatch.setattr(
+        module,
+        "_load_canonical_profile",
+        lambda symbol: profile,
+    )
+
+    plan = (
+        module._translation_production_plan()
+    )
+
+    assert plan["openai_used"] is False
+    assert plan["planned_count"] == 1
+    assert plan["excluded_count"] == 2
+    assert plan["invariants"] == {
+        "openai_used": False,
+        "review_included": 0,
+        "fail_included": 0,
+        "product_mismatch": 0,
+        "ready_equals_planned": True,
+    }
+    assert [
+        row["symbol"]
+        for row in plan["planned"]
+    ] == ["AAA"]
+
+    excluded = {
+        row["symbol"]:
+            row["translation_allowed"]
+        for row in plan["excluded"]
+    }
+
+    assert excluded == {
+        "BBB": False,
+        "CCC": False,
+    }
+
+
+def test_translation_plan_priority_is_disjoint():
+    module = _load_script()
+
+    metadata = {
+        "CORE": {
+            "theme_id":
+                "theme:artificial_intelligence"
+        }
+    }
+
+    assert (
+        module._translation_plan_priority(
+            symbol="NVDA",
+            metadata=metadata,
+        )
+        == (
+            "P0",
+            "major_tech",
+        )
+    )
+
+    assert (
+        module._translation_plan_priority(
+            symbol="CORE",
+            metadata=metadata,
+        )
+        == (
+            "P1",
+            "core_ai_tech",
+        )
+    )
+
+    assert (
+        module._translation_plan_priority(
+            symbol="OTHER",
+            metadata=metadata,
+        )
+        == (
+            "P2",
+            "strategic_remainder",
+        )
+    )
+
+
+def test_translation_plan_never_calls_openai(monkeypatch):
+    module = _load_script()
+
+    census = {
+        "canonical_company_count": 0,
+        "summary": {
+            "ready": 0,
+        },
+        "rows": [],
+    }
+
+    monkeypatch.setattr(
+        module,
+        "_translation_production_census",
+        lambda: census,
+    )
+
+    monkeypatch.setattr(
+        module,
+        "_translation_candidate_metadata_map",
+        lambda: {},
+    )
+
+    def forbidden_openai(**kwargs):
+        raise AssertionError(
+            "translation plan touched OpenAI"
+        )
+
+    monkeypatch.setattr(
+        module,
+        "_translate_with_openai",
+        forbidden_openai,
+    )
+
+    plan = (
+        module._translation_production_plan()
+    )
+
+    assert plan["openai_used"] is False
+    assert plan["planned_count"] == 0

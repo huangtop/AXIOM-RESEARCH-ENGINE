@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 import os
 import sys
 from pathlib import Path
@@ -932,6 +933,622 @@ def _translation_census_one_screen(
     return "\n".join(lines)
 
 
+MAJOR_TECH_SYMBOLS = (
+    "NVDA",
+    "AMD",
+    "AVGO",
+    "QCOM",
+    "MRVL",
+    "ALAB",
+    "ARM",
+    "TSM",
+    "ASML",
+    "MU",
+    "ANET",
+    "CRDO",
+    "VRT",
+    "SMCI",
+    "DELL",
+    "MSFT",
+    "GOOGL",
+    "GOOG",
+    "AMZN",
+    "META",
+    "ORCL",
+    "AAPL",
+    "PLTR",
+    "SNPS",
+    "CDNS",
+    "AMAT",
+    "LRCX",
+    "KLAC",
+    "ADI",
+    "MCHP",
+    "NXPI",
+    "INTC",
+)
+
+
+def _translation_candidate_metadata_map() -> dict[str, dict]:
+    """
+    Reuse existing translation-universe metadata for priority assignment.
+    No new theme taxonomy is invented in the display/translation layer.
+    """
+    rows = _load_translation_candidates()
+
+    return {
+        str(row.get("symbol") or "")
+        .strip()
+        .upper(): row
+        for row in rows
+        if row.get("symbol")
+    }
+
+
+def _estimate_input_tokens_from_characters(
+    characters: int,
+) -> int:
+    """
+    Deterministic planning estimate only; not an OpenAI billing/tokenizer quote.
+    """
+    if characters <= 0:
+        return 0
+
+    return max(
+        1,
+        int(
+            math.ceil(
+                characters
+                / 3.5
+            )
+        ),
+    )
+
+
+def _translation_plan_priority(
+    *,
+    symbol: str,
+    metadata: dict[str, dict],
+) -> tuple[str, str]:
+    normalized = (
+        str(symbol)
+        .strip()
+        .upper()
+    )
+
+    if normalized in MAJOR_TECH_SYMBOLS:
+        return (
+            "P0",
+            "major_tech",
+        )
+
+    row = metadata.get(
+        normalized,
+        {},
+    )
+
+    if row.get("theme_id") in AI_THEME_IDS:
+        return (
+            "P1",
+            "core_ai_tech",
+        )
+
+    return (
+        "P2",
+        "strategic_remainder",
+    )
+
+
+def _translation_plan_source_metrics(
+    source: dict,
+) -> dict:
+    canonical = json.dumps(
+        source,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    )
+
+    populated_surface_fields = [
+        field
+        for field
+        in TRANSLATION_CENSUS_SURFACE_FIELDS
+        if _surface_value_present(
+            source.get(field)
+        )
+    ]
+
+    characters = len(
+        canonical
+    )
+
+    return {
+        "surface_field_count":
+            len(
+                populated_surface_fields
+            ),
+        "surface_fields":
+            populated_surface_fields,
+        "source_characters":
+            characters,
+        "estimated_input_tokens":
+            _estimate_input_tokens_from_characters(
+                characters
+            ),
+    }
+
+
+def _translation_plan_row(
+    *,
+    readiness_row: dict,
+    metadata: dict[str, dict],
+) -> dict:
+    symbol = str(
+        readiness_row.get("symbol")
+        or ""
+    ).strip().upper()
+
+    status = str(
+        readiness_row.get("status")
+        or ""
+    )
+
+    if status != "READY":
+        return {
+            "symbol": symbol,
+            "status": status,
+            "priority": None,
+            "cohort": None,
+            "translation_allowed": False,
+            "reasons":
+                readiness_row.get("reasons")
+                or [],
+            "canonical_handoff":
+                readiness_row.get(
+                    "canonical_handoff"
+                ),
+            "product_count":
+                readiness_row.get(
+                    "translation_product_count"
+                ),
+        }
+
+    profile = _load_canonical_profile(
+        symbol
+    )
+
+    source = _extract_translation_surface(
+        profile
+    )
+
+    _assert_product_handoff(
+        profile=profile,
+        translation_source=source,
+    )
+
+    if not source.get("company_summary"):
+        raise CanonicalHandoffError(
+            f"{symbol}: READY plan requires company_summary"
+        )
+
+    products = (
+        source.get("product_stack")
+        or []
+    )
+
+    if not products:
+        raise CanonicalHandoffError(
+            f"{symbol}: READY plan requires non-empty product_stack"
+        )
+
+    priority, cohort = (
+        _translation_plan_priority(
+            symbol=symbol,
+            metadata=metadata,
+        )
+    )
+
+    metrics = (
+        _translation_plan_source_metrics(
+            source
+        )
+    )
+
+    return {
+        "symbol": symbol,
+        "company_id":
+            profile.get("company_id"),
+        "status": "READY",
+        "priority": priority,
+        "cohort": cohort,
+        "translation_allowed": True,
+        "product_count":
+            len(products),
+        "canonical_handoff":
+            "read_back_verified",
+        "product_cardinality_match":
+            True,
+        **metrics,
+    }
+
+
+def _translation_production_plan() -> dict:
+    """
+    Zero-API deterministic production plan over the translation census.
+
+    READY companies are planned. REVIEW/FAIL companies are explicitly excluded
+    and remain translation_allowed=False.
+    """
+    census = _translation_production_census()
+    metadata = _translation_candidate_metadata_map()
+
+    planned = []
+    excluded = []
+
+    for readiness_row in (
+        census.get("rows")
+        or []
+    ):
+        row = _translation_plan_row(
+            readiness_row=readiness_row,
+            metadata=metadata,
+        )
+
+        if row.get(
+            "translation_allowed"
+        ):
+            planned.append(
+                row
+            )
+        else:
+            excluded.append(
+                row
+            )
+
+    priority_order = {
+        "P0": 0,
+        "P1": 1,
+        "P2": 2,
+    }
+
+    planned.sort(
+        key=lambda row: (
+            priority_order.get(
+                row.get("priority"),
+                99,
+            ),
+            row.get("symbol")
+            or "",
+        )
+    )
+
+    cohort_counts = {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0,
+    }
+
+    workload = {
+        "companies": 0,
+        "product_items": 0,
+        "surface_fields": 0,
+        "source_characters": 0,
+        "estimated_input_tokens": 0,
+    }
+
+    cohort_workload = {
+        "P0": {
+            key: 0
+            for key in workload
+        },
+        "P1": {
+            key: 0
+            for key in workload
+        },
+        "P2": {
+            key: 0
+            for key in workload
+        },
+    }
+
+    for row in planned:
+        priority = row[
+            "priority"
+        ]
+
+        cohort_counts[
+            priority
+        ] += 1
+
+        values = {
+            "companies": 1,
+            "product_items":
+                row.get(
+                    "product_count"
+                )
+                or 0,
+            "surface_fields":
+                row.get(
+                    "surface_field_count"
+                )
+                or 0,
+            "source_characters":
+                row.get(
+                    "source_characters"
+                )
+                or 0,
+            "estimated_input_tokens":
+                row.get(
+                    "estimated_input_tokens"
+                )
+                or 0,
+        }
+
+        for key, value in (
+            values.items()
+        ):
+            workload[
+                key
+            ] += value
+            cohort_workload[
+                priority
+            ][
+                key
+            ] += value
+
+    review_included = sum(
+        1
+        for row in planned
+        if row.get("status")
+        == "REVIEW"
+    )
+
+    fail_included = sum(
+        1
+        for row in planned
+        if row.get("status")
+        == "FAIL"
+    )
+
+    mismatch_count = sum(
+        1
+        for row in planned
+        if row.get(
+            "product_cardinality_match"
+        )
+        is not True
+    )
+
+    ready_count = (
+        census.get(
+            "summary",
+            {},
+        ).get(
+            "ready",
+            0,
+        )
+    )
+
+    if len(
+        planned
+    ) != ready_count:
+        raise CanonicalHandoffError(
+            "translation plan READY count mismatch: "
+            f"census={ready_count} planned={len(planned)}"
+        )
+
+    if (
+        review_included
+        or fail_included
+        or mismatch_count
+    ):
+        raise CanonicalHandoffError(
+            "translation plan invariant failed: "
+            f"review_included={review_included} "
+            f"fail_included={fail_included} "
+            f"product_mismatch={mismatch_count}"
+        )
+
+    return {
+        "schema_version":
+            "axiom-company-profile-translation-production-plan.v2.6.5.9",
+        "mode":
+            "zero_api_translation_production_plan",
+        "openai_used":
+            False,
+        "canonical_company_count":
+            census.get(
+                "canonical_company_count"
+            ),
+        "ready_count":
+            ready_count,
+        "excluded_count":
+            len(
+                excluded
+            ),
+        "planned_count":
+            len(
+                planned
+            ),
+        "cohort_counts":
+            cohort_counts,
+        "workload":
+            workload,
+        "cohort_workload":
+            cohort_workload,
+        "invariants": {
+            "openai_used": False,
+            "review_included":
+                review_included,
+            "fail_included":
+                fail_included,
+            "product_mismatch":
+                mismatch_count,
+            "ready_equals_planned":
+                ready_count
+                == len(
+                    planned
+                ),
+        },
+        "excluded":
+            excluded,
+        "planned":
+            planned,
+    }
+
+
+def _translation_plan_one_screen(
+    plan: dict,
+) -> str:
+    workload = (
+        plan.get("workload")
+        or {}
+    )
+
+    cohort_counts = (
+        plan.get("cohort_counts")
+        or {}
+    )
+
+    cohort_workload = (
+        plan.get("cohort_workload")
+        or {}
+    )
+
+    invariants = (
+        plan.get("invariants")
+        or {}
+    )
+
+    lines = [
+        "=== V2.6.5.9 Translation Production Plan ===",
+        "",
+        (
+            f"Canonical            "
+            f"{plan.get('canonical_company_count', 0):>4}"
+        ),
+        (
+            f"READY                "
+            f"{plan.get('ready_count', 0):>4}"
+        ),
+        (
+            f"Excluded             "
+            f"{plan.get('excluded_count', 0):>4}"
+        ),
+        (
+            f"Planned              "
+            f"{plan.get('planned_count', 0):>4}"
+        ),
+        "",
+        "Priority cohorts",
+    ]
+
+    for priority, label in (
+        ("P0", "Major Tech"),
+        ("P1", "Core AI / Tech"),
+        ("P2", "Strategic remainder"),
+    ):
+        cohort = (
+            cohort_workload.get(
+                priority
+            )
+            or {}
+        )
+
+        lines.append(
+            (
+                f"  {priority} {label:<20} "
+                f"companies={cohort_counts.get(priority, 0):>4} "
+                f"products={cohort.get('product_items', 0):>5} "
+                f"chars={cohort.get('source_characters', 0):>8} "
+                f"est_tokens={cohort.get('estimated_input_tokens', 0):>7}"
+            )
+        )
+
+    lines.extend(
+        [
+            "",
+            "Translation workload",
+            (
+                f"  companies               "
+                f"{workload.get('companies', 0)}"
+            ),
+            (
+                f"  product items           "
+                f"{workload.get('product_items', 0)}"
+            ),
+            (
+                f"  populated surface fields "
+                f"{workload.get('surface_fields', 0)}"
+            ),
+            (
+                f"  source characters       "
+                f"{workload.get('source_characters', 0)}"
+            ),
+            (
+                f"  estimated input tokens  "
+                f"{workload.get('estimated_input_tokens', 0)}"
+            ),
+            "",
+            "Invariant",
+            (
+                f"  OpenAI used              "
+                f"{invariants.get('openai_used')}"
+            ),
+            (
+                f"  REVIEW included          "
+                f"{invariants.get('review_included')}"
+            ),
+            (
+                f"  FAIL included            "
+                f"{invariants.get('fail_included')}"
+            ),
+            (
+                f"  Product mismatch         "
+                f"{invariants.get('product_mismatch')}"
+            ),
+            (
+                f"  READY == Planned         "
+                f"{invariants.get('ready_equals_planned')}"
+            ),
+        ]
+    )
+
+    excluded = (
+        plan.get("excluded")
+        or []
+    )
+
+    if excluded:
+        lines.extend(
+            [
+                "",
+                "Excluded from API gate",
+            ]
+        )
+
+        for row in excluded:
+            reasons = (
+                ", ".join(
+                    row.get("reasons")
+                    or []
+                )
+                or "-"
+            )
+
+            lines.append(
+                (
+                    f"  {row.get('symbol', ''):<6} "
+                    f"{row.get('status', ''):<7} "
+                    f"{reasons}"
+                )
+            )
+
+    return "\n".join(
+        lines
+    )
+
+
 def _build_translation_prompt(
     *,
     symbol: str,
@@ -1457,7 +2074,46 @@ def main() -> int:
         ),
     )
 
+    parser.add_argument(
+        "--translation-plan",
+        action="store_true",
+        help=(
+            "Build a deterministic zero-API production plan from READY "
+            "canonical profiles."
+        ),
+    )
+
+    parser.add_argument(
+        "--translation-plan-json",
+        action="store_true",
+        help=(
+            "With --translation-plan, print the full machine-readable plan."
+        ),
+    )
+
     args = parser.parse_args()
+
+    if args.translation_plan:
+        plan = (
+            _translation_production_plan()
+        )
+
+        if args.translation_plan_json:
+            print(
+                json.dumps(
+                    plan,
+                    ensure_ascii=False,
+                    indent=2,
+                )
+            )
+        else:
+            print(
+                _translation_plan_one_screen(
+                    plan
+                )
+            )
+
+        return 0
 
     if args.translation_census:
         census = (
