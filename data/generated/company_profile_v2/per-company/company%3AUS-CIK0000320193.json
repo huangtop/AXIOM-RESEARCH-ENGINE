@@ -15,10 +15,8 @@
     "Apple Watch Ultra® 3",
     "Company’s own advertising platforms",
     "Apple Arcade®",
-    "including Apple Card®",
     "Apple Pay®",
-    "Apple Card®",
-    "strong third-party software"
+    "Apple Card®"
   ],
   "market_products": {},
   "core_technologies": [],
@@ -343,5 +341,22 @@
     "candidate_eligibility_reason": "ELIGIBLE",
     "candidate_blockers": [],
     "good_existing": false
+  },
+  "product_stack_sanitizer": {
+    "version": "v2.6.6.2a",
+    "mode": "deterministic_production_boundary",
+    "before_count": 9,
+    "after_count": 7,
+    "removed_count": 2,
+    "removed": [
+      {
+        "value": "including Apple Card®",
+        "reason": "DANGLING_CLAUSE"
+      },
+      {
+        "value": "strong third-party software",
+        "reason": "GENERIC_NON_PRODUCT_TEXT"
+      }
+    ]
   }
 }

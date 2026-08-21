@@ -39,7 +39,6 @@
     "Serial Attached SCSI (“SAS”)",
     "NVMe over Fabrics (“NVMe-oF”)",
     "opto-electronics",
-    "Authorization of Chemicals SVHC Substances Directive",
     "broad portfolio of Ethernet solutions spanning controllers",
     "physical transceivers",
     "switches",
@@ -1058,5 +1057,18 @@
     "candidate_eligibility_reason": "ELIGIBLE",
     "candidate_blockers": [],
     "good_existing": true
+  },
+  "product_stack_sanitizer": {
+    "version": "v2.6.6.2a",
+    "mode": "deterministic_production_boundary",
+    "before_count": 26,
+    "after_count": 25,
+    "removed_count": 1,
+    "removed": [
+      {
+        "value": "Authorization of Chemicals SVHC Substances Directive",
+        "reason": "REGULATORY_OR_COMPLIANCE_TEXT"
+      }
+    ]
   }
 }

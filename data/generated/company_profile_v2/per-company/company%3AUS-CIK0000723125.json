@@ -13,8 +13,7 @@
     "PCIe Gen6 SSDs",
     "memory modules",
     "DDR5",
-    "LPDDR5",
-    "health clinics at certain Micron sites"
+    "LPDDR5"
   ],
   "market_products": {},
   "core_technologies": [
@@ -535,5 +534,18 @@
     "candidate_eligibility_reason": "ELIGIBLE",
     "candidate_blockers": [],
     "good_existing": true
+  },
+  "product_stack_sanitizer": {
+    "version": "v2.6.6.2a",
+    "mode": "deterministic_production_boundary",
+    "before_count": 5,
+    "after_count": 4,
+    "removed_count": 1,
+    "removed": [
+      {
+        "value": "health clinics at certain Micron sites",
+        "reason": "HR_OR_FACILITY_TEXT"
+      }
+    ]
   }
 }

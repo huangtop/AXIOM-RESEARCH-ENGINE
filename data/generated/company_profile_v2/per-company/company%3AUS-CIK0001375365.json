@@ -12,7 +12,6 @@
   "product_stack": [
     "products that contain the NVIDIA A100",
     "products that contain the NVIDIA H100 integrated circuits",
-    "Form 10-K",
     "SuperDoctor 5",
     "software",
     "edge platforms",
@@ -24,12 +23,10 @@
     "Supermicro Power Management software",
     "Supermicro Update Manager",
     "SuperCloud Composer",
-    "Hong Kong",
     "H100 integrated circuits",
     "storage solutions for enterprise data centers",
     "storage",
-    "server boards",
-    "those in the Middle East"
+    "server boards"
   ],
   "market_products": {},
   "core_technologies": [],
@@ -801,5 +798,26 @@
     "candidate_eligibility_reason": "ELIGIBLE",
     "candidate_blockers": [],
     "good_existing": true
+  },
+  "product_stack_sanitizer": {
+    "version": "v2.6.6.2a",
+    "mode": "deterministic_production_boundary",
+    "before_count": 20,
+    "after_count": 17,
+    "removed_count": 3,
+    "removed": [
+      {
+        "value": "Form 10-K",
+        "reason": "NON_PRODUCT_DOCUMENT_OR_FRAGMENT"
+      },
+      {
+        "value": "Hong Kong",
+        "reason": "GEOGRAPHY_TEXT"
+      },
+      {
+        "value": "those in the Middle East",
+        "reason": "GEOGRAPHY_TEXT"
+      }
+    ]
   }
 }

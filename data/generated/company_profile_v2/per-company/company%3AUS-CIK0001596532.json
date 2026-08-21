@@ -11,7 +11,6 @@
   "markets": [],
   "product_stack": [
     "open-source software",
-    "other software available on commercially reasonable terms",
     "integrated circuit components",
     "all managed through CloudVision®"
   ],
@@ -622,5 +621,18 @@
     "candidate_eligibility_reason": "ELIGIBLE",
     "candidate_blockers": [],
     "good_existing": false
+  },
+  "product_stack_sanitizer": {
+    "version": "v2.6.6.2a",
+    "mode": "deterministic_production_boundary",
+    "before_count": 4,
+    "after_count": 3,
+    "removed_count": 1,
+    "removed": [
+      {
+        "value": "other software available on commercially reasonable terms",
+        "reason": "DANGLING_CLAUSE"
+      }
+    ]
   }
 }

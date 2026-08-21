@@ -25,14 +25,10 @@
     "several thousand analog ICs",
     "a broad portfolio of high-performance RF and microwave ICs covering the entire RF signal chain",
     "broadband switches suitable for radio and instrument systems",
-    "Mixed Signal—We are a leading supplier of data converter products",
     "communications",
     "microwave ICs covering the entire RF signal chain",
     "products based on micro-electro-mechanical systems (MEMS) technology",
     "broadband switches suitable for radio",
-    "hearing health) See Note 4",
-    "Geographic Information",
-    "of the Notes to Consolidated Financial Statements contained in Part II",
     "other high-performance sensors"
   ],
   "market_products": {},
@@ -728,5 +724,30 @@
       "FILING_PROSE_OR_BULLET"
     ],
     "good_existing": true
+  },
+  "product_stack_sanitizer": {
+    "version": "v2.6.6.2a",
+    "mode": "deterministic_production_boundary",
+    "before_count": 12,
+    "after_count": 8,
+    "removed_count": 4,
+    "removed": [
+      {
+        "value": "Mixed Signal—We are a leading supplier of data converter products",
+        "reason": "SECTION_PROSE_FRAGMENT"
+      },
+      {
+        "value": "hearing health) See Note 4",
+        "reason": "FINANCIAL_STATEMENT_NOTE"
+      },
+      {
+        "value": "Geographic Information",
+        "reason": "NON_PRODUCT_DOCUMENT_OR_FRAGMENT"
+      },
+      {
+        "value": "of the Notes to Consolidated Financial Statements contained in Part II",
+        "reason": "FINANCIAL_STATEMENT_NOTE"
+      }
+    ]
   }
 }
