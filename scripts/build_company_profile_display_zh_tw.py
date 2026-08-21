@@ -8,7 +8,6 @@ import json
 import os
 import sys
 from pathlib import Path
-from urllib.parse import quote
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -20,14 +19,15 @@ if str(ROOT / "src") not in sys.path:
     )
 
 
-from axiom_engine.company_profile_v2 import (  # noqa: E402
-    build_company_profile_v2,
-)
-
 from axiom_engine.company_profile_v2.display_zh_tw import (  # noqa: E402
     build_company_profile_display_zh_tw,
 )
 
+
+CANONICAL_ROOT = (
+    ROOT
+    / "data/generated/company_profile_v2"
+)
 
 OUTPUT_ROOT = (
     ROOT
@@ -35,8 +35,7 @@ OUTPUT_ROOT = (
 )
 
 TRANSLATION_CENSUS = (
-    ROOT
-    / "data/generated/company_profile_v2"
+    CANONICAL_ROOT
     / "translation_universe_census_v2640.json"
 )
 
@@ -50,6 +49,10 @@ AI_THEME_IDS = {
     "theme:ai_infrastructure",
     "theme:artificial_intelligence",
 }
+
+
+class CanonicalHandoffError(RuntimeError):
+    """Raised when display/translation cannot prove canonical handoff integrity."""
 
 
 def _write_json(
@@ -72,16 +75,162 @@ def _write_json(
     )
 
 
-def _filename(
-    company_id: str,
-) -> str:
-    return (
-        quote(
-            company_id,
-            safe="",
+def _load_json(
+    path: Path,
+) -> object:
+    try:
+        return json.loads(
+            path.read_text(
+                encoding="utf-8",
+            )
         )
-        + ".json"
+    except FileNotFoundError as exc:
+        raise CanonicalHandoffError(
+            f"canonical handoff file not found: {path}"
+        ) from exc
+    except json.JSONDecodeError as exc:
+        raise CanonicalHandoffError(
+            f"canonical handoff file is invalid JSON: {path}: {exc}"
+        ) from exc
+    except OSError as exc:
+        raise CanonicalHandoffError(
+            f"cannot read canonical handoff file: {path}: {exc}"
+        ) from exc
+
+
+def _canonical_index() -> dict:
+    path = CANONICAL_ROOT / "index.json"
+    payload = _load_json(path)
+
+    if not isinstance(payload, dict):
+        raise CanonicalHandoffError(
+            f"canonical index is not an object: {path}"
+        )
+
+    symbol_to_file = payload.get(
+        "symbol_to_file"
     )
+
+    if not isinstance(
+        symbol_to_file,
+        dict,
+    ):
+        raise CanonicalHandoffError(
+            "canonical index has no symbol_to_file mapping"
+        )
+
+    return payload
+
+
+def _load_canonical_profile(
+    symbol: str,
+) -> dict:
+    """Load the already-written production canonical profile.
+
+    This function intentionally has no fallback to build_company_profile_v2().
+    Display/translation must consume the same canonical artifact produced by the
+    V2.6.5.7 extraction/gate pipeline. Missing or malformed canonical data is a
+    hard handoff failure.
+    """
+    normalized_symbol = (
+        str(symbol)
+        .strip()
+        .upper()
+    )
+
+    if not normalized_symbol:
+        raise CanonicalHandoffError(
+            "canonical handoff requires a symbol"
+        )
+
+    index = _canonical_index()
+    relative = (
+        index.get(
+            "symbol_to_file",
+            {},
+        ).get(
+            normalized_symbol
+        )
+    )
+
+    if not relative:
+        raise CanonicalHandoffError(
+            "canonical handoff missing symbol "
+            f"{normalized_symbol} in "
+            f"{CANONICAL_ROOT / 'index.json'}"
+        )
+
+    relative_path = Path(
+        str(relative)
+    )
+
+    if (
+        relative_path.is_absolute()
+        or ".." in relative_path.parts
+    ):
+        raise CanonicalHandoffError(
+            f"unsafe canonical path for {normalized_symbol}: {relative}"
+        )
+
+    profile_path = (
+        CANONICAL_ROOT
+        / relative_path
+    )
+
+    payload = _load_json(
+        profile_path
+    )
+
+    if not isinstance(
+        payload,
+        dict,
+    ):
+        raise CanonicalHandoffError(
+            f"canonical profile is not an object: {profile_path}"
+        )
+
+    actual_symbol = str(
+        payload.get("symbol")
+        or ""
+    ).strip().upper()
+
+    if (
+        actual_symbol
+        != normalized_symbol
+    ):
+        raise CanonicalHandoffError(
+            "canonical symbol mismatch: "
+            f"requested={normalized_symbol} "
+            f"loaded={actual_symbol or '<missing>'} "
+            f"path={profile_path}"
+        )
+
+    company_id = str(
+        payload.get("company_id")
+        or ""
+    ).strip()
+
+    if not company_id:
+        raise CanonicalHandoffError(
+            f"canonical profile has no company_id: {profile_path}"
+        )
+
+    product_stack = (
+        payload.get(
+            "product_stack"
+        )
+    )
+
+    if not isinstance(
+        product_stack,
+        list,
+    ):
+        raise CanonicalHandoffError(
+            "canonical product_stack is not an array: "
+            f"{profile_path}"
+        )
+
+    return payload
 
 
 def _load_index() -> dict:
@@ -104,6 +253,12 @@ def _load_index() -> dict:
     except (
         OSError,
         json.JSONDecodeError,
+    ):
+        payload = {}
+
+    if not isinstance(
+        payload,
+        dict,
     ):
         payload = {}
 
@@ -137,9 +292,19 @@ def _write_payload(
         payload["symbol"]
     ).upper()
 
+    # Match the canonical/display batch convention without importing the
+    # extractor/batch layer back into this translation-only CLI.
+    from urllib.parse import quote
+
     relative_path = (
         Path("per-company")
-        / _filename(company_id)
+        / (
+            quote(
+                company_id,
+                safe="",
+            )
+            + ".json"
+        )
     )
 
     output_path = (
@@ -338,6 +503,39 @@ def _extract_translation_surface(
     }
 
 
+def _assert_product_handoff(
+    *,
+    profile: dict,
+    translation_source: dict,
+) -> None:
+    canonical_products = [
+        str(value).strip()
+        for value in (
+            profile.get(
+                "product_stack"
+            )
+            or []
+        )
+        if str(value).strip()
+    ]
+
+    source_products = (
+        translation_source.get(
+            "product_stack"
+        )
+    )
+
+    if (
+        source_products
+        != canonical_products
+    ):
+        raise CanonicalHandoffError(
+            "product_stack handoff mismatch: "
+            "canonical written product_stack != "
+            "translation_source.product_stack"
+        )
+
+
 def _build_translation_prompt(
     *,
     symbol: str,
@@ -370,7 +568,6 @@ def _build_translation_prompt(
     )
 
 
-
 def _translation_cache_key(
     *,
     model: str,
@@ -397,7 +594,6 @@ def _translation_cache_key(
         f"{safe_model}__"
         f"{digest}.json"
     )
-
 
 
 def _validate_translation_shape(
@@ -630,14 +826,13 @@ def _translate_with_openai(
 
     return translated, "API"
 
-def _build_openai_payload(
+
+def _build_payload_from_canonical(
     *,
     symbol: str,
-    model: str,
-) -> dict:
-    profile = build_company_profile_v2(
-        ROOT,
-        symbol=symbol,
+) -> tuple[dict, dict, dict]:
+    profile = _load_canonical_profile(
+        symbol
     )
 
     source = (
@@ -646,18 +841,49 @@ def _build_openai_payload(
         )
     )
 
-    translated, translation_source = (
-        _translate_with_openai(
-            model=model,
-            symbol=symbol,
-            source=source,
-        )
+    _assert_product_handoff(
+        profile=profile,
+        translation_source=source,
     )
 
     payload = dict(
         build_company_profile_display_zh_tw(
             ROOT,
             profile=profile,
+        )
+    )
+
+    return (
+        profile,
+        source,
+        payload,
+    )
+
+
+def _build_openai_payload(
+    *,
+    symbol: str,
+    model: str,
+) -> dict:
+    profile, source, payload = (
+        _build_payload_from_canonical(
+            symbol=symbol,
+        )
+    )
+
+    # Important ordering:
+    # canonical read-back + product handoff invariant must pass before any
+    # OpenAI cache/API access. A broken handoff therefore costs $0.
+    _assert_product_handoff(
+        profile=profile,
+        translation_source=source,
+    )
+
+    translated, translation_source = (
+        _translate_with_openai(
+            model=model,
+            symbol=symbol,
+            source=source,
         )
     )
 
@@ -669,6 +895,7 @@ def _build_openai_payload(
         "mode": "company_profile_translation_only",
         "result_source": translation_source,
         "validation": "exact_json_shape_and_array_cardinality",
+        "canonical_handoff": "read_back_verified",
     }
 
     payload[
@@ -697,17 +924,24 @@ def _run_one(
             )
         )
     else:
-        profile = build_company_profile_v2(
-            ROOT,
-            symbol=symbol,
-        )
-
-        payload = (
-            build_company_profile_display_zh_tw(
-                ROOT,
-                profile=profile,
+        _, source, payload = (
+            _build_payload_from_canonical(
+                symbol=symbol,
             )
         )
+
+        # Expose the exact source even in non-OpenAI preview mode so the
+        # canonical -> display/translation handoff can be inspected without
+        # spending API money.
+        payload = dict(
+            payload
+        )
+        payload[
+            "translation_source"
+        ] = source
+        payload[
+            "canonical_handoff"
+        ] = "read_back_verified"
 
     result = {
         "symbol":
@@ -751,9 +985,9 @@ def _run_one(
 def main() -> int:
     parser = argparse.ArgumentParser(
         description=(
-            "Build zh-TW display payload from "
-            "Company Profile V2; optionally use OpenAI "
-            "for translation-only handoff."
+            "Build zh-TW display payload from the already-written "
+            "Company Profile V2 canonical artifact; optionally use "
+            "OpenAI for translation-only handoff."
         )
     )
 
@@ -788,7 +1022,8 @@ def main() -> int:
         "--openai",
         action="store_true",
         help=(
-            "Translate Company Profile fields with OpenAI."
+            "Translate Company Profile fields with OpenAI. "
+            "Canonical read-back invariant is checked first."
         ),
     )
 
