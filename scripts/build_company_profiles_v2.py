@@ -19,9 +19,11 @@ and reproducible.
 
 from __future__ import annotations
 
+import json
 import re
 import subprocess
 import sys
+from urllib.parse import quote
 from pathlib import Path
 from typing import Any
 
@@ -33,6 +35,10 @@ FROZEN_V2657_COMMIT = (
 )
 FROZEN_SCRIPT_PATH = (
     "scripts/build_company_profiles_v2.py"
+)
+
+CANONICAL_ROOT = (
+    ROOT / "data/generated/company_profile_v2"
 )
 
 
@@ -320,6 +326,15 @@ def _promotion_quality_issue_rows(
             )
             continue
 
+        if _PROMOTION_EMBEDDED_FILING_RE.search(
+            text
+        ):
+            add(
+                "PROMOTION_EMBEDDED_FILING_TEXT",
+                text,
+            )
+            continue
+
         if any(
             marker in (
                 " " + lower + " "
@@ -329,15 +344,6 @@ def _promotion_quality_issue_rows(
         ):
             add(
                 "PROMOTION_FILING_PROSE",
-                text,
-            )
-            continue
-
-        if _PROMOTION_EMBEDDED_FILING_RE.search(
-            text
-        ):
-            add(
-                "PROMOTION_EMBEDDED_FILING_TEXT",
                 text,
             )
             continue
@@ -830,246 +836,208 @@ _V2657[
 ] = _promotion_quality_issue_rows
 
 
-def main() -> int:
-    """
-    Run the frozen V2.6.5.7 build/extraction pipeline, then expose V2.6.5.8
-    promotion decisions. Existing --write behavior is intentionally blocked
-    for V2.6.5.8 until safe upsert is implemented; this prevents destructive
-    batch pruning from being used as a promotion mechanism.
-    """
-    import argparse
-    import json
 
-    parser = argparse.ArgumentParser(
-        description=(
-            "V2.6.5.8 Company Profile build with frozen "
-            "V2.6.5.7 extraction and promotion-only quality gate."
-        )
+def _snapshot_records(payload: dict) -> list[dict]:
+    records = payload.get("records")
+    if isinstance(records, list):
+        valid = [row for row in records if isinstance(row, dict)]
+        if valid and all(isinstance(row.get("product_stack_full"), list) for row in valid):
+            return valid
+    raise ValueError(
+        "snapshot has no complete record-level product stacks; "
+        "expected records[].product_stack_full"
     )
 
-    parser.add_argument(
-        "--scope",
-        choices=(
-            "published",
-            "strategic",
-        ),
-        default="strategic",
-    )
-    parser.add_argument(
-        "--symbol",
-        action="append",
-        default=[],
-    )
-    parser.add_argument(
-        "--write",
-        action="store_true",
-    )
-    parser.add_argument(
-        "--allow-partial",
-        action="store_true",
-    )
-    parser.add_argument(
-        "--full-report",
-        action="store_true",
-    )
-    parser.add_argument(
-        "--diagnostic-limit",
-        type=int,
-        default=12,
-    )
-    parser.add_argument(
-        "--worst-limit",
-        type=int,
-        default=20,
-    )
-    parser.add_argument(
-        "--one-screen",
-        action="store_true",
-    )
 
-    args = parser.parse_args()
-
-    if args.write:
-        print(
-            json.dumps(
-                {
-                    "write_status": "blocked",
-                    "gate_version":
-                        PROMOTION_GATE_VERSION,
-                    "write_error": (
-                        "V2.6.5.8 blocks destructive batch --write. "
-                        "Promotion is dry-run only until safe canonical "
-                        "upsert is implemented."
-                    ),
-                },
-                ensure_ascii=False,
-                indent=2,
-            )
-        )
-        return 2
-
-    explicit_symbols = [
-        str(symbol)
-        .strip()
-        .upper()
-        for symbol in args.symbol
-        if str(symbol).strip()
-    ]
-
-    batch_scope = (
-        "published"
-        if args.scope
-        == "published"
-        else "evidence"
-    )
-
-    symbols = (
-        explicit_symbols
-        if explicit_symbols
-        else (
-            _strategic_symbols()
-            if args.scope
-            == "strategic"
-            else []
-        )
-    )
-
-    report = (
-        build_company_profile_batch(
-            ROOT,
-            scope=batch_scope,
-            symbols=symbols,
-        )
-    )
-
-    report[
-        "_requested_scope"
-    ] = args.scope
-
-    _apply_product_recall(
-        report
-    )
-
-    promotion_gate = (
-        _production_promotion_gate(
-            report,
-            sample_limit=max(
-                1,
-                args.diagnostic_limit,
-            ),
-        )
-    )
-
-    report[
-        "promotion_gate"
-    ] = promotion_gate
-
-    product_recall_policy = {
-        "version": "v2.6.5.8",
-        "extractor_version":
-            "v2.6.5.7-frozen",
-        "promotion_gate_version":
-            PROMOTION_GATE_VERSION,
-        "principles": [
-            "freeze_v2657_extractor",
-            "promotion_gate_does_not_mutate_product_stack",
-            "promotion_requires_non_empty_product_stack",
-            "promotion_blocks_non_product_clauses",
-            "promotion_blocks_filing_prose",
-            "promotion_blocks_embedded_filing_text",
-            "promotion_blocks_legal_or_patent_text",
-            "promotion_blocks_market_or_geography_fragments",
-            "promotion_blocks_organization_names",
-            "promotion_blocks_external_product_signals",
-            "destructive_batch_write_disabled",
-            "openai_not_used",
-        ],
+def _report_from_snapshot(path: Path) -> dict:
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(payload, dict):
+        raise ValueError("census snapshot root must be an object")
+    records = _snapshot_records(payload)
+    failures = payload.get("failures") or payload.get("failure_samples") or []
+    return {
+        "scope": "evidence",
+        "_requested_scope": "strategic",
+        "records": records,
+        "failures": failures,
+        "summary": {
+            "target_company_count": payload.get("summary", {}).get("target_company_count", len(records)+len(failures)),
+            "generated_company_count": len(records),
+            "failed_company_count": len(failures),
+            "complete": not failures,
+        },
+        "snapshot_source": str(path),
     }
 
-    report[
-        "product_recall_policy"
-    ] = product_recall_policy
 
-    if (
-        args.one_screen
-        or (
-            args.scope
-            == "strategic"
-            and not explicit_symbols
-            and not args.full_report
-        )
-    ):
-        print(
-            _one_screen_promotion_summary(
-                report
-            )
-        )
-    elif args.full_report:
-        public = _public_report(
-            report
-        )
-        print(
-            json.dumps(
-                public,
-                ensure_ascii=False,
-                indent=2,
-            )
-        )
+def _resolve_snapshot_path(explicit: str | None) -> Path:
+    if explicit:
+        path = Path(explicit).expanduser().resolve()
     else:
-        output = (
-            _compact_census_report_v2658(
-                report,
-                sample_limit=max(
-                    1,
-                    args.diagnostic_limit,
-                ),
-                worst_limit=max(
-                    1,
-                    args.worst_limit,
-                ),
-                expand_symbols=set(
-                    explicit_symbols
-                ),
-            )
-        )
-
-        output[
-            "product_recall_policy"
-        ] = product_recall_policy
-
-        print(
-            json.dumps(
-                output,
-                ensure_ascii=False,
-                indent=2,
-            )
-        )
-
-    if not (
-        report[
-            "summary"
-        ][
-            "complete"
-        ]
-    ):
-        return 1
-
-    return 0
+        path = (CANONICAL_ROOT / "strategic_product_census_v2657.json").resolve()
+    if not path.is_file():
+        raise ValueError(f"V2.6.5.7 census snapshot not found: {path}")
+    return path
 
 
-# Export promotion helpers for tests/importers.
-globals()[
-    "_promotion_quality_issue_rows"
-] = _promotion_quality_issue_rows
-globals()[
-    "_promotion_quality_gate"
-] = _promotion_quality_gate
-globals()[
-    "_production_promotion_gate"
-] = _production_promotion_gate
+def _canonical_index_payload() -> dict:
+    path = CANONICAL_ROOT / "index.json"
+    if not path.is_file():
+        return {"schema_version":"axiom-company-profile-index.v2.3","symbol_to_file":{},"company_id_to_file":{},"symbols":[],"company_count":0}
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(payload, dict):
+        raise ValueError(f"canonical index is not an object: {path}")
+    payload.setdefault("symbol_to_file", {})
+    payload.setdefault("company_id_to_file", {})
+    return payload
+
+
+def _write_json_atomic(path: Path, payload: object) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
+    tmp.replace(path)
+
+
+def _safe_upsert_canonical_profiles(profiles: list[dict]) -> dict:
+    index = _canonical_index_payload()
+    symbol_to_file = dict(index.get("symbol_to_file") or {})
+    company_id_to_file = dict(index.get("company_id_to_file") or {})
+    before_symbols = set(symbol_to_file)
+    before_company_ids = set(company_id_to_file)
+    written = []
+    for profile in profiles:
+        symbol = str(profile.get("symbol") or "").strip().upper()
+        company_id = str(profile.get("company_id") or "").strip()
+        products = profile.get("product_stack") or []
+        if not symbol or not company_id:
+            raise ValueError("safe promotion profile requires symbol and company_id")
+        if not isinstance(products, list) or not products:
+            raise ValueError(f"{symbol}: safe promotion refuses empty product_stack")
+        rel = Path("per-company") / (quote(company_id, safe="") + ".json")
+        target = CANONICAL_ROOT / rel
+        _write_json_atomic(target, profile)
+        readback = json.loads(target.read_text(encoding="utf-8"))
+        if readback.get("product_stack") != profile.get("product_stack"):
+            raise ValueError(f"{symbol}: canonical product_stack read-back mismatch")
+        symbol_to_file[symbol] = str(rel)
+        company_id_to_file[company_id] = str(rel)
+        written.append({"symbol":symbol,"company_id":company_id,"relative_path":str(rel),"product_stack_count":len(products)})
+    if not before_symbols <= set(symbol_to_file):
+        raise ValueError("safe promotion invariant failed: existing symbol index entry lost")
+    if not before_company_ids <= set(company_id_to_file):
+        raise ValueError("safe promotion invariant failed: existing company index entry lost")
+    index["symbol_to_file"] = dict(sorted(symbol_to_file.items()))
+    index["company_id_to_file"] = dict(sorted(company_id_to_file.items()))
+    index["symbols"] = sorted(symbol_to_file)
+    index["company_count"] = len(company_id_to_file)
+    _write_json_atomic(CANONICAL_ROOT / "index.json", index)
+    return {
+        "written_count": len(written),
+        "company_count_before": len(before_company_ids),
+        "company_count_after": len(company_id_to_file),
+        "preserved_existing_symbols": before_symbols <= set(index["symbol_to_file"]),
+        "written": written,
+    }
+
+
+def _promotion_candidates_from_snapshot(snapshot_path: Path) -> tuple[list[str], dict]:
+    report = _report_from_snapshot(snapshot_path)
+    gate = _production_promotion_gate(report, sample_limit=12)
+    symbols = [row["symbol"] for row in gate.get("rows", []) if row.get("promotion_status") == "PROMOTE"]
+    return symbols, gate
+
+
+def _safe_promotion_run(snapshot_path: Path, write: bool, limit: int | None) -> dict:
+    candidates, snapshot_gate = _promotion_candidates_from_snapshot(snapshot_path)
+    if limit is not None:
+        if limit <= 0: raise ValueError("--promotion-limit must be > 0")
+        candidates = candidates[:limit]
+    report = build_company_profile_batch(ROOT, scope="evidence", symbols=candidates)
+    report["_requested_scope"] = "strategic"
+    _apply_product_recall(report)
+    rebuild_gate = _production_promotion_gate(report, sample_limit=12)
+    status_by_symbol = {row["symbol"]:row["promotion_status"] for row in rebuild_gate.get("rows", [])}
+    still_promote = [s for s in candidates if status_by_symbol.get(s) == "PROMOTE"]
+    downgraded = [{"symbol":s,"status":status_by_symbol.get(s,"MISSING")} for s in candidates if status_by_symbol.get(s) != "PROMOTE"]
+    profiles_by_symbol = {str(p.get("symbol") or "").upper():p for p in report.get("_canonical_profiles", [])}
+    result = {
+        "gate_version": PROMOTION_GATE_VERSION,
+        "mode": "safe_promotion_writer",
+        "snapshot": str(snapshot_path),
+        "snapshot_promote_count": snapshot_gate["strategic_universe"]["promote"],
+        "selected_candidate_count": len(candidates),
+        "revalidated_promote_count": len(still_promote),
+        "downgraded_count": len(downgraded),
+        "downgraded": downgraded,
+        "write_requested": write,
+    }
+    if not write:
+        result["write_status"] = "dry_run"
+        result["promote_symbols"] = still_promote
+        return result
+    profiles = [profiles_by_symbol[s] for s in still_promote if s in profiles_by_symbol]
+    result["write_status"] = "written"
+    result["write_result"] = _safe_upsert_canonical_profiles(profiles)
+    return result
+
+
+def main() -> int:
+    import argparse
+    parser = argparse.ArgumentParser(description="V2.6.5.8 Company Profile promotion gate and safe writer")
+    parser.add_argument("--scope", choices=("published","strategic"), default="strategic")
+    parser.add_argument("--symbol", action="append", default=[])
+    parser.add_argument("--write", action="store_true")
+    parser.add_argument("--allow-partial", action="store_true")
+    parser.add_argument("--full-report", action="store_true")
+    parser.add_argument("--diagnostic-limit", type=int, default=12)
+    parser.add_argument("--worst-limit", type=int, default=20)
+    parser.add_argument("--one-screen", action="store_true")
+    parser.add_argument("--census-snapshot", help="Existing V2.6.5.7 strategic product census JSON")
+    parser.add_argument("--promote-from-snapshot", action="store_true", help="Rebuild only snapshot PROMOTE symbols and revalidate")
+    parser.add_argument("--promotion-limit", type=int, help="Optional canary limit for safe promotion")
+    args = parser.parse_args()
+
+    if args.promote_from_snapshot:
+        try:
+            snapshot = _resolve_snapshot_path(args.census_snapshot)
+            result = _safe_promotion_run(snapshot, args.write, args.promotion_limit)
+        except (ValueError, OSError, json.JSONDecodeError) as exc:
+            print(json.dumps({"status":"blocked","gate_version":PROMOTION_GATE_VERSION,"error":str(exc)}, ensure_ascii=False, indent=2))
+            return 2
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return 0
+
+    if args.write:
+        print(json.dumps({"write_status":"blocked","gate_version":PROMOTION_GATE_VERSION,"write_error":"Destructive batch --write is disabled. Use --promote-from-snapshot --write."}, ensure_ascii=False, indent=2))
+        return 2
+
+    explicit_symbols = [str(s).strip().upper() for s in args.symbol if str(s).strip()]
+    if explicit_symbols:
+        report = build_company_profile_batch(ROOT, scope="evidence", symbols=explicit_symbols)
+        report["_requested_scope"] = args.scope
+        _apply_product_recall(report)
+    elif args.scope == "strategic":
+        try:
+            report = _report_from_snapshot(_resolve_snapshot_path(args.census_snapshot))
+        except (ValueError, OSError, json.JSONDecodeError) as exc:
+            print(json.dumps({"status":"blocked","gate_version":PROMOTION_GATE_VERSION,"error":str(exc)}, ensure_ascii=False, indent=2))
+            return 2
+    else:
+        report = build_company_profile_batch(ROOT, scope="published", symbols=[])
+        report["_requested_scope"] = args.scope
+        _apply_product_recall(report)
+
+    report["promotion_gate"] = _production_promotion_gate(report, sample_limit=max(1,args.diagnostic_limit))
+    if args.one_screen or (args.scope == "strategic" and not explicit_symbols and not args.full_report):
+        print(_one_screen_promotion_summary(report))
+    elif args.full_report:
+        print(json.dumps(_public_report(report), ensure_ascii=False, indent=2))
+    else:
+        output = _compact_census_report_v2658(report, sample_limit=max(1,args.diagnostic_limit), worst_limit=max(1,args.worst_limit), expand_symbols=set(explicit_symbols))
+        print(json.dumps(output, ensure_ascii=False, indent=2))
+    return 0 if report.get("summary",{}).get("complete",True) else 1
 
 
 if __name__ == "__main__":
-    raise SystemExit(
-        main()
-    )
+    raise SystemExit(main())

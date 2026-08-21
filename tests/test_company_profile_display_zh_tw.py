@@ -202,11 +202,10 @@ def test_v2658_avgo_embedded_filing_text_blocks_promotion():
         )
     )
     assert gate["status"] == "REVIEW"
-    assert gate["status"] == "REVIEW"
-    assert {
-        "PROMOTION_EMBEDDED_FILING_TEXT",
-        "PROMOTION_FILING_PROSE",
-    } & set(gate["issue_types"])
+    assert (
+        "PROMOTION_EMBEDDED_FILING_TEXT"
+        in gate["issue_types"]
+    )
 
 
 def test_v2658_patent_text_blocks_promotion():
