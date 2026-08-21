@@ -842,6 +842,781 @@ def _inherit_model_family(
     )
 
 
+
+_PRODUCT_SECTION_HEADINGS = (
+    "products and services",
+    "our products",
+    "printing systems",
+    "fdm printers",
+    "polyjet printers",
+    "stereolithography printers",
+    "origin p3 printers",
+    "saf printers",
+    "consumable materials",
+    "fdm materials",
+    "polyjet materials",
+    "stereolithography materials",
+    "software",
+    "our services",
+    "range of technologies and differentiating factors",
+    "range of solutions",
+)
+
+_PRODUCT_SECTION_TERMINATORS = (
+    "customers",
+    "marketing",
+    "sales distribution methods",
+    "manufacturing and suppliers",
+    "research and development",
+    "intellectual property",
+    "competition",
+    "seasonality",
+    "global operations",
+    "employees",
+    "government regulation",
+    "environmental, social, and governance",
+)
+
+_MODEL_TOKEN_RE = re.compile(
+    r"\b(?:"
+    r"[A-Z]{1,8}\d{1,4}[A-Z0-9+-]*"
+    r"|[A-Z]{1,6}\d{2,5}[a-z]{0,3}"
+    r"|[A-Z][A-Za-z]{1,15}\s+\d{1,4}[A-Za-z0-9+-]*"
+    r")\b"
+)
+
+_PRODUCT_FAMILY_HEAD_RE = re.compile(
+    r"\b(?:"
+    r"FDM|PolyJet|P3|SAF|SLA|stereolithography|"
+    r"retimer|retimers|controller|controllers|switch|switches|"
+    r"processor|processors|accelerator|accelerators|"
+    r"FPGA|FPGAs|SoC|SoCs|GPU|GPUs|CPU|CPUs|NIC|NICs|DPU|DPUs|"
+    r"printer|printers|printing system|printing systems|"
+    r"software platform|software suite|materials platform"
+    r")\b",
+    flags=re.IGNORECASE,
+)
+
+
+def _section_lines(
+    text: str,
+) -> list[str]:
+    return [
+        re.sub(
+            r"\s+",
+            " ",
+            line,
+        ).strip()
+        for line in str(text or "").splitlines()
+        if re.sub(
+            r"\s+",
+            " ",
+            line,
+        ).strip()
+    ]
+
+
+def _is_heading_like(
+    line: str,
+) -> bool:
+    value = line.strip()
+
+    if not value:
+        return False
+
+    lower = value.casefold().rstrip(".:")
+
+    if lower in _PRODUCT_SECTION_HEADINGS:
+        return True
+
+    if lower in _PRODUCT_SECTION_TERMINATORS:
+        return True
+
+    if len(value) > 90:
+        return False
+
+    words = value.split()
+
+    if len(words) > 10:
+        return False
+
+    # SEC filing section headings are commonly short title-like lines.
+    alpha_words = [
+        word
+        for word in words
+        if re.search(
+            r"[A-Za-z]",
+            word,
+        )
+    ]
+
+    if not alpha_words:
+        return False
+
+    title_like = sum(
+        bool(
+            re.match(
+                r"^[A-Z][A-Za-z0-9/&()+.-]*$",
+                word,
+            )
+        )
+        for word in alpha_words
+    )
+
+    return (
+        title_like
+        >= max(
+            1,
+            len(alpha_words) - 1,
+        )
+    )
+
+
+def _product_section_blocks(
+    text: str,
+) -> list[str]:
+    lines = _section_lines(
+        text
+    )
+
+    blocks = []
+    active = False
+    buffer: list[str] = []
+
+    for line in lines:
+        lower = (
+            line.casefold()
+            .rstrip(".:")
+        )
+
+        if lower in _PRODUCT_SECTION_HEADINGS:
+            if buffer:
+                blocks.append(
+                    " ".join(
+                        buffer
+                    )
+                )
+                buffer = []
+
+            active = True
+            buffer.append(
+                line
+            )
+            continue
+
+        if (
+            active
+            and lower
+            in _PRODUCT_SECTION_TERMINATORS
+        ):
+            if buffer:
+                blocks.append(
+                    " ".join(
+                        buffer
+                    )
+                )
+
+            buffer = []
+            active = False
+            continue
+
+        if active:
+            buffer.append(
+                line
+            )
+
+    if buffer:
+        blocks.append(
+            " ".join(
+                buffer
+            )
+        )
+
+    return [
+        block
+        for block
+        in blocks
+        if len(block) >= 80
+    ]
+
+
+
+_PRODUCT_DATE_FRAGMENT_RE = re.compile(
+    r"^(?:(?:In|Throughout|During|Since|As of)\s+)?"
+    r"(?:(?:January|February|March|April|May|June|July|August|"
+    r"September|October|November|December)\s+)?"
+    r"(?:19|20)\d{2}$",
+    flags=re.IGNORECASE,
+)
+
+_PRODUCT_BASED_DESCRIPTOR_RE = re.compile(
+    r"^[A-Za-z0-9®™+.-]+-based$",
+    flags=re.IGNORECASE,
+)
+
+_PRODUCT_DANGLING_FRAGMENT_RE = re.compile(
+    r"^(?:Printer|Printers|Series\s+3D|One\s+3D|Prime\s+3D|"
+    r"Pro\s+3D|Stratasys\s+3D|PolyJet\s+3D|FDM\s+3D|"
+    r"Industry\s+\d+(?:\.\d+)?)$",
+    flags=re.IGNORECASE,
+)
+
+
+def _is_precision_noise_product(
+    value: str,
+) -> bool:
+    text = re.sub(
+        r"\s+",
+        " ",
+        str(value or ""),
+    ).strip(" ,;:.")
+
+    if not text:
+        return True
+
+    return bool(
+        _PRODUCT_DATE_FRAGMENT_RE.fullmatch(text)
+        or _PRODUCT_BASED_DESCRIPTOR_RE.fullmatch(text)
+        or _PRODUCT_DANGLING_FRAGMENT_RE.fullmatch(text)
+    )
+
+
+def _precision_clean_products(
+    values: list[str],
+) -> list[str]:
+    cleaned = []
+
+    for value in values:
+        text = _normalize_product_candidate(
+            str(value)
+        )
+
+        if not text:
+            continue
+
+        if _is_precision_noise_product(text):
+            continue
+
+        if _LOCATION_PRODUCT_RE.fullmatch(text):
+            continue
+
+        cleaned.append(text)
+
+    # Keep family + named members. Only remove existing semantic duplicates.
+    return _semantic_dedupe_products(cleaned)
+
+
+def _extract_inline_model_products(
+    text: str,
+) -> tuple[
+    list[str],
+    list[str],
+]:
+    products: list[str] = []
+    evidence: list[str] = []
+
+    for sentence in _sentences(
+        text
+    ):
+        if _blocked_product_context(
+            sentence
+        ):
+            continue
+
+        lower = sentence.casefold()
+
+        if not (
+            _PRODUCT_FAMILY_HEAD_RE.search(
+                sentence
+            )
+            or any(
+                token in lower
+                for token in (
+                    "models",
+                    "series",
+                    "printers",
+                    "platform",
+                    "software",
+                    "systems",
+                )
+            )
+        ):
+            continue
+
+        # Pull obvious trademarked/title-case product names and model tokens.
+        candidates = []
+
+        for match in re.finditer(
+            r"\b(?:"
+            r"[A-Z][A-Za-z0-9+.-]*"
+            r"(?:\s+[A-Z][A-Za-z0-9+.-]*){0,4}"
+            r")"
+            r"(?:™|®)?"
+            r"\b",
+            sentence,
+        ):
+            value = match.group(0).strip()
+
+            if (
+                len(value) >= 2
+                and (
+                    _MODEL_TOKEN_RE.search(
+                        value
+                    )
+                    or _PRODUCT_FAMILY_HEAD_RE.search(
+                        value
+                    )
+                    or "™" in value
+                    or "®" in value
+                )
+            ):
+                candidates.append(
+                    value
+                )
+
+        # Also collect compact model tokens from list-style sentences.
+        for match in _MODEL_TOKEN_RE.finditer(
+            sentence
+        ):
+            candidates.append(
+                match.group(0)
+            )
+
+        for candidate in candidates:
+            candidate = (
+                _normalize_product_candidate(
+                    candidate
+                )
+            )
+
+            if (
+                candidate
+                and len(
+                    candidate.split()
+                )
+                <= 8
+                and not _blocked_product_context(
+                    candidate
+                )
+            ):
+                products.append(
+                    candidate
+                )
+                evidence.append(
+                    sentence
+                )
+
+    return (
+        _semantic_dedupe_products(
+            products
+        ),
+        _dedupe(
+            evidence
+        ),
+    )
+
+
+
+_SUBJECT_GATED_ALLOWED_SUBJECT_RE = re.compile(
+    r"(?:"
+    r"products?|product lines?|product portfolio|portfolio of products|"
+    r"components?|semiconductors?|passive components?|"
+    r"mosfets? product line|diodes? business|diodes? products?|"
+    r"software products?|software offerings?|"
+    r"systems?|printing systems?|printers?|"
+    r"materials?|consumables?|services?"
+    r")",
+    flags=re.IGNORECASE,
+)
+
+_SUBJECT_GATED_BLOCKED_SUBJECT_RE = re.compile(
+    r"(?:"
+    r"applications?|projects?|competitors?|competition|customers?|"
+    r"markets?|facilities?|manufacturing|capacity|capacities|"
+    r"acquisitions?|suppliers?|employees?|workforce|sites?|"
+    r"factories?|operations?|segments?|channels?|"
+    r"research and development|r&d|strategies?|initiatives?"
+    r")",
+    flags=re.IGNORECASE,
+)
+
+_SUBJECT_GATED_CUE_RE = re.compile(
+    r"\b(?:"
+    r"include|includes|including|"
+    r"consist of|consists of|"
+    r"comprise|comprises|"
+    r"offer|offers|offering"
+    r")\b",
+    flags=re.IGNORECASE,
+)
+
+_SUBJECT_GATED_PRODUCT_HEADS = (
+    "mosfet",
+    "mosfets",
+    "diode",
+    "diodes",
+    "rectifier",
+    "rectifiers",
+    "thyristor",
+    "thyristors",
+    "scr",
+    "scrs",
+    "resistor",
+    "resistors",
+    "inductor",
+    "inductors",
+    "capacitor",
+    "capacitors",
+    "optoelectronic",
+    "infrared",
+    "sensor",
+    "sensors",
+    "photodiode",
+    "photodiodes",
+    "power module",
+    "power modules",
+    "power ic",
+    "power ics",
+    "integrated circuit",
+    "integrated circuits",
+    "semiconductor",
+    "semiconductors",
+    "passive component",
+    "passive components",
+    "printer",
+    "printers",
+    "software",
+    "platform",
+    "suite",
+    "sdk",
+    "retimer",
+    "retimers",
+    "controller",
+    "controllers",
+    "switch",
+    "switches",
+    "accelerator",
+    "accelerators",
+    "processor",
+    "processors",
+    "gpu",
+    "gpus",
+    "cpu",
+    "cpus",
+    "fpga",
+    "fpgas",
+    "soc",
+    "socs",
+    "nic",
+    "nics",
+    "dpu",
+    "dpus",
+)
+
+
+def _subject_before_cue(
+    sentence: str,
+    cue_start: int,
+) -> str:
+    prefix = sentence[
+        :cue_start
+    ]
+
+    # Keep only the most local clause before the cue.
+    prefix = re.split(
+        r"[.;:]",
+        prefix,
+    )[-1]
+
+    prefix = re.sub(
+        r"\s+",
+        " ",
+        prefix,
+    ).strip()
+
+    return prefix
+
+
+def _subject_is_product_role(
+    subject: str,
+) -> bool:
+    if not subject:
+        return False
+
+    if _SUBJECT_GATED_BLOCKED_SUBJECT_RE.search(
+        subject
+    ):
+        return False
+
+    return (
+        _SUBJECT_GATED_ALLOWED_SUBJECT_RE.search(
+            subject
+        )
+        is not None
+    )
+
+
+def _clean_subject_gated_piece(
+    piece: str,
+) -> str:
+    value = re.sub(
+        r"^[\s•·\-–—:]+",
+        "",
+        str(piece or ""),
+    )
+
+    value = re.sub(
+        r"\s+",
+        " ",
+        value,
+    ).strip(
+        " ,.;:-"
+    )
+
+    # Drop common lead-in determiners/adjectives that are not part of the
+    # product noun phrase itself.
+    value = re.sub(
+        r"^(?:"
+        r"our|the|a|an|"
+        r"broad range of|wide range of|selection of|portfolio of"
+        r")\s+",
+        "",
+        value,
+        flags=re.IGNORECASE,
+    )
+
+    # Stop at obvious non-product subordinate clauses.
+    value = re.split(
+        r"\b(?:"
+        r"used for|used in|for use in|serving|targeting|"
+        r"which|that|where|with applications in"
+        r")\b",
+        value,
+        maxsplit=1,
+        flags=re.IGNORECASE,
+    )[0]
+
+    return _normalize_product_candidate(
+        value
+    )
+
+
+def _subject_gated_piece_allowed(
+    value: str,
+) -> bool:
+    if not value:
+        return False
+
+    lower = value.casefold()
+
+    if len(
+        value.split()
+    ) > 12:
+        return False
+
+    if _is_precision_noise_product(
+        value
+    ):
+        return False
+
+    if _LOCATION_PRODUCT_RE.fullmatch(
+        value
+    ):
+        return False
+
+    if any(
+        marker in lower
+        for marker
+        in (
+            "competitor",
+            "competitors",
+            "manufacturing",
+            "capacity",
+            "capacities",
+            "application",
+            "applications",
+            "site in",
+            "factory",
+            "customer",
+            "customers",
+            "market",
+            "markets",
+        )
+    ):
+        return False
+
+    # Require an explicit commercial head or a filing-native brand/model
+    # signal. This keeps the list extraction precision-first.
+    if not (
+        any(
+            head in lower
+            for head
+            in _SUBJECT_GATED_PRODUCT_HEADS
+        )
+        or _has_brand_signal(
+            value
+        )
+    ):
+        return False
+
+    return True
+
+
+def _extract_subject_gated_product_lists(
+    text: str,
+) -> tuple[
+    list[str],
+    list[str],
+]:
+    products: list[str] = []
+    evidence: list[str] = []
+
+    for sentence in _sentences(
+        text
+    ):
+        if _blocked_product_context(
+            sentence
+        ):
+            continue
+
+        for cue in _SUBJECT_GATED_CUE_RE.finditer(
+            sentence
+        ):
+            subject = _subject_before_cue(
+                sentence,
+                cue.start(),
+            )
+
+            if not _subject_is_product_role(
+                subject
+            ):
+                continue
+
+            tail = sentence[
+                cue.end():
+            ].strip()
+
+            if not tail:
+                continue
+
+            # Keep the immediate noun-list clause only.
+            tail = re.split(
+                r"[.;]",
+                tail,
+                maxsplit=1,
+            )[0]
+
+            # Normalize list separators. Parentheses are retained because
+            # product acronyms such as MOSFETs / power ICs can matter.
+            pieces = re.split(
+                r",|;|\band\b",
+                tail,
+                flags=re.IGNORECASE,
+            )
+
+            for piece in pieces:
+                value = _clean_subject_gated_piece(
+                    piece
+                )
+
+                if not _subject_gated_piece_allowed(
+                    value
+                ):
+                    continue
+
+                products.append(
+                    value
+                )
+                evidence.append(
+                    sentence
+                )
+
+    return (
+        _semantic_dedupe_products(
+            products
+        ),
+        _dedupe(
+            evidence
+        ),
+    )
+
+
+def _extract_section_aware_products(
+    text: str,
+) -> tuple[
+    list[str],
+    list[str],
+]:
+    products: list[str] = []
+    evidence: list[str] = []
+
+    for block in _product_section_blocks(
+        text
+    ):
+        # Reuse the existing named product extractor semantics within
+        # product-specific filing blocks by applying local sentence scans.
+        inline_products, inline_evidence = (
+            _extract_inline_model_products(
+                block
+            )
+        )
+
+        products.extend(
+            inline_products
+        )
+        evidence.extend(
+            inline_evidence
+        )
+
+        # Explicit family/platform names in section prose.
+        for sentence in _sentences(
+            block
+        ):
+            if _blocked_product_context(
+                sentence
+            ):
+                continue
+
+            family_patterns = (
+                r"\b(FDM(?:®)?(?:\s+printers?|\s+systems?)?)\b",
+                r"\b(PolyJet(?:™)?(?:\s+printers?|\s+systems?)?)\b",
+                r"\b(P3(?:™)?(?:\s+platform|\s+printers?)?)\b",
+                r"\b(SAF(?:™)?(?:\s+technology|\s+printers?)?)\b",
+                r"\b(Neo(?:®)?(?:\s+(?:range|series|printers?))?)\b",
+                r"\b(Origin(?:®)?(?:\s+(?:One|Two))?)\b",
+                r"\b(GrabCAD(?:®)?\s+(?:Print(?:\s+Pro)?|Streamline Pro|IoT Platform|Community|SDK))\b",
+            )
+
+            for pattern in family_patterns:
+                for match in re.finditer(
+                    pattern,
+                    sentence,
+                    flags=re.IGNORECASE,
+                ):
+                    value = (
+                        _normalize_product_candidate(
+                            match.group(1)
+                        )
+                    )
+
+                    if value:
+                        products.append(
+                            value
+                        )
+                        evidence.append(
+                            sentence
+                        )
+
+    return (
+        _semantic_dedupe_products(
+            products
+        ),
+        _dedupe(
+            evidence
+        ),
+    )
+
+
 def _extract_named_products(
     text: str,
 ) -> tuple[
@@ -1321,8 +2096,13 @@ def _clean_existing_product_stack(
             str(value or "")
         )
 
-        if _product_candidate_allowed(
-            text
+        if (
+            _product_candidate_allowed(
+                text
+            )
+            and not _LOCATION_PRODUCT_RE.fullmatch(
+                text
+            )
         ):
             output.append(
                 text
@@ -1399,6 +2179,32 @@ def _enrich_profile_product_recall(
         )
     )
 
+    section_products, section_evidence = (
+        _extract_section_aware_products(
+            raw_text
+        )
+    )
+
+    subject_products, subject_evidence = (
+        _extract_subject_gated_product_lists(
+            raw_text
+        )
+    )
+
+    discovered = (
+        _semantic_dedupe_products(
+            discovered
+            + section_products
+            + subject_products
+        )
+    )
+
+    discovered_evidence = _dedupe(
+        discovered_evidence
+        + section_evidence
+        + subject_evidence
+    )
+
     existing = (
         _clean_existing_product_stack(
             profile.get(
@@ -1454,7 +2260,7 @@ def _enrich_profile_product_recall(
     profile[
         "product_recall_enrichment"
     ] = {
-        "version": "v2.6.4.9",
+        "version": "v2.6.5.7",
         "mode": (
             "generic_filing_native_named_product_recovery"
         ),
@@ -1556,12 +2362,18 @@ def _apply_product_recall(
         if profile is None:
             continue
 
-        products = list(
-            profile.get(
-                "product_stack"
+        products = _precision_clean_products(
+            list(
+                profile.get(
+                    "product_stack"
+                )
+                or []
             )
-            or []
         )
+
+        profile[
+            "product_stack"
+        ] = products
 
         row[
             "product_stack_count"
@@ -1597,7 +2409,8 @@ _LOCATION_PRODUCT_RE = re.compile(
     r"^(?:"
     r"United States|United Kingdom|North Carolina|South Carolina|"
     r"California|Texas|New York|Mainland China|China|Europe|Asia|"
-    r"North America|South America|Middle East|Africa"
+    r"North America|South America|Middle East|Africa|"
+    r"Europe and Middle East|Asia Pacific|APAC|EMEA"
     r")$",
     flags=re.IGNORECASE,
 )
@@ -1736,11 +2549,744 @@ def _percentile_nearest_rank(
     ]
 
 
+
+# === V2.6.5.6 STRATEGIC / MAJOR-TECH PRODUCTION GATE ===
+
+CORE_TECH_THEME_IDS = {
+    "theme:ai_infrastructure",
+    "theme:artificial_intelligence",
+    "theme:advanced_semiconductors",
+}
+
+MAJOR_TECH_SYMBOLS = (
+    "NVDA",
+    "AMD",
+    "AVGO",
+    "QCOM",
+    "MRVL",
+    "ALAB",
+    "ARM",
+    "TSM",
+    "ASML",
+    "MU",
+    "ANET",
+    "CRDO",
+    "VRT",
+    "SMCI",
+    "DELL",
+    "MSFT",
+    "GOOGL",
+    "GOOG",
+    "AMZN",
+    "META",
+    "ORCL",
+    "AAPL",
+    "PLTR",
+    "SNPS",
+    "CDNS",
+    "AMAT",
+    "LRCX",
+    "KLAC",
+    "ADI",
+    "MCHP",
+    "NXPI",
+    "INTC",
+)
+
+_HARD_NON_PRODUCT_PREFIX_RE = re.compile(
+    r"^(?:"
+    r"are\s+|is\s+|was\s+|were\s+|"
+    r"functionality\s+of\s+|"
+    r"completeness\s+of\s+|"
+    r"properties\s+listed\s+below|"
+    r"following\s+the\s+|"
+    r"throughout\s+|"
+    r"yet\s+|"
+    r"via\s+|"
+    r"also\s+the\s+|"
+    r"supporting\s+|"
+    r"designed\s+to\s+|"
+    r"intended\s+to\s+|"
+    r"used\s+to\s+|"
+    r"used\s+for\s+"
+    r")",
+    flags=re.IGNORECASE,
+)
+
+_HARD_NON_PRODUCT_CONTAINS = (
+    " described in the previous sentence",
+    " listed below:",
+    " location:",
+    " employee",
+    " employees",
+    " competitor",
+    " competitors",
+    " manufacturing expansion",
+    " capacity expansion",
+    " applications include ",
+)
+
+_SOFT_DESCRIPTOR_CONTAINS = (
+    " data bandwidth",
+    " lower latency ",
+    " interconnectivity between ",
+    " software design tools",
+    " applicable software solutions",
+    " user experience with ",
+    " feedback software",
+)
+
+_MAJOR_TECH_GATE_PRIORITY = {
+    "theme:ai_infrastructure": 0,
+    "theme:artificial_intelligence": 0,
+    "theme:advanced_semiconductors": 0,
+    "theme:advanced_communications": 1,
+    "theme:physical_ai": 1,
+    "theme:autonomous_vehicles": 1,
+    "theme:quantum_computing": 1,
+    "theme:robotics": 2,
+    "theme:space_economy": 2,
+    "theme:clean_energy": 2,
+}
+
+
+def _translation_candidate_metadata() -> dict[str, dict]:
+    if not TRANSLATION_CENSUS.is_file():
+        return {}
+
+    payload = _load_json(
+        TRANSLATION_CENSUS
+    )
+
+    rows = payload.get(
+        "translation_candidates"
+    ) or []
+
+    output = {}
+
+    for row in rows:
+        if not isinstance(
+            row,
+            dict,
+        ):
+            continue
+
+        symbol = str(
+            row.get("symbol")
+            or row.get("ticker")
+            or ""
+        ).strip().upper()
+
+        if not symbol:
+            continue
+
+        output[symbol] = {
+            "symbol": symbol,
+            "company_id": row.get(
+                "company_id"
+            ),
+            "display_name": row.get(
+                "display_name"
+            ),
+            "theme_id": row.get(
+                "theme_id"
+            ),
+            "theme_name": row.get(
+                "theme_name"
+            ),
+            "theme_zh_tw": row.get(
+                "theme_zh_tw"
+            ),
+            "priority": row.get(
+                "priority"
+            ),
+            "classification_authority": bool(
+                row.get(
+                    "classification_authority"
+                )
+            ),
+            "classification_review_required": bool(
+                row.get(
+                    "classification_review_required"
+                )
+            ),
+        }
+
+    return output
+
+
+def _quality_issue_rows(
+    row: dict,
+) -> list[dict]:
+    symbol = str(
+        row.get("symbol")
+        or ""
+    ).upper()
+
+    products = _record_products(
+        row
+    )
+
+    issues: list[dict] = []
+
+    if not products:
+        return [
+            {
+                "type": "EMPTY_PRODUCT_STACK",
+                "severity": "FAIL",
+                "symbol": symbol,
+                "value": "",
+            }
+        ]
+
+    # Existing deterministic diagnostics remain authoritative.
+    for issue in _product_quality_flags(
+        row
+    ):
+        issues.append(
+            {
+                **issue,
+                "severity": "REVIEW",
+            }
+        )
+
+    for value in products:
+        text = re.sub(
+            r"\s+",
+            " ",
+            str(value or ""),
+        ).strip()
+
+        lower = text.casefold()
+
+        if not text:
+            continue
+
+        if (
+            _HARD_NON_PRODUCT_PREFIX_RE.search(
+                text
+            )
+            or any(
+                marker in lower
+                for marker
+                in _HARD_NON_PRODUCT_CONTAINS
+            )
+        ):
+            issues.append(
+                {
+                    "type": "NON_PRODUCT_CLAUSE",
+                    "severity": "REVIEW",
+                    "symbol": symbol,
+                    "value": text,
+                }
+            )
+            continue
+
+        if any(
+            marker in lower
+            for marker
+            in _SOFT_DESCRIPTOR_CONTAINS
+        ):
+            issues.append(
+                {
+                    "type": "SUSPICIOUS_DESCRIPTOR",
+                    "severity": "REVIEW",
+                    "symbol": symbol,
+                    "value": text,
+                }
+            )
+            continue
+
+        # Long prose-like items are review candidates, not automatic failures.
+        if (
+            len(
+                text.split()
+            ) >= 11
+            and not _has_brand_signal(
+                text
+            )
+        ):
+            issues.append(
+                {
+                    "type": "SUSPICIOUS_LONG_PHRASE",
+                    "severity": "REVIEW",
+                    "symbol": symbol,
+                    "value": text,
+                }
+            )
+
+    return issues
+
+
+def _company_quality_gate(
+    row: dict,
+) -> dict:
+    products = _record_products(
+        row
+    )
+
+    issues = _quality_issue_rows(
+        row
+    )
+
+    fail_issues = [
+        issue
+        for issue
+        in issues
+        if issue.get(
+            "severity"
+        ) == "FAIL"
+    ]
+
+    review_issues = [
+        issue
+        for issue
+        in issues
+        if issue.get(
+            "severity"
+        ) == "REVIEW"
+    ]
+
+    generic_count = int(
+        row.get(
+            "generic_product_count"
+        )
+        or 0
+    )
+
+    if fail_issues:
+        status = "FAIL"
+    elif review_issues:
+        status = "REVIEW"
+    elif (
+        products
+        and generic_count
+        >= len(products)
+    ):
+        status = "REVIEW"
+        issues.append(
+            {
+                "type": "GENERIC_ONLY",
+                "severity": "REVIEW",
+                "symbol": str(
+                    row.get("symbol")
+                    or ""
+                ).upper(),
+                "value": "",
+            }
+        )
+    else:
+        status = "PASS"
+
+    return {
+        "status": status,
+        "product_stack_count": len(
+            products
+        ),
+        "generic_product_count": generic_count,
+        "issue_count": len(
+            issues
+        ),
+        "issue_types": sorted(
+            {
+                str(
+                    issue.get(
+                        "type"
+                    )
+                    or ""
+                )
+                for issue
+                in issues
+                if issue.get(
+                    "type"
+                )
+            }
+        ),
+        "issue_samples": issues[:5],
+    }
+
+
+def _gate_summary(
+    rows: list[dict],
+) -> dict:
+    counts = {
+        "PASS": 0,
+        "REVIEW": 0,
+        "FAIL": 0,
+    }
+
+    for row in rows:
+        status = str(
+            row.get(
+                "gate_status"
+            )
+            or ""
+        )
+
+        if status in counts:
+            counts[
+                status
+            ] += 1
+
+    total = len(
+        rows
+    )
+
+    pass_count = counts[
+        "PASS"
+    ]
+
+    return {
+        "total": total,
+        "pass": pass_count,
+        "review": counts[
+            "REVIEW"
+        ],
+        "fail": counts[
+            "FAIL"
+        ],
+        "pass_rate": (
+            round(
+                pass_count
+                / total,
+                4,
+            )
+            if total
+            else 0.0
+        ),
+        "usable_rate": (
+            round(
+                (
+                    pass_count
+                    + counts[
+                        "REVIEW"
+                    ]
+                )
+                / total,
+                4,
+            )
+            if total
+            else 0.0
+        ),
+    }
+
+
+def _strategic_production_gate(
+    report: dict,
+    *,
+    sample_limit: int = 12,
+) -> dict:
+    records = report.get(
+        "records"
+    ) or []
+
+    metadata = (
+        _translation_candidate_metadata()
+    )
+
+    rows = []
+
+    for row in records:
+        symbol = str(
+            row.get("symbol")
+            or ""
+        ).upper()
+
+        meta = metadata.get(
+            symbol,
+            {}
+        )
+
+        gate = _company_quality_gate(
+            row
+        )
+
+        rows.append(
+            {
+                "symbol": symbol,
+                "theme_id": meta.get(
+                    "theme_id"
+                ),
+                "theme_name": meta.get(
+                    "theme_name"
+                ),
+                "theme_zh_tw": meta.get(
+                    "theme_zh_tw"
+                ),
+                "priority": meta.get(
+                    "priority"
+                ),
+                "classification_authority": meta.get(
+                    "classification_authority",
+                    False,
+                ),
+                "gate_status": gate[
+                    "status"
+                ],
+                "product_stack_count": gate[
+                    "product_stack_count"
+                ],
+                "generic_product_count": gate[
+                    "generic_product_count"
+                ],
+                "issue_count": gate[
+                    "issue_count"
+                ],
+                "issue_types": gate[
+                    "issue_types"
+                ],
+                "issue_samples": gate[
+                    "issue_samples"
+                ],
+            }
+        )
+
+    by_symbol = {
+        row[
+            "symbol"
+        ]: row
+        for row
+        in rows
+    }
+
+    core_rows = [
+        row
+        for row
+        in rows
+        if row.get(
+            "theme_id"
+        )
+        in CORE_TECH_THEME_IDS
+    ]
+
+    # Theme-level production readiness for the whole strategic universe.
+    theme_rows: dict[
+        str,
+        list[dict],
+    ] = {}
+
+    for row in rows:
+        theme_id = str(
+            row.get(
+                "theme_id"
+            )
+            or "unclassified"
+        )
+
+        theme_rows.setdefault(
+            theme_id,
+            [],
+        ).append(
+            row
+        )
+
+    theme_summary = []
+
+    for theme_id, members in sorted(
+        theme_rows.items(),
+        key=lambda item: (
+            _MAJOR_TECH_GATE_PRIORITY.get(
+                item[0],
+                99,
+            ),
+            item[0],
+        ),
+    ):
+        example = members[0]
+
+        theme_summary.append(
+            {
+                "theme_id": theme_id,
+                "theme_name": example.get(
+                    "theme_name"
+                ),
+                "theme_zh_tw": example.get(
+                    "theme_zh_tw"
+                ),
+                **_gate_summary(
+                    members
+                ),
+            }
+        )
+
+    major_rows = []
+
+    for symbol in MAJOR_TECH_SYMBOLS:
+        row = by_symbol.get(
+            symbol
+        )
+
+        if row is None:
+            major_rows.append(
+                {
+                    "symbol": symbol,
+                    "gate_status": (
+                        "NOT_IN_UNIVERSE"
+                    ),
+                }
+            )
+            continue
+
+        major_rows.append(
+            {
+                "symbol": symbol,
+                "theme_id": row.get(
+                    "theme_id"
+                ),
+                "theme_name": row.get(
+                    "theme_name"
+                ),
+                "gate_status": row.get(
+                    "gate_status"
+                ),
+                "product_stack_count": row.get(
+                    "product_stack_count"
+                ),
+                "issue_types": row.get(
+                    "issue_types"
+                ),
+                "issue_samples": row.get(
+                    "issue_samples"
+                ),
+            }
+        )
+
+    diagnostic_types = (
+        "EMPTY_PRODUCT_STACK",
+        "LOCATION_POLLUTION",
+        "ORG_POLLUTION",
+        "SENTENCE_FRAGMENT",
+        "NON_PRODUCT_CLAUSE",
+        "SUSPICIOUS_DESCRIPTOR",
+        "SUSPICIOUS_LONG_PHRASE",
+        "GENERIC_ONLY",
+    )
+
+    diagnostic_summary = {}
+
+    for issue_type in diagnostic_types:
+        matched = [
+            row
+            for row
+            in rows
+            if issue_type
+            in row.get(
+                "issue_types",
+                [],
+            )
+        ]
+
+        diagnostic_summary[
+            issue_type
+        ] = {
+            "company_count": len(
+                matched
+            ),
+            "samples": [
+                {
+                    "symbol": row[
+                        "symbol"
+                    ],
+                    "theme_id": row.get(
+                        "theme_id"
+                    ),
+                    "gate_status": row[
+                        "gate_status"
+                    ],
+                    "issue_samples": [
+                        issue
+                        for issue
+                        in row.get(
+                            "issue_samples",
+                            []
+                        )
+                        if issue.get(
+                            "type"
+                        ) == issue_type
+                    ][:2],
+                }
+                for row
+                in matched[
+                    :sample_limit
+                ]
+            ],
+        }
+
+    # P0 theme rows that need review/fail are the immediate production queue.
+    core_attention = [
+        {
+            "symbol": row[
+                "symbol"
+            ],
+            "theme_id": row.get(
+                "theme_id"
+            ),
+            "gate_status": row[
+                "gate_status"
+            ],
+            "product_stack_count": row[
+                "product_stack_count"
+            ],
+            "issue_types": row[
+                "issue_types"
+            ],
+            "issue_samples": row[
+                "issue_samples"
+            ],
+        }
+        for row
+        in core_rows
+        if row[
+            "gate_status"
+        ] != "PASS"
+    ][
+        :max(
+            sample_limit,
+            30,
+        )
+    ]
+
+    return {
+        "gate_version": "v2.6.5.7",
+        "definitions": {
+            "core_tech_theme_ids": sorted(
+                CORE_TECH_THEME_IDS
+            ),
+            "PASS": (
+                "non-empty product stack with no detected "
+                "product-quality issue"
+            ),
+            "REVIEW": (
+                "usable product stack but one or more "
+                "quality warnings require review"
+            ),
+            "FAIL": (
+                "empty product stack or hard extraction failure"
+            ),
+        },
+        "strategic_universe": (
+            _gate_summary(
+                rows
+            )
+        ),
+        "core_tech_subset": (
+            _gate_summary(
+                core_rows
+            )
+        ),
+        "theme_summary": theme_summary,
+        "major_tech_gate": major_rows,
+        "core_tech_attention": core_attention,
+        "diagnostics": diagnostic_summary,
+    }
+
+
 def _compact_census_report(
     report: dict,
     *,
     sample_limit: int = 12,
     worst_limit: int = 20,
+    expand_symbols: set[str] | None = None,
 ) -> dict:
     records = report.get(
         "records"
@@ -1925,9 +3471,57 @@ def _compact_census_report(
         if len(worst) >= worst_limit:
             break
 
+    expanded_records = []
+
+    expand_symbols = {
+        str(symbol).upper()
+        for symbol
+        in (
+            expand_symbols
+            or set()
+        )
+    }
+
+    if expand_symbols:
+        for row in records:
+            symbol = str(
+                row.get("symbol")
+                or ""
+            ).upper()
+
+            if symbol not in expand_symbols:
+                continue
+
+            expanded_records.append(
+                {
+                    "symbol": symbol,
+                    "product_stack_count": len(
+                        _record_products(
+                            row
+                        )
+                    ),
+                    "generic_product_count": int(
+                        row.get(
+                            "generic_product_count"
+                        )
+                        or 0
+                    ),
+                    "product_stack_full": _precision_clean_products(
+                        _record_products(
+                            row
+                        )
+                    ),
+                }
+            )
+
+    production_gate = _strategic_production_gate(
+        report,
+        sample_limit=sample_limit,
+    )
+
     return {
         "schema_version": (
-            "axiom-company-profile-product-census.v2.6.4.9"
+            "axiom-company-profile-product-census.v2.6.5.7"
         ),
         "scope": (
             "strategic"
@@ -2013,6 +3607,8 @@ def _compact_census_report(
             for key, items
             in diagnostics.items()
         },
+        "production_gate": production_gate,
+        "expanded_records": expanded_records,
         "worst_records": worst,
         "failure_samples": failures[
             :sample_limit
@@ -2023,6 +3619,219 @@ def _compact_census_report(
             )
         ),
     }
+
+
+
+def _pct_text(
+    value: float,
+) -> str:
+    return (
+        f"{value * 100:.1f}%"
+    )
+
+
+def _one_screen_gate_summary(
+    report: dict,
+) -> str:
+    gate = _strategic_production_gate(
+        report,
+        sample_limit=12,
+    )
+
+    lines = [
+        "=== V2.6.5.7 Major-Tech Production Gate ===",
+        "",
+    ]
+
+    strategic = gate[
+        "strategic_universe"
+    ]
+
+    lines.extend(
+        [
+            "Strategic universe",
+            (
+                f"  Total {strategic['total']:>6}   "
+                f"PASS {strategic['pass']:>6}   "
+                f"REVIEW {strategic['review']:>6}   "
+                f"FAIL {strategic['fail']:>6}"
+            ),
+            (
+                f"  Pass rate {_pct_text(strategic['pass_rate'])}   "
+                f"Usable rate {_pct_text(strategic['usable_rate'])}"
+            ),
+            "",
+        ]
+    )
+
+    core = gate[
+        "core_tech_subset"
+    ]
+
+    lines.extend(
+        [
+            "Core AI / Tech",
+            (
+                f"  Total {core['total']:>6}   "
+                f"PASS {core['pass']:>6}   "
+                f"REVIEW {core['review']:>6}   "
+                f"FAIL {core['fail']:>6}"
+            ),
+            (
+                f"  Pass rate {_pct_text(core['pass_rate'])}   "
+                f"Usable rate {_pct_text(core['usable_rate'])}"
+            ),
+            "",
+            "Core themes",
+        ]
+    )
+
+    core_theme_ids = {
+        "theme:ai_infrastructure",
+        "theme:artificial_intelligence",
+        "theme:advanced_semiconductors",
+    }
+
+    for row in gate[
+        "theme_summary"
+    ]:
+        if row.get(
+            "theme_id"
+        ) not in core_theme_ids:
+            continue
+
+        name = (
+            row.get(
+                "theme_name"
+            )
+            or row.get(
+                "theme_id"
+            )
+            or "unknown"
+        )
+
+        lines.append(
+            (
+                f"  {name[:28]:<28} "
+                f"{row['pass']:>4}/{row['total']:<4} PASS   "
+                f"{_pct_text(row['pass_rate']):>6}"
+            )
+        )
+
+    lines.extend(
+        [
+            "",
+            "Major Tech",
+        ]
+    )
+
+    for row in gate[
+        "major_tech_gate"
+    ]:
+        symbol = row[
+            "symbol"
+        ]
+
+        status = row[
+            "gate_status"
+        ]
+
+        if status == "NOT_IN_UNIVERSE":
+            lines.append(
+                f"  {symbol:<6} NOT_IN_UNIVERSE"
+            )
+            continue
+
+        issue_types = row.get(
+            "issue_types"
+        ) or []
+
+        suffix = (
+            "  "
+            + ", ".join(
+                issue_types
+            )
+            if issue_types
+            else ""
+        )
+
+        lines.append(
+            f"  {symbol:<6} {status:<7}{suffix}"
+        )
+
+    lines.extend(
+        [
+            "",
+            "Top blockers",
+        ]
+    )
+
+    blocker_order = (
+        "EMPTY_PRODUCT_STACK",
+        "NON_PRODUCT_CLAUSE",
+        "SENTENCE_FRAGMENT",
+        "SUSPICIOUS_DESCRIPTOR",
+        "SUSPICIOUS_LONG_PHRASE",
+        "LOCATION_POLLUTION",
+        "ORG_POLLUTION",
+        "GENERIC_ONLY",
+    )
+
+    diagnostics = gate[
+        "diagnostics"
+    ]
+
+    for issue_type in blocker_order:
+        count = (
+            diagnostics.get(
+                issue_type,
+                {},
+            ).get(
+                "company_count",
+                0,
+            )
+        )
+
+        lines.append(
+            f"  {issue_type:<28} {count:>4}"
+        )
+
+    attention = gate.get(
+        "core_tech_attention"
+    ) or []
+
+    if attention:
+        lines.extend(
+            [
+                "",
+                "Core-tech attention",
+            ]
+        )
+
+        for row in attention[
+            :20
+        ]:
+            issue_types = (
+                ", ".join(
+                    row.get(
+                        "issue_types"
+                    )
+                    or []
+                )
+                or "-"
+            )
+
+            lines.append(
+                (
+                    f"  {row['symbol']:<6} "
+                    f"{row['gate_status']:<7} "
+                    f"{issue_types}"
+                )
+            )
+
+    return "\n".join(
+        lines
+    )
 
 
 def main() -> int:
@@ -2106,6 +3915,14 @@ def main() -> int:
         ),
     )
 
+    parser.add_argument(
+        "--one-screen",
+        action="store_true",
+        help=(
+            "Print only the compact V2.6.5.7 production-gate summary."
+        ),
+    )
+
     args = parser.parse_args()
 
     explicit_symbols = [
@@ -2156,7 +3973,7 @@ def main() -> int:
     )
 
     product_recall_policy = {
-        "version": "v2.6.4.9",
+        "version": "v2.6.5.7",
         "principles": [
             "filing_native_named_products_only",
             "no_company_specific_product_dictionary",
@@ -2167,6 +3984,22 @@ def main() -> int:
             "preserve_complete_named_product_families",
             "drop_generic_category_when_specific_named_peer_exists",
             "semantic_near_duplicate_suppression",
+            "section_aware_product_recall",
+            "model_and_platform_recovery",
+            "drop_geography_from_product_stack",
+            "final_stage_geography_guard",
+            "explicit_symbol_full_product_diagnostics",
+            "drop_date_fragments",
+            "drop_based_descriptors",
+            "drop_dangling_product_fragments",
+            "preserve_family_member_hierarchy",
+            "subject_gated_product_list_recall",
+            "block_application_project_competitor_subjects",
+            "strategic_universe_quality_gate",
+            "core_tech_p0_production_gate",
+            "major_tech_frontend_gate",
+            "non_product_clause_diagnostics",
+            "one_screen_major_tech_gate_summary",
         ],
     }
 
@@ -2216,31 +4049,56 @@ def main() -> int:
             "outputs"
         ] = outputs
 
-    output = public
+    explicit_symbols = {
+        str(symbol).strip().upper()
+        for symbol
+        in args.symbol
+        if str(symbol).strip()
+    }
 
     if (
         not args.write
         and not args.full_report
+        and (
+            args.one_screen
+            or (
+                args.scope == "strategic"
+                and not explicit_symbols
+            )
+        )
     ):
-        output = _compact_census_report(
-            report,
-            sample_limit=max(
-                1,
-                args.diagnostic_limit,
-            ),
-            worst_limit=max(
-                1,
-                args.worst_limit,
-            ),
+        print(
+            _one_screen_gate_summary(
+                report
+            )
         )
+    else:
+        output = public
 
-    print(
-        json.dumps(
-            output,
-            ensure_ascii=False,
-            indent=2,
+        if (
+            not args.write
+            and not args.full_report
+        ):
+            output = _compact_census_report(
+                report,
+                sample_limit=max(
+                    1,
+                    args.diagnostic_limit,
+                ),
+                worst_limit=max(
+                    1,
+                    args.worst_limit,
+                ),
+                expand_symbols=explicit_symbols,
+            )
+
+        print(
+            json.dumps(
+                output,
+                ensure_ascii=False,
+                indent=2,
+            )
         )
-    )
 
     if not (
         report[
