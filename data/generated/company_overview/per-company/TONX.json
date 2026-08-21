@@ -13,7 +13,7 @@
     "code": "6199",
     "label": "Finance Services",
     "authority": "U.S. Securities and Exchange Commission",
-    "observed_at": "2026-08-19T10:24:45.834543+00:00",
+    "observed_at": "2026-08-20T10:25:11.237289+00:00",
     "provenance_ids": [
       "provenance:SEC-SUBMISSIONS-0001566610-3daae5ad540521dd"
     ]
@@ -137,6 +137,62 @@
       ],
       "reason_code": "LOCKED_PRIMARY_BUSINESS_FINANCIAL_INSTITUTION"
     }
+  },
+  "primary_business_shadow_candidate": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "finance_insurance_real_estate",
+      "name": "Finance, Insurance and Real Estate"
+    },
+    "category": {
+      "id": "credit_and_lending",
+      "name": "Credit and Lending",
+      "source": "SEC_SIC",
+      "source_code": "6199"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0001566610-6199",
+      "scheme": "SEC_SIC",
+      "code": "6199",
+      "label": "Finance Services",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-20T10:25:11.237289+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0001566610-3daae5ad540521dd"
+      ]
+    },
+    "offering_roles": [
+      "operator_business",
+      "product"
+    ],
+    "offering_evidence_count": 2,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0001493152-26-013931",
+        "provenance_id": "provenance:SEC-FILING-0001493152-26-013931-181437ee9761170e",
+        "accession_number": "0001493152-26-013931",
+        "filing_date": "2026-03-31",
+        "offering_role": "operator_business",
+        "confidence": 0.92,
+        "statement": "As of December 31, 2025, the Company owns 4.2% of the total supply of Toncoin.",
+        "start_character": 2726,
+        "end_character": 2804
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001493152-26-013931",
+        "provenance_id": "provenance:SEC-FILING-0001493152-26-013931-181437ee9761170e",
+        "accession_number": "0001493152-26-013931",
+        "filing_date": "2026-03-31",
+        "offering_role": "product",
+        "confidence": 0.86,
+        "statement": "October 18, 2021, we established verbMarketplace, LLC (“Market LLC”), a Nevada limited liability company.",
+        "start_character": 17296,
+        "end_character": 17401
+      }
+    ]
   },
   "path": {
     "theme": {

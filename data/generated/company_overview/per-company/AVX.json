@@ -13,9 +13,9 @@
     "code": "6199",
     "label": "Finance Services",
     "authority": "U.S. Securities and Exchange Commission",
-    "observed_at": "2026-08-19T10:24:45.834543+00:00",
+    "observed_at": "2026-08-20T10:25:11.237289+00:00",
     "provenance_ids": [
-      "provenance:SEC-SUBMISSIONS-0001826397-a40c79aa3ef15995"
+      "provenance:SEC-SUBMISSIONS-0001826397-bfda92cab6f2938c"
     ]
   },
   "primary_business": {
@@ -148,6 +148,73 @@
       ],
       "reason_code": "LOCKED_PRIMARY_BUSINESS_FINANCIAL_INSTITUTION"
     }
+  },
+  "primary_business_shadow_candidate": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "finance_insurance_real_estate",
+      "name": "Finance, Insurance and Real Estate"
+    },
+    "category": {
+      "id": "credit_and_lending",
+      "name": "Credit and Lending",
+      "source": "SEC_SIC",
+      "source_code": "6199"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0001826397-6199",
+      "scheme": "SEC_SIC",
+      "code": "6199",
+      "label": "Finance Services",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-20T10:25:11.237289+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0001826397-bfda92cab6f2938c"
+      ]
+    },
+    "offering_roles": [
+      "operator_business",
+      "product"
+    ],
+    "offering_evidence_count": 3,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0001493152-26-014138",
+        "provenance_id": "provenance:SEC-FILING-0001493152-26-014138-48fca636199725d2",
+        "accession_number": "0001493152-26-014138",
+        "filing_date": "2026-03-31",
+        "offering_role": "product",
+        "confidence": 0.92,
+        "statement": "all mined Bitcoin are held on the Company’s balance sheet, and we have no intention to sell except for occasions where the Company",
+        "start_character": 31734,
+        "end_character": 31864
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001493152-26-014138",
+        "provenance_id": "provenance:SEC-FILING-0001493152-26-014138-48fca636199725d2",
+        "accession_number": "0001493152-26-014138",
+        "filing_date": "2026-03-31",
+        "offering_role": "operator_business",
+        "confidence": 0.92,
+        "statement": "of the fourth quarter of 2025, the Company operates a digital asset treasury, focused on the Avalanche blockchain.",
+        "start_character": 24115,
+        "end_character": 24229
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001493152-26-014138",
+        "provenance_id": "provenance:SEC-FILING-0001493152-26-014138-48fca636199725d2",
+        "accession_number": "0001493152-26-014138",
+        "filing_date": "2026-03-31",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "billion, (c) the last day of our fiscal year in which we are deemed to be a “large accelerated filer” as defined in Rule",
+        "start_character": 41499,
+        "end_character": 41619
+      }
+    ]
   },
   "path": {
     "theme": {

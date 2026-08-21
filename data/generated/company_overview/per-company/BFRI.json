@@ -13,7 +13,7 @@
     "code": "2834",
     "label": "Pharmaceutical Preparations",
     "authority": "U.S. Securities and Exchange Commission",
-    "observed_at": "2026-08-19T10:24:45.834543+00:00",
+    "observed_at": "2026-08-20T10:25:11.237289+00:00",
     "provenance_ids": [
       "provenance:SEC-SUBMISSIONS-0001858685-2a7e3c944559073c"
     ]
@@ -147,6 +147,73 @@
       ],
       "reason_code": "LOCKED_PRIMARY_BUSINESS_BIOPHARMA"
     }
+  },
+  "primary_business_shadow_candidate": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "manufacturing",
+      "name": "Manufacturing"
+    },
+    "category": {
+      "id": "pharmaceuticals_and_biotechnology",
+      "name": "Pharmaceuticals and Biotechnology",
+      "source": "SEC_SIC",
+      "source_code": "2834"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0001858685-2834",
+      "scheme": "SEC_SIC",
+      "code": "2834",
+      "label": "Pharmaceutical Preparations",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-20T10:25:11.237289+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0001858685-2a7e3c944559073c"
+      ]
+    },
+    "offering_roles": [
+      "operator_business",
+      "product"
+    ],
+    "offering_evidence_count": 3,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0001493152-26-011625",
+        "provenance_id": "provenance:SEC-FILING-0001493152-26-011625-cc193d5cd37cf1f4",
+        "accession_number": "0001493152-26-011625",
+        "filing_date": "2026-03-19",
+        "offering_role": "product",
+        "confidence": 0.96,
+        "statement": "We rely, in part, on our manufacturing partner’s facilities for the production of clinical and commercial quantities of our products",
+        "start_character": 32213,
+        "end_character": 32345
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001493152-26-011625",
+        "provenance_id": "provenance:SEC-FILING-0001493152-26-011625-cc193d5cd37cf1f4",
+        "accession_number": "0001493152-26-011625",
+        "filing_date": "2026-03-19",
+        "offering_role": "product",
+        "confidence": 0.92,
+        "statement": "We are a United States based biopharmaceutical company engaging in the development,",
+        "start_character": 26,
+        "end_character": 109
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001493152-26-011625",
+        "provenance_id": "provenance:SEC-FILING-0001493152-26-011625-cc193d5cd37cf1f4",
+        "accession_number": "0001493152-26-011625",
+        "filing_date": "2026-03-19",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "We are also seeing government-mandated",
+        "start_character": 23053,
+        "end_character": 23091
+      }
+    ]
   },
   "path": {
     "theme": null,

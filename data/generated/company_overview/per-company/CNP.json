@@ -13,7 +13,7 @@
     "code": "4911",
     "label": "Electric Services",
     "authority": "U.S. Securities and Exchange Commission",
-    "observed_at": "2026-08-19T10:24:45.834543+00:00",
+    "observed_at": "2026-08-20T10:25:11.237289+00:00",
     "provenance_ids": [
       "provenance:SEC-SUBMISSIONS-0001130310-f369a4f06651d4e8"
     ]
@@ -135,6 +135,61 @@
       ],
       "reason_code": "LOCKED_PRIMARY_BUSINESS_ASSET_HEAVY"
     }
+  },
+  "primary_business_shadow_candidate": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "transport_communications_utilities",
+      "name": "Transportation, Communications and Utilities"
+    },
+    "category": {
+      "id": "utilities",
+      "name": "Utilities",
+      "source": "SEC_SIC",
+      "source_code": "4911"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0001130310-4911",
+      "scheme": "SEC_SIC",
+      "code": "4911",
+      "label": "Electric Services",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-20T10:25:11.237289+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0001130310-f369a4f06651d4e8"
+      ]
+    },
+    "offering_roles": [
+      "service"
+    ],
+    "offering_evidence_count": 2,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0001130310-26-000008",
+        "provenance_id": "provenance:SEC-FILING-0001130310-26-000008-5e5b3c29095c2736",
+        "accession_number": "0001130310-26-000008",
+        "filing_date": "2026-02-19",
+        "offering_role": "service",
+        "confidence": 0.88,
+        "statement": "For another provider of transmission and distribution services to provide such services in Houston Electric’s territory, it would be required to obtain a CCN from the PUCT and, depending on the location of the facilities, may also be required to obtain franchises from one or more municipalities.",
+        "start_character": 12135,
+        "end_character": 12431
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001130310-26-000008",
+        "provenance_id": "provenance:SEC-FILING-0001130310-26-000008-5e5b3c29095c2736",
+        "accession_number": "0001130310-26-000008",
+        "filing_date": "2026-02-19",
+        "offering_role": "service",
+        "confidence": 0.88,
+        "statement": "For another provider of transmission and distribution services to provide such services in Indiana Electric’s territory, it would be required to obtain IURC approval of such service territory.",
+        "start_character": 19944,
+        "end_character": 20136
+      }
+    ]
   },
   "path": {
     "theme": null,

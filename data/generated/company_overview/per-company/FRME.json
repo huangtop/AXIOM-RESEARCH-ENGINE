@@ -13,9 +13,9 @@
     "code": "6021",
     "label": "National Commercial Banks",
     "authority": "U.S. Securities and Exchange Commission",
-    "observed_at": "2026-08-19T10:24:45.834543+00:00",
+    "observed_at": "2026-08-20T10:25:11.237289+00:00",
     "provenance_ids": [
-      "provenance:SEC-SUBMISSIONS-0000712534-1e54217448ef0304"
+      "provenance:SEC-SUBMISSIONS-0000712534-ae8476bd760ac3e9"
     ]
   },
   "primary_business": {
@@ -137,6 +137,62 @@
       ],
       "reason_code": "LOCKED_PRIMARY_BUSINESS_FINANCIAL_INSTITUTION"
     }
+  },
+  "primary_business_shadow_candidate": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "finance_insurance_real_estate",
+      "name": "Finance, Insurance and Real Estate"
+    },
+    "category": {
+      "id": "commercial_banking",
+      "name": "Commercial Banking",
+      "source": "SEC_SIC",
+      "source_code": "6021"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0000712534-6021",
+      "scheme": "SEC_SIC",
+      "code": "6021",
+      "label": "National Commercial Banks",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-20T10:25:11.237289+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0000712534-ae8476bd760ac3e9"
+      ]
+    },
+    "offering_roles": [
+      "operator_business",
+      "product"
+    ],
+    "offering_evidence_count": 2,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0000712534-26-000022",
+        "provenance_id": "provenance:SEC-FILING-0000712534-26-000022-e61994f86fd85ac6",
+        "accession_number": "0000712534-26-000022",
+        "filing_date": "2026-02-25",
+        "offering_role": "operator_business",
+        "confidence": 0.92,
+        "statement": "Best Places to Work / Employer of Choice: The Bank will continue to participate in the Best Places to Work surveys in the three states we operate.",
+        "start_character": 3806,
+        "end_character": 3952
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0000712534-26-000022",
+        "provenance_id": "provenance:SEC-FILING-0000712534-26-000022-e61994f86fd85ac6",
+        "accession_number": "0000712534-26-000022",
+        "filing_date": "2026-02-25",
+        "offering_role": "product",
+        "confidence": 0.92,
+        "statement": "We seek to attract, retain and develop a team of committed colleagues who are capable of delivering a whole-bank delivery approach.",
+        "start_character": 3674,
+        "end_character": 3805
+      }
+    ]
   },
   "path": {
     "theme": null,

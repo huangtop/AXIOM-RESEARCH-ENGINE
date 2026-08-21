@@ -14,7 +14,7 @@
     "code": "4513",
     "label": "Air Courier Services",
     "authority": "U.S. Securities and Exchange Commission",
-    "observed_at": "2026-08-19T10:24:45.834543+00:00",
+    "observed_at": "2026-08-20T10:25:11.237289+00:00",
     "provenance_ids": [
       "provenance:SEC-SUBMISSIONS-0000353184-512e5b5e6842ca6d"
     ]
@@ -137,6 +137,62 @@
       ],
       "reason_code": "LOCKED_PRIMARY_BUSINESS_ASSET_HEAVY"
     }
+  },
+  "primary_business_shadow_candidate": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "transport_communications_utilities",
+      "name": "Transportation, Communications and Utilities"
+    },
+    "category": {
+      "id": "transportation",
+      "name": "Transportation",
+      "source": "SEC_SIC",
+      "source_code": "4513"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0000353184-4513",
+      "scheme": "SEC_SIC",
+      "code": "4513",
+      "label": "Air Courier Services",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-20T10:25:11.237289+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0000353184-512e5b5e6842ca6d"
+      ]
+    },
+    "offering_roles": [
+      "operator_business",
+      "product"
+    ],
+    "offering_evidence_count": 2,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0000353184-26-000054",
+        "provenance_id": "provenance:SEC-FILING-0000353184-26-000054-b068a4164c76e8f7",
+        "accession_number": "0000353184-26-000054",
+        "filing_date": "2026-06-29",
+        "offering_role": "product",
+        "confidence": 0.96,
+        "statement": "Management periodically reports to the Board regarding our human capital measures and results that guide how we attract, retain and develop a workforce to enable our business strategies.",
+        "start_character": 42614,
+        "end_character": 42800
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0000353184-26-000054",
+        "provenance_id": "provenance:SEC-FILING-0000353184-26-000054-b068a4164c76e8f7",
+        "accession_number": "0000353184-26-000054",
+        "filing_date": "2026-06-29",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "We are committed to providing team members with the training and resources necessary to continually strengthen their skills.",
+        "start_character": 42276,
+        "end_character": 42400
+      }
+    ]
   },
   "path": {
     "theme": null,

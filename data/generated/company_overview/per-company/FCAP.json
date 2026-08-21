@@ -13,7 +13,7 @@
     "code": "6035",
     "label": "Savings Institution, Federally Chartered",
     "authority": "U.S. Securities and Exchange Commission",
-    "observed_at": "2026-08-19T10:24:45.834543+00:00",
+    "observed_at": "2026-08-20T10:25:11.237289+00:00",
     "provenance_ids": [
       "provenance:SEC-SUBMISSIONS-0001070296-f6946b5b105719a8"
     ]
@@ -125,6 +125,50 @@
       ],
       "reason_code": "LOCKED_PRIMARY_BUSINESS_FINANCIAL_INSTITUTION"
     }
+  },
+  "primary_business_shadow_candidate": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "finance_insurance_real_estate",
+      "name": "Finance, Insurance and Real Estate"
+    },
+    "category": {
+      "id": "commercial_banking",
+      "name": "Commercial Banking",
+      "source": "SEC_SIC",
+      "source_code": "6035"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0001070296-6035",
+      "scheme": "SEC_SIC",
+      "code": "6035",
+      "label": "Savings Institution, Federally Chartered",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-20T10:25:11.237289+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0001070296-f6946b5b105719a8"
+      ]
+    },
+    "offering_roles": [
+      "operator_business"
+    ],
+    "offering_evidence_count": 1,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0001104659-26-037802",
+        "provenance_id": "provenance:SEC-FILING-0001104659-26-037802-559c79aca0946b1c",
+        "accession_number": "0001104659-26-037802",
+        "filing_date": "2026-03-31",
+        "offering_role": "operator_business",
+        "confidence": 0.92,
+        "statement": "Because the Company owns 100% of the issued and outstanding capital stock of the Bank, the Company and the Bank are members of an affiliated group within the meaning of Section 1504(a) of the Internal Revenue Code, of which group the Company is the common parent corporation.",
+        "start_character": 102039,
+        "end_character": 102314
+      }
+    ]
   },
   "path": {
     "theme": null,

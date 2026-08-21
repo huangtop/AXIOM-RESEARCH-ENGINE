@@ -6,14 +6,14 @@
     "AESP"
   ],
   "display_name": "Aeon Acquisition I Corp. - Class A Ordinary Shares",
-  "status": "awaiting_business_evidence",
+  "status": "evidence_available_unclassified",
   "official_industry": {
     "classification_id": "classification:SEC-SIC-0002082526-6770",
     "scheme": "SEC_SIC",
     "code": "6770",
     "label": "Blank Checks",
     "authority": "U.S. Securities and Exchange Commission",
-    "observed_at": "2026-08-19T10:24:45.834543+00:00",
+    "observed_at": "2026-08-20T10:25:11.237289+00:00",
     "provenance_ids": [
       "provenance:SEC-SUBMISSIONS-0002082526-96e095569e7471bd"
     ]
@@ -84,7 +84,7 @@
   "thematic_classification": {
     "status": "unclassified",
     "taxonomy_layer": "axiom_theme_sector",
-    "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+    "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
   },
   "routing": {
     "status": "routed",
@@ -112,6 +112,84 @@
       "reason_code": "LOCKED_PRIMARY_BUSINESS_INVESTMENT_VEHICLE"
     }
   },
+  "primary_business_shadow_candidate": {
+    "status": "verified",
+    "taxonomy_layer": "primary_business",
+    "classification_source": "SEC_SIC+SEC_ITEM1_OFFERING_EVIDENCE",
+    "division": {
+      "id": "finance_insurance_real_estate",
+      "name": "Finance, Insurance and Real Estate"
+    },
+    "category": {
+      "id": "investment_holding_and_vehicles",
+      "name": "Investment Holding and Vehicles",
+      "source": "SEC_SIC",
+      "source_code": "6770"
+    },
+    "category_evidence_status": "official_with_offering_context",
+    "industry": {
+      "classification_id": "classification:SEC-SIC-0002082526-6770",
+      "scheme": "SEC_SIC",
+      "code": "6770",
+      "label": "Blank Checks",
+      "authority": "U.S. Securities and Exchange Commission",
+      "observed_at": "2026-08-20T10:25:11.237289+00:00",
+      "provenance_ids": [
+        "provenance:SEC-SUBMISSIONS-0002082526-96e095569e7471bd"
+      ]
+    },
+    "offering_roles": [
+      "operator_business",
+      "product"
+    ],
+    "offering_evidence_count": 4,
+    "offering_evidence": [
+      {
+        "business_evidence_id": "business-evidence:SEC-0001493152-26-016531",
+        "provenance_id": "provenance:SEC-FILING-0001493152-26-016531-ffb336086757ad82",
+        "accession_number": "0001493152-26-016531",
+        "filing_date": "2026-04-14",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "Only in the event we are deemed to be a large accelerated filer or an accelerated filer and no longer an emerging growth company",
+        "start_character": 6673,
+        "end_character": 6801
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001493152-26-016531",
+        "provenance_id": "provenance:SEC-FILING-0001493152-26-016531-ffb336086757ad82",
+        "accession_number": "0001493152-26-016531",
+        "filing_date": "2026-04-14",
+        "offering_role": "product",
+        "confidence": 0.86,
+        "statement": "in which we are deemed to be a large accelerated filer, which means the aggregate worldwide market value of our Class A ordinary shares",
+        "start_character": 10027,
+        "end_character": 10162
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001493152-26-016531",
+        "provenance_id": "provenance:SEC-FILING-0001493152-26-016531-ffb336086757ad82",
+        "accession_number": "0001493152-26-016531",
+        "filing_date": "2026-04-14",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "we are a “smaller reporting company” as defined in Item 10(f)(1) of Regulation S-K.",
+        "start_character": 10545,
+        "end_character": 10628
+      },
+      {
+        "business_evidence_id": "business-evidence:SEC-0001493152-26-016531",
+        "provenance_id": "provenance:SEC-FILING-0001493152-26-016531-ffb336086757ad82",
+        "accession_number": "0001493152-26-016531",
+        "filing_date": "2026-04-14",
+        "offering_role": "operator_business",
+        "confidence": 0.86,
+        "statement": "we are eligible to take advantage of certain exemptions from various reporting requirements that are applicable to other public companies",
+        "start_character": 8460,
+        "end_character": 8597
+      }
+    ]
+  },
   "path": {
     "theme": null,
     "sector": null,
@@ -122,5 +200,5 @@
     }
   },
   "evidence": [],
-  "reason_code": "SEC_BUSINESS_EVIDENCE_PENDING"
+  "reason_code": "NO_EVIDENCE_SUPPORTED_THEME_SECTOR_PATH"
 }
