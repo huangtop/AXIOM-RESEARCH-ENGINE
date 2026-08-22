@@ -5,14 +5,6 @@ import typer
 from .coverage_audit import build_coverage_audit, validate_coverage_audit
 from .valuation_card import build_valuation_cards, validate_valuation_cards
 from axiom_engine.market_data import import_market_data
-from axiom_engine.company_registry_builder import (
-    build_real_100_registry,
-    validate_real_100_registry,
-)
-from axiom_engine.sec_financial_loader import (
-    build_real_100_financials,
-    validate_real_100_financials,
-)
 from .config import GENERATED_DIR
 from .io import read_json, write_json
 from .repository import load_bundle
@@ -31,14 +23,6 @@ from .canonical_valuation import (
     run_batch_valuation,
     validate_canonical_valuation,
     valuation_readiness,
-)
-from .real_100_onboarding import build_sec_registry_source, load_cohort, onboarding_status
-
-from .real_100_estimate_loader import (
-    Real100EstimateError,
-    build_real_100_estimate_template,
-    build_real_100_estimates,
-    validate_real_100_estimates,
 )
 
 
@@ -87,11 +71,6 @@ from .production_research_card import (
     build_production_research_cards,
     get_production_research_card,
     validate_production_research_cards,
-)
-from .existing_universe_population import (
-    ExistingUniversePopulationError,
-    build_existing_universe_population,
-    validate_existing_universe_population,
 )
 from .financial_population_baseline import (
     FinancialPopulationBaselineError,
@@ -336,44 +315,6 @@ def validate_canonical_valuation_command(
     typer.echo("OK " + " ".join(f"{key}={value}" for key, value in stats.items()))
 
 
-@app.command("real-100-plan")
-def real_100_plan_command(
-    cohort_path: str = typer.Option("data/onboarding/us_real_100_cohort.json"),
-) -> None:
-    typer.echo(
-        json.dumps(load_cohort(cohort_path).model_dump(mode="json"), ensure_ascii=False, indent=2)
-    )
-
-
-@app.command("real-100-status")
-def real_100_status_command(
-    cohort_path: str = typer.Option("data/onboarding/us_real_100_cohort.json"),
-    registry_dir: str = typer.Option("data/company_registry"),
-    financial_dir: str = typer.Option("data/financial_data"),
-    estimate_dir: str = typer.Option("data/estimate_data"),
-) -> None:
-    report = onboarding_status(cohort_path, registry_dir, financial_dir, estimate_dir)
-    typer.echo(json.dumps(report, ensure_ascii=False, indent=2))
-    if not report["acceptance_passed"]:
-        raise typer.Exit(code=2)
-
-
-@app.command("build-sec-real-100-registry-source")
-def build_sec_real_100_registry_source_command(
-    user_agent: str = typer.Option(...),
-    cohort_path: str = typer.Option("data/onboarding/us_real_100_cohort.json"),
-    output: str = typer.Option("data/onboarding/generated/company_universe_source.json"),
-    write: bool = typer.Option(False, "--write"),
-) -> None:
-    typer.echo(
-        json.dumps(
-            build_sec_registry_source(user_agent, cohort_path, output, write),
-            ensure_ascii=False,
-            indent=2,
-        )
-    )
-
-
 @app.command("import-market-data")
 def import_market_data_command(
     source: str = typer.Option(..., help="Provider-normalized market data source JSON"),
@@ -385,65 +326,6 @@ def import_market_data_command(
         source, output_dir=output_dir, company_registry_dir=company_registry_dir, dry_run=not write
     )
     typer.echo(json.dumps(report.model_dump(mode="json"), ensure_ascii=False, indent=2))
-
-
-@app.command("build-real-100-estimate-template")
-def build_real_100_estimate_template_command(
-    registry_dir: str = typer.Option("data/company_registry"),
-    output: str = typer.Option("data/onboarding/generated/real_100_estimate_template.csv"),
-    fiscal_year: int | None = typer.Option(None, "--fiscal-year"),
-    period_end: str | None = typer.Option(None, "--period-end"),
-) -> None:
-    report = build_real_100_estimate_template(
-        registry_dir=registry_dir,
-        output=output,
-        fiscal_year=fiscal_year,
-        period_end=period_end,
-    )
-    typer.echo(json.dumps(report, ensure_ascii=False, indent=2))
-
-
-@app.command("build-real-100-estimates")
-def build_real_100_estimates_command(
-    source: str = typer.Option(..., help="Provider estimate export in JSON or CSV"),
-    registry_dir: str = typer.Option("data/company_registry"),
-    output_dir: str = typer.Option("data/estimate_data"),
-    write: bool = typer.Option(False, "--write", help="Write canonical estimate_data bundle"),
-    adapter: str = typer.Option("auto", "--adapter"),
-    provider_id: str | None = typer.Option(None, "--provider-id"),
-    provider_name: str | None = typer.Option(None, "--provider-name"),
-    as_of_date: str | None = typer.Option(None, "--as-of-date"),
-    compact: bool = typer.Option(False, "--compact"),
-) -> None:
-    try:
-        report = build_real_100_estimates(
-            source,
-            registry_dir=registry_dir,
-            output_dir=output_dir,
-            write=write,
-            adapter=adapter,
-            provider_id=provider_id,
-            provider_name=provider_name,
-            as_of_date=as_of_date,
-            compact=compact,
-        )
-    except Real100EstimateError as exc:
-        typer.echo(f"Error: {exc}", err=True)
-        raise typer.Exit(code=2)
-    typer.echo(json.dumps(report, ensure_ascii=False, indent=2))
-    if write and not report["acceptance_passed"]:
-        raise typer.Exit(code=2)
-
-
-@app.command("validate-real-100-estimates")
-def validate_real_100_estimates_command(
-    estimate_dir: str = typer.Option("data/estimate_data"),
-    registry_dir: str = typer.Option("data/company_registry"),
-) -> None:
-    report = validate_real_100_estimates(estimate_dir=estimate_dir, registry_dir=registry_dir)
-    typer.echo(json.dumps(report, ensure_ascii=False, indent=2))
-    if not report["acceptance_passed"]:
-        raise typer.Exit(code=2)
 
 
 @app.command("build-valuations")
@@ -1051,32 +933,6 @@ def validate_production_research_cards_command(
         raise typer.Exit(code=1)
 
 
-@app.command("populate-existing-universe")
-def populate_existing_universe_command(
-    universe_dir: str = typer.Option("data/universe"),
-    output_dir: str = typer.Option("data/universe"),
-    strict: bool = typer.Option(False),
-    write: bool = typer.Option(False),
-) -> None:
-    try:
-        payload = build_existing_universe_population(
-            universe_dir=universe_dir, output_dir=output_dir, strict=strict, write=write
-        )
-    except ExistingUniversePopulationError as exc:
-        raise typer.BadParameter(str(exc)) from exc
-    typer.echo(json.dumps(payload, ensure_ascii=False, indent=2))
-
-
-@app.command("validate-existing-universe-population")
-def validate_existing_universe_population_command(
-    output_dir: str = typer.Option("data/universe"),
-) -> None:
-    payload = validate_existing_universe_population(output_dir=output_dir)
-    typer.echo(json.dumps(payload, ensure_ascii=False, indent=2))
-    if not payload.get("valid"):
-        raise typer.Exit(code=1)
-
-
 @app.command("build-financial-population-baseline")
 def build_financial_population_baseline_command(
     population_dir: str = typer.Option("data/universe"),
@@ -1113,83 +969,3 @@ def validate_financial_population_baseline_command(
 
 if __name__ == "__main__":
     app()
-
-
-@app.command("build-real-100-company-registry")
-def build_real_100_company_registry_command(
-    user_agent: str = typer.Option(..., help="SEC-compliant application and contact email"),
-    cohort_path: str = typer.Option("data/onboarding/us_real_100_cohort.json"),
-    sec_file: str | None = typer.Option(
-        None, help="Optional downloaded SEC JSON for deterministic/offline runs"
-    ),
-    source_output: str = typer.Option(
-        "data/onboarding/generated/real_100_company_registry_source.json"
-    ),
-    registry_dir: str = typer.Option("data/company_registry"),
-    write: bool = typer.Option(
-        False, "--write", help="Write source and canonical registry; default is dry-run"
-    ),
-) -> None:
-    report = build_real_100_registry(
-        user_agent=user_agent,
-        cohort_path=cohort_path,
-        sec_file=sec_file,
-        source_output=source_output,
-        registry_dir=registry_dir,
-        write=write,
-    )
-    typer.echo(json.dumps(report.model_dump(mode="json"), ensure_ascii=False, indent=2))
-
-
-@app.command("validate-real-100-company-registry")
-def validate_real_100_company_registry_command(
-    cohort_path: str = typer.Option("data/onboarding/us_real_100_cohort.json"),
-    registry_dir: str = typer.Option("data/company_registry"),
-) -> None:
-    report = validate_real_100_registry(cohort_path=cohort_path, registry_dir=registry_dir)
-    typer.echo(json.dumps(report, ensure_ascii=False, indent=2))
-    if not report["acceptance_passed"]:
-        raise typer.Exit(code=2)
-
-
-@app.command("build-real-100-financials")
-def build_real_100_financials_command(
-    user_agent: str = typer.Option(..., help="SEC-compliant application and contact email"),
-    registry_dir: str = typer.Option("data/company_registry"),
-    source_output: str = typer.Option(
-        "data/onboarding/generated/real_100_sec_financial_source.json"
-    ),
-    financial_dir: str = typer.Option("data/financial_data"),
-    cache_dir: str = typer.Option("data/onboarding/sec_companyfacts"),
-    diagnostics_output: str = typer.Option(
-        "data/onboarding/generated/v023_financial_diagnostics.json"
-    ),
-    sleep_seconds: float = typer.Option(0.12),
-    write: bool = typer.Option(
-        False, "--write", help="Write source and canonical financial data; default is dry-run"
-    ),
-) -> None:
-    report = build_real_100_financials(
-        user_agent=user_agent,
-        registry_dir=registry_dir,
-        source_output=source_output,
-        financial_dir=financial_dir,
-        cache_dir=cache_dir,
-        diagnostics_output=diagnostics_output,
-        sleep_seconds=sleep_seconds,
-        write=write,
-    )
-    typer.echo(json.dumps(report.model_dump(mode="json"), ensure_ascii=False, indent=2))
-    if write and not report.acceptance_passed:
-        raise typer.Exit(code=2)
-
-
-@app.command("validate-real-100-financials")
-def validate_real_100_financials_command(
-    registry_dir: str = typer.Option("data/company_registry"),
-    financial_dir: str = typer.Option("data/financial_data"),
-) -> None:
-    report = validate_real_100_financials(registry_dir=registry_dir, financial_dir=financial_dir)
-    typer.echo(json.dumps(report, ensure_ascii=False, indent=2))
-    if not report["acceptance_passed"]:
-        raise typer.Exit(code=2)
