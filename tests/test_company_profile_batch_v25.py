@@ -12,16 +12,16 @@ from axiom_engine.company_profile_v2.batch import (
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_v25_published_scope_follows_existing_production_index():
-    legacy = json.loads(
+def test_v25_published_scope_follows_company_profile_v2_production_index():
+    production = json.loads(
         (
             ROOT
-            / "data/generated/company_analysis/index.json"
+            / "data/generated/company_profile_v2/index.json"
         ).read_text()
     )
 
     expected = sorted(
-        legacy[
+        production[
             "symbol_to_file"
         ]
     )

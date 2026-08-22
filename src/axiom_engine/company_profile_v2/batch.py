@@ -17,7 +17,7 @@ class CompanyProfileBatchError(RuntimeError):
 
 CANONICAL_OUTPUT = Path("data/generated/company_profile_v2")
 DISPLAY_OUTPUT = Path("data/generated/company_profile_display_zh_tw")
-LEGACY_PUBLISHED_INDEX = Path("data/generated/company_analysis/index.json")
+PUBLISHED_INDEX = CANONICAL_OUTPUT / "index.json"
 BUSINESS_EVIDENCE_INDEX = Path(
     "data/generated/canonical_business_evidence/index.json"
 )
@@ -65,12 +65,12 @@ def _primary_symbol_by_company(root: Path) -> dict[str, str]:
 
 
 def _published_symbols(root: Path) -> list[str]:
-    payload = _load_json(root / LEGACY_PUBLISHED_INDEX)
+    payload = _load_json(root / PUBLISHED_INDEX)
     symbols = payload.get("symbol_to_file") or {}
 
     if not isinstance(symbols, dict):
         raise CompanyProfileBatchError(
-            "legacy company_analysis index has no symbol_to_file mapping"
+            "company_profile_v2 production index has no symbol_to_file mapping"
         )
 
     return sorted(
@@ -487,24 +487,6 @@ def write_company_profile_batch(
         public_report,
     )
 
-    migration = {
-        "schema_version": "axiom-company-profile-migration.v2.5",
-        "source": str(LEGACY_PUBLISHED_INDEX),
-        "target_canonical_index": str(
-            CANONICAL_OUTPUT / "index.json"
-        ),
-        "target_zh_tw_index": str(
-            DISPLAY_OUTPUT / "index.json"
-        ),
-        "symbols": canonical_index["symbols"],
-        "company_count": canonical_index["company_count"],
-        "complete": bool(summary.get("complete")),
-    }
-
-    _write_json(
-        canonical_output / "migration_manifest.json",
-        migration,
-    )
 
     return {
         "canonical_index": str(
@@ -515,9 +497,6 @@ def write_company_profile_batch(
         ),
         "readiness_report": str(
             CANONICAL_OUTPUT / "production_readiness.json"
-        ),
-        "migration_manifest": str(
-            CANONICAL_OUTPUT / "migration_manifest.json"
         ),
         "company_count": canonical_index["company_count"],
     }
