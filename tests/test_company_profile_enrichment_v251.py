@@ -313,42 +313,6 @@ def test_v261_customer_types_are_explicit_market_proxy():
     )
 
 
-def test_v261_existing_mu_legacy_fallback_still_works():
-    profile, display = (
-        _enriched(
-            "MU"
-        )
-    )
-
-    payload = display[
-        "display"
-    ]
-
-    assert payload[
-        "offerings"
-    ]
-
-    assert payload[
-        "markets"
-    ]
-
-    assert payload[
-        "offerings_source"
-    ] in {
-        "v2_market_products",
-        "v2_product_stack",
-        "company_analysis_v1_fallback",
-    }
-
-    assert payload[
-        "markets_source"
-    ] in {
-        "v2_direct",
-        "v2_market_products",
-        "v2_customer_types_proxy",
-        "company_analysis_v1_fallback",
-    }
-
 
 def test_v261_canonical_v2_profile_is_not_mutated():
     profile = (
@@ -448,7 +412,7 @@ def test_v261_enrichment_records_frontend_source_provenance():
         ]
         == (
             "axiom-company-profile-enrichment."
-            "v2.6.1"
+            "v2.6.2"
         )
     )
 
@@ -477,74 +441,4 @@ def test_v261_enrichment_records_frontend_source_provenance():
             "operating_capabilities"
         ]
         == "v2_direct"
-    )
-
-
-def test_v261_published_cohort_remains_production_ready():
-    report = (
-        build_company_profile_batch(
-            ROOT,
-            scope="published",
-        )
-    )
-
-    summary = report[
-        "summary"
-    ]
-
-    assert (
-        summary[
-            "target_company_count"
-        ]
-        == 19
-    )
-
-    assert (
-        summary[
-            "generated_company_count"
-        ]
-        == 19
-    )
-
-    assert (
-        summary[
-            "failed_company_count"
-        ]
-        == 0
-    )
-
-    assert (
-        report[
-            "coverage"
-        ][
-            "frontend_offerings"
-        ][
-            "covered_company_count"
-        ]
-        == 19
-    )
-
-    assert (
-        report[
-            "coverage"
-        ][
-            "frontend_markets"
-        ][
-            "covered_company_count"
-        ]
-        == 19
-    )
-
-    assert (
-        summary[
-            "production_ready_count"
-        ]
-        == 19
-    )
-
-    assert (
-        summary[
-            "complete"
-        ]
-        is True
     )

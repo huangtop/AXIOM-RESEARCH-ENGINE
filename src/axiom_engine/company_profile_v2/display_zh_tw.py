@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Any, Mapping
 
 
-POLICY_PATH = Path("config/company_analysis.v1.json")
+POLICY_PATH = Path("config/company_profile_display.zh_tw.v2.json")
 
 
 # This bridge does NOT classify companies.
@@ -20,7 +20,7 @@ RAW_TO_POLICY_ID = {
 }
 
 
-# Only phrases not covered by company_analysis.v1.json belong here.
+# Only phrases not covered by the Company Profile display policy belong here.
 # Keep this deliberately small. It is a display fallback, not an ontology.
 DISPLAY_FALLBACK_ZH_TW = {
     # Markets
@@ -131,7 +131,7 @@ def _load_policy_labels(root: Path) -> dict[str, str]:
             f"cannot read display-name policy {path}: {exc}"
         ) from exc
 
-    if payload.get("schema_version") != "company-analysis-policy.v1":
+    if payload.get("schema_version") != "axiom-company-profile-display-policy.v2":
         raise CompanyProfileDisplayError(
             "unsupported company-analysis policy"
         )
