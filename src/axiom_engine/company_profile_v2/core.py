@@ -864,14 +864,43 @@ def _extract_generic_markets(
         ):
             continue
 
+        # Market lists must describe a company-to-end-market relation.  A
+        # competitive-factor list merely happens to occur near the word
+        # "market", and an organization may serve an industry's supply chain
+        # without that industry being a market served by the company.
+        if re.search(
+            r"\b(?:significant\s+)?competitive\s+(?:factors?|criteria)\b",
+            sentence,
+            flags=re.IGNORECASE,
+        ):
+            continue
+
         for pattern in patterns:
             for match in re.finditer(
                 pattern,
                 sentence,
                 flags=re.IGNORECASE,
             ):
+                prefix = sentence[max(0, match.start() - 120):match.start()]
+                captured = match.group(1)
+
+                if (
+                    re.search(
+                        r"\b(?:organization|association|consortium|alliance|"
+                        r"council|society|institute|foundation)\s*$",
+                        prefix,
+                        flags=re.IGNORECASE,
+                    )
+                    and re.search(
+                        r"\b(?:manufacturing\s+)?supply\s+chain\b",
+                        captured,
+                        flags=re.IGNORECASE,
+                    )
+                ):
+                    continue
+
                 candidates = _split_market_phrase(
-                    match.group(1)
+                    captured
                 )
 
                 if not candidates:
@@ -2585,6 +2614,29 @@ def _extract_core_technologies(
             match.group(1),
         ).strip()
 
+        direct_tail = text[match.end():min(len(text), match.end() + 90)]
+        organization_head = re.search(
+            r"\b(?:Corporation|Company|Consortium|Association|Organization|"
+            r"Alliance|Council|Society|Institute|Foundation)\b",
+            expansion,
+            flags=re.IGNORECASE,
+        )
+        organization_appositive = re.match(
+            r"\s*,?\s*(?:our|an?|the)\s+(?:industry\s+)?"
+            r"(?:organization|association|consortium|alliance|council|society|"
+            r"institute|foundation)\b",
+            direct_tail,
+            flags=re.IGNORECASE,
+        )
+        membership_role = re.search(
+            r"\b(?:member|membership|founding\s+member)\s+of\s+(?:the\s+)?$",
+            text[max(0, match.start() - 45):match.start()],
+            flags=re.IGNORECASE,
+        )
+
+        if organization_head or organization_appositive or membership_role:
+            continue
+
         technologies.append(
             f"{expansion} ({match.group(2)})"
         )
@@ -2642,6 +2694,26 @@ def _extract_manufacturing(
         r"manufacturing(?: operations)?[^.]{0,80}?in\s+(?:the\s+)?(.+?)(?:,\s+we|\.\s+[A-Z]|\n|$)",
     ]
 
+    non_geography_candidate = re.compile(
+        r"^(?:"
+        r"(?:semiconductor|microelectronics?|electronics?|automotive|medical|"
+        r"aerospace|industrial|advanced)"
+        r"|"
+        r"(?:electric|autonomous)\s+vehicles?"
+        r"|"
+        r"(?:battery|solar\s+cell|flat\s+panel\s+display)\s+production"
+        r"|"
+        r"(?:microelectronics?\s+)?fabrication"
+        r"|"
+        r"(?:metal\s+)?cutting"
+        r"|"
+        r"welding"
+        r"|"
+        r"(?:advanced\s+)?manufacturing"
+        r")$",
+        flags=re.IGNORECASE,
+    )
+
     for pattern in location_patterns:
         match = re.search(
             pattern,
@@ -2674,7 +2746,10 @@ def _extract_manufacturing(
                 normalized,
             )
 
-            if len(normalized.split()) <= 5:
+            if (
+                len(normalized.split()) <= 5
+                and not non_geography_candidate.fullmatch(normalized)
+            ):
                 locations.append(normalized)
 
         evidence.append(match.group(0))
