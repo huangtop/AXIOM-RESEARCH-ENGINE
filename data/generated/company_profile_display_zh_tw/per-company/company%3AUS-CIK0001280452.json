@@ -226,7 +226,6 @@
   "translation_zh_tw": {
     "company_summary": "Monolithic Power Systems, Inc. 是一家無晶圓廠全球公司，提供高效能、半導體為基礎的電源電子解決方案。",
     "product_stack": [
-      "企業控制器",
       "電子系統的基本元件",
       "直流（“DC”）到直流",
       "交流（“AC”）到直流",
@@ -243,6 +242,25 @@
     "demand_drivers": [
       "AI"
     ],
-    "strategy_changes": []
+    "strategy_changes": [],
+    "manufacturing": {
+      "model": [],
+      "locations": [
+        "insufficient inventory levels"
+      ],
+      "critical_assets": []
+    }
+  },
+  "display_sanitizer": {
+    "version": "v2.6.6.2c-display-sanitizer1",
+    "mode": "deterministic_zero_cost",
+    "removed_count": 1,
+    "removals": [
+      {
+        "field": "product_stack",
+        "source_value": "Corporate Controller",
+        "display_value": "企業控制器"
+      }
+    ]
   }
 }

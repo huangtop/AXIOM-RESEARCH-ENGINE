@@ -2094,9 +2094,7 @@ def _request_openai_translation(
     )
 
 
-TRANSLATION_HARD_FREEZE_BYPASS_SYMBOLS = {
-    "MPWR",
-}
+TRANSLATION_HARD_FREEZE_BYPASS_SYMBOLS = set()
 
 
 def _load_current_locked_translation(
