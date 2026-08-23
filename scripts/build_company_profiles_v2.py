@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-V2.6.6.2 — Product Stack Production Sanitizer + Company Summary Semantic Selector
+V2.6.6.2b — Product Stack Production Sanitizer + Diagnostics + Company Summary Semantic Selector
 
 This file intentionally freezes the V2.6.5.7 extractor implementation at the
 known-good repository commit fa9f64c341eda97e457c4178686b6409b12dae33 and
@@ -1230,7 +1230,7 @@ def _summary_diagnostics_payload(
 
 # === V2.6.6.2 PRODUCT STACK PRODUCTION SANITIZER ==========================
 
-PRODUCT_SANITIZER_VERSION = "v2.6.6.2a"
+PRODUCT_SANITIZER_VERSION = "v2.6.6.2c-batch1"
 
 _PRODUCT_SANITIZER_EXACT_RE = re.compile(
     r"^(?:"
@@ -1321,6 +1321,98 @@ _PRODUCT_SANITIZER_GENERIC_NON_PRODUCT_RE = re.compile(
 )
 
 
+# === V2.6.6.2c PRODUCTION SANITIZER PROMOTION BATCH 1 ====================
+#
+# Promoted from V2.6.6.2b-hp3 after:
+# - targeted stress tests,
+# - second-batch 20-company regression,
+# - 338-company classification census,
+# - 338-company read-only before/after simulation.
+#
+# These rules are intentionally limited to the seven highest-confidence
+# contamination families. Geography section rules, regulatory-compliance
+# prose, acquisition/business-context rules, customer/org ambiguity, and
+# suspicious fragments remain diagnostics-only.
+_PRODUCT_SANITIZER_V2662C_BATCH1_PATTERNS = (
+    (
+        "TABLE_OF_CONTENTS_OR_SECTION_LEAKAGE",
+        re.compile(
+            r"(?:\btable\s+of\s+contents\b|"
+            r"^\s*(?:research\s*,?\s*)?development\s*[（(]?[\"“”']?R&D|"
+            r"\br&d\s+activities?\s+focus\b|"
+            r"^\s*(?:total\s+\d+|\([ivx]+\)\s+materialise\b)"
+            r")",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "SEC_OR_REPORT_DOCUMENT_LEAKAGE",
+        re.compile(
+            r"(?:\bsecurities\s+and\s+exchange\s+commission\b|"
+            r"^\s*(?:annual\s+report|sustainability\s+report)\s*$|"
+            r"^\s*exchange\s+commission\b)",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "REGULATORY_OR_CHEMICAL_LEAKAGE",
+        re.compile(
+            r"(?:^\s*(?:drug\s+administration|food\s+and\s+drug\s+administration)\b|"
+            r"^\s*polybrominat(?:ed|el)\s+diphenyl\s+ethers?\b|"
+            r"\bbis\s*\(2-ethylhexyl\)\s+phthalate\b)",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "STANDARDS_OR_CERTIFICATION_PROSE",
+        re.compile(
+            r"(?:^\s*designs?\s+tested\s+to\s+meet\b|"
+            r"^\s*under\s+(?:both\s+)?the\s+american\s+national\s+standards\s+institute\b|"
+            r"^\s*international\s+electrotechnical\s+commission\s*$|"
+            r"^\s*(?:ISO\s+(?:9001|14001|45001)|SEMI\s+S[28]|S[28]|Directive\s+2006)\s*$)",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "ACCREDITATION_OR_CERTIFICATION_PROSE",
+        re.compile(
+            r"(?:"
+            r"\baccredited\s+by\b|"
+            r"\baccreditation\s+program\b|"
+            r"\baccredited\s+test\s+lab(?:oratory)?\b|"
+            r"\bproduct\s+tests?\s+(?:are\s+)?accredited\b|"
+            r"\btesting\s+(?:is\s+)?accredited\b"
+            r")",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "CORPORATE_TITLE_LEAKAGE",
+        re.compile(
+            r"^\s*(?:corporate\s+vice\s+president|division\s+controller|corporate\s+controller)\s*$",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "EVENT_OR_INSTITUTION_LEAKAGE",
+        re.compile(
+            r"(?:\bworld\s+expo\s+\d{4}\b|^\s*smithsonian\s+institute\s*$)",
+            flags=re.IGNORECASE,
+        ),
+    ),
+)
+
+
+def _product_sanitizer_v2662c_batch1_reason(
+    text: str,
+) -> str | None:
+    for reason, pattern in _PRODUCT_SANITIZER_V2662C_BATCH1_PATTERNS:
+        if pattern.search(text):
+            return reason
+
+    return None
+
+
 def _product_sanitizer_reason(
     value: object,
 ) -> str | None:
@@ -1382,6 +1474,18 @@ def _product_sanitizer_reason(
         text
     ):
         return "GENERIC_NON_PRODUCT_TEXT"
+
+    batch1_reason = (
+        _product_sanitizer_v2662c_batch1_reason(
+            text
+        )
+    )
+
+    if batch1_reason:
+        return (
+            "V2662C_BATCH1_"
+            + batch1_reason
+        )
 
     return None
 
@@ -1477,6 +1581,8 @@ def _sanitize_profile_for_production(
             PRODUCT_SANITIZER_VERSION,
         "mode":
             "deterministic_production_boundary",
+        "promotion_batch":
+            "V2.6.6.2c-batch1",
         "before_count":
             result[
                 "before_count"
@@ -1609,6 +1715,482 @@ def _product_sanitizer_diagnostics(
             rows,
     }
 
+
+
+# === V2.6.6.2b PRODUCT STACK CONTAMINATION DIAGNOSTICS ====================
+
+PRODUCT_CONTAMINATION_DIAGNOSTICS_VERSION = "v2.6.6.2c-core7-pr1"
+
+PRODUCT_CONTAMINATION_CLASSIFICATION_VERSION = "v2.6.6.2b-hp3-classification1"
+
+# Diagnostics-only classification layer.
+# This does NOT participate in:
+# - _product_sanitizer_reason()
+# - _sanitize_profile_for_production()
+# - canonical writes
+# - promotion decisions
+# - translation
+#
+# SAFE_AUTO_REMOVE means the reason family is considered structurally
+# high-confidence enough to be a candidate for future production promotion.
+# It is NOT automatically removed here.
+#
+# REVIEW_ONLY means the signal is useful for human review but is intentionally
+# too ambiguous to mutate production data automatically.
+_PRODUCT_CONTAMINATION_REASON_CLASSIFICATION = {
+    "EMPTY_VALUE": "SAFE_AUTO_REMOVE",
+    "TABLE_OF_CONTENTS_OR_SECTION_LEAKAGE": "SAFE_AUTO_REMOVE",
+    "SEC_OR_REPORT_DOCUMENT_LEAKAGE": "SAFE_AUTO_REMOVE",
+    "REGULATORY_OR_CHEMICAL_LEAKAGE": "SAFE_AUTO_REMOVE",
+    "REGULATORY_COMPLIANCE_PROSE": "SAFE_AUTO_REMOVE",
+    "GEOGRAPHY_LEAKAGE": "SAFE_AUTO_REMOVE",
+    "GEOGRAPHY_SECTION_LEAKAGE": "SAFE_AUTO_REMOVE",
+    "STANDARDS_OR_CERTIFICATION_PROSE": "SAFE_AUTO_REMOVE",
+    "ACCREDITATION_OR_CERTIFICATION_PROSE": "SAFE_AUTO_REMOVE",
+    "CORPORATE_TITLE_LEAKAGE": "SAFE_AUTO_REMOVE",
+    "EVENT_OR_INSTITUTION_LEAKAGE": "SAFE_AUTO_REMOVE",
+    "EXPORT_CONTROL_OR_PROHIBITION_PROSE": "SAFE_AUTO_REMOVE",
+
+    "CUSTOMER_DISTRIBUTOR_OR_ORG_LEAKAGE": "REVIEW_ONLY",
+    "OPERATING_SEGMENT_PROSE": "REVIEW_ONLY",
+    "ACQUISITION_OR_CORPORATE_PROSE": "REVIEW_ONLY",
+    "GENERIC_BUSINESS_CONTEXT": "REVIEW_ONLY",
+    "SUSPICIOUS_FRAGMENT": "REVIEW_ONLY",
+    "EXTERNAL_COMPANY_OR_ORG_LEAKAGE": "REVIEW_ONLY",
+    "EXPORT_CONTROL_PROSE": "REVIEW_ONLY",
+    "LICENSING_OR_LEGAL_PROSE": "REVIEW_ONLY",
+    "SECTION_OR_ORG_PROSE": "REVIEW_ONLY",
+}
+
+def _product_contamination_reason_classification(
+    reason: object,
+) -> str:
+    key = str(
+        reason
+        or ""
+    ).strip()
+
+    return (
+        _PRODUCT_CONTAMINATION_REASON_CLASSIFICATION.get(
+            key,
+            "REVIEW_ONLY",
+        )
+    )
+
+# Diagnostics only. These rules DO NOT participate in:
+# - _product_sanitizer_reason()
+# - _sanitize_profile_for_production()
+# - canonical writes
+# - promotion decisions
+# - translation
+# Existing V2.6.6.2a production behavior remains unchanged.
+_PRODUCT_CONTAMINATION_DIAGNOSTIC_PATTERNS = (
+    (
+        "TABLE_OF_CONTENTS_OR_SECTION_LEAKAGE",
+        re.compile(
+            r"(?:\btable\s+of\s+contents\b|"
+            r"^\s*(?:research\s*,?\s*)?development\s*[（(]?[\"“”']?R&D|"
+            r"\br&d\s+activities?\s+focus\b|"
+            r"^\s*(?:total\s+\d+|\([ivx]+\)\s+materialise\b)"
+            r")",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "SEC_OR_REPORT_DOCUMENT_LEAKAGE",
+        re.compile(
+            r"(?:\bsecurities\s+and\s+exchange\s+commission\b|"
+            r"^\s*(?:annual\s+report|sustainability\s+report)\s*$|"
+            r"^\s*exchange\s+commission\b)",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "REGULATORY_OR_CHEMICAL_LEAKAGE",
+        re.compile(
+            r"(?:^\s*(?:drug\s+administration|food\s+and\s+drug\s+administration)\b|"
+            r"^\s*polybrominat(?:ed|el)\s+diphenyl\s+ethers?\b|"
+            r"\bbis\s*\(2-ethylhexyl\)\s+phthalate\b)",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "REGULATORY_COMPLIANCE_PROSE",
+        re.compile(
+            r"(?:"
+            r"\b(?:european\s+union(?:'s|’s)?\s+)?medical\s+device\s+directive\b|"
+            r"\bsubmission\s+demonstrating\s+clinical\s+safety\b|"
+            r"\brohs\b.{0,80}\bsubstances?\b|"
+            r"\bquality\s+system\s+regulations?\b"
+            r")",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "GEOGRAPHY_LEAKAGE",
+        re.compile(
+            r"(?:^\s*(?:in\s+)?north\s+america\s*$|"
+            r"^\s*(?:in\s+)?(?:latin\s+america|south\s+africa)\s*$|"
+            r"^\s*(?:asia\s+pacific)(?:\s+region)?\s*$|"
+            r"^\s*north\s+america\s+and\s+europe\s*$|"
+            r"^\s*latin\s+america\s+and\s+israel\s*$)",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "GEOGRAPHY_SECTION_LEAKAGE",
+        re.compile(
+            r"(?:"
+            r"^\s*geographies(?:\s+[\u200b\u200c\u200d\ufeff]*)?(?:\s+the\s+company\s+manufactures\b.*)?$|"
+            r"^\s*asia[-\s]?pacific(?:\s*\([\"“”']?APAC[\"“”']?\))?\s*(?:region|regions)?\s*$|"
+            r"^\s*(?:europe,\s*middle\s+east\s+and\s+africa|africa)(?:\s*\([\"“”']?EMEA[\"“”']?\))?\s*(?:region|regions)?\s*$|"
+            r"\bauthorities?\s+located\s+in\s+the\s+united\s+states\b|"
+            r"\bmanufacturing\s+services?\s+in\s+north\s+america\b"
+            r")",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "STANDARDS_OR_CERTIFICATION_PROSE",
+        re.compile(
+            r"(?:^\s*designs?\s+tested\s+to\s+meet\b|"
+            r"^\s*under\s+(?:both\s+)?the\s+american\s+national\s+standards\s+institute\b|"
+            r"^\s*international\s+electrotechnical\s+commission\s*$|"
+            r"^\s*(?:ISO\s+(?:9001|14001|45001)|SEMI\s+S[28]|S[28]|Directive\s+2006)\s*$)",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "ACCREDITATION_OR_CERTIFICATION_PROSE",
+        re.compile(
+            r"(?:"
+            r"\baccredited\s+by\b|"
+            r"\baccreditation\s+program\b|"
+            r"\baccredited\s+test\s+lab(?:oratory)?\b|"
+            r"\bproduct\s+tests?\s+(?:are\s+)?accredited\b|"
+            r"\btesting\s+(?:is\s+)?accredited\b"
+            r")",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "CORPORATE_TITLE_LEAKAGE",
+        re.compile(
+            r"^\s*(?:corporate\s+vice\s+president|division\s+controller|corporate\s+controller)\s*$",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "CUSTOMER_DISTRIBUTOR_OR_ORG_LEAKAGE",
+        re.compile(
+            r"^\s*(?:AT&T|Ingram\s+Micro|Contract\s+Manufacturers?|independent\s+software\s+vendors?)\s*$",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "OPERATING_SEGMENT_PROSE",
+        re.compile(
+            r"(?:"
+            r"^\s*(?:[A-Za-z0-9&/+\- ]+\s+)?operating\s+segments?\s*$|"
+            r"^\s*segment\s+description\b|"
+            r"^\s*solutions?\s+described\s+below\s+within\s+our\b|"
+            r"^\s*software\s+subject\s+to\s+various\s+open\s+source\s+software\s+licenses?\s*$"
+            r")",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "ACQUISITION_OR_CORPORATE_PROSE",
+        re.compile(
+            r"(?:"
+            r"\bacquisition\s+of\s+[A-Z][A-Za-z0-9&.,'’\- ]{2,80}\b|"
+            r"^\s*following\s+the\s+acquisition\s+of\b"
+            r")",
+        ),
+    ),
+    (
+        "EXTERNAL_COMPANY_OR_ORG_LEAKAGE",
+        re.compile(
+            r"(?:"
+            r"^\s*(?:Broadcom\s+Ltd|Arista\s+Networks|Cisco\s+Systems)\s*$|"
+            r"^\s*\d+\s+Marvell\s+Technology\s*$|"
+            r"^\s*Inc\.\s+and\s+Astera\s+Labs\s*$"
+            r")",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "EXPORT_CONTROL_PROSE",
+        re.compile(
+            r"(?:"
+            r"^\s*United\s+States\s+export\s+controls?(?:\s+and\s+sanctions\s+laws)?\s*$|"
+            r"^\s*any\s+China-specific\s+product\s+designed\s+to\s+comply\s+with\s+U\.?S\.?\s*$"
+            r")",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "LICENSING_OR_LEGAL_PROSE",
+        re.compile(
+            r"(?:"
+            r"^\s*paid\s+licenses?\s+to\s+NVIDIA\s+AI\s+Enterprise\s*$|"
+            r"^\s*software\s+or\s+other\s+intellectual\s+property\s+licensed\s+from\s+third\s+parties\s*$"
+            r")",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "SECTION_OR_ORG_PROSE",
+        re.compile(
+            r"(?:"
+            r"^\s*as\s+described\s+below:\s*[•\-]\s*Communication\s+Services\s+Sales\s+Organization\s*$|"
+            r"^\s*subscriber\s+retention\s+efforts\s*$|"
+            r"^\s*all\s+leveraging\s+the\s+Company(?:'s|’s)\s+PILOT\s+diagnostic\s*$|"
+            r"^\s*are\s+operated\s+by\s+Qualcomm\s+Technologies\s*$"
+            r")",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "CORPORATE_TITLE_LEAKAGE",
+        re.compile(
+            r"^\s*assistant\s+controller\s*$",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "GENERIC_BUSINESS_CONTEXT",
+        re.compile(
+            r"(?:^\s*(?:storage|sell\s+software|as\s+a\s+whole\s+platform\s+offering|"
+            r"architecture\s+description|these\s+socs|more\s+platform\s+solutions)\s*$|"
+            r"^\s*primarily\s+for\s+the\s+semiconductor\s+device\s+manufacturers\s*$|"
+            r"^\s*across\s+almost\s+every\s+major\s+process\s+in\s+semiconductor\s+manufacturing\s+today\s*$|"
+            r"^\s*one\s+RF\s+component\s+plant\s+in\s+China\s*$)",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "EVENT_OR_INSTITUTION_LEAKAGE",
+        re.compile(
+            r"(?:\bworld\s+expo\s+\d{4}\b|^\s*smithsonian\s+institute\s*$)",
+            flags=re.IGNORECASE,
+        ),
+    ),
+    (
+        "EXPORT_CONTROL_OR_PROHIBITION_PROSE",
+        re.compile(
+            r"(?:^\s*prohibitions?\s+on\s+(?:their|the)\s+use\b|\bin\s+connection\s+with\s+nuclear\b)",
+            flags=re.IGNORECASE,
+        ),
+    ),
+)
+
+_PRODUCT_CONTAMINATION_SUSPICIOUS_FRAGMENT_RE = re.compile(
+    r"(?:\b\d+\s+table\s+of\s+contents\b|"
+    r"\bfor\s*$|"
+    r"^\s*(?:technical|communications)\s*$|"
+    r"\bin\s+the\s+U\s*$|"
+    r"^\s*passive\s+devices\s*\([^)]*$|"
+    r"^\s*integrated\s+electronic\s*$|"
+    r"^\s*accuracy\s+of\s+detection\s+sensors\s*\([^)]*$|"
+    r"^\s*lattice\s+drive[™]?\s+for\s+advanced\s*$|"
+    r"^\s*photonics\s+devices\s*\(\s*including\s+laser\s+diodes\s*$|"
+    r"^\s*standard\s+brick\s+products\s+emphasizing\s+[\"“”']mass\s+customization\s*$|"
+    r"^\s*each\s+controlled\s+by\s+a\s+series\s+of\s+mass\s+flow\s+controllers\s*$|"
+    r"^\s*solutions?\s+described\s+below\s+within\s+our\s+networking\s+platforms\s*$|"
+    r"^\s*are\s+based\s+on\s+AMD\s+CDNA[™]?\s+architecture\s*$|"
+    r"^\s*functionality\s+of\s+software\s+design\s+tools\s*$|"
+    r"^\s*completeness\s+of\s+applicable\s+software\s+solutions\s*$|"
+    r"^\s*EV\s+market\s+under\s+the\s+DRIVE\s*$|"
+    r"^\s*in\s+addition\s+to\s+\d+\s+discrete\s+filtering\s+products\s*$|"
+    r"^\s*strong\s+oceanic\s+coverage\)\s+with\s+greater\s+redundancy\s*$)"
+    , flags=re.IGNORECASE,
+)
+
+
+
+def _product_contamination_new_reason(
+    value: object,
+) -> str | None:
+    text = re.sub(
+        r"\s+",
+        " ",
+        str(value or ""),
+    ).strip()
+
+    if not text:
+        return "EMPTY_VALUE"
+
+    for reason, pattern in _PRODUCT_CONTAMINATION_DIAGNOSTIC_PATTERNS:
+        if pattern.search(text):
+            return reason
+
+    if _PRODUCT_CONTAMINATION_SUSPICIOUS_FRAGMENT_RE.search(text):
+        return "SUSPICIOUS_FRAGMENT"
+
+    return None
+
+
+def _product_contamination_diagnostics(
+    profiles: list[dict],
+) -> dict:
+    rows = []
+
+    for profile in profiles:
+        symbol = str(
+            profile.get("symbol")
+            or ""
+        ).strip().upper()
+
+        products = profile.get("product_stack")
+        if not isinstance(products, list):
+            products = []
+
+        production_flags = []
+        new_flags = []
+        post_v2662a = []
+
+        for raw_value in products:
+            text = re.sub(
+                r"\s+",
+                " ",
+                str(raw_value or ""),
+            ).strip()
+
+            production_reason = _product_sanitizer_reason(text)
+
+            if production_reason:
+                production_flags.append(
+                    {
+                        "value": text,
+                        "reason": production_reason,
+                    }
+                )
+            else:
+                post_v2662a.append(text)
+
+            new_reason = _product_contamination_new_reason(text)
+
+            if new_reason:
+                new_flags.append(
+                    {
+                        "value": text,
+                        "reason": new_reason,
+                        "classification":
+                            _product_contamination_reason_classification(
+                                new_reason
+                            ),
+                    }
+                )
+
+        post_new_flags = [
+            row
+            for row in new_flags
+            if row["value"] in post_v2662a
+        ]
+
+        blocked_empty_after_sanitize = (
+            len(products) > 0
+            and len(post_v2662a) == 0
+        )
+
+        if blocked_empty_after_sanitize:
+            post_status = "BLOCKED_EMPTY_AFTER_SANITIZE"
+        elif post_new_flags:
+            post_status = "REVIEW"
+        else:
+            post_status = "CLEAN"
+
+        rows.append(
+            {
+                "symbol": symbol,
+                "product_count": len(products),
+                "production_sanitizer_flag_count": len(
+                    production_flags
+                ),
+                "production_sanitizer_flags": production_flags,
+                "new_2b_flag_count": len(
+                    new_flags
+                ),
+                "new_2b_flags": new_flags,
+                "safe_auto_remove_flag_count": sum(
+                    1
+                    for row in new_flags
+                    if row.get("classification")
+                    == "SAFE_AUTO_REMOVE"
+                ),
+                "review_only_flag_count": sum(
+                    1
+                    for row in new_flags
+                    if row.get("classification")
+                    == "REVIEW_ONLY"
+                ),
+                "post_v2662a_product_count": len(
+                    post_v2662a
+                ),
+                "blocked_empty_after_sanitize":
+                    blocked_empty_after_sanitize,
+                "post_v2662a_status": post_status,
+                "post_v2662a_new_2b_flags": post_new_flags,
+                "post_v2662a_product_stack": post_v2662a,
+            }
+        )
+
+    return {
+        "diagnostics_version":
+            PRODUCT_CONTAMINATION_DIAGNOSTICS_VERSION,
+        "classification_version":
+            PRODUCT_CONTAMINATION_CLASSIFICATION_VERSION,
+        "mode":
+            "diagnostics_only_no_production_mutation",
+        "classification_mode":
+            "metadata_only_no_auto_remove",
+        "company_count":
+            len(rows),
+        "post_v2662a_blocked_empty_company_count":
+            sum(
+                1
+                for row in rows
+                if row["post_v2662a_status"]
+                == "BLOCKED_EMPTY_AFTER_SANITIZE"
+            ),
+        "post_v2662a_review_company_count":
+            sum(
+                1
+                for row in rows
+                if row["post_v2662a_status"]
+                == "REVIEW"
+            ),
+        "post_v2662a_clean_company_count":
+            sum(
+                1
+                for row in rows
+                if row["post_v2662a_status"]
+                == "CLEAN"
+            ),
+        "production_sanitizer_flagged_item_count":
+            sum(
+                row["production_sanitizer_flag_count"]
+                for row in rows
+            ),
+        "new_2b_flagged_item_count":
+            sum(
+                row["new_2b_flag_count"]
+                for row in rows
+            ),
+        "safe_auto_remove_flagged_item_count":
+            sum(
+                row["safe_auto_remove_flag_count"]
+                for row in rows
+            ),
+        "review_only_flagged_item_count":
+            sum(
+                row["review_only_flag_count"]
+                for row in rows
+            ),
+        "rows":
+            rows,
+    }
 
 
 # === V2.6.5.8 PRODUCTION PROMOTION QUALITY GATE ============================
@@ -2357,6 +2939,374 @@ def _report_from_snapshot(path: Path) -> dict:
     }
 
 
+
+# === V2.6.6.2c 7 CORE CANONICAL TARGETED REPAIR =========================
+
+CORE7_TARGETED_REPAIR_VERSION = "v2.6.6.2c-core7-targeted-repair1"
+
+CORE7_TARGETED_REPAIR_SYMBOLS = (
+    "AMD",
+    "AVGO",
+    "CRDO",
+    "LITE",
+    "NVDA",
+    "QCOM",
+    "VSAT",
+)
+
+# Exact-value manifest only.
+# This is intentionally NOT a global regex sanitizer.
+CORE7_TARGETED_REPAIR_REMOVALS = {
+    "AMD": (
+        "are based on AMD CDNA™ architecture",
+        "new Asus ROG Xbox Ally",
+        "functionality of software design tools",
+        "completeness of applicable software solutions",
+    ),
+    "AVGO": (
+        "inductive charging devices. •RF Semiconductor Devices: Our devices selectively filter",
+    ),
+    "CRDO": (
+        "Broadcom Ltd",
+        "14 Marvell Technology",
+        "Inc. and Astera Labs",
+        "United States export controls and sanctions laws",
+        "all leveraging the Company’s PILOT diagnostic",
+        "United States export controls",
+    ),
+    "LITE": (),
+    "NVDA": (
+        "any China-specific product designed to comply with U.S",
+        "Arista Networks",
+        "Cisco Systems",
+        "paid licenses to NVIDIA AI Enterprise",
+        "EV market under the DRIVE",
+    ),
+    "QCOM": (
+        "Qualcomm Dragonwing™ families of highly-integrated",
+        "in addition to 8 discrete filtering products",
+        "are operated by Qualcomm Technologies",
+    ),
+    "VSAT": (
+        "software or other intellectual property licensed from third parties",
+        "Assistant Controller",
+        "strong oceanic coverage) with greater redundancy",
+        "Latin America",
+        "strong oceanic coverage",
+        "subscriber retention efforts",
+        "as described below: • Communication Services Sales Organization",
+    ),
+}
+
+
+def _core7_targeted_repair_candidate(
+    profile: dict,
+) -> tuple[dict, dict]:
+    symbol = str(
+        profile.get("symbol")
+        or ""
+    ).strip().upper()
+
+    if symbol not in CORE7_TARGETED_REPAIR_SYMBOLS:
+        raise ValueError(
+            f"{symbol or '<missing>'}: not in 7-core targeted repair whitelist"
+        )
+
+    sanitized, sanitizer = (
+        _sanitize_profile_for_production(
+            profile
+        )
+    )
+
+    products = (
+        sanitized.get("product_stack")
+        if isinstance(
+            sanitized.get("product_stack"),
+            list,
+        )
+        else []
+    )
+
+    expected = list(
+        CORE7_TARGETED_REPAIR_REMOVALS.get(
+            symbol,
+            (),
+        )
+    )
+
+    missing_expected = [
+        value
+        for value in expected
+        if value not in products
+    ]
+
+    if missing_expected:
+        raise ValueError(
+            f"{symbol}: targeted repair manifest mismatch; "
+            f"expected removal values not found post-2c: "
+            f"{missing_expected}"
+        )
+
+    expected_set = set(
+        expected
+    )
+
+    final_products = [
+        value
+        for value in products
+        if value not in expected_set
+    ]
+
+    targeted_removed = [
+        value
+        for value in products
+        if value in expected_set
+    ]
+
+    if len(targeted_removed) != len(expected):
+        raise ValueError(
+            f"{symbol}: targeted repair removal accounting mismatch "
+            f"(expected={len(expected)} removed={len(targeted_removed)})"
+        )
+
+    if not final_products:
+        raise ValueError(
+            f"{symbol}: targeted repair refuses empty final product_stack"
+        )
+
+    repaired = dict(
+        sanitized
+    )
+
+    repaired[
+        "product_stack"
+    ] = final_products
+
+    repaired[
+        "core7_targeted_repair"
+    ] = {
+        "version":
+            CORE7_TARGETED_REPAIR_VERSION,
+        "mode":
+            "exact_value_whitelist_repair",
+        "symbol":
+            symbol,
+        "post_2c_count":
+            len(products),
+        "targeted_removed_count":
+            len(targeted_removed),
+        "targeted_removed":
+            targeted_removed,
+        "final_product_count":
+            len(final_products),
+    }
+
+    return repaired, {
+        "symbol":
+            symbol,
+        "rebuilt_count":
+            len(
+                profile.get("product_stack")
+                if isinstance(
+                    profile.get("product_stack"),
+                    list,
+                )
+                else []
+            ),
+        "post_2c_count":
+            len(products),
+        "production_sanitizer_removed_count":
+            sanitizer.get(
+                "removed_count",
+                0,
+            ),
+        "production_sanitizer_removed":
+            sanitizer.get(
+                "removed",
+                [],
+            ),
+        "targeted_removed_count":
+            len(targeted_removed),
+        "targeted_removed":
+            targeted_removed,
+        "final_product_count":
+            len(final_products),
+        "final_product_stack":
+            final_products,
+    }
+
+
+def _core7_targeted_repair_run(
+    write: bool,
+) -> dict:
+    symbols = list(
+        CORE7_TARGETED_REPAIR_SYMBOLS
+    )
+
+    report = build_company_profile_batch(
+        ROOT,
+        scope="evidence",
+        symbols=symbols,
+    )
+
+    report[
+        "_requested_scope"
+    ] = "strategic"
+
+    _apply_product_recall(
+        report
+    )
+
+    _apply_company_summary_semantic_selector(
+        report
+    )
+
+    profiles_by_symbol = {
+        str(
+            p.get("symbol")
+            or ""
+        ).strip().upper(): p
+        for p in (
+            report.get(
+                "_canonical_profiles"
+            )
+            or []
+        )
+    }
+
+    missing = [
+        symbol
+        for symbol in symbols
+        if symbol not in profiles_by_symbol
+    ]
+
+    extras = sorted(
+        set(
+            profiles_by_symbol
+        )
+        - set(
+            symbols
+        )
+    )
+
+    if missing or extras:
+        raise ValueError(
+            "7-core rebuild invariant failed: "
+            f"missing={missing} extras={extras}"
+        )
+
+    candidates = []
+    rows = []
+
+    for symbol in symbols:
+        candidate, row = (
+            _core7_targeted_repair_candidate(
+                profiles_by_symbol[
+                    symbol
+                ]
+            )
+        )
+
+        candidates.append(
+            candidate
+        )
+
+        rows.append(
+            row
+        )
+
+    expected_targeted_removals = sum(
+        len(
+            CORE7_TARGETED_REPAIR_REMOVALS[
+                symbol
+            ]
+        )
+        for symbol in symbols
+    )
+
+    actual_targeted_removals = sum(
+        row[
+            "targeted_removed_count"
+        ]
+        for row in rows
+    )
+
+    if (
+        actual_targeted_removals
+        != expected_targeted_removals
+    ):
+        raise ValueError(
+            "7-core targeted removal total mismatch "
+            f"(expected={expected_targeted_removals} "
+            f"actual={actual_targeted_removals})"
+        )
+
+    result = {
+        "repair_version":
+            CORE7_TARGETED_REPAIR_VERSION,
+        "sanitizer_version":
+            PRODUCT_SANITIZER_VERSION,
+        "diagnostics_version":
+            PRODUCT_CONTAMINATION_DIAGNOSTICS_VERSION,
+        "mode":
+            "7_core_exact_value_targeted_repair",
+        "symbols":
+            symbols,
+        "company_count":
+            len(rows),
+        "expected_targeted_removed_item_count":
+            expected_targeted_removals,
+        "targeted_removed_item_count":
+            actual_targeted_removals,
+        "all_final_product_stacks_nonempty":
+            all(
+                row[
+                    "final_product_count"
+                ] > 0
+                for row in rows
+            ),
+        "write_requested":
+            write,
+        "rows":
+            rows,
+    }
+
+    if not write:
+        result[
+            "write_status"
+        ] = "dry_run"
+
+        return result
+
+    write_result = (
+        _safe_upsert_canonical_profiles(
+            candidates
+        )
+    )
+
+    if (
+        write_result.get(
+            "written_count"
+        )
+        != len(symbols)
+    ):
+        raise ValueError(
+            "7-core canonical write count mismatch "
+            f"(expected={len(symbols)} "
+            f"actual={write_result.get('written_count')})"
+        )
+
+    result[
+        "write_status"
+    ] = "written"
+
+    result[
+        "write_result"
+    ] = write_result
+
+    return result
+
+
 def _resolve_snapshot_path(explicit: str | None) -> Path:
     if explicit:
         path = Path(explicit).expanduser().resolve()
@@ -2699,6 +3649,15 @@ def main() -> int:
     parser.add_argument("--promote-from-snapshot", action="store_true", help="Rebuild only snapshot PROMOTE symbols and revalidate")
     parser.add_argument("--promotion-limit", type=int, help="Optional canary limit for safe promotion")
     parser.add_argument(
+        "--core7-targeted-repair",
+        action="store_true",
+        help=(
+            "V2.6.6.2c exact-value targeted canonical repair for "
+            "AMD/AVGO/CRDO/LITE/NVDA/QCOM/VSAT. "
+            "Dry-run unless --write is explicitly supplied."
+        ),
+    )
+    parser.add_argument(
         "--summary-diagnostics",
         action="store_true",
         help=(
@@ -2716,7 +3675,52 @@ def main() -> int:
         ),
     )
 
+    parser.add_argument(
+        "--product-contamination-diagnostics",
+        action="store_true",
+        help=(
+            "Print V2.6.6.2b diagnostics-only contamination review "
+            "for explicitly requested symbols. No write is performed and "
+            "V2.6.6.2a production sanitizer behavior is unchanged."
+        ),
+    )
+
     args = parser.parse_args()
+
+    if args.core7_targeted_repair:
+        try:
+            result = (
+                _core7_targeted_repair_run(
+                    args.write
+                )
+            )
+        except (
+            ValueError,
+            OSError,
+            json.JSONDecodeError,
+        ) as exc:
+            print(
+                json.dumps(
+                    {
+                        "status": "blocked",
+                        "repair_version":
+                            CORE7_TARGETED_REPAIR_VERSION,
+                        "error": str(exc),
+                    },
+                    ensure_ascii=False,
+                    indent=2,
+                )
+            )
+            return 2
+
+        print(
+            json.dumps(
+                result,
+                ensure_ascii=False,
+                indent=2,
+            )
+        )
+        return 0
 
     if args.promote_from_snapshot:
         try:
@@ -2785,6 +3789,37 @@ def main() -> int:
         print(
             json.dumps(
                 _product_sanitizer_diagnostics(
+                    report.get(
+                        "_canonical_profiles"
+                    )
+                    or []
+                ),
+                ensure_ascii=False,
+                indent=2,
+            )
+        )
+        return 0
+
+    if args.product_contamination_diagnostics:
+        if not explicit_symbols:
+            print(
+                json.dumps(
+                    {
+                        "status": "blocked",
+                        "error": (
+                            "--product-contamination-diagnostics requires "
+                            "explicit --symbol values"
+                        ),
+                    },
+                    ensure_ascii=False,
+                    indent=2,
+                )
+            )
+            return 2
+
+        print(
+            json.dumps(
+                _product_contamination_diagnostics(
                     report.get(
                         "_canonical_profiles"
                     )
