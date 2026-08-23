@@ -42,6 +42,22 @@ TRANSLATION_CENSUS = (
 
 DEFAULT_MODEL = "gpt-4.1-mini"
 
+TRANSLATION_POLICY_VERSION = "v2.6.6.2c-tech-terms1"
+
+TECHNICAL_TERMINOLOGY_RULE = (
+    "技術縮寫、業界通用 acronym、介面名稱、架構名稱與產品技術名稱"
+    "必須保留英文原文，不得翻成中文、不得展開全名、不得改寫縮寫。"
+    "包括但不限於 AI、GPU、GPUs、CPU、CPUs、DPU、DPUs、HPC、"
+    "SoC、SoCs、FPGA、FPGAs、ASIC、ASICs、NPU、NPUs、TPU、TPUs、"
+    "PCIe、CXL、NVLink、CUDA、Ethernet、InfiniBand、HBM、DRAM、"
+    "NAND、SSD、SSDs、NIC、NICs、DSP、DSPs、IP、API、SDK、"
+    "NVMe、SATA、SAS、DDR、DDR5、LPDDR、LPDDR5、GDDR、RFFE、"
+    "EDA、CFD、TSV、RRAM、OEM、OEMs、ODM、ODMs。"
+    "可翻譯縮寫前後的一般描述，例如 energy efficient GPUs 應翻成"
+    "「節能 GPUs」，HPC software stacks 應翻成「HPC 軟體堆疊」。"
+)
+
+
 OPENAI_CACHE_ROOT = (
     OUTPUT_ROOT / ".openai_cache"
 )
@@ -1572,7 +1588,8 @@ def _build_translation_prompt(
         "8. 品牌、產品家族、型號、技術標準與商標必須保留原文拼寫；"
         "例如 Aries、Leo、Scorpio、COSMOS、EPYC、Instinct、Ryzen、Radeon、"
         "Pensando、PCIe、CXL、Ethernet。\n"
-        "9. 只回傳 JSON。\n\n"
+        f"9. {TECHNICAL_TERMINOLOGY_RULE}\n"
+        "10. 只回傳 JSON。\n\n"
         f"SYMBOL: {symbol}\n"
         "SOURCE_JSON:\n"
         + json.dumps(
@@ -1590,7 +1607,12 @@ def _translation_cache_key(
     source: dict,
 ) -> str:
     canonical = json.dumps(
-        source,
+        {
+            "translation_policy_version":
+                TRANSLATION_POLICY_VERSION,
+            "source":
+                source,
+        },
         ensure_ascii=False,
         sort_keys=True,
         separators=(",", ":"),
@@ -1904,9 +1926,10 @@ def _build_locked_translation_prompt(
         "3. 每個來源 value 只能產生一個對應 value，不得拆分或合併。\n"
         "4. 公司名、品牌、產品家族、型號、技術標準與商標保留原文；"
         "其餘忠實翻成自然、專業的台灣繁體中文。\n"
-        "5. null、空 object、空 array wrapper 維持原樣。\n"
-        "6. 不得新增、推論、補齊任何公司事實。\n"
-        "7. 只回傳 JSON，不要 Markdown。\n\n"
+        f"5. {TECHNICAL_TERMINOLOGY_RULE}\n"
+        "6. null、空 object、空 array wrapper 維持原樣。\n"
+        "7. 不得新增、推論、補齊任何公司事實。\n"
+        "8. 只回傳 JSON，不要 Markdown。\n\n"
         f"SYMBOL: {symbol}\n"
         "LOCKED_SOURCE_JSON:\n"
         + json.dumps(
@@ -2006,7 +2029,8 @@ def _build_translation_repair_prompt(
         "把一個來源 item 拆成兩個以上輸出 items。\n"
         "5. 不得合併兩個來源 items，也不得新增、刪除、排序 array items。\n"
         "6. 品牌、型號、技術標準與商標保留原文，其餘忠實翻成台灣繁體中文。\n"
-        "7. 只回傳 JSON，不要 Markdown。\n\n"
+        f"7. {TECHNICAL_TERMINOLOGY_RULE}\n"
+        "8. 只回傳 JSON，不要 Markdown。\n\n"
         "REQUIRED_SHAPE:\n"
         f"{manifest}\n\n"
         "SOURCE_JSON:\n"
@@ -2134,7 +2158,8 @@ def _translate_with_openai(
                 "2. __axiom_array__ 及其數字 keys 是鎖定的 array 結構，絕對不可修改。\n"
                 "3. 只能翻譯 leaf string values。\n"
                 "4. 不得新增、刪除、拆分、合併、排序任何項目。\n"
-                "5. 只回傳 JSON。\n\n"
+                f"5. {TECHNICAL_TERMINOLOGY_RULE}\n"
+                "6. 只回傳 JSON。\n\n"
                 "REQUIRED_LOCKED_SHAPE:\n"
                 f"{manifest}\n\n"
                 "LOCKED_SOURCE_JSON:\n"
