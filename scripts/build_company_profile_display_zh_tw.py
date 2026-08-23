@@ -2094,12 +2094,157 @@ def _request_openai_translation(
     )
 
 
+TRANSLATION_HARD_FREEZE_BYPASS_SYMBOLS = {
+    "MPWR",
+}
+
+
+def _load_current_locked_translation(
+    *,
+    symbol: str,
+    source: dict,
+) -> tuple[dict, str] | None:
+    normalized_symbol = (
+        str(symbol)
+        .strip()
+        .upper()
+    )
+
+    if (
+        normalized_symbol
+        in TRANSLATION_HARD_FREEZE_BYPASS_SYMBOLS
+    ):
+        return None
+
+    index = _load_index()
+
+    relative = (
+        index.get(
+            "symbol_to_file",
+            {},
+        ).get(
+            normalized_symbol
+        )
+    )
+
+    if not relative:
+        return None
+
+    relative_path = Path(
+        str(relative)
+    )
+
+    if (
+        relative_path.is_absolute()
+        or ".." in relative_path.parts
+    ):
+        return None
+
+    path = (
+        OUTPUT_ROOT
+        / relative_path
+    )
+
+    if not path.is_file():
+        return None
+
+    try:
+        payload = json.loads(
+            path.read_text(
+                encoding="utf-8"
+            )
+        )
+    except (
+        OSError,
+        json.JSONDecodeError,
+    ):
+        return None
+
+    if not isinstance(
+        payload,
+        dict,
+    ):
+        return None
+
+    engine = (
+        payload.get(
+            "translation_engine"
+        )
+        if isinstance(
+            payload.get(
+                "translation_engine"
+            ),
+            dict,
+        )
+        else {}
+    )
+
+    result_source = str(
+        engine.get(
+            "result_source"
+        )
+        or ""
+    ).strip()
+
+    handoff = str(
+        engine.get(
+            "canonical_handoff"
+        )
+        or ""
+    ).strip()
+
+    if not (
+        result_source.startswith(
+            "API_LOCKED"
+        )
+        and handoff
+        == "read_back_verified"
+    ):
+        return None
+
+    locked_source = payload.get(
+        "translation_source"
+    )
+
+    if locked_source != source:
+        return None
+
+    translated = payload.get(
+        "translation_zh_tw"
+    )
+
+    if not isinstance(
+        translated,
+        dict,
+    ):
+        return None
+
+    _validate_translation_shape(
+        source=source,
+        translated=translated,
+    )
+
+    return (
+        translated,
+        result_source,
+    )
+
+
+
 def _translate_with_openai(
     *,
     model: str,
     symbol: str,
     source: dict,
 ) -> tuple[dict, str]:
+    locked = _load_current_locked_translation(
+        symbol=symbol,
+        source=source,
+    )
+
+    if locked is not None:
+        return locked
+
     cached = _load_translation_cache(
         model=model,
         symbol=symbol,
