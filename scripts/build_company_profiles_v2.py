@@ -133,6 +133,83 @@ for _name, _value in _V2657.items():
     globals()[_name] = _value
 
 
+# The frozen extractor remains the production recall path.  Tighten its
+# candidate promotion gate in-place so actor/entity roles and corporate job
+# titles never become products, including during cleanup and recall merging.
+_frozen_product_candidate_allowed = _V2657[
+    "_product_candidate_allowed"
+]
+
+_PRODUCT_ACTOR_ROLE_RE = re.compile(
+    r"^(?:[A-Za-z0-9/&+.-]+\s+){0,5}"
+    r"(?:providers?|customers?|distributors?|suppliers?|operators?|"
+    r"integrators?|employees?|personnel|vendors?|partners?)$",
+    flags=re.IGNORECASE,
+)
+
+_PRODUCT_ROLE_SAFE_HEAD_RE = re.compile(
+    r"\b(?:products?|platforms?|accelerators?|software|systems?|solutions?|"
+    r"devices?|modules?|components?|equipment)\b",
+    flags=re.IGNORECASE,
+)
+
+_CORPORATE_JOB_TITLE_RE = re.compile(
+    r"^(?:(?:Executive|Senior|Assistant|Associate|Interim|Corporate|Division|"
+    r"Regional|Global|Group)\s+)*(?:Vice President|President|Controller|"
+    r"Chief (?:Executive|Financial|Operating|Technology|Accounting) Officer)$",
+    flags=re.IGNORECASE,
+)
+
+
+def _product_candidate_allowed(
+    value: str,
+) -> bool:
+    candidate = _V2657[
+        "_normalize_product_candidate"
+    ](value)
+
+    if _CORPORATE_JOB_TITLE_RE.fullmatch(candidate):
+        return False
+
+    if (
+        _PRODUCT_ACTOR_ROLE_RE.fullmatch(candidate)
+        and not _PRODUCT_ROLE_SAFE_HEAD_RE.search(candidate)
+    ):
+        return False
+
+    return _frozen_product_candidate_allowed(candidate)
+
+
+_V2657[
+    "_product_candidate_allowed"
+] = _product_candidate_allowed
+
+_frozen_enrich_profile_product_recall = _V2657[
+    "_enrich_profile_product_recall"
+]
+
+
+def _enrich_profile_product_recall(
+    profile: dict[str, Any],
+) -> dict[str, Any]:
+    enriched = _frozen_enrich_profile_product_recall(profile)
+    enriched["product_stack"] = [
+        value
+        for value in enriched.get("product_stack") or []
+        if not (
+            _PRODUCT_ACTOR_ROLE_RE.fullmatch(str(value).strip())
+            and not _PRODUCT_ROLE_SAFE_HEAD_RE.search(str(value))
+        )
+        and not _CORPORATE_JOB_TITLE_RE.fullmatch(str(value).strip())
+    ]
+    return enriched
+
+
+_V2657[
+    "_enrich_profile_product_recall"
+] = _enrich_profile_product_recall
+
+
 # === V2.6.6.0 COMPANY SUMMARY SEMANTIC SELECTOR ===========================
 
 SUMMARY_SELECTOR_VERSION = "v2.6.6.1c"
