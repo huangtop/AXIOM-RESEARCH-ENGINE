@@ -1,58 +1,57 @@
 {
   "schema_version": "axiom-company-profile.v2.3",
-  "generation_mode": "evidence_first_generic_extractor",
+  "generation_mode": "manual_evidence_locked",
   "company_id": "company:US-CIK0001807794",
   "symbol": "CRDO",
   "exchange": "NASDAQ",
   "as_of": "2026-06-15",
   "company_summary": {
-    "one_line_business": "At Credo, our mission is to transform connectivity at scale through fast, reliable and energy-efficient system solutions."
+    "one_line_business": "Credo provides high-speed connectivity semiconductor and cable solutions for data centers and communications infrastructure."
   },
-  "markets": [],
+  "markets": [
+    "AI data centers",
+    "Cloud infrastructure",
+    "Networking",
+    "Optical communications"
+  ],
   "product_stack": [
-    "Active Electrical Cables (AECs)",
-    "SerDes Chiplets",
+    "Active Electrical Cables",
     "ZeroFlap AECs",
-    "Optical PAM4 DSPs",
-    "PCIe Retimers",
-    "Line Card PHYs",
-    "SerDes Chiplets for Multi-Chip 8 Module package integration",
-    "SerDes IP licensing",
-    "Digital Signal Processor",
-    "As NIC",
-    "MCM SoC",
-    "SMART NICs",
-    "PILOT Software Platform",
-    "ZeroFlap (ZF) Active Electrical Cables (AECs)",
-    "OmniConnect memory solutions",
-    "suite of retimers",
-    "analytics software platform",
-    "integrated circuits (ICs)",
-    "integrated circuits (ICs), Active Electrical Cables (AECs) and SerDes Chiplets",
-    "solutions: ZeroFlap AECs",
-    "ZeroFlap Optical Transceivers"
+    "SerDes chiplets and IP",
+    "optical PAM4 DSPs",
+    "PCIe and CXL retimers",
+    "line-card PHYs",
+    "PILOT software platform"
   ],
   "market_products": {},
-  "core_technologies": [],
+  "core_technologies": [
+    "high-speed SerDes",
+    "signal integrity",
+    "digital signal processing",
+    "PAM4 connectivity",
+    "low-power interconnect design"
+  ],
   "manufacturing": {
     "model": [],
     "locations": [],
     "critical_assets": []
   },
   "customer_types": [
-    "OEMs"
+    "hyperscale cloud providers",
+    "data-center operators",
+    "networking equipment manufacturers",
+    "optical module manufacturers"
   ],
   "ai_exposure": {
     "type": "direct_company_disclosure",
-    "summary": "The demands for increased bandwidth, better reliability and improved power efficiency have grown as AI model sizes have increased from billions to trillions of parameters and the workload has expanded from training to inference."
+    "summary": "Credo connectivity products address bandwidth and power bottlenecks in AI scale-up and scale-out networks."
   },
   "competitive_advantages": [],
   "demand_drivers": [
-    "AI",
-    "DOCSIS 4.0",
-    "5G",
-    "bandwidth growth",
-    "HPC"
+    "AI cluster bandwidth",
+    "data-center networking",
+    "high-speed interconnects",
+    "energy efficiency"
   ],
   "strategy_changes": [],
   "financial_snapshot": {
@@ -65,45 +64,36 @@
   },
   "field_evidence": {
     "company_summary.one_line_business": [
-      "At Credo, our mission is to transform connectivity at scale through fast, reliable and energy-efficient system solutions."
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001628280-26-043303"
     ],
-    "markets": [],
+    "markets": [
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001628280-26-043303"
+    ],
     "product_stack": [
-      "Our product families include integrated circuits (ICs), Active Electrical Cables (AECs) and SerDes Chiplets",
-      "Comprehensive Family of Connectivity Solutions: Our extensive solutions portfolio includes ZeroFlap AECs, Optical PAM4 DSPs, PCIe retimers, Line Card PHYs, SerDes Chiplets for Multi-Chip 8 Module (MCM) package integration and SerDes IP licensing",
-      "Our principal competitors with respect to our products include Broadcom Ltd. (Broadcom), 14 Marvell Technology, Inc. (Marvell) and Astera Labs, Inc. (Astera), as well as various cable and optical transceiver suppliers",
-      "As our business operates in many global jurisdictions, the import and export of our products and services are subject to laws and regulations including international treaties, United States export controls and sanctions laws, customs regulations and local trade rules around the world which vary widely across different countries and may change from time to time",
-      "Our products are based on our own optimized Serializer/Deserializer (SerDes) and Digital Signal Processor (DSP) technologies",
-      "As NIC speeds double, there is a need for higher speed east-west traffic infrastructure to support applications such as Remote Direct Memory Access (RDMA), Non-volatile Memory Express (NVMe) and other high-bandwidth applications, while maintaining high reliability and observability within the power and cost constraints of a modern data center",
-      "Today, we offer the following products and solutions: ZeroFlap AECs, Optical PAM4 DSPs, ZeroFlap Optical Transceivers, OmniConnect, SerDes Chiplets, PCIe Retimers, microLED solutions and PILOT software platform",
-      "Our SerDes Chiplets are designed for high performance and low power from mature processes, allowing customers to fabricate their core logic in advanced processes and combine them in their MCM SoC",
-      "PCIe Retimers: Toucan PCI Express (PCIs) Gen6.x/CXL 3.x retimers, powered by Credo’s low latency, low-power DSPs and SerDes technology, are designed to extend PCIe trace lengths between root-complex and endpoint devices such as GPUs, SMART NICs, NVMe SSDs, and CXL memory",
-      "Built using the 7nm process node, these retimers are optimized for cost-efficient production while delivering the highest performance, supporting cloud-scale datacenters and the growing demands of modern infrastructure with low latency and best-in-class signal integrity. •Our PCIe Retimer devices are designed with our low power, industry-leading SerDes IP which has been optimized for low-latency PCIe. •Built using the 7nm process node, these retimers are optimized for cost-efficient production while delivering the highest performance, supporting cloud-scale datacenters and the growing demands of modern infrastructure with low latency and best-in-class signal integrity. •Enabled by our Toucan family of retimers, Credo’s OSFP-XD ZeroFlap PCIe AECs provide extended range up to 7m with lossless end-to-end x16 Gen6 PCIe connectivity, allowing for transfer rates of up to 1Tb/sec. microLED Solutions: Credo is expanding its connectivity portfolio by developing solutions based on microLED technology",
-      "PILOT Software Platform: Credo’s proprietary PILOT software empowers network administrators to detect, diagnose, and resolve signal degradation before it impacts workloads—dramatically reducing link flaps and minimizing costly system maintenance and down-time",
-      "The Company’s product portfolio includes ZeroFlap (ZF) Active Electrical Cables (AECs) and ZF optical transceivers, OmniConnect memory solutions and a suite of retimers and DSPs for optical and copper Ethernet and PCIe, all leveraging the Company’s PILOT diagnostic and analytics software platform",
-      "We sell our products to hyperscalers, NeoClouds and other cloud infrastructure providers",
-      "we offer the following products and solutions: ZeroFlap AECs, Optical PAM4 DSPs, ZeroFlap Optical Transceivers, OmniConnect, SerDes Chiplets, PCIe Retimers, microLED solutions and PILOT software platform",
-      "We sell our products to hyperscalers, Neoclouds, OEMs, ODMs, CMs and optical module manufacturers, as well as into the enterprise and HPC markets",
-      "our products include Broadcom Ltd"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001628280-26-043303"
     ],
     "market_products": {},
-    "core_technologies": [],
-    "manufacturing": [],
+    "core_technologies": [
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001628280-26-043303"
+    ],
+    "manufacturing": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
     "customer_types": [
-      "original equipment manufacturers"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001628280-26-043303"
     ],
     "ai_exposure": [
-      "The demands for increased bandwidth, better reliability and improved power efficiency have grown as AI model sizes have increased from billions to trillions of parameters and the workload has expanded from training to inference."
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001628280-26-043303"
     ],
-    "competitive_advantages": [],
+    "competitive_advantages": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
     "demand_drivers": [
-      "copper and optical interconnect products deliver industry-leading power and performance at up to 1.6T to meet the ever-expanding data infrastructure demands of AI. The Company’s product portfolio includes ZeroFlap (ZF) Active Electrical Cables (AECs) and ZF optical transceivers, OmniConnect memory solutions and a suite of retimers and DSPs for optical and copper Ethernet and PCIe",
-      "ormance and cost for users who cannot access the existing infrastructure. Fixed-line infrastructure speeds continue to grow, with the announcement of CableLabs DOCSIS 4.0 10Gb standards and proliferation of fiber-to-the-home. Beyond hyperscalers and 5G networking, the evolution of connectivity standards for servers such as Peripheral Component Interconnect Express (PCIe) and consumer dev",
-      "ed-line and wireless networks, carriers are also increasingly seeking higher performance connectivity solutions to address their substantial growth in traffic. 5G wireless infrastructure has proliferated in some countries but still has much room for growth, and low earth orbit satellite IP solutions such as Starlink offer disruptive performance and cost for users who cannot acces",
-      "s (hyperscalers) and emerging NeoClouds building AI/Machine Learning (ML) Infrastructure as well as general compute and data centers. The demands for increased bandwidth, better reliability and improved power efficiency have grown as AI model sizes have increased from billions to trillions of parameters and the workload has expanded from training to inference. We design, market and sell",
-      "lude CLOS, SPAN, SHIFT and SWITCH family of cables. •Credo ZeroFlap CLOS AECs are specifically designed for high density in-rack or High Performance Computing (HPC) rack-to-rack interconnect to support CLOS architectures, a type of non-blocking, multistage switching architecture that reduces the number of ports required in an interconnected fabric. With up to 50% less power than o"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001628280-26-043303"
     ],
-    "strategy_changes": [],
+    "strategy_changes": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
     "financial_snapshot": []
   },
   "evidence": [
@@ -119,470 +109,11 @@
   ],
   "value_provenance": {
     "company_summary.one_line_business": {
-      "value": "At Credo, our mission is to transform connectivity at scale through fast, reliable and energy-efficient system solutions.",
-      "evidence": {
-        "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-        "form": "10-K",
-        "accession_number": "0001628280-26-043303",
-        "filing_date": "2026-06-15",
-        "section_type": "item_1_business",
-        "quote": "At Credo, our mission is to transform connectivity at scale through fast, reliable and energy-efficient system solutions. The Company’s highspeed copper and optical interconnect products deliver industry-leading power and performance at up to 1.",
-        "evidence_start_character": 34,
-        "evidence_end_character": 279,
-        "document_start_character": 31465,
-        "document_end_character": 31710,
-        "matched_start_character": 34,
-        "matched_end_character": 155,
-        "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-      }
+      "value": "Credo provides high-speed connectivity semiconductor and cable solutions for data centers and communications infrastructure.",
+      "evidence": null
     },
     "markets": [],
-    "product_stack": [
-      {
-        "value": "Active Electrical Cables (AECs)",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "Our product families include integrated circuits (ICs), Active Electrical Cables (AECs) and SerDes Chiplets.",
-          "evidence_start_character": 1064,
-          "evidence_end_character": 1172,
-          "document_start_character": 32495,
-          "document_end_character": 32603,
-          "matched_start_character": 1120,
-          "matched_end_character": 1151,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "SerDes Chiplets",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "Our product families include integrated circuits (ICs), Active Electrical Cables (AECs) and SerDes Chiplets.",
-          "evidence_start_character": 1064,
-          "evidence_end_character": 1172,
-          "document_start_character": 32495,
-          "document_end_character": 32603,
-          "matched_start_character": 1156,
-          "matched_end_character": 1171,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "ZeroFlap AECs",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "Comprehensive Family of Connectivity Solutions: Our extensive solutions portfolio includes ZeroFlap AECs, Optical PAM4 DSPs, PCIe retimers, Line Card PHYs, SerDes Chiplets for Multi-Chip",
-          "evidence_start_character": 7702,
-          "evidence_end_character": 7888,
-          "document_start_character": 39133,
-          "document_end_character": 39319,
-          "matched_start_character": 7793,
-          "matched_end_character": 7806,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "Optical PAM4 DSPs",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "Comprehensive Family of Connectivity Solutions: Our extensive solutions portfolio includes ZeroFlap AECs, Optical PAM4 DSPs, PCIe retimers, Line Card PHYs, SerDes Chiplets for Multi-Chip",
-          "evidence_start_character": 7702,
-          "evidence_end_character": 7888,
-          "document_start_character": 39133,
-          "document_end_character": 39319,
-          "matched_start_character": 7808,
-          "matched_end_character": 7825,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "PCIe Retimers",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "Comprehensive Family of Connectivity Solutions: Our extensive solutions portfolio includes ZeroFlap AECs, Optical PAM4 DSPs, PCIe retimers, Line Card PHYs, SerDes Chiplets for Multi-Chip",
-          "evidence_start_character": 7702,
-          "evidence_end_character": 7888,
-          "document_start_character": 39133,
-          "document_end_character": 39319,
-          "matched_start_character": 7827,
-          "matched_end_character": 7840,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "Line Card PHYs",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "Comprehensive Family of Connectivity Solutions: Our extensive solutions portfolio includes ZeroFlap AECs, Optical PAM4 DSPs, PCIe retimers, Line Card PHYs, SerDes Chiplets for Multi-Chip",
-          "evidence_start_character": 7702,
-          "evidence_end_character": 7888,
-          "document_start_character": 39133,
-          "document_end_character": 39319,
-          "matched_start_character": 7842,
-          "matched_end_character": 7856,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "SerDes Chiplets for Multi-Chip 8 Module package integration",
-        "evidence": null
-      },
-      {
-        "value": "SerDes IP licensing",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "Our intellectual property (IP) solutions consist primarily of SerDes IP licensing.",
-          "evidence_start_character": 1173,
-          "evidence_end_character": 1255,
-          "document_start_character": 32604,
-          "document_end_character": 32686,
-          "matched_start_character": 1235,
-          "matched_end_character": 1254,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "Broadcom Ltd",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "Our principal competitors with respect to our products include Broadcom Ltd.",
-          "evidence_start_character": 31180,
-          "evidence_end_character": 31256,
-          "document_start_character": 62611,
-          "document_end_character": 62687,
-          "matched_start_character": 31243,
-          "matched_end_character": 31255,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "14 Marvell Technology",
-        "evidence": null
-      },
-      {
-        "value": "Inc. and Astera Labs",
-        "evidence": null
-      },
-      {
-        "value": "United States export controls and sanctions laws",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "As our business operates in many global jurisdictions, the import and export of our products and services are subject to laws and regulations including international treaties, United States export controls and sanctions laws, customs regulations and local trade rules around the world which vary widely across different countries and may change from time to time.",
-          "evidence_start_character": 38015,
-          "evidence_end_character": 38378,
-          "document_start_character": 69446,
-          "document_end_character": 69809,
-          "matched_start_character": 38191,
-          "matched_end_character": 38239,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "Digital Signal Processor",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "Our products are based on our own optimized Serializer/Deserializer (SerDes) and Digital Signal Processor (DSP) technologies.",
-          "evidence_start_character": 938,
-          "evidence_end_character": 1063,
-          "document_start_character": 32369,
-          "document_end_character": 32494,
-          "matched_start_character": 1019,
-          "matched_end_character": 1043,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "As NIC",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "As NIC speeds double, there is a need for higher speed east-west traffic infrastructure to support applications such as Remote Direct Memory Access (RDMA), Non-volatile Memory Express (NVMe) and other high-bandwidth applications, while maintaining high reliability and observability within the power and cost constraints of a modern data center.",
-          "evidence_start_character": 5212,
-          "evidence_end_character": 5557,
-          "document_start_character": 36643,
-          "document_end_character": 36988,
-          "matched_start_character": 5212,
-          "matched_end_character": 5218,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "MCM SoC",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "Our SerDes Chiplets are designed for high performance and low power from mature processes, allowing customers to fabricate their core logic in advanced processes and combine them in their MCM SoC.",
-          "evidence_start_character": 20655,
-          "evidence_end_character": 20851,
-          "document_start_character": 52086,
-          "document_end_character": 52282,
-          "matched_start_character": 20843,
-          "matched_end_character": 20850,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "SMART NICs",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "PCIe Retimers: Toucan PCI Express (PCIs) Gen6.x/CXL 3.x retimers, powered by Credo’s low latency, low-power DSPs and SerDes technology, are designed to extend PCIe trace lengths between root-complex and endpoint devices such as GPUs, SMART NICs, NVMe SSDs, and CXL memory.",
-          "evidence_start_character": 20852,
-          "evidence_end_character": 21124,
-          "document_start_character": 52283,
-          "document_end_character": 52555,
-          "matched_start_character": 21086,
-          "matched_end_character": 21096,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "PILOT Software Platform",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "Today, we offer the following products and solutions: ZeroFlap AECs, Optical PAM4 DSPs, ZeroFlap Optical Transceivers, OmniConnect, SerDes Chiplets, PCIe Retimers, microLED solutions and PILOT software platform.",
-          "evidence_start_character": 12470,
-          "evidence_end_character": 12681,
-          "document_start_character": 43901,
-          "document_end_character": 44112,
-          "matched_start_character": 12657,
-          "matched_end_character": 12680,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "ZeroFlap (ZF) Active Electrical Cables (AECs)",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "The Company’s product portfolio includes ZeroFlap (ZF) Active Electrical Cables (AECs) and ZF optical transceivers, OmniConnect memory solutions and a suite of retimers and DSPs for optical and copper Ethernet and PCIe, all leveraging the Company’s PILOT diagnostic and analytics software platform.",
-          "evidence_start_character": 344,
-          "evidence_end_character": 642,
-          "document_start_character": 31775,
-          "document_end_character": 32073,
-          "matched_start_character": 385,
-          "matched_end_character": 430,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "OmniConnect memory solutions",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "The Company’s product portfolio includes ZeroFlap (ZF) Active Electrical Cables (AECs) and ZF optical transceivers, OmniConnect memory solutions and a suite of retimers and DSPs for optical and copper Ethernet and PCIe, all leveraging the Company’s PILOT diagnostic and analytics software platform.",
-          "evidence_start_character": 344,
-          "evidence_end_character": 642,
-          "document_start_character": 31775,
-          "document_end_character": 32073,
-          "matched_start_character": 460,
-          "matched_end_character": 488,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "suite of retimers",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "The Company’s product portfolio includes ZeroFlap (ZF) Active Electrical Cables (AECs) and ZF optical transceivers, OmniConnect memory solutions and a suite of retimers and DSPs for optical and copper Ethernet and PCIe, all leveraging the Company’s PILOT diagnostic and analytics software platform.",
-          "evidence_start_character": 344,
-          "evidence_end_character": 642,
-          "document_start_character": 31775,
-          "document_end_character": 32073,
-          "matched_start_character": 495,
-          "matched_end_character": 512,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "all leveraging the Company’s PILOT diagnostic",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "The Company’s product portfolio includes ZeroFlap (ZF) Active Electrical Cables (AECs) and ZF optical transceivers, OmniConnect memory solutions and a suite of retimers and DSPs for optical and copper Ethernet and PCIe, all leveraging the Company’s PILOT diagnostic and analytics software platform.",
-          "evidence_start_character": 344,
-          "evidence_end_character": 642,
-          "document_start_character": 31775,
-          "document_end_character": 32073,
-          "matched_start_character": 564,
-          "matched_end_character": 609,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "analytics software platform",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "The Company’s product portfolio includes ZeroFlap (ZF) Active Electrical Cables (AECs) and ZF optical transceivers, OmniConnect memory solutions and a suite of retimers and DSPs for optical and copper Ethernet and PCIe, all leveraging the Company’s PILOT diagnostic and analytics software platform.",
-          "evidence_start_character": 344,
-          "evidence_end_character": 642,
-          "document_start_character": 31775,
-          "document_end_character": 32073,
-          "matched_start_character": 614,
-          "matched_end_character": 641,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "integrated circuits (ICs)",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "Our product families include integrated circuits (ICs), Active Electrical Cables (AECs) and SerDes Chiplets.",
-          "evidence_start_character": 1064,
-          "evidence_end_character": 1172,
-          "document_start_character": 32495,
-          "document_end_character": 32603,
-          "matched_start_character": 1093,
-          "matched_end_character": 1118,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "United States export controls",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "As our business operates in many global jurisdictions, the import and export of our products and services are subject to laws and regulations including international treaties, United States export controls and sanctions laws, customs regulations and local trade rules around the world which vary widely across different countries and may change from time to time.",
-          "evidence_start_character": 38015,
-          "evidence_end_character": 38378,
-          "document_start_character": 69446,
-          "document_end_character": 69809,
-          "matched_start_character": 38191,
-          "matched_end_character": 38220,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "integrated circuits (ICs), Active Electrical Cables (AECs) and SerDes Chiplets",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "Our product families include integrated circuits (ICs), Active Electrical Cables (AECs) and SerDes Chiplets.",
-          "evidence_start_character": 1064,
-          "evidence_end_character": 1172,
-          "document_start_character": 32495,
-          "document_end_character": 32603,
-          "matched_start_character": 1093,
-          "matched_end_character": 1171,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "solutions: ZeroFlap AECs",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "Today, we offer the following products and solutions: ZeroFlap AECs, Optical PAM4 DSPs, ZeroFlap Optical Transceivers, OmniConnect, SerDes Chiplets, PCIe Retimers, microLED solutions and PILOT software platform.",
-          "evidence_start_character": 12470,
-          "evidence_end_character": 12681,
-          "document_start_character": 43901,
-          "document_end_character": 44112,
-          "matched_start_character": 12513,
-          "matched_end_character": 12537,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "ZeroFlap Optical Transceivers",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "Today, we offer the following products and solutions: ZeroFlap AECs, Optical PAM4 DSPs, ZeroFlap Optical Transceivers, OmniConnect, SerDes Chiplets, PCIe Retimers, microLED solutions and PILOT software platform.",
-          "evidence_start_character": 12470,
-          "evidence_end_character": 12681,
-          "document_start_character": 43901,
-          "document_end_character": 44112,
-          "matched_start_character": 12558,
-          "matched_end_character": 12587,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      }
-    ],
+    "product_stack": [],
     "market_products": {},
     "core_technologies": [],
     "manufacturing": {
@@ -590,188 +121,31 @@
       "locations": [],
       "critical_assets": []
     },
-    "customer_types": [
-      {
-        "value": "OEMs",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "We are engaged with all of the major hyperscalers, and our customer base includes over 20 blue chip clients, including a broad mix of original equipment manufacturers (OEMs), original design manufacturers (ODMs), optical module manufacturers and other leading enterprises.",
-          "evidence_start_character": 3367,
-          "evidence_end_character": 3639,
-          "document_start_character": 34798,
-          "document_end_character": 35070,
-          "matched_start_character": 3535,
-          "matched_end_character": 3539,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      }
-    ],
+    "customer_types": [],
     "ai_exposure": {
       "value": {
         "type": "direct_company_disclosure",
-        "summary": "The demands for increased bandwidth, better reliability and improved power efficiency have grown as AI model sizes have increased from billions to trillions of parameters and the workload has expanded from training to inference."
+        "summary": "Credo connectivity products address bandwidth and power bottlenecks in AI scale-up and scale-out networks."
       },
       "evidence": null
     },
     "competitive_advantages": [],
-    "demand_drivers": [
-      {
-        "value": "AI",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "The Company’s highspeed copper and optical interconnect products deliver industry-leading power and performance at up to 1.6T to meet the ever-expanding data infrastructure demands of AI.",
-          "evidence_start_character": 156,
-          "evidence_end_character": 343,
-          "document_start_character": 31587,
-          "document_end_character": 31774,
-          "matched_start_character": 340,
-          "matched_end_character": 342,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "DOCSIS 4.0",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "Fixed-line infrastructure speeds continue to grow, with the announcement of CableLabs DOCSIS 4.0 10Gb standards and proliferation of fiber-to-the-home.",
-          "evidence_start_character": 6532,
-          "evidence_end_character": 6683,
-          "document_start_character": 37963,
-          "document_end_character": 38114,
-          "matched_start_character": 6618,
-          "matched_end_character": 6628,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "5G",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "Beyond hyperscalers and 5G networking, the evolution of connectivity standards for servers such as Peripheral Component Interconnect Express (PCIe) and consumer devices such as Universal Serial Bus (USB) present an additional long-term opportunity.",
-          "evidence_start_character": 6684,
-          "evidence_end_character": 6932,
-          "document_start_character": 38115,
-          "document_end_character": 38363,
-          "matched_start_character": 6708,
-          "matched_end_character": 6710,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      },
-      {
-        "value": "bandwidth growth",
-        "evidence": null
-      },
-      {
-        "value": "HPC",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "•Credo ZeroFlap CLOS AECs are specifically designed for high density in-rack or High Performance Computing (HPC) rack-to-rack interconnect to support CLOS architectures, a type of non-blocking, multistage switching architecture that reduces the number of ports required in an interconnected fabric.",
-          "evidence_start_character": 13390,
-          "evidence_end_character": 13688,
-          "document_start_character": 44821,
-          "document_end_character": 45119,
-          "matched_start_character": 13498,
-          "matched_end_character": 13501,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
-      }
-    ],
+    "demand_drivers": [],
     "strategy_changes": [],
     "financial_snapshot": {
       "fiscal_year": {
         "value": 2025,
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-043303",
-          "form": "10-K",
-          "accession_number": "0001628280-26-043303",
-          "filing_date": "2026-06-15",
-          "section_type": "item_1_business",
-          "quote": "During fiscal 2026 and 2025, we generated $1.",
-          "evidence_start_character": 3640,
-          "evidence_end_character": 3685,
-          "document_start_character": 35071,
-          "document_end_character": 35116,
-          "matched_start_character": 3663,
-          "matched_end_character": 3667,
-          "text_sha256": "ea18217934dc835b0b13ef64eae5307e923e95e00e8e5101b77f5deba1d690b0"
-        }
+        "evidence": null
       },
       "revenue_mix": {},
       "customer_concentration": {}
     }
   },
   "product_recall_enrichment": {
-    "version": "v2.6.5.7",
-    "mode": "generic_filing_native_named_product_recovery",
-    "discovered_product_count": 24,
-    "final_product_count": 27,
+    "version": "manual-2026-08-25-legacy16-rebuild",
+    "mode": "manual_evidence_lock",
+    "discovered_product_count": 7,
+    "final_product_count": 7,
     "removed_market_product_pollution": true
-  },
-  "company_summary_selector": {
-    "version": "v2.6.6.1c",
-    "mode": "conservative_sec_item1_challenger",
-    "decision": "KEEP",
-    "existing_score": 33,
-    "candidate_score": 135,
-    "score_delta": 102,
-    "existing_reasons": [
-      "BUSINESS_TERMS"
-    ],
-    "candidate_reasons": [
-      "BUSINESS_IDENTITY",
-      "BUSINESS_TERMS",
-      "OPERATING_VERB"
-    ],
-    "candidate_eligible": false,
-    "candidate_eligibility_reason": "BLOCKED_DETAIL_OR_FILING_PROSE",
-    "candidate_blockers": [
-      "FILING_PROSE_OR_BULLET"
-    ],
-    "good_existing": false
-  },
-  "product_stack_sanitizer": {
-    "version": "v2.6.6.2c-batch1",
-    "mode": "deterministic_production_boundary",
-    "promotion_batch": "V2.6.6.2c-batch1",
-    "before_count": 21,
-    "after_count": 21,
-    "removed_count": 0,
-    "removed": []
-  },
-  "core7_targeted_repair": {
-    "version": "v2.6.6.2c-core7-targeted-repair1",
-    "mode": "exact_value_whitelist_repair",
-    "symbol": "CRDO",
-    "post_2c_count": 27,
-    "targeted_removed_count": 6,
-    "targeted_removed": [
-      "Broadcom Ltd",
-      "14 Marvell Technology",
-      "Inc. and Astera Labs",
-      "United States export controls and sanctions laws",
-      "all leveraging the Company’s PILOT diagnostic",
-      "United States export controls"
-    ],
-    "final_product_count": 21
   }
 }
