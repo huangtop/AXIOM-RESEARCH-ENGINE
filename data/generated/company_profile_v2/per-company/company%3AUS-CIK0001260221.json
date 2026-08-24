@@ -1,42 +1,52 @@
 {
   "schema_version": "axiom-company-profile.v2.3",
-  "generation_mode": "evidence_first_generic_extractor",
+  "generation_mode": "manual_evidence_locked",
   "company_id": "company:US-CIK0001260221",
   "symbol": "TDG",
   "exchange": "NYSE",
   "as_of": "2025-11-12",
   "company_summary": {
-    "one_line_business": "BUSINESS The Company TD Group, through its wholly-owned subsidiary, TransDigm Inc., is a leading global designer, producer and supplier of highly engineered aircraft components that are critical to the safe and effective operation of nearly all commercial and military aircraft worldwide."
+    "one_line_business": "TransDigm designs and manufactures highly engineered aircraft components, systems and subsystems for commercial and military aerospace applications."
   },
   "markets": [
-    "Needs Of The Aircraft Component",
-    "Commercial",
-    "Regional",
-    "Business Jet",
-    "General Aviation Aftermarket"
+    "Commercial aerospace",
+    "Defense aerospace",
+    "Aircraft aftermarket"
   ],
   "product_stack": [
-    "mechanical/electromechanical actuators",
-    "specialized AC/DC electric motors",
-    "advanced sensor products",
-    "switches",
-    "electronic components",
-    "hydraulic/electromechanical actuators"
+    "actuation systems",
+    "ignition systems",
+    "pumps and valves",
+    "power-control products",
+    "aircraft interiors",
+    "specialty fastening systems"
   ],
   "market_products": {},
-  "core_technologies": [],
+  "core_technologies": [
+    "aerospace actuation",
+    "fluid and power control",
+    "ignition technology",
+    "high-reliability component engineering"
+  ],
   "manufacturing": {
     "model": [],
     "locations": [],
     "critical_assets": []
   },
   "customer_types": [
-    "OEMs",
-    "distributors"
+    "aircraft manufacturers",
+    "airlines",
+    "maintenance organizations",
+    "defense agencies"
   ],
   "ai_exposure": null,
   "competitive_advantages": [],
-  "demand_drivers": [],
+  "demand_drivers": [
+    "commercial air travel",
+    "aircraft production",
+    "aftermarket maintenance",
+    "defense spending"
+  ],
   "strategy_changes": [],
   "financial_snapshot": {
     "fiscal_year": 2025,
@@ -48,29 +58,36 @@
   },
   "field_evidence": {
     "company_summary.one_line_business": [
-      "BUSINESS The Company TD Group, through its wholly-owned subsidiary, TransDigm Inc., is a leading global designer, producer and supplier of highly engineered aircraft components that are critical to the safe and effective operation of nearly all commercial and military aircraft worldwide."
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001260221-25-000081"
     ],
     "markets": [
-      "serve the needs of the aircraft component industry",
-      "customers in the commercial, regional, business jet and general aviation aftermarket, which generally account for 30% to 35% of our annual net sales; the commercial aerospace OEM market"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001260221-25-000081"
     ],
     "product_stack": [
-      "Major product offerings include mechanical/electromechanical actuators and controls, ignition systems and engine technology, specialized pumps and valves, power conditioning devices, specialized AC/DC electric motors and generators, batteries and chargers, databus and power controls, advanced sensor products, switches and relay panels, high performance hoists, winches and lifting devices, cargo loading, handling, delivery systems and electronic components used in the generation, amplification, transmission and reception of microwave signals",
-      "Major product offerings include seat belts and safety restraints for ground transportation applications, mechanical/electromechanical actuators and controls for space applications, hydraulic/electromechanical actuators and fuel valves for land-based gas turbines, and refueling systems for heavy equipment used in mining, construction and other industries and turbine controls for the energy and oil and gas markets",
-      "we offer and our organizational structure, with a focus on reducing the cost of each",
-      "we provide and the resources required to do so"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001260221-25-000081"
     ],
     "market_products": {},
-    "core_technologies": [],
-    "manufacturing": [],
-    "customer_types": [
-      "original equipment manufacturers",
-      "distributors"
+    "core_technologies": [
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001260221-25-000081"
     ],
-    "ai_exposure": [],
-    "competitive_advantages": [],
-    "demand_drivers": [],
-    "strategy_changes": [],
+    "manufacturing": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "customer_types": [
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001260221-25-000081"
+    ],
+    "ai_exposure": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "competitive_advantages": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "demand_drivers": [
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001260221-25-000081"
+    ],
+    "strategy_changes": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
     "financial_snapshot": []
   },
   "evidence": [
@@ -86,139 +103,11 @@
   ],
   "value_provenance": {
     "company_summary.one_line_business": {
-      "value": "BUSINESS The Company TD Group, through its wholly-owned subsidiary, TransDigm Inc., is a leading global designer, producer and supplier of highly engineered aircraft components that are critical to the safe and effective operation of nearly all commercial and military aircraft worldwide.",
+      "value": "TransDigm designs and manufactures highly engineered aircraft components, systems and subsystems for commercial and military aerospace applications.",
       "evidence": null
     },
-    "markets": [
-      {
-        "value": "Needs Of The Aircraft Component",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001260221-25-000081",
-          "form": "10-K",
-          "accession_number": "0001260221-25-000081",
-          "filing_date": "2025-11-12",
-          "section_type": "item_1_business",
-          "quote": "Our proprietary products, and particularly our new product initiatives, are designed by our engineers and are intended to serve the needs of the aircraft component industry.",
-          "evidence_start_character": 3875,
-          "evidence_end_character": 4048,
-          "document_start_character": 46771,
-          "document_end_character": 46944,
-          "matched_start_character": 4007,
-          "matched_end_character": 4038,
-          "text_sha256": "4794e1d6fe7dd1f28757053e3e135d6116b04218847cb62fc69642453c9b80f7"
-        }
-      },
-      {
-        "value": "Commercial",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001260221-25-000081",
-          "form": "10-K",
-          "accession_number": "0001260221-25-000081",
-          "filing_date": "2025-11-12",
-          "section_type": "item_1_business",
-          "quote": "Our portfolio of products encompasses a vast array of essential components that play pivotal roles on commercial aerospace and defense platforms, as well as other products.",
-          "evidence_start_character": 4260,
-          "evidence_end_character": 4432,
-          "document_start_character": 47156,
-          "document_end_character": 47328,
-          "matched_start_character": 4362,
-          "matched_end_character": 4372,
-          "text_sha256": "4794e1d6fe7dd1f28757053e3e135d6116b04218847cb62fc69642453c9b80f7"
-        }
-      },
-      {
-        "value": "Regional",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001260221-25-000081",
-          "form": "10-K",
-          "accession_number": "0001260221-25-000081",
-          "filing_date": "2025-11-12",
-          "section_type": "item_1_business",
-          "quote": "We predominantly serve customers in the commercial, regional, business jet and general aviation aftermarket, which generally account for 30% to 35% of our annual net sales; the commercial aerospace OEM market, comprising large commercial transport manufacturers and regional and business jet manufacturers, which generally account for 25% to 30% of our annual net sales; and the defense market (which includes defense OEMs and aftermarket sales to the U.",
-          "evidence_start_character": 8594,
-          "evidence_end_character": 9048,
-          "document_start_character": 51490,
-          "document_end_character": 51944,
-          "matched_start_character": 8646,
-          "matched_end_character": 8654,
-          "text_sha256": "4794e1d6fe7dd1f28757053e3e135d6116b04218847cb62fc69642453c9b80f7"
-        }
-      },
-      {
-        "value": "Business Jet",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001260221-25-000081",
-          "form": "10-K",
-          "accession_number": "0001260221-25-000081",
-          "filing_date": "2025-11-12",
-          "section_type": "item_1_business",
-          "quote": "We predominantly serve customers in the commercial, regional, business jet and general aviation aftermarket, which generally account for 30% to 35% of our annual net sales; the commercial aerospace OEM market, comprising large commercial transport manufacturers and regional and business jet manufacturers, which generally account for 25% to 30% of our annual net sales; and the defense market (which includes defense OEMs and aftermarket sales to the U.",
-          "evidence_start_character": 8594,
-          "evidence_end_character": 9048,
-          "document_start_character": 51490,
-          "document_end_character": 51944,
-          "matched_start_character": 8656,
-          "matched_end_character": 8668,
-          "text_sha256": "4794e1d6fe7dd1f28757053e3e135d6116b04218847cb62fc69642453c9b80f7"
-        }
-      },
-      {
-        "value": "General Aviation Aftermarket",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001260221-25-000081",
-          "form": "10-K",
-          "accession_number": "0001260221-25-000081",
-          "filing_date": "2025-11-12",
-          "section_type": "item_1_business",
-          "quote": "We predominantly serve customers in the commercial, regional, business jet and general aviation aftermarket, which generally account for 30% to 35% of our annual net sales; the commercial aerospace OEM market, comprising large commercial transport manufacturers and regional and business jet manufacturers, which generally account for 25% to 30% of our annual net sales; and the defense market (which includes defense OEMs and aftermarket sales to the U.",
-          "evidence_start_character": 8594,
-          "evidence_end_character": 9048,
-          "document_start_character": 51490,
-          "document_end_character": 51944,
-          "matched_start_character": 8673,
-          "matched_end_character": 8701,
-          "text_sha256": "4794e1d6fe7dd1f28757053e3e135d6116b04218847cb62fc69642453c9b80f7"
-        }
-      }
-    ],
-    "product_stack": [
-      {
-        "value": "organizational structure",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001260221-25-000081",
-          "form": "10-K",
-          "accession_number": "0001260221-25-000081",
-          "filing_date": "2025-11-12",
-          "section_type": "item_1_business",
-          "quote": "We are committed to maintaining and continuously improving our lean cost structure through detailed attention to the cost of each of the products that we offer and our organizational structure, with a focus on reducing the cost of each.",
-          "evidence_start_character": 2025,
-          "evidence_end_character": 2261,
-          "document_start_character": 44921,
-          "document_end_character": 45157,
-          "matched_start_character": 2193,
-          "matched_end_character": 2217,
-          "text_sha256": "4794e1d6fe7dd1f28757053e3e135d6116b04218847cb62fc69642453c9b80f7"
-        }
-      },
-      {
-        "value": "resources required to do so",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001260221-25-000081",
-          "form": "10-K",
-          "accession_number": "0001260221-25-000081",
-          "filing_date": "2025-11-12",
-          "section_type": "item_1_business",
-          "quote": "This has generally enabled us to price our products to fairly reflect the value we provide and the resources required to do so.",
-          "evidence_start_character": 2593,
-          "evidence_end_character": 2720,
-          "document_start_character": 45489,
-          "document_end_character": 45616,
-          "matched_start_character": 2692,
-          "matched_end_character": 2719,
-          "text_sha256": "4794e1d6fe7dd1f28757053e3e135d6116b04218847cb62fc69642453c9b80f7"
-        }
-      }
-    ],
+    "markets": [],
+    "product_stack": [],
     "market_products": {},
     "core_technologies": [],
     "manufacturing": {
@@ -226,73 +115,23 @@
       "locations": [],
       "critical_assets": []
     },
-    "customer_types": [
-      {
-        "value": "OEMs",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001260221-25-000081",
-          "form": "10-K",
-          "accession_number": "0001260221-25-000081",
-          "filing_date": "2025-11-12",
-          "section_type": "item_1_business",
-          "quote": "Historically, these aftermarket revenues have produced a higher gross profit and have been more stable than net sales to original equipment manufacturers (“OEMs”).",
-          "evidence_start_character": 1181,
-          "evidence_end_character": 1344,
-          "document_start_character": 44077,
-          "document_end_character": 44240,
-          "matched_start_character": 1337,
-          "matched_end_character": 1341,
-          "text_sha256": "4794e1d6fe7dd1f28757053e3e135d6116b04218847cb62fc69642453c9b80f7"
-        }
-      },
-      {
-        "value": "distributors",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001260221-25-000081",
-          "form": "10-K",
-          "accession_number": "0001260221-25-000081",
-          "filing_date": "2025-11-12",
-          "section_type": "item_1_business",
-          "quote": "Our customers include: (1) distributors of aerospace components; (2) worldwide commercial airlines, including national and regional airlines; (3) large commercial transport and regional and business aircraft OEMs; (4) various armed forces of the United States and friendly foreign governments; (5) defense OEMs; (6) system suppliers; and (7) various other industrial customers.",
-          "evidence_start_character": 9164,
-          "evidence_end_character": 9541,
-          "document_start_character": 52060,
-          "document_end_character": 52437,
-          "matched_start_character": 9191,
-          "matched_end_character": 9203,
-          "text_sha256": "4794e1d6fe7dd1f28757053e3e135d6116b04218847cb62fc69642453c9b80f7"
-        }
-      }
-    ],
+    "customer_types": [],
+    "ai_exposure": null,
     "competitive_advantages": [],
     "demand_drivers": [],
     "strategy_changes": [],
     "financial_snapshot": {
       "fiscal_year": {
         "value": 2025,
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001260221-25-000081",
-          "form": "10-K",
-          "accession_number": "0001260221-25-000081",
-          "filing_date": "2025-11-12",
-          "section_type": "item_1_business",
-          "quote": "We estimate that approximately 90% of our net sales for fiscal year 2025 were generated by proprietary products.",
-          "evidence_start_character": 488,
-          "evidence_end_character": 600,
-          "document_start_character": 43384,
-          "document_end_character": 43496,
-          "matched_start_character": 556,
-          "matched_end_character": 560,
-          "text_sha256": "4794e1d6fe7dd1f28757053e3e135d6116b04218847cb62fc69642453c9b80f7"
-        }
+        "evidence": null
       },
       "revenue_mix": {},
       "customer_concentration": {}
     }
   },
   "product_recall_enrichment": {
-    "version": "v2.6.5.7",
-    "mode": "generic_filing_native_named_product_recovery",
+    "version": "manual-2026-08-25-batch8",
+    "mode": "manual_evidence_lock",
     "discovered_product_count": 6,
     "final_product_count": 6,
     "removed_market_product_pollution": true

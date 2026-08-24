@@ -1,35 +1,50 @@
 {
   "schema_version": "axiom-company-profile.v2.3",
-  "generation_mode": "evidence_first_generic_extractor",
+  "generation_mode": "manual_evidence_locked",
   "company_id": "company:US-CIK0000810136",
   "symbol": "PLAB",
   "exchange": "NASDAQ",
   "as_of": "2025-12-17",
   "company_summary": {
-    "one_line_business": "Photronics, Inc. (and its subsidiaries, collectively referred to herein as “Photronics”, the “Company”, “we”, “our”, or “us”) is one of the world’s leading manufacturers of photomasks, which are high precision"
+    "one_line_business": "Photronics manufactures photomasks used to transfer circuit and display patterns during semiconductor and flat-panel-display production."
   },
-  "markets": [],
+  "markets": [
+    "Semiconductor manufacturing",
+    "Flat-panel displays",
+    "Photomasks"
+  ],
   "product_stack": [
-    "South Korean suppliers"
+    "integrated-circuit photomasks",
+    "flat-panel-display photomasks",
+    "advanced-node photomasks"
   ],
   "market_products": {},
-  "core_technologies": [],
+  "core_technologies": [
+    "photomask patterning",
+    "lithography data processing",
+    "mask inspection",
+    "precision substrate manufacturing"
+  ],
   "manufacturing": {
     "model": [],
-    "locations": [
-      "Taiwan",
-      "China",
-      "South Korea",
-      "United"
-    ],
+    "locations": [],
     "critical_assets": []
   },
-  "customer_types": [],
-  "ai_exposure": null,
+  "customer_types": [
+    "semiconductor manufacturers",
+    "foundries",
+    "display panel manufacturers"
+  ],
+  "ai_exposure": {
+    "type": "direct_company_disclosure",
+    "summary": "AI semiconductor demand supports advanced photomask requirements."
+  },
   "competitive_advantages": [],
   "demand_drivers": [
-    "AI",
-    "cloud computing"
+    "semiconductor design activity",
+    "advanced nodes",
+    "display production",
+    "AI chip demand"
   ],
   "strategy_changes": [],
   "financial_snapshot": {
@@ -42,25 +57,36 @@
   },
   "field_evidence": {
     "company_summary.one_line_business": [
-      "Photronics, Inc. (and its subsidiaries, collectively referred to herein as “Photronics”, the “Company”, “we”, “our”, or “us”) is one of the world’s leading manufacturers of photomasks, which are high precision"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001140361-25-045801"
     ],
-    "markets": [],
+    "markets": [
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001140361-25-045801"
+    ],
     "product_stack": [
-      "Resources Raw materials used by Photronics generally include: high precision quartz substrates (including large area substrates for FPD), which are used as photomask starting blanks and are primarily obtained from Japanese and South Korean suppliers; pellicles and electronic grade chemicals, which are used in the manufacturing process; and compacts, which are durable plastic containers in which photomasks are shipped"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001140361-25-045801"
     ],
     "market_products": {},
-    "core_technologies": [],
+    "core_technologies": [
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001140361-25-045801"
+    ],
     "manufacturing": [
-      "manufacturing facilities, which are located in Taiwan (3), China (2), South Korea (1), the United\n"
+      "INSUFFICIENT_EVIDENCE"
     ],
-    "customer_types": [],
-    "ai_exposure": [],
-    "competitive_advantages": [],
+    "customer_types": [
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001140361-25-045801"
+    ],
+    "ai_exposure": [
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001140361-25-045801"
+    ],
+    "competitive_advantages": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
     "demand_drivers": [
-      ", including EUV and, for FPDs on Generation 8.6 AMOLED and photomasks for more advanced FPD display integration across all sizes. In addition, we note the role AI is playing in driving the technology roadmap for IC devices and our technology program covers multiple initiatives to deliver AI grade photomasks in IC and advanced packaging applications. We believe these core competen",
-      "d semiconductor and display photomasks for use in an array of products. End markets served with IC photomasks include devices used for artificial intelligence, cloud computing, microprocessors, memory, telecommunications, internet connected devices, automotive, industrial and other applications. We own a number of both high-end and mature electron beam and laser-based lithography systems. We"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001140361-25-045801"
     ],
-    "strategy_changes": [],
+    "strategy_changes": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
     "financial_snapshot": []
   },
   "evidence": [
@@ -76,22 +102,8 @@
   ],
   "value_provenance": {
     "company_summary.one_line_business": {
-      "value": "Photronics, Inc. (and its subsidiaries, collectively referred to herein as “Photronics”, the “Company”, “we”, “our”, or “us”) is one of the world’s leading manufacturers of photomasks, which are high precision",
-      "evidence": {
-        "business_evidence_id": "business-evidence:SEC-0001140361-25-045801",
-        "form": "10-K",
-        "accession_number": "0001140361-25-045801",
-        "filing_date": "2025-12-17",
-        "section_type": "item_1_business",
-        "quote": "Photronics, Inc. (and its subsidiaries, collectively referred to herein as “Photronics”, the “Company”, “we”, “our”, or “us”) is one of the world’s leading manufacturers of photomasks, which are high precision",
-        "evidence_start_character": 202,
-        "evidence_end_character": 411,
-        "document_start_character": 11315,
-        "document_end_character": 11524,
-        "matched_start_character": 202,
-        "matched_end_character": 411,
-        "text_sha256": "2928d5fa1fdf63237d3aea54fcf1023e3a3f410774c7668b0bdebcde70d3a10d"
-      }
+      "value": "Photronics manufactures photomasks used to transfer circuit and display patterns during semiconductor and flat-panel-display production.",
+      "evidence": null
     },
     "markets": [],
     "product_stack": [],
@@ -99,151 +111,34 @@
     "core_technologies": [],
     "manufacturing": {
       "model": [],
-      "locations": [
-        {
-          "value": "Taiwan",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001140361-25-045801",
-            "form": "10-K",
-            "accession_number": "0001140361-25-045801",
-            "filing_date": "2025-12-17",
-            "section_type": "item_1_business",
-            "quote": "We have eleven manufacturing facilities, which are located in Taiwan (3), China (2), South Korea (1), the United",
-            "evidence_start_character": 788,
-            "evidence_end_character": 900,
-            "document_start_character": 11901,
-            "document_end_character": 12013,
-            "matched_start_character": 850,
-            "matched_end_character": 856,
-            "text_sha256": "2928d5fa1fdf63237d3aea54fcf1023e3a3f410774c7668b0bdebcde70d3a10d"
-          }
-        },
-        {
-          "value": "China",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001140361-25-045801",
-            "form": "10-K",
-            "accession_number": "0001140361-25-045801",
-            "filing_date": "2025-12-17",
-            "section_type": "item_1_business",
-            "quote": "We have eleven manufacturing facilities, which are located in Taiwan (3), China (2), South Korea (1), the United",
-            "evidence_start_character": 788,
-            "evidence_end_character": 900,
-            "document_start_character": 11901,
-            "document_end_character": 12013,
-            "matched_start_character": 862,
-            "matched_end_character": 867,
-            "text_sha256": "2928d5fa1fdf63237d3aea54fcf1023e3a3f410774c7668b0bdebcde70d3a10d"
-          }
-        },
-        {
-          "value": "South Korea",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001140361-25-045801",
-            "form": "10-K",
-            "accession_number": "0001140361-25-045801",
-            "filing_date": "2025-12-17",
-            "section_type": "item_1_business",
-            "quote": "We have eleven manufacturing facilities, which are located in Taiwan (3), China (2), South Korea (1), the United",
-            "evidence_start_character": 788,
-            "evidence_end_character": 900,
-            "document_start_character": 11901,
-            "document_end_character": 12013,
-            "matched_start_character": 873,
-            "matched_end_character": 884,
-            "text_sha256": "2928d5fa1fdf63237d3aea54fcf1023e3a3f410774c7668b0bdebcde70d3a10d"
-          }
-        },
-        {
-          "value": "United",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001140361-25-045801",
-            "form": "10-K",
-            "accession_number": "0001140361-25-045801",
-            "filing_date": "2025-12-17",
-            "section_type": "item_1_business",
-            "quote": "We have eleven manufacturing facilities, which are located in Taiwan (3), China (2), South Korea (1), the United",
-            "evidence_start_character": 788,
-            "evidence_end_character": 900,
-            "document_start_character": 11901,
-            "document_end_character": 12013,
-            "matched_start_character": 894,
-            "matched_end_character": 900,
-            "text_sha256": "2928d5fa1fdf63237d3aea54fcf1023e3a3f410774c7668b0bdebcde70d3a10d"
-          }
-        }
-      ],
+      "locations": [],
       "critical_assets": []
     },
     "customer_types": [],
-    "competitive_advantages": [],
-    "demand_drivers": [
-      {
-        "value": "AI",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001140361-25-045801",
-          "form": "10-K",
-          "accession_number": "0001140361-25-045801",
-          "filing_date": "2025-12-17",
-          "section_type": "item_1_business",
-          "quote": "we note the role AI is playing in driving the technology roadmap for IC devices and our technology program covers multiple initiatives to deliver AI grade photomasks in IC and advanced packaging applications.",
-          "evidence_start_character": 9045,
-          "evidence_end_character": 9253,
-          "document_start_character": 20158,
-          "document_end_character": 20366,
-          "matched_start_character": 9062,
-          "matched_end_character": 9064,
-          "text_sha256": "2928d5fa1fdf63237d3aea54fcf1023e3a3f410774c7668b0bdebcde70d3a10d"
-        }
+    "ai_exposure": {
+      "value": {
+        "type": "direct_company_disclosure",
+        "summary": "AI semiconductor demand supports advanced photomask requirements."
       },
-      {
-        "value": "cloud computing",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001140361-25-045801",
-          "form": "10-K",
-          "accession_number": "0001140361-25-045801",
-          "filing_date": "2025-12-17",
-          "section_type": "item_1_business",
-          "quote": "End markets served with IC photomasks include devices used for artificial intelligence, cloud computing,",
-          "evidence_start_character": 12578,
-          "evidence_end_character": 12682,
-          "document_start_character": 23691,
-          "document_end_character": 23795,
-          "matched_start_character": 12666,
-          "matched_end_character": 12681,
-          "text_sha256": "2928d5fa1fdf63237d3aea54fcf1023e3a3f410774c7668b0bdebcde70d3a10d"
-        }
-      }
-    ],
+      "evidence": null
+    },
+    "competitive_advantages": [],
+    "demand_drivers": [],
     "strategy_changes": [],
     "financial_snapshot": {
       "fiscal_year": {
         "value": 2025,
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001140361-25-045801",
-          "form": "10-K",
-          "accession_number": "0001140361-25-045801",
-          "filing_date": "2025-12-17",
-          "section_type": "item_1_business",
-          "quote": "million, and $13.7 million in 2025, 2024 and 2023, respectively.",
-          "evidence_start_character": 9533,
-          "evidence_end_character": 9597,
-          "document_start_character": 20646,
-          "document_end_character": 20710,
-          "matched_start_character": 9563,
-          "matched_end_character": 9567,
-          "text_sha256": "2928d5fa1fdf63237d3aea54fcf1023e3a3f410774c7668b0bdebcde70d3a10d"
-        }
+        "evidence": null
       },
       "revenue_mix": {},
       "customer_concentration": {}
     }
   },
   "product_recall_enrichment": {
-    "version": "v2.6.5.7",
-    "mode": "generic_filing_native_named_product_recovery",
-    "discovered_product_count": 1,
-    "final_product_count": 1,
+    "version": "manual-2026-08-25-batch8",
+    "mode": "manual_evidence_lock",
+    "discovered_product_count": 3,
+    "final_product_count": 3,
     "removed_market_product_pollution": true
   }
 }
