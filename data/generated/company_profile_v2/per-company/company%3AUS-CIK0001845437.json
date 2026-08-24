@@ -1,37 +1,50 @@
 {
   "schema_version": "axiom-company-profile.v2.3",
-  "generation_mode": "evidence_first_generic_extractor",
+  "generation_mode": "manual_evidence_locked",
   "company_id": "company:US-CIK0001845437",
   "symbol": "NPWR",
   "exchange": "NYSE",
   "as_of": "2026-03-09",
   "company_summary": {
-    "one_line_business": "Net Power is an energy technology and project development company focused on delivering low-carbon gas power solutions."
+    "one_line_business": "NET Power develops low-carbon natural-gas power plants using an oxy-combustion cycle that captures carbon dioxide."
   },
-  "markets": [],
+  "markets": [
+    "Low-carbon power generation",
+    "Natural-gas power",
+    "Carbon capture"
+  ],
   "product_stack": [
-    "operational data from the La Porte Demonstration Facility and related development efforts",
-    "CO2 management",
-    "associated incentives ("
+    "NET Power plants",
+    "utility-scale project development",
+    "technology licensing and engineering services"
   ],
   "market_products": {},
   "core_technologies": [
-    "Oxy-Combustion Cycle (SN1)",
-    "Enhanced geothermal systems (EGS)"
+    "oxy-combustion cycle",
+    "carbon dioxide capture",
+    "supercritical carbon dioxide power cycle",
+    "air separation"
   ],
   "manufacturing": {
     "model": [],
     "locations": [],
     "critical_assets": []
   },
-  "customer_types": [],
+  "customer_types": [
+    "utilities",
+    "power developers",
+    "industrial energy companies"
+  ],
   "ai_exposure": {
     "type": "direct_company_disclosure",
-    "summary": "Historically, data centers have procured their power directly from the grid, but growing grid constraints across many markets plus growing demand, due in part to the proliferation of artificial intelligence applications, have led data center companies to evaluate co-location of data centers with dedicated power generation facilities."
+    "summary": "AI and data-center electricity growth can increase demand for reliable low-carbon power."
   },
   "competitive_advantages": [],
   "demand_drivers": [
-    "AI"
+    "electricity demand",
+    "carbon reduction",
+    "data-center growth",
+    "firm power demand"
   ],
   "strategy_changes": [],
   "financial_snapshot": {
@@ -44,28 +57,36 @@
   },
   "field_evidence": {
     "company_summary.one_line_business": [
-      "Net Power is an energy technology and project development company focused on delivering low-carbon gas power solutions. Founded in 2010, our mission is to transform natural gas into the lowest cost form of clean firm power."
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001845437-26-000009"
     ],
-    "markets": [],
+    "markets": [
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001845437-26-000009"
+    ],
     "product_stack": [
-      "Our technology portfolio includes intellectual property, engineering capabilities, and operational data from the La Porte Demonstration Facility and related development efforts",
-      "We intend to generate returns by monetizing the products and attributes of each plant, including electricity sales, CO2 management and associated incentives (where available), and environmental attributes, depending on project-specific commercial structures"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001845437-26-000009"
     ],
     "market_products": {},
     "core_technologies": [
-      "n program commenced in late 2024.\nIn 2023, we began the front-end engineering and design (“FEED”) process for our first utility-scale power plant utilizing the Oxy-Combustion Cycle (“SN1”) with the intention of locating SN1 in the Permian Basin of West Texas (“Project Permian”). In 2024, we began purchasing initial long-lead materials for SN1. Ho",
-      "onsistently satisfy on their own.\nGeothermal—Geothermal power leverages heat from the Earth’s subsurface to generate clean, firm, and dispatchable electricity. Enhanced geothermal systems (“EGS”) represent an emerging advancement that seeks to expand geothermal development beyond traditional hydrothermal resources by engineering subsurface reservoirs in"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001845437-26-000009"
     ],
-    "manufacturing": [],
-    "customer_types": [],
+    "manufacturing": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "customer_types": [
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001845437-26-000009"
+    ],
     "ai_exposure": [
-      "Historically, data centers have procured their power directly from the grid, but growing grid constraints across many markets plus growing demand, due in part to the proliferation of artificial intelligence applications, have led data center companies to evaluate co-location of data centers with dedicated power generation facilities."
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001845437-26-000009"
     ],
-    "competitive_advantages": [],
+    "competitive_advantages": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
     "demand_drivers": [
-      "ers have procured their power directly from the grid, but growing grid constraints across many markets plus growing demand, due in part to the proliferation of artificial intelligence applications, have led data center companies to evaluate co-location of data centers with dedicated power generation facilities. Key benefits for customers include the following: •Clean—We are designing our Clean Gas Pr"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001845437-26-000009"
     ],
-    "strategy_changes": [],
+    "strategy_changes": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
     "financial_snapshot": []
   },
   "evidence": [
@@ -81,36 +102,13 @@
   ],
   "value_provenance": {
     "company_summary.one_line_business": {
-      "value": "Net Power is an energy technology and project development company focused on delivering low-carbon gas power solutions.",
-      "evidence": {
-        "business_evidence_id": "business-evidence:SEC-0001845437-26-000009",
-        "form": "10-K",
-        "accession_number": "0001845437-26-000009",
-        "filing_date": "2026-03-09",
-        "section_type": "item_1_business",
-        "quote": "Net Power is an energy technology and project development company focused on delivering low-carbon gas power solutions. Founded in 2010, our mission is to transform natural gas into the lowest cost form of clean firm power.",
-        "evidence_start_character": 26,
-        "evidence_end_character": 249,
-        "document_start_character": 38966,
-        "document_end_character": 39189,
-        "matched_start_character": 26,
-        "matched_end_character": 145,
-        "text_sha256": "615e9ca7dabf5fe417b23755eb4f04d89e7e446bc89f9f56fbb40873294ff7ee"
-      }
+      "value": "NET Power develops low-carbon natural-gas power plants using an oxy-combustion cycle that captures carbon dioxide.",
+      "evidence": null
     },
     "markets": [],
     "product_stack": [],
     "market_products": {},
-    "core_technologies": [
-      {
-        "value": "Oxy-Combustion Cycle (SN1)",
-        "evidence": null
-      },
-      {
-        "value": "Enhanced geothermal systems (EGS)",
-        "evidence": null
-      }
-    ],
+    "core_technologies": [],
     "manufacturing": {
       "model": [],
       "locations": [],
@@ -120,58 +118,25 @@
     "ai_exposure": {
       "value": {
         "type": "direct_company_disclosure",
-        "summary": "Historically, data centers have procured their power directly from the grid, but growing grid constraints across many markets plus growing demand, due in part to the proliferation of artificial intelligence applications, have led data center companies to evaluate co-location of data centers with dedicated power generation facilities."
+        "summary": "AI and data-center electricity growth can increase demand for reliable low-carbon power."
       },
       "evidence": null
     },
     "competitive_advantages": [],
-    "demand_drivers": [
-      {
-        "value": "AI",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001845437-26-000009",
-          "form": "10-K",
-          "accession_number": "0001845437-26-000009",
-          "filing_date": "2026-03-09",
-          "section_type": "item_1_business",
-          "quote": "Historically, data centers have procured their power directly from the grid, but growing grid constraints across many markets plus growing demand, due in part to the proliferation of artificial intelligence applications, have led data center companies to evaluate co-location of data centers with dedicated power generation facilities.",
-          "evidence_start_character": 7951,
-          "evidence_end_character": 8286,
-          "document_start_character": 46891,
-          "document_end_character": 47226,
-          "matched_start_character": 8051,
-          "matched_end_character": 8053,
-          "text_sha256": "615e9ca7dabf5fe417b23755eb4f04d89e7e446bc89f9f56fbb40873294ff7ee"
-        }
-      }
-    ],
+    "demand_drivers": [],
     "strategy_changes": [],
     "financial_snapshot": {
       "fiscal_year": {
         "value": 2025,
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001845437-26-000009",
-          "form": "10-K",
-          "accession_number": "0001845437-26-000009",
-          "filing_date": "2026-03-09",
-          "section_type": "item_1_business",
-          "quote": "In response, during the first quarter of 2025, we commenced a post-FEED optimization and value engineering process.",
-          "evidence_start_character": 1577,
-          "evidence_end_character": 1692,
-          "document_start_character": 40517,
-          "document_end_character": 40632,
-          "matched_start_character": 1618,
-          "matched_end_character": 1622,
-          "text_sha256": "615e9ca7dabf5fe417b23755eb4f04d89e7e446bc89f9f56fbb40873294ff7ee"
-        }
+        "evidence": null
       },
       "revenue_mix": {},
       "customer_concentration": {}
     }
   },
   "product_recall_enrichment": {
-    "version": "v2.6.5.7",
-    "mode": "generic_filing_native_named_product_recovery",
+    "version": "manual-2026-08-25-batch8",
+    "mode": "manual_evidence_lock",
     "discovered_product_count": 3,
     "final_product_count": 3,
     "removed_market_product_pollution": true

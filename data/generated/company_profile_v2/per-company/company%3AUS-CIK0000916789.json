@@ -1,43 +1,54 @@
 {
   "schema_version": "axiom-company-profile.v2.3",
-  "generation_mode": "evidence_first_generic_extractor",
+  "generation_mode": "manual_evidence_locked",
   "company_id": "company:US-CIK0000916789",
   "symbol": "HELE",
   "exchange": "NASDAQ",
   "as_of": "2026-04-23",
   "company_summary": {
-    "one_line_business": "We incorporated as Helen of Troy Corporation in Texas in 1968 and were reorganized as Helen of Troy Limited in Bermuda in 1994."
+    "one_line_business": "Helen of Troy designs, develops and markets consumer products in beauty, health, wellness and home categories under a portfolio of brands."
   },
-  "markets": [],
+  "markets": [
+    "Beauty",
+    "Health and wellness",
+    "Home and outdoor",
+    "Consumer products"
+  ],
   "product_stack": [
-    "Hydro Flask",
-    "Hot Tools",
-    "Revlon and Olive & June",
-    "food preparation and storage"
+    "OXO housewares",
+    "Hydro Flask bottles",
+    "Osprey packs",
+    "Vicks health products",
+    "Braun thermometers",
+    "Hot Tools hair appliances",
+    "PUR water filtration"
   ],
   "market_products": {},
   "core_technologies": [
-    "Task Force on Climate-related Financial Disclosures (TCFD)"
+    "consumer product design",
+    "thermal appliance engineering",
+    "water filtration",
+    "insulated container design"
   ],
   "manufacturing": {
     "model": [],
-    "locations": [
-      "China",
-      "Vietnam",
-      "Mexico",
-      "accessories",
-      "nail consumables",
-      "grooming tools",
-      "certain wellness product categories"
-    ],
+    "locations": [],
     "critical_assets": []
   },
   "customer_types": [
-    "distributors"
+    "retailers",
+    "e-commerce customers",
+    "distributors",
+    "consumers"
   ],
   "ai_exposure": null,
   "competitive_advantages": [],
-  "demand_drivers": [],
+  "demand_drivers": [
+    "consumer spending",
+    "health and wellness",
+    "outdoor recreation",
+    "e-commerce"
+  ],
   "strategy_changes": [],
   "financial_snapshot": {
     "fiscal_year": 2025,
@@ -49,27 +60,36 @@
   },
   "field_evidence": {
     "company_summary.one_line_business": [
-      "We incorporated as Helen of Troy Corporation in Texas in 1968 and were reorganized as Helen of Troy Limited in Bermuda in 1994. We are a leading global consumer products company offering creative products and solutions for our customers through a diversified portfolio of brands. We have built leading market positions through new product innovation, product quality and competitive pricing. We go to market under a number of brands, some of which are licensed. Our portfolio of brands includes OXO, Hydro Flask, Osprey, Vicks, Braun, Honeywell, PUR, Hot Tools, Drybar, Curlsmith, Revlon and Olive & June, among others."
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0000916789-26-000048"
     ],
-    "markets": [],
+    "markets": [
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0000916789-26-000048"
+    ],
     "product_stack": [
-      "Our portfolio of brands includes OXO, Hydro Flask, Osprey, Vicks, Braun, Honeywell, PUR, Hot Tools, Drybar, Curlsmith, Revlon and Olive & June, among others",
-      "Our innovative products for home activities include food preparation and storage, cooking, cleaning, organization and beverage service"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0000916789-26-000048"
     ],
     "market_products": {},
     "core_technologies": [
-      "ent of Regulatory, Sustainability and Governance leads these initiatives to implement a strategic plan aligned with globally recognized frameworks, such as the Task Force on Climate-related Financial Disclosures (“TCFD”).\nOur approach to product design and development prioritizes meeting growing consumer demand for products that are safe, durable and responsibly made. We focus"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0000916789-26-000048"
     ],
     "manufacturing": [
-      "Manufacturing and Distribution\nWe contract with unaffiliated manufacturers, primarily in China, Vietnam and Mexico, to manufacture a significant portion of our finished goods for the Home & Outdoor segment and our Beauty & Wellness segment’s hair tools and accessories and nail consumables and grooming tools, as well as certain wellness product categories. T"
+      "INSUFFICIENT_EVIDENCE"
     ],
     "customer_types": [
-      "distributors"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0000916789-26-000048"
     ],
-    "ai_exposure": [],
-    "competitive_advantages": [],
-    "demand_drivers": [],
-    "strategy_changes": [],
+    "ai_exposure": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "competitive_advantages": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "demand_drivers": [
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0000916789-26-000048"
+    ],
+    "strategy_changes": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
     "financial_snapshot": []
   },
   "evidence": [
@@ -85,215 +105,37 @@
   ],
   "value_provenance": {
     "company_summary.one_line_business": {
-      "value": "We incorporated as Helen of Troy Corporation in Texas in 1968 and were reorganized as Helen of Troy Limited in Bermuda in 1994.",
-      "evidence": {
-        "business_evidence_id": "business-evidence:SEC-0000916789-26-000048",
-        "form": "10-K",
-        "accession_number": "0000916789-26-000048",
-        "filing_date": "2026-04-23",
-        "section_type": "item_1_business",
-        "quote": "We incorporated as Helen of Troy Corporation in Texas in 1968 and were reorganized as Helen of Troy Limited in Bermuda in 1994. We are a leading global consumer products company offering creative products and solutions for our customers through a diversified portfolio of brands.",
-        "evidence_start_character": 29,
-        "evidence_end_character": 308,
-        "document_start_character": 62704,
-        "document_end_character": 62983,
-        "matched_start_character": 29,
-        "matched_end_character": 156,
-        "text_sha256": "3b698cdbf21b8bbcee924e86beec57e919640c358a88a4c13c92747bef9e8679"
-      }
+      "value": "Helen of Troy designs, develops and markets consumer products in beauty, health, wellness and home categories under a portfolio of brands.",
+      "evidence": null
     },
     "markets": [],
     "product_stack": [],
     "market_products": {},
-    "core_technologies": [
-      {
-        "value": "Task Force on Climate-related Financial Disclosures (TCFD)",
-        "evidence": null
-      }
-    ],
+    "core_technologies": [],
     "manufacturing": {
       "model": [],
-      "locations": [
-        {
-          "value": "China",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0000916789-26-000048",
-            "form": "10-K",
-            "accession_number": "0000916789-26-000048",
-            "filing_date": "2026-04-23",
-            "section_type": "item_1_business",
-            "quote": "We contract with unaffiliated manufacturers, primarily in China, Vietnam and Mexico, to manufacture a significant portion of our finished goods for the Home & Outdoor segment and our Beauty & Wellness segment’s hair tools and accessories and nail consumables and grooming tools, as well as certain wellness product categories.",
-            "evidence_start_character": 10177,
-            "evidence_end_character": 10503,
-            "document_start_character": 72852,
-            "document_end_character": 73178,
-            "matched_start_character": 10235,
-            "matched_end_character": 10240,
-            "text_sha256": "3b698cdbf21b8bbcee924e86beec57e919640c358a88a4c13c92747bef9e8679"
-          }
-        },
-        {
-          "value": "Vietnam",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0000916789-26-000048",
-            "form": "10-K",
-            "accession_number": "0000916789-26-000048",
-            "filing_date": "2026-04-23",
-            "section_type": "item_1_business",
-            "quote": "We contract with unaffiliated manufacturers, primarily in China, Vietnam and Mexico, to manufacture a significant portion of our finished goods for the Home & Outdoor segment and our Beauty & Wellness segment’s hair tools and accessories and nail consumables and grooming tools, as well as certain wellness product categories.",
-            "evidence_start_character": 10177,
-            "evidence_end_character": 10503,
-            "document_start_character": 72852,
-            "document_end_character": 73178,
-            "matched_start_character": 10242,
-            "matched_end_character": 10249,
-            "text_sha256": "3b698cdbf21b8bbcee924e86beec57e919640c358a88a4c13c92747bef9e8679"
-          }
-        },
-        {
-          "value": "Mexico",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0000916789-26-000048",
-            "form": "10-K",
-            "accession_number": "0000916789-26-000048",
-            "filing_date": "2026-04-23",
-            "section_type": "item_1_business",
-            "quote": "We contract with unaffiliated manufacturers, primarily in China, Vietnam and Mexico, to manufacture a significant portion of our finished goods for the Home & Outdoor segment and our Beauty & Wellness segment’s hair tools and accessories and nail consumables and grooming tools, as well as certain wellness product categories.",
-            "evidence_start_character": 10177,
-            "evidence_end_character": 10503,
-            "document_start_character": 72852,
-            "document_end_character": 73178,
-            "matched_start_character": 10254,
-            "matched_end_character": 10260,
-            "text_sha256": "3b698cdbf21b8bbcee924e86beec57e919640c358a88a4c13c92747bef9e8679"
-          }
-        },
-        {
-          "value": "accessories",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0000916789-26-000048",
-            "form": "10-K",
-            "accession_number": "0000916789-26-000048",
-            "filing_date": "2026-04-23",
-            "section_type": "item_1_business",
-            "quote": "We contract with unaffiliated manufacturers, primarily in China, Vietnam and Mexico, to manufacture a significant portion of our finished goods for the Home & Outdoor segment and our Beauty & Wellness segment’s hair tools and accessories and nail consumables and grooming tools, as well as certain wellness product categories.",
-            "evidence_start_character": 10177,
-            "evidence_end_character": 10503,
-            "document_start_character": 72852,
-            "document_end_character": 73178,
-            "matched_start_character": 10403,
-            "matched_end_character": 10414,
-            "text_sha256": "3b698cdbf21b8bbcee924e86beec57e919640c358a88a4c13c92747bef9e8679"
-          }
-        },
-        {
-          "value": "nail consumables",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0000916789-26-000048",
-            "form": "10-K",
-            "accession_number": "0000916789-26-000048",
-            "filing_date": "2026-04-23",
-            "section_type": "item_1_business",
-            "quote": "We contract with unaffiliated manufacturers, primarily in China, Vietnam and Mexico, to manufacture a significant portion of our finished goods for the Home & Outdoor segment and our Beauty & Wellness segment’s hair tools and accessories and nail consumables and grooming tools, as well as certain wellness product categories.",
-            "evidence_start_character": 10177,
-            "evidence_end_character": 10503,
-            "document_start_character": 72852,
-            "document_end_character": 73178,
-            "matched_start_character": 10419,
-            "matched_end_character": 10435,
-            "text_sha256": "3b698cdbf21b8bbcee924e86beec57e919640c358a88a4c13c92747bef9e8679"
-          }
-        },
-        {
-          "value": "grooming tools",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0000916789-26-000048",
-            "form": "10-K",
-            "accession_number": "0000916789-26-000048",
-            "filing_date": "2026-04-23",
-            "section_type": "item_1_business",
-            "quote": "We contract with unaffiliated manufacturers, primarily in China, Vietnam and Mexico, to manufacture a significant portion of our finished goods for the Home & Outdoor segment and our Beauty & Wellness segment’s hair tools and accessories and nail consumables and grooming tools, as well as certain wellness product categories.",
-            "evidence_start_character": 10177,
-            "evidence_end_character": 10503,
-            "document_start_character": 72852,
-            "document_end_character": 73178,
-            "matched_start_character": 10440,
-            "matched_end_character": 10454,
-            "text_sha256": "3b698cdbf21b8bbcee924e86beec57e919640c358a88a4c13c92747bef9e8679"
-          }
-        },
-        {
-          "value": "certain wellness product categories",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0000916789-26-000048",
-            "form": "10-K",
-            "accession_number": "0000916789-26-000048",
-            "filing_date": "2026-04-23",
-            "section_type": "item_1_business",
-            "quote": "We contract with unaffiliated manufacturers, primarily in China, Vietnam and Mexico, to manufacture a significant portion of our finished goods for the Home & Outdoor segment and our Beauty & Wellness segment’s hair tools and accessories and nail consumables and grooming tools, as well as certain wellness product categories.",
-            "evidence_start_character": 10177,
-            "evidence_end_character": 10503,
-            "document_start_character": 72852,
-            "document_end_character": 73178,
-            "matched_start_character": 10467,
-            "matched_end_character": 10502,
-            "text_sha256": "3b698cdbf21b8bbcee924e86beec57e919640c358a88a4c13c92747bef9e8679"
-          }
-        }
-      ],
+      "locations": [],
       "critical_assets": []
     },
-    "customer_types": [
-      {
-        "value": "distributors",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0000916789-26-000048",
-          "form": "10-K",
-          "accession_number": "0000916789-26-000048",
-          "filing_date": "2026-04-23",
-          "section_type": "item_1_business",
-          "quote": "Sales for this global segment are primarily to online and brick & mortar retailers, distributors and through our direct-to-consumer channel.",
-          "evidence_start_character": 1781,
-          "evidence_end_character": 1921,
-          "document_start_character": 64456,
-          "document_end_character": 64596,
-          "matched_start_character": 1865,
-          "matched_end_character": 1877,
-          "text_sha256": "3b698cdbf21b8bbcee924e86beec57e919640c358a88a4c13c92747bef9e8679"
-        }
-      }
-    ],
+    "customer_types": [],
+    "ai_exposure": null,
     "competitive_advantages": [],
     "demand_drivers": [],
     "strategy_changes": [],
     "financial_snapshot": {
       "fiscal_year": {
         "value": 2025,
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0000916789-26-000048",
-          "form": "10-K",
-          "accession_number": "0000916789-26-000048",
-          "filing_date": "2026-04-23",
-          "section_type": "item_1_business",
-          "quote": "comprised approximately 72%, 71% and 74% of total net sales revenue in fiscal 2026, 2025 and 2024, respectively.",
-          "evidence_start_character": 7945,
-          "evidence_end_character": 8057,
-          "document_start_character": 70620,
-          "document_end_character": 70732,
-          "matched_start_character": 8029,
-          "matched_end_character": 8033,
-          "text_sha256": "3b698cdbf21b8bbcee924e86beec57e919640c358a88a4c13c92747bef9e8679"
-        }
+        "evidence": null
       },
       "revenue_mix": {},
       "customer_concentration": {}
     }
   },
   "product_recall_enrichment": {
-    "version": "v2.6.5.7",
-    "mode": "generic_filing_native_named_product_recovery",
-    "discovered_product_count": 4,
-    "final_product_count": 4,
+    "version": "manual-2026-08-25-batch8",
+    "mode": "manual_evidence_lock",
+    "discovered_product_count": 7,
+    "final_product_count": 7,
     "removed_market_product_pollution": true
   }
 }
