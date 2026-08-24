@@ -161,6 +161,39 @@ _CORPORATE_JOB_TITLE_RE = re.compile(
 )
 
 
+def _is_semantic_product_noise(value: str) -> bool:
+    candidate = _V2657["_normalize_product_candidate"](value)
+    lower = candidate.casefold()
+
+    if lower in {"modular platforms", "every processor"}:
+        return True
+
+    if lower.startswith((
+        "are essential ",
+        "are required ",
+        "are used ",
+        "available embedded ",
+        "these products ",
+        "life sciences products under ",
+        "monitors with ",
+    )):
+        return True
+
+    if (
+        "licensed from third parties" in lower
+        or lower.endswith((" brands", " for private"))
+        or re.match(
+            r"^(?:lower|higher|reduced|improved)\s+\w+\s+"
+            r"(?:between|across|for|with)\b",
+            lower,
+        )
+        or re.search(r"\bcommunications\s+on\s+one\b.*\bplatform$", lower)
+    ):
+        return True
+
+    return False
+
+
 def _product_candidate_allowed(
     value: str,
 ) -> bool:
@@ -169,6 +202,9 @@ def _product_candidate_allowed(
     ](value)
 
     if _CORPORATE_JOB_TITLE_RE.fullmatch(candidate):
+        return False
+
+    if _is_semantic_product_noise(candidate):
         return False
 
     if (
@@ -337,6 +373,12 @@ def _explicit_owned_product_candidates(
 def _normalize_relation_product(value: str) -> str:
     candidate = _V2657["_normalize_product_candidate"](value)
     candidate = re.sub(
+        r"^(?:following:\s*[•\-]?|three\s+different\s+product\s+lines:\s*)",
+        "",
+        candidate,
+        flags=re.IGNORECASE,
+    ).strip()
+    candidate = re.sub(
         r"^higher\s+performance\s+",
         "",
         candidate,
@@ -412,7 +454,37 @@ def _brand_relation_members(text: str) -> set[str]:
             candidate = _V2657["_normalize_product_candidate"](piece)
             if candidate:
                 members.add(candidate.casefold())
+    sold_under_pattern = re.compile(
+        r"\bsell\s+[^.]{0,80}?products?\s+under\s+(?:the\s+)?"
+        r"(.+?)\s+brands\b",
+        flags=re.IGNORECASE,
+    )
+    for match in sold_under_pattern.finditer(text):
+        for piece in re.split(r",|\s+and\s+", match.group(1)):
+            candidate = _V2657["_normalize_product_candidate"](piece)
+            if candidate:
+                members.add(re.sub(r"®$", "", candidate).casefold())
     return members
+
+
+def _non_owned_product_candidates(text: str) -> set[str]:
+    values: set[str] = set()
+    pattern = re.compile(
+        r"\bour\s+products?\s+with\s+others,?\s+including\s+(.+?)"
+        r"(?:,?\s+and\s+resell|\.|;)",
+        flags=re.IGNORECASE,
+    )
+    for match in pattern.finditer(text):
+        captured_candidate = _V2657["_normalize_product_candidate"](
+            match.group(1)
+        )
+        if captured_candidate:
+            values.add(captured_candidate.casefold())
+        for piece in re.split(r",|\s+and\s+", match.group(1)):
+            candidate = _V2657["_normalize_product_candidate"](piece)
+            if candidate:
+                values.add(candidate.casefold())
+    return values
 
 
 def _non_product_enumeration_candidates(text: str) -> set[str]:
@@ -424,6 +496,23 @@ def _non_product_enumeration_candidates(text: str) -> set[str]:
     )
     for match in pattern.finditer(text):
         for piece in re.split(r",|\s+and\s+", match.group(1)):
+            candidate = _V2657["_normalize_product_candidate"](piece)
+            if candidate:
+                values.add(candidate.casefold())
+    return values
+
+
+def _descriptive_product_tail_candidates(text: str) -> set[str]:
+    """Identify nouns in a use/benefit clause following an owned product list."""
+    values: set[str] = set()
+    pattern = re.compile(
+        r"\bour\s+[^.]{0,80}?products?\b[^.]{0,240}?\binclude\b[^.]{0,300}?"
+        r"\bare\s+(?:essential|required|used|designed|intended)\b(.+?)(?:\.|;)",
+        flags=re.IGNORECASE,
+    )
+    for match in pattern.finditer(text):
+        captured = match.group(1)
+        for piece in re.split(r",|\s+and\s+", captured):
             candidate = _V2657["_normalize_product_candidate"](piece)
             if candidate:
                 values.add(candidate.casefold())
@@ -450,6 +539,8 @@ def _enrich_profile_product_recall(
     recalled, recalled_evidence = _explicit_owned_product_candidates(raw_text)
     application_values = _application_relation_candidates(raw_text)
     non_product_enumerations = _non_product_enumeration_candidates(raw_text)
+    descriptive_product_tails = _descriptive_product_tail_candidates(raw_text)
+    non_owned_products = _non_owned_product_candidates(raw_text)
     brand_members = _brand_relation_members(raw_text)
 
     refined = []
@@ -465,6 +556,10 @@ def _enrich_profile_product_recall(
             or _CORPORATE_JOB_TITLE_RE.fullmatch(value)
             or lower in application_values
             or lower in non_product_enumerations
+            or lower in descriptive_product_tails
+            or lower in non_owned_products
+            or lower in brand_members
+            or _is_semantic_product_noise(value)
             or lower == "integrated modules"
             or re.fullmatch(
                 r"\d+\s+stage\s+linac\s+with\s+energies\s+up\s+to\s+.+",
@@ -491,6 +586,8 @@ def _enrich_profile_product_recall(
     # model token is a prefix of another (for example, H versus H200).
     for value in recalled:
         normalized = _normalize_relation_product(value)
+        if _is_semantic_product_noise(normalized):
+            continue
         if normalized and normalized.casefold() not in final_keys:
             final_products.append(normalized)
             final_keys.add(normalized.casefold())

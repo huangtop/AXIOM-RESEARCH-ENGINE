@@ -137,6 +137,206 @@ def test_existing_legitimate_manufacturing_geographies_survive() -> None:
         assert locations.issubset(profile["manufacturing"]["locations"])
 
 
+def test_manufacturing_relation_noise_is_not_promoted_as_geography() -> None:
+    assert _profile("ACMR")["manufacturing"]["locations"] == []
+    assert _profile("HEI")["manufacturing"]["locations"] == []
+    assert _profile("DCO")["manufacturing"]["locations"] == []
+    assert _profile("ASYS")["manufacturing"]["locations"] == []
+    assert _profile("AIR")["manufacturing"]["locations"] == []
+    assert _profile("GILT")["manufacturing"]["locations"] == [
+        "Sofia",
+        "Bulgaria",
+    ]
+
+
+def test_manufacturing_precision_controls_remain_stable() -> None:
+    assert _profile("LITE")["manufacturing"]["locations"] == ["Asia"]
+    assert _profile("CTS")["manufacturing"]["locations"] == [
+        "North America",
+        "Asia",
+        "Europe",
+    ]
+
+    for symbol in ("MPWR", "ERIC", "ARW"):
+        assert _profile(symbol)["manufacturing"]["locations"] == []
+
+
+def test_core_technology_entities_roles_and_fragments_are_rejected() -> None:
+    rejected = {
+        "ALAB": {"Restriction of Chemicals (REACH)"},
+        "AEIS": {
+            "Our strategy is to outgrow the wafer fabrication equipment (WFE)",
+        },
+        "HEI": {
+            "Federal Aviation Administration (FAA)",
+            "Our Electronic Technologies Group (ETG)",
+            "FAA-qualified designated engineering representative (DER)",
+            "Repair and Overhaul (MRO)",
+            "FAA and European Aviation Safety Agency (EASA)",
+        },
+        "GLW": {
+            "This glass has been optimized for oxide thin-film transistor (TFT)",
+            "TFT backplanes through low temperature poly-silicon (LTPS)",
+            "General Counsel at Worthington Steel Processing and Worthington Armstrong Venture (WAVE)",
+        },
+        "AIR": {
+            "LLC (ADI)",
+            "Aircraft Reconfig Technologies (ART)",
+            "Federal Aviation Administration (FAA)",
+            "Parts Manufacturer Approval (PMA)",
+        },
+    }
+
+    for symbol, values in rejected.items():
+        assert values.isdisjoint(_profile(symbol)["core_technologies"])
+
+
+def test_owned_product_list_stops_before_descriptive_benefit_clause() -> None:
+    products = set(_profile("ALAB")["product_stack"])
+
+    assert {
+        "Aries PCIe®/CXL® Smart DSP Retimers",
+        "Leo CXL Memory Connectivity Controllers",
+        "COSMOS software suite",
+    }.issubset(products)
+    assert {
+        "are essential to enable higher PCIe/CXL data bandwidth",
+        "lower latency interconnectivity between various heterogeneous compute processors",
+        "network controllers",
+    }.isdisjoint(products)
+
+
+def test_owned_architecture_and_used_protocols_are_core_technologies() -> None:
+    technologies = set(_profile("ALAB")["core_technologies"])
+
+    assert "software-defined IC architecture" in technologies
+    assert "Peripheral Component Interconnect Express" in technologies
+    assert "Compute Express Link" in technologies
+    assert "Restriction of Chemicals (REACH)" not in technologies
+
+
+def test_core_technology_precision_controls_remain_stable() -> None:
+    assert {
+        "Point of Load (POL)",
+        "Technical Surveillance Countermeasures (TSCM)",
+    }.issubset(_profile("HEI")["core_technologies"])
+    assert "optical physics" in _profile("GLW")["core_technologies"]
+    assert "International Berthing and Docking Mechanism (IBDM)" in _profile(
+        "RDW"
+    )["core_technologies"]
+
+
+def test_market_competition_actor_and_product_lists_are_rejected() -> None:
+    rejected = {
+        "AEIS": {
+            "A Wide Variety Of Applications",
+            "Highly Competitive",
+            "Characterized By Rapid Technological Development",
+            "Changing Customer Requirements",
+        },
+        "ARM": {
+            "Various End",
+            "Chips Used By A Wide Range Of Goods",
+            "Main Server Chips",
+            "Chips Used In Autonomous",
+            "Other Mobile Chips",
+        },
+        "HEI": {
+            "A Number Of Public",
+            "Private Manufacturing",
+            "Service Clients In A Broad Range Of",
+        },
+        "DCO": {
+            "Products Used In Military",
+            "General Economic Conditions",
+            "Highly Competitive",
+            "Services Are Affected By Varying Degrees Of Competition",
+            "Heavy Industrial Manufacturing Systems",
+            "Certain Medical",
+        },
+        "ENPH": {
+            "Tesla",
+            "Solaredge",
+            "Huawei",
+            "Byd Company Limited",
+            "Wallbox N",
+        },
+        "GILT": {"SES", "Viasat", "Hispasat", "Amazon Leo"},
+        "ASYS": {
+            "Characterized By Rapidly Evolving Industry Standards",
+            "Technological Change",
+        },
+    }
+
+    for symbol, values in rejected.items():
+        assert values.isdisjoint(_profile(symbol)["markets"])
+
+
+def test_market_precision_controls_remain_stable() -> None:
+    assert {"Medical Devices", "Aerospace"}.issubset(_profile("AEIS")["markets"])
+    assert {"Smartphones", "Automotive", "Cloud Compute"}.issubset(
+        _profile("ARM")["markets"]
+    )
+    assert _profile("ASYS")["markets"] == ["Ceramics", "Optics"]
+    assert _profile("LITE")["markets"] == [
+        "Printed Circuit Board Manufacturing",
+        "Electric Vehicle Battery Production",
+        "Solar Cell Production",
+        "Flat Panel Display Fabrication",
+        "Semiconductor Processing",
+    ]
+    assert _profile("MPWR")["markets"] == [
+        "Storage And Computing",
+        "Enterprise Data",
+        "Automotive",
+        "Communications",
+        "Consumer",
+        "Industrial",
+    ]
+
+
+def test_product_wrong_type_fragments_and_non_owned_lists_are_rejected() -> None:
+    rejected = {
+        "ACMR": {"modular platforms"},
+        "ARM": {"Every Processor"},
+        "CSCO": {
+            "software or other intellectual property licensed from third parties",
+            "available embedded on these new switches",
+        },
+        "GLW": {
+            "monitors with larger-sized screens",
+            "life sciences products under the Corning®",
+            "Axygen® brands",
+            "ClearCurve® ultra-bendable multimode fiber for private",
+        },
+        "ENPH": {
+            "solar module products and racking systems",
+            "communications on one intelligent platform",
+        },
+        "ASYS": {"these products to semiconductor device packaging"},
+    }
+
+    for symbol, values in rejected.items():
+        assert values.isdisjoint(_profile(symbol)["product_stack"])
+
+
+def test_product_precision_controls_remain_stable() -> None:
+    assert {"scrubber", "Ultra ECP ap"}.issubset(_profile("ACMR")["product_stack"])
+    assert {"Arm CPUs", "Arm compute platform"}.issubset(
+        _profile("ARM")["product_stack"]
+    )
+    assert {"Cisco Smart Switches", "Catalyst 9000"}.issubset(
+        _profile("CSCO")["product_stack"]
+    )
+    assert "Corning® EAGLE XG® Slim Glass" in _profile("GLW")["product_stack"]
+    assert {"IQ® Load Controllers", "Proposal™ platform"}.issubset(
+        _profile("ENPH")["product_stack"]
+    )
+    assert "Tensor Series Products" in _profile("ASYS")["product_stack"]
+    assert _profile("LITE")["product_stack"]
+    assert _profile("MPWR")["product_stack"]
+
+
 def test_standalone_temporal_fragments_are_not_inline_model_products() -> None:
     expected = {
         "AIIO": {"Since 2023"},
