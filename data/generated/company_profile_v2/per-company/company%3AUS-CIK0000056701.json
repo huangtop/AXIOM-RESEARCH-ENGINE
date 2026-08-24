@@ -6,7 +6,7 @@
   "exchange": "NASDAQ",
   "as_of": "2025-08-29",
   "company_summary": {
-    "one_line_business": "The Company operates in the audio/video industry segment of the home entertainment and communication industry through its design, manufacture and sale of stereo headphones and related accessory products."
+    "one_line_business": null
   },
   "markets": [],
   "product_stack": [
@@ -25,7 +25,8 @@
     "critical_assets": []
   },
   "customer_types": [
-    "OEMs"
+    "OEMs",
+    "distributors"
   ],
   "ai_exposure": null,
   "competitive_advantages": [],
@@ -40,9 +41,7 @@
     "customer_concentration": {}
   },
   "field_evidence": {
-    "company_summary.one_line_business": [
-      "The Company operates in the audio/video industry segment of the home entertainment and communication industry through its design, manufacture and sale of stereo headphones and related accessory products."
-    ],
+    "company_summary.one_line_business": [],
     "markets": [],
     "product_stack": [
       "The Company sells its products to independent distributors in countries and regions outside the United States including Europe, the Middle East, Africa, Asia, Australia, South America, Latin America, the Caribbean, Canada and Mexico"
@@ -54,23 +53,14 @@
       "MANUFACTURING OPERATIONS\nThe Company has a manufacturing facility in Milwaukee, Wisconsin and uses contract manufacturing facilities in the People’s Republic of China and Taiwan. A"
     ],
     "customer_types": [
-      "original equipment manufacturers"
+      "original equipment manufacturers",
+      "distributors"
     ],
     "ai_exposure": [],
     "competitive_advantages": [],
     "demand_drivers": [],
     "strategy_changes": [],
-    "financial_snapshot": [],
-    "product_stack_by_value": {
-      "Latin America": [
-        "The Company sells its products to independent distributors in countries and regions outside the United States including Europe, the Middle East, Africa, Asia, Australia, South America, Latin America, the Caribbean, Canada and Mexico"
-      ]
-    },
-    "product_stack_source_terms": {
-      "Latin America": [
-        "Latin America"
-      ]
-    }
+    "financial_snapshot": []
   },
   "evidence": [
     {
@@ -84,45 +74,8 @@
     }
   ],
   "value_provenance": {
-    "company_summary.one_line_business": {
-      "value": "The Company operates in the audio/video industry segment of the home entertainment and communication industry through its design, manufacture and sale of stereo headphones and related accessory products.",
-      "evidence": {
-        "business_evidence_id": "business-evidence:SEC-0000056701-25-000044",
-        "form": "10-K",
-        "accession_number": "0000056701-25-000044",
-        "filing_date": "2025-08-29",
-        "section_type": "item_1_business",
-        "quote": "The Company operates in the audio/video industry segment of the home entertainment and communication industry through its design, manufacture and sale of stereo headphones and related accessory products. The Company reports its results as a single reporting segment, as the Company’s only business line is the design, manufacture and sale of stereo headphones and related personal listening accessories.",
-        "evidence_start_character": 416,
-        "evidence_end_character": 819,
-        "document_start_character": 18740,
-        "document_end_character": 19143,
-        "matched_start_character": 416,
-        "matched_end_character": 619,
-        "text_sha256": "e87c9fe494ba9660ed71c64664971a740d6dbc9cd9932dc8e2b2915e41cd356e"
-      }
-    },
     "markets": [],
-    "product_stack": [
-      {
-        "value": "Latin America",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0000056701-25-000044",
-          "form": "10-K",
-          "accession_number": "0000056701-25-000044",
-          "filing_date": "2025-08-29",
-          "section_type": "item_1_business",
-          "quote": "The Company sells its products to independent distributors in countries and regions outside the United States including Europe, the Middle East, Africa, Asia, Australia, South America, Latin America, the Caribbean, Canada and Mexico.",
-          "evidence_start_character": 11402,
-          "evidence_end_character": 11635,
-          "document_start_character": 29726,
-          "document_end_character": 29959,
-          "matched_start_character": 11587,
-          "matched_end_character": 11600,
-          "text_sha256": "e87c9fe494ba9660ed71c64664971a740d6dbc9cd9932dc8e2b2915e41cd356e"
-        }
-      }
-    ],
+    "product_stack": [],
     "market_products": {},
     "core_technologies": [],
     "manufacturing": {
@@ -221,6 +174,24 @@
           "matched_end_character": 6750,
           "text_sha256": "e87c9fe494ba9660ed71c64664971a740d6dbc9cd9932dc8e2b2915e41cd356e"
         }
+      },
+      {
+        "value": "distributors",
+        "evidence": {
+          "business_evidence_id": "business-evidence:SEC-0000056701-25-000044",
+          "form": "10-K",
+          "accession_number": "0000056701-25-000044",
+          "filing_date": "2025-08-29",
+          "section_type": "item_1_business",
+          "quote": "distributors, international distributors, audio specialty stores, the internet, national retailers, grocery stores, electronics retailers, and prisons under the “Koss” name as well as private label.",
+          "evidence_start_character": 865,
+          "evidence_end_character": 1063,
+          "document_start_character": 19189,
+          "document_end_character": 19387,
+          "matched_start_character": 865,
+          "matched_end_character": 877,
+          "text_sha256": "e87c9fe494ba9660ed71c64664971a740d6dbc9cd9932dc8e2b2915e41cd356e"
+        }
       }
     ],
     "competitive_advantages": [],
@@ -255,14 +226,5 @@
     "discovered_product_count": 1,
     "final_product_count": 1,
     "removed_market_product_pollution": true
-  },
-  "product_stack_sanitizer": {
-    "version": "v2.6.6.2c-batch1",
-    "mode": "deterministic_production_boundary",
-    "promotion_batch": "V2.6.6.2c-batch1",
-    "before_count": 1,
-    "after_count": 1,
-    "removed_count": 0,
-    "removed": []
   }
 }

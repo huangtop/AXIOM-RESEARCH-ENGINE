@@ -300,7 +300,6 @@ def _extract_one_line_business(
 
     return None, None
 
-
 # === V2.6.3 GENERIC MARKET / END-MARKET EXTRACTION ===
 
 _MARKET_BLOCKED_EXACT = {
@@ -587,12 +586,6 @@ def _market_candidate_allowed(
 
     lower = candidate.casefold()
 
-    # A list coordinator belongs to the relation ("both X and Y"), not to
-    # the market label.  Reject the malformed first fragment here; recall is
-    # handled separately and must not be smuggled into a cleanup gate.
-    if lower.startswith(("both ", "either ")):
-        return False
-
     # Existing V2.6.3 hard rejects.
     if lower in _MARKET_BLOCKED_EXACT:
         return False
@@ -601,29 +594,6 @@ def _market_candidate_allowed(
     # reject generic actors, technologies,
     # products and obvious prose fragments.
     if lower in _MARKET_NON_MARKET_EXACT:
-        return False
-
-    if lower in {
-        "precision",
-        "reliability",
-        "safety",
-        "business model",
-        "business strategy",
-        "our business model",
-        "our business strategy",
-    }:
-        return False
-
-    if re.search(
-        r"\b(?:countries|headsets)\s*$",
-        lower,
-    ):
-        return False
-
-    if (
-        lower.count(")") > lower.count("(")
-        or lower.startswith("shifting competition ")
-    ):
         return False
 
     if lower.startswith(
@@ -1180,16 +1150,6 @@ def _extract_markets(
 
     if section_match:
         section = section_match.group(1)
-
-        # SEC table-of-contents blocks can repeat an "Our Markets" heading
-        # followed by page-number leaders.  They are navigation, not a market
-        # disclosure section.
-        if section[:1200].count("\u200b") >= 10:
-            return (
-                _dedupe(markets),
-                _dedupe(evidence),
-            )
-
         lines = section.splitlines()
 
         for index, raw in enumerate(lines[:-1]):
@@ -2835,14 +2795,7 @@ def _extract_core_technologies(
         direct_tail = text[match.end():min(len(text), match.end() + 90)]
         organization_head = re.search(
             r"\b(?:Corporation|Company|Consortium|Association|Organization|"
-            r"Alliance|Council|Society|Institute|Foundation|Commission|"
-            r"Department|Task\s+Force)\b",
-            expansion,
-            flags=re.IGNORECASE,
-        )
-        legal_or_role_head = re.search(
-            r"\b(?:Act(?:\s+of\s+\d{4})?|Directive|Regulation|"
-            r"Pharmacopoeia|original\s+equipment\s+manufacturer)\b",
+            r"Alliance|Council|Society|Institute|Foundation)\b",
             expansion,
             flags=re.IGNORECASE,
         )
@@ -2868,7 +2821,6 @@ def _extract_core_technologies(
 
         if (
             organization_head
-            or legal_or_role_head
             or organization_appositive
             or membership_role
             or regulatory_or_framework_context
@@ -2928,8 +2880,7 @@ def _extract_manufacturing(
     evidence = []
 
     location_patterns = [
-        r"manufacturing facilities (?:located\s+)?(?:in|within)\s+"
-        r"(.+?)(?:,\s+we|\.\s+[A-Z]|\n|$)",
+        r"manufacturing facilities in\s+(.+?)(?:,\s+we|\.\s+[A-Z]|\n|$)",
         r"manufacturing(?: operations)?[^.]{0,80}?in\s+(?:the\s+)?(.+?)(?:,\s+we|\.\s+[A-Z]|\n|$)",
     ]
 
@@ -2959,25 +2910,6 @@ def _extract_manufacturing(
         r"inventory\s+levels?|reduced\s+sales|"
         r"underestimate\s+the\s+demand|production\s+costs?|"
         r"operating\s+expenses?|business\s+conditions"
-        r")\b",
-        flags=re.IGNORECASE,
-    )
-
-    non_location_semantics = re.compile(
-        r"\b(?:"
-        r"applications?|categories|conditions|costs?|designs?|"
-        r"finished\s+products?|semi-finished\s+products?|"
-        r"inventory\s+management|risks?(?:\s+management)?|"
-        r"products?|quality|remediation|support|"
-        r"(?:manufacturing|production)\s+capacity|"
-        r"capacity\s+(?:for|without)|technology\s+industry|"
-        r"technology\s+city|manufacturing\s+of|"
-        r"manufacturing\s+services?|manufacturing\s+requirements?|"
-        r"manufacturing\s+technologies?|manufacturing\s+efficiencies|"
-        r"manufacturing\s+processes?|manufacturing\s+personnel|"
-        r"manufacturing\s+supply|assembling?|assemble|sourced|provides|"
-        r"delay\s+in\s+production|non-compliance"
-        r"|industrial\s+technology|terms\s+of\s+technology"
         r")\b",
         flags=re.IGNORECASE,
     )
@@ -3019,22 +2951,6 @@ def _extract_manufacturing(
                 normalized,
                 normalized,
             )
-            located_region = re.fullmatch(
-                r"(?:one|two|three|four|five|six|seven|eight|nine|ten|"
-                r"eleven|twelve|\d+)\s+(?:leased\s+facility|facilities|"
-                r"provinces?|states?)\s+in\s+(.+)",
-                normalized,
-                flags=re.IGNORECASE,
-            )
-            if located_region:
-                normalized = located_region.group(1).strip()
-            elif re.fullmatch(
-                r"(?:one|two|three|four|five|six|seven|eight|nine|ten|"
-                r"eleven|twelve|\d+)\s+U\.S\.\s+states?",
-                normalized,
-                flags=re.IGNORECASE,
-            ):
-                normalized = "United States"
             normalized = re.sub(
                 r"^(?:one|two|three|four|five|six|seven|eight|nine|ten|"
                 r"eleven|twelve|\d+)\s+(?=(?:United States|China|Japan|"
@@ -3048,7 +2964,6 @@ def _extract_manufacturing(
                 len(normalized.split()) <= 5
                 and not non_geography_candidate.fullmatch(normalized)
                 and not non_location_outcome.search(normalized)
-                and not non_location_semantics.search(normalized)
                 and not re.search(
                     r"\b(?:accessories|consumables|tools?|product\s+categories|"
                     r"technologies|workflows?|components?)\b",
@@ -3331,33 +3246,27 @@ def _extract_surface_demand_drivers(
     evidence = []
 
     for label, pattern in patterns:
-        for match in re.finditer(pattern, text, flags=re.IGNORECASE):
-            start = max(0, match.start() - 160)
-            end = min(len(text), match.end() + 220)
-            context = re.sub(r"\s+", " ", text[start:end]).strip()
-            lower_context = context.casefold()
+        match = re.search(
+            pattern,
+            text,
+            flags=re.IGNORECASE,
+        )
 
-            # Internal use of AI to improve the reporting company's own
-            # processes is not an external demand driver.
-            if (
-                label == "AI"
-                and re.search(
-                    r"\b(?:business performance|ways of working|"
-                    r"internal operations?|operational efficiency|"
-                    r"process improvement)\b",
-                    lower_context,
-                )
-                and not re.search(
-                    r"\b(?:customer demand|market demand|demand for|"
-                    r"market growth|adoption|investment|opportunity)\b",
-                    lower_context,
-                )
-            ):
-                continue
+        if not match:
+            continue
 
-            values.append(label)
-            evidence.append(context)
-            break
+        values.append(label)
+
+        start = max(0, match.start() - 160)
+        end = min(len(text), match.end() + 220)
+
+        evidence.append(
+            re.sub(
+                r"\s+",
+                " ",
+                text[start:end],
+            ).strip()
+        )
 
     return values, evidence
 
@@ -3528,25 +3437,8 @@ def _extract_financial_snapshot(
             financial_sentence.group(0)
         )
 
-    fiscal_year = None
-    fiscal_year_evidence = re.search(
-        r"\b(?:fiscal\s+year\s+ended[^.]{0,80}?|fiscal\s+)"
-        r"(20\d{2})\s+(?:net\s+sales|year|results|revenue)\b",
-        text,
-        flags=re.IGNORECASE,
-    )
-    if not fiscal_year_evidence:
-        fiscal_year_evidence = re.search(
-            r"\b(?:fiscal\s+year\s+)?(20\d{2})\s+net\s+sales\b",
-            text,
-            flags=re.IGNORECASE,
-        )
-    if fiscal_year_evidence:
-        fiscal_year = int(fiscal_year_evidence.group(1))
-        evidence.append(fiscal_year_evidence.group(0))
-
     return {
-        "fiscal_year": fiscal_year,
+        "fiscal_year": 2025,
         "revenue": revenue,
         "gross_margin": (
             _percent(gross_match.group(1))

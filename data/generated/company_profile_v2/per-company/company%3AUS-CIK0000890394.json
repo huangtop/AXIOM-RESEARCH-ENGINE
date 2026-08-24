@@ -9,7 +9,9 @@
     "one_line_business": "We are a fabless semiconductor company focused on"
   },
   "markets": [],
-  "product_stack": [],
+  "product_stack": [
+    "associated antenna technology"
+  ],
   "market_products": {},
   "core_technologies": [
     "applications engineering"
@@ -25,7 +27,8 @@
     "critical_assets": []
   },
   "customer_types": [
-    "OEMs"
+    "OEMs",
+    "distributors"
   ],
   "ai_exposure": null,
   "competitive_advantages": [],
@@ -47,7 +50,9 @@
       "We are a fabless semiconductor company focused on"
     ],
     "markets": [],
-    "product_stack": [],
+    "product_stack": [
+      "This product line includes a baseband IC, several variations of mmWave radio frequency, or RF, ICs, and associated antenna technology"
+    ],
     "market_products": {},
     "core_technologies": [
       "and technical selling\nand applications engineering capabilit"
@@ -56,7 +61,8 @@
       "manufacturing-related\noperations and 11 in sales, marketing and general and administrative functions. W"
     ],
     "customer_types": [
-      "original equipment manufacturers"
+      "original equipment manufacturers",
+      "distributors"
     ],
     "ai_exposure": [],
     "competitive_advantages": [],
@@ -65,9 +71,7 @@
       "has incorporated mmWave wireless into substantially all versions of the iPhone for sale in the U.S. market. The basic premise is the ever-increasing demand for bandwidth. The initial use case for cellular service providers is to provide their customer base (primarily smart-phone customers) with continuity of network access in highly congested environments, such as sporting events, publi"
     ],
     "strategy_changes": [],
-    "financial_snapshot": [],
-    "product_stack_by_value": {},
-    "product_stack_source_terms": {}
+    "financial_snapshot": []
   },
   "evidence": [
     {
@@ -218,6 +222,24 @@
           "matched_end_character": 1541,
           "text_sha256": "6355d74a9b94d5fdb629cb5544682d5020550b28d0b8d55b0863e1badd91ffa2"
         }
+      },
+      {
+        "value": "distributors",
+        "evidence": {
+          "business_evidence_id": "business-evidence:SEC-0001213900-26-036514",
+          "form": "10-K",
+          "accession_number": "0001213900-26-036514",
+          "filing_date": "2026-03-30",
+          "section_type": "item_1_business",
+          "quote": "and distributors in the United States, Africa, Asia and Europe.",
+          "evidence_start_character": 27120,
+          "evidence_end_character": 27183,
+          "document_start_character": 35162,
+          "document_end_character": 35225,
+          "matched_start_character": 27124,
+          "matched_end_character": 27136,
+          "text_sha256": "6355d74a9b94d5fdb629cb5544682d5020550b28d0b8d55b0863e1badd91ffa2"
+        }
       }
     ],
     "competitive_advantages": [],
@@ -242,21 +264,7 @@
       },
       {
         "value": "bandwidth growth",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001213900-26-036514",
-          "form": "10-K",
-          "accession_number": "0001213900-26-036514",
-          "filing_date": "2026-03-30",
-          "section_type": "item_1_business",
-          "quote": "premise is the ever-increasing demand for bandwidth.",
-          "evidence_start_character": 13913,
-          "evidence_end_character": 13965,
-          "document_start_character": 21955,
-          "document_end_character": 22007,
-          "matched_start_character": 13955,
-          "matched_end_character": 13964,
-          "text_sha256": "6355d74a9b94d5fdb629cb5544682d5020550b28d0b8d55b0863e1badd91ffa2"
-        }
+        "evidence": null
       }
     ],
     "strategy_changes": [],
@@ -286,17 +294,8 @@
   "product_recall_enrichment": {
     "version": "v2.6.5.7",
     "mode": "generic_filing_native_named_product_recovery",
-    "discovered_product_count": 0,
-    "final_product_count": 0,
+    "discovered_product_count": 1,
+    "final_product_count": 1,
     "removed_market_product_pollution": true
-  },
-  "product_stack_sanitizer": {
-    "version": "v2.6.6.2c-batch1",
-    "mode": "deterministic_production_boundary",
-    "promotion_batch": "V2.6.6.2c-batch1",
-    "before_count": 0,
-    "after_count": 0,
-    "removed_count": 0,
-    "removed": []
   }
 }
