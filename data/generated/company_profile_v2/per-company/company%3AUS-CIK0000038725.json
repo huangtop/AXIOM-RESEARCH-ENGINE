@@ -1,34 +1,34 @@
 {
   "schema_version": "axiom-company-profile.v2.3",
-  "generation_mode": "evidence_first_generic_extractor",
+  "generation_mode": "manual_evidence_locked",
   "company_id": "company:US-CIK0000038725",
   "symbol": "FELE",
   "exchange": "NASDAQ",
   "as_of": "2026-02-20",
   "company_summary": {
-    "one_line_business": "BUSINESS Description of the Business Franklin Electric Co., Inc. (“Franklin Electric” or the “Company”) is an Indiana corporation founded in 1944 and incorporated in 1946."
+    "one_line_business": "Franklin Electric designs, manufactures and distributes water and fuel pumping systems and related controls and treatment equipment."
   },
-  "markets": [
-    "Power Reliability Systems",
-    "Hydroelectric",
-    "Rail",
-    "Telecommunication",
-    "Data Center Infrastructure"
-  ],
+  "markets": [],
   "product_stack": [
-    "electronic controls"
+    "submersible motors",
+    "water pumps",
+    "fuel pumps",
+    "electronic controls",
+    "water-treatment systems"
   ],
   "market_products": {},
-  "core_technologies": [],
+  "core_technologies": [
+    "submersible motor engineering",
+    "fluid pumping",
+    "electronic pump control",
+    "water treatment"
+  ],
   "manufacturing": {
     "model": [],
     "locations": [],
     "critical_assets": []
   },
-  "customer_types": [
-    "OEMs",
-    "distributors"
-  ],
+  "customer_types": [],
   "ai_exposure": null,
   "competitive_advantages": [],
   "demand_drivers": [],
@@ -43,25 +43,36 @@
   },
   "field_evidence": {
     "company_summary.one_line_business": [
-      "BUSINESS Description of the Business Franklin Electric Co., Inc. (“Franklin Electric” or the “Company”) is an Indiana corporation founded in 1944 and incorporated in 1946."
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0000038725-26-000009"
     ],
     "markets": [
-      "markets such as power reliability systems and includes intelligent electronic devices that are designed for online monitoring for the power utility, hydroelectric, rail, and telecommunication and data center infrastructure"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0000038725-26-000009"
     ],
     "product_stack": [
-      "Energy Systems offers a complete array of components between the tank and the dispenser, including submersible pumps, motors, station hardware, piping, sumps, vapor recovery, corrosion control systems and electronic controls and monitoring"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0000038725-26-000009"
     ],
     "market_products": {},
-    "core_technologies": [],
-    "manufacturing": [],
-    "customer_types": [
-      "original equipment manufacturers",
-      "distributors"
+    "core_technologies": [
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0000038725-26-000009"
     ],
-    "ai_exposure": [],
-    "competitive_advantages": [],
-    "demand_drivers": [],
-    "strategy_changes": [],
+    "manufacturing": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "customer_types": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "ai_exposure": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "competitive_advantages": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "demand_drivers": [
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0000038725-26-000009"
+    ],
+    "strategy_changes": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
     "financial_snapshot": []
   },
   "evidence": [
@@ -77,101 +88,10 @@
   ],
   "value_provenance": {
     "company_summary.one_line_business": {
-      "value": "BUSINESS Description of the Business Franklin Electric Co., Inc. (“Franklin Electric” or the “Company”) is an Indiana corporation founded in 1944 and incorporated in 1946.",
+      "value": "Franklin Electric designs, manufactures and distributes water and fuel pumping systems and related controls and treatment equipment.",
       "evidence": null
     },
-    "markets": [
-      {
-        "value": "Power Reliability Systems",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0000038725-26-000009",
-          "form": "10-K",
-          "accession_number": "0000038725-26-000009",
-          "filing_date": "2026-02-20",
-          "section_type": "item_1_business",
-          "quote": "The segment serves other energy markets such as power reliability systems and includes intelligent electronic devices that are designed for online monitoring for the power utility, hydroelectric, rail, and telecommunication and data center infrastructure.",
-          "evidence_start_character": 7645,
-          "evidence_end_character": 7900,
-          "document_start_character": 46188,
-          "document_end_character": 46443,
-          "matched_start_character": 7693,
-          "matched_end_character": 7718,
-          "text_sha256": "80ab980b6b497424ca4e6ea2ea763e265b2590146ec1deb859c0a133f39e0f6a"
-        }
-      },
-      {
-        "value": "Hydroelectric",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0000038725-26-000009",
-          "form": "10-K",
-          "accession_number": "0000038725-26-000009",
-          "filing_date": "2026-02-20",
-          "section_type": "item_1_business",
-          "quote": "The segment serves other energy markets such as power reliability systems and includes intelligent electronic devices that are designed for online monitoring for the power utility, hydroelectric, rail, and telecommunication and data center infrastructure.",
-          "evidence_start_character": 7645,
-          "evidence_end_character": 7900,
-          "document_start_character": 46188,
-          "document_end_character": 46443,
-          "matched_start_character": 7826,
-          "matched_end_character": 7839,
-          "text_sha256": "80ab980b6b497424ca4e6ea2ea763e265b2590146ec1deb859c0a133f39e0f6a"
-        }
-      },
-      {
-        "value": "Rail",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0000038725-26-000009",
-          "form": "10-K",
-          "accession_number": "0000038725-26-000009",
-          "filing_date": "2026-02-20",
-          "section_type": "item_1_business",
-          "quote": "The segment serves other energy markets such as power reliability systems and includes intelligent electronic devices that are designed for online monitoring for the power utility, hydroelectric, rail, and telecommunication and data center infrastructure.",
-          "evidence_start_character": 7645,
-          "evidence_end_character": 7900,
-          "document_start_character": 46188,
-          "document_end_character": 46443,
-          "matched_start_character": 7841,
-          "matched_end_character": 7845,
-          "text_sha256": "80ab980b6b497424ca4e6ea2ea763e265b2590146ec1deb859c0a133f39e0f6a"
-        }
-      },
-      {
-        "value": "Telecommunication",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0000038725-26-000009",
-          "form": "10-K",
-          "accession_number": "0000038725-26-000009",
-          "filing_date": "2026-02-20",
-          "section_type": "item_1_business",
-          "quote": "The segment serves other energy markets such as power reliability systems and includes intelligent electronic devices that are designed for online monitoring for the power utility, hydroelectric, rail, and telecommunication and data center infrastructure.",
-          "evidence_start_character": 7645,
-          "evidence_end_character": 7900,
-          "document_start_character": 46188,
-          "document_end_character": 46443,
-          "matched_start_character": 7851,
-          "matched_end_character": 7868,
-          "text_sha256": "80ab980b6b497424ca4e6ea2ea763e265b2590146ec1deb859c0a133f39e0f6a"
-        }
-      },
-      {
-        "value": "Data Center Infrastructure",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0000038725-26-000009",
-          "form": "10-K",
-          "accession_number": "0000038725-26-000009",
-          "filing_date": "2026-02-20",
-          "section_type": "item_1_business",
-          "quote": "The segment serves other energy markets such as power reliability systems and includes intelligent electronic devices that are designed for online monitoring for the power utility, hydroelectric, rail, and telecommunication and data center infrastructure.",
-          "evidence_start_character": 7645,
-          "evidence_end_character": 7900,
-          "document_start_character": 46188,
-          "document_end_character": 46443,
-          "matched_start_character": 7873,
-          "matched_end_character": 7899,
-          "text_sha256": "80ab980b6b497424ca4e6ea2ea763e265b2590146ec1deb859c0a133f39e0f6a"
-        }
-      }
-    ],
+    "markets": [],
     "product_stack": [],
     "market_products": {},
     "core_technologies": [],
@@ -180,75 +100,25 @@
       "locations": [],
       "critical_assets": []
     },
-    "customer_types": [
-      {
-        "value": "OEMs",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0000038725-26-000009",
-          "form": "10-K",
-          "accession_number": "0000038725-26-000009",
-          "filing_date": "2026-02-20",
-          "section_type": "item_1_business",
-          "quote": "The Company’s Water Systems and Energy Systems products and related equipment are sold to specialty distributors and some original equipment manufacturers (“OEMs”), as well as industrial and petroleum equipment distributors and major oil and utility companies.",
-          "evidence_start_character": 2927,
-          "evidence_end_character": 3187,
-          "document_start_character": 41470,
-          "document_end_character": 41730,
-          "matched_start_character": 3084,
-          "matched_end_character": 3088,
-          "text_sha256": "80ab980b6b497424ca4e6ea2ea763e265b2590146ec1deb859c0a133f39e0f6a"
-        }
-      },
-      {
-        "value": "distributors",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0000038725-26-000009",
-          "form": "10-K",
-          "accession_number": "0000038725-26-000009",
-          "filing_date": "2026-02-20",
-          "section_type": "item_1_business",
-          "quote": "The Company’s Water Systems and Energy Systems products and related equipment are sold to specialty distributors and some original equipment manufacturers (“OEMs”), as well as industrial and petroleum equipment distributors and major oil and utility companies.",
-          "evidence_start_character": 2927,
-          "evidence_end_character": 3187,
-          "document_start_character": 41470,
-          "document_end_character": 41730,
-          "matched_start_character": 3027,
-          "matched_end_character": 3039,
-          "text_sha256": "80ab980b6b497424ca4e6ea2ea763e265b2590146ec1deb859c0a133f39e0f6a"
-        }
-      }
-    ],
+    "customer_types": [],
+    "ai_exposure": null,
     "competitive_advantages": [],
     "demand_drivers": [],
     "strategy_changes": [],
     "financial_snapshot": {
       "fiscal_year": {
         "value": 2025,
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0000038725-26-000009",
-          "form": "10-K",
-          "accession_number": "0000038725-26-000009",
-          "filing_date": "2026-02-20",
-          "section_type": "item_1_business",
-          "quote": "With 2025 revenue of approximately $2.",
-          "evidence_start_character": 397,
-          "evidence_end_character": 435,
-          "document_start_character": 38940,
-          "document_end_character": 38978,
-          "matched_start_character": 402,
-          "matched_end_character": 406,
-          "text_sha256": "80ab980b6b497424ca4e6ea2ea763e265b2590146ec1deb859c0a133f39e0f6a"
-        }
+        "evidence": null
       },
       "revenue_mix": {},
       "customer_concentration": {}
     }
   },
   "product_recall_enrichment": {
-    "version": "v2.6.5.7",
-    "mode": "generic_filing_native_named_product_recovery",
-    "discovered_product_count": 1,
-    "final_product_count": 1,
+    "version": "manual-2026-08-25-approved127-part1",
+    "mode": "manual_evidence_lock",
+    "discovered_product_count": 5,
+    "final_product_count": 5,
     "removed_market_product_pollution": true
   }
 }

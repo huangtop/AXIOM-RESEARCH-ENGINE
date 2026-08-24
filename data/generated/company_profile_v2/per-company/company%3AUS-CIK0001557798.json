@@ -1,21 +1,24 @@
 {
   "schema_version": "axiom-company-profile.v2.3",
-  "generation_mode": "evidence_first_generic_extractor",
+  "generation_mode": "manual_evidence_locked",
   "company_id": "company:US-CIK0001557798",
   "symbol": "CIIT",
   "exchange": "NASDAQ",
   "as_of": "2025-10-03",
   "company_summary": {
-    "one_line_business": "Roshing, provides global logistics services, encompassing booking and transportation arrangement and related logistics solutions."
+    "one_line_business": "Roshing provides international freight forwarding, transportation arrangement and related logistics services."
   },
   "markets": [],
   "product_stack": [
-    "LED screens",
-    "touch screens",
-    "software technical services"
+    "freight forwarding",
+    "transportation arrangement",
+    "logistics management services"
   ],
   "market_products": {},
-  "core_technologies": [],
+  "core_technologies": [
+    "logistics coordination",
+    "shipment management"
+  ],
   "manufacturing": {
     "model": [],
     "locations": [],
@@ -36,20 +39,36 @@
   },
   "field_evidence": {
     "company_summary.one_line_business": [
-      "Roshing, provides global logistics services, encompassing booking and transportation arrangement and related logistics solutions. As a"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001683168-25-007401"
     ],
-    "markets": [],
+    "markets": [
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001683168-25-007401"
+    ],
     "product_stack": [
-      "The main products include Wi-Fi modules, Bluetooth modules, 4G network modules, LED screens and touch screens, and software technical services"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001683168-25-007401"
     ],
     "market_products": {},
-    "core_technologies": [],
-    "manufacturing": [],
-    "customer_types": [],
-    "ai_exposure": [],
-    "competitive_advantages": [],
-    "demand_drivers": [],
-    "strategy_changes": [],
+    "core_technologies": [
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001683168-25-007401"
+    ],
+    "manufacturing": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "customer_types": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "ai_exposure": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "competitive_advantages": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "demand_drivers": [
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001683168-25-007401"
+    ],
+    "strategy_changes": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
     "financial_snapshot": []
   },
   "evidence": [
@@ -65,22 +84,8 @@
   ],
   "value_provenance": {
     "company_summary.one_line_business": {
-      "value": "Roshing, provides global logistics services, encompassing booking and transportation arrangement and related logistics solutions.",
-      "evidence": {
-        "business_evidence_id": "business-evidence:SEC-0001683168-25-007401",
-        "form": "10-K",
-        "accession_number": "0001683168-25-007401",
-        "filing_date": "2025-10-03",
-        "section_type": "item_1_business",
-        "quote": "Roshing, provides global logistics services, encompassing booking and transportation arrangement and related logistics solutions. As a",
-        "evidence_start_character": 1350,
-        "evidence_end_character": 1484,
-        "document_start_character": 14177,
-        "document_end_character": 14311,
-        "matched_start_character": 1350,
-        "matched_end_character": 1479,
-        "text_sha256": "ecced5652074f978626c93ddd4f8962166d031c1665d4e7369ab43d03ca68361"
-      }
+      "value": "Roshing provides international freight forwarding, transportation arrangement and related logistics services.",
+      "evidence": null
     },
     "markets": [],
     "product_stack": [],
@@ -92,35 +97,22 @@
       "critical_assets": []
     },
     "customer_types": [],
+    "ai_exposure": null,
     "competitive_advantages": [],
     "demand_drivers": [],
     "strategy_changes": [],
     "financial_snapshot": {
       "fiscal_year": {
         "value": 2025,
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001683168-25-007401",
-          "form": "10-K",
-          "accession_number": "0001683168-25-007401",
-          "filing_date": "2025-10-03",
-          "section_type": "item_1_business",
-          "quote": "services provided through Roshing accounted for the vast majority of our revenue for the years ended July 31, 2025 and 2024.",
-          "evidence_start_character": 3889,
-          "evidence_end_character": 4013,
-          "document_start_character": 16716,
-          "document_end_character": 16840,
-          "matched_start_character": 3999,
-          "matched_end_character": 4003,
-          "text_sha256": "ecced5652074f978626c93ddd4f8962166d031c1665d4e7369ab43d03ca68361"
-        }
+        "evidence": null
       },
       "revenue_mix": {},
       "customer_concentration": {}
     }
   },
   "product_recall_enrichment": {
-    "version": "v2.6.5.7",
-    "mode": "generic_filing_native_named_product_recovery",
+    "version": "manual-2026-08-25-approved127-part1",
+    "mode": "manual_evidence_lock",
     "discovered_product_count": 3,
     "final_product_count": 3,
     "removed_market_product_pollution": true
