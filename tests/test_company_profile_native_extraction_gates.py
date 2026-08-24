@@ -135,3 +135,46 @@ def test_existing_legitimate_manufacturing_geographies_survive() -> None:
     for symbol, locations in expected.items():
         profile = _profile(symbol)
         assert locations.issubset(profile["manufacturing"]["locations"])
+
+
+def test_standalone_temporal_fragments_are_not_inline_model_products() -> None:
+    expected = {
+        "AIIO": {"Since 2023"},
+        "CIEN": {"February 2017"},
+        "FRSX": {
+            "July 2024",
+            "January 2025",
+            "July 2023",
+            "April 2024",
+            "October 2024",
+            "September 2025",
+            "December 2025",
+        },
+        "MDB": {"In 2025"},
+        "NA": {"August 2020"},
+        "NIU": {"February 2025"},
+        "OSS": {"July 2017"},
+        "SEDG": {"In 2025"},
+        "SES": {"September 2025"},
+        "SHAZ": {"January 2026", "December 2025"},
+        "SMTK": {"During 2025"},
+        "XCH": {"May 2023", "April 2022"},
+    }
+
+    assert sum(len(values) for values in expected.values()) == 20
+
+    for symbol, temporal_fragments in expected.items():
+        products = set(_profile(symbol)["product_stack"])
+        assert temporal_fragments.isdisjoint(products)
+
+
+def test_numbered_model_names_remain_inline_model_products() -> None:
+    module = _production_builder_module()
+    products, _ = module._extract_inline_model_products(
+        "Our product models include Alpha 2024, Server 2022, X1, and Cuckoo 3.0 systems."
+    )
+
+    assert "Alpha 2024" in products
+    assert "Server 2022" in products
+    assert "X1" in products
+    assert any(value.startswith("Cuckoo 3") for value in products)
