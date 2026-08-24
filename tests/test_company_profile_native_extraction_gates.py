@@ -1,7 +1,10 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 from pathlib import Path
+
+import pytest
 
 from axiom_engine.company_profile_v2.core import build_company_profile_v2
 
@@ -137,6 +140,49 @@ def test_existing_legitimate_manufacturing_geographies_survive() -> None:
         assert locations.issubset(profile["manufacturing"]["locations"])
 
 
+def test_regulatory_entities_and_actor_roles_are_not_core_technologies() -> None:
+    rejected = {
+        "AZIO": "American Security Drones Act (ASDA)",
+        "FEBO": "original equipment manufacturer (OEM)",
+        "JOBY": "Department of Transportation (DOT)",
+        "NEOV": "California Public Utilities Commission (CPUC)",
+        "TM": "Task Force on Climate-related Financial Disclosures (TCFD)",
+    }
+
+    for symbol, value in rejected.items():
+        assert value not in _profile(symbol)["core_technologies"]
+
+
+def test_market_relation_fragments_are_rejected_or_cleaned() -> None:
+    algm = _profile("ALGM")["markets"]
+    assert {"Precision", "Reliability"}.isdisjoint(algm)
+
+    mob = _profile("MOB")["markets"]
+    assert "Both Defense" not in mob
+    assert "Defense" not in mob
+    assert "Commercial" in mob
+
+    fcel = _profile("FCEL")["markets"]
+    assert {"Our Business Strategy", "Our Business Model"}.isdisjoint(fcel)
+
+    assert "Consumer Good Segments" in _profile("SSYS")["markets"]
+
+
+def test_manufacturing_activity_fragments_are_not_locations() -> None:
+    rejected = {
+        "ALGM": "to support local customer demand",
+        "AMPX": "risks",
+        "AOUT": "product designs",
+        "BKSY": "risk management",
+        "KE": "industrial applications",
+        "MKDW": "Technology City",
+        "SQNS": "product quality",
+    }
+
+    for symbol, value in rejected.items():
+        assert value not in _profile(symbol)["manufacturing"]["locations"]
+
+
 def test_standalone_temporal_fragments_are_not_inline_model_products() -> None:
     expected = {
         "AIIO": {"Since 2023"},
@@ -180,6 +226,72 @@ def test_numbered_model_names_remain_inline_model_products() -> None:
     assert any(value.startswith("Cuckoo 3") for value in products)
 
 
+def test_safe_upsert_accepts_product_stack_that_was_originally_empty(
+    monkeypatch,
+    tmp_path,
+) -> None:
+    module = _production_builder_module()
+    monkeypatch.setattr(module, "CANONICAL_ROOT", tmp_path)
+
+    result = module._safe_upsert_canonical_profiles(
+        [
+            {
+                "symbol": "EMPTY",
+                "company_id": "company:empty",
+                "product_stack": [],
+            }
+        ]
+    )
+
+    assert result["written_count"] == 1
+    written_path = tmp_path / result["written"][0]["relative_path"]
+    assert json.loads(written_path.read_text(encoding="utf-8"))["product_stack"] == []
+
+
+def test_safe_upsert_blocks_nonempty_product_stack_sanitized_to_empty(
+    monkeypatch,
+    tmp_path,
+) -> None:
+    module = _production_builder_module()
+    monkeypatch.setattr(module, "CANONICAL_ROOT", tmp_path)
+
+    with pytest.raises(
+        ValueError,
+        match="refuses empty production product_stack",
+    ):
+        module._safe_upsert_canonical_profiles(
+            [
+                {
+                    "symbol": "POLLUTED",
+                    "company_id": "company:polluted",
+                    "product_stack": ["Form 10-K"],
+                }
+            ]
+        )
+
+
+def test_ter_polluted_product_stack_is_not_promotable(
+    monkeypatch,
+    tmp_path,
+) -> None:
+    module = _production_builder_module()
+    monkeypatch.setattr(module, "CANONICAL_ROOT", tmp_path)
+
+    with pytest.raises(
+        ValueError,
+        match=r"TER: product sanitizer refuses empty production product_stack",
+    ):
+        module._safe_upsert_canonical_profiles(
+            [
+                {
+                    "symbol": "TER",
+                    "company_id": "company:US-CIK0000097210",
+                    "product_stack": [
+                        "prohibitions on their use 8 Table of Contents in connection with nuclear"
+                    ],
+                }
+            ]
+        )
 def test_competitor_and_regulatory_relations_are_not_products() -> None:
     profile = _profile("CRDO")
     products = set(profile["product_stack"])
@@ -340,10 +452,15 @@ def test_lyts_lists_stop_before_standards_and_preserve_compound_markets() -> Non
     assert {
         "sensors",
         "photocontrols",
-        "dimming",
-        "motion detection",
+        "dimming controls",
+        "motion detection controls",
         "circuit controllers",
     }.issubset(profile["product_stack"])
+    assert {
+        "suite of lighting control options",
+        "dimming",
+        "motion detection",
+    }.isdisjoint(profile["product_stack"])
     assert not any(
         marker in value
         for value in profile["product_stack"]
@@ -380,6 +497,10 @@ def test_ral_explicit_end_markets_products_and_regulations_are_typed() -> None:
         for marker in ("GDPR", "LGPD")
     )
     assert profile["manufacturing"]["locations"] == []
+    assert "AI" in profile["demand_drivers"]
+    ai_evidence = " ".join(profile["field_evidence"]["demand_drivers"])
+    assert "creating a need" in ai_evidence
+    assert "business performance, ways of working" not in ai_evidence
     assert all(
         row["evidence"] is not None
         for row in profile["value_provenance"]["product_stack"]

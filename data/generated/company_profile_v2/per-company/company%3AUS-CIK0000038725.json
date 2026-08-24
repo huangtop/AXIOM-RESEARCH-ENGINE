@@ -6,7 +6,7 @@
   "exchange": "NASDAQ",
   "as_of": "2026-02-20",
   "company_summary": {
-    "one_line_business": "BUSINESS Description of the Business Franklin Electric Co., Inc. (“Franklin Electric” or the “Company”) is an Indiana corporation founded in 1944 and incorporated in 1946."
+    "one_line_business": "With 2025 revenue of approximately $2.1 billion, the Company designs, manufactures and distributes water and fuel pumping systems, composed primarily of submersible motors, pumps, electronic controls, water treatment systems, and related parts and equipment."
   },
   "markets": [
     "Power Reliability Systems",
@@ -15,9 +15,7 @@
     "Telecommunication",
     "Data Center Infrastructure"
   ],
-  "product_stack": [
-    "electronic controls"
-  ],
+  "product_stack": [],
   "market_products": {},
   "core_technologies": [],
   "manufacturing": {
@@ -26,8 +24,7 @@
     "critical_assets": []
   },
   "customer_types": [
-    "OEMs",
-    "distributors"
+    "OEMs"
   ],
   "ai_exposure": null,
   "competitive_advantages": [],
@@ -43,26 +40,25 @@
   },
   "field_evidence": {
     "company_summary.one_line_business": [
-      "BUSINESS Description of the Business Franklin Electric Co., Inc. (“Franklin Electric” or the “Company”) is an Indiana corporation founded in 1944 and incorporated in 1946."
+      "With 2025 revenue of approximately $2.1 billion, the Company designs, manufactures and distributes water and fuel pumping systems, composed primarily of submersible motors, pumps, electronic controls, water treatment systems, and related parts and equipment."
     ],
     "markets": [
       "markets such as power reliability systems and includes intelligent electronic devices that are designed for online monitoring for the power utility, hydroelectric, rail, and telecommunication and data center infrastructure"
     ],
-    "product_stack": [
-      "Energy Systems offers a complete array of components between the tank and the dispenser, including submersible pumps, motors, station hardware, piping, sumps, vapor recovery, corrosion control systems and electronic controls and monitoring"
-    ],
+    "product_stack": [],
     "market_products": {},
     "core_technologies": [],
     "manufacturing": [],
     "customer_types": [
-      "original equipment manufacturers",
-      "distributors"
+      "original equipment manufacturers"
     ],
     "ai_exposure": [],
     "competitive_advantages": [],
     "demand_drivers": [],
     "strategy_changes": [],
-    "financial_snapshot": []
+    "financial_snapshot": [],
+    "product_stack_by_value": {},
+    "product_stack_source_terms": {}
   },
   "evidence": [
     {
@@ -77,8 +73,22 @@
   ],
   "value_provenance": {
     "company_summary.one_line_business": {
-      "value": "BUSINESS Description of the Business Franklin Electric Co., Inc. (“Franklin Electric” or the “Company”) is an Indiana corporation founded in 1944 and incorporated in 1946.",
-      "evidence": null
+      "value": "With 2025 revenue of approximately $2.1 billion, the Company designs, manufactures and distributes water and fuel pumping systems, composed primarily of submersible motors, pumps, electronic controls, water treatment systems, and related parts and equipment.",
+      "evidence": {
+        "business_evidence_id": "business-evidence:SEC-0000038725-26-000009",
+        "form": "10-K",
+        "accession_number": "0000038725-26-000009",
+        "filing_date": "2026-02-20",
+        "section_type": "item_1_business",
+        "quote": "With 2025 revenue of approximately $2.1 billion, the Company designs, manufactures and distributes water and fuel pumping systems, composed primarily of submersible motors, pumps, electronic controls, water treatment systems, and related parts and equipment.",
+        "evidence_start_character": 397,
+        "evidence_end_character": 655,
+        "document_start_character": 38940,
+        "document_end_character": 39198,
+        "matched_start_character": 397,
+        "matched_end_character": 655,
+        "text_sha256": "80ab980b6b497424ca4e6ea2ea763e265b2590146ec1deb859c0a133f39e0f6a"
+      }
     },
     "markets": [
       {
@@ -198,24 +208,6 @@
           "matched_end_character": 3088,
           "text_sha256": "80ab980b6b497424ca4e6ea2ea763e265b2590146ec1deb859c0a133f39e0f6a"
         }
-      },
-      {
-        "value": "distributors",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0000038725-26-000009",
-          "form": "10-K",
-          "accession_number": "0000038725-26-000009",
-          "filing_date": "2026-02-20",
-          "section_type": "item_1_business",
-          "quote": "The Company’s Water Systems and Energy Systems products and related equipment are sold to specialty distributors and some original equipment manufacturers (“OEMs”), as well as industrial and petroleum equipment distributors and major oil and utility companies.",
-          "evidence_start_character": 2927,
-          "evidence_end_character": 3187,
-          "document_start_character": 41470,
-          "document_end_character": 41730,
-          "matched_start_character": 3027,
-          "matched_end_character": 3039,
-          "text_sha256": "80ab980b6b497424ca4e6ea2ea763e265b2590146ec1deb859c0a133f39e0f6a"
-        }
       }
     ],
     "competitive_advantages": [],
@@ -247,8 +239,17 @@
   "product_recall_enrichment": {
     "version": "v2.6.5.7",
     "mode": "generic_filing_native_named_product_recovery",
-    "discovered_product_count": 1,
-    "final_product_count": 1,
+    "discovered_product_count": 0,
+    "final_product_count": 0,
     "removed_market_product_pollution": true
+  },
+  "product_stack_sanitizer": {
+    "version": "v2.6.6.2c-batch1",
+    "mode": "deterministic_production_boundary",
+    "promotion_batch": "V2.6.6.2c-batch1",
+    "before_count": 0,
+    "after_count": 0,
+    "removed_count": 0,
+    "removed": []
   }
 }

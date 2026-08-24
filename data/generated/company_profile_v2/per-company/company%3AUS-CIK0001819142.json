@@ -49,7 +49,6 @@
     ],
     "markets": [],
     "product_stack": [
-      "In September 2025, we completed the acquisition of UZ Energy, an ESS systems manufacturer, which has allowed us to accelerate our entry into the ESS market",
       "Existing manufacturers of battery materials that we compete with include Enovix, Solid Power, FREYR Battery, Sion Power, and Natrion"
     ],
     "market_products": {},
@@ -70,7 +69,31 @@
       "al”) and Lithium-ion (“Li-ion”) rechargeable battery technologies and battery materials for Energy Storage Systems (“ESS”), Urban Air Mobility (“UAM”), drones, robotics, electric vehicles (“EVs”), and other applications. The Company’s mission is to accelerate the world’s energy transition through material discovery and battery management. SES accelerates its pace of innovation by utili"
     ],
     "strategy_changes": [],
-    "financial_snapshot": []
+    "financial_snapshot": [],
+    "product_stack_by_value": {
+      "Solid Power": [
+        "Existing manufacturers of battery materials that we compete with include Enovix, Solid Power, FREYR Battery, Sion Power, and Natrion"
+      ],
+      "FREYR Battery": [
+        "Existing manufacturers of battery materials that we compete with include Enovix, Solid Power, FREYR Battery, Sion Power, and Natrion"
+      ],
+      "Sion Power": [
+        "Existing manufacturers of battery materials that we compete with include Enovix, Solid Power, FREYR Battery, Sion Power, and Natrion"
+      ]
+    },
+    "product_stack_source_terms": {
+      "Solid Power": [
+        "Solid Power",
+        "Power"
+      ],
+      "FREYR Battery": [
+        "FREYR Battery"
+      ],
+      "Sion Power": [
+        "Sion Power",
+        "Power"
+      ]
+    }
   },
   "evidence": [
     {
@@ -103,7 +126,62 @@
       }
     },
     "markets": [],
-    "product_stack": [],
+    "product_stack": [
+      {
+        "value": "Solid Power",
+        "evidence": {
+          "business_evidence_id": "business-evidence:SEC-0001819142-26-000010",
+          "form": "10-K",
+          "accession_number": "0001819142-26-000010",
+          "filing_date": "2026-03-04",
+          "section_type": "item_1_business",
+          "quote": "Existing manufacturers of battery materials that we compete with include Enovix, Solid Power, FREYR Battery, Sion Power, and Natrion.",
+          "evidence_start_character": 12303,
+          "evidence_end_character": 12436,
+          "document_start_character": 43861,
+          "document_end_character": 43994,
+          "matched_start_character": 12384,
+          "matched_end_character": 12395,
+          "text_sha256": "15120f81dc1c850aff7941ab32aca524c506ea2b0411027198830b8f25ee3752"
+        }
+      },
+      {
+        "value": "FREYR Battery",
+        "evidence": {
+          "business_evidence_id": "business-evidence:SEC-0001819142-26-000010",
+          "form": "10-K",
+          "accession_number": "0001819142-26-000010",
+          "filing_date": "2026-03-04",
+          "section_type": "item_1_business",
+          "quote": "Existing manufacturers of battery materials that we compete with include Enovix, Solid Power, FREYR Battery, Sion Power, and Natrion.",
+          "evidence_start_character": 12303,
+          "evidence_end_character": 12436,
+          "document_start_character": 43861,
+          "document_end_character": 43994,
+          "matched_start_character": 12397,
+          "matched_end_character": 12410,
+          "text_sha256": "15120f81dc1c850aff7941ab32aca524c506ea2b0411027198830b8f25ee3752"
+        }
+      },
+      {
+        "value": "Sion Power",
+        "evidence": {
+          "business_evidence_id": "business-evidence:SEC-0001819142-26-000010",
+          "form": "10-K",
+          "accession_number": "0001819142-26-000010",
+          "filing_date": "2026-03-04",
+          "section_type": "item_1_business",
+          "quote": "Existing manufacturers of battery materials that we compete with include Enovix, Solid Power, FREYR Battery, Sion Power, and Natrion.",
+          "evidence_start_character": 12303,
+          "evidence_end_character": 12436,
+          "document_start_character": 43861,
+          "document_end_character": 43994,
+          "matched_start_character": 12412,
+          "matched_end_character": 12422,
+          "text_sha256": "15120f81dc1c850aff7941ab32aca524c506ea2b0411027198830b8f25ee3752"
+        }
+      }
+    ],
     "market_products": {},
     "core_technologies": [
       {
@@ -208,8 +286,17 @@
   "product_recall_enrichment": {
     "version": "v2.6.5.7",
     "mode": "generic_filing_native_named_product_recovery",
-    "discovered_product_count": 4,
-    "final_product_count": 4,
+    "discovered_product_count": 3,
+    "final_product_count": 3,
     "removed_market_product_pollution": true
+  },
+  "product_stack_sanitizer": {
+    "version": "v2.6.6.2c-batch1",
+    "mode": "deterministic_production_boundary",
+    "promotion_batch": "V2.6.6.2c-batch1",
+    "before_count": 3,
+    "after_count": 3,
+    "removed_count": 0,
+    "removed": []
   }
 }
