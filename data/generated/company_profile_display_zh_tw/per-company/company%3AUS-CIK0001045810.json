@@ -1,101 +1,77 @@
 {
   "schema_version": "axiom-company-profile-display.zh-tw.v2.4",
-  "generation_mode": "reuse_existing_display_names_zh_tw",
+  "generation_mode": "manual_evidence_locked_zh_tw",
   "company_id": "company:US-CIK0001045810",
   "symbol": "NVDA",
   "canonical_schema_version": "axiom-company-profile.v2.3",
   "display": {
-    "locale": "zh-TW",
-    "symbol": "NVDA",
     "as_of": "2026-02-25",
     "company_summary": {
-      "one_line_business": "NVIDIA has a platform strategy, bringing together hardware, systems, software, algorithms, libraries, AI models and training data sets, and services to create unique value for the markets we serve."
+      "one_line_business": "NVIDIA 是資料中心級 AI 基礎設施公司，提供涵蓋 GPU、CPU、網路、系統、軟體與服務的加速運算平台。"
     },
     "markets": [
-      "雲端與資料中心",
+      "資料中心與 AI 基礎設施",
       "遊戲",
       "專業視覺化",
-      "汽車"
+      "汽車",
+      "機器人與實體 AI"
     ],
     "product_stack": [
-      "NVIDIA DRIVE stack for autonomous driving",
-      "Omniverse for physical AI applications",
-      "NVIDIA AI Enterprise software – essentially an operating system for enterprise AI applications",
-      "software",
-      "supercomputing platforms",
-      "energy efficient GPUs",
-      "CPUs",
-      "HPC software stacks",
-      "DPUs",
-      "A100",
-      "A800",
-      "H100",
-      "H800",
-      "L4",
-      "L40",
-      "L40S RTX 4090",
+      "Blackwell GPU",
+      "Grace CPU",
       "GB200 NVL72",
-      "B200",
-      "end-to-end platform spanning data center infrastructure",
-      "embedded compute modules",
-      "end-to-end accelerated computing platform for AI",
-      "software solution"
+      "DGX 系統",
+      "GeForce RTX GPU",
+      "RTX PRO GPU",
+      "NVIDIA DRIVE",
+      "NVIDIA AI Enterprise",
+      "NVIDIA Omniverse",
+      "NVIDIA Spectrum-X",
+      "NVIDIA InfiniBand",
+      "BlueField DPU"
     ],
-    "market_products": {
-      "雲端與資料中心": [
-        "along with software",
-        "switches",
-        "DPUs",
-        "switch chips",
-        "software"
-      ],
-      "遊戲": [
-        "GeForce RTX GPUs for gaming desktop",
-        "SoCs"
-      ]
-    },
-    "core_technologies": [],
+    "market_products": {},
+    "core_technologies": [
+      "CUDA 平行運算平台",
+      "GPU 加速運算",
+      "Blackwell 架構",
+      "Tensor Core 技術",
+      "NVLink 互連",
+      "資料中心級網路",
+      "AI 模型訓練與推論",
+      "光線追蹤"
+    ],
     "manufacturing": {
       "model": [],
       "locations": [],
       "critical_assets": []
     },
     "customer_types": [
-      "all major public",
-      "private cloud providers",
-      "AI model makers",
-      "enterprises",
-      "startups",
-      "public sector entities",
-      "cloud providers",
-      "OEMs",
-      "ODMs",
-      "system integrators",
-      "distributors"
+      "雲端服務供應商",
+      "消費型網路公司",
+      "企業",
+      "AI 模型開發商",
+      "OEM",
+      "系統製造商",
+      "汽車製造商",
+      "遊戲開發商"
     ],
     "ai_exposure": {
       "type": "direct_company_disclosure",
-      "summary": "Data Center The NVIDIA Data Center platform is focused on accelerating compute-intensive workloads, such as AI, data processing, graphics, robotics, and scientific computing, delivering superior total cost of ownership relative to conventional CPU-only approaches."
+      "summary": "NVIDIA 提供訓練及執行 AI 模型所需的加速運算基礎設施，包括 GPU、網路、系統、CUDA、軟體函式庫及企業 AI 軟體。"
     },
     "competitive_advantages": [],
     "demand_drivers": [
-      "人工智慧（AI）",
-      "頻寬需求成長",
-      "高效能運算（HPC）",
+      "AI 模型訓練",
+      "AI 推論",
       "生成式 AI",
       "代理型 AI",
-      "機器人"
+      "加速運算",
+      "高效能運算",
+      "資料中心投資",
+      "實體 AI 與機器人"
     ],
-    "strategy_changes": [
-      {
-        "year": 2023,
-        "change": "In 2023, we introduced our first data center CPU, Grace, built for giant-scale AI and high-performance computing, or HPC."
-      },
-      {
-        "year": 2024,
-        "change": "In 2024, we launched the NVIDIA Blackwell architecture – connecting 36 Grace CPUs and 72 Blackwell GPUs in a data center scale, liquid-cooled design – for real-time trillion-parameter inference and training."
-      }
-    ],
+    "strategy_changes": [],
     "financial_snapshot": {
       "fiscal_year": 2025,
       "revenue": null,
@@ -107,1061 +83,33 @@
   },
   "value_provenance": {
     "company_summary.one_line_business": {
-      "value": "NVIDIA has a platform strategy, bringing together hardware, systems, software, algorithms, libraries, AI models and training data sets, and services to create unique value for the markets we serve.",
-      "evidence": {
-        "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-        "form": "10-K",
-        "accession_number": "0001045810-26-000021",
-        "filing_date": "2026-02-25",
-        "section_type": "item_1_business",
-        "quote": "NVIDIA has a platform strategy, bringing together hardware, systems, software, algorithms, libraries, AI models and training data sets, and services to create unique value for the markets we serve. While the computing requirements of these end markets are diverse, we address them with a unified underlying programmable architecture allowing us to support several multi-billion-dollar end markets with the same underlying technology by using a variety of software stacks developed either internally or by third-party developers and partners.",
-        "evidence_start_character": 2435,
-        "evidence_end_character": 2976,
-        "document_start_character": 31821,
-        "document_end_character": 32362,
-        "matched_start_character": 2435,
-        "matched_end_character": 2632,
-        "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-      }
+      "value": "NVIDIA is a data-center-scale AI infrastructure company that provides accelerated computing platforms spanning GPUs, CPUs, networking, systems, software, and services.",
+      "evidence": null
     },
-    "markets": [
-      {
-        "value": "Data Center",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "Our computing platforms serve a diverse set of markets such as data centers, gaming, professional visualization, and automotive.",
-          "evidence_start_character": 25443,
-          "evidence_end_character": 25571,
-          "document_start_character": 54829,
-          "document_end_character": 54957,
-          "matched_start_character": 25506,
-          "matched_end_character": 25517,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "Gaming",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "Our computing platforms serve a diverse set of markets such as data centers, gaming, professional visualization, and automotive.",
-          "evidence_start_character": 25443,
-          "evidence_end_character": 25571,
-          "document_start_character": 54829,
-          "document_end_character": 54957,
-          "matched_start_character": 25520,
-          "matched_end_character": 25526,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "Professional Visualization",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "Our computing platforms serve a diverse set of markets such as data centers, gaming, professional visualization, and automotive.",
-          "evidence_start_character": 25443,
-          "evidence_end_character": 25571,
-          "document_start_character": 54829,
-          "document_end_character": 54957,
-          "matched_start_character": 25528,
-          "matched_end_character": 25554,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "Automotive",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "Our computing platforms serve a diverse set of markets such as data centers, gaming, professional visualization, and automotive.",
-          "evidence_start_character": 25443,
-          "evidence_end_character": 25571,
-          "document_start_character": 54829,
-          "document_end_character": 54957,
-          "matched_start_character": 25560,
-          "matched_end_character": 25570,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      }
-    ],
-    "product_stack": [
-      {
-        "value": "NVIDIA DRIVE stack for autonomous driving",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "Over the past 5 years, we have built full software stacks that run on top of our GPUs and CUDA to bring AI to the world’s largest industries, including NVIDIA DRIVE stack for autonomous driving, Clara for healthcare, Omniverse for physical AI applications, and NVIDIA AI Enterprise software – essentially an operating system for enterprise AI applications.",
-          "evidence_start_character": 4159,
-          "evidence_end_character": 4515,
-          "document_start_character": 33545,
-          "document_end_character": 33901,
-          "matched_start_character": 4311,
-          "matched_end_character": 4352,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "Omniverse for physical AI applications",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "Over the past 5 years, we have built full software stacks that run on top of our GPUs and CUDA to bring AI to the world’s largest industries, including NVIDIA DRIVE stack for autonomous driving, Clara for healthcare, Omniverse for physical AI applications, and NVIDIA AI Enterprise software – essentially an operating system for enterprise AI applications.",
-          "evidence_start_character": 4159,
-          "evidence_end_character": 4515,
-          "document_start_character": 33545,
-          "document_end_character": 33901,
-          "matched_start_character": 4376,
-          "matched_end_character": 4414,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "NVIDIA AI Enterprise software – essentially an operating system for enterprise AI applications",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "Over the past 5 years, we have built full software stacks that run on top of our GPUs and CUDA to bring AI to the world’s largest industries, including NVIDIA DRIVE stack for autonomous driving, Clara for healthcare, Omniverse for physical AI applications, and NVIDIA AI Enterprise software – essentially an operating system for enterprise AI applications.",
-          "evidence_start_character": 4159,
-          "evidence_end_character": 4515,
-          "document_start_character": 33545,
-          "document_end_character": 33901,
-          "matched_start_character": 4420,
-          "matched_end_character": 4514,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "any China-specific product designed to comply with U.S",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "The Chinese government has encouraged customers to purchase from our China-based competitors and discouraged customers from purchasing, importing, or using our data center products, including any China-specific product designed to comply with U.S.",
-          "evidence_start_character": 40145,
-          "evidence_end_character": 40392,
-          "document_start_character": 69531,
-          "document_end_character": 69778,
-          "matched_start_character": 40337,
-          "matched_end_character": 40391,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "software",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "Over the past 5 years, we have built full software stacks that run on top of our GPUs and CUDA to bring AI to the world’s largest industries, including NVIDIA DRIVE stack for autonomous driving, Clara for healthcare, Omniverse for physical AI applications, and NVIDIA AI Enterprise software – essentially an operating system for enterprise AI applications.",
-          "evidence_start_character": 4159,
-          "evidence_end_character": 4515,
-          "document_start_character": 33545,
-          "document_end_character": 33901,
-          "matched_start_character": 4201,
-          "matched_end_character": 4209,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "supercomputing platforms",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "Our Data Center infrastructure systems include supercomputing platforms and servers, bringing together our higher performance, energy efficient GPUs, CPUs, interconnects, and fully optimized AI and HPC software stacks.",
-          "evidence_start_character": 9739,
-          "evidence_end_character": 9957,
-          "document_start_character": 39125,
-          "document_end_character": 39343,
-          "matched_start_character": 9786,
-          "matched_end_character": 9810,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "energy efficient GPUs",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "Our Data Center infrastructure systems include supercomputing platforms and servers, bringing together our higher performance, energy efficient GPUs, CPUs, interconnects, and fully optimized AI and HPC software stacks.",
-          "evidence_start_character": 9739,
-          "evidence_end_character": 9957,
-          "document_start_character": 39125,
-          "document_end_character": 39343,
-          "matched_start_character": 9866,
-          "matched_end_character": 9887,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "CPUs",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "In 2024, we launched the NVIDIA Blackwell architecture – connecting 36 Grace CPUs and 72 Blackwell GPUs in a data center scale, liquid-cooled design – for real-time trillion-parameter inference and training.",
-          "evidence_start_character": 4638,
-          "evidence_end_character": 4845,
-          "document_start_character": 34024,
-          "document_end_character": 34231,
-          "matched_start_character": 4715,
-          "matched_end_character": 4719,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "HPC software stacks",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "Our Data Center infrastructure systems include supercomputing platforms and servers, bringing together our higher performance, energy efficient GPUs, CPUs, interconnects, and fully optimized AI and HPC software stacks.",
-          "evidence_start_character": 9739,
-          "evidence_end_character": 9957,
-          "document_start_character": 39125,
-          "document_end_character": 39343,
-          "matched_start_character": 9937,
-          "matched_end_character": 9956,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "DPUs",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "Our networking offerings include NVLink interconnects and switches, end-to-end platforms for InfiniBand and Ethernet, consisting of network adapters, cables, DPUs, switch chips and systems, as well as software.",
-          "evidence_start_character": 10116,
-          "evidence_end_character": 10326,
-          "document_start_character": 39502,
-          "document_end_character": 39712,
-          "matched_start_character": 10274,
-          "matched_end_character": 10278,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "Arista Networks",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "•networking products consisting of switches, network adapters (including DPUs), and cable solutions (including optical modules) include such as AMD, Arista Networks, Broadcom, Cisco Systems, Inc.",
-          "evidence_start_character": 30642,
-          "evidence_end_character": 30837,
-          "document_start_character": 60028,
-          "document_end_character": 60223,
-          "matched_start_character": 30791,
-          "matched_end_character": 30806,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "Cisco Systems",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "•networking products consisting of switches, network adapters (including DPUs), and cable solutions (including optical modules) include such as AMD, Arista Networks, Broadcom, Cisco Systems, Inc.",
-          "evidence_start_character": 30642,
-          "evidence_end_character": 30837,
-          "document_start_character": 60028,
-          "document_end_character": 60223,
-          "matched_start_character": 30818,
-          "matched_end_character": 30831,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "A100",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "In October 2023, the USG announced new and updated licensing requirements for exports to China and Country Groups D:1, D:4, and D:5 (including but not limited to Saudi Arabia, the United Arab Emirates, and Vietnam, but excluding Israel) of our products exceeding certain performance thresholds, including, but not limited to, the A100, A800, H100, H800, L4, L40, L40S RTX 4090, GB200 NVL72, and B200.",
-          "evidence_start_character": 33695,
-          "evidence_end_character": 34095,
-          "document_start_character": 63081,
-          "document_end_character": 63481,
-          "matched_start_character": 34025,
-          "matched_end_character": 34029,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "A800",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "In October 2023, the USG announced new and updated licensing requirements for exports to China and Country Groups D:1, D:4, and D:5 (including but not limited to Saudi Arabia, the United Arab Emirates, and Vietnam, but excluding Israel) of our products exceeding certain performance thresholds, including, but not limited to, the A100, A800, H100, H800, L4, L40, L40S RTX 4090, GB200 NVL72, and B200.",
-          "evidence_start_character": 33695,
-          "evidence_end_character": 34095,
-          "document_start_character": 63081,
-          "document_end_character": 63481,
-          "matched_start_character": 34031,
-          "matched_end_character": 34035,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "H100",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "In October 2023, the USG announced new and updated licensing requirements for exports to China and Country Groups D:1, D:4, and D:5 (including but not limited to Saudi Arabia, the United Arab Emirates, and Vietnam, but excluding Israel) of our products exceeding certain performance thresholds, including, but not limited to, the A100, A800, H100, H800, L4, L40, L40S RTX 4090, GB200 NVL72, and B200.",
-          "evidence_start_character": 33695,
-          "evidence_end_character": 34095,
-          "document_start_character": 63081,
-          "document_end_character": 63481,
-          "matched_start_character": 34037,
-          "matched_end_character": 34041,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "H800",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "In October 2023, the USG announced new and updated licensing requirements for exports to China and Country Groups D:1, D:4, and D:5 (including but not limited to Saudi Arabia, the United Arab Emirates, and Vietnam, but excluding Israel) of our products exceeding certain performance thresholds, including, but not limited to, the A100, A800, H100, H800, L4, L40, L40S RTX 4090, GB200 NVL72, and B200.",
-          "evidence_start_character": 33695,
-          "evidence_end_character": 34095,
-          "document_start_character": 63081,
-          "document_end_character": 63481,
-          "matched_start_character": 34043,
-          "matched_end_character": 34047,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "L4",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "In October 2023, the USG announced new and updated licensing requirements for exports to China and Country Groups D:1, D:4, and D:5 (including but not limited to Saudi Arabia, the United Arab Emirates, and Vietnam, but excluding Israel) of our products exceeding certain performance thresholds, including, but not limited to, the A100, A800, H100, H800, L4, L40, L40S RTX 4090, GB200 NVL72, and B200.",
-          "evidence_start_character": 33695,
-          "evidence_end_character": 34095,
-          "document_start_character": 63081,
-          "document_end_character": 63481,
-          "matched_start_character": 34049,
-          "matched_end_character": 34051,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "L40",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "In October 2023, the USG announced new and updated licensing requirements for exports to China and Country Groups D:1, D:4, and D:5 (including but not limited to Saudi Arabia, the United Arab Emirates, and Vietnam, but excluding Israel) of our products exceeding certain performance thresholds, including, but not limited to, the A100, A800, H100, H800, L4, L40, L40S RTX 4090, GB200 NVL72, and B200.",
-          "evidence_start_character": 33695,
-          "evidence_end_character": 34095,
-          "document_start_character": 63081,
-          "document_end_character": 63481,
-          "matched_start_character": 34053,
-          "matched_end_character": 34056,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "L40S RTX 4090",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "In October 2023, the USG announced new and updated licensing requirements for exports to China and Country Groups D:1, D:4, and D:5 (including but not limited to Saudi Arabia, the United Arab Emirates, and Vietnam, but excluding Israel) of our products exceeding certain performance thresholds, including, but not limited to, the A100, A800, H100, H800, L4, L40, L40S RTX 4090, GB200 NVL72, and B200.",
-          "evidence_start_character": 33695,
-          "evidence_end_character": 34095,
-          "document_start_character": 63081,
-          "document_end_character": 63481,
-          "matched_start_character": 34058,
-          "matched_end_character": 34071,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "GB200 NVL72",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "In October 2023, the USG announced new and updated licensing requirements for exports to China and Country Groups D:1, D:4, and D:5 (including but not limited to Saudi Arabia, the United Arab Emirates, and Vietnam, but excluding Israel) of our products exceeding certain performance thresholds, including, but not limited to, the A100, A800, H100, H800, L4, L40, L40S RTX 4090, GB200 NVL72, and B200.",
-          "evidence_start_character": 33695,
-          "evidence_end_character": 34095,
-          "document_start_character": 63081,
-          "document_end_character": 63481,
-          "matched_start_character": 34073,
-          "matched_end_character": 34084,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "B200",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "In October 2023, the USG announced new and updated licensing requirements for exports to China and Country Groups D:1, D:4, and D:5 (including but not limited to Saudi Arabia, the United Arab Emirates, and Vietnam, but excluding Israel) of our products exceeding certain performance thresholds, including, but not limited to, the A100, A800, H100, H800, L4, L40, L40S RTX 4090, GB200 NVL72, and B200.",
-          "evidence_start_character": 33695,
-          "evidence_end_character": 34095,
-          "document_start_character": 63081,
-          "document_end_character": 63481,
-          "matched_start_character": 34074,
-          "matched_end_character": 34078,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "paid licenses to NVIDIA AI Enterprise",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "In addition to software delivered to customers as an integral part of our data center computing and networking platform, we offer paid licenses to NVIDIA AI Enterprise, a comprehensive suite of enterprise-grade AI software and NVIDIA vGPU software for graphics-rich virtual desktops and workstations.",
-          "evidence_start_character": 12121,
-          "evidence_end_character": 12421,
-          "document_start_character": 41507,
-          "document_end_character": 41807,
-          "matched_start_character": 12251,
-          "matched_end_character": 12288,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "end-to-end platform spanning data center infrastructure",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "For physical AI, we provide an end-to-end platform spanning data center infrastructure, open models, systems, embedded compute modules, and software stacks to train, simulate, and deploy advanced automation and robotics solutions.",
-          "evidence_start_character": 13257,
-          "evidence_end_character": 13487,
-          "document_start_character": 42643,
-          "document_end_character": 42873,
-          "matched_start_character": 13288,
-          "matched_end_character": 13343,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "embedded compute modules",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "For physical AI, we provide an end-to-end platform spanning data center infrastructure, open models, systems, embedded compute modules, and software stacks to train, simulate, and deploy advanced automation and robotics solutions.",
-          "evidence_start_character": 13257,
-          "evidence_end_character": 13487,
-          "document_start_character": 42643,
-          "document_end_character": 42873,
-          "matched_start_character": 13367,
-          "matched_end_character": 13391,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "end-to-end accelerated computing platform for AI",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "We provide a complete, end-to-end accelerated computing platform for AI, addressing both training and inferencing.",
-          "evidence_start_character": 18129,
-          "evidence_end_character": 18243,
-          "document_start_character": 47515,
-          "document_end_character": 47629,
-          "matched_start_character": 18152,
-          "matched_end_character": 18200,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "software solution",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "Therefore, we provide an AI-based hardware and software solution, designed and implemented from the ground up based on automotive safety standards, for the AV and EV market under the DRIVE brand, which we are bringing to market through our partnerships across the transportation industry including with automotive OEMs, mobility service providers, robotaxis, tier-1 suppliers, and start-ups.",
-          "evidence_start_character": 21724,
-          "evidence_end_character": 22115,
-          "document_start_character": 51110,
-          "document_end_character": 51501,
-          "matched_start_character": 21771,
-          "matched_end_character": 21788,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "EV market under the DRIVE",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "Therefore, we provide an AI-based hardware and software solution, designed and implemented from the ground up based on automotive safety standards, for the AV and EV market under the DRIVE brand, which we are bringing to market through our partnerships across the transportation industry including with automotive OEMs, mobility service providers, robotaxis, tier-1 suppliers, and start-ups.",
-          "evidence_start_character": 21724,
-          "evidence_end_character": 22115,
-          "document_start_character": 51110,
-          "document_end_character": 51501,
-          "matched_start_character": 21887,
-          "matched_end_character": 21912,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      }
-    ],
-    "market_products": {
-      "data_center": [
-        {
-          "value": "along with software",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-            "form": "10-K",
-            "accession_number": "0001045810-26-000021",
-            "filing_date": "2026-02-25",
-            "section_type": "item_1_business",
-            "quote": "The platform consists of data center compute and networking infrastructure offerings typically delivered to customers as rack-scale systems, subsystems, or modules, along with software and services.",
-            "evidence_start_character": 9540,
-            "evidence_end_character": 9738,
-            "document_start_character": 38926,
-            "document_end_character": 39124,
-            "matched_start_character": 9705,
-            "matched_end_character": 9724,
-            "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-          }
-        },
-        {
-          "value": "switches",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-            "form": "10-K",
-            "accession_number": "0001045810-26-000021",
-            "filing_date": "2026-02-25",
-            "section_type": "item_1_business",
-            "quote": "Our networking offerings include NVLink interconnects and switches, end-to-end platforms for InfiniBand and Ethernet, consisting of network adapters, cables, DPUs, switch chips and systems, as well as software.",
-            "evidence_start_character": 10116,
-            "evidence_end_character": 10326,
-            "document_start_character": 39502,
-            "document_end_character": 39712,
-            "matched_start_character": 10174,
-            "matched_end_character": 10182,
-            "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-          }
-        },
-        {
-          "value": "DPUs",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-            "form": "10-K",
-            "accession_number": "0001045810-26-000021",
-            "filing_date": "2026-02-25",
-            "section_type": "item_1_business",
-            "quote": "Our networking offerings include NVLink interconnects and switches, end-to-end platforms for InfiniBand and Ethernet, consisting of network adapters, cables, DPUs, switch chips and systems, as well as software.",
-            "evidence_start_character": 10116,
-            "evidence_end_character": 10326,
-            "document_start_character": 39502,
-            "document_end_character": 39712,
-            "matched_start_character": 10274,
-            "matched_end_character": 10278,
-            "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-          }
-        },
-        {
-          "value": "switch chips",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-            "form": "10-K",
-            "accession_number": "0001045810-26-000021",
-            "filing_date": "2026-02-25",
-            "section_type": "item_1_business",
-            "quote": "Our networking offerings include NVLink interconnects and switches, end-to-end platforms for InfiniBand and Ethernet, consisting of network adapters, cables, DPUs, switch chips and systems, as well as software.",
-            "evidence_start_character": 10116,
-            "evidence_end_character": 10326,
-            "document_start_character": 39502,
-            "document_end_character": 39712,
-            "matched_start_character": 10280,
-            "matched_end_character": 10292,
-            "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-          }
-        },
-        {
-          "value": "software",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-            "form": "10-K",
-            "accession_number": "0001045810-26-000021",
-            "filing_date": "2026-02-25",
-            "section_type": "item_1_business",
-            "quote": "The platform consists of data center compute and networking infrastructure offerings typically delivered to customers as rack-scale systems, subsystems, or modules, along with software and services.",
-            "evidence_start_character": 9540,
-            "evidence_end_character": 9738,
-            "document_start_character": 38926,
-            "document_end_character": 39124,
-            "matched_start_character": 9716,
-            "matched_end_character": 9724,
-            "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-          }
-        }
-      ],
-      "gaming": [
-        {
-          "value": "GeForce RTX GPUs for gaming desktop",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-            "form": "10-K",
-            "accession_number": "0001045810-26-000021",
-            "filing_date": "2026-02-25",
-            "section_type": "item_1_business",
-            "quote": "Our products for the gaming market include GeForce RTX GPUs for gaming desktop and laptop PCs, GeForce NOW cloud gaming service, as well as SoCs and development services for game consoles.",
-            "evidence_start_character": 13813,
-            "evidence_end_character": 14001,
-            "document_start_character": 43199,
-            "document_end_character": 43387,
-            "matched_start_character": 13856,
-            "matched_end_character": 13891,
-            "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-          }
-        },
-        {
-          "value": "SoCs",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-            "form": "10-K",
-            "accession_number": "0001045810-26-000021",
-            "filing_date": "2026-02-25",
-            "section_type": "item_1_business",
-            "quote": "Our products for the gaming market include GeForce RTX GPUs for gaming desktop and laptop PCs, GeForce NOW cloud gaming service, as well as SoCs and development services for game consoles.",
-            "evidence_start_character": 13813,
-            "evidence_end_character": 14001,
-            "document_start_character": 43199,
-            "document_end_character": 43387,
-            "matched_start_character": 13953,
-            "matched_end_character": 13957,
-            "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-          }
-        }
-      ]
-    },
+    "markets": [],
+    "product_stack": [],
+    "market_products": {},
     "core_technologies": [],
     "manufacturing": {
       "model": [],
       "locations": [],
       "critical_assets": []
     },
-    "customer_types": [
-      {
-        "value": "all major public",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "Our customers include all major public and private cloud providers, AI model makers, enterprises and startups, and public sector entities.",
-          "evidence_start_character": 10796,
-          "evidence_end_character": 10934,
-          "document_start_character": 40182,
-          "document_end_character": 40320,
-          "matched_start_character": 10818,
-          "matched_end_character": 10834,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "private cloud providers",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "Our customers include all major public and private cloud providers, AI model makers, enterprises and startups, and public sector entities.",
-          "evidence_start_character": 10796,
-          "evidence_end_character": 10934,
-          "document_start_character": 40182,
-          "document_end_character": 40320,
-          "matched_start_character": 10839,
-          "matched_end_character": 10862,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "AI model makers",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "Our customers include all major public and private cloud providers, AI model makers, enterprises and startups, and public sector entities.",
-          "evidence_start_character": 10796,
-          "evidence_end_character": 10934,
-          "document_start_character": 40182,
-          "document_end_character": 40320,
-          "matched_start_character": 10864,
-          "matched_end_character": 10879,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "enterprises",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "Our customers include all major public and private cloud providers, AI model makers, enterprises and startups, and public sector entities.",
-          "evidence_start_character": 10796,
-          "evidence_end_character": 10934,
-          "document_start_character": 40182,
-          "document_end_character": 40320,
-          "matched_start_character": 10881,
-          "matched_end_character": 10892,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "startups",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "Our customers include all major public and private cloud providers, AI model makers, enterprises and startups, and public sector entities.",
-          "evidence_start_character": 10796,
-          "evidence_end_character": 10934,
-          "document_start_character": 40182,
-          "document_end_character": 40320,
-          "matched_start_character": 10897,
-          "matched_end_character": 10905,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "public sector entities",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "Our customers include all major public and private cloud providers, AI model makers, enterprises and startups, and public sector entities.",
-          "evidence_start_character": 10796,
-          "evidence_end_character": 10934,
-          "document_start_character": 40182,
-          "document_end_character": 40320,
-          "matched_start_character": 10911,
-          "matched_end_character": 10933,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "cloud providers",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "Our customers include all major public and private cloud providers, AI model makers, enterprises and startups, and public sector entities.",
-          "evidence_start_character": 10796,
-          "evidence_end_character": 10934,
-          "document_start_character": 40182,
-          "document_end_character": 40320,
-          "matched_start_character": 10847,
-          "matched_end_character": 10862,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "OEMs",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "Some of our direct customers include original equipment manufacturers, or OEMs, original device manufacturers, or",
-          "evidence_start_character": 11043,
-          "evidence_end_character": 11156,
-          "document_start_character": 40429,
-          "document_end_character": 40542,
-          "matched_start_character": 11117,
-          "matched_end_character": 11121,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "ODMs",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "ODMs, system integrators and distributors which we partner with to help bring our products to market.",
-          "evidence_start_character": 11177,
-          "evidence_end_character": 11278,
-          "document_start_character": 40563,
-          "document_end_character": 40664,
-          "matched_start_character": 11177,
-          "matched_end_character": 11181,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "system integrators",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "ODMs, system integrators and distributors which we partner with to help bring our products to market.",
-          "evidence_start_character": 11177,
-          "evidence_end_character": 11278,
-          "document_start_character": 40563,
-          "document_end_character": 40664,
-          "matched_start_character": 11183,
-          "matched_end_character": 11201,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "distributors",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "ODMs, system integrators and distributors which we partner with to help bring our products to market.",
-          "evidence_start_character": 11177,
-          "evidence_end_character": 11278,
-          "document_start_character": 40563,
-          "document_end_character": 40664,
-          "matched_start_character": 11206,
-          "matched_end_character": 11218,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      }
-    ],
+    "customer_types": [],
     "ai_exposure": {
       "value": {
         "type": "direct_company_disclosure",
-        "summary": "Data Center The NVIDIA Data Center platform is focused on accelerating compute-intensive workloads, such as AI, data processing, graphics, robotics, and scientific computing, delivering superior total cost of ownership relative to conventional CPU-only approaches."
+        "summary": "NVIDIA provides the accelerated computing infrastructure used to train and run AI models, including GPUs, networking, systems, CUDA, software libraries, and enterprise AI software."
       },
       "evidence": null
     },
     "competitive_advantages": [],
-    "demand_drivers": [
-      {
-        "value": "AI",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "NVIDIA is now a data center scale AI infrastructure company reshaping all industries.",
-          "evidence_start_character": 127,
-          "evidence_end_character": 212,
-          "document_start_character": 29513,
-          "document_end_character": 29598,
-          "matched_start_character": 161,
-          "matched_end_character": 163,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "bandwidth growth",
-        "evidence": null
-      },
-      {
-        "value": "HPC",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "In 2023, we introduced our first data center CPU, Grace, built for giant-scale AI and high-performance computing, or HPC.",
-          "evidence_start_character": 4516,
-          "evidence_end_character": 4637,
-          "document_start_character": 33902,
-          "document_end_character": 34023,
-          "matched_start_character": 4633,
-          "matched_end_character": 4636,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "generative AI",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "Examples include generative AI, which can create new content such as text, code, images, audio, video, molecule structures, and recommendation systems; and agentic AI where systems of AI models work in concert to automatically complete a task.",
-          "evidence_start_character": 2191,
-          "evidence_end_character": 2434,
-          "document_start_character": 31577,
-          "document_end_character": 31820,
-          "matched_start_character": 2208,
-          "matched_end_character": 2221,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "agentic AI",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "More recently, in support of market development, we have accelerated the release cadence of our open AI model platforms including NVIDIA Nemotron for agentic AI and Cosmos for physical AI.",
-          "evidence_start_character": 5199,
-          "evidence_end_character": 5387,
-          "document_start_character": 34585,
-          "document_end_character": 34773,
-          "matched_start_character": 5349,
-          "matched_end_character": 5359,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      },
-      {
-        "value": "robotics",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "This deep and broad software stack accelerates the performance and facilitates the deployment of NVIDIA accelerated computing for computationally intensive workloads such as artificial intelligence, or AI, model training and inference, data analytics, scientific computing, robotics, and 3D graphics, with vertical-specific optimizations to address industries ranging from healthcare and telecom to automotive and manufacturing.",
-          "evidence_start_character": 491,
-          "evidence_end_character": 919,
-          "document_start_character": 29877,
-          "document_end_character": 30305,
-          "matched_start_character": 765,
-          "matched_end_character": 773,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
-      }
-    ],
-    "strategy_changes": [
-      {
-        "value": {
-          "year": 2023,
-          "change": "In 2023, we introduced our first data center CPU, Grace, built for giant-scale AI and high-performance computing, or HPC."
-        },
-        "evidence": null
-      },
-      {
-        "value": {
-          "year": 2024,
-          "change": "In 2024, we launched the NVIDIA Blackwell architecture – connecting 36 Grace CPUs and 72 Blackwell GPUs in a data center scale, liquid-cooled design – for real-time trillion-parameter inference and training."
-        },
-        "evidence": null
-      }
-    ],
+    "demand_drivers": [],
+    "strategy_changes": [],
     "financial_snapshot": {
       "fiscal_year": {
         "value": 2025,
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001045810-26-000021",
-          "form": "10-K",
-          "accession_number": "0001045810-26-000021",
-          "filing_date": "2026-02-25",
-          "section_type": "item_1_business",
-          "quote": "In fiscal year 2025, we launched the NVIDIA Blackwell architecture, a full set of data center scale infrastructure that includes GPUs, CPUs, DPUs, interconnects, switch chips and systems, and networking adapters.",
-          "evidence_start_character": 12422,
-          "evidence_end_character": 12634,
-          "document_start_character": 41808,
-          "document_end_character": 42020,
-          "matched_start_character": 12437,
-          "matched_end_character": 12441,
-          "text_sha256": "eebd453192d52b2883d056d51c6625157c8c20fe09ce792c70cef6e9ed3e3f9c"
-        }
+        "evidence": null
       },
       "revenue_mix": {},
       "customer_concentration": {}
@@ -1179,175 +127,131 @@
     }
   ],
   "translation_engine": {
-    "provider": "openai",
-    "model": "gpt-4.1-mini",
-    "mode": "company_profile_translation_only",
-    "result_source": "API_LOCKED",
-    "validation": "exact_json_shape_and_array_cardinality",
+    "provider": "manual",
+    "model": null,
+    "mode": "human_reviewed_company_profile_translation",
+    "result_source": "MANUAL_LOCKED",
+    "validation": "manual_review_and_read_back",
     "canonical_handoff": "read_back_verified"
   },
   "translation_source": {
-    "company_summary": "NVIDIA has a platform strategy, bringing together hardware, systems, software, algorithms, libraries, AI models and training data sets, and services to create unique value for the markets we serve.",
+    "company_summary": "NVIDIA is a data-center-scale AI infrastructure company that provides accelerated computing platforms spanning GPUs, CPUs, networking, systems, software, and services.",
     "product_stack": [
-      "NVIDIA DRIVE stack for autonomous driving",
-      "Omniverse for physical AI applications",
-      "NVIDIA AI Enterprise software – essentially an operating system for enterprise AI applications",
-      "software",
-      "supercomputing platforms",
-      "energy efficient GPUs",
-      "CPUs",
-      "HPC software stacks",
-      "DPUs",
-      "A100",
-      "A800",
-      "H100",
-      "H800",
-      "L4",
-      "L40",
-      "L40S RTX 4090",
+      "Blackwell GPUs",
+      "Grace CPUs",
       "GB200 NVL72",
-      "B200",
-      "end-to-end platform spanning data center infrastructure",
-      "embedded compute modules",
-      "end-to-end accelerated computing platform for AI",
-      "software solution"
+      "DGX systems",
+      "GeForce RTX GPUs",
+      "RTX PRO GPUs",
+      "NVIDIA DRIVE",
+      "NVIDIA AI Enterprise",
+      "NVIDIA Omniverse",
+      "NVIDIA Spectrum-X",
+      "NVIDIA InfiniBand",
+      "BlueField DPUs"
     ],
-    "market_products": {
-      "data_center": [
-        "along with software",
-        "switches",
-        "DPUs",
-        "switch chips",
-        "software"
-      ],
-      "gaming": [
-        "GeForce RTX GPUs for gaming desktop",
-        "SoCs"
-      ]
-    },
+    "market_products": {},
     "markets": [
-      "Data Center",
+      "Data Center and AI Infrastructure",
       "Gaming",
       "Professional Visualization",
-      "Automotive"
+      "Automotive",
+      "Robotics and Physical AI"
     ],
     "customer_types": [
-      "all major public",
-      "private cloud providers",
-      "AI model makers",
+      "cloud service providers",
+      "consumer internet companies",
       "enterprises",
-      "startups",
-      "public sector entities",
-      "cloud providers",
+      "AI model developers",
       "OEMs",
-      "ODMs",
-      "system integrators",
-      "distributors"
+      "system builders",
+      "automotive manufacturers",
+      "game developers"
     ],
-    "core_technologies": [],
+    "core_technologies": [
+      "CUDA parallel computing platform",
+      "GPU accelerated computing",
+      "Blackwell architecture",
+      "Tensor Core technology",
+      "NVLink interconnect",
+      "data-center-scale networking",
+      "AI model training and inference",
+      "ray tracing"
+    ],
     "ai_exposure": {
       "type": "direct_company_disclosure",
-      "summary": "Data Center The NVIDIA Data Center platform is focused on accelerating compute-intensive workloads, such as AI, data processing, graphics, robotics, and scientific computing, delivering superior total cost of ownership relative to conventional CPU-only approaches."
+      "summary": "NVIDIA provides the accelerated computing infrastructure used to train and run AI models, including GPUs, networking, systems, CUDA, software libraries, and enterprise AI software."
     },
     "demand_drivers": [
-      "AI",
-      "bandwidth growth",
-      "HPC",
+      "AI model training",
+      "AI inference",
       "generative AI",
       "agentic AI",
-      "robotics"
+      "accelerated computing",
+      "high-performance computing",
+      "data-center investment",
+      "physical AI and robotics"
     ],
-    "strategy_changes": [
-      {
-        "year": 2023,
-        "change": "In 2023, we introduced our first data center CPU, Grace, built for giant-scale AI and high-performance computing, or HPC."
-      },
-      {
-        "year": 2024,
-        "change": "In 2024, we launched the NVIDIA Blackwell architecture – connecting 36 Grace CPUs and 72 Blackwell GPUs in a data center scale, liquid-cooled design – for real-time trillion-parameter inference and training."
-      }
-    ]
+    "strategy_changes": []
   },
   "translation_zh_tw": {
-    "company_summary": "NVIDIA 採用平台策略，結合硬體、系統、軟體、演算法、函式庫、AI 模型與訓練資料集，以及服務，為我們服務的市場創造獨特價值。",
+    "company_summary": "NVIDIA 是資料中心級 AI 基礎設施公司，提供涵蓋 GPU、CPU、網路、系統、軟體與服務的加速運算平台。",
     "product_stack": [
-      "NVIDIA DRIVE 堆疊用於自動駕駛",
-      "Omniverse 用於實體 AI 應用",
-      "NVIDIA AI Enterprise 軟體——本質上是企業 AI 應用的作業系統",
-      "軟體",
-      "超級運算平台",
-      "節能 GPUs",
-      "CPUs",
-      "HPC 軟體堆疊",
-      "DPUs",
-      "A100",
-      "A800",
-      "H100",
-      "H800",
-      "L4",
-      "L40",
-      "L40S RTX 4090",
+      "Blackwell GPU",
+      "Grace CPU",
       "GB200 NVL72",
-      "B200",
-      "涵蓋資料中心基礎架構的端到端平台",
-      "嵌入式運算模組",
-      "用於 AI 的端到端加速運算平台",
-      "軟體解決方案"
+      "DGX 系統",
+      "GeForce RTX GPU",
+      "RTX PRO GPU",
+      "NVIDIA DRIVE",
+      "NVIDIA AI Enterprise",
+      "NVIDIA Omniverse",
+      "NVIDIA Spectrum-X",
+      "NVIDIA InfiniBand",
+      "BlueField DPU"
     ],
-    "market_products": {
-      "data_center": [
-        "並搭配軟體",
-        "交換器",
-        "DPUs",
-        "交換芯片",
-        "軟體"
-      ],
-      "gaming": [
-        "GeForce RTX 用於遊戲桌機的 GPUs",
-        "SoCs"
-      ]
-    },
+    "market_products": {},
     "markets": [
-      "資料中心",
+      "資料中心與 AI 基礎設施",
       "遊戲",
       "專業視覺化",
-      "汽車產業"
+      "汽車",
+      "機器人與實體 AI"
     ],
     "customer_types": [
-      "所有主要公共",
-      "私有雲服務提供商",
-      "AI 模型開發者",
+      "雲端服務供應商",
+      "消費型網路公司",
       "企業",
-      "新創公司",
-      "公共部門實體",
-      "雲端服務提供商",
-      "OEMs",
-      "ODMs",
-      "系統整合商",
-      "分銷商"
+      "AI 模型開發商",
+      "OEM",
+      "系統製造商",
+      "汽車製造商",
+      "遊戲開發商"
     ],
-    "core_technologies": [],
+    "core_technologies": [
+      "CUDA 平行運算平台",
+      "GPU 加速運算",
+      "Blackwell 架構",
+      "Tensor Core 技術",
+      "NVLink 互連",
+      "資料中心級網路",
+      "AI 模型訓練與推論",
+      "光線追蹤"
+    ],
     "ai_exposure": {
       "type": "direct_company_disclosure",
-      "summary": "資料中心 NVIDIA 的資料中心平台專注於加速計算密集型工作負載，如 AI、資料處理、圖形、機器人技術及科學運算，與傳統僅使用 CPU 的方法相比，提供更優越的整體擁有成本。"
+      "summary": "NVIDIA 提供訓練及執行 AI 模型所需的加速運算基礎設施，包括 GPU、網路、系統、CUDA、軟體函式庫及企業 AI 軟體。"
     },
     "demand_drivers": [
-      "AI",
-      "頻寬成長",
-      "HPC",
+      "AI 模型訓練",
+      "AI 推論",
       "生成式 AI",
-      "智能代理 AI",
-      "機器人技術"
+      "代理型 AI",
+      "加速運算",
+      "高效能運算",
+      "資料中心投資",
+      "實體 AI 與機器人"
     ],
-    "strategy_changes": [
-      {
-        "year": 2023,
-        "change": "2023 年，我們推出首款資料中心 CPU Grace，專為巨型規模 AI 與高效能運算（HPC）打造。"
-      },
-      {
-        "year": 2024,
-        "change": "2024 年，我們發表 NVIDIA Blackwell 架構——在資料中心規模設計中搭配 36 顆 Grace CPUs 和 72 顆 Blackwell GPUs，並採用液冷系統，支援實時兆參數推論與訓練。"
-      }
-    ]
+    "strategy_changes": []
   }
 }
