@@ -1,66 +1,38 @@
 {
   "schema_version": "axiom-company-profile.v2.3",
-  "generation_mode": "evidence_first_generic_extractor",
+  "generation_mode": "manual_evidence_locked",
   "company_id": "company:US-CIK0001835632",
   "symbol": "MRVL",
   "exchange": "NASDAQ",
   "as_of": "2026-03-11",
   "company_summary": {
-    "one_line_business": "Marvell Technology, Inc., together with its consolidated subsidiaries (“Marvell,” “MTI,” the “Company,” “we,” or “us”) is a leading supplier of data infrastructure semiconductor solutions, spanning the data center core to network edge."
+    "one_line_business": "Marvell provides data-infrastructure semiconductor solutions for data centers, carrier networks, enterprise networking and storage."
   },
   "markets": [
-    "Networking",
-    "Security",
-    "Interconnects",
-    "Differentiating For These",
-    "Data Center",
-    "Communications",
-    "Other"
+    "Data centers",
+    "Cloud networking",
+    "Carrier infrastructure",
+    "Enterprise networking",
+    "Storage"
   ],
   "product_stack": [
-    "custom Application Specific Integrated Circuits",
-    "storage controllers",
-    "LPO chipsets",
-    "AEC DSPs",
-    "PCIe retimer solutions",
-    "a complete suite of PCIe and CXL connectivity solutions",
-    "spanning both re-timers and high-performance switches",
-    "Scale-Up Switches",
-    "PCIe and CXL Switches",
-    "Ultra Accelerator",
-    "CXL Switches",
+    "custom data-center ASICs",
     "OCTEON DPUs",
-    "coherent-lite DSPs (digital signal processors)",
-    "silicon photonics",
-    "AEC (active electrical cable) DSPs",
-    "microcontrollers",
-    "photodiodes",
-    "Serial Advanced Technology Attachment (“SATA”)",
-    "Serial Attached SCSI (“SAS”)",
-    "NVMe over Fabrics (“NVMe-oF”)",
-    "opto-electronics",
-    "broad portfolio of Ethernet solutions spanning controllers",
-    "physical transceivers",
-    "switches",
-    "highly integrated semiconductors"
+    "Prestera Ethernet switches",
+    "Alaska Ethernet PHYs",
+    "Bravera storage controllers",
+    "PAM4 optical DSPs",
+    "PCIe and CXL switches",
+    "silicon photonics products"
   ],
-  "market_products": {
-    "networking": [
-      "custom Application Specific Integrated Circuits",
-      "processors",
-      "storage controllers"
-    ],
-    "interconnects": [
-      "custom Application Specific Integrated Circuits",
-      "processors",
-      "storage controllers"
-    ]
-  },
+  "market_products": {},
   "core_technologies": [
-    "Ethernet for Scale-Up Networking (ESUN)",
-    "Serial Advanced Technology Attachment (SATA)",
-    "Serial Attached SCSI (SAS)",
-    "Global Unichip Corporation (GUC)"
+    "custom silicon design",
+    "high-speed SerDes",
+    "Ethernet switching",
+    "storage controllers",
+    "digital signal processing",
+    "silicon photonics"
   ],
   "manufacturing": {
     "model": [],
@@ -68,18 +40,21 @@
     "critical_assets": []
   },
   "customer_types": [
-    "OEMs",
-    "distributors"
+    "hyperscale cloud providers",
+    "networking equipment manufacturers",
+    "storage-system companies",
+    "telecommunications operators"
   ],
   "ai_exposure": {
     "type": "direct_company_disclosure",
-    "summary": "Our AEC DSPs are utilized in active electrical cables to enable high-bandwidth copper data transmission within data centers, specifically for scale-up and scale-out AI and general-purpose server connectivity."
+    "summary": "Marvell supplies custom silicon, networking, optical-connectivity and DPU products for AI data centers."
   },
   "competitive_advantages": [],
   "demand_drivers": [
-    "AI",
-    "5G",
-    "bandwidth growth"
+    "AI data centers",
+    "cloud bandwidth",
+    "optical connectivity",
+    "storage growth"
   ],
   "strategy_changes": [],
   "financial_snapshot": {
@@ -92,63 +67,36 @@
   },
   "field_evidence": {
     "company_summary.one_line_business": [
-      "Marvell Technology, Inc., together with its consolidated subsidiaries (“Marvell,” “MTI,” the “Company,” “we,” or “us”) is a leading supplier of data infrastructure semiconductor solutions, spanning the data center core to network edge."
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001835632-26-000011"
     ],
     "markets": [
-      "We serve these two end markets with a broad portfolio of semiconductor solutions based on our compute, networking, security, interconnects, and storage technologies, which are essential and differentiating for these markets",
-      "end markets: (i) data center and (ii) communications and other"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001835632-26-000011"
     ],
     "product_stack": [
-      "Our current product offerings include custom Application Specific Integrated Circuits (“ASICs”), interconnects, ethernet solutions, fibre channel adapters, processors and storage controllers",
-      "Our interconnect products include PAM (pulse amplitude modulation), coherent and coherent-lite DSPs (digital signal processors), laser drivers, TIAs (trans-impedance amplifiers), silicon photonics, CPO (co-packaged optics), LPO (linear pluggable optics) chipsets, DCI (data center interconnect), AEC (active electrical cable) DSPs and PCIe retimer solutions",
-      "6 Table of Contents PCIe and CXL Switches With the acquisition of XConn, we have expanded our portfolio to include a complete suite of PCIe and CXL connectivity solutions, spanning both re-timers and high-performance switches",
-      "Scale-Up Switches To address increased performance and fabric-scaling demands of AI datacenter scale-up networking, we are committed to develop new classes of UALinkTM and ESUN switch fabrics, which leverage our high-bandwidth Teralynx switch architecture and advanced 224G SerDes technology. These classes of scale-up switches are architected to provide extreme bandwidth, low power, ultra-low latency and high radix port counts, enabling both CPC and CPO inter and intra rack connectivity needed for next generation, compute intensive AI centric fabric architecture. 6",
-      "PCIe and CXL Switches With the acquisition of XConn, we have expanded our portfolio to include a complete suite of PCIe and CXL connectivity solutions, spanning both re-timers and high-performance switches. While PCIe switching has long been foundational to traditional computing architectures, it is now evolving into a critical enabler for multi-host connectivity, composable infrastructure, and rack-scale accelerator expansion. In parallel, CXL has become essential for memory pooling, coherency, and disaggregation, addressing the substantial memory bandwidth and capacity demands of large-scale AI models. Our high radix PCIe and CXL switches, derived from XConn’s advanced fabric architecture, are built on an ultra-latency fabric architecture that supports both multi-level switching and flexible fabric topology (mesh, dragonfly, 3D torus) enabling cache-coherent connectivity extended across racks. Fibre Channel Products",
-      "Storage Controllers We offer a broad portfolio of storage controllers for hard disk drives (“HDDs”) and solid-state-drives (“SSDs”) across all high-volume markets. Our Bravera controllers integrate several key Marvell technologies spanning compute, networking, security and storage. These key technologies enable our controllers to be optimized performance-power solutions and to help our customers’ high-efficient storage products. Our Bravera HDD controllers integrate Marvell’s industry-leading read channel technologies to enable higher volumetric densities at low power profiles and are being used by all the current HDD makers. Our technology density and power differentiators are critical for addressing the fast-growing high-capacity, nearline HDD data center and enterprise markets. To further enhance our Bravera HDD controller differentiation and value propositions, we offer customers preamplifier products as part of a chipset with our HDD controllers, seeking to increase our customers’ product efficiencies. Our Bravera HDD controllers support all the high-volume host system interfaces, including Serial Advanced Technology Attachment (“SATA”) and Serial Attached SCSI (“SAS”), which are critical for the data center and enterprise markets. Our Bravera SSD controller products leverage our strong HDD controller know-how and system-level expertise. We integrate several of our Bravera HDD controller IPs with our flash technologies to deliver optimal solutions for data center, enterprise and client computing markets. Our Bravera SSD controller products integrate hardware and firmware components to help accelerate our customers’ time to market and maximize the capabilities of our solutions. Like our HDD controllers, our SSD controllers support all the high-volume SSD host system interfaces, including SAS, SATA, PCIe, non-volatile memory express (“NVMe”) and NVMe over Fabrics (“NVMe-oF”)",
-      "Subsequent to our fiscal 2026 year end, on February 10, 2026, we completed the previously announced acquisition of XConn Technologies Holdings, Ltd. (“XConn”), a provider of advanced PCIe and CXL switching silicon, which expands our switching portfolio and augments our Ultra Accelerator LinkTM (“UALinkTM”) scale-up switch team",
-      "In addition, we are developing Ultra Accelerator LinkTM (“UALinkTM”) switches and Ethernet for Scale-Up Networking (“ESUN”) switches for the emerging scale-out AI market",
-      "Scale-Up Switches To address increased performance and fabric-scaling demands of AI datacenter scale-up networking, we are committed to develop new classes of UALinkTM and ESUN switch fabrics, which leverage our high-bandwidth Teralynx switch architecture and advanced 224G SerDes technology",
-      "The OCTEON DPUs and processors are targeted for use in a wide variety of carrier, data center, and enterprise equipment, including routers, switches, security UTM appliances, content-aware switches, application-aware gateways, wireless access points, 3G/4G/5G wireless base stations, storage arrays, smart network interface controllers, network functions virtualization (“NFV”) and software-defined networking (“SDN”) infrastructure",
-      "7 Table of Contents Storage Controllers We offer a broad portfolio of storage controllers for hard disk drives (“HDDs”) and solid-state-drives (“SSDs”) across all high-volume markets",
-      "Our first-generation product is a Photonic FabricTM chiplet, which integrates all the required electrical and optical components, including drivers, TIAs, equalizers, SerDes, microcontrollers, modulators, photodiodes, and waveguides, into a compact form factor",
-      "Our Bravera HDD controllers support all the high-volume host system interfaces, including Serial Advanced Technology Attachment (“SATA”) and Serial Attached SCSI (“SAS”), which are critical for the data center and enterprise markets",
-      "Like our HDD controllers, our SSD controllers support all the high-volume SSD host system interfaces, including SAS, SATA, PCIe, non-volatile memory express (“NVMe”) and NVMe over Fabrics (“NVMe-oF”)",
-      "We devote a sizable portion of our resources to expanding our product portfolio based on a broad intellectual property portfolio with designs that are intended to enable high-performance, reliable communications over a variety of physical transmission media including silicon photonics and opto-electronics",
-      "We believe that our products comply with the current Restriction of Hazardous Substances Directive, the European legislation that restricts the use of a number of substances, including lead, and the Regulation, Evaluation and Authorization of Chemicals SVHC Substances Directive",
-      "We offer a complete portfolio of high-speed interconnect semiconductor solutions for inside cloud data centers, between cloud data centers and in carrier networks",
-      "We offer a broad portfolio of Ethernet solutions spanning controllers, network adapters, physical transceivers and switches",
-      "We offer highly integrated semiconductors that provide single or multiple core processors, along with intelligent Layer 2 through 7 processing of the OSI (Open Systems Interconnection) stack which is the framework that governs network communications within enterprise, data center, storage, and carrier markets",
-      "we offer extensive training, mentorship and mobility opportunities, no matter the path that employees wish to take"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001835632-26-000011"
     ],
-    "market_products": {
-      "networking": [
-        "Our current product offerings include custom Application Specific Integrated Circuits (“ASICs”), interconnects, ethernet solutions, fibre channel adapters, processors and storage controllers. In addition, we are developing Ultra Accelerator LinkTM (“UALinkTM”) switches and Ethernet for Scale-Up Networking (“ESUN”) switches for the emerging scale-out AI market. The acquisition of Celestial further extends our interconnect portfolio with the addition of their Photonic FabricTM solutions and XConn further extends our switch portfolio with the addition of their peripheral component interconnect express (“PCIe”) and compute express link (“CXL\") switches."
-      ],
-      "interconnects": [
-        "Our current product offerings include custom Application Specific Integrated Circuits (“ASICs”), interconnects, ethernet solutions, fibre channel adapters, processors and storage controllers. In addition, we are developing Ultra Accelerator LinkTM (“UALinkTM”) switches and Ethernet for Scale-Up Networking (“ESUN”) switches for the emerging scale-out AI market. The acquisition of Celestial further extends our interconnect portfolio with the addition of their Photonic FabricTM solutions and XConn further extends our switch portfolio with the addition of their peripheral component interconnect express (“PCIe”) and compute express link (“CXL\") switches."
-      ]
-    },
+    "market_products": {},
     "core_technologies": [
-      "hernet solutions, fibre channel adapters, processors and storage controllers. In addition, we are developing Ultra Accelerator LinkTM (“UALinkTM”) switches and Ethernet for Scale-Up Networking (“ESUN”) switches for the emerging scale-out AI market. The acquisition of Celestial further extends our interconnect portfolio with the addition of their Photonic Fabr",
-      "controllers, seeking to increase our customers’ product efficiencies. Our Bravera HDD controllers support all the high-volume host system interfaces, including Serial Advanced Technology Attachment (“SATA”) and Serial Attached SCSI (“SAS”), which are critical for the data center and enterprise markets.\nOur Bravera SSD controller products leverage our strong HDD co",
-      "duct efficiencies. Our Bravera HDD controllers support all the high-volume host system interfaces, including Serial Advanced Technology Attachment (“SATA”) and Serial Attached SCSI (“SAS”), which are critical for the data center and enterprise markets.\nOur Bravera SSD controller products leverage our strong HDD controller know-how and system-leve",
-      "ra Labs, Inc., Ayar Labs, Inc. (“Ayar Labs”), Broadcom Inc. (“Broadcom”), Cisco Systems, Inc. (“Cisco”), Credo Technology Group Holding Ltd, Intel Corporation, Global Unichip Corporation (“GUC”), Lightmatter, Inc. (“Lightmatter”), MACOM Technology Solutions Holdings, Inc., MediaTek Inc., Microchip Technology Inc., Montage Technology, Nvidia Corporation"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001835632-26-000011"
     ],
-    "manufacturing": [],
+    "manufacturing": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
     "customer_types": [
-      "original equipment manufacturers",
-      "distributors"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001835632-26-000011"
     ],
     "ai_exposure": [
-      "Our AEC DSPs are utilized in active electrical cables to enable high-bandwidth copper data transmission within data centers, specifically for scale-up and scale-out AI and general-purpose server connectivity."
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001835632-26-000011"
     ],
-    "competitive_advantages": [],
+    "competitive_advantages": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
     "demand_drivers": [
-      "e-tax gain on sale of $1.8 billion. Subsequent to our fiscal 2026 year end, on February 2, 2026, we completed the previously announced acquisition of Celestial AI, Inc. (“Celestial”), a provider of a Photonic FabricTM technology platform purpose-built for next-generation scale-up interconnect. The acquisition of Celestial is expected to accelerate our connectivity strategy for ne",
-      "d enterprise equipment, including routers, switches, security UTM appliances, content-aware switches, application-aware gateways, wireless access points, 3G/4G/5G wireless base stations, storage arrays, smart network interface controllers, network functions virtualization (“NFV”) and software-defined networking (“SDN”) infrastructure. Our OCTEON Fusion family of wireless baseband",
-      "compute, security, storage, silicon photonics and advanced packaging, including die to die interconnects, chiplets, co-packaged optics (“CPO”) and custom high-bandwidth memory (“HBM”). We have successfully executed multiple 5 nanometer (“nm”) designs in the last few years, and are progressing through 3nm designs now and developing our advanced 2nm generation platform. Interconnects We"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001835632-26-000011"
     ],
-    "strategy_changes": [],
+    "strategy_changes": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
     "financial_snapshot": []
   },
   "evidence": [
@@ -164,911 +112,43 @@
   ],
   "value_provenance": {
     "company_summary.one_line_business": {
-      "value": "Marvell Technology, Inc., together with its consolidated subsidiaries (“Marvell,” “MTI,” the “Company,” “we,” or “us”) is a leading supplier of data infrastructure semiconductor solutions, spanning the data center core to network edge.",
-      "evidence": {
-        "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-        "form": "10-K",
-        "accession_number": "0001835632-26-000011",
-        "filing_date": "2026-03-11",
-        "section_type": "item_1_business",
-        "quote": "Marvell Technology, Inc., together with its consolidated subsidiaries (“Marvell,” “MTI,” the “Company,” “we,” or “us”) is a leading supplier of data infrastructure semiconductor solutions, spanning the data center core to network edge. We are a fabless supplier of high-performance semiconductor products with core strengths in developing and scaling complex System-on-a-Chip architectures, integrating analog, mixed-signal and digital signal processing functionality.",
-        "evidence_start_character": 29,
-        "evidence_end_character": 497,
-        "document_start_character": 44974,
-        "document_end_character": 45442,
-        "matched_start_character": 29,
-        "matched_end_character": 264,
-        "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-      }
+      "value": "Marvell provides data-infrastructure semiconductor solutions for data centers, carrier networks, enterprise networking and storage.",
+      "evidence": null
     },
-    "markets": [
-      {
-        "value": "Networking",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "We serve these two end markets with a broad portfolio of semiconductor solutions based on our compute, networking, security, interconnects, and storage technologies, which are essential and differentiating for these markets.",
-          "evidence_start_character": 5907,
-          "evidence_end_character": 6131,
-          "document_start_character": 50852,
-          "document_end_character": 51076,
-          "matched_start_character": 6010,
-          "matched_end_character": 6020,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "Security",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "We serve these two end markets with a broad portfolio of semiconductor solutions based on our compute, networking, security, interconnects, and storage technologies, which are essential and differentiating for these markets.",
-          "evidence_start_character": 5907,
-          "evidence_end_character": 6131,
-          "document_start_character": 50852,
-          "document_end_character": 51076,
-          "matched_start_character": 6022,
-          "matched_end_character": 6030,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "Interconnects",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "We serve these two end markets with a broad portfolio of semiconductor solutions based on our compute, networking, security, interconnects, and storage technologies, which are essential and differentiating for these markets.",
-          "evidence_start_character": 5907,
-          "evidence_end_character": 6131,
-          "document_start_character": 50852,
-          "document_end_character": 51076,
-          "matched_start_character": 6032,
-          "matched_end_character": 6045,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "Differentiating For These",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "We serve these two end markets with a broad portfolio of semiconductor solutions based on our compute, networking, security, interconnects, and storage technologies, which are essential and differentiating for these markets.",
-          "evidence_start_character": 5907,
-          "evidence_end_character": 6131,
-          "document_start_character": 50852,
-          "document_end_character": 51076,
-          "matched_start_character": 6097,
-          "matched_end_character": 6122,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "Data Center",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "Data center$6,100.",
-          "evidence_start_character": 6348,
-          "evidence_end_character": 6366,
-          "document_start_character": 51293,
-          "document_end_character": 51311,
-          "matched_start_character": 6348,
-          "matched_end_character": 6359,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "Communications",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "Communications and other2,094.",
-          "evidence_start_character": 6399,
-          "evidence_end_character": 6429,
-          "document_start_character": 51344,
-          "document_end_character": 51374,
-          "matched_start_character": 6399,
-          "matched_end_character": 6413,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "Other",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "Communications and other2,094.",
-          "evidence_start_character": 6399,
-          "evidence_end_character": 6429,
-          "document_start_character": 51344,
-          "document_end_character": 51374,
-          "matched_start_character": 6418,
-          "matched_end_character": 6423,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      }
-    ],
-    "product_stack": [
-      {
-        "value": "custom Application Specific Integrated Circuits",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "Our current product offerings include custom Application Specific Integrated Circuits (“ASICs”), interconnects, ethernet solutions, fibre channel adapters, processors and storage controllers.",
-          "evidence_start_character": 7122,
-          "evidence_end_character": 7313,
-          "document_start_character": 52067,
-          "document_end_character": 52258,
-          "matched_start_character": 7160,
-          "matched_end_character": 7207,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "storage controllers",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "Our current product offerings include custom Application Specific Integrated Circuits (“ASICs”), interconnects, ethernet solutions, fibre channel adapters, processors and storage controllers.",
-          "evidence_start_character": 7122,
-          "evidence_end_character": 7313,
-          "document_start_character": 52067,
-          "document_end_character": 52258,
-          "matched_start_character": 7293,
-          "matched_end_character": 7312,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "LPO chipsets",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "Additionally, our LPO chipsets, comprising of optimized TIAs and laser drivers, address next-generation short-reach, compute fabric connectivity requirements inside AI data centers for connections that have a predictable and controlled channel.",
-          "evidence_start_character": 11116,
-          "evidence_end_character": 11360,
-          "document_start_character": 56061,
-          "document_end_character": 56305,
-          "matched_start_character": 11134,
-          "matched_end_character": 11146,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "AEC DSPs",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "Our AEC DSPs are utilized in active electrical cables to enable high-bandwidth copper data transmission within data centers, specifically for scale-up and scale-out AI and general-purpose server connectivity.",
-          "evidence_start_character": 11517,
-          "evidence_end_character": 11725,
-          "document_start_character": 56462,
-          "document_end_character": 56670,
-          "matched_start_character": 11521,
-          "matched_end_character": 11529,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "PCIe retimer solutions",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "Our interconnect products include PAM (pulse amplitude modulation), coherent and coherent-lite DSPs (digital signal processors), laser drivers, TIAs (trans-impedance amplifiers), silicon photonics, CPO (co-packaged optics), LPO (linear pluggable optics) chipsets, DCI (data center interconnect), AEC (active electrical cable) DSPs and PCIe retimer solutions.",
-          "evidence_start_character": 8784,
-          "evidence_end_character": 9142,
-          "document_start_character": 53729,
-          "document_end_character": 54087,
-          "matched_start_character": 9119,
-          "matched_end_character": 9141,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "a complete suite of PCIe and CXL connectivity solutions",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "With the acquisition of XConn, we have expanded our portfolio to include a complete suite of PCIe and CXL connectivity solutions, spanning both re-timers and high-performance switches.",
-          "evidence_start_character": 16059,
-          "evidence_end_character": 16243,
-          "document_start_character": 61004,
-          "document_end_character": 61188,
-          "matched_start_character": 16132,
-          "matched_end_character": 16187,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "spanning both re-timers and high-performance switches",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "With the acquisition of XConn, we have expanded our portfolio to include a complete suite of PCIe and CXL connectivity solutions, spanning both re-timers and high-performance switches.",
-          "evidence_start_character": 16059,
-          "evidence_end_character": 16243,
-          "document_start_character": 61004,
-          "document_end_character": 61188,
-          "matched_start_character": 16189,
-          "matched_end_character": 16242,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "Scale-Up Switches",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "Scale-Up Switches",
-          "evidence_start_character": 15448,
-          "evidence_end_character": 15465,
-          "document_start_character": 60393,
-          "document_end_character": 60410,
-          "matched_start_character": 15448,
-          "matched_end_character": 15465,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "PCIe and CXL Switches",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "PCIe and CXL Switches",
-          "evidence_start_character": 16037,
-          "evidence_end_character": 16058,
-          "document_start_character": 60982,
-          "document_end_character": 61003,
-          "matched_start_character": 16037,
-          "matched_end_character": 16058,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "Ultra Accelerator",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "In addition, we are developing Ultra Accelerator LinkTM (“UALinkTM”) switches and Ethernet for Scale-Up Networking (“ESUN”) switches for the emerging scale-out AI market.",
-          "evidence_start_character": 7314,
-          "evidence_end_character": 7484,
-          "document_start_character": 52259,
-          "document_end_character": 52429,
-          "matched_start_character": 7345,
-          "matched_end_character": 7362,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "CXL Switches",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "PCIe and CXL Switches",
-          "evidence_start_character": 16037,
-          "evidence_end_character": 16058,
-          "document_start_character": 60982,
-          "document_end_character": 61003,
-          "matched_start_character": 16046,
-          "matched_end_character": 16058,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "OCTEON DPUs",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "The OCTEON DPUs and processors are targeted for use in a wide variety of carrier, data center, and enterprise equipment, including routers, switches, security UTM appliances, content-aware switches, application-aware gateways, wireless access points, 3G/4G/5G wireless base stations, storage arrays, smart network interface controllers, network functions virtualization (“NFV”) and software-defined networking (“SDN”) infrastructure.",
-          "evidence_start_character": 18539,
-          "evidence_end_character": 18972,
-          "document_start_character": 63484,
-          "document_end_character": 63917,
-          "matched_start_character": 18543,
-          "matched_end_character": 18554,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "coherent-lite DSPs (digital signal processors)",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "Our interconnect products include PAM (pulse amplitude modulation), coherent and coherent-lite DSPs (digital signal processors), laser drivers, TIAs (trans-impedance amplifiers), silicon photonics, CPO (co-packaged optics), LPO (linear pluggable optics) chipsets, DCI (data center interconnect), AEC (active electrical cable) DSPs and PCIe retimer solutions.",
-          "evidence_start_character": 8784,
-          "evidence_end_character": 9142,
-          "document_start_character": 53729,
-          "document_end_character": 54087,
-          "matched_start_character": 8865,
-          "matched_end_character": 8911,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "silicon photonics",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "These custom offerings are built on our proven ASIC platform which leverages a broad suite of differentiated Marvell intellectual property including ultra-high-speed SerDes, ARM compute, security, storage, silicon photonics and advanced packaging, including die to die interconnects, chiplets, co-packaged optics (“CPO”) and custom high-bandwidth memory (“HBM”).",
-          "evidence_start_character": 8057,
-          "evidence_end_character": 8419,
-          "document_start_character": 53002,
-          "document_end_character": 53364,
-          "matched_start_character": 8263,
-          "matched_end_character": 8280,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "AEC (active electrical cable) DSPs",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "Our interconnect products include PAM (pulse amplitude modulation), coherent and coherent-lite DSPs (digital signal processors), laser drivers, TIAs (trans-impedance amplifiers), silicon photonics, CPO (co-packaged optics), LPO (linear pluggable optics) chipsets, DCI (data center interconnect), AEC (active electrical cable) DSPs and PCIe retimer solutions.",
-          "evidence_start_character": 8784,
-          "evidence_end_character": 9142,
-          "document_start_character": 53729,
-          "document_end_character": 54087,
-          "matched_start_character": 9080,
-          "matched_end_character": 9114,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "microcontrollers",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "Our first-generation product is a Photonic FabricTM chiplet, which integrates all the required electrical and optical components, including drivers, TIAs, equalizers, SerDes, microcontrollers, modulators, photodiodes, and waveguides, into a compact form factor.",
-          "evidence_start_character": 13185,
-          "evidence_end_character": 13446,
-          "document_start_character": 58130,
-          "document_end_character": 58391,
-          "matched_start_character": 13360,
-          "matched_end_character": 13376,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "photodiodes",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "Our first-generation product is a Photonic FabricTM chiplet, which integrates all the required electrical and optical components, including drivers, TIAs, equalizers, SerDes, microcontrollers, modulators, photodiodes, and waveguides, into a compact form factor.",
-          "evidence_start_character": 13185,
-          "evidence_end_character": 13446,
-          "document_start_character": 58130,
-          "document_end_character": 58391,
-          "matched_start_character": 13390,
-          "matched_end_character": 13401,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "Serial Advanced Technology Attachment (“SATA”)",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "Our Bravera HDD controllers support all the high-volume host system interfaces, including Serial Advanced Technology Attachment (“SATA”) and Serial Attached SCSI (“SAS”), which are critical for the data center and enterprise markets.",
-          "evidence_start_character": 22062,
-          "evidence_end_character": 22295,
-          "document_start_character": 67007,
-          "document_end_character": 67240,
-          "matched_start_character": 22152,
-          "matched_end_character": 22198,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "Serial Attached SCSI (“SAS”)",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "Our Bravera HDD controllers support all the high-volume host system interfaces, including Serial Advanced Technology Attachment (“SATA”) and Serial Attached SCSI (“SAS”), which are critical for the data center and enterprise markets.",
-          "evidence_start_character": 22062,
-          "evidence_end_character": 22295,
-          "document_start_character": 67007,
-          "document_end_character": 67240,
-          "matched_start_character": 22203,
-          "matched_end_character": 22231,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "NVMe over Fabrics (“NVMe-oF”)",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "Like our HDD controllers, our SSD controllers support all the high-volume SSD host system interfaces, including SAS, SATA, PCIe, non-volatile memory express (“NVMe”) and NVMe over Fabrics (“NVMe-oF”).",
-          "evidence_start_character": 22750,
-          "evidence_end_character": 22950,
-          "document_start_character": 67695,
-          "document_end_character": 67895,
-          "matched_start_character": 22920,
-          "matched_end_character": 22949,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "opto-electronics",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "We devote a sizable portion of our resources to expanding our product portfolio based on a broad intellectual property portfolio with designs that are intended to enable high-performance, reliable communications over a variety of physical transmission media including silicon photonics and opto-electronics.",
-          "evidence_start_character": 26945,
-          "evidence_end_character": 27252,
-          "document_start_character": 71890,
-          "document_end_character": 72197,
-          "matched_start_character": 27235,
-          "matched_end_character": 27251,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "Authorization of Chemicals SVHC Substances Directive",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "We believe that our products comply with the current Restriction of Hazardous Substances Directive, the European legislation that restricts the use of a number of substances, including lead, and the Regulation, Evaluation and Authorization of Chemicals SVHC Substances Directive.",
-          "evidence_start_character": 33423,
-          "evidence_end_character": 33702,
-          "document_start_character": 78368,
-          "document_end_character": 78647,
-          "matched_start_character": 33649,
-          "matched_end_character": 33701,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "broad portfolio of Ethernet solutions spanning controllers",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "We offer a broad portfolio of Ethernet solutions spanning controllers, network adapters, physical transceivers and switches.",
-          "evidence_start_character": 13466,
-          "evidence_end_character": 13590,
-          "document_start_character": 58411,
-          "document_end_character": 58535,
-          "matched_start_character": 13477,
-          "matched_end_character": 13535,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "physical transceivers",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "We offer a broad portfolio of Ethernet solutions spanning controllers, network adapters, physical transceivers and switches.",
-          "evidence_start_character": 13466,
-          "evidence_end_character": 13590,
-          "document_start_character": 58411,
-          "document_end_character": 58535,
-          "matched_start_character": 13555,
-          "matched_end_character": 13576,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "switches",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "In addition, we are developing Ultra Accelerator LinkTM (“UALinkTM”) switches and Ethernet for Scale-Up Networking (“ESUN”) switches for the emerging scale-out AI market.",
-          "evidence_start_character": 7314,
-          "evidence_end_character": 7484,
-          "document_start_character": 52259,
-          "document_end_character": 52429,
-          "matched_start_character": 7383,
-          "matched_end_character": 7391,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "highly integrated semiconductors",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "We offer highly integrated semiconductors that provide single or multiple core processors, along with intelligent Layer 2 through 7 processing of the OSI (Open Systems Interconnection) stack which is the framework that governs network communications within enterprise, data center, storage, and carrier markets.",
-          "evidence_start_character": 17566,
-          "evidence_end_character": 17877,
-          "document_start_character": 62511,
-          "document_end_character": 62822,
-          "matched_start_character": 17575,
-          "matched_end_character": 17607,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      }
-    ],
-    "market_products": {
-      "networking": [
-        {
-          "value": "custom Application Specific Integrated Circuits",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-            "form": "10-K",
-            "accession_number": "0001835632-26-000011",
-            "filing_date": "2026-03-11",
-            "section_type": "item_1_business",
-            "quote": "Our current product offerings include custom Application Specific Integrated Circuits (“ASICs”), interconnects, ethernet solutions, fibre channel adapters, processors and storage controllers.",
-            "evidence_start_character": 7122,
-            "evidence_end_character": 7313,
-            "document_start_character": 52067,
-            "document_end_character": 52258,
-            "matched_start_character": 7160,
-            "matched_end_character": 7207,
-            "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-          }
-        },
-        {
-          "value": "processors",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-            "form": "10-K",
-            "accession_number": "0001835632-26-000011",
-            "filing_date": "2026-03-11",
-            "section_type": "item_1_business",
-            "quote": "Our current product offerings include custom Application Specific Integrated Circuits (“ASICs”), interconnects, ethernet solutions, fibre channel adapters, processors and storage controllers.",
-            "evidence_start_character": 7122,
-            "evidence_end_character": 7313,
-            "document_start_character": 52067,
-            "document_end_character": 52258,
-            "matched_start_character": 7278,
-            "matched_end_character": 7288,
-            "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-          }
-        },
-        {
-          "value": "storage controllers",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-            "form": "10-K",
-            "accession_number": "0001835632-26-000011",
-            "filing_date": "2026-03-11",
-            "section_type": "item_1_business",
-            "quote": "Our current product offerings include custom Application Specific Integrated Circuits (“ASICs”), interconnects, ethernet solutions, fibre channel adapters, processors and storage controllers.",
-            "evidence_start_character": 7122,
-            "evidence_end_character": 7313,
-            "document_start_character": 52067,
-            "document_end_character": 52258,
-            "matched_start_character": 7293,
-            "matched_end_character": 7312,
-            "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-          }
-        }
-      ],
-      "interconnects": [
-        {
-          "value": "custom Application Specific Integrated Circuits",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-            "form": "10-K",
-            "accession_number": "0001835632-26-000011",
-            "filing_date": "2026-03-11",
-            "section_type": "item_1_business",
-            "quote": "Our current product offerings include custom Application Specific Integrated Circuits (“ASICs”), interconnects, ethernet solutions, fibre channel adapters, processors and storage controllers.",
-            "evidence_start_character": 7122,
-            "evidence_end_character": 7313,
-            "document_start_character": 52067,
-            "document_end_character": 52258,
-            "matched_start_character": 7160,
-            "matched_end_character": 7207,
-            "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-          }
-        },
-        {
-          "value": "processors",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-            "form": "10-K",
-            "accession_number": "0001835632-26-000011",
-            "filing_date": "2026-03-11",
-            "section_type": "item_1_business",
-            "quote": "Our current product offerings include custom Application Specific Integrated Circuits (“ASICs”), interconnects, ethernet solutions, fibre channel adapters, processors and storage controllers.",
-            "evidence_start_character": 7122,
-            "evidence_end_character": 7313,
-            "document_start_character": 52067,
-            "document_end_character": 52258,
-            "matched_start_character": 7278,
-            "matched_end_character": 7288,
-            "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-          }
-        },
-        {
-          "value": "storage controllers",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-            "form": "10-K",
-            "accession_number": "0001835632-26-000011",
-            "filing_date": "2026-03-11",
-            "section_type": "item_1_business",
-            "quote": "Our current product offerings include custom Application Specific Integrated Circuits (“ASICs”), interconnects, ethernet solutions, fibre channel adapters, processors and storage controllers.",
-            "evidence_start_character": 7122,
-            "evidence_end_character": 7313,
-            "document_start_character": 52067,
-            "document_end_character": 52258,
-            "matched_start_character": 7293,
-            "matched_end_character": 7312,
-            "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-          }
-        }
-      ]
-    },
-    "core_technologies": [
-      {
-        "value": "Ethernet for Scale-Up Networking (ESUN)",
-        "evidence": null
-      },
-      {
-        "value": "Serial Advanced Technology Attachment (SATA)",
-        "evidence": null
-      },
-      {
-        "value": "Serial Attached SCSI (SAS)",
-        "evidence": null
-      },
-      {
-        "value": "Global Unichip Corporation (GUC)",
-        "evidence": null
-      }
-    ],
+    "markets": [],
+    "product_stack": [],
+    "market_products": {},
+    "core_technologies": [],
     "manufacturing": {
       "model": [],
       "locations": [],
       "critical_assets": []
     },
-    "customer_types": [
-      {
-        "value": "OEMs",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "Our target customers are original equipment manufacturers (“OEMs”) and original design manufacturers, both of which design and manufacture end market devices, and distributors for these products.",
-          "evidence_start_character": 23895,
-          "evidence_end_character": 24090,
-          "document_start_character": 68840,
-          "document_end_character": 69035,
-          "matched_start_character": 23955,
-          "matched_end_character": 23959,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "distributors",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "Our target customers are original equipment manufacturers (“OEMs”) and original design manufacturers, both of which design and manufacture end market devices, and distributors for these products.",
-          "evidence_start_character": 23895,
-          "evidence_end_character": 24090,
-          "document_start_character": 68840,
-          "document_end_character": 69035,
-          "matched_start_character": 24058,
-          "matched_end_character": 24070,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      }
-    ],
+    "customer_types": [],
     "ai_exposure": {
       "value": {
         "type": "direct_company_disclosure",
-        "summary": "Our AEC DSPs are utilized in active electrical cables to enable high-bandwidth copper data transmission within data centers, specifically for scale-up and scale-out AI and general-purpose server connectivity."
+        "summary": "Marvell supplies custom silicon, networking, optical-connectivity and DPU products for AI data centers."
       },
       "evidence": null
     },
     "competitive_advantages": [],
-    "demand_drivers": [
-      {
-        "value": "AI",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "In connection with the transaction, during the third quarter of fiscal 2026, we recorded a pre-tax gain on sale of $1.",
-          "evidence_start_character": 1275,
-          "evidence_end_character": 1393,
-          "document_start_character": 46220,
-          "document_end_character": 46338,
-          "matched_start_character": 1375,
-          "matched_end_character": 1377,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "5G",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "The OCTEON DPUs and processors are targeted for use in a wide variety of carrier, data center, and enterprise equipment, including routers, switches, security UTM appliances, content-aware switches, application-aware gateways, wireless access points, 3G/4G/5G wireless base stations, storage arrays, smart network interface controllers, network functions virtualization (“NFV”) and software-defined networking (“SDN”) infrastructure.",
-          "evidence_start_character": 18539,
-          "evidence_end_character": 18972,
-          "document_start_character": 63484,
-          "document_end_character": 63917,
-          "matched_start_character": 18796,
-          "matched_end_character": 18798,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
-      },
-      {
-        "value": "bandwidth growth",
-        "evidence": null
-      }
-    ],
+    "demand_drivers": [],
     "strategy_changes": [],
     "financial_snapshot": {
       "fiscal_year": {
         "value": 2025,
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001835632-26-000011",
-          "form": "10-K",
-          "accession_number": "0001835632-26-000011",
-          "filing_date": "2026-03-11",
-          "section_type": "item_1_business",
-          "quote": "On August 14, 2025, we completed the sale of our automotive ethernet business to Infineon Technologies AG for $2.",
-          "evidence_start_character": 1143,
-          "evidence_end_character": 1256,
-          "document_start_character": 46088,
-          "document_end_character": 46201,
-          "matched_start_character": 1157,
-          "matched_end_character": 1161,
-          "text_sha256": "70bd7cf07363e4219c750a5bef6bdf21ea2ca4e7d474c49e5cc224287607a83d"
-        }
+        "evidence": null
       },
       "revenue_mix": {},
       "customer_concentration": {}
     }
   },
   "product_recall_enrichment": {
-    "version": "v2.6.5.7",
-    "mode": "generic_filing_native_named_product_recovery",
-    "discovered_product_count": 22,
-    "final_product_count": 26,
+    "version": "manual-2026-08-25-legacy16-rebuild",
+    "mode": "manual_evidence_lock",
+    "discovered_product_count": 8,
+    "final_product_count": 8,
     "removed_market_product_pollution": true
-  },
-  "company_summary_selector": {
-    "version": "v2.6.6.1c",
-    "mode": "conservative_sec_item1_challenger",
-    "decision": "KEEP",
-    "existing_score": 142,
-    "candidate_score": 135,
-    "score_delta": -7,
-    "existing_reasons": [
-      "BUSINESS_TERMS",
-      "OPERATING_VERB",
-      "COMPANY_LEVEL_SCOPE",
-      "BUSINESS_MODEL_OR_PLATFORM"
-    ],
-    "candidate_reasons": [
-      "BUSINESS_IDENTITY",
-      "BUSINESS_TERMS",
-      "OPERATING_VERB"
-    ],
-    "candidate_eligible": true,
-    "candidate_eligibility_reason": "ELIGIBLE",
-    "candidate_blockers": [],
-    "good_existing": true
-  },
-  "product_stack_sanitizer": {
-    "version": "v2.6.6.2a",
-    "mode": "deterministic_production_boundary",
-    "before_count": 26,
-    "after_count": 25,
-    "removed_count": 1,
-    "removed": [
-      {
-        "value": "Authorization of Chemicals SVHC Substances Directive",
-        "reason": "REGULATORY_OR_COMPLIANCE_TEXT"
-      }
-    ]
   }
 }

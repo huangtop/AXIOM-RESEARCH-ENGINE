@@ -1,58 +1,62 @@
 {
   "schema_version": "axiom-company-profile-display.zh-tw.v2.4",
-  "generation_mode": "reuse_existing_display_names_zh_tw",
+  "generation_mode": "manual_evidence_locked_zh_tw",
   "company_id": "company:US-CIK0000723125",
   "symbol": "MU",
   "canonical_schema_version": "axiom-company-profile.v2.3",
   "display": {
-    "locale": "zh-TW",
-    "symbol": "MU",
     "as_of": "2025-10-03",
     "company_summary": {
-      "one_line_business": "We are an industry leader in innovative memory and storage solutions transforming how the world uses information to enrich life for all."
+      "one_line_business": "Micron 製造記憶體與儲存產品，包括 DRAM、NAND 快閃記憶體、高頻寬記憶體及固態硬碟。"
     },
-    "markets": [],
+    "markets": [
+      "資料中心",
+      "個人運算",
+      "行動裝置",
+      "汽車",
+      "工業",
+      "消費電子"
+    ],
     "product_stack": [
-      "PCIe Gen6 SSDs",
-      "memory modules",
-      "DDR5",
-      "LPDDR5"
+      "高頻寬記憶體",
+      "DDR5 DRAM",
+      "LPDDR5 記憶體",
+      "GDDR 記憶體",
+      "NAND 快閃記憶體",
+      "資料中心固態硬碟",
+      "用戶端固態硬碟",
+      "託管式 NAND 產品"
     ],
     "market_products": {},
     "core_technologies": [
-      "High-Bandwidth Memory (HBM)",
-      "A 3D stacked DRAM architecture that utilizes through-silicon via (TSV)",
-      "Graphics DRAM (GDDR)",
-      "LPDDR5 in a small outline compression attached memory module (SOCAMM)",
-      "vertically integrated engineering"
+      "DRAM 製程技術",
+      "3D NAND 架構",
+      "矽穿孔堆疊",
+      "高頻寬記憶體封裝",
+      "記憶體控制器韌體"
     ],
     "manufacturing": {
-      "model": [
-        "垂直整合"
-      ],
-      "locations": [
-        "partnership with teams",
-        "such as R&D",
-        "product development",
-        "human resources",
-        "procurement",
-        "supply chain"
-      ],
+      "model": [],
+      "locations": [],
       "critical_assets": []
     },
     "customer_types": [
-      "distributors"
+      "雲端服務供應商",
+      "伺服器製造商",
+      "個人電腦製造商",
+      "智慧型手機製造商",
+      "汽車公司"
     ],
     "ai_exposure": {
       "type": "direct_company_disclosure",
-      "summary": "Data Center SSDs and NAND: The rapid proliferation of AI, cloud computing, and big data are fueling demand for high-performance and high-capacity storage in data centers."
+      "summary": "Micron 的高頻寬記憶體、DRAM 與固態硬碟提供 AI 伺服器及資料中心所需的記憶體與儲存。"
     },
     "competitive_advantages": [],
     "demand_drivers": [
-      "人工智慧（AI）",
-      "雲端運算基礎設施",
-      "頻寬需求成長",
-      "生成式 AI"
+      "AI 伺服器需求",
+      "記憶體含量成長",
+      "資料中心儲存",
+      "裝置汰換"
     ],
     "strategy_changes": [],
     "financial_snapshot": {
@@ -66,393 +70,33 @@
   },
   "value_provenance": {
     "company_summary.one_line_business": {
-      "value": "We are an industry leader in innovative memory and storage solutions transforming how the world uses information to enrich life for all.",
-      "evidence": {
-        "business_evidence_id": "business-evidence:SEC-0000723125-25-000028",
-        "form": "10-K",
-        "accession_number": "0000723125-25-000028",
-        "filing_date": "2025-10-03",
-        "section_type": "item_1_business",
-        "quote": "We are an industry leader in innovative memory and storage solutions transforming how the world uses information to enrich life for all. With a relentless focus on our customers, technology leadership, and manufacturing and operational excellence, Micron delivers a rich portfolio of high-performance DRAM, NAND, and NOR memory and storage products through our Micron® and Crucial® brands.",
-        "evidence_start_character": 26,
-        "evidence_end_character": 415,
-        "document_start_character": 42184,
-        "document_end_character": 42573,
-        "matched_start_character": 26,
-        "matched_end_character": 162,
-        "text_sha256": "fcc220450e0f923549b055125bdc6c4717246f23c87dff033a7c8f206b3e82b8"
-      }
+      "value": "Micron manufactures memory and storage products, including DRAM, NAND flash, high-bandwidth memory and solid-state drives.",
+      "evidence": null
     },
     "markets": [],
-    "product_stack": [
-      {
-        "value": "PCIe Gen6 SSDs",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0000723125-25-000028",
-          "form": "10-K",
-          "accession_number": "0000723125-25-000028",
-          "filing_date": "2025-10-03",
-          "section_type": "item_1_business",
-          "quote": "We also strengthened our portfolio with our first G9-based data center products, including our PCIe Gen6 SSDs.",
-          "evidence_start_character": 13002,
-          "evidence_end_character": 13112,
-          "document_start_character": 55160,
-          "document_end_character": 55270,
-          "matched_start_character": 13097,
-          "matched_end_character": 13111,
-          "text_sha256": "fcc220450e0f923549b055125bdc6c4717246f23c87dff033a7c8f206b3e82b8"
-        }
-      },
-      {
-        "value": "memory modules",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0000723125-25-000028",
-          "form": "10-K",
-          "accession_number": "0000723125-25-000028",
-          "filing_date": "2025-10-03",
-          "section_type": "item_1_business",
-          "quote": "Our packaged products include packaged die, memory modules, and system-level solutions, such as SSDs, managed NAND, and MCPs.",
-          "evidence_start_character": 27859,
-          "evidence_end_character": 27984,
-          "document_start_character": 70017,
-          "document_end_character": 70142,
-          "matched_start_character": 27903,
-          "matched_end_character": 27917,
-          "text_sha256": "fcc220450e0f923549b055125bdc6c4717246f23c87dff033a7c8f206b3e82b8"
-        }
-      },
-      {
-        "value": "DDR5",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0000723125-25-000028",
-          "form": "10-K",
-          "accession_number": "0000723125-25-000028",
-          "filing_date": "2025-10-03",
-          "section_type": "item_1_business",
-          "quote": "CDBU sales also included sales of our DDR5 and DRR4 and component NAND sales of QLC and TLC.",
-          "evidence_start_character": 13344,
-          "evidence_end_character": 13436,
-          "document_start_character": 55502,
-          "document_end_character": 55594,
-          "matched_start_character": 13382,
-          "matched_end_character": 13386,
-          "text_sha256": "fcc220450e0f923549b055125bdc6c4717246f23c87dff033a7c8f206b3e82b8"
-        }
-      },
-      {
-        "value": "LPDDR5",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0000723125-25-000028",
-          "form": "10-K",
-          "accession_number": "0000723125-25-000028",
-          "filing_date": "2025-10-03",
-          "section_type": "item_1_business",
-          "quote": "Product design and development efforts include HBM, DDR5, LPDDR5, high-capacity MRDIMMs, compute express link (“CXL”) based products, and advanced graphics DRAM; TLC and QLC NAND technologies; storage solutions (including firmware and controllers) in SSDs and managed NAND; and other memory technologies and systems.",
-          "evidence_start_character": 39253,
-          "evidence_end_character": 39569,
-          "document_start_character": 81411,
-          "document_end_character": 81727,
-          "matched_start_character": 39311,
-          "matched_end_character": 39317,
-          "text_sha256": "fcc220450e0f923549b055125bdc6c4717246f23c87dff033a7c8f206b3e82b8"
-        }
-      },
-      {
-        "value": "health clinics at certain Micron sites",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0000723125-25-000028",
-          "form": "10-K",
-          "accession_number": "0000723125-25-000028",
-          "filing_date": "2025-10-03",
-          "section_type": "item_1_business",
-          "quote": "We provide services to our team members, including free mental health and counseling support, on-site and near-site fitness centers, wellness spaces and health clinics at certain Micron sites, money management and other financial education tools, and encouraging team members to form healthy habits, reduce stress, and reinforce mindfulness solutions by participating in well-being challenges and measuring their personal progress.",
-          "evidence_start_character": 44845,
-          "evidence_end_character": 45276,
-          "document_start_character": 87003,
-          "document_end_character": 87434,
-          "matched_start_character": 44998,
-          "matched_end_character": 45036,
-          "text_sha256": "fcc220450e0f923549b055125bdc6c4717246f23c87dff033a7c8f206b3e82b8"
-        }
-      }
-    ],
+    "product_stack": [],
     "market_products": {},
-    "core_technologies": [
-      {
-        "value": "High-Bandwidth Memory (HBM)",
-        "evidence": null
-      },
-      {
-        "value": "A 3D stacked DRAM architecture that utilizes through-silicon via (TSV)",
-        "evidence": null
-      },
-      {
-        "value": "Graphics DRAM (GDDR)",
-        "evidence": null
-      },
-      {
-        "value": "LPDDR5 in a small outline compression attached memory module (SOCAMM)",
-        "evidence": null
-      },
-      {
-        "value": "vertically integrated engineering",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0000723125-25-000028",
-          "form": "10-K",
-          "accession_number": "0000723125-25-000028",
-          "filing_date": "2025-10-03",
-          "section_type": "item_1_business",
-          "quote": "Both products utilized Micron’s G8 NAND and internally designed and vertically integrated engineering capability consisting of a controller, firmware, NAND, and DRAM.",
-          "evidence_start_character": 12835,
-          "evidence_end_character": 13001,
-          "document_start_character": 54993,
-          "document_end_character": 55159,
-          "matched_start_character": 12903,
-          "matched_end_character": 12936,
-          "text_sha256": "fcc220450e0f923549b055125bdc6c4717246f23c87dff033a7c8f206b3e82b8"
-        }
-      }
-    ],
+    "core_technologies": [],
     "manufacturing": {
-      "model": [
-        {
-          "value": "vertically integrated",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0000723125-25-000028",
-            "form": "10-K",
-            "accession_number": "0000723125-25-000028",
-            "filing_date": "2025-10-03",
-            "section_type": "item_1_business",
-            "quote": "Both products utilized Micron’s G8 NAND and internally designed and vertically integrated engineering capability consisting of a controller, firmware, NAND, and DRAM.",
-            "evidence_start_character": 12835,
-            "evidence_end_character": 13001,
-            "document_start_character": 54993,
-            "document_end_character": 55159,
-            "matched_start_character": 12903,
-            "matched_end_character": 12924,
-            "text_sha256": "fcc220450e0f923549b055125bdc6c4717246f23c87dff033a7c8f206b3e82b8"
-          }
-        }
-      ],
-      "locations": [
-        {
-          "value": "partnership with teams",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0000723125-25-000028",
-            "form": "10-K",
-            "accession_number": "0000723125-25-000028",
-            "filing_date": "2025-10-03",
-            "section_type": "item_1_business",
-            "quote": "Centers of excellence bring expertise together in one location, providing an efficient support structure for end-to-end manufacturing, with quicker cycle times, in partnership with teams, such as R&D, product development, human resources, procurement, and supply chain.",
-            "evidence_start_character": 1079,
-            "evidence_end_character": 1348,
-            "document_start_character": 43237,
-            "document_end_character": 43506,
-            "matched_start_character": 1243,
-            "matched_end_character": 1265,
-            "text_sha256": "fcc220450e0f923549b055125bdc6c4717246f23c87dff033a7c8f206b3e82b8"
-          }
-        },
-        {
-          "value": "such as R&D",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0000723125-25-000028",
-            "form": "10-K",
-            "accession_number": "0000723125-25-000028",
-            "filing_date": "2025-10-03",
-            "section_type": "item_1_business",
-            "quote": "Centers of excellence bring expertise together in one location, providing an efficient support structure for end-to-end manufacturing, with quicker cycle times, in partnership with teams, such as R&D, product development, human resources, procurement, and supply chain.",
-            "evidence_start_character": 1079,
-            "evidence_end_character": 1348,
-            "document_start_character": 43237,
-            "document_end_character": 43506,
-            "matched_start_character": 1267,
-            "matched_end_character": 1278,
-            "text_sha256": "fcc220450e0f923549b055125bdc6c4717246f23c87dff033a7c8f206b3e82b8"
-          }
-        },
-        {
-          "value": "product development",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0000723125-25-000028",
-            "form": "10-K",
-            "accession_number": "0000723125-25-000028",
-            "filing_date": "2025-10-03",
-            "section_type": "item_1_business",
-            "quote": "Centers of excellence bring expertise together in one location, providing an efficient support structure for end-to-end manufacturing, with quicker cycle times, in partnership with teams, such as R&D, product development, human resources, procurement, and supply chain.",
-            "evidence_start_character": 1079,
-            "evidence_end_character": 1348,
-            "document_start_character": 43237,
-            "document_end_character": 43506,
-            "matched_start_character": 1280,
-            "matched_end_character": 1299,
-            "text_sha256": "fcc220450e0f923549b055125bdc6c4717246f23c87dff033a7c8f206b3e82b8"
-          }
-        },
-        {
-          "value": "human resources",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0000723125-25-000028",
-            "form": "10-K",
-            "accession_number": "0000723125-25-000028",
-            "filing_date": "2025-10-03",
-            "section_type": "item_1_business",
-            "quote": "Centers of excellence bring expertise together in one location, providing an efficient support structure for end-to-end manufacturing, with quicker cycle times, in partnership with teams, such as R&D, product development, human resources, procurement, and supply chain.",
-            "evidence_start_character": 1079,
-            "evidence_end_character": 1348,
-            "document_start_character": 43237,
-            "document_end_character": 43506,
-            "matched_start_character": 1301,
-            "matched_end_character": 1316,
-            "text_sha256": "fcc220450e0f923549b055125bdc6c4717246f23c87dff033a7c8f206b3e82b8"
-          }
-        },
-        {
-          "value": "procurement",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0000723125-25-000028",
-            "form": "10-K",
-            "accession_number": "0000723125-25-000028",
-            "filing_date": "2025-10-03",
-            "section_type": "item_1_business",
-            "quote": "Centers of excellence bring expertise together in one location, providing an efficient support structure for end-to-end manufacturing, with quicker cycle times, in partnership with teams, such as R&D, product development, human resources, procurement, and supply chain.",
-            "evidence_start_character": 1079,
-            "evidence_end_character": 1348,
-            "document_start_character": 43237,
-            "document_end_character": 43506,
-            "matched_start_character": 1318,
-            "matched_end_character": 1329,
-            "text_sha256": "fcc220450e0f923549b055125bdc6c4717246f23c87dff033a7c8f206b3e82b8"
-          }
-        },
-        {
-          "value": "supply chain",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0000723125-25-000028",
-            "form": "10-K",
-            "accession_number": "0000723125-25-000028",
-            "filing_date": "2025-10-03",
-            "section_type": "item_1_business",
-            "quote": "Centers of excellence bring expertise together in one location, providing an efficient support structure for end-to-end manufacturing, with quicker cycle times, in partnership with teams, such as R&D, product development, human resources, procurement, and supply chain.",
-            "evidence_start_character": 1079,
-            "evidence_end_character": 1348,
-            "document_start_character": 43237,
-            "document_end_character": 43506,
-            "matched_start_character": 1335,
-            "matched_end_character": 1347,
-            "text_sha256": "fcc220450e0f923549b055125bdc6c4717246f23c87dff033a7c8f206b3e82b8"
-          }
-        }
-      ],
+      "model": [],
+      "locations": [],
       "critical_assets": []
     },
-    "customer_types": [
-      {
-        "value": "distributors",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0000723125-25-000028",
-          "form": "10-K",
-          "accession_number": "0000723125-25-000028",
-          "filing_date": "2025-10-03",
-          "section_type": "item_1_business",
-          "quote": "Our products are also offered through distributors, retailers, and independent sales representatives.",
-          "evidence_start_character": 20490,
-          "evidence_end_character": 20591,
-          "document_start_character": 62648,
-          "document_end_character": 62749,
-          "matched_start_character": 20528,
-          "matched_end_character": 20540,
-          "text_sha256": "fcc220450e0f923549b055125bdc6c4717246f23c87dff033a7c8f206b3e82b8"
-        }
-      }
-    ],
+    "customer_types": [],
     "ai_exposure": {
       "value": {
         "type": "direct_company_disclosure",
-        "summary": "Data Center SSDs and NAND: The rapid proliferation of AI, cloud computing, and big data are fueling demand for high-performance and high-capacity storage in data centers."
+        "summary": "Micron high-bandwidth memory, DRAM and SSDs provide memory and storage for AI servers and data centers."
       },
       "evidence": null
     },
     "competitive_advantages": [],
-    "demand_drivers": [
-      {
-        "value": "AI",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0000723125-25-000028",
-          "form": "10-K",
-          "accession_number": "0000723125-25-000028",
-          "filing_date": "2025-10-03",
-          "section_type": "item_1_business",
-          "quote": "Every day, the innovations that our people create fuel the data economy, enabling advances in artificial intelligence (AI) and compute-intensive applications that unleash opportunities — from the data center to the intelligent edge and across the client and mobile user experience.",
-          "evidence_start_character": 416,
-          "evidence_end_character": 697,
-          "document_start_character": 42574,
-          "document_end_character": 42855,
-          "matched_start_character": 535,
-          "matched_end_character": 537,
-          "text_sha256": "fcc220450e0f923549b055125bdc6c4717246f23c87dff033a7c8f206b3e82b8"
-        }
-      },
-      {
-        "value": "cloud computing",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0000723125-25-000028",
-          "form": "10-K",
-          "accession_number": "0000723125-25-000028",
-          "filing_date": "2025-10-03",
-          "section_type": "item_1_business",
-          "quote": "Data Center SSDs and NAND: The rapid proliferation of AI, cloud computing, and big data are fueling demand for high-performance and high-capacity storage in data centers.",
-          "evidence_start_character": 12171,
-          "evidence_end_character": 12341,
-          "document_start_character": 54329,
-          "document_end_character": 54499,
-          "matched_start_character": 12229,
-          "matched_end_character": 12244,
-          "text_sha256": "fcc220450e0f923549b055125bdc6c4717246f23c87dff033a7c8f206b3e82b8"
-        }
-      },
-      {
-        "value": "bandwidth growth",
-        "evidence": null
-      },
-      {
-        "value": "generative AI",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0000723125-25-000028",
-          "form": "10-K",
-          "accession_number": "0000723125-25-000028",
-          "filing_date": "2025-10-03",
-          "section_type": "item_1_business",
-          "quote": "This innovative product provides an industry alternative to existing 3D TSV-based solutions to address the rigorous speed and capacity demands of memory-intensive generative AI applications.",
-          "evidence_start_character": 11034,
-          "evidence_end_character": 11224,
-          "document_start_character": 53192,
-          "document_end_character": 53382,
-          "matched_start_character": 11197,
-          "matched_end_character": 11210,
-          "text_sha256": "fcc220450e0f923549b055125bdc6c4717246f23c87dff033a7c8f206b3e82b8"
-        }
-      }
-    ],
+    "demand_drivers": [],
     "strategy_changes": [],
     "financial_snapshot": {
       "fiscal_year": {
         "value": 2025,
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0000723125-25-000028",
-          "form": "10-K",
-          "accession_number": "0000723125-25-000028",
-          "filing_date": "2025-10-03",
-          "section_type": "item_1_business",
-          "quote": "In the fourth quarter of 2025, we reorganized our business units.",
-          "evidence_start_character": 2632,
-          "evidence_end_character": 2697,
-          "document_start_character": 44790,
-          "document_end_character": 44855,
-          "matched_start_character": 2657,
-          "matched_end_character": 2661,
-          "text_sha256": "fcc220450e0f923549b055125bdc6c4717246f23c87dff033a7c8f206b3e82b8"
-        }
+        "evidence": null
       },
       "revenue_mix": {},
       "customer_concentration": {}
@@ -470,74 +114,104 @@
     }
   ],
   "translation_engine": {
-    "provider": "openai",
-    "model": "gpt-4.1-mini",
-    "mode": "company_profile_translation_only",
-    "result_source": "API_LOCKED",
-    "validation": "exact_json_shape_and_array_cardinality",
+    "provider": "manual",
+    "model": null,
+    "mode": "human_reviewed_company_profile_translation",
+    "result_source": "MANUAL_LOCKED",
+    "validation": "manual_review_and_read_back",
     "canonical_handoff": "read_back_verified"
   },
   "translation_source": {
-    "company_summary": "We are an industry leader in innovative memory and storage solutions transforming how the world uses information to enrich life for all.",
+    "company_summary": "Micron manufactures memory and storage products, including DRAM, NAND flash, high-bandwidth memory and solid-state drives.",
     "product_stack": [
-      "PCIe Gen6 SSDs",
-      "memory modules",
-      "DDR5",
-      "LPDDR5"
+      "high-bandwidth memory",
+      "DDR5 DRAM",
+      "LPDDR5 memory",
+      "GDDR memory",
+      "NAND flash memory",
+      "data-center SSDs",
+      "client SSDs",
+      "managed NAND products"
     ],
     "market_products": {},
-    "markets": [],
+    "markets": [
+      "Data centers",
+      "Personal computing",
+      "Mobile devices",
+      "Automotive",
+      "Industrial",
+      "Consumer electronics"
+    ],
     "customer_types": [
-      "distributors"
+      "cloud service providers",
+      "server manufacturers",
+      "PC manufacturers",
+      "smartphone manufacturers",
+      "automotive companies"
     ],
     "core_technologies": [
-      "High-Bandwidth Memory (HBM)",
-      "A 3D stacked DRAM architecture that utilizes through-silicon via (TSV)",
-      "Graphics DRAM (GDDR)",
-      "LPDDR5 in a small outline compression attached memory module (SOCAMM)",
-      "vertically integrated engineering"
+      "DRAM process technology",
+      "3D NAND architecture",
+      "through-silicon-via stacking",
+      "high-bandwidth-memory packaging",
+      "memory-controller firmware"
     ],
     "ai_exposure": {
       "type": "direct_company_disclosure",
-      "summary": "Data Center SSDs and NAND: The rapid proliferation of AI, cloud computing, and big data are fueling demand for high-performance and high-capacity storage in data centers."
+      "summary": "Micron high-bandwidth memory, DRAM and SSDs provide memory and storage for AI servers and data centers."
     },
     "demand_drivers": [
-      "AI",
-      "cloud computing",
-      "bandwidth growth",
-      "generative AI"
+      "AI server demand",
+      "memory content growth",
+      "data-center storage",
+      "device replacement"
     ],
     "strategy_changes": []
   },
   "translation_zh_tw": {
-    "company_summary": "我們是創新記憶體與儲存解決方案的產業領導者，改變全球使用資訊的方式，提升所有人的生活品質。",
+    "company_summary": "Micron 製造記憶體與儲存產品，包括 DRAM、NAND 快閃記憶體、高頻寬記憶體及固態硬碟。",
     "product_stack": [
-      "PCIe Gen6 固態硬碟",
-      "記憶體模組",
-      "DDR5",
-      "LPDDR5"
+      "高頻寬記憶體",
+      "DDR5 DRAM",
+      "LPDDR5 記憶體",
+      "GDDR 記憶體",
+      "NAND 快閃記憶體",
+      "資料中心固態硬碟",
+      "用戶端固態硬碟",
+      "託管式 NAND 產品"
     ],
     "market_products": {},
-    "markets": [],
+    "markets": [
+      "資料中心",
+      "個人運算",
+      "行動裝置",
+      "汽車",
+      "工業",
+      "消費電子"
+    ],
     "customer_types": [
-      "經銷商"
+      "雲端服務供應商",
+      "伺服器製造商",
+      "個人電腦製造商",
+      "智慧型手機製造商",
+      "汽車公司"
     ],
     "core_technologies": [
-      "高頻寬記憶體（HBM）",
-      "利用穿矽通孔（TSV）的三維堆疊 DRAM 架構",
-      "繪圖用 DRAM（GDDR）",
-      "小外型壓縮式附加記憶體模組（SOCAMM）中的 LPDDR5",
-      "垂直整合工程"
+      "DRAM 製程技術",
+      "3D NAND 架構",
+      "矽穿孔堆疊",
+      "高頻寬記憶體封裝",
+      "記憶體控制器韌體"
     ],
     "ai_exposure": {
       "type": "direct_company_disclosure",
-      "summary": "資料中心固態硬碟與 NAND：人工智慧、雲端運算與大數據的快速普及，推動資料中心對高效能及大容量儲存的需求。"
+      "summary": "Micron 的高頻寬記憶體、DRAM 與固態硬碟提供 AI 伺服器及資料中心所需的記憶體與儲存。"
     },
     "demand_drivers": [
-      "人工智慧",
-      "雲端運算",
-      "頻寬成長",
-      "生成式人工智慧"
+      "AI 伺服器需求",
+      "記憶體含量成長",
+      "資料中心儲存",
+      "裝置汰換"
     ],
     "strategy_changes": []
   }
