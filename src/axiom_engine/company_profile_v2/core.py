@@ -586,6 +586,24 @@ def _market_candidate_allowed(
 
     lower = candidate.casefold()
 
+    if lower in {
+        "various end",
+        "a wide variety of applications",
+    }:
+        return False
+
+    if lower.startswith("certain "):
+        return False
+
+    if re.search(
+        r"\b(?:chips?|manufacturing\s+systems?)$",
+        lower,
+    ):
+        return False
+
+    if re.fullmatch(r".+\s+[A-Z]", candidate):
+        return False
+
     # Existing V2.6.3 hard rejects.
     if lower in _MARKET_BLOCKED_EXACT:
         return False
@@ -941,6 +959,21 @@ def _extract_generic_markets(
         # without that industry being a market served by the company.
         if re.search(
             r"\b(?:significant\s+)?competitive\s+(?:factors?|criteria)\b",
+            sentence,
+            flags=re.IGNORECASE,
+        ):
+            continue
+
+        if re.search(
+            r"\bmarkets?\s+(?:we\s+serve\s+)?are\s+(?:highly\s+competitive|"
+            r"characterized\s+by)\b|"
+            r"\baffected\s+by\s+varying\s+degrees\s+of\s+competition\b|"
+            r"\bmarket\s+includes?\s+(?:products\s+used\b|[^.]{0,40}\bchips\b)|"
+            r"\bserving\s+a\s+number\s+of\b[^.]{0,120}\bclients?\s+in\s+"
+            r"a\s+broad\s+range\s+of\s+industries\b|"
+            r"\bother\s+producers\s+of\b|"
+            r"\bconstellations\s+such\s+as\b|"
+            r"\bgeneral\s+economic\s+conditions\b",
             sentence,
             flags=re.IGNORECASE,
         ):
@@ -2795,7 +2828,28 @@ def _extract_core_technologies(
         direct_tail = text[match.end():min(len(text), match.end() + 90)]
         organization_head = re.search(
             r"\b(?:Corporation|Company|Consortium|Association|Organization|"
-            r"Alliance|Council|Society|Institute|Foundation)\b",
+            r"Alliance|Council|Society|Institute|Foundation|Administration|"
+            r"Agency|Office|Group|LLC)\b",
+            expansion,
+            flags=re.IGNORECASE,
+        )
+        role_or_certification_head = re.search(
+            r"\b(?:Representative|Manufacturer|Approval|Counsel)\b",
+            expansion,
+            flags=re.IGNORECASE,
+        )
+        sentence_fragment = bool(re.match(
+            r"^(?:Our|We|This|As\s+the)\b",
+            expansion,
+            flags=re.IGNORECASE,
+        )) or " through " in expansion.casefold()
+        acquisition_context = re.search(
+            r"\b(?:we\s+)?acquired\b",
+            text[max(0, match.start() - 90):match.start()],
+            flags=re.IGNORECASE,
+        )
+        service_role = re.fullmatch(
+            r"(?:Maintenance,?\s+)?Repair\s+and\s+Overhaul",
             expansion,
             flags=re.IGNORECASE,
         )
@@ -2818,12 +2872,23 @@ def _extract_core_technologies(
             context,
             flags=re.IGNORECASE,
         )
+        regulatory_expansion = re.match(
+            r"^(?:Registration|Evaluation|Authorization|Restriction)\b"
+            r".*\b(?:Chemicals?|Substances?)\b",
+            expansion,
+            flags=re.IGNORECASE,
+        )
 
         if (
             organization_head
+            or role_or_certification_head
+            or sentence_fragment
+            or acquisition_context
+            or service_role
             or organization_appositive
             or membership_role
             or regulatory_or_framework_context
+            or regulatory_expansion
         ):
             continue
 
@@ -2856,6 +2921,35 @@ def _extract_core_technologies(
                     technologies.append(item)
 
             evidence.append(match.group(0))
+
+    # High-confidence company-owned technology relations. These patterns
+    # require an explicit ownership/use relation and do not infer technology
+    # from nearby organization, compliance, or partner names.
+    owned_technology_patterns = [
+        r"\bbuilt\s+(?:upon|on)\s+our\s+"
+        r"([^.]{2,100}?(?:architecture|technology|platform|process))\b",
+        r"\bour\s+(?:products?|solutions?)\s+(?:are\s+)?built\s+"
+        r"(?:upon|on)\s+([^.]{2,100}?(?:architecture|technology|platform|process))\b",
+    ]
+    for pattern in owned_technology_patterns:
+        for match in re.finditer(pattern, text, flags=re.IGNORECASE):
+            technology = re.sub(r"\s+", " ", match.group(1)).strip(" ,;:-")
+            if technology:
+                technologies.append(technology)
+                evidence.append(match.group(0))
+
+    protocol_pattern = re.compile(
+        r"\b(?:built\s+(?:upon|on)|(?:we|our\s+products?)\s+(?:use|utilize))"
+        r"[^.]{0,100}?\bprotocols?\s+such\s+as\s+(.+?)"
+        r"(?=\s+to\s+(?:address|enable|support|provide)\b|\.|;)",
+        flags=re.IGNORECASE,
+    )
+    for match in protocol_pattern.finditer(text):
+        for item in _split_list_phrase(match.group(1)):
+            item = re.sub(r"\s+", " ", item).strip(" ,;:-")
+            if item:
+                technologies.append(item)
+        evidence.append(match.group(0))
 
     return _dedupe(technologies), evidence
 
@@ -2914,6 +3008,15 @@ def _extract_manufacturing(
         flags=re.IGNORECASE,
     )
 
+    non_location_semantics = re.compile(
+        r"\b(?:"
+        r"industr(?:y|ies)|defense|availability|pricing|raw\s+materials?|"
+        r"semiconductor\s+device\s+manufacturing|semiconductor\s+packaging|"
+        r"electronics?\s+assembly"
+        r")\b",
+        flags=re.IGNORECASE,
+    )
+
     for pattern in location_patterns:
         match = re.search(
             pattern,
@@ -2925,6 +3028,18 @@ def _extract_manufacturing(
             continue
 
         raw = match.group(1)
+        if re.search(
+            r"\bcustomers?\s+located\s+in\b",
+            raw,
+            flags=re.IGNORECASE,
+        ):
+            continue
+        raw = re.split(
+            r",\s+(?:which|whose)\s+lease\b",
+            raw,
+            maxsplit=1,
+            flags=re.IGNORECASE,
+        )[0]
         raw = re.split(
             r",\s+to\s+(?:manufacture|produce|assemble)\b",
             raw,
@@ -2964,6 +3079,7 @@ def _extract_manufacturing(
                 len(normalized.split()) <= 5
                 and not non_geography_candidate.fullmatch(normalized)
                 and not non_location_outcome.search(normalized)
+                and not non_location_semantics.search(normalized)
                 and not re.search(
                     r"\b(?:accessories|consumables|tools?|product\s+categories|"
                     r"technologies|workflows?|components?)\b",
