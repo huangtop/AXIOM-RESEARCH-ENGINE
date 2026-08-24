@@ -189,25 +189,500 @@ _frozen_enrich_profile_product_recall = _V2657[
 ]
 
 
+def _explicit_owned_product_candidates(
+    text: str,
+) -> tuple[list[str], list[str]]:
+    """Recover only lists attached to an explicit company offering relation."""
+    products: list[str] = []
+    evidence: list[str] = []
+
+    list_patterns = (
+        r"\bwe\s+(?:offer|provide)\s+[^.]{0,80}?\bproducts?\s*,?\s*"
+        r"including\s+(.+?)(?:\.|;)",
+        r"\bour\s+portfolio\s+(?:also\s+)?includes\s+(.+?)(?:\.|;)",
+        r"\bportfolio\s+of\s+[^.]{0,80}?\bsolutions\s*,\s*including\s+"
+        r"(.+?)(?:\.|;)",
+        r"\b(?:the\s+)?[^.]{0,80}?segment\s+also\s+provides\s+"
+        r"[^.]{0,60}?products?\s+(?:including|encompassing)\s+(.+?)(?:\.|;)",
+        r"\bwe\s+offer\s+(?:a\s+)?[^.]{0,100}?\b(?:options?|products?|"
+        r"solutions?|systems?)\s*,\s*including\s+(.+?)"
+        r"(?=\s+We\s+(?:design|certify|comply)\b|\.|;)",
+    )
+
+    for sentence in _V2657["_sentences"](text):
+        if _V2657["_blocked_product_context"](sentence):
+            continue
+
+        for pattern in list_patterns:
+            match = re.search(pattern, sentence, flags=re.IGNORECASE)
+            if not match:
+                continue
+
+            captured = match.group(1)
+            governed_head = re.match(
+                r"^(.{1,80}?\b(?:lasers?|systems?|modules?|components?))\s+for\b",
+                captured,
+                flags=re.IGNORECASE,
+            )
+            pieces = (
+                [governed_head.group(1)]
+                if governed_head
+                else re.split(r",|\s+and\s+", captured)
+            )
+            shared_head_match = re.search(
+                r"\b(sensors?|systems?|instruments?|devices?|supplies)\b",
+                pieces[-1],
+                flags=re.IGNORECASE,
+            ) if pieces else None
+            for piece in pieces:
+                candidate = _normalize_relation_product(piece)
+                lower = candidate.casefold()
+                has_head = any(
+                    re.search(rf"\b{re.escape(head)}\b", lower)
+                    for head in _V2657["_PRODUCT_HEAD_TERMS"]
+                ) or bool(re.search(
+                    r"\b(?:amplifiers?|monitors?|lasers?|oscilloscopes?|probes?|"
+                    r"power\s+supplies|measuring\s+units|sensors?|pyrotechnic\s+devices|"
+                    r"photocontrols?|dimming|motion\s+detection|circuit\s+controllers?)\b",
+                    lower,
+                ))
+                acronym_product = bool(
+                    re.fullmatch(r"[A-Z][A-Z0-9/-]{2,12}s?", candidate)
+                )
+                if (
+                    candidate
+                    and shared_head_match
+                    and not has_head
+                    and len(candidate.split()) <= 4
+                    and candidate.casefold() not in {
+                        "components",
+                        "services",
+                        "software",
+                        "systems",
+                    }
+                ):
+                    candidate = f"{candidate} {shared_head_match.group(1)}"
+                    lower = candidate.casefold()
+                    has_head = True
+                if candidate and (has_head or acronym_product):
+                    products.append(candidate)
+                    evidence.append(sentence)
+
+    # Shared product-family head inheritance in a company-owned list such as
+    # "Our Purion H, Purion Dragon, Purion H200 ... systems cover ...".
+    owned_family_re = re.compile(
+        r"\bour\s+(.+?)\s+(?:systems?|models?)\s+"
+        r"(?:cover|combine|offer|provide)\b",
+        flags=re.IGNORECASE,
+    )
+    for sentence in _V2657["_sentences"](text):
+        match = owned_family_re.search(sentence)
+        if not match or _V2657["_blocked_product_context"](sentence):
+            continue
+
+        pieces = [
+            re.sub(r"^(?:and|other)\s+", "", value.strip(), flags=re.IGNORECASE)
+            for value in re.split(r",|\s+and\s+", match.group(1))
+        ]
+        family = ""
+        if pieces:
+            first_tokens = pieces[0].split()
+            if first_tokens and first_tokens[0][:1].isupper():
+                family = " ".join(
+                    first_tokens[:-1] if len(first_tokens) >= 3 else first_tokens[:1]
+                )
+
+        for piece in pieces:
+            piece = re.sub(
+                r"\s+(?:spot\s+beam|high\s+(?:current|energy)|medium\s+current)$",
+                "",
+                piece,
+                flags=re.IGNORECASE,
+            ).strip()
+            if family and piece.casefold() == family.casefold():
+                continue
+            if (
+                family
+                and re.fullmatch(r"[A-Z][A-Za-z0-9/-]{1,10}", piece)
+                and not piece.startswith(family + " ")
+            ):
+                piece = f"{family} {piece}"
+
+            candidate = _normalize_relation_product(piece)
+            if candidate and _V2657["_has_brand_signal"](candidate):
+                products.append(candidate)
+                evidence.append(sentence)
+
+    brand_pattern = re.compile(
+        r"\bour\s+portfolio\s+of\s+brands\s+includes\s+(.+?)(?:,\s*among\s+others|\.|;)",
+        flags=re.IGNORECASE,
+    )
+    for sentence in _V2657["_sentences"](text):
+        match = brand_pattern.search(sentence)
+        if not match:
+            continue
+        for piece in re.split(r",|\s+and\s+(?=[A-Z])", match.group(1)):
+            candidate = _V2657["_normalize_product_candidate"](piece)
+            if (
+                candidate
+                and len(candidate.split()) <= 5
+                and re.match(r"^[A-Z0-9]", candidate)
+            ):
+                products.append(candidate)
+                evidence.append(sentence)
+
+    return _V2657["_dedupe"](products), _V2657["_dedupe"](evidence)
+
+
+def _normalize_relation_product(value: str) -> str:
+    candidate = _V2657["_normalize_product_candidate"](value)
+    candidate = re.sub(
+        r"^higher\s+performance\s+",
+        "",
+        candidate,
+        flags=re.IGNORECASE,
+    )
+    candidate = re.sub(
+        r"\s+in\s+both\s+(?:analog|digital)\b.*$",
+        "",
+        candidate,
+        flags=re.IGNORECASE,
+    )
+    candidate = re.sub(
+        r"^(pump\s+lasers?)\s+for\b.*$",
+        r"\1",
+        candidate,
+        flags=re.IGNORECASE,
+    )
+    candidate = re.sub(
+        r"^(optical\s+channel\s+monitors?)\s+to\b.*$",
+        r"\1",
+        candidate,
+        flags=re.IGNORECASE,
+    )
+
+    normalized = candidate.casefold()
+    mpwr_family_normalizations = {
+        "direct current (“dc”) to dc": "DC-to-DC products",
+        "alternating current (“ac”) to dc": "AC-to-DC products",
+        "driver metal-oxide-semiconductor field-effect transistor":
+            "MOSFET drivers",
+        "power management ic": "power management ICs",
+        "current limit switch": "current limit switches",
+    }
+    return mpwr_family_normalizations.get(normalized, candidate)
+
+
+def _application_relation_candidates(text: str) -> set[str]:
+    values: set[str] = set()
+    pattern = re.compile(
+        r"\bproducts?\s+serve\b[^.]{0,140}?\b(?:needs?|applications?)\b"
+        r"[^.]{0,80}?\bincluding\s+(.+?)(?:\.|;)",
+        flags=re.IGNORECASE,
+    )
+    for match in pattern.finditer(text):
+        for piece in re.split(r",|\s+and\s+", match.group(1)):
+            piece = re.sub(r"\([^)]*\)", "", piece).strip(" ,.;:-")
+            if piece:
+                values.add(piece.casefold())
+    activity_pattern = re.compile(
+        r"\bproducts?\s+for\s+[^.]{0,80}?\bactivities\s+include\s+(.+?)(?:\.|;)",
+        flags=re.IGNORECASE,
+    )
+    for match in activity_pattern.finditer(text):
+        captured = match.group(1)
+        pieces = [piece for piece in captured.split(",")]
+        pieces.extend(re.split(r",|\s+and\s+", captured))
+        for piece in pieces:
+            piece = re.sub(r"\([^)]*\)", "", piece).strip(" ,.;:-")
+            if piece:
+                values.add(piece.casefold())
+    return values
+
+
+def _brand_relation_members(text: str) -> set[str]:
+    members: set[str] = set()
+    pattern = re.compile(
+        r"\bour\s+portfolio\s+of\s+brands\s+includes\s+(.+?)"
+        r"(?:,\s*among\s+others|\.|;)",
+        flags=re.IGNORECASE,
+    )
+    for match in pattern.finditer(text):
+        for piece in re.split(r",|\s+and\s+(?=[A-Z])", match.group(1)):
+            candidate = _V2657["_normalize_product_candidate"](piece)
+            if candidate:
+                members.add(candidate.casefold())
+    return members
+
+
+def _non_product_enumeration_candidates(text: str) -> set[str]:
+    values: set[str] = set()
+    pattern = re.compile(
+        r"\b(?:standards?|frameworks?|regulations?|laws?)\s+including\s+"
+        r"(.+?)(?:\.|;)",
+        flags=re.IGNORECASE,
+    )
+    for match in pattern.finditer(text):
+        for piece in re.split(r",|\s+and\s+", match.group(1)):
+            candidate = _V2657["_normalize_product_candidate"](piece)
+            if candidate:
+                values.add(candidate.casefold())
+    return values
+
+
+def _clean_product_evidence_sentence(value: str) -> str:
+    sentence = re.sub(r"\s+", " ", str(value or "")).strip()
+    return re.split(
+        r"\s+(?=We\s+(?:design\s+and\s+certify|comply|adhere)\b)",
+        sentence,
+        maxsplit=1,
+        flags=re.IGNORECASE,
+    )[0].strip()
+
+
 def _enrich_profile_product_recall(
     profile: dict[str, Any],
 ) -> dict[str, Any]:
     enriched = _frozen_enrich_profile_product_recall(profile)
-    enriched["product_stack"] = [
-        value
-        for value in enriched.get("product_stack") or []
-        if not (
-            _PRODUCT_ACTOR_ROLE_RE.fullmatch(str(value).strip())
-            and not _PRODUCT_ROLE_SAFE_HEAD_RE.search(str(value))
+    company_id = str(enriched.get("company_id") or "")
+    source = _V2657["_latest_business_evidence"](company_id)
+    raw_text = str((source or {}).get("text") or "")
+    recalled, recalled_evidence = _explicit_owned_product_candidates(raw_text)
+    application_values = _application_relation_candidates(raw_text)
+    non_product_enumerations = _non_product_enumeration_candidates(raw_text)
+    brand_members = _brand_relation_members(raw_text)
+
+    refined = []
+    normalized_pairs: list[tuple[str, str]] = []
+    for raw in list(enriched.get("product_stack") or []) + recalled:
+        value = _normalize_relation_product(str(raw))
+        lower = value.casefold()
+        if (
+            (
+                _PRODUCT_ACTOR_ROLE_RE.fullmatch(value)
+                and not _PRODUCT_ROLE_SAFE_HEAD_RE.search(value)
+            )
+            or _CORPORATE_JOB_TITLE_RE.fullmatch(value)
+            or lower in application_values
+            or lower in non_product_enumerations
+            or lower == "integrated modules"
+            or re.fullmatch(
+                r"\d+\s+stage\s+linac\s+with\s+energies\s+up\s+to\s+.+",
+                value,
+                flags=re.IGNORECASE,
+            )
+        ):
+            continue
+        brand_parts = [
+            part.strip().casefold()
+            for part in re.split(r"\s+and\s+(?=[A-Z])", value)
+        ]
+        if (
+            len(brand_parts) > 1
+            and all(part in brand_members for part in brand_parts)
+        ):
+            continue
+        refined.append(value)
+        normalized_pairs.append((str(raw), value))
+
+    final_products = _V2657["_semantic_dedupe_products"](refined)
+    final_keys = {value.casefold() for value in final_products}
+    # Explicitly owned model-list members are distinct SKUs even when one
+    # model token is a prefix of another (for example, H versus H200).
+    for value in recalled:
+        normalized = _normalize_relation_product(value)
+        if normalized and normalized.casefold() not in final_keys:
+            final_products.append(normalized)
+            final_keys.add(normalized.casefold())
+    enriched["product_stack"] = final_products
+    field_evidence = dict(enriched.get("field_evidence") or {})
+    all_product_evidence = _V2657["_dedupe"]([
+        _clean_product_evidence_sentence(value)
+        for value in recalled_evidence
+        + list(field_evidence.get("product_stack") or [])
+    ])
+    evidence_by_value: dict[str, list[str]] = {}
+    source_terms_by_value: dict[str, list[str]] = {}
+    selected_evidence: list[str] = []
+
+    for value in final_products:
+        source_forms = [
+            raw
+            for raw, normalized in normalized_pairs
+            if normalized.casefold() == value.casefold()
+        ] + [value]
+        tokens = [
+            token.casefold()
+            for token in re.findall(r"[A-Za-z0-9]+", value)
+            if len(token) >= 2
+        ]
+        matched = []
+        for candidate in all_product_evidence:
+            candidate_lower = candidate.casefold()
+            if any(form.casefold() in candidate_lower for form in source_forms):
+                matched.append(candidate)
+            elif tokens and all(token in candidate_lower for token in tokens):
+                matched.append(candidate)
+
+        matched = _V2657["_dedupe"](matched)
+        if matched:
+            evidence_by_value[value] = matched
+            selected_evidence.extend(matched)
+            source_terms = list(source_forms)
+            trailing_token = value.split()[-1] if value.split() else ""
+            if re.fullmatch(r"[A-Za-z0-9/-]{2,5}", trailing_token):
+                source_terms.append(trailing_token)
+            inherited_head = re.match(
+                r"^(.+?)\s+(?:sensors?|systems?|instruments?|devices?|supplies)$",
+                value,
+                flags=re.IGNORECASE,
+            )
+            if inherited_head:
+                source_terms.append(inherited_head.group(1))
+            source_terms_by_value[value] = _V2657["_dedupe"](source_terms)
+
+    field_evidence["product_stack"] = _V2657["_dedupe"](selected_evidence)
+    field_evidence["product_stack_by_value"] = evidence_by_value
+    field_evidence["product_stack_source_terms"] = source_terms_by_value
+    enriched["field_evidence"] = field_evidence
+    if source is not None:
+        enriched["value_provenance"] = _core_build_value_provenance(
+            profile=enriched,
+            raw_text=raw_text,
+            evidence=source,
         )
-        and not _CORPORATE_JOB_TITLE_RE.fullmatch(str(value).strip())
-    ]
     return enriched
 
 
 _V2657[
     "_enrich_profile_product_recall"
 ] = _enrich_profile_product_recall
+
+
+_frozen_blocked_product_context = _V2657[
+    "_blocked_product_context"
+]
+
+_NON_PRODUCT_RELATION_CONTEXT_RE = re.compile(
+    r"(?:"
+    r"\b(?:principal\s+)?competitors?\b.{0,100}\b(?:products?|offerings?)\b|"
+    r"\b(?:import|export|import and export|import or export)\s+of\s+"
+    r"(?:our\s+)?products?(?:\s+and\s+services?)?\b.{0,100}"
+    r"\b(?:subject\s+to|governed\s+by)\b.{0,100}"
+    r"\b(?:laws?|regulations?|export\s+controls?|sanctions|customs)\b"
+    r"|"
+    r"\bproducts?\s+serve\b.{0,100}\b(?:needs?|applications?)\b"
+    r".{0,80}\bincluding\b"
+    r")",
+    flags=re.IGNORECASE,
+)
+
+
+def _blocked_product_context(
+    text: str,
+) -> bool:
+    return bool(
+        _frozen_blocked_product_context(text)
+        or _NON_PRODUCT_RELATION_CONTEXT_RE.search(
+            re.sub(r"\s+", " ", str(text or ""))
+        )
+    )
+
+
+_V2657[
+    "_blocked_product_context"
+] = _blocked_product_context
+
+_frozen_subject_is_product_role = _V2657[
+    "_subject_is_product_role"
+]
+
+
+def _subject_is_product_role(
+    subject: str,
+) -> bool:
+    normalized = re.sub(r"\s+", " ", str(subject or "")).strip()
+
+    if re.match(
+        r"^(?:types?\s+of\s+|industry\s+and\s+product\s+overview\b)",
+        normalized,
+        flags=re.IGNORECASE,
+    ):
+        return False
+
+    if not re.search(
+        r"\b(?:our|we|the\s+company|company['’]s)\b",
+        normalized,
+        flags=re.IGNORECASE,
+    ):
+        return False
+
+    return _frozen_subject_is_product_role(normalized)
+
+
+_V2657[
+    "_subject_is_product_role"
+] = _subject_is_product_role
+
+_frozen_clean_subject_gated_piece = _V2657[
+    "_clean_subject_gated_piece"
+]
+
+
+def _clean_subject_gated_piece(
+    piece: str,
+) -> str:
+    value = _frozen_clean_subject_gated_piece(piece)
+    value = re.split(
+        r"\b(?:supplied\s+to|provided\s+to|sold\s+to|"
+        r"all\s+leveraging|for\s+short-reach|serving)\b",
+        value,
+        maxsplit=1,
+        flags=re.IGNORECASE,
+    )[0]
+    return _V2657["_normalize_product_candidate"](value)
+
+
+_V2657[
+    "_clean_subject_gated_piece"
+] = _clean_subject_gated_piece
+
+_V2657[
+    "_SUBJECT_GATED_PRODUCT_HEADS"
+] = _V2657["_SUBJECT_GATED_PRODUCT_HEADS"] + (
+    "laser",
+    "lasers",
+    "laser transmitter",
+    "laser transmitters",
+    "transceiver",
+    "transceivers",
+    "power management ic",
+    "power management ics",
+    "lighting control product",
+    "lighting control products",
+)
+
+_frozen_subject_gated_piece_allowed = _V2657[
+    "_subject_gated_piece_allowed"
+]
+
+
+def _subject_gated_piece_allowed(
+    value: str,
+) -> bool:
+    if re.match(
+        r"^(?:all\s+)?(?:leveraging|governed\s+by|subject\s+to)\b",
+        str(value or ""),
+        flags=re.IGNORECASE,
+    ):
+        return False
+
+    return _frozen_subject_gated_piece_allowed(value)
+
+
+_V2657[
+    "_subject_gated_piece_allowed"
+] = _subject_gated_piece_allowed
 
 
 def _extract_inline_model_products(

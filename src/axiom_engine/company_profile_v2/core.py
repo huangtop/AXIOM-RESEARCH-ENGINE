@@ -238,9 +238,53 @@ def _extract_one_line_business(
             sentences = _sentences(candidate)
 
             if sentences:
+                for sentence in sentences:
+                    if re.search(
+                        r"\b(?:is|are)\s+(?:a|an)\s+[^.]{0,140}\b"
+                        r"(?:company|producer|provider|supplier|manufacturer)\b",
+                        sentence,
+                        flags=re.IGNORECASE,
+                    ):
+                        return sentence, candidate
                 return sentences[0], candidate
 
     sentences = _sentences(text)
+
+    # Prefer an explicit company identity/business-model sentence before the
+    # broad fallback below. This avoids strategy, liquidity, and section prose
+    # that merely happens to contain "provides" or another weak marker.
+    for sentence in sentences:
+        normalized = re.sub(
+            r"^(?:(?:BUSINESS|GENERAL|OVERVIEW OF OUR BUSINESS)"
+            r"[\s\u200b]*[.:]?[\s\u200b]*)+",
+            "",
+            sentence,
+            flags=re.IGNORECASE,
+        ).strip()
+        lower = normalized.lower()
+
+        identity_relation = re.search(
+            r"\b(?:is|are)\s+(?:a|an)\s+[^.]{0,120}\b"
+            r"(?:company|provider|supplier|manufacturer)\b",
+            normalized,
+            flags=re.IGNORECASE,
+        )
+        operating_relation = re.search(
+            r"\b(?:designs?|manufactures?|services?|develops?|provides?)\b"
+            r"[^.]{0,160}\b(?:equipment|products?|solutions?|systems?)\b",
+            normalized,
+            flags=re.IGNORECASE,
+        )
+
+        if (
+            (identity_relation or operating_relation)
+            and not re.search(
+                r"\b(?:cash flows?|cash balance|capital to fund|"
+                r"compensation|employees?|benefits?)\b",
+                lower,
+            )
+        ):
+            return normalized, sentence
 
     for sentence in sentences:
         lower = sentence.lower()
@@ -290,6 +334,13 @@ _MARKET_BLOCKED_EXACT = {
     "services",
     "solutions",
     "business",
+    "target",
+    "large",
+    "diverse",
+    "digitization",
+    "and other",
+    "other",
+    "field",
 }
 
 _MARKET_BLOCKED_PREFIXES = (
@@ -693,10 +744,23 @@ def _split_market_phrase(
     output = []
 
     for raw in value.split(","):
+        raw = re.sub(
+            r"^\s*(?:and|or)\s+",
+            "",
+            raw,
+            flags=re.IGNORECASE,
+        )
         candidate = re.sub(
-            r"^(?:including|such as)\s+",
+            r"^(?:including|such as)(?:\s+but\s+not\s+limited\s+to"
+            r"(?:\s+the\s+following)?)?\s+",
             "",
             raw.strip(),
+            flags=re.IGNORECASE,
+        )
+        candidate = re.sub(
+            r"^but\s+not\s+limited\s+to(?:\s+the\s+following)?\s*:\s*",
+            "",
+            candidate,
             flags=re.IGNORECASE,
         )
 
@@ -714,6 +778,13 @@ def _split_market_phrase(
         candidate = _clean_market_candidate(
             candidate
         )
+
+        if re.search(
+            r"\b(?:new\s+construction|renovation|retrofit)\b",
+            candidate,
+            flags=re.IGNORECASE,
+        ):
+            continue
 
         # V2.6.3.4.2: collapse audience/channel framing
         # around the actual external market.
@@ -884,6 +955,13 @@ def _extract_generic_markets(
                 prefix = sentence[max(0, match.start() - 120):match.start()]
                 captured = match.group(1)
 
+                if re.search(
+                    r"\b(?:large|diverse)\b.*\b(?:experiencing|tailwinds?)\b",
+                    captured,
+                    flags=re.IGNORECASE,
+                ):
+                    continue
+
                 if (
                     re.search(
                         r"\b(?:organization|association|consortium|alliance|"
@@ -941,6 +1019,64 @@ def _extract_markets(
         generic_evidence
     )
 
+    # A strongly owned "we design/develop our products for ... end markets"
+    # disclosure is safe even when a market label (for example, Storage and
+    # Computing) contains a word that the broader market gate conservatively
+    # treats as product-like.
+    explicit_product_market_re = re.compile(
+        r"\b(?:we|the company)\s+(?:design(?:s)?(?:\s+and\s+develop(?:s)?)?|"
+        r"develop(?:s)?)\s+(?:our\s+)?products?\s+for\s+(?:the\s+)?"
+        r"(.+?)\s+end[- ]markets?(?:\.|;)",
+        flags=re.IGNORECASE,
+    )
+    for sentence in _sentences(text):
+        for match in explicit_product_market_re.finditer(sentence):
+            # Commas delimit the disclosed markets.  Preserve an internal
+            # conjunction such as "storage and computing".
+            for raw in match.group(1).split(","):
+                candidate = re.sub(
+                    r"^\s*and\s+",
+                    "",
+                    raw,
+                    flags=re.IGNORECASE,
+                ).strip(" ,.;:-")
+                if (
+                    candidate
+                    and len(candidate.split()) <= 5
+                    and candidate.casefold() not in _MARKET_BLOCKED_EXACT
+                    and not re.search(
+                        r"\b(?:distributors?|resellers?|channel partners?|"
+                        r"customers?|employees?)\b",
+                        candidate,
+                        flags=re.IGNORECASE,
+                    )
+                ):
+                    markets.append(_canonical_market_label(candidate))
+                    evidence.append(match.group(0))
+
+    explicit_industry_relation_re = re.compile(
+        r"\bour\s+[^.]{1,100}?\b(?:products?|lasers?|systems?|solutions?)\s+"
+        r"(?:cater|caters)\s+to\s+industries\s+such\s+as\s+(.+?)(?:,\s*where|\.|;)",
+        flags=re.IGNORECASE,
+    )
+    for sentence in _sentences(text):
+        for match in explicit_industry_relation_re.finditer(sentence):
+            for raw in re.split(r",|\s+and\s+", match.group(1)):
+                candidate = raw.strip(" ,.;:-")
+                if (
+                    candidate
+                    and len(candidate.split()) <= 6
+                    and candidate.casefold() not in _MARKET_BLOCKED_EXACT
+                    and not re.search(
+                        r"\b(?:distributors?|resellers?|channel partners?|"
+                        r"customers?|employees?)\b",
+                        candidate,
+                        flags=re.IGNORECASE,
+                    )
+                ):
+                    markets.append(_canonical_market_label(candidate))
+                    evidence.append(match.group(0))
+
     opening = text[:10000]
 
     patterns = [
@@ -961,20 +1097,40 @@ def _extract_markets(
 
         phrase = match.group(1)
 
-        pieces = re.split(
-            r",\s*(?=[A-Za-z])|\s+and\s+",
-            phrase,
+        pieces = (
+            re.split(r",\s*(?=[A-Za-z])", phrase)
+            if "," in phrase
+            else re.split(r"\s+and\s+", phrase, flags=re.IGNORECASE)
         )
 
         for piece in pieces:
-            piece = piece.strip()
+            piece = re.sub(
+                r"^\s*(?:and|or)\s+",
+                "",
+                piece,
+                flags=re.IGNORECASE,
+            ).strip()
 
             if not piece:
                 continue
 
             label = _canonical_market_label(piece)
 
-            if label and len(label) <= 50:
+            explicit_head = pattern.startswith(
+                r"(?:networking\s+)?end[- ]markets?"
+            )
+            if (
+                label
+                and len(label) <= 50
+                and (
+                    _market_candidate_allowed(label)
+                    or (
+                        explicit_head
+                        and label.casefold() not in _MARKET_BLOCKED_EXACT
+                        and len(label.split()) <= 5
+                    )
+                )
+            ):
                 markets.append(label)
 
         evidence.append(match.group(0))
@@ -1222,6 +1378,17 @@ def _offering_context_allowed(
         "earnings release",
         "earnings releases",
         "notifications of news",
+
+        # Competitor/entity lists are not company offerings even when their
+        # grammar contains "our products include".
+        "principal competitors",
+        "competitors with respect to our products",
+
+        # Product mentions inside trade-control and regulatory obligations
+        # describe legal scope, not commercial offerings.
+        "subject to laws and regulations",
+        "export controls and sanctions laws",
+        "customs regulations",
 
         # ESG / volunteering
         "company-matched donations",
@@ -1493,6 +1660,7 @@ def _strip_offering_tail(
         r"\s+who\s+in turn\b.*$",
         r"\s+which\s+(?:enable|provide|support)\b.*$",
         r"\s+that\s+(?:enable|provide|support)\b.*$",
+        r"\s+(?=We\s+(?:design|certify|comply|adhere)\b).*$",
     ]
 
     for pattern in tail_patterns:
@@ -2614,6 +2782,16 @@ def _extract_core_technologies(
             match.group(1),
         ).strip()
 
+        # Definitions of customer/device categories can contain a technology
+        # acronym near words such as "manufacturing" without asserting that
+        # the technology belongs to the reporting company.
+        if re.match(
+            r"^(?:types?|kinds?|categories?)\s+of\b.*\b(?:include|includes)\b",
+            expansion,
+            flags=re.IGNORECASE,
+        ):
+            continue
+
         direct_tail = text[match.end():min(len(text), match.end() + 90)]
         organization_head = re.search(
             r"\b(?:Corporation|Company|Consortium|Association|Organization|"
@@ -2634,7 +2812,19 @@ def _extract_core_technologies(
             flags=re.IGNORECASE,
         )
 
-        if organization_head or organization_appositive or membership_role:
+        regulatory_or_framework_context = re.search(
+            r"\b(?:frameworks?\s*,?\s+such\s+as|data\s+(?:privacy|protection)|"
+            r"regulations?|compliance\s+requirements?|laws?\s+in)\b",
+            context,
+            flags=re.IGNORECASE,
+        )
+
+        if (
+            organization_head
+            or organization_appositive
+            or membership_role
+            or regulatory_or_framework_context
+        ):
             continue
 
         technologies.append(
@@ -2714,6 +2904,16 @@ def _extract_manufacturing(
         flags=re.IGNORECASE,
     )
 
+    non_location_outcome = re.compile(
+        r"\b(?:"
+        r"aligned\s+to\s+business\s+conditions|"
+        r"inventory\s+levels?|reduced\s+sales|"
+        r"underestimate\s+the\s+demand|production\s+costs?|"
+        r"operating\s+expenses?|business\s+conditions"
+        r")\b",
+        flags=re.IGNORECASE,
+    )
+
     for pattern in location_patterns:
         match = re.search(
             pattern,
@@ -2725,6 +2925,12 @@ def _extract_manufacturing(
             continue
 
         raw = match.group(1)
+        raw = re.split(
+            r",\s+to\s+(?:manufacture|produce|assemble)\b",
+            raw,
+            maxsplit=1,
+            flags=re.IGNORECASE,
+        )[0]
         raw = (
             raw
             .replace("U.S.", "United States")
@@ -2745,10 +2951,25 @@ def _extract_manufacturing(
                 normalized,
                 normalized,
             )
+            normalized = re.sub(
+                r"^(?:one|two|three|four|five|six|seven|eight|nine|ten|"
+                r"eleven|twelve|\d+)\s+(?=(?:United States|China|Japan|"
+                r"Vietnam|Mexico|India|Malaysia|Singapore|Taiwan|Korea)\b)",
+                "",
+                normalized,
+                flags=re.IGNORECASE,
+            )
 
             if (
                 len(normalized.split()) <= 5
                 and not non_geography_candidate.fullmatch(normalized)
+                and not non_location_outcome.search(normalized)
+                and not re.search(
+                    r"\b(?:accessories|consumables|tools?|product\s+categories|"
+                    r"technologies|workflows?|components?)\b",
+                    normalized,
+                    flags=re.IGNORECASE,
+                )
             ):
                 locations.append(normalized)
 
@@ -2856,10 +3077,6 @@ def _extract_customer_types(
         (
             r'system integrators',
             "system integrators",
-        ),
-        (
-            r'distributors',
-            "distributors",
         ),
     ]
 
