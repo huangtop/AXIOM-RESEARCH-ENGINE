@@ -6,7 +6,7 @@
   "exchange": "NYSE_AMERICAN",
   "as_of": "2026-06-26",
   "company_summary": {
-    "one_line_business": "The Company designs, sources, imports and markets a variety of houseware and consumer electronic products, and licenses its trademarks to others on a worldwide basis for a variety of products."
+    "one_line_business": "The Company’s website serves as an additional sales channel for products, and provides search capability, detailed product information, online merchant availability, demo videos and downloadable product specification sheets."
   },
   "markets": [],
   "product_stack": [
@@ -24,7 +24,8 @@
     "critical_assets": []
   },
   "customer_types": [
-    "OEMs"
+    "OEMs",
+    "distributors"
   ],
   "ai_exposure": null,
   "competitive_advantages": [],
@@ -40,7 +41,7 @@
   },
   "field_evidence": {
     "company_summary.one_line_business": [
-      "The Company designs, sources, imports and markets a variety of houseware and consumer electronic products, and licenses its trademarks to others on a worldwide basis for a variety of products."
+      "The Company’s website serves as an additional sales channel for products, and provides search capability, detailed product information, online merchant availability, demo videos and downloadable product specification sheets."
     ],
     "markets": [],
     "product_stack": [
@@ -54,24 +55,14 @@
       "Manufacturing\nThe Company’s products are manufactured by original equipment manufacturers in accordance with the Company’s specifications. D"
     ],
     "customer_types": [
-      "original equipment manufacturers"
+      "original equipment manufacturers",
+      "distributors"
     ],
     "ai_exposure": [],
     "competitive_advantages": [],
     "demand_drivers": [],
     "strategy_changes": [],
-    "financial_snapshot": [],
-    "product_stack_by_value": {
-      "Fans Wireless Charging Sales": [
-        "4 Table of Contents Products The Company’s current product categories, which include licensed products, consist primarily of the following: Houseware Products Audio Products Other Microwave Ovens Clock Radios Televisions Compact Refrigerators Bluetooth Speakers Security Products Toaster Ovens Karaoke Machines Massagers Heaters and Fans Wireless Charging Sales and Distribution The Company markets its products exclusively in the United States, Canada and Mexico, primarily through mass merchandisers and online marketplaces"
-      ]
-    },
-    "product_stack_source_terms": {
-      "Fans Wireless Charging Sales": [
-        "Fans Wireless Charging Sales",
-        "Sales"
-      ]
-    }
+    "financial_snapshot": []
   },
   "evidence": [
     {
@@ -86,44 +77,25 @@
   ],
   "value_provenance": {
     "company_summary.one_line_business": {
-      "value": "The Company designs, sources, imports and markets a variety of houseware and consumer electronic products, and licenses its trademarks to others on a worldwide basis for a variety of products.",
+      "value": "The Company’s website serves as an additional sales channel for products, and provides search capability, detailed product information, online merchant availability, demo videos and downloadable product specification sheets.",
       "evidence": {
         "business_evidence_id": "business-evidence:SEC-0001437749-26-021828",
         "form": "10-K",
         "accession_number": "0001437749-26-021828",
         "filing_date": "2026-06-26",
         "section_type": "item_1_business",
-        "quote": "The Company designs, sources, imports and markets a variety of houseware and consumer electronic products, and licenses its trademarks to others on a worldwide basis for a variety of products.",
-        "evidence_start_character": 227,
-        "evidence_end_character": 419,
-        "document_start_character": 26769,
-        "document_end_character": 26961,
-        "matched_start_character": 227,
-        "matched_end_character": 419,
+        "quote": "The Company’s website serves as an additional sales channel for products, and provides search capability, detailed product information, online merchant availability, demo videos and downloadable product specification sheets. The Company expects sales through online marketplaces to continue to be a growth initiative for its business.",
+        "evidence_start_character": 6730,
+        "evidence_end_character": 7064,
+        "document_start_character": 33272,
+        "document_end_character": 33606,
+        "matched_start_character": 6730,
+        "matched_end_character": 6954,
         "text_sha256": "5701bb73d7db04cb67b20cd81c5a5efed9e3de73cd3a8547799df88c1a96795b"
       }
     },
     "markets": [],
-    "product_stack": [
-      {
-        "value": "Fans Wireless Charging Sales",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001437749-26-021828",
-          "form": "10-K",
-          "accession_number": "0001437749-26-021828",
-          "filing_date": "2026-06-26",
-          "section_type": "item_1_business",
-          "quote": "Sales and Distribution",
-          "evidence_start_character": 2233,
-          "evidence_end_character": 2255,
-          "document_start_character": 28775,
-          "document_end_character": 28797,
-          "matched_start_character": 2233,
-          "matched_end_character": 2238,
-          "text_sha256": "5701bb73d7db04cb67b20cd81c5a5efed9e3de73cd3a8547799df88c1a96795b"
-        }
-      }
-    ],
+    "product_stack": [],
     "market_products": {},
     "core_technologies": [
       {
@@ -159,6 +131,24 @@
       {
         "value": "OEMs",
         "evidence": null
+      },
+      {
+        "value": "distributors",
+        "evidence": {
+          "business_evidence_id": "business-evidence:SEC-0001437749-26-021828",
+          "form": "10-K",
+          "accession_number": "0001437749-26-021828",
+          "filing_date": "2026-06-26",
+          "section_type": "item_1_business",
+          "quote": "Finding replacement organizations and distributors could be a time-consuming process during which the Company’s revenues could be negatively impacted.",
+          "evidence_start_character": 5347,
+          "evidence_end_character": 5497,
+          "document_start_character": 31889,
+          "document_end_character": 32039,
+          "matched_start_character": 5385,
+          "matched_end_character": 5397,
+          "text_sha256": "5701bb73d7db04cb67b20cd81c5a5efed9e3de73cd3a8547799df88c1a96795b"
+        }
       }
     ],
     "competitive_advantages": [],
@@ -193,14 +183,5 @@
     "discovered_product_count": 1,
     "final_product_count": 1,
     "removed_market_product_pollution": true
-  },
-  "product_stack_sanitizer": {
-    "version": "v2.6.6.2c-batch1",
-    "mode": "deterministic_production_boundary",
-    "promotion_batch": "V2.6.6.2c-batch1",
-    "before_count": 1,
-    "after_count": 1,
-    "removed_count": 0,
-    "removed": []
   }
 }
