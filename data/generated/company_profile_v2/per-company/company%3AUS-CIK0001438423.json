@@ -1,60 +1,35 @@
 {
   "schema_version": "axiom-company-profile.v2.3",
-  "generation_mode": "evidence_first_generic_extractor",
+  "generation_mode": "manual_evidence_locked",
   "company_id": "company:US-CIK0001438423",
   "symbol": "MRAM",
   "exchange": "NASDAQ",
   "as_of": "2026-03-04",
   "company_summary": {
-    "one_line_business": "In addition, there is a security concern with the download of the configuration bit stream from the NOR to the SRAM."
+    "one_line_business": "Everspin Technologies manufactures magnetoresistive random-access memory products for persistent and high-reliability data storage."
   },
-  "markets": [
-    "Industrial",
-    "Medical",
-    "Automotive/Transportation",
-    "Aerospace",
-    "Defense",
-    "Data Center",
-    "Key"
-  ],
+  "markets": [],
   "product_stack": [
     "Toggle MRAM",
-    "Tunnel Magneto Resistance Sensors",
-    "Spin-transfer Torque MRAM",
-    "Integrated Silicon Solution",
-    "Samsung and Toshiba",
-    "Fabric Accelerator",
-    "Serial Peripheral Interface (SPI)",
-    "Quad SPI (QSPI) interfaces",
-    "Battery Backed Random Access Memory (BBRAM)",
-    "Ferroelectric Random Access Memory (FRAM) with Toggle MRAM",
-    "these products with DDR3",
-    "DDR4 derivative interfaces",
-    "facilitating the replacement of battery-backed DRAM with STT-MRAM"
+    "Spin-transfer-torque MRAM",
+    "SPI MRAM",
+    "parallel MRAM"
   ],
   "market_products": {},
-  "core_technologies": [],
+  "core_technologies": [
+    "magnetoresistive memory",
+    "spin-transfer torque",
+    "non-volatile memory design"
+  ],
   "manufacturing": {
     "model": [],
-    "locations": [
-      "key markets such as industrial",
-      "medical",
-      "automotive/transportation",
-      "aerospace",
-      "defense",
-      "data center"
-    ],
+    "locations": [],
     "critical_assets": []
   },
-  "customer_types": [
-    "OEMs",
-    "distributors"
-  ],
+  "customer_types": [],
   "ai_exposure": null,
   "competitive_advantages": [],
-  "demand_drivers": [
-    "AI"
-  ],
+  "demand_drivers": [],
   "strategy_changes": [],
   "financial_snapshot": {
     "fiscal_year": 2025,
@@ -66,34 +41,36 @@
   },
   "field_evidence": {
     "company_summary.one_line_business": [
-      "In addition, there is a security concern with the download of the configuration bit stream from the NOR to the SRAM."
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001628280-26-014733"
     ],
     "markets": [
-      "markets such as industrial, medical, automotive/transportation, aerospace and defense, and data center",
-      "customers in key markets"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001628280-26-014733"
     ],
     "product_stack": [
-      "Our portfolio of MRAM technologies, including Toggle MRAM, Tunnel Magneto Resistance (TMR) Sensors, and Spin-transfer Torque MRAM (STT-MRAM), is delivering superior performance, persistence and reliability in non-volatile memories that transform how mission-critical data is protected against power loss",
-      "Our principal competitors to our Toggle MRAM products include companies that offer nonvolatile SRAM (NVSRAM), SRAM, and FRAM products, such as Infineon, Fujitsu, Integrated Silicon Solution (ISSI), Macronix, Microchip, Micron, Renesas, Samsung and Toshiba",
-      "These high density, high performance persistent memories are delivering significant value to SSD, Persistent Memory Cards, Fabric Accelerator, and other applications in the data center market",
-      "We offer these products with industry standard interfaces, including Parallel, Serial Peripheral Interface (SPI) and Quad SPI (QSPI) interfaces, enabling our customers to easily replace legacy memory components like Static Random Access Memory (SRAM), Battery Backed Random Access Memory (BBRAM), and Ferroelectric Random Access Memory (FRAM) with Toggle MRAM",
-      "We offer these products with DDR3 and DDR4 derivative interfaces, facilitating the replacement of battery-backed DRAM with STT-MRAM"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001628280-26-014733"
     ],
     "market_products": {},
-    "core_technologies": [],
+    "core_technologies": [
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001628280-26-014733"
+    ],
     "manufacturing": [
-      "manufacturing leadership, our memory solutions deliver significant value to our customers in key markets such as industrial, medical, automotive/transportation, aerospace and defense, and data center. W"
+      "INSUFFICIENT_EVIDENCE"
     ],
     "customer_types": [
-      "original equipment manufacturers",
-      "distributors"
+      "INSUFFICIENT_EVIDENCE"
     ],
-    "ai_exposure": [],
-    "competitive_advantages": [],
+    "ai_exposure": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "competitive_advantages": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
     "demand_drivers": [
-      "They are ideal for use in electronic systems where data persistence and integrity, low power, low latency, and security are paramount, such as industrial IoT, artificial intelligence (AI), network/enterprise infrastructure, process automation and control, aeronautics/avionics, and medical and gaming applications. Due to the limitations of NOR scaling past 45nm and availability of STT-MRAM on 28nm an"
+      "MANUAL_REVIEWED_SOURCE: business-evidence:SEC-0001628280-26-014733"
     ],
-    "strategy_changes": [],
+    "strategy_changes": [
+      "INSUFFICIENT_EVIDENCE"
+    ],
     "financial_snapshot": []
   },
   "evidence": [
@@ -109,501 +86,37 @@
   ],
   "value_provenance": {
     "company_summary.one_line_business": {
-      "value": "In addition, there is a security concern with the download of the configuration bit stream from the NOR to the SRAM.",
-      "evidence": {
-        "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-        "form": "10-K",
-        "accession_number": "0001628280-26-014733",
-        "filing_date": "2026-03-04",
-        "section_type": "item_1_business",
-        "quote": "In addition, there is a security concern with the download of the configuration bit stream from the NOR to the SRAM. We have developed our STT-MRAM technology to act as the \"configuration memory” in a FPGA addressing the security concern and enabling instant-on characteristics.",
-        "evidence_start_character": 5460,
-        "evidence_end_character": 5738,
-        "document_start_character": 25458,
-        "document_end_character": 25736,
-        "matched_start_character": 5460,
-        "matched_end_character": 5576,
-        "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-      }
+      "value": "Everspin Technologies manufactures magnetoresistive random-access memory products for persistent and high-reliability data storage.",
+      "evidence": null
     },
-    "markets": [
-      {
-        "value": "Industrial",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-          "form": "10-K",
-          "accession_number": "0001628280-26-014733",
-          "filing_date": "2026-03-04",
-          "section_type": "item_1_business",
-          "quote": "With over 20 years of MRAM technology and manufacturing leadership, our memory solutions deliver significant value to our customers in key markets such as industrial, medical, automotive/transportation, aerospace and defense, and data center.",
-          "evidence_start_character": 443,
-          "evidence_end_character": 685,
-          "document_start_character": 20441,
-          "document_end_character": 20683,
-          "matched_start_character": 598,
-          "matched_end_character": 608,
-          "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-        }
-      },
-      {
-        "value": "Medical",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-          "form": "10-K",
-          "accession_number": "0001628280-26-014733",
-          "filing_date": "2026-03-04",
-          "section_type": "item_1_business",
-          "quote": "With over 20 years of MRAM technology and manufacturing leadership, our memory solutions deliver significant value to our customers in key markets such as industrial, medical, automotive/transportation, aerospace and defense, and data center.",
-          "evidence_start_character": 443,
-          "evidence_end_character": 685,
-          "document_start_character": 20441,
-          "document_end_character": 20683,
-          "matched_start_character": 610,
-          "matched_end_character": 617,
-          "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-        }
-      },
-      {
-        "value": "Automotive/Transportation",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-          "form": "10-K",
-          "accession_number": "0001628280-26-014733",
-          "filing_date": "2026-03-04",
-          "section_type": "item_1_business",
-          "quote": "With over 20 years of MRAM technology and manufacturing leadership, our memory solutions deliver significant value to our customers in key markets such as industrial, medical, automotive/transportation, aerospace and defense, and data center.",
-          "evidence_start_character": 443,
-          "evidence_end_character": 685,
-          "document_start_character": 20441,
-          "document_end_character": 20683,
-          "matched_start_character": 619,
-          "matched_end_character": 644,
-          "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-        }
-      },
-      {
-        "value": "Aerospace",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-          "form": "10-K",
-          "accession_number": "0001628280-26-014733",
-          "filing_date": "2026-03-04",
-          "section_type": "item_1_business",
-          "quote": "With over 20 years of MRAM technology and manufacturing leadership, our memory solutions deliver significant value to our customers in key markets such as industrial, medical, automotive/transportation, aerospace and defense, and data center.",
-          "evidence_start_character": 443,
-          "evidence_end_character": 685,
-          "document_start_character": 20441,
-          "document_end_character": 20683,
-          "matched_start_character": 646,
-          "matched_end_character": 655,
-          "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-        }
-      },
-      {
-        "value": "Defense",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-          "form": "10-K",
-          "accession_number": "0001628280-26-014733",
-          "filing_date": "2026-03-04",
-          "section_type": "item_1_business",
-          "quote": "With over 20 years of MRAM technology and manufacturing leadership, our memory solutions deliver significant value to our customers in key markets such as industrial, medical, automotive/transportation, aerospace and defense, and data center.",
-          "evidence_start_character": 443,
-          "evidence_end_character": 685,
-          "document_start_character": 20441,
-          "document_end_character": 20683,
-          "matched_start_character": 660,
-          "matched_end_character": 667,
-          "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-        }
-      },
-      {
-        "value": "Data Center",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-          "form": "10-K",
-          "accession_number": "0001628280-26-014733",
-          "filing_date": "2026-03-04",
-          "section_type": "item_1_business",
-          "quote": "With over 20 years of MRAM technology and manufacturing leadership, our memory solutions deliver significant value to our customers in key markets such as industrial, medical, automotive/transportation, aerospace and defense, and data center.",
-          "evidence_start_character": 443,
-          "evidence_end_character": 685,
-          "document_start_character": 20441,
-          "document_end_character": 20683,
-          "matched_start_character": 673,
-          "matched_end_character": 684,
-          "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-        }
-      },
-      {
-        "value": "Key",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-          "form": "10-K",
-          "accession_number": "0001628280-26-014733",
-          "filing_date": "2026-03-04",
-          "section_type": "item_1_business",
-          "quote": "With over 20 years of MRAM technology and manufacturing leadership, our memory solutions deliver significant value to our customers in key markets such as industrial, medical, automotive/transportation, aerospace and defense, and data center.",
-          "evidence_start_character": 443,
-          "evidence_end_character": 685,
-          "document_start_character": 20441,
-          "document_end_character": 20683,
-          "matched_start_character": 578,
-          "matched_end_character": 581,
-          "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-        }
-      }
-    ],
-    "product_stack": [
-      {
-        "value": "these products with industry standard interfaces",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-          "form": "10-K",
-          "accession_number": "0001628280-26-014733",
-          "filing_date": "2026-03-04",
-          "section_type": "item_1_business",
-          "quote": "We offer these products with industry standard interfaces, including Parallel, Serial Peripheral Interface (SPI) and Quad SPI (QSPI) interfaces, enabling our customers to easily replace legacy memory components like Static Random Access Memory (SRAM), Battery Backed Random Access Memory (BBRAM), and Ferroelectric Random Access Memory (FRAM) with Toggle MRAM.",
-          "evidence_start_character": 2564,
-          "evidence_end_character": 2924,
-          "document_start_character": 22562,
-          "document_end_character": 22922,
-          "matched_start_character": 2573,
-          "matched_end_character": 2621,
-          "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-        }
-      },
-      {
-        "value": "Serial Peripheral Interface (SPI)",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-          "form": "10-K",
-          "accession_number": "0001628280-26-014733",
-          "filing_date": "2026-03-04",
-          "section_type": "item_1_business",
-          "quote": "We offer these products with industry standard interfaces, including Parallel, Serial Peripheral Interface (SPI) and Quad SPI (QSPI) interfaces, enabling our customers to easily replace legacy memory components like Static Random Access Memory (SRAM), Battery Backed Random Access Memory (BBRAM), and Ferroelectric Random Access Memory (FRAM) with Toggle MRAM.",
-          "evidence_start_character": 2564,
-          "evidence_end_character": 2924,
-          "document_start_character": 22562,
-          "document_end_character": 22922,
-          "matched_start_character": 2643,
-          "matched_end_character": 2676,
-          "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-        }
-      },
-      {
-        "value": "Quad SPI (QSPI) interfaces",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-          "form": "10-K",
-          "accession_number": "0001628280-26-014733",
-          "filing_date": "2026-03-04",
-          "section_type": "item_1_business",
-          "quote": "We offer these products with industry standard interfaces, including Parallel, Serial Peripheral Interface (SPI) and Quad SPI (QSPI) interfaces, enabling our customers to easily replace legacy memory components like Static Random Access Memory (SRAM), Battery Backed Random Access Memory (BBRAM), and Ferroelectric Random Access Memory (FRAM) with Toggle MRAM.",
-          "evidence_start_character": 2564,
-          "evidence_end_character": 2924,
-          "document_start_character": 22562,
-          "document_end_character": 22922,
-          "matched_start_character": 2681,
-          "matched_end_character": 2707,
-          "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-        }
-      },
-      {
-        "value": "Battery Backed Random Access Memory (BBRAM)",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-          "form": "10-K",
-          "accession_number": "0001628280-26-014733",
-          "filing_date": "2026-03-04",
-          "section_type": "item_1_business",
-          "quote": "We offer these products with industry standard interfaces, including Parallel, Serial Peripheral Interface (SPI) and Quad SPI (QSPI) interfaces, enabling our customers to easily replace legacy memory components like Static Random Access Memory (SRAM), Battery Backed Random Access Memory (BBRAM), and Ferroelectric Random Access Memory (FRAM) with Toggle MRAM.",
-          "evidence_start_character": 2564,
-          "evidence_end_character": 2924,
-          "document_start_character": 22562,
-          "document_end_character": 22922,
-          "matched_start_character": 2816,
-          "matched_end_character": 2859,
-          "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-        }
-      },
-      {
-        "value": "Ferroelectric Random Access Memory (FRAM) with Toggle MRAM",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-          "form": "10-K",
-          "accession_number": "0001628280-26-014733",
-          "filing_date": "2026-03-04",
-          "section_type": "item_1_business",
-          "quote": "We offer these products with industry standard interfaces, including Parallel, Serial Peripheral Interface (SPI) and Quad SPI (QSPI) interfaces, enabling our customers to easily replace legacy memory components like Static Random Access Memory (SRAM), Battery Backed Random Access Memory (BBRAM), and Ferroelectric Random Access Memory (FRAM) with Toggle MRAM.",
-          "evidence_start_character": 2564,
-          "evidence_end_character": 2924,
-          "document_start_character": 22562,
-          "document_end_character": 22922,
-          "matched_start_character": 2865,
-          "matched_end_character": 2923,
-          "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-        }
-      },
-      {
-        "value": "these products with DDR3",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-          "form": "10-K",
-          "accession_number": "0001628280-26-014733",
-          "filing_date": "2026-03-04",
-          "section_type": "item_1_business",
-          "quote": "We offer these products with DDR3 and DDR4 derivative interfaces, facilitating the replacement of battery-backed DRAM with STT-MRAM.",
-          "evidence_start_character": 3537,
-          "evidence_end_character": 3669,
-          "document_start_character": 23535,
-          "document_end_character": 23667,
-          "matched_start_character": 3546,
-          "matched_end_character": 3570,
-          "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-        }
-      },
-      {
-        "value": "DDR4 derivative interfaces",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-          "form": "10-K",
-          "accession_number": "0001628280-26-014733",
-          "filing_date": "2026-03-04",
-          "section_type": "item_1_business",
-          "quote": "We offer these products with DDR3 and DDR4 derivative interfaces, facilitating the replacement of battery-backed DRAM with STT-MRAM.",
-          "evidence_start_character": 3537,
-          "evidence_end_character": 3669,
-          "document_start_character": 23535,
-          "document_end_character": 23667,
-          "matched_start_character": 3575,
-          "matched_end_character": 3601,
-          "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-        }
-      },
-      {
-        "value": "facilitating the replacement of battery-backed DRAM with STT-MRAM",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-          "form": "10-K",
-          "accession_number": "0001628280-26-014733",
-          "filing_date": "2026-03-04",
-          "section_type": "item_1_business",
-          "quote": "We offer these products with DDR3 and DDR4 derivative interfaces, facilitating the replacement of battery-backed DRAM with STT-MRAM.",
-          "evidence_start_character": 3537,
-          "evidence_end_character": 3669,
-          "document_start_character": 23535,
-          "document_end_character": 23667,
-          "matched_start_character": 3603,
-          "matched_end_character": 3668,
-          "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-        }
-      }
-    ],
+    "markets": [],
+    "product_stack": [],
     "market_products": {},
     "core_technologies": [],
     "manufacturing": {
       "model": [],
-      "locations": [
-        {
-          "value": "key markets such as industrial",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-            "form": "10-K",
-            "accession_number": "0001628280-26-014733",
-            "filing_date": "2026-03-04",
-            "section_type": "item_1_business",
-            "quote": "With over 20 years of MRAM technology and manufacturing leadership, our memory solutions deliver significant value to our customers in key markets such as industrial, medical, automotive/transportation, aerospace and defense, and data center.",
-            "evidence_start_character": 443,
-            "evidence_end_character": 685,
-            "document_start_character": 20441,
-            "document_end_character": 20683,
-            "matched_start_character": 578,
-            "matched_end_character": 608,
-            "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-          }
-        },
-        {
-          "value": "medical",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-            "form": "10-K",
-            "accession_number": "0001628280-26-014733",
-            "filing_date": "2026-03-04",
-            "section_type": "item_1_business",
-            "quote": "With over 20 years of MRAM technology and manufacturing leadership, our memory solutions deliver significant value to our customers in key markets such as industrial, medical, automotive/transportation, aerospace and defense, and data center.",
-            "evidence_start_character": 443,
-            "evidence_end_character": 685,
-            "document_start_character": 20441,
-            "document_end_character": 20683,
-            "matched_start_character": 610,
-            "matched_end_character": 617,
-            "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-          }
-        },
-        {
-          "value": "automotive/transportation",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-            "form": "10-K",
-            "accession_number": "0001628280-26-014733",
-            "filing_date": "2026-03-04",
-            "section_type": "item_1_business",
-            "quote": "With over 20 years of MRAM technology and manufacturing leadership, our memory solutions deliver significant value to our customers in key markets such as industrial, medical, automotive/transportation, aerospace and defense, and data center.",
-            "evidence_start_character": 443,
-            "evidence_end_character": 685,
-            "document_start_character": 20441,
-            "document_end_character": 20683,
-            "matched_start_character": 619,
-            "matched_end_character": 644,
-            "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-          }
-        },
-        {
-          "value": "aerospace",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-            "form": "10-K",
-            "accession_number": "0001628280-26-014733",
-            "filing_date": "2026-03-04",
-            "section_type": "item_1_business",
-            "quote": "With over 20 years of MRAM technology and manufacturing leadership, our memory solutions deliver significant value to our customers in key markets such as industrial, medical, automotive/transportation, aerospace and defense, and data center.",
-            "evidence_start_character": 443,
-            "evidence_end_character": 685,
-            "document_start_character": 20441,
-            "document_end_character": 20683,
-            "matched_start_character": 646,
-            "matched_end_character": 655,
-            "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-          }
-        },
-        {
-          "value": "defense",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-            "form": "10-K",
-            "accession_number": "0001628280-26-014733",
-            "filing_date": "2026-03-04",
-            "section_type": "item_1_business",
-            "quote": "With over 20 years of MRAM technology and manufacturing leadership, our memory solutions deliver significant value to our customers in key markets such as industrial, medical, automotive/transportation, aerospace and defense, and data center.",
-            "evidence_start_character": 443,
-            "evidence_end_character": 685,
-            "document_start_character": 20441,
-            "document_end_character": 20683,
-            "matched_start_character": 660,
-            "matched_end_character": 667,
-            "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-          }
-        },
-        {
-          "value": "data center",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-            "form": "10-K",
-            "accession_number": "0001628280-26-014733",
-            "filing_date": "2026-03-04",
-            "section_type": "item_1_business",
-            "quote": "With over 20 years of MRAM technology and manufacturing leadership, our memory solutions deliver significant value to our customers in key markets such as industrial, medical, automotive/transportation, aerospace and defense, and data center.",
-            "evidence_start_character": 443,
-            "evidence_end_character": 685,
-            "document_start_character": 20441,
-            "document_end_character": 20683,
-            "matched_start_character": 673,
-            "matched_end_character": 684,
-            "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-          }
-        }
-      ],
+      "locations": [],
       "critical_assets": []
     },
-    "customer_types": [
-      {
-        "value": "OEMs",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-          "form": "10-K",
-          "accession_number": "0001628280-26-014733",
-          "filing_date": "2026-03-04",
-          "section_type": "item_1_business",
-          "quote": "We sell our products directly and through our established distribution channels to industry-leading original equipment manufacturers (OEMs) and original design manufacturers (ODMs).",
-          "evidence_start_character": 840,
-          "evidence_end_character": 1021,
-          "document_start_character": 20838,
-          "document_end_character": 21019,
-          "matched_start_character": 974,
-          "matched_end_character": 978,
-          "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-        }
-      },
-      {
-        "value": "distributors",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-          "form": "10-K",
-          "accession_number": "0001628280-26-014733",
-          "filing_date": "2026-03-04",
-          "section_type": "item_1_business",
-          "quote": "We sell our products through a direct sales channel and a network of representatives and distributors.",
-          "evidence_start_character": 7920,
-          "evidence_end_character": 8022,
-          "document_start_character": 27918,
-          "document_end_character": 28020,
-          "matched_start_character": 8009,
-          "matched_end_character": 8021,
-          "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-        }
-      }
-    ],
+    "customer_types": [],
+    "ai_exposure": null,
     "competitive_advantages": [],
-    "demand_drivers": [
-      {
-        "value": "AI",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-          "form": "10-K",
-          "accession_number": "0001628280-26-014733",
-          "filing_date": "2026-03-04",
-          "section_type": "item_1_business",
-          "quote": "They are ideal for use in electronic systems where data persistence and integrity, low power, low latency, and security are paramount, such as industrial IoT, artificial intelligence (AI), network/enterprise infrastructure, process automation and control, aeronautics/avionics, and medical and gaming applications.",
-          "evidence_start_character": 4026,
-          "evidence_end_character": 4340,
-          "document_start_character": 24024,
-          "document_end_character": 24338,
-          "matched_start_character": 4210,
-          "matched_end_character": 4212,
-          "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-        }
-      }
-    ],
+    "demand_drivers": [],
     "strategy_changes": [],
     "financial_snapshot": {
       "fiscal_year": {
         "value": 2025,
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001628280-26-014733",
-          "form": "10-K",
-          "accession_number": "0001628280-26-014733",
-          "filing_date": "2026-03-04",
-          "section_type": "item_1_business",
-          "quote": "For the years ended December 31, 2025 and 2024, we recorded revenue of $55.",
-          "evidence_start_character": 1575,
-          "evidence_end_character": 1650,
-          "document_start_character": 21573,
-          "document_end_character": 21648,
-          "matched_start_character": 1608,
-          "matched_end_character": 1612,
-          "text_sha256": "d16009d0204f73d5813e0406e4e0c6d6f4e058f863a5e1198f73d606745a95df"
-        }
+        "evidence": null
       },
       "revenue_mix": {},
       "customer_concentration": {}
     }
   },
   "product_recall_enrichment": {
-    "version": "v2.6.5.7",
-    "mode": "generic_filing_native_named_product_recovery",
-    "discovered_product_count": 10,
-    "final_product_count": 13,
+    "version": "manual-2026-08-25-approved127-part2",
+    "mode": "manual_evidence_lock",
+    "discovered_product_count": 4,
+    "final_product_count": 4,
     "removed_market_product_pollution": true
   }
 }
