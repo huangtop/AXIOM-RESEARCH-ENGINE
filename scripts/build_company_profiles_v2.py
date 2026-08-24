@@ -210,6 +210,82 @@ _V2657[
 ] = _enrich_profile_product_recall
 
 
+def _extract_inline_model_products(
+    text: str,
+) -> tuple[list[str], list[str]]:
+    products: list[str] = []
+    evidence: list[str] = []
+
+    for sentence in _V2657["_sentences"](text):
+        if _V2657["_blocked_product_context"](sentence):
+            continue
+
+        lower = sentence.casefold()
+
+        if not (
+            _V2657["_PRODUCT_FAMILY_HEAD_RE"].search(sentence)
+            or any(
+                token in lower
+                for token in (
+                    "models",
+                    "series",
+                    "printers",
+                    "platform",
+                    "software",
+                    "systems",
+                )
+            )
+        ):
+            continue
+
+        candidates = []
+
+        for match in re.finditer(
+            r"\b(?:"
+            r"[A-Z][A-Za-z0-9+.-]*"
+            r"(?:\s+[A-Z][A-Za-z0-9+.-]*){0,4}"
+            r")"
+            r"(?:™|®)?"
+            r"\b",
+            sentence,
+        ):
+            value = match.group(0).strip()
+
+            if (
+                len(value) >= 2
+                and (
+                    _V2657["_MODEL_TOKEN_RE"].search(value)
+                    or _V2657["_PRODUCT_FAMILY_HEAD_RE"].search(value)
+                    or "™" in value
+                    or "®" in value
+                )
+            ):
+                candidates.append(value)
+
+        for match in _V2657["_MODEL_TOKEN_RE"].finditer(sentence):
+            candidates.append(match.group(0))
+
+        for candidate in candidates:
+            candidate = _V2657["_normalize_product_candidate"](candidate)
+
+            if (
+                candidate
+                and len(candidate.split()) <= 8
+                and not _V2657["_blocked_product_context"](candidate)
+                and not _V2657["_is_precision_noise_product"](candidate)
+            ):
+                products.append(candidate)
+                evidence.append(sentence)
+
+    return (
+        _V2657["_semantic_dedupe_products"](products),
+        _V2657["_dedupe"](evidence),
+    )
+
+
+_V2657["_extract_inline_model_products"] = _extract_inline_model_products
+
+
 # === V2.6.6.0 COMPANY SUMMARY SEMANTIC SELECTOR ===========================
 
 SUMMARY_SELECTOR_VERSION = "v2.6.6.1c"
