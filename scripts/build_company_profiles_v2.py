@@ -197,6 +197,11 @@ def _explicit_owned_product_candidates(
     evidence: list[str] = []
 
     list_patterns = (
+        r"\bour innovative products?[^.]{0,100}?\binclude\s+(.+?)(?:\.|;)",
+        r"\bwe deliver innovation through products such as\s+(.+?)"
+        r"(?:\s+that\b|\.|;)",
+        r"\bour [^.]{1,80}?\brange[^.]{0,60}?\bincludes\s+(.+?)(?:\.|;)",
+        r"\bour (.+?) are produced in a variety of\b[^.]*?(?:\.|;)",
         r"\bwe\s+(?:offer|provide)\s+[^.]{0,80}?\bproducts?\s*,?\s*"
         r"including\s+(.+?)(?:\.|;)",
         r"\bour\s+portfolio\s+(?:also\s+)?includes\s+(.+?)(?:\.|;)",
@@ -204,6 +209,10 @@ def _explicit_owned_product_candidates(
         r"(.+?)(?:\.|;)",
         r"\b(?:the\s+)?[^.]{0,80}?segment\s+also\s+provides\s+"
         r"[^.]{0,60}?products?\s+(?:including|encompassing)\s+(.+?)(?:\.|;)",
+        r"\b(?:the\s+)?[^.]{0,80}?segment\s+also\s+manufactures[^.]{0,100}?"
+        r"\bincluding\s+(.+?)(?:\.|;)",
+        r"\bmajor products and services offered by our [^.]{1,80}?\binclude\s+"
+        r"(.+?)(?:\.|;)",
         r"\bwe\s+offer\s+(?:a\s+)?[^.]{0,100}?\b(?:options?|products?|"
         r"solutions?|systems?)\s*,\s*including\s+(.+?)"
         r"(?=\s+We\s+(?:design|certify|comply)\b|\.|;)",
@@ -243,7 +252,10 @@ def _explicit_owned_product_candidates(
                 ) or bool(re.search(
                     r"\b(?:amplifiers?|monitors?|lasers?|oscilloscopes?|probes?|"
                     r"power\s+supplies|measuring\s+units|sensors?|pyrotechnic\s+devices|"
-                    r"photocontrols?|dimming|motion\s+detection|circuit\s+controllers?)\b",
+                    r"photocontrols?|dimming|motion\s+detection|circuit\s+controllers?|"
+                    r"fixtures?|poles?|accessories|graphics|signage|displays?|"
+                    r"counters?|cabinetry|appliances?|tools?|purifiers?|humidifiers?|"
+                    r"thermometers?|heaters?|fans?|coolers?|backpacks?|travel\s+gear)\b",
                     lower,
                 ))
                 acronym_product = bool(
@@ -457,6 +469,15 @@ def _enrich_profile_product_recall(
     for raw in list(enriched.get("product_stack") or []) + recalled:
         value = _normalize_relation_product(str(raw))
         lower = value.casefold()
+        lighting_control_relation = bool(re.search(
+            r"\blighting control options?\b[^.]{0,120}\b"
+            r"(?:dimming|motion detection)\b",
+            raw_text,
+            flags=re.IGNORECASE,
+        ))
+        if lighting_control_relation and lower in {"dimming", "motion detection"}:
+            value = f"{value} controls"
+            lower = value.casefold()
         if (
             (
                 _PRODUCT_ACTOR_ROLE_RE.fullmatch(value)
@@ -465,7 +486,9 @@ def _enrich_profile_product_recall(
             or _CORPORATE_JOB_TITLE_RE.fullmatch(value)
             or lower in application_values
             or lower in non_product_enumerations
+            or lower in brand_members
             or lower == "integrated modules"
+            or re.fullmatch(r"suite of .+ options?", lower)
             or re.fullmatch(
                 r"\d+\s+stage\s+linac\s+with\s+energies\s+up\s+to\s+.+",
                 value,
@@ -491,6 +514,12 @@ def _enrich_profile_product_recall(
     # model token is a prefix of another (for example, H versus H200).
     for value in recalled:
         normalized = _normalize_relation_product(value)
+        lower = normalized.casefold()
+        if lighting_control_relation and lower in {"dimming", "motion detection"}:
+            normalized = f"{normalized} controls"
+            lower = normalized.casefold()
+        if re.fullmatch(r"suite of .+ options?", lower):
+            continue
         if normalized and normalized.casefold() not in final_keys:
             final_products.append(normalized)
             final_keys.add(normalized.casefold())
@@ -3994,6 +4023,17 @@ def _safe_upsert_canonical_profiles(
     written = []
 
     for raw_profile in profiles:
+        source_products = raw_profile.get(
+            "product_stack"
+        )
+        source_product_stack_was_empty = (
+            isinstance(
+                source_products,
+                list,
+            )
+            and not source_products
+        )
+
         profile, sanitizer = (
             _sanitize_profile_for_production(
                 raw_profile
@@ -4031,7 +4071,10 @@ def _safe_upsert_canonical_profiles(
                 products,
                 list,
             )
-            or not products
+            or (
+                not products
+                and not source_product_stack_was_empty
+            )
         ):
             raise ValueError(
                 f"{symbol}: product sanitizer refuses empty production product_stack "

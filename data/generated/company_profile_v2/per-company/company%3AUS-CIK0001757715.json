@@ -1,0 +1,140 @@
+{
+  "schema_version": "axiom-company-profile.v2.3",
+  "generation_mode": "evidence_first_generic_extractor",
+  "company_id": "company:US-CIK0001757715",
+  "symbol": "ATER",
+  "exchange": "NASDAQ",
+  "as_of": "2026-03-23",
+  "company_summary": {
+    "one_line_business": "About Aterian Aterian, Inc. (the \"Company\") is a consumer products company that predominantly operates through online retail channels such as Amazon, Walmart, and Target and its own direct to consumer websites."
+  },
+  "markets": [],
+  "product_stack": [],
+  "market_products": {},
+  "core_technologies": [],
+  "manufacturing": {
+    "model": [
+      "geographically distributed"
+    ],
+    "locations": [],
+    "critical_assets": []
+  },
+  "customer_types": [],
+  "ai_exposure": null,
+  "competitive_advantages": [],
+  "demand_drivers": [],
+  "strategy_changes": [],
+  "financial_snapshot": {
+    "fiscal_year": 2025,
+    "revenue": null,
+    "gross_margin": null,
+    "net_loss": null,
+    "revenue_mix": {},
+    "customer_concentration": {}
+  },
+  "field_evidence": {
+    "company_summary.one_line_business": [
+      "About Aterian Aterian, Inc. (the \"Company\") is a consumer products company that predominantly operates through online retail channels such as Amazon, Walmart, and Target and its own direct to consumer websites."
+    ],
+    "markets": [],
+    "product_stack": [],
+    "market_products": {},
+    "core_technologies": [],
+    "manufacturing": [],
+    "customer_types": [],
+    "ai_exposure": [],
+    "competitive_advantages": [],
+    "demand_drivers": [],
+    "strategy_changes": [],
+    "financial_snapshot": [],
+    "product_stack_by_value": {},
+    "product_stack_source_terms": {}
+  },
+  "evidence": [
+    {
+      "business_evidence_id": "business-evidence:SEC-0001437749-26-009285",
+      "form": "10-K",
+      "accession_number": "0001437749-26-009285",
+      "filing_date": "2026-03-23",
+      "section_type": "item_1_business",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/1757715/000143774926009285/ater20251231_10k.htm",
+      "text_sha256": "0188713d40a9dabfca2593b87e38b6745565a80cf63c7d531369e0c85a868c9e"
+    }
+  ],
+  "value_provenance": {
+    "company_summary.one_line_business": {
+      "value": "About Aterian Aterian, Inc. (the \"Company\") is a consumer products company that predominantly operates through online retail channels such as Amazon, Walmart, and Target and its own direct to consumer websites.",
+      "evidence": null
+    },
+    "markets": [],
+    "product_stack": [],
+    "market_products": {},
+    "core_technologies": [],
+    "manufacturing": {
+      "model": [
+        {
+          "value": "geographically distributed",
+          "evidence": {
+            "business_evidence_id": "business-evidence:SEC-0001437749-26-009285",
+            "form": "10-K",
+            "accession_number": "0001437749-26-009285",
+            "filing_date": "2026-03-23",
+            "section_type": "item_1_business",
+            "quote": "In addition to fulfillment by Amazon warehouses, we use geographically distributed third-party warehouses in the U.",
+            "evidence_start_character": 5826,
+            "evidence_end_character": 5941,
+            "document_start_character": 41725,
+            "document_end_character": 41840,
+            "matched_start_character": 5882,
+            "matched_end_character": 5908,
+            "text_sha256": "0188713d40a9dabfca2593b87e38b6745565a80cf63c7d531369e0c85a868c9e"
+          }
+        }
+      ],
+      "locations": [],
+      "critical_assets": []
+    },
+    "customer_types": [],
+    "competitive_advantages": [],
+    "demand_drivers": [],
+    "strategy_changes": [],
+    "financial_snapshot": {
+      "fiscal_year": {
+        "value": 2025,
+        "evidence": {
+          "business_evidence_id": "business-evidence:SEC-0001437749-26-009285",
+          "form": "10-K",
+          "accession_number": "0001437749-26-009285",
+          "filing_date": "2026-03-23",
+          "section_type": "item_1_business",
+          "quote": "On December 8, 2025, we announced that our Board of Directors has authorized the initiation of a process to explore strategic alternatives to maximize shareholder value, which may include a sale of the company, a merger, or other strategic transactions.",
+          "evidence_start_character": 1107,
+          "evidence_end_character": 1360,
+          "document_start_character": 37006,
+          "document_end_character": 37259,
+          "matched_start_character": 1122,
+          "matched_end_character": 1126,
+          "text_sha256": "0188713d40a9dabfca2593b87e38b6745565a80cf63c7d531369e0c85a868c9e"
+        }
+      },
+      "revenue_mix": {},
+      "customer_concentration": {}
+    }
+  },
+  "product_recall_enrichment": {
+    "version": "v2.6.5.7",
+    "mode": "generic_filing_native_named_product_recovery",
+    "discovered_product_count": 0,
+    "final_product_count": 0,
+    "removed_market_product_pollution": true
+  },
+  "product_stack_sanitizer": {
+    "version": "v2.6.6.2c-batch1",
+    "mode": "deterministic_production_boundary",
+    "promotion_batch": "V2.6.6.2c-batch1",
+    "before_count": 0,
+    "after_count": 0,
+    "removed_count": 0,
+    "removed": []
+  }
+}

@@ -6,7 +6,7 @@
   "exchange": "NASDAQ",
   "as_of": "2026-03-31",
   "company_summary": {
-    "one_line_business": "Focus Universal Inc. (the “Company,” “we,” “us,” or “our”) is a Nevada corporation."
+    "one_line_business": "AVX, incorporated on June 16, 2000, in the state of California, is an IoT installation and management company specializing in high performance and easy to use audio/video systems, home theaters, lighting control, automation and integration systems for houses, apartments, commercial complexes, and office spaces."
   },
   "markets": [
     "Indoor Agriculture"
@@ -28,9 +28,7 @@
     ],
     "critical_assets": []
   },
-  "customer_types": [
-    "distributors"
-  ],
+  "customer_types": [],
   "ai_exposure": {
     "type": "direct_company_disclosure",
     "summary": "5 The development of USIP is closely associated with the development and proliferation of computers and mobile devices that provide the foundation and technical support to the universal smart instrument such as an attractive graphical user touch screen interface, data processing and analysis capabilities, video and audio, cameras, GPS, ubiquitous wireless connectivity, artificial intelligence, cloud-based communications and a diverse number of functions and software available to users that are not contained in traditional instruments."
@@ -52,7 +50,7 @@
   },
   "field_evidence": {
     "company_summary.one_line_business": [
-      "Focus Universal Inc. (the “Company,” “we,” “us,” or “our”) is a Nevada corporation."
+      "AVX, incorporated on June 16, 2000, in the state of California, is an IoT installation and management company specializing in high performance and easy to use audio/video systems, home theaters, lighting control, automation and integration systems for houses, apartments, commercial complexes, and office spaces."
     ],
     "markets": [
       "industries such as indoor agriculture"
@@ -69,9 +67,7 @@
     "manufacturing": [
       "Manufacturing and Assembly\nWe have an assembly facility in Ontario, California\n"
     ],
-    "customer_types": [
-      "distributors"
-    ],
+    "customer_types": [],
     "ai_exposure": [
       "5 The development of USIP is closely associated with the development and proliferation of computers and mobile devices that provide the foundation and technical support to the universal smart instrument such as an attractive graphical user touch screen interface, data processing and analysis capabilities, video and audio, cameras, GPS, ubiquitous wireless connectivity, artificial intelligence, cloud-based communications and a diverse number of functions and software available to users that are not contained in traditional instruments."
     ],
@@ -82,7 +78,17 @@
       "r related applications are expected to add three million jobs and $1.2 trillion to the economy in the U.S. Though 5G offers a significant increase in speed and bandwidth over previous generation telecommunication networks, its more limited range for high-speed internet will require further infrastructure investments. A 5G network requires spectrum across low, mid, and high spectrum band"
     ],
     "strategy_changes": [],
-    "financial_snapshot": []
+    "financial_snapshot": [],
+    "product_stack_by_value": {
+      "SC1000 Multi-parameter Universal Controller": [
+        "Hach developed and launched the SC1000 Multi-parameter Universal Controller, a probe module for connecting to 32 digital sensors or analyzers"
+      ]
+    },
+    "product_stack_source_terms": {
+      "SC1000 Multi-parameter Universal Controller": [
+        "SC1000 Multi-parameter Universal Controller"
+      ]
+    }
   },
   "evidence": [
     {
@@ -97,7 +103,7 @@
   ],
   "value_provenance": {
     "company_summary.one_line_business": {
-      "value": "Focus Universal Inc. (the “Company,” “we,” “us,” or “our”) is a Nevada corporation.",
+      "value": "AVX, incorporated on June 16, 2000, in the state of California, is an IoT installation and management company specializing in high performance and easy to use audio/video systems, home theaters, lighting control, automation and integration systems for houses, apartments, commercial complexes, and office spaces.",
       "evidence": null
     },
     "markets": [
@@ -120,7 +126,12 @@
         }
       }
     ],
-    "product_stack": [],
+    "product_stack": [
+      {
+        "value": "SC1000 Multi-parameter Universal Controller",
+        "evidence": null
+      }
+    ],
     "market_products": {},
     "core_technologies": [
       {
@@ -178,26 +189,7 @@
       ],
       "critical_assets": []
     },
-    "customer_types": [
-      {
-        "value": "distributors",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001683168-26-002503",
-          "form": "10-K",
-          "accession_number": "0001683168-26-002503",
-          "filing_date": "2026-03-31",
-          "section_type": "item_1_business",
-          "quote": "Afterwards, we intend to distribute our Ubiquitor devices to distributors and retailers directly",
-          "evidence_start_character": 37671,
-          "evidence_end_character": 37767,
-          "document_start_character": 58604,
-          "document_end_character": 58700,
-          "matched_start_character": 37732,
-          "matched_end_character": 37744,
-          "text_sha256": "3a8ed0201de47b9dd15bb44626ba09aece461a4ab3ab910dfa15647aef7f5892"
-        }
-      }
-    ],
+    "customer_types": [],
     "ai_exposure": {
       "value": {
         "type": "direct_company_disclosure",
@@ -245,7 +237,21 @@
       },
       {
         "value": "bandwidth growth",
-        "evidence": null
+        "evidence": {
+          "business_evidence_id": "business-evidence:SEC-0001683168-26-002503",
+          "form": "10-K",
+          "accession_number": "0001683168-26-002503",
+          "filing_date": "2026-03-31",
+          "section_type": "item_1_business",
+          "quote": "and bandwidth over previous generation telecommunication networks, its more limited range for high-speed internet will require further",
+          "evidence_start_character": 10284,
+          "evidence_end_character": 10418,
+          "document_start_character": 31217,
+          "document_end_character": 31351,
+          "matched_start_character": 10288,
+          "matched_end_character": 10297,
+          "text_sha256": "3a8ed0201de47b9dd15bb44626ba09aece461a4ab3ab910dfa15647aef7f5892"
+        }
       }
     ],
     "strategy_changes": [],
@@ -278,5 +284,14 @@
     "discovered_product_count": 1,
     "final_product_count": 1,
     "removed_market_product_pollution": true
+  },
+  "product_stack_sanitizer": {
+    "version": "v2.6.6.2c-batch1",
+    "mode": "deterministic_production_boundary",
+    "promotion_batch": "V2.6.6.2c-batch1",
+    "before_count": 1,
+    "after_count": 1,
+    "removed_count": 0,
+    "removed": []
   }
 }
