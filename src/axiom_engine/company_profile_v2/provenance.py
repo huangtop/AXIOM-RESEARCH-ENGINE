@@ -32,6 +32,10 @@ def _value_search_terms(value: Any) -> list[str]:
         terms.append(value)
 
         aliases = {
+            "AI": [
+                "AI",
+                "artificial intelligence",
+            ],
             "United States": [
                 "U.S.",
                 "U.S",
@@ -60,6 +64,9 @@ def _value_search_terms(value: Any) -> list[str]:
             "800Gbps+ optical networking": [
                 "800 Gbps",
                 "800Gbps",
+            ],
+            "bandwidth growth": [
+                "bandwidth",
             ],
             "Molecular Beam Epitaxy (MBE)": [
                 "Molecular Beam Epitaxy",
@@ -147,8 +154,14 @@ def _find_case_insensitive(
     text: str,
     term: str,
 ) -> tuple[int, int] | None:
+    escaped = re.escape(term)
+    if re.fullmatch(r"[A-Za-z0-9]+", term) and (
+        len(term) <= 3 or term.isupper()
+    ):
+        escaped = rf"(?<![A-Za-z0-9]){escaped}(?![A-Za-z0-9])"
+
     match = re.search(
-        re.escape(term),
+        escaped,
         text,
         flags=re.IGNORECASE,
     )
@@ -296,10 +309,12 @@ def _best_span(
     raw_text: str,
     value: Any,
     candidates: list[str],
+    aliases: list[str] | None = None,
 ) -> tuple[int, int] | None:
     search_terms = _value_search_terms(
         value
     )
+    search_terms = _dedupe_strings(search_terms + list(aliases or []))
 
     # Best case:
     # find the value inside one of the evidence
@@ -373,11 +388,13 @@ def _make_evidence(
     evidence: Mapping[str, Any],
     value: Any,
     candidates: list[str],
+    aliases: list[str] | None = None,
 ) -> dict[str, Any] | None:
     span = _best_span(
         raw_text=raw_text,
         value=value,
         candidates=candidates,
+        aliases=aliases,
     )
 
     if not span:
@@ -450,6 +467,7 @@ def _provenance_item(
     evidence: Mapping[str, Any],
     value: Any,
     candidates: list[str],
+    aliases: list[str] | None = None,
 ) -> dict[str, Any]:
     return {
         "value": value,
@@ -458,6 +476,7 @@ def _provenance_item(
             evidence=evidence,
             value=value,
             candidates=candidates,
+            aliases=aliases,
         ),
     }
 
@@ -525,9 +544,21 @@ def build_value_provenance(
             raw_text=raw_text,
             evidence=evidence,
             value=value,
-            candidates=_field_candidates(
+            candidates=(
+                _field_candidates(
+                    field_evidence,
+                    "product_stack_by_value",
+                    nested_key=str(value),
+                )
+                or _field_candidates(
+                    field_evidence,
+                    "product_stack",
+                )
+            ),
+            aliases=_field_candidates(
                 field_evidence,
-                "product_stack",
+                "product_stack_source_terms",
+                nested_key=str(value),
             ),
         )
         for value in product_stack
