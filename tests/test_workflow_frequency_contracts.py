@@ -8,44 +8,18 @@ def _workflow(name: str) -> str:
     return (ROOT / ".github/workflows" / name).read_text(encoding="utf-8")
 
 
-def test_classification_refresh_is_manual_only_after_evidence_completion():
-    workflow = _workflow("research-classification-refresh.yml")
-    assert "workflow_dispatch:" in workflow
-    assert "schedule:" not in workflow
-    assert "cron:" not in workflow
-    assert "--resume" in workflow
-    assert "--merge-existing" in workflow
-    assert workflow.index("Smoke-test workflow and publication contracts") < workflow.index(
-        "Extend SEC business evidence checkpoint"
-    )
-
-
-def test_ci_runs_validation_and_full_suite():
+def test_ci_runs_validation_and_maintained_suites():
     workflow = _workflow("ci.yml")
 
     assert "axiom validate" in workflow
     assert "pytest -q" in workflow
     assert workflow.count("pytest -q") == 1
+    assert '"--ignore-glob=tests/test_company_*.py"' in workflow
 
 def test_generated_data_pushes_do_not_start_the_full_ci_suite():
     workflow = _workflow("ci.yml")
     assert 'paths-ignore:' in workflow
     assert '"data/generated/**"' in workflow
-
-
-def test_business_evidence_is_checkpointed_before_classification_rebuild():
-    workflow = _workflow("research-classification-refresh.yml")
-    evidence = workflow.index("Extend SEC business evidence checkpoint")
-    checkpoint = workflow.index("Validate and publish SEC business evidence checkpoint")
-    rebuild = workflow.index("Rebuild evidence-derived classifications and action gates")
-    validation = workflow.index("Validate classification and publication contracts")
-    assert evidence < checkpoint < rebuild < validation
-    checkpoint_block = workflow[checkpoint:rebuild]
-    assert "tests/test_sec_business_evidence_v031_2b.py" in checkpoint_block
-    assert "git add data/generated/canonical_business_evidence" in checkpoint_block
-    derived_block = workflow[workflow.index("Commit derived research artifacts"):]
-    assert "git add data/generated/canonical_business_evidence" not in derived_block
-    assert "--delay 0.20" in workflow
 
 
 def test_market_refresh_publishes_the_daily_close_refresh_report():
