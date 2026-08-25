@@ -45,9 +45,28 @@ QUARTERLY_METRICS["diluted_eps"] = {
     "tags": ["EarningsPerShareDiluted", "EarningsPerShareBasicAndDiluted"],
 }
 
+PUBLIC_SOURCE_KEYS = {
+    "provider",
+    "formula_version",
+    "source_fact_ids",
+}
+
 
 def _load(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _public_fact(row: Mapping[str, Any]) -> dict[str, Any]:
+    """Remove parser-only SEC provenance before writing public snapshots."""
+    public = dict(row)
+    source = row.get("source")
+    if isinstance(source, Mapping):
+        public["source"] = {
+            str(key): value
+            for key, value in source.items()
+            if key in PUBLIC_SOURCE_KEYS
+        }
+    return public
 
 
 def _scope(root: Path, company_ids: set[str] | None = None) -> list[dict[str, str]]:
@@ -305,6 +324,7 @@ def write_sec_financial_population(report: Mapping[str, Any], output_dir: Path, 
         or not str(row.get("period_end") or "")
         or (newest_by_company[company_id] - date.fromisoformat(str(row["period_end"])[:10])).days <= 550
     ]
+    facts = [_public_fact(row) for row in facts]
     quarterly_by_company: dict[str, list[Mapping[str, Any]]] = {}
     for row in report["quarterly_financial_facts"]:
         quarterly_by_company.setdefault(str(row["company_id"]), []).append(row)
@@ -315,6 +335,7 @@ def write_sec_financial_population(report: Mapping[str, Any], output_dir: Path, 
         else {}
     )
     for company_id, rows in sorted(quarterly_by_company.items()):
+        rows = [_public_fact(row) for row in rows]
         filename = quote(company_id, safe="._-") + ".json"
         quarterly_index[company_id] = f"quarterly/{filename}"
         temporary = (quarterly_root / filename).with_suffix(".json.tmp")
