@@ -116,6 +116,30 @@ def test_population_retains_only_eight_latest_direct_discrete_quarters(tmp_path)
     written = json.loads(quarterly_file.read_text())
     assert len({row["period_end"] for row in written}) == 8
     assert "2023-03-28" not in {row["period_end"] for row in written}
+    assert all(row.get("accession_number") for row in written)
+    assert all(row.get("source") == {"provider": "sec_companyfacts"} for row in written)
+    assert all("xbrl_tag" not in row.get("source", {}) for row in written)
+    assert all("period_selection" not in row.get("source", {}) for row in written)
+    assert all("source_accessions" not in row.get("source", {}) for row in written)
+
+
+def test_public_annual_snapshot_keeps_accession_but_strips_parser_provenance(tmp_path):
+    root = _root(tmp_path)
+    report = build_sec_financial_population(root)
+    internal_revenue = next(
+        row for row in report["financial_facts"] if row["metric"] == "revenue"
+    )
+    assert internal_revenue["source"]["xbrl_tag"] == "Revenues"
+
+    output = root / "out"
+    write_sec_financial_population(report, output)
+    public_revenue = next(
+        row
+        for row in json.loads((output / "financial_facts.json").read_text())
+        if row["metric"] == "revenue"
+    )
+    assert public_revenue["accession_number"] == "0001-26-1"
+    assert public_revenue["source"] == {"provider": "sec_companyfacts"}
 
 
 def test_population_does_not_derive_discrete_q2_cash_flow_from_ytd(tmp_path):
