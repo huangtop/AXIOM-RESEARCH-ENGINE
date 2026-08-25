@@ -655,7 +655,7 @@ def build_full_market_coverage(
     explicit_estimate_path: str = "data/valuation/estimates.json",
     security_identity_path: str = "data/generated/security_identity/security_identity_normalization.json",
     company_snapshot_path: str = "data/generated/company/yahoo_company_snapshot.json",
-    company_overview_path: str = "data/generated/company_overview/index.json",
+    valuation_routing_path: str = "data/valuation/company_routing.json",
     valuation_assumptions_path: str = "data/knowledge/valuation_assumptions.json",
     dcf_policy_path: str = "config/fair_value_snapshot.v030.14.0.json",
 ) -> dict[str, Any]:
@@ -671,7 +671,7 @@ def build_full_market_coverage(
         default={"companies": [], "securities": []},
     )
     company_snapshot = _load(root / company_snapshot_path, default={"symbols": {}})
-    overview_index = _load(root / company_overview_path, default={"ticker_to_file": {}})
+    routing_payload = _load(root / valuation_routing_path, default={"companies": {}})
     assumption_rows = _load(root / valuation_assumptions_path, default=[])
     dcf_policy_payload = _load(root / dcf_policy_path)
     dcf_policy = dcf_policy_payload.get("dcf", {})
@@ -774,34 +774,19 @@ def build_full_market_coverage(
         snapshot_symbols if isinstance(snapshot_symbols, Mapping) else {}
     )
 
-    ai_company_ids: set[str] = set()
-    overview_by_company: dict[str, Mapping[str, Any]] = {}
-    overview_files = (
-        overview_index.get("ticker_to_file")
-        if isinstance(overview_index, Mapping)
+    routing_by_company = (
+        routing_payload.get("companies")
+        if isinstance(routing_payload, Mapping)
         else {}
     )
-    overview_root = (root / company_overview_path).parent / "per-company"
-    for overview_file in (
-        set(overview_files.values())
-        if isinstance(overview_files, Mapping)
-        else set()
-    ):
-        overview = _load(
-            overview_root / str(overview_file),
-            default={},
-        )
-        if not isinstance(overview, Mapping):
-            continue
-        overview_company_id = str(overview.get("company_id") or "")
-        if overview_company_id:
-            overview_by_company[overview_company_id] = overview
-        theme_id = (((overview.get("path") or {}).get("theme") or {}).get("id"))
-        if theme_id in {
-            "theme:artificial_intelligence",
-            "theme:ai_infrastructure",
-        }:
-            ai_company_ids.add(overview_company_id)
+    routing_by_company = (
+        routing_by_company if isinstance(routing_by_company, Mapping) else {}
+    )
+    ai_company_ids = {
+        str(company_id)
+        for company_id, row in routing_by_company.items()
+        if isinstance(row, Mapping) and row.get("ai_research_company") is True
+    }
 
     cards: list[dict[str, Any]] = []
     ticker_index: dict[str, int] = {}
@@ -999,10 +984,10 @@ def build_full_market_coverage(
             company_assumption_row.get("assumption_roles") or {}
         )
 
-        overview = overview_by_company.get(company_id, {})
+        routing_row = routing_by_company.get(company_id, {})
         routing = (
-            ((overview.get("routing") or {}).get("valuation") or {})
-            if isinstance(overview, Mapping)
+            (routing_row.get("valuation") or {})
+            if isinstance(routing_row, Mapping)
             else {}
         )
         routing_archetype = str(routing.get("archetype") or "pending")
