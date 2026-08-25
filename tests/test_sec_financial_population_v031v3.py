@@ -55,7 +55,7 @@ def test_missing_companyfacts_is_diagnostic_not_zero(tmp_path):
     assert report["diagnostics"][0]["reason_code"] == "SEC_COMPANYFACTS_NOT_AVAILABLE"
 
 
-def test_population_retains_up_to_six_direct_discrete_quarters_for_eps_chart(tmp_path):
+def test_population_retains_only_eight_latest_direct_discrete_quarters(tmp_path):
     root = _root(tmp_path)
     path = root / "data/generated/provider_cache/sec/companyfacts/CIK0000000001.json"
     payload = json.loads(path.read_text())
@@ -99,7 +99,10 @@ def test_population_retains_up_to_six_direct_discrete_quarters_for_eps_chart(tmp
         row for row in report["quarterly_financial_facts"]
         if row["metric"] == "diluted_eps"
     ]
-    assert len(quarters) == 6
+    assert len(quarters) == 8
+    assert quarters[0]["fiscal_year"] == 2023
+    assert quarters[0]["fiscal_period"] == "Q2"
+    assert quarters[0]["value"] == "0.2"
     assert quarters[-1]["fiscal_year"] == 2025
     assert quarters[-1]["fiscal_period"] == "Q3"
     assert quarters[-1]["value"] == "0.9"
@@ -110,7 +113,9 @@ def test_population_retains_up_to_six_direct_discrete_quarters_for_eps_chart(tmp
     index = json.loads((output / "quarterly_index.json").read_text())
     quarterly_file = output / index["company_id_to_file"]["company:1"]
     assert quarterly_file.is_file()
-    assert len(json.loads(quarterly_file.read_text())) >= 6
+    written = json.loads(quarterly_file.read_text())
+    assert len({row["period_end"] for row in written}) == 8
+    assert "2023-03-28" not in {row["period_end"] for row in written}
 
 
 def test_population_does_not_derive_discrete_q2_cash_flow_from_ytd(tmp_path):

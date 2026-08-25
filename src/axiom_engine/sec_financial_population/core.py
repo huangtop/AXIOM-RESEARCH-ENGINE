@@ -141,7 +141,7 @@ def _filing_lag(row: Mapping[str, Any]) -> int:
         return 100_000
 
 
-def _quarterly_facts(company_id: str, cik: str, payload: Mapping[str, Any], limit: int = 6) -> list[dict[str, Any]]:
+def _quarterly_facts(company_id: str, cik: str, payload: Mapping[str, Any], limit: int = 8) -> list[dict[str, Any]]:
     us_gaap = ((payload.get("facts") or {}).get("us-gaap") or {})
     selected: dict[tuple[str, int, str], tuple[str, Mapping[str, Any], Mapping[str, Any]]] = {}
     for metric, spec in QUARTERLY_METRICS.items():
