@@ -1,31 +1,31 @@
 {
   "schema_version": "etf-security-identity-bridge.v031e.1",
   "version": "V031E.1B",
-  "generated_at": "2026-08-24T23:51:53.663629+00:00",
+  "generated_at": "2026-08-25T23:52:12.701355+00:00",
   "source_snapshot": {
-    "snapshot_id": "20260824225219-4dfd87cc0133",
-    "provider_generated_at": "2026-08-24T22:52:19.983821+00:00",
-    "holdings_index_sha256": "4f54e44aa08875708903d0dbb62e029a9031e2e3729d18107274097997bd52ab",
+    "snapshot_id": "20260825224607-c2c637d2b749",
+    "provider_generated_at": "2026-08-25T22:46:07.675474+00:00",
+    "holdings_index_sha256": "a94efd26e63b2e6af33df1556c454a75870e8fc54b3a91b5009ad673cb94d4d3",
     "holdings_coverage": "top_holdings_only"
   },
   "summary": {
-    "holding_symbol_count": 804,
-    "resolved_symbol_count": 320,
-    "unresolved_symbol_count": 484,
-    "resolved_company_count": 319,
-    "resolved_exposure_count": 1170,
-    "unresolved_exposure_count": 1724,
+    "holding_symbol_count": 801,
+    "resolved_symbol_count": 331,
+    "unresolved_symbol_count": 470,
+    "resolved_company_count": 330,
+    "resolved_exposure_count": 1273,
+    "unresolved_exposure_count": 1710,
     "status_counts": {
       "resolved_alias": 2,
-      "resolved_exact": 318,
-      "unresolved": 108,
-      "unsupported_market": 376
+      "resolved_exact": 329,
+      "unresolved": 96,
+      "unsupported_market": 374
     },
     "reason_code_counts": {
       "CLASS_SHARE_PUNCTUATION_NORMALIZED": 2,
-      "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY": 376,
-      "SECURITY_IDENTITY_NOT_FOUND": 108,
-      "UNIQUE_ACTIVE_COMMON_EQUITY_MATCH": 318
+      "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY": 374,
+      "SECURITY_IDENTITY_NOT_FOUND": 96,
+      "UNIQUE_ACTIVE_COMMON_EQUITY_MATCH": 329
     },
     "name_based_matching_used": false,
     "valuation_readiness_consumed": false
@@ -64,6 +64,25 @@
       "source_exposure_count": 1
     },
     {
+      "holding_symbol": "000660.KQ",
+      "normalized_holding_symbol": "000660.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "matched_registry_symbol": null,
+      "security_id": null,
+      "company_id": null,
+      "exchange": null,
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-AIQ",
+        "US-BAI",
+        "US-CHAT",
+        "US-VXUS"
+      ],
+      "source_exposure_count": 4
+    },
+    {
       "holding_symbol": "000660.KS",
       "normalized_holding_symbol": "000660.KS",
       "market_suffix": "KS",
@@ -78,16 +97,14 @@
         "TW-00735",
         "TW-00762",
         "TW-00851",
-        "US-AIQ",
-        "US-BAI",
-        "US-CHAT",
         "US-CHPS",
         "US-DRAM",
         "US-DTCR",
         "US-IGPT",
-        "US-VEA"
+        "US-VEA",
+        "US-VEU"
       ],
-      "source_exposure_count": 11
+      "source_exposure_count": 9
     },
     {
       "holding_symbol": "000725.SZ",
@@ -323,8 +340,8 @@
       "source_exposure_count": 2
     },
     {
-      "holding_symbol": "00386",
-      "normalized_holding_symbol": "00386",
+      "holding_symbol": "005930.KQ",
+      "normalized_holding_symbol": "005930.KQ",
       "market_suffix": null,
       "status": "unresolved",
       "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
@@ -334,25 +351,12 @@
       "exchange": null,
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-0080"
+        "US-AIQ",
+        "US-CHAT",
+        "US-VXUS",
+        "US-WTAI"
       ],
-      "source_exposure_count": 1
-    },
-    {
-      "holding_symbol": "00388.HK",
-      "normalized_holding_symbol": "00388.HK",
-      "market_suffix": "HK",
-      "status": "unsupported_market",
-      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
-      "matched_registry_symbol": null,
-      "security_id": null,
-      "company_id": null,
-      "exchange": null,
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-0081"
-      ],
-      "source_exposure_count": 1
+      "source_exposure_count": 4
     },
     {
       "holding_symbol": "005930.KS",
@@ -370,14 +374,12 @@
         "TW-00861",
         "TW-00916",
         "TW-009810",
-        "US-AIQ",
         "US-CARZ",
-        "US-CHAT",
         "US-DRAM",
         "US-VEA",
-        "US-WTAI"
+        "US-VEU"
       ],
-      "source_exposure_count": 10
+      "source_exposure_count": 8
     },
     {
       "holding_symbol": "0061.TW",
@@ -446,23 +448,6 @@
       "source_exposure_count": 1
     },
     {
-      "holding_symbol": "00700",
-      "normalized_holding_symbol": "00700",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "matched_registry_symbol": null,
-      "security_id": null,
-      "company_id": null,
-      "exchange": null,
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-0080",
-        "TW-0081"
-      ],
-      "source_exposure_count": 2
-    },
-    {
       "holding_symbol": "00752.TW",
       "normalized_holding_symbol": "00752.TW",
       "market_suffix": "TW",
@@ -475,38 +460,6 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00753L"
-      ],
-      "source_exposure_count": 1
-    },
-    {
-      "holding_symbol": "00857",
-      "normalized_holding_symbol": "00857",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "matched_registry_symbol": null,
-      "security_id": null,
-      "company_id": null,
-      "exchange": null,
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-0080"
-      ],
-      "source_exposure_count": 1
-    },
-    {
-      "holding_symbol": "00883",
-      "normalized_holding_symbol": "00883",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "matched_registry_symbol": null,
-      "security_id": null,
-      "company_id": null,
-      "exchange": null,
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-0081"
       ],
       "source_exposure_count": 1
     },
@@ -527,6 +480,23 @@
       "source_exposure_count": 1
     },
     {
+      "holding_symbol": "009150.KQ",
+      "normalized_holding_symbol": "009150.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "matched_registry_symbol": null,
+      "security_id": null,
+      "company_id": null,
+      "exchange": null,
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "TW-00990A",
+        "TW-00997A"
+      ],
+      "source_exposure_count": 2
+    },
+    {
       "holding_symbol": "009150.KS",
       "normalized_holding_symbol": "009150.KS",
       "market_suffix": "KS",
@@ -538,11 +508,9 @@
       "exchange": null,
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00735",
-        "TW-00990A",
-        "TW-00997A"
+        "TW-00735"
       ],
-      "source_exposure_count": 3
+      "source_exposure_count": 1
     },
     {
       "holding_symbol": "00939",
@@ -560,28 +528,9 @@
         "TW-00703",
         "TW-00736",
         "TW-00752",
-        "TW-0080",
-        "TW-0081",
         "US-VWO"
       ],
-      "source_exposure_count": 7
-    },
-    {
-      "holding_symbol": "00941",
-      "normalized_holding_symbol": "00941",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "matched_registry_symbol": null,
-      "security_id": null,
-      "company_id": null,
-      "exchange": null,
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-0080",
-        "TW-0081"
-      ],
-      "source_exposure_count": 2
+      "source_exposure_count": 5
     },
     {
       "holding_symbol": "01211",
@@ -617,22 +566,6 @@
       "source_exposure_count": 1
     },
     {
-      "holding_symbol": "01299.HK",
-      "normalized_holding_symbol": "01299.HK",
-      "market_suffix": "HK",
-      "status": "unsupported_market",
-      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
-      "matched_registry_symbol": null,
-      "security_id": null,
-      "company_id": null,
-      "exchange": null,
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-0081"
-      ],
-      "source_exposure_count": 1
-    },
-    {
       "holding_symbol": "01398",
       "normalized_holding_symbol": "01398",
       "market_suffix": null,
@@ -646,11 +579,9 @@
       "source_etf_ids": [
         "TW-00700",
         "TW-00703",
-        "TW-00752",
-        "TW-0080",
-        "TW-0081"
+        "TW-00752"
       ],
-      "source_exposure_count": 5
+      "source_exposure_count": 3
     },
     {
       "holding_symbol": "017800.KS",
@@ -698,27 +629,9 @@
       "source_etf_ids": [
         "TW-00700",
         "TW-00703",
-        "TW-00752",
-        "TW-0080",
-        "TW-0081"
+        "TW-00752"
       ],
-      "source_exposure_count": 5
-    },
-    {
-      "holding_symbol": "02628",
-      "normalized_holding_symbol": "02628",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "matched_registry_symbol": null,
-      "security_id": null,
-      "company_id": null,
-      "exchange": null,
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-0080"
-      ],
-      "source_exposure_count": 1
+      "source_exposure_count": 3
     },
     {
       "holding_symbol": "0270.HK",
@@ -801,22 +714,6 @@
       "source_exposure_count": 1
     },
     {
-      "holding_symbol": "03968",
-      "normalized_holding_symbol": "03968",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "matched_registry_symbol": null,
-      "security_id": null,
-      "company_id": null,
-      "exchange": null,
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-0080"
-      ],
-      "source_exposure_count": 1
-    },
-    {
       "holding_symbol": "03988",
       "normalized_holding_symbol": "03988",
       "market_suffix": null,
@@ -830,11 +727,9 @@
       "source_etf_ids": [
         "TW-00700",
         "TW-00703",
-        "TW-00752",
-        "TW-0080",
-        "TW-0081"
+        "TW-00752"
       ],
-      "source_exposure_count": 5
+      "source_exposure_count": 3
     },
     {
       "holding_symbol": "051910.KS",
@@ -884,9 +779,11 @@
         "TW-00703",
         "TW-00736",
         "TW-00752",
-        "US-VWO"
+        "US-VEU",
+        "US-VWO",
+        "US-VXUS"
       ],
-      "source_exposure_count": 5
+      "source_exposure_count": 7
     },
     {
       "holding_symbol": "0788.HK",
@@ -987,6 +884,22 @@
         "TW-00991A"
       ],
       "source_exposure_count": 4
+    },
+    {
+      "holding_symbol": "1301.TW",
+      "normalized_holding_symbol": "1301.TW",
+      "market_suffix": "TW",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "matched_registry_symbol": null,
+      "security_id": null,
+      "company_id": null,
+      "exchange": null,
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "TW-00985A"
+      ],
+      "source_exposure_count": 1
     },
     {
       "holding_symbol": "1303.TW",
@@ -1198,22 +1111,6 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00403A"
-      ],
-      "source_exposure_count": 1
-    },
-    {
-      "holding_symbol": "1802.TW",
-      "normalized_holding_symbol": "1802.TW",
-      "market_suffix": "TW",
-      "status": "unsupported_market",
-      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
-      "matched_registry_symbol": null,
-      "security_id": null,
-      "company_id": null,
-      "exchange": null,
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-00985A"
       ],
       "source_exposure_count": 1
     },
@@ -1703,10 +1600,12 @@
         "TW-00999A",
         "US-ARTY",
         "US-CHPS",
+        "US-VEU",
         "US-VT",
-        "US-VWO"
+        "US-VWO",
+        "US-VXUS"
       ],
-      "source_exposure_count": 67
+      "source_exposure_count": 69
     },
     {
       "holding_symbol": "2337.TW",
@@ -3903,10 +3802,9 @@
       "source_etf_ids": [
         "TW-006201",
         "TW-00892",
-        "TW-00980A",
-        "TW-00985A"
+        "TW-00980A"
       ],
-      "source_exposure_count": 4
+      "source_exposure_count": 3
     },
     {
       "holding_symbol": "3533.TW",
@@ -3978,9 +3876,10 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00947",
-        "TW-00981A"
+        "TW-00981A",
+        "TW-00985A"
       ],
-      "source_exposure_count": 2
+      "source_exposure_count": 3
     },
     {
       "holding_symbol": "3665.TW",
@@ -4644,38 +4543,6 @@
       "source_exposure_count": 2
     },
     {
-      "holding_symbol": "600030.SS",
-      "normalized_holding_symbol": "600030.SS",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "matched_registry_symbol": null,
-      "security_id": null,
-      "company_id": null,
-      "exchange": null,
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-008201"
-      ],
-      "source_exposure_count": 1
-    },
-    {
-      "holding_symbol": "600031.SS",
-      "normalized_holding_symbol": "600031.SS",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "matched_registry_symbol": null,
-      "security_id": null,
-      "company_id": null,
-      "exchange": null,
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-008201"
-      ],
-      "source_exposure_count": 1
-    },
-    {
       "holding_symbol": "600036.SS",
       "normalized_holding_symbol": "600036.SS",
       "market_suffix": null,
@@ -4691,10 +4558,9 @@
         "TW-006207",
         "TW-00636",
         "TW-00636K",
-        "TW-00739",
-        "TW-008201"
+        "TW-00739"
       ],
-      "source_exposure_count": 6
+      "source_exposure_count": 5
     },
     {
       "holding_symbol": "600111.SS",
@@ -4759,10 +4625,9 @@
       "source_etf_ids": [
         "TW-006205",
         "TW-00625K",
-        "TW-008201",
         "TW-00887"
       ],
-      "source_exposure_count": 4
+      "source_exposure_count": 3
     },
     {
       "holding_symbol": "600392.SS",
@@ -4830,26 +4695,9 @@
         "TW-00625K",
         "TW-00636",
         "TW-00636K",
-        "TW-00739",
-        "TW-008201"
+        "TW-00739"
       ],
-      "source_exposure_count": 8
-    },
-    {
-      "holding_symbol": "600887.SS",
-      "normalized_holding_symbol": "600887.SS",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "matched_registry_symbol": null,
-      "security_id": null,
-      "company_id": null,
-      "exchange": null,
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-008201"
-      ],
-      "source_exposure_count": 1
+      "source_exposure_count": 7
     },
     {
       "holding_symbol": "600900.SS",
@@ -4871,22 +4719,6 @@
       "source_exposure_count": 4
     },
     {
-      "holding_symbol": "601012.SS",
-      "normalized_holding_symbol": "601012.SS",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "matched_registry_symbol": null,
-      "security_id": null,
-      "company_id": null,
-      "exchange": null,
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-008201"
-      ],
-      "source_exposure_count": 1
-    },
-    {
       "holding_symbol": "601138.SS",
       "normalized_holding_symbol": "601138.SS",
       "market_suffix": null,
@@ -4906,22 +4738,6 @@
       "source_exposure_count": 4
     },
     {
-      "holding_symbol": "601166.SS",
-      "normalized_holding_symbol": "601166.SS",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "matched_registry_symbol": null,
-      "security_id": null,
-      "company_id": null,
-      "exchange": null,
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-008201"
-      ],
-      "source_exposure_count": 1
-    },
-    {
       "holding_symbol": "601318.SS",
       "normalized_holding_symbol": "601318.SS",
       "market_suffix": null,
@@ -4936,26 +4752,9 @@
         "TW-006205",
         "TW-006206",
         "TW-006207",
-        "TW-00625K",
-        "TW-008201"
+        "TW-00625K"
       ],
-      "source_exposure_count": 5
-    },
-    {
-      "holding_symbol": "601888.SS",
-      "normalized_holding_symbol": "601888.SS",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "matched_registry_symbol": null,
-      "security_id": null,
-      "company_id": null,
-      "exchange": null,
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-008201"
-      ],
-      "source_exposure_count": 1
+      "source_exposure_count": 4
     },
     {
       "holding_symbol": "601899.SS",
@@ -7051,9 +6850,11 @@
         "TW-00703",
         "TW-00736",
         "TW-00752",
-        "US-VWO"
+        "US-VEU",
+        "US-VWO",
+        "US-VXUS"
       ],
-      "source_exposure_count": 5
+      "source_exposure_count": 7
     },
     {
       "holding_symbol": "9999.HK",
@@ -7121,14 +6922,19 @@
         "US-IVV",
         "US-JEPQ",
         "US-QQQ",
+        "US-SPLG",
         "US-SPY",
+        "US-SPYM",
+        "US-VGT",
         "US-VIG",
         "US-VOO",
         "US-VT",
         "US-VTI",
+        "US-VUG",
+        "US-VV",
         "US-XLK"
       ],
-      "source_exposure_count": 40
+      "source_exposure_count": 45
     },
     {
       "holding_symbol": "ABBN.SW",
@@ -7166,9 +6972,11 @@
         "TW-00898",
         "US-DGRO",
         "US-JEPI",
+        "US-VTV",
+        "US-VYM",
         "US-XLV"
       ],
-      "source_exposure_count": 4
+      "source_exposure_count": 6
     },
     {
       "holding_symbol": "ABEV",
@@ -7447,9 +7255,10 @@
         "security:NASDAQ-ALAB"
       ],
       "source_etf_ids": [
+        "US-VXF",
         "US-XSD"
       ],
-      "source_exposure_count": 1
+      "source_exposure_count": 2
     },
     {
       "holding_symbol": "ALB",
@@ -7567,9 +7376,10 @@
         "US-SMH",
         "US-SOXQ",
         "US-SOXX",
+        "US-VGT",
         "US-XLK"
       ],
-      "source_exposure_count": 17
+      "source_exposure_count": 18
     },
     {
       "holding_symbol": "AMBA",
@@ -7685,10 +7495,11 @@
         "US-SOXQ",
         "US-SOXX",
         "US-USD",
+        "US-VGT",
         "US-XLK",
         "US-XSD"
       ],
-      "source_exposure_count": 45
+      "source_exposure_count": 46
     },
     {
       "holding_symbol": "AMGN",
@@ -7730,12 +7541,11 @@
       "source_etf_ids": [
         "TW-00714",
         "US-DTCR",
-        "US-IGN",
         "US-SRVR",
         "US-VNQ",
         "US-VPN"
       ],
-      "source_exposure_count": 6
+      "source_exposure_count": 5
     },
     {
       "holding_symbol": "AMUN.PA",
@@ -7798,14 +7608,18 @@
         "US-QQQ",
         "US-QTUM",
         "US-SKYY",
+        "US-SPLG",
         "US-SPY",
+        "US-SPYM",
         "US-THNQ",
         "US-VOO",
         "US-VT",
         "US-VTI",
+        "US-VUG",
+        "US-VV",
         "US-WTAI"
       ],
-      "source_exposure_count": 37
+      "source_exposure_count": 41
     },
     {
       "holding_symbol": "ANET",
@@ -7822,11 +7636,10 @@
       ],
       "source_etf_ids": [
         "US-FIVG",
-        "US-IGN",
         "US-SKYY",
         "US-THNQ"
       ],
-      "source_exposure_count": 4
+      "source_exposure_count": 3
     },
     {
       "holding_symbol": "APD",
@@ -8087,9 +7900,11 @@
         "TW-00876",
         "TW-00941",
         "US-CHPS",
-        "US-VEA"
+        "US-VEA",
+        "US-VEU",
+        "US-VXUS"
       ],
-      "source_exposure_count": 7
+      "source_exposure_count": 9
     },
     {
       "holding_symbol": "ASTS",
@@ -8108,6 +7923,25 @@
         "US-UFO"
       ],
       "source_exposure_count": 1
+    },
+    {
+      "holding_symbol": "ATO",
+      "normalized_holding_symbol": "ATO",
+      "market_suffix": null,
+      "status": "resolved_exact",
+      "reason_code": "UNIQUE_ACTIVE_COMMON_EQUITY_MATCH",
+      "matched_registry_symbol": "ATO",
+      "security_id": "security:NYSE-ATO",
+      "company_id": "company:US-CIK0000731802",
+      "exchange": "NYSE",
+      "candidate_security_ids": [
+        "security:NYSE-ATO"
+      ],
+      "source_etf_ids": [
+        "US-VB",
+        "US-VBR"
+      ],
+      "source_exposure_count": 2
     },
     {
       "holding_symbol": "AUR",
@@ -8204,17 +8038,23 @@
         "US-SOXL",
         "US-SOXQ",
         "US-SOXX",
+        "US-SPLG",
         "US-SPY",
+        "US-SPYM",
         "US-USD",
+        "US-VGT",
         "US-VIG",
         "US-VOO",
         "US-VT",
         "US-VTI",
+        "US-VUG",
+        "US-VV",
+        "US-VYM",
         "US-WTAI",
         "US-XLK",
         "US-XSD"
       ],
-      "source_exposure_count": 54
+      "source_exposure_count": 60
     },
     {
       "holding_symbol": "AXISBANK.BO",
@@ -8302,9 +8142,11 @@
       ],
       "source_etf_ids": [
         "TW-00917",
+        "US-VTV",
+        "US-VYM",
         "US-XLF"
       ],
-      "source_exposure_count": 2
+      "source_exposure_count": 4
     },
     {
       "holding_symbol": "BAPA",
@@ -8371,22 +8213,6 @@
       "source_exposure_count": 1
     },
     {
-      "holding_symbol": "BBQ9",
-      "normalized_holding_symbol": "BBQ9",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "matched_registry_symbol": null,
-      "security_id": null,
-      "company_id": null,
-      "exchange": null,
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-00716R"
-      ],
-      "source_exposure_count": 1
-    },
-    {
       "holding_symbol": "BBVA.MC",
       "normalized_holding_symbol": "BBVA.MC",
       "market_suffix": "MC",
@@ -8419,9 +8245,10 @@
         "TW-00899",
         "TW-00920",
         "TW-009805",
-        "TW-00988A"
+        "TW-00988A",
+        "US-VXF"
       ],
-      "source_exposure_count": 4
+      "source_exposure_count": 5
     },
     {
       "holding_symbol": "BEN",
@@ -8626,12 +8453,16 @@
         "security:NYSE-BRK.B"
       ],
       "source_etf_ids": [
+        "TW-009813",
         "US-IVV",
+        "US-SPLG",
         "US-SPY",
+        "US-SPYM",
         "US-VOO",
+        "US-VTV",
         "US-XLF"
       ],
-      "source_exposure_count": 4
+      "source_exposure_count": 8
     },
     {
       "holding_symbol": "BTSG",
@@ -8743,6 +8574,24 @@
       "source_exposure_count": 2
     },
     {
+      "holding_symbol": "CASY",
+      "normalized_holding_symbol": "CASY",
+      "market_suffix": null,
+      "status": "resolved_exact",
+      "reason_code": "UNIQUE_ACTIVE_COMMON_EQUITY_MATCH",
+      "matched_registry_symbol": "CASY",
+      "security_id": "security:NASDAQ-CASY",
+      "company_id": "company:US-CIK0000726958",
+      "exchange": "NASDAQ",
+      "candidate_security_ids": [
+        "security:NASDAQ-CASY"
+      ],
+      "source_etf_ids": [
+        "US-VB"
+      ],
+      "source_exposure_count": 1
+    },
+    {
       "holding_symbol": "CAT",
       "normalized_holding_symbol": "CAT",
       "market_suffix": null,
@@ -8759,9 +8608,10 @@
         "TW-00668",
         "TW-00668K",
         "US-DIA",
-        "US-IFRA"
+        "US-IFRA",
+        "US-VYM"
       ],
-      "source_exposure_count": 4
+      "source_exposure_count": 5
     },
     {
       "holding_symbol": "CBRE",
@@ -8815,11 +8665,10 @@
       ],
       "source_etf_ids": [
         "US-DTCR",
-        "US-IGN",
         "US-SRVR",
         "US-VPN"
       ],
-      "source_exposure_count": 4
+      "source_exposure_count": 3
     },
     {
       "holding_symbol": "CCO.TO",
@@ -9015,9 +8864,10 @@
         "security:NYSE-CMI"
       ],
       "source_etf_ids": [
-        "TW-00925"
+        "TW-00925",
+        "US-VO"
       ],
-      "source_exposure_count": 1
+      "source_exposure_count": 2
     },
     {
       "holding_symbol": "COFPI",
@@ -9191,9 +9041,11 @@
         "security:NASDAQ-CRDO"
       ],
       "source_etf_ids": [
-        "TW-00988A"
+        "TW-00988A",
+        "US-VB",
+        "US-VXF"
       ],
-      "source_exposure_count": 1
+      "source_exposure_count": 3
     },
     {
       "holding_symbol": "CRM",
@@ -9249,6 +9101,7 @@
       ],
       "source_etf_ids": [
         "TW-00886",
+        "TW-009820",
         "TW-00986A",
         "US-BUG",
         "US-CIBR",
@@ -9258,7 +9111,7 @@
         "US-THNQ",
         "US-WCLD"
       ],
-      "source_exposure_count": 9
+      "source_exposure_count": 10
     },
     {
       "holding_symbol": "CRWV",
@@ -9299,10 +9152,12 @@
         "US-CIBR",
         "US-FIVG",
         "US-HACK",
-        "US-IGN",
+        "US-VGT",
+        "US-VTV",
+        "US-VYM",
         "US-XLK"
       ],
-      "source_exposure_count": 9
+      "source_exposure_count": 11
     },
     {
       "holding_symbol": "CSX",
@@ -9356,9 +9211,10 @@
       ],
       "source_etf_ids": [
         "US-SCHD",
+        "US-VYM",
         "US-XLE"
       ],
-      "source_exposure_count": 2
+      "source_exposure_count": 3
     },
     {
       "holding_symbol": "CYTK",
@@ -9430,9 +9286,10 @@
       "source_etf_ids": [
         "US-CLOU",
         "US-THNQ",
+        "US-VO",
         "US-WCLD"
       ],
-      "source_exposure_count": 3
+      "source_exposure_count": 4
     },
     {
       "holding_symbol": "DE",
@@ -9469,12 +9326,11 @@
       "source_etf_ids": [
         "TW-00714",
         "US-DTCR",
-        "US-IGN",
         "US-SRVR",
         "US-VNQ",
         "US-VPN"
       ],
-      "source_exposure_count": 6
+      "source_exposure_count": 5
     },
     {
       "holding_symbol": "DML.TO",
@@ -9708,6 +9564,24 @@
       "source_exposure_count": 1
     },
     {
+      "holding_symbol": "EME",
+      "normalized_holding_symbol": "EME",
+      "market_suffix": null,
+      "status": "resolved_exact",
+      "reason_code": "UNIQUE_ACTIVE_COMMON_EQUITY_MATCH",
+      "matched_registry_symbol": "EME",
+      "security_id": "security:NYSE-EME",
+      "company_id": "company:US-CIK0000105634",
+      "exchange": "NYSE",
+      "candidate_security_ids": [
+        "security:NYSE-EME"
+      ],
+      "source_etf_ids": [
+        "US-VB"
+      ],
+      "source_exposure_count": 1
+    },
+    {
       "holding_symbol": "EMR",
       "normalized_holding_symbol": "EMR",
       "market_suffix": null,
@@ -9812,12 +9686,11 @@
         "TW-00714",
         "TW-009819",
         "US-DTCR",
-        "US-IGN",
         "US-SRVR",
         "US-VNQ",
         "US-VPN"
       ],
-      "source_exposure_count": 7
+      "source_exposure_count": 6
     },
     {
       "holding_symbol": "ERAS",
@@ -9875,6 +9748,42 @@
       "source_exposure_count": 4
     },
     {
+      "holding_symbol": "EXE",
+      "normalized_holding_symbol": "EXE",
+      "market_suffix": null,
+      "status": "resolved_exact",
+      "reason_code": "UNIQUE_ACTIVE_COMMON_EQUITY_MATCH",
+      "matched_registry_symbol": "EXE",
+      "security_id": "security:NASDAQ-EXE",
+      "company_id": "company:US-CIK0000895126",
+      "exchange": "NASDAQ",
+      "candidate_security_ids": [
+        "security:NASDAQ-EXE"
+      ],
+      "source_etf_ids": [
+        "US-VBR"
+      ],
+      "source_exposure_count": 1
+    },
+    {
+      "holding_symbol": "FERG",
+      "normalized_holding_symbol": "FERG",
+      "market_suffix": null,
+      "status": "resolved_exact",
+      "reason_code": "UNIQUE_ACTIVE_COMMON_EQUITY_MATCH",
+      "matched_registry_symbol": "FERG",
+      "security_id": "security:NYSE-FERG",
+      "company_id": "company:US-CIK0002011641",
+      "exchange": "NYSE",
+      "candidate_security_ids": [
+        "security:NYSE-FERG"
+      ],
+      "source_etf_ids": [
+        "US-VXF"
+      ],
+      "source_exposure_count": 1
+    },
+    {
       "holding_symbol": "FFIV",
       "normalized_holding_symbol": "FFIV",
       "market_suffix": null,
@@ -9888,9 +9797,10 @@
         "security:NASDAQ-FFIV"
       ],
       "source_etf_ids": [
-        "US-CIBR"
+        "US-CIBR",
+        "US-VBR"
       ],
-      "source_exposure_count": 1
+      "source_exposure_count": 2
     },
     {
       "holding_symbol": "FGXXX",
@@ -10016,24 +9926,6 @@
         "TW-00920"
       ],
       "source_exposure_count": 2
-    },
-    {
-      "holding_symbol": "FSLY",
-      "normalized_holding_symbol": "FSLY",
-      "market_suffix": null,
-      "status": "resolved_exact",
-      "reason_code": "UNIQUE_ACTIVE_COMMON_EQUITY_MATCH",
-      "matched_registry_symbol": "FSLY",
-      "security_id": "security:NASDAQ-FSLY",
-      "company_id": "company:US-CIK0001517413",
-      "exchange": "NASDAQ",
-      "candidate_security_ids": [
-        "security:NASDAQ-FSLY"
-      ],
-      "source_etf_ids": [
-        "US-IGN"
-      ],
-      "source_exposure_count": 1
     },
     {
       "holding_symbol": "FTNT",
@@ -10348,12 +10240,16 @@
         "US-IVV",
         "US-JEPQ",
         "US-QQQ",
+        "US-SPLG",
         "US-SPY",
+        "US-SPYM",
         "US-VOO",
         "US-VT",
-        "US-VTI"
+        "US-VTI",
+        "US-VUG",
+        "US-VV"
       ],
-      "source_exposure_count": 25
+      "source_exposure_count": 29
     },
     {
       "holding_symbol": "GOOGL",
@@ -10406,13 +10302,17 @@
         "US-JEPI",
         "US-QQQ",
         "US-SKYY",
+        "US-SPLG",
         "US-SPY",
+        "US-SPYM",
         "US-VOO",
         "US-VT",
         "US-VTI",
+        "US-VUG",
+        "US-VV",
         "US-WTAI"
       ],
-      "source_exposure_count": 42
+      "source_exposure_count": 46
     },
     {
       "holding_symbol": "GRMN",
@@ -10663,12 +10563,13 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00709",
-        "TW-0081",
         "TW-00917",
         "TW-00998A",
-        "US-VEA"
+        "US-VEA",
+        "US-VEU",
+        "US-VXUS"
       ],
-      "source_exposure_count": 5
+      "source_exposure_count": 6
     },
     {
       "holding_symbol": "HUBB",
@@ -10723,9 +10624,10 @@
         "security:NYSE-HWM"
       ],
       "source_etf_ids": [
-        "US-PAVE"
+        "US-PAVE",
+        "US-VO"
       ],
-      "source_exposure_count": 1
+      "source_exposure_count": 2
     },
     {
       "holding_symbol": "IBE.MC",
@@ -10868,9 +10770,10 @@
         "US-ARKG",
         "US-IBB",
         "US-ROBO",
-        "US-ROBT"
+        "US-ROBT",
+        "US-VB"
       ],
-      "source_exposure_count": 7
+      "source_exposure_count": 8
     },
     {
       "holding_symbol": "INCY",
@@ -10957,9 +10860,10 @@
         "US-PSI",
         "US-SHOC",
         "US-SOXX",
+        "US-VGT",
         "US-XLK"
       ],
-      "source_exposure_count": 20
+      "source_exposure_count": 21
     },
     {
       "holding_symbol": "IOT",
@@ -11117,6 +11021,25 @@
       "source_exposure_count": 1
     },
     {
+      "holding_symbol": "JBL",
+      "normalized_holding_symbol": "JBL",
+      "market_suffix": null,
+      "status": "resolved_exact",
+      "reason_code": "UNIQUE_ACTIVE_COMMON_EQUITY_MATCH",
+      "matched_registry_symbol": "JBL",
+      "security_id": "security:NYSE-JBL",
+      "company_id": "company:US-CIK0000898293",
+      "exchange": "NYSE",
+      "candidate_security_ids": [
+        "security:NYSE-JBL"
+      ],
+      "source_etf_ids": [
+        "US-VB",
+        "US-VBR"
+      ],
+      "source_exposure_count": 2
+    },
+    {
       "holding_symbol": "JBTM",
       "normalized_holding_symbol": "JBTM",
       "market_suffix": null,
@@ -11187,9 +11110,11 @@
         "US-DGRO",
         "US-JEPI",
         "US-VIG",
+        "US-VTV",
+        "US-VYM",
         "US-XLV"
       ],
-      "source_exposure_count": 4
+      "source_exposure_count": 6
     },
     {
       "holding_symbol": "JPM",
@@ -11209,17 +11134,22 @@
         "TW-00916",
         "TW-00917",
         "TW-009810",
+        "TW-009813",
         "US-DGRO",
         "US-DIA",
         "US-IVV",
         "US-SPY",
+        "US-SPYM",
         "US-VIG",
         "US-VOO",
         "US-VT",
         "US-VTI",
+        "US-VTV",
+        "US-VV",
+        "US-VYM",
         "US-XLF"
       ],
-      "source_exposure_count": 13
+      "source_exposure_count": 18
     },
     {
       "holding_symbol": "JPMPC",
@@ -11604,9 +11534,29 @@
         "US-ARKG",
         "US-VIG",
         "US-VTI",
+        "US-VUG",
+        "US-VV",
         "US-XLV"
       ],
-      "source_exposure_count": 9
+      "source_exposure_count": 11
+    },
+    {
+      "holding_symbol": "LNG",
+      "normalized_holding_symbol": "LNG",
+      "market_suffix": null,
+      "status": "resolved_exact",
+      "reason_code": "UNIQUE_ACTIVE_COMMON_EQUITY_MATCH",
+      "matched_registry_symbol": "LNG",
+      "security_id": "security:NYSE-LNG",
+      "company_id": "company:US-CIK0000003570",
+      "exchange": "NYSE",
+      "candidate_security_ids": [
+        "security:NYSE-LNG"
+      ],
+      "source_etf_ids": [
+        "US-VXF"
+      ],
+      "source_exposure_count": 1
     },
     {
       "holding_symbol": "LQDW",
@@ -11660,9 +11610,10 @@
         "US-SMH",
         "US-SOXQ",
         "US-SOXX",
+        "US-VGT",
         "US-XLK"
       ],
-      "source_exposure_count": 22
+      "source_exposure_count": 23
     },
     {
       "holding_symbol": "LT.NS",
@@ -11859,13 +11810,17 @@
         "US-IVV",
         "US-JEPQ",
         "US-QQQ",
+        "US-SPLG",
         "US-SPY",
+        "US-SPYM",
         "US-VOO",
         "US-VT",
         "US-VTI",
+        "US-VUG",
+        "US-VV",
         "US-WTAI"
       ],
-      "source_exposure_count": 31
+      "source_exposure_count": 35
     },
     {
       "holding_symbol": "MNG.L",
@@ -11951,9 +11906,10 @@
         "security:NYSE-MPC"
       ],
       "source_etf_ids": [
+        "US-VO",
         "US-XLE"
       ],
-      "source_exposure_count": 1
+      "source_exposure_count": 2
     },
     {
       "holding_symbol": "MPWR",
@@ -12038,11 +11994,10 @@
         "US-ARTY",
         "US-DTCR",
         "US-FTXL",
-        "US-IGN",
         "US-SOXQ",
         "US-SOXX"
       ],
-      "source_exposure_count": 12
+      "source_exposure_count": 11
     },
     {
       "holding_symbol": "MS",
@@ -12116,14 +12071,19 @@
         "US-QQQ",
         "US-QTUM",
         "US-SKYY",
+        "US-SPLG",
         "US-SPY",
+        "US-SPYM",
+        "US-VGT",
         "US-VIG",
         "US-VOO",
         "US-VT",
         "US-VTI",
+        "US-VUG",
+        "US-VV",
         "US-XLK"
       ],
-      "source_exposure_count": 44
+      "source_exposure_count": 49
     },
     {
       "holding_symbol": "MSN.VN",
@@ -12173,7 +12133,6 @@
         "TW-009807",
         "TW-00980T",
         "TW-009811",
-        "TW-009813",
         "TW-009814",
         "TW-009818",
         "TW-009820",
@@ -12202,10 +12161,12 @@
         "US-SOXQ",
         "US-SOXX",
         "US-USD",
+        "US-VGT",
+        "US-VTV",
         "US-WTAI",
         "US-XLK"
       ],
-      "source_exposure_count": 49
+      "source_exposure_count": 50
     },
     {
       "holding_symbol": "NBIS",
@@ -12318,9 +12279,11 @@
         "US-QTUM",
         "US-ROBT",
         "US-SKYY",
-        "US-THNQ"
+        "US-THNQ",
+        "US-VO",
+        "US-VXF"
       ],
-      "source_exposure_count": 8
+      "source_exposure_count": 10
     },
     {
       "holding_symbol": "NFLX",
@@ -12425,9 +12388,11 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00709",
-        "US-VEA"
+        "US-VEA",
+        "US-VEU",
+        "US-VXUS"
       ],
-      "source_exposure_count": 2
+      "source_exposure_count": 4
     },
     {
       "holding_symbol": "NOVT",
@@ -12466,6 +12431,24 @@
         "US-IGV"
       ],
       "source_exposure_count": 3
+    },
+    {
+      "holding_symbol": "NRG",
+      "normalized_holding_symbol": "NRG",
+      "market_suffix": null,
+      "status": "resolved_exact",
+      "reason_code": "UNIQUE_ACTIVE_COMMON_EQUITY_MATCH",
+      "matched_registry_symbol": "NRG",
+      "security_id": "security:NYSE-NRG",
+      "company_id": "company:US-CIK0001013871",
+      "exchange": "NYSE",
+      "candidate_security_ids": [
+        "security:NYSE-NRG"
+      ],
+      "source_etf_ids": [
+        "US-VBR"
+      ],
+      "source_exposure_count": 1
     },
     {
       "holding_symbol": "NSC",
@@ -12538,9 +12521,11 @@
       ],
       "source_etf_ids": [
         "TW-00898",
-        "US-IBB"
+        "US-IBB",
+        "US-VB",
+        "US-VXF"
       ],
-      "source_exposure_count": 2
+      "source_exposure_count": 4
     },
     {
       "holding_symbol": "NTSK",
@@ -12664,16 +12649,21 @@
         "US-SOXL",
         "US-SOXQ",
         "US-SOXX",
+        "US-SPLG",
         "US-SPY",
+        "US-SPYM",
         "US-USD",
+        "US-VGT",
         "US-VOO",
         "US-VT",
         "US-VTI",
+        "US-VUG",
+        "US-VV",
         "US-WTAI",
         "US-XLK",
         "US-XSD"
       ],
-      "source_exposure_count": 62
+      "source_exposure_count": 67
     },
     {
       "holding_symbol": "NVT",
@@ -12861,6 +12851,24 @@
         "US-WCLD"
       ],
       "source_exposure_count": 5
+    },
+    {
+      "holding_symbol": "OMC",
+      "normalized_holding_symbol": "OMC",
+      "market_suffix": null,
+      "status": "resolved_exact",
+      "reason_code": "UNIQUE_ACTIVE_COMMON_EQUITY_MATCH",
+      "matched_registry_symbol": "OMC",
+      "security_id": "security:NYSE-OMC",
+      "company_id": "company:US-CIK0000029989",
+      "exchange": "NYSE",
+      "candidate_security_ids": [
+        "security:NYSE-OMC"
+      ],
+      "source_etf_ids": [
+        "US-VBR"
+      ],
+      "source_exposure_count": 1
     },
     {
       "holding_symbol": "ONB",
@@ -13369,9 +13377,10 @@
         "TW-009805",
         "US-GRID",
         "US-IFRA",
-        "US-PAVE"
+        "US-PAVE",
+        "US-VO"
       ],
-      "source_exposure_count": 4
+      "source_exposure_count": 5
     },
     {
       "holding_symbol": "QCOM",
@@ -13390,10 +13399,9 @@
         "TW-00876",
         "US-DRIV",
         "US-FIVG",
-        "US-FTXL",
-        "US-IGN"
+        "US-FTXL"
       ],
-      "source_exposure_count": 5
+      "source_exposure_count": 4
     },
     {
       "holding_symbol": "QLYS",
@@ -13615,9 +13623,11 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00709",
-        "US-VEA"
+        "US-VEA",
+        "US-VEU",
+        "US-VXUS"
       ],
-      "source_exposure_count": 2
+      "source_exposure_count": 4
     },
     {
       "holding_symbol": "ROST",
@@ -13673,9 +13683,11 @@
         "TW-00678",
         "TW-00897",
         "US-IBB",
+        "US-VB",
+        "US-VXF",
         "US-XBI"
       ],
-      "source_exposure_count": 4
+      "source_exposure_count": 6
     },
     {
       "holding_symbol": "RWE.DE",
@@ -13725,9 +13737,11 @@
         "security:NYSE-RY"
       ],
       "source_etf_ids": [
-        "US-VEA"
+        "US-VEA",
+        "US-VEU",
+        "US-VXUS"
       ],
-      "source_exposure_count": 1
+      "source_exposure_count": 3
     },
     {
       "holding_symbol": "S",
@@ -14030,7 +14044,6 @@
         "security:NASDAQ-SNDK"
       ],
       "source_etf_ids": [
-        "TW-009820",
         "TW-009824",
         "TW-00988A",
         "TW-00989A",
@@ -14038,7 +14051,7 @@
         "TW-00997A",
         "US-IGPT"
       ],
-      "source_exposure_count": 7
+      "source_exposure_count": 6
     },
     {
       "holding_symbol": "SNOW",
@@ -14057,9 +14070,10 @@
         "TW-00988A",
         "US-CLOU",
         "US-QTUM",
+        "US-VXF",
         "US-WCLD"
       ],
-      "source_exposure_count": 4
+      "source_exposure_count": 5
     },
     {
       "holding_symbol": "SO",
@@ -14099,9 +14113,10 @@
         "US-ARKK",
         "US-ARKQ",
         "US-ARKX",
-        "US-UFO"
+        "US-UFO",
+        "US-VXF"
       ],
-      "source_exposure_count": 5
+      "source_exposure_count": 6
     },
     {
       "holding_symbol": "SPG",
@@ -14277,9 +14292,10 @@
         "TW-00988A",
         "TW-00997A",
         "US-DRAM",
-        "US-IGPT"
+        "US-IGPT",
+        "US-VO"
       ],
-      "source_exposure_count": 4
+      "source_exposure_count": 5
     },
     {
       "holding_symbol": "SU.PA",
@@ -14297,6 +14313,24 @@
         "US-GRID"
       ],
       "source_exposure_count": 2
+    },
+    {
+      "holding_symbol": "SW",
+      "normalized_holding_symbol": "SW",
+      "market_suffix": null,
+      "status": "resolved_exact",
+      "reason_code": "UNIQUE_ACTIVE_COMMON_EQUITY_MATCH",
+      "matched_registry_symbol": "SW",
+      "security_id": "security:NYSE-SW",
+      "company_id": "company:US-CIK0002005951",
+      "exchange": "NYSE",
+      "candidate_security_ids": [
+        "security:NYSE-SW"
+      ],
+      "source_etf_ids": [
+        "US-VBR"
+      ],
+      "source_exposure_count": 1
     },
     {
       "holding_symbol": "SYF",
@@ -14500,6 +14534,25 @@
       "source_exposure_count": 1
     },
     {
+      "holding_symbol": "TPR",
+      "normalized_holding_symbol": "TPR",
+      "market_suffix": null,
+      "status": "resolved_exact",
+      "reason_code": "UNIQUE_ACTIVE_COMMON_EQUITY_MATCH",
+      "matched_registry_symbol": "TPR",
+      "security_id": "security:NYSE-TPR",
+      "company_id": "company:US-CIK0001116132",
+      "exchange": "NYSE",
+      "candidate_security_ids": [
+        "security:NYSE-TPR"
+      ],
+      "source_etf_ids": [
+        "US-VB",
+        "US-VBR"
+      ],
+      "source_exposure_count": 2
+    },
+    {
       "holding_symbol": "TRGP",
       "normalized_holding_symbol": "TRGP",
       "market_suffix": null,
@@ -14611,7 +14664,6 @@
         "TW-009806",
         "TW-00980T",
         "TW-009811",
-        "TW-009813",
         "TW-009814",
         "TW-009823",
         "TW-00983A",
@@ -14619,9 +14671,11 @@
         "US-ARKQ",
         "US-CARZ",
         "US-IDRV",
-        "US-KARS"
+        "US-KARS",
+        "US-SPLG",
+        "US-VUG"
       ],
-      "source_exposure_count": 19
+      "source_exposure_count": 20
     },
     {
       "holding_symbol": "TSM",
@@ -14720,9 +14774,10 @@
       "source_etf_ids": [
         "TW-00988A",
         "US-CLOU",
+        "US-VB",
         "US-WCLD"
       ],
-      "source_exposure_count": 3
+      "source_exposure_count": 4
     },
     {
       "holding_symbol": "TWO",
@@ -14899,9 +14954,11 @@
         "TW-00668K",
         "US-DIA",
         "US-SCHD",
+        "US-VTV",
+        "US-VYM",
         "US-XLV"
       ],
-      "source_exposure_count": 5
+      "source_exposure_count": 7
     },
     {
       "holding_symbol": "UNI.MI",
@@ -14916,22 +14973,6 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00998A"
-      ],
-      "source_exposure_count": 1
-    },
-    {
-      "holding_symbol": "UNIT",
-      "normalized_holding_symbol": "UNIT",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "matched_registry_symbol": null,
-      "security_id": null,
-      "company_id": null,
-      "exchange": null,
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "US-IGN"
       ],
       "source_exposure_count": 1
     },
@@ -14987,6 +15028,24 @@
       ],
       "source_etf_ids": [
         "US-IFRA"
+      ],
+      "source_exposure_count": 1
+    },
+    {
+      "holding_symbol": "USFD",
+      "normalized_holding_symbol": "USFD",
+      "market_suffix": null,
+      "status": "resolved_exact",
+      "reason_code": "UNIQUE_ACTIVE_COMMON_EQUITY_MATCH",
+      "matched_registry_symbol": "USFD",
+      "security_id": "security:NYSE-USFD",
+      "company_id": "company:US-CIK0001665918",
+      "exchange": "NYSE",
+      "candidate_security_ids": [
+        "security:NYSE-USFD"
+      ],
+      "source_etf_ids": [
+        "US-VBR"
       ],
       "source_exposure_count": 1
     },
@@ -15128,9 +15187,10 @@
         "security:NYSE-VLO"
       ],
       "source_etf_ids": [
+        "US-VO",
         "US-XLE"
       ],
-      "source_exposure_count": 1
+      "source_exposure_count": 2
     },
     {
       "holding_symbol": "VNM.VN",
@@ -15197,9 +15257,10 @@
         "security:NYSE-VRT"
       ],
       "source_etf_ids": [
-        "TW-009805"
+        "TW-009805",
+        "US-VO"
       ],
-      "source_exposure_count": 1
+      "source_exposure_count": 2
     },
     {
       "holding_symbol": "VRTPX",
@@ -15348,9 +15409,10 @@
         "TW-00997A",
         "US-BAI",
         "US-DRAM",
-        "US-IGPT"
+        "US-IGPT",
+        "US-VO"
       ],
-      "source_exposure_count": 5
+      "source_exposure_count": 6
     },
     {
       "holding_symbol": "WELL",
@@ -15474,9 +15536,10 @@
       ],
       "source_etf_ids": [
         "TW-00916",
-        "US-VIG"
+        "US-VIG",
+        "US-VTV"
       ],
-      "source_exposure_count": 2
+      "source_exposure_count": 3
     },
     {
       "holding_symbol": "WSM",
@@ -15492,9 +15555,10 @@
         "security:NYSE-WSM"
       ],
       "source_etf_ids": [
-        "US-AIEQ"
+        "US-AIEQ",
+        "US-VBR"
       ],
-      "source_exposure_count": 1
+      "source_exposure_count": 2
     },
     {
       "holding_symbol": "WULF",
@@ -15547,9 +15611,11 @@
         "TW-00926",
         "US-DGRO",
         "US-VIG",
+        "US-VTV",
+        "US-VYM",
         "US-XLE"
       ],
-      "source_exposure_count": 4
+      "source_exposure_count": 6
     },
     {
       "holding_symbol": "XPEV",
@@ -15648,6 +15714,19 @@
       ]
     },
     {
+      "holding_symbol": "000660.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-AIQ",
+        "US-BAI",
+        "US-CHAT",
+        "US-VXUS"
+      ]
+    },
+    {
       "holding_symbol": "000660.KS",
       "market_suffix": "KS",
       "status": "unsupported_market",
@@ -15657,14 +15736,12 @@
         "TW-00735",
         "TW-00762",
         "TW-00851",
-        "US-AIQ",
-        "US-BAI",
-        "US-CHAT",
         "US-CHPS",
         "US-DRAM",
         "US-DTCR",
         "US-IGPT",
-        "US-VEA"
+        "US-VEA",
+        "US-VEU"
       ]
     },
     {
@@ -15823,23 +15900,16 @@
       ]
     },
     {
-      "holding_symbol": "00386",
+      "holding_symbol": "005930.KQ",
       "market_suffix": null,
       "status": "unresolved",
       "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-0080"
-      ]
-    },
-    {
-      "holding_symbol": "00388.HK",
-      "market_suffix": "HK",
-      "status": "unsupported_market",
-      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-0081"
+        "US-AIQ",
+        "US-CHAT",
+        "US-VXUS",
+        "US-WTAI"
       ]
     },
     {
@@ -15853,12 +15923,10 @@
         "TW-00861",
         "TW-00916",
         "TW-009810",
-        "US-AIQ",
         "US-CARZ",
-        "US-CHAT",
         "US-DRAM",
         "US-VEA",
-        "US-WTAI"
+        "US-VEU"
       ]
     },
     {
@@ -15904,17 +15972,6 @@
       ]
     },
     {
-      "holding_symbol": "00700",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-0080",
-        "TW-0081"
-      ]
-    },
-    {
       "holding_symbol": "00752.TW",
       "market_suffix": "TW",
       "status": "unsupported_market",
@@ -15922,26 +15979,6 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00753L"
-      ]
-    },
-    {
-      "holding_symbol": "00857",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-0080"
-      ]
-    },
-    {
-      "holding_symbol": "00883",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-0081"
       ]
     },
     {
@@ -15955,15 +15992,24 @@
       ]
     },
     {
+      "holding_symbol": "009150.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "TW-00990A",
+        "TW-00997A"
+      ]
+    },
+    {
       "holding_symbol": "009150.KS",
       "market_suffix": "KS",
       "status": "unsupported_market",
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00735",
-        "TW-00990A",
-        "TW-00997A"
+        "TW-00735"
       ]
     },
     {
@@ -15977,20 +16023,7 @@
         "TW-00703",
         "TW-00736",
         "TW-00752",
-        "TW-0080",
-        "TW-0081",
         "US-VWO"
-      ]
-    },
-    {
-      "holding_symbol": "00941",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-0080",
-        "TW-0081"
       ]
     },
     {
@@ -16015,16 +16048,6 @@
       ]
     },
     {
-      "holding_symbol": "01299.HK",
-      "market_suffix": "HK",
-      "status": "unsupported_market",
-      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-0081"
-      ]
-    },
-    {
       "holding_symbol": "01398",
       "market_suffix": null,
       "status": "unresolved",
@@ -16033,9 +16056,7 @@
       "source_etf_ids": [
         "TW-00700",
         "TW-00703",
-        "TW-00752",
-        "TW-0080",
-        "TW-0081"
+        "TW-00752"
       ]
     },
     {
@@ -16067,19 +16088,7 @@
       "source_etf_ids": [
         "TW-00700",
         "TW-00703",
-        "TW-00752",
-        "TW-0080",
-        "TW-0081"
-      ]
-    },
-    {
-      "holding_symbol": "02628",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-0080"
+        "TW-00752"
       ]
     },
     {
@@ -16133,16 +16142,6 @@
       ]
     },
     {
-      "holding_symbol": "03968",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-0080"
-      ]
-    },
-    {
       "holding_symbol": "03988",
       "market_suffix": null,
       "status": "unresolved",
@@ -16151,9 +16150,7 @@
       "source_etf_ids": [
         "TW-00700",
         "TW-00703",
-        "TW-00752",
-        "TW-0080",
-        "TW-0081"
+        "TW-00752"
       ]
     },
     {
@@ -16187,7 +16184,9 @@
         "TW-00703",
         "TW-00736",
         "TW-00752",
-        "US-VWO"
+        "US-VEU",
+        "US-VWO",
+        "US-VXUS"
       ]
     },
     {
@@ -16252,6 +16251,16 @@
         "TW-00731",
         "TW-00985A",
         "TW-00991A"
+      ]
+    },
+    {
+      "holding_symbol": "1301.TW",
+      "market_suffix": "TW",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "TW-00985A"
       ]
     },
     {
@@ -16387,16 +16396,6 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00403A"
-      ]
-    },
-    {
-      "holding_symbol": "1802.TW",
-      "market_suffix": "TW",
-      "status": "unsupported_market",
-      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-00985A"
       ]
     },
     {
@@ -16790,8 +16789,10 @@
         "TW-00999A",
         "US-ARTY",
         "US-CHPS",
+        "US-VEU",
         "US-VT",
-        "US-VWO"
+        "US-VWO",
+        "US-VXUS"
       ]
     },
     {
@@ -18366,8 +18367,7 @@
       "source_etf_ids": [
         "TW-006201",
         "TW-00892",
-        "TW-00980A",
-        "TW-00985A"
+        "TW-00980A"
       ]
     },
     {
@@ -18417,7 +18417,8 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00947",
-        "TW-00981A"
+        "TW-00981A",
+        "TW-00985A"
       ]
     },
     {
@@ -18872,26 +18873,6 @@
       ]
     },
     {
-      "holding_symbol": "600030.SS",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-008201"
-      ]
-    },
-    {
-      "holding_symbol": "600031.SS",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-008201"
-      ]
-    },
-    {
       "holding_symbol": "600036.SS",
       "market_suffix": null,
       "status": "unresolved",
@@ -18902,8 +18883,7 @@
         "TW-006207",
         "TW-00636",
         "TW-00636K",
-        "TW-00739",
-        "TW-008201"
+        "TW-00739"
       ]
     },
     {
@@ -18946,7 +18926,6 @@
       "source_etf_ids": [
         "TW-006205",
         "TW-00625K",
-        "TW-008201",
         "TW-00887"
       ]
     },
@@ -18993,18 +18972,7 @@
         "TW-00625K",
         "TW-00636",
         "TW-00636K",
-        "TW-00739",
-        "TW-008201"
-      ]
-    },
-    {
-      "holding_symbol": "600887.SS",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-008201"
+        "TW-00739"
       ]
     },
     {
@@ -19021,16 +18989,6 @@
       ]
     },
     {
-      "holding_symbol": "601012.SS",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-008201"
-      ]
-    },
-    {
       "holding_symbol": "601138.SS",
       "market_suffix": null,
       "status": "unresolved",
@@ -19044,16 +19002,6 @@
       ]
     },
     {
-      "holding_symbol": "601166.SS",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-008201"
-      ]
-    },
-    {
       "holding_symbol": "601318.SS",
       "market_suffix": null,
       "status": "unresolved",
@@ -19063,18 +19011,7 @@
         "TW-006205",
         "TW-006206",
         "TW-006207",
-        "TW-00625K",
-        "TW-008201"
-      ]
-    },
-    {
-      "holding_symbol": "601888.SS",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-008201"
+        "TW-00625K"
       ]
     },
     {
@@ -20458,7 +20395,9 @@
         "TW-00703",
         "TW-00736",
         "TW-00752",
-        "US-VWO"
+        "US-VEU",
+        "US-VWO",
+        "US-VXUS"
       ]
     },
     {
@@ -20601,7 +20540,9 @@
         "TW-00876",
         "TW-00941",
         "US-CHPS",
-        "US-VEA"
+        "US-VEA",
+        "US-VEU",
+        "US-VXUS"
       ]
     },
     {
@@ -20663,16 +20604,6 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "US-DRIV"
-      ]
-    },
-    {
-      "holding_symbol": "BBQ9",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-00716R"
       ]
     },
     {
@@ -20982,10 +20913,11 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00709",
-        "TW-0081",
         "TW-00917",
         "TW-00998A",
-        "US-VEA"
+        "US-VEA",
+        "US-VEU",
+        "US-VXUS"
       ]
     },
     {
@@ -21276,7 +21208,9 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00709",
-        "US-VEA"
+        "US-VEA",
+        "US-VEU",
+        "US-VXUS"
       ]
     },
     {
@@ -21365,7 +21299,9 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00709",
-        "US-VEA"
+        "US-VEA",
+        "US-VEU",
+        "US-VXUS"
       ]
     },
     {
@@ -21567,16 +21503,6 @@
       ]
     },
     {
-      "holding_symbol": "UNIT",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "US-IGN"
-      ]
-    },
-    {
       "holding_symbol": "VCB.VN",
       "market_suffix": null,
       "status": "unresolved",
@@ -21712,808 +21638,805 @@
     "holding_symbol_to_position": {
       "000333.SZ": 0,
       "000660 KS": 1,
-      "000660.KS": 2,
-      "000725.SZ": 3,
-      "000831.SZ": 4,
-      "001309.SZ": 5,
-      "002008.SZ": 6,
-      "002028.SZ": 7,
-      "002142.SZ": 8,
-      "002281.SZ": 9,
-      "002371.SZ": 10,
-      "002384.SZ": 11,
-      "002463.SZ": 12,
-      "002475.SZ": 13,
-      "002594.SZ": 14,
-      "002916.SZ": 15,
-      "00386": 16,
-      "00388.HK": 17,
+      "000660.KQ": 2,
+      "000660.KS": 3,
+      "000725.SZ": 4,
+      "000831.SZ": 5,
+      "001309.SZ": 6,
+      "002008.SZ": 7,
+      "002028.SZ": 8,
+      "002142.SZ": 9,
+      "002281.SZ": 10,
+      "002371.SZ": 11,
+      "002384.SZ": 12,
+      "002463.SZ": 13,
+      "002475.SZ": 14,
+      "002594.SZ": 15,
+      "002916.SZ": 16,
+      "005930.KQ": 17,
       "005930.KS": 18,
       "0061.TW": 19,
       "006205.TW": 20,
       "006400.KS": 21,
       "00645.TW": 22,
-      "00700": 23,
-      "00752.TW": 24,
-      "00857": 25,
-      "00883": 26,
-      "009150 KS": 27,
-      "009150.KS": 28,
-      "00939": 29,
-      "00941": 30,
-      "01211": 31,
-      "012450.KS": 32,
-      "01299.HK": 33,
-      "01398": 34,
-      "017800.KS": 35,
-      "0220.HK": 36,
-      "02318": 37,
-      "02628": 38,
-      "0270.HK": 39,
-      "028260.KS": 40,
-      "0322.HK": 41,
-      "035420.KS": 42,
-      "03750": 43,
-      "03968": 44,
-      "03988": 45,
-      "051910.KS": 46,
-      "06690": 47,
-      "0700.HK": 48,
-      "0788.HK": 49,
-      "0823.HK": 50,
-      "095340 KS": 51,
-      "1102.TW": 52,
-      "1164.HK": 53,
-      "1216.TW": 54,
-      "1303.TW": 55,
-      "1306.T": 56,
-      "1308.HK": 57,
-      "1319.TW": 58,
-      "1402.TW": 59,
-      "1477.TW": 60,
-      "1488": 61,
-      "1504.TW": 62,
-      "1513.TW": 63,
-      "1560.TW": 64,
-      "1579.HK": 65,
-      "1590.TW": 66,
-      "1717.TW": 67,
-      "1802.TW": 68,
-      "1810.HK": 69,
-      "1908.HK": 70,
-      "1919.HK": 71,
-      "1928.T": 72,
-      "2002.TW": 73,
-      "2015.HK": 74,
-      "2027.TW": 75,
-      "2049.TW": 76,
-      "2059.TW": 77,
-      "2301.TW": 78,
-      "2303.TW": 79,
-      "2308.TW": 80,
-      "2313.TW": 81,
-      "2317.TW": 82,
-      "2327.TW": 83,
-      "2330.TW": 84,
-      "2337.TW": 85,
-      "2344.TW": 86,
-      "2345.TW": 87,
-      "2347.TW": 88,
-      "2353.TW": 89,
-      "2356.TW": 90,
-      "2357.TW": 91,
-      "2360.TW": 92,
-      "2368.TW": 93,
-      "2376.TW": 94,
-      "2377.TW": 95,
-      "2379.TW": 96,
-      "2382.TW": 97,
-      "2383.TW": 98,
-      "2385.TW": 99,
-      "2393.TW": 100,
-      "2395.TW": 101,
-      "2404.TW": 102,
-      "2408.TW": 103,
-      "2412.TW": 104,
-      "2439.TW": 105,
-      "2441.TW": 106,
-      "2449.TW": 107,
-      "2451.TW": 108,
-      "2454.TW": 109,
-      "2455.TW": 110,
-      "2458.TW": 111,
-      "2472.TW": 112,
-      "2474.TW": 113,
-      "2481.TW": 114,
-      "2510.HK": 115,
-      "2542.TW": 116,
-      "2603.TW": 117,
-      "2609.TW": 118,
-      "2610.TW": 119,
-      "2615.TW": 120,
-      "2618.TW": 121,
-      "2633.TW": 122,
-      "2637.TW": 123,
-      "2727.TW": 124,
-      "2768.T": 125,
-      "2801.T": 126,
-      "2827.HK": 127,
-      "2855.TW": 128,
-      "285A JP": 129,
-      "285A.T": 130,
-      "2880.TW": 131,
-      "2881.TW": 132,
-      "2882.TW": 133,
-      "2883.TW": 134,
-      "2884.TW": 135,
-      "2885.TW": 136,
-      "2886.TW": 137,
-      "2887.TW": 138,
-      "2890.TW": 139,
-      "2891.TW": 140,
-      "2892.TW": 141,
-      "2912.TW": 142,
-      "2914.T": 143,
-      "300014.SZ": 144,
-      "300059.SZ": 145,
-      "300124.SZ": 146,
-      "300136.SZ": 147,
-      "300274.SZ": 148,
-      "300308.SZ": 149,
-      "300394.SZ": 150,
-      "300408 CH": 151,
-      "3005.TW": 152,
-      "300502.SZ": 153,
-      "300604.SZ": 154,
-      "300750.SZ": 155,
-      "3008.TW": 156,
-      "300857.SZ": 157,
-      "301377 CH": 158,
-      "3014.TW": 159,
-      "3015.TW": 160,
-      "3017.TW": 161,
-      "3026.TW": 162,
-      "3033.TW": 163,
-      "3034.TW": 164,
-      "3036.TW": 165,
-      "3037.TW": 166,
-      "3044.TW": 167,
-      "3045.TW": 168,
-      "3081.TWO": 169,
-      "3090.TW": 170,
-      "3105.TWO": 171,
-      "3131.TWO": 172,
-      "3189.TW": 173,
-      "3211.TWO": 174,
-      "3227.TWO": 175,
-      "3231.TW": 176,
-      "3260.TWO": 177,
-      "3264.TWO": 178,
-      "3293.TWO": 179,
-      "3308 HK": 180,
-      "3311.HK": 181,
-      "3360.HK": 182,
-      "3376.TW": 183,
-      "3436.T": 184,
-      "3443.TW": 185,
-      "3450.TW": 186,
-      "3481.TW": 187,
-      "3529.TWO": 188,
-      "3533.TW": 189,
-      "3583.TW": 190,
-      "3653.TW": 191,
-      "3661.TW": 192,
-      "3665.TW": 193,
-      "3690.HK": 194,
-      "3702.TW": 195,
-      "3706.TW": 196,
-      "3711.TW": 197,
-      "373220.KS": 198,
-      "3998.HK": 199,
-      "402340.KS": 200,
-      "4062.T": 201,
-      "4063.T": 202,
-      "4180 JP": 203,
-      "4502.T": 204,
-      "4503.T": 205,
-      "4551.TW": 206,
-      "4746.TW": 207,
-      "4904.TW": 208,
-      "4938.TW": 209,
-      "4958.TW": 210,
-      "4966.TWO": 211,
-      "4979.TWO": 212,
-      "5274.TWO": 213,
-      "5289.TWO": 214,
-      "5347.TWO": 215,
-      "5401.T": 216,
-      "5434.TW": 217,
-      "5439.TWO": 218,
-      "5483.TWO": 219,
-      "5534.TW": 220,
-      "5536.TWO": 221,
-      "5801 JP": 222,
-      "5801.T": 223,
-      "5803.T": 224,
-      "5871.TW": 225,
-      "5876.TW": 226,
-      "5904.TWO": 227,
-      "600030.SS": 228,
-      "600031.SS": 229,
-      "600036.SS": 230,
-      "600111.SS": 231,
-      "600183.SS": 232,
-      "600259.SS": 233,
-      "600276.SS": 234,
-      "600392.SS": 235,
-      "600487.SS": 236,
-      "6005.TW": 237,
-      "600519.SS": 238,
-      "600887.SS": 239,
-      "600900.SS": 240,
-      "601012.SS": 241,
-      "601138.SS": 242,
-      "601166.SS": 243,
-      "601318.SS": 244,
-      "601888.SS": 245,
-      "601899.SS": 246,
-      "603259.SS": 247,
-      "603799.SS": 248,
-      "603986.SS": 249,
-      "603993": 250,
-      "6098.T": 251,
-      "6121.TWO": 252,
-      "6138.TWO": 253,
-      "6139.TW": 254,
-      "6146.T": 255,
-      "6147.TWO": 256,
-      "6187.TWO": 257,
-      "6191.TW": 258,
-      "6196.TW": 259,
-      "6206.TW": 260,
-      "6213.TW": 261,
-      "6223.TWO": 262,
-      "6239.TW": 263,
-      "6271.TW": 264,
-      "6273.T": 265,
-      "6274.TWO": 266,
-      "6278.TW": 267,
-      "6285.TW": 268,
-      "6301.T": 269,
-      "6383.T": 270,
-      "6409.TW": 271,
-      "6415.TW": 272,
-      "6435.TWO": 273,
-      "6442.TW": 274,
-      "6446.TW": 275,
-      "6488.TWO": 276,
-      "6501.T": 277,
-      "6503.T": 278,
-      "6510.TWO": 279,
-      "6515.TW": 280,
-      "6525.T": 281,
-      "6525.TW": 282,
-      "6531.TW": 283,
-      "6613.TWO": 284,
-      "6669.TW": 285,
-      "6691.TW": 286,
-      "6701.T": 287,
-      "6723.T": 288,
-      "6752.T": 289,
-      "6758.T": 290,
-      "6762.T": 291,
-      "6770.TW": 292,
-      "6789.TW": 293,
-      "6805.TW": 294,
-      "6831.TW": 295,
-      "6841.T": 296,
-      "6857.T": 297,
-      "6861.T": 298,
-      "6871 JP": 299,
-      "688008.SS": 300,
-      "688012.SS": 301,
-      "688041.SS": 302,
-      "688120.SS": 303,
-      "688256.SS": 304,
-      "688347": 305,
-      "688361.SS": 306,
-      "688498.SS": 307,
-      "6920.T": 308,
-      "6944.TW": 309,
-      "6954.T": 310,
-      "6963.T": 311,
-      "6976.T": 312,
-      "6981 JP": 313,
-      "6981.T": 314,
-      "6997 JP": 315,
-      "7011.T": 316,
-      "7202.T": 317,
-      "7203.T": 318,
-      "7267.T": 319,
-      "7459.T": 320,
-      "7729.T": 321,
-      "7735.T": 322,
-      "7750.TW": 323,
-      "7769.TW": 324,
-      "8001.T": 325,
-      "8002.T": 326,
-      "8015.T": 327,
-      "8016.TW": 328,
-      "8031.T": 329,
-      "8035.T": 330,
-      "8046.TW": 331,
-      "8053.T": 332,
-      "8058.T": 333,
-      "8069.TWO": 334,
-      "8081.TW": 335,
-      "8112.TW": 336,
-      "8150.TW": 337,
-      "8210.TW": 338,
-      "8299.TWO": 339,
-      "8306.T": 340,
-      "8309.T": 341,
-      "8316.T": 342,
-      "8358.TWO": 343,
-      "8411.T": 344,
-      "8464.TW": 345,
-      "8591.T": 346,
-      "8604.T": 347,
-      "8725.T": 348,
-      "8750.T": 349,
-      "8936.TWO": 350,
-      "8996.TW": 351,
-      "9101.T": 352,
-      "9104.T": 353,
-      "9107.T": 354,
-      "9502.T": 355,
-      "9866.HK": 356,
-      "9939.TW": 357,
-      "9941.TW": 358,
-      "9945.TW": 359,
-      "9958.TW": 360,
-      "9962.T": 361,
-      "9983.T": 362,
-      "9984.T": 363,
-      "9988.HK": 364,
-      "9999.HK": 365,
-      "AAPL": 366,
-      "ABBN.SW": 367,
-      "ABBV": 368,
-      "ABEV": 369,
-      "ABN.AS": 370,
-      "ABSI": 371,
-      "ABT": 372,
-      "ADBE": 373,
-      "ADI": 374,
-      "AEHR": 375,
-      "AEM": 376,
-      "AEM.TO": 377,
-      "AGNC": 378,
-      "AI.PA": 379,
-      "AIR.PA": 380,
-      "AIXA": 381,
-      "AJBU.SI": 382,
-      "AKAM": 383,
-      "ALAB": 384,
-      "ALB": 385,
-      "ALBPA": 386,
-      "ALLPH": 387,
-      "ALNY": 388,
-      "ALV.DE": 389,
-      "AMAT": 390,
-      "AMBA": 391,
-      "AMBQ": 392,
-      "AMCR": 393,
-      "AMD": 394,
-      "AMGN": 395,
-      "AMT": 396,
-      "AMUN.PA": 397,
-      "AMZN": 398,
-      "ANET": 399,
-      "APD": 400,
-      "APGE": 401,
-      "APH": 402,
-      "APLD": 403,
-      "APLE": 404,
-      "APP": 405,
-      "APPN": 406,
-      "ARE": 407,
-      "ARGX": 408,
-      "ARI": 409,
-      "ARQQ": 410,
-      "ARR": 411,
-      "ASML": 412,
-      "ASML.AS": 413,
-      "ASTS": 414,
-      "AUR": 415,
-      "AVAV": 416,
-      "AVGO": 417,
-      "AXISBANK.BO": 418,
-      "AXP": 419,
-      "AZN.L": 420,
-      "BABA": 421,
-      "BAC": 422,
-      "BAPA": 423,
-      "BAS.DE": 424,
-      "BAYN.DE": 425,
-      "BB.TO": 426,
-      "BBQ9": 427,
-      "BBVA.MC": 428,
-      "BE": 429,
-      "BEN": 430,
-      "BHARTIARTL.NS": 431,
-      "BHP.AX": 432,
-      "BIIB": 433,
-      "BISXX": 434,
-      "BLK": 435,
-      "BLLN": 436,
-      "BMPS.MI": 437,
-      "BMW.DE": 438,
-      "BNL": 439,
-      "BNTX": 440,
-      "BRK-B": 441,
-      "BTSG": 442,
-      "BWA": 443,
-      "BWXT": 444,
-      "BX": 445,
-      "BXMT": 446,
-      "C": 447,
-      "CAT": 448,
-      "CBRE": 449,
-      "CCC": 450,
-      "CCI": 451,
-      "CCO.TO": 452,
-      "CDNA": 453,
-      "CEG": 454,
-      "CEN.NZ": 455,
-      "CGNX": 456,
-      "CGON": 457,
-      "CIFR": 458,
-      "CIM": 459,
-      "CLNX.MC": 460,
-      "CME": 461,
-      "CMI": 462,
-      "COFPI": 463,
-      "COFPJ": 464,
-      "COHR": 465,
-      "COHU": 466,
-      "COIN": 467,
-      "COP": 468,
-      "CORZ": 469,
-      "CPN": 470,
-      "CRCL": 471,
-      "CRDO": 472,
-      "CRM": 473,
-      "CRSP": 474,
-      "CRWD": 475,
-      "CRWV": 476,
-      "CSCO": 477,
-      "CSX": 478,
-      "CTRE": 479,
-      "CVX": 480,
-      "CYTK": 481,
-      "DBRG": 482,
-      "DBX": 483,
-      "DDOG": 484,
-      "DE": 485,
-      "DLR": 486,
-      "DML.TO": 487,
-      "DNTH": 488,
-      "DOC": 489,
-      "DOCN": 490,
-      "DT": 491,
-      "DUK": 492,
-      "DUKPA": 493,
-      "DX": 494,
-      "DYL.AX": 495,
-      "EAT": 496,
-      "ECHO": 497,
-      "EDEN.PA": 498,
-      "EDPR.LS": 499,
-      "EMR": 500,
-      "ENLT.TA": 501,
-      "ENPH": 502,
-      "EOAN.DE": 503,
-      "EOG": 504,
-      "EQIX": 505,
-      "ERAS": 506,
-      "ETE.AT": 507,
-      "ETN": 508,
-      "FFIV": 509,
-      "FGXXX": 510,
-      "FLY": 511,
-      "FORM": 512,
-      "FORTUM.HE": 513,
-      "FRO": 514,
-      "FROG": 515,
-      "FSLR": 516,
-      "FSLY": 517,
-      "FTNT": 518,
-      "G1A.DE": 519,
-      "GD": 520,
-      "GDS": 521,
-      "GE": 522,
-      "GEV": 523,
-      "GH": 524,
-      "GILD": 525,
-      "GKOS": 526,
-      "GLW": 527,
-      "GM": 528,
-      "GMAB.CO": 529,
-      "GNL": 530,
-      "GNRC": 531,
-      "GNTX": 532,
-      "GOOG": 533,
-      "GOOGL": 534,
-      "GRMN": 535,
-      "GS": 536,
-      "GSAT": 537,
-      "GSPD": 538,
-      "HD": 539,
-      "HDFCBANK.NS": 540,
-      "HEXA-B.ST": 541,
-      "HIMX": 542,
-      "HMC": 543,
-      "HOOD": 544,
-      "HPEPC": 545,
-      "HPG.VN": 546,
-      "HQ": 547,
-      "HSBA.L": 548,
-      "HUBB": 549,
-      "HUT": 550,
-      "HWM": 551,
-      "IBE.MC": 552,
-      "IBM": 553,
-      "ICHR": 554,
-      "ICICIBANK.NS": 555,
-      "ICLN": 556,
-      "IFX": 557,
-      "IFX.DE": 558,
-      "ILMN": 559,
-      "INCY": 560,
-      "INFY.NS": 561,
-      "INSW": 562,
-      "INTC": 563,
-      "IOT": 564,
-      "IOVA": 565,
-      "IPN.PA": 566,
-      "IQMM": 567,
-      "IRDM": 568,
-      "IRM": 569,
-      "ISRG": 570,
-      "ITC.NS": 571,
-      "ITUB": 572,
-      "JBTM": 573,
-      "JCI": 574,
-      "JD": 575,
-      "JNJ": 576,
-      "JPM": 577,
-      "JPMPC": 578,
-      "JYEU.SI": 579,
-      "KAP": 580,
-      "KHC": 581,
-      "KIM": 582,
-      "KKRPD": 583,
-      "KLAC": 584,
-      "KMI": 585,
-      "KO": 586,
-      "KOPN": 587,
-      "KOTAKBANK.NS": 588,
-      "KTOS": 589,
-      "KYMR": 590,
-      "LCID": 591,
-      "LEU": 592,
-      "LGEN.L": 593,
-      "LHX": 594,
-      "LI": 595,
-      "LIN": 596,
-      "LITE": 597,
-      "LLY": 598,
-      "LQDW": 599,
-      "LRCX": 600,
-      "LT.NS": 601,
-      "LYC.AX": 602,
-      "MA": 603,
-      "MAERSK-B.CO": 604,
-      "MATX": 605,
-      "MCHPP": 606,
-      "MDB": 607,
-      "MEL.NZ": 608,
-      "MELI": 609,
-      "META": 610,
-      "MNG.L": 611,
-      "MO": 612,
-      "MOG-A": 613,
-      "MP": 614,
-      "MPC": 615,
-      "MPWR": 616,
-      "MRK": 617,
-      "MRNA": 618,
-      "MRVL": 619,
-      "MS": 620,
-      "MSFT": 621,
-      "MSN.VN": 622,
-      "MU": 623,
-      "NBIS": 624,
-      "NDX1.DE": 625,
-      "NEE": 626,
-      "NEM": 627,
-      "NESN.SW": 628,
-      "NET": 629,
-      "NFLX": 630,
-      "NG.L": 631,
-      "NICE": 632,
-      "NLY": 633,
-      "NOC": 634,
-      "NOVN.SW": 635,
-      "NOVT": 636,
-      "NOW": 637,
-      "NSC": 638,
-      "NTLA": 639,
-      "NTNX": 640,
-      "NTRA": 641,
-      "NTSK": 642,
-      "NU": 643,
-      "NUE": 644,
-      "NVDA": 645,
-      "NVT": 646,
-      "NXE.TO": 647,
-      "NXPI": 648,
-      "NXT.AX": 649,
-      "O": 650,
-      "OBDC": 651,
-      "OII": 652,
-      "OKE": 653,
-      "OKLO": 654,
-      "OKTA": 655,
-      "ONB": 656,
-      "ORCL": 657,
-      "ORCLPD": 658,
-      "ORKA": 659,
-      "P": 660,
-      "PANW": 661,
-      "PAYC": 662,
-      "PD": 663,
-      "PDD": 664,
-      "PDN.AX": 665,
-      "PEG": 666,
-      "PEP": 667,
-      "PFE": 668,
-      "PG": 669,
-      "PHP.L": 670,
-      "PI": 671,
-      "PK": 672,
-      "PL": 673,
-      "PLD": 674,
-      "PLTR": 675,
-      "PM": 676,
-      "PRY.MI": 677,
-      "PSA": 678,
-      "PSNL": 679,
-      "PSX": 680,
-      "PTGX": 681,
-      "PWR": 682,
-      "QCOM": 683,
-      "QLYS": 684,
-      "QRVO": 685,
-      "RDW": 686,
-      "REGN": 687,
-      "RELIANCE.NS": 688,
-      "RIOT": 689,
-      "RITM": 690,
-      "RIVN": 691,
-      "RKLB": 692,
-      "RLJ": 693,
-      "ROK": 694,
-      "ROP.SW": 695,
-      "ROST": 696,
-      "RTX": 697,
-      "RVMD": 698,
-      "RWE.DE": 699,
-      "RXRX": 700,
-      "RY": 701,
-      "S": 702,
-      "SAIL": 703,
-      "SAN.MC": 704,
-      "SAP.DE": 705,
-      "SATL": 706,
-      "SBAC": 707,
-      "SBIN.NS": 708,
-      "SDLF.L": 709,
-      "SHEL.L": 710,
-      "SHOP": 711,
-      "SHW": 712,
-      "SIE.DE": 713,
-      "SIRI": 714,
-      "SLAB": 715,
-      "SLB": 716,
-      "SMCI": 717,
-      "SNDK": 718,
-      "SNOW": 719,
-      "SO": 720,
-      "SPCX": 721,
-      "SPG": 722,
-      "SPGI": 723,
-      "SPIR": 724,
-      "SQM": 725,
-      "SSI.VN": 726,
-      "STB.VN": 727,
-      "STMPA.PA": 728,
-      "STRC": 729,
-      "STWD": 730,
-      "STX": 731,
-      "SU.PA": 732,
-      "SYF": 733,
-      "SYRE": 734,
-      "TEM": 735,
-      "TENB": 736,
-      "TER": 737,
-      "TLTW": 738,
-      "TM": 739,
-      "TMO": 740,
-      "TPA": 741,
-      "TPC": 742,
-      "TPEIR.AT": 743,
-      "TRGP": 744,
-      "TRMB": 745,
-      "TRV": 746,
-      "TSEM": 747,
-      "TSEM.TA": 748,
-      "TSLA": 749,
-      "TSM": 750,
-      "TT": 751,
-      "TTE.PA": 752,
-      "TTWO": 753,
-      "TWLO": 754,
-      "TWO": 755,
-      "TWST": 756,
-      "TXG": 757,
-      "TXN": 758,
-      "U-U.TO": 759,
-      "UBER": 760,
-      "UEC": 761,
-      "UMBF": 762,
-      "UNH": 763,
-      "UNI.MI": 764,
-      "UNIT": 765,
-      "UNP": 766,
-      "UPST": 767,
-      "URI": 768,
-      "V": 769,
-      "VCB.VN": 770,
-      "VCK.VN": 771,
-      "VHM.VN": 772,
-      "VIC.VN": 773,
-      "VICI": 774,
-      "VIX.VN": 775,
-      "VLO": 776,
-      "VNM.VN": 777,
-      "VOW3.DE": 778,
-      "VRNS": 779,
-      "VRT": 780,
-      "VRTPX": 781,
-      "VRTX": 782,
-      "VSAT": 783,
-      "VTR": 784,
-      "VWS.CO": 785,
-      "VZ": 786,
-      "WDAY": 787,
-      "WDC": 788,
-      "WELL": 789,
-      "WFC": 790,
-      "WFCPA": 791,
-      "WFCPZ": 792,
-      "WGS": 793,
-      "WMB": 794,
-      "WMT": 795,
-      "WSM": 796,
-      "WULF": 797,
-      "XBOX": 798,
-      "XOM": 799,
-      "XPEV": 800,
-      "XYZ": 801,
-      "YCA.L": 802,
-      "ZS": 803
+      "00752.TW": 23,
+      "009150 KS": 24,
+      "009150.KQ": 25,
+      "009150.KS": 26,
+      "00939": 27,
+      "01211": 28,
+      "012450.KS": 29,
+      "01398": 30,
+      "017800.KS": 31,
+      "0220.HK": 32,
+      "02318": 33,
+      "0270.HK": 34,
+      "028260.KS": 35,
+      "0322.HK": 36,
+      "035420.KS": 37,
+      "03750": 38,
+      "03988": 39,
+      "051910.KS": 40,
+      "06690": 41,
+      "0700.HK": 42,
+      "0788.HK": 43,
+      "0823.HK": 44,
+      "095340 KS": 45,
+      "1102.TW": 46,
+      "1164.HK": 47,
+      "1216.TW": 48,
+      "1301.TW": 49,
+      "1303.TW": 50,
+      "1306.T": 51,
+      "1308.HK": 52,
+      "1319.TW": 53,
+      "1402.TW": 54,
+      "1477.TW": 55,
+      "1488": 56,
+      "1504.TW": 57,
+      "1513.TW": 58,
+      "1560.TW": 59,
+      "1579.HK": 60,
+      "1590.TW": 61,
+      "1717.TW": 62,
+      "1810.HK": 63,
+      "1908.HK": 64,
+      "1919.HK": 65,
+      "1928.T": 66,
+      "2002.TW": 67,
+      "2015.HK": 68,
+      "2027.TW": 69,
+      "2049.TW": 70,
+      "2059.TW": 71,
+      "2301.TW": 72,
+      "2303.TW": 73,
+      "2308.TW": 74,
+      "2313.TW": 75,
+      "2317.TW": 76,
+      "2327.TW": 77,
+      "2330.TW": 78,
+      "2337.TW": 79,
+      "2344.TW": 80,
+      "2345.TW": 81,
+      "2347.TW": 82,
+      "2353.TW": 83,
+      "2356.TW": 84,
+      "2357.TW": 85,
+      "2360.TW": 86,
+      "2368.TW": 87,
+      "2376.TW": 88,
+      "2377.TW": 89,
+      "2379.TW": 90,
+      "2382.TW": 91,
+      "2383.TW": 92,
+      "2385.TW": 93,
+      "2393.TW": 94,
+      "2395.TW": 95,
+      "2404.TW": 96,
+      "2408.TW": 97,
+      "2412.TW": 98,
+      "2439.TW": 99,
+      "2441.TW": 100,
+      "2449.TW": 101,
+      "2451.TW": 102,
+      "2454.TW": 103,
+      "2455.TW": 104,
+      "2458.TW": 105,
+      "2472.TW": 106,
+      "2474.TW": 107,
+      "2481.TW": 108,
+      "2510.HK": 109,
+      "2542.TW": 110,
+      "2603.TW": 111,
+      "2609.TW": 112,
+      "2610.TW": 113,
+      "2615.TW": 114,
+      "2618.TW": 115,
+      "2633.TW": 116,
+      "2637.TW": 117,
+      "2727.TW": 118,
+      "2768.T": 119,
+      "2801.T": 120,
+      "2827.HK": 121,
+      "2855.TW": 122,
+      "285A JP": 123,
+      "285A.T": 124,
+      "2880.TW": 125,
+      "2881.TW": 126,
+      "2882.TW": 127,
+      "2883.TW": 128,
+      "2884.TW": 129,
+      "2885.TW": 130,
+      "2886.TW": 131,
+      "2887.TW": 132,
+      "2890.TW": 133,
+      "2891.TW": 134,
+      "2892.TW": 135,
+      "2912.TW": 136,
+      "2914.T": 137,
+      "300014.SZ": 138,
+      "300059.SZ": 139,
+      "300124.SZ": 140,
+      "300136.SZ": 141,
+      "300274.SZ": 142,
+      "300308.SZ": 143,
+      "300394.SZ": 144,
+      "300408 CH": 145,
+      "3005.TW": 146,
+      "300502.SZ": 147,
+      "300604.SZ": 148,
+      "300750.SZ": 149,
+      "3008.TW": 150,
+      "300857.SZ": 151,
+      "301377 CH": 152,
+      "3014.TW": 153,
+      "3015.TW": 154,
+      "3017.TW": 155,
+      "3026.TW": 156,
+      "3033.TW": 157,
+      "3034.TW": 158,
+      "3036.TW": 159,
+      "3037.TW": 160,
+      "3044.TW": 161,
+      "3045.TW": 162,
+      "3081.TWO": 163,
+      "3090.TW": 164,
+      "3105.TWO": 165,
+      "3131.TWO": 166,
+      "3189.TW": 167,
+      "3211.TWO": 168,
+      "3227.TWO": 169,
+      "3231.TW": 170,
+      "3260.TWO": 171,
+      "3264.TWO": 172,
+      "3293.TWO": 173,
+      "3308 HK": 174,
+      "3311.HK": 175,
+      "3360.HK": 176,
+      "3376.TW": 177,
+      "3436.T": 178,
+      "3443.TW": 179,
+      "3450.TW": 180,
+      "3481.TW": 181,
+      "3529.TWO": 182,
+      "3533.TW": 183,
+      "3583.TW": 184,
+      "3653.TW": 185,
+      "3661.TW": 186,
+      "3665.TW": 187,
+      "3690.HK": 188,
+      "3702.TW": 189,
+      "3706.TW": 190,
+      "3711.TW": 191,
+      "373220.KS": 192,
+      "3998.HK": 193,
+      "402340.KS": 194,
+      "4062.T": 195,
+      "4063.T": 196,
+      "4180 JP": 197,
+      "4502.T": 198,
+      "4503.T": 199,
+      "4551.TW": 200,
+      "4746.TW": 201,
+      "4904.TW": 202,
+      "4938.TW": 203,
+      "4958.TW": 204,
+      "4966.TWO": 205,
+      "4979.TWO": 206,
+      "5274.TWO": 207,
+      "5289.TWO": 208,
+      "5347.TWO": 209,
+      "5401.T": 210,
+      "5434.TW": 211,
+      "5439.TWO": 212,
+      "5483.TWO": 213,
+      "5534.TW": 214,
+      "5536.TWO": 215,
+      "5801 JP": 216,
+      "5801.T": 217,
+      "5803.T": 218,
+      "5871.TW": 219,
+      "5876.TW": 220,
+      "5904.TWO": 221,
+      "600036.SS": 222,
+      "600111.SS": 223,
+      "600183.SS": 224,
+      "600259.SS": 225,
+      "600276.SS": 226,
+      "600392.SS": 227,
+      "600487.SS": 228,
+      "6005.TW": 229,
+      "600519.SS": 230,
+      "600900.SS": 231,
+      "601138.SS": 232,
+      "601318.SS": 233,
+      "601899.SS": 234,
+      "603259.SS": 235,
+      "603799.SS": 236,
+      "603986.SS": 237,
+      "603993": 238,
+      "6098.T": 239,
+      "6121.TWO": 240,
+      "6138.TWO": 241,
+      "6139.TW": 242,
+      "6146.T": 243,
+      "6147.TWO": 244,
+      "6187.TWO": 245,
+      "6191.TW": 246,
+      "6196.TW": 247,
+      "6206.TW": 248,
+      "6213.TW": 249,
+      "6223.TWO": 250,
+      "6239.TW": 251,
+      "6271.TW": 252,
+      "6273.T": 253,
+      "6274.TWO": 254,
+      "6278.TW": 255,
+      "6285.TW": 256,
+      "6301.T": 257,
+      "6383.T": 258,
+      "6409.TW": 259,
+      "6415.TW": 260,
+      "6435.TWO": 261,
+      "6442.TW": 262,
+      "6446.TW": 263,
+      "6488.TWO": 264,
+      "6501.T": 265,
+      "6503.T": 266,
+      "6510.TWO": 267,
+      "6515.TW": 268,
+      "6525.T": 269,
+      "6525.TW": 270,
+      "6531.TW": 271,
+      "6613.TWO": 272,
+      "6669.TW": 273,
+      "6691.TW": 274,
+      "6701.T": 275,
+      "6723.T": 276,
+      "6752.T": 277,
+      "6758.T": 278,
+      "6762.T": 279,
+      "6770.TW": 280,
+      "6789.TW": 281,
+      "6805.TW": 282,
+      "6831.TW": 283,
+      "6841.T": 284,
+      "6857.T": 285,
+      "6861.T": 286,
+      "6871 JP": 287,
+      "688008.SS": 288,
+      "688012.SS": 289,
+      "688041.SS": 290,
+      "688120.SS": 291,
+      "688256.SS": 292,
+      "688347": 293,
+      "688361.SS": 294,
+      "688498.SS": 295,
+      "6920.T": 296,
+      "6944.TW": 297,
+      "6954.T": 298,
+      "6963.T": 299,
+      "6976.T": 300,
+      "6981 JP": 301,
+      "6981.T": 302,
+      "6997 JP": 303,
+      "7011.T": 304,
+      "7202.T": 305,
+      "7203.T": 306,
+      "7267.T": 307,
+      "7459.T": 308,
+      "7729.T": 309,
+      "7735.T": 310,
+      "7750.TW": 311,
+      "7769.TW": 312,
+      "8001.T": 313,
+      "8002.T": 314,
+      "8015.T": 315,
+      "8016.TW": 316,
+      "8031.T": 317,
+      "8035.T": 318,
+      "8046.TW": 319,
+      "8053.T": 320,
+      "8058.T": 321,
+      "8069.TWO": 322,
+      "8081.TW": 323,
+      "8112.TW": 324,
+      "8150.TW": 325,
+      "8210.TW": 326,
+      "8299.TWO": 327,
+      "8306.T": 328,
+      "8309.T": 329,
+      "8316.T": 330,
+      "8358.TWO": 331,
+      "8411.T": 332,
+      "8464.TW": 333,
+      "8591.T": 334,
+      "8604.T": 335,
+      "8725.T": 336,
+      "8750.T": 337,
+      "8936.TWO": 338,
+      "8996.TW": 339,
+      "9101.T": 340,
+      "9104.T": 341,
+      "9107.T": 342,
+      "9502.T": 343,
+      "9866.HK": 344,
+      "9939.TW": 345,
+      "9941.TW": 346,
+      "9945.TW": 347,
+      "9958.TW": 348,
+      "9962.T": 349,
+      "9983.T": 350,
+      "9984.T": 351,
+      "9988.HK": 352,
+      "9999.HK": 353,
+      "AAPL": 354,
+      "ABBN.SW": 355,
+      "ABBV": 356,
+      "ABEV": 357,
+      "ABN.AS": 358,
+      "ABSI": 359,
+      "ABT": 360,
+      "ADBE": 361,
+      "ADI": 362,
+      "AEHR": 363,
+      "AEM": 364,
+      "AEM.TO": 365,
+      "AGNC": 366,
+      "AI.PA": 367,
+      "AIR.PA": 368,
+      "AIXA": 369,
+      "AJBU.SI": 370,
+      "AKAM": 371,
+      "ALAB": 372,
+      "ALB": 373,
+      "ALBPA": 374,
+      "ALLPH": 375,
+      "ALNY": 376,
+      "ALV.DE": 377,
+      "AMAT": 378,
+      "AMBA": 379,
+      "AMBQ": 380,
+      "AMCR": 381,
+      "AMD": 382,
+      "AMGN": 383,
+      "AMT": 384,
+      "AMUN.PA": 385,
+      "AMZN": 386,
+      "ANET": 387,
+      "APD": 388,
+      "APGE": 389,
+      "APH": 390,
+      "APLD": 391,
+      "APLE": 392,
+      "APP": 393,
+      "APPN": 394,
+      "ARE": 395,
+      "ARGX": 396,
+      "ARI": 397,
+      "ARQQ": 398,
+      "ARR": 399,
+      "ASML": 400,
+      "ASML.AS": 401,
+      "ASTS": 402,
+      "ATO": 403,
+      "AUR": 404,
+      "AVAV": 405,
+      "AVGO": 406,
+      "AXISBANK.BO": 407,
+      "AXP": 408,
+      "AZN.L": 409,
+      "BABA": 410,
+      "BAC": 411,
+      "BAPA": 412,
+      "BAS.DE": 413,
+      "BAYN.DE": 414,
+      "BB.TO": 415,
+      "BBVA.MC": 416,
+      "BE": 417,
+      "BEN": 418,
+      "BHARTIARTL.NS": 419,
+      "BHP.AX": 420,
+      "BIIB": 421,
+      "BISXX": 422,
+      "BLK": 423,
+      "BLLN": 424,
+      "BMPS.MI": 425,
+      "BMW.DE": 426,
+      "BNL": 427,
+      "BNTX": 428,
+      "BRK-B": 429,
+      "BTSG": 430,
+      "BWA": 431,
+      "BWXT": 432,
+      "BX": 433,
+      "BXMT": 434,
+      "C": 435,
+      "CASY": 436,
+      "CAT": 437,
+      "CBRE": 438,
+      "CCC": 439,
+      "CCI": 440,
+      "CCO.TO": 441,
+      "CDNA": 442,
+      "CEG": 443,
+      "CEN.NZ": 444,
+      "CGNX": 445,
+      "CGON": 446,
+      "CIFR": 447,
+      "CIM": 448,
+      "CLNX.MC": 449,
+      "CME": 450,
+      "CMI": 451,
+      "COFPI": 452,
+      "COFPJ": 453,
+      "COHR": 454,
+      "COHU": 455,
+      "COIN": 456,
+      "COP": 457,
+      "CORZ": 458,
+      "CPN": 459,
+      "CRCL": 460,
+      "CRDO": 461,
+      "CRM": 462,
+      "CRSP": 463,
+      "CRWD": 464,
+      "CRWV": 465,
+      "CSCO": 466,
+      "CSX": 467,
+      "CTRE": 468,
+      "CVX": 469,
+      "CYTK": 470,
+      "DBRG": 471,
+      "DBX": 472,
+      "DDOG": 473,
+      "DE": 474,
+      "DLR": 475,
+      "DML.TO": 476,
+      "DNTH": 477,
+      "DOC": 478,
+      "DOCN": 479,
+      "DT": 480,
+      "DUK": 481,
+      "DUKPA": 482,
+      "DX": 483,
+      "DYL.AX": 484,
+      "EAT": 485,
+      "ECHO": 486,
+      "EDEN.PA": 487,
+      "EDPR.LS": 488,
+      "EME": 489,
+      "EMR": 490,
+      "ENLT.TA": 491,
+      "ENPH": 492,
+      "EOAN.DE": 493,
+      "EOG": 494,
+      "EQIX": 495,
+      "ERAS": 496,
+      "ETE.AT": 497,
+      "ETN": 498,
+      "EXE": 499,
+      "FERG": 500,
+      "FFIV": 501,
+      "FGXXX": 502,
+      "FLY": 503,
+      "FORM": 504,
+      "FORTUM.HE": 505,
+      "FRO": 506,
+      "FROG": 507,
+      "FSLR": 508,
+      "FTNT": 509,
+      "G1A.DE": 510,
+      "GD": 511,
+      "GDS": 512,
+      "GE": 513,
+      "GEV": 514,
+      "GH": 515,
+      "GILD": 516,
+      "GKOS": 517,
+      "GLW": 518,
+      "GM": 519,
+      "GMAB.CO": 520,
+      "GNL": 521,
+      "GNRC": 522,
+      "GNTX": 523,
+      "GOOG": 524,
+      "GOOGL": 525,
+      "GRMN": 526,
+      "GS": 527,
+      "GSAT": 528,
+      "GSPD": 529,
+      "HD": 530,
+      "HDFCBANK.NS": 531,
+      "HEXA-B.ST": 532,
+      "HIMX": 533,
+      "HMC": 534,
+      "HOOD": 535,
+      "HPEPC": 536,
+      "HPG.VN": 537,
+      "HQ": 538,
+      "HSBA.L": 539,
+      "HUBB": 540,
+      "HUT": 541,
+      "HWM": 542,
+      "IBE.MC": 543,
+      "IBM": 544,
+      "ICHR": 545,
+      "ICICIBANK.NS": 546,
+      "ICLN": 547,
+      "IFX": 548,
+      "IFX.DE": 549,
+      "ILMN": 550,
+      "INCY": 551,
+      "INFY.NS": 552,
+      "INSW": 553,
+      "INTC": 554,
+      "IOT": 555,
+      "IOVA": 556,
+      "IPN.PA": 557,
+      "IQMM": 558,
+      "IRDM": 559,
+      "IRM": 560,
+      "ISRG": 561,
+      "ITC.NS": 562,
+      "ITUB": 563,
+      "JBL": 564,
+      "JBTM": 565,
+      "JCI": 566,
+      "JD": 567,
+      "JNJ": 568,
+      "JPM": 569,
+      "JPMPC": 570,
+      "JYEU.SI": 571,
+      "KAP": 572,
+      "KHC": 573,
+      "KIM": 574,
+      "KKRPD": 575,
+      "KLAC": 576,
+      "KMI": 577,
+      "KO": 578,
+      "KOPN": 579,
+      "KOTAKBANK.NS": 580,
+      "KTOS": 581,
+      "KYMR": 582,
+      "LCID": 583,
+      "LEU": 584,
+      "LGEN.L": 585,
+      "LHX": 586,
+      "LI": 587,
+      "LIN": 588,
+      "LITE": 589,
+      "LLY": 590,
+      "LNG": 591,
+      "LQDW": 592,
+      "LRCX": 593,
+      "LT.NS": 594,
+      "LYC.AX": 595,
+      "MA": 596,
+      "MAERSK-B.CO": 597,
+      "MATX": 598,
+      "MCHPP": 599,
+      "MDB": 600,
+      "MEL.NZ": 601,
+      "MELI": 602,
+      "META": 603,
+      "MNG.L": 604,
+      "MO": 605,
+      "MOG-A": 606,
+      "MP": 607,
+      "MPC": 608,
+      "MPWR": 609,
+      "MRK": 610,
+      "MRNA": 611,
+      "MRVL": 612,
+      "MS": 613,
+      "MSFT": 614,
+      "MSN.VN": 615,
+      "MU": 616,
+      "NBIS": 617,
+      "NDX1.DE": 618,
+      "NEE": 619,
+      "NEM": 620,
+      "NESN.SW": 621,
+      "NET": 622,
+      "NFLX": 623,
+      "NG.L": 624,
+      "NICE": 625,
+      "NLY": 626,
+      "NOC": 627,
+      "NOVN.SW": 628,
+      "NOVT": 629,
+      "NOW": 630,
+      "NRG": 631,
+      "NSC": 632,
+      "NTLA": 633,
+      "NTNX": 634,
+      "NTRA": 635,
+      "NTSK": 636,
+      "NU": 637,
+      "NUE": 638,
+      "NVDA": 639,
+      "NVT": 640,
+      "NXE.TO": 641,
+      "NXPI": 642,
+      "NXT.AX": 643,
+      "O": 644,
+      "OBDC": 645,
+      "OII": 646,
+      "OKE": 647,
+      "OKLO": 648,
+      "OKTA": 649,
+      "OMC": 650,
+      "ONB": 651,
+      "ORCL": 652,
+      "ORCLPD": 653,
+      "ORKA": 654,
+      "P": 655,
+      "PANW": 656,
+      "PAYC": 657,
+      "PD": 658,
+      "PDD": 659,
+      "PDN.AX": 660,
+      "PEG": 661,
+      "PEP": 662,
+      "PFE": 663,
+      "PG": 664,
+      "PHP.L": 665,
+      "PI": 666,
+      "PK": 667,
+      "PL": 668,
+      "PLD": 669,
+      "PLTR": 670,
+      "PM": 671,
+      "PRY.MI": 672,
+      "PSA": 673,
+      "PSNL": 674,
+      "PSX": 675,
+      "PTGX": 676,
+      "PWR": 677,
+      "QCOM": 678,
+      "QLYS": 679,
+      "QRVO": 680,
+      "RDW": 681,
+      "REGN": 682,
+      "RELIANCE.NS": 683,
+      "RIOT": 684,
+      "RITM": 685,
+      "RIVN": 686,
+      "RKLB": 687,
+      "RLJ": 688,
+      "ROK": 689,
+      "ROP.SW": 690,
+      "ROST": 691,
+      "RTX": 692,
+      "RVMD": 693,
+      "RWE.DE": 694,
+      "RXRX": 695,
+      "RY": 696,
+      "S": 697,
+      "SAIL": 698,
+      "SAN.MC": 699,
+      "SAP.DE": 700,
+      "SATL": 701,
+      "SBAC": 702,
+      "SBIN.NS": 703,
+      "SDLF.L": 704,
+      "SHEL.L": 705,
+      "SHOP": 706,
+      "SHW": 707,
+      "SIE.DE": 708,
+      "SIRI": 709,
+      "SLAB": 710,
+      "SLB": 711,
+      "SMCI": 712,
+      "SNDK": 713,
+      "SNOW": 714,
+      "SO": 715,
+      "SPCX": 716,
+      "SPG": 717,
+      "SPGI": 718,
+      "SPIR": 719,
+      "SQM": 720,
+      "SSI.VN": 721,
+      "STB.VN": 722,
+      "STMPA.PA": 723,
+      "STRC": 724,
+      "STWD": 725,
+      "STX": 726,
+      "SU.PA": 727,
+      "SW": 728,
+      "SYF": 729,
+      "SYRE": 730,
+      "TEM": 731,
+      "TENB": 732,
+      "TER": 733,
+      "TLTW": 734,
+      "TM": 735,
+      "TMO": 736,
+      "TPA": 737,
+      "TPC": 738,
+      "TPEIR.AT": 739,
+      "TPR": 740,
+      "TRGP": 741,
+      "TRMB": 742,
+      "TRV": 743,
+      "TSEM": 744,
+      "TSEM.TA": 745,
+      "TSLA": 746,
+      "TSM": 747,
+      "TT": 748,
+      "TTE.PA": 749,
+      "TTWO": 750,
+      "TWLO": 751,
+      "TWO": 752,
+      "TWST": 753,
+      "TXG": 754,
+      "TXN": 755,
+      "U-U.TO": 756,
+      "UBER": 757,
+      "UEC": 758,
+      "UMBF": 759,
+      "UNH": 760,
+      "UNI.MI": 761,
+      "UNP": 762,
+      "UPST": 763,
+      "URI": 764,
+      "USFD": 765,
+      "V": 766,
+      "VCB.VN": 767,
+      "VCK.VN": 768,
+      "VHM.VN": 769,
+      "VIC.VN": 770,
+      "VICI": 771,
+      "VIX.VN": 772,
+      "VLO": 773,
+      "VNM.VN": 774,
+      "VOW3.DE": 775,
+      "VRNS": 776,
+      "VRT": 777,
+      "VRTPX": 778,
+      "VRTX": 779,
+      "VSAT": 780,
+      "VTR": 781,
+      "VWS.CO": 782,
+      "VZ": 783,
+      "WDAY": 784,
+      "WDC": 785,
+      "WELL": 786,
+      "WFC": 787,
+      "WFCPA": 788,
+      "WFCPZ": 789,
+      "WGS": 790,
+      "WMB": 791,
+      "WMT": 792,
+      "WSM": 793,
+      "WULF": 794,
+      "XBOX": 795,
+      "XOM": 796,
+      "XPEV": 797,
+      "XYZ": 798,
+      "YCA.L": 799,
+      "ZS": 800
     },
     "company_id_to_holding_symbols": {
       "company:US-CIK0000001800": [
@@ -22530,6 +22453,9 @@
       ],
       "company:US-CIK0000003453": [
         "MATX"
+      ],
+      "company:US-CIK0000003570": [
+        "LNG"
       ],
       "company:US-CIK0000004281": [
         "HWM"
@@ -22560,6 +22486,9 @@
       ],
       "company:US-CIK0000026172": [
         "CMI"
+      ],
+      "company:US-CIK0000029989": [
+        "OMC"
       ],
       "company:US-CIK0000032604": [
         "EMR"
@@ -22648,6 +22577,9 @@
       "company:US-CIK0000104169": [
         "WMT"
       ],
+      "company:US-CIK0000105634": [
+        "EME"
+      ],
       "company:US-CIK0000106040": [
         "WDC"
       ],
@@ -22708,8 +22640,14 @@
       "company:US-CIK0000726728": [
         "O"
       ],
+      "company:US-CIK0000726958": [
+        "CASY"
+      ],
       "company:US-CIK0000731766": [
         "UNH"
+      ],
+      "company:US-CIK0000731802": [
+        "ATO"
       ],
       "company:US-CIK0000732712": [
         "VZ"
@@ -22798,8 +22736,14 @@
       "company:US-CIK0000886982": [
         "GS"
       ],
+      "company:US-CIK0000895126": [
+        "EXE"
+      ],
       "company:US-CIK0000895421": [
         "MS"
+      ],
+      "company:US-CIK0000898293": [
+        "JBL"
       ],
       "company:US-CIK0000907654": [
         "ORKA"
@@ -22833,6 +22777,9 @@
       ],
       "company:US-CIK0001003935": [
         "NICE"
+      ],
+      "company:US-CIK0001013871": [
+        "NRG"
       ],
       "company:US-CIK0001018724": [
         "AMZN"
@@ -22941,6 +22888,9 @@
       ],
       "company:US-CIK0001114995": [
         "PI"
+      ],
+      "company:US-CIK0001116132": [
+        "TPR"
       ],
       "company:US-CIK0001121788": [
         "GRMN"
@@ -23149,9 +23099,6 @@
       "company:US-CIK0001513845": [
         "NBIS"
       ],
-      "company:US-CIK0001517413": [
-        "FSLY"
-      ],
       "company:US-CIK0001526113": [
         "GNL"
       ],
@@ -23278,6 +23225,9 @@
       ],
       "company:US-CIK0001664703": [
         "BE"
+      ],
+      "company:US-CIK0001665918": [
+        "USFD"
       ],
       "company:US-CIK0001672688": [
         "ABSI"
@@ -23446,6 +23396,12 @@
       ],
       "company:US-CIK0001996810": [
         "GEV"
+      ],
+      "company:US-CIK0002005951": [
+        "SW"
+      ],
+      "company:US-CIK0002011641": [
+        "FERG"
       ],
       "company:US-CIK0002012383": [
         "BLK"
