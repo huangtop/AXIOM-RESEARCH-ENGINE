@@ -144,71 +144,9 @@ class ExecutionStatus(StrEnum):
     skipped = "skipped"
 
 
-class ValuationExecution(StrictModel):
-    execution_id: str
-    valuation_snapshot_id: str
-    company_id: str
-    security_id: str
-    scenario_id: str
-    model_type: str
-    model_version: str
-    input_refs: list[str]
-    input_hash: str
-    started_at: datetime
-    completed_at: datetime
-    status: ExecutionStatus
-    created_snapshot: bool
-    warnings: list[str] = Field(default_factory=list)
-
-    @model_validator(mode="after")
-    def validate_timing(self) -> "ValuationExecution":
-        if self.completed_at < self.started_at:
-            raise ValueError("completed_at cannot precede started_at")
-        return self
 
 
-class ValuationSnapshot(StrictModel):
-    valuation_snapshot_id: str
-    company_id: str
-    security_id: str
-    scenario_id: str
-    research_period: str
-    revision: int
-    model_type: str
-    model_version: str
-    input_hash: str
-    input_refs: list[str]
-    as_of_date: date
-    currency: str
-    fair_value_per_share: float
-    market_price: float
-    upside: float
-    model_inputs: dict[str, float] = Field(default_factory=dict)
-    model_outputs: dict[str, float] = Field(default_factory=dict)
-    confidence: float = Field(default=0.5, ge=0, le=1)
 
 
-class ValuationBookEntry(StrictModel):
-    model_type: str
-    applicability: ModelApplicability
-    priority: int
-    blend_weight: float | None = Field(default=None, ge=0)
-    snapshot_id: str | None = None
-    status: str
-    fair_value_per_share: float | None = None
-    upside: float | None = None
-    confidence: float | None = None
-    reason_zh_tw: str
-    warnings: list[str] = Field(default_factory=list)
 
 
-class ValuationBook(StrictModel):
-    valuation_book_id: str
-    company_id: str
-    security_id: str
-    scenario_id: str
-    as_of_date: date
-    profile_ids: list[str]
-    entries: list[ValuationBookEntry]
-    blended_fair_value: float | None = None
-    blended_upside: float | None = None

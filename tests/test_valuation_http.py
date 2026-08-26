@@ -1,22 +1,7 @@
 import io
 import json
-from datetime import date
-from decimal import Decimal
 
-from axiom_engine.previous_close import DailyClose
-from axiom_engine.valuation_api import LegacyValuationAPIService
 from axiom_engine.valuation_http import ValuationWSGIApp
-
-
-class CloseProvider:
-    def previous_close(self, symbol, *, as_of=None):
-        return DailyClose(
-            symbol,
-            date(2026, 7, 21),
-            Decimal("205.47"),
-            "USD",
-            "America/New_York",
-        )
 
 
 def call(app, method, path, payload=None):
@@ -42,34 +27,47 @@ def test_health():
     assert observed["status"] == "200 OK"
     assert body == {"status": "ok"}
 
+class UnifiedFullMarketStub:
+    def get(self, symbol):
+        return {
+            "valuation": {
+                "unified_contract": {
+                    "contract_version": "unified-valuation.v1",
+                    "symbol": symbol,
+                    "headline": {
+                        "base_fair_value": "123.45",
+                    },
+                }
+            }
+        }
 
-def test_debug_legacy_parity_endpoint():
+
+class CoverageStub:
+    def require_public(self, symbol, capability=None):
+        return None
+
+
+def test_unified_valuation_endpoint_uses_full_market_contract():
     app = ValuationWSGIApp(
-        legacy_service=LegacyValuationAPIService(CloseProvider())
+        full_market_service=UnifiedFullMarketStub(),
+        coverage_service=CoverageStub(),
     )
     observed, body = call(
         app,
         "POST",
-        "/v1/debug/valuations/legacy-parity",
-        {
-            "symbol": "NVDA",
-            "research_payload": {
-                "market_consensus_eps_forward": 6,
-                "market_consensus_eps_current": 4,
-                "growth_estimate": 0.3,
-            },
-        },
+        "/v1/valuations",
+        {"symbol": "NVDA"},
     )
-
     assert observed["status"] == "200 OK"
-    assert observed["headers"]["Cache-Control"] == "no-store"
-    assert body["endpoint_mode"] == "debug_only"
-    assert body["models"]["peg"]["fair_value"] == "162.00"
+    assert body["contract_version"] == "unified-valuation.v1"
+    assert body["symbol"] == "NVDA"
+    assert body["headline"]["base_fair_value"] == "123.45"
 
 
-def test_debug_legacy_parity_bad_request():
+def test_legacy_debug_endpoint_is_retired():
     app = ValuationWSGIApp(
-        legacy_service=LegacyValuationAPIService(CloseProvider())
+        full_market_service=UnifiedFullMarketStub(),
+        coverage_service=CoverageStub(),
     )
     observed, body = call(
         app,
@@ -77,6 +75,6 @@ def test_debug_legacy_parity_bad_request():
         "/v1/debug/valuations/legacy-parity",
         {"symbol": "NVDA"},
     )
+    assert observed["status"] == "404 Not Found"
+    assert body["error"] == "not_found"
 
-    assert observed["status"] == "400 Bad Request"
-    assert body["error"] == "invalid_request"
