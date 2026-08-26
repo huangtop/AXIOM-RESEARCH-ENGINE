@@ -1,0 +1,15 @@
+{
+  "schema_version": "axiom-taxonomy-review-queue.v1",
+  "status": "local_manual_review_only",
+  "rule": "一次證據審閱仍無法確定主要付費產品或可比同業者即停止，不反覆猜測。",
+  "companies": {
+    "BMR": {"current_sector":"sector:ai_compute","reason":"主要描述是影片壓縮軟體，需確認收入究竟來自軟體授權、GPU 加速服務或其他業務。","evidence_source":"yahoo_finance_company_snapshot"},
+    "CHAI": {"current_sector":"sector:data_center_infrastructure","reason":"公司名稱與摘要前段指向 AI 基礎設施，但現有摘要同時描述手機遊戲，業務主體可能已轉型或資料混雜。","evidence_source":"yahoo_finance_company_snapshot"},
+    "DTST": {"current_sector":"sector:data_center_infrastructure","reason":"提供雲端語音、資料傳輸、網路與受管理 IT 服務，不足以確認是否以自有機房營運為主要收入。","evidence_source":"yahoo_finance_company_snapshot"},
+    "ECL": {"current_sector":"sector:data_center_power","reason":"公司是多元水務、衛生與感染預防服務商；資料中心冷卻只是部分曝險，需依營收部門決定 primary sector。","evidence_source":"yahoo_finance_company_snapshot"},
+    "KC": {"current_sector":"sector:ai_compute","reason":"核心為通用 IaaS/PaaS 雲端服務，需確認應設一般雲端平台類別或 AI cloud 類別。","evidence_source":"yahoo_finance_company_snapshot"},
+    "MMED": {"current_sector":"sector:ai_compute","reason":"本地 Yahoo 快照沒有業務證據，不能可靠分類。","evidence_source":"missing"},
+    "P": {"current_sector":"sector:data_infrastructure","reason":"ticker 與公司主體可能有近期變更，需確認目前 Everpure 的正式申報與資料儲存業務描述是否一致。","evidence_source":"yahoo_finance_company_snapshot"},
+    "TGEN": {"current_sector":"sector:data_center_power","reason":"核心產品是熱電共生設備，需確認資料中心是否為主要付費市場，而非一般分散式發電曝險。","evidence_source":"yahoo_finance_company_snapshot"}
+  }
+}
