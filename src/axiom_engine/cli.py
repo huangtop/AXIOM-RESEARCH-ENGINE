@@ -10,7 +10,6 @@ from .io import read_json, write_json
 from .repository import load_bundle
 from .services.public_builder import build_public
 from .services.validator import validate_bundle
-from .services.valuation import run_valuation_book
 from .services.research import research_summary
 from .services.industry import industry_summary, find_paths
 from .services.etf import etf_summary
@@ -19,11 +18,6 @@ from .company_registry import import_company_universe
 from .ontology import load_ontology, validate_ontology, OntologyRegistry
 from .financial_data import import_financial_data, validate_financial_data
 from .estimate_data import import_estimate_data, validate_estimate_data
-from .canonical_valuation import (
-    run_batch_valuation,
-    validate_canonical_valuation,
-    valuation_readiness,
-)
 
 
 from .market_data import MarketDataError, build_market_data, validate_market_data, write_template
@@ -89,55 +83,6 @@ def validate() -> None:
     typer.echo(f"OK {summary.compact()}")
 
 
-@app.command()
-def value(
-    company_id: str = typer.Option("company:US-NVDA"),
-    security_id: str = typer.Option("security:NASDAQ-NVDA"),
-    scenario_id: str = typer.Option("valuation_scenario:NVDA-2026Q3-BASE"),
-) -> None:
-    bundle = load_bundle()
-    validate_bundle(bundle)
-    GENERATED_DIR.mkdir(parents=True, exist_ok=True)
-    ep = GENERATED_DIR / "executions.json"
-    sp = GENERATED_DIR / "valuation_snapshots.json"
-    bp = GENERATED_DIR / "valuation_books.json"
-    executions = read_json(ep) if ep.exists() else []
-    snapshots = read_json(sp) if sp.exists() else []
-    books = read_json(bp) if bp.exists() else []
-    new_executions, new_snapshots, book = run_valuation_book(
-        bundle,
-        company_id=company_id,
-        security_id=security_id,
-        scenario_id=scenario_id,
-        existing_snapshot_ids={x["valuation_snapshot_id"] for x in snapshots},
-    )
-    executions.extend(x.model_dump(mode="json", exclude_none=True) for x in new_executions)
-    snapshots.extend(x.model_dump(mode="json", exclude_none=True) for x in new_snapshots)
-    books = [x for x in books if x["valuation_book_id"] != book.valuation_book_id]
-    books.append(book.model_dump(mode="json", exclude_none=True))
-    write_json(ep, executions)
-    write_json(sp, snapshots)
-    write_json(bp, books)
-    typer.echo(
-        json.dumps(
-            {
-                "valuation_book_id": book.valuation_book_id,
-                "created_snapshots": len(new_snapshots),
-                "models": [
-                    {
-                        "model": x.model_type,
-                        "status": x.status,
-                        "fair_value": x.fair_value_per_share,
-                        "upside": x.upside,
-                    }
-                    for x in book.entries
-                ],
-                "blended_fair_value": book.blended_fair_value,
-                "blended_upside": book.blended_upside,
-            },
-            ensure_ascii=False,
-        )
-    )
 
 
 @app.command()
@@ -275,44 +220,10 @@ def validate_estimate_data_command(root: str = typer.Option("data/estimate_data"
     typer.echo("OK " + " ".join(f"{key}={value}" for key, value in stats.items()))
 
 
-@app.command("valuation-readiness")
-def valuation_readiness_command(
-    financial_dir: str = typer.Option("data/financial_data"),
-    estimate_dir: str = typer.Option("data/estimate_data"),
-    required_company_count: int = typer.Option(100, min=1),
-) -> None:
-    report = valuation_readiness(
-        financial_dir=financial_dir,
-        estimate_dir=estimate_dir,
-        required_company_count=required_company_count,
-    )
-    typer.echo(json.dumps(report.model_dump(mode="json"), ensure_ascii=False, indent=2))
-    if not report.acceptance_passed:
-        raise typer.Exit(code=2)
 
 
-@app.command("run-canonical-valuation")
-def run_canonical_valuation_command(
-    financial_dir: str = typer.Option("data/financial_data"),
-    estimate_dir: str = typer.Option("data/estimate_data"),
-    output_dir: str = typer.Option("data/canonical_valuation"),
-    write: bool = typer.Option(False, "--write", help="Write output; default is dry-run"),
-) -> None:
-    report = run_batch_valuation(
-        financial_dir=financial_dir,
-        estimate_dir=estimate_dir,
-        output_dir=output_dir,
-        dry_run=not write,
-    )
-    typer.echo(json.dumps(report.model_dump(mode="json"), ensure_ascii=False, indent=2))
 
 
-@app.command("validate-canonical-valuation")
-def validate_canonical_valuation_command(
-    root: str = typer.Option("data/canonical_valuation"),
-) -> None:
-    stats = validate_canonical_valuation(root)
-    typer.echo("OK " + " ".join(f"{key}={value}" for key, value in stats.items()))
 
 
 @app.command("import-market-data")

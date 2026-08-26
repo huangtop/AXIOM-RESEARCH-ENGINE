@@ -7,8 +7,6 @@ from http import HTTPStatus
 from pathlib import Path
 from typing import Any, Callable, Iterable
 
-from axiom_engine.cached_close import JsonCachedPreviousCloseProvider
-from axiom_engine.config import PREVIOUS_CLOSE_CACHE
 from axiom_engine.coverage_policy import (
     CoveragePolicyError,
     CoveragePolicyNotFound,
@@ -16,11 +14,6 @@ from axiom_engine.coverage_policy import (
     CoveragePublicationDenied,
 )
 from axiom_engine.company_overview import CompanyOverviewError, CompanyOverviewNotFound, CompanyOverviewService
-from axiom_engine.fair_value_snapshot import (
-    FairValueSnapshotAPIError,
-    FairValueSnapshotNotFound,
-    FairValueSnapshotService,
-)
 from axiom_engine.full_market_coverage import (
     FullMarketCoverageError,
     FullMarketCoverageNotFound,
@@ -34,17 +27,15 @@ from axiom_engine.etf_company_card_api import (
     ETFCompanyCardService,
 )
 from axiom_engine.etf_detail_api import ETFDetailAPIError, ETFDetailNotFound, ETFDetailService
-from axiom_engine.previous_close import PreviousCloseError, YahooPreviousCloseAdapter
 from axiom_engine.theme_sector_inference import (
     ThemeSectorInferenceError,
     ThemeSectorInferenceNotFound,
     ThemeSectorInferenceService,
 )
-from axiom_engine.valuation_api import (
-    BackendValuationAPIService,
-    LegacyValuationAPIService,
-    ValuationAPIError,
-)
+
+class ValuationRequestError(ValueError):
+    pass
+
 
 StartResponse = Callable[[str, list[tuple[str, str]]], Any]
 
@@ -52,9 +43,6 @@ StartResponse = Callable[[str, list[tuple[str, str]]], Any]
 class ValuationWSGIApp:
     def __init__(
         self,
-        production_service: BackendValuationAPIService | None = None,
-        legacy_service: LegacyValuationAPIService | None = None,
-        fair_value_service: FairValueSnapshotService | None = None,
         full_market_service: FullMarketCoverageService | None = None,
         theme_sector_service: ThemeSectorInferenceService | None = None,
         etf_exposure_service: ETFExposureService | None = None,
@@ -65,14 +53,6 @@ class ValuationWSGIApp:
         company_overview_service: CompanyOverviewService | None = None,
         publication_root: Path | str = "data/generated/publication_gate",
     ) -> None:
-        cached_close_provider = JsonCachedPreviousCloseProvider(PREVIOUS_CLOSE_CACHE)
-        yahoo_close_provider = YahooPreviousCloseAdapter()
-        self.production_service = production_service or BackendValuationAPIService(
-            cached_close_provider
-        )
-        # Debug-only parity endpoint may still fetch when explicitly requested.
-        self.legacy_service = legacy_service or LegacyValuationAPIService(yahoo_close_provider)
-        self.fair_value_service = fair_value_service or FairValueSnapshotService()
         self.coverage_service = coverage_service or CoveragePolicyService()
         self.company_overview_service = company_overview_service or CompanyOverviewService()
         self.publication_root = Path(publication_root)
@@ -92,13 +72,10 @@ class ValuationWSGIApp:
         if method == "OPTIONS" and (
             path in {
                 "/v1/valuations",
-                "/v1/debug/valuations/legacy-parity",
-                "/v1/fair-values",
                 "/v1/companies",
                 "/v1/research-universe",
                 "/v1/publication/manifest.json",
             }
-            or path.startswith("/v1/fair-values/")
             or (path.startswith("/v1/companies/") and path.endswith("/valuation-card"))
             or (path.startswith("/v1/companies/") and path.endswith("/research-policy"))
             or (path.startswith("/v1/companies/") and path.endswith("/overview"))
@@ -135,8 +112,6 @@ class ValuationWSGIApp:
         gated_symbol = None
         if method == "GET" and path.startswith("/v1/companies/") and path.endswith(company_suffixes):
             gated_symbol = path.removeprefix("/v1/companies/").rsplit("/", 1)[0].strip("/")
-        elif method == "GET" and path.startswith("/v1/fair-values/"):
-            gated_symbol = path.removeprefix("/v1/fair-values/").strip("/")
         if gated_symbol is not None:
             try:
                 self.coverage_service.require_public(gated_symbol)
@@ -151,27 +126,7 @@ class ValuationWSGIApp:
                 return self._respond(start_response, HTTPStatus.NOT_FOUND, {"error": "company_not_found", "message": str(exc)})
             except CoveragePolicyError as exc:
                 return self._respond(start_response, HTTPStatus.SERVICE_UNAVAILABLE, {"error": "coverage_policy_unavailable", "message": str(exc)})
-        if method == "GET" and path == "/v1/fair-values":
-            try:
-                payload = self.fair_value_service.list_companies()
-                public_tickers = self.coverage_service.public_tickers()
-                companies = [row for row in payload.get("companies", []) if str(row.get("symbol") or "").upper() in public_tickers]
-                payload = {**payload, "companies": companies, "summary": {
-                    "company_count": len(companies),
-                    "source_company_count": len(payload.get("companies", [])),
-                    "publication_gate": "coverage-policy.v031f.1",
-                }}
-                return self._respond(
-                    start_response, HTTPStatus.OK, payload
-                )
-            except FairValueSnapshotAPIError as exc:
-                return self._respond(
-                    start_response,
-                    HTTPStatus.SERVICE_UNAVAILABLE,
-                    {"error": "snapshot_unavailable", "message": str(exc)},
-                )
-            except CoveragePolicyError as exc:
-                return self._respond(start_response, HTTPStatus.SERVICE_UNAVAILABLE, {"error": "coverage_policy_unavailable", "message": str(exc)})
+        
         if method == "GET" and path == "/v1/companies":
             try:
                 return self._respond(start_response, HTTPStatus.OK, self.full_market_service.list())
@@ -264,35 +219,42 @@ class ValuationWSGIApp:
                 return self._respond(start_response, HTTPStatus.NOT_FOUND, {"error": "etf_not_found", "message": str(exc)})
             except ETFDetailAPIError as exc:
                 return self._respond(start_response, HTTPStatus.SERVICE_UNAVAILABLE, {"error": "etf_detail_unavailable", "message": str(exc)})
-        if method == "GET" and path.startswith("/v1/fair-values/"):
-            symbol = path.removeprefix("/v1/fair-values/")
-            try:
-                return self._respond(
-                    start_response, HTTPStatus.OK, self.fair_value_service.get_company(symbol)
-                )
-            except FairValueSnapshotNotFound as exc:
-                return self._respond(
-                    start_response,
-                    HTTPStatus.NOT_FOUND,
-                    {"error": "fair_value_not_found", "message": str(exc)},
-                )
-            except FairValueSnapshotAPIError as exc:
-                return self._respond(
-                    start_response,
-                    HTTPStatus.SERVICE_UNAVAILABLE,
-                    {"error": "snapshot_unavailable", "message": str(exc)},
-                )
+        
         if method != "POST":
             return self._respond(start_response, HTTPStatus.NOT_FOUND, {"error": "not_found"})
         try:
             request = _read_json(environ)
             if path == "/v1/valuations":
-                self.coverage_service.require_public(str(request.get("symbol") or ""), capability="valuation_card")
-                payload = self.production_service.calculate(request)
-            elif path == "/v1/debug/valuations/legacy-parity":
-                payload = self.legacy_service.calculate(request)
+                symbol = str(request.get("symbol") or "").strip().upper()
+                if not symbol:
+                    raise ValuationRequestError("symbol is required")
+
+                unsupported = sorted(set(request) - {"symbol"})
+                if unsupported:
+                    raise ValuationRequestError(
+                        "unified valuation endpoint accepts symbol only; "
+                        f"unsupported field(s): {', '.join(unsupported)}"
+                    )
+
+                self.coverage_service.require_public(
+                    symbol,
+                    capability="valuation_card",
+                )
+
+                card = self.full_market_service.get(symbol)
+                valuation = card.get("valuation") or {}
+                payload = valuation.get("unified_contract")
+
+                if not isinstance(payload, dict):
+                    raise FullMarketCoverageError(
+                        f"unified valuation contract unavailable: {symbol}"
+                    )
             else:
-                return self._respond(start_response, HTTPStatus.NOT_FOUND, {"error": "not_found"})
+                return self._respond(
+                    start_response,
+                    HTTPStatus.NOT_FOUND,
+                    {"error": "not_found"},
+                )
         except CoveragePublicationDenied as exc:
             return self._respond(start_response, HTTPStatus.NOT_FOUND, {
                 "error": "company_not_published",
@@ -304,17 +266,11 @@ class ValuationWSGIApp:
             return self._respond(start_response, HTTPStatus.NOT_FOUND, {"error": "company_not_found", "message": str(exc)})
         except CoveragePolicyError as exc:
             return self._respond(start_response, HTTPStatus.SERVICE_UNAVAILABLE, {"error": "coverage_policy_unavailable", "message": str(exc)})
-        except ValuationAPIError as exc:
+        except ValuationRequestError as exc:
             return self._respond(
                 start_response,
                 HTTPStatus.BAD_REQUEST,
                 {"error": "invalid_request", "message": str(exc)},
-            )
-        except PreviousCloseError as exc:
-            return self._respond(
-                start_response,
-                HTTPStatus.BAD_GATEWAY,
-                {"error": "market_data_unavailable", "message": str(exc)},
             )
         except Exception as exc:
             return self._respond(
@@ -383,19 +339,19 @@ class ValuationWSGIApp:
 
 def _read_json(environ: dict[str, Any]) -> dict[str, Any]:
     if "application/json" not in str(environ.get("CONTENT_TYPE", "")):
-        raise ValuationAPIError("Content-Type must be application/json")
+        raise ValuationRequestError("Content-Type must be application/json")
     try:
         length = int(environ.get("CONTENT_LENGTH", "0") or 0)
     except (TypeError, ValueError) as exc:
-        raise ValuationAPIError("invalid Content-Length") from exc
+        raise ValuationRequestError("invalid Content-Length") from exc
     if length <= 0 or length > 1_000_000:
-        raise ValuationAPIError("request body size is invalid")
+        raise ValuationRequestError("request body size is invalid")
     try:
         payload = json.loads(environ["wsgi.input"].read(length).decode())
     except (UnicodeDecodeError, json.JSONDecodeError) as exc:
-        raise ValuationAPIError("request body must be valid JSON") from exc
+        raise ValuationRequestError("request body must be valid JSON") from exc
     if not isinstance(payload, dict):
-        raise ValuationAPIError("request body must be a JSON object")
+        raise ValuationRequestError("request body must be a JSON object")
     return payload
 
 

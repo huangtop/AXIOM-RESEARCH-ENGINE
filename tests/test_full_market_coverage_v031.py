@@ -122,31 +122,43 @@ def test_alphabet_share_classes_resolve_to_one_primary_company_artifact(tmp_path
     assert "GOOGN" not in index
 
 
-def test_valuation_uses_independent_model_families_and_reports_disagreement():
+def test_valuation_uses_unified_contract_and_preserves_market_anchor_exclusions():
     payload = report()
     googl = next(card for card in payload["cards"] if card["primary_security"]["ticker"] == "GOOGL")
     valuation = googl["valuation"]
-    assert valuation["aggregation_version"] == "independent-model-family.v031v.8"
-    assert valuation["aggregation"] is None
-    assert valuation["fair_value"] is None
-    assert valuation["models"]["peg"]["status"] == "unavailable"
+    assert valuation["aggregation_version"] == "unified-dynamic-weight.v1"
+    unified = valuation["unified_contract"]
+    assert unified["contract_version"] == "unified-valuation.v1"
+    assert tuple(unified["models"]) == (
+        "dcf",
+        "forward_pe",
+        "peg",
+        "forward_ps",
+        "ev_ebitda",
+        "forward_pb",
+        "milestone",
+    )
     for name in ("forward_pe", "forward_ps", "ev_ebitda", "forward_pb"):
         diagnostic = valuation["model_diagnostics"].get(name)
-        if diagnostic:
-            assert diagnostic["aggregation_role"] == "market_anchored"
+        if diagnostic and diagnostic["aggregation_role"] == "market_anchored":
             assert diagnostic["included_in_independent_aggregation"] is False
+            assert Decimal(diagnostic["effective_weight"]) == 0
 
 
-def test_dcf_is_globally_diagnostic_only_and_does_not_reduce_nvda_confidence():
+def test_nvda_uses_unified_backend_model_selection():
     payload = report()
     nvda = next(card for card in payload["cards"] if card["primary_security"]["ticker"] == "NVDA")
     valuation = nvda["valuation"]
-    dcf = valuation["aggregation"]["families"]["intrinsic_cash_flow"]
-    assert dcf["included_in_aggregation"] is False
-    assert Decimal(dcf["weight"]) == 0
-    assert "intrinsic_cash_flow" not in valuation["aggregation"]["cross_check_families"]
-    assert valuation["aggregation"]["confidence"] == "low"
-    assert Decimal(valuation["fair_value"]) == Decimal(valuation["aggregation"]["families"]["forward_earnings"]["representative_fair_value"])
+    unified = valuation["unified_contract"]
+    assert unified["headline"]["dominant_model"] in unified["models"]
+    included = unified["aggregation"]["included_models"]
+    weights = {
+        name: Decimal(value)
+        for name, value in unified["aggregation"]["normalized_weights"].items()
+    }
+    assert included
+    assert sum((weights[name] for name in included), Decimal("0")) == Decimal("1")
+    assert Decimal(valuation["fair_value"]) == Decimal(unified["headline"]["base_fair_value"])
 
 
 def test_ai_research_companies_have_a_calculated_valuation_model():
@@ -188,43 +200,32 @@ def test_provider_fallbacks_are_labeled_without_analyst_target_derivation():
     assert arbb["valuation"]["models"]["forward_ps"]["status"] == "calculated"
 
 
-def test_extreme_model_to_market_outlier_cannot_publish_a_headline():
+def test_unified_headline_comes_from_backend_contract_not_legacy_market_sanity_gate():
     payload = report()
-    outliers = [
+    cards = [
         card for card in payload["cards"]
-        if card["valuation"].get("reason_code") == "FAIR_VALUE_TO_MARKET_PRICE_EXTREME_OUTLIER"
+        if card["valuation"].get("unified_contract")
     ]
-    assert outliers
-    assert all(card["valuation"]["calculated_model_count"] >= 1 for card in outliers)
-    assert all(card["valuation"]["fair_value"] is None for card in outliers)
+    assert cards
+    for card in cards:
+        valuation = card["valuation"]
+        unified = valuation["unified_contract"]
+        assert valuation["reason_code"] != "FAIR_VALUE_TO_MARKET_PRICE_EXTREME_OUTLIER"
+        assert valuation["fair_value"] == unified["headline"]["base_fair_value"]
 
 
-def test_locked_primary_business_routing_reaches_valuation_aggregation():
+def test_primary_business_routing_no_longer_controls_valuation_aggregation():
     payload = report()
     routed = [
         card for card in payload["cards"]
         if (card.get("valuation") or {}).get("routing", {}).get("status") == "routed"
     ]
     assert routed
-    assert payload["summary"]["primary_business_routing_applied_count"] > 0
-    assert payload["summary"]["primary_business_routing_pending_count"] < payload["summary"]["company_count"]
+    assert payload["summary"]["primary_business_routing_applied_count"] == 0
 
-    archetypes = {
-        card["valuation"]["routing"].get("archetype")
-        for card in routed
-    }
-    assert "financial_institution" in archetypes
-    assert "biopharma" in archetypes
-    assert "technology_operating_company" in archetypes
-    assert "investment_vehicle" in archetypes
+    for card in routed:
+        valuation = card["valuation"]
+        unified = valuation["unified_contract"]
+        assert valuation["aggregation"]["routing_source"] == "unified_valuation"
+        assert unified["aggregation"]["methodology_version"] == "unified-dynamic-weight.v1"
 
-    aggregated = [
-        card for card in routed
-        if card["valuation"].get("aggregation") is not None
-        and card["valuation"]["routing"].get("aggregation_applied") is True
-    ]
-    assert aggregated
-    for card in aggregated:
-        aggregation = card["valuation"]["aggregation"]
-        assert aggregation["routing_source"] == "locked_primary_business"
-        assert aggregation["business_archetype"] == card["valuation"]["routing"]["archetype"]

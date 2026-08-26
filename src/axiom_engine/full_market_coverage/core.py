@@ -10,7 +10,7 @@ from urllib.parse import quote
 from zipfile import BadZipFile, ZipFile
 
 from axiom_engine.coverage_policy import CoveragePolicyService
-from axiom_engine.seven_model_valuation import calculate_seven_models
+from axiom_engine.unified_valuation import build_unified_valuation
 
 
 MODELS = (
@@ -23,79 +23,11 @@ MODELS = (
     "milestone",
 )
 
-MODEL_FAMILIES = {
-    "dcf": "intrinsic_cash_flow",
-    "forward_pe": "forward_earnings",
-    "peg": "forward_earnings",
-    "forward_ps": "forward_revenue",
-    "ev_ebitda": "enterprise_operations",
-    "forward_pb": "balance_sheet",
-    "milestone": "event_probability",
-}
 
-DEFAULT_FAMILY_WEIGHTS = {
-    "intrinsic_cash_flow": Decimal("0"),
-    "forward_earnings": Decimal("1.00"),
-    "forward_revenue": Decimal("0.75"),
-    "enterprise_operations": Decimal("0.90"),
-    "balance_sheet": Decimal("0.45"),
-    "event_probability": Decimal("1.00"),
-}
 
 # Primary Business routing changes family preference only.  It does not create
 # inputs, manufacture calculated models, or turn Primary Business into thematic
 # evidence.  DCF stays diagnostic-only globally.
-BUSINESS_ARCHETYPE_FAMILY_WEIGHTS: dict[str, dict[str, Decimal]] = {
-    "financial_institution": {
-        "intrinsic_cash_flow": Decimal("0"),
-        "forward_earnings": Decimal("1.20"),
-        "forward_revenue": Decimal("0.10"),
-        "enterprise_operations": Decimal("0.15"),
-        "balance_sheet": Decimal("1.40"),
-        "event_probability": Decimal("0"),
-    },
-    "biopharma": {
-        "intrinsic_cash_flow": Decimal("0"),
-        "forward_earnings": Decimal("0.55"),
-        "forward_revenue": Decimal("1.00"),
-        "enterprise_operations": Decimal("0.35"),
-        "balance_sheet": Decimal("0.15"),
-        "event_probability": Decimal("1.40"),
-    },
-    "investment_vehicle": {
-        "intrinsic_cash_flow": Decimal("0"),
-        "forward_earnings": Decimal("0.35"),
-        "forward_revenue": Decimal("0"),
-        "enterprise_operations": Decimal("0"),
-        "balance_sheet": Decimal("1.50"),
-        "event_probability": Decimal("0"),
-    },
-    "real_estate": {
-        "intrinsic_cash_flow": Decimal("0"),
-        "forward_earnings": Decimal("1.00"),
-        "forward_revenue": Decimal("0.30"),
-        "enterprise_operations": Decimal("0.90"),
-        "balance_sheet": Decimal("1.00"),
-        "event_probability": Decimal("0"),
-    },
-    "asset_heavy_operating_company": {
-        "intrinsic_cash_flow": Decimal("0"),
-        "forward_earnings": Decimal("1.00"),
-        "forward_revenue": Decimal("0.35"),
-        "enterprise_operations": Decimal("1.20"),
-        "balance_sheet": Decimal("0.60"),
-        "event_probability": Decimal("0"),
-    },
-    "technology_operating_company": {
-        "intrinsic_cash_flow": Decimal("0"),
-        "forward_earnings": Decimal("1.20"),
-        "forward_revenue": Decimal("1.00"),
-        "enterprise_operations": Decimal("0.75"),
-        "balance_sheet": Decimal("0.20"),
-        "event_probability": Decimal("0"),
-    },
-    "general_operating_company": dict(DEFAULT_FAMILY_WEIGHTS),
-}
 
 
 class FullMarketCoverageError(RuntimeError):
@@ -227,375 +159,14 @@ def _date(value: Any) -> date | None:
         return None
 
 
-def _weighted_quantile(
-    rows: list[tuple[Decimal, Decimal]],
-    quantile: Decimal,
-) -> Decimal:
-    ordered = sorted(rows, key=lambda row: row[0])
-    total = sum((weight for _, weight in ordered), Decimal("0"))
-    threshold = total * quantile
-    cumulative = Decimal("0")
-    for value, weight in ordered:
-        cumulative += weight
-        if cumulative >= threshold:
-            return value
-    return ordered[-1][0]
 
 
-def _valuation_archetype(
-    financials: Mapping[str, Mapping[str, Any]],
-    estimates: Mapping[str, Mapping[str, Any]],
-) -> tuple[str, dict[str, Decimal], list[str]]:
-    def value(
-        layer: Mapping[str, Mapping[str, Any]],
-        name: str,
-    ) -> Decimal | None:
-        payload = layer.get(name) or {}
-        return _number(payload.get("value"))
-
-    revenue = value(financials, "revenue")
-    net_income = value(financials, "net_income")
-    free_cash_flow = value(financials, "free_cash_flow")
-    forward_eps = value(estimates, "forward_eps")
-    forward_growth = value(estimates, "forward_eps_growth")
-    net_margin = net_income / revenue if revenue and net_income is not None else None
-
-    profitable_growth = bool(
-        net_margin is not None
-        and net_margin >= Decimal("0.10")
-        and free_cash_flow is not None
-        and free_cash_flow > 0
-        and forward_eps is not None
-        and forward_eps > 0
-        and forward_growth is not None
-        and forward_growth > 0
-    )
-    if profitable_growth:
-        weights = {
-            "intrinsic_cash_flow": Decimal("0"),
-            "forward_earnings": Decimal("1.40"),
-            "forward_revenue": Decimal("0.65"),
-            "enterprise_operations": Decimal("0.85"),
-            "balance_sheet": Decimal("0.20"),
-            "event_probability": Decimal("0.25"),
-        }
-        reasons = [
-            "POSITIVE_FORWARD_EARNINGS",
-            "NET_MARGIN_AT_LEAST_10_PERCENT",
-            "POSITIVE_FREE_CASH_FLOW",
-            "DCF_EXCLUDED_FROM_AGGREGATION_BY_PRODUCT_POLICY",
-        ]
-        return "profitable_growth", weights, reasons
-
-    if net_income is not None and net_income <= 0:
-        weights = dict(DEFAULT_FAMILY_WEIGHTS)
-        weights.update(
-            {
-                "forward_earnings": Decimal("0.20"),
-                "forward_revenue": Decimal("1.20"),
-                "balance_sheet": Decimal("0.35"),
-                "event_probability": Decimal("0.90"),
-            }
-        )
-        return "loss_making_or_pre_profit", weights, ["NON_POSITIVE_NET_INCOME"]
-
-    return (
-        "general_operating_company",
-        dict(DEFAULT_FAMILY_WEIGHTS),
-        ["DEFAULT_OPERATING_COMPANY_PROFILE"],
-    )
 
 
-def _business_routing_weights(
-    routing: Mapping[str, Any] | None,
-    financial_weights: Mapping[str, Decimal],
-) -> tuple[dict[str, Decimal], str | None, str | None]:
-    """Return model-family weights for a locked Primary Business route.
-
-    The Primary Business route is authoritative only when Overview says the
-    route is `routed`.  Pending or malformed routes preserve the historical
-    financial-only weights.
-    """
-    if not isinstance(routing, Mapping) or routing.get("status") != "routed":
-        return dict(financial_weights), None, None
-
-    archetype = str(routing.get("archetype") or "").strip()
-    routed = BUSINESS_ARCHETYPE_FAMILY_WEIGHTS.get(archetype)
-    if routed is None:
-        return dict(financial_weights), None, None
-
-    weights = dict(routed)
-    # Product policy: intrinsic DCF remains diagnostic-only in every route.
-    weights["intrinsic_cash_flow"] = Decimal("0")
-    return (
-        weights,
-        archetype,
-        str(routing.get("reason_code") or "LOCKED_PRIMARY_BUSINESS_ROUTING"),
-    )
 
 
-def _aggregate_models(
-    models: Mapping[str, Mapping[str, Any]],
-    financials: Mapping[str, Mapping[str, Any]],
-    estimates: Mapping[str, Mapping[str, Any]],
-    assumption_roles: Mapping[str, str] | None = None,
-    business_routing: Mapping[str, Any] | None = None,
-) -> dict[str, Any]:
-    """Aggregate independent model families without using the market price.
-
-    Financial shape still diagnoses profitability / pre-profit state.  When a
-    locked Primary Business route exists, it becomes the model-family routing
-    authority and changes family weights only; it does not create model inputs.
-    """
-    dated_inputs: dict[str, date] = {}
-    for layer in (financials, estimates):
-        for name, payload in layer.items():
-            if isinstance(payload, Mapping):
-                observed = _date(payload.get("as_of_date"))
-                if observed:
-                    dated_inputs[name] = observed
-
-    reference_date = max(dated_inputs.values(), default=None)
-    financial_archetype, financial_weights, archetype_reasons = (
-        _valuation_archetype(financials, estimates)
-    )
-    family_weights, business_archetype, business_reason = (
-        _business_routing_weights(business_routing, financial_weights)
-    )
-    if business_archetype:
-        archetype_reasons = [
-            *archetype_reasons,
-            "LOCKED_PRIMARY_BUSINESS_ROUTING_APPLIED",
-            business_reason or "LOCKED_PRIMARY_BUSINESS_ROUTING",
-        ]
-
-    family_models: dict[str, list[tuple[str, Decimal, Decimal]]] = defaultdict(list)
-    model_diagnostics: dict[str, dict[str, Any]] = {}
-    assumption_roles = assumption_roles or {}
-    model_assumption_keys = {
-        "forward_pe": "target_forward_pe",
-        "forward_ps": "target_forward_ps",
-        "ev_ebitda": "target_ev_ebitda",
-        "forward_pb": "target_forward_pb",
-        "peg": "target_peg",
-    }
-
-    for name, model in models.items():
-        if model.get("status") != "calculated":
-            continue
-        fair_value = _number(model.get("fair_value"))
-        if fair_value is None or fair_value <= 0:
-            continue
-
-        family = MODEL_FAMILIES[name]
-        input_dates = [
-            dated_inputs[input_name]
-            for input_name in model.get("input_names") or []
-            if input_name in dated_inputs
-        ]
-        freshness = Decimal("1")
-        newest_input = max(input_dates, default=None)
-        if reference_date and newest_input:
-            age = (reference_date - newest_input).days
-            freshness = (
-                Decimal("0.45")
-                if age > 550
-                else Decimal("0.65")
-                if age > 370
-                else Decimal("0.80")
-                if age > 185
-                else Decimal("1")
-            )
-        elif reference_date:
-            freshness = Decimal("0.70")
-
-        assumption_quality = (
-            Decimal("0.70")
-            if str(model.get("assumption_source") or "").startswith("config/")
-            else Decimal("1")
-        )
-        quality = freshness * assumption_quality
-        role = assumption_roles.get(
-            model_assumption_keys.get(name, ""),
-            "independent",
-        )
-        if role != "market_anchored":
-            family_models[family].append((name, fair_value, quality))
-
-        model_diagnostics[name] = {
-            "family": family,
-            "input_freshness_score": format(freshness, "f"),
-            "assumption_quality_score": format(assumption_quality, "f"),
-            "newest_dated_input": newest_input.isoformat() if newest_input else None,
-            "aggregation_role": role,
-            "included_in_independent_aggregation": role != "market_anchored",
-            "business_routing_archetype": business_archetype,
-        }
-        if role == "market_anchored":
-            model_diagnostics[name]["exclusion_reason_code"] = (
-                "MARKET_ANCHORED_NOT_INDEPENDENT"
-            )
-
-    families: dict[str, dict[str, Any]] = {}
-    weighted_families: list[tuple[Decimal, Decimal]] = []
-    for family, members in sorted(family_models.items()):
-        family_base = family_weights[family]
-        quality_total = sum((quality for _, _, quality in members), Decimal("0"))
-        representative = (
-            sum((value * quality for _, value, quality in members), Decimal("0"))
-            / quality_total
-        )
-        family_quality = quality_total / Decimal(len(members))
-        weight = family_base * family_quality
-        if weight > 0:
-            weighted_families.append((representative, weight))
-        families[family] = {
-            "model_names": [name for name, _, _ in members],
-            "representative_fair_value": format(representative, "f"),
-            "base_weight": format(family_base, "f"),
-            "weight": format(weight, "f"),
-            "included_in_aggregation": weight > 0,
-            "exclusion_reason_code": (
-                None if weight > 0 else "ARCHETYPE_MODEL_FAMILY_EXCLUDED"
-            ),
-        }
-        for name, _, quality in members:
-            model_diagnostics[name]["effective_weight"] = format(
-                weight * quality / quality_total,
-                "f",
-            )
-
-    if not weighted_families:
-        return {
-            "fair_value": None,
-            "reason_code": "NO_CALCULATED_MODELS",
-            "aggregation": None,
-            "model_diagnostics": model_diagnostics,
-            "business_routing": {
-                "status": "applied" if business_archetype else "not_applied",
-                "archetype": business_archetype,
-                "reason_code": business_reason,
-            },
-        }
-
-    raw_values = [value for value, _ in weighted_families]
-    median = _weighted_quantile(weighted_families, Decimal("0.50"))
-    lower_cap = median * Decimal("0.50")
-    upper_cap = median * Decimal("2.00")
-    winsorized = [
-        (max(lower_cap, min(value, upper_cap)), weight)
-        for value, weight in weighted_families
-    ]
-    total_weight = sum((weight for _, weight in winsorized), Decimal("0"))
-    weighted_center = (
-        sum((value * weight for value, weight in winsorized), Decimal("0"))
-        / total_weight
-    )
-
-    # Preserve the existing profitable-growth primary-family behavior so the
-    # routing patch does not rewrite already validated headline contracts.
-    primary_family = (
-        "forward_earnings"
-        if financial_archetype == "profitable_growth"
-        and "forward_earnings" in families
-        and families["forward_earnings"]["included_in_aggregation"]
-        else None
-    )
-    center = (
-        _number(families[primary_family]["representative_fair_value"])
-        if primary_family
-        else weighted_center
-    )
-    center = center if center is not None else weighted_center
-
-    minimum = min(raw_values)
-    maximum = max(raw_values)
-    disagreement_ratio = maximum / minimum if minimum > 0 else Decimal("999")
-    independent_family_count = sum(
-        bool(row["included_in_aggregation"])
-        for row in families.values()
-    )
-    confidence = (
-        "high"
-        if independent_family_count >= 3
-        and disagreement_ratio <= Decimal("1.35")
-        else "medium"
-        if independent_family_count >= 2
-        and disagreement_ratio <= Decimal("2.00")
-        else "low"
-    )
-
-    return {
-        "fair_value": format(center, "f"),
-        "reason_code": None,
-        "aggregation": {
-            "method": (
-                "archetype-primary-family"
-                if primary_family
-                else "confidence-weighted-family-winsorized-center"
-            ),
-            "primary_family": primary_family,
-            "cross_check_families": [
-                family
-                for family in families
-                if family != primary_family
-                and families[family]["included_in_aggregation"]
-            ],
-            "weighted_cross_check_center": format(weighted_center, "f"),
-            # Existing field retained for compatibility.
-            "archetype": financial_archetype,
-            "financial_archetype": financial_archetype,
-            "business_archetype": business_archetype,
-            "routing_source": (
-                "locked_primary_business" if business_archetype else "financial_shape"
-            ),
-            "routing_reason_code": business_reason,
-            "archetype_reason_codes": archetype_reasons,
-            "family_count": independent_family_count,
-            "confidence": confidence,
-            "disagreement_ratio": format(disagreement_ratio, ".4f"),
-            "range_low": (
-                format(_weighted_quantile(weighted_families, Decimal("0.20")), "f")
-                if independent_family_count >= 2
-                else None
-            ),
-            "range_high": (
-                format(_weighted_quantile(weighted_families, Decimal("0.80")), "f")
-                if independent_family_count >= 2
-                else None
-            ),
-            "families": families,
-        },
-        "model_diagnostics": model_diagnostics,
-        "business_routing": {
-            "status": "applied" if business_archetype else "not_applied",
-            "archetype": business_archetype,
-            "reason_code": business_reason,
-        },
-    }
 
 
-def _apply_market_sanity_gate(
-    aggregate: dict[str, Any],
-    current_price: Decimal | None,
-) -> None:
-    fair_value = _number(aggregate.get("fair_value"))
-    if fair_value is None or current_price is None or current_price <= 0:
-        return
-    ratio = fair_value / current_price
-    if Decimal("0.10") <= ratio <= Decimal("10"):
-        return
-    aggregation = aggregate.get("aggregation")
-    if isinstance(aggregation, dict):
-        aggregation["publication_gate"] = {
-            "status": "blocked",
-            "reason_code": "FAIR_VALUE_TO_MARKET_PRICE_EXTREME_OUTLIER",
-            "fair_value_to_market_ratio": format(ratio, ".4f"),
-            "permitted_ratio_low": "0.10",
-            "permitted_ratio_high": "10.00",
-        }
-    aggregate["fair_value"] = None
-    aggregate["reason_code"] = "FAIR_VALUE_TO_MARKET_PRICE_EXTREME_OUTLIER"
 
 
 def _quarterly_history(
@@ -643,6 +214,77 @@ def _quarterly_history(
     }
 
 
+
+def _compat_aggregate_from_unified(
+    unified: Mapping[str, Any],
+) -> dict[str, Any]:
+    headline = unified.get("headline") or {}
+    aggregation = unified.get("aggregation") or {}
+    models = unified.get("models") or {}
+
+    dominant_family = headline.get("dominant_family")
+    included_models = list(aggregation.get("included_models") or [])
+    included_families = []
+    for name in included_models:
+        family = (models.get(name) or {}).get("family")
+        if family and family not in included_families:
+            included_families.append(family)
+
+    model_diagnostics = {}
+    for name, row in models.items():
+        if not isinstance(row, Mapping):
+            continue
+        model_diagnostics[name] = {
+            "family": row.get("family"),
+            "input_freshness_score": row.get("data_quality_score"),
+            "assumption_quality_score": row.get("assumption_quality_score"),
+            "aggregation_role": row.get("assumption_role"),
+            "included_in_independent_aggregation": row.get(
+                "included_in_independent_aggregation"
+            ),
+            "effective_weight": row.get("effective_weight"),
+        }
+        if row.get("assumption_role") == "market_anchored":
+            model_diagnostics[name]["exclusion_reason_code"] = (
+                "MARKET_ANCHORED_NOT_INDEPENDENT"
+            )
+
+    base = headline.get("base_fair_value")
+    return {
+        "fair_value": base,
+        "reason_code": None if base is not None else "NO_CALCULATED_MODELS",
+        "aggregation": {
+            "method": "unified-dynamic-weight.v1",
+            "primary_family": dominant_family,
+            "cross_check_families": [
+                family
+                for family in included_families
+                if family != dominant_family
+            ],
+            "weighted_cross_check_center": base,
+            "archetype": aggregation.get("financial_archetype"),
+            "financial_archetype": aggregation.get("financial_archetype"),
+            "business_archetype": None,
+            "routing_source": "unified_valuation",
+            "routing_reason_code": None,
+            "archetype_reason_codes": list(
+                aggregation.get("reason_codes") or []
+            ),
+            "family_count": len(included_families),
+            "confidence": headline.get("confidence"),
+            "disagreement_ratio": None,
+            "range_low": headline.get("bear_fair_value"),
+            "range_high": headline.get("bull_fair_value"),
+            "families": {},
+        },
+        "model_diagnostics": model_diagnostics,
+        "business_routing": {
+            "status": "not_applied",
+            "archetype": None,
+            "reason_code": "UNIFIED_VALUATION_OWNS_MODEL_SELECTION",
+        },
+    }
+
 def build_full_market_coverage(
     root: Path,
     *,
@@ -657,7 +299,7 @@ def build_full_market_coverage(
     company_snapshot_path: str = "data/generated/company/yahoo_company_snapshot.json",
     valuation_routing_path: str = "data/valuation/company_routing.json",
     valuation_assumptions_path: str = "data/knowledge/valuation_assumptions.json",
-    dcf_policy_path: str = "config/fair_value_snapshot.v030.14.0.json",
+    dcf_policy_path: str = "config/valuation_dcf_policy.v1.json",
 ) -> dict[str, Any]:
     companies = _load(root / companies_path)
     securities = _load(root / securities_path)
@@ -673,8 +315,7 @@ def build_full_market_coverage(
     company_snapshot = _load(root / company_snapshot_path, default={"symbols": {}})
     routing_payload = _load(root / valuation_routing_path, default={"companies": {}})
     assumption_rows = _load(root / valuation_assumptions_path, default=[])
-    dcf_policy_payload = _load(root / dcf_policy_path)
-    dcf_policy = dcf_policy_payload.get("dcf", {})
+    dcf_policy = _load(root / dcf_policy_path)
 
     if not all(
         isinstance(rows, list)
@@ -1024,25 +665,22 @@ def build_full_market_coverage(
             ),
         }
 
-        models = calculate_seven_models(
-            fin,
-            est,
-            company_assumptions,
+        unified = build_unified_valuation(
+            symbol=ticker,
+            financials=fin,
+            estimates=est,
+            assumptions=company_assumptions,
+            assumption_roles=company_assumption_roles,
             dcf_policy=dcf_policy,
+            reference_price={
+                "value": market.get("current_price"),
+                "currency": market.get("currency"),
+                "as_of_date": market.get("as_of_date"),
+                "source": "full_market_coverage.market",
+            },
         )
-        aggregate = _aggregate_models(
-            models,
-            fin,
-            est,
-            company_assumption_roles,
-            business_routing=routing,
-        )
-        if (aggregate.get("business_routing") or {}).get("status") == "applied":
-            routing_applied_count += 1
-        _apply_market_sanity_gate(
-            aggregate,
-            _number(market.get("current_price")),
-        )
+        models = unified["models"]
+        aggregate = _compat_aggregate_from_unified(unified)
 
         calculated_values = [
             Decimal(row["fair_value"])
@@ -1124,9 +762,9 @@ def build_full_market_coverage(
                 "calculated_model_count": calculated_count,
                 "total_model_count": 7,
                 "fair_value": aggregate["fair_value"],
-                # Existing version retained; routing is an additive contract.
-                "aggregation_version": "independent-model-family.v031v.8",
-                "routing_version": "locked-primary-business-routing.v1",
+                "unified_contract": unified,
+                "aggregation_version": "unified-dynamic-weight.v1",
+                "routing_version": "unified-valuation-routing.v1",
                 "routing": {
                     "status": routing.get("status") or "pending_primary_business",
                     "archetype": routing.get("archetype"),
@@ -1138,10 +776,7 @@ def build_full_market_coverage(
                     ),
                     "reason_code": routing.get("reason_code"),
                     "source": "company_overview.routing.valuation",
-                    "aggregation_applied": (
-                        (aggregate.get("business_routing") or {}).get("status")
-                        == "applied"
-                    ),
+                    "aggregation_applied": False,
                 },
                 "reason_code": aggregate["reason_code"],
                 "aggregation": aggregate["aggregation"],

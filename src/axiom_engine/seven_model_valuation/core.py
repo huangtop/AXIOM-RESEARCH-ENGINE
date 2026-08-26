@@ -6,6 +6,14 @@ from typing import Any, Mapping
 
 MODEL_NAMES = ("dcf", "forward_pe", "peg", "forward_ps", "ev_ebitda", "forward_pb", "milestone")
 
+DEFAULT_DCF_POLICY = {
+    "forecast_years": 5,
+    "discount_rate": "0.10",
+    "terminal_growth": "0.03",
+    "default_growth": "0.08",
+    "min_growth": "0.0",
+    "max_growth": "0.25",
+}
 
 def _d(value: Any) -> Decimal | None:
     try:
@@ -45,8 +53,12 @@ def calculate_seven_models(
     estimates: Mapping[str, Any],
     assumptions: Mapping[str, Any],
     *,
-    dcf_policy: Mapping[str, Any],
+    dcf_policy: Mapping[str, Any] | None = None,
 ) -> dict[str, dict[str, Any]]:
+    effective_dcf_policy = {
+        **DEFAULT_DCF_POLICY,
+        **(dcf_policy or {}),
+    }
     fcf = _value(financials, "free_cash_flow")
     shares = _value(financials, "diluted_shares_outstanding")
     cash = _value(financials, "cash_and_cash_equivalents")
@@ -57,10 +69,10 @@ def calculate_seven_models(
     growth = _value(estimates, "forward_eps_growth")
     forward_revenue = _value(estimates, "forward_revenue")
 
-    growth_rate = _d(dcf_policy.get("default_growth"))
-    discount_rate = _d(dcf_policy.get("discount_rate"))
-    terminal_growth = _d(dcf_policy.get("terminal_growth"))
-    years = int(dcf_policy.get("forecast_years") or 5)
+    growth_rate = _d(effective_dcf_policy.get("default_growth"))
+    discount_rate = _d(effective_dcf_policy.get("discount_rate"))
+    terminal_growth = _d(effective_dcf_policy.get("terminal_growth"))
+    years = int(effective_dcf_policy.get("forecast_years") or 5)
     dcf_missing = [
         name
         for name, value in (
@@ -112,7 +124,7 @@ def calculate_seven_models(
     milestone_value = success_probability * success_value + (Decimal("1") - success_probability) * failure_value if success_probability is not None and success_value is not None and failure_value is not None and Decimal("0") <= success_probability <= Decimal("1") else None
 
     return {
-        "dcf": _result(dcf_value, "dcf-fair-value.v031v.5", ["free_cash_flow", "cash_and_cash_equivalents", "total_debt", "diluted_shares_outstanding", "growth_rate", "discount_rate", "terminal_growth"], dcf_missing, assumption_source="config/fair_value_snapshot.v030.14.0.json"),
+        "dcf": _result(dcf_value, "dcf-fair-value.v031v.5", ["free_cash_flow", "cash_and_cash_equivalents", "total_debt", "diluted_shares_outstanding", "growth_rate", "discount_rate", "terminal_growth"], dcf_missing, assumption_source="seven_model_valuation.default_dcf_policy"),
         "forward_pe": _result(forward_pe_value, "forward-pe-fair-value.v031v.5", ["forward_eps", "target_forward_pe"], [name for name, value in (("forward_eps", forward_eps), ("target_forward_pe", target_pe)) if value is None], assumption_source="knowledge.valuation_assumptions"),
         "peg": _result(peg_value, "peg-fair-value.v031v.5", ["forward_eps", "forward_eps_growth", "target_peg"], [name for name, value in (("forward_eps", forward_eps), ("forward_eps_growth", peg_growth), ("target_peg", target_peg)) if value is None], assumption_source="knowledge.valuation_assumptions"),
         "forward_ps": _result(forward_ps_value, "forward-ps-fair-value.v031v.5", ["forward_revenue", "shares", "target_forward_ps"], [name for name, value in (("forward_revenue", forward_revenue), ("shares", shares), ("target_forward_ps", target_ps)) if value is None], assumption_source="knowledge.valuation_assumptions"),
