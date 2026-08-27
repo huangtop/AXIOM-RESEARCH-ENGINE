@@ -1,31 +1,31 @@
 {
   "schema_version": "etf-security-identity-diagnostics.v031e.1",
   "version": "V031E.1B",
-  "generated_at": "2026-08-25T23:52:12.701355+00:00",
+  "generated_at": "2026-08-27T00:55:46.538349+00:00",
   "source_snapshot": {
-    "snapshot_id": "20260825224607-c2c637d2b749",
-    "provider_generated_at": "2026-08-25T22:46:07.675474+00:00",
-    "holdings_index_sha256": "a94efd26e63b2e6af33df1556c454a75870e8fc54b3a91b5009ad673cb94d4d3",
+    "snapshot_id": "20260826234203-9e5146befbaf",
+    "provider_generated_at": "2026-08-26T23:42:03.399162+00:00",
+    "holdings_index_sha256": "97a33664313d108abd48690f37763b25aef2e516d6c6b4813992763363d3a6fd",
     "holdings_coverage": "top_holdings_only"
   },
   "summary": {
-    "holding_symbol_count": 801,
-    "resolved_symbol_count": 331,
-    "unresolved_symbol_count": 470,
-    "resolved_company_count": 330,
-    "resolved_exposure_count": 1273,
-    "unresolved_exposure_count": 1710,
+    "holding_symbol_count": 814,
+    "resolved_symbol_count": 341,
+    "unresolved_symbol_count": 473,
+    "resolved_company_count": 340,
+    "resolved_exposure_count": 1331,
+    "unresolved_exposure_count": 1740,
     "status_counts": {
       "resolved_alias": 2,
-      "resolved_exact": 329,
-      "unresolved": 96,
-      "unsupported_market": 374
+      "resolved_exact": 339,
+      "unresolved": 100,
+      "unsupported_market": 373
     },
     "reason_code_counts": {
       "CLASS_SHARE_PUNCTUATION_NORMALIZED": 2,
-      "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY": 374,
-      "SECURITY_IDENTITY_NOT_FOUND": 96,
-      "UNIQUE_ACTIVE_COMMON_EQUITY_MATCH": 329
+      "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY": 373,
+      "SECURITY_IDENTITY_NOT_FOUND": 100,
+      "UNIQUE_ACTIVE_COMMON_EQUITY_MATCH": 339
     },
     "name_based_matching_used": false,
     "valuation_readiness_consumed": false
@@ -61,6 +61,11 @@
         "US-AIQ",
         "US-BAI",
         "US-CHAT",
+        "US-CHPS",
+        "US-DRAM",
+        "US-DTCR",
+        "US-IEMG",
+        "US-IGPT",
         "US-VXUS"
       ]
     },
@@ -74,10 +79,6 @@
         "TW-00735",
         "TW-00762",
         "TW-00851",
-        "US-CHPS",
-        "US-DRAM",
-        "US-DTCR",
-        "US-IGPT",
         "US-VEA",
         "US-VEU"
       ]
@@ -245,7 +246,10 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "US-AIQ",
+        "US-CARZ",
         "US-CHAT",
+        "US-DRAM",
+        "US-IEMG",
         "US-VXUS",
         "US-WTAI"
       ]
@@ -261,10 +265,18 @@
         "TW-00861",
         "TW-00916",
         "TW-009810",
-        "US-CARZ",
-        "US-DRAM",
         "US-VEA",
         "US-VEU"
+      ]
+    },
+    {
+      "holding_symbol": "005935",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-IEMG"
       ]
     },
     {
@@ -361,6 +373,7 @@
         "TW-00703",
         "TW-00736",
         "TW-00752",
+        "US-IEMG",
         "US-VWO"
       ]
     },
@@ -492,10 +505,10 @@
       ]
     },
     {
-      "holding_symbol": "051910.KS",
-      "market_suffix": "KS",
-      "status": "unsupported_market",
-      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "holding_symbol": "051910.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
         "US-IDRV"
@@ -522,6 +535,7 @@
         "TW-00703",
         "TW-00736",
         "TW-00752",
+        "US-IEMG",
         "US-VEU",
         "US-VWO",
         "US-VXUS"
@@ -954,6 +968,7 @@
         "TW-00995A",
         "TW-00996A",
         "TW-00999A",
+        "US-IEMG",
         "US-VWO"
       ]
     },
@@ -1007,6 +1022,7 @@
         "TW-00982T",
         "TW-00985A",
         "TW-00991A",
+        "US-IEMG",
         "US-VWO"
       ]
     },
@@ -1127,6 +1143,7 @@
         "TW-00999A",
         "US-ARTY",
         "US-CHPS",
+        "US-IEMG",
         "US-VEU",
         "US-VT",
         "US-VWO",
@@ -1617,6 +1634,7 @@
         "TW-00995A",
         "TW-00996A",
         "TW-00999A",
+        "US-IEMG",
         "US-VWO"
       ]
     },
@@ -2852,9 +2870,18 @@
         "TW-009816",
         "TW-00981A",
         "TW-00985A",
-        "TW-00988A",
         "TW-00991A",
         "TW-00999A"
+      ]
+    },
+    {
+      "holding_symbol": "373220.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-IDRV"
       ]
     },
     {
@@ -2864,8 +2891,7 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00902",
-        "US-IDRV"
+        "TW-00902"
       ]
     },
     {
@@ -4471,7 +4497,9 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00645"
+        "TW-00645",
+        "US-EFA",
+        "US-IEFA"
       ]
     },
     {
@@ -4733,6 +4761,7 @@
         "TW-00703",
         "TW-00736",
         "TW-00752",
+        "US-IEMG",
         "US-VEU",
         "US-VWO",
         "US-VXUS"
@@ -4878,6 +4907,8 @@
         "TW-00876",
         "TW-00941",
         "US-CHPS",
+        "US-EFA",
+        "US-IEFA",
         "US-VEA",
         "US-VEU",
         "US-VXUS"
@@ -4901,6 +4932,8 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00709",
+        "US-EFA",
+        "US-IEFA",
         "US-VEA"
       ]
     },
@@ -4971,6 +5004,8 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
+        "US-EFA",
+        "US-IEFA",
         "US-URA"
       ]
     },
@@ -5253,6 +5288,8 @@
         "TW-00709",
         "TW-00917",
         "TW-00998A",
+        "US-EFA",
+        "US-IEFA",
         "US-VEA",
         "US-VEU",
         "US-VXUS"
@@ -5525,6 +5562,8 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00709",
+        "US-EFA",
+        "US-IEFA",
         "US-VEA"
       ]
     },
@@ -5546,6 +5585,8 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00709",
+        "US-EFA",
+        "US-IEFA",
         "US-VEA",
         "US-VEU",
         "US-VXUS"
@@ -5637,6 +5678,8 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00709",
+        "US-EFA",
+        "US-IEFA",
         "US-VEA",
         "US-VEU",
         "US-VXUS"
@@ -5701,6 +5744,8 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00709",
+        "US-EFA",
+        "US-IEFA",
         "US-VEA"
       ]
     },
@@ -5712,7 +5757,9 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00660",
-        "TW-00709"
+        "TW-00709",
+        "US-EFA",
+        "US-IEFA"
       ]
     },
     {
@@ -5959,6 +6006,16 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "US-MAGS"
+      ]
+    },
+    {
+      "holding_symbol": "XTSLA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-IJR"
       ]
     },
     {
