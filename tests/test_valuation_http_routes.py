@@ -6,9 +6,24 @@ import json
 from axiom_engine.valuation_http import ValuationWSGIApp
 
 
-class StubService:
-    def __init__(self, payload): self.payload = payload
-    def calculate(self, request): return {**self.payload, "request": request}
+class StubFullMarketService:
+    def __init__(self, payload):
+        self.payload = payload
+
+    def get(self, symbol):
+        return {
+            "valuation": {
+                "unified_contract": {
+                    **self.payload,
+                    "symbol": symbol,
+                }
+            }
+        }
+
+
+class StubCoverageService:
+    def require_public(self, symbol, *, capability=None):
+        return {"symbol": symbol, "capability": capability}
 
 
 def invoke(app, path, payload):
@@ -33,30 +48,47 @@ def invoke_get(app, path, *, etag=None):
 
 
 def test_production_route_is_v1_valuations():
-    app = ValuationWSGIApp(StubService({"endpoint_mode": "production"}), StubService({"endpoint_mode": "debug_only"}))
+    app = ValuationWSGIApp(
+        full_market_service=StubFullMarketService({"contract_version": "unified-valuation.v1"}),
+        coverage_service=StubCoverageService(),
+    )
     status, payload = invoke(app, "/v1/valuations", {"symbol": "NVDA"})
     assert status.startswith("200")
-    assert payload["endpoint_mode"] == "production"
+    assert payload["contract_version"] == "unified-valuation.v1"
+    assert payload["symbol"] == "NVDA"
 
 
-def test_legacy_route_is_debug_namespaced():
-    app = ValuationWSGIApp(StubService({"endpoint_mode": "production"}), StubService({"endpoint_mode": "debug_only"}))
-    status, payload = invoke(app, "/v1/debug/valuations/legacy-parity", {"symbol": "NVDA"})
-    assert status.startswith("200")
-    assert payload["endpoint_mode"] == "debug_only"
+def test_retired_legacy_debug_route_is_removed():
+    app = ValuationWSGIApp(
+        full_market_service=StubFullMarketService({}),
+        coverage_service=StubCoverageService(),
+    )
+    status, _ = invoke(
+        app,
+        "/v1/debug/valuations/legacy-parity",
+        {"symbol": "NVDA"},
+    )
+    assert status.startswith("404")
 
 
 def test_old_legacy_route_is_removed():
-    app = ValuationWSGIApp(StubService({}), StubService({}))
+    app = ValuationWSGIApp(
+        full_market_service=StubFullMarketService({}),
+        coverage_service=StubCoverageService(),
+    )
     status, _ = invoke(app, "/v1/valuations/legacy", {"symbol": "NVDA"})
     assert status.startswith("404")
 
 
 def test_production_valuation_route_accepts_basic_market_company():
-    app = ValuationWSGIApp(StubService({"endpoint_mode": "production"}), StubService({}))
+    app = ValuationWSGIApp(
+        full_market_service=StubFullMarketService({"contract_version": "unified-valuation.v1"}),
+        coverage_service=StubCoverageService(),
+    )
     status, payload = invoke(app, "/v1/valuations", {"symbol": "F"})
     assert status.startswith("200")
-    assert payload["endpoint_mode"] == "production"
+    assert payload["contract_version"] == "unified-valuation.v1"
+    assert payload["symbol"] == "F"
 
 
 def test_publication_files_use_etag_and_immutable_cache(tmp_path):
