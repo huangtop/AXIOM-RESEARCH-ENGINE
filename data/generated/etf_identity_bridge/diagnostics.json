@@ -1,31 +1,31 @@
 {
   "schema_version": "etf-security-identity-diagnostics.v031e.1",
   "version": "V031E.1B",
-  "generated_at": "2026-08-27T00:55:46.538349+00:00",
+  "generated_at": "2026-08-28T02:19:16.764529+00:00",
   "source_snapshot": {
-    "snapshot_id": "20260826234203-9e5146befbaf",
-    "provider_generated_at": "2026-08-26T23:42:03.399162+00:00",
-    "holdings_index_sha256": "97a33664313d108abd48690f37763b25aef2e516d6c6b4813992763363d3a6fd",
+    "snapshot_id": "20260828012524-2433f049fdfb",
+    "provider_generated_at": "2026-08-28T01:25:24.353924+00:00",
+    "holdings_index_sha256": "33fee363faf09e5f7ddc0c422bd61ebd5a9cf4fa9723855c492725a1c2b480b8",
     "holdings_coverage": "top_holdings_only"
   },
   "summary": {
-    "holding_symbol_count": 814,
-    "resolved_symbol_count": 341,
-    "unresolved_symbol_count": 473,
-    "resolved_company_count": 340,
-    "resolved_exposure_count": 1331,
-    "unresolved_exposure_count": 1740,
+    "holding_symbol_count": 823,
+    "resolved_symbol_count": 349,
+    "unresolved_symbol_count": 474,
+    "resolved_company_count": 348,
+    "resolved_exposure_count": 1374,
+    "unresolved_exposure_count": 1759,
     "status_counts": {
       "resolved_alias": 2,
-      "resolved_exact": 339,
-      "unresolved": 100,
-      "unsupported_market": 373
+      "resolved_exact": 347,
+      "unresolved": 102,
+      "unsupported_market": 372
     },
     "reason_code_counts": {
       "CLASS_SHARE_PUNCTUATION_NORMALIZED": 2,
-      "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY": 373,
-      "SECURITY_IDENTITY_NOT_FOUND": 100,
-      "UNIQUE_ACTIVE_COMMON_EQUITY_MATCH": 339
+      "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY": 372,
+      "SECURITY_IDENTITY_NOT_FOUND": 102,
+      "UNIQUE_ACTIVE_COMMON_EQUITY_MATCH": 347
     },
     "name_based_matching_used": false,
     "valuation_readiness_consumed": false
@@ -58,6 +58,7 @@
       "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
+        "TW-00735",
         "US-AIQ",
         "US-BAI",
         "US-CHAT",
@@ -66,6 +67,8 @@
         "US-DTCR",
         "US-IEMG",
         "US-IGPT",
+        "US-IXUS",
+        "US-SCHF",
         "US-VXUS"
       ]
     },
@@ -76,7 +79,6 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00735",
         "TW-00762",
         "TW-00851",
         "US-VEA",
@@ -245,11 +247,14 @@
       "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
+        "TW-00735",
         "US-AIQ",
         "US-CARZ",
         "US-CHAT",
         "US-DRAM",
         "US-IEMG",
+        "US-IXUS",
+        "US-SCHF",
         "US-VXUS",
         "US-WTAI"
       ]
@@ -261,7 +266,6 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00735",
         "TW-00861",
         "TW-00916",
         "TW-009810",
@@ -300,6 +304,16 @@
       ]
     },
     {
+      "holding_symbol": "006400.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-KARS"
+      ]
+    },
+    {
       "holding_symbol": "006400.KS",
       "market_suffix": "KS",
       "status": "unsupported_market",
@@ -307,8 +321,7 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00902",
-        "TW-00920",
-        "US-KARS"
+        "TW-00920"
       ]
     },
     {
@@ -348,18 +361,9 @@
       "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
+        "TW-00735",
         "TW-00990A",
         "TW-00997A"
-      ]
-    },
-    {
-      "holding_symbol": "009150.KS",
-      "market_suffix": "KS",
-      "status": "unsupported_market",
-      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-00735"
       ]
     },
     {
@@ -453,10 +457,10 @@
       ]
     },
     {
-      "holding_symbol": "028260.KS",
-      "market_suffix": "KS",
-      "status": "unsupported_market",
-      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "holding_symbol": "028260.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
         "US-URA"
@@ -536,6 +540,7 @@
         "TW-00736",
         "TW-00752",
         "US-IEMG",
+        "US-IXUS",
         "US-VEU",
         "US-VWO",
         "US-VXUS"
@@ -1144,6 +1149,7 @@
         "US-ARTY",
         "US-CHPS",
         "US-IEMG",
+        "US-IXUS",
         "US-VEU",
         "US-VT",
         "US-VWO",
@@ -2127,6 +2133,16 @@
       "source_etf_ids": [
         "TW-00956",
         "TW-00972"
+      ]
+    },
+    {
+      "holding_symbol": "2H2.DE",
+      "market_suffix": "DE",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "TW-00712"
       ]
     },
     {
@@ -3630,6 +3646,7 @@
         "TW-00980A",
         "TW-00981A",
         "TW-00987A",
+        "TW-00988A",
         "TW-00991A",
         "TW-00994A",
         "TW-00999A"
@@ -4909,6 +4926,8 @@
         "US-CHPS",
         "US-EFA",
         "US-IEFA",
+        "US-IXUS",
+        "US-SCHF",
         "US-VEA",
         "US-VEU",
         "US-VXUS"
@@ -4934,6 +4953,7 @@
         "TW-00709",
         "US-EFA",
         "US-IEFA",
+        "US-SCHF",
         "US-VEA"
       ]
     },
@@ -5290,6 +5310,8 @@
         "TW-00998A",
         "US-EFA",
         "US-IEFA",
+        "US-IXUS",
+        "US-SCHF",
         "US-VEA",
         "US-VEU",
         "US-VXUS"
@@ -5564,6 +5586,8 @@
         "TW-00709",
         "US-EFA",
         "US-IEFA",
+        "US-IXUS",
+        "US-SCHF",
         "US-VEA"
       ]
     },
@@ -5587,6 +5611,8 @@
         "TW-00709",
         "US-EFA",
         "US-IEFA",
+        "US-IXUS",
+        "US-SCHF",
         "US-VEA",
         "US-VEU",
         "US-VXUS"
@@ -5680,6 +5706,7 @@
         "TW-00709",
         "US-EFA",
         "US-IEFA",
+        "US-IXUS",
         "US-VEA",
         "US-VEU",
         "US-VXUS"
@@ -5746,6 +5773,7 @@
         "TW-00709",
         "US-EFA",
         "US-IEFA",
+        "US-SCHF",
         "US-VEA"
       ]
     },
