@@ -37,7 +37,7 @@ rebuild_generated_outputs() {
 }
 
 stage_generated_outputs() {
-  git add data/generated/provider_cache/yahoo/daily_close
+  git add -f data/generated/provider_cache/yahoo/daily_close
   git add \
     data/generated/market \
     data/generated/full_market_coverage \
