@@ -42,10 +42,11 @@ def _get(app, path):
 
 def test_real_population_is_complete_and_unverified_seed_relationships_are_rejected():
     payload = build_theme_sector_inference(ROOT)
-    assert payload["summary"]["company_count"] == 6464
+    companies = json.loads((ROOT / "data/universe/companies.json").read_text())
+    assert payload["summary"]["company_count"] == len(companies)
     assert payload["summary"]["selected_research_company_count"] == 0
     assert payload["summary"]["rejected_evidence_count"] == 10
-    assert len(payload["records"]) == 6464
+    assert len(payload["records"]) == len(companies)
 
 
 def test_description_requires_provenance_and_never_infers_from_company_name(tmp_path):

@@ -58,7 +58,8 @@ def test_gate_policy_forbids_ticker_membership(tmp_path: Path):
 
 def test_real_gate_covers_full_registry_and_expected_sic_examples():
     report = build_research_relevance_gate(ROOT)
-    assert report["summary"]["company_count"] == 6464
+    companies = json.loads((ROOT / "data/universe/companies.json").read_text())
+    assert report["summary"]["company_count"] == len(companies)
     records = {row["company_id"]: row for row in report["records"]}
     assert records["company:US-CIK0000831001"]["upper_category"] == "traditional_banking"
     assert records["company:US-CIK0000320187"]["upper_category"] == "apparel_and_footwear"

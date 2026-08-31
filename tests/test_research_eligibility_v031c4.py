@@ -184,7 +184,8 @@ def test_digital_assets_remain_classifiable_but_have_no_research_actions():
 
 def test_real_population_remains_full_market_and_not_valuation_gated():
     report = build_research_eligibility(ROOT)
-    assert report["summary"]["company_count"] == 6464
+    companies = json.loads((ROOT / "data/universe/companies.json").read_text())
+    assert report["summary"]["company_count"] == len(companies)
     assert report["summary"]["active_intelligence_company_count"] <= 160
     assert report["summary"]["supply_chain_company_count"] <= 1000
     assert report["policy"]["deep_research_activation_mode"] == "event_driven"
