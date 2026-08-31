@@ -202,7 +202,9 @@ def _dual_fy_legacy_models(snapshot: Mapping[str, Any], financials: Mapping[str,
     out = {}
     for basis in ("CURRENT_FY", "NEXT_FY"):
         row = annual.get(basis) or {}
-        eps = num(row.get("eps")); revenue = num(row.get("revenue")); growth = num(row.get("peg_growth"))
+        eps = num(row.get("eps"))
+        revenue = num(row.get("revenue"))
+        growth = num(row.get("peg_growth"))
         growth_pct = growth * Decimal("100") if growth and growth > 0 else None
         pe = eps * current_pe if eps and eps > 0 else price
         peg = eps * target_peg * growth_pct if eps and eps > 0 and growth_pct else pe
@@ -1084,12 +1086,14 @@ def write_full_market_coverage(
     company_root.mkdir(parents=True, exist_ok=True)
     ticker_to_file: dict[str, str] = {}
     company_id_to_file: dict[str, str] = {}
+    current_files: set[str] = set()
 
     for card in report.get("cards") or []:
         company_id = str((card.get("company") or {}).get("company_id") or "")
         if not company_id:
             continue
         filename = quote(company_id, safe="._-") + ".json"
+        current_files.add(filename)
         path = company_root / filename
         temporary = path.with_suffix(path.suffix + ".tmp")
         temporary.write_text(
@@ -1102,6 +1106,10 @@ def write_full_market_coverage(
             ticker = str(security.get("ticker") or "").upper()
             if ticker:
                 ticker_to_file[ticker] = f"per-company/{filename}"
+
+    for stale in company_root.glob("*.json"):
+        if stale.name not in current_files:
+            stale.unlink()
 
     index = {
         "schema_version": "full-market-valuation-index.v031g.1",
