@@ -111,12 +111,15 @@ def test_real_projection_preserves_key_identity_and_scope_contracts():
         (ROOT / "data/generated/research_eligibility/research_eligibility.json").read_text()
     )
     by_ticker = {row["ticker"]: row for row in report["records"] if row.get("ticker")}
-    assert report["summary"]["company_count"] == 6464
+    companies = json.loads((ROOT / "data/universe/companies.json").read_text())
+    assert report["summary"]["company_count"] == len(companies)
     assert report["summary"]["explicit_record_count"] < report["summary"]["company_count"]
     assert by_ticker["MU"]["research_scope"] == "core"
     assert by_ticker["TSLA"]["research_scope"] == "core"
     assert by_ticker["SKHY"]["research_scope"] == "candidate"
-    assert report["summary"]["public_valuation_card_count"] == 5851
+    assert report["summary"]["public_valuation_card_count"] == report["summary"][
+        "valuation_scope_counts"
+    ]["eligible"]
     assert report["summary"]["research_page_count"] == eligibility["summary"][
         "selected_research_company_count"
     ]

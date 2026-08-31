@@ -51,8 +51,10 @@ def test_instrument_only_shells_are_excluded_but_linked_warrant_does_not_exclude
 
 def test_real_registry_is_classified_without_a_ticker_membership_list():
     report = build_security_identity_normalization(ROOT)
-    assert report["summary"]["registry_company_count"] == 6464
-    assert report["summary"]["registry_security_count"] == 7451
+    companies = json.loads((ROOT / "data/universe/companies.json").read_text())
+    securities = json.loads((ROOT / "data/universe/securities.json").read_text())
+    assert report["summary"]["registry_company_count"] == len(companies)
+    assert report["summary"]["registry_security_count"] == len(securities)
     assert report["summary"]["excluded_company_count"] > 0
     assert report["summary"]["instrument_type_counts"]["warrant"] > 0
     assert report["summary"]["instrument_type_counts"]["unit"] > 0
