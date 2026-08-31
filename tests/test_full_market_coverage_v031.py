@@ -9,11 +9,46 @@ from axiom_engine.full_market_coverage import (
     build_full_market_coverage,
     write_full_market_coverage,
 )
+from axiom_engine.full_market_coverage.core import _dual_fy_seven_models
 from axiom_engine.valuation_http import ValuationWSGIApp
 
 
 ROOT = Path(__file__).resolve().parents[1]
 MODELS = {"dcf", "forward_pe", "peg", "forward_ps", "ev_ebitda", "forward_pb", "milestone"}
+
+
+def test_dual_fy_models_never_use_current_to_next_growth_for_next_fy_peg():
+    horizons = _dual_fy_seven_models(
+        {
+            "annual_estimates": {
+                "CURRENT_FY": {"eps": "214.09818", "revenue": "48960258320", "peg_growth": "0.2364", "growth_basis": "CURRENT_FY_TO_NEXT_FY"},
+                "NEXT_FY": {"eps": "264.72162", "revenue": "57786626660", "peg_growth": None, "growth_basis": None},
+            },
+            "previous_close": "1484.98",
+            "trailing_eps": "73.8",
+            "revenue_ttm": "20248000512",
+            "shares_outstanding": "146000000",
+        },
+        {"diluted_shares_outstanding": {"value": "146000000"}},
+        {},
+        {"current_price": "1484.98"},
+        {},
+    )
+
+    assert Decimal(horizons["CURRENT_FY"]["models"]["peg"]["fair_value"]).quantize(Decimal("0.01")) == Decimal("4555.15")
+    assert horizons["NEXT_FY"]["models"]["peg"]["status"] == "unavailable"
+    assert horizons["NEXT_FY"]["models"]["peg"]["fair_value"] is None
+    assert horizons["NEXT_FY"]["models"]["peg"]["reason_code"] == "HORIZON_EPS_OR_MATCHED_GROWTH_UNAVAILABLE"
+
+
+def test_missing_horizon_inputs_are_unavailable_instead_of_current_price_fallbacks():
+    horizons = _dual_fy_seven_models(
+        {}, {}, {}, {"current_price": "100"}, {}
+    )
+    for horizon in horizons.values():
+        for model_name in ("dcf", "forward_pe", "peg", "forward_ps", "ev_ebitda", "forward_pb"):
+            assert horizon["models"][model_name]["status"] == "unavailable"
+            assert horizon["models"][model_name]["fair_value"] is None
 
 
 def report():

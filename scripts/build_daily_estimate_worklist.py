@@ -14,6 +14,7 @@ def main() -> int:
     parser.add_argument("--force", action="store_true", help="Include fresh companies so a full priority batch is actually refetched")
     parser.add_argument("--priority-symbols", type=Path, help="JSON completion set placed ahead of the general daily queue")
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--allow-empty", action="store_true")
     args = parser.parse_args()
     if args.limit < 1 or args.ttl_days < 1:
         parser.error("--limit and --ttl-days must be positive")
@@ -24,6 +25,12 @@ def main() -> int:
 
     def needs_refresh(symbol: str) -> bool:
         row = snapshots.get(symbol) or {}
+        annual = row.get("annual_estimates")
+        if not isinstance(annual, dict) or not all(
+            isinstance(annual.get(basis), dict)
+            for basis in ("CURRENT_FY", "NEXT_FY")
+        ):
+            return True
         value = row.get("fetched_at") or row.get("last_refresh")
         if not value:
             return True
@@ -55,7 +62,7 @@ def main() -> int:
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text("\n".join(symbols) + ("\n" if symbols else ""), encoding="utf-8")
     print({"eligible_missing_or_stale": len(candidates), "selected": len(symbols), "limit": args.limit})
-    if not symbols:
+    if not symbols and not args.allow_empty:
         raise SystemExit("no missing or stale estimate symbols selected")
     return 0
 

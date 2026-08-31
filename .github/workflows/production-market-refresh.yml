@@ -33,7 +33,7 @@ jobs:
           python-version: "3.11"
           cache: pip
 
-      - run: pip install -e .[dev]
+      - run: pip install -e .[dev,yahoo]
 
       - name: Synchronize main before the expensive provider refresh
         run: git pull --ff-only origin main
@@ -50,6 +50,25 @@ jobs:
           --max-failure-rate 0.03
           --report data/generated/market/daily_close_refresh_report.json
           ${{ github.event_name == 'schedule' && '--force' || (inputs.force && '--force' || '') }}
+
+      - name: Backfill missing dual-fiscal-year estimate contracts
+        run: |
+          python scripts/build_daily_estimate_worklist.py \
+            --limit 194 \
+            --allow-empty \
+            --priority-symbols config/frontier_priority_symbols.v1.json \
+            --output /tmp/axiom-dual-fy-estimate-symbols.txt
+          printf '%s\n' NVDA SNDK MU LITE PM TSLA >> /tmp/axiom-dual-fy-estimate-symbols.txt
+          sort -u /tmp/axiom-dual-fy-estimate-symbols.txt -o /tmp/axiom-dual-fy-estimate-symbols.txt
+          if [[ -s /tmp/axiom-dual-fy-estimate-symbols.txt ]]; then
+            python scripts/refresh_yahoo_company_snapshots.py \
+              --symbols-file /tmp/axiom-dual-fy-estimate-symbols.txt \
+              --ttl-days 30 \
+              --delay 0.5 \
+              --max-fetch 200
+            python scripts/build_estimate_population_v031v6.py
+            python scripts/build_multiple_policy_v031v6.py
+          fi
 
       - name: Rebuild valuation shards and publication catalog
         run: |

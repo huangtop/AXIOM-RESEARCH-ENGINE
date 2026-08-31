@@ -54,6 +54,38 @@ def test_forward_estimates_prefer_next_fiscal_year_over_current_year():
     assert row.forward_eps_growth == "0.4372"
 
 
+def test_snapshot_preserves_separate_current_and_next_fiscal_year_inputs():
+    now = datetime(2026, 8, 31, tzinfo=timezone.utc)
+    row = snapshot_from_info("SNDK", {
+        "__earnings_estimate__": {
+            "0y": {"avg": "214.09818", "growth": "1.25"},
+            "+1y": {"avg": "264.72162", "growth": "0.2364"},
+        },
+        "__revenue_estimate__": {
+            "0y": {"avg": "48960258320"},
+            "+1y": {"avg": "57786626660"},
+        },
+    }, fetched_at=now)
+
+    assert row.forward_eps == "264.72162"
+    assert row.annual_estimates == {
+        "CURRENT_FY": {
+            "eps": "214.09818",
+            "revenue": "48960258320",
+            "reported_growth": "1.25",
+            "peg_growth": "0.2364",
+            "growth_basis": "CURRENT_FY_TO_NEXT_FY",
+        },
+        "NEXT_FY": {
+            "eps": "264.72162",
+            "revenue": "57786626660",
+            "reported_growth": "0.2364",
+            "peg_growth": None,
+            "growth_basis": None,
+        },
+    }
+
+
 def test_cache_first_skips_before_provider_request(tmp_path):
     now = datetime(2026, 7, 27, tzinfo=timezone.utc)
     cache = YahooCompanySnapshotCache(tmp_path / "symbols", canonical_output_path=tmp_path / "canonical.json", ttl_days=30)
@@ -83,6 +115,7 @@ def test_committed_canonical_output_is_durable_ttl_checkpoint(tmp_path):
         "symbol": "PLTR",
         "fetched_at": (now - timedelta(days=1)).isoformat(),
         "forward_eps": "1.59",
+        "annual_estimates": {"CURRENT_FY": {}, "NEXT_FY": {}},
     }}}))
     cache = YahooCompanySnapshotCache(tmp_path / "ignored-symbol-cache", canonical_output_path=output, ttl_days=30)
     fetcher = FakeFetcher()
@@ -92,6 +125,23 @@ def test_committed_canonical_output_is_durable_ttl_checkpoint(tmp_path):
     assert report.fetched == 0
     assert report.skipped_cached_before_request == 1
     assert fetcher.calls == []
+
+
+def test_fresh_legacy_snapshot_without_dual_fy_contract_is_refetched(tmp_path):
+    now = datetime(2026, 8, 31, tzinfo=timezone.utc)
+    output = tmp_path / "canonical.json"
+    output.write_text(json.dumps({"symbols": {"SNDK": {
+        "symbol": "SNDK",
+        "fetched_at": (now - timedelta(days=1)).isoformat(),
+        "forward_eps": "264.72",
+    }}}))
+    cache = YahooCompanySnapshotCache(
+        tmp_path / "ignored-symbol-cache",
+        canonical_output_path=output,
+        ttl_days=30,
+    )
+
+    assert cache.is_fresh("SNDK", now=now) is False
 
 
 def test_canonical_output_contains_all_cached_symbols(tmp_path):

@@ -62,6 +62,8 @@ class YahooCompanySnapshot:
     analyst_target_mean: str | None
     analyst_count: int | None
     previous_close: str | None
+    estimate_metadata: dict[str, object] | None = None
+    annual_estimates: dict[str, object] | None = None
 
     def to_dict(self) -> dict[str, object]:
         return asdict(self)
@@ -183,6 +185,12 @@ class YahooCompanySnapshotCache:
     def is_fresh(self, symbol: str, *, now: datetime) -> bool:
         payload = self.read_symbol(symbol)
         if not payload:
+            return False
+        annual = payload.get("annual_estimates")
+        if not isinstance(annual, Mapping) or not all(
+            isinstance(annual.get(basis), Mapping)
+            for basis in ("CURRENT_FY", "NEXT_FY")
+        ):
             return False
         fetched_at = payload.get("fetched_at") or payload.get("last_refresh")
         if not isinstance(fetched_at, str):
@@ -372,6 +380,7 @@ def snapshot_and_diagnostic_from_info(
 
     values: dict[str, object] = {}
     sources: dict[str, str] = {}
+    selected_sources: dict[str, str] = {}
 
     def resolve(field: str, candidates: list[tuple[str, object]], converter: Callable[[object], object | None]) -> object | None:
         for index, (source, candidate) in enumerate(candidates):
@@ -379,6 +388,7 @@ def snapshot_and_diagnostic_from_info(
             if value is not None:
                 values[field] = value
                 sources[field] = "ok" if index == 0 else "fallback"
+                selected_sources[field] = source
                 return value
         values[field] = None
         sources[field] = "missing"
@@ -390,10 +400,26 @@ def snapshot_and_diagnostic_from_info(
     previous_close = _first_decimal(info.get("previousClose"), fast.get("previousClose"), fast.get("previous_close"))
     implied_shares = _divide_decimal(market_cap, previous_close)
     shares = resolve("shares", [("info.sharesOutstanding", info.get("sharesOutstanding")), ("info.impliedSharesOutstanding", info.get("impliedSharesOutstanding")), ("market_cap/previous_close", implied_shares)], _decimal_text)
-    forward_eps = resolve("forward_eps", [("earnings_estimate.+1y.avg", _estimate_value(earnings, ("avg", "Average"))), ("info.forwardEps", info.get("forwardEps"))], _decimal_text)
-    forward_eps_growth = resolve("forward_eps_growth", [("earnings_estimate.+1y.growth", _estimate_value(earnings, ("growth", "Growth"))), ("info.earningsGrowth", info.get("earningsGrowth"))], _decimal_text)
+    eps_estimate_value, eps_estimate_row = _estimate_value_with_row(earnings, ("avg", "Average"))
+    growth_estimate_value = _row_metric(earnings, ("+1y", "nextYear", "Next Year"), ("growth", "Growth"))
+    growth_estimate_row = "+1y" if growth_estimate_value is not None else None
+    if growth_estimate_value is None:
+        growth_estimate_value, growth_estimate_row = _estimate_value_with_row(earnings, ("growth", "Growth"))
+    revenue_estimate_value, revenue_estimate_row = _estimate_value_with_row(revenue_estimate, ("avg", "Average"))
+    forward_eps = resolve("forward_eps", [
+        (f"earnings_estimate.{eps_estimate_row}.avg" if eps_estimate_row else "earnings_estimate.unknown.avg", eps_estimate_value),
+        ("info.forwardEps", info.get("forwardEps")),
+    ], _decimal_text)
+    forward_eps_growth = resolve("forward_eps_growth", [
+        (f"earnings_estimate.{growth_estimate_row}.growth" if growth_estimate_row else "earnings_estimate.unknown.growth", growth_estimate_value),
+        ("info.earningsGrowth", info.get("earningsGrowth")),
+    ], _decimal_text)
     revenue_ttm = resolve("revenue_ttm", [("info.totalRevenue", info.get("totalRevenue")), ("financials.Total Revenue", _financial_value(financials, ("Total Revenue", "TotalRevenue")))], _decimal_text)
-    forward_revenue = resolve("forward_revenue", [("revenue_estimate.avg", _estimate_value(revenue_estimate, ("avg", "Average"))), ("calendar.revenueAverage", calendar.get("revenueAverage")), ("financials.Total Revenue", _financial_value(financials, ("Total Revenue", "TotalRevenue")))], _decimal_text)
+    forward_revenue = resolve("forward_revenue", [
+        (f"revenue_estimate.{revenue_estimate_row}.avg" if revenue_estimate_row else "revenue_estimate.unknown.avg", revenue_estimate_value),
+        ("calendar.revenueAverage", calendar.get("revenueAverage")),
+        ("financials.Total Revenue", _financial_value(financials, ("Total Revenue", "TotalRevenue"))),
+    ], _decimal_text)
 
     essential = (company_name, market_cap, shares, revenue_ttm, forward_eps)
     present = sum(value is not None for value in essential)
@@ -440,6 +466,8 @@ def snapshot_and_diagnostic_from_info(
         analyst_target_mean=_decimal_text(info.get("targetMeanPrice")),
         analyst_count=_integer(info.get("numberOfAnalystOpinions")),
         previous_close=_decimal_text(previous_close),
+        estimate_metadata=_build_estimate_metadata(selected_sources),
+        annual_estimates=_build_annual_estimates(earnings, revenue_estimate),
     )
     diagnostic: dict[str, object] = {
         "company_name": sources["company_name"],
@@ -493,6 +521,96 @@ def _as_mapping(value: object) -> dict[str, object]:
         except Exception:
             return {}
     return {}
+
+
+def _estimate_value_with_row(payload: object, keys: tuple[str, ...]) -> tuple[object, str | None]:
+    if not isinstance(payload, Mapping):
+        return None, None
+    preferred_rows = ("+1y", "nextYear", "Next Year", "0y", "current", "Current Year")
+    for row_name in preferred_rows:
+        row = payload.get(row_name)
+        if isinstance(row, Mapping):
+            for key in keys:
+                if row.get(key) is not None:
+                    return row[key], row_name
+    return None, None
+
+
+def _row_metric(payload: object, row_names: tuple[str, ...], keys: tuple[str, ...]) -> object:
+    if not isinstance(payload, Mapping):
+        return None
+    for row_name in row_names:
+        row = payload.get(row_name)
+        if isinstance(row, Mapping):
+            for key in keys:
+                if row.get(key) is not None:
+                    return row[key]
+    return None
+
+
+def _build_annual_estimates(earnings: object, revenue: object) -> dict[str, object]:
+    current_rows = ("0y", "current", "Current Year")
+    next_rows = ("+1y", "nextYear", "Next Year")
+    following_rows = ("+2y", "followingYear", "Following Year")
+    current_growth = _decimal_text(_row_metric(earnings, current_rows, ("growth", "Growth")))
+    current_to_next_growth = _decimal_text(_row_metric(earnings, next_rows, ("growth", "Growth")))
+    next_to_following_growth = _decimal_text(_row_metric(earnings, following_rows, ("growth", "Growth")))
+    return {
+        "CURRENT_FY": {
+            "eps": _decimal_text(_row_metric(earnings, current_rows, ("avg", "Average"))),
+            "revenue": _decimal_text(_row_metric(revenue, current_rows, ("avg", "Average"))),
+            "reported_growth": current_growth,
+            "peg_growth": current_to_next_growth,
+            "growth_basis": "CURRENT_FY_TO_NEXT_FY" if current_to_next_growth else None,
+        },
+        "NEXT_FY": {
+            "eps": _decimal_text(_row_metric(earnings, next_rows, ("avg", "Average"))),
+            "revenue": _decimal_text(_row_metric(revenue, next_rows, ("avg", "Average"))),
+            "reported_growth": current_to_next_growth,
+            "peg_growth": next_to_following_growth,
+            "growth_basis": "NEXT_FY_TO_FOLLOWING_FY" if next_to_following_growth else None,
+        },
+    }
+
+
+def _basis_from_yahoo_source(source: str | None) -> str | None:
+    source = str(source or "")
+    if any(token in source for token in (".+1y.", ".nextYear.", ".Next Year.")):
+        return "NEXT_FY"
+    if any(token in source for token in (".0y.", ".current.", ".Current Year.")):
+        return "CURRENT_FY"
+    if source in {"info.forwardEps", "calendar.revenueAverage"}:
+        return "PROVIDER_FORWARD"
+    if source == "financials.Total Revenue":
+        return "TTM"
+    return None
+
+
+def _build_estimate_metadata(selected_sources: Mapping[str, str]) -> dict[str, object]:
+    result: dict[str, object] = {}
+    for field in ("forward_eps", "forward_revenue"):
+        source = selected_sources.get(field)
+        if source:
+            result[field] = {
+                "source": source,
+                "forecast_basis": _basis_from_yahoo_source(source),
+                "provenance": source,
+            }
+    growth_source = selected_sources.get("forward_eps_growth")
+    if growth_source:
+        result["forward_eps_growth"] = {
+            "source": growth_source,
+            "growth_from_period": "CURRENT_FY",
+            "growth_to_period": "NEXT_FY",
+            "growth_kind": "period_transition",
+            "provenance": growth_source,
+        }
+    result["ebitda_ttm"] = {
+        "source": "info.ebitda",
+        "forecast_basis": "TTM",
+        "provenance": "info.ebitda",
+    }
+    return result
 
 
 def _estimate_value(payload: object, keys: tuple[str, ...]) -> object:

@@ -160,15 +160,17 @@ def _derived(
     }
 
 
-def _dual_fy_legacy_models(snapshot: Mapping[str, Any], financials: Mapping[str, Any], assumptions: Mapping[str, Any], market: Mapping[str, Any], dcf_policy: Mapping[str, Any]) -> dict[str, Any]:
+def _retired_dual_fy_legacy_models(snapshot: Mapping[str, Any], financials: Mapping[str, Any], assumptions: Mapping[str, Any], market: Mapping[str, Any], dcf_policy: Mapping[str, Any]) -> dict[str, Any]:
     annual = snapshot.get("annual_estimates") or {}
     if not isinstance(annual, Mapping):
         annual = {}
     def num(value: Any) -> Decimal | None:
         return _number(value)
     price = num(market.get("current_price")) or num(snapshot.get("previous_close"))
-    shares = num((financials.get("diluted_shares_outstanding") or {}).get("value")) or num(snapshot.get("shares_outstanding"))
-    trailing_eps = num((financials.get("trailing_eps") or {}).get("value")) or num(snapshot.get("trailing_eps"))
+    shares = num(snapshot.get("shares_outstanding")) or num((financials.get("diluted_shares_outstanding") or {}).get("value"))
+    # The market-anchored P/E numerator and denominator must share the same
+    # provider/as-of basis. SEC-derived EPS can represent a different period.
+    trailing_eps = num(snapshot.get("trailing_eps")) or num((financials.get("trailing_eps") or {}).get("value"))
     revenue_ttm = num(snapshot.get("revenue_ttm")) or num((financials.get("revenue") or {}).get("value"))
     cash = num((financials.get("cash_and_cash_equivalents") or {}).get("value")) or num(snapshot.get("total_cash")) or Decimal("0")
     debt = num((financials.get("total_debt") or {}).get("value")) or num(snapshot.get("total_debt")) or Decimal("0")
@@ -252,8 +254,9 @@ def _dual_fy_seven_models(
         return _number(value)
 
     price = num(market.get("current_price")) or num(snapshot.get("previous_close"))
-    shares = num((financials.get("diluted_shares_outstanding") or {}).get("value")) or num(snapshot.get("shares_outstanding"))
-    trailing_eps = num((financials.get("trailing_eps") or {}).get("value")) or num(snapshot.get("trailing_eps"))
+    shares = num(snapshot.get("shares_outstanding")) or num((financials.get("diluted_shares_outstanding") or {}).get("value"))
+    # Keep both sides of the observed P/E on the same provider/as-of basis.
+    trailing_eps = num(snapshot.get("trailing_eps")) or num((financials.get("trailing_eps") or {}).get("value"))
     revenue_ttm = num(snapshot.get("revenue_ttm")) or num((financials.get("revenue") or {}).get("value"))
     cash = num((financials.get("cash_and_cash_equivalents") or {}).get("value")) or num(snapshot.get("total_cash")) or Decimal("0")
     debt = num((financials.get("total_debt") or {}).get("value")) or num(snapshot.get("total_debt")) or Decimal("0")
@@ -287,19 +290,20 @@ def _dual_fy_seven_models(
             if candidate > 0:
                 dcf_value = candidate
 
-    def model(value: Decimal | None, mode: str = "formula", note: str | None = None) -> dict[str, Any]:
-        is_fallback = mode == "market_anchor_fallback"
+    def model(
+        value: Decimal | None,
+        mode: str = "formula",
+        note: str | None = None,
+        reason_code: str | None = None,
+    ) -> dict[str, Any]:
         return {
             "status": "calculated" if value is not None else "unavailable",
             "fair_value": format(value, "f") if value is not None else None,
             "calculation_mode": mode,
             "note": note,
-            "included_in_weighting": not is_fallback,
-            "weighting_exclusion_reason": (
-                "MARKET_ANCHOR_FALLBACK_NOT_MODEL_EVIDENCE"
-                if is_fallback
-                else None
-            ),
+            "reason_code": reason_code if value is None else None,
+            "included_in_weighting": value is not None,
+            "weighting_exclusion_reason": reason_code if value is None else None,
         }
 
     out: dict[str, Any] = {}
@@ -307,33 +311,32 @@ def _dual_fy_seven_models(
         row = annual.get(basis) or {}
         eps = num(row.get("eps"))
         revenue = num(row.get("revenue"))
-        eps_growth = (
-            num(row.get("peg_growth"))
-            or num(row.get("eps_growth"))
-            or num(row.get("reported_growth"))
-        )
+        # PEG requires growth that starts at the EPS horizon being valued.
+        # `reported_growth` describes how that EPS was reached and must never be
+        # reused to project/value the same EPS a second time.
+        eps_growth = num(row.get("peg_growth"))
         growth_pct = eps_growth * Decimal("100") if eps_growth is not None and eps_growth > 0 else None
 
-        pe_value = eps * current_pe if eps is not None and eps > 0 else price
-        ps_value = revenue / shares * current_ps if revenue is not None and revenue > 0 and shares is not None and shares > 0 else price
-        peg_value = eps * growth_pct * target_peg if eps is not None and eps > 0 and growth_pct is not None else pe_value
-        pb_value = bvps * current_pb if bvps is not None and bvps > 0 else price
+        pe_value = eps * current_pe if eps is not None and eps > 0 else None
+        ps_value = revenue / shares * current_ps if revenue is not None and revenue > 0 and shares is not None and shares > 0 else None
+        peg_value = eps * growth_pct * target_peg if eps is not None and eps > 0 and growth_pct is not None else None
+        pb_value = bvps * current_pb if bvps is not None and bvps > 0 else None
 
         ev_multiple = current_ev_multiple
         if ev_multiple is None or ev_multiple <= 0:
             ev_multiple = Decimal("45") if eps_growth is not None and eps_growth > Decimal("0.50") else Decimal("35")
-        ev_value = ((ebitda * ev_multiple) - debt + cash) / shares if ebitda is not None and ebitda > 0 and shares is not None and shares > 0 else price
+        ev_value = ((ebitda * ev_multiple) - debt + cash) / shares if ebitda is not None and ebitda > 0 and shares is not None and shares > 0 else None
 
         milestone_value = price * (Decimal("3") * success_probability + Decimal("0.5") * (Decimal("1") - success_probability)) if price is not None else pe_value
-        dcf_out = dcf_value if dcf_value is not None else price
+        dcf_out = dcf_value
 
         models = {
-            "dcf": model(dcf_out, "formula" if dcf_value is not None else "market_anchor_fallback"),
-            "forward_pe": model(pe_value),
-            "peg": model(peg_value, note="growth sets implied P/E; EPS is not grown a second time"),
-            "forward_ps": model(ps_value),
-            "ev_ebitda": model(ev_value, "formula" if ebitda is not None and ebitda > 0 else "market_anchor_fallback"),
-            "forward_pb": model(pb_value, "formula" if bvps is not None and bvps > 0 else "market_anchor_fallback"),
+            "dcf": model(dcf_out, reason_code="DCF_INPUTS_UNAVAILABLE"),
+            "forward_pe": model(pe_value, reason_code="HORIZON_EPS_UNAVAILABLE"),
+            "peg": model(peg_value, note="growth sets implied P/E; EPS is not grown a second time", reason_code="HORIZON_EPS_OR_MATCHED_GROWTH_UNAVAILABLE"),
+            "forward_ps": model(ps_value, reason_code="HORIZON_REVENUE_OR_SHARES_UNAVAILABLE"),
+            "ev_ebitda": model(ev_value, reason_code="EBITDA_OR_SHARES_UNAVAILABLE"),
+            "forward_pb": model(pb_value, reason_code="BOOK_VALUE_PER_SHARE_UNAVAILABLE"),
             "milestone": model(milestone_value),
         }
         out[basis] = {
@@ -342,6 +345,7 @@ def _dual_fy_seven_models(
             "revenue": format(revenue, "f") if revenue is not None else None,
             "eps_growth": format(eps_growth, "f") if eps_growth is not None else None,
             "growth_basis": row.get("growth_basis"),
+            "growth_is_horizon_matched": bool(row.get("growth_basis")),
             "model_count": sum(m.get("status") == "calculated" for m in models.values()),
             "models": models,
         }
@@ -925,8 +929,6 @@ def build_full_market_coverage(
                 "included_in_independent_aggregation": False,
             }
         )
-
-        valuation_horizons = _dual_fy_legacy_models(snapshot_row, fin, company_assumptions, market, dcf_policy)
 
         valuation_horizons = _dual_fy_seven_models(
             snapshot_row,
