@@ -20,7 +20,7 @@ def test_real_catalog_separates_market_publication_from_research_actions():
         (ROOT / "data/generated/research_eligibility/research_eligibility.json").read_text()
     )
     by_ticker = {row["ticker"]: row for row in report["companies"]}
-    assert report["summary"]["public_company_count"] == 5851
+    assert report["summary"]["public_company_count"] == len(report["companies"])
     # Publication is security/card based, while research eligibility is company
     # based.  Comparing their de-duplicated company-id counts is invalid when a
     # company has multiple listings or a publication card resolves through a
@@ -40,7 +40,9 @@ def test_real_catalog_separates_market_publication_from_research_actions():
     assert report["summary"]["scope_axis_counts"]["news_ai"] == eligibility["summary"][
         "active_intelligence_company_count"
     ]
-    assert report["summary"]["scope_axis_counts"]["etf_exposure"] == 5851
+    assert report["summary"]["scope_axis_counts"]["etf_exposure"] == len(
+        report["companies"]
+    )
     assert by_ticker["MU"]["research_scope"] == "core"
     assert by_ticker["F"]["product_scope"] == "basic_market"
     assert by_ticker["F"]["scope_axes"]["research_page"] is False

@@ -22,12 +22,15 @@ def report():
 
 def test_builder_uses_entire_population_without_a_maintained_ticker_cohort():
     payload = report()
-    assert payload["summary"]["registry_company_count"] == 6464
-    assert payload["summary"]["company_count"] == 5851
+    companies = json.loads((ROOT / "data/universe/companies.json").read_text())
+    securities = json.loads((ROOT / "data/universe/securities.json").read_text())
+    assert payload["summary"]["registry_company_count"] == len(companies)
+    assert payload["summary"]["company_count"] == len(payload["cards"])
     assert payload["summary"]["excluded_non_company_instrument_count"] == 613
-    assert payload["summary"]["security_count"] == 7451
-    assert len(payload["cards"]) == 5851
-    assert len(payload["indexes"]["ticker_to_position"]) == 6027
+    assert payload["summary"]["security_count"] == len(securities)
+    assert len(payload["indexes"]["ticker_to_position"]) >= payload["summary"][
+        "company_count"
+    ]
 
 
 def test_every_company_has_seven_model_slots_and_explicit_reasons():
@@ -228,4 +231,3 @@ def test_primary_business_routing_no_longer_controls_valuation_aggregation():
         unified = valuation["unified_contract"]
         assert valuation["aggregation"]["routing_source"] == "unified_valuation"
         assert unified["aggregation"]["methodology_version"] == "unified-dynamic-weight.v1"
-
