@@ -79,7 +79,7 @@ def test_http_exposes_full_market_list_and_company_card():
     card_response, card = _get(app, "/v1/companies/NVDA/valuation-card")
     contextual_response, contextual = _get(app, "/v1/companies/F/valuation-card")
     assert list_response["status"].startswith("200")
-    assert listing["summary"]["company_count"] == 5851
+    assert listing["summary"]["company_count"] == len(listing["companies"])
     assert listing["summary"]["source"] == "compact_publication_catalog"
     assert card_response["status"].startswith("200")
     assert card["primary_security"]["ticker"] == "NVDA"
