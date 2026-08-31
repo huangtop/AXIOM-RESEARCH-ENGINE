@@ -96,7 +96,7 @@ def _metric(
             "reason_code": "canonical_metric_not_populated",
             "source_record_ids": [],
         }
-    return {
+    result = {
         "status": "ready",
         "value": str(row.get("value")),
         "unit": row.get("unit"),
@@ -107,6 +107,14 @@ def _metric(
             [row.get(source_id_field)] if row.get(source_id_field) else []
         ),
     }
+    for key in (
+        "forecast_basis", "horizon", "estimate_horizon", "fiscal_year",
+        "period_start", "period_end", "growth_from_period", "growth_to_period",
+        "growth_kind", "provenance", "is_proxy", "source",
+    ):
+        if row.get(key) not in (None, ""):
+            result[key] = row.get(key)
+    return result
 
 
 def _snapshot_metric(
@@ -151,6 +159,191 @@ def _derived(
         "source_record_ids": source_ids,
     }
 
+
+def _dual_fy_legacy_models(snapshot: Mapping[str, Any], financials: Mapping[str, Any], assumptions: Mapping[str, Any], market: Mapping[str, Any], dcf_policy: Mapping[str, Any]) -> dict[str, Any]:
+    annual = snapshot.get("annual_estimates") or {}
+    if not isinstance(annual, Mapping):
+        annual = {}
+    def num(value: Any) -> Decimal | None:
+        return _number(value)
+    price = num(market.get("current_price")) or num(snapshot.get("previous_close"))
+    shares = num((financials.get("diluted_shares_outstanding") or {}).get("value")) or num(snapshot.get("shares_outstanding"))
+    trailing_eps = num((financials.get("trailing_eps") or {}).get("value")) or num(snapshot.get("trailing_eps"))
+    revenue_ttm = num(snapshot.get("revenue_ttm")) or num((financials.get("revenue") or {}).get("value"))
+    cash = num((financials.get("cash_and_cash_equivalents") or {}).get("value")) or num(snapshot.get("total_cash")) or Decimal("0")
+    debt = num((financials.get("total_debt") or {}).get("value")) or num(snapshot.get("total_debt")) or Decimal("0")
+    ebitda = num(snapshot.get("ebitda_ttm")) or num((financials.get("ebitda") or {}).get("value"))
+    bvps = num((financials.get("book_value_per_share") or {}).get("value"))
+    fcf = num((financials.get("free_cash_flow") or {}).get("value"))
+    current_pe = price / trailing_eps if price and trailing_eps and trailing_eps > 0 else (num(snapshot.get("trailing_pe")) or Decimal("15"))
+    current_ps = price * shares / revenue_ttm if price and shares and revenue_ttm and revenue_ttm > 0 else Decimal("8")
+    current_pb = num(snapshot.get("price_to_book")) or num(assumptions.get("target_forward_pb")) or Decimal("5.5")
+    current_ev = num(snapshot.get("enterprise_to_ebitda"))
+    target_peg = Decimal("0.9")  # AXIOM CURRENT_FY legacy PEG contract
+    success_prob = num(assumptions.get("milestone_success_probability")) or Decimal("0.5")
+    success_prob = min(Decimal("1"), max(Decimal("0"), success_prob))
+    dcf_value = None
+    if fcf is not None and shares is not None and shares > 0:
+        growth = num(dcf_policy.get("default_growth")) or Decimal("0.08")
+        discount = num(dcf_policy.get("discount_rate")) or Decimal("0.10")
+        tg = num(dcf_policy.get("terminal_growth")) or Decimal("0.03")
+        years = int(dcf_policy.get("forecast_years") or 5)
+        if discount > tg:
+            projected = fcf
+            enterprise = Decimal("0")
+            for year in range(1, years + 1):
+                projected *= Decimal("1") + growth
+                enterprise += projected / ((Decimal("1") + discount) ** year)
+            terminal = projected * (Decimal("1") + tg) / (discount - tg)
+            enterprise += terminal / ((Decimal("1") + discount) ** years)
+            candidate = (enterprise + cash - debt) / shares
+            if candidate > 0:
+                dcf_value = candidate
+    out = {}
+    for basis in ("CURRENT_FY", "NEXT_FY"):
+        row = annual.get(basis) or {}
+        eps = num(row.get("eps")); revenue = num(row.get("revenue")); growth = num(row.get("peg_growth"))
+        growth_pct = growth * Decimal("100") if growth and growth > 0 else None
+        pe = eps * current_pe if eps and eps > 0 else price
+        peg = eps * target_peg * growth_pct if eps and eps > 0 and growth_pct else pe
+        ps = revenue / shares * current_ps if revenue and revenue > 0 and shares and shares > 0 else price
+        pb = bvps * current_pb if bvps and bvps > 0 else price
+        ev_mult = current_ev if current_ev and current_ev > 0 else (Decimal("45") if growth and growth > Decimal("0.50") else Decimal("35"))
+        ev = ((ebitda * ev_mult) - debt + cash) / shares if ebitda and ebitda > 0 and shares and shares > 0 else price
+        milestone = price * (Decimal("3") * success_prob + Decimal("0.5") * (Decimal("1") - success_prob)) if price else pe
+        dcf = dcf_value if dcf_value is not None else price
+        def model(value, mode="formula", note=None):
+            return {"status": "calculated", "fair_value": format(value, "f") if value is not None else None, "calculation_mode": mode, "note": note}
+        out[basis] = {
+            "estimate_basis": basis,
+            "eps": format(eps, "f") if eps is not None else None,
+            "revenue": format(revenue, "f") if revenue is not None else None,
+            "peg_growth": format(growth, "f") if growth is not None else None,
+            "growth_basis": row.get("growth_basis"),
+            "model_count": 7,
+            "models": {
+                "dcf": model(dcf, "formula" if dcf_value is not None else "market_anchor_fallback"),
+                "forward_pe": model(pe),
+                "peg": model(peg, note="growth sets implied P/E; EPS is not projected a second time"),
+                "forward_ps": model(ps),
+                "ev_ebitda": model(ev, "formula" if ebitda and ebitda > 0 else "market_anchor_fallback"),
+                "forward_pb": model(pb, "formula" if bvps and bvps > 0 else "market_anchor_fallback"),
+                "milestone": model(milestone),
+            },
+        }
+    return out
+
+
+
+def _dual_fy_seven_models(
+    snapshot: Mapping[str, Any],
+    financials: Mapping[str, Any],
+    assumptions: Mapping[str, Any],
+    market: Mapping[str, Any],
+    dcf_policy: Mapping[str, Any],
+) -> dict[str, Any]:
+    annual = snapshot.get("annual_estimates") or {}
+    if not isinstance(annual, Mapping):
+        annual = {}
+
+    def num(value: Any) -> Decimal | None:
+        return _number(value)
+
+    price = num(market.get("current_price")) or num(snapshot.get("previous_close"))
+    shares = num((financials.get("diluted_shares_outstanding") or {}).get("value")) or num(snapshot.get("shares_outstanding"))
+    trailing_eps = num((financials.get("trailing_eps") or {}).get("value")) or num(snapshot.get("trailing_eps"))
+    revenue_ttm = num(snapshot.get("revenue_ttm")) or num((financials.get("revenue") or {}).get("value"))
+    cash = num((financials.get("cash_and_cash_equivalents") or {}).get("value")) or num(snapshot.get("total_cash")) or Decimal("0")
+    debt = num((financials.get("total_debt") or {}).get("value")) or num(snapshot.get("total_debt")) or Decimal("0")
+    ebitda = num(snapshot.get("ebitda_ttm")) or num((financials.get("ebitda") or {}).get("value"))
+    bvps = num((financials.get("book_value_per_share") or {}).get("value"))
+    fcf = num((financials.get("free_cash_flow") or {}).get("value"))
+
+    current_pe = price / trailing_eps if price is not None and trailing_eps is not None and trailing_eps > 0 else (num(snapshot.get("trailing_pe")) or Decimal("15"))
+    current_ps = price * shares / revenue_ttm if price is not None and shares is not None and revenue_ttm is not None and revenue_ttm > 0 else Decimal("8")
+    current_pb = num(snapshot.get("price_to_book")) or num(assumptions.get("target_forward_pb")) or Decimal("5.5")
+    current_ev_multiple = num(snapshot.get("enterprise_to_ebitda"))
+    target_peg = Decimal("0.9")  # AXIOM CURRENT_FY legacy PEG contract
+    success_probability = num(assumptions.get("milestone_success_probability")) or Decimal("0.5")
+    success_probability = max(Decimal("0"), min(Decimal("1"), success_probability))
+
+    dcf_value = None
+    if fcf is not None and shares is not None and shares > 0:
+        growth = num(dcf_policy.get("default_growth")) or Decimal("0.08")
+        discount_rate = num(dcf_policy.get("discount_rate")) or Decimal("0.10")
+        terminal_growth = num(dcf_policy.get("terminal_growth")) or Decimal("0.03")
+        years = int(dcf_policy.get("forecast_years") or 5)
+        if discount_rate > terminal_growth:
+            projected = fcf
+            enterprise = Decimal("0")
+            for year in range(1, years + 1):
+                projected *= Decimal("1") + growth
+                enterprise += projected / ((Decimal("1") + discount_rate) ** year)
+            terminal = projected * (Decimal("1") + terminal_growth) / (discount_rate - terminal_growth)
+            enterprise += terminal / ((Decimal("1") + discount_rate) ** years)
+            candidate = (enterprise + cash - debt) / shares
+            if candidate > 0:
+                dcf_value = candidate
+
+    def model(value: Decimal | None, mode: str = "formula", note: str | None = None) -> dict[str, Any]:
+        is_fallback = mode == "market_anchor_fallback"
+        return {
+            "status": "calculated" if value is not None else "unavailable",
+            "fair_value": format(value, "f") if value is not None else None,
+            "calculation_mode": mode,
+            "note": note,
+            "included_in_weighting": not is_fallback,
+            "weighting_exclusion_reason": (
+                "MARKET_ANCHOR_FALLBACK_NOT_MODEL_EVIDENCE"
+                if is_fallback
+                else None
+            ),
+        }
+
+    out: dict[str, Any] = {}
+    for basis in ("CURRENT_FY", "NEXT_FY"):
+        row = annual.get(basis) or {}
+        eps = num(row.get("eps"))
+        revenue = num(row.get("revenue"))
+        eps_growth = (
+            num(row.get("peg_growth"))
+            or num(row.get("eps_growth"))
+            or num(row.get("reported_growth"))
+        )
+        growth_pct = eps_growth * Decimal("100") if eps_growth is not None and eps_growth > 0 else None
+
+        pe_value = eps * current_pe if eps is not None and eps > 0 else price
+        ps_value = revenue / shares * current_ps if revenue is not None and revenue > 0 and shares is not None and shares > 0 else price
+        peg_value = eps * growth_pct * target_peg if eps is not None and eps > 0 and growth_pct is not None else pe_value
+        pb_value = bvps * current_pb if bvps is not None and bvps > 0 else price
+
+        ev_multiple = current_ev_multiple
+        if ev_multiple is None or ev_multiple <= 0:
+            ev_multiple = Decimal("45") if eps_growth is not None and eps_growth > Decimal("0.50") else Decimal("35")
+        ev_value = ((ebitda * ev_multiple) - debt + cash) / shares if ebitda is not None and ebitda > 0 and shares is not None and shares > 0 else price
+
+        milestone_value = price * (Decimal("3") * success_probability + Decimal("0.5") * (Decimal("1") - success_probability)) if price is not None else pe_value
+        dcf_out = dcf_value if dcf_value is not None else price
+
+        models = {
+            "dcf": model(dcf_out, "formula" if dcf_value is not None else "market_anchor_fallback"),
+            "forward_pe": model(pe_value),
+            "peg": model(peg_value, note="growth sets implied P/E; EPS is not grown a second time"),
+            "forward_ps": model(ps_value),
+            "ev_ebitda": model(ev_value, "formula" if ebitda is not None and ebitda > 0 else "market_anchor_fallback"),
+            "forward_pb": model(pb_value, "formula" if bvps is not None and bvps > 0 else "market_anchor_fallback"),
+            "milestone": model(milestone_value),
+        }
+        out[basis] = {
+            "estimate_basis": basis,
+            "eps": format(eps, "f") if eps is not None else None,
+            "revenue": format(revenue, "f") if revenue is not None else None,
+            "eps_growth": format(eps_growth, "f") if eps_growth is not None else None,
+            "growth_basis": row.get("growth_basis"),
+            "model_count": sum(m.get("status") == "calculated" for m in models.values()),
+            "models": models,
+        }
+    return out
 
 def _date(value: Any) -> date | None:
     try:
@@ -495,11 +688,7 @@ def build_full_market_coverage(
             )
         }
 
-        snapshot_row = (
-            snapshot_symbols.get(ticker)
-            if ticker and company_id in ai_company_ids
-            else None
-        )
+        snapshot_row = snapshot_symbols.get(ticker) if ticker else None
         snapshot_row = snapshot_row if isinstance(snapshot_row, Mapping) else {}
         snapshot_currency = (
             str(snapshot_row.get("currency") or primary.get("currency") or "")
@@ -579,7 +768,25 @@ def build_full_market_coverage(
         )
 
         latest_est = _latest(estimates_by_company.get(company_id, []), "metric")
-        latest_est.update(explicit_estimates_by_symbol.get(ticker, {}))
+        # Manual/explicit estimates may override canonical provider estimates only
+        # when the explicit row itself carries a verifiable forecast period.
+        # Legacy seed rows with only fiscal_period="Forward" must not silently
+        # replace refreshed canonical Yahoo estimates with known horizon metadata.
+        for explicit_metric, explicit_row in explicit_estimates_by_symbol.get(ticker, {}).items():
+            explicit_period = str(explicit_row.get("fiscal_period") or "").strip().upper()
+            explicit_has_horizon = bool(
+                explicit_row.get("forecast_basis")
+                or explicit_row.get("horizon")
+                or explicit_row.get("estimate_horizon")
+                or explicit_row.get("fiscal_year")
+                or explicit_row.get("period_end")
+                or (
+                    explicit_period
+                    and explicit_period not in {"FORWARD", "FORWARD_UNSPECIFIED", "PROVIDER_FORWARD"}
+                )
+            )
+            if explicit_has_horizon or explicit_metric not in latest_est:
+                latest_est[explicit_metric] = explicit_row
         est = {
             name: _metric(
                 latest_est.get(name),
@@ -717,6 +924,31 @@ def build_full_market_coverage(
             }
         )
 
+        valuation_horizons = _dual_fy_legacy_models(snapshot_row, fin, company_assumptions, market, dcf_policy)
+
+        valuation_horizons = _dual_fy_seven_models(
+            snapshot_row,
+            fin,
+            company_assumptions,
+            market,
+            dcf_policy,
+        )
+
+        # Production default: unchanged frontend consumes CURRENT_FY.
+        annual_estimates = snapshot_row.get("annual_estimates") if isinstance(snapshot_row, Mapping) else {}
+        annual_estimates = annual_estimates if isinstance(annual_estimates, Mapping) else {}
+        current_fy = annual_estimates.get("CURRENT_FY") or {}
+        next_fy = annual_estimates.get("NEXT_FY") or {}
+        current_eps = current_fy.get("eps")
+        current_revenue = current_fy.get("revenue")
+        current_growth = next_fy.get("eps_growth") or current_fy.get("peg_growth") or current_fy.get("eps_growth")
+        if current_eps not in (None, ""):
+            est["forward_eps"] = {**(est.get("forward_eps") or {}), "status": "ready", "value": str(current_eps), "forecast_basis": "CURRENT_FY", "fiscal_period": "CURRENT_FY", "reason_code": None}
+        if current_revenue not in (None, ""):
+            est["forward_revenue"] = {**(est.get("forward_revenue") or {}), "status": "ready", "value": str(current_revenue), "forecast_basis": "CURRENT_FY", "fiscal_period": "CURRENT_FY", "reason_code": None}
+        if current_growth not in (None, ""):
+            est["forward_eps_growth"] = {**(est.get("forward_eps_growth") or {}), "status": "ready", "value": str(current_growth), "growth_from_period": "CURRENT_FY", "growth_to_period": "NEXT_FY", "growth_kind": "period_transition", "reason_code": None}
+
         card = {
             "schema_version": "full-market-valuation-card.v031.0",
             "company": {
@@ -757,6 +989,7 @@ def build_full_market_coverage(
                 else []
             ),
             "estimates": est,
+            "valuation_horizons": valuation_horizons,
             "valuation": {
                 "status": status,
                 "calculated_model_count": calculated_count,
