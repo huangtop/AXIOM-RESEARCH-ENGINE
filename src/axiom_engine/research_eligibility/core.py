@@ -168,6 +168,7 @@ def build_research_eligibility(
         company_id = str(security.get("company_id") or "")
         if security.get("primary_listing") is True or company_id not in primary_ticker:
             primary_ticker[company_id] = str(security.get("ticker") or "").upper()
+    canonical_company_ids = set(primary_ticker)
     listed = {
         str(row.get("company_id")): row.get("valuation_scope_status") == "included"
         for row in identity["companies"]
@@ -178,6 +179,8 @@ def build_research_eligibility(
     records: list[dict[str, Any]] = []
     for source in knowledge_payload["records"]:
         company_id = str(source["company_id"])
+        if company_id not in canonical_company_ids:
+            continue
         knowledge = list(source.get("knowledge") or [])
         scores = {
             dimension: _max_score(knowledge, dimension)

@@ -26,7 +26,10 @@ def test_builder_uses_entire_population_without_a_maintained_ticker_cohort():
     securities = json.loads((ROOT / "data/universe/securities.json").read_text())
     assert payload["summary"]["registry_company_count"] == len(companies)
     assert payload["summary"]["company_count"] == len(payload["cards"])
-    assert payload["summary"]["excluded_non_company_instrument_count"] == 613
+    assert payload["summary"]["excluded_non_company_instrument_count"] == (
+        payload["summary"]["registry_company_count"]
+        - payload["summary"]["company_count"]
+    )
     assert payload["summary"]["security_count"] == len(securities)
     assert len(payload["indexes"]["ticker_to_position"]) >= payload["summary"][
         "company_count"

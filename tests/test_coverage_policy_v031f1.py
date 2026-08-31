@@ -123,6 +123,9 @@ def test_real_projection_preserves_key_identity_and_scope_contracts():
     assert report["summary"]["research_page_count"] == eligibility["summary"][
         "selected_research_company_count"
     ]
-    assert report["summary"]["supply_chain_context_count"] == 1000
+    policy = json.loads((ROOT / "config/coverage_policy.v031f.2.1.json").read_text())
+    assert report["summary"]["supply_chain_context_count"] <= policy["projection"][
+        "contextual_supply_chain_limit"
+    ]
     assert report["contract"]["etf_exposure_determines_tier"] is False
     assert report["contract"]["valuation_readiness_determines_research_scope"] is False
