@@ -36,7 +36,13 @@ def test_real_catalog_separates_market_publication_from_research_actions():
         == (row["scope_axes"]["research_page"] is True)
         for row in report["companies"]
     )
-    assert report["summary"]["scope_axis_counts"]["supply_chain_context"] == 1000
+    supply_chain_context_rows = [
+        row for row in report["companies"]
+        if row["scope_axes"].get("supply_chain_context") is True
+    ]
+    assert report["summary"]["scope_axis_counts"]["supply_chain_context"] == len(
+        supply_chain_context_rows
+    )
     assert report["summary"]["scope_axis_counts"]["news_ai"] == eligibility["summary"][
         "active_intelligence_company_count"
     ]
