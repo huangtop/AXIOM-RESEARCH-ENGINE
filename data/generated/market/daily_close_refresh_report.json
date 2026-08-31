@@ -1,8 +1,8 @@
 {
   "requested": 5846,
-  "succeeded": 152,
+  "succeeded": 0,
   "failed": 4,
-  "skipped_existing": 5690,
+  "skipped_existing": 5842,
   "failures": {
     "CCIX": "PreviousCloseResponseError: Yahoo chart response is missing daily closes",
     "NSA": "PreviousCloseResponseError: Yahoo chart response is missing daily closes",
@@ -12,18 +12,21 @@
   "archive": {
     "archive_root": "data/generated/provider_cache/yahoo/daily_close",
     "latest_cache_path": "data/generated/market/previous_close_cache.json",
-    "rows_received": 1,
-    "session_files_written": 1,
+    "rows_received": 0,
+    "session_files_written": 0,
     "latest_symbols": 5884,
-    "history_rows": 23267,
+    "history_rows": 23115,
     "pruned_session_files": 0,
     "retention_days": 365
   },
   "success_rate": 0.999316,
   "execution": {
-    "generated_at": "2026-08-31T07:23:50.730271+00:00",
+    "generated_at": "2026-08-31T09:43:49.773446+00:00",
     "force": false,
     "skip_existing": true,
-    "provider_requests_attempted": 156
+    "provider_requests_attempted": 4,
+    "provider_failure_rate": 1.0,
+    "universe_failure_rate": 0.0006842285323297981,
+    "ci_failure_rate_basis": "requested_universe"
   }
-}
+}\n
