@@ -196,19 +196,59 @@ def main() -> int:
             "because skip-existing was enabled."
         )
 
-    failure_rate = (
+    # Provider request failure rate is useful diagnostic information,
+    # but it must NOT be the production CI gate when skip-existing is enabled.
+    #
+    # Example:
+    #   requested universe: 5846
+    #   skipped existing:   5840
+    #   attempted:             6
+    #   failed:                2
+    #
+    # Provider request failure rate = 2 / 6 = 33.33%
+    # But unresolved production-universe rate = 2 / 5846 = 0.034%.
+    #
+    # A skip-heavy idempotent rerun must not turn a tiny number of unresolved
+    # symbols into a false CI outage. Production gating therefore measures
+    # unresolved coverage against the full requested universe.
+    provider_failure_rate = (
         report.failed / provider_requests_attempted
         if provider_requests_attempted
         else 0.0
     )
 
+    universe_failure_rate = (
+        report.failed / report.requested
+        if report.requested
+        else 0.0
+    )
+
+    report_payload["execution"]["provider_failure_rate"] = provider_failure_rate
+    report_payload["execution"]["universe_failure_rate"] = universe_failure_rate
+    report_payload["execution"]["ci_failure_rate_basis"] = "requested_universe"
+
+    # Rewrite report after adding final health metrics.
+    args.report.write_text(
+        json.dumps(
+            report_payload,
+            ensure_ascii=False,
+            indent=2,
+        )
+        + "\\n",
+        encoding="utf-8",
+    )
+
     print(
-        "Provider failure rate: "
-        f"{failure_rate * 100:.2f}% "
+        "Provider failure rate (diagnostic only): "
+        f"{provider_failure_rate * 100:.2f}%"
+    )
+    print(
+        "Unresolved universe rate (CI gate): "
+        f"{universe_failure_rate * 100:.4f}% "
         f"(allowed {args.max_failure_rate * 100:.2f}%)"
     )
 
-    return 0 if failure_rate <= args.max_failure_rate else 2
+    return 0 if universe_failure_rate <= args.max_failure_rate else 2
 
 
 def load_symbols(path: Path) -> Iterable[str]:
