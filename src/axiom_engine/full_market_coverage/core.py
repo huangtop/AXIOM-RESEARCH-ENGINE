@@ -309,6 +309,10 @@ def _dual_fy_seven_models(
     out: dict[str, Any] = {}
     for basis in ("CURRENT_FY", "NEXT_FY"):
         row = annual.get(basis) or {}
+        current_fiscal_year = snapshot.get("current_fiscal_year")
+        fiscal_year = row.get("fiscal_year")
+        if fiscal_year is None and current_fiscal_year is not None:
+            fiscal_year = int(current_fiscal_year) + (1 if basis == "NEXT_FY" else 0)
         eps = num(row.get("eps"))
         revenue = num(row.get("revenue"))
         # PEG requires growth that starts at the EPS horizon being valued.
@@ -339,8 +343,22 @@ def _dual_fy_seven_models(
             "forward_pb": model(pb_value, reason_code="BOOK_VALUE_PER_SHARE_UNAVAILABLE"),
             "milestone": model(milestone_value),
         }
+        models["forward_pe"]["inputs"] = {
+            "fiscal_year": fiscal_year,
+            "eps": format(eps, "f") if eps is not None else None,
+            "observed_trailing_pe": format(current_pe, "f"),
+            "observed_price": format(price, "f") if price is not None else None,
+            "trailing_eps": (
+                format(trailing_eps, "f")
+                if trailing_eps is not None
+                else None
+            ),
+            "multiple_source": "observed_price_divided_by_trailing_eps",
+            "eps_source": f"annual_estimates.{basis}.eps",
+        }
         out[basis] = {
             "estimate_basis": basis,
+            "fiscal_year": fiscal_year,
             "eps": format(eps, "f") if eps is not None else None,
             "revenue": format(revenue, "f") if revenue is not None else None,
             "eps_growth": format(eps_growth, "f") if eps_growth is not None else None,

@@ -64,6 +64,7 @@ class YahooCompanySnapshot:
     previous_close: str | None
     estimate_metadata: dict[str, object] | None = None
     annual_estimates: dict[str, object] | None = None
+    current_fiscal_year: int | None = None
 
     def to_dict(self) -> dict[str, object]:
         return asdict(self)
@@ -468,6 +469,11 @@ def snapshot_and_diagnostic_from_info(
         previous_close=_decimal_text(previous_close),
         estimate_metadata=_build_estimate_metadata(selected_sources),
         annual_estimates=_build_annual_estimates(earnings, revenue_estimate),
+        current_fiscal_year=(
+            _fiscal_year(info.get("nextFiscalYearEnd"))
+            or _fiscal_year(calendar.get("nextFiscalYearEnd"))
+            or fetched_at.year
+        ),
     )
     diagnostic: dict[str, object] = {
         "company_name": sources["company_name"],
@@ -571,6 +577,17 @@ def _build_annual_estimates(earnings: object, revenue: object) -> dict[str, obje
             "growth_basis": "NEXT_FY_TO_FOLLOWING_FY" if next_to_following_growth else None,
         },
     }
+
+
+def _fiscal_year(value: object) -> int | None:
+    if value is None or isinstance(value, bool):
+        return None
+    try:
+        if isinstance(value, (int, float, Decimal)) or str(value).isdigit():
+            return datetime.fromtimestamp(float(value), tz=timezone.utc).year
+        return date.fromisoformat(str(value)[:10]).year
+    except (OverflowError, OSError, TypeError, ValueError):
+        return None
 
 
 def _basis_from_yahoo_source(source: str | None) -> str | None:
