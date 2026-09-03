@@ -116,6 +116,7 @@ def test_committed_canonical_output_is_durable_ttl_checkpoint(tmp_path):
         "fetched_at": (now - timedelta(days=1)).isoformat(),
         "forward_eps": "1.59",
         "annual_estimates": {"CURRENT_FY": {}, "NEXT_FY": {}},
+        "current_fiscal_year": 2026,
     }}}))
     cache = YahooCompanySnapshotCache(tmp_path / "ignored-symbol-cache", canonical_output_path=output, ttl_days=30)
     fetcher = FakeFetcher()
@@ -127,13 +128,14 @@ def test_committed_canonical_output_is_durable_ttl_checkpoint(tmp_path):
     assert fetcher.calls == []
 
 
-def test_fresh_legacy_snapshot_without_dual_fy_contract_is_refetched(tmp_path):
+def test_fresh_legacy_snapshot_without_fiscal_year_is_refetched(tmp_path):
     now = datetime(2026, 8, 31, tzinfo=timezone.utc)
     output = tmp_path / "canonical.json"
     output.write_text(json.dumps({"symbols": {"SNDK": {
         "symbol": "SNDK",
         "fetched_at": (now - timedelta(days=1)).isoformat(),
         "forward_eps": "264.72",
+        "annual_estimates": {"CURRENT_FY": {}, "NEXT_FY": {}},
     }}}))
     cache = YahooCompanySnapshotCache(
         tmp_path / "ignored-symbol-cache",

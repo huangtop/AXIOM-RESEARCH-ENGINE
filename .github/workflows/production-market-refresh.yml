@@ -65,7 +65,8 @@ jobs:
               --symbols-file /tmp/axiom-dual-fy-estimate-symbols.txt \
               --ttl-days 30 \
               --delay 0.5 \
-              --max-fetch 200
+              --max-fetch 200 \
+              ${{ inputs.force && '--force' || '' }}
             python scripts/build_estimate_population_v031v6.py
             python scripts/build_multiple_policy_v031v6.py
           fi
