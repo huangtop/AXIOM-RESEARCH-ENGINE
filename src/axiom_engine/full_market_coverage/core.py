@@ -827,27 +827,26 @@ def build_full_market_coverage(
             )
         }
         forward_revenue = _number(est["forward_revenue"].get("value"))
-        trailing_revenue = _number(fin["revenue"].get("value"))
+        forward_revenue_provenance = str(
+            est["forward_revenue"].get("provenance") or ""
+        ).lower()
+        forward_revenue_is_proxy = (
+            est["forward_revenue"].get("is_proxy") is True
+            or str(est["forward_revenue"].get("forecast_basis") or "").upper()
+            == "TTM"
+            or "trailing_revenue_proxy" in forward_revenue_provenance
+        )
         if (
-            company_id in ai_company_ids
-            and (forward_revenue is None or forward_revenue <= 0)
-            and trailing_revenue is not None
-            and trailing_revenue > 0
+            forward_revenue is None
+            or forward_revenue <= 0
+            or forward_revenue_is_proxy
         ):
             est["forward_revenue"] = {
-                "status": "ready",
-                "value": format(trailing_revenue, "f"),
-                "unit": fin["revenue"].get("unit"),
-                "currency": fin["revenue"].get("currency"),
-                "as_of_date": fin["revenue"].get("as_of_date"),
-                "reason_code": None,
-                "source_record_ids": list(
-                    fin["revenue"].get("source_record_ids", [])
-                ),
-                "provenance": (
-                    "trailing_revenue_proxy_when_forward_consensus_unavailable"
-                ),
-                "is_proxy": True,
+                **est["forward_revenue"],
+                "status": "unavailable",
+                "value": None,
+                "reason_code": "MISSING_POSITIVE_FORWARD_REVENUE",
+                "is_proxy": False,
             }
 
         company_assumption_row = assumption_rows_by_company.get(company_id, {})
@@ -966,7 +965,7 @@ def build_full_market_coverage(
         current_growth = next_fy.get("eps_growth") or current_fy.get("peg_growth") or current_fy.get("eps_growth")
         if current_eps not in (None, ""):
             est["forward_eps"] = {**(est.get("forward_eps") or {}), "status": "ready", "value": str(current_eps), "forecast_basis": "CURRENT_FY", "fiscal_period": "CURRENT_FY", "reason_code": None}
-        if current_revenue not in (None, ""):
+        if (_number(current_revenue) or Decimal("0")) > 0:
             est["forward_revenue"] = {**(est.get("forward_revenue") or {}), "status": "ready", "value": str(current_revenue), "forecast_basis": "CURRENT_FY", "fiscal_period": "CURRENT_FY", "reason_code": None}
         if current_growth not in (None, ""):
             est["forward_eps_growth"] = {**(est.get("forward_eps_growth") or {}), "status": "ready", "value": str(current_growth), "growth_from_period": "CURRENT_FY", "growth_to_period": "NEXT_FY", "growth_kind": "period_transition", "reason_code": None}

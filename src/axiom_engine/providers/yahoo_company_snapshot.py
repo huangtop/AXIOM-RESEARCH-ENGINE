@@ -419,8 +419,7 @@ def snapshot_and_diagnostic_from_info(
     forward_revenue = resolve("forward_revenue", [
         (f"revenue_estimate.{revenue_estimate_row}.avg" if revenue_estimate_row else "revenue_estimate.unknown.avg", revenue_estimate_value),
         ("calendar.revenueAverage", calendar.get("revenueAverage")),
-        ("financials.Total Revenue", _financial_value(financials, ("Total Revenue", "TotalRevenue"))),
-    ], _decimal_text)
+    ], _positive_decimal_text)
 
     essential = (company_name, market_cap, shares, revenue_ttm, forward_eps)
     present = sum(value is not None for value in essential)
@@ -564,14 +563,14 @@ def _build_annual_estimates(earnings: object, revenue: object) -> dict[str, obje
     return {
         "CURRENT_FY": {
             "eps": _decimal_text(_row_metric(earnings, current_rows, ("avg", "Average"))),
-            "revenue": _decimal_text(_row_metric(revenue, current_rows, ("avg", "Average"))),
+            "revenue": _positive_decimal_text(_row_metric(revenue, current_rows, ("avg", "Average"))),
             "reported_growth": current_growth,
             "peg_growth": current_to_next_growth,
             "growth_basis": "CURRENT_FY_TO_NEXT_FY" if current_to_next_growth else None,
         },
         "NEXT_FY": {
             "eps": _decimal_text(_row_metric(earnings, next_rows, ("avg", "Average"))),
-            "revenue": _decimal_text(_row_metric(revenue, next_rows, ("avg", "Average"))),
+            "revenue": _positive_decimal_text(_row_metric(revenue, next_rows, ("avg", "Average"))),
             "reported_growth": current_to_next_growth,
             "peg_growth": next_to_following_growth,
             "growth_basis": "NEXT_FY_TO_FOLLOWING_FY" if next_to_following_growth else None,
@@ -679,6 +678,11 @@ def _decimal_text(value: object) -> str | None:
         return format(decimal, "f")
     except (InvalidOperation, ValueError, TypeError):
         return None
+
+
+def _positive_decimal_text(value: object) -> str | None:
+    text = _decimal_text(value)
+    return text if text is not None and Decimal(text) > 0 else None
 
 
 def _integer(value: object) -> int | None:

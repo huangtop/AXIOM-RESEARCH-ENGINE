@@ -202,7 +202,7 @@ def test_nvda_uses_unified_backend_model_selection():
     assert Decimal(valuation["fair_value"]) == Decimal(unified["headline"]["base_fair_value"])
 
 
-def test_ai_research_companies_have_a_calculated_valuation_model():
+def test_ai_research_companies_without_inputs_report_unavailable_models():
     payload = report()
     cards = {card["primary_security"]["ticker"]: card for card in payload["cards"]}
     eligibility = json.loads((ROOT / "data/generated/research_eligibility/research_eligibility.json").read_text())
@@ -223,10 +223,13 @@ def test_ai_research_companies_have_a_calculated_valuation_model():
             ai_tickers.append(overview["ticker"])
     missing = [ticker for ticker in ai_tickers if cards[ticker]["valuation"]["calculated_model_count"] == 0]
     assert ai_tickers
-    assert missing == []
+    for ticker in missing:
+        valuation = cards[ticker]["valuation"]
+        assert valuation["reason_code"] == "NO_CALCULATED_MODELS"
+        assert all(model["status"] == "unavailable" for model in valuation["models"].values())
 
 
-def test_provider_fallbacks_are_labeled_without_analyst_target_derivation():
+def test_trailing_revenue_is_not_relabelled_as_forward_revenue():
     payload = report()
     lite = next(card for card in payload["cards"] if card["primary_security"]["ticker"] == "LITE")
     arbb = next(card for card in payload["cards"] if card["primary_security"]["ticker"] == "ARBB")
@@ -237,8 +240,10 @@ def test_provider_fallbacks_are_labeled_without_analyst_target_derivation():
     assert consensus["aggregation_role"] == "external_reference"
     assert consensus["included_in_independent_aggregation"] is False
     assert arbb["financials"]["diluted_shares_outstanding"]["provenance"] == "yahoo_company_snapshot_fallback"
-    assert arbb["estimates"]["forward_revenue"]["is_proxy"] is True
-    assert arbb["valuation"]["models"]["forward_ps"]["status"] == "calculated"
+    assert arbb["estimates"]["forward_revenue"]["status"] == "unavailable"
+    assert arbb["estimates"]["forward_revenue"]["reason_code"] == "MISSING_POSITIVE_FORWARD_REVENUE"
+    assert arbb["estimates"]["forward_revenue"]["is_proxy"] is False
+    assert arbb["valuation"]["models"]["forward_ps"]["status"] == "unavailable"
 
 
 def test_unified_headline_comes_from_backend_contract_not_legacy_market_sanity_gate():
