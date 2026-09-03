@@ -31,6 +31,8 @@ def main() -> int:
             for basis in ("CURRENT_FY", "NEXT_FY")
         ):
             return True
+        if not isinstance(row.get("current_fiscal_year"), int):
+            return True
         value = row.get("fetched_at") or row.get("last_refresh")
         if not value:
             return True

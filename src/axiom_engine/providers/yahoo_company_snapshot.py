@@ -193,6 +193,8 @@ class YahooCompanySnapshotCache:
             for basis in ("CURRENT_FY", "NEXT_FY")
         ):
             return False
+        if not isinstance(payload.get("current_fiscal_year"), int):
+            return False
         fetched_at = payload.get("fetched_at") or payload.get("last_refresh")
         if not isinstance(fetched_at, str):
             return False
