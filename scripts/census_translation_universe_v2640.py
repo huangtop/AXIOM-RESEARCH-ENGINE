@@ -29,16 +29,14 @@ HISTORICAL_TRANSLATION_CENSUS = (
 # are in scope for Company Profile reconciliation / translation handoff.
 STRATEGIC_THEME_PRIORITY = {
     "theme:ai_infrastructure": "P0",
-    "theme:artificial_intelligence": "P0",
     "theme:advanced_semiconductors": "P0",
     "theme:autonomous_vehicles": "P1",
-    "theme:physical_ai": "P1",
     "theme:space_economy": "P1",
     "theme:quantum_computing": "P1",
     "theme:advanced_communications": "P1",
     "theme:clean_energy": "P1",
     "theme:advanced_manufacturing": "P1",
-    "theme:robotics": "P2",
+    "theme:robotics": "P1",
     "theme:digital_assets": "P2",
     "theme:digital_asset_infrastructure": "P2",
 }

@@ -227,13 +227,13 @@ def test_curated_core_override_is_published_without_rerunning_evidence(tmp_path:
     policy = json.loads(policy_path.read_text())
     policy["curated_overrides"] = [{
         "company_id": "company:alphabet",
-        "theme_id": "theme:artificial_intelligence",
-        "theme_name": "Artificial Intelligence",
+        "theme_id": "theme:ai_infrastructure",
+        "theme_name": "AI Infrastructure",
         "sector_id": "sector:cloud_infrastructure",
         "sector_name": "Cloud Infrastructure",
         "confidence": 1.0,
     }]
-    policy["display_names_zh_tw"]["theme:artificial_intelligence"] = "人工智慧"
+    policy["display_names_zh_tw"]["theme:ai_infrastructure"] = "人工智慧與核心科技"
     _w(tmp_path, "config/company_overview.v031c.6.json", policy)
     _w(tmp_path, "data/generated/canonical_business_evidence/business_evidence.json", [])
     _w(tmp_path, "data/generated/knowledge_inference/knowledge_inference.json", {
@@ -248,7 +248,7 @@ def test_curated_core_override_is_published_without_rerunning_evidence(tmp_path:
     assert row["status"] == "classified"
     assert row["ticker"] == "GOOGL"
     assert row["ticker_aliases"] == ["GOOG", "GOOGL"]
-    assert row["path"]["theme"]["display_name_zh_tw"] == "人工智慧"
+    assert row["path"]["theme"]["display_name_zh_tw"] == "人工智慧與核心科技"
     assert row["path"]["sector"]["display_name_zh_tw"] == "雲端基礎設施與巨頭"
     assert row["classification_source"] == "curated_core_override"
     assert row["evidence"] == []

@@ -25,6 +25,24 @@ AI_INFRASTRUCTURE_SECTOR_IDS = {
     "sector:ai_servers",
 }
 
+LEGACY_THEME_ALIASES = {
+    "theme:artificial_intelligence": "theme:ai_infrastructure",
+    "theme:physical_ai": "theme:robotics",
+}
+
+
+def _canonicalize_theme(item: Mapping[str, Any]) -> dict[str, Any]:
+    result = dict(item)
+    knowledge_id = str(result.get("knowledge_id") or "")
+    canonical_id = LEGACY_THEME_ALIASES.get(knowledge_id)
+    if canonical_id:
+        result["knowledge_id"] = canonical_id
+        result["canonical_name"] = {
+            "theme:ai_infrastructure": "AI Infrastructure",
+            "theme:robotics": "Robotics",
+        }[canonical_id]
+    return result
+
 
 def _sector_rank(item: Mapping[str, Any]) -> tuple[int, float, str]:
     knowledge_id = str(item.get("knowledge_id") or "")
@@ -1247,7 +1265,12 @@ def build_company_overviews(
         ):
             continue
 
-        items = list(source.get("knowledge") or [])
+        items = [
+            _canonicalize_theme(item)
+            if item.get("dimension") == "theme"
+            else dict(item)
+            for item in source.get("knowledge") or []
+        ]
 
         themes = sorted(
             (

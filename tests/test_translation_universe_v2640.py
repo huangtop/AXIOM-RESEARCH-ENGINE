@@ -908,7 +908,7 @@ def test_v2640_audits_profile_for_strategic_new_profile_build_row(
     row = _overview(
         "NEW",
         "c22",
-        theme="theme:artificial_intelligence",
+        theme="theme:ai_infrastructure",
     )
     _fixture(tmp_path, [row], [])
 

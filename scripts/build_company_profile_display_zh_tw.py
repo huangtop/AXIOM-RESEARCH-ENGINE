@@ -64,7 +64,6 @@ OPENAI_CACHE_ROOT = (
 
 AI_THEME_IDS = {
     "theme:ai_infrastructure",
-    "theme:artificial_intelligence",
 }
 
 
