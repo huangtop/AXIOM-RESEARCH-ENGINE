@@ -29,7 +29,10 @@ def _fixture(tmp_path: Path) -> Path:
         {"knowledge_id":"supply_chain_role:designer","dimension":"supply_chain_role","confidence":0.70,"derivation_type":"observed_signal","source_business_evidence_ids":["e:1"],"source_signal_ids":["signal:designer"]},
     ]
     _write(tmp_path, "data/generated/knowledge_inference/knowledge_inference.json", {"schema_version":"multidimensional-knowledge-inference.v031c.3","records":[{"company_id":"company:1","status":"knowledge_available","knowledge":knowledge},{"company_id":"company:2","status":"business_evidence_unavailable","knowledge":[]}]})
-    _write(tmp_path, "data/universe/securities.json", [{"company_id":"company:1","ticker":"TEST","primary_listing":True}])
+    _write(tmp_path, "data/universe/securities.json", [
+        {"company_id":"company:1","ticker":"TEST","primary_listing":True},
+        {"company_id":"company:2","ticker":"NONE","primary_listing":True},
+    ])
     _write(tmp_path, "data/generated/security_identity/security_identity_normalization.json", {"companies":[{"company_id":"company:1","valuation_scope_status":"included"},{"company_id":"company:2","valuation_scope_status":"included"}]})
     return tmp_path
 
@@ -70,7 +73,7 @@ def test_generic_ai_theme_without_sector_is_not_research_eligible(tmp_path: Path
     path = root / "data/generated/knowledge_inference/knowledge_inference.json"
     payload = json.loads(path.read_text())
     payload["records"][0]["knowledge"] = [{
-        "knowledge_id":"theme:artificial_intelligence","dimension":"theme","confidence":0.90,
+        "knowledge_id":"theme:ai_infrastructure","dimension":"theme","confidence":0.90,
         "derivation_type":"rule_inference","source_business_evidence_ids":["e:1"]
     }]
     path.write_text(json.dumps(payload))

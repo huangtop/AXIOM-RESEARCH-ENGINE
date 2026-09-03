@@ -24,7 +24,7 @@ def test_audit_reports_requested_quality_dimensions(tmp_path: Path):
     }, {"company_id":"company:2","signals":[]}]})
     _write(tmp_path, "data/generated/knowledge_inference/knowledge_inference.json", {"records":[{
         "company_id":"company:1","status":"knowledge_available","knowledge":[{
-            "knowledge_id":"theme:artificial_intelligence","dimension":"theme","confidence":0.50,
+            "knowledge_id":"theme:ai_infrastructure","dimension":"theme","confidence":0.50,
             "derivation_type":"rule_inference","source_business_evidence_ids":["e:1"]
         }]
     }, {"company_id":"company:2","status":"signals_only","knowledge":[]}]})

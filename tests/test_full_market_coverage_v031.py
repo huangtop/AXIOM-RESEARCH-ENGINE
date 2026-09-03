@@ -218,7 +218,7 @@ def test_ai_research_companies_without_inputs_report_unavailable_models():
         if (
             overview.get("status") == "classified"
             and overview.get("company_id") in research_company_ids
-            and theme_id in {"theme:artificial_intelligence", "theme:ai_infrastructure"}
+            and theme_id == "theme:ai_infrastructure"
         ):
             ai_tickers.append(overview["ticker"])
     missing = [ticker for ticker in ai_tickers if cards[ticker]["valuation"]["calculated_model_count"] == 0]

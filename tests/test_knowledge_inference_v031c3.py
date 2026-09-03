@@ -143,7 +143,6 @@ def test_chains_signal_to_cluster_sector_and_theme_with_rebuildable_paths(
         "cluster:high_bandwidth_memory",
         "sector:ai_memory",
         "theme:ai_infrastructure",
-        "theme:artificial_intelligence",
     } <= knowledge.keys()
 
     path = knowledge[
@@ -287,7 +286,6 @@ def test_research_relevance_gate_does_not_suppress_full_market_inference(
     assert {
         "sector:ai_memory",
         "theme:ai_infrastructure",
-        "theme:artificial_intelligence",
     } <= knowledge_ids
 
     assert (

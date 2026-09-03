@@ -493,7 +493,7 @@ def test_translation_plan_priority_is_disjoint():
     metadata = {
         "CORE": {
             "theme_id":
-                "theme:artificial_intelligence"
+                "theme:ai_infrastructure"
         }
     }
 

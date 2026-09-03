@@ -74,7 +74,7 @@ def build_classification_quality_audit(
         conflicts = {theme: required for theme, required in compatibility.items() if theme in ids and not sectors.intersection(required)}
         if conflicts:
             flags.append({"code":"THEME_SECTOR_CONFLICT","details":{"conflicts":conflicts}})
-        if "theme:artificial_intelligence" in ids:
+        if "theme:ai_infrastructure" in ids:
             support_dimensions = set(policy["ai_support_dimensions"])
             supported = any(item.get("dimension") in support_dimensions and item.get("knowledge_id") != policy["broad_ai_signal_id"] for item in knowledge)
             if not supported:

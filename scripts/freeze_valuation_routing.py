@@ -10,7 +10,6 @@ ROOT = Path(__file__).resolve().parents[1]
 OVERVIEW_ROOT = ROOT / "data/generated/company_overview"
 OUTPUT = ROOT / "data/valuation/company_routing.json"
 AI_THEMES = {
-    "theme:artificial_intelligence",
     "theme:ai_infrastructure",
 }
 

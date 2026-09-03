@@ -23,16 +23,6 @@
       ]
     },
     {
-      "theme_id": "theme:physical_ai",
-      "canonical_name": "Physical AI",
-      "priority": 1.0,
-      "actions": {"news": true, "etf": true, "supply_chain": true, "deep_research": true},
-      "required_any_knowledge": [
-        "product:humanoid_robot", "product:autonomous_mobile_robot", "product:robot_actuator",
-        "product:robotaxi_platform", "capability:autonomous_perception"
-      ]
-    },
-    {
       "theme_id": "theme:quantum_computing",
       "canonical_name": "Quantum Computing",
       "priority": 0.98,
@@ -59,12 +49,12 @@
     },
     {
       "theme_id": "theme:autonomous_vehicles",
-      "canonical_name": "AI Autonomous Vehicles",
+      "canonical_name": "Autonomous Vehicles",
       "priority": 0.90,
       "actions": {"news": true, "etf": true, "supply_chain": true, "deep_research": true},
       "required_any_knowledge": [
         "technology:full_self_driving", "product:robotaxi_platform", "product:autonomous_compute",
-        "capability:autonomous_perception", "theme:physical_ai"
+        "capability:autonomous_perception", "technology:physical_ai"
       ]
     },
     {
@@ -78,12 +68,6 @@
       "theme_id": "theme:cybersecurity",
       "canonical_name": "Cybersecurity",
       "priority": 0.55,
-      "actions": {"news": false, "etf": false, "supply_chain": false, "deep_research": false}
-    },
-    {
-      "theme_id": "theme:artificial_intelligence",
-      "canonical_name": "Generic Artificial Intelligence",
-      "priority": 0.0,
       "actions": {"news": false, "etf": false, "supply_chain": false, "deep_research": false}
     }
   ]
