@@ -17,6 +17,10 @@ class PublicationGateError(RuntimeError):
     pass
 
 
+PUBLICATION_SHARD_RETENTION_GENERATIONS = 2
+PUBLICATION_SHARD_RETENTION_FILE = "shard_retention.json"
+
+
 def _load(path: Path) -> Any:
     try:
         return json.loads(path.read_text(encoding="utf-8"))
@@ -26,6 +30,17 @@ def _load(path: Path) -> Any:
 
 def _filename(ticker: str) -> str:
     return quote(ticker, safe="._-") + ".json"
+
+
+def _manifest_shard_files(manifest: Mapping[str, Any]) -> list[str]:
+    files: set[str] = set()
+    for row in (manifest.get("companies") or {}).values():
+        if not isinstance(row, Mapping):
+            continue
+        path = Path(str(row.get("path") or ""))
+        if path.parent == Path("companies") and path.name.endswith(".json"):
+            files.add(path.name)
+    return sorted(files)
 
 
 def _valuation_cards(root: Path, valuation_path: str, valuation: Mapping[str, Any]):
@@ -152,7 +167,14 @@ def build_publication_catalog(
     }
 
 
-def write_publication_catalog(report: Mapping[str, Any], output: Path) -> None:
+def write_publication_catalog(
+    report: Mapping[str, Any],
+    output: Path,
+    *,
+    retention_generations: int = PUBLICATION_SHARD_RETENTION_GENERATIONS,
+) -> None:
+    if retention_generations < 2:
+        raise ValueError("retention_generations must be at least 2")
     output.parent.mkdir(parents=True, exist_ok=True)
     projections = report.get("_company_projections") or {}
     previous_manifest = _load(output.parent / "manifest.json") if (output.parent / "manifest.json").is_file() else {}
@@ -185,9 +207,6 @@ def write_publication_catalog(report: Mapping[str, Any], output: Path) -> None:
             "sha256": digest,
             "size_bytes": len(body),
         }
-    for stale in company_root.glob("*.json"):
-        if stale.name not in current_files:
-            stale.unlink()
     changed_company_ids = sorted(
         company_id for company_id, digest in current_by_company.items()
         if previous_by_company.get(company_id) != digest
@@ -210,11 +229,54 @@ def write_publication_catalog(report: Mapping[str, Any], output: Path) -> None:
             "manifest": "public, max-age=60, must-revalidate",
             "company_shards": "public, max-age=31536000, immutable",
         },
+        "retention_policy": {
+            "company_shard_generations": retention_generations,
+        },
     }
     manifest_path = output.parent / "manifest.json"
     manifest_tmp = manifest_path.with_suffix(".json.tmp")
     manifest_tmp.write_text(json.dumps(manifest, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     os.replace(manifest_tmp, manifest_path)
+
+    retention_path = output.parent / PUBLICATION_SHARD_RETENTION_FILE
+    if retention_path.is_file():
+        retention = _load(retention_path)
+        previous_generations = retention.get("generations") or []
+    elif previous_manifest:
+        previous_generations = [{
+            "release_id": previous_manifest.get("release_id"),
+            "files": _manifest_shard_files(previous_manifest),
+        }]
+    else:
+        previous_generations = []
+    generations = [{"release_id": release_id, "files": sorted(current_files)}]
+    generations.extend(
+        generation for generation in previous_generations
+        if isinstance(generation, Mapping) and generation.get("release_id") != release_id
+    )
+    generations = generations[:retention_generations]
+    retained_files = {
+        str(filename)
+        for generation in generations
+        for filename in (generation.get("files") or [])
+    }
+    retention_payload = {
+        "schema_version": "publication-shard-retention.v1",
+        "retention_generations": retention_generations,
+        "generations": generations,
+    }
+    retention_tmp = retention_path.with_suffix(".json.tmp")
+    retention_tmp.write_text(
+        json.dumps(retention_payload, ensure_ascii=False, separators=(",", ":")) + "\n",
+        encoding="utf-8",
+    )
+    os.replace(retention_tmp, retention_path)
+    # Publish the new pointer and its retention ledger before removing shards.
+    # A client holding the immediately previous manifest can therefore never
+    # observe its referenced shard disappear during a successful build.
+    for stale in company_root.glob("*.json"):
+        if stale.name not in retained_files:
+            stale.unlink()
     archive = output.parent / "company_projections.zip"
     temporary_archive = archive.with_suffix(".zip.tmp")
     with ZipFile(temporary_archive, "w", compression=ZIP_DEFLATED, compresslevel=9) as bundle:

@@ -14,5 +14,8 @@ at `/v1/publication/manifest.json` and `/v1/publication/companies/<hashed-file>`
 `refreshManifest()` at application start, then `company("NVDA")` on demand. It downloads only
 the selected company's current hash shard and removes superseded cached shards.
 
-The build prunes unreferenced hash files after the new release is complete, so repository and
-deployment size do not grow once per release.
+The build retains company shards referenced by the latest two distinct publication
+generations. It writes the new manifest and `shard_retention.json` ledger atomically before
+pruning shards outside that window. This lets clients with a recently stale manifest continue
+to resolve its immutable URL while bounding repository and deployment growth. Rebuilding an
+unchanged release does not consume a retention generation.
