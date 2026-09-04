@@ -3,11 +3,58 @@
   "company_id": "company:US-CIK0001341439",
   "ticker": "ORCL",
   "comparison": {
-    "previous_date": "2026-09-02",
-    "current_date": "2026-09-03"
+    "previous_date": "2026-09-03",
+    "current_date": "2026-09-04"
   },
   "coverage": "top_holdings_only",
-  "events": [],
+  "events": [
+    {
+      "canonical_event_id": "etf-change:4f6bcf82225c55485e9ae75b",
+      "source_event_id": null,
+      "etf_id": "US-IGV",
+      "etf_ticker": "IGV",
+      "holding_symbol": "ORCL",
+      "security_id": "security:NYSE-ORCL",
+      "company_id": "company:US-CIK0001341439",
+      "change_type": "WEIGHT_INCREASED",
+      "previous_weight": 0.053131,
+      "current_weight": 0.0532625,
+      "delta_weight": 0.00013149999999999967,
+      "previous_shares": null,
+      "current_shares": null,
+      "delta_shares": null,
+      "shares_status": "not_provided_by_source",
+      "previous_observed_at": "2026-09-03",
+      "current_observed_at": "2026-09-04",
+      "material": false,
+      "coverage": "top_holdings_only",
+      "official_membership_change": false,
+      "source": "ETF-ENGINE-V2 daily snapshot diff"
+    },
+    {
+      "canonical_event_id": "etf-change:6748c8186e5eac1002766d05",
+      "source_event_id": null,
+      "etf_id": "US-WTAI",
+      "etf_ticker": "WTAI",
+      "holding_symbol": "ORCL",
+      "security_id": "security:NYSE-ORCL",
+      "company_id": "company:US-CIK0001341439",
+      "change_type": "ENTERED_TOP_HOLDINGS",
+      "previous_weight": null,
+      "current_weight": 0.0301118,
+      "delta_weight": 0.0301118,
+      "previous_shares": null,
+      "current_shares": null,
+      "delta_shares": null,
+      "shares_status": "not_provided_by_source",
+      "previous_observed_at": "2026-09-03",
+      "current_observed_at": "2026-09-04",
+      "material": true,
+      "coverage": "top_holdings_only",
+      "official_membership_change": false,
+      "source": "ETF-ENGINE-V2 daily snapshot diff"
+    }
+  ],
   "fund_observations": [
     {
       "etf_id": "US-DRAM",
@@ -17,11 +64,52 @@
       "observation_status": "not_observed_in_top_holdings"
     },
     {
+      "etf_id": "US-FIVG",
+      "etf_ticker": "FIVG",
+      "previous": {
+        "holding_symbol": "ORCL",
+        "weight": 0.0471515,
+        "shares": null
+      },
+      "current": {
+        "holding_symbol": "ORCL",
+        "weight": 0.0471515,
+        "shares": null
+      },
+      "observation_status": "observed"
+    },
+    {
+      "etf_id": "US-IGV",
+      "etf_ticker": "IGV",
+      "previous": {
+        "holding_symbol": "ORCL",
+        "weight": 0.053131,
+        "shares": null
+      },
+      "current": {
+        "holding_symbol": "ORCL",
+        "weight": 0.0532625,
+        "shares": null
+      },
+      "observation_status": "observed"
+    },
+    {
       "etf_id": "US-QQQ",
       "etf_ticker": "QQQ",
       "previous": null,
       "current": null,
       "observation_status": "not_observed_in_top_holdings"
+    },
+    {
+      "etf_id": "US-WTAI",
+      "etf_ticker": "WTAI",
+      "previous": null,
+      "current": {
+        "holding_symbol": "ORCL",
+        "weight": 0.0301118,
+        "shares": null
+      },
+      "observation_status": "observed"
     }
   ]
 }

@@ -3,11 +3,35 @@
   "company_id": "company:US-CIK0001604778",
   "ticker": "QRVO",
   "comparison": {
-    "previous_date": "2026-09-02",
-    "current_date": "2026-09-03"
+    "previous_date": "2026-09-03",
+    "current_date": "2026-09-04"
   },
   "coverage": "top_holdings_only",
-  "events": [],
+  "events": [
+    {
+      "canonical_event_id": "etf-change:8f6ee7a6d900e77e41b24ce4",
+      "source_event_id": null,
+      "etf_id": "US-XSD",
+      "etf_ticker": "XSD",
+      "holding_symbol": "QRVO",
+      "security_id": "security:NASDAQ-QRVO",
+      "company_id": "company:US-CIK0001604778",
+      "change_type": "WEIGHT_INCREASED",
+      "previous_weight": 0.0256461,
+      "current_weight": 0.0278711,
+      "delta_weight": 0.002224999999999998,
+      "previous_shares": null,
+      "current_shares": null,
+      "delta_shares": null,
+      "shares_status": "not_provided_by_source",
+      "previous_observed_at": "2026-09-03",
+      "current_observed_at": "2026-09-04",
+      "material": true,
+      "coverage": "top_holdings_only",
+      "official_membership_change": false,
+      "source": "ETF-ENGINE-V2 daily snapshot diff"
+    }
+  ],
   "fund_observations": [
     {
       "etf_id": "US-DRAM",
@@ -22,6 +46,21 @@
       "previous": null,
       "current": null,
       "observation_status": "not_observed_in_top_holdings"
+    },
+    {
+      "etf_id": "US-XSD",
+      "etf_ticker": "XSD",
+      "previous": {
+        "holding_symbol": "QRVO",
+        "weight": 0.0256461,
+        "shares": null
+      },
+      "current": {
+        "holding_symbol": "QRVO",
+        "weight": 0.0278711,
+        "shares": null
+      },
+      "observation_status": "observed"
     }
   ]
 }

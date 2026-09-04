@@ -3,12 +3,51 @@
   "company_id": "company:US-CIK0000097210",
   "ticker": "TER",
   "comparison": {
-    "previous_date": "2026-09-02",
-    "current_date": "2026-09-03"
+    "previous_date": "2026-09-03",
+    "current_date": "2026-09-04"
   },
   "coverage": "top_holdings_only",
-  "events": [],
+  "events": [
+    {
+      "canonical_event_id": "etf-change:6144f1e611328954173adf30",
+      "source_event_id": null,
+      "etf_id": "US-ROBO",
+      "etf_ticker": "ROBO",
+      "holding_symbol": "TER",
+      "security_id": "security:NASDAQ-TER",
+      "company_id": "company:US-CIK0000097210",
+      "change_type": "EXITED_TOP_HOLDINGS",
+      "previous_weight": 0.0167519,
+      "current_weight": null,
+      "delta_weight": -0.0167519,
+      "previous_shares": null,
+      "current_shares": null,
+      "delta_shares": null,
+      "shares_status": "not_provided_by_source",
+      "previous_observed_at": "2026-09-03",
+      "current_observed_at": "2026-09-04",
+      "material": true,
+      "coverage": "top_holdings_only",
+      "official_membership_change": false,
+      "source": "ETF-ENGINE-V2 daily snapshot diff"
+    }
+  ],
   "fund_observations": [
+    {
+      "etf_id": "US-ARKQ",
+      "etf_ticker": "ARKQ",
+      "previous": {
+        "holding_symbol": "TER",
+        "weight": 0.0663896,
+        "shares": null
+      },
+      "current": {
+        "holding_symbol": "TER",
+        "weight": 0.0663896,
+        "shares": null
+      },
+      "observation_status": "observed"
+    },
     {
       "etf_id": "US-DRAM",
       "etf_ticker": "DRAM",
@@ -22,6 +61,17 @@
       "previous": null,
       "current": null,
       "observation_status": "not_observed_in_top_holdings"
+    },
+    {
+      "etf_id": "US-ROBO",
+      "etf_ticker": "ROBO",
+      "previous": {
+        "holding_symbol": "TER",
+        "weight": 0.0167519,
+        "shares": null
+      },
+      "current": null,
+      "observation_status": "observed"
     }
   ]
 }

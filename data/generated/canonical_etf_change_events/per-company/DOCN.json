@@ -3,12 +3,51 @@
   "company_id": "company:US-CIK0001582961",
   "ticker": "DOCN",
   "comparison": {
-    "previous_date": "2026-09-02",
-    "current_date": "2026-09-03"
+    "previous_date": "2026-09-03",
+    "current_date": "2026-09-04"
   },
   "coverage": "top_holdings_only",
-  "events": [],
+  "events": [
+    {
+      "canonical_event_id": "etf-change:9ba0d1ea05d74a8cf377053c",
+      "source_event_id": null,
+      "etf_id": "US-WCLD",
+      "etf_ticker": "WCLD",
+      "holding_symbol": "DOCN",
+      "security_id": "security:NYSE-DOCN",
+      "company_id": "company:US-CIK0001582961",
+      "change_type": "EXITED_TOP_HOLDINGS",
+      "previous_weight": 0.0221628,
+      "current_weight": null,
+      "delta_weight": -0.0221628,
+      "previous_shares": null,
+      "current_shares": null,
+      "delta_shares": null,
+      "shares_status": "not_provided_by_source",
+      "previous_observed_at": "2026-09-03",
+      "current_observed_at": "2026-09-04",
+      "material": true,
+      "coverage": "top_holdings_only",
+      "official_membership_change": false,
+      "source": "ETF-ENGINE-V2 daily snapshot diff"
+    }
+  ],
   "fund_observations": [
+    {
+      "etf_id": "US-CLOU",
+      "etf_ticker": "CLOU",
+      "previous": {
+        "holding_symbol": "DOCN",
+        "weight": 0.0398568,
+        "shares": null
+      },
+      "current": {
+        "holding_symbol": "DOCN",
+        "weight": 0.0398568,
+        "shares": null
+      },
+      "observation_status": "observed"
+    },
     {
       "etf_id": "US-DRAM",
       "etf_ticker": "DRAM",
@@ -22,6 +61,32 @@
       "previous": null,
       "current": null,
       "observation_status": "not_observed_in_top_holdings"
+    },
+    {
+      "etf_id": "US-SKYY",
+      "etf_ticker": "SKYY",
+      "previous": {
+        "holding_symbol": "DOCN",
+        "weight": 0.0290443,
+        "shares": null
+      },
+      "current": {
+        "holding_symbol": "DOCN",
+        "weight": 0.0290443,
+        "shares": null
+      },
+      "observation_status": "observed"
+    },
+    {
+      "etf_id": "US-WCLD",
+      "etf_ticker": "WCLD",
+      "previous": {
+        "holding_symbol": "DOCN",
+        "weight": 0.0221628,
+        "shares": null
+      },
+      "current": null,
+      "observation_status": "observed"
     }
   ]
 }

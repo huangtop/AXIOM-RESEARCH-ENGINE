@@ -3,11 +3,35 @@
   "company_id": "company:US-CIK0002023554",
   "ticker": "SNDK",
   "comparison": {
-    "previous_date": "2026-09-02",
-    "current_date": "2026-09-03"
+    "previous_date": "2026-09-03",
+    "current_date": "2026-09-04"
   },
   "coverage": "top_holdings_only",
-  "events": [],
+  "events": [
+    {
+      "canonical_event_id": "etf-change:1a31aa6951c58d35295831a0",
+      "source_event_id": null,
+      "etf_id": "US-IGPT",
+      "etf_ticker": "IGPT",
+      "holding_symbol": "SNDK",
+      "security_id": "security:NASDAQ-SNDK",
+      "company_id": "company:US-CIK0002023554",
+      "change_type": "WEIGHT_INCREASED",
+      "previous_weight": 0.0304577,
+      "current_weight": 0.0371512,
+      "delta_weight": 0.0066935000000000015,
+      "previous_shares": null,
+      "current_shares": null,
+      "delta_shares": null,
+      "shares_status": "not_provided_by_source",
+      "previous_observed_at": "2026-09-03",
+      "current_observed_at": "2026-09-04",
+      "material": true,
+      "coverage": "top_holdings_only",
+      "official_membership_change": false,
+      "source": "ETF-ENGINE-V2 daily snapshot diff"
+    }
+  ],
   "fund_observations": [
     {
       "etf_id": "US-DRAM",
@@ -15,6 +39,21 @@
       "previous": null,
       "current": null,
       "observation_status": "not_observed_in_top_holdings"
+    },
+    {
+      "etf_id": "US-IGPT",
+      "etf_ticker": "IGPT",
+      "previous": {
+        "holding_symbol": "SNDK",
+        "weight": 0.0304577,
+        "shares": null
+      },
+      "current": {
+        "holding_symbol": "SNDK",
+        "weight": 0.0371512,
+        "shares": null
+      },
+      "observation_status": "observed"
     },
     {
       "etf_id": "US-QQQ",

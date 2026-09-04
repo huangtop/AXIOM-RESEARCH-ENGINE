@@ -3,11 +3,35 @@
   "company_id": "company:US-CIK0001418819",
   "ticker": "IRDM",
   "comparison": {
-    "previous_date": "2026-09-02",
-    "current_date": "2026-09-03"
+    "previous_date": "2026-09-03",
+    "current_date": "2026-09-04"
   },
   "coverage": "top_holdings_only",
-  "events": [],
+  "events": [
+    {
+      "canonical_event_id": "etf-change:58c6c9c5a789d14ccc8ff98d",
+      "source_event_id": null,
+      "etf_id": "US-UFO",
+      "etf_ticker": "UFO",
+      "holding_symbol": "IRDM",
+      "security_id": "security:NASDAQ-IRDM",
+      "company_id": "company:US-CIK0001418819",
+      "change_type": "WEIGHT_DECREASED",
+      "previous_weight": 0.0364824,
+      "current_weight": 0.0363807,
+      "delta_weight": -0.00010169999999999624,
+      "previous_shares": null,
+      "current_shares": null,
+      "delta_shares": null,
+      "shares_status": "not_provided_by_source",
+      "previous_observed_at": "2026-09-03",
+      "current_observed_at": "2026-09-04",
+      "material": false,
+      "coverage": "top_holdings_only",
+      "official_membership_change": false,
+      "source": "ETF-ENGINE-V2 daily snapshot diff"
+    }
+  ],
   "fund_observations": [
     {
       "etf_id": "US-DRAM",
@@ -22,6 +46,21 @@
       "previous": null,
       "current": null,
       "observation_status": "not_observed_in_top_holdings"
+    },
+    {
+      "etf_id": "US-UFO",
+      "etf_ticker": "UFO",
+      "previous": {
+        "holding_symbol": "IRDM",
+        "weight": 0.0364824,
+        "shares": null
+      },
+      "current": {
+        "holding_symbol": "IRDM",
+        "weight": 0.0363807,
+        "shares": null
+      },
+      "observation_status": "observed"
     }
   ]
 }
