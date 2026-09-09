@@ -107,3 +107,59 @@ def test_incremental_manifest_uses_stable_hashed_shards_and_reports_only_changes
     assert second["release_id"] == first["release_id"]
     assert second["changed_company_ids"] == []
     assert second["companies"]["NVDA"]["path"] == nvda["path"]
+
+
+def test_publication_retains_recent_hashed_shard_generations(tmp_path: Path):
+    output = tmp_path / "publication/company_catalog.json"
+
+    def report(value: int) -> dict:
+        projection = {"company_id": "company:TEST", "ticker": "TEST", "value": value}
+        return {
+            "generated_at": f"2026-09-{value + 1:02d}T00:00:00+00:00",
+            "companies": [],
+            "indexes": {},
+            "_company_projections": {"TEST": projection},
+        }
+
+    paths = []
+    for value in range(4):
+        write_publication_catalog(report(value), output, retention_generations=3)
+        manifest = json.loads((output.parent / "manifest.json").read_text())
+        paths.append(output.parent / manifest["companies"]["TEST"]["path"])
+
+    assert not paths[0].exists()
+    assert all(path.exists() for path in paths[1:])
+    retention = json.loads((output.parent / "shard_retention.json").read_text())
+    assert retention["retention_generations"] == 3
+    assert len(retention["generations"]) == 3
+
+
+def test_publication_defaults_to_current_and_previous_generation(tmp_path: Path):
+    output = tmp_path / "publication/company_catalog.json"
+
+    for value in range(3):
+        projection = {"company_id": "company:TEST", "ticker": "TEST", "value": value}
+        report = {
+            "companies": [],
+            "indexes": {},
+            "_company_projections": {"TEST": projection},
+        }
+        write_publication_catalog(report, output)
+
+    manifest = json.loads((output.parent / "manifest.json").read_text())
+    retention = json.loads((output.parent / "shard_retention.json").read_text())
+    assert manifest["retention_policy"]["company_shard_generations"] == 2
+    assert retention["retention_generations"] == 2
+    assert len(retention["generations"]) == 2
+
+
+def test_publication_rejects_retention_that_can_delete_previous_generation(tmp_path: Path):
+    output = tmp_path / "publication/company_catalog.json"
+    report = {"_company_projections": {}, "companies": [], "indexes": {}}
+
+    try:
+        write_publication_catalog(report, output, retention_generations=1)
+    except ValueError as exc:
+        assert "at least 2" in str(exc)
+    else:
+        raise AssertionError("retention_generations=1 must be rejected")
