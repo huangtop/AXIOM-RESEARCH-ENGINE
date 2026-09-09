@@ -235,11 +235,16 @@ def build_multiple_policy(
         company["assumptions"][target] = value
         company["policy_version"] = "historical-median-over-analyst-consensus.v031v.6"
 
-    # Market roll-forward is the production default used by the original
-    # valuation module: apply the subject company's observable Yahoo multiple
-    # to forward fundamentals.  These are market-anchored scenarios, not an
-    # analyst target-price reverse engineering.  PEG, DCF, and milestone remain
-    # independent and are intentionally not populated here.
+    # Subject-company market multiples remain the production anchor for the
+    # two forward market-multiple models, but P/E and P/S are normalized for
+    # forward fundamental expansion with alpha=0.5:
+    #
+    #   target_multiple = current_multiple / sqrt(forward_fundamental / trailing_fundamental)
+    #
+    # This prevents a large forward EPS/revenue step-up from being valued at an
+    # unchanged trailing multiple.  EV/EBITDA and P/B are intentionally left
+    # unchanged in this revision because the Yahoo snapshot does not provide
+    # horizon-matched forward EBITDA or forward BVPS.
     snapshot_file = root / company_snapshot_path
     snapshot_payload = json.loads(snapshot_file.read_text(encoding="utf-8")) if snapshot_file.is_file() else {}
     roll_forward_bounds = {
@@ -249,22 +254,48 @@ def build_multiple_policy(
         "target_forward_pb": (0.1, 100.0),
     }
     market_roll_forward_count = 0
+    normalized_pe_count = 0
+    normalized_ps_count = 0
+
+    def sqrt_ratio(forward_value: Decimal | None, trailing_value: Decimal | None) -> Decimal | None:
+        if forward_value is None or trailing_value is None or forward_value <= 0 or trailing_value <= 0:
+            return None
+        ratio = forward_value / trailing_value
+        return ratio.sqrt() if ratio > 0 else None
+
     for symbol, snapshot in (snapshot_payload.get("symbols") or {}).items():
         if not isinstance(snapshot, Mapping):
             continue
         company_id = company_by_symbol.get(str(symbol).upper())
         if not company_id:
             continue
+
         price = positive(snapshot.get("previous_close"))
         shares = positive(snapshot.get("shares_outstanding"))
         revenue_ttm = positive(snapshot.get("revenue_ttm"))
-        forward_eps = positive(snapshot.get("forward_eps"))
+        trailing_eps = positive(snapshot.get("trailing_eps"))
+        trailing_pe = positive(snapshot.get("trailing_pe"))
+
+        annual = snapshot.get("annual_estimates")
+        current_fy = annual.get("CURRENT_FY") if isinstance(annual, Mapping) else None
+        current_fy_eps = positive(current_fy.get("eps")) if isinstance(current_fy, Mapping) else None
+        current_fy_revenue = positive(current_fy.get("revenue")) if isinstance(current_fy, Mapping) else None
+
+        # P/E normalization: trailing P/E compressed by the square root of
+        # CURRENT_FY consensus EPS expansion versus trailing EPS.
+        pe_scale = sqrt_ratio(current_fy_eps, trailing_eps)
+        normalized_pe = trailing_pe / pe_scale if trailing_pe is not None and pe_scale is not None else trailing_pe
+
+        # P/S normalization: current subject-company P/S compressed by the
+        # square root of CURRENT_FY consensus revenue expansion versus TTM revenue.
+        current_ps = (price * shares / revenue_ttm) if price and shares and revenue_ttm else None
+        ps_scale = sqrt_ratio(current_fy_revenue, revenue_ttm)
+        normalized_ps = current_ps / ps_scale if current_ps is not None and ps_scale is not None else current_ps
+
         observed = {
-            # Never reverse-engineer an analyst price target into a multiple.
-            # This is an explicit market roll-forward scenario: today's
-            # observable subject-company multiple is applied to forward inputs.
-            "target_forward_pe": positive(snapshot.get("trailing_pe")),
-            "target_forward_ps": (price * shares / revenue_ttm) if price and shares and revenue_ttm else None,
+            "target_forward_pe": normalized_pe,
+            "target_forward_ps": normalized_ps,
+            # Deliberately unchanged in this revision.
             "target_ev_ebitda": positive(snapshot.get("enterprise_to_ebitda")),
             "target_forward_pb": positive(snapshot.get("price_to_book")),
         }
@@ -275,30 +306,71 @@ def build_multiple_policy(
         }
         if not bounded:
             continue
+
         company = companies.setdefault(company_id, {
             "company_id": company_id,
-            "policy_version": "yahoo-market-roll-forward.v031v.10",
+            "policy_version": "yahoo-market-roll-forward-normalized-pe-ps.v031v.12",
             "evidence_ids": [],
             "assumptions": {},
         })
         company["assumptions"].update(bounded)
+
         assumption_roles = company.setdefault("assumption_roles", {})
         assumption_roles.update({key: "market_anchored" for key in bounded})
+        if "target_forward_pe" in bounded and pe_scale is not None:
+            assumption_roles["target_forward_pe"] = "market_anchored_fundamental_normalized"
+            normalized_pe_count += 1
+        if "target_forward_ps" in bounded and ps_scale is not None:
+            assumption_roles["target_forward_ps"] = "market_anchored_fundamental_normalized"
+            normalized_ps_count += 1
+
         fetched_at = str(snapshot.get("fetched_at") or snapshot.get("last_refresh") or "undated")
-        company["evidence_ids"] = sorted(set(company.get("evidence_ids") or []) | {
+        evidence = {
             f"yahoo-market-multiple:{str(symbol).upper()}:{key}:{fetched_at}"
             for key in bounded
-        })
-        company["policy_version"] = "yahoo-market-roll-forward-no-analyst-target.v031v.11"
+        }
+        if pe_scale is not None and "target_forward_pe" in bounded:
+            evidence.add(
+                f"fundamental-normalization:{str(symbol).upper()}:target_forward_pe:"
+                f"alpha0.5:ttm_eps={trailing_eps}:current_fy_eps={current_fy_eps}"
+            )
+        if ps_scale is not None and "target_forward_ps" in bounded:
+            evidence.add(
+                f"fundamental-normalization:{str(symbol).upper()}:target_forward_ps:"
+                f"alpha0.5:ttm_revenue={revenue_ttm}:current_fy_revenue={current_fy_revenue}"
+            )
+        company["evidence_ids"] = sorted(set(company.get("evidence_ids") or []) | evidence)
+        company["policy_version"] = "yahoo-market-roll-forward-normalized-pe-ps.v031v.12"
         market_roll_forward_count += 1
+
     return {
         "schema_version": "valuation-multiple-policy.v031v.6",
         "version": "V031V.6",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "source": benchmark_path,
-        "policy": {"minimum_confidence": minimum_confidence, "primary": "subject_market_multiple_roll_forward", "fallback": "historical_then_classified_peer_median", "analyst_target_as_multiple_source": "forbidden", "current_spot_multiple_as_target": "allowed_for_explicit_market_roll_forward_models", "own_current_spot_multiple_as_target": "allowed_but_marked_market_anchored_and_excluded_from_independent_aggregation", "peer_current_multiple_policy": "fallback_only_exclude_subject_company_and_require_at_least_three_peers", "peg_policy": "independent_classified_peer_profile_median", "milestone_policy": "requires_separate_verified_event_evidence"},
+        "policy": {
+            "minimum_confidence": minimum_confidence,
+            "primary": "subject_market_multiple_roll_forward_with_pe_ps_fundamental_normalization",
+            "fallback": "historical_then_classified_peer_median",
+            "analyst_target_as_multiple_source": "forbidden",
+            "current_spot_multiple_as_target": "allowed_with_alpha_0_5_fundamental_normalization_for_pe_ps",
+            "own_current_spot_multiple_as_target": "allowed_but_marked_market_anchored_and_excluded_from_independent_aggregation",
+            "peer_current_multiple_policy": "exclude_subject_company_and_require_at_least_three_peers",
+            "peg_policy": "independent_classified_peer_profile_median",
+            "milestone_policy": "requires_separate_verified_event_evidence",
+            "normalized_models": ["forward_pe", "forward_ps"],
+            "normalization_alpha": 0.5,
+        },
         "companies": sorted(companies.values(), key=lambda row: row["company_id"]),
-        "summary": {"company_count": len(companies), "assumption_count": sum(len(row["assumptions"]) for row in companies.values()), "market_roll_forward_company_count": market_roll_forward_count, "rejected_count": len(rejected), "ai_peer_policy": peer_summary},
+        "summary": {
+            "company_count": len(companies),
+            "assumption_count": sum(len(row["assumptions"]) for row in companies.values()),
+            "market_roll_forward_company_count": market_roll_forward_count,
+            "normalized_forward_pe_company_count": normalized_pe_count,
+            "normalized_forward_ps_company_count": normalized_ps_count,
+            "rejected_count": len(rejected),
+            "ai_peer_policy": peer_summary,
+        },
         "diagnostics": {"rejected": rejected},
     }
 

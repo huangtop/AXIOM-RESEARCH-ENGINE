@@ -254,23 +254,68 @@ def _dual_fy_seven_models(
         return _number(value)
 
     price = num(market.get("current_price")) or num(snapshot.get("previous_close"))
-    shares = num(snapshot.get("shares_outstanding")) or num((financials.get("diluted_shares_outstanding") or {}).get("value"))
+    shares = num(snapshot.get("shares_outstanding")) or num(
+        (financials.get("diluted_shares_outstanding") or {}).get("value")
+    )
     # Keep both sides of the observed P/E on the same provider/as-of basis.
-    trailing_eps = num(snapshot.get("trailing_eps")) or num((financials.get("trailing_eps") or {}).get("value"))
-    revenue_ttm = num(snapshot.get("revenue_ttm")) or num((financials.get("revenue") or {}).get("value"))
-    cash = num((financials.get("cash_and_cash_equivalents") or {}).get("value")) or num(snapshot.get("total_cash")) or Decimal("0")
-    debt = num((financials.get("total_debt") or {}).get("value")) or num(snapshot.get("total_debt")) or Decimal("0")
-    ebitda = num(snapshot.get("ebitda_ttm")) or num((financials.get("ebitda") or {}).get("value"))
+    trailing_eps = num(snapshot.get("trailing_eps")) or num(
+        (financials.get("trailing_eps") or {}).get("value")
+    )
+    revenue_ttm = num(snapshot.get("revenue_ttm")) or num(
+        (financials.get("revenue") or {}).get("value")
+    )
+    cash = (
+        num((financials.get("cash_and_cash_equivalents") or {}).get("value"))
+        or num(snapshot.get("total_cash"))
+        or Decimal("0")
+    )
+    debt = (
+        num((financials.get("total_debt") or {}).get("value"))
+        or num(snapshot.get("total_debt"))
+        or Decimal("0")
+    )
+    ebitda = num(snapshot.get("ebitda_ttm")) or num(
+        (financials.get("ebitda") or {}).get("value")
+    )
     bvps = num((financials.get("book_value_per_share") or {}).get("value"))
     fcf = num((financials.get("free_cash_flow") or {}).get("value"))
 
-    current_pe = price / trailing_eps if price is not None and trailing_eps is not None and trailing_eps > 0 else (num(snapshot.get("trailing_pe")) or Decimal("15"))
-    current_ps = price * shares / revenue_ttm if price is not None and shares is not None and revenue_ttm is not None and revenue_ttm > 0 else Decimal("8")
-    current_pb = num(snapshot.get("price_to_book")) or num(assumptions.get("target_forward_pb")) or Decimal("5.5")
+    current_pe = (
+        price / trailing_eps
+        if price is not None and trailing_eps is not None and trailing_eps > 0
+        else (num(snapshot.get("trailing_pe")) or Decimal("15"))
+    )
+    current_ps = (
+        price * shares / revenue_ttm
+        if (
+            price is not None
+            and shares is not None
+            and revenue_ttm is not None
+            and revenue_ttm > 0
+        )
+        else Decimal("8")
+    )
+
+    # Only Forward P/E and Forward P/S consume the normalized target multiples
+    # published by multiple_policy. If unavailable, preserve the prior observed
+    # market-multiple fallback. Other five models keep their existing behavior.
+    target_pe = num(assumptions.get("target_forward_pe")) or current_pe
+    target_ps = num(assumptions.get("target_forward_ps")) or current_ps
+
+    current_pb = (
+        num(snapshot.get("price_to_book"))
+        or num(assumptions.get("target_forward_pb"))
+        or Decimal("5.5")
+    )
     current_ev_multiple = num(snapshot.get("enterprise_to_ebitda"))
     target_peg = Decimal("0.9")  # AXIOM CURRENT_FY legacy PEG contract
-    success_probability = num(assumptions.get("milestone_success_probability")) or Decimal("0.5")
-    success_probability = max(Decimal("0"), min(Decimal("1"), success_probability))
+    success_probability = (
+        num(assumptions.get("milestone_success_probability")) or Decimal("0.5")
+    )
+    success_probability = max(
+        Decimal("0"),
+        min(Decimal("1"), success_probability),
+    )
 
     dcf_value = None
     if fcf is not None and shares is not None and shares > 0:
@@ -284,7 +329,11 @@ def _dual_fy_seven_models(
             for year in range(1, years + 1):
                 projected *= Decimal("1") + growth
                 enterprise += projected / ((Decimal("1") + discount_rate) ** year)
-            terminal = projected * (Decimal("1") + terminal_growth) / (discount_rate - terminal_growth)
+            terminal = (
+                projected
+                * (Decimal("1") + terminal_growth)
+                / (discount_rate - terminal_growth)
+            )
             enterprise += terminal / ((Decimal("1") + discount_rate) ** years)
             candidate = (enterprise + cash - debt) / shares
             if candidate > 0:
@@ -312,40 +361,111 @@ def _dual_fy_seven_models(
         current_fiscal_year = snapshot.get("current_fiscal_year")
         fiscal_year = row.get("fiscal_year")
         if fiscal_year is None and current_fiscal_year is not None:
-            fiscal_year = int(current_fiscal_year) + (1 if basis == "NEXT_FY" else 0)
+            fiscal_year = int(current_fiscal_year) + (
+                1 if basis == "NEXT_FY" else 0
+            )
+
         eps = num(row.get("eps"))
         revenue = num(row.get("revenue"))
+
         # PEG requires growth that starts at the EPS horizon being valued.
         # `reported_growth` describes how that EPS was reached and must never be
         # reused to project/value the same EPS a second time.
         eps_growth = num(row.get("peg_growth"))
-        growth_pct = eps_growth * Decimal("100") if eps_growth is not None and eps_growth > 0 else None
+        growth_pct = (
+            eps_growth * Decimal("100")
+            if eps_growth is not None and eps_growth > 0
+            else None
+        )
 
-        pe_value = eps * current_pe if eps is not None and eps > 0 else None
-        ps_value = revenue / shares * current_ps if revenue is not None and revenue > 0 and shares is not None and shares > 0 else None
-        peg_value = eps * growth_pct * target_peg if eps is not None and eps > 0 and growth_pct is not None else None
-        pb_value = bvps * current_pb if bvps is not None and bvps > 0 else None
+        pe_value = (
+            eps * target_pe
+            if eps is not None and eps > 0
+            else None
+        )
+        ps_value = (
+            revenue / shares * target_ps
+            if (
+                revenue is not None
+                and revenue > 0
+                and shares is not None
+                and shares > 0
+            )
+            else None
+        )
+
+        # Existing behavior below is intentionally unchanged.
+        peg_value = (
+            eps * growth_pct * target_peg
+            if eps is not None and eps > 0 and growth_pct is not None
+            else None
+        )
+        pb_value = (
+            bvps * current_pb
+            if bvps is not None and bvps > 0
+            else None
+        )
 
         ev_multiple = current_ev_multiple
         if ev_multiple is None or ev_multiple <= 0:
-            ev_multiple = Decimal("45") if eps_growth is not None and eps_growth > Decimal("0.50") else Decimal("35")
-        ev_value = ((ebitda * ev_multiple) - debt + cash) / shares if ebitda is not None and ebitda > 0 and shares is not None and shares > 0 else None
+            ev_multiple = (
+                Decimal("45")
+                if eps_growth is not None and eps_growth > Decimal("0.50")
+                else Decimal("35")
+            )
+        ev_value = (
+            ((ebitda * ev_multiple) - debt + cash) / shares
+            if (
+                ebitda is not None
+                and ebitda > 0
+                and shares is not None
+                and shares > 0
+            )
+            else None
+        )
 
-        milestone_value = price * (Decimal("3") * success_probability + Decimal("0.5") * (Decimal("1") - success_probability)) if price is not None else pe_value
+        milestone_value = (
+            price
+            * (
+                Decimal("3") * success_probability
+                + Decimal("0.5") * (Decimal("1") - success_probability)
+            )
+            if price is not None
+            else pe_value
+        )
         dcf_out = dcf_value
 
         models = {
             "dcf": model(dcf_out, reason_code="DCF_INPUTS_UNAVAILABLE"),
-            "forward_pe": model(pe_value, reason_code="HORIZON_EPS_UNAVAILABLE"),
-            "peg": model(peg_value, note="growth sets implied P/E; EPS is not grown a second time", reason_code="HORIZON_EPS_OR_MATCHED_GROWTH_UNAVAILABLE"),
-            "forward_ps": model(ps_value, reason_code="HORIZON_REVENUE_OR_SHARES_UNAVAILABLE"),
-            "ev_ebitda": model(ev_value, reason_code="EBITDA_OR_SHARES_UNAVAILABLE"),
-            "forward_pb": model(pb_value, reason_code="BOOK_VALUE_PER_SHARE_UNAVAILABLE"),
+            "forward_pe": model(
+                pe_value,
+                reason_code="HORIZON_EPS_UNAVAILABLE",
+            ),
+            "peg": model(
+                peg_value,
+                note="growth sets implied P/E; EPS is not grown a second time",
+                reason_code="HORIZON_EPS_OR_MATCHED_GROWTH_UNAVAILABLE",
+            ),
+            "forward_ps": model(
+                ps_value,
+                reason_code="HORIZON_REVENUE_OR_SHARES_UNAVAILABLE",
+            ),
+            "ev_ebitda": model(
+                ev_value,
+                reason_code="EBITDA_OR_SHARES_UNAVAILABLE",
+            ),
+            "forward_pb": model(
+                pb_value,
+                reason_code="BOOK_VALUE_PER_SHARE_UNAVAILABLE",
+            ),
             "milestone": model(milestone_value),
         }
+
+        models["forward_pe"]["target_multiple"] = format(target_pe, "f")
         models["forward_pe"]["inputs"] = {
             "fiscal_year": fiscal_year,
             "eps": format(eps, "f") if eps is not None else None,
+            "target_multiple": format(target_pe, "f"),
             "observed_trailing_pe": format(current_pe, "f"),
             "observed_price": format(price, "f") if price is not None else None,
             "trailing_eps": (
@@ -353,18 +473,45 @@ def _dual_fy_seven_models(
                 if trailing_eps is not None
                 else None
             ),
-            "multiple_source": "observed_price_divided_by_trailing_eps",
+            "multiple_source": (
+                "valuation_assumptions.target_forward_pe"
+                if num(assumptions.get("target_forward_pe")) is not None
+                else "observed_price_divided_by_trailing_eps_fallback"
+            ),
             "eps_source": f"annual_estimates.{basis}.eps",
         }
+
+        models["forward_ps"]["target_multiple"] = format(target_ps, "f")
+        models["forward_ps"]["inputs"] = {
+            "fiscal_year": fiscal_year,
+            "revenue": format(revenue, "f") if revenue is not None else None,
+            "shares": format(shares, "f") if shares is not None else None,
+            "target_multiple": format(target_ps, "f"),
+            "observed_current_ps": format(current_ps, "f"),
+            "multiple_source": (
+                "valuation_assumptions.target_forward_ps"
+                if num(assumptions.get("target_forward_ps")) is not None
+                else "observed_price_times_shares_divided_by_ttm_revenue_fallback"
+            ),
+            "revenue_source": f"annual_estimates.{basis}.revenue",
+        }
+
         out[basis] = {
             "estimate_basis": basis,
             "fiscal_year": fiscal_year,
             "eps": format(eps, "f") if eps is not None else None,
             "revenue": format(revenue, "f") if revenue is not None else None,
-            "eps_growth": format(eps_growth, "f") if eps_growth is not None else None,
+            "eps_growth": (
+                format(eps_growth, "f")
+                if eps_growth is not None
+                else None
+            ),
             "growth_basis": row.get("growth_basis"),
             "growth_is_horizon_matched": bool(row.get("growth_basis")),
-            "model_count": sum(m.get("status") == "calculated" for m in models.values()),
+            "model_count": sum(
+                m.get("status") == "calculated"
+                for m in models.values()
+            ),
             "models": models,
         }
     return out
