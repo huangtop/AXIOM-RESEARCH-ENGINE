@@ -3,12 +3,70 @@
   "company_id": "company:US-CIK0001736297",
   "ticker": "ALAB",
   "comparison": {
-    "previous_date": "2026-09-01",
-    "current_date": "2026-09-02"
+    "previous_date": "2026-09-02",
+    "current_date": "2026-09-09"
   },
   "coverage": "top_holdings_only",
-  "events": [],
+  "events": [
+    {
+      "canonical_event_id": "etf-change:63fd5ff3be0126477505b1d7",
+      "source_event_id": null,
+      "etf_id": "US-CHAT",
+      "etf_ticker": "CHAT",
+      "holding_symbol": "ALAB",
+      "security_id": "security:NASDAQ-ALAB",
+      "company_id": "company:US-CIK0001736297",
+      "change_type": "ENTERED_TOP_HOLDINGS",
+      "previous_weight": null,
+      "current_weight": 0.0271943,
+      "delta_weight": 0.0271943,
+      "previous_shares": null,
+      "current_shares": null,
+      "delta_shares": null,
+      "shares_status": "not_provided_by_source",
+      "previous_observed_at": "2026-09-02",
+      "current_observed_at": "2026-09-09",
+      "material": true,
+      "coverage": "top_holdings_only",
+      "official_membership_change": false,
+      "source": "ETF-ENGINE-V2 daily snapshot diff"
+    },
+    {
+      "canonical_event_id": "etf-change:87b1677632d87f7cc8766ff1",
+      "source_event_id": null,
+      "etf_id": "US-XSD",
+      "etf_ticker": "XSD",
+      "holding_symbol": "ALAB",
+      "security_id": "security:NASDAQ-ALAB",
+      "company_id": "company:US-CIK0001736297",
+      "change_type": "EXITED_TOP_HOLDINGS",
+      "previous_weight": 0.0254068,
+      "current_weight": null,
+      "delta_weight": -0.0254068,
+      "previous_shares": null,
+      "current_shares": null,
+      "delta_shares": null,
+      "shares_status": "not_provided_by_source",
+      "previous_observed_at": "2026-09-02",
+      "current_observed_at": "2026-09-09",
+      "material": true,
+      "coverage": "top_holdings_only",
+      "official_membership_change": false,
+      "source": "ETF-ENGINE-V2 daily snapshot diff"
+    }
+  ],
   "fund_observations": [
+    {
+      "etf_id": "US-CHAT",
+      "etf_ticker": "CHAT",
+      "previous": null,
+      "current": {
+        "holding_symbol": "ALAB",
+        "weight": 0.0271943,
+        "shares": null
+      },
+      "observation_status": "observed"
+    },
     {
       "etf_id": "US-DRAM",
       "etf_ticker": "DRAM",
@@ -22,6 +80,32 @@
       "previous": null,
       "current": null,
       "observation_status": "not_observed_in_top_holdings"
+    },
+    {
+      "etf_id": "US-VXF",
+      "etf_ticker": "VXF",
+      "previous": {
+        "holding_symbol": "ALAB",
+        "weight": 0.0049983,
+        "shares": null
+      },
+      "current": {
+        "holding_symbol": "ALAB",
+        "weight": 0.0049983,
+        "shares": null
+      },
+      "observation_status": "observed"
+    },
+    {
+      "etf_id": "US-XSD",
+      "etf_ticker": "XSD",
+      "previous": {
+        "holding_symbol": "ALAB",
+        "weight": 0.0254068,
+        "shares": null
+      },
+      "current": null,
+      "observation_status": "observed"
     }
   ]
 }

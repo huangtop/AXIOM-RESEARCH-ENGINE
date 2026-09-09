@@ -3,18 +3,91 @@
   "company_id": "company:US-CIK0001513845",
   "ticker": "NBIS",
   "comparison": {
-    "previous_date": "2026-09-01",
-    "current_date": "2026-09-02"
+    "previous_date": "2026-09-02",
+    "current_date": "2026-09-09"
   },
   "coverage": "top_holdings_only",
-  "events": [],
+  "events": [
+    {
+      "canonical_event_id": "etf-change:363eb5b352a8989f5df63214",
+      "source_event_id": null,
+      "etf_id": "US-CHAT",
+      "etf_ticker": "CHAT",
+      "holding_symbol": "NBIS",
+      "security_id": "security:NASDAQ-NBIS",
+      "company_id": "company:US-CIK0001513845",
+      "change_type": "WEIGHT_INCREASED",
+      "previous_weight": 0.029178,
+      "current_weight": 0.0314041,
+      "delta_weight": 0.0022260999999999982,
+      "previous_shares": null,
+      "current_shares": null,
+      "delta_shares": null,
+      "shares_status": "not_provided_by_source",
+      "previous_observed_at": "2026-09-02",
+      "current_observed_at": "2026-09-09",
+      "material": true,
+      "coverage": "top_holdings_only",
+      "official_membership_change": false,
+      "source": "ETF-ENGINE-V2 daily snapshot diff"
+    },
+    {
+      "canonical_event_id": "etf-change:ec144dff2698b280b949302d",
+      "source_event_id": null,
+      "etf_id": "US-DRIV",
+      "etf_ticker": "DRIV",
+      "holding_symbol": "NBIS",
+      "security_id": "security:NASDAQ-NBIS",
+      "company_id": "company:US-CIK0001513845",
+      "change_type": "EXITED_TOP_HOLDINGS",
+      "previous_weight": 0.021507,
+      "current_weight": null,
+      "delta_weight": -0.021507,
+      "previous_shares": null,
+      "current_shares": null,
+      "delta_shares": null,
+      "shares_status": "not_provided_by_source",
+      "previous_observed_at": "2026-09-02",
+      "current_observed_at": "2026-09-09",
+      "material": true,
+      "coverage": "top_holdings_only",
+      "official_membership_change": false,
+      "source": "ETF-ENGINE-V2 daily snapshot diff"
+    }
+  ],
   "fund_observations": [
+    {
+      "etf_id": "US-CHAT",
+      "etf_ticker": "CHAT",
+      "previous": {
+        "holding_symbol": "NBIS",
+        "weight": 0.029178,
+        "shares": null
+      },
+      "current": {
+        "holding_symbol": "NBIS",
+        "weight": 0.0314041,
+        "shares": null
+      },
+      "observation_status": "observed"
+    },
     {
       "etf_id": "US-DRAM",
       "etf_ticker": "DRAM",
       "previous": null,
       "current": null,
       "observation_status": "not_observed_in_top_holdings"
+    },
+    {
+      "etf_id": "US-DRIV",
+      "etf_ticker": "DRIV",
+      "previous": {
+        "holding_symbol": "NBIS",
+        "weight": 0.021507,
+        "shares": null
+      },
+      "current": null,
+      "observation_status": "observed"
     },
     {
       "etf_id": "US-QQQ",
