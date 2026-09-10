@@ -7,42 +7,41 @@ cd "$repo_root"
 git config user.name "github-actions[bot]"
 git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+archive_root="data/generated/provider_cache/yahoo/daily_close"
 cache_file="data/generated/market/previous_close_cache.json"
 report_file="data/generated/market/daily_close_refresh_report.json"
+
 retry_root="$(mktemp -d)"
 trap 'rm -rf "$retry_root"' EXIT
 
 preserve_market_inputs() {
+  mkdir -p "$retry_root/daily_close"
+  cp -R "$archive_root/." "$retry_root/daily_close/"
   cp "$cache_file" "$retry_root/previous_close_cache.json"
+
   if [[ -f "$report_file" ]]; then
     cp "$report_file" "$retry_root/daily_close_refresh_report.json"
   fi
 }
 
 restore_market_inputs() {
+  mkdir -p "$archive_root"
+  rm -rf "$archive_root"/*
+  cp -R "$retry_root/daily_close/." "$archive_root/"
   cp "$retry_root/previous_close_cache.json" "$cache_file"
+
   if [[ -f "$retry_root/daily_close_refresh_report.json" ]]; then
     cp "$retry_root/daily_close_refresh_report.json" "$report_file"
   fi
 }
 
-rebuild_generated_outputs() {
-  python scripts/build_full_market_coverage.py
-  python scripts/build_coverage_policy.py
-  python scripts/build_publication_catalog.py
-  pytest -q \
-    tests/test_full_market_daily_close_population_v031v1.py \
-    tests/test_full_market_coverage_v031.py \
-    tests/test_publication_gate_v031f2.py
-}
+stage_market_outputs() {
+  git add -f "$archive_root"
+  git add "$cache_file"
 
-stage_generated_outputs() {
-  git add -f data/generated/provider_cache/yahoo/daily_close
-  git add \
-    data/generated/market \
-    data/generated/full_market_coverage \
-    data/generated/coverage_policy \
-    data/generated/publication_gate
+  if [[ -f "$report_file" ]]; then
+    git add "$report_file"
+  fi
 }
 
 preserve_market_inputs
@@ -50,23 +49,24 @@ preserve_market_inputs
 for attempt in 1 2 3; do
   git fetch origin main
 
-  # Generated content-hash shards cannot be meaningfully rebased. If main
-  # advanced while Yahoo was running, retain the completed market download,
-  # move to the new main, and deterministically rebuild all derived artifacts.
+  # If main advanced while Yahoo was running, keep the completed market
+  # download, move to the new main, then restore only the market artifacts.
+  # Valuation/publication artifacts are intentionally not rebuilt here.
   if [[ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]]; then
-    echo "main advanced during refresh; rebuilding on origin/main (attempt $attempt)"
+    echo "main advanced during refresh; restoring market-only artifacts on origin/main (attempt $attempt)"
     git reset --hard origin/main
     restore_market_inputs
-    rebuild_generated_outputs
   fi
 
-  stage_generated_outputs
+  stage_market_outputs
+
   if git diff --cached --quiet; then
-    echo "No generated market changes to publish."
+    echo "No market changes to publish."
     exit 0
   fi
 
-  git commit -m "chore(data): refresh production daily market artifacts"
+  git commit -m "chore(data): refresh production daily market data"
+
   if git push origin HEAD:main; then
     exit 0
   fi
@@ -74,5 +74,5 @@ for attempt in 1 2 3; do
   echo "main changed before push; retrying from the latest main"
 done
 
-echo "Unable to publish market refresh after 3 race-safe rebuild attempts." >&2
+echo "Unable to publish market refresh after 3 race-safe attempts." >&2
 exit 1

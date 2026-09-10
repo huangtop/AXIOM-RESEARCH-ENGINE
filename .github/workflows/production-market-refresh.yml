@@ -33,13 +33,11 @@ jobs:
           python-version: "3.11"
           cache: pip
 
-      - run: pip install -e .[dev,yahoo]
+      - name: Install market refresh dependencies
+        run: pip install -e ".[dev,yahoo]"
 
-      - name: Synchronize main before the expensive provider refresh
+      - name: Synchronize main before the provider refresh
         run: git pull --ff-only origin main
-
-      - name: Capture valuation baseline
-        run: cp data/generated/full_market_coverage/full_market_coverage.json /tmp/axiom-valuation-before.json
 
       - name: Refresh all eligible operating-company closes
         run: >-
@@ -51,38 +49,8 @@ jobs:
           --report data/generated/market/daily_close_refresh_report.json
           ${{ github.event_name == 'schedule' && '--force' || (inputs.force && '--force' || '') }}
 
-      - name: Backfill missing dual-fiscal-year estimate contracts
-        run: |
-          python scripts/build_daily_estimate_worklist.py \
-            --limit 194 \
-            --allow-empty \
-            --priority-symbols config/frontier_priority_symbols.v1.json \
-            --output /tmp/axiom-dual-fy-estimate-symbols.txt
-          printf '%s\n' NVDA SNDK MU LITE PM TSLA >> /tmp/axiom-dual-fy-estimate-symbols.txt
-          sort -u /tmp/axiom-dual-fy-estimate-symbols.txt -o /tmp/axiom-dual-fy-estimate-symbols.txt
-          if [[ -s /tmp/axiom-dual-fy-estimate-symbols.txt ]]; then
-            python scripts/refresh_yahoo_company_snapshots.py \
-              --symbols-file /tmp/axiom-dual-fy-estimate-symbols.txt \
-              --ttl-days 30 \
-              --delay 0.5 \
-              --max-fetch 200 \
-              ${{ inputs.force && '--force' || '' }}
-            python scripts/build_estimate_population_v031v6.py
-            python scripts/build_multiple_policy_v031v6.py
-          fi
+      - name: Validate market cache contract
+        run: pytest -q tests/test_cached_close.py
 
-      - name: Rebuild valuation shards and publication catalog
-        run: |
-          python scripts/build_full_market_coverage.py
-          python scripts/build_coverage_policy.py
-          python scripts/build_publication_catalog.py
-
-      - name: Validate focused production contracts
-        run: pytest -q tests/test_full_market_daily_close_population_v031v1.py tests/test_full_market_coverage_v031.py tests/test_publication_gate_v031f2.py
-
-      - name: Commit generated market artifacts
+      - name: Commit market-only artifacts
         run: bash scripts/publish_daily_market_refresh.sh
-
-      - name: Publish daily refresh summary
-        if: always()
-        run: python scripts/write_daily_refresh_summary.py --before /tmp/axiom-valuation-before.json
