@@ -36,7 +36,7 @@ jobs:
       - name: Install market refresh dependencies
         run: pip install -e ".[dev,yahoo]"
 
-      - name: Synchronize main before the provider refresh
+      - name: Synchronize main before the expensive provider refresh
         run: git pull --ff-only origin main
 
       - name: Refresh all eligible operating-company closes
