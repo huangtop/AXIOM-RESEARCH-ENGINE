@@ -56,9 +56,11 @@ jobs:
         run: |
           python scripts/build_estimate_population_v031v6.py
           python scripts/build_multiple_policy_v031v6.py
-          python scripts/build_full_market_coverage.py
+          python scripts/build_full_market_coverage.py \
+            --symbols-file /tmp/axiom-daily-estimate-symbols.txt
           python scripts/build_coverage_policy.py
-          python scripts/build_publication_catalog.py
+          python scripts/build_publication_catalog.py \
+            --symbols-file /tmp/axiom-daily-estimate-symbols.txt
       - name: Validate estimates and valuation publication contracts
         run: >-
           pytest -q
