@@ -7,6 +7,7 @@ from decimal import Decimal
 from pathlib import Path
 from typing import Iterable
 
+from axiom_engine.market_price_cache import compact_market_row, market_rows, unpack_market_row
 from axiom_engine.previous_close import DailyClose, DailyCloseProvider, PreviousCloseError
 
 
@@ -31,23 +32,22 @@ class JsonCachedPreviousCloseProvider:
         except json.JSONDecodeError as exc:
             raise PreviousCloseError("previous-close cache is invalid JSON") from exc
 
-        rows = payload.get("symbols") if isinstance(payload, dict) else None
-        item = rows.get(normalized) if isinstance(rows, dict) else None
-        if not isinstance(item, dict):
+        row = unpack_market_row(market_rows(payload).get(normalized))
+        if row.get("close") in (None, "") or not row.get("session_date"):
             raise PreviousCloseError(f"previous close not cached for symbol: {normalized}")
 
         try:
             close = DailyClose(
                 symbol=normalized,
-                session_date=datetime.strptime(str(item["session_date"]), "%Y-%m-%d").date(),
-                close=Decimal(str(item["close"])),
-                currency=str(item["currency"]) if item.get("currency") else None,
+                session_date=datetime.strptime(str(row["session_date"]), "%Y-%m-%d").date(),
+                close=Decimal(str(row["close"])),
+                currency=str(row["currency"]) if row.get("currency") else None,
                 exchange_timezone=(
-                    str(item["exchange_timezone"])
-                    if item.get("exchange_timezone")
+                    str(row["exchange_timezone"])
+                    if row.get("exchange_timezone")
                     else None
                 ),
-                provider=str(item.get("provider") or "github_actions_close_cache"),
+                provider=str(row.get("provider") or "yahoo_finance"),
             )
         except (KeyError, TypeError, ValueError) as exc:
             raise PreviousCloseError(f"cached previous close is invalid: {normalized}") from exc
@@ -60,22 +60,20 @@ class JsonCachedPreviousCloseProvider:
 
 
 def write_close_cache(path: Path, closes: Iterable[DailyClose], *, generated_at: datetime) -> None:
+    del generated_at
     existing: dict[str, object] = {}
     if path.exists():
         try:
             raw = json.loads(path.read_text(encoding="utf-8"))
-            if isinstance(raw, dict) and isinstance(raw.get("symbols"), dict):
-                existing = dict(raw["symbols"])
+            existing = dict(market_rows(raw))
         except json.JSONDecodeError:
             existing = {}
 
     for close in closes:
-        existing[close.symbol] = close.to_dict()
+        existing[close.symbol] = compact_market_row(close.close, close.session_date)
 
-    payload = {
-        "schema_version": "1.0",
-        "generated_at": generated_at.isoformat(),
-        "symbols": dict(sorted(existing.items())),
-    }
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    path.write_text(
+        json.dumps(dict(sorted(existing.items())), ensure_ascii=False, separators=(",", ":")) + "\n",
+        encoding="utf-8",
+    )

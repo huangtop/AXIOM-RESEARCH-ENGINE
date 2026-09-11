@@ -46,17 +46,7 @@ def test_multiple_policy_uses_canonical_market_close_not_snapshot_previous_close
     )
     _write_json(
         tmp_path / "data/generated/market/previous_close_cache.json",
-        {
-            "symbols": {
-                "AAA": {
-                    "symbol": "AAA",
-                    "session_date": "2026-09-10",
-                    "close": "100",
-                    "currency": "USD",
-                    "provider": "yahoo_finance",
-                }
-            }
-        },
+        {"AAA": [100, "2026-09-10"]},
     )
     _write_json(
         tmp_path / "data/universe/securities.json",

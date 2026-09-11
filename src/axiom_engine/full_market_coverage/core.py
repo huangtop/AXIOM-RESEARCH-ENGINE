@@ -10,6 +10,7 @@ from urllib.parse import quote
 from zipfile import BadZipFile, ZipFile
 
 from axiom_engine.coverage_policy import CoveragePolicyService
+from axiom_engine.market_price_cache import market_rows, unpack_market_row
 from axiom_engine.unified_valuation import build_unified_valuation
 
 
@@ -779,12 +780,7 @@ def build_full_market_coverage(
         for row in assumption_rows
         if row.get("company_id") and row.get("evidence_ids")
     }
-    market_symbols = (
-        market_payload.get("symbols")
-        if isinstance(market_payload, Mapping)
-        else {}
-    )
-    market_symbols = market_symbols if isinstance(market_symbols, Mapping) else {}
+    market_symbols = market_rows(market_payload)
     snapshot_symbols = (
         company_snapshot.get("symbols")
         if isinstance(company_snapshot, Mapping)
@@ -1026,35 +1022,16 @@ def build_full_market_coverage(
         routing_archetype = str(routing.get("archetype") or "pending")
         routing_counts[routing_archetype] += 1
 
-        market_row = market_symbols.get(ticker) if ticker else None
+        market_row = unpack_market_row(
+            market_symbols.get(ticker) if ticker else None
+        )
+        market_price = _number(market_row.get("close"))
         market = {
-            "status": (
-                "ready"
-                if isinstance(market_row, Mapping)
-                and _number(market_row.get("close")) is not None
-                else "unavailable"
-            ),
-            "current_price": (
-                str(market_row.get("close"))
-                if isinstance(market_row, Mapping)
-                and market_row.get("close") is not None
-                else None
-            ),
-            "currency": (
-                market_row.get("currency")
-                if isinstance(market_row, Mapping)
-                else primary.get("currency")
-            ),
-            "as_of_date": (
-                market_row.get("session_date")
-                if isinstance(market_row, Mapping)
-                else None
-            ),
-            "reason_code": (
-                None
-                if isinstance(market_row, Mapping)
-                else "CANONICAL_MARKET_NOT_POPULATED"
-            ),
+            "status": "ready" if market_price is not None else "unavailable",
+            "current_price": str(market_row.get("close")) if market_price is not None else None,
+            "currency": market_row.get("currency") or primary.get("currency"),
+            "as_of_date": market_row.get("session_date"),
+            "reason_code": None if market_price is not None else "CANONICAL_MARKET_NOT_POPULATED",
         }
 
         unified = build_unified_valuation(

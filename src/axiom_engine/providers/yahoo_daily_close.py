@@ -8,6 +8,7 @@ from decimal import Decimal
 from pathlib import Path
 from typing import Callable, Iterable, Mapping, Protocol
 
+from axiom_engine.market_price_cache import compact_market_row, market_rows, unpack_market_row
 from axiom_engine.previous_close import DailyClose, PreviousCloseError
 
 
@@ -19,6 +20,7 @@ class PreviousCloseFetcher(Protocol):
 class ArchiveWriteReport:
     archive_root: str
     latest_cache_path: str
+    refresh_state_path: str
     rows_received: int
     session_files_written: int
     latest_symbols: int
@@ -59,12 +61,14 @@ class YahooDailyCloseArchive:
         archive_root: Path,
         *,
         latest_cache_path: Path | None = None,
+        refresh_state_path: Path | None = None,
         retention_days: int = 365,
     ) -> None:
         if retention_days < 1:
             raise ValueError("retention_days must be positive")
         self.archive_root = Path(archive_root)
         self.latest_cache_path = Path(latest_cache_path) if latest_cache_path else self.archive_root / "latest.json"
+        self.refresh_state_path = Path(refresh_state_path) if refresh_state_path else self.archive_root.parent / f"{self.archive_root.name}_state.json"
         self.retention_days = retention_days
 
     def write(
@@ -98,25 +102,31 @@ class YahooDailyCloseArchive:
             )
 
         latest = self._read_latest_rows()
+        refresh_state = self._read_refresh_state()
         for close in rows:
-            previous = latest.get(close.symbol)
-            previous_date = str(previous.get("session_date")) if isinstance(previous, Mapping) else ""
+            previous = unpack_market_row(latest.get(close.symbol))
+            previous_date = str(previous.get("session_date") or "")
             if not previous_date or close.session_date.isoformat() >= previous_date:
-                latest[close.symbol] = {**close.to_dict(), "fetched_at": now.isoformat()}
-        self._atomic_json_write(
+                latest[close.symbol] = compact_market_row(close.close, close.session_date)
+            refresh_state[close.symbol] = now.isoformat()
+        self._atomic_compact_json_write(
             self.latest_cache_path,
-            {
-                "schema_version": "1.0",
-                "generated_at": now.isoformat(),
-                "retention_days": self.retention_days,
-                "symbols": dict(sorted(latest.items())),
-            },
+            dict(sorted(latest.items())),
         )
+        if rows or not self.refresh_state_path.exists():
+            self._atomic_compact_json_write(
+                self.refresh_state_path,
+                {
+                    "schema_version": "yahoo-daily-close-refresh-state.v1",
+                    "symbols": dict(sorted(refresh_state.items())),
+                },
+            )
 
         pruned = self.prune(reference_date=now.date())
         return ArchiveWriteReport(
             archive_root=str(self.archive_root),
             latest_cache_path=str(self.latest_cache_path),
+            refresh_state_path=str(self.refresh_state_path),
             rows_received=len(rows),
             session_files_written=len(grouped),
             latest_symbols=len(latest),
@@ -151,15 +161,24 @@ class YahooDailyCloseArchive:
 
     def latest(self, symbol: str) -> DailyClose | None:
         normalized = symbol.strip().upper()
-        item = self._read_latest_rows().get(normalized)
-        return _daily_close_from_dict(normalized, item) if isinstance(item, Mapping) else None
+        row = unpack_market_row(self._read_latest_rows().get(normalized))
+        if row.get("close") in (None, "") or not row.get("session_date"):
+            return None
+        return DailyClose(
+            symbol=normalized,
+            session_date=date.fromisoformat(str(row["session_date"])),
+            close=Decimal(str(row["close"])),
+            currency=str(row["currency"]) if row.get("currency") else None,
+            exchange_timezone=None,
+            provider=str(row.get("provider") or "yahoo_finance"),
+        )
 
     def was_fetched_on(self, symbol: str, fetch_date: date) -> bool:
-        item = self._read_latest_rows().get(symbol.strip().upper())
-        if not isinstance(item, Mapping) or not item.get("fetched_at"):
+        fetched_at = self._read_refresh_state().get(symbol.strip().upper())
+        if not fetched_at:
             return False
         try:
-            return datetime.fromisoformat(str(item["fetched_at"])).date() == fetch_date
+            return datetime.fromisoformat(str(fetched_at)).date() == fetch_date
         except ValueError:
             return False
 
@@ -187,13 +206,34 @@ class YahooDailyCloseArchive:
     def _session_path(self, session_date: date) -> Path:
         return self.archive_root / f"{session_date.isoformat()}.json"
 
-    def _read_latest_rows(self) -> dict[str, dict[str, object]]:
+    def _read_latest_rows(self) -> dict[str, object]:
         try:
             payload = json.loads(self.latest_cache_path.read_text(encoding="utf-8"))
         except (FileNotFoundError, json.JSONDecodeError):
             return {}
+        return dict(market_rows(payload))
+
+    def _read_refresh_state(self) -> dict[str, str]:
+        try:
+            payload = json.loads(self.refresh_state_path.read_text(encoding="utf-8"))
+        except (FileNotFoundError, json.JSONDecodeError):
+            payload = {}
         symbols = payload.get("symbols") if isinstance(payload, Mapping) else None
-        return dict(symbols) if isinstance(symbols, Mapping) else {}
+        if isinstance(symbols, Mapping):
+            return {str(k).upper(): str(v) for k, v in symbols.items() if v}
+        try:
+            legacy = json.loads(self.latest_cache_path.read_text(encoding="utf-8"))
+        except (FileNotFoundError, json.JSONDecodeError):
+            return {}
+        legacy_rows = legacy.get("symbols") if isinstance(legacy, Mapping) else None
+        if not isinstance(legacy_rows, Mapping):
+            return {}
+        out = {}
+        for symbol, row in legacy_rows.items():
+            fetched = unpack_market_row(row).get("fetched_at")
+            if fetched:
+                out[str(symbol).upper()] = str(fetched)
+        return out
 
     @staticmethod
     def _read_session(path: Path) -> dict[str, dict[str, object]]:
@@ -209,6 +249,13 @@ class YahooDailyCloseArchive:
         path.parent.mkdir(parents=True, exist_ok=True)
         temporary = path.with_suffix(path.suffix + ".tmp")
         temporary.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        temporary.replace(path)
+
+    @staticmethod
+    def _atomic_compact_json_write(path: Path, payload: object) -> None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        temporary = path.with_suffix(path.suffix + ".tmp")
+        temporary.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":"), sort_keys=True) + "\n", encoding="utf-8")
         temporary.replace(path)
 
 

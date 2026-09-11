@@ -39,5 +39,5 @@ def test_write_cache_preserves_other_symbols(tmp_path):
         close=Decimal("212.05"), currency="USD", exchange_timezone="America/New_York"
     )], generated_at=datetime(2026, 7, 23, tzinfo=timezone.utc))
     payload = json.loads(path.read_text())
-    assert "AAPL" in payload["symbols"]
-    assert payload["symbols"]["NVDA"]["close"] == "212.05"
+    assert "AAPL" in payload
+    assert payload["NVDA"] == [212.05, "2026-07-22"]

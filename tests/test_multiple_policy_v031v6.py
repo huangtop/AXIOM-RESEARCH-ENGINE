@@ -9,20 +9,7 @@ def _write_market_cache(tmp_path: Path, symbol: str, close: str = "100") -> None
     path = tmp_path / "data/generated/market/previous_close_cache.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(
-        json.dumps(
-            {
-                "symbols": {
-                    symbol: {
-                        "symbol": symbol,
-                        "session_date": "2026-07-28",
-                        "close": close,
-                        "currency": "USD",
-                        "provider": "yahoo_finance",
-                        "fetched_at": "2026-07-28T22:00:00+00:00",
-                    }
-                }
-            }
-        )
+        json.dumps({symbol: [float(close), "2026-07-28"]})
     )
 
 

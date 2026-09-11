@@ -1,5 +1,6 @@
 from datetime import date, datetime, timezone
 from decimal import Decimal
+import json
 
 from axiom_engine.previous_close import DailyClose, PreviousCloseError
 from axiom_engine.providers.yahoo_daily_close import YahooDailyCloseArchive, refresh_yahoo_daily_closes
@@ -16,6 +17,12 @@ def test_archive_keeps_history_and_latest(tmp_path):
     assert [row.close for row in archive.history("AAPL")] == [Decimal("210"), Decimal("212")]
     assert report.latest_symbols == 2
     assert report.history_rows == 3
+    latest = json.loads((tmp_path / "latest.json").read_text())
+    assert latest == {
+        "AAPL": [212, "2026-07-24"],
+        "MSFT": [500, "2026-07-24"],
+    }
+    assert report.refresh_state_path.endswith("history_state.json")
     assert (tmp_path / "history" / "2026-07-23.json").exists()
     assert (tmp_path / "history" / "2026-07-24.json").exists()
 

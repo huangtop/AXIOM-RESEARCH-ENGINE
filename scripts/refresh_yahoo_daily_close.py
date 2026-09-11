@@ -47,6 +47,11 @@ def main() -> int:
         type=Path,
         default=Path("data/generated/market/previous_close_cache.json"),
     )
+    parser.add_argument(
+        "--refresh-state",
+        type=Path,
+        default=Path("data/generated/provider_cache/yahoo/daily_close_state.json"),
+    )
     parser.add_argument("--retention-days", type=int, default=365)
 
     parser.add_argument(
@@ -133,6 +138,7 @@ def main() -> int:
     archive = YahooDailyCloseArchive(
         args.archive_root,
         latest_cache_path=args.latest_cache,
+        refresh_state_path=args.refresh_state,
         retention_days=args.retention_days,
     )
 
@@ -186,6 +192,7 @@ def main() -> int:
     print(f"Retention days: {report.archive.retention_days}")
     print(f"Archive: {report.archive.archive_root}")
     print(f"Latest cache: {report.archive.latest_cache_path}")
+    print(f"Refresh state: {report.archive.refresh_state_path}")
     print(f"Report: {args.report}")
 
     if report.skipped_existing:

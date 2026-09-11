@@ -6,6 +6,8 @@ from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any, Mapping
 
+from axiom_engine.market_price_cache import MARKET_CACHE_SCHEMA, market_rows, unpack_market_row
+
 
 class ValuationInputError(RuntimeError):
     pass
@@ -42,7 +44,8 @@ def _parse_date(value: Any) -> date | None:
         return None
 
 
-def _market_payload(row: Mapping[str, Any], *, as_of: date) -> dict[str, Any] | None:
+def _market_payload(row: object, *, as_of: date) -> dict[str, Any] | None:
+    row = unpack_market_row(row)
     close = _number(row.get("close"))
     session_date = _parse_date(row.get("session_date"))
     if close is None or close <= 0 or session_date is None:
@@ -97,10 +100,8 @@ def build_valuation_input_snapshot(
         raise ValuationInputError("bridge QA must exist and have status=pass")
 
     resolved_market_path, market_source_path = _resolve_market_path(repository_root, market_path)
-    market = _load(resolved_market_path, "previous close cache") if resolved_market_path else {"symbols": {}}
-    symbols = market.get("symbols") if isinstance(market, Mapping) else {}
-    if not isinstance(symbols, Mapping):
-        symbols = {}
+    market = _load(resolved_market_path, "previous close cache") if resolved_market_path else {}
+    symbols = market_rows(market)
 
     companies: list[dict[str, Any]] = []
     missing_market: list[dict[str, Any]] = []
@@ -124,12 +125,12 @@ def build_valuation_input_snapshot(
                 provider_metric_counts[provider] += 1
 
         raw_market = symbols.get(symbol) if symbol else None
-        market_payload = _market_payload(raw_market, as_of=as_of) if isinstance(raw_market, Mapping) else None
+        market_payload = _market_payload(raw_market, as_of=as_of) if raw_market is not None else None
         if market_payload:
             market_matched += 1
             freshness = market_payload["freshness_state"]
             market_freshness_counts[freshness] = market_freshness_counts.get(freshness, 0) + 1
-        elif isinstance(raw_market, Mapping):
+        elif raw_market is not None:
             invalid_market.append({"company_id": company_id, "symbol": symbol, "reason": "invalid_previous_close"})
         else:
             missing_market.append({"company_id": company_id, "symbol": symbol, "reason": "previous_close_not_found"})
@@ -193,7 +194,7 @@ def build_valuation_input_snapshot(
             "bridge_qa_schema_version": qa.get("schema_version"),
             "bridge_qa_status": qa.get("status"),
             "market_path": market_source_path or market_path,
-            "market_schema_version": market.get("schema_version") if isinstance(market, Mapping) else None,
+            "market_schema_version": MARKET_CACHE_SCHEMA if resolved_market_path else None,
         },
         "summary": summary,
         "companies": companies,

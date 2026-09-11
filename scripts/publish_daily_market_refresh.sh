@@ -8,6 +8,7 @@ git config user.name "github-actions[bot]"
 git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
 archive_root="data/generated/provider_cache/yahoo/daily_close"
+state_file="data/generated/provider_cache/yahoo/daily_close_state.json"
 cache_file="data/generated/market/previous_close_cache.json"
 report_file="data/generated/market/daily_close_refresh_report.json"
 
@@ -18,6 +19,7 @@ preserve_market_inputs() {
   mkdir -p "$retry_root/daily_close"
   cp -R "$archive_root/." "$retry_root/daily_close/"
   cp "$cache_file" "$retry_root/previous_close_cache.json"
+  if [[ -f "$state_file" ]]; then cp "$state_file" "$retry_root/daily_close_state.json"; fi
 
   if [[ -f "$report_file" ]]; then
     cp "$report_file" "$retry_root/daily_close_refresh_report.json"
@@ -29,6 +31,7 @@ restore_market_inputs() {
   rm -rf "$archive_root"/*
   cp -R "$retry_root/daily_close/." "$archive_root/"
   cp "$retry_root/previous_close_cache.json" "$cache_file"
+  if [[ -f "$retry_root/daily_close_state.json" ]]; then cp "$retry_root/daily_close_state.json" "$state_file"; fi
 
   if [[ -f "$retry_root/daily_close_refresh_report.json" ]]; then
     cp "$retry_root/daily_close_refresh_report.json" "$report_file"
@@ -37,6 +40,7 @@ restore_market_inputs() {
 
 stage_market_outputs() {
   git add -f "$archive_root"
+  if [[ -f "$state_file" ]]; then git add -f "$state_file"; fi
   git add "$cache_file"
 
   if [[ -f "$report_file" ]]; then

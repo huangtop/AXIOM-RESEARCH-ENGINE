@@ -7,6 +7,8 @@ from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any, Mapping
 
+from axiom_engine.market_price_cache import market_rows, unpack_market_row
+
 
 METHOD_TO_ASSUMPTION = {
     "forward_pe": "target_forward_pe",
@@ -257,12 +259,7 @@ def build_multiple_policy(
         if market_file.is_file()
         else {"symbols": {}}
     )
-    market_symbols = (
-        market_payload.get("symbols")
-        if isinstance(market_payload, Mapping)
-        else {}
-    )
-    market_symbols = market_symbols if isinstance(market_symbols, Mapping) else {}
+    market_symbols = market_rows(market_payload)
 
     roll_forward_bounds = {
         "target_forward_pe": (1.0, 500.0),
@@ -287,8 +284,7 @@ def build_multiple_policy(
         if not company_id:
             continue
 
-        market_row = market_symbols.get(str(symbol).upper())
-        market_row = market_row if isinstance(market_row, Mapping) else {}
+        market_row = unpack_market_row(market_symbols.get(str(symbol).upper()))
         price = positive(market_row.get("close"))
 
         shares = positive(snapshot.get("shares_outstanding"))
