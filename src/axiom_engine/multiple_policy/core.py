@@ -144,6 +144,7 @@ def build_multiple_policy(
     *,
     benchmark_path: str = "data/generated/historical_multiple_benchmark/historical_multiple_benchmark.json",
     company_snapshot_path: str = "data/generated/company/yahoo_company_snapshot.json",
+    market_path: str = "data/generated/market/previous_close_cache.json",
     existing_policy_path: str = "data/knowledge/valuation_assumptions.json",
     minimum_confidence: str = "medium",
 ) -> dict[str, Any]:
@@ -247,6 +248,22 @@ def build_multiple_policy(
     # horizon-matched forward EBITDA or forward BVPS.
     snapshot_file = root / company_snapshot_path
     snapshot_payload = json.loads(snapshot_file.read_text(encoding="utf-8")) if snapshot_file.is_file() else {}
+
+    # Canonical market-price domain. Yahoo company snapshots remain a source for
+    # company fundamentals / analyst estimates, but never for the stock price.
+    market_file = root / market_path
+    market_payload = (
+        json.loads(market_file.read_text(encoding="utf-8"))
+        if market_file.is_file()
+        else {"symbols": {}}
+    )
+    market_symbols = (
+        market_payload.get("symbols")
+        if isinstance(market_payload, Mapping)
+        else {}
+    )
+    market_symbols = market_symbols if isinstance(market_symbols, Mapping) else {}
+
     roll_forward_bounds = {
         "target_forward_pe": (1.0, 500.0),
         "target_forward_ps": (0.05, 100.0),
@@ -270,21 +287,35 @@ def build_multiple_policy(
         if not company_id:
             continue
 
-        price = positive(snapshot.get("previous_close"))
+        market_row = market_symbols.get(str(symbol).upper())
+        market_row = market_row if isinstance(market_row, Mapping) else {}
+        price = positive(market_row.get("close"))
+
         shares = positive(snapshot.get("shares_outstanding"))
         revenue_ttm = positive(snapshot.get("revenue_ttm"))
         trailing_eps = positive(snapshot.get("trailing_eps"))
-        trailing_pe = positive(snapshot.get("trailing_pe"))
 
         annual = snapshot.get("annual_estimates")
         current_fy = annual.get("CURRENT_FY") if isinstance(annual, Mapping) else None
         current_fy_eps = positive(current_fy.get("eps")) if isinstance(current_fy, Mapping) else None
         current_fy_revenue = positive(current_fy.get("revenue")) if isinstance(current_fy, Mapping) else None
 
-        # P/E normalization: trailing P/E compressed by the square root of
-        # CURRENT_FY consensus EPS expansion versus trailing EPS.
+        # P/E normalization: rebuild the observed current P/E from the
+        # canonical market close and trailing EPS, then compress it by the
+        # square root of CURRENT_FY consensus EPS expansion versus trailing EPS.
+        # Yahoo snapshot.trailing_pe is deliberately ignored so market price has
+        # exactly one source of truth across valuation.
+        current_pe = (
+            price / trailing_eps
+            if price is not None and trailing_eps is not None and trailing_eps > 0
+            else None
+        )
         pe_scale = sqrt_ratio(current_fy_eps, trailing_eps)
-        normalized_pe = trailing_pe / pe_scale if trailing_pe is not None and pe_scale is not None else trailing_pe
+        normalized_pe = (
+            current_pe / pe_scale
+            if current_pe is not None and pe_scale is not None
+            else current_pe
+        )
 
         # P/S normalization: current subject-company P/S compressed by the
         # square root of CURRENT_FY consensus revenue expansion versus TTM revenue.
@@ -324,11 +355,26 @@ def build_multiple_policy(
             assumption_roles["target_forward_ps"] = "market_anchored_fundamental_normalized"
             normalized_ps_count += 1
 
-        fetched_at = str(snapshot.get("fetched_at") or snapshot.get("last_refresh") or "undated")
-        evidence = {
-            f"yahoo-market-multiple:{str(symbol).upper()}:{key}:{fetched_at}"
-            for key in bounded
-        }
+        market_as_of = str(
+            market_row.get("session_date")
+            or market_row.get("fetched_at")
+            or "undated"
+        )
+        snapshot_as_of = str(
+            snapshot.get("fetched_at")
+            or snapshot.get("last_refresh")
+            or "undated"
+        )
+        evidence = set()
+        for key in bounded:
+            if key in {"target_forward_pe", "target_forward_ps"}:
+                evidence.add(
+                    f"canonical-market-close:{str(symbol).upper()}:{key}:{market_as_of}"
+                )
+            else:
+                evidence.add(
+                    f"yahoo-market-multiple:{str(symbol).upper()}:{key}:{snapshot_as_of}"
+                )
         if pe_scale is not None and "target_forward_pe" in bounded:
             evidence.add(
                 f"fundamental-normalization:{str(symbol).upper()}:target_forward_pe:"
@@ -360,6 +406,7 @@ def build_multiple_policy(
             "milestone_policy": "requires_separate_verified_event_evidence",
             "normalized_models": ["forward_pe", "forward_ps"],
             "normalization_alpha": 0.5,
+            "market_price_source": market_path,
         },
         "companies": sorted(companies.values(), key=lambda row: row["company_id"]),
         "summary": {

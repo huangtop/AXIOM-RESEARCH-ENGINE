@@ -5,6 +5,27 @@ from pathlib import Path
 from axiom_engine.multiple_policy import build_multiple_policy
 
 
+def _write_market_cache(tmp_path: Path, symbol: str, close: str = "100") -> None:
+    path = tmp_path / "data/generated/market/previous_close_cache.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps(
+            {
+                "symbols": {
+                    symbol: {
+                        "symbol": symbol,
+                        "session_date": "2026-07-28",
+                        "close": close,
+                        "currency": "USD",
+                        "provider": "yahoo_finance",
+                        "fetched_at": "2026-07-28T22:00:00+00:00",
+                    }
+                }
+            }
+        )
+    )
+
+
 def test_only_ready_historical_benchmarks_become_evidence_backed_assumptions(tmp_path: Path):
     payload = {"schema_version": "historical-multiple-benchmark.v030.13.3", "benchmarks": [
         {"company_id": "c1", "method": "forward_pe", "status": "ready", "confidence": "high", "selected_window": "252d", "latest_observation_date": "2026-07-28", "benchmark": {"target_multiple": 22}},
@@ -46,10 +67,10 @@ def test_market_multiples_normalize_forward_pe_and_ps_without_using_analyst_targ
         "ebitda_ttm": "80",
         "total_debt": "20",
         "total_cash": "10",
-        "previous_close": "100",
+        "previous_close": "999",
         "price_to_book": "5",
         "trailing_eps": "4",
-        "trailing_pe": "25",
+        "trailing_pe": "999",
         "revenue_ttm": "800",
         "enterprise_to_ebitda": "14",
         "annual_estimates": {
@@ -67,6 +88,8 @@ def test_market_multiples_normalize_forward_pe_and_ps_without_using_analyst_targ
     company_path.parent.mkdir(parents=True)
     company_path.write_text(json.dumps(snapshot))
 
+    _write_market_cache(tmp_path, "AAA", "100")
+
     universe = tmp_path / "data/universe"
     universe.mkdir(parents=True)
     (universe / "securities.json").write_text(
@@ -77,7 +100,8 @@ def test_market_multiples_normalize_forward_pe_and_ps_without_using_analyst_targ
     company = report["companies"][0]
     assumptions = company["assumptions"]
 
-    expected_pe = 25.0 / math.sqrt(8.0 / 4.0)
+    current_pe = 100.0 / 4.0
+    expected_pe = current_pe / math.sqrt(8.0 / 4.0)
     current_ps = 100.0 * 10.0 / 800.0
     expected_ps = current_ps / math.sqrt(1600.0 / 800.0)
 
@@ -97,6 +121,7 @@ def test_market_multiples_normalize_forward_pe_and_ps_without_using_analyst_targ
 
     assert report["policy"]["analyst_target_as_multiple_source"] == "forbidden"
     assert report["policy"]["peg_policy"] == "independent_classified_peer_profile_median"
+    assert report["policy"]["market_price_source"] == "data/generated/market/previous_close_cache.json"
     assert report["summary"]["normalized_forward_pe_company_count"] == 1
     assert report["summary"]["normalized_forward_ps_company_count"] == 1
 
@@ -105,8 +130,9 @@ def test_pe_ps_normalization_falls_back_to_current_multiple_when_forward_basis_i
     snapshot = {"symbols": {"AAA": {
         "fetched_at": "2026-07-28T00:00:00+00:00",
         "shares_outstanding": "10",
-        "previous_close": "100",
-        "trailing_pe": "25",
+        "previous_close": "999",
+        "trailing_eps": "4",
+        "trailing_pe": "999",
         "revenue_ttm": "800",
         "enterprise_to_ebitda": "14",
         "price_to_book": "5",
@@ -114,6 +140,8 @@ def test_pe_ps_normalization_falls_back_to_current_multiple_when_forward_basis_i
     company_path = tmp_path / "data/generated/company/yahoo_company_snapshot.json"
     company_path.parent.mkdir(parents=True)
     company_path.write_text(json.dumps(snapshot))
+
+    _write_market_cache(tmp_path, "AAA", "100")
 
     universe = tmp_path / "data/universe"
     universe.mkdir(parents=True)

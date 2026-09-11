@@ -166,7 +166,7 @@ def _retired_dual_fy_legacy_models(snapshot: Mapping[str, Any], financials: Mapp
         annual = {}
     def num(value: Any) -> Decimal | None:
         return _number(value)
-    price = num(market.get("current_price")) or num(snapshot.get("previous_close"))
+    price = num(market.get("current_price"))
     shares = num(snapshot.get("shares_outstanding")) or num((financials.get("diluted_shares_outstanding") or {}).get("value"))
     # The market-anchored P/E numerator and denominator must share the same
     # provider/as-of basis. SEC-derived EPS can represent a different period.
@@ -177,7 +177,11 @@ def _retired_dual_fy_legacy_models(snapshot: Mapping[str, Any], financials: Mapp
     ebitda = num(snapshot.get("ebitda_ttm")) or num((financials.get("ebitda") or {}).get("value"))
     bvps = num((financials.get("book_value_per_share") or {}).get("value"))
     fcf = num((financials.get("free_cash_flow") or {}).get("value"))
-    current_pe = price / trailing_eps if price and trailing_eps and trailing_eps > 0 else (num(snapshot.get("trailing_pe")) or Decimal("15"))
+    current_pe = (
+        price / trailing_eps
+        if price is not None and trailing_eps is not None and trailing_eps > 0
+        else None
+    )
     current_ps = price * shares / revenue_ttm if price and shares and revenue_ttm and revenue_ttm > 0 else Decimal("8")
     current_pb = num(snapshot.get("price_to_book")) or num(assumptions.get("target_forward_pb")) or Decimal("5.5")
     current_ev = num(snapshot.get("enterprise_to_ebitda"))
@@ -253,7 +257,7 @@ def _dual_fy_seven_models(
     def num(value: Any) -> Decimal | None:
         return _number(value)
 
-    price = num(market.get("current_price")) or num(snapshot.get("previous_close"))
+    price = num(market.get("current_price"))
     shares = num(snapshot.get("shares_outstanding")) or num(
         (financials.get("diluted_shares_outstanding") or {}).get("value")
     )
@@ -283,7 +287,7 @@ def _dual_fy_seven_models(
     current_pe = (
         price / trailing_eps
         if price is not None and trailing_eps is not None and trailing_eps > 0
-        else (num(snapshot.get("trailing_pe")) or Decimal("15"))
+        else None
     )
     current_ps = (
         price * shares / revenue_ttm
@@ -380,7 +384,12 @@ def _dual_fy_seven_models(
 
         pe_value = (
             eps * target_pe
-            if eps is not None and eps > 0
+            if (
+                eps is not None
+                and eps > 0
+                and target_pe is not None
+                and target_pe > 0
+            )
             else None
         )
         ps_value = (
@@ -461,12 +470,18 @@ def _dual_fy_seven_models(
             "milestone": model(milestone_value),
         }
 
-        models["forward_pe"]["target_multiple"] = format(target_pe, "f")
+        models["forward_pe"]["target_multiple"] = (
+            format(target_pe, "f") if target_pe is not None else None
+        )
         models["forward_pe"]["inputs"] = {
             "fiscal_year": fiscal_year,
             "eps": format(eps, "f") if eps is not None else None,
-            "target_multiple": format(target_pe, "f"),
-            "observed_trailing_pe": format(current_pe, "f"),
+            "target_multiple": (
+                format(target_pe, "f") if target_pe is not None else None
+            ),
+            "observed_trailing_pe": (
+                format(current_pe, "f") if current_pe is not None else None
+            ),
             "observed_price": format(price, "f") if price is not None else None,
             "trailing_eps": (
                 format(trailing_eps, "f")
