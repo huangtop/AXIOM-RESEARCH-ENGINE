@@ -274,3 +274,42 @@ def test_primary_business_routing_no_longer_controls_valuation_aggregation():
         unified = valuation["unified_contract"]
         assert valuation["aggregation"]["routing_source"] == "unified_valuation"
         assert unified["aggregation"]["methodology_version"] == "unified-dynamic-weight.v1"
+
+
+def test_incremental_builder_filters_to_requested_company_and_share_class_alias():
+    payload = build_full_market_coverage(ROOT, symbols=["GOOG"])
+    assert payload["summary"]["incremental"] is True
+    assert payload["summary"]["selected_symbol_count"] == 1
+    assert len(payload["cards"]) == 1
+    card = payload["cards"][0]
+    assert card["primary_security"]["ticker"] == "GOOGL"
+    assert {row["ticker"] for row in card["securities"]} >= {"GOOG", "GOOGL"}
+
+
+def test_incremental_writer_preserves_unmentioned_company_bytes_and_complete_index(
+    tmp_path: Path,
+):
+    output = tmp_path / "full_market_coverage.json"
+
+    initial = build_full_market_coverage(ROOT, symbols=["AMD", "NVDA"])
+    write_full_market_coverage(initial, output)
+    before_index = json.loads(output.read_text())
+    amd_file = before_index["indexes"]["ticker_to_file"]["AMD"]
+    nvda_file = before_index["indexes"]["ticker_to_file"]["NVDA"]
+    amd_path = output.parent / amd_file
+    nvda_path = output.parent / nvda_file
+    amd_before = amd_path.read_bytes()
+    nvda_before = nvda_path.read_bytes()
+
+    partial = build_full_market_coverage(ROOT, symbols=["NVDA"])
+    assert len(partial["cards"]) == 1
+    partial["cards"][0]["company"]["display_name"] = "NVIDIA incremental test"
+    write_full_market_coverage(partial, output, incremental=True)
+
+    after_index = json.loads(output.read_text())
+    assert after_index["indexes"]["ticker_to_file"]["AMD"] == amd_file
+    assert after_index["indexes"]["ticker_to_file"]["NVDA"] == nvda_file
+    assert amd_path.read_bytes() == amd_before
+    assert nvda_path.read_bytes() != nvda_before
+    assert after_index["summary"]["incremental"] is True
+    assert after_index["summary"]["incremental_updated_company_count"] == 1

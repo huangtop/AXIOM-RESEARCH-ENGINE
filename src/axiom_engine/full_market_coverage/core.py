@@ -5,7 +5,7 @@ from collections import Counter, defaultdict
 from datetime import date, datetime, timezone
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any, Iterable, Mapping
 from urllib.parse import quote
 from zipfile import BadZipFile, ZipFile
 
@@ -680,6 +680,7 @@ def build_full_market_coverage(
     valuation_routing_path: str = "data/valuation/company_routing.json",
     valuation_assumptions_path: str = "data/knowledge/valuation_assumptions.json",
     dcf_policy_path: str = "config/valuation_dcf_policy.v1.json",
+    symbols: Iterable[str] | None = None,
 ) -> dict[str, Any]:
     companies = _load(root / companies_path)
     securities = _load(root / securities_path)
@@ -711,6 +712,12 @@ def build_full_market_coverage(
         raise FullMarketCoverageError(
             "population and canonical layers must contain arrays"
         )
+
+    selected_symbols = (
+        {str(symbol).strip().upper() for symbol in symbols if str(symbol).strip()}
+        if symbols is not None
+        else None
+    )
 
     scoped_company_ids = {
         str(row.get("company_id"))
@@ -838,6 +845,15 @@ def build_full_market_coverage(
         )
         primary = primary or (company_securities[0] if company_securities else {})
         ticker = str(primary.get("ticker") or "").upper()
+
+        if selected_symbols is not None:
+            company_symbols = {
+                str(row.get("ticker") or "").strip().upper()
+                for row in company_securities
+                if str(row.get("ticker") or "").strip()
+            }
+            if not company_symbols.intersection(selected_symbols):
+                continue
 
         latest_fin = _latest(financial_by_company.get(company_id, []), "metric")
         newest_financial_date = max(
@@ -1194,6 +1210,10 @@ def build_full_market_coverage(
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "summary": {
             "company_count": len(cards),
+            "incremental": selected_symbols is not None,
+            "selected_symbol_count": (
+                len(selected_symbols) if selected_symbols is not None else None
+            ),
             "registry_company_count": len(companies),
             "excluded_non_company_instrument_count": len(companies) - len(cards),
             "security_count": len(securities),
@@ -1238,12 +1258,39 @@ def build_full_market_coverage(
 def write_full_market_coverage(
     report: Mapping[str, Any],
     output: Path,
+    *,
+    incremental: bool = False,
 ) -> None:
     output.parent.mkdir(parents=True, exist_ok=True)
     company_root = output.parent / "per-company"
     company_root.mkdir(parents=True, exist_ok=True)
-    ticker_to_file: dict[str, str] = {}
-    company_id_to_file: dict[str, str] = {}
+
+    existing_index: Mapping[str, Any] = {}
+    if incremental:
+        if not output.is_file():
+            raise FullMarketCoverageError(
+                "incremental full-market write requires an existing index"
+            )
+        existing_index = _load(output)
+        if (
+            existing_index.get("schema_version")
+            != "full-market-valuation-index.v031g.1"
+        ):
+            raise FullMarketCoverageError(
+                "incremental full-market write requires V031G.1 index"
+            )
+
+    existing_indexes = existing_index.get("indexes") or {}
+    ticker_to_file: dict[str, str] = (
+        dict(existing_indexes.get("ticker_to_file") or {})
+        if incremental
+        else {}
+    )
+    company_id_to_file: dict[str, str] = (
+        dict(existing_indexes.get("company_id_to_file") or {})
+        if incremental
+        else {}
+    )
     current_files: set[str] = set()
 
     for card in report.get("cards") or []:
@@ -1251,29 +1298,59 @@ def write_full_market_coverage(
         if not company_id:
             continue
         filename = quote(company_id, safe="._-") + ".json"
+        relative_path = f"per-company/{filename}"
         current_files.add(filename)
         path = company_root / filename
-        temporary = path.with_suffix(path.suffix + ".tmp")
-        temporary.write_text(
-            json.dumps(card, ensure_ascii=False, separators=(",", ":")) + "\n",
-            encoding="utf-8",
-        )
-        temporary.replace(path)
-        company_id_to_file[company_id] = f"per-company/{filename}"
+
+        if incremental:
+            for alias, mapped_path in list(ticker_to_file.items()):
+                if mapped_path == relative_path:
+                    ticker_to_file.pop(alias, None)
+
+        body = json.dumps(
+            card,
+            ensure_ascii=False,
+            separators=(",", ":"),
+        ) + "\n"
+        existing_body = None
+        if path.is_file():
+            try:
+                existing_body = path.read_text(encoding="utf-8")
+            except OSError:
+                existing_body = None
+        if existing_body != body:
+            temporary = path.with_suffix(path.suffix + ".tmp")
+            temporary.write_text(body, encoding="utf-8")
+            temporary.replace(path)
+
+        company_id_to_file[company_id] = relative_path
         for security in card.get("securities") or []:
             ticker = str(security.get("ticker") or "").upper()
             if ticker:
-                ticker_to_file[ticker] = f"per-company/{filename}"
+                ticker_to_file[ticker] = relative_path
 
-    for stale in company_root.glob("*.json"):
-        if stale.name not in current_files:
-            stale.unlink()
+    if not incremental:
+        for stale in company_root.glob("*.json"):
+            if stale.name not in current_files:
+                stale.unlink()
+
+    if incremental:
+        summary = dict(existing_index.get("summary") or {})
+        summary["incremental"] = True
+        summary["selected_symbol_count"] = (
+            (report.get("summary") or {}).get("selected_symbol_count")
+        )
+        summary["incremental_updated_company_count"] = len(
+            report.get("cards") or []
+        )
+    else:
+        summary = dict(report.get("summary") or {})
 
     index = {
         "schema_version": "full-market-valuation-index.v031g.1",
         "version": "V031G.1",
         "generated_at": report.get("generated_at"),
-        "summary": dict(report.get("summary") or {}),
+        "summary": summary,
         "indexes": {
             "ticker_to_file": dict(sorted(ticker_to_file.items())),
             "company_id_to_file": dict(sorted(company_id_to_file.items())),
