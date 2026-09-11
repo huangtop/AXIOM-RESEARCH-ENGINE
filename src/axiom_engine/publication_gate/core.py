@@ -5,7 +5,7 @@ import hashlib
 import os
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any, Iterable, Mapping
 from urllib.parse import quote
 from zipfile import ZIP_DEFLATED, ZipFile
 
@@ -43,13 +43,58 @@ def _manifest_shard_files(manifest: Mapping[str, Any]) -> list[str]:
     return sorted(files)
 
 
-def _valuation_cards(root: Path, valuation_path: str, valuation: Mapping[str, Any]):
+def _card_symbols(card: Mapping[str, Any]) -> set[str]:
+    symbols = {
+        str((card.get("primary_security") or {}).get("ticker") or "").strip().upper()
+    }
+    symbols.update(
+        str(row.get("ticker") or "").strip().upper()
+        for row in (card.get("securities") or [])
+        if isinstance(row, Mapping)
+    )
+    symbols.discard("")
+    return symbols
+
+
+def _valuation_cards(
+    root: Path,
+    valuation_path: str,
+    valuation: Mapping[str, Any],
+    *,
+    symbols: set[str] | None = None,
+):
     cards = valuation.get("cards")
     if isinstance(cards, list):
-        yield from cards
+        for card in cards:
+            if not isinstance(card, Mapping):
+                continue
+            if symbols is not None and not _card_symbols(card).intersection(symbols):
+                continue
+            yield card
         return
-    file_index = (valuation.get("indexes") or {}).get("company_id_to_file") or {}
+
+    indexes = valuation.get("indexes") or {}
     base = (root / valuation_path).parent
+
+    if symbols is not None:
+        ticker_to_file = indexes.get("ticker_to_file") or {}
+        filenames = {
+            str(ticker_to_file[symbol])
+            for symbol in symbols
+            if symbol in ticker_to_file
+        }
+        for filename in sorted(filenames):
+            path = base / filename
+            if not path.is_file():
+                raise PublicationGateError(
+                    f"valuation artifact missing for selected symbol: {path}"
+                )
+            card = _load(path)
+            if isinstance(card, Mapping):
+                yield card
+        return
+
+    file_index = indexes.get("company_id_to_file") or {}
     for company_id, filename in sorted(file_index.items()):
         path = base / str(filename)
         if not path.is_file():
@@ -65,10 +110,16 @@ def build_publication_catalog(
     coverage_path: str = "data/generated/coverage_policy/coverage_policy.json",
     valuation_path: str = "data/generated/full_market_coverage/full_market_coverage.json",
     now: datetime | None = None,
+    symbols: Iterable[str] | None = None,
 ) -> dict[str, Any]:
     current = now or datetime.now(timezone.utc)
     if current.tzinfo is None or current.utcoffset() is None:
         raise ValueError("now must be timezone-aware")
+    selected_symbols = (
+        {str(symbol).strip().upper() for symbol in symbols if str(symbol).strip()}
+        if symbols is not None
+        else None
+    )
     coverage = _load(root / coverage_path)
     valuation_file = root / valuation_path
     valuation = _load(valuation_file) if valuation_file.is_file() else build_full_market_coverage(root)
@@ -83,7 +134,12 @@ def build_publication_catalog(
     coverage_service = CoveragePolicyService(root=root, projection_path=root / coverage_path)
     records: list[dict[str, Any]] = []
     projections: dict[str, dict[str, Any]] = {}
-    for card in _valuation_cards(root, valuation_path, valuation):
+    for card in _valuation_cards(
+        root,
+        valuation_path,
+        valuation,
+        symbols=selected_symbols,
+    ):
         ticker = str((card.get("primary_security") or {}).get("ticker") or "").upper()
         if not ticker:
             continue
@@ -150,6 +206,10 @@ def build_publication_catalog(
         "generated_at": current.isoformat(),
         "summary": {
             "public_company_count": len(records),
+            "incremental": selected_symbols is not None,
+            "selected_symbol_count": (
+                len(selected_symbols) if selected_symbols is not None else None
+            ),
             "basic_market_count": sum(row["product_scope"] == "basic_market" for row in records),
             "frontier_research_count": sum(row["product_scope"] == "frontier_research" for row in records),
             "scope_axis_counts": axis_counts,
@@ -167,29 +227,73 @@ def build_publication_catalog(
     }
 
 
+def _merge_ticker_file_index(
+    previous: Mapping[str, Any],
+    updates: Mapping[str, Any],
+    projections: Mapping[str, Any],
+) -> dict[str, str]:
+    merged = {str(alias): str(filename) for alias, filename in previous.items()}
+    for ticker in projections:
+        old_filename = _filename(str(ticker))
+        for alias, filename in list(merged.items()):
+            if filename == old_filename:
+                merged.pop(alias, None)
+    for alias, filename in updates.items():
+        merged[str(alias)] = str(filename)
+    return dict(sorted(merged.items()))
+
+
 def write_publication_catalog(
     report: Mapping[str, Any],
     output: Path,
     *,
     retention_generations: int = PUBLICATION_SHARD_RETENTION_GENERATIONS,
+    incremental: bool = False,
 ) -> None:
     if retention_generations < 2:
         raise ValueError("retention_generations must be at least 2")
     output.parent.mkdir(parents=True, exist_ok=True)
+
+    if incremental and not output.is_file():
+        raise PublicationGateError(
+            "incremental publication write requires an existing company catalog"
+        )
+
     projections = report.get("_company_projections") or {}
-    previous_manifest = _load(output.parent / "manifest.json") if (output.parent / "manifest.json").is_file() else {}
+    previous_manifest = (
+        _load(output.parent / "manifest.json")
+        if (output.parent / "manifest.json").is_file()
+        else {}
+    )
+    if incremental and not previous_manifest:
+        raise PublicationGateError(
+            "incremental publication write requires an existing manifest"
+        )
+
+    previous_catalog = _load(output) if incremental else {}
     previous_by_company = {
         str(row.get("company_id")): str(row.get("sha256"))
         for row in (previous_manifest.get("companies") or {}).values()
         if isinstance(row, Mapping) and row.get("company_id")
     }
+
     company_root = output.parent / "companies"
     company_root.mkdir(parents=True, exist_ok=True)
-    company_entries: dict[str, dict[str, Any]] = {}
-    current_files: set[str] = set()
-    current_by_company: dict[str, str] = {}
+
+    company_entries: dict[str, dict[str, Any]] = (
+        {
+            str(ticker): dict(row)
+            for ticker, row in (previous_manifest.get("companies") or {}).items()
+            if isinstance(row, Mapping)
+        }
+        if incremental
+        else {}
+    )
+
     for ticker, projection in sorted(projections.items()):
-        body = (json.dumps(projection, ensure_ascii=False, separators=(",", ":")) + "\n").encode()
+        body = (
+            json.dumps(projection, ensure_ascii=False, separators=(",", ":")) + "\n"
+        ).encode()
         digest = hashlib.sha256(body).hexdigest()
         filename = f"{quote(str(ticker), safe='._-')}.{digest[:16]}.json"
         path = company_root / filename
@@ -197,9 +301,8 @@ def write_publication_catalog(
             temporary = path.with_suffix(path.suffix + ".tmp")
             temporary.write_bytes(body)
             os.replace(temporary, path)
+
         company_id = str(projection.get("company_id") or "")
-        current_by_company[company_id] = digest
-        current_files.add(filename)
         company_entries[str(ticker)] = {
             "company_id": company_id,
             "path": f"companies/{filename}",
@@ -207,15 +310,43 @@ def write_publication_catalog(
             "sha256": digest,
             "size_bytes": len(body),
         }
+
+    current_by_company = {
+        str(row.get("company_id")): str(row.get("sha256"))
+        for row in company_entries.values()
+        if isinstance(row, Mapping) and row.get("company_id")
+    }
     changed_company_ids = sorted(
-        company_id for company_id, digest in current_by_company.items()
-        if previous_by_company.get(company_id) != digest
+        {
+            str(projection.get("company_id") or "")
+            for projection in projections.values()
+            if str(projection.get("company_id") or "")
+            and previous_by_company.get(str(projection.get("company_id") or ""))
+            != current_by_company.get(str(projection.get("company_id") or ""))
+        }
     )
-    removed_company_ids = sorted(set(previous_by_company) - set(current_by_company))
+    removed_company_ids = (
+        []
+        if incremental
+        else sorted(set(previous_by_company) - set(current_by_company))
+    )
+
+    previous_manifest_indexes = previous_manifest.get("indexes") or {}
+    report_indexes = report.get("indexes") or {}
+    manifest_ticker_index = _merge_ticker_file_index(
+        (previous_manifest_indexes.get("ticker_to_file") or {})
+        if incremental
+        else {},
+        report_indexes.get("ticker_to_file") or {},
+        projections,
+    )
+
     release_material = "\n".join(
-        f"{ticker}:{row['sha256']}" for ticker, row in sorted(company_entries.items())
+        f"{ticker}:{row['sha256']}"
+        for ticker, row in sorted(company_entries.items())
     )
     release_id = hashlib.sha256(release_material.encode()).hexdigest()
+
     manifest = {
         "schema_version": "incremental-publication-manifest.v1",
         "release_id": release_id,
@@ -223,8 +354,8 @@ def write_publication_catalog(
         "company_count": len(company_entries),
         "changed_company_ids": changed_company_ids,
         "removed_company_ids": removed_company_ids,
-        "companies": company_entries,
-        "indexes": report.get("indexes") or {},
+        "companies": dict(sorted(company_entries.items())),
+        "indexes": {"ticker_to_file": manifest_ticker_index},
         "cache_policy": {
             "manifest": "public, max-age=60, must-revalidate",
             "company_shards": "public, max-age=31536000, immutable",
@@ -233,11 +364,16 @@ def write_publication_catalog(
             "company_shard_generations": retention_generations,
         },
     }
+
     manifest_path = output.parent / "manifest.json"
     manifest_tmp = manifest_path.with_suffix(".json.tmp")
-    manifest_tmp.write_text(json.dumps(manifest, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+    manifest_tmp.write_text(
+        json.dumps(manifest, ensure_ascii=False, separators=(",", ":")) + "\n",
+        encoding="utf-8",
+    )
     os.replace(manifest_tmp, manifest_path)
 
+    current_files = set(_manifest_shard_files(manifest))
     retention_path = output.parent / PUBLICATION_SHARD_RETENTION_FILE
     if retention_path.is_file():
         retention = _load(retention_path)
@@ -249,12 +385,16 @@ def write_publication_catalog(
         }]
     else:
         previous_generations = []
+
     generations = [{"release_id": release_id, "files": sorted(current_files)}]
     generations.extend(
-        generation for generation in previous_generations
-        if isinstance(generation, Mapping) and generation.get("release_id") != release_id
+        generation
+        for generation in previous_generations
+        if isinstance(generation, Mapping)
+        and generation.get("release_id") != release_id
     )
     generations = generations[:retention_generations]
+
     retained_files = {
         str(filename)
         for generation in generations
@@ -267,23 +407,72 @@ def write_publication_catalog(
     }
     retention_tmp = retention_path.with_suffix(".json.tmp")
     retention_tmp.write_text(
-        json.dumps(retention_payload, ensure_ascii=False, separators=(",", ":")) + "\n",
+        json.dumps(retention_payload, ensure_ascii=False, separators=(",", ":"))
+        + "\n",
         encoding="utf-8",
     )
     os.replace(retention_tmp, retention_path)
-    # Publish the new pointer and its retention ledger before removing shards.
-    # A client holding the immediately previous manifest can therefore never
-    # observe its referenced shard disappear during a successful build.
+
     for stale in company_root.glob("*.json"):
         if stale.name not in retained_files:
             stale.unlink()
-    archive = output.parent / "company_projections.zip"
-    temporary_archive = archive.with_suffix(".zip.tmp")
-    with ZipFile(temporary_archive, "w", compression=ZIP_DEFLATED, compresslevel=9) as bundle:
-        for ticker, projection in sorted(projections.items()):
-            bundle.writestr(_filename(str(ticker)), json.dumps(projection, ensure_ascii=False, separators=(",", ":")) + "\n")
-    temporary_archive.replace(archive)
-    serializable = {key: value for key, value in report.items() if key != "_company_projections"}
+
+    if not incremental:
+        archive = output.parent / "company_projections.zip"
+        temporary_archive = archive.with_suffix(".zip.tmp")
+        with ZipFile(
+            temporary_archive,
+            "w",
+            compression=ZIP_DEFLATED,
+            compresslevel=9,
+        ) as bundle:
+            for ticker, projection in sorted(projections.items()):
+                bundle.writestr(
+                    _filename(str(ticker)),
+                    json.dumps(projection, ensure_ascii=False, separators=(",", ":"))
+                    + "\n",
+                )
+        temporary_archive.replace(archive)
+
+    if incremental:
+        previous_companies = {
+            str(row.get("ticker") or ""): dict(row)
+            for row in (previous_catalog.get("companies") or [])
+            if isinstance(row, Mapping) and row.get("ticker")
+        }
+        for row in report.get("companies") or []:
+            if isinstance(row, Mapping) and row.get("ticker"):
+                previous_companies[str(row["ticker"])] = dict(row)
+
+        previous_catalog_indexes = previous_catalog.get("indexes") or {}
+        catalog_ticker_index = _merge_ticker_file_index(
+            previous_catalog_indexes.get("ticker_to_file") or {},
+            report_indexes.get("ticker_to_file") or {},
+            projections,
+        )
+        serializable = {
+            key: value
+            for key, value in previous_catalog.items()
+            if key not in {"generated_at", "companies", "indexes", "summary"}
+        }
+        serializable["generated_at"] = report.get("generated_at")
+        serializable["summary"] = dict(previous_catalog.get("summary") or {})
+        serializable["companies"] = [
+            previous_companies[ticker]
+            for ticker in sorted(previous_companies)
+        ]
+        serializable["indexes"] = {"ticker_to_file": catalog_ticker_index}
+    else:
+        serializable = {
+            key: value
+            for key, value in report.items()
+            if key != "_company_projections"
+        }
+
     temporary = output.with_suffix(output.suffix + ".tmp")
-    temporary.write_text(json.dumps(serializable, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+    temporary.write_text(
+        json.dumps(serializable, ensure_ascii=False, separators=(",", ":"))
+        + "\n",
+        encoding="utf-8",
+    )
     temporary.replace(output)

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import argparse
 import sys
 from pathlib import Path
 
@@ -12,10 +13,41 @@ from axiom_engine.publication_gate import (  # noqa: E402
 )
 
 
+def _load_symbols(path: Path) -> list[str]:
+    return [
+        line.strip().upper()
+        for line in path.read_text(encoding="utf-8-sig").splitlines()
+        if line.strip() and not line.lstrip().startswith("#")
+    ]
+
+
 def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Build publication catalog, optionally for an incremental symbol set."
+    )
+    parser.add_argument("--symbols", nargs="*", default=[])
+    parser.add_argument("--symbols-file", type=Path)
+    args = parser.parse_args()
+
+    symbols = list(args.symbols)
+    if args.symbols_file:
+        symbols.extend(_load_symbols(args.symbols_file))
+    symbols = sorted(
+        {str(symbol).strip().upper() for symbol in symbols if str(symbol).strip()}
+    )
+    incremental = bool(symbols)
+
     root = ROOT
-    report = build_publication_catalog(root)
-    write_publication_catalog(report, root / "data/generated/publication_gate/company_catalog.json")
+    output = root / "data/generated/publication_gate/company_catalog.json"
+    report = build_publication_catalog(
+        root,
+        symbols=symbols if incremental else None,
+    )
+    write_publication_catalog(
+        report,
+        output,
+        incremental=incremental,
+    )
     print(report["summary"])
 
 

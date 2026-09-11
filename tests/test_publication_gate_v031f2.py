@@ -163,3 +163,94 @@ def test_publication_rejects_retention_that_can_delete_previous_generation(tmp_p
         assert "at least 2" in str(exc)
     else:
         raise AssertionError("retention_generations=1 must be rejected")
+
+
+
+def test_incremental_publication_builder_reads_only_selected_full_market_cards():
+    report = build_publication_catalog(ROOT, symbols=["GOOG"])
+    assert report["summary"]["incremental"] is True
+    assert report["summary"]["selected_symbol_count"] == 1
+    assert list(report["_company_projections"]) == ["GOOGL"]
+    assert report["indexes"]["ticker_to_file"]["GOOG"] == "GOOGL.json"
+    assert report["indexes"]["ticker_to_file"]["GOOGL"] == "GOOGL.json"
+
+
+def test_incremental_publication_merges_manifest_and_catalog_without_touching_zip(
+    tmp_path: Path,
+):
+    output = tmp_path / "publication/company_catalog.json"
+
+    initial = build_publication_catalog(ROOT)
+    write_publication_catalog(initial, output)
+
+    first_manifest = json.loads((output.parent / "manifest.json").read_text())
+    first_catalog = json.loads(output.read_text())
+    archive = output.parent / "company_projections.zip"
+    archive_before = archive.read_bytes()
+
+    amd_entry_before = dict(first_manifest["companies"]["AMD"])
+    nvda_entry_before = dict(first_manifest["companies"]["NVDA"])
+    company_count_before = first_manifest["company_count"]
+    catalog_count_before = len(first_catalog["companies"])
+
+    partial = build_publication_catalog(ROOT, symbols=["NVDA"])
+    assert list(partial["_company_projections"]) == ["NVDA"]
+    partial["_company_projections"]["NVDA"]["valuation_card"]["company"][
+        "display_name"
+    ] = "NVIDIA incremental publication test"
+    partial["companies"][0]["display_name"] = "NVIDIA incremental publication test"
+
+    write_publication_catalog(partial, output, incremental=True)
+
+    second_manifest = json.loads((output.parent / "manifest.json").read_text())
+    second_catalog = json.loads(output.read_text())
+
+    assert second_manifest["company_count"] == company_count_before
+    assert len(second_catalog["companies"]) == catalog_count_before
+    assert second_manifest["companies"]["AMD"] == amd_entry_before
+    assert second_manifest["companies"]["NVDA"] != nvda_entry_before
+    assert second_manifest["companies"]["NVDA"]["company_id"] in (
+        second_manifest["changed_company_ids"]
+    )
+    assert archive.read_bytes() == archive_before
+
+    amd_catalog_before = next(
+        row for row in first_catalog["companies"] if row["ticker"] == "AMD"
+    )
+    amd_catalog_after = next(
+        row for row in second_catalog["companies"] if row["ticker"] == "AMD"
+    )
+    nvda_catalog_after = next(
+        row for row in second_catalog["companies"] if row["ticker"] == "NVDA"
+    )
+    assert amd_catalog_after == amd_catalog_before
+    assert nvda_catalog_after["display_name"] == (
+        "NVIDIA incremental publication test"
+    )
+
+
+def test_incremental_publication_retains_previous_manifest_generation(
+    tmp_path: Path,
+):
+    output = tmp_path / "publication/company_catalog.json"
+
+    initial = build_publication_catalog(ROOT)
+    write_publication_catalog(initial, output)
+    first_manifest = json.loads((output.parent / "manifest.json").read_text())
+    first_nvda = output.parent / first_manifest["companies"]["NVDA"]["path"]
+
+    partial = build_publication_catalog(ROOT, symbols=["NVDA"])
+    partial["_company_projections"]["NVDA"]["valuation_card"]["company"][
+        "display_name"
+    ] = "NVIDIA retention generation test"
+    write_publication_catalog(partial, output, incremental=True)
+
+    second_manifest = json.loads((output.parent / "manifest.json").read_text())
+    second_nvda = output.parent / second_manifest["companies"]["NVDA"]["path"]
+    retention = json.loads((output.parent / "shard_retention.json").read_text())
+
+    assert first_nvda.exists()
+    assert second_nvda.exists()
+    assert first_nvda != second_nvda
+    assert retention["retention_generations"] == 2
+    assert len(retention["generations"]) == 2
