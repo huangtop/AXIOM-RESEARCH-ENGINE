@@ -52,6 +52,8 @@ class YahooCompanySnapshot:
     trailing_eps: str | None
     forward_eps: str | None
     forward_eps_growth: str | None
+    normalized_peg_growth: str | None
+    normalized_peg_growth_basis: str | None
     forward_revenue: str | None
     trailing_pe: str | None
     forward_pe: str | None
@@ -120,6 +122,11 @@ class YFinanceCompanyInfoFetcher:
         payload["__calendar__"] = {}
         payload["__earnings_estimate__"] = self._dataframe_records(ticker, "earnings_estimate", endpoint_errors)
         payload["__revenue_estimate__"] = self._dataframe_records(ticker, "revenue_estimate", endpoint_errors)
+        payload["__growth_estimates__"] = self._dataframe_records(
+            ticker,
+            "growth_estimates",
+            endpoint_errors,
+        )
         payload["__financials__"] = {}
         payload["__endpoint_errors__"] = endpoint_errors
 
@@ -195,6 +202,14 @@ class YahooCompanySnapshotCache:
             return False
         if not isinstance(payload.get("current_fiscal_year"), int):
             return False
+
+        # Cache freshness includes the provider schema contract, not only TTL.
+        # A migrated snapshot may legitimately have no Yahoo +1y growth value;
+        # key presence distinguishes that case from a legacy pre-migration cache.
+        if "normalized_peg_growth" not in payload:
+            return False
+        if "normalized_peg_growth_basis" not in payload:
+            return False
         fetched_at = payload.get("fetched_at") or payload.get("last_refresh")
         if not isinstance(fetched_at, str):
             return False
@@ -260,8 +275,8 @@ class YahooCompanySnapshotCache:
         self._atomic_json_write(
             self.canonical_output_path,
             {
-                "schema_version": "yahoo-company-snapshot.v030.10.3",
-                "version": "V030.10.3",
+                "schema_version": "yahoo-company-snapshot.v031.0",
+                "version": "V031.0",
                 "provider": "yahoo_finance",
                 "generated_at": generated_at.isoformat(),
                 "cache_ttl_days": self.ttl_days,
@@ -379,6 +394,7 @@ def snapshot_and_diagnostic_from_info(
     calendar = _as_mapping(info.get("__calendar__"))
     earnings = info.get("__earnings_estimate__")
     revenue_estimate = info.get("__revenue_estimate__")
+    growth_estimates = info.get("__growth_estimates__")
     financials = info.get("__financials__")
 
     values: dict[str, object] = {}
@@ -417,6 +433,20 @@ def snapshot_and_diagnostic_from_info(
         (f"earnings_estimate.{growth_estimate_row}.growth" if growth_estimate_row else "earnings_estimate.unknown.growth", growth_estimate_value),
         ("info.earningsGrowth", info.get("earningsGrowth")),
     ], _decimal_text)
+
+    normalized_peg_growth = _decimal_text(
+        _row_metric(
+            growth_estimates,
+            ("+1y", "nextYear", "Next Year"),
+            ("stockTrend", "stock", "Stock"),
+        )
+    )
+
+    normalized_peg_growth_basis = (
+        "YAHOO_GROWTH_ESTIMATES_PLUS_1Y"
+        if normalized_peg_growth is not None
+        else None
+    )
     revenue_ttm = resolve("revenue_ttm", [("info.totalRevenue", info.get("totalRevenue")), ("financials.Total Revenue", _financial_value(financials, ("Total Revenue", "TotalRevenue")))], _decimal_text)
     forward_revenue = resolve("forward_revenue", [
         (f"revenue_estimate.{revenue_estimate_row}.avg" if revenue_estimate_row else "revenue_estimate.unknown.avg", revenue_estimate_value),
@@ -458,6 +488,8 @@ def snapshot_and_diagnostic_from_info(
         trailing_eps=_decimal_text(info.get("trailingEps")),
         forward_eps=forward_eps,
         forward_eps_growth=forward_eps_growth,
+        normalized_peg_growth=normalized_peg_growth,
+        normalized_peg_growth_basis=normalized_peg_growth_basis,
         forward_revenue=forward_revenue,
         trailing_pe=_decimal_text(info.get("trailingPE")),
         forward_pe=_decimal_text(info.get("forwardPE")),
@@ -555,30 +587,86 @@ def _row_metric(payload: object, row_names: tuple[str, ...], keys: tuple[str, ..
     return None
 
 
+def _derive_eps_growth(
+    from_eps: str | None,
+    to_eps: str | None,
+) -> str | None:
+    """Derive horizon-matched EPS growth from adjacent consensus EPS values."""
+    if from_eps is None or to_eps is None:
+        return None
+
+    try:
+        start = Decimal(from_eps)
+        end = Decimal(to_eps)
+    except (ValueError, TypeError):
+        return None
+
+    if start <= 0:
+        return None
+
+    growth = (end / start) - Decimal("1")
+    return format(growth, "f")
+
+
 def _build_annual_estimates(earnings: object, revenue: object) -> dict[str, object]:
     current_rows = ("0y", "current", "Current Year")
     next_rows = ("+1y", "nextYear", "Next Year")
     following_rows = ("+2y", "followingYear", "Following Year")
-    current_growth = _decimal_text(_row_metric(earnings, current_rows, ("growth", "Growth")))
-    current_to_next_growth = _decimal_text(_row_metric(earnings, next_rows, ("growth", "Growth")))
-    next_to_following_growth = _decimal_text(_row_metric(earnings, following_rows, ("growth", "Growth")))
+
+    current_eps = _decimal_text(
+        _row_metric(earnings, current_rows, ("avg", "Average"))
+    )
+    next_eps = _decimal_text(
+        _row_metric(earnings, next_rows, ("avg", "Average"))
+    )
+    following_eps = _decimal_text(
+        _row_metric(earnings, following_rows, ("avg", "Average"))
+    )
+
+    # Preserve Yahoo/yfinance row-level growth as provider-reported data only.
+    # Its semantics are not assumed to equal the transition between the
+    # adjacent annual EPS consensus values.
+    current_reported_growth = _decimal_text(
+        _row_metric(earnings, current_rows, ("growth", "Growth"))
+    )
+    next_reported_growth = _decimal_text(
+        _row_metric(earnings, next_rows, ("growth", "Growth"))
+    )
+
+    # PEG growth is canonical and horizon-matched: derive it directly from
+    # adjacent annual EPS consensus estimates rather than trusting the
+    # provider's row-level "growth" field.
+    current_to_next_growth = _derive_eps_growth(current_eps, next_eps)
+    next_to_following_growth = _derive_eps_growth(next_eps, following_eps)
+
     return {
         "CURRENT_FY": {
-            "eps": _decimal_text(_row_metric(earnings, current_rows, ("avg", "Average"))),
-            "revenue": _positive_decimal_text(_row_metric(revenue, current_rows, ("avg", "Average"))),
-            "reported_growth": current_growth,
+            "eps": current_eps,
+            "revenue": _positive_decimal_text(
+                _row_metric(revenue, current_rows, ("avg", "Average"))
+            ),
+            "reported_growth": current_reported_growth,
             "peg_growth": current_to_next_growth,
-            "growth_basis": "CURRENT_FY_TO_NEXT_FY" if current_to_next_growth else None,
+            "growth_basis": (
+                "CURRENT_FY_TO_NEXT_FY"
+                if current_to_next_growth is not None
+                else None
+            ),
         },
         "NEXT_FY": {
-            "eps": _decimal_text(_row_metric(earnings, next_rows, ("avg", "Average"))),
-            "revenue": _positive_decimal_text(_row_metric(revenue, next_rows, ("avg", "Average"))),
-            "reported_growth": current_to_next_growth,
+            "eps": next_eps,
+            "revenue": _positive_decimal_text(
+                _row_metric(revenue, next_rows, ("avg", "Average"))
+            ),
+            "reported_growth": next_reported_growth,
             "peg_growth": next_to_following_growth,
-            "growth_basis": "NEXT_FY_TO_FOLLOWING_FY" if next_to_following_growth else None,
+            "growth_basis": (
+                "NEXT_FY_TO_FOLLOWING_FY"
+                if next_to_following_growth is not None
+                else None
+            ),
         },
     }
-
 
 def _fiscal_year(value: object) -> int | None:
     if value is None or isinstance(value, bool):

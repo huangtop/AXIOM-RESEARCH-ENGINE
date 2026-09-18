@@ -145,3 +145,139 @@ def test_pe_ps_normalization_falls_back_to_current_multiple_when_forward_basis_i
     assert company["assumption_roles"]["target_forward_ps"] == "market_anchored"
     assert report["summary"]["normalized_forward_pe_company_count"] == 0
     assert report["summary"]["normalized_forward_ps_company_count"] == 0
+
+def test_peer_target_peg_uses_normalized_growth_and_migrates_legacy_published_peg(
+    tmp_path: Path,
+):
+    coverage_root = tmp_path / "data/generated/full_market_coverage"
+    per_company = coverage_root / "per-company"
+    per_company.mkdir(parents=True)
+
+    overview_root = tmp_path / "data/generated/company_overview"
+    overview_per_company = overview_root / "per-company"
+    overview_per_company.mkdir(parents=True)
+
+    companies = [
+        ("AAA", "c1", "0.20"),
+        ("BBB", "c2", "0.25"),
+        ("CCC", "c3", "0.30"),
+        ("DDD", "c4", "0.35"),
+    ]
+
+    ticker_to_file = {}
+    overview_ticker_to_file = {}
+
+    for ticker, company_id, normalized_growth in companies:
+        filename = f"{company_id}.json"
+        ticker_to_file[ticker] = f"per-company/{filename}"
+        overview_filename = f"{company_id}.json"
+        overview_ticker_to_file[ticker] = overview_filename
+
+        overview_profile = {
+            "company_id": company_id,
+            "path": {
+                "sector": {"id": "sector:test"},
+                "theme": {"id": "theme:test"},
+            },
+        }
+
+        (overview_per_company / overview_filename).write_text(
+            json.dumps(overview_profile)
+        )
+
+        card = {
+            "company_id": company_id,
+            "primary_security": {"ticker": ticker},
+            "classification": {
+                "sector": "sector:test",
+                "theme": "theme:test",
+            },
+            "market": {
+                "current_price": "100",
+            },
+            "financials": {},
+            "estimates": {
+                "forward_eps": {
+                    "status": "ready",
+                    "value": "10",
+                },
+                # Deliberately incompatible fiscal-transition growth.
+                "forward_eps_growth": {
+                    "status": "ready",
+                    "value": "0.01",
+                    "growth_kind": "period_transition",
+                },
+                # Dedicated PEG valuation/calibration growth.
+                "normalized_peg_growth": {
+                    "status": "ready",
+                    "value": normalized_growth,
+                    "growth_kind": "normalized_peg_growth",
+                    "growth_basis": "YAHOO_GROWTH_ESTIMATES_PLUS_1Y",
+                },
+            },
+        }
+
+        (per_company / filename).write_text(json.dumps(card))
+
+    (coverage_root / "full_market_coverage.json").write_text(
+        json.dumps(
+            {
+                "indexes": {
+                    "ticker_to_file": ticker_to_file,
+                }
+            }
+        )
+    )
+    (overview_root / "index.json").write_text(
+        json.dumps(
+            {
+                "ticker_to_file": overview_ticker_to_file,
+            }
+        )
+    )
+
+    existing_path = tmp_path / "data/knowledge/valuation_assumptions.json"
+    existing_path.parent.mkdir(parents=True)
+    existing_path.write_text(
+        json.dumps(
+            [
+                {
+                    "company_id": "c1",
+                    "policy_version": "legacy-peg-contract",
+                    "evidence_ids": ["legacy-evidence"],
+                    "assumptions": {
+                        "target_forward_pe": 77.0,
+                        "target_peg": 4.99,
+                    },
+                }
+            ]
+        )
+    )
+
+    report = build_multiple_policy(tmp_path)
+
+    by_company = {
+        row["company_id"]: row
+        for row in report["companies"]
+    }
+    c1 = by_company["c1"]
+
+    # Subject company c1 is excluded. Peer PEG observations are:
+    #
+    # BBB: (100 / 10) / (0.25 * 100) = 0.4
+    # CCC: (100 / 10) / (0.30 * 100) = 1/3
+    # DDD: (100 / 10) / (0.35 * 100) = 2/7
+    #
+    # Median = 1/3.
+    assert math.isclose(
+        c1["assumptions"]["target_peg"],
+        1.0 / 3.0,
+        rel_tol=1e-12,
+    )
+
+    # Unrelated already-published assumptions retain the existing
+    # publication-stability contract.
+    assert c1["assumptions"]["target_forward_pe"] == 77.0
+
+    # The legacy PEG value must not survive migration.
+    assert c1["assumptions"]["target_peg"] != 4.99

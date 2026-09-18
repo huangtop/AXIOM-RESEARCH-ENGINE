@@ -207,6 +207,8 @@ def _retired_dual_fy_legacy_models(snapshot: Mapping[str, Any], financials: Mapp
             if candidate > 0:
                 dcf_value = candidate
     out = {}
+    normalized_peg_growth = num(snapshot.get("normalized_peg_growth"))
+    normalized_peg_growth_basis = snapshot.get("normalized_peg_growth_basis")
     for basis in ("CURRENT_FY", "NEXT_FY"):
         row = annual.get(basis) or {}
         eps = num(row.get("eps"))
@@ -359,6 +361,11 @@ def _dual_fy_seven_models(
             "included_in_weighting": value is not None,
             "weighting_exclusion_reason": reason_code if value is None else None,
         }
+    # Snapshot-level normalized PEG growth is a CURRENT_FY valuation input.
+    # It is intentionally separate from annual_estimates[*].peg_growth,
+    # which represents an adjacent-fiscal-year transition diagnostic.
+    normalized_peg_growth = num(snapshot.get("normalized_peg_growth"))
+    normalized_peg_growth_basis = snapshot.get("normalized_peg_growth_basis")
 
     out: dict[str, Any] = {}
     for basis in ("CURRENT_FY", "NEXT_FY"):
@@ -373,10 +380,21 @@ def _dual_fy_seven_models(
         eps = num(row.get("eps"))
         revenue = num(row.get("revenue"))
 
-        # PEG requires growth that starts at the EPS horizon being valued.
-        # `reported_growth` describes how that EPS was reached and must never be
-        # reused to project/value the same EPS a second time.
-        eps_growth = num(row.get("peg_growth"))
+        # PEG valuation growth is distinct from adjacent-FY transition growth.
+        #
+        # CURRENT_FY may use the provider's dedicated normalized PEG-growth input.
+        # The row-level `peg_growth` remains the horizon transition diagnostic and
+        # must not override normalized growth when the latter is available.
+        #
+        # NEXT_FY must not reuse CURRENT_FY normalized growth because that would
+        # apply one growth assumption to two different valuation horizons.
+        if basis == "CURRENT_FY" and normalized_peg_growth is not None:
+            eps_growth = normalized_peg_growth
+            growth_basis = normalized_peg_growth_basis
+        else:
+            eps_growth = num(row.get("peg_growth"))
+            growth_basis = row.get("growth_basis")
+
         growth_pct = (
             eps_growth * Decimal("100")
             if eps_growth is not None and eps_growth > 0
@@ -522,7 +540,7 @@ def _dual_fy_seven_models(
                 if eps_growth is not None
                 else None
             ),
-            "growth_basis": row.get("growth_basis"),
+            "growth_basis": growth_basis,
             "growth_is_horizon_matched": bool(row.get("growth_basis")),
             "model_count": sum(
                 m.get("status") == "calculated"
@@ -1050,6 +1068,76 @@ def build_full_market_coverage(
             "reason_code": None if market_price is not None else "CANONICAL_MARKET_NOT_POPULATED",
         }
 
+        # Production default: unchanged frontend consumes CURRENT_FY.
+        annual_estimates = (
+            snapshot_row.get("annual_estimates")
+            if isinstance(snapshot_row, Mapping)
+            else {}
+        )
+        annual_estimates = (
+            annual_estimates
+            if isinstance(annual_estimates, Mapping)
+            else {}
+        )
+
+        current_fy = annual_estimates.get("CURRENT_FY") or {}
+        current_eps = current_fy.get("eps")
+        current_revenue = current_fy.get("revenue")
+        current_growth = current_fy.get("peg_growth")
+
+        if current_eps not in (None, ""):
+            est["forward_eps"] = {
+                **(est.get("forward_eps") or {}),
+                "status": "ready",
+                "value": str(current_eps),
+                "forecast_basis": "CURRENT_FY",
+                "fiscal_period": "CURRENT_FY",
+                "reason_code": None,
+            }
+
+        if (_number(current_revenue) or Decimal("0")) > 0:
+            est["forward_revenue"] = {
+                **(est.get("forward_revenue") or {}),
+                "status": "ready",
+                "value": str(current_revenue),
+                "forecast_basis": "CURRENT_FY",
+                "fiscal_period": "CURRENT_FY",
+                "reason_code": None,
+            }
+
+        if current_growth not in (None, ""):
+            est["forward_eps_growth"] = {
+                **(est.get("forward_eps_growth") or {}),
+                "status": "ready",
+                "value": str(current_growth),
+                "growth_from_period": "CURRENT_FY",
+                "growth_to_period": "NEXT_FY",
+                "growth_kind": "period_transition",
+                "reason_code": None,
+            }
+        # PEG valuation growth is a dedicated input and must remain separate from
+        # forward_eps_growth, which represents the CURRENT_FY -> NEXT_FY transition.
+        normalized_peg_growth = (
+            snapshot_row.get("normalized_peg_growth")
+            if isinstance(snapshot_row, Mapping)
+            else None
+        )
+        normalized_peg_growth_basis = (
+            snapshot_row.get("normalized_peg_growth_basis")
+            if isinstance(snapshot_row, Mapping)
+            else None
+        )
+
+        if normalized_peg_growth not in (None, ""):
+            est["normalized_peg_growth"] = {
+                "status": "ready",
+                "value": str(normalized_peg_growth),
+                "reason_code": None,
+                "source_record_ids": [],
+                "growth_kind": "normalized_peg_growth",
+                "growth_basis": normalized_peg_growth_basis,
+            }
+
         unified = build_unified_valuation(
             symbol=ticker,
             financials=fin,
@@ -1110,20 +1198,7 @@ def build_full_market_coverage(
             dcf_policy,
         )
 
-        # Production default: unchanged frontend consumes CURRENT_FY.
-        annual_estimates = snapshot_row.get("annual_estimates") if isinstance(snapshot_row, Mapping) else {}
-        annual_estimates = annual_estimates if isinstance(annual_estimates, Mapping) else {}
-        current_fy = annual_estimates.get("CURRENT_FY") or {}
-        next_fy = annual_estimates.get("NEXT_FY") or {}
-        current_eps = current_fy.get("eps")
-        current_revenue = current_fy.get("revenue")
-        current_growth = next_fy.get("eps_growth") or current_fy.get("peg_growth") or current_fy.get("eps_growth")
-        if current_eps not in (None, ""):
-            est["forward_eps"] = {**(est.get("forward_eps") or {}), "status": "ready", "value": str(current_eps), "forecast_basis": "CURRENT_FY", "fiscal_period": "CURRENT_FY", "reason_code": None}
-        if (_number(current_revenue) or Decimal("0")) > 0:
-            est["forward_revenue"] = {**(est.get("forward_revenue") or {}), "status": "ready", "value": str(current_revenue), "forecast_basis": "CURRENT_FY", "fiscal_period": "CURRENT_FY", "reason_code": None}
-        if current_growth not in (None, ""):
-            est["forward_eps_growth"] = {**(est.get("forward_eps_growth") or {}), "status": "ready", "value": str(current_growth), "growth_from_period": "CURRENT_FY", "growth_to_period": "NEXT_FY", "growth_kind": "period_transition", "reason_code": None}
+
 
         card = {
             "schema_version": "full-market-valuation-card.v031.0",

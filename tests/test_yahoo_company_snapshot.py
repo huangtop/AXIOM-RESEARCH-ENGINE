@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from decimal import Decimal
 from datetime import datetime, timedelta, timezone
 
 from axiom_engine.providers.yahoo_company_snapshot import (
@@ -56,36 +57,191 @@ def test_forward_estimates_prefer_next_fiscal_year_over_current_year():
 
 def test_snapshot_preserves_separate_current_and_next_fiscal_year_inputs():
     now = datetime(2026, 8, 31, tzinfo=timezone.utc)
-    row = snapshot_from_info("SNDK", {
-        "__earnings_estimate__": {
-            "0y": {"avg": "214.09818", "growth": "1.25"},
-            "+1y": {"avg": "264.72162", "growth": "0.2364"},
+
+    row = snapshot_from_info(
+        "SNDK",
+        {
+            "__earnings_estimate__": {
+                "0y": {"avg": "214.09818", "growth": "1.25"},
+                "+1y": {"avg": "264.72162", "growth": "0.2364"},
+            },
+            "__revenue_estimate__": {
+                "0y": {"avg": "48960258320"},
+                "+1y": {"avg": "57786626660"},
+            },
         },
-        "__revenue_estimate__": {
-            "0y": {"avg": "48960258320"},
-            "+1y": {"avg": "57786626660"},
-        },
-    }, fetched_at=now)
+        fetched_at=now,
+    )
 
     assert row.forward_eps == "264.72162"
-    assert row.annual_estimates == {
-        "CURRENT_FY": {
-            "eps": "214.09818",
-            "revenue": "48960258320",
-            "reported_growth": "1.25",
-            "peg_growth": "0.2364",
-            "growth_basis": "CURRENT_FY_TO_NEXT_FY",
-        },
-        "NEXT_FY": {
-            "eps": "264.72162",
-            "revenue": "57786626660",
-            "reported_growth": "0.2364",
-            "peg_growth": None,
-            "growth_basis": None,
-        },
-    }
 
+    current = row.annual_estimates["CURRENT_FY"]
+    next_fy = row.annual_estimates["NEXT_FY"]
 
+    assert current["eps"] == "214.09818"
+    assert current["revenue"] == "48960258320"
+
+    # Preserve Yahoo's provider-reported growth separately.
+    assert current["reported_growth"] == "1.25"
+
+    # Canonical PEG growth is derived from adjacent EPS consensus values.
+    assert Decimal(current["peg_growth"]) == (
+        Decimal("264.72162") / Decimal("214.09818") - Decimal("1")
+    )
+    assert current["growth_basis"] == "CURRENT_FY_TO_NEXT_FY"
+
+    assert next_fy["eps"] == "264.72162"
+    assert next_fy["revenue"] == "57786626660"
+    assert next_fy["reported_growth"] == "0.2364"
+
+    # There is no following-year EPS estimate, therefore NEXT_FY cannot
+    # manufacture a horizon-matched PEG growth.
+    assert next_fy["peg_growth"] is None
+    assert next_fy["growth_basis"] is None
+
+def test_peg_growth_is_derived_from_current_and_next_eps_not_yahoo_row_growth():
+    now = datetime(2026, 9, 17, tzinfo=timezone.utc)
+
+    row = snapshot_from_info(
+        "DELL",
+        {
+            "__earnings_estimate__": {
+                "0y": {
+                    "avg": "25.88306",
+                    "growth": "0.375",
+                },
+                "+1y": {
+                    "avg": "24.66365",
+                    "growth": "0.0083",
+                },
+            },
+        },
+        fetched_at=now,
+    )
+
+    current = row.annual_estimates["CURRENT_FY"]
+    next_fy = row.annual_estimates["NEXT_FY"]
+
+    # Yahoo's row-level growth is retained only as reported provider data.
+    assert current["reported_growth"] == "0.375"
+    assert next_fy["reported_growth"] == "0.0083"
+
+    # Canonical PEG growth must be derived from the two EPS consensus values:
+    # NEXT_FY EPS / CURRENT_FY EPS - 1.
+    assert Decimal(current["peg_growth"]) == (
+        Decimal("24.66365") / Decimal("25.88306") - Decimal("1")
+    )
+    assert current["growth_basis"] == "CURRENT_FY_TO_NEXT_FY"
+
+    # No following-year EPS consensus exists, so NEXT_FY has no
+    # horizon-matched PEG growth.
+    assert next_fy["peg_growth"] is None
+    assert next_fy["growth_basis"] is None
+def test_snapshot_preserves_yahoo_growth_estimate_for_normalized_peg_growth():
+    now = datetime(2026, 9, 17, tzinfo=timezone.utc)
+
+    row = snapshot_from_info(
+        "DELL",
+        {
+            "__earnings_estimate__": {
+                "0y": {
+                    "avg": "25.88376",
+                    "growth": "1.5130",
+                },
+                "+1y": {
+                    "avg": "24.66365",
+                    "growth": "0.0083",
+                },
+            },
+            "__growth_estimates__": {
+                "0y": {
+                    "stockTrend": "1.5130",
+                    "indexTrend": "0.3193",
+                },
+                "+1y": {
+                    "stockTrend": "0.1077",
+                    "indexTrend": "0.1536",
+                },
+                "LTG": {
+                    "stockTrend": None,
+                    "indexTrend": "0.1220",
+                },
+            },
+        },
+        fetched_at=now,
+    )
+
+    assert Decimal(
+        row.annual_estimates["CURRENT_FY"]["reported_growth"]
+    ) == Decimal("1.5130")
+
+    assert Decimal(
+        row.annual_estimates["NEXT_FY"]["reported_growth"]
+    ) == Decimal("0.0083")
+
+    # Fiscal transition remains a separate diagnostic.
+    assert Decimal(
+        row.annual_estimates["CURRENT_FY"]["peg_growth"]
+    ) == (
+        Decimal("24.66365") / Decimal("25.88376") - Decimal("1")
+    )
+
+    # PEG-normalized growth comes from Yahoo's dedicated growth-estimates table,
+    # not earnings_estimate +1y growth and not adjacent EPS arithmetic.
+    assert row.normalized_peg_growth == "0.1077"
+    assert row.normalized_peg_growth_basis == "YAHOO_GROWTH_ESTIMATES_PLUS_1Y"
+
+def test_nvda_normalized_peg_growth_matches_yahoo_growth_estimate():
+    now = datetime(2026, 9, 17, tzinfo=timezone.utc)
+
+    row = snapshot_from_info(
+        "NVDA",
+        {
+            "__earnings_estimate__": {
+                "0y": {
+                    "avg": "9.30713",
+                    "growth": "0.9512",
+                },
+                "+1y": {
+                    "avg": "15.68263",
+                    "growth": "0.6850",
+                },
+            },
+            "__growth_estimates__": {
+                "0y": {
+                    "stockTrend": "0.9512",
+                    "indexTrend": "0.3193",
+                },
+                "+1y": {
+                    "stockTrend": "0.6850",
+                    "indexTrend": "0.1536",
+                },
+                "LTG": {
+                    "stockTrend": None,
+                    "indexTrend": "0.1220",
+                },
+            },
+        },
+        fetched_at=now,
+    )
+
+    assert Decimal(row.normalized_peg_growth) == Decimal("0.6850")
+    assert (
+        row.normalized_peg_growth_basis
+        == "YAHOO_GROWTH_ESTIMATES_PLUS_1Y"
+    )
+
+    # Provider-reported annual growth happens to agree for NVDA.
+    assert Decimal(
+        row.annual_estimates["NEXT_FY"]["reported_growth"]
+    ) == Decimal("0.6850")
+
+    # But the fiscal transition is independently derived from EPS consensus.
+    assert Decimal(
+        row.annual_estimates["CURRENT_FY"]["peg_growth"]
+    ) == (
+        Decimal("15.68263") / Decimal("9.30713") - Decimal("1")
+    )
 def test_cache_first_skips_before_provider_request(tmp_path):
     now = datetime(2026, 7, 27, tzinfo=timezone.utc)
     cache = YahooCompanySnapshotCache(tmp_path / "symbols", canonical_output_path=tmp_path / "canonical.json", ttl_days=30)
@@ -115,6 +271,8 @@ def test_committed_canonical_output_is_durable_ttl_checkpoint(tmp_path):
         "symbol": "PLTR",
         "fetched_at": (now - timedelta(days=1)).isoformat(),
         "forward_eps": "1.59",
+        "normalized_peg_growth": None,
+        "normalized_peg_growth_basis": None,
         "annual_estimates": {"CURRENT_FY": {}, "NEXT_FY": {}},
         "current_fiscal_year": 2026,
     }}}))
@@ -127,6 +285,66 @@ def test_committed_canonical_output_is_durable_ttl_checkpoint(tmp_path):
     assert report.skipped_cached_before_request == 1
     assert fetcher.calls == []
 
+def test_cache_rejects_legacy_snapshot_missing_normalized_peg_growth_contract(
+    tmp_path,
+):
+    now = datetime(2026, 9, 17, tzinfo=timezone.utc)
+    cache = YahooCompanySnapshotCache(
+        tmp_path / "symbols",
+        canonical_output_path=tmp_path / "canonical.json",
+        ttl_days=30,
+    )
+
+    path = cache.symbol_path("OLD")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps(
+            {
+                "symbol": "OLD",
+                "fetched_at": now.isoformat(),
+                "current_fiscal_year": 2027,
+                "annual_estimates": {
+                    "CURRENT_FY": {},
+                    "NEXT_FY": {},
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    assert cache.is_fresh("OLD", now=now) is False
+
+
+def test_cache_accepts_migrated_snapshot_with_unavailable_normalized_peg_growth(
+    tmp_path,
+):
+    now = datetime(2026, 9, 17, tzinfo=timezone.utc)
+    cache = YahooCompanySnapshotCache(
+        tmp_path / "symbols",
+        canonical_output_path=tmp_path / "canonical.json",
+        ttl_days=30,
+    )
+
+    path = cache.symbol_path("NO_GROWTH")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps(
+            {
+                "symbol": "NO_GROWTH",
+                "fetched_at": now.isoformat(),
+                "current_fiscal_year": 2027,
+                "annual_estimates": {
+                    "CURRENT_FY": {},
+                    "NEXT_FY": {},
+                },
+                "normalized_peg_growth": None,
+                "normalized_peg_growth_basis": None,
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    assert cache.is_fresh("NO_GROWTH", now=now) is True
 
 def test_fresh_legacy_snapshot_without_fiscal_year_is_refetched(tmp_path):
     now = datetime(2026, 8, 31, tzinfo=timezone.utc)

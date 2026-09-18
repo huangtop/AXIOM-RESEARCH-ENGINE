@@ -48,3 +48,42 @@ def test_peg_rejects_growth_above_sustainable_bound():
     )
     assert models["peg"]["status"] == "unavailable"
     assert "forward_eps_growth" in models["peg"]["missing_inputs"]
+
+def test_peg_prefers_normalized_growth_without_redefining_forward_eps_growth():
+    estimates = {
+        "forward_eps": metric("25.88376"),
+        # Fiscal transition remains negative and must retain its own semantics.
+        "forward_eps_growth": metric("-0.0471380510404979802007127249"),
+        # Dedicated PEG valuation growth.
+        "normalized_peg_growth": metric("0.107700005"),
+    }
+    assumptions = {
+        "target_peg": "0.9",
+    }
+
+    models = calculate_seven_models(
+        {},
+        estimates,
+        assumptions,
+    )
+
+    peg = models["peg"]
+
+    expected = (
+        Decimal("25.88376")
+        * Decimal("0.107700005")
+        * Decimal("100")
+        * Decimal("0.9")
+    )
+
+    assert peg["status"] == "calculated"
+    assert Decimal(peg["fair_value"]) == expected
+
+    # Published provenance must identify the actual PEG growth input,
+    # not the fiscal-transition diagnostic.
+    assert peg["input_names"] == [
+        "forward_eps",
+        "normalized_peg_growth",
+        "target_peg",
+    ]
+    assert peg["missing_inputs"] == []

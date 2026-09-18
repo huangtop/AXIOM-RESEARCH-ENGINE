@@ -80,7 +80,8 @@ def _peer_assumptions(root: Path) -> tuple[dict[str, dict[str, Any]], dict[str, 
             price = float(market.get("current_price"))
         except (TypeError, ValueError):
             continue
-        eps, growth = value(est, "forward_eps"), value(est, "forward_eps_growth")
+        eps = value(est, "forward_eps")
+        growth = value(est, "normalized_peg_growth")
         revenue, ebitda = value(est, "forward_revenue"), value(est, "forward_ebitda") or value(est, "ebitda_ttm")
         shares, cash, debt = value(fin, "diluted_shares_outstanding"), value(fin, "cash_and_cash_equivalents"), value(fin, "total_debt")
         bvps = value(fin, "book_value_per_share")
@@ -169,9 +170,17 @@ def build_multiple_policy(
             "evidence_ids": list(prior.get("evidence_ids") or []),
             "assumptions": {},
         })
-        # A refresh fills missing keys; it never silently rewrites an already
-        # published target multiple merely because today's stock price moved.
-        company["assumptions"].update(assumptions)
+        # Preserve already-published target multiples against ordinary market
+        # movement. PEG is the exception during this contract migration: legacy
+        # target_peg values were calibrated from fiscal-transition growth, while
+        # production PEG valuation now uses normalized_peg_growth. If the new peer
+        # calibration produced target_peg, do not overwrite it with the legacy value.
+        preserved_assumptions = dict(assumptions)
+
+        if "target_peg" in company.get("assumptions", {}):
+            preserved_assumptions.pop("target_peg", None)
+
+        company["assumptions"].update(preserved_assumptions)
         company["evidence_ids"] = sorted(set(company.get("evidence_ids") or []) | set(prior.get("evidence_ids") or []))
     rejected: list[dict[str, Any]] = []
     securities_file = root / "data/universe/securities.json"

@@ -41,6 +41,207 @@ def test_dual_fy_models_never_use_current_to_next_growth_for_next_fy_peg():
     assert horizons["NEXT_FY"]["models"]["peg"]["reason_code"] == "HORIZON_EPS_OR_MATCHED_GROWTH_UNAVAILABLE"
 
 
+def test_dell_negative_horizon_growth_makes_current_fy_peg_unavailable():
+    current_eps = Decimal("25.88306")
+    next_eps = Decimal("24.66365")
+    derived_growth = next_eps / current_eps - Decimal("1")
+
+    assert derived_growth < 0
+
+    horizons = _dual_fy_seven_models(
+        {
+            "annual_estimates": {
+                "CURRENT_FY": {
+                    "eps": format(current_eps, "f"),
+                    "revenue": "113538000000",
+                    "reported_growth": "0.375",
+                    "peg_growth": format(derived_growth, "f"),
+                    "growth_basis": "CURRENT_FY_TO_NEXT_FY",
+                },
+                "NEXT_FY": {
+                    "eps": format(next_eps, "f"),
+                    "revenue": None,
+                    "reported_growth": "0.0083",
+                    "peg_growth": None,
+                    "growth_basis": None,
+                },
+            },
+            "current_fiscal_year": 2027,
+            "trailing_eps": "17.24",
+            "shares_outstanding": "684000000",
+            "revenue_ttm": "113538000000",
+        },
+        {
+            "diluted_shares_outstanding": {"value": "684000000"},
+        },
+        {},
+        {
+            "current_price": "563.2899780273438",
+        },
+        {},
+    )
+
+    current = horizons["CURRENT_FY"]
+    peg = current["models"]["peg"]
+
+    assert current["estimate_basis"] == "CURRENT_FY"
+
+    assert peg["status"] == "unavailable"
+    assert peg["fair_value"] is None
+    assert (
+        peg["reason_code"]
+        == "HORIZON_EPS_OR_MATCHED_GROWTH_UNAVAILABLE"
+    )
+    assert peg["included_in_weighting"] is False
+    assert (
+        peg["weighting_exclusion_reason"]
+        == "HORIZON_EPS_OR_MATCHED_GROWTH_UNAVAILABLE"
+    )
+def test_dell_current_fy_peg_uses_normalized_growth_not_fiscal_transition():
+    current_eps = Decimal("25.88376")
+    next_eps = Decimal("24.66365")
+    transition_growth = next_eps / current_eps - Decimal("1")
+
+    assert transition_growth < 0
+
+    horizons = _dual_fy_seven_models(
+        {
+            "normalized_peg_growth": "0.1077",
+            "normalized_peg_growth_basis": "YAHOO_GROWTH_ESTIMATES_PLUS_1Y",
+            "annual_estimates": {
+                "CURRENT_FY": {
+                    "eps": format(current_eps, "f"),
+                    "revenue": "113538000000",
+                    "reported_growth": "1.5130",
+                    "peg_growth": format(transition_growth, "f"),
+                    "growth_basis": "CURRENT_FY_TO_NEXT_FY",
+                },
+                "NEXT_FY": {
+                    "eps": format(next_eps, "f"),
+                    "revenue": None,
+                    "reported_growth": "0.0083",
+                    "peg_growth": None,
+                    "growth_basis": None,
+                },
+            },
+            "current_fiscal_year": 2027,
+            "trailing_eps": "17.24",
+            "shares_outstanding": "684000000",
+            "revenue_ttm": "113538000000",
+        },
+        {
+            "diluted_shares_outstanding": {"value": "684000000"},
+        },
+        {},
+        {
+            "current_price": "506.62",
+        },
+        {},
+    )
+
+    current_fy = horizons["CURRENT_FY"]
+
+    # The negative adjacent-FY transition remains available as a diagnostic,
+    # but it is not the normalized growth input used by PEG valuation.
+    assert transition_growth == (
+        next_eps / current_eps - Decimal("1")
+    )
+
+    assert Decimal(current_fy["eps_growth"]) == Decimal("0.1077")
+    assert (
+        current_fy["growth_basis"]
+        == "YAHOO_GROWTH_ESTIMATES_PLUS_1Y"
+    )
+
+    expected_peg = (
+        current_eps
+        * Decimal("0.1077")
+        * Decimal("100")
+        * Decimal("0.9")
+    )
+
+    assert Decimal(
+        current_fy["models"]["peg"]["fair_value"]
+    ) == expected_peg
+
+    # One normalized CURRENT_FY PEG growth must not leak into NEXT_FY.
+    assert horizons["NEXT_FY"]["models"]["peg"]["status"] == "unavailable"
+    assert horizons["NEXT_FY"]["models"]["peg"]["fair_value"] is None
+
+def test_dell_full_market_card_keeps_transition_growth_separate_from_unified_peg_growth():
+    payload = build_full_market_coverage(ROOT, symbols=["DELL"])
+
+    assert payload["summary"]["incremental"] is True
+    assert len(payload["cards"]) == 1
+
+    card = payload["cards"][0]
+    assert card["primary_security"]["ticker"] == "DELL"
+
+    estimates = card["estimates"]
+    horizons = card["valuation_horizons"]
+    unified = card["valuation"]["unified_contract"]
+
+    current_eps = Decimal("25.88376")
+    next_eps = Decimal("24.66365")
+    transition_growth = next_eps / current_eps - Decimal("1")
+    normalized_growth = Decimal("0.107700005")
+
+    # Public estimate contract remains the adjacent-FY transition.
+    assert Decimal(estimates["forward_eps"]["value"]) == current_eps
+    assert (
+        estimates["forward_eps"]["forecast_basis"]
+        == "CURRENT_FY"
+    )
+
+    assert Decimal(
+        estimates["forward_eps_growth"]["value"]
+    ) == transition_growth
+    assert (
+        estimates["forward_eps_growth"]["growth_kind"]
+        == "period_transition"
+    )
+    assert (
+        estimates["forward_eps_growth"]["growth_from_period"]
+        == "CURRENT_FY"
+    )
+    assert (
+        estimates["forward_eps_growth"]["growth_to_period"]
+        == "NEXT_FY"
+    )
+
+    # Horizon PEG uses the dedicated normalized growth.
+    current_fy = horizons["CURRENT_FY"]
+
+    assert Decimal(current_fy["eps_growth"]) == normalized_growth
+    assert (
+        current_fy["growth_basis"]
+        == "YAHOO_GROWTH_ESTIMATES_PLUS_1Y"
+    )
+
+    expected_peg = (
+        current_eps
+        * normalized_growth
+        * Decimal("100")
+        * Decimal("0.9")
+    )
+
+    assert Decimal(
+        current_fy["models"]["peg"]["fair_value"]
+    ) == expected_peg
+
+    # Unified valuation must use the same dedicated PEG growth,
+    # not the negative fiscal-transition diagnostic.
+    unified_peg = unified["models"]["peg"]
+
+    assert unified_peg["status"] == "calculated"
+    assert Decimal(unified_peg["fair_value"]) == expected_peg
+    assert unified_peg["input_names"] == [
+        "forward_eps",
+        "normalized_peg_growth",
+        "target_peg",
+    ]
+    assert unified_peg["missing_inputs"] == []
+
 def test_missing_horizon_inputs_are_unavailable_instead_of_current_price_fallbacks():
     horizons = _dual_fy_seven_models(
         {}, {}, {}, {"current_price": "100"}, {}
