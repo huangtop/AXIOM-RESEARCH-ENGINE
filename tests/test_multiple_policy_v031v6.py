@@ -163,6 +163,26 @@ def test_peer_target_peg_uses_normalized_growth_and_migrates_legacy_published_pe
         ("CCC", "c3", "0.30"),
         ("DDD", "c4", "0.35"),
     ]
+    yahoo_root = tmp_path / "data/generated/company"
+    yahoo_root.mkdir(parents=True)
+
+    (yahoo_root / "yahoo_company_snapshot.json").write_text(
+        json.dumps(
+            {
+                "symbols": {
+                    ticker: {
+                        "symbol": ticker,
+                        "forward_eps": "10",
+                        "normalized_peg_growth": normalized_growth,
+                        "normalized_peg_growth_basis": (
+                            "YAHOO_GROWTH_ESTIMATES_PLUS_1Y"
+                        ),
+                    }
+                    for ticker, _, normalized_growth in companies
+                }
+            }
+        )
+    )
 
     ticker_to_file = {}
     overview_ticker_to_file = {}
@@ -281,3 +301,150 @@ def test_peer_target_peg_uses_normalized_growth_and_migrates_legacy_published_pe
 
     # The legacy PEG value must not survive migration.
     assert c1["assumptions"]["target_peg"] != 4.99
+
+def test_peer_target_peg_uses_current_yahoo_growth_not_previous_full_market_generation(
+    tmp_path: Path,
+):
+    coverage_root = tmp_path / "data/generated/full_market_coverage"
+    coverage_per_company = coverage_root / "per-company"
+    coverage_per_company.mkdir(parents=True)
+
+    overview_root = tmp_path / "data/generated/company_overview"
+    overview_per_company = overview_root / "per-company"
+    overview_per_company.mkdir(parents=True)
+
+    universe_root = tmp_path / "data/universe"
+    universe_root.mkdir(parents=True)
+
+    tickers = [
+        ("AAA", "c1"),
+        ("BBB", "c2"),
+        ("CCC", "c3"),
+        ("DDD", "c4"),
+    ]
+
+    (universe_root / "securities.json").write_text(
+        json.dumps(
+            [
+                {"ticker": ticker, "company_id": company_id}
+                for ticker, company_id in tickers
+            ]
+        )
+    )
+
+    coverage_index = {}
+    overview_index = {}
+
+    # Previous Full Market generation deliberately contains stale PEG growth.
+    stale_growth = {
+        "AAA": "0.10",
+        "BBB": "0.10",
+        "CCC": "0.10",
+        "DDD": "0.10",
+    }
+
+    for ticker, company_id in tickers:
+        filename = f"{company_id}.json"
+        coverage_index[ticker] = f"per-company/{filename}"
+        overview_index[ticker] = filename
+
+        (overview_per_company / filename).write_text(
+            json.dumps(
+                {
+                    "company_id": company_id,
+                    "path": {
+                        "sector": {"id": "sector:test"},
+                        "theme": {"id": "theme:test"},
+                    },
+                }
+            )
+        )
+
+        (coverage_per_company / filename).write_text(
+            json.dumps(
+                {
+                    "company_id": company_id,
+                    "primary_security": {"ticker": ticker},
+                    "market": {"current_price": "100"},
+                    "financials": {},
+                    "estimates": {
+                        "forward_eps": {
+                            "status": "ready",
+                            "value": "10",
+                        },
+                        "normalized_peg_growth": {
+                            "status": "ready",
+                            "value": stale_growth[ticker],
+                            "growth_kind": "normalized_peg_growth",
+                            "growth_basis": "YAHOO_GROWTH_ESTIMATES_PLUS_1Y",
+                        },
+                    },
+                }
+            )
+        )
+
+    (coverage_root / "full_market_coverage.json").write_text(
+        json.dumps(
+            {
+                "indexes": {
+                    "ticker_to_file": coverage_index,
+                }
+            }
+        )
+    )
+
+    (overview_root / "index.json").write_text(
+        json.dumps(
+            {
+                "ticker_to_file": overview_index,
+            }
+        )
+    )
+
+    # Current canonical Yahoo generation contains newer PEG inputs.
+    #
+    # For c1, peer observations should therefore be:
+    # BBB: (100 / 10) / (0.25 * 100) = 0.4
+    # CCC: (100 / 10) / (0.30 * 100) = 1/3
+    # DDD: (100 / 10) / (0.35 * 100) = 2/7
+    # Median = 1/3.
+    snapshot_root = tmp_path / "data/generated/company"
+    snapshot_root.mkdir(parents=True)
+
+    current_growth = {
+        "AAA": "0.20",
+        "BBB": "0.25",
+        "CCC": "0.30",
+        "DDD": "0.35",
+    }
+
+    (snapshot_root / "yahoo_company_snapshot.json").write_text(
+        json.dumps(
+            {
+                "symbols": {
+                    ticker: {
+                        "symbol": ticker,
+                        "forward_eps": "10",
+                        "normalized_peg_growth": current_growth[ticker],
+                        "normalized_peg_growth_basis": (
+                            "YAHOO_GROWTH_ESTIMATES_PLUS_1Y"
+                        ),
+                    }
+                    for ticker, _ in tickers
+                }
+            }
+        )
+    )
+
+    report = build_multiple_policy(tmp_path)
+
+    by_company = {
+        row["company_id"]: row
+        for row in report["companies"]
+    }
+
+    assert math.isclose(
+        by_company["c1"]["assumptions"]["target_peg"],
+        1.0 / 3.0,
+        rel_tol=1e-12,
+    )

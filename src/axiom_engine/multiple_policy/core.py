@@ -32,6 +32,16 @@ def _peer_assumptions(root: Path) -> tuple[dict[str, dict[str, Any]], dict[str, 
         return {}, {"company_count": 0, "reason": "peer_inputs_unavailable"}
     overview = json.loads(overview_index.read_text(encoding="utf-8"))
     coverage = json.loads(coverage_index.read_text(encoding="utf-8"))
+
+    yahoo_snapshot_path = (
+        root / "data/generated/company/yahoo_company_snapshot.json"
+    )
+    yahoo_snapshot = (
+        json.loads(yahoo_snapshot_path.read_text(encoding="utf-8"))
+        if yahoo_snapshot_path.is_file()
+        else {"symbols": {}}
+    )
+    yahoo_symbols = yahoo_snapshot.get("symbols") or {}
     ticker_files = overview.get("ticker_to_file") or {}
     coverage_files = (coverage.get("indexes") or {}).get("ticker_to_file") or {}
     profiles: dict[str, dict[str, Any]] = {}
@@ -80,8 +90,25 @@ def _peer_assumptions(root: Path) -> tuple[dict[str, dict[str, Any]], dict[str, 
             price = float(market.get("current_price"))
         except (TypeError, ValueError):
             continue
-        eps = value(est, "forward_eps")
-        growth = value(est, "normalized_peg_growth")
+        # PEG calibration must consume the current canonical Yahoo generation
+        # directly. Full-market coverage is downstream of multiple policy, so
+        # using its estimate layer here introduces a one-generation lag.
+        ticker = str(profile.get("ticker") or "").upper()
+        yahoo = yahoo_symbols.get(ticker) or {}
+
+        try:
+            eps = float(yahoo.get("forward_eps"))
+        except (TypeError, ValueError):
+            eps = None
+        if eps is not None and eps <= 0:
+            eps = None
+
+        try:
+            growth = float(yahoo.get("normalized_peg_growth"))
+        except (TypeError, ValueError):
+            growth = None
+        if growth is not None and growth <= 0:
+            growth = None
         revenue, ebitda = value(est, "forward_revenue"), value(est, "forward_ebitda") or value(est, "ebitda_ttm")
         shares, cash, debt = value(fin, "diluted_shares_outstanding"), value(fin, "cash_and_cash_equivalents"), value(fin, "total_debt")
         bvps = value(fin, "book_value_per_share")
