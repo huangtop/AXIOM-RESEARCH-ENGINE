@@ -256,22 +256,63 @@ class YahooCompanySnapshotCache:
         with self.error_log_path.open("a", encoding="utf-8") as handle:
             handle.write(f"[{occurred_at.isoformat()}] {symbol}\n{type(exc).__name__}: {exc}\n\n")
 
-    def rebuild_canonical_output(self, *, generated_at: datetime) -> int:
-        symbols: dict[str, dict[str, object]] = {}
+    def rebuild_canonical_output(
+        self,
+        *,
+        generated_at: datetime,
+        symbols: Iterable[str] | None = None,
+    ) -> int:
+        canonical_symbols: dict[str, dict[str, object]] = {}
+
         try:
-            existing = json.loads(self.canonical_output_path.read_text(encoding="utf-8"))
-            if isinstance(existing, Mapping) and isinstance(existing.get("symbols"), Mapping):
-                symbols.update({str(key): dict(value) for key, value in existing["symbols"].items() if isinstance(value, Mapping)})
+            existing = json.loads(
+                self.canonical_output_path.read_text(encoding="utf-8")
+            )
+            if isinstance(existing, Mapping) and isinstance(
+                existing.get("symbols"), Mapping
+            ):
+                canonical_symbols.update(
+                    {
+                        str(key): dict(value)
+                        for key, value in existing["symbols"].items()
+                        if isinstance(value, Mapping)
+                    }
+                )
         except (FileNotFoundError, json.JSONDecodeError, OSError):
             pass
-        if self.symbol_cache_root.exists():
-            for path in sorted(self.symbol_cache_root.glob("*.json")):
-                try:
-                    payload = json.loads(path.read_text(encoding="utf-8"))
-                except (OSError, json.JSONDecodeError):
-                    continue
-                if isinstance(payload, Mapping) and payload.get("symbol"):
-                    symbols[str(payload["symbol"])] = dict(payload)
+
+        # Only publish explicitly selected symbols. A targeted refresh must not
+        # promote unrelated per-symbol cache entries into the canonical dataset.
+        selected = (
+            sorted(
+                {
+                    str(symbol).strip().upper()
+                    for symbol in symbols
+                    if str(symbol).strip()
+                }
+            )
+            if symbols is not None
+            else None
+        )
+
+        if selected is None:
+            paths = (
+                sorted(self.symbol_cache_root.glob("*.json"))
+                if self.symbol_cache_root.exists()
+                else []
+            )
+        else:
+            paths = [self.symbol_path(symbol) for symbol in selected]
+
+        for path in paths:
+            try:
+                payload = json.loads(path.read_text(encoding="utf-8"))
+            except (FileNotFoundError, OSError, json.JSONDecodeError):
+                continue
+
+            if isinstance(payload, Mapping) and payload.get("symbol"):
+                canonical_symbols[str(payload["symbol"])] = dict(payload)
+
         self._atomic_json_write(
             self.canonical_output_path,
             {
@@ -280,10 +321,10 @@ class YahooCompanySnapshotCache:
                 "provider": "yahoo_finance",
                 "generated_at": generated_at.isoformat(),
                 "cache_ttl_days": self.ttl_days,
-                "symbols": dict(sorted(symbols.items())),
+                "symbols": dict(sorted(canonical_symbols.items())),
             },
         )
-        return len(symbols)
+        return len(canonical_symbols)
 
     def symbol_path(self, symbol: str) -> Path:
         safe = symbol.strip().upper().replace("/", "_")
@@ -330,6 +371,7 @@ def refresh_yahoo_company_snapshots(
         pending = pending[:max_fetch]
 
     successes = 0
+    successful_symbols: list[str] = []
     failures: dict[str, str] = {}
     diagnostics: dict[str, object] = {}
     consecutive_rate_limits = 0
@@ -341,6 +383,7 @@ def refresh_yahoo_company_snapshots(
                 cache.write_symbol(snapshot)
                 diagnostics[symbol] = diagnostic
                 successes += 1
+                successful_symbols.append(symbol)
                 consecutive_rate_limits = 0
                 break
             except Exception as exc:  # preserve batch progress and record the real exception type
@@ -360,7 +403,10 @@ def refresh_yahoo_company_snapshots(
             sleep(request_delay_seconds)
 
     cache.write_diagnostics(diagnostics)
-    cache.rebuild_canonical_output(generated_at=current)
+    cache.rebuild_canonical_output(
+        generated_at=current,
+        symbols=successful_symbols,
+    )
     return YahooCompanyRefreshReport(
         requested=skipped + len(pending),
         fetched=len(pending),

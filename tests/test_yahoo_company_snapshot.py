@@ -504,3 +504,181 @@ def test_max_fetch_limits_only_uncached_requests(tmp_path):
     assert fetcher.calls == ["B"]
     assert report.skipped_cached_before_request == 1
     assert report.fetched == 1
+
+def test_targeted_refresh_does_not_merge_unrequested_symbol_cache_into_canonical(
+    tmp_path,
+):
+    now = datetime(2026, 9, 18, tzinfo=timezone.utc)
+    canonical_path = tmp_path / "canonical.json"
+    symbol_root = tmp_path / "symbols"
+
+    canonical_path.write_text(
+        json.dumps(
+            {
+                "schema_version": "yahoo-company-snapshot.v031.0",
+                "version": "V031.0",
+                "provider": "yahoo_finance",
+                "generated_at": "2026-09-17T00:00:00+00:00",
+                "cache_ttl_days": 30,
+                "symbols": {
+                    "A": {
+                        "symbol": "A",
+                        "company_name": "Canonical A",
+                    },
+                    "B": {
+                        "symbol": "B",
+                        "company_name": "Canonical B",
+                        "marker": "must-survive",
+                    },
+                    "C": {
+                        "symbol": "C",
+                        "company_name": "Canonical C",
+                        "marker": "must-survive",
+                    },
+                },
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    symbol_root.mkdir(parents=True)
+
+    # Simulate an unrelated local cache entry that differs from the committed
+    # canonical record. Refreshing A must not silently publish this B payload.
+    (symbol_root / "B.json").write_text(
+        json.dumps(
+            {
+                "symbol": "B",
+                "company_name": "Unrelated Cached B",
+                "marker": "must-not-leak",
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    class Fetcher:
+        def company_info(self, symbol):
+            assert symbol == "A"
+            return {
+                "longName": "Refreshed A",
+                "marketCap": 1000,
+                "sharesOutstanding": 100,
+                "totalRevenue": 500,
+                "forwardEps": 10,
+                "previousClose": 10,
+                "__earnings_estimate__": {
+                    "0y": {"avg": 10},
+                    "+1y": {"avg": 11},
+                },
+                "__revenue_estimate__": {
+                    "0y": {"avg": 500},
+                    "+1y": {"avg": 550},
+                },
+                "__growth_estimates__": {
+                    "+1y": {"stockTrend": 0.10},
+                },
+            }
+
+    cache = YahooCompanySnapshotCache(
+        symbol_root,
+        canonical_output_path=canonical_path,
+    )
+
+    before = json.loads(canonical_path.read_text(encoding="utf-8"))
+    before_b = before["symbols"]["B"]
+    before_c = before["symbols"]["C"]
+
+    report = refresh_yahoo_company_snapshots(
+        ["A"],
+        fetcher=Fetcher(),
+        cache=cache,
+        now=now,
+        force=True,
+    )
+
+    after = json.loads(canonical_path.read_text(encoding="utf-8"))
+
+    assert report.requested == 1
+    assert report.fetched == 1
+    assert report.succeeded == 1
+
+    assert after["symbols"]["A"]["company_name"] == "Refreshed A"
+
+    # Targeted refresh contract: unrequested canonical records are immutable.
+    assert after["symbols"]["B"] == before_b
+    assert after["symbols"]["C"] == before_c
+
+
+def test_failed_targeted_refresh_does_not_publish_stale_requested_symbol_cache(
+    tmp_path,
+):
+    now = datetime(2026, 9, 18, tzinfo=timezone.utc)
+    canonical_path = tmp_path / "canonical.json"
+    symbol_root = tmp_path / "symbols"
+    symbol_root.mkdir(parents=True)
+
+    canonical_a = {
+        "symbol": "A",
+        "company_name": "Canonical A",
+        "marker": "must-survive",
+    }
+
+    canonical_path.write_text(
+        json.dumps(
+            {
+                "schema_version": "yahoo-company-snapshot.v031.0",
+                "version": "V031.0",
+                "provider": "yahoo_finance",
+                "generated_at": "2026-09-17T00:00:00+00:00",
+                "cache_ttl_days": 30,
+                "symbols": {
+                    "A": canonical_a,
+                },
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    # Stale/local cache differs from the committed canonical record.
+    (symbol_root / "A.json").write_text(
+        json.dumps(
+            {
+                "symbol": "A",
+                "company_name": "Stale Cached A",
+                "marker": "must-not-publish",
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    class FailingFetcher:
+        def company_info(self, symbol):
+            assert symbol == "A"
+            raise RuntimeError("synthetic provider failure")
+
+    cache = YahooCompanySnapshotCache(
+        symbol_root,
+        canonical_output_path=canonical_path,
+    )
+
+    report = refresh_yahoo_company_snapshots(
+        ["A"],
+        fetcher=FailingFetcher(),
+        cache=cache,
+        now=now,
+        force=True,
+    )
+
+    after = json.loads(canonical_path.read_text(encoding="utf-8"))
+
+    assert report.requested == 1
+    assert report.fetched == 1
+    assert report.succeeded == 0
+    assert report.failed == 1
+
+    # A failed provider request must not promote a stale local cache entry.
+    assert after["symbols"]["A"] == canonical_a
