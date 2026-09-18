@@ -204,20 +204,27 @@ def build_multiple_policy(
         # calibration produced target_peg, do not overwrite it with the legacy value.
         preserved_assumptions = dict(assumptions)
 
-        recalibrated_target_peg = "target_peg" in company.get("assumptions", {})
-        if recalibrated_target_peg:
+        recalibrated_assumptions = set(company.get("assumptions", {}))
+
+        # Preserve already-published assumption values against ordinary market
+        # movement. target_peg remains the migration exception: when current
+        # normalized-growth peer calibration succeeds, replace the legacy PEG value.
+        if "target_peg" in recalibrated_assumptions:
             preserved_assumptions.pop("target_peg", None)
 
         company["assumptions"].update(preserved_assumptions)
 
         prior_evidence = set(prior.get("evidence_ids") or [])
-        if recalibrated_target_peg:
+        if recalibrated_assumptions:
             prior_evidence = {
                 evidence_id
                 for evidence_id in prior_evidence
                 if not (
                     str(evidence_id).startswith("peer-median:")
-                    and ":target_peg:" in str(evidence_id)
+                    and any(
+                        f":{assumption}:" in str(evidence_id)
+                        for assumption in recalibrated_assumptions
+                    )
                 )
             }
 
