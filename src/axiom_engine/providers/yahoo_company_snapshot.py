@@ -54,6 +54,7 @@ class YahooCompanySnapshot:
     forward_eps_growth: str | None
     normalized_peg_growth: str | None
     normalized_peg_growth_basis: str | None
+    normalized_peg_growth_source_field: str | None
     forward_revenue: str | None
     trailing_pe: str | None
     forward_pe: str | None
@@ -480,17 +481,29 @@ def snapshot_and_diagnostic_from_info(
         ("info.earningsGrowth", info.get("earningsGrowth")),
     ], _decimal_text)
 
-    normalized_peg_growth = _decimal_text(
-        _row_metric(
-            growth_estimates,
-            ("+1y", "nextYear", "Next Year"),
-            ("stockTrend", "stock", "Stock"),
-        )
+    (
+        normalized_peg_growth_value,
+        normalized_peg_growth_row,
+        normalized_peg_growth_metric,
+    ) = _row_metric_with_source(
+        growth_estimates,
+        ("+1y", "nextYear", "Next Year"),
+        ("stockTrend", "stock", "Stock"),
     )
+
+    normalized_peg_growth = _decimal_text(normalized_peg_growth_value)
 
     normalized_peg_growth_basis = (
         "YAHOO_GROWTH_ESTIMATES_PLUS_1Y"
         if normalized_peg_growth is not None
+        else None
+    )
+
+    normalized_peg_growth_source_field = (
+        f"growth_estimates.{normalized_peg_growth_row}.{normalized_peg_growth_metric}"
+        if normalized_peg_growth is not None
+        and normalized_peg_growth_row is not None
+        and normalized_peg_growth_metric is not None
         else None
     )
     revenue_ttm = resolve("revenue_ttm", [("info.totalRevenue", info.get("totalRevenue")), ("financials.Total Revenue", _financial_value(financials, ("Total Revenue", "TotalRevenue")))], _decimal_text)
@@ -536,6 +549,7 @@ def snapshot_and_diagnostic_from_info(
         forward_eps_growth=forward_eps_growth,
         normalized_peg_growth=normalized_peg_growth,
         normalized_peg_growth_basis=normalized_peg_growth_basis,
+        normalized_peg_growth_source_field=normalized_peg_growth_source_field,
         forward_revenue=forward_revenue,
         trailing_pe=_decimal_text(info.get("trailingPE")),
         forward_pe=_decimal_text(info.get("forwardPE")),
@@ -631,6 +645,25 @@ def _row_metric(payload: object, row_names: tuple[str, ...], keys: tuple[str, ..
                 if row.get(key) is not None:
                     return row[key]
     return None
+
+
+def _row_metric_with_source(
+    payload: object,
+    row_names: tuple[str, ...],
+    keys: tuple[str, ...],
+) -> tuple[object, str | None, str | None]:
+    if not isinstance(payload, Mapping):
+        return None, None, None
+
+    for row_name in row_names:
+        row = payload.get(row_name)
+        if isinstance(row, Mapping):
+            for key in keys:
+                if row.get(key) is not None:
+                    return row[key], row_name, key
+
+    return None, None, None
+
 
 
 def _derive_eps_growth(

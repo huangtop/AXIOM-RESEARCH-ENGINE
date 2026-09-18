@@ -190,6 +190,10 @@ def test_snapshot_preserves_yahoo_growth_estimate_for_normalized_peg_growth():
     # not earnings_estimate +1y growth and not adjacent EPS arithmetic.
     assert row.normalized_peg_growth == "0.1077"
     assert row.normalized_peg_growth_basis == "YAHOO_GROWTH_ESTIMATES_PLUS_1Y"
+    assert (
+        row.normalized_peg_growth_source_field
+        == "growth_estimates.+1y.stockTrend"
+    )
 
 def test_nvda_normalized_peg_growth_matches_yahoo_growth_estimate():
     now = datetime(2026, 9, 17, tzinfo=timezone.utc)
@@ -229,6 +233,10 @@ def test_nvda_normalized_peg_growth_matches_yahoo_growth_estimate():
     assert (
         row.normalized_peg_growth_basis
         == "YAHOO_GROWTH_ESTIMATES_PLUS_1Y"
+    )
+    assert (
+        row.normalized_peg_growth_source_field
+        == "growth_estimates.+1y.stockTrend"
     )
 
     # Provider-reported annual growth happens to agree for NVDA.
@@ -682,3 +690,25 @@ def test_failed_targeted_refresh_does_not_publish_stale_requested_symbol_cache(
 
     # A failed provider request must not promote a stale local cache entry.
     assert after["symbols"]["A"] == canonical_a
+
+def test_normalized_peg_growth_records_actual_yahoo_source_field():
+    now = datetime(2026, 9, 17, tzinfo=timezone.utc)
+
+    row = snapshot_from_info(
+        "ALIAS",
+        {
+            "__growth_estimates__": {
+                "nextYear": {
+                    "stock": "0.1234",
+                },
+            },
+        },
+        fetched_at=now,
+    )
+
+    assert row.normalized_peg_growth == "0.1234"
+    assert row.normalized_peg_growth_basis == "YAHOO_GROWTH_ESTIMATES_PLUS_1Y"
+    assert (
+        row.normalized_peg_growth_source_field
+        == "growth_estimates.nextYear.stock"
+    )
