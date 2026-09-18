@@ -204,11 +204,26 @@ def build_multiple_policy(
         # calibration produced target_peg, do not overwrite it with the legacy value.
         preserved_assumptions = dict(assumptions)
 
-        if "target_peg" in company.get("assumptions", {}):
+        recalibrated_target_peg = "target_peg" in company.get("assumptions", {})
+        if recalibrated_target_peg:
             preserved_assumptions.pop("target_peg", None)
 
         company["assumptions"].update(preserved_assumptions)
-        company["evidence_ids"] = sorted(set(company.get("evidence_ids") or []) | set(prior.get("evidence_ids") or []))
+
+        prior_evidence = set(prior.get("evidence_ids") or [])
+        if recalibrated_target_peg:
+            prior_evidence = {
+                evidence_id
+                for evidence_id in prior_evidence
+                if not (
+                    str(evidence_id).startswith("peer-median:")
+                    and ":target_peg:" in str(evidence_id)
+                )
+            }
+
+        company["evidence_ids"] = sorted(
+            set(company.get("evidence_ids") or []) | prior_evidence
+        )
     rejected: list[dict[str, Any]] = []
     securities_file = root / "data/universe/securities.json"
     securities = json.loads(securities_file.read_text(encoding="utf-8")) if securities_file.is_file() else []

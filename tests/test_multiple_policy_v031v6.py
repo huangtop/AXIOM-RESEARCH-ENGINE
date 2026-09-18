@@ -264,7 +264,12 @@ def test_peer_target_peg_uses_normalized_growth_and_migrates_legacy_published_pe
                 {
                     "company_id": "c1",
                     "policy_version": "legacy-peg-contract",
-                    "evidence_ids": ["legacy-evidence"],
+                    "evidence_ids": [
+                        "legacy-evidence",
+                        "peer-median:operating-market:target_peg:n500",
+                        "peer-median:theme:old_theme:target_peg:n20",
+                        "peer-median:sector:old_sector:target_forward_pe:n10",
+                    ],
                     "assumptions": {
                         "target_forward_pe": 77.0,
                         "target_peg": 4.99,
@@ -301,6 +306,25 @@ def test_peer_target_peg_uses_normalized_growth_and_migrates_legacy_published_pe
 
     # The legacy PEG value must not survive migration.
     assert c1["assumptions"]["target_peg"] != 4.99
+
+    # Recalibrating target_peg replaces prior peer-median PEG provenance.
+    # Evidence for unrelated assumptions and unrelated provenance survives.
+    peg_evidence = [
+        evidence_id
+        for evidence_id in c1["evidence_ids"]
+        if evidence_id.startswith("peer-median:")
+        and ":target_peg:" in evidence_id
+    ]
+
+    assert len(peg_evidence) == 1
+    assert "peer-median:operating-market:target_peg:n500" not in c1["evidence_ids"]
+    assert "peer-median:theme:old_theme:target_peg:n20" not in c1["evidence_ids"]
+
+    assert (
+        "peer-median:sector:old_sector:target_forward_pe:n10"
+        in c1["evidence_ids"]
+    )
+    assert "legacy-evidence" in c1["evidence_ids"]
 
 def test_peer_target_peg_uses_current_yahoo_growth_not_previous_full_market_generation(
     tmp_path: Path,

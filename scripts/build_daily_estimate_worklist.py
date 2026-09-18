@@ -25,6 +25,15 @@ def main() -> int:
 
     def needs_refresh(symbol: str) -> bool:
         row = snapshots.get(symbol) or {}
+
+        # Keep the worklist freshness contract aligned with the provider cache.
+        # Key presence, rather than a non-null value, marks this schema
+        # migration complete because Yahoo may legitimately have no +1y growth.
+        if "normalized_peg_growth" not in row:
+            return True
+        if "normalized_peg_growth_basis" not in row:
+            return True
+
         annual = row.get("annual_estimates")
         if not isinstance(annual, dict) or not all(
             isinstance(annual.get(basis), dict)
