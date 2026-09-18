@@ -373,37 +373,134 @@ def write_publication_catalog(
     )
     os.replace(manifest_tmp, manifest_path)
 
-    current_files = set(_manifest_shard_files(manifest))
+    # Retain immutable shard history per company. Incremental publication of
+    # one ticker must not age unrelated companies merely because a new
+    # repository-wide release was created.
     retention_path = output.parent / PUBLICATION_SHARD_RETENTION_FILE
+    histories: dict[str, list[str]] = {}
+
     if retention_path.is_file():
         retention = _load(retention_path)
-        previous_generations = retention.get("generations") or []
-    elif previous_manifest:
-        previous_generations = [{
-            "release_id": previous_manifest.get("release_id"),
-            "files": _manifest_shard_files(previous_manifest),
-        }]
-    else:
-        previous_generations = []
+        stored_histories = retention.get("company_generations") or {}
+        if isinstance(stored_histories, Mapping):
+            histories = {
+                str(ticker): [
+                    str(filename)
+                    for filename in filenames
+                    if str(filename)
+                ][:retention_generations]
+                for ticker, filenames in stored_histories.items()
+                if isinstance(filenames, list)
+            }
 
-    generations = [{"release_id": release_id, "files": sorted(current_files)}]
-    generations.extend(
-        generation
-        for generation in previous_generations
-        if isinstance(generation, Mapping)
-        and generation.get("release_id") != release_id
-    )
-    generations = generations[:retention_generations]
+    # Migration from the old release-wide retention format. Reconstruct
+    # per-company histories from the legacy generations without advancing
+    # untouched companies or discarding their previous immutable shards.
+    if not histories and previous_manifest:
+        legacy_generations = (
+            retention.get("generations") or []
+            if retention_path.is_file()
+            else []
+        )
+
+        legacy_files = [
+            str(filename)
+            for generation in legacy_generations
+            if isinstance(generation, Mapping)
+            for filename in (generation.get("files") or [])
+        ]
+
+        for ticker, row in (previous_manifest.get("companies") or {}).items():
+            if not isinstance(row, Mapping):
+                continue
+
+            path = Path(str(row.get("path") or ""))
+            if path.parent != Path("companies") or not path.name.endswith(".json"):
+                continue
+
+            current_name = path.name
+
+            # Hashed shard names have the form <stable-prefix>.<hash>.json.
+            # Derive the prefix from the manifest's known current shard rather
+            # than from the ticker, so aliases and encoded ticker names do not
+            # need separate parsing rules.
+            parts = current_name.rsplit(".", 2)
+            shard_prefix = parts[0] if len(parts) == 3 else None
+
+            history = []
+            for filename in legacy_files:
+                candidate = Path(filename).name
+                candidate_parts = candidate.rsplit(".", 2)
+                candidate_prefix = (
+                    candidate_parts[0]
+                    if len(candidate_parts) == 3
+                    else None
+                )
+
+                if (
+                    candidate == current_name
+                    or (
+                        shard_prefix is not None
+                        and candidate_prefix == shard_prefix
+                    )
+                ):
+                    if candidate not in history:
+                        history.append(candidate)
+
+                if len(history) >= retention_generations:
+                    break
+
+            if current_name in history:
+                history.remove(current_name)
+            history.insert(0, current_name)
+
+            histories[str(ticker)] = history[:retention_generations]
+
+    # A full publication defines the complete current company set. Incremental
+    # publication mutates only companies present in this report.
+    if not incremental:
+        histories = {
+            ticker: histories.get(ticker, [])
+            for ticker in company_entries
+        }
+
+    for ticker in projections:
+        row = company_entries.get(str(ticker)) or {}
+        path = Path(str(row.get("path") or ""))
+        if path.parent != Path("companies") or not path.name.endswith(".json"):
+            continue
+
+        history = histories.get(str(ticker), [])
+        history = [
+            filename
+            for filename in history
+            if filename != path.name
+        ]
+        histories[str(ticker)] = (
+            [path.name] + history
+        )[:retention_generations]
+
+    # Ensure every active manifest shard is protected, including companies
+    # untouched by this incremental publication.
+    for ticker, row in company_entries.items():
+        path = Path(str(row.get("path") or ""))
+        if path.parent != Path("companies") or not path.name.endswith(".json"):
+            continue
+        history = histories.get(str(ticker), [])
+        if path.name not in history:
+            history.insert(0, path.name)
+        histories[str(ticker)] = history[:retention_generations]
 
     retained_files = {
-        str(filename)
-        for generation in generations
-        for filename in (generation.get("files") or [])
+        filename
+        for filenames in histories.values()
+        for filename in filenames
     }
+
     retention_payload = {
-        "schema_version": "publication-shard-retention.v1",
+        "schema_version": "publication-shard-retention.v2",
         "retention_generations": retention_generations,
-        "generations": generations,
+        "company_generations": dict(sorted(histories.items())),
     }
     retention_tmp = retention_path.with_suffix(".json.tmp")
     retention_tmp.write_text(

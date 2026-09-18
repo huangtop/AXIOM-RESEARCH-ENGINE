@@ -130,8 +130,9 @@ def test_publication_retains_recent_hashed_shard_generations(tmp_path: Path):
     assert not paths[0].exists()
     assert all(path.exists() for path in paths[1:])
     retention = json.loads((output.parent / "shard_retention.json").read_text())
+    assert retention["schema_version"] == "publication-shard-retention.v2"
     assert retention["retention_generations"] == 3
-    assert len(retention["generations"]) == 3
+    assert len(retention["company_generations"]["TEST"]) == 3
 
 
 def test_publication_defaults_to_current_and_previous_generation(tmp_path: Path):
@@ -149,8 +150,9 @@ def test_publication_defaults_to_current_and_previous_generation(tmp_path: Path)
     manifest = json.loads((output.parent / "manifest.json").read_text())
     retention = json.loads((output.parent / "shard_retention.json").read_text())
     assert manifest["retention_policy"]["company_shard_generations"] == 2
+    assert retention["schema_version"] == "publication-shard-retention.v2"
     assert retention["retention_generations"] == 2
-    assert len(retention["generations"]) == 2
+    assert len(retention["company_generations"]["TEST"]) == 2
 
 
 def test_publication_rejects_retention_that_can_delete_previous_generation(tmp_path: Path):
@@ -252,5 +254,245 @@ def test_incremental_publication_retains_previous_manifest_generation(
     assert first_nvda.exists()
     assert second_nvda.exists()
     assert first_nvda != second_nvda
+    assert retention["schema_version"] == "publication-shard-retention.v2"
     assert retention["retention_generations"] == 2
-    assert len(retention["generations"]) == 2
+    assert retention["company_generations"]["NVDA"] == [
+        Path(second_nvda).name,
+        Path(first_nvda).name,
+    ]
+
+
+def test_incremental_retention_ages_shards_per_company_not_per_release(
+    tmp_path: Path,
+):
+    output = tmp_path / "publication/company_catalog.json"
+
+    def make_report(values: dict[str, int]) -> dict:
+        projections = {
+            ticker: {
+                "company_id": f"company:{ticker}",
+                "ticker": ticker,
+                "value": value,
+            }
+            for ticker, value in values.items()
+        }
+        return {
+            "companies": [
+                {
+                    "company_id": f"company:{ticker}",
+                    "ticker": ticker,
+                }
+                for ticker in sorted(values)
+            ],
+            "indexes": {
+                "ticker_to_file": {
+                    ticker: f"{ticker}.json"
+                    for ticker in values
+                }
+            },
+            "_company_projections": projections,
+        }
+
+    # Generation 1: publish A/B/C.
+    write_publication_catalog(
+        make_report({"A": 1, "B": 1, "C": 1}),
+        output,
+    )
+    manifest_1 = json.loads(
+        (output.parent / "manifest.json").read_text()
+    )
+
+    a1 = output.parent / manifest_1["companies"]["A"]["path"]
+    b1 = output.parent / manifest_1["companies"]["B"]["path"]
+    c1 = output.parent / manifest_1["companies"]["C"]["path"]
+
+    assert a1.exists()
+    assert b1.exists()
+    assert c1.exists()
+
+    # Incremental A update. A1 must remain as A's previous generation.
+    write_publication_catalog(
+        make_report({"A": 2}),
+        output,
+        incremental=True,
+    )
+    manifest_2 = json.loads(
+        (output.parent / "manifest.json").read_text()
+    )
+    a2 = output.parent / manifest_2["companies"]["A"]["path"]
+
+    assert a2 != a1
+    assert a1.exists()
+    assert a2.exists()
+    assert b1.exists()
+    assert c1.exists()
+
+    # Incremental B update must NOT age A1 or C1 merely because another
+    # repository-wide publication release occurred.
+    write_publication_catalog(
+        make_report({"B": 2}),
+        output,
+        incremental=True,
+    )
+
+    assert a1.exists()
+    assert a2.exists()
+    assert b1.exists()
+    assert c1.exists()
+
+    # A changes again. Only now has A itself advanced beyond the configured
+    # two-generation retention window: A1 may be collected, while A2 and the
+    # untouched C1 must remain.
+    write_publication_catalog(
+        make_report({"A": 3}),
+        output,
+        incremental=True,
+    )
+    manifest_4 = json.loads(
+        (output.parent / "manifest.json").read_text()
+    )
+    a3 = output.parent / manifest_4["companies"]["A"]["path"]
+
+    assert not a1.exists()
+    assert a2.exists()
+    assert a3.exists()
+    assert c1.exists()
+
+
+def test_incremental_migration_from_v1_retention_preserves_unrelated_history(
+    tmp_path: Path,
+):
+    output = tmp_path / "publication/company_catalog.json"
+
+    def make_report(values: dict[str, int]) -> dict:
+        projections = {
+            ticker: {
+                "company_id": f"company:{ticker}",
+                "ticker": ticker,
+                "value": value,
+            }
+            for ticker, value in values.items()
+        }
+        return {
+            "companies": [
+                {
+                    "company_id": f"company:{ticker}",
+                    "ticker": ticker,
+                }
+                for ticker in sorted(values)
+            ],
+            "indexes": {
+                "ticker_to_file": {
+                    ticker: f"{ticker}.json"
+                    for ticker in values
+                }
+            },
+            "_company_projections": projections,
+        }
+
+    # Build generation 1 and capture A1/B1/C1.
+    write_publication_catalog(
+        make_report({"A": 1, "B": 1, "C": 1}),
+        output,
+    )
+    manifest_1 = json.loads(
+        (output.parent / "manifest.json").read_text()
+    )
+
+    old_paths = {
+        ticker: output.parent / manifest_1["companies"][ticker]["path"]
+        for ticker in ("A", "B", "C")
+    }
+
+    # Build generation 2 and capture A2/B2/C2.
+    write_publication_catalog(
+        make_report({"A": 2, "B": 2, "C": 2}),
+        output,
+    )
+    manifest_2 = json.loads(
+        (output.parent / "manifest.json").read_text()
+    )
+
+    current_paths = {
+        ticker: output.parent / manifest_2["companies"][ticker]["path"]
+        for ticker in ("A", "B", "C")
+    }
+
+    assert all(path.exists() for path in old_paths.values())
+    assert all(path.exists() for path in current_paths.values())
+
+    # Replace the v2 retention metadata with the exact legacy v1 shape that
+    # production repositories may still contain during the first deployment
+    # of per-company retention.
+    legacy_retention = {
+        "retention_generations": 2,
+        "generations": [
+            {
+                "release_id": manifest_2["release_id"],
+                "files": sorted(
+                    path.name for path in current_paths.values()
+                ),
+            },
+            {
+                "release_id": manifest_1["release_id"],
+                "files": sorted(
+                    path.name for path in old_paths.values()
+                ),
+            },
+        ],
+    }
+    (output.parent / "shard_retention.json").write_text(
+        json.dumps(
+            legacy_retention,
+            ensure_ascii=False,
+            separators=(",", ":"),
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    # First publication after upgrading to v2 changes A only.
+    write_publication_catalog(
+        make_report({"A": 3}),
+        output,
+        incremental=True,
+    )
+
+    manifest_3 = json.loads(
+        (output.parent / "manifest.json").read_text()
+    )
+    a3 = output.parent / manifest_3["companies"]["A"]["path"]
+
+    # A advanced itself, so with retention=2 A1 may be collected.
+    assert not old_paths["A"].exists()
+    assert current_paths["A"].exists()
+    assert a3.exists()
+
+    # B and C were untouched. Migration must preserve both their current and
+    # previous immutable shards instead of treating the A-only publication as
+    # a repository-wide retention generation advance.
+    assert old_paths["B"].exists()
+    assert current_paths["B"].exists()
+    assert old_paths["C"].exists()
+    assert current_paths["C"].exists()
+
+    # Migration must persist the new per-company v2 contract.
+    retention = json.loads(
+        (output.parent / "shard_retention.json").read_text()
+    )
+
+    assert retention["schema_version"] == "publication-shard-retention.v2"
+    assert retention["retention_generations"] == 2
+
+    assert retention["company_generations"]["A"] == [
+        a3.name,
+        current_paths["A"].name,
+    ]
+    assert retention["company_generations"]["B"] == [
+        current_paths["B"].name,
+        old_paths["B"].name,
+    ]
+    assert retention["company_generations"]["C"] == [
+        current_paths["C"].name,
+        old_paths["C"].name,
+    ]
