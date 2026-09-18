@@ -189,7 +189,7 @@ def _peer_median_evidence(
             continue
 
         if scope and count >= 0:
-            result[scope] = count
+            result[scope] = max(result.get(scope, 0), count)
 
     return result
 
@@ -267,6 +267,8 @@ def build_multiple_policy(
             ]
             recalibrated_assumptions.remove("target_peg")
 
+            # The current PEG calibration is based on a collapsed peer sample, so its
+            # PEG provenance must not be published.
             current_evidence = {
                 evidence_id
                 for evidence_id in current_evidence
@@ -275,6 +277,20 @@ def build_multiple_policy(
                     and ":target_peg:" in str(evidence_id)
                 )
             }
+
+            # The preserved PEG value predates the current calibration generation.
+            # Historical policy files may contain accumulated peer-median generations,
+            # and those evidence IDs cannot be proven to correspond to the preserved
+            # target value. Do not republish stale PEG peer provenance.
+            prior_evidence = {
+                evidence_id
+                for evidence_id in prior_evidence
+                if not (
+                    str(evidence_id).startswith("peer-median:")
+                    and ":target_peg:" in str(evidence_id)
+                )
+            }
+
         elif "target_peg" in recalibrated_assumptions:
             preserved_assumptions.pop("target_peg", None)
 
