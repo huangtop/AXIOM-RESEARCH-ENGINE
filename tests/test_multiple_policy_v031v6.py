@@ -158,10 +158,10 @@ def test_peer_target_peg_uses_normalized_growth_and_migrates_legacy_published_pe
     overview_per_company.mkdir(parents=True)
 
     companies = [
-        ("AAA", "c1", "0.20"),
-        ("BBB", "c2", "0.25"),
-        ("CCC", "c3", "0.30"),
-        ("DDD", "c4", "0.35"),
+        ("AAA", "c1", "1.20"),
+        ("BBB", "c2", "1.25"),
+        ("CCC", "c3", "1.50"),
+        ("DDD", "c4", "1.75"),
     ]
     yahoo_root = tmp_path / "data/generated/company"
     yahoo_root.mkdir(parents=True)
@@ -287,16 +287,19 @@ def test_peer_target_peg_uses_normalized_growth_and_migrates_legacy_published_pe
     }
     c1 = by_company["c1"]
 
+    # Yahoo normalized PEG growth is a fractional rate even above 1:
+    # 1.50 means 150%, not 1.50%.
+    #
     # Subject company c1 is excluded. Peer PEG observations are:
     #
-    # BBB: (100 / 10) / (0.25 * 100) = 0.4
-    # CCC: (100 / 10) / (0.30 * 100) = 1/3
-    # DDD: (100 / 10) / (0.35 * 100) = 2/7
+    # BBB: (100 / 10) / (1.25 * 100) = 0.08
+    # CCC: (100 / 10) / (1.50 * 100) = 1/15
+    # DDD: (100 / 10) / (1.75 * 100) = 2/35
     #
-    # Median = 1/3.
+    # Median = 1/15.
     assert math.isclose(
         c1["assumptions"]["target_peg"],
-        1.0 / 3.0,
+        1.0 / 15.0,
         rel_tol=1e-12,
     )
 

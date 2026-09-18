@@ -128,18 +128,23 @@ def calculate_seven_models(
         else "forward_eps_growth"
     )
 
-    raw_peg_growth = (
-        normalized_peg_growth
-        if normalized_peg_growth is not None
-        else forward_eps_growth
-    )
-
-    peg_growth = (
-        raw_peg_growth
-        if raw_peg_growth is not None
-        and Decimal("0") < raw_peg_growth <= Decimal("1")
-        else None
-    )
+    if normalized_peg_growth is not None:
+        # Yahoo normalized PEG growth is a fractional rate:
+        # 1.5130 means 151.30%, so values above 1 are valid.
+        peg_growth = (
+            normalized_peg_growth
+            if normalized_peg_growth > Decimal("0")
+            else None
+        )
+    else:
+        # Legacy fiscal-transition growth retains its historical sustainable
+        # bound. It is only a fallback and has a different semantic contract.
+        peg_growth = (
+            forward_eps_growth
+            if forward_eps_growth is not None
+            and Decimal("0") < forward_eps_growth <= Decimal("1")
+            else None
+        )
 
     peg_value = product([
         forward_eps,

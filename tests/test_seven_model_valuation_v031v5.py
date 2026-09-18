@@ -87,3 +87,39 @@ def test_peg_prefers_normalized_growth_without_redefining_forward_eps_growth():
         "target_peg",
     ]
     assert peg["missing_inputs"] == []
+
+def test_peg_treats_normalized_growth_above_one_as_fractional_rate():
+    estimates = {
+        "forward_eps": metric("10"),
+        # Yahoo fractional growth rate: 1.5130 means 151.30%, not 1.513%.
+        "normalized_peg_growth": metric("1.5130"),
+    }
+    assumptions = {
+        "target_peg": "1",
+    }
+
+    models = calculate_seven_models(
+        {},
+        estimates,
+        assumptions,
+    )
+
+    peg = models["peg"]
+
+    # PEG uses percentage points at the valuation boundary:
+    # 10 EPS * 151.30 growth points * 1.0 PEG = 1513.
+    expected = (
+        Decimal("10")
+        * Decimal("1.5130")
+        * Decimal("100")
+        * Decimal("1")
+    )
+
+    assert peg["status"] == "calculated"
+    assert Decimal(peg["fair_value"]) == expected
+    assert Decimal(peg["fair_value"]) == Decimal("1513.0000")
+    assert peg["input_names"] == [
+        "forward_eps",
+        "normalized_peg_growth",
+        "target_peg",
+    ]
