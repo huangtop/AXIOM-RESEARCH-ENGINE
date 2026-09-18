@@ -328,6 +328,138 @@ def test_peer_target_peg_uses_normalized_growth_and_migrates_legacy_published_pe
     # Non-peer provenance still survives the merge.
     assert "legacy-evidence" in c1["evidence_ids"]
 
+def test_peer_target_peg_preserves_published_value_when_same_scope_peer_sample_collapses(
+    tmp_path: Path,
+):
+    coverage_root = tmp_path / "data/generated/full_market_coverage"
+    per_company = coverage_root / "per-company"
+    per_company.mkdir(parents=True)
+
+    overview_root = tmp_path / "data/generated/company_overview"
+    overview_per_company = overview_root / "per-company"
+    overview_per_company.mkdir(parents=True)
+
+    companies = [
+        ("AAA", "c1", "0.20"),
+        ("BBB", "c2", "0.25"),
+        ("CCC", "c3", "0.30"),
+        ("DDD", "c4", "0.35"),
+    ]
+
+    yahoo_root = tmp_path / "data/generated/company"
+    yahoo_root.mkdir(parents=True)
+    (yahoo_root / "yahoo_company_snapshot.json").write_text(
+        json.dumps(
+            {
+                "symbols": {
+                    ticker: {
+                        "symbol": ticker,
+                        "forward_eps": "10",
+                        "normalized_peg_growth": growth,
+                        "normalized_peg_growth_basis": (
+                            "YAHOO_GROWTH_ESTIMATES_PLUS_1Y"
+                        ),
+                    }
+                    for ticker, _, growth in companies
+                }
+            }
+        )
+    )
+
+    ticker_to_file = {}
+    overview_ticker_to_file = {}
+
+    for ticker, company_id, growth in companies:
+        filename = f"{company_id}.json"
+        ticker_to_file[ticker] = f"per-company/{filename}"
+        overview_ticker_to_file[ticker] = filename
+
+        (overview_per_company / filename).write_text(
+            json.dumps(
+                {
+                    "company_id": company_id,
+                    "path": {
+                        "sector": {"id": "sector:test"},
+                        "theme": {"id": "theme:test"},
+                    },
+                }
+            )
+        )
+
+        (per_company / filename).write_text(
+            json.dumps(
+                {
+                    "company_id": company_id,
+                    "primary_security": {"ticker": ticker},
+                    "market": {"current_price": "100"},
+                    "financials": {},
+                    "estimates": {},
+                }
+            )
+        )
+
+    (coverage_root / "full_market_coverage.json").write_text(
+        json.dumps(
+            {
+                "indexes": {
+                    "ticker_to_file": ticker_to_file,
+                }
+            }
+        )
+    )
+    (overview_root / "index.json").write_text(
+        json.dumps(
+            {
+                "ticker_to_file": overview_ticker_to_file,
+            }
+        )
+    )
+
+    existing_path = tmp_path / "data/knowledge/valuation_assumptions.json"
+    existing_path.parent.mkdir(parents=True)
+    existing_path.write_text(
+        json.dumps(
+            [
+                {
+                    "company_id": "c1",
+                    "policy_version": "published-normalized-peg",
+                    "evidence_ids": [
+                        "published-evidence",
+                        "peer-median:sector:test:target_peg:n40",
+                    ],
+                    "assumptions": {
+                        "target_peg": 1.0125,
+                    },
+                }
+            ]
+        )
+    )
+
+    report = build_multiple_policy(tmp_path)
+
+    by_company = {
+        row["company_id"]: row
+        for row in report["companies"]
+    }
+    c1 = by_company["c1"]
+
+    # Current generation has only three same-sector PEG peers, while the
+    # published generation had forty. This is a migration-coverage collapse,
+    # not evidence that the economic target itself changed.
+    assert c1["assumptions"]["target_peg"] == 1.0125
+
+    peg_evidence = [
+        evidence_id
+        for evidence_id in c1["evidence_ids"]
+        if evidence_id.startswith("peer-median:")
+        and ":target_peg:" in evidence_id
+    ]
+
+    assert peg_evidence == [
+        "peer-median:sector:test:target_peg:n40"
+    ]
+    assert "published-evidence" in c1["evidence_ids"]
+
 def test_peer_target_peg_uses_current_yahoo_growth_not_previous_full_market_generation(
     tmp_path: Path,
 ):

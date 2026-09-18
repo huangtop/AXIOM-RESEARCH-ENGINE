@@ -168,6 +168,46 @@ def _peer_assumptions(root: Path) -> tuple[dict[str, dict[str, Any]], dict[str, 
         "assumption_company_counts": method_counts,
     }
 
+def _peer_median_evidence(
+    evidence_ids: list[str] | set[str],
+    assumption: str,
+) -> dict[str, int]:
+    result: dict[str, int] = {}
+
+    marker = f":{assumption}:n"
+    prefix = "peer-median:"
+
+    for evidence_id in evidence_ids:
+        text = str(evidence_id)
+        if not text.startswith(prefix) or marker not in text:
+            continue
+
+        scope, count_text = text[len(prefix):].rsplit(marker, 1)
+        try:
+            count = int(count_text)
+        except ValueError:
+            continue
+
+        if scope and count >= 0:
+            result[scope] = count
+
+    return result
+
+
+def _peer_sample_collapsed(
+    prior_evidence: list[str] | set[str],
+    current_evidence: list[str] | set[str],
+    assumption: str,
+) -> bool:
+    prior = _peer_median_evidence(prior_evidence, assumption)
+    current = _peer_median_evidence(current_evidence, assumption)
+
+    for scope, current_count in current.items():
+        prior_count = prior.get(scope)
+        if prior_count is not None and current_count < prior_count:
+            return True
+
+    return False
 
 def build_multiple_policy(
     root: Path,
@@ -205,16 +245,41 @@ def build_multiple_policy(
         preserved_assumptions = dict(assumptions)
 
         recalibrated_assumptions = set(company.get("assumptions", {}))
+        current_evidence = set(company.get("evidence_ids") or [])
+        prior_evidence = set(prior.get("evidence_ids") or [])
 
-        # Preserve already-published assumption values against ordinary market
-        # movement. target_peg remains the migration exception: when current
-        # normalized-growth peer calibration succeeds, replace the legacy PEG value.
-        if "target_peg" in recalibrated_assumptions:
+        # During normalized-PEG migration, a temporarily incomplete Yahoo
+        # generation can collapse the valid peer sample. Do not let a smaller
+        # same-scope sample overwrite an already-published PEG target.
+        preserve_prior_peg = (
+            "target_peg" in recalibrated_assumptions
+            and "target_peg" in preserved_assumptions
+            and _peer_sample_collapsed(
+                prior_evidence,
+                current_evidence,
+                "target_peg",
+            )
+        )
+
+        if preserve_prior_peg:
+            company["assumptions"]["target_peg"] = preserved_assumptions[
+                "target_peg"
+            ]
+            recalibrated_assumptions.remove("target_peg")
+
+            current_evidence = {
+                evidence_id
+                for evidence_id in current_evidence
+                if not (
+                    str(evidence_id).startswith("peer-median:")
+                    and ":target_peg:" in str(evidence_id)
+                )
+            }
+        elif "target_peg" in recalibrated_assumptions:
             preserved_assumptions.pop("target_peg", None)
 
         company["assumptions"].update(preserved_assumptions)
 
-        prior_evidence = set(prior.get("evidence_ids") or [])
         if recalibrated_assumptions:
             prior_evidence = {
                 evidence_id
@@ -229,7 +294,7 @@ def build_multiple_policy(
             }
 
         company["evidence_ids"] = sorted(
-            set(company.get("evidence_ids") or []) | prior_evidence
+            current_evidence | prior_evidence
         )
     rejected: list[dict[str, Any]] = []
     securities_file = root / "data/universe/securities.json"
