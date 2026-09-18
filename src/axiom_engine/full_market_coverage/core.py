@@ -315,7 +315,7 @@ def _dual_fy_seven_models(
         or Decimal("5.5")
     )
     current_ev_multiple = num(snapshot.get("enterprise_to_ebitda"))
-    target_peg = Decimal("0.9")  # AXIOM CURRENT_FY legacy PEG contract
+    target_peg = num(assumptions.get("target_peg"))
     success_probability = (
         num(assumptions.get("milestone_success_probability")) or Decimal("0.5")
     )
@@ -422,10 +422,15 @@ def _dual_fy_seven_models(
             else None
         )
 
-        # Existing behavior below is intentionally unchanged.
         peg_value = (
             eps * growth_pct * target_peg
-            if eps is not None and eps > 0 and growth_pct is not None
+            if (
+                eps is not None
+                and eps > 0
+                and growth_pct is not None
+                and target_peg is not None
+                and target_peg > 0
+            )
             else None
         )
         pb_value = (

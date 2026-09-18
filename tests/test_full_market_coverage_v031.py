@@ -30,7 +30,9 @@ def test_dual_fy_models_never_use_current_to_next_growth_for_next_fy_peg():
             "shares_outstanding": "146000000",
         },
         {"diluted_shares_outstanding": {"value": "146000000"}},
-        {},
+        {
+            "target_peg": "0.9",
+        },
         {"current_price": "1484.98"},
         {},
     )
@@ -97,7 +99,7 @@ def test_dell_negative_horizon_growth_makes_current_fy_peg_unavailable():
         peg["weighting_exclusion_reason"]
         == "HORIZON_EPS_OR_MATCHED_GROWTH_UNAVAILABLE"
     )
-def test_dell_current_fy_peg_uses_normalized_growth_not_fiscal_transition():
+def test_dell_current_fy_peg_uses_normalized_growth_and_published_target_peg():
     current_eps = Decimal("25.88376")
     next_eps = Decimal("24.66365")
     transition_growth = next_eps / current_eps - Decimal("1")
@@ -132,7 +134,9 @@ def test_dell_current_fy_peg_uses_normalized_growth_not_fiscal_transition():
         {
             "diluted_shares_outstanding": {"value": "684000000"},
         },
-        {},
+        {
+            "target_peg": "1.0125115160599578",
+        },
         {
             "current_price": "506.62",
         },
@@ -153,11 +157,13 @@ def test_dell_current_fy_peg_uses_normalized_growth_not_fiscal_transition():
         == "YAHOO_GROWTH_ESTIMATES_PLUS_1Y"
     )
 
+    published_target_peg = Decimal("1.0125115160599578")
+
     expected_peg = (
         current_eps
         * Decimal("0.1077")
         * Decimal("100")
-        * Decimal("0.9")
+        * published_target_peg
     )
 
     assert Decimal(
