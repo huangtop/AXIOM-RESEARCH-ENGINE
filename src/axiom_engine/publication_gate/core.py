@@ -56,6 +56,216 @@ def _card_symbols(card: Mapping[str, Any]) -> set[str]:
     return symbols
 
 
+PUBLICATION_FINANCIAL_FIELDS = (
+    "diluted_shares_outstanding",
+    "shares_outstanding",
+    "cash_and_cash_equivalents",
+    "total_debt",
+    "free_cash_flow",
+    "ebitda",
+    "book_value_per_share",
+    "diluted_eps_ttm",
+    "eps_ttm",
+)
+
+PUBLICATION_ESTIMATE_FIELDS = (
+    "forward_eps",
+    "forward_eps_growth",
+    "growth_estimate",
+    "forward_revenue",
+    "forward_ebitda",
+    "ebitda_ttm",
+)
+
+PUBLICATION_MODEL_FIELDS = (
+    "status",
+    "fair_value",
+    "applicability",
+    "role",
+    "reason_code",
+    "bear_fair_value",
+    "base_fair_value",
+    "bull_fair_value",
+)
+
+
+def _pick(source: Mapping[str, Any], fields: Iterable[str]) -> dict[str, Any]:
+    return {
+        field: source[field]
+        for field in fields
+        if field in source
+    }
+
+
+def _publication_metric(metric: Any) -> Any:
+    if not isinstance(metric, Mapping):
+        return metric
+    return _pick(metric, ("status", "value"))
+
+
+def _publication_model(name: str, model: Any) -> Any:
+    if not isinstance(model, Mapping):
+        return model
+
+    projected = _pick(model, PUBLICATION_MODEL_FIELDS)
+
+    # The WordPress valuation consumer directly reads these Forward P/E
+    # inputs. Other model input/assumption/parameter bags are backend
+    # diagnostics and must not leak into the frontend publication payload.
+    if name == "forward_pe":
+        inputs = model.get("inputs")
+        if isinstance(inputs, Mapping):
+            projected_inputs = _pick(
+                inputs,
+                ("fiscal_year", "eps", "observed_trailing_pe"),
+            )
+            if projected_inputs:
+                projected["inputs"] = projected_inputs
+
+    return projected
+
+
+def _publication_horizon(horizon: Any) -> Any:
+    if not isinstance(horizon, Mapping):
+        return horizon
+
+    projected = _pick(
+        horizon,
+        (
+            "fiscal_year",
+            "eps",
+            "revenue",
+            "eps_growth",
+            "growth_basis",
+        ),
+    )
+
+    models = horizon.get("models")
+    if isinstance(models, Mapping):
+        projected["models"] = {
+            str(name): _publication_model(str(name), model)
+            for name, model in models.items()
+        }
+
+    return projected
+
+
+def _publication_valuation(valuation: Any) -> dict[str, Any]:
+    if not isinstance(valuation, Mapping):
+        return {}
+
+    projected = _pick(
+        valuation,
+        (
+            "primary_model",
+            "selected_model",
+            "preferred_model",
+            "fair_value",
+        ),
+    )
+
+    profile = valuation.get("profile")
+    if isinstance(profile, Mapping):
+        projected_profile = _pick(profile, ("primary_model",))
+        if projected_profile:
+            projected["profile"] = projected_profile
+
+    # The frontend only uses unified scenarios as a fallback for
+    # bear/base/bull fair values. Do not publish the full unified contract.
+    unified = valuation.get("unified_contract")
+    if isinstance(unified, Mapping):
+        scenarios = unified.get("scenarios")
+        if isinstance(scenarios, Mapping):
+            projected_scenarios: dict[str, Any] = {}
+            for name in ("bear", "base", "bull"):
+                row = scenarios.get(name)
+                if isinstance(row, Mapping) and "fair_value" in row:
+                    projected_scenarios[name] = {
+                        "fair_value": row["fair_value"]
+                    }
+            if projected_scenarios:
+                projected["unified_contract"] = {
+                    "scenarios": projected_scenarios
+                }
+
+    return projected
+
+
+def _publication_valuation_card(card: Mapping[str, Any]) -> dict[str, Any]:
+    """Project a rich Full Market card onto the WordPress publication contract.
+
+    This is deliberately a positive allowlist. New Full Market diagnostics,
+    provenance, financial history, or backend-only model fields must not
+    automatically increase immutable Publication shard size.
+    """
+    projected: dict[str, Any] = {}
+
+    company = card.get("company")
+    if isinstance(company, Mapping):
+        projected_company = _pick(
+            company,
+            ("company_id", "display_name", "legal_name"),
+        )
+        valuation_profile = company.get("valuation_profile")
+        if isinstance(valuation_profile, Mapping):
+            projected_profile = _pick(
+                valuation_profile,
+                ("primary_model",),
+            )
+            if projected_profile:
+                projected_company["valuation_profile"] = projected_profile
+        if projected_company:
+            projected["company"] = projected_company
+
+    primary_security = card.get("primary_security")
+    if isinstance(primary_security, Mapping):
+        projected_security = _pick(
+            primary_security,
+            ("ticker", "currency"),
+        )
+        if projected_security:
+            projected["primary_security"] = projected_security
+
+    market = card.get("market")
+    if isinstance(market, Mapping):
+        projected_market = _pick(
+            market,
+            ("current_price", "currency", "as_of_date"),
+        )
+        if projected_market:
+            projected["market"] = projected_market
+
+    financials = card.get("financials")
+    if isinstance(financials, Mapping):
+        projected["financials"] = {
+            field: _publication_metric(financials[field])
+            for field in PUBLICATION_FINANCIAL_FIELDS
+            if field in financials
+        }
+
+    estimates = card.get("estimates")
+    if isinstance(estimates, Mapping):
+        projected["estimates"] = {
+            field: _publication_metric(estimates[field])
+            for field in PUBLICATION_ESTIMATE_FIELDS
+            if field in estimates
+        }
+
+    horizons = card.get("valuation_horizons")
+    if isinstance(horizons, Mapping):
+        projected["valuation_horizons"] = {
+            name: _publication_horizon(horizons[name])
+            for name in ("CURRENT_FY", "NEXT_FY")
+            if name in horizons
+        }
+
+    projected_valuation = _publication_valuation(card.get("valuation"))
+    if projected_valuation:
+        projected["valuation"] = projected_valuation
+
+    return projected
+
+
 def _valuation_cards(
     root: Path,
     valuation_path: str,
@@ -134,6 +344,7 @@ def build_publication_catalog(
     coverage_service = CoveragePolicyService(root=root, projection_path=root / coverage_path)
     records: list[dict[str, Any]] = []
     projections: dict[str, dict[str, Any]] = {}
+    projection_aliases: dict[str, set[str]] = {}
     for card in _valuation_cards(
         root,
         valuation_path,
@@ -163,9 +374,13 @@ def build_publication_catalog(
             "current_price": market.get("current_price"),
             "fair_value": valuation_summary.get("fair_value"),
         })
+        # Alias discovery belongs to the rich Full Market card. The compact
+        # frontend projection intentionally does not publish ``securities``.
+        projection_aliases[ticker] = _card_symbols(card)
+
         projections[ticker] = {
-            "schema_version": "company-page-projection.v031f.2.1",
-            "version": "V031F.2.1",
+            "schema_version": "company-page-projection.v031f.2.2",
+            "version": "V031F.2.2",
             "company_id": company_id,
             "ticker": ticker,
             "product_scope": decision.get("product_scope") or "basic_market",
@@ -175,18 +390,15 @@ def build_publication_catalog(
                 "reason_codes": list(decision.get("reason_codes") or []),
                 "review_status": decision.get("review_status"),
             },
-            "valuation_card": card,
+            "valuation_card": _publication_valuation_card(card),
         }
 
     records.sort(key=lambda row: str(row.get("ticker") or ""))
     index: dict[str, str] = {}
-    for ticker, projection in projections.items():
+    for ticker in projections:
         filename = _filename(ticker)
-        card = projection.get("valuation_card") or {}
-        for security in card.get("securities") or []:
-            alias = str(security.get("ticker") or "").upper()
-            if alias:
-                index[alias] = filename
+        for alias in projection_aliases.get(ticker, set()):
+            index[alias] = filename
         index[ticker] = filename
     axis_counts = {
         axis: sum(bool((row.get("scope_axes") or {}).get(axis)) for row in records)

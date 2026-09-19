@@ -53,11 +53,148 @@ def test_real_catalog_separates_market_publication_from_research_actions():
     assert by_ticker["F"]["product_scope"] == "basic_market"
     assert by_ticker["F"]["scope_axes"]["research_page"] is False
     assert "BOTZ" not in by_ticker
-    nvda_models = report["_company_projections"]["NVDA"]["valuation_card"]["valuation"][
-        "models"
-    ]
+    nvda_projection = report["_company_projections"]["NVDA"]
+    assert nvda_projection["schema_version"] == "company-page-projection.v031f.2.2"
+    assert nvda_projection["version"] == "V031F.2.2"
+
+    nvda_card = nvda_projection["valuation_card"]
+    nvda_models = nvda_card["valuation_horizons"]["CURRENT_FY"]["models"]
     assert set(nvda_models) == VALUATION_MODELS
     assert len(nvda_models) == 7
+
+
+def test_publication_valuation_card_is_frontend_allowlist_not_full_market_copy():
+    report = build_publication_catalog(ROOT, symbols=["NVDA"])
+    projection = report["_company_projections"]["NVDA"]
+    card = projection["valuation_card"]
+
+    assert projection["schema_version"] == "company-page-projection.v031f.2.2"
+    assert projection["version"] == "V031F.2.2"
+
+    # Full Market / valuation-card API retain these rich backend fields.
+    # Publication must not duplicate them into immutable frontend shards.
+    assert "financial_history" not in card
+    assert "securities" not in card
+
+    assert set(card).issubset(
+        {
+            "company",
+            "primary_security",
+            "market",
+            "financials",
+            "estimates",
+            "valuation_horizons",
+            "valuation",
+        }
+    )
+
+    assert card["company"]["company_id"]
+    assert card["primary_security"]["ticker"] == "NVDA"
+
+    valuation = card["valuation"]
+    assert "models" not in valuation
+    assert "model_diagnostics" not in valuation
+    assert "reference_values" not in valuation
+    assert "routing" not in valuation
+    assert "aggregation" not in valuation
+
+    unified = valuation.get("unified_contract") or {}
+    assert set(unified).issubset({"scenarios"})
+    for scenario in (unified.get("scenarios") or {}).values():
+        assert set(scenario).issubset({"fair_value"})
+
+
+def test_publication_horizon_models_expose_only_wordpress_contract():
+    report = build_publication_catalog(ROOT, symbols=["NVDA"])
+    card = report["_company_projections"]["NVDA"]["valuation_card"]
+
+    for basis in ("CURRENT_FY", "NEXT_FY"):
+        horizon = card["valuation_horizons"][basis]
+
+        assert set(horizon).issubset(
+            {
+                "fiscal_year",
+                "eps",
+                "revenue",
+                "eps_growth",
+                "growth_basis",
+                "models",
+            }
+        )
+
+        models = horizon["models"]
+        assert set(models) == VALUATION_MODELS
+
+        for name, model in models.items():
+            assert set(model).issubset(
+                {
+                    "status",
+                    "fair_value",
+                    "applicability",
+                    "role",
+                    "reason_code",
+                    "bear_fair_value",
+                    "base_fair_value",
+                    "bull_fair_value",
+                    "inputs",
+                }
+            )
+
+            assert "model_inputs" not in model
+            assert "assumptions" not in model
+            assert "parameters" not in model
+
+            if name == "forward_pe" and "inputs" in model:
+                assert set(model["inputs"]).issubset(
+                    {
+                        "fiscal_year",
+                        "eps",
+                        "observed_trailing_pe",
+                    }
+                )
+            else:
+                assert "inputs" not in model
+
+
+def test_publication_compaction_preserves_secondary_share_class_aliases():
+    report = build_publication_catalog(ROOT, symbols=["GOOG"])
+
+    projection = report["_company_projections"]["GOOGL"]
+    card = projection["valuation_card"]
+    index = report["indexes"]["ticker_to_file"]
+
+    # Alias routing is derived before projection from the rich Full Market card,
+    # even though the frontend shard no longer publishes ``securities``.
+    assert "securities" not in card
+    assert index["GOOG"] == "GOOGL.json"
+    assert index["GOOGL"] == "GOOGL.json"
+
+
+def test_publication_projection_is_materially_smaller_than_full_market_card():
+    report = build_publication_catalog(ROOT, symbols=["NVDA"])
+    compact = report["_company_projections"]["NVDA"]["valuation_card"]
+
+    service = FullMarketCoverageService(root=ROOT)
+    rich = service.get("NVDA")
+
+    compact_bytes = len(
+        json.dumps(
+            compact,
+            ensure_ascii=False,
+            separators=(",", ":"),
+        ).encode("utf-8")
+    )
+    rich_bytes = len(
+        json.dumps(
+            rich,
+            ensure_ascii=False,
+            separators=(",", ":"),
+        ).encode("utf-8")
+    )
+
+    # This is deliberately loose enough to avoid testing exact generated-data
+    # byte counts while still preventing accidental rich-card publication.
+    assert compact_bytes < rich_bytes * 0.25
 
 
 def test_per_company_archive_supports_single_ticker_lookup_without_snapshot(tmp_path: Path):
