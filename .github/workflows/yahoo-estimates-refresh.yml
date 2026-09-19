@@ -73,8 +73,12 @@ jobs:
           echo "Downstream dirty symbols:"
           wc -l /tmp/axiom-downstream-symbols.txt
 
-          python scripts/build_full_market_coverage.py \
-            --symbols-file /tmp/axiom-downstream-symbols.txt
+          if [ -s /tmp/axiom-downstream-symbols.txt ]; then
+            python scripts/build_full_market_coverage.py \
+              --symbols-file /tmp/axiom-downstream-symbols.txt
+          else
+            echo "No downstream dirty symbols; skipping Full Market incremental build."
+          fi
 
           python scripts/build_coverage_policy.py \
             --dirty-symbols-output /tmp/axiom-coverage-dirty-symbols.txt
@@ -91,8 +95,12 @@ jobs:
           echo "Publication dirty symbols:"
           wc -l /tmp/axiom-publication-dirty-symbols.txt
 
-          python scripts/build_publication_catalog.py \
-            --symbols-file /tmp/axiom-publication-dirty-symbols.txt
+          if [ -s /tmp/axiom-publication-dirty-symbols.txt ]; then
+            python scripts/build_publication_catalog.py \
+              --symbols-file /tmp/axiom-publication-dirty-symbols.txt
+          else
+            echo "No publication dirty symbols; skipping Publication incremental build."
+          fi
       - name: Validate estimates and valuation publication contracts
         run: >-
           pytest -q
