@@ -55,12 +55,44 @@ jobs:
       - name: Rebuild estimate-driven valuation artifacts
         run: |
           python scripts/build_estimate_population_v031v6.py
-          python scripts/build_multiple_policy_v031v6.py
+
+          python scripts/build_multiple_policy_v031v6.py \
+            --dirty-symbols-output /tmp/axiom-policy-dirty-symbols.txt
+
+          cat \
+            /tmp/axiom-daily-estimate-symbols.txt \
+            /tmp/axiom-policy-dirty-symbols.txt \
+            | awk 'NF' \
+            | sort -u \
+            > /tmp/axiom-downstream-symbols.txt
+
+          echo "Source dirty symbols:"
+          wc -l /tmp/axiom-daily-estimate-symbols.txt
+          echo "Policy dirty symbols:"
+          wc -l /tmp/axiom-policy-dirty-symbols.txt
+          echo "Downstream dirty symbols:"
+          wc -l /tmp/axiom-downstream-symbols.txt
+
           python scripts/build_full_market_coverage.py \
-            --symbols-file /tmp/axiom-daily-estimate-symbols.txt
-          python scripts/build_coverage_policy.py
+            --symbols-file /tmp/axiom-downstream-symbols.txt
+
+          python scripts/build_coverage_policy.py \
+            --dirty-symbols-output /tmp/axiom-coverage-dirty-symbols.txt
+
+          cat \
+            /tmp/axiom-downstream-symbols.txt \
+            /tmp/axiom-coverage-dirty-symbols.txt \
+            | awk 'NF' \
+            | sort -u \
+            > /tmp/axiom-publication-dirty-symbols.txt
+
+          echo "Coverage dirty symbols:"
+          wc -l /tmp/axiom-coverage-dirty-symbols.txt
+          echo "Publication dirty symbols:"
+          wc -l /tmp/axiom-publication-dirty-symbols.txt
+
           python scripts/build_publication_catalog.py \
-            --symbols-file /tmp/axiom-daily-estimate-symbols.txt
+            --symbols-file /tmp/axiom-publication-dirty-symbols.txt
       - name: Validate estimates and valuation publication contracts
         run: >-
           pytest -q

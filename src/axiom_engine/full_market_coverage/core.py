@@ -808,7 +808,7 @@ def build_full_market_coverage(
     assumption_rows_by_company = {
         str(row.get("company_id")): row
         for row in assumption_rows
-        if row.get("company_id") and row.get("evidence_ids")
+        if row.get("company_id")
     }
     market_symbols = market_rows(market_payload)
     snapshot_symbols = (
