@@ -254,7 +254,14 @@ def test_http_exposes_full_market_list_and_company_card():
     assert listing["summary"]["source"] == "compact_publication_catalog"
     assert card_response["status"].startswith("200")
     assert card["primary_security"]["ticker"] == "NVDA"
-    assert set(card["valuation"]["models"]) == MODELS
+
+    # HTTP fallback is backed by the compact Publication projection.
+    # Rich valuation.models is intentionally not published; the frontend
+    # model contract lives under valuation_horizons.
+    assert "models" not in card["valuation"]
+    assert set(card["valuation_horizons"]["CURRENT_FY"]["models"]) == MODELS
+    assert set(card["valuation_horizons"]["NEXT_FY"]["models"]) == MODELS
+
     assert card["coverage_policy"]["research_scope"] == "core"
     assert contextual_response["status"].startswith("200")
     assert contextual["primary_security"]["ticker"] == "F"

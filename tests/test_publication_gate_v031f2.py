@@ -170,31 +170,34 @@ def test_publication_compaction_preserves_secondary_share_class_aliases():
     assert index["GOOGL"] == "GOOGL.json"
 
 
-def test_publication_projection_is_materially_smaller_than_full_market_card():
+def test_publication_projection_excludes_rich_backend_payloads():
     report = build_publication_catalog(ROOT, symbols=["NVDA"])
     compact = report["_company_projections"]["NVDA"]["valuation_card"]
 
-    service = FullMarketCoverageService(root=ROOT)
-    rich = service.get("NVDA")
+    # Publication is a positive frontend allowlist.  Do not compare its byte
+    # size with mutable generated Full Market artifacts because workflows may
+    # legitimately rebuild those artifacts before pytest runs.
+    assert "financial_history" not in compact
+    assert "securities" not in compact
 
-    compact_bytes = len(
-        json.dumps(
-            compact,
-            ensure_ascii=False,
-            separators=(",", ":"),
-        ).encode("utf-8")
-    )
-    rich_bytes = len(
-        json.dumps(
-            rich,
-            ensure_ascii=False,
-            separators=(",", ":"),
-        ).encode("utf-8")
-    )
+    valuation = compact["valuation"]
 
-    # This is deliberately loose enough to avoid testing exact generated-data
-    # byte counts while still preventing accidental rich-card publication.
-    assert compact_bytes < rich_bytes * 0.25
+    for field in (
+        "models",
+        "model_diagnostics",
+        "reference_values",
+        "routing",
+        "aggregation",
+    ):
+        assert field not in valuation
+
+    # The seven-model frontend contract remains available through the compact
+    # fiscal-horizon representation.
+    for basis in ("CURRENT_FY", "NEXT_FY"):
+        assert (
+            set(compact["valuation_horizons"][basis]["models"])
+            == VALUATION_MODELS
+        )
 
 
 def test_per_company_archive_supports_single_ticker_lookup_without_snapshot(tmp_path: Path):
