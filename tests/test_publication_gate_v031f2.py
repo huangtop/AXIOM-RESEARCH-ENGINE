@@ -199,21 +199,26 @@ def test_publication_projection_excludes_rich_backend_payloads():
             == VALUATION_MODELS
         )
 
-
-def test_per_company_archive_supports_single_ticker_lookup_without_snapshot(tmp_path: Path):
+def test_compact_publication_does_not_shadow_full_market_lookup(tmp_path: Path):
     report = build_publication_catalog(ROOT)
     output = tmp_path / "data/generated/publication_gate/company_catalog.json"
     write_publication_catalog(report, output)
+
     archive = output.parent / "company_projections.zip"
     with ZipFile(archive) as bundle:
         assert "NVDA.json" in bundle.namelist()
+
     service = FullMarketCoverageService(
         root=ROOT,
-        snapshot_path=tmp_path / "missing-full-market.json",
         publication_root=output.parent,
     )
-    assert service.get("NVDA")["primary_security"]["ticker"] == "NVDA"
-    assert service._payload is None
+
+    card = service.get("NVDA")
+
+    assert card["primary_security"]["ticker"] == "NVDA"
+    assert "financial_history" in card
+    assert "models" in card["valuation"]
+    assert service._payload is not None
 
 
 def test_publication_catalog_maps_secondary_share_class_to_primary_projection(tmp_path: Path):

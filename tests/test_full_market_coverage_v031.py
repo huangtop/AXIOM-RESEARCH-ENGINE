@@ -255,10 +255,11 @@ def test_http_exposes_full_market_list_and_company_card():
     assert card_response["status"].startswith("200")
     assert card["primary_security"]["ticker"] == "NVDA"
 
-    # HTTP fallback is backed by the compact Publication projection.
-    # Rich valuation.models is intentionally not published; the frontend
-    # model contract lives under valuation_horizons.
-    assert "models" not in card["valuation"]
+    # The valuation-card API is backed by the rich Full Market artifact.
+    # Compact Publication projections are a separate frontend delivery
+    # contract and must not shadow backend valuation-card responses.
+    assert set(card["valuation"]["models"]) == MODELS
+    assert "financial_history" in card
     assert set(card["valuation_horizons"]["CURRENT_FY"]["models"]) == MODELS
     assert set(card["valuation_horizons"]["NEXT_FY"]["models"]) == MODELS
 

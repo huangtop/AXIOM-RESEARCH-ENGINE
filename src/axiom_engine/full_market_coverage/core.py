@@ -1539,50 +1539,6 @@ class FullMarketCoverageService:
             symbol,
             capability="valuation_card",
         )
-        catalog_path = self.publication_root / "company_catalog.json"
-        if catalog_path.is_file():
-            if self._catalog is None:
-                self._catalog = _load(catalog_path)
-            filename = (
-                (self._catalog.get("indexes") or {})
-                .get("ticker_to_file", {})
-                .get(symbol)
-            )
-            if filename:
-                loose_projection = self.publication_root / "companies" / filename
-                if loose_projection.is_file():
-                    projection = _load(loose_projection)
-                else:
-                    archive = self.publication_root / "company_projections.zip"
-                    try:
-                        with ZipFile(archive) as bundle:
-                            projection = json.loads(bundle.read(filename))
-                    except (
-                        OSError,
-                        KeyError,
-                        BadZipFile,
-                        json.JSONDecodeError,
-                    ) as exc:
-                        raise FullMarketCoverageError(
-                            f"cannot read company projection for {symbol}: {exc}"
-                        ) from exc
-                card = projection.get("valuation_card")
-                if isinstance(card, Mapping):
-                    return {
-                        **card,
-                        "coverage_policy": {
-                            "product_scope": projection.get("product_scope"),
-                            "research_scope": projection.get("research_scope"),
-                            "scope_axes": projection.get("scope_axes") or {},
-                            "reason_codes": (
-                                (projection.get("coverage_policy") or {}).get(
-                                    "reason_codes"
-                                )
-                                or []
-                            ),
-                        },
-                    }
-
         payload = self._get_payload()
         filename = (
             payload.get("indexes", {})
@@ -1600,6 +1556,9 @@ class FullMarketCoverageService:
                 **card,
                 "coverage_policy": {
                     "publication_tier": coverage.get("publication_tier"),
+                    "product_scope": coverage.get("product_scope"),
+                    "research_scope": coverage.get("research_scope"),
+                    "scope_axes": coverage.get("scope_axes") or {},
                     "reason_codes": coverage.get("reason_codes") or [],
                 },
             }
@@ -1617,6 +1576,9 @@ class FullMarketCoverageService:
             **payload["cards"][position],
             "coverage_policy": {
                 "publication_tier": coverage.get("publication_tier"),
+                "product_scope": coverage.get("product_scope"),
+                "research_scope": coverage.get("research_scope"),
+                "scope_axes": coverage.get("scope_axes") or {},
                 "reason_codes": coverage.get("reason_codes") or [],
             },
         }
