@@ -1,11 +1,12 @@
 {
   "requested": 5846,
-  "succeeded": 5815,
-  "failed": 31,
+  "succeeded": 5813,
+  "failed": 33,
   "skipped_existing": 0,
   "failures": {
     "AFBI": "PreviousCloseResponseError: Yahoo chart response is missing daily closes",
     "ANSC": "PreviousCloseResponseError: Yahoo chart response is missing daily closes",
+    "AVB": "PreviousCloseResponseError: Yahoo chart response is missing daily closes",
     "AXIA": "PreviousCloseResponseError: Yahoo chart response is missing daily closes",
     "BNRG": "PreviousCloseResponseError: Yahoo chart response is missing daily closes",
     "BNZI": "PreviousCloseResponseError: Yahoo chart response is missing daily closes",
@@ -15,9 +16,10 @@
     "EMPG": "PreviousCloseError: Yahoo history request failed: HTTP 404",
     "EQR": "PreviousCloseResponseError: Yahoo chart response is missing daily closes",
     "FCT": "PreviousCloseResponseError: Yahoo chart response is missing daily closes",
-    "GAMB": "PreviousCloseResponseError: Yahoo chart response is missing daily closes",
+    "GAMB": "PreviousCloseError: Yahoo history request failed: HTTP 404",
     "GREE": "PreviousCloseResponseError: Yahoo chart response is missing daily closes",
     "IPCX": "PreviousCloseResponseError: Yahoo chart response is missing daily closes",
+    "ISSC": "PreviousCloseResponseError: Yahoo chart response is missing daily closes",
     "KVAC": "PreviousCloseResponseError: Yahoo chart response is missing daily closes",
     "LBRDA": "PreviousCloseResponseError: Yahoo chart response is missing daily closes",
     "LMFA": "PreviousCloseError: Yahoo history request failed: HTTP 404",
@@ -41,20 +43,20 @@
     "latest_cache_path": "data/generated/market/previous_close_cache.json",
     "refresh_state_path": "data/generated/provider_cache/yahoo/daily_close_state.json",
     "rows_received": 46,
-    "session_files_written": 4,
+    "session_files_written": 3,
     "latest_symbols": 5885,
-    "history_rows": 108995,
+    "history_rows": 114712,
     "pruned_session_files": 0,
     "retention_days": 365
   },
-  "success_rate": 0.994697,
+  "success_rate": 0.994355,
   "execution": {
-    "generated_at": "2026-09-23T22:27:46.066210+00:00",
+    "generated_at": "2026-09-24T22:28:50.778107+00:00",
     "force": true,
     "skip_existing": false,
     "provider_requests_attempted": 5846,
-    "provider_failure_rate": 0.005302771125555936,
-    "universe_failure_rate": 0.005302771125555936,
+    "provider_failure_rate": 0.005644885391720835,
+    "universe_failure_rate": 0.005644885391720835,
     "ci_failure_rate_basis": "requested_universe"
   }
 }\n
