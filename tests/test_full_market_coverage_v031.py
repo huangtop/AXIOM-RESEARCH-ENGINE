@@ -9,7 +9,12 @@ from axiom_engine.full_market_coverage import (
     build_full_market_coverage,
     write_full_market_coverage,
 )
-from axiom_engine.full_market_coverage.core import _dual_fy_seven_models
+import pytest
+
+from axiom_engine.full_market_coverage.core import (
+    _dual_fy_seven_models,
+    _forward_fundamental_peg_growth,
+)
 from axiom_engine.valuation_http import ValuationWSGIApp
 
 
@@ -37,13 +42,13 @@ def test_dual_fy_models_never_use_current_to_next_growth_for_next_fy_peg():
         {},
     )
 
-    assert Decimal(horizons["CURRENT_FY"]["models"]["peg"]["fair_value"]).quantize(Decimal("0.01")) == Decimal("4555.15")
+    assert Decimal(horizons["CURRENT_FY"]["models"]["peg"]["fair_value"]).quantize(Decimal("0.01")) == Decimal("3473.71")
     assert horizons["NEXT_FY"]["models"]["peg"]["status"] == "unavailable"
     assert horizons["NEXT_FY"]["models"]["peg"]["fair_value"] is None
     assert horizons["NEXT_FY"]["models"]["peg"]["reason_code"] == "HORIZON_EPS_OR_MATCHED_GROWTH_UNAVAILABLE"
 
 
-def test_dell_negative_horizon_growth_makes_current_fy_peg_unavailable():
+def test_negative_eps_growth_without_revenue_growth_makes_peg_unavailable():
     current_eps = Decimal("25.88306")
     next_eps = Decimal("24.66365")
     derived_growth = next_eps / current_eps - Decimal("1")
@@ -99,7 +104,7 @@ def test_dell_negative_horizon_growth_makes_current_fy_peg_unavailable():
         peg["weighting_exclusion_reason"]
         == "HORIZON_EPS_OR_MATCHED_GROWTH_UNAVAILABLE"
     )
-def test_dell_current_fy_peg_uses_normalized_growth_and_published_target_peg():
+def test_dell_current_fy_peg_uses_revenue_anchor_and_published_target_peg():
     current_eps = Decimal("25.88376")
     next_eps = Decimal("24.66365")
     transition_growth = next_eps / current_eps - Decimal("1")
@@ -116,11 +121,11 @@ def test_dell_current_fy_peg_uses_normalized_growth_and_published_target_peg():
                     "revenue": "113538000000",
                     "reported_growth": "1.5130",
                     "peg_growth": format(transition_growth, "f"),
-                    "growth_basis": "CURRENT_FY_TO_NEXT_FY",
+                    "growth_basis": None,
                 },
                 "NEXT_FY": {
                     "eps": format(next_eps, "f"),
-                    "revenue": None,
+                    "revenue": "130307450000",
                     "reported_growth": "0.0083",
                     "peg_growth": None,
                     "growth_basis": None,
@@ -151,17 +156,19 @@ def test_dell_current_fy_peg_uses_normalized_growth_and_published_target_peg():
         next_eps / current_eps - Decimal("1")
     )
 
-    assert Decimal(current_fy["eps_growth"]) == Decimal("0.1077")
+    assert Decimal(current_fy["eps_growth"]) == (Decimal("130307450000") / Decimal("113538000000") - 1)
     assert (
         current_fy["growth_basis"]
-        == "YAHOO_GROWTH_ESTIMATES_PLUS_1Y"
+        == "PEG_GROWTH_FORWARD_FUNDAMENTAL_ANCHOR"
     )
+
+    assert current_fy["growth_is_horizon_matched"] is True
 
     published_target_peg = Decimal("1.0125115160599578")
 
     expected_peg = (
         current_eps
-        * Decimal("0.1077")
+        * (Decimal("130307450000") / Decimal("113538000000") - 1)
         * Decimal("100")
         * published_target_peg
     )
@@ -454,3 +461,111 @@ def test_incremental_writer_preserves_unmentioned_company_bytes_and_complete_ind
     assert nvda_path.read_bytes() != nvda_before
     assert after_index["summary"]["incremental"] is True
     assert after_index["summary"]["incremental_updated_company_count"] == 1
+
+
+@pytest.mark.parametrize("eps_next,revenue_next,expected", [
+    ("130", "120", "0.2"),
+    ("110", "120", "0.1"),
+    ("95", "120", "0.2"),
+    ("100", "120", "0.2"),
+    (None, "120", "0.2"),
+    ("130", None, "0.3"),
+    ("130", "100", "0.3"),
+    ("130", "90", "0.3"),
+    ("250", None, "1.5"),
+    ("95", "90", None),
+    (None, None, None),
+    ("NaN", "Infinity", None),
+])
+def test_forward_fundamental_peg_growth_selection(eps_next, revenue_next, expected):
+    growth, basis = _forward_fundamental_peg_growth({
+        "CURRENT_FY": {"eps": "100", "revenue": "100", "peg_growth": "9"},
+        "NEXT_FY": {"eps": eps_next, "revenue": revenue_next},
+    })
+    assert growth == (Decimal(expected) if expected is not None else None)
+    assert basis == ("PEG_GROWTH_FORWARD_FUNDAMENTAL_ANCHOR" if expected else None)
+
+
+def test_current_fy_peg_anchor_matches_unified_contract():
+    payload = build_full_market_coverage(ROOT, symbols=["DELL", "NVDA", "SNDK", "MU"])
+    assert len(payload["cards"]) == 4
+    for card in payload["cards"]:
+        horizon = card["valuation_horizons"]["CURRENT_FY"]
+        unified = card["valuation"]["unified_contract"]["models"]["peg"]
+        assert horizon["growth_basis"] == "PEG_GROWTH_FORWARD_FUNDAMENTAL_ANCHOR"
+        assert horizon["models"]["peg"]["status"] == unified["status"] == "calculated"
+        assert Decimal(horizon["models"]["peg"]["fair_value"]) == Decimal(unified["fair_value"])
+        assert horizon["eps_growth"] == card["estimates"]["normalized_peg_growth"]["value"]
+
+
+def test_unavailable_anchor_does_not_fall_back_to_legacy_growth(monkeypatch):
+    monkeypatch.setattr(
+        "axiom_engine.full_market_coverage.core._forward_fundamental_peg_growth",
+        lambda annual: (None, None),
+    )
+    payload = build_full_market_coverage(ROOT, symbols=["NVDA"])
+    card = payload["cards"][0]
+    assert Decimal(card["estimates"]["forward_eps_growth"]["value"]) > 0
+    horizon = card["valuation_horizons"]["CURRENT_FY"]
+    unified = card["valuation"]["unified_contract"]["models"]["peg"]
+    assert horizon["growth_basis"] is None
+    assert horizon["growth_is_horizon_matched"] is False
+    assert horizon["models"]["peg"]["status"] == unified["status"] == "unavailable"
+    assert horizon["models"]["peg"]["fair_value"] is unified["fair_value"] is None
+
+
+@pytest.mark.parametrize("base", [None, "0", "-100", "NaN", "Infinity"])
+def test_peg_growth_requires_valid_positive_denominators(base):
+    assert _forward_fundamental_peg_growth({
+        "CURRENT_FY": {"eps": base, "revenue": base},
+        "NEXT_FY": {"eps": "100", "revenue": "100"},
+    }) == (None, None)
+
+
+def test_ev_ebitda_uses_canonical_shares_and_target_not_snapshot_or_peg_growth():
+    snapshot = {
+        "shares_outstanding": "315433188",
+        "ebitda_ttm": "17725999104",
+        "enterprise_to_ebitda": "99",
+        "annual_estimates": {
+            "CURRENT_FY": {"eps": "10", "revenue": "100"},
+            "NEXT_FY": {"eps": "30", "revenue": "300"},
+        },
+    }
+    financials = {
+        "diluted_shares_outstanding": {"value": "684000000"},
+        "cash_and_cash_equivalents": {"value": "11528000000"},
+        "total_debt": {"value": "31503000000"},
+    }
+    horizons = _dual_fy_seven_models(
+        snapshot, financials, {"target_ev_ebitda": "22.443"}, {}, {}
+    )
+    for horizon in horizons.values():
+        assert Decimal(horizon["models"]["ev_ebitda"]["fair_value"]).quantize(
+            Decimal("0.01")
+        ) == Decimal("552.41")
+    without_target = _dual_fy_seven_models(snapshot, financials, {}, {}, {})
+    for horizon in without_target.values():
+        assert horizon["models"]["ev_ebitda"]["status"] == "unavailable"
+
+
+def test_ev_ebitda_horizons_share_unified_result_for_five_companies():
+    payload = build_full_market_coverage(ROOT, symbols=["DELL", "NVDA", "AMD", "MU", "SNDK"])
+    assert len(payload["cards"]) == 5
+    for card in payload["cards"]:
+        unified = card["valuation"]["unified_contract"]["models"]["ev_ebitda"]
+        for horizon in card["valuation_horizons"].values():
+            model = horizon["models"]["ev_ebitda"]
+            assert model["status"] == unified["status"]
+            assert model["fair_value"] == unified["fair_value"]
+
+
+def test_peg_does_not_use_other_period_eps_when_current_fy_eps_is_missing():
+    payload = build_full_market_coverage(ROOT, symbols=["ALAR"])
+    card = payload["cards"][0]
+    horizon = card["valuation_horizons"]["CURRENT_FY"]
+    assert horizon["eps"] is None
+    assert Decimal(card["estimates"]["forward_eps"]["value"]) > 0
+    assert Decimal(horizon["eps_growth"]) > 0
+    assert horizon["models"]["peg"]["fair_value"] is None
+    assert card["valuation"]["unified_contract"]["models"]["peg"]["fair_value"] is None

@@ -12,6 +12,7 @@ from zipfile import BadZipFile, ZipFile
 from axiom_engine.coverage_policy import CoveragePolicyService
 from axiom_engine.market_price_cache import market_rows, unpack_market_row
 from axiom_engine.unified_valuation import build_unified_valuation
+from axiom_engine.seven_model_valuation.core import calculate_seven_models
 
 
 MODELS = (
@@ -56,6 +57,28 @@ def _number(value: Any) -> Decimal | None:
     except (InvalidOperation, ValueError):
         return None
     return result if result.is_finite() else None
+
+
+def _forward_fundamental_peg_growth(
+    annual: Mapping[str, Any],
+) -> tuple[Decimal | None, str | None]:
+    current = annual.get("CURRENT_FY") or {}
+    next_fy = annual.get("NEXT_FY") or {}
+
+    def growth(metric: str) -> Decimal | None:
+        base = _number(current.get(metric))
+        forward = _number(next_fy.get(metric))
+        if base is None or base <= 0 or forward is None:
+            return None
+        return forward / base - Decimal("1")
+
+    positive_growth = [
+        value for value in (growth("eps"), growth("revenue"))
+        if value is not None and value > 0
+    ]
+    if not positive_growth:
+        return None, None
+    return min(positive_growth), "PEG_GROWTH_FORWARD_FUNDAMENTAL_ANCHOR"
 
 
 def _latest(
@@ -252,6 +275,8 @@ def _dual_fy_seven_models(
     assumptions: Mapping[str, Any],
     market: Mapping[str, Any],
     dcf_policy: Mapping[str, Any],
+    *,
+    ev_ebitda_model: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     annual = snapshot.get("annual_estimates") or {}
     if not isinstance(annual, Mapping):
@@ -280,9 +305,6 @@ def _dual_fy_seven_models(
         num((financials.get("total_debt") or {}).get("value"))
         or num(snapshot.get("total_debt"))
         or Decimal("0")
-    )
-    ebitda = num(snapshot.get("ebitda_ttm")) or num(
-        (financials.get("ebitda") or {}).get("value")
     )
     bvps = num((financials.get("book_value_per_share") or {}).get("value"))
     fcf = num((financials.get("free_cash_flow") or {}).get("value"))
@@ -314,7 +336,6 @@ def _dual_fy_seven_models(
         or num(assumptions.get("target_forward_pb"))
         or Decimal("5.5")
     )
-    current_ev_multiple = num(snapshot.get("enterprise_to_ebitda"))
     target_peg = num(assumptions.get("target_peg"))
     success_probability = (
         num(assumptions.get("milestone_success_probability")) or Decimal("0.5")
@@ -361,11 +382,18 @@ def _dual_fy_seven_models(
             "included_in_weighting": value is not None,
             "weighting_exclusion_reason": reason_code if value is None else None,
         }
-    # Snapshot-level normalized PEG growth is a CURRENT_FY valuation input.
-    # It is intentionally separate from annual_estimates[*].peg_growth,
-    # which represents an adjacent-fiscal-year transition diagnostic.
-    normalized_peg_growth = num(snapshot.get("normalized_peg_growth"))
-    normalized_peg_growth_basis = snapshot.get("normalized_peg_growth_basis")
+    # Share the canonical EV/EBITDA calculation; never use class-specific
+    # snapshot shares or PEG growth to manufacture an EV multiple.
+    if ev_ebitda_model is None:
+        ev_ebitda_model = calculate_seven_models(
+            financials,
+            {"ebitda_ttm": {"value": snapshot.get("ebitda_ttm")}},
+            assumptions,
+            dcf_policy=dcf_policy,
+        )["ev_ebitda"]
+    ev_value = num(ev_ebitda_model.get("fair_value"))
+
+    peg_growth, peg_growth_basis = _forward_fundamental_peg_growth(annual)
 
     out: dict[str, Any] = {}
     for basis in ("CURRENT_FY", "NEXT_FY"):
@@ -380,17 +408,11 @@ def _dual_fy_seven_models(
         eps = num(row.get("eps"))
         revenue = num(row.get("revenue"))
 
-        # PEG valuation growth is distinct from adjacent-FY transition growth.
-        #
-        # CURRENT_FY may use the provider's dedicated normalized PEG-growth input.
-        # The row-level `peg_growth` remains the horizon transition diagnostic and
-        # must not override normalized growth when the latter is available.
-        #
-        # NEXT_FY must not reuse CURRENT_FY normalized growth because that would
-        # apply one growth assumption to two different valuation horizons.
-        if basis == "CURRENT_FY" and normalized_peg_growth is not None:
-            eps_growth = normalized_peg_growth
-            growth_basis = normalized_peg_growth_basis
+        # CURRENT_FY shares the fundamental anchor with unified valuation.
+        # NEXT_FY retains its existing horizon-specific growth selection.
+        if basis == "CURRENT_FY":
+            eps_growth = peg_growth
+            growth_basis = peg_growth_basis
         else:
             eps_growth = num(row.get("peg_growth"))
             growth_basis = row.get("growth_basis")
@@ -439,24 +461,6 @@ def _dual_fy_seven_models(
             else None
         )
 
-        ev_multiple = current_ev_multiple
-        if ev_multiple is None or ev_multiple <= 0:
-            ev_multiple = (
-                Decimal("45")
-                if eps_growth is not None and eps_growth > Decimal("0.50")
-                else Decimal("35")
-            )
-        ev_value = (
-            ((ebitda * ev_multiple) - debt + cash) / shares
-            if (
-                ebitda is not None
-                and ebitda > 0
-                and shares is not None
-                and shares > 0
-            )
-            else None
-        )
-
         milestone_value = (
             price
             * (
@@ -485,7 +489,8 @@ def _dual_fy_seven_models(
             ),
             "ev_ebitda": model(
                 ev_value,
-                reason_code="EBITDA_OR_SHARES_UNAVAILABLE",
+                note="Shared unified valuation input basis; not a fiscal-year EBITDA forecast",
+                reason_code=ev_ebitda_model.get("reason_code"),
             ),
             "forward_pb": model(
                 pb_value,
@@ -546,7 +551,7 @@ def _dual_fy_seven_models(
                 else None
             ),
             "growth_basis": growth_basis,
-            "growth_is_horizon_matched": bool(row.get("growth_basis")),
+            "growth_is_horizon_matched": bool(growth_basis),
             "model_count": sum(
                 m.get("status") == "calculated"
                 for m in models.values()
@@ -1122,31 +1127,34 @@ def build_full_market_coverage(
             }
         # PEG valuation growth is a dedicated input and must remain separate from
         # forward_eps_growth, which represents the CURRENT_FY -> NEXT_FY transition.
-        normalized_peg_growth = (
-            snapshot_row.get("normalized_peg_growth")
-            if isinstance(snapshot_row, Mapping)
-            else None
+        peg_growth, peg_growth_basis = _forward_fundamental_peg_growth(
+            annual_estimates
         )
-        normalized_peg_growth_basis = (
-            snapshot_row.get("normalized_peg_growth_basis")
-            if isinstance(snapshot_row, Mapping)
-            else None
-        )
-
-        if normalized_peg_growth not in (None, ""):
+        if peg_growth is not None:
             est["normalized_peg_growth"] = {
                 "status": "ready",
-                "value": str(normalized_peg_growth),
+                "value": format(peg_growth, "f"),
                 "reason_code": None,
                 "source_record_ids": [],
                 "growth_kind": "normalized_peg_growth",
-                "growth_basis": normalized_peg_growth_basis,
+                "growth_basis": peg_growth_basis,
             }
 
+        # Disable the legacy PEG transition-growth fallback when the anchor is
+        # unavailable, while preserving the transition diagnostic in est.
+        peg_estimates = est
+        if peg_growth is None or _number(current_eps) is None:
+            # A legacy forward EPS from another period must not stand in for
+            # missing CURRENT_FY EPS. Suppress only PEG's growth inputs.
+            peg_estimates = {
+                **est,
+                "normalized_peg_growth": {"status": "unavailable", "value": None},
+                "forward_eps_growth": {"status": "unavailable", "value": None},
+            }
         unified = build_unified_valuation(
             symbol=ticker,
             financials=fin,
-            estimates=est,
+            estimates=peg_estimates,
             assumptions=company_assumptions,
             assumption_roles=company_assumption_roles,
             dcf_policy=dcf_policy,
@@ -1201,6 +1209,7 @@ def build_full_market_coverage(
             company_assumptions,
             market,
             dcf_policy,
+            ev_ebitda_model=unified["models"]["ev_ebitda"],
         )
 
 
