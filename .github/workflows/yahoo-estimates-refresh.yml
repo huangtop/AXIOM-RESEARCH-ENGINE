@@ -40,7 +40,7 @@ jobs:
       - name: Build AI and technology prioritized daily estimate batch
         run: >-
           python scripts/build_daily_estimate_worklist.py
-          --limit 200
+          --limit 1000
           --priority-symbols config/frontier_priority_symbols.v1.json
           --output /tmp/axiom-daily-estimate-symbols.txt
           ${{ inputs.force && '--force' || '' }}
@@ -50,7 +50,7 @@ jobs:
           --symbols-file /tmp/axiom-daily-estimate-symbols.txt
           --ttl-days 30
           --delay 0.5
-          --max-fetch 200
+          --max-fetch 1000
           ${{ inputs.force && '--force' || '' }}
       - name: Rebuild estimate-driven valuation artifacts
         run: |
