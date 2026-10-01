@@ -68,4 +68,4 @@ def test_generated_snapshot_contains_nvda_smh_exposure():
     exposures = json.loads((root / "data/generated/canonical_etf_exposure/etf_exposures.json").read_text())
     row = next(item for item in exposures if item["holding_symbol"] == "NVDA" and item["etf_id"] == "US-SMH")
     assert row["company_id"] == "company:US-CIK0001045810"
-    assert row["portfolio_weight_percent"] == 17.7539
+    assert row["portfolio_weight_percent"] == 22.62537

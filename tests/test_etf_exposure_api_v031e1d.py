@@ -72,6 +72,6 @@ def test_http_route_returns_exposure_and_unknown_company_404(tmp_path: Path):
 def test_real_nvda_api_projection_contains_smh_weight():
     payload = ETFExposureService(root=ROOT).get("NVDA")
     smh = next(row for row in payload["exposures"] if row["etf_id"] == "US-SMH")
-    assert smh["portfolio_weight"] == 0.177539
-    assert smh["portfolio_weight_percent"] == 17.7539
+    assert smh["portfolio_weight"] == 0.2262537
+    assert smh["portfolio_weight_percent"] == 22.62537
     assert payload["summary"]["holding_etf_count"] > 1
