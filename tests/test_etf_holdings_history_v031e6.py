@@ -17,7 +17,6 @@ def _seed_static(root: Path) -> None:
     _write(root / "config/etf_holdings_refresh.v031e.6.json", {
         "history_retention_days": 90,
         "materiality": {"absolute_weight_change": 0.001, "relative_share_change": 0.05},
-        "focus_etfs": ["QQQ", "DRAM"],
     })
     _write(root / "data/generated/etf_identity_bridge/identity_bridge.json", {
         "records": [{"holding_symbol": "MU", "status": "resolved_exact", "security_id": "security:MU", "company_id": "company:MU"}]
@@ -109,3 +108,45 @@ def test_snapshots_older_than_retention_window_are_pruned(tmp_path: Path):
     assert not (history / "snapshots/2026-01-01").exists()
     assert index["history_retention_days"] == 90
     assert index["pruned_snapshots"] == ["2026-01-01"]
+def test_company_observations_exclude_unrelated_etfs(tmp_path: Path):
+    _seed_static(tmp_path)
+
+    # Baseline: MU is observed only in QQQ.
+    _provider(
+        tmp_path,
+        "2026-08-03",
+        qqq_weight=0.010,
+        qqq_shares=100,
+        dram_weight=None,
+    )
+    build_etf_holdings_history(tmp_path)
+
+    # Next snapshot: MU remains observed only in QQQ.
+    _provider(
+        tmp_path,
+        "2026-08-10",
+        qqq_weight=0.012,
+        qqq_shares=120,
+        dram_weight=None,
+    )
+    build_etf_holdings_history(tmp_path)
+
+    company = json.loads(
+        (
+            tmp_path
+            / "data/generated/canonical_etf_change_events/per-company/MU.json"
+        ).read_text()
+    )
+
+    observations = {
+        row["etf_ticker"]: row
+        for row in company["fund_observations"]
+    }
+
+    assert "QQQ" in observations
+    assert "DRAM" not in observations
+
+    assert all(
+        row["previous"] is not None or row["current"] is not None
+        for row in company["fund_observations"]
+    )

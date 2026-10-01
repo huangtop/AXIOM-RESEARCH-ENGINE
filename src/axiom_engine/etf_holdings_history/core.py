@@ -177,7 +177,6 @@ def build_etf_holdings_history(root: Path, *, now: datetime | None = None) -> di
     retention_days = int(config.get("history_retention_days", 90))
     material_weight = float(config["materiality"]["absolute_weight_change"])
     material_shares = float(config["materiality"]["relative_share_change"])
-    focus_etfs = [f"US-{ticker}" for ticker in config.get("focus_etfs", [])]
     events, diagnostics = [], []
     company_observations: dict[str, list[dict[str, Any]]] = {}
     for etf_id in sorted(set(funds) | set(previous_funds)):
@@ -245,15 +244,19 @@ def build_etf_holdings_history(root: Path, *, now: datetime | None = None) -> di
             continue
         company_events = company_observations.get(company_id, [])
         status_rows = []
-        for etf_id in sorted((set(funds) | set(previous_funds)) if company_events else focus_etfs):
+        for etf_id in sorted(set(funds) | set(previous_funds)):
             before = previous_funds.get(etf_id, {}).get("holdings", {}).get(symbol)
             after = funds.get(etf_id, {}).get("holdings", {}).get(symbol)
-            if before is None and after is None and etf_id not in focus_etfs:
+
+            if before is None and after is None:
                 continue
+
             status_rows.append({
-                "etf_id": etf_id, "etf_ticker": etf_id.removeprefix("US-"),
-                "previous": before, "current": after,
-                "observation_status": "observed" if before is not None or after is not None else "not_observed_in_top_holdings",
+                "etf_id": etf_id,
+                "etf_ticker": etf_id.removeprefix("US-"),
+                "previous": before,
+                "current": after,
+                "observation_status": "observed",
             })
         filename = f"{symbol}.json"
         per_company_files[company_id] = filename
