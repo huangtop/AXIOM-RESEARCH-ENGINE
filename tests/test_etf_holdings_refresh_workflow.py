@@ -17,3 +17,5 @@ def test_weekly_etf_workflow_preserves_history_and_scopes_commit():
     assert 'get("research_scope") != "core"' in history
     assert "name: Weekly ETF Holdings Refresh" in workflow
     assert 'cron: "45 23 * * 1-5"' not in workflow
+    assert "python scripts/build_canonical_etf_exposure.py" in workflow
+    assert "data/generated/canonical_etf_exposure" in workflow
