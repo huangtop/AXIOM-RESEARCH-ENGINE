@@ -35,9 +35,9 @@ def test_market_refresh_publishes_the_daily_close_refresh_report():
     assert "restore_market_inputs" in publisher
 
 
-def test_estimates_refresh_daily_in_batches_of_1000():
+def test_estimates_refresh_weekly_in_batches_of_1000():
     workflow = _workflow("yahoo-estimates-refresh.yml")
-    assert 'cron: "30 11 * * *"' in workflow
+    assert 'cron: "30 11 * * 4"' in workflow
     assert "build_daily_estimate_worklist.py" in workflow
     assert "--limit 1000" in workflow
     assert "--max-fetch 1000" in workflow
