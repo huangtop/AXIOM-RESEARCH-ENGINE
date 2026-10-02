@@ -38,21 +38,49 @@ jobs:
       - name: Capture valuation baseline
         run: cp data/generated/full_market_coverage/full_market_coverage.json /tmp/axiom-valuation-before.json
       - name: Build AI and technology prioritized daily estimate batch
-        run: >-
-          python scripts/build_daily_estimate_worklist.py
-          --limit 1000
-          --priority-symbols config/frontier_priority_symbols.v1.json
-          --output /tmp/axiom-daily-estimate-symbols.txt
-          ${{ inputs.force && '--force' || '' }}
+        id: worklist
+        shell: bash
+        run: |
+          set +e
+          python scripts/build_daily_estimate_worklist.py \
+            --limit 1000 \
+            --priority-symbols config/frontier_priority_symbols.v1.json \
+            --output /tmp/axiom-daily-estimate-symbols.txt \
+            ${{ inputs.force && '--force' || '' }}
+          rc=$?
+          set -e
+
+          if [ "$rc" -eq 0 ]; then
+            echo "has_work=true" >> "$GITHUB_OUTPUT"
+            echo "Daily estimate worklist built successfully."
+            exit 0
+          fi
+
+          if [ "$rc" -eq 1 ] && [ ! -s /tmp/axiom-daily-estimate-symbols.txt ]; then
+            echo "has_work=false" >> "$GITHUB_OUTPUT"
+            echo "No missing or stale estimate symbols selected; normal no-op."
+            : > /tmp/axiom-daily-estimate-symbols.txt
+            exit 0
+          fi
+
+          echo "Daily estimate worklist failed unexpectedly with exit code $rc."
+          exit "$rc"
       - name: Refresh the daily missing or 30-day-stale estimate batch
-        run: >-
-          python scripts/refresh_yahoo_company_snapshots.py
-          --symbols-file /tmp/axiom-daily-estimate-symbols.txt
-          --ttl-days 30
-          --delay 0.5
-          --max-fetch 1000
-          ${{ inputs.force && '--force' || '' }}
+        if: steps.worklist.outputs.has_work == 'true'
+        run: |
+          if [ ! -s /tmp/axiom-daily-estimate-symbols.txt ]; then
+            echo "Daily estimate worklist is empty; skipping Yahoo refresh."
+            exit 0
+          fi
+
+          python scripts/refresh_yahoo_company_snapshots.py \
+            --symbols-file /tmp/axiom-daily-estimate-symbols.txt \
+            --ttl-days 30 \
+            --delay 0.5 \
+            --max-fetch 1000 \
+            ${{ inputs.force && '--force' || '' }}
       - name: Rebuild estimate-driven valuation artifacts
+        if: steps.worklist.outputs.has_work == 'true'
         run: |
           python scripts/build_estimate_population_v031v6.py
 
