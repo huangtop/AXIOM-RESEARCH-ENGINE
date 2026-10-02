@@ -1,15 +1,15 @@
-name: Daily Yahoo Estimates Refresh
+name: Weekly Yahoo Estimates Refresh
 
 on:
   workflow_dispatch:
     inputs:
       force:
-        description: Refetch the selected daily batch regardless of the 30-day TTL
+        description: Refetch the selected weekly batch regardless of the 30-day TTL
         required: false
         default: false
         type: boolean
   schedule:
-    - cron: "30 11 * * *"
+    - cron: "30 11 * * 4"
 
 permissions:
   contents: write
@@ -37,7 +37,7 @@ jobs:
         run: python -c "import yfinance; print(yfinance.__version__)"
       - name: Capture valuation baseline
         run: cp data/generated/full_market_coverage/full_market_coverage.json /tmp/axiom-valuation-before.json
-      - name: Build AI and technology prioritized daily estimate batch
+      - name: Build AI and technology prioritized weekly estimate batch
         id: worklist
         shell: bash
         run: |
@@ -52,7 +52,7 @@ jobs:
 
           if [ "$rc" -eq 0 ]; then
             echo "has_work=true" >> "$GITHUB_OUTPUT"
-            echo "Daily estimate worklist built successfully."
+            echo "Weekly estimate worklist built successfully."
             exit 0
           fi
 
@@ -63,13 +63,13 @@ jobs:
             exit 0
           fi
 
-          echo "Daily estimate worklist failed unexpectedly with exit code $rc."
+          echo "Weekly estimate worklist failed unexpectedly with exit code $rc."
           exit "$rc"
-      - name: Refresh the daily missing or 30-day-stale estimate batch
+      - name: Refresh the weekly missing or 30-day-stale estimate batch
         if: steps.worklist.outputs.has_work == 'true'
         run: |
           if [ ! -s /tmp/axiom-daily-estimate-symbols.txt ]; then
-            echo "Daily estimate worklist is empty; skipping Yahoo refresh."
+            echo "Weekly estimate worklist is empty; skipping Yahoo refresh."
             exit 0
           fi
 
@@ -79,6 +79,7 @@ jobs:
             --delay 0.5 \
             --max-fetch 1000 \
             ${{ inputs.force && '--force' || '' }}
+
       - name: Rebuild estimate-driven valuation artifacts
         if: steps.worklist.outputs.has_work == 'true'
         run: |
@@ -149,7 +150,7 @@ jobs:
             data/generated/coverage_policy \
             data/generated/publication_gate
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "chore(data): refresh daily Yahoo estimate batch"
+          git commit -m "chore(data): refresh weekly Yahoo estimate batch"
           if ! git diff --quiet || ! git diff --cached --quiet; then
             echo "Tracked changes remain after the estimates artifact commit:"
             git status --short
@@ -157,6 +158,6 @@ jobs:
           fi
           git pull --rebase origin main
           git push origin HEAD:main
-      - name: Publish daily refresh summary
+      - name: Publish weekly refresh summary
         if: always()
         run: python scripts/write_daily_refresh_summary.py --before /tmp/axiom-valuation-before.json
