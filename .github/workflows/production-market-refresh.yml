@@ -4,12 +4,14 @@ on:
   workflow_dispatch:
     inputs:
       force:
-        description: Refetch an already populated completed session
+        description: Refetch already fresh completed session prices
         required: false
         default: false
         type: boolean
   schedule:
-    - cron: "20 22 * * 1-5"
+    # 01:30 UTC Tue-Sat = US previous trading evening 20:30 EST / 21:30 EDT.
+    # No nightly run on Sunday/Monday UTC after a non-trading Saturday/Sunday.
+    - cron: "30 1 * * 2-6"
 
 permissions:
   contents: write
@@ -22,35 +24,30 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     timeout-minutes: 150
-
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: pip
-
       - name: Install market refresh dependencies
         run: pip install -e ".[dev,yahoo]"
-
       - name: Synchronize main before the expensive provider refresh
         run: git pull --ff-only origin main
-
-      - name: Refresh all eligible operating-company closes
+      - name: Refresh eligible operating-company closes and repair stale sessions
         run: >-
           python scripts/refresh_yahoo_daily_close.py
           --universe-root data/universe
           --delay 0.05
           --checkpoint-size 50
+          --retry-stale
+          --min-fresh-coverage 0.90
           --max-failure-rate 0.03
           --report data/generated/market/daily_close_refresh_report.json
-          ${{ github.event_name == 'schedule' && '--force' || (inputs.force && '--force' || '') }}
-
+          ${{ github.event_name == 'workflow_dispatch' && inputs.force && '--force' || '' }}
       - name: Validate market cache contract
-        run: pytest -q tests/test_cached_close.py
-
+        run: pytest -q tests/test_cached_close.py tests/test_yahoo_daily_close_archive.py
       - name: Commit market-only artifacts
         run: bash scripts/publish_daily_market_refresh.sh

@@ -10,11 +10,11 @@ def _workflow(name: str) -> str:
 
 def test_ci_runs_validation_and_maintained_suites():
     workflow = _workflow("ci.yml")
-
     assert "axiom validate" in workflow
     assert "pytest -q" in workflow
     assert workflow.count("pytest -q") == 1
     assert '"--ignore-glob=tests/test_company_*.py"' in workflow
+
 
 def test_generated_data_pushes_do_not_start_the_full_ci_suite():
     workflow = _workflow("ci.yml")
@@ -27,6 +27,9 @@ def test_market_refresh_publishes_the_daily_close_refresh_report():
     assert "--report data/generated/market/daily_close_refresh_report.json" in workflow
     assert "data/generated/market" in workflow
     assert "Synchronize main before the expensive provider refresh" in workflow
+    assert "git pull --ff-only origin main" in workflow
+    assert "--retry-stale" in workflow
+    assert "--min-fresh-coverage 0.90" in workflow
     assert "publish_daily_market_refresh.sh" in workflow
     publisher = (ROOT / "scripts/publish_daily_market_refresh.sh").read_text(encoding="utf-8")
     assert "git pull --rebase" not in publisher
@@ -63,5 +66,5 @@ def test_sec_financial_refresh_never_runs_classification_or_business_evidence():
 def test_market_daily_and_etf_weekly_schedules_are_preserved():
     market = _workflow("production-market-refresh.yml")
     etf = _workflow("etf-holdings-refresh.yml")
-    assert 'cron: "20 22 * * 1-5"' in market
+    assert 'cron: "30 1 * * 2-6"' in market
     assert 'cron: "0 0 * * 2"' in etf
