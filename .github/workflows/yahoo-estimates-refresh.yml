@@ -80,6 +80,15 @@ jobs:
             --max-fetch 1000 \
             ${{ inputs.force && '--force' || '' }}
 
+      - name: Backfill missing SEC quarterly EPS and diluted shares from Yahoo
+        if: steps.worklist.outputs.has_work == 'true'
+        run: |
+          if [ -s /tmp/axiom-daily-estimate-symbols.txt ]; then
+            mapfile -t symbols < <(head -n 80 /tmp/axiom-daily-estimate-symbols.txt)
+            python scripts/build_sec_financial_population.py \
+              --yahoo-quarterly-symbols "${symbols[@]}" \
+              --yahoo-quarterly-write
+          fi
       - name: Rebuild estimate-driven valuation artifacts
         if: steps.worklist.outputs.has_work == 'true'
         run: |
@@ -143,6 +152,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
+            data/generated/canonical_financial_population \
             data/generated/company/yahoo_company_snapshot.json \
             data/estimate_data/consensus_estimates.json \
             data/knowledge/valuation_assumptions.json \

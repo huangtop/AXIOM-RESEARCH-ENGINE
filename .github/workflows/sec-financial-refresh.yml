@@ -81,6 +81,7 @@ jobs:
           --download-bulk
           --bulk-zip data/onboarding/sec/companyfacts.zip
           --user-agent "$SEC_USER_AGENT"
+          --merge-existing
           --write
       - name: Rebuild per-company valuation and publication artifacts
         if: steps.gate.outputs.should_refresh == 'true'

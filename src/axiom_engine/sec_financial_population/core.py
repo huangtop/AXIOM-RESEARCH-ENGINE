@@ -665,11 +665,42 @@ def _quarterly_facts(company_id: str, cik: str, payload: Mapping[str, Any], limi
             fact = us_gaap.get(tag)
             if not isinstance(fact, Mapping):
                 continue
-            for row in _quarter_unit_rows(fact, str(spec["unit"])):
+            observations = _quarter_unit_rows(fact, str(spec["unit"]))
+
+            # SEC 10-K may label a directly reported three-month Q4
+            # comparative with fp=FY. Require a matching annual period
+            # end for the SAME accounting concept.
+            annual_ends = set()
+            if metric in {"diluted_eps", "diluted_shares_outstanding"}:
+                annual_ends = {
+                    str(obs["end"])
+                    for obs in observations
+                    if str(obs.get("form") or "").upper() in {"10-K", "10-K/A"}
+                    and str(obs.get("fp") or "").upper() == "FY"
+                    and 300 <= (_duration_days(obs) or 0) <= 430
+                    and obs.get("end")
+                }
+
+            for row in observations:
                 if row.get("val") is None or not row.get("start") or not row.get("end"):
                     continue
-                if not _is_discrete_quarter(row):
+
+                direct_q4 = (
+                    metric in {"diluted_eps", "diluted_shares_outstanding"}
+                    and str(row.get("form") or "").upper() in {"10-K", "10-K/A"}
+                    and str(row.get("fp") or "").upper() == "FY"
+                    and 60 <= (_duration_days(row) or 0) <= 120
+                    and str(row["end"]) in annual_ends
+                )
+
+                if not (_is_discrete_quarter(row) or direct_q4):
                     continue
+
+                if direct_q4:
+                    row = dict(row)
+                    row["fp"] = "Q4"
+                    row["_derivation_type"] = "direct_q4_from_10k"
+
                 key = (metric, str(row["end"]))
                 old = selected.get(key)
                 if old is None or _observation_rank(row, tag_priority) > _observation_rank(old[1], spec["tags"].index(old[0])):
@@ -797,6 +828,63 @@ def _quarter_latest_end(rows: list[Mapping[str, Any]]) -> str:
     return max(ends, default="")
 
 
+def _is_direct_sec_exhibit_fact(row: Mapping[str, Any]) -> bool:
+    """Only direct reported 8-K/6-K quarterly facts, never derived metrics."""
+    form = str(row.get("form_type") or "").upper()
+    source = row.get("source") or {}
+    if not isinstance(source, Mapping):
+        return False
+    provider = str(source.get("provider") or "").lower()
+    selection = str(source.get("period_selection") or "").lower()
+    return (
+        form in {"8-K", "8-K/A", "6-K", "6-K/A"}
+        and str(row.get("fiscal_period") or "").upper() in {"Q1", "Q2", "Q3", "Q4"}
+        and str(row.get("period_type") or "") == "duration"
+        and bool(row.get("accession_number"))
+        and ("exhibit" in provider or provider.startswith("sec_6k") or provider.startswith("sec_8k"))
+        and not selection.startswith("derived")
+    )
+
+
+def _merge_verified_exhibit_quarters(
+    previous_rows: list[Mapping[str, Any]],
+    new_rows: list[Mapping[str, Any]],
+) -> tuple[list[dict[str, Any]], int]:
+    """Keep verified direct attachment facts through Companyfacts refreshes.
+
+    Never use EPS arithmetic, substitute GAAP metrics, or resurrect quarters
+    outside the bounded 8-quarter history. A conflicting direct attachment
+    value is a hard error rather than silently choosing one.
+    """
+    by_key = {
+        (str(row.get("period_end")), str(row.get("metric"))): dict(row)
+        for row in new_rows
+    }
+    kept = 0
+    for old in previous_rows:
+        if not (
+            _is_direct_sec_exhibit_fact(old)
+            or (old.get("source") or {}).get("provider") == "sec_10k_manual_verified"
+        ):
+            continue
+        key = (str(old.get("period_end")), str(old.get("metric")))
+        incoming = by_key.get(key)
+        if incoming is not None and (
+            _is_direct_sec_exhibit_fact(incoming)
+            or (incoming.get("source") or {}).get("provider") == "sec_10k_manual_verified"
+        ):
+            if str(incoming.get("value")) != str(old.get("value")):
+                raise ValueError(f"Conflicting SEC exhibit observations: {key}")
+            continue
+        # Preserve the direct filing over missing or less direct Companyfacts.
+        by_key[key] = dict(old)
+        kept += 1
+    newest_ends = set(sorted({key[0] for key in by_key})[-8:])
+    merged = [row for key, row in by_key.items() if key[0] in newest_ends]
+    merged.sort(key=lambda r: (str(r.get("period_end")), str(r.get("metric"))))
+    return merged, kept
+
+
 def write_sec_financial_population(report: Mapping[str, Any], output_dir: Path, *, merge_existing: bool = False) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     quarterly_root = output_dir / "quarterly"
@@ -843,6 +931,7 @@ def write_sec_financial_population(report: Mapping[str, Any], output_dir: Path, 
     # not a mixture of incompatible fiscal identities. Track every hold for review.
     quarterly_holds: list[dict[str, Any]] = []
     updated_quarterly_companies = 0
+    preserved_exhibit_rows = 0
     for company_id, rows in sorted(quarterly_by_company.items()):
         rows = [_public_fact(row) for row in rows]
         filename = quote(company_id, safe="._-") + ".json"
@@ -864,9 +953,26 @@ def write_sec_financial_population(report: Mapping[str, Any], output_dir: Path, 
                     "candidate_latest": new_latest,
                 })
                 continue
-            # Prevent partial reruns from deleting still-valid metrics for the
-            # same fiscal quarter/date. A true older-history trim is permitted
-            # only when the candidate advances the latest financial period.
+            # Preserve verified SEC 8-K/6-K direct metrics, even when SEC
+            # Companyfacts lacks a discrete Q4 EPS or diluted-share observation.
+            # Other metrics still use the original regression/coverage guards.
+            rows, preserved_exhibit_count = _merge_verified_exhibit_quarters(previous_rows, rows)
+            preserved_exhibit_rows += preserved_exhibit_count
+            # Preserve Yahoo backfills only when refreshed SEC still lacks the metric.
+            # A direct SEC fact always takes precedence; existing 8-K/6-K facts were
+            # already protected by _merge_verified_exhibit_quarters above.
+            existing_metric_keys = {(str(r.get("period_end")), str(r.get("metric"))) for r in rows}
+            for previous_row in previous_rows:
+                source = previous_row.get("source") or {}
+                if not isinstance(source, Mapping) or source.get("provider") != "yahoo_finance_quarterly_income_stmt":
+                    continue
+                key = (str(previous_row.get("period_end")), str(previous_row.get("metric")))
+                if key in existing_metric_keys:
+                    continue
+                if str(previous_row.get("period_end")) not in {str(r.get("period_end")) for r in rows}:
+                    continue
+                rows.append(dict(previous_row))
+                existing_metric_keys.add(key)
             previous_keys = {(str(r.get("period_end")), str(r.get("metric"))) for r in previous_rows}
             candidate_keys = {(str(r.get("period_end")), str(r.get("metric"))) for r in rows}
             lost_same_or_newer = sorted(k for k in previous_keys - candidate_keys if k[0] >= new_latest)
@@ -890,6 +996,7 @@ def write_sec_financial_population(report: Mapping[str, Any], output_dir: Path, 
         write_mode="merge_existing" if merge_existing else "replace",
         quarterly_safe_merge_held_company_count=len(quarterly_holds),
         quarterly_safe_merge_updated_company_count=updated_quarterly_companies,
+        quarterly_preserved_sec_exhibit_fact_count=preserved_exhibit_rows,
     )
     for name, payload in {"manifest.json": manifest, "financial_facts.json": facts, "quarterly_index.json": {"schema_version": "quarterly-financial-index.v031v.4", "company_count": len(quarterly_index), "company_id_to_file": quarterly_index}, "diagnostics.json": list(report["diagnostics"]) + quarterly_holds}.items():
         temporary = output_dir / f"{name}.tmp"

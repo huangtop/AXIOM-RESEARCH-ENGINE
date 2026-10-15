@@ -587,7 +587,7 @@ def _quarterly_history(
         if fiscal_period not in {"Q1", "Q2", "Q3", "Q4"}:
             continue
         period_end = str(row.get("period_end") or "")
-        fiscal_year = int(period_end[:4] or 0)
+        fiscal_year = int(row.get("fiscal_year") or period_end[:4] or 0)
         metric = str(row.get("metric") or "")
         if not fiscal_year or not period_end or not metric:
             continue
