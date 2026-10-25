@@ -51,6 +51,20 @@ def test_import_is_dry_run_by_default(tmp_path: Path) -> None:
     assert not output.exists()
 
 
+def test_default_writer_stages_without_replacing_universe(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    universe = Path("data/universe")
+    universe.mkdir(parents=True)
+    sentinel = '[{"company_id":"company:KEEP"}]\n'
+    (universe / "companies.json").write_text(sentinel)
+    source = Path("source.json")
+    source.write_text(json.dumps(source_payload()))
+    import_company_universe(source, dry_run=False)
+    assert (universe / "companies.json").read_text() == sentinel
+    assert Path("data/onboarding/generated/company_registry/companies.json").is_file()
+    assert not Path("data/company_registry/companies.json").exists()
+
+
 def test_write_creates_only_independent_registry_files(tmp_path: Path) -> None:
     source = tmp_path / "source.json"
     output = tmp_path / "registry"

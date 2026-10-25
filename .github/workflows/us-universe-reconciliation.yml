@@ -39,6 +39,14 @@ jobs:
           --write
       - name: Validate canonical repository integrity
         run: axiom validate
+      - name: Validate company-and-security-only reconciliation contract
+        run: >-
+          pytest -q
+          tests/test_universe_models.py
+          tests/test_universe_repository.py
+          tests/test_universe_import.py
+          tests/test_repository_layout.py
+          tests/test_us_universe_import.py
       - name: Rebuild existing population and publication outputs
         run: |
           python scripts/discover_population_sources.py --write

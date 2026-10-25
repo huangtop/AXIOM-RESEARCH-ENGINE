@@ -14,8 +14,6 @@
     "status": {"enum": ["active", "inactive", "delisted", "acquired", "bankrupt"], "default": "active"},
     "primary_security_id": {"type": ["string", "null"], "pattern": "^security:"},
     "research_level": {"enum": ["none", "basic", "focus", "core"], "default": "none"},
-    "classification_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true, "default": []},
-    "valuation_profile_ids": {"type": "array", "items": {"type": "string", "pattern": "^valuation_profile:"}, "uniqueItems": true, "default": []},
     "website": {"type": ["string", "null"]},
     "founded_year": {"type": ["integer", "null"], "minimum": 1600, "maximum": 2200},
     "metadata": {"type": "object", "default": {}}

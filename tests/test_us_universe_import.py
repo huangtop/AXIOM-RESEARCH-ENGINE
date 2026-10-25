@@ -25,10 +25,12 @@ def record(ticker: str, exchange: str, *, cik: int | None, name: str) -> USListi
 
 
 def test_same_cik_groups_multiple_listings_into_one_company() -> None:
-    bundle = transform_us_source_records([
-        record("ACME", "NASDAQ", cik=123, name="Acme Inc. - Common Stock"),
-        record("ACM.A", "NYSE", cik=123, name="Acme Inc. Class A"),
-    ])
+    bundle = transform_us_source_records(
+        [
+            record("ACME", "NASDAQ", cik=123, name="Acme Inc. - Common Stock"),
+            record("ACM.A", "NYSE", cik=123, name="Acme Inc. Class A"),
+        ]
+    )
     assert len(bundle.companies) == 1
     assert len(bundle.securities) == 2
     assert bundle.companies[0].company_id == "company:US-CIK0000000123"
@@ -37,13 +39,22 @@ def test_same_cik_groups_multiple_listings_into_one_company() -> None:
 
 
 def test_primary_listing_prefers_voting_class_a_over_non_voting_class_c() -> None:
-    bundle = transform_us_source_records([
-        record("GOOG", "NASDAQ", cik=1652044, name="Alphabet Inc. - Class C Capital Stock"),
-        record("GOOGL", "NASDAQ", cik=1652044, name="Alphabet Inc. - Class A Common Stock"),
-        record("GOOGM", "NASDAQ", cik=1652044, name="Alphabet Inc. - Depositary Shares representing Preferred Stock"),
-    ])
+    bundle = transform_us_source_records(
+        [
+            record("GOOG", "NASDAQ", cik=1652044, name="Alphabet Inc. - Class C Capital Stock"),
+            record("GOOGL", "NASDAQ", cik=1652044, name="Alphabet Inc. - Class A Common Stock"),
+            record(
+                "GOOGM",
+                "NASDAQ",
+                cik=1652044,
+                name="Alphabet Inc. - Depositary Shares representing Preferred Stock",
+            ),
+        ]
+    )
     assert bundle.companies[0].primary_security_id == "security:NASDAQ-GOOGL"
-    assert next(item for item in bundle.securities if item.ticker == "GOOGL").primary_listing is True
+    assert (
+        next(item for item in bundle.securities if item.ticker == "GOOGL").primary_listing is True
+    )
 
 
 def test_missing_cik_uses_deterministic_listing_company_id() -> None:
@@ -54,9 +65,8 @@ def test_missing_cik_uses_deterministic_listing_company_id() -> None:
     assert bundle.securities[0].company_id == bundle.companies[0].company_id
 
 
-def test_transform_emits_no_valuation_assignments() -> None:
+def test_transform_defaults_research_level() -> None:
     bundle = transform_us_source_records([record("ACME", "NASDAQ", cik=123, name="Acme")])
-    assert bundle.valuation_profile_assignments == ()
     assert bundle.companies[0].research_level.value == "none"
 
 
@@ -70,31 +80,40 @@ def test_load_source_snapshot_rejects_invalid_contract(tmp_path: Path) -> None:
 def test_build_writes_importer_compatible_json(tmp_path: Path) -> None:
     source = tmp_path / "source.json"
     output = tmp_path / "import.json"
-    source.write_text(json.dumps({
-        "schema_version": "1.0.0",
-        "records": [{
-            "ticker": "ACME",
-            "exchange": "NASDAQ",
-            "security_name": "Acme Inc. - Common Stock",
-            "cik": 123,
-            "legal_name": "Acme Inc.",
-            "source_ids": ["nasdaq_trader:nasdaqlisted", "sec:company_tickers"],
-        }],
-    }), encoding="utf-8")
+    source.write_text(
+        json.dumps(
+            {
+                "schema_version": "1.0.0",
+                "records": [
+                    {
+                        "ticker": "ACME",
+                        "exchange": "NASDAQ",
+                        "security_name": "Acme Inc. - Common Stock",
+                        "cik": 123,
+                        "legal_name": "Acme Inc.",
+                        "source_ids": ["nasdaq_trader:nasdaqlisted", "sec:company_tickers"],
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
     report = build_us_universe_import(source, output)
     payload = json.loads(output.read_text(encoding="utf-8"))
     assert report.company_count == 1
     assert report.security_count == 1
     assert payload["companies"][0]["company_id"] == "company:US-CIK0000000123"
     assert payload["securities"][0]["security_id"] == "security:NASDAQ-ACME"
-    assert payload["valuation_profile_assignments"] == []
+    assert set(payload) == {"schema_version", "source", "companies", "securities"}
 
 
 def test_security_ids_preserve_distinct_official_ticker_symbols() -> None:
-    bundle = transform_us_source_records([
-        record("DCOM", "NYSE", cik=1, name="Dime Community Bancshares"),
-        record("DCOM^G", "NYSE", cik=2, name="Dime Community Bancshares Preferred G"),
-    ])
+    bundle = transform_us_source_records(
+        [
+            record("DCOM", "NYSE", cik=1, name="Dime Community Bancshares"),
+            record("DCOM^G", "NYSE", cik=2, name="Dime Community Bancshares Preferred G"),
+        ]
+    )
     assert {item.security_id for item in bundle.securities} == {
         "security:NYSE-DCOM",
         "security:NYSE-DCOM~5E~G",
@@ -102,8 +121,10 @@ def test_security_ids_preserve_distinct_official_ticker_symbols() -> None:
 
 
 def test_safe_ticker_encoding_avoids_previous_normalization_collision() -> None:
-    bundle = transform_us_source_records([
-        record("ABC$A", "NYSE", cik=1, name="ABC Preferred A"),
-        record("ABC^A", "NYSE", cik=2, name="ABC Depositary A"),
-    ])
+    bundle = transform_us_source_records(
+        [
+            record("ABC$A", "NYSE", cik=1, name="ABC Preferred A"),
+            record("ABC^A", "NYSE", cik=2, name="ABC Depositary A"),
+        ]
+    )
     assert len({item.security_id for item in bundle.securities}) == 2

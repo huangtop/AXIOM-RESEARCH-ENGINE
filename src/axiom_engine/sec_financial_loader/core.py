@@ -392,7 +392,7 @@ def _acceptance(companies: int, with_facts: int, coverage: dict[str, int], faile
 def build_real_100_financials(
     *,
     user_agent: str,
-    registry_dir: str = "data/company_registry",
+    registry_dir: str,
     source_output: str = "data/onboarding/generated/real_100_sec_financial_source.json",
     financial_dir: str = "data/financial_data",
     cache_dir: str = "data/onboarding/sec_companyfacts",
@@ -557,7 +557,7 @@ def build_real_100_financials(
 
 def validate_real_100_financials(
     *,
-    registry_dir: str = "data/company_registry",
+    registry_dir: str,
     financial_dir: str = "data/financial_data",
 ) -> dict[str, Any]:
     companies = {

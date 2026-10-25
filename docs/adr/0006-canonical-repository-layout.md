@@ -4,7 +4,7 @@
 Accepted
 
 ## Decision
-AXIOM canonical data is partitioned by responsibility. Market entities and listings live in `data/universe`; shared classification and valuation-profile taxonomies live in `data/taxonomy`. Other existing repositories (`valuation`, `research`, `industry`, `etf`, `impact`, and `ingestion`) remain independent.
+AXIOM canonical data is partitioned by responsibility. Market entities and listings live in `data/universe`. Classification and valuation data are maintained by their own pipelines. Other existing repositories (`valuation`, `research`, `industry`, `etf`, `impact`, and `ingestion`) remain independent.
 
 `UniverseRepository` and `UniverseImporter` accept either the canonical data root or the legacy `data/universe` directory. Legacy compatibility is temporary migration support; new code should pass `data`.
 
@@ -15,10 +15,6 @@ data/
   universe/
     companies.json
     securities.json
-    valuation_profile_assignments.json
-  taxonomy/
-    classifications.json
-    valuation_profile_catalog.json
   valuation/
   research/
   industry/
@@ -28,4 +24,4 @@ data/
 ```
 
 ## Consequences
-Universe imports cannot overwrite taxonomy files. Official Universe migration can replace companies and securities while preserving manually curated classifications and valuation policies.
+Universe imports write only companies and securities. Official Universe migration can replace both files while enforcing company, security, ticker and primary-listing integrity.

@@ -87,7 +87,7 @@ def build_production_market(
     *,
     source_dir: str | Path,
     output_dir: str | Path = "data/market",
-    registry_dir: str | Path = "data/company_registry",
+    registry_dir: str | Path = "data/universe",
     strict: bool = False,
     write: bool = False,
 ) -> dict[str, Any]:
@@ -210,7 +210,7 @@ def build_production_market(
     return {**manifest, "output_dir": str(out), "dry_run": not write}
 
 
-def validate_production_market(*, output_dir: str | Path = "data/market", registry_dir: str | Path = "data/company_registry") -> dict[str, Any]:
+def validate_production_market(*, output_dir: str | Path = "data/market", registry_dir: str | Path = "data/universe") -> dict[str, Any]:
     root = Path(output_dir)
     required = ["market_snapshots.json", "provenance.json", "market_diagnostics.json", "market_manifest.json"]
     missing = [name for name in required if not (root / name).exists()]

@@ -133,7 +133,7 @@ def _select(company_id: str, ticker: str, facts: list[dict[str, Any]], estimates
     return _result(company_id, ticker, "insufficient_data", "X", 0, None, "no_supported_strategy_inputs", missing, source_ids, status="unavailable")
 
 
-def build_valuation_strategies(*, registry_dir: str | Path = "data/company_registry", financial_dir: str | Path = "data/financial_data", estimate_dir: str | Path = "data/estimate_data", market_dir: str | Path = "data/market_data", output_dir: str | Path = "data/valuation_strategy", company: str | None = None, write: bool = False) -> dict[str, Any]:
+def build_valuation_strategies(*, registry_dir: str | Path = "data/universe", financial_dir: str | Path = "data/financial_data", estimate_dir: str | Path = "data/estimate_data", market_dir: str | Path = "data/market_data", output_dir: str | Path = "data/valuation_strategy", company: str | None = None, write: bool = False) -> dict[str, Any]:
     registry = Path(registry_dir)
     companies = _read(registry / "companies.json")
     securities = _read(registry / "securities.json", [])

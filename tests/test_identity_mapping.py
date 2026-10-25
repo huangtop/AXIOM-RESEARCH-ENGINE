@@ -86,7 +86,7 @@ def test_per_symbol_cache_uses_filename_when_payload_is_invalid(tmp_path):
     assert report["summary"]["yahoo_cached_symbol_count"] == 1
 
 
-def test_enriches_missing_universe_cik_from_registry_symbol(tmp_path):
+def test_missing_universe_cik_is_not_filled_from_retired_registry(tmp_path):
     root = fixture_repo(tmp_path, ["BRK-B"])
     companies_path = root / "data/universe/companies.json"
     securities_path = root / "data/universe/securities.json"
@@ -117,6 +117,7 @@ def test_enriches_missing_universe_cik_from_registry_symbol(tmp_path):
 
     report = build_identity_mapping(root)
     record = next(row for row in report["records"] if row["primary_symbol"] == "BRK-B")
-    assert record["cik"] == "0001067983"
-    assert record["identity_state"] == "resolved"
-    assert report["indexes"]["cik_to_company_id"]["0001067983"] == "company:US-NYSE-BRK.B"
+    assert record["cik"] is None
+    assert record["identity_state"] == "partial"
+    assert "0001067983" not in report["indexes"]["cik_to_company_id"]
+    assert report["diagnostics"]["companies_without_cik"] == ["company:US-NYSE-BRK.B"]

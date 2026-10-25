@@ -71,7 +71,7 @@ def _diag(severity: str, code: str, message: str, **details: Any) -> dict[str, A
     return {"severity": severity, "code": code, "message": message, "details": details}
 
 
-def build_production_registry(*, source_dir: str | Path, output_dir: str | Path = "data/company_registry", write: bool = False, strict: bool = False) -> dict[str, Any]:
+def build_production_registry(*, source_dir: str | Path, output_dir: str | Path = "data/onboarding/generated/company_registry", write: bool = False, strict: bool = False) -> dict[str, Any]:
     source = Path(source_dir)
     if not source.is_dir():
         raise ProductionRegistryError(f"source directory not found: {source}")
@@ -184,7 +184,7 @@ def build_production_registry(*, source_dir: str | Path, output_dir: str | Path 
     return {**manifest, "output_dir": str(out), "dry_run": not write}
 
 
-def validate_production_registry(*, output_dir: str | Path = "data/company_registry") -> dict[str, Any]:
+def validate_production_registry(*, output_dir: str | Path = "data/onboarding/generated/company_registry") -> dict[str, Any]:
     root = Path(output_dir)
     required = ["companies.json", "securities.json", "provenance.json", "registry_diagnostics.json", "registry_manifest.json"]
     missing = [name for name in required if not (root / name).exists()]

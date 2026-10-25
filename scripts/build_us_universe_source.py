@@ -49,19 +49,24 @@ def main() -> None:
             dangling_count = len(
                 UniverseRepository.from_directory(args.universe_dir).integrity_errors()
             )
-        print(json.dumps({
-            "before_company_count": len(before_companies),
-            "before_security_count": len(before_securities),
-            "official_current_count": len(snapshot.records),
-            "added_company_count": len(after_companies - before_companies),
-            "added_security_count": len(after_securities - before_securities),
-            "deleted_company_count": len(before_companies - after_companies),
-            "deleted_security_count": len(before_securities - after_securities),
-            "after_company_count": len(after_companies),
-            "after_security_count": len(after_securities),
-            "dangling_reference_count": dangling_count,
-            "dry_run": not args.write,
-        }, indent=2))
+        print(
+            json.dumps(
+                {
+                    "before_company_count": len(before_companies),
+                    "before_security_count": len(before_securities),
+                    "official_current_count": len(snapshot.records),
+                    "added_company_count": len(after_companies - before_companies),
+                    "added_security_count": len(after_securities - before_securities),
+                    "deleted_company_count": len(before_companies - after_companies),
+                    "deleted_security_count": len(before_securities - after_securities),
+                    "after_company_count": len(after_companies),
+                    "after_security_count": len(after_securities),
+                    "dangling_reference_count": dangling_count,
+                    "dry_run": not args.write,
+                },
+                indent=2,
+            )
+        )
 
 
 if __name__ == "__main__":

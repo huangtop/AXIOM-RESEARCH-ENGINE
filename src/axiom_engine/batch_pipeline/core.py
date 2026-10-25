@@ -99,7 +99,7 @@ def _merge_company_outputs(company_results: list[dict[str, Any]], output_dir: Pa
 
 def run_batch_pipeline(
     *,
-    registry_dir: str | Path = "data/company_registry",
+    registry_dir: str | Path = "data/universe",
     financial_dir: str | Path = "data/financial_data",
     estimate_dir: str | Path = "data/estimate_data",
     market_dir: str | Path = "data/market_data",

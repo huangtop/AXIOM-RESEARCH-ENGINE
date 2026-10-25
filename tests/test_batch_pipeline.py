@@ -1,4 +1,5 @@
 import json
+import shutil
 from pathlib import Path
 
 from axiom_engine.batch_pipeline import run_batch_pipeline, validate_batch_pipeline
@@ -32,6 +33,18 @@ def test_batch_pipeline_builds_research_and_cards(tmp_path):
     assert validation["valid"] is True
     assert validation["research_bundles"] == 1
     assert validation["valuation_cards"] == 1
+
+
+def test_default_universe_builds_research_and_cards_without_legacy_registry(tmp_path, monkeypatch):
+    shutil.copytree(FIXTURE / "company_registry", tmp_path / "data/universe")
+    monkeypatch.chdir(tmp_path)
+    options = kwargs(tmp_path)
+    options.pop("registry_dir")
+    report = run_batch_pipeline(**options, write=True)
+    assert report["valid"] is True
+    assert report["completed"] == 1
+    assert validate_batch_pipeline(output_dir=tmp_path / "production")["valid"] is True
+    assert not Path("data/company_registry").exists()
 
 
 def test_resume_reuses_completed_company(tmp_path):

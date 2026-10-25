@@ -35,6 +35,18 @@ def test_import_is_dry_run_by_default(tmp_path: Path) -> None:
     assert report.dry_run is True and not output.exists()
 
 
+def test_default_import_uses_universe_and_still_rejects_unknown_company(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    Path("data").mkdir()
+    write_registry(Path("data/universe"), "company:US-NEW")
+    source = Path("source.json")
+    write_json(source, source_payload("company:US-NEW"))
+    assert import_financial_data(source).facts_found == 1
+    write_json(source, source_payload("company:US-MISSING"))
+    with pytest.raises(FinancialDataImportError, match="missing from registry"):
+        import_financial_data(source)
+
+
 def test_write_outputs_only_financial_bundle(tmp_path: Path) -> None:
     source = tmp_path / "source.json"; write_json(source, source_payload())
     registry = tmp_path / "registry"; write_registry(registry)

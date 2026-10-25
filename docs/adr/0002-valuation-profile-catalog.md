@@ -1,7 +1,8 @@
 # ADR-0002: Valuation Profile Catalog belongs to Market Universe
 
 ## Status
-Proposed for Commit-002 validation.
+Superseded. The experimental Universe-owned catalog was retired; runtime valuation
+configuration remains under `data/valuation`.
 
 ## Decision
 Create a Universe-owned valuation profile catalog that describes company applicability, lifecycle, profitability, model priority, legacy website mapping, warning policy, and confidence policy.

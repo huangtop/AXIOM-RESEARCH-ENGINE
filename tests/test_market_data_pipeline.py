@@ -34,6 +34,18 @@ def test_import_is_dry_run_by_default(tmp_path: Path) -> None:
     assert report.dry_run is True and not output.exists()
 
 
+def test_default_import_uses_universe_company_and_security_ids(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    Path("data").mkdir()
+    write_registry(Path("data/universe"))
+    source = Path("source.json")
+    write_json(source, payload())
+    assert import_market_data(source).observations_found == 1
+    write_json(Path("data/universe/securities.json"), [])
+    with pytest.raises(MarketDataImportError, match="securities missing"):
+        import_market_data(source)
+
+
 def test_write_and_validate_bundle(tmp_path: Path) -> None:
     source=tmp_path/"source.json"; write_json(source,payload()); registry=tmp_path/"registry"; write_registry(registry)
     output=tmp_path/"out"; report=import_market_data(source,output_dir=output,company_registry_dir=registry,dry_run=False)

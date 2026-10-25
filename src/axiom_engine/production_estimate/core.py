@@ -78,7 +78,7 @@ def _estimate_id(row: dict[str, Any]) -> str:
 
 def build_production_estimates(
     *, source_dir: str | Path, output_dir: str | Path = "data/estimates",
-    registry_dir: str | Path = "data/company_registry", strict: bool = False,
+    registry_dir: str | Path = "data/universe", strict: bool = False,
     write: bool = False,
 ) -> dict[str, Any]:
     source = Path(source_dir)
@@ -151,7 +151,7 @@ def build_production_estimates(
     return {**manifest,"output_dir":str(out),"dry_run":not write}
 
 
-def validate_production_estimates(*, output_dir: str | Path = "data/estimates", registry_dir: str | Path = "data/company_registry") -> dict[str, Any]:
+def validate_production_estimates(*, output_dir: str | Path = "data/estimates", registry_dir: str | Path = "data/universe") -> dict[str, Any]:
     root=Path(output_dir); required=["consensus_estimates.json","provenance.json","estimate_diagnostics.json","estimate_manifest.json"]
     missing=[n for n in required if not (root/n).exists()]
     if missing: return {"valid":False,"errors":[f"missing file: {n}" for n in missing],"output_dir":str(root)}

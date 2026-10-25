@@ -11,7 +11,7 @@ from typing import Any, Iterable
 
 from pydantic import ValidationError
 
-from .models.universe import CompanyMaster, SecurityMaster, ValuationProfileAssignment
+from .models.universe import CompanyMaster, SecurityMaster
 from .repository_layout import CanonicalRepositoryLayout
 from .universe_repository import UniverseIntegrityError, UniverseRepository
 
@@ -42,7 +42,6 @@ class ConflictPolicy(StrEnum):
 class UniverseImportBundle:
     companies: tuple[CompanyMaster, ...] = ()
     securities: tuple[SecurityMaster, ...] = ()
-    valuation_profile_assignments: tuple[ValuationProfileAssignment, ...] = ()
 
 
 @dataclass(frozen=True, slots=True)
@@ -52,87 +51,65 @@ class UniverseImportReport:
     dry_run: bool
     incoming_companies: int
     incoming_securities: int
-    incoming_valuation_profile_assignments: int
     output_companies: int
     output_securities: int
-    output_valuation_profile_assignments: int
     written_files: tuple[Path, ...] = ()
     warnings: tuple[str, ...] = ()
 
 
 @dataclass(slots=True)
 class UniverseImporter:
-    """Parse, validate and atomically write canonical Universe master data."""
+    """Parse, validate and atomically write company and security master data."""
 
     universe_dir: Path
     mode: ImportMode = ImportMode.MERGE
     conflict_policy: ConflictPolicy = ConflictPolicy.ERROR
     _warnings: list[str] = field(default_factory=list, init=False)
-    _layout: CanonicalRepositoryLayout = field(init=False, repr=False)
 
     def __post_init__(self) -> None:
-        layout = CanonicalRepositoryLayout.resolve(self.universe_dir)
-        self.universe_dir = layout.universe_dir
-        self._layout = layout
+        self.universe_dir = CanonicalRepositoryLayout.resolve(self.universe_dir).universe_dir
 
     def import_file(self, source_path: str | Path, *, dry_run: bool = True) -> UniverseImportReport:
         source = Path(source_path)
-        bundle = self.read(source)
-        return self.apply(bundle, source_path=source, dry_run=dry_run)
+        return self.apply(self.read(source), source_path=source, dry_run=dry_run)
 
     def read(self, source_path: str | Path) -> UniverseImportBundle:
         path = Path(source_path)
-        suffix = path.suffix.lower()
-        if suffix == ".json":
+        if path.suffix.lower() == ".json":
             records = self._read_json(path)
-        elif suffix == ".csv":
+        elif path.suffix.lower() == ".csv":
             records = self._read_csv(path)
         else:
             raise UniverseImportFormatError(
-                f"unsupported Universe import format {suffix!r}; expected .json or .csv"
+                f"unsupported Universe import format {path.suffix.lower()!r}; expected .json or .csv"
             )
         return self._parse_records(records, path)
 
     def apply(
-        self,
-        bundle: UniverseImportBundle,
-        *,
-        source_path: str | Path,
-        dry_run: bool = True,
+        self, bundle: UniverseImportBundle, *, source_path: str | Path, dry_run: bool = True
     ) -> UniverseImportReport:
         self._warnings.clear()
-        existing = self._load_existing() if self.mode == ImportMode.MERGE else UniverseImportBundle()
-
-        companies = self._combine(existing.companies, bundle.companies, "company_id", "company")
-        securities = self._combine(existing.securities, bundle.securities, "security_id", "security")
-        assignments = self._combine(
-            existing.valuation_profile_assignments,
-            bundle.valuation_profile_assignments,
-            "assignment_id",
-            "valuation profile assignment",
+        existing = (
+            self._load_existing() if self.mode == ImportMode.MERGE else UniverseImportBundle()
         )
-
         staged = UniverseImportBundle(
-            companies=tuple(companies),
-            securities=tuple(securities),
-            valuation_profile_assignments=tuple(assignments),
+            companies=tuple(
+                self._combine(existing.companies, bundle.companies, "company_id", "company")
+            ),
+            securities=tuple(
+                self._combine(existing.securities, bundle.securities, "security_id", "security")
+            ),
         )
         self._validate_staged(staged)
-
-        written: tuple[Path, ...] = ()
-        if not dry_run:
-            written = self._write_atomic(staged)
-
+        written = () if dry_run else self._write_atomic(staged)
         return UniverseImportReport(
             source_path=Path(source_path),
             mode=self.mode,
             dry_run=dry_run,
             incoming_companies=len(bundle.companies),
             incoming_securities=len(bundle.securities),
-            incoming_valuation_profile_assignments=len(bundle.valuation_profile_assignments),
             output_companies=len(staged.companies),
             output_securities=len(staged.securities),
-            output_valuation_profile_assignments=len(staged.valuation_profile_assignments),
             written_files=written,
             warnings=tuple(self._warnings),
         )
@@ -142,23 +119,17 @@ class UniverseImporter:
             payload = json.loads(path.read_text(encoding="utf-8"))
         except (OSError, json.JSONDecodeError) as exc:
             raise UniverseImportFormatError(f"cannot read Universe JSON import: {path}") from exc
-
         if isinstance(payload, list):
             return [self._require_mapping(item, path) for item in payload]
         if not isinstance(payload, dict):
             raise UniverseImportFormatError("Universe JSON must be an object or an array")
-
-        records: list[dict[str, Any]] = []
-        keys = {
-            "companies": "company",
-            "securities": "security",
-            "valuation_profile_assignments": "valuation_profile_assignment",
-        }
+        keys = {"companies": "company", "securities": "security"}
         unknown = set(payload) - set(keys) - {"schema_version", "source"}
         if unknown:
             raise UniverseImportFormatError(
                 f"unknown top-level Universe import keys: {', '.join(sorted(unknown))}"
             )
+        records: list[dict[str, Any]] = []
         for key, record_type in keys.items():
             values = payload.get(key, [])
             if not isinstance(values, list):
@@ -171,34 +142,24 @@ class UniverseImporter:
 
     def _read_csv(self, path: Path) -> list[dict[str, Any]]:
         try:
-            with path.open("r", encoding="utf-8-sig", newline="") as handle:
-                reader = csv.DictReader(handle)
-                if reader.fieldnames is None or "record_type" not in reader.fieldnames:
-                    raise UniverseImportFormatError("Universe CSV requires a record_type column")
-                return [self._clean_csv_row(row) for row in reader]
+            with path.open(encoding="utf-8-sig", newline="") as handle:
+                return [self._clean_csv_row(row) for row in csv.DictReader(handle)]
         except OSError as exc:
             raise UniverseImportFormatError(f"cannot read Universe CSV import: {path}") from exc
 
     @staticmethod
-    def _require_mapping(item: Any, path: Path) -> dict[str, Any]:
-        if not isinstance(item, dict):
-            raise UniverseImportFormatError(f"records in {path} must be JSON objects")
-        return dict(item)
+    def _require_mapping(value: Any, path: Path) -> dict[str, Any]:
+        if not isinstance(value, dict):
+            raise UniverseImportFormatError(f"Universe records must be objects: {path}")
+        return dict(value)
 
     @staticmethod
     def _clean_csv_row(row: dict[str, str | None]) -> dict[str, Any]:
         cleaned: dict[str, Any] = {}
-        list_fields = {
-            "aliases",
-            "classification_ids",
-            "valuation_profile_ids",
-            "source_ids",
-        }
+        list_fields = {"aliases"}
         json_fields = {"metadata"}
         boolean_fields = {"primary_listing"}
-        integer_fields = {"priority", "founded_year"}
-        float_fields = {"confidence"}
-
+        integer_fields = {"founded_year"}
         for key, raw in row.items():
             value = "" if raw is None else raw.strip()
             if value == "":
@@ -220,8 +181,6 @@ class UniverseImporter:
                 cleaned[key] = normalized in {"true", "1", "yes"}
             elif key in integer_fields:
                 cleaned[key] = int(value)
-            elif key in float_fields:
-                cleaned[key] = float(value)
             else:
                 cleaned[key] = value
         return cleaned
@@ -231,13 +190,10 @@ class UniverseImporter:
     ) -> UniverseImportBundle:
         companies: list[CompanyMaster] = []
         securities: list[SecurityMaster] = []
-        assignments: list[ValuationProfileAssignment] = []
         model_by_type = {
             "company": (CompanyMaster, companies),
             "security": (SecurityMaster, securities),
-            "valuation_profile_assignment": (ValuationProfileAssignment, assignments),
         }
-
         for row_number, raw_record in enumerate(records, start=1):
             record = dict(raw_record)
             record_type = str(record.pop("record_type", "")).strip().lower()
@@ -252,21 +208,14 @@ class UniverseImporter:
                 raise UniverseImportFormatError(
                     f"{source_path}: record {row_number} failed {record_type} validation: {exc}"
                 ) from exc
-
         self._assert_unique(companies, "company_id", "incoming company")
         self._assert_unique(securities, "security_id", "incoming security")
-        self._assert_unique(assignments, "assignment_id", "incoming assignment")
-        return UniverseImportBundle(tuple(companies), tuple(securities), tuple(assignments))
+        return UniverseImportBundle(tuple(companies), tuple(securities))
 
     def _load_existing(self) -> UniverseImportBundle:
         return UniverseImportBundle(
             companies=tuple(self._load_models("companies.json", CompanyMaster)),
             securities=tuple(self._load_models("securities.json", SecurityMaster)),
-            valuation_profile_assignments=tuple(
-                self._load_models(
-                    "valuation_profile_assignments.json", ValuationProfileAssignment
-                )
-            ),
         )
 
     def _load_models(self, filename: str, model_type: Any) -> list[Any]:
@@ -281,7 +230,9 @@ class UniverseImporter:
             raise UniverseImportFormatError(f"canonical Universe file must be an array: {path}")
         return [model_type.model_validate(item) for item in payload]
 
-    def _combine(self, existing: Iterable[Any], incoming: Iterable[Any], key: str, label: str) -> list[Any]:
+    def _combine(
+        self, existing: Iterable[Any], incoming: Iterable[Any], key: str, label: str
+    ) -> list[Any]:
         result = {getattr(item, key): item for item in existing}
         for item in incoming:
             item_id = getattr(item, key)
@@ -304,39 +255,16 @@ class UniverseImporter:
                 raise UniverseImportConflictError(f"duplicate {label} ID: {item_id}")
             seen.add(item_id)
 
-    def _validate_staged(self, bundle: UniverseImportBundle) -> None:
-        classifications = UniverseRepository._load_models(
-            self._layout.classifications_path,
-            __import__(
-                "axiom_engine.models.universe", fromlist=["ClassificationNode"]
-            ).ClassificationNode,
-        )
-        valuation_profiles = UniverseRepository._load_models(
-            self._layout.valuation_profile_catalog_path,
-            __import__(
-                "axiom_engine.models.valuation_catalog",
-                fromlist=["ValuationProfileCatalogEntry"],
-            ).ValuationProfileCatalogEntry,
-        )
+    @staticmethod
+    def _validate_staged(bundle: UniverseImportBundle) -> None:
         try:
-            UniverseRepository(
-                companies=bundle.companies,
-                securities=bundle.securities,
-                classifications=classifications,
-                valuation_profile_assignments=bundle.valuation_profile_assignments,
-                valuation_profiles=valuation_profiles,
-                validate=True,
-            )
+            UniverseRepository(companies=bundle.companies, securities=bundle.securities)
         except UniverseIntegrityError as exc:
             raise UniverseImportError(str(exc)) from exc
 
     def _write_atomic(self, bundle: UniverseImportBundle) -> tuple[Path, ...]:
         self.universe_dir.mkdir(parents=True, exist_ok=True)
-        payloads = {
-            "companies.json": bundle.companies,
-            "securities.json": bundle.securities,
-            "valuation_profile_assignments.json": bundle.valuation_profile_assignments,
-        }
+        payloads = {"companies.json": bundle.companies, "securities.json": bundle.securities}
         temp_paths: list[tuple[Path, Path]] = []
         try:
             for filename, records in payloads.items():

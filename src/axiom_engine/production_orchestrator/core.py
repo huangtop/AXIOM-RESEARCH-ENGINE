@@ -87,7 +87,7 @@ def _enrich_records(path: Path, strategies: dict[str, dict[str, Any]]) -> int:
 
 def run_production_orchestrator(
     *,
-    registry_dir: str | Path = "data/company_registry",
+    registry_dir: str | Path = "data/universe",
     financial_dir: str | Path = "data/financial_data",
     estimate_dir: str | Path = "data/estimate_data",
     market_dir: str | Path = "data/market_data",

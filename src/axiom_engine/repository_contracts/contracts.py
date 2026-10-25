@@ -6,6 +6,7 @@ from typing import Iterable
 
 
 class ContractOwner(StrEnum):
+    UNIVERSE = "universe"
     PRODUCTION_REGISTRY = "production_registry"
     PRODUCTION_FINANCIAL = "production_financial"
     PRODUCTION_MARKET = "production_market"
@@ -48,23 +49,19 @@ CONTRACTS: tuple[ContractDefinition, ...] = (
     ContractDefinition(
         contract_id="company_identity",
         description="Durable company identity and legal/display metadata.",
-        canonical_owner=ContractOwner.PRODUCTION_REGISTRY,
+        canonical_owner=ContractOwner.UNIVERSE,
         status=ContractStatus.ACTIVE,
-        canonical_paths=_t(("data/production/registry/companies.json", "data/generated/production_registry/companies.json")),
-        accepted_inputs=_t(("data/universe/companies.json", "data/company_registry/companies.json")),
-        legacy_paths=_t(("data/universe/companies.json",)),
+        canonical_paths=_t(("data/universe/companies.json",)),
         forbidden_fields=_t(("current_price", "revenue_ttm", "analyst_target", "valuation", "logic_type", "default_params")),
         downstream_consumers=_t(("production_financial", "production_market", "production_estimate", "production_research_card")),
-        notes="data/universe is an accepted legacy universe source, not a second runtime owner.",
+        notes="Universe is the shared identity source. Registry importers write explicit staging outputs only.",
     ),
     ContractDefinition(
         contract_id="security_identity",
         description="Listed security, exchange, ticker, currency and primary-listing relationship.",
-        canonical_owner=ContractOwner.PRODUCTION_REGISTRY,
+        canonical_owner=ContractOwner.UNIVERSE,
         status=ContractStatus.ACTIVE,
-        canonical_paths=_t(("data/production/registry/securities.json", "data/generated/production_registry/securities.json")),
-        accepted_inputs=_t(("data/universe/securities.json", "data/company_registry/securities.json")),
-        legacy_paths=_t(("data/universe/securities.json",)),
+        canonical_paths=_t(("data/universe/securities.json",)),
         downstream_consumers=_t(("production_market", "production_research_card")),
     ),
     ContractDefinition(
@@ -136,13 +133,13 @@ CONTRACTS: tuple[ContractDefinition, ...] = (
     ),
     ContractDefinition(
         contract_id="investment_classification",
-        description="AXIOM themes, value-chain roles, business model and valuation profile assignments.",
+        description="AXIOM themes, value-chain roles and business-model classifications.",
         canonical_owner=ContractOwner.STRUCTURE_MIGRATION,
         status=ContractStatus.PENDING,
-        canonical_paths=_t(("data/canonical/company_classifications.json", "data/canonical/valuation_profile_assignments.json")),
-        accepted_inputs=_t(("structure.json", "data/taxonomy", "data/universe/valuation_profile_assignments.json")),
+        canonical_paths=_t(("data/canonical/company_classifications.json",)),
+        accepted_inputs=_t(("structure.json", "wp-content/uploads/axiom-company-classification")),
         legacy_paths=_t(("structure.json",)),
-        downstream_consumers=_t(("automatic_classification", "valuation_model_policy", "production_research_card")),
+        downstream_consumers=_t(("automatic_classification", "production_research_card")),
         notes="V030.3 will migrate structure.json; V030.2 only reserves the contract and detects existing candidates.",
     ),
     ContractDefinition(

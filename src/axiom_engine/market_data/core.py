@@ -59,7 +59,7 @@ def _normalize_rows(raw:Any,adapter:str)->list[dict[str,Any]]:
     if not isinstance(rows,list): raise MarketDataError('provider payload must resolve to a list of records')
     return rows
 
-def build_market_data(*,source:str|Path,registry_dir:str|Path='data/company_registry',output_dir:str|Path='data/market_data',adapter:str='auto',provider_id:str='provider:manual',provider_name:str='Manual Provider',as_of_date:str|None=None,write:bool=False,compact:bool=False)->dict[str,Any]:
+def build_market_data(*,source:str|Path,registry_dir:str|Path='data/universe',output_dir:str|Path='data/market_data',adapter:str='auto',provider_id:str='provider:manual',provider_name:str='Manual Provider',as_of_date:str|None=None,write:bool=False,compact:bool=False)->dict[str,Any]:
     raw=_read(Path(source)); forbidden=sorted(FORBIDDEN & _walk(raw))
     if forbidden: raise MarketDataError('source contains forbidden valuation fields: '+', '.join(forbidden))
     rows=_normalize_rows(raw,adapter); ticker_map,security_ids=_registry(Path(registry_dir))

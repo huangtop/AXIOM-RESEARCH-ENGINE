@@ -5,14 +5,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
 
-from .models.universe import (
-    ClassificationNode,
-    ClassificationType,
-    CompanyMaster,
-    SecurityMaster,
-    ValuationProfileAssignment,
-)
-from .models.valuation_catalog import ValuationProfileCatalogEntry
+from .models.universe import CompanyMaster, SecurityMaster
 from .repository_layout import CanonicalRepositoryLayout
 
 
@@ -38,13 +31,10 @@ class UniverseIntegrityError(UniverseRepositoryError, ValueError):
 
 @dataclass(frozen=True, slots=True)
 class ResolvedCompany:
-    """Company aggregate with Universe references resolved."""
+    """Company aggregate with its listed securities resolved."""
 
     company: CompanyMaster
     securities: tuple[SecurityMaster, ...]
-    classifications: tuple[ClassificationNode, ...]
-    valuation_assignments: tuple[ValuationProfileAssignment, ...]
-    valuation_profiles: tuple[ValuationProfileCatalogEntry, ...]
 
     @property
     def company_id(self) -> str:
@@ -61,79 +51,29 @@ class ResolvedCompany:
     @property
     def primary_security(self) -> SecurityMaster | None:
         if self.company.primary_security_id is not None:
-            for security in self.securities:
-                if security.security_id == self.company.primary_security_id:
-                    return security
-        return next((security for security in self.securities if security.primary_listing), None)
-
-    @property
-    def themes(self) -> tuple[ClassificationNode, ...]:
-        return tuple(
-            item
-            for item in self.classifications
-            if item.classification_type == ClassificationType.THEME
-        )
-
-    @property
-    def business_model_ids(self) -> tuple[str, ...]:
-        seen: set[str] = set()
-        values: list[str] = []
-        for profile in self.valuation_profiles:
-            for business_model_id in profile.business_model_ids:
-                if business_model_id not in seen:
-                    seen.add(business_model_id)
-                    values.append(business_model_id)
-        return tuple(values)
-
-    @property
-    def primary_valuation_profile(self) -> ValuationProfileCatalogEntry | None:
-        for assignment in self.valuation_assignments:
-            if assignment.applicability == "primary":
-                return next(
-                    (
-                        profile
-                        for profile in self.valuation_profiles
-                        if profile.profile_id == assignment.profile_id
-                    ),
-                    None,
-                )
-        return self.valuation_profiles[0] if self.valuation_profiles else None
-
-    @property
-    def primary_model_types(self) -> tuple[str, ...]:
-        profile = self.primary_valuation_profile
-        if profile is None:
-            return ()
-        policies = sorted(profile.model_policy, key=lambda item: item.priority)
-        return tuple(
-            policy.model_type for policy in policies if policy.applicability == "primary"
-        )
+            return next(
+                (
+                    item
+                    for item in self.securities
+                    if item.security_id == self.company.primary_security_id
+                ),
+                None,
+            )
+        return next((item for item in self.securities if item.primary_listing), None)
 
 
 class UniverseRepository:
-    """Read-only repository for AXIOM Market Universe data."""
+    """Read-only repository for company and security master data."""
 
     def __init__(
         self,
         *,
         companies: Iterable[CompanyMaster],
         securities: Iterable[SecurityMaster],
-        classifications: Iterable[ClassificationNode],
-        valuation_profile_assignments: Iterable[ValuationProfileAssignment],
-        valuation_profiles: Iterable[ValuationProfileCatalogEntry],
         validate: bool = True,
     ) -> None:
         self._companies = self._index_unique(companies, "company_id", "company")
         self._securities = self._index_unique(securities, "security_id", "security")
-        self._classifications = self._index_unique(
-            classifications, "classification_id", "classification"
-        )
-        self._valuation_assignments = self._index_unique(
-            valuation_profile_assignments, "assignment_id", "valuation assignment"
-        )
-        self._valuation_profiles = self._index_unique(
-            valuation_profiles, "profile_id", "valuation profile"
-        )
         self._ticker_index: dict[str, list[SecurityMaster]] = {}
         for security in self._securities.values():
             self._ticker_index.setdefault(security.ticker.upper(), []).append(security)
@@ -148,17 +88,6 @@ class UniverseRepository:
         return cls(
             companies=cls._load_models(layout.companies_path, CompanyMaster),
             securities=cls._load_models(layout.securities_path, SecurityMaster),
-            classifications=cls._load_models(
-                layout.classifications_path, ClassificationNode
-            ),
-            valuation_profile_assignments=cls._load_models(
-                layout.valuation_profile_assignments_path,
-                ValuationProfileAssignment,
-            ),
-            valuation_profiles=cls._load_models(
-                layout.valuation_profile_catalog_path,
-                ValuationProfileCatalogEntry,
-            ),
             validate=validate,
         )
 
@@ -202,13 +131,10 @@ class UniverseRepository:
         except KeyError as exc:
             raise UniverseRecordNotFoundError(f"security not found: {security_id}") from exc
 
-    def get_security_by_ticker(
-        self, ticker: str, *, exchange: str | None = None
-    ) -> SecurityMaster:
+    def get_security_by_ticker(self, ticker: str, *, exchange: str | None = None) -> SecurityMaster:
         matches = self._ticker_index.get(ticker.upper(), [])
         if exchange is not None:
-            exchange_code = exchange.upper()
-            matches = [item for item in matches if item.exchange == exchange_code]
+            matches = [item for item in matches if item.exchange == exchange.upper()]
         if not matches:
             suffix = f" on {exchange.upper()}" if exchange else ""
             raise UniverseRecordNotFoundError(
@@ -229,111 +155,45 @@ class UniverseRepository:
             company = self.get_company_by_id(
                 self.get_security_by_ticker(identifier, exchange=exchange).company_id
             )
-
         securities = tuple(
             item for item in self._securities.values() if item.company_id == company.company_id
         )
-        classifications = tuple(
-            self._classifications[item_id] for item_id in company.classification_ids
-        )
-        assignments = tuple(
-            sorted(
-                (
-                    item
-                    for item in self._valuation_assignments.values()
-                    if item.company_id == company.company_id
-                ),
-                key=lambda item: item.priority,
-            )
-        )
-        profiles = tuple(
-            self._valuation_profiles[item.profile_id] for item in assignments
-        )
-        return ResolvedCompany(
-            company=company,
-            securities=securities,
-            classifications=classifications,
-            valuation_assignments=assignments,
-            valuation_profiles=profiles,
-        )
+        return ResolvedCompany(company=company, securities=securities)
 
     def integrity_errors(self) -> tuple[str, ...]:
         errors: list[str] = []
-        primary_security_claims: dict[str, list[str]] = {}
-
+        primary_claims: dict[str, list[str]] = {}
         for security in self._securities.values():
             if security.company_id not in self._companies:
                 errors.append(
                     f"security {security.security_id} references missing company {security.company_id}"
                 )
             if security.primary_listing:
-                primary_security_claims.setdefault(security.company_id, []).append(
-                    security.security_id
-                )
+                primary_claims.setdefault(security.company_id, []).append(security.security_id)
 
         for company in self._companies.values():
-            if company.primary_security_id is not None:
-                security = self._securities.get(company.primary_security_id)
+            primary_id = company.primary_security_id
+            if primary_id is not None:
+                security = self._securities.get(primary_id)
                 if security is None:
                     errors.append(
-                        f"company {company.company_id} references missing primary security "
-                        f"{company.primary_security_id}"
+                        f"company {company.company_id} references missing primary security {primary_id}"
                     )
                 elif security.company_id != company.company_id:
                     errors.append(
-                        f"company {company.company_id} primary security belongs to "
-                        f"{security.company_id}"
+                        f"company {company.company_id} primary security belongs to {security.company_id}"
                     )
-            if len(primary_security_claims.get(company.company_id, [])) > 1:
-                errors.append(
-                    f"company {company.company_id} has multiple primary listings"
-                )
-            for classification_id in company.classification_ids:
-                if classification_id not in self._classifications:
+                elif not security.primary_listing:
                     errors.append(
-                        f"company {company.company_id} references missing classification "
-                        f"{classification_id}"
+                        f"company {company.company_id} primary security {primary_id} is not marked primary_listing"
                     )
-            for profile_id in company.valuation_profile_ids:
-                if profile_id not in self._valuation_profiles:
-                    errors.append(
-                        f"company {company.company_id} references missing valuation profile "
-                        f"{profile_id}"
-                    )
-
-        assignment_pairs: set[tuple[str, str]] = set()
-        for assignment in self._valuation_assignments.values():
-            if assignment.company_id not in self._companies:
+            claims = primary_claims.get(company.company_id, [])
+            if len(claims) > 1:
+                errors.append(f"company {company.company_id} has multiple primary listings")
+            if primary_id is not None and claims and primary_id not in claims:
                 errors.append(
-                    f"assignment {assignment.assignment_id} references missing company "
-                    f"{assignment.company_id}"
+                    f"company {company.company_id} primary security does not match primary_listing"
                 )
-            if assignment.profile_id not in self._valuation_profiles:
-                errors.append(
-                    f"assignment {assignment.assignment_id} references missing profile "
-                    f"{assignment.profile_id}"
-                )
-            pair = (assignment.company_id, assignment.profile_id)
-            if pair in assignment_pairs:
-                errors.append(
-                    f"duplicate company/profile assignment: {assignment.company_id} -> "
-                    f"{assignment.profile_id}"
-                )
-            assignment_pairs.add(pair)
-
-        for company in self._companies.values():
-            assigned_profile_ids = {
-                assignment.profile_id
-                for assignment in self._valuation_assignments.values()
-                if assignment.company_id == company.company_id
-            }
-            declared_profile_ids = set(company.valuation_profile_ids)
-            if assigned_profile_ids != declared_profile_ids:
-                errors.append(
-                    f"company {company.company_id} valuation profile declarations do not match "
-                    "valuation_profile_assignments"
-                )
-
         return tuple(errors)
 
     def validate_integrity(self) -> None:

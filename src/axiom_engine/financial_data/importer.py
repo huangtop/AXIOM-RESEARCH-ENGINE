@@ -66,7 +66,7 @@ def import_financial_data(
     source: str | Path,
     *,
     output_dir: str | Path = "data/financial_data",
-    company_registry_dir: str | Path | None = "data/company_registry",
+    company_registry_dir: str | Path | None = "data/universe",
     dry_run: bool = True,
 ) -> FinancialImportReport:
     payload = load_financial_data_source(source)

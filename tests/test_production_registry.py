@@ -29,3 +29,15 @@ def test_strict_rejects_errors(tmp_path):
 def test_validator(tmp_path):
     build_production_registry(source_dir=FIXTURE/"valid", output_dir=tmp_path, write=True)
     assert validate_production_registry(output_dir=tmp_path)["valid"] is True
+
+
+def test_default_builder_and_validator_use_staging(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    universe = Path("data/universe")
+    universe.mkdir(parents=True)
+    sentinel = '[{"company_id":"company:KEEP"}]\n'
+    (universe / "companies.json").write_text(sentinel)
+    build_production_registry(source_dir=FIXTURE / "valid", write=True)
+    assert validate_production_registry()["valid"] is True
+    assert (universe / "companies.json").read_text() == sentinel
+    assert not Path("data/company_registry/companies.json").exists()

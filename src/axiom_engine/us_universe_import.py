@@ -19,7 +19,9 @@ def _primary_listing_rank(item: USListingSourceRecord) -> tuple[int, int, str]:
     non_common = bool(re.search(r"preferred|depositary|warrant|rights?|units?", name))
     class_match = re.search(r"\bclass\s+([a-z])\b", name)
     share_class = class_match.group(1) if class_match else ""
-    class_rank = 0 if share_class == "a" else 1 if not share_class else 2 + ord(share_class) - ord("b")
+    class_rank = (
+        0 if share_class == "a" else 1 if not share_class else 2 + ord(share_class) - ord("b")
+    )
     return (1 if non_common else 0, class_rank, item.ticker)
 
 
@@ -88,7 +90,10 @@ def transform_us_source_records(
     for company_key in sorted(grouped):
         listings = sorted(
             grouped[company_key],
-            key=lambda item: (_EXCHANGE_PRIORITY.get(item.exchange, 99), *_primary_listing_rank(item)),
+            key=lambda item: (
+                _EXCHANGE_PRIORITY.get(item.exchange, 99),
+                *_primary_listing_rank(item),
+            ),
         )
         primary = listings[0]
         company_id = _company_id(primary)
@@ -156,7 +161,6 @@ def build_us_universe_import(
         "source": "official_us_universe_snapshot",
         "companies": [item.model_dump(mode="json") for item in bundle.companies],
         "securities": [item.model_dump(mode="json") for item in bundle.securities],
-        "valuation_profile_assignments": [],
     }
     target.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     cik_count = sum(1 for company in bundle.companies if company.metadata.get("cik") is not None)
@@ -184,9 +188,11 @@ def _company_id(record: USListingSourceRecord) -> str:
 
     return f"company:US-{exchange}-{_safe_token(record.ticker)}"
 
+
 def _security_id(record: USListingSourceRecord) -> str:
     exchange = _canonical_exchange(record.exchange)
     return f"security:{exchange}-{_safe_token(record.ticker)}"
+
 
 def _canonical_exchange(exchange: str) -> str:
     normalized = exchange.strip().upper()
@@ -200,6 +206,7 @@ def _canonical_exchange(exchange: str) -> str:
     }
 
     return mapping.get(normalized, normalized.replace("_", "-"))
+
 
 def _safe_token(value: str) -> str:
     normalized = value.strip().upper()

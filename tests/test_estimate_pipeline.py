@@ -15,6 +15,17 @@ def test_dry_run_default(tmp_path):
     report=import_estimate_data(s,output_dir=o,company_registry_dir=r)
     assert report.dry_run and not o.exists()
 
+def test_default_import_uses_universe(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    Path("data").mkdir()
+    registry(Path("data/universe"), "company:US-NEW")
+    source = Path("source.json")
+    write(source, payload("company:US-NEW"))
+    assert import_estimate_data(source).estimates_found == 1
+    write(source, payload("company:US-MISSING"))
+    with pytest.raises(EstimateDataImportError, match="missing from registry"):
+        import_estimate_data(source)
+
 def test_write_canonical_bundle(tmp_path):
     s=tmp_path/"s.json"; write(s,payload()); r=tmp_path/"r"; registry(r); o=tmp_path/"out"
     report=import_estimate_data(s,output_dir=o,company_registry_dir=r,dry_run=False)

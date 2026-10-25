@@ -94,7 +94,7 @@ def build_production_financials(
     *,
     source_dir: str | Path,
     output_dir: str | Path = "data/financials",
-    registry_dir: str | Path | None = "data/company_registry",
+    registry_dir: str | Path | None = "data/universe",
     write: bool = False,
     strict: bool = False,
 ) -> dict[str, Any]:
@@ -236,7 +236,7 @@ def build_production_financials(
     return {**manifest, "output_dir": str(out), "dry_run": not write}
 
 
-def validate_production_financials(*, output_dir: str | Path = "data/financials", registry_dir: str | Path | None = "data/company_registry") -> dict[str, Any]:
+def validate_production_financials(*, output_dir: str | Path = "data/financials", registry_dir: str | Path | None = "data/universe") -> dict[str, Any]:
     root = Path(output_dir)
     required = ["financial_facts.json", "provenance.json", "financial_diagnostics.json", "financial_manifest.json"]
     missing = [name for name in required if not (root / name).exists()]

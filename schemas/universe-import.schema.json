@@ -8,8 +8,7 @@
     "schema_version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$"},
     "source": {"type": "string"},
     "companies": {"type": "array", "items": {"type": "object"}},
-    "securities": {"type": "array", "items": {"type": "object"}},
-    "valuation_profile_assignments": {"type": "array", "items": {"type": "object"}}
+    "securities": {"type": "array", "items": {"type": "object"}}
   },
-  "required": ["companies", "securities", "valuation_profile_assignments"]
+  "required": ["companies", "securities"]
 }

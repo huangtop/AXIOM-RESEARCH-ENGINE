@@ -64,7 +64,7 @@ def import_market_data(
     source: str | Path,
     *,
     output_dir: str | Path = "data/market_data",
-    company_registry_dir: str | Path | None = "data/company_registry",
+    company_registry_dir: str | Path | None = "data/universe",
     dry_run: bool = True,
 ) -> MarketImportReport:
     payload = load_market_data_source(source)

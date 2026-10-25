@@ -63,7 +63,7 @@ def load_company_universe_source(source: str | Path) -> CompanyUniverseSource:
 def import_company_universe(
     source: str | Path,
     *,
-    output_dir: str | Path = "data/company_registry",
+    output_dir: str | Path = "data/onboarding/generated/company_registry",
     dry_run: bool = True,
 ) -> RegistryImportReport:
     payload = load_company_universe_source(source)

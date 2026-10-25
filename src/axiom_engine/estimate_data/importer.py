@@ -43,7 +43,7 @@ def _atomic_write_json(path:Path,payload:Any)->None:
         except FileNotFoundError: pass
         raise
 
-def import_estimate_data(source:str|Path,*,output_dir:str|Path="data/estimate_data",company_registry_dir:str|Path|None="data/company_registry",dry_run:bool=True)->EstimateImportReport:
+def import_estimate_data(source:str|Path,*,output_dir:str|Path="data/estimate_data",company_registry_dir:str|Path|None="data/universe",dry_run:bool=True)->EstimateImportReport:
     payload=load_estimate_data_source(source)
     known=_load_company_ids(company_registry_dir) if company_registry_dir else None
     companies={x.company_id for x in [*payload.estimates,*payload.forward_assumptions]}

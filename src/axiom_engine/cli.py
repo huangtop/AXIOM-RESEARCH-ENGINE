@@ -123,7 +123,7 @@ def impact(shock_id: str = typer.Option("shock:CLOUD-AI-CAPEX-DOWN-15")) -> None
 @app.command("import-company-universe")
 def import_company_universe_command(
     source: str = typer.Option(..., help="Independent company-universe source JSON"),
-    output_dir: str = typer.Option("data/company_registry"),
+    output_dir: str = typer.Option("data/onboarding/generated/company_registry"),
     write: bool = typer.Option(False, "--write", help="Write output; default is dry-run"),
 ) -> None:
     report = import_company_universe(
@@ -186,7 +186,7 @@ def ontology_show_command(entity_id: str, root: str = typer.Option("data/ontolog
 def import_financial_data_command(
     source: str = typer.Option(..., help="Provider-normalized financial data source JSON"),
     output_dir: str = typer.Option("data/financial_data"),
-    company_registry_dir: str = typer.Option("data/company_registry"),
+    company_registry_dir: str = typer.Option("data/universe"),
     write: bool = typer.Option(False, "--write", help="Write output; default is dry-run"),
 ) -> None:
     report = import_financial_data(
@@ -205,7 +205,7 @@ def validate_financial_data_command(root: str = typer.Option("data/financial_dat
 def import_estimate_data_command(
     source: str = typer.Option(..., help="Provider-normalized estimate data source JSON"),
     output_dir: str = typer.Option("data/estimate_data"),
-    company_registry_dir: str = typer.Option("data/company_registry"),
+    company_registry_dir: str = typer.Option("data/universe"),
     write: bool = typer.Option(False, "--write", help="Write output; default is dry-run"),
 ) -> None:
     report = import_estimate_data(
@@ -230,7 +230,7 @@ def validate_estimate_data_command(root: str = typer.Option("data/estimate_data"
 def import_market_data_command(
     source: str = typer.Option(..., help="Provider-normalized market data source JSON"),
     output_dir: str = typer.Option("data/market_data"),
-    company_registry_dir: str = typer.Option("data/company_registry"),
+    company_registry_dir: str = typer.Option("data/universe"),
     write: bool = typer.Option(False, "--write", help="Write output; default is dry-run"),
 ) -> None:
     report = import_market_data(
@@ -244,7 +244,7 @@ def build_valuations_command(
     financial_dir: str = typer.Option("data/financial_data", "--financial-dir"),
     estimate_dir: str = typer.Option("data/estimate_data", "--estimate-dir"),
     market_dir: str = typer.Option("data/market_data", "--market-dir"),
-    registry_dir: str = typer.Option("data/company_registry", "--registry-dir"),
+    registry_dir: str = typer.Option("data/universe", "--registry-dir"),
     assumptions_file: str = typer.Option("data/valuation_assumptions.json", "--assumptions-file"),
     output_dir: str = typer.Option("data/valuation_data", "--output-dir"),
     company: str | None = typer.Option(None, "--company", help="Company ID or primary ticker"),
@@ -313,7 +313,7 @@ def build_market_data_template_command(
 @app.command("build-market-data")
 def build_market_data_command(
     source: str = typer.Option(..., "--source"),
-    registry_dir: str = typer.Option("data/company_registry", "--registry-dir"),
+    registry_dir: str = typer.Option("data/universe", "--registry-dir"),
     output_dir: str = typer.Option("data/market_data", "--output-dir"),
     adapter: str = typer.Option(
         "auto", "--adapter", help="auto/canonical/generic/yahoo/fmp/finnhub/polygon/alpha_vantage"
@@ -373,7 +373,7 @@ def validate_market_data_command(
 
 @app.command("build-research")
 def build_research_command(
-    registry_dir: str = typer.Option("data/company_registry", "--registry-dir"),
+    registry_dir: str = typer.Option("data/universe", "--registry-dir"),
     financial_dir: str = typer.Option("data/financial_data", "--financial-dir"),
     estimate_dir: str = typer.Option("data/estimate_data", "--estimate-dir"),
     market_dir: str = typer.Option("data/market_data", "--market-dir"),
@@ -471,7 +471,7 @@ def serve_valuation_card_command(
 
 @app.command("audit-company-coverage")
 def audit_company_coverage_command(
-    registry_path: str = typer.Option("data/company_registry"),
+    registry_path: str = typer.Option("data/universe"),
     financial_path: str = typer.Option("data/financial_data"),
     estimate_path: str = typer.Option("data/estimate_data"),
     market_path: str = typer.Option("data/market_data"),
@@ -505,7 +505,7 @@ def validate_company_coverage_command(
 
 @app.command("run-canonical-pipeline")
 def run_canonical_pipeline_command(
-    registry_dir: str = typer.Option("data/company_registry"),
+    registry_dir: str = typer.Option("data/universe"),
     financial_dir: str = typer.Option("data/financial_data"),
     estimate_dir: str = typer.Option("data/estimate_data"),
     market_dir: str = typer.Option("data/market_data"),
@@ -551,7 +551,7 @@ def validate_canonical_pipeline_command(
 
 @app.command("build-valuation-strategies")
 def build_valuation_strategies_command(
-    registry_dir: str = typer.Option("data/company_registry"),
+    registry_dir: str = typer.Option("data/universe"),
     financial_dir: str = typer.Option("data/financial_data"),
     estimate_dir: str = typer.Option("data/estimate_data"),
     market_dir: str = typer.Option("data/market_data"),
@@ -587,7 +587,7 @@ def validate_valuation_strategies_command(
 
 @app.command("run-production-orchestrator")
 def run_production_orchestrator_command(
-    registry_dir: str = typer.Option("data/company_registry"),
+    registry_dir: str = typer.Option("data/universe"),
     financial_dir: str = typer.Option("data/financial_data"),
     estimate_dir: str = typer.Option("data/estimate_data"),
     market_dir: str = typer.Option("data/market_data"),
@@ -632,7 +632,7 @@ def validate_production_orchestrator_command(
 @app.command("build-production-registry")
 def build_production_registry_command(
     source_dir: str = typer.Option(..., "--source-dir"),
-    output_dir: str = typer.Option("data/company_registry", "--output-dir"),
+    output_dir: str = typer.Option("data/onboarding/generated/company_registry", "--output-dir"),
     strict: bool = typer.Option(False, "--strict"),
     write: bool = typer.Option(False, "--write"),
 ) -> None:
@@ -651,7 +651,7 @@ def build_production_registry_command(
 
 @app.command("validate-production-registry")
 def validate_production_registry_command(
-    output_dir: str = typer.Option("data/company_registry", "--output-dir"),
+    output_dir: str = typer.Option("data/onboarding/generated/company_registry", "--output-dir"),
 ) -> None:
     result = validate_production_registry(output_dir=output_dir)
     typer.echo(json.dumps(result, ensure_ascii=False, indent=2))
@@ -663,7 +663,7 @@ def validate_production_registry_command(
 def build_production_financials_command(
     source_dir: str = typer.Option(..., "--source-dir"),
     output_dir: str = typer.Option("data/financials", "--output-dir"),
-    registry_dir: str = typer.Option("data/company_registry", "--registry-dir"),
+    registry_dir: str = typer.Option("data/universe", "--registry-dir"),
     strict: bool = typer.Option(False, "--strict"),
     write: bool = typer.Option(False, "--write"),
 ) -> None:
@@ -684,7 +684,7 @@ def build_production_financials_command(
 @app.command("validate-production-financials")
 def validate_production_financials_command(
     output_dir: str = typer.Option("data/financials", "--output-dir"),
-    registry_dir: str = typer.Option("data/company_registry", "--registry-dir"),
+    registry_dir: str = typer.Option("data/universe", "--registry-dir"),
 ) -> None:
     try:
         result = validate_production_financials(output_dir=output_dir, registry_dir=registry_dir)
@@ -700,7 +700,7 @@ def validate_production_financials_command(
 def build_production_market_command(
     source_dir: str = typer.Option(..., "--source-dir"),
     output_dir: str = typer.Option("data/market", "--output-dir"),
-    registry_dir: str = typer.Option("data/company_registry", "--registry-dir"),
+    registry_dir: str = typer.Option("data/universe", "--registry-dir"),
     strict: bool = typer.Option(False, "--strict"),
     write: bool = typer.Option(False, "--write"),
 ) -> None:
@@ -721,7 +721,7 @@ def build_production_market_command(
 @app.command("validate-production-market")
 def validate_production_market_command(
     output_dir: str = typer.Option("data/market", "--output-dir"),
-    registry_dir: str = typer.Option("data/company_registry", "--registry-dir"),
+    registry_dir: str = typer.Option("data/universe", "--registry-dir"),
 ) -> None:
     try:
         result = validate_production_market(output_dir=output_dir, registry_dir=registry_dir)
@@ -737,7 +737,7 @@ def validate_production_market_command(
 def build_production_estimates_command(
     source_dir: str = typer.Option(..., "--source-dir"),
     output_dir: str = typer.Option("data/estimates", "--output-dir"),
-    registry_dir: str = typer.Option("data/company_registry", "--registry-dir"),
+    registry_dir: str = typer.Option("data/universe", "--registry-dir"),
     strict: bool = typer.Option(False, "--strict"),
     write: bool = typer.Option(False, "--write"),
 ) -> None:
@@ -758,7 +758,7 @@ def build_production_estimates_command(
 @app.command("validate-production-estimates")
 def validate_production_estimates_command(
     output_dir: str = typer.Option("data/estimates", "--output-dir"),
-    registry_dir: str = typer.Option("data/company_registry", "--registry-dir"),
+    registry_dir: str = typer.Option("data/universe", "--registry-dir"),
 ) -> None:
     try:
         result = validate_production_estimates(output_dir=output_dir, registry_dir=registry_dir)
