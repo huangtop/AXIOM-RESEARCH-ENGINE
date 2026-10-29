@@ -10,7 +10,7 @@ from axiom_engine.company_profile_v2.display_zh_tw import (
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SCRIPT = ROOT / "scripts/build_company_profile_display_zh_tw.py"
+SCRIPT = ROOT / "archive/retired/build_company_profile_display_zh_tw.py"
 PROFILE_SCRIPT = ROOT / "scripts/build_company_profiles_v2.py"
 
 
