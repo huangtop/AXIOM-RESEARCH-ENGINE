@@ -1,8 +1,8 @@
 {
   "schema_version": "sec-filing-refresh-plan.v031c.1.1",
   "version": "V031C.1.1",
-  "generated_at": "2026-10-29T10:22:17.381888+00:00",
-  "as_of_date": "2026-10-29",
+  "generated_at": "2026-10-30T10:22:10.197921+00:00",
+  "as_of_date": "2026-10-30",
   "policy": {
     "submissions_metadata_poll": "daily",
     "financial_refresh_trigger": "latest_unprocessed_financial_filing_accession",
@@ -16,13 +16,13 @@
   },
   "summary": {
     "registry_company_count": 6461,
-    "detected_refresh_company_count": 827,
+    "detected_refresh_company_count": 991,
     "refresh_company_count": 200,
-    "deferred_company_count": 627,
-    "financial_refresh_company_count": 71,
+    "deferred_company_count": 791,
+    "financial_refresh_company_count": 82,
     "missing_submissions_cache_count": 560,
-    "new_filing_count": 71,
-    "annual_evidence_refresh_company_count": 133,
+    "new_filing_count": 82,
+    "annual_evidence_refresh_company_count": 123,
     "safety_ttl_count": 0
   },
   "worklist": [
@@ -50,36 +50,37 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 0,
       "research_score": 0.8984
     },
     {
-      "company_id": "company:US-CIK0000813672",
-      "cik": "0000813672",
+      "company_id": "company:US-CIK0001897087",
+      "cik": "0001897087",
       "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
+        "NEW_FINANCIAL_FILING_ACCESSION",
+        "ANNUAL_BUSINESS_EVIDENCE_PENDING"
       ],
       "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0000813672-26-000121"
+        "form": "20-F",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-06-30",
+        "accession_number": "0001213900-26-113814"
       },
       "pending_filings": [
         {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0000813672-26-000121",
+          "form": "20-F",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-06-30",
+          "accession_number": "0001213900-26-113814",
           "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
+          "requires_business_evidence_refresh": true
         }
       ],
       "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "requires_business_evidence_refresh": true,
+      "known_financial_accession_count": 3403,
       "submissions_cache_age_days": 0,
       "priority_tier": 0,
       "research_score": 0.893
@@ -108,39 +109,10 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 0,
       "research_score": 0.8771
-    },
-    {
-      "company_id": "company:US-CIK0001394056",
-      "cik": "0001394056",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0001193125-26-435152"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0001193125-26-435152",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 0,
-      "research_score": 0.8704
     },
     {
       "company_id": "company:US-CIK0000820318",
@@ -166,7 +138,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 0,
       "research_score": 0.8687
@@ -195,10 +167,68 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3336,
+      "known_financial_accession_count": 3407,
       "submissions_cache_age_days": 0,
       "priority_tier": 0,
       "research_score": 0.8625
+    },
+    {
+      "company_id": "company:US-CIK0001101302",
+      "cik": "0001101302",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-26",
+        "accession_number": "0001101302-26-000162"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-26",
+          "accession_number": "0001101302-26-000162",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 0,
+      "research_score": 0.8615
+    },
+    {
+      "company_id": "company:US-CIK0000021535",
+      "cik": "0000021535",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-26",
+        "accession_number": "0001437749-26-033843"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-26",
+          "accession_number": "0001437749-26-033843",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 0,
+      "research_score": 0.8552
     },
     {
       "company_id": "company:US-CIK0001387467",
@@ -224,39 +254,39 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 0,
       "research_score": 0.8341
     },
     {
-      "company_id": "company:US-CIK0001275014",
-      "cik": "0001275014",
+      "company_id": "company:US-CIK0001910139",
+      "cik": "0001910139",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-25",
-        "accession_number": "0001628280-26-067880"
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-26",
+        "accession_number": "0001104659-26-120226"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-25",
-          "accession_number": "0001628280-26-067880",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-26",
+          "accession_number": "0001104659-26-120226",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 0,
-      "research_score": 0.827
+      "research_score": 0.8313
     },
     {
       "company_id": "company:US-CIK0001616533",
@@ -282,39 +312,10 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 0,
       "research_score": 0.8261
-    },
-    {
-      "company_id": "company:US-CIK0001708055",
-      "cik": "0001708055",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0001708055-26-000087"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0001708055-26-000087",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 0,
-      "research_score": 0.8238
     },
     {
       "company_id": "company:US-CIK0000898293",
@@ -340,7 +341,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 0,
       "research_score": 0.8202
@@ -369,7 +370,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 0,
       "research_score": 0.8106
@@ -398,7 +399,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 0,
       "research_score": 0.8105
@@ -427,7 +428,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 0,
       "research_score": 0.8028
@@ -456,7 +457,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 0,
       "research_score": 0.8002
@@ -485,7 +486,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 0,
       "research_score": 0.7972
@@ -514,39 +515,10 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 0,
       "research_score": 0.7764
-    },
-    {
-      "company_id": "company:US-CIK0000889331",
-      "cik": "0000889331",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-26",
-        "accession_number": "0001628280-26-067807"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-26",
-          "accession_number": "0001628280-26-067807",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 0,
-      "research_score": 0.7712
     },
     {
       "company_id": "company:US-CIK0002023554",
@@ -572,7 +544,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 0,
       "research_score": 0.7502
@@ -601,36 +573,65 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 2,
       "research_score": 0.7343
     },
     {
-      "company_id": "company:US-CIK0001078271",
-      "cik": "0001078271",
+      "company_id": "company:US-CIK0001315098",
+      "cik": "0001315098",
       "reason_codes": [
-        "ANNUAL_BUSINESS_EVIDENCE_PENDING"
+        "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
-        "form": "10-K",
-        "filing_date": "2026-08-17",
-        "report_date": "2026-06-30",
-        "accession_number": "0001193125-26-352872"
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001628280-26-068253"
       },
       "pending_filings": [
         {
-          "form": "10-K",
-          "filing_date": "2026-08-17",
-          "report_date": "2026-06-30",
-          "accession_number": "0001193125-26-352872",
-          "requires_financial_refresh": false,
-          "requires_business_evidence_refresh": true
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001628280-26-068253",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
         }
       ],
-      "requires_financial_refresh": false,
-      "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 2,
+      "research_score": 0.7313
+    },
+    {
+      "company_id": "company:US-CIK0001078271",
+      "cik": "0001078271",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001193125-26-437803"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001193125-26-437803",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 2,
       "research_score": 0.7304
@@ -659,7 +660,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 2,
       "research_score": 0.7177
@@ -668,27 +669,27 @@
       "company_id": "company:US-CIK0000319201",
       "cik": "0000319201",
       "reason_codes": [
-        "ANNUAL_BUSINESS_EVIDENCE_PENDING"
+        "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
-        "form": "10-K",
-        "filing_date": "2026-08-06",
-        "report_date": "2026-06-30",
-        "accession_number": "0000319201-26-000027"
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0000319201-26-000034"
       },
       "pending_filings": [
         {
-          "form": "10-K",
-          "filing_date": "2026-08-06",
-          "report_date": "2026-06-30",
-          "accession_number": "0000319201-26-000027",
-          "requires_financial_refresh": false,
-          "requires_business_evidence_refresh": true
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0000319201-26-000034",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
         }
       ],
-      "requires_financial_refresh": false,
-      "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 2,
       "research_score": 0.707
@@ -717,7 +718,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 2,
       "research_score": 0.6874
@@ -746,10 +747,39 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 2,
       "research_score": 0.6857
+    },
+    {
+      "company_id": "company:US-CIK0000024741",
+      "cik": "0000024741",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0000024741-26-000279"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0000024741-26-000279",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3405,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 2,
+      "research_score": 0.6715
     },
     {
       "company_id": "company:US-CIK0002009233",
@@ -775,68 +805,10 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 2,
       "research_score": 0.6673
-    },
-    {
-      "company_id": "company:US-CIK0001116942",
-      "cik": "0001116942",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-28",
-        "accession_number": "0001193125-26-435875"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-28",
-          "accession_number": "0001193125-26-435875",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 2,
-      "research_score": 0.667
-    },
-    {
-      "company_id": "company:US-CIK0001410384",
-      "cik": "0001410384",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0001410384-26-000065"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0001410384-26-000065",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 2,
-      "research_score": 0.6621
     },
     {
       "company_id": "company:US-CIK0001002638",
@@ -862,7 +834,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 2,
       "research_score": 0.6602
@@ -891,68 +863,126 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 2,
       "research_score": 0.6594
     },
     {
-      "company_id": "company:US-CIK0000354963",
-      "cik": "0000354963",
+      "company_id": "company:US-CIK0001529274",
+      "cik": "0001529274",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
+        "filing_date": "2026-10-29",
         "report_date": "2026-09-30",
-        "accession_number": "0000354963-26-000266"
+        "accession_number": "0001529274-26-000062"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
+          "filing_date": "2026-10-29",
           "report_date": "2026-09-30",
-          "accession_number": "0000354963-26-000266",
+          "accession_number": "0001529274-26-000062",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3407,
       "submissions_cache_age_days": 0,
       "priority_tier": 2,
-      "research_score": 0.657
+      "research_score": 0.6581
     },
     {
-      "company_id": "company:US-CIK0001373715",
-      "cik": "0001373715",
+      "company_id": "company:US-CIK0000732712",
+      "cik": "0000732712",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
+        "filing_date": "2026-10-29",
         "report_date": "2026-09-30",
-        "accession_number": "0001373715-26-000096"
+        "accession_number": "0000732712-26-000052"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
+          "filing_date": "2026-10-29",
           "report_date": "2026-09-30",
-          "accession_number": "0001373715-26-000096",
+          "accession_number": "0000732712-26-000052",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 2,
-      "research_score": 0.6344
+      "research_score": 0.6572
+    },
+    {
+      "company_id": "company:US-CIK0001652044",
+      "cik": "0001652044",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001652044-26-000084"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001652044-26-000084",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 2,
+      "research_score": 0.6536
+    },
+    {
+      "company_id": "company:US-CIK0001282637",
+      "cik": "0001282637",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001282637-26-000020"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001282637-26-000020",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3407,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 2,
+      "research_score": 0.6454
     },
     {
       "company_id": "company:US-CIK0002047148",
@@ -978,7 +1008,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 2,
       "research_score": 0.6338
@@ -1007,39 +1037,39 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 2,
       "research_score": 0.6305
     },
     {
-      "company_id": "company:US-CIK0001674101",
-      "cik": "0001674101",
+      "company_id": "company:US-CIK0000913142",
+      "cik": "0000913142",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0001628280-26-067893"
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-27",
+        "accession_number": "0000913142-26-000042"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0001628280-26-067893",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-27",
+          "accession_number": "0000913142-26-000042",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3336,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 2,
-      "research_score": 0.6137
+      "research_score": 0.6238
     },
     {
       "company_id": "company:US-CIK0000310354",
@@ -1065,97 +1095,10 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 2,
       "research_score": 0.6035
-    },
-    {
-      "company_id": "company:US-CIK0000275880",
-      "cik": "0000275880",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0001193125-26-435045"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0001193125-26-435045",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 2,
-      "research_score": 0.603
-    },
-    {
-      "company_id": "company:US-CIK0001096056",
-      "cik": "0001096056",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-27",
-        "accession_number": "0001437749-26-033797"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-27",
-          "accession_number": "0001437749-26-033797",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3334,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 2,
-      "research_score": 0.5995
-    },
-    {
-      "company_id": "company:US-CIK0000863436",
-      "cik": "0000863436",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0001193125-26-436286"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0001193125-26-436286",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 2,
-      "research_score": 0.5992
     },
     {
       "company_id": "company:US-CIK0001966750",
@@ -1181,7 +1124,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3333,
+      "known_financial_accession_count": 3404,
       "submissions_cache_age_days": 0,
       "priority_tier": 2,
       "research_score": 0.5992
@@ -1210,10 +1153,39 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 2,
       "research_score": 0.5992
+    },
+    {
+      "company_id": "company:US-CIK0001818201",
+      "cik": "0001818201",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001193125-26-437061"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001193125-26-437061",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3407,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 2,
+      "research_score": 0.5892
     },
     {
       "company_id": "company:US-CIK0001467373",
@@ -1239,68 +1211,126 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 2,
       "research_score": 0.5848
     },
     {
-      "company_id": "company:US-CIK0001021860",
-      "cik": "0001021860",
+      "company_id": "company:US-CIK0001466258",
+      "cik": "0001466258",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
+        "filing_date": "2026-10-29",
         "report_date": "2026-09-30",
-        "accession_number": "0001193125-26-435747"
+        "accession_number": "0001628280-26-068122"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
+          "filing_date": "2026-10-29",
           "report_date": "2026-09-30",
-          "accession_number": "0001193125-26-435747",
+          "accession_number": "0001628280-26-068122",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3407,
       "submissions_cache_age_days": 0,
       "priority_tier": 2,
-      "research_score": 0.5522
+      "research_score": 0.577
     },
     {
-      "company_id": "company:US-CIK0001169561",
-      "cik": "0001169561",
+      "company_id": "company:US-CIK0001735707",
+      "cik": "0001735707",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
+        "filing_date": "2026-10-29",
         "report_date": "2026-09-30",
-        "accession_number": "0001169561-26-000035"
+        "accession_number": "0001735707-26-000034"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
+          "filing_date": "2026-10-29",
           "report_date": "2026-09-30",
-          "accession_number": "0001169561-26-000035",
+          "accession_number": "0001735707-26-000034",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 2,
-      "research_score": 0.474
+      "research_score": 0.577
+    },
+    {
+      "company_id": "company:US-CIK0001137789",
+      "cik": "0001137789",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-10-02",
+        "accession_number": "0001137789-26-000309"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-10-02",
+          "accession_number": "0001137789-26-000309",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 2,
+      "research_score": 0.5095
+    },
+    {
+      "company_id": "company:US-CIK0000819793",
+      "cik": "0000819793",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001628280-26-068150"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001628280-26-068150",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3407,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 2,
+      "research_score": 0.4556
     },
     {
       "company_id": "company:US-CIK0001944399",
@@ -1326,7 +1356,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.7805
@@ -1355,68 +1385,10 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.7458
-    },
-    {
-      "company_id": "company:US-CIK0001828108",
-      "cik": "0001828108",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0001828108-26-000094"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0001828108-26-000094",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 3,
-      "research_score": 0.7445
-    },
-    {
-      "company_id": "company:US-CIK0001005284",
-      "cik": "0001005284",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0001193125-26-436148"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0001193125-26-436148",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 3,
-      "research_score": 0.7314
     },
     {
       "company_id": "company:US-CIK0000779152",
@@ -1442,7 +1414,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.7249
@@ -1471,7 +1443,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.7194
@@ -1480,27 +1452,27 @@
       "company_id": "company:US-CIK0001039065",
       "cik": "0001039065",
       "reason_codes": [
-        "ANNUAL_BUSINESS_EVIDENCE_PENDING"
+        "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
-        "form": "10-K",
-        "filing_date": "2026-08-21",
-        "report_date": "2026-06-30",
-        "accession_number": "0001104659-26-099752"
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001104659-26-120281"
       },
       "pending_filings": [
         {
-          "form": "10-K",
-          "filing_date": "2026-08-21",
-          "report_date": "2026-06-30",
-          "accession_number": "0001104659-26-099752",
-          "requires_financial_refresh": false,
-          "requires_business_evidence_refresh": true
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001104659-26-120281",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
         }
       ],
-      "requires_financial_refresh": false,
-      "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.7035
@@ -1529,7 +1501,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.7015
@@ -1558,10 +1530,39 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.7003
+    },
+    {
+      "company_id": "company:US-CIK0001274494",
+      "cik": "0001274494",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001274494-26-000212"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001274494-26-000212",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 3,
+      "research_score": 0.6895
     },
     {
       "company_id": "company:US-CIK0001786352",
@@ -1587,7 +1588,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.6895
@@ -1616,39 +1617,10 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.6547
-    },
-    {
-      "company_id": "company:US-CIK0001280058",
-      "cik": "0001280058",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0001280058-26-000032"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0001280058-26-000032",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 3,
-      "research_score": 0.6306
     },
     {
       "company_id": "company:US-CIK0001114925",
@@ -1674,7 +1646,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.6225
@@ -1683,7 +1655,6 @@
       "company_id": "company:US-CIK0001667313",
       "cik": "0001667313",
       "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION",
         "ANNUAL_BUSINESS_EVIDENCE_PENDING"
       ],
       "latest_financial_filing": {
@@ -1698,45 +1669,16 @@
           "filing_date": "2026-10-28",
           "report_date": "2026-07-31",
           "accession_number": "0001213900-26-113312",
-          "requires_financial_refresh": true,
+          "requires_financial_refresh": false,
           "requires_business_evidence_refresh": true
         }
       ],
-      "requires_financial_refresh": true,
+      "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.5852
-    },
-    {
-      "company_id": "company:US-CIK0000789019",
-      "cik": "0000789019",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0001193125-26-436133"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0001193125-26-436133",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 3,
-      "research_score": 0.5841
     },
     {
       "company_id": "company:US-CIK0000858877",
@@ -1762,7 +1704,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.5831
@@ -1791,7 +1733,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.5678
@@ -1820,7 +1762,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.5385
@@ -1849,7 +1791,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.5364
@@ -1878,68 +1820,39 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3332,
+      "known_financial_accession_count": 3403,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.5345
     },
     {
-      "company_id": "company:US-CIK0001982960",
-      "cik": "0001982960",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "6-K",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-06-30",
-        "accession_number": "0001493152-26-048803"
-      },
-      "pending_filings": [
-        {
-          "form": "6-K",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-06-30",
-          "accession_number": "0001493152-26-048803",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3331,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 3,
-      "research_score": 0.5324
-    },
-    {
-      "company_id": "company:US-CIK0001836981",
-      "cik": "0001836981",
+      "company_id": "company:US-CIK0000884144",
+      "cik": "0000884144",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
+        "filing_date": "2026-10-29",
         "report_date": "2026-09-30",
-        "accession_number": "0001836981-26-000092"
+        "accession_number": "0001628280-26-068268"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
+          "filing_date": "2026-10-29",
           "report_date": "2026-09-30",
-          "accession_number": "0001836981-26-000092",
+          "accession_number": "0001628280-26-068268",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
-      "research_score": 0.5076
+      "research_score": 0.5049
     },
     {
       "company_id": "company:US-CIK0000069633",
@@ -1965,7 +1878,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.5017
@@ -1994,39 +1907,10 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.4848
-    },
-    {
-      "company_id": "company:US-CIK0001114995",
-      "cik": "0001114995",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0001193125-26-436204"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0001193125-26-436204",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 3,
-      "research_score": 0.4778
     },
     {
       "company_id": "company:US-CIK0000889971",
@@ -2052,97 +1936,39 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.4771
     },
     {
-      "company_id": "company:US-CIK0001032975",
-      "cik": "0001032975",
+      "company_id": "company:US-CIK0001058290",
+      "cik": "0001058290",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
+        "filing_date": "2026-10-29",
         "report_date": "2026-09-30",
-        "accession_number": "0001032975-26-000063"
+        "accession_number": "0001058290-26-000041"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
+          "filing_date": "2026-10-29",
           "report_date": "2026-09-30",
-          "accession_number": "0001032975-26-000063",
+          "accession_number": "0001058290-26-000041",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
-      "research_score": 0.4725
-    },
-    {
-      "company_id": "company:US-CIK0000860731",
-      "cik": "0000860731",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0000860731-26-000058"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0000860731-26-000058",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 3,
-      "research_score": 0.4696
-    },
-    {
-      "company_id": "company:US-CIK0000048898",
-      "cik": "0000048898",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0001628280-26-067729"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0001628280-26-067729",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3336,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 3,
-      "research_score": 0.4224
+      "research_score": 0.4314
     },
     {
       "company_id": "company:US-CIK0001013237",
@@ -2168,36 +1994,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 3,
-      "research_score": 0.4207
-    },
-    {
-      "company_id": "company:US-CIK0001659166",
-      "cik": "0001659166",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-10-02",
-        "accession_number": "0001659166-26-000040"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-10-02",
-          "accession_number": "0001659166-26-000040",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.4207
@@ -2226,10 +2023,68 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.3979
+    },
+    {
+      "company_id": "company:US-CIK0001833756",
+      "cik": "0001833756",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001833756-26-000044"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001833756-26-000044",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 3,
+      "research_score": 0.3972
+    },
+    {
+      "company_id": "company:US-CIK0000849399",
+      "cik": "0000849399",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-10-02",
+        "accession_number": "0000849399-26-000083"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-10-02",
+          "accession_number": "0000849399-26-000083",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3405,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 3,
+      "research_score": 0.3932
     },
     {
       "company_id": "company:US-CIK0001807166",
@@ -2255,10 +2110,68 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.3704
+    },
+    {
+      "company_id": "company:US-CIK0001514416",
+      "cik": "0001514416",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001514416-26-000082"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001514416-26-000082",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 3,
+      "research_score": 0.3521
+    },
+    {
+      "company_id": "company:US-CIK0000202058",
+      "cik": "0000202058",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-10-02",
+        "accession_number": "0000202058-26-000087"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-10-02",
+          "accession_number": "0000202058-26-000087",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 3,
+      "research_score": 0.3246
     },
     {
       "company_id": "company:US-CIK0000722572",
@@ -2284,7 +2197,65 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 3,
+      "research_score": 0.3246
+    },
+    {
+      "company_id": "company:US-CIK0001092699",
+      "cik": "0001092699",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001092699-26-000075"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001092699-26-000075",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 3,
+      "research_score": 0.3246
+    },
+    {
+      "company_id": "company:US-CIK0001506293",
+      "cik": "0001506293",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001506293-26-000153"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001506293-26-000153",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.3246
@@ -2313,39 +2284,10 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.3246
-    },
-    {
-      "company_id": "company:US-CIK0001121788",
-      "cik": "0001121788",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-26",
-        "accession_number": "0001193125-26-435070"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-26",
-          "accession_number": "0001193125-26-435070",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 3,
-      "research_score": 0.0455
     },
     {
       "company_id": "company:US-CIK0001511737",
@@ -2371,7 +2313,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.0455
@@ -2400,7 +2342,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.0435
@@ -2409,7 +2351,6 @@
       "company_id": "company:US-CIK0001748137",
       "cik": "0001748137",
       "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION",
         "ANNUAL_BUSINESS_EVIDENCE_PENDING"
       ],
       "latest_financial_filing": {
@@ -2424,13 +2365,13 @@
           "filing_date": "2026-10-28",
           "report_date": "2026-06-30",
           "accession_number": "0001683168-26-008142",
-          "requires_financial_refresh": true,
+          "requires_financial_refresh": false,
           "requires_business_evidence_refresh": true
         }
       ],
-      "requires_financial_refresh": true,
+      "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.0435
@@ -2459,7 +2400,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.0435
@@ -2488,10 +2429,39 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.0415
+    },
+    {
+      "company_id": "company:US-CIK0000078814",
+      "cik": "0000078814",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001628280-26-068089"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001628280-26-068089",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 3,
+      "research_score": 0.01
     },
     {
       "company_id": "company:US-CIK0001039280",
@@ -2517,7 +2487,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.01
@@ -2546,7 +2516,37 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 3,
+      "research_score": 0.01
+    },
+    {
+      "company_id": "company:US-CIK0001908705",
+      "cik": "0001908705",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION",
+        "ANNUAL_BUSINESS_EVIDENCE_PENDING"
+      ],
+      "latest_financial_filing": {
+        "form": "20-F",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-06-30",
+        "accession_number": "0001213900-26-113795"
+      },
+      "pending_filings": [
+        {
+          "form": "20-F",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-06-30",
+          "accession_number": "0001213900-26-113795",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": true
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": true,
+      "known_financial_accession_count": 3403,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.01
@@ -2575,39 +2575,10 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.01
-    },
-    {
-      "company_id": "company:US-CIK0000028823",
-      "cik": "0000028823",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0000028823-26-000040"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0000028823-26-000040",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 3,
-      "research_score": 0.0
     },
     {
       "company_id": "company:US-CIK0000033533",
@@ -2633,7 +2604,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.0
@@ -2662,7 +2633,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.0
@@ -2691,7 +2662,36 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 3,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0001044777",
+      "cik": "0001044777",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001044777-26-000053"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001044777-26-000053",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.0
@@ -2720,7 +2720,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.0
@@ -2749,7 +2749,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.0
@@ -2778,7 +2778,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3333,
+      "known_financial_accession_count": 3404,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.0
@@ -2807,36 +2807,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 3,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0001784535",
-      "cik": "0001784535",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0001784535-26-000059"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0001784535-26-000059",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.0
@@ -2865,7 +2836,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.0
@@ -2894,7 +2865,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.0
@@ -2923,7 +2894,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.0
@@ -2952,7 +2923,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.0
@@ -2981,7 +2952,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.0
@@ -3010,7 +2981,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.0
@@ -3039,10 +3010,39 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 3,
       "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000887936",
+      "cik": "0000887936",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0000887936-26-000095"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0000887936-26-000095",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.7333
     },
     {
       "company_id": "company:US-CIK0001747661",
@@ -3068,10 +3068,68 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.7318
+    },
+    {
+      "company_id": "company:US-CIK0001141391",
+      "cik": "0001141391",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001141391-26-000124"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001141391-26-000124",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.6935
+    },
+    {
+      "company_id": "company:US-CIK0001758488",
+      "cik": "0001758488",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001193125-26-437886"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001193125-26-437886",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.6895
     },
     {
       "company_id": "company:US-CIK0001287032",
@@ -3097,7 +3155,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.01
@@ -3126,36 +3184,65 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
     },
     {
-      "company_id": "company:US-CIK0000004904",
-      "cik": "0000004904",
+      "company_id": "company:US-CIK0000003570",
+      "cik": "0000003570",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
+        "filing_date": "2026-10-29",
         "report_date": "2026-09-30",
-        "accession_number": "0000004904-26-000072"
+        "accession_number": "0000003570-26-000038"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
+          "filing_date": "2026-10-29",
           "report_date": "2026-09-30",
-          "accession_number": "0000004904-26-000072",
+          "accession_number": "0000003570-26-000038",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3405,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000004281",
+      "cik": "0000004281",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0000004281-26-000036"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0000004281-26-000036",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -3184,7 +3271,37 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3333,
+      "known_financial_accession_count": 3404,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000006955",
+      "cik": "0000006955",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION",
+        "ANNUAL_BUSINESS_EVIDENCE_PENDING"
+      ],
+      "latest_financial_filing": {
+        "form": "10-K",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-08-31",
+        "accession_number": "0000006955-26-000109"
+      },
+      "pending_filings": [
+        {
+          "form": "10-K",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-08-31",
+          "accession_number": "0000006955-26-000109",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": true
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": true,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -3213,7 +3330,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -3242,7 +3359,36 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000010456",
+      "cik": "0000010456",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001628280-26-068278"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001628280-26-068278",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -3271,7 +3417,65 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000014272",
+      "cik": "0000014272",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0000014272-26-000024"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0000014272-26-000024",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000015615",
+      "cik": "0000015615",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0000015615-26-000125"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0000015615-26-000125",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3407,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -3300,7 +3504,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -3329,36 +3533,65 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3333,
+      "known_financial_accession_count": 3404,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
     },
     {
-      "company_id": "company:US-CIK0000020212",
-      "cik": "0000020212",
+      "company_id": "company:US-CIK0000016875",
+      "cik": "0000016875",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
+        "filing_date": "2026-10-29",
         "report_date": "2026-09-30",
-        "accession_number": "0000020212-26-000084"
+        "accession_number": "0000016875-26-000033"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
+          "filing_date": "2026-10-29",
           "report_date": "2026-09-30",
-          "accession_number": "0000020212-26-000084",
+          "accession_number": "0000016875-26-000033",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3408,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000019584",
+      "cik": "0000019584",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0000019584-26-000024"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0000019584-26-000024",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3407,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -3387,36 +3620,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000021344",
-      "cik": "0000021344",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-10-02",
-        "accession_number": "0001628280-26-067844"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-10-02",
-          "accession_number": "0001628280-26-067844",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -3445,7 +3649,36 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000025232",
+      "cik": "0000025232",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0000025232-26-000079"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0000025232-26-000079",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3407,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -3474,152 +3707,181 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
     },
     {
-      "company_id": "company:US-CIK0000030625",
-      "cik": "0000030625",
+      "company_id": "company:US-CIK0000031462",
+      "cik": "0000031462",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
+        "filing_date": "2026-10-29",
         "report_date": "2026-09-30",
-        "accession_number": "0000030625-26-000026"
+        "accession_number": "0001628280-26-068208"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
+          "filing_date": "2026-10-29",
           "report_date": "2026-09-30",
-          "accession_number": "0000030625-26-000026",
+          "accession_number": "0001628280-26-068208",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3336,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
     },
     {
-      "company_id": "company:US-CIK0000033213",
-      "cik": "0000033213",
+      "company_id": "company:US-CIK0000033488",
+      "cik": "0000033488",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
+        "filing_date": "2026-10-29",
         "report_date": "2026-09-30",
-        "accession_number": "0000033213-26-000058"
+        "accession_number": "0001437749-26-033847"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
+          "filing_date": "2026-10-29",
           "report_date": "2026-09-30",
-          "accession_number": "0000033213-26-000058",
+          "accession_number": "0001437749-26-033847",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
     },
     {
-      "company_id": "company:US-CIK0000037472",
-      "cik": "0000037472",
+      "company_id": "company:US-CIK0000037996",
+      "cik": "0000037996",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
+        "filing_date": "2026-10-29",
         "report_date": "2026-09-30",
-        "accession_number": "0001193125-26-436394"
+        "accession_number": "0000037996-26-000191"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
+          "filing_date": "2026-10-29",
           "report_date": "2026-09-30",
-          "accession_number": "0001193125-26-436394",
+          "accession_number": "0000037996-26-000191",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
     },
     {
-      "company_id": "company:US-CIK0000038725",
-      "cik": "0000038725",
+      "company_id": "company:US-CIK0000039263",
+      "cik": "0000039263",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
+        "filing_date": "2026-10-29",
         "report_date": "2026-09-30",
-        "accession_number": "0000038725-26-000069"
+        "accession_number": "0000039263-26-000056"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
+          "filing_date": "2026-10-29",
           "report_date": "2026-09-30",
-          "accession_number": "0000038725-26-000069",
+          "accession_number": "0000039263-26-000056",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
     },
     {
-      "company_id": "company:US-CIK0000049826",
-      "cik": "0000049826",
+      "company_id": "company:US-CIK0000046080",
+      "cik": "0000046080",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0000049826-26-000060"
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-27",
+        "accession_number": "0000046080-26-000065"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0000049826-26-000060",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-27",
+          "accession_number": "0000046080-26-000065",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000047111",
+      "cik": "0000047111",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-27",
+        "accession_number": "0001628280-26-068136"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-27",
+          "accession_number": "0001628280-26-068136",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -3648,7 +3910,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -3677,7 +3939,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -3706,7 +3968,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -3735,7 +3997,94 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000059478",
+      "cik": "0000059478",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0000059478-26-000108"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0000059478-26-000108",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000060714",
+      "cik": "0000060714",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001193125-26-437807"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001193125-26-437807",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000062234",
+      "cik": "0000062234",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0000062234-26-000048"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0000062234-26-000048",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -3764,65 +4113,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000062996",
-      "cik": "0000062996",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0000062996-26-000033"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0000062996-26-000033",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000064040",
-      "cik": "0000064040",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0000064040-26-000058"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0000064040-26-000058",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -3851,7 +4142,36 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000066004",
+      "cik": "0000066004",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001628280-26-068210"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001628280-26-068210",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3408,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -3880,36 +4200,94 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
     },
     {
-      "company_id": "company:US-CIK0000072971",
-      "cik": "0000072971",
+      "company_id": "company:US-CIK0000070318",
+      "cik": "0000070318",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
+        "filing_date": "2026-10-29",
         "report_date": "2026-09-30",
-        "accession_number": "0000072971-26-000327"
+        "accession_number": "0000070318-26-000050"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
+          "filing_date": "2026-10-29",
           "report_date": "2026-09-30",
-          "accession_number": "0000072971-26-000327",
+          "accession_number": "0000070318-26-000050",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000072903",
+      "cik": "0000072903",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0000072903-26-000181"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0000072903-26-000181",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000073124",
+      "cik": "0000073124",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0000073124-26-000066"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0000073124-26-000066",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3407,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -3938,36 +4316,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000075362",
-      "cik": "0000075362",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0001193125-26-436124"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0001193125-26-436124",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -3996,181 +4345,123 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
     },
     {
-      "company_id": "company:US-CIK0000079879",
-      "cik": "0000079879",
+      "company_id": "company:US-CIK0000080035",
+      "cik": "0000080035",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
+        "filing_date": "2026-10-29",
         "report_date": "2026-09-30",
-        "accession_number": "0000079879-26-000318"
+        "accession_number": "0000080035-26-000036"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
+          "filing_date": "2026-10-29",
           "report_date": "2026-09-30",
-          "accession_number": "0000079879-26-000318",
+          "accession_number": "0000080035-26-000036",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
     },
     {
-      "company_id": "company:US-CIK0000084748",
-      "cik": "0000084748",
+      "company_id": "company:US-CIK0000081362",
+      "cik": "0000081362",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
+        "filing_date": "2026-10-29",
         "report_date": "2026-09-30",
-        "accession_number": "0000084748-26-000057"
+        "accession_number": "0001628280-26-068284"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
+          "filing_date": "2026-10-29",
           "report_date": "2026-09-30",
-          "accession_number": "0000084748-26-000057",
+          "accession_number": "0001628280-26-068284",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
     },
     {
-      "company_id": "company:US-CIK0000087347",
-      "cik": "0000087347",
+      "company_id": "company:US-CIK0000089089",
+      "cik": "0000089089",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
+        "filing_date": "2026-10-29",
         "report_date": "2026-09-30",
-        "accession_number": "0001193125-26-435577"
+        "accession_number": "0000089089-26-000098"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
+          "filing_date": "2026-10-29",
           "report_date": "2026-09-30",
-          "accession_number": "0001193125-26-435577",
+          "accession_number": "0000089089-26-000098",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
     },
     {
-      "company_id": "company:US-CIK0000091767",
-      "cik": "0000091767",
+      "company_id": "company:US-CIK0000091142",
+      "cik": "0000091142",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-27",
-        "accession_number": "0000091767-26-000051"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-27",
-          "accession_number": "0000091767-26-000051",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000092230",
-      "cik": "0000092230",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
+        "filing_date": "2026-10-29",
         "report_date": "2026-09-30",
-        "accession_number": "0000092230-26-000129"
+        "accession_number": "0000091142-26-000104"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
+          "filing_date": "2026-10-29",
           "report_date": "2026-09-30",
-          "accession_number": "0000092230-26-000129",
+          "accession_number": "0000091142-26-000104",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000093751",
-      "cik": "0000093751",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0000093751-26-000600"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0000093751-26-000600",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3407,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -4199,7 +4490,36 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000097216",
+      "cik": "0000097216",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0000097216-26-000142"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0000097216-26-000142",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3407,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -4228,7 +4548,36 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3332,
+      "known_financial_accession_count": 3403,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000099780",
+      "cik": "0000099780",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0000099780-26-000136"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0000099780-26-000136",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -4257,7 +4606,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -4286,36 +4635,36 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
     },
     {
-      "company_id": "company:US-CIK0000103379",
-      "cik": "0000103379",
+      "company_id": "company:US-CIK0000101382",
+      "cik": "0000101382",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-26",
-        "accession_number": "0000103379-26-000135"
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001193125-26-437096"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-26",
-          "accession_number": "0000103379-26-000135",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001193125-26-437096",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -4344,7 +4693,36 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000104889",
+      "cik": "0000104889",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001628280-26-068026"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001628280-26-068026",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3407,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -4373,7 +4751,65 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000105634",
+      "cik": "0000105634",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0000105634-26-000130"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0000105634-26-000130",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3407,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000105770",
+      "cik": "0000105770",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0000105770-26-000121"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0000105770-26-000121",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -4402,7 +4838,94 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000203596",
+      "cik": "0000203596",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001193125-26-437801"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001193125-26-437801",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3407,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000217346",
+      "cik": "0000217346",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-10-03",
+        "accession_number": "0000217346-26-000044"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-10-03",
+          "accession_number": "0000217346-26-000044",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3407,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000277509",
+      "cik": "0000277509",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001628280-26-068175"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001628280-26-068175",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -4431,7 +4954,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -4460,7 +4983,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -4489,94 +5012,36 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
     },
     {
-      "company_id": "company:US-CIK0000315293",
-      "cik": "0000315293",
+      "company_id": "company:US-CIK0000318300",
+      "cik": "0000318300",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
+        "filing_date": "2026-10-29",
         "report_date": "2026-09-30",
-        "accession_number": "0001628280-26-067879"
+        "accession_number": "0000318300-26-000241"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
+          "filing_date": "2026-10-29",
           "report_date": "2026-09-30",
-          "accession_number": "0001628280-26-067879",
+          "accession_number": "0000318300-26-000241",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000700923",
-      "cik": "0000700923",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0000700923-26-000052"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0000700923-26-000052",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000701347",
-      "cik": "0000701347",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0000701347-26-000077"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0000701347-26-000077",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -4605,65 +5070,36 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
     },
     {
-      "company_id": "company:US-CIK0000703351",
-      "cik": "0000703351",
+      "company_id": "company:US-CIK0000705432",
+      "cik": "0000705432",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-23",
-        "accession_number": "0000703351-26-000040"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-23",
-          "accession_number": "0000703351-26-000040",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3334,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000707179",
-      "cik": "0000707179",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
+        "filing_date": "2026-10-29",
         "report_date": "2026-09-30",
-        "accession_number": "0000707179-26-000067"
+        "accession_number": "0000705432-26-000111"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
+          "filing_date": "2026-10-29",
           "report_date": "2026-09-30",
-          "accession_number": "0000707179-26-000067",
+          "accession_number": "0000705432-26-000111",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -4692,7 +5128,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -4701,7 +5137,6 @@
       "company_id": "company:US-CIK0000717954",
       "cik": "0000717954",
       "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION",
         "ANNUAL_BUSINESS_EVIDENCE_PENDING"
       ],
       "latest_financial_filing": {
@@ -4716,13 +5151,13 @@
           "filing_date": "2026-10-28",
           "report_date": "2026-08-29",
           "accession_number": "0001628280-26-067689",
-          "requires_financial_refresh": true,
+          "requires_financial_refresh": false,
           "requires_business_evidence_refresh": true
         }
       ],
-      "requires_financial_refresh": true,
+      "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -4751,7 +5186,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -4780,36 +5215,37 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
     },
     {
-      "company_id": "company:US-CIK0000721994",
-      "cik": "0000721994",
+      "company_id": "company:US-CIK0000727273",
+      "cik": "0000727273",
       "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
+        "NEW_FINANCIAL_FILING_ACCESSION",
+        "ANNUAL_BUSINESS_EVIDENCE_PENDING"
       ],
       "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0000721994-26-000079"
+        "form": "10-K/A",
+        "filing_date": "2026-10-29",
+        "report_date": "2025-12-31",
+        "accession_number": "0001213900-26-113579"
       },
       "pending_filings": [
         {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0000721994-26-000079",
+          "form": "10-K/A",
+          "filing_date": "2026-10-29",
+          "report_date": "2025-12-31",
+          "accession_number": "0001213900-26-113579",
           "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
+          "requires_business_evidence_refresh": true
         }
       ],
       "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "requires_business_evidence_refresh": true,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -4838,7 +5274,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -4847,27 +5283,27 @@
       "company_id": "company:US-CIK0000730464",
       "cik": "0000730464",
       "reason_codes": [
-        "ANNUAL_BUSINESS_EVIDENCE_PENDING"
+        "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
-        "form": "10-K",
-        "filing_date": "2026-08-06",
-        "report_date": "2026-06-30",
-        "accession_number": "0001104659-26-092044"
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001104659-26-120213"
       },
       "pending_filings": [
         {
-          "form": "10-K",
-          "filing_date": "2026-08-06",
-          "report_date": "2026-06-30",
-          "accession_number": "0001104659-26-092044",
-          "requires_financial_refresh": false,
-          "requires_business_evidence_refresh": true
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001104659-26-120213",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
         }
       ],
-      "requires_financial_refresh": false,
-      "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -4896,7 +5332,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -4925,65 +5361,36 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
     },
     {
-      "company_id": "company:US-CIK0000740260",
-      "cik": "0000740260",
+      "company_id": "company:US-CIK0000742278",
+      "cik": "0000742278",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
+        "filing_date": "2026-10-29",
         "report_date": "2026-09-30",
-        "accession_number": "0000740260-26-000030"
+        "accession_number": "0001104659-26-120202"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
+          "filing_date": "2026-10-29",
           "report_date": "2026-09-30",
-          "accession_number": "0000740260-26-000030",
+          "accession_number": "0001104659-26-120202",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000745308",
-      "cik": "0000745308",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0001104659-26-119631"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0001104659-26-119631",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -5012,36 +5419,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000752714",
-      "cik": "0000752714",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0001193125-26-436106"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0001193125-26-436106",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -5070,36 +5448,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000759944",
-      "cik": "0000759944",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0000759944-26-000213"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0000759944-26-000213",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -5128,7 +5477,66 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000764180",
+      "cik": "0000764180",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0000764180-26-000114"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0000764180-26-000114",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000764401",
+      "cik": "0000764401",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION",
+        "ANNUAL_BUSINESS_EVIDENCE_PENDING"
+      ],
+      "latest_financial_filing": {
+        "form": "10-K",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-10-03",
+        "accession_number": "0001437749-26-033862"
+      },
+      "pending_filings": [
+        {
+          "form": "10-K",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-10-03",
+          "accession_number": "0001437749-26-033862",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": true
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": true,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -5157,7 +5565,65 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000775158",
+      "cik": "0000775158",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001193125-26-437287"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001193125-26-437287",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000784977",
+      "cik": "0000784977",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0001193125-26-436451"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0001193125-26-436451",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -5186,7 +5652,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -5195,85 +5661,114 @@
       "company_id": "company:US-CIK0000788920",
       "cik": "0000788920",
       "reason_codes": [
-        "ANNUAL_BUSINESS_EVIDENCE_PENDING"
-      ],
-      "latest_financial_filing": {
-        "form": "10-K",
-        "filing_date": "2026-09-03",
-        "report_date": "2026-06-30",
-        "accession_number": "0001079973-26-001215"
-      },
-      "pending_filings": [
-        {
-          "form": "10-K",
-          "filing_date": "2026-09-03",
-          "report_date": "2026-06-30",
-          "accession_number": "0001079973-26-001215",
-          "requires_financial_refresh": false,
-          "requires_business_evidence_refresh": true
-        }
-      ],
-      "requires_financial_refresh": false,
-      "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000789570",
-      "cik": "0000789570",
-      "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
+        "filing_date": "2026-10-29",
         "report_date": "2026-09-30",
-        "accession_number": "0000789570-26-000107"
+        "accession_number": "0001079973-26-001410"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
+          "filing_date": "2026-10-29",
           "report_date": "2026-09-30",
-          "accession_number": "0000789570-26-000107",
+          "accession_number": "0001079973-26-001410",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
     },
     {
-      "company_id": "company:US-CIK0000805928",
-      "cik": "0000805928",
+      "company_id": "company:US-CIK0000790051",
+      "cik": "0000790051",
       "reason_codes": [
         "NEW_FINANCIAL_FILING_ACCESSION"
       ],
       "latest_financial_filing": {
         "form": "10-Q",
-        "filing_date": "2026-10-28",
+        "filing_date": "2026-10-29",
         "report_date": "2026-09-30",
-        "accession_number": "0000805928-26-000108"
+        "accession_number": "0000790051-26-000053"
       },
       "pending_filings": [
         {
           "form": "10-Q",
-          "filing_date": "2026-10-28",
+          "filing_date": "2026-10-29",
           "report_date": "2026-09-30",
-          "accession_number": "0000805928-26-000108",
+          "accession_number": "0000790051-26-000053",
           "requires_financial_refresh": true,
           "requires_business_evidence_refresh": false
         }
       ],
       "requires_financial_refresh": true,
       "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000790816",
+      "cik": "0000790816",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-30",
+        "accession_number": "0000790816-26-000045"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-30",
+          "accession_number": "0000790816-26-000045",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
+      "submissions_cache_age_days": 0,
+      "priority_tier": 4,
+      "research_score": 0.0
+    },
+    {
+      "company_id": "company:US-CIK0000802481",
+      "cik": "0000802481",
+      "reason_codes": [
+        "NEW_FINANCIAL_FILING_ACCESSION"
+      ],
+      "latest_financial_filing": {
+        "form": "10-Q",
+        "filing_date": "2026-10-29",
+        "report_date": "2026-09-27",
+        "accession_number": "0000802481-26-000081"
+      },
+      "pending_filings": [
+        {
+          "form": "10-Q",
+          "filing_date": "2026-10-29",
+          "report_date": "2026-09-27",
+          "accession_number": "0000802481-26-000081",
+          "requires_financial_refresh": true,
+          "requires_business_evidence_refresh": false
+        }
+      ],
+      "requires_financial_refresh": true,
+      "requires_business_evidence_refresh": false,
+      "known_financial_accession_count": 3406,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -5302,7 +5797,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
+      "known_financial_accession_count": 3402,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
@@ -5331,501 +5826,7 @@
       ],
       "requires_financial_refresh": false,
       "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000812074",
-      "cik": "0000812074",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0001104659-26-119653"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0001104659-26-119653",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000812801",
-      "cik": "0000812801",
-      "reason_codes": [
-        "ANNUAL_BUSINESS_EVIDENCE_PENDING"
-      ],
-      "latest_financial_filing": {
-        "form": "10-K",
-        "filing_date": "2000-03-30",
-        "report_date": "1999-12-31",
-        "accession_number": "0000950137-00-001476"
-      },
-      "pending_filings": [
-        {
-          "form": "10-K",
-          "filing_date": "2000-03-30",
-          "report_date": "1999-12-31",
-          "accession_number": "0000950137-00-001476",
-          "requires_financial_refresh": false,
-          "requires_business_evidence_refresh": true
-        }
-      ],
-      "requires_financial_refresh": false,
-      "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000816956",
-      "cik": "0000816956",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0000816956-26-000111"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0000816956-26-000111",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3336,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000822818",
-      "cik": "0000822818",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0000822818-26-000047"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0000822818-26-000047",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000823768",
-      "cik": "0000823768",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0001628280-26-067830"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0001628280-26-067830",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000832101",
-      "cik": "0000832101",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0000832101-26-000029"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0000832101-26-000029",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000835011",
-      "cik": "0000835011",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-30",
-        "accession_number": "0000835011-26-000124"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-30",
-          "accession_number": "0000835011-26-000124",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3335,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000835403",
-      "cik": "0000835403",
-      "reason_codes": [
-        "ANNUAL_BUSINESS_EVIDENCE_PENDING"
-      ],
-      "latest_financial_filing": {
-        "form": "20-F",
-        "filing_date": "2026-08-18",
-        "report_date": "2026-06-30",
-        "accession_number": "0001628280-26-057529"
-      },
-      "pending_filings": [
-        {
-          "form": "20-F",
-          "filing_date": "2026-08-18",
-          "report_date": "2026-06-30",
-          "accession_number": "0001628280-26-057529",
-          "requires_financial_refresh": false,
-          "requires_business_evidence_refresh": true
-        }
-      ],
-      "requires_financial_refresh": false,
-      "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000836157",
-      "cik": "0000836157",
-      "reason_codes": [
-        "ANNUAL_BUSINESS_EVIDENCE_PENDING"
-      ],
-      "latest_financial_filing": {
-        "form": "10-K",
-        "filing_date": "2026-10-22",
-        "report_date": "2026-08-31",
-        "accession_number": "0001193125-26-428926"
-      },
-      "pending_filings": [
-        {
-          "form": "10-K",
-          "filing_date": "2026-10-22",
-          "report_date": "2026-08-31",
-          "accession_number": "0001193125-26-428926",
-          "requires_financial_refresh": false,
-          "requires_business_evidence_refresh": true
-        }
-      ],
-      "requires_financial_refresh": false,
-      "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000839923",
-      "cik": "0000839923",
-      "reason_codes": [
-        "ANNUAL_BUSINESS_EVIDENCE_PENDING"
-      ],
-      "latest_financial_filing": {
-        "form": "20-F",
-        "filing_date": "2026-05-22",
-        "report_date": "2026-03-31",
-        "accession_number": "0001193125-26-235425"
-      },
-      "pending_filings": [
-        {
-          "form": "20-F",
-          "filing_date": "2026-05-22",
-          "report_date": "2026-03-31",
-          "accession_number": "0001193125-26-235425",
-          "requires_financial_refresh": false,
-          "requires_business_evidence_refresh": true
-        }
-      ],
-      "requires_financial_refresh": false,
-      "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000842023",
-      "cik": "0000842023",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION",
-        "ANNUAL_BUSINESS_EVIDENCE_PENDING"
-      ],
-      "latest_financial_filing": {
-        "form": "10-K/A",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-06-30",
-        "accession_number": "0001140361-26-041062"
-      },
-      "pending_filings": [
-        {
-          "form": "10-K/A",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-06-30",
-          "accession_number": "0001140361-26-041062",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": true
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000849146",
-      "cik": "0000849146",
-      "reason_codes": [
-        "ANNUAL_BUSINESS_EVIDENCE_PENDING"
-      ],
-      "latest_financial_filing": {
-        "form": "10-K",
-        "filing_date": "2026-08-27",
-        "report_date": "2026-06-30",
-        "accession_number": "0001193125-26-371257"
-      },
-      "pending_filings": [
-        {
-          "form": "10-K",
-          "filing_date": "2026-08-27",
-          "report_date": "2026-06-30",
-          "accession_number": "0001193125-26-371257",
-          "requires_financial_refresh": false,
-          "requires_business_evidence_refresh": true
-        }
-      ],
-      "requires_financial_refresh": false,
-      "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000853816",
-      "cik": "0000853816",
-      "reason_codes": [
-        "NEW_FINANCIAL_FILING_ACCESSION"
-      ],
-      "latest_financial_filing": {
-        "form": "10-Q",
-        "filing_date": "2026-10-28",
-        "report_date": "2026-09-26",
-        "accession_number": "0001193125-26-435898"
-      },
-      "pending_filings": [
-        {
-          "form": "10-Q",
-          "filing_date": "2026-10-28",
-          "report_date": "2026-09-26",
-          "accession_number": "0001193125-26-435898",
-          "requires_financial_refresh": true,
-          "requires_business_evidence_refresh": false
-        }
-      ],
-      "requires_financial_refresh": true,
-      "requires_business_evidence_refresh": false,
-      "known_financial_accession_count": 3337,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000858446",
-      "cik": "0000858446",
-      "reason_codes": [
-        "ANNUAL_BUSINESS_EVIDENCE_PENDING"
-      ],
-      "latest_financial_filing": {
-        "form": "20-F",
-        "filing_date": "2026-02-26",
-        "report_date": "2025-12-31",
-        "accession_number": "0000858446-26-000010"
-      },
-      "pending_filings": [
-        {
-          "form": "20-F",
-          "filing_date": "2026-02-26",
-          "report_date": "2025-12-31",
-          "accession_number": "0000858446-26-000010",
-          "requires_financial_refresh": false,
-          "requires_business_evidence_refresh": true
-        }
-      ],
-      "requires_financial_refresh": false,
-      "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3331,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000866273",
-      "cik": "0000866273",
-      "reason_codes": [
-        "ANNUAL_BUSINESS_EVIDENCE_PENDING"
-      ],
-      "latest_financial_filing": {
-        "form": "10-K",
-        "filing_date": "2026-09-03",
-        "report_date": "2026-06-30",
-        "accession_number": "0000866273-26-000057"
-      },
-      "pending_filings": [
-        {
-          "form": "10-K",
-          "filing_date": "2026-09-03",
-          "report_date": "2026-06-30",
-          "accession_number": "0000866273-26-000057",
-          "requires_financial_refresh": false,
-          "requires_business_evidence_refresh": true
-        }
-      ],
-      "requires_financial_refresh": false,
-      "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000866787",
-      "cik": "0000866787",
-      "reason_codes": [
-        "ANNUAL_BUSINESS_EVIDENCE_PENDING"
-      ],
-      "latest_financial_filing": {
-        "form": "10-K",
-        "filing_date": "2026-10-26",
-        "report_date": "2026-08-29",
-        "accession_number": "0001104659-26-118791"
-      },
-      "pending_filings": [
-        {
-          "form": "10-K",
-          "filing_date": "2026-10-26",
-          "report_date": "2026-08-29",
-          "accession_number": "0001104659-26-118791",
-          "requires_financial_refresh": false,
-          "requires_business_evidence_refresh": true
-        }
-      ],
-      "requires_financial_refresh": false,
-      "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3334,
-      "submissions_cache_age_days": 0,
-      "priority_tier": 4,
-      "research_score": 0.0
-    },
-    {
-      "company_id": "company:US-CIK0000867840",
-      "cik": "0000867840",
-      "reason_codes": [
-        "ANNUAL_BUSINESS_EVIDENCE_PENDING"
-      ],
-      "latest_financial_filing": {
-        "form": "10-K",
-        "filing_date": "2026-09-28",
-        "report_date": "2026-06-30",
-        "accession_number": "0001683168-26-007462"
-      },
-      "pending_filings": [
-        {
-          "form": "10-K",
-          "filing_date": "2026-09-28",
-          "report_date": "2026-06-30",
-          "accession_number": "0001683168-26-007462",
-          "requires_financial_refresh": false,
-          "requires_business_evidence_refresh": true
-        }
-      ],
-      "requires_financial_refresh": false,
-      "requires_business_evidence_refresh": true,
-      "known_financial_accession_count": 3335,
+      "known_financial_accession_count": 3405,
       "submissions_cache_age_days": 0,
       "priority_tier": 4,
       "research_score": 0.0
