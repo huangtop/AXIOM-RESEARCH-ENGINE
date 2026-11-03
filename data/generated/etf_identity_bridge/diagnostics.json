@@ -1,31 +1,31 @@
 {
   "schema_version": "etf-security-identity-diagnostics.v031e.1",
   "version": "V031E.1B",
-  "generated_at": "2026-10-27T00:05:05.839193+00:00",
+  "generated_at": "2026-11-03T00:03:47.686701+00:00",
   "source_snapshot": {
-    "snapshot_id": "20261026225005-cb0f80ccbcb5",
-    "provider_generated_at": "2026-10-26T22:50:05.365213+00:00",
-    "holdings_index_sha256": "d67838bfdde99a182c3093dc81605f78c0b8c9399d9c6c9e5b05487fb6cde5b1",
+    "snapshot_id": "20261102225454-05b1d20f06a4",
+    "provider_generated_at": "2026-11-02T22:54:54.109032+00:00",
+    "holdings_index_sha256": "56fd188d61be4d531a23096b2f711f1d7ae2fb4bfa4dcae34434b0c14042c1aa",
     "holdings_coverage": "top_holdings_only"
   },
   "summary": {
-    "holding_symbol_count": 839,
-    "resolved_symbol_count": 338,
-    "unresolved_symbol_count": 501,
-    "resolved_company_count": 337,
-    "resolved_exposure_count": 1440,
-    "unresolved_exposure_count": 1845,
+    "holding_symbol_count": 1491,
+    "resolved_symbol_count": 686,
+    "unresolved_symbol_count": 805,
+    "resolved_company_count": 685,
+    "resolved_exposure_count": 3486,
+    "unresolved_exposure_count": 3002,
     "status_counts": {
-      "resolved_alias": 2,
-      "resolved_exact": 336,
-      "unresolved": 118,
-      "unsupported_market": 383
+      "resolved_alias": 4,
+      "resolved_exact": 682,
+      "unresolved": 319,
+      "unsupported_market": 486
     },
     "reason_code_counts": {
-      "CLASS_SHARE_PUNCTUATION_NORMALIZED": 2,
-      "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY": 383,
-      "SECURITY_IDENTITY_NOT_FOUND": 118,
-      "UNIQUE_ACTIVE_COMMON_EQUITY_MATCH": 336
+      "CLASS_SHARE_PUNCTUATION_NORMALIZED": 4,
+      "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY": 486,
+      "SECURITY_IDENTITY_NOT_FOUND": 319,
+      "UNIQUE_ACTIVE_COMMON_EQUITY_MATCH": 682
     },
     "name_based_matching_used": false,
     "valuation_readiness_consumed": false
@@ -38,7 +38,9 @@
       "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "US-AFEM"
+        "US-AFEM",
+        "US-EFFE",
+        "US-EMOP"
       ]
     },
     {
@@ -48,6 +50,7 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
+        "TW-006207",
         "TW-00639"
       ]
     },
@@ -61,20 +64,74 @@
         "TW-00735",
         "TW-00851",
         "US-AFEM",
+        "US-AIS",
+        "US-AVEM",
+        "US-AVSE",
+        "US-BBEM",
+        "US-BCEM",
+        "US-BKEM",
+        "US-BREE",
         "US-CHAT",
         "US-CHPS",
+        "US-DBEM",
+        "US-DEHP",
+        "US-DEXC",
+        "US-DFEM",
+        "US-DFEV",
+        "US-DFSE",
         "US-DMXU",
         "US-DRAM",
+        "US-EEMO",
+        "US-EEMV",
+        "US-EEMX",
+        "US-EFFE",
+        "US-EMC",
+        "US-EMCR",
+        "US-EMCS",
+        "US-EMES",
+        "US-EMGF",
+        "US-EMM",
+        "US-EMMF",
         "US-ENHE",
+        "US-EQLT",
+        "US-FDEM",
+        "US-FEMR",
+        "US-FFEM",
+        "US-FRDM",
+        "US-FTHF",
+        "US-GEM",
         "US-GEMQ",
+        "US-GSEE",
         "US-IEMG",
         "US-IGPT",
         "US-IXUS",
+        "US-JHEM",
+        "US-KAIT",
         "US-KCHP",
+        "US-KEMQ",
+        "US-KEMX",
+        "US-MEM",
+        "US-MEMX",
+        "US-MFEM",
+        "US-NTSE",
+        "US-NUEM",
+        "US-OAEM",
+        "US-PEMX",
+        "US-QEMM",
+        "US-QLVE",
+        "US-ROAM",
+        "US-RWEM",
         "US-SCHF",
+        "US-STXE",
+        "US-TEMR",
+        "US-TEMX",
+        "US-TLTE",
+        "US-VDG",
         "US-VEA",
+        "US-VEM",
         "US-VEU",
-        "US-VXUS"
+        "US-VXUS",
+        "US-XSOE"
       ]
     },
     {
@@ -86,6 +143,16 @@
       "source_etf_ids": [
         "TW-00639",
         "TW-00887"
+      ]
+    },
+    {
+      "holding_symbol": "000810.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-MEMX"
       ]
     },
     {
@@ -130,6 +197,16 @@
       ]
     },
     {
+      "holding_symbol": "002230.SZ",
+      "market_suffix": "SZ",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-DRGN"
+      ]
+    },
+    {
       "holding_symbol": "002281.SZ",
       "market_suffix": "SZ",
       "status": "unsupported_market",
@@ -148,9 +225,6 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-006207",
-        "TW-00636",
-        "TW-00636K",
         "TW-00639",
         "TW-00643",
         "TW-00643K",
@@ -212,6 +286,7 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
+        "TW-00639",
         "TW-00643",
         "TW-00643K",
         "US-KARS"
@@ -225,7 +300,8 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00643",
-        "TW-00643K"
+        "TW-00643K",
+        "US-RWEM"
       ]
     },
     {
@@ -251,6 +327,36 @@
       ]
     },
     {
+      "holding_symbol": "003550.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-RWEM"
+      ]
+    },
+    {
+      "holding_symbol": "003816",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-URAN"
+      ]
+    },
+    {
+      "holding_symbol": "005380.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-MFEM"
+      ]
+    },
+    {
       "holding_symbol": "005930.KQ",
       "market_suffix": null,
       "status": "unresolved",
@@ -262,19 +368,68 @@
         "TW-00916",
         "TW-009810",
         "US-AFEM",
+        "US-BBEM",
+        "US-BCEM",
+        "US-BKEM",
+        "US-BREE",
         "US-CARZ",
+        "US-DBEM",
+        "US-DEXC",
+        "US-DFEM",
+        "US-DFEV",
+        "US-DFSE",
         "US-DMXU",
         "US-DRAM",
+        "US-EEMO",
+        "US-EEMV",
+        "US-EEMX",
+        "US-EMCR",
+        "US-EMCS",
+        "US-EMGF",
+        "US-EMM",
+        "US-EMMF",
+        "US-EMSF",
         "US-ENHE",
+        "US-EPEM",
+        "US-EVLU",
+        "US-FDEM",
+        "US-FEMR",
+        "US-FFEM",
+        "US-FRDM",
+        "US-FTHF",
+        "US-GEM",
         "US-GEMQ",
+        "US-GSEE",
         "US-IEMG",
         "US-IXUS",
+        "US-JHEM",
+        "US-KAIT",
         "US-KCHP",
+        "US-KEMX",
+        "US-MEM",
+        "US-MEMX",
+        "US-NTSE",
+        "US-OAEM",
+        "US-PEMX",
+        "US-PXF",
+        "US-QEMM",
+        "US-QLVE",
+        "US-ROAM",
+        "US-RWEM",
         "US-SCHF",
+        "US-STXE",
+        "US-TEK",
+        "US-TEMR",
+        "US-TEMX",
+        "US-TLTE",
+        "US-VDG",
+        "US-VDV",
         "US-VEA",
+        "US-VEM",
         "US-VEU",
         "US-VXUS",
-        "US-WTAI"
+        "US-WTAI",
+        "US-XSOE"
       ]
     },
     {
@@ -284,7 +439,22 @@
       "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "US-IEMG"
+        "US-BBEM",
+        "US-BKEM",
+        "US-BREE",
+        "US-DBEM",
+        "US-EEMO",
+        "US-EEMV",
+        "US-EEMX",
+        "US-EMES",
+        "US-GEM",
+        "US-GSEE",
+        "US-IEMG",
+        "US-QLVE",
+        "US-STXE",
+        "US-TEMR",
+        "US-TLTE",
+        "US-VEM"
       ]
     },
     {
@@ -326,6 +496,8 @@
       "source_etf_ids": [
         "TW-00902",
         "TW-00920",
+        "US-BATT",
+        "US-EEMV",
         "US-IDRV",
         "US-KARS"
       ]
@@ -361,6 +533,16 @@
       ]
     },
     {
+      "holding_symbol": "00902",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-SDEM"
+      ]
+    },
+    {
       "holding_symbol": "009150 KS",
       "market_suffix": null,
       "status": "unresolved",
@@ -378,7 +560,23 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00735",
-        "US-KCHP"
+        "US-DFEM",
+        "US-EEMO",
+        "US-KCHP",
+        "US-KEMX",
+        "US-MFEM",
+        "US-NUEM",
+        "US-ROAM"
+      ]
+    },
+    {
+      "holding_symbol": "00916",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-KGRN"
       ]
     },
     {
@@ -392,8 +590,39 @@
         "TW-00703",
         "TW-00736",
         "TW-00752",
+        "US-AVEM",
+        "US-AVSE",
+        "US-BBEM",
+        "US-BKEM",
+        "US-BREE",
+        "US-DBEM",
+        "US-DEM",
+        "US-DFEM",
+        "US-DFEV",
+        "US-DFSE",
+        "US-DVYE",
+        "US-EEMX",
+        "US-EMCS",
+        "US-EMGF",
         "US-ENHE",
+        "US-EVLU",
+        "US-FFEM",
+        "US-FNDE",
+        "US-FXI",
+        "US-GEM",
+        "US-GSEE",
         "US-IEMG",
+        "US-JHEM",
+        "US-JPEM",
+        "US-MEM",
+        "US-NTSE",
+        "US-NUEM",
+        "US-PXH",
+        "US-QEMM",
+        "US-SCHE",
+        "US-SPEM",
+        "US-TEMR",
+        "US-TLTE",
         "US-VWO"
       ]
     },
@@ -404,7 +633,18 @@
       "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00882"
+        "TW-00882",
+        "US-EMOP"
+      ]
+    },
+    {
+      "holding_symbol": "011070.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-AVEE"
       ]
     },
     {
@@ -415,7 +655,10 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00700",
-        "US-IDRV"
+        "US-BATT",
+        "US-FXI",
+        "US-IDRV",
+        "US-KGRN"
       ]
     },
     {
@@ -425,7 +668,18 @@
       "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00965"
+        "TW-00965",
+        "US-EMM"
+      ]
+    },
+    {
+      "holding_symbol": "0136.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ECNS"
       ]
     },
     {
@@ -440,7 +694,22 @@
         "TW-00736",
         "TW-00752",
         "US-AFEM",
+        "US-AVSE",
+        "US-DEM",
+        "US-DFEV",
+        "US-DVYE",
+        "US-EEMV",
+        "US-EMGF",
+        "US-FNDE",
+        "US-FXI",
         "US-GEMQ",
+        "US-NUEM",
+        "US-PXH",
+        "US-QEMM",
+        "US-QLVE",
+        "US-SCHE",
+        "US-TLTE",
+        "US-VEM",
         "US-VWO"
       ]
     },
@@ -476,6 +745,16 @@
       ]
     },
     {
+      "holding_symbol": "0189.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ECNS"
+      ]
+    },
+    {
       "holding_symbol": "02318",
       "market_suffix": null,
       "status": "unresolved",
@@ -485,7 +764,30 @@
         "TW-00700",
         "TW-00703",
         "TW-00752",
-        "US-ENHE"
+        "US-ENHE",
+        "US-FXI",
+        "US-TKNQ"
+      ]
+    },
+    {
+      "holding_symbol": "02359",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-FDEM"
+      ]
+    },
+    {
+      "holding_symbol": "0257.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ECNS",
+        "US-KGRN"
       ]
     },
     {
@@ -499,6 +801,16 @@
       ]
     },
     {
+      "holding_symbol": "0268.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ECNS"
+      ]
+    },
+    {
       "holding_symbol": "0270.HK",
       "market_suffix": "HK",
       "status": "unsupported_market",
@@ -506,6 +818,27 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00882"
+      ]
+    },
+    {
+      "holding_symbol": "028260.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EFFE",
+        "US-EMM"
+      ]
+    },
+    {
+      "holding_symbol": "0288.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EDIV"
       ]
     },
     {
@@ -520,6 +853,17 @@
       ]
     },
     {
+      "holding_symbol": "034020.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-RCTR",
+        "US-TNUK"
+      ]
+    },
+    {
       "holding_symbol": "036930.KQ",
       "market_suffix": null,
       "status": "unresolved",
@@ -527,6 +871,26 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "US-KCHP"
+      ]
+    },
+    {
+      "holding_symbol": "03750",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-KGRN"
+      ]
+    },
+    {
+      "holding_symbol": "0388.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EMES"
       ]
     },
     {
@@ -540,6 +904,17 @@
       ]
     },
     {
+      "holding_symbol": "03968",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EMKT",
+        "US-EMOP"
+      ]
+    },
+    {
       "holding_symbol": "03988",
       "market_suffix": null,
       "status": "unresolved",
@@ -549,7 +924,25 @@
         "TW-00700",
         "TW-00703",
         "TW-00752",
-        "TW-00882"
+        "TW-00882",
+        "US-DFEV",
+        "US-DVYE",
+        "US-EEMV",
+        "US-FXI",
+        "US-JPEM",
+        "US-PXH",
+        "US-QEMM",
+        "US-QLVE"
+      ]
+    },
+    {
+      "holding_symbol": "0425.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ECNS"
       ]
     },
     {
@@ -559,6 +952,7 @@
       "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
+        "US-KAIT",
         "US-KCHP"
       ]
     },
@@ -574,6 +968,26 @@
       ]
     },
     {
+      "holding_symbol": "0522.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PDN"
+      ]
+    },
+    {
+      "holding_symbol": "055550.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EMC"
+      ]
+    },
+    {
       "holding_symbol": "0576.HK",
       "market_suffix": "HK",
       "status": "unsupported_market",
@@ -581,6 +995,17 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00908"
+      ]
+    },
+    {
+      "holding_symbol": "066570.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-AVES",
+        "US-EFFE"
       ]
     },
     {
@@ -594,13 +1019,63 @@
         "TW-00703",
         "TW-00736",
         "TW-00752",
+        "US-AVEM",
+        "US-AVSE",
+        "US-BBEM",
+        "US-BCEM",
+        "US-BKEM",
+        "US-CQQQ",
+        "US-DBEM",
+        "US-DEHP",
+        "US-DFEM",
+        "US-DFSE",
+        "US-EEMX",
+        "US-EMC",
+        "US-EMCR",
+        "US-EMCS",
+        "US-EMES",
+        "US-EMGF",
+        "US-EMKT",
+        "US-EMMF",
+        "US-EMQQ",
         "US-ENHE",
+        "US-EPEM",
+        "US-EQLT",
+        "US-FEMR",
+        "US-FFEM",
+        "US-FNDE",
+        "US-FXI",
+        "US-GEM",
         "US-GEMQ",
+        "US-GSEE",
         "US-IEMG",
         "US-IXUS",
+        "US-JHEM",
+        "US-KEMQ",
+        "US-MEM",
+        "US-NTSE",
+        "US-NUEM",
+        "US-PXH",
+        "US-QLVE",
+        "US-RWEM",
+        "US-SCHE",
+        "US-SPEM",
+        "US-TEMR",
+        "US-TLTE",
         "US-VEU",
         "US-VWO",
-        "US-VXUS"
+        "US-VXUS",
+        "US-XSOE"
+      ]
+    },
+    {
+      "holding_symbol": "071050.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-MEM"
       ]
     },
     {
@@ -610,8 +1085,19 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
+        "US-EDIV",
         "US-SRVR",
         "US-VPN"
+      ]
+    },
+    {
+      "holding_symbol": "078930.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-OAEM"
       ]
     },
     {
@@ -625,13 +1111,42 @@
       ]
     },
     {
+      "holding_symbol": "084370.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EMSF"
+      ]
+    },
+    {
+      "holding_symbol": "086790.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-AVES"
+      ]
+    },
+    {
       "holding_symbol": "0992.HK",
       "market_suffix": "HK",
       "status": "unsupported_market",
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "US-AFEM"
+        "US-AFEM",
+        "US-DEHP",
+        "US-DFSE",
+        "US-EFFE",
+        "US-EMKT",
+        "US-EMOP",
+        "US-EQLT",
+        "US-MFEM",
+        "US-NUEM",
+        "US-ROAM"
       ]
     },
     {
@@ -642,6 +1157,57 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00910"
+      ]
+    },
+    {
+      "holding_symbol": "1023.KL",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EDIV"
+      ]
+    },
+    {
+      "holding_symbol": "1024.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-CQQQ"
+      ]
+    },
+    {
+      "holding_symbol": "105560.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PEMX"
+      ]
+    },
+    {
+      "holding_symbol": "1070.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ECNS"
+      ]
+    },
+    {
+      "holding_symbol": "108490.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-HUMN",
+        "US-RTOO"
       ]
     },
     {
@@ -661,7 +1227,30 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00907"
+        "TW-00907",
+        "US-EDIV"
+      ]
+    },
+    {
+      "holding_symbol": "1120.SR",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-STXE",
+        "US-XC",
+        "US-XSOE"
+      ]
+    },
+    {
+      "holding_symbol": "1155.KL",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EDIV"
       ]
     },
     {
@@ -685,6 +1274,16 @@
       ]
     },
     {
+      "holding_symbol": "1209.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-FDEM"
+      ]
+    },
+    {
       "holding_symbol": "1216.TW",
       "market_suffix": "TW",
       "status": "unsupported_market",
@@ -704,6 +1303,7 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
+        "TW-0051",
         "TW-00985A"
       ]
     },
@@ -716,15 +1316,22 @@
       "source_etf_ids": [
         "TW-00403A",
         "TW-0050",
+        "TW-0056",
+        "TW-0057",
+        "TW-006203",
+        "TW-006204",
         "TW-006208",
         "TW-00692",
         "TW-00896",
         "TW-00921",
+        "TW-009804",
         "TW-00980A",
         "TW-00984A",
         "TW-00988A",
         "TW-00991A",
-        "TW-00999A"
+        "TW-00999A",
+        "US-KEMX",
+        "US-MFEM"
       ]
     },
     {
@@ -744,7 +1351,39 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00964"
+        "TW-00964",
+        "US-EAFG",
+        "US-VEM"
+      ]
+    },
+    {
+      "holding_symbol": "1326.TW",
+      "market_suffix": "TW",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "TW-0051"
+      ]
+    },
+    {
+      "holding_symbol": "1347.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-CQQQ"
+      ]
+    },
+    {
+      "holding_symbol": "1368.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EWX"
       ]
     },
     {
@@ -833,6 +1472,16 @@
       ]
     },
     {
+      "holding_symbol": "1658.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EMDV"
+      ]
+    },
+    {
       "holding_symbol": "1717.TW",
       "market_suffix": "TW",
       "status": "unsupported_market",
@@ -852,6 +1501,8 @@
         "TW-00700",
         "TW-00703",
         "TW-00752",
+        "US-EVLU",
+        "US-FXI",
         "US-KARS"
       ]
     },
@@ -866,13 +1517,35 @@
       ]
     },
     {
+      "holding_symbol": "1815.TWO",
+      "market_suffix": "TWO",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EWX"
+      ]
+    },
+    {
       "holding_symbol": "1816.HK",
       "market_suffix": "HK",
       "status": "unsupported_market",
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "US-NLR"
+        "US-KGRN",
+        "US-NLR",
+        "US-SMRF"
+      ]
+    },
+    {
+      "holding_symbol": "1888.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-CQQQ"
       ]
     },
     {
@@ -903,7 +1576,8 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00882",
-        "TW-00964"
+        "TW-00964",
+        "US-VEM"
       ]
     },
     {
@@ -914,6 +1588,26 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00972"
+      ]
+    },
+    {
+      "holding_symbol": "192820.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EPEM"
+      ]
+    },
+    {
+      "holding_symbol": "1961.T",
+      "market_suffix": "T",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ISCF"
       ]
     },
     {
@@ -987,7 +1681,20 @@
         "TW-00991A",
         "TW-00992A",
         "TW-00994A",
-        "TW-00999A"
+        "TW-00999A",
+        "US-EFFE",
+        "US-EMMF",
+        "US-EQLT"
+      ]
+    },
+    {
+      "holding_symbol": "2162.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ECNS"
       ]
     },
     {
@@ -998,6 +1705,18 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00921"
+      ]
+    },
+    {
+      "holding_symbol": "2222.SR",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-DEM",
+        "US-EEMV",
+        "US-QEMM"
       ]
     },
     {
@@ -1038,7 +1757,6 @@
         "TW-0050",
         "TW-0052",
         "TW-0053",
-        "TW-0056",
         "TW-0057",
         "TW-006203",
         "TW-006204",
@@ -1065,15 +1783,25 @@
         "TW-00940",
         "TW-00944",
         "TW-00952",
-        "TW-009803",
         "TW-009804",
         "TW-009808",
         "TW-009809",
         "TW-00980A",
-        "TW-009816",
         "TW-00981A",
+        "TW-00982T",
         "TW-00985A",
-        "TW-00991A"
+        "TW-00991A",
+        "US-AVEM",
+        "US-AVES",
+        "US-DEM",
+        "US-EEMV",
+        "US-EVLU",
+        "US-JHEM",
+        "US-MFEM",
+        "US-NUEM",
+        "US-QLVE",
+        "US-ROAM",
+        "US-VEXC"
       ]
     },
     {
@@ -1127,9 +1855,40 @@
         "TW-00995A",
         "TW-00996A",
         "TW-00999A",
+        "US-BBEM",
+        "US-BKEM",
+        "US-DBEM",
+        "US-DEHP",
+        "US-EEMO",
+        "US-EEMV",
+        "US-EEMX",
+        "US-EMC",
+        "US-EMCR",
+        "US-EMCS",
+        "US-EMGF",
+        "US-EMM",
+        "US-EMOP",
+        "US-FEMR",
+        "US-FRDM",
+        "US-FTHF",
         "US-GEMQ",
+        "US-GSEE",
         "US-IEMG",
-        "US-VWO"
+        "US-KEMX",
+        "US-MFEM",
+        "US-NTSE",
+        "US-NUEM",
+        "US-PEMX",
+        "US-QEMM",
+        "US-RWEM",
+        "US-SCHE",
+        "US-SPEM",
+        "US-SPTE",
+        "US-STXE",
+        "US-TEMX",
+        "US-VEXC",
+        "US-VWO",
+        "US-XSOE"
       ]
     },
     {
@@ -1142,7 +1901,8 @@
         "TW-00403A",
         "TW-0051",
         "TW-00981A",
-        "TW-00991A"
+        "TW-00991A",
+        "US-EEMS"
       ]
     },
     {
@@ -1184,8 +1944,32 @@
         "TW-00982T",
         "TW-00985A",
         "TW-00991A",
+        "US-AVEM",
+        "US-AVSE",
+        "US-BBEM",
+        "US-BKEM",
+        "US-BREE",
+        "US-DFEV",
+        "US-DFSE",
+        "US-EEMX",
+        "US-EMCR",
+        "US-EMGF",
+        "US-EMM",
         "US-ENHE",
+        "US-EPEM",
+        "US-EVLU",
+        "US-FEMR",
+        "US-FNDE",
+        "US-FRDM",
         "US-IEMG",
+        "US-JHEM",
+        "US-KEMX",
+        "US-MEMX",
+        "US-PXH",
+        "US-SCHE",
+        "US-SPEM",
+        "US-TLTE",
+        "US-VEXC",
         "US-VWO"
       ]
     },
@@ -1198,20 +1982,13 @@
       "source_etf_ids": [
         "TW-00403A",
         "TW-0052",
-        "TW-0053",
-        "TW-0057",
-        "TW-006203",
-        "TW-006204",
         "TW-00690",
         "TW-00901",
         "TW-00935",
         "TW-00944",
-        "TW-009803",
-        "TW-009804",
-        "TW-009808",
         "TW-00980A",
-        "TW-009816",
         "TW-00981A",
+        "TW-00982T",
         "TW-00985A",
         "TW-00991A",
         "TW-00996A"
@@ -1248,6 +2025,7 @@
         "TW-006203",
         "TW-006204",
         "TW-006208",
+        "TW-00631L",
         "TW-00690",
         "TW-00692",
         "TW-00728",
@@ -1299,15 +2077,73 @@
         "TW-00999A",
         "US-AFEM",
         "US-ARTY",
+        "US-AVEM",
+        "US-AVSE",
+        "US-BBEM",
+        "US-BCEM",
+        "US-BKEM",
         "US-CHPS",
+        "US-DBEM",
+        "US-DEHP",
+        "US-DEXC",
+        "US-DFEM",
+        "US-DFSE",
+        "US-EEMO",
+        "US-EEMV",
+        "US-EEMX",
+        "US-EFFE",
+        "US-EMC",
+        "US-EMCR",
+        "US-EMCS",
+        "US-EMES",
+        "US-EMGF",
+        "US-EMKT",
+        "US-EMM",
+        "US-EMMF",
+        "US-EMOP",
+        "US-EMSF",
         "US-ENHE",
+        "US-EPEM",
+        "US-FAI",
+        "US-FDEM",
+        "US-FEMR",
+        "US-FFEM",
+        "US-FNDE",
+        "US-FTHF",
+        "US-GEM",
         "US-GEMQ",
+        "US-GSEE",
         "US-IEMG",
         "US-IXUS",
+        "US-JHEM",
+        "US-JPEM",
+        "US-KAIT",
+        "US-KEMQ",
+        "US-KEMX",
+        "US-MEM",
+        "US-MEMX",
+        "US-NTSE",
+        "US-NUEM",
+        "US-OAEM",
+        "US-PEMX",
+        "US-PXH",
+        "US-QEMM",
+        "US-QLVE",
+        "US-RWEM",
+        "US-SCHE",
+        "US-SPEM",
+        "US-STXE",
+        "US-TEMR",
+        "US-TEMX",
+        "US-TINY",
+        "US-TLTE",
+        "US-VEM",
         "US-VEU",
+        "US-VEXC",
         "US-VT",
         "US-VWO",
-        "US-VXUS"
+        "US-VXUS",
+        "US-XSOE"
       ]
     },
     {
@@ -1317,8 +2153,10 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-0051",
-        "TW-00947"
+        "TW-00947",
+        "US-AVEE",
+        "US-DEXC",
+        "US-EEMS"
       ]
     },
     {
@@ -1346,17 +2184,16 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00403A",
-        "TW-0053",
-        "TW-0057",
-        "TW-006203",
         "TW-00935",
         "TW-00980A",
-        "TW-009816",
         "TW-00981A",
         "TW-00985A",
         "TW-00991A",
         "TW-00992A",
-        "TW-00999A"
+        "TW-00999A",
+        "US-EQLT",
+        "US-KEMX",
+        "US-OAEM"
       ]
     },
     {
@@ -1369,8 +2206,10 @@
         "TW-00915",
         "TW-00929",
         "TW-00943",
+        "TW-00944",
         "TW-00946",
-        "TW-00961"
+        "TW-00961",
+        "US-VEM"
       ]
     },
     {
@@ -1405,9 +2244,13 @@
         "TW-00961",
         "TW-00962",
         "TW-00964",
+        "TW-009802",
+        "TW-009803",
         "TW-009809",
         "TW-00991A",
-        "TW-00999A"
+        "TW-00999A",
+        "US-EVLU",
+        "US-RWEM"
       ]
     },
     {
@@ -1426,7 +2269,8 @@
         "TW-00980A",
         "TW-00981A",
         "TW-00982A",
-        "TW-00991A"
+        "TW-00991A",
+        "US-EMES"
       ]
     },
     {
@@ -1443,6 +2287,16 @@
         "TW-00981A",
         "TW-00985A",
         "TW-00999A"
+      ]
+    },
+    {
+      "holding_symbol": "2371.TW",
+      "market_suffix": "TW",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EWX"
       ]
     },
     {
@@ -1467,7 +2321,9 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00943",
-        "TW-00985A"
+        "TW-00962",
+        "TW-00985A",
+        "US-EPEM"
       ]
     },
     {
@@ -1491,9 +2347,21 @@
         "TW-00940",
         "TW-00944",
         "TW-00946",
+        "TW-00947",
         "TW-009803",
         "TW-00984A",
-        "TW-00991A"
+        "TW-00991A",
+        "US-ROAM"
+      ]
+    },
+    {
+      "holding_symbol": "2382.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-CQQQ"
       ]
     },
     {
@@ -1506,6 +2374,7 @@
         "TW-00401A",
         "TW-00404A",
         "TW-0052",
+        "TW-0053",
         "TW-0056",
         "TW-00713",
         "TW-00878",
@@ -1518,11 +2387,16 @@
         "TW-00952",
         "TW-00961",
         "TW-00962",
-        "TW-009808",
+        "TW-009802",
         "TW-00980A",
         "TW-00981A",
         "TW-00991A",
-        "TW-00999A"
+        "TW-00999A",
+        "US-DEM",
+        "US-DEPW",
+        "US-EFFE",
+        "US-EVLU",
+        "US-MTAW"
       ]
     },
     {
@@ -1566,7 +2440,9 @@
         "TW-00994A",
         "TW-00995A",
         "TW-00996A",
-        "TW-00999A"
+        "TW-00999A",
+        "US-DEHP",
+        "US-EMSF"
       ]
     },
     {
@@ -1576,7 +2452,8 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00730"
+        "TW-00730",
+        "TW-00946"
       ]
     },
     {
@@ -1599,7 +2476,7 @@
         "TW-00728",
         "TW-00900",
         "TW-00962",
-        "TW-009802"
+        "TW-009809"
       ]
     },
     {
@@ -1622,8 +2499,8 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00403A",
+        "TW-0053",
         "TW-0056",
-        "TW-006204",
         "TW-00888",
         "TW-00905",
         "TW-00912",
@@ -1634,6 +2511,17 @@
         "TW-00985A",
         "TW-00991A",
         "TW-00999A"
+      ]
+    },
+    {
+      "holding_symbol": "2409.TW",
+      "market_suffix": "TW",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "TW-0051",
+        "US-EEMS"
       ]
     },
     {
@@ -1648,8 +2536,10 @@
         "TW-00896",
         "TW-00929",
         "TW-009809",
+        "TW-009816",
         "TW-00985A",
-        "TW-00991A"
+        "TW-00991A",
+        "US-EELV"
       ]
     },
     {
@@ -1682,7 +2572,8 @@
         "TW-00403A",
         "TW-00904",
         "TW-00981A",
-        "TW-00991A"
+        "TW-00991A",
+        "US-DEPW"
       ]
     },
     {
@@ -1744,7 +2635,6 @@
         "TW-00935",
         "TW-00944",
         "TW-00947",
-        "TW-009802",
         "TW-009803",
         "TW-009804",
         "TW-009808",
@@ -1764,11 +2654,62 @@
         "TW-00996A",
         "TW-00999A",
         "US-AFEM",
+        "US-AVEM",
+        "US-AVSE",
+        "US-BBEM",
+        "US-BKEM",
+        "US-BREE",
         "US-CHPS",
+        "US-DBEM",
+        "US-DEHP",
+        "US-DEM",
+        "US-DEXC",
+        "US-DFEM",
+        "US-DFEV",
+        "US-DFSE",
+        "US-EEMO",
+        "US-EEMX",
+        "US-EMC",
+        "US-EMCR",
+        "US-EMCS",
+        "US-EMES",
+        "US-EMGF",
+        "US-EMKT",
+        "US-EMM",
+        "US-EMMF",
+        "US-EPEM",
+        "US-FDEM",
+        "US-FEMR",
+        "US-FFEM",
+        "US-FNDE",
+        "US-FRDM",
+        "US-FTHF",
+        "US-GEM",
         "US-GEMQ",
+        "US-GSEE",
         "US-IEMG",
         "US-IGPT",
-        "US-VWO"
+        "US-JHEM",
+        "US-JPEM",
+        "US-KEMX",
+        "US-MEM",
+        "US-MEMX",
+        "US-MFEM",
+        "US-NTSE",
+        "US-PXH",
+        "US-QEMM",
+        "US-QLVE",
+        "US-ROAM",
+        "US-RWEM",
+        "US-SCHE",
+        "US-SPEM",
+        "US-SPTE",
+        "US-STXE",
+        "US-TEMR",
+        "US-TLTE",
+        "US-VEXC",
+        "US-VWO",
+        "US-XSOE"
       ]
     },
     {
@@ -1782,16 +2723,6 @@
         "TW-00403A",
         "TW-00910",
         "TW-00987A"
-      ]
-    },
-    {
-      "holding_symbol": "2458.TW",
-      "market_suffix": "TW",
-      "status": "unsupported_market",
-      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-00946"
       ]
     },
     {
@@ -1834,6 +2765,16 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00733"
+      ]
+    },
+    {
+      "holding_symbol": "2498.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-CABZ"
       ]
     },
     {
@@ -1885,7 +2826,8 @@
         "TW-00984A",
         "TW-00985A",
         "TW-00991A",
-        "TW-00999A"
+        "TW-00999A",
+        "US-DVYE"
       ]
     },
     {
@@ -1937,7 +2879,8 @@
         "TW-00938",
         "TW-00940",
         "TW-00984A",
-        "TW-00999A"
+        "TW-00999A",
+        "US-OAEM"
       ]
     },
     {
@@ -1962,6 +2905,36 @@
       ]
     },
     {
+      "holding_symbol": "2666.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EWX"
+      ]
+    },
+    {
+      "holding_symbol": "267260.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EMSF"
+      ]
+    },
+    {
+      "holding_symbol": "2688.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EDIV"
+      ]
+    },
+    {
       "holding_symbol": "2768.T",
       "market_suffix": "T",
       "status": "unsupported_market",
@@ -1969,6 +2942,16 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00955"
+      ]
+    },
+    {
+      "holding_symbol": "277810.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-HUMN"
       ]
     },
     {
@@ -2033,7 +3016,9 @@
         "TW-00657",
         "TW-00657K",
         "TW-00661",
+        "TW-00951",
         "TW-00954",
+        "US-EAFG",
         "US-NECK",
         "US-WTAI"
       ]
@@ -2063,6 +3048,9 @@
       "source_etf_ids": [
         "TW-0050",
         "TW-0055",
+        "TW-0057",
+        "TW-006203",
+        "TW-006204",
         "TW-006208",
         "TW-00690",
         "TW-00692",
@@ -2078,8 +3066,12 @@
         "TW-00939",
         "TW-00940",
         "TW-00944",
+        "TW-009802",
+        "TW-009804",
         "TW-009808",
-        "TW-00991A"
+        "TW-00991A",
+        "US-AVES",
+        "US-EMCS"
       ]
     },
     {
@@ -2091,6 +3083,7 @@
       "source_etf_ids": [
         "TW-00403A",
         "TW-0055",
+        "TW-006204",
         "TW-00701",
         "TW-00731",
         "TW-00878",
@@ -2098,8 +3091,11 @@
         "TW-00938",
         "TW-00939",
         "TW-00944",
+        "TW-009802",
         "TW-009803",
-        "TW-00991A"
+        "TW-009808",
+        "TW-00991A",
+        "US-AVES"
       ]
     },
     {
@@ -2116,6 +3112,8 @@
         "TW-00907",
         "TW-00919",
         "TW-00938",
+        "TW-009802",
+        "TW-009816",
         "TW-00991A"
       ]
     },
@@ -2135,6 +3133,7 @@
         "TW-00939",
         "TW-00961",
         "TW-00980A",
+        "TW-009816",
         "TW-00991A",
         "TW-00999A"
       ]
@@ -2156,7 +3155,8 @@
         "TW-009809",
         "TW-009816",
         "TW-00991A",
-        "TW-00999A"
+        "TW-00999A",
+        "US-OAEM"
       ]
     },
     {
@@ -2198,8 +3198,11 @@
         "TW-00919",
         "TW-00938",
         "TW-00939",
+        "TW-00944",
         "TW-009802",
+        "TW-009808",
         "TW-009809",
+        "TW-009816",
         "TW-00991A",
         "TW-00999A"
       ]
@@ -2219,8 +3222,10 @@
         "TW-00912",
         "TW-00918",
         "TW-00938",
+        "TW-009802",
         "TW-00991A",
-        "TW-00999A"
+        "TW-00999A",
+        "US-OAEM"
       ]
     },
     {
@@ -2243,11 +3248,10 @@
         "TW-00938",
         "TW-00939",
         "TW-00940",
-        "TW-00944",
-        "TW-009804",
         "TW-009808",
         "TW-00980A",
-        "TW-00991A"
+        "TW-00991A",
+        "US-JPEM"
       ]
     },
     {
@@ -2282,6 +3286,16 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00972"
+      ]
+    },
+    {
+      "holding_symbol": "298040.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-AVEE"
       ]
     },
     {
@@ -2321,7 +3335,7 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00639"
+        "US-KGRN"
       ]
     },
     {
@@ -2338,7 +3352,8 @@
         "TW-00739",
         "TW-00877",
         "US-AICH",
-        "US-LYTE"
+        "US-LYTE",
+        "US-PHOX"
       ]
     },
     {
@@ -2348,7 +3363,8 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00877"
+        "TW-00877",
+        "US-PHOX"
       ]
     },
     {
@@ -2371,12 +3387,11 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-006207",
-        "TW-00636",
-        "TW-00636K",
         "TW-00639",
         "TW-00877",
         "US-AICH",
-        "US-LYTE"
+        "US-LYTE",
+        "US-PHOX"
       ]
     },
     {
@@ -2404,17 +3419,9 @@
         "TW-00887",
         "TW-00893",
         "TW-00902",
-        "US-KARS"
-      ]
-    },
-    {
-      "holding_symbol": "300757 CH",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-00988A"
+        "US-BATT",
+        "US-KARS",
+        "US-KGRN"
       ]
     },
     {
@@ -2440,7 +3447,7 @@
         "TW-00731",
         "TW-00881",
         "TW-00921",
-        "TW-009802",
+        "TW-009803",
         "TW-00980A",
         "TW-00981A",
         "TW-00985A",
@@ -2501,7 +3508,8 @@
         "TW-00994A",
         "TW-00995A",
         "TW-00999A",
-        "US-GEMQ"
+        "US-GEMQ",
+        "US-KAIT"
       ]
     },
     {
@@ -2523,8 +3531,10 @@
       "source_etf_ids": [
         "TW-00733",
         "TW-00980A",
+        "TW-00982T",
         "TW-00991A",
-        "TW-00999A"
+        "TW-00999A",
+        "US-AVEE"
       ]
     },
     {
@@ -2571,7 +3581,8 @@
         "TW-00940",
         "TW-00946",
         "TW-00962",
-        "TW-009803"
+        "TW-009803",
+        "US-DVYE"
       ]
     },
     {
@@ -2605,7 +3616,6 @@
         "TW-0053",
         "TW-0057",
         "TW-006203",
-        "TW-006204",
         "TW-006208",
         "TW-00692",
         "TW-00735",
@@ -2618,7 +3628,6 @@
         "TW-00935",
         "TW-009804",
         "TW-00980A",
-        "TW-009816",
         "TW-00981A",
         "TW-00985A",
         "TW-00987A",
@@ -2629,7 +3638,12 @@
         "TW-00994A",
         "TW-00997A",
         "TW-00999A",
-        "US-AFEM"
+        "US-AFEM",
+        "US-DEXC",
+        "US-DFEM",
+        "US-DFEV",
+        "US-EEMO",
+        "US-KAIT"
       ]
     },
     {
@@ -2639,10 +3653,10 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-0051",
         "TW-00980A",
         "TW-00991A",
-        "TW-00999A"
+        "TW-00999A",
+        "US-EEMS"
       ]
     },
     {
@@ -2655,8 +3669,8 @@
         "TW-00713",
         "TW-00888",
         "TW-00929",
-        "TW-009809",
-        "TW-00984A"
+        "TW-00984A",
+        "US-EELV"
       ]
     },
     {
@@ -2671,7 +3685,10 @@
         "TW-00980A",
         "TW-00985A",
         "TW-00991A",
-        "TW-00999A"
+        "TW-00999A",
+        "US-KAIT",
+        "US-LAZR",
+        "US-LUMA"
       ]
     },
     {
@@ -2691,10 +3708,22 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
+        "TW-006201",
         "TW-00913",
         "TW-00936",
         "TW-00982A",
-        "TW-00985A"
+        "TW-00985A",
+        "US-AVEE"
+      ]
+    },
+    {
+      "holding_symbol": "316140.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-AVES"
       ]
     },
     {
@@ -2720,7 +3749,9 @@
         "TW-00980A",
         "TW-00985A",
         "TW-00991A",
-        "TW-00993A"
+        "TW-00993A",
+        "US-AVEE",
+        "US-EEMS"
       ]
     },
     {
@@ -2730,7 +3761,8 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00403A"
+        "TW-00403A",
+        "US-EWX"
       ]
     },
     {
@@ -2751,7 +3783,8 @@
         "TW-00980A",
         "TW-00981A",
         "TW-00985A",
-        "TW-00991A"
+        "TW-00991A",
+        "US-EFFE"
       ]
     },
     {
@@ -2810,7 +3843,9 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00928"
+        "TW-00928",
+        "US-KAIT",
+        "US-MTAW"
       ]
     },
     {
@@ -2867,6 +3902,7 @@
         "TW-00994A",
         "TW-00996A",
         "US-ARTY",
+        "US-DEPW",
         "US-QTUM",
         "US-THNQ"
       ]
@@ -2898,7 +3934,8 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-0051"
+        "TW-0051",
+        "US-AVES"
       ]
     },
     {
@@ -2922,7 +3959,8 @@
         "TW-006201",
         "TW-00892",
         "TW-00980A",
-        "TW-00999A"
+        "TW-00999A",
+        "US-EEMS"
       ]
     },
     {
@@ -2942,7 +3980,8 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00728"
+        "TW-00728",
+        "US-EMDV"
       ]
     },
     {
@@ -2988,7 +4027,8 @@
         "TW-00994A",
         "TW-00995A",
         "TW-00999A",
-        "US-AFEM"
+        "US-AFEM",
+        "US-EMMF"
       ]
     },
     {
@@ -2998,9 +4038,11 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
+        "TW-0051",
         "TW-00947",
         "TW-00981A",
-        "TW-00985A"
+        "TW-00985A",
+        "US-EMDV"
       ]
     },
     {
@@ -3033,7 +4075,11 @@
       "source_etf_ids": [
         "TW-00700",
         "TW-00703",
-        "TW-00752"
+        "TW-00752",
+        "US-CQQQ",
+        "US-EMQQ",
+        "US-FXI",
+        "US-KEMQ"
       ]
     },
     {
@@ -3091,7 +4137,6 @@
         "TW-00923",
         "TW-00927",
         "TW-00935",
-        "TW-009802",
         "TW-009803",
         "TW-009804",
         "TW-009808",
@@ -3100,7 +4145,17 @@
         "TW-009816",
         "TW-00981A",
         "TW-00985A",
-        "TW-00991A"
+        "TW-00991A",
+        "US-DEHP",
+        "US-EEMO",
+        "US-EMCR",
+        "US-EPEM",
+        "US-FEMR",
+        "US-JHEM",
+        "US-MEMX",
+        "US-MFEM",
+        "US-SPEM",
+        "US-VEXC"
       ]
     },
     {
@@ -3115,6 +4170,44 @@
       ]
     },
     {
+      "holding_symbol": "3800.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ECNS"
+      ]
+    },
+    {
+      "holding_symbol": "3888.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-DRGN"
+      ]
+    },
+    {
+      "holding_symbol": "402340.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EEMO",
+        "US-EMC",
+        "US-EMSF",
+        "US-KEMX",
+        "US-MEM",
+        "US-MEMX",
+        "US-NUEM",
+        "US-PEMX",
+        "US-TEMX"
+      ]
+    },
+    {
       "holding_symbol": "4062.T",
       "market_suffix": "T",
       "status": "unsupported_market",
@@ -3124,7 +4217,8 @@
         "TW-00657",
         "TW-00657K",
         "TW-00661",
-        "TW-00997A"
+        "TW-00997A",
+        "US-EAFG"
       ]
     },
     {
@@ -3156,7 +4250,8 @@
       "source_etf_ids": [
         "TW-00897",
         "TW-00956",
-        "TW-00972"
+        "TW-00972",
+        "US-ICOW"
       ]
     },
     {
@@ -3166,7 +4261,18 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00972"
+        "TW-00972",
+        "US-RODM"
+      ]
+    },
+    {
+      "holding_symbol": "454910.KQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-HUMN"
       ]
     },
     {
@@ -3177,6 +4283,17 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00999A"
+      ]
+    },
+    {
+      "holding_symbol": "4689.T",
+      "market_suffix": "T",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EAFG",
+        "US-ICOW"
       ]
     },
     {
@@ -3256,6 +4373,18 @@
       ]
     },
     {
+      "holding_symbol": "500034",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BCEM",
+        "US-EMQQ",
+        "US-TEMX"
+      ]
+    },
+    {
       "holding_symbol": "5274.TWO",
       "market_suffix": "TWO",
       "status": "unsupported_market",
@@ -3276,7 +4405,9 @@
         "TW-00981A",
         "TW-00991A",
         "TW-00993A",
-        "TW-00999A"
+        "TW-00999A",
+        "US-EQLT",
+        "US-ROAM"
       ]
     },
     {
@@ -3287,6 +4418,26 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00928"
+      ]
+    },
+    {
+      "holding_symbol": "5301.T",
+      "market_suffix": "T",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PDN"
+      ]
+    },
+    {
+      "holding_symbol": "531642",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EMSF"
       ]
     },
     {
@@ -3354,8 +4505,7 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00928",
-        "TW-00962"
+        "TW-00928"
       ]
     },
     {
@@ -3365,7 +4515,8 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00902"
+        "TW-00902",
+        "US-LAZR"
       ]
     },
     {
@@ -3400,7 +4551,18 @@
         "TW-00713",
         "TW-00936",
         "TW-00961",
-        "TW-00984A"
+        "TW-00984A",
+        "US-EDIV"
+      ]
+    },
+    {
+      "holding_symbol": "5880.TW",
+      "market_suffix": "TW",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EELV"
       ]
     },
     {
@@ -3415,37 +4577,30 @@
       ]
     },
     {
+      "holding_symbol": "600030.SS",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "TW-006206"
+      ]
+    },
+    {
       "holding_symbol": "600036.SS",
       "market_suffix": null,
       "status": "unresolved",
       "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
+        "TW-006205",
         "TW-006206",
         "TW-006207",
+        "TW-00625K",
         "TW-00636",
         "TW-00636K",
-        "TW-00739"
-      ]
-    },
-    {
-      "holding_symbol": "600111.SS",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-009821"
-      ]
-    },
-    {
-      "holding_symbol": "600183 CH",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-00988A"
+        "TW-00739",
+        "US-EMDV"
       ]
     },
     {
@@ -3460,16 +4615,6 @@
       ]
     },
     {
-      "holding_symbol": "600259.SS",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-009821"
-      ]
-    },
-    {
       "holding_symbol": "600276.SS",
       "market_suffix": null,
       "status": "unresolved",
@@ -3479,16 +4624,6 @@
         "TW-006205",
         "TW-00625K",
         "TW-00887"
-      ]
-    },
-    {
-      "holding_symbol": "600392.SS",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-009821"
       ]
     },
     {
@@ -3508,16 +4643,30 @@
       ]
     },
     {
+      "holding_symbol": "600886.SS",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-KGRN"
+      ]
+    },
+    {
       "holding_symbol": "600900.SS",
       "market_suffix": null,
       "status": "unresolved",
       "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
+        "TW-006205",
         "TW-006206",
+        "TW-006207",
+        "TW-00625K",
         "TW-00636",
         "TW-00636K",
-        "TW-00739"
+        "TW-00739",
+        "US-KGRN"
       ]
     },
     {
@@ -3530,7 +4679,28 @@
         "TW-00636",
         "TW-00636K",
         "TW-00739",
-        "TW-00877"
+        "TW-00877",
+        "US-DRGN"
+      ]
+    },
+    {
+      "holding_symbol": "601166.SS",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "TW-006206"
+      ]
+    },
+    {
+      "holding_symbol": "601216.SS",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-SDEM"
       ]
     },
     {
@@ -3540,6 +4710,8 @@
       "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
+        "TW-00636",
+        "TW-00636K",
         "TW-00739"
       ]
     },
@@ -3558,6 +4730,39 @@
       ]
     },
     {
+      "holding_symbol": "601328.SS",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EMDV"
+      ]
+    },
+    {
+      "holding_symbol": "601360.SS",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-DRGN"
+      ]
+    },
+    {
+      "holding_symbol": "601398.SS",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "TW-006206",
+        "TW-00636",
+        "TW-00636K",
+        "US-EMDV"
+      ]
+    },
+    {
       "holding_symbol": "601899.SS",
       "market_suffix": null,
       "status": "unresolved",
@@ -3568,7 +4773,40 @@
         "TW-006206",
         "TW-006207",
         "TW-00625K",
+        "TW-00636",
+        "TW-00636K",
         "TW-00739"
+      ]
+    },
+    {
+      "holding_symbol": "601939.SS",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EMDV"
+      ]
+    },
+    {
+      "holding_symbol": "601985.SS",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-KGRN",
+        "US-URAN"
+      ]
+    },
+    {
+      "holding_symbol": "601988.SS",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EMDV"
       ]
     },
     {
@@ -3579,6 +4817,8 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-006205",
+        "TW-006206",
+        "TW-006207",
         "TW-00625K"
       ]
     },
@@ -3590,8 +4830,6 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-006205",
-        "TW-006206",
-        "TW-006207",
         "TW-00625K",
         "TW-00877",
         "TW-00887"
@@ -3618,7 +4856,10 @@
         "TW-00657",
         "TW-00657K",
         "TW-00661",
-        "TW-00949"
+        "TW-00949",
+        "US-EAFG",
+        "US-LOEV",
+        "US-PQNT"
       ]
     },
     {
@@ -3638,7 +4879,8 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "US-ROBO"
+        "US-ROBO",
+        "US-ROBX"
       ]
     },
     {
@@ -3772,7 +5014,8 @@
         "TW-00992A",
         "TW-00993A",
         "TW-00995A",
-        "TW-00999A"
+        "TW-00999A",
+        "US-AVEE"
       ]
     },
     {
@@ -3782,8 +5025,27 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00403A",
-        "TW-0051"
+        "TW-00403A"
+      ]
+    },
+    {
+      "holding_symbol": "6257.TW",
+      "market_suffix": "TW",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-AVEE"
+      ]
+    },
+    {
+      "holding_symbol": "6268.T",
+      "market_suffix": "T",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-RTOO"
       ]
     },
     {
@@ -3804,7 +5066,8 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "US-AT",
-        "US-BOTZ"
+        "US-BOTZ",
+        "US-RTOO"
       ]
     },
     {
@@ -3824,7 +5087,10 @@
         "TW-00987A",
         "TW-00991A",
         "TW-00994A",
-        "TW-00999A"
+        "TW-00999A",
+        "US-AVEE",
+        "US-DEXC",
+        "US-EEMS"
       ]
     },
     {
@@ -3834,7 +5100,6 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00944",
         "TW-00981A",
         "TW-00996A"
       ]
@@ -3847,7 +5112,6 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00403A",
-        "TW-009802",
         "TW-00985A"
       ]
     },
@@ -3858,7 +5122,10 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "US-ROBO"
+        "US-HUMN",
+        "US-ROBO",
+        "US-ROBX",
+        "US-RTOO"
       ]
     },
     {
@@ -3872,6 +5139,16 @@
       ]
     },
     {
+      "holding_symbol": "6407.T",
+      "market_suffix": "T",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ROBX"
+      ]
+    },
+    {
       "holding_symbol": "6409.TW",
       "market_suffix": "TW",
       "status": "unsupported_market",
@@ -3880,16 +5157,6 @@
       "source_etf_ids": [
         "TW-00733",
         "TW-00946"
-      ]
-    },
-    {
-      "holding_symbol": "6415.TW",
-      "market_suffix": "TW",
-      "status": "unsupported_market",
-      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-00947"
       ]
     },
     {
@@ -3911,10 +5178,18 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-0051",
         "TW-00921",
-        "TW-009802",
         "TW-00985A"
+      ]
+    },
+    {
+      "holding_symbol": "6460.T",
+      "market_suffix": "T",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PDN"
       ]
     },
     {
@@ -3942,7 +5217,9 @@
       "source_etf_ids": [
         "TW-00645",
         "TW-00895",
-        "TW-00949"
+        "TW-00949",
+        "US-FEDM",
+        "US-RCTR"
       ]
     },
     {
@@ -3972,7 +5249,8 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "US-AT"
+        "US-AT",
+        "US-RTOO"
       ]
     },
     {
@@ -4062,6 +5340,16 @@
       ]
     },
     {
+      "holding_symbol": "6622.T",
+      "market_suffix": "T",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ROBX"
+      ]
+    },
+    {
       "holding_symbol": "6669.TW",
       "market_suffix": "TW",
       "status": "unsupported_market",
@@ -4076,6 +5364,7 @@
         "TW-00934",
         "TW-00952",
         "TW-00962",
+        "TW-009802",
         "TW-00980A",
         "TW-00981A",
         "TW-00982A",
@@ -4083,7 +5372,9 @@
         "TW-00991A",
         "TW-00993A",
         "TW-00995A",
-        "TW-00999A"
+        "TW-00999A",
+        "US-EFFE",
+        "US-EVLU"
       ]
     },
     {
@@ -4118,6 +5409,16 @@
       ]
     },
     {
+      "holding_symbol": "6702.T",
+      "market_suffix": "T",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-WQTM"
+      ]
+    },
+    {
       "holding_symbol": "6723.T",
       "market_suffix": "T",
       "status": "unsupported_market",
@@ -4125,7 +5426,8 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00951",
-        "TW-00954"
+        "TW-00954",
+        "US-GGTL"
       ]
     },
     {
@@ -4137,7 +5439,8 @@
       "source_etf_ids": [
         "TW-00893",
         "TW-00949",
-        "US-KARS"
+        "US-KARS",
+        "US-ROBX"
       ]
     },
     {
@@ -4148,7 +5451,9 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00645",
-        "TW-00949"
+        "TW-00949",
+        "US-ICOW",
+        "US-PQNT"
       ]
     },
     {
@@ -4172,7 +5477,8 @@
         "TW-00657K",
         "TW-00661",
         "TW-00902",
-        "TW-00920"
+        "TW-00920",
+        "US-BATT"
       ]
     },
     {
@@ -4182,7 +5488,8 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-0051"
+        "TW-0051",
+        "US-EEMS"
       ]
     },
     {
@@ -4193,16 +5500,6 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00988A"
-      ]
-    },
-    {
-      "holding_symbol": "6789.TW",
-      "market_suffix": "TW",
-      "status": "unsupported_market",
-      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
-      "candidate_security_ids": [],
-      "source_etf_ids": [
-        "TW-009802"
       ]
     },
     {
@@ -4242,7 +5539,10 @@
         "TW-00661",
         "TW-00951",
         "TW-00954",
-        "US-CHIP"
+        "US-AIVC",
+        "US-CHIP",
+        "US-FEDM",
+        "US-KAIT"
       ]
     },
     {
@@ -4252,7 +5552,8 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "US-BOTZ"
+        "US-BOTZ",
+        "US-RTOO"
       ]
     },
     {
@@ -4272,11 +5573,10 @@
       "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-006205",
-        "TW-006206",
-        "TW-00625K",
         "TW-00887",
-        "US-AICH"
+        "US-AICH",
+        "US-DRGN",
+        "US-KSTR"
       ]
     },
     {
@@ -4287,9 +5587,19 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-006205",
-        "TW-006206",
         "TW-00625K",
-        "TW-00887"
+        "TW-00887",
+        "US-KSTR"
+      ]
+    },
+    {
+      "holding_symbol": "688017.SS",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-HUMN"
       ]
     },
     {
@@ -4299,13 +5609,21 @@
       "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-006205",
-        "TW-006206",
-        "TW-00625K",
-        "TW-00636",
-        "TW-00636K",
         "TW-00887",
-        "US-AICH"
+        "US-AICH",
+        "US-CQQQ",
+        "US-DRGN",
+        "US-KSTR"
+      ]
+    },
+    {
+      "holding_symbol": "688072.SS",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-KSTR"
       ]
     },
     {
@@ -4315,7 +5633,8 @@
       "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00783"
+        "TW-00783",
+        "US-KSTR"
       ]
     },
     {
@@ -4327,12 +5646,14 @@
       "source_etf_ids": [
         "TW-006205",
         "TW-006206",
-        "TW-006207",
         "TW-00625K",
         "TW-00636",
         "TW-00636K",
         "TW-00739",
-        "TW-00887"
+        "TW-00887",
+        "US-CQQQ",
+        "US-DRGN",
+        "US-KSTR"
       ]
     },
     {
@@ -4342,7 +5663,8 @@
       "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00783"
+        "TW-00783",
+        "US-KSTR"
       ]
     },
     {
@@ -4352,7 +5674,8 @@
       "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00783"
+        "TW-00783",
+        "US-KSTR"
       ]
     },
     {
@@ -4363,7 +5686,21 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00783",
-        "TW-00877"
+        "TW-00877",
+        "US-DRGN",
+        "US-KSTR",
+        "US-LAZR",
+        "US-PHOX"
+      ]
+    },
+    {
+      "holding_symbol": "688525.SS",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-KSTR"
       ]
     },
     {
@@ -4374,7 +5711,8 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00951",
-        "TW-00954"
+        "TW-00954",
+        "US-LOEV"
       ]
     },
     {
@@ -4386,7 +5724,8 @@
       "source_etf_ids": [
         "US-AT",
         "US-BOTZ",
-        "US-ROBO"
+        "US-ROBO",
+        "US-RTOO"
       ]
     },
     {
@@ -4422,6 +5761,16 @@
       ]
     },
     {
+      "holding_symbol": "7010.SR",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EELV"
+      ]
+    },
+    {
       "holding_symbol": "7011.T",
       "market_suffix": "T",
       "status": "unsupported_market",
@@ -4429,7 +5778,18 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00949",
-        "TW-00965"
+        "TW-00965",
+        "US-RCTR"
+      ]
+    },
+    {
+      "holding_symbol": "7189.T",
+      "market_suffix": "T",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ISCF"
       ]
     },
     {
@@ -4451,7 +5811,10 @@
       "source_etf_ids": [
         "TW-00645",
         "TW-00949",
-        "US-DRIV"
+        "US-DRIV",
+        "US-PXF",
+        "US-TLTD",
+        "US-VDV"
       ]
     },
     {
@@ -4476,13 +5839,13 @@
       ]
     },
     {
-      "holding_symbol": "7729.T",
+      "holding_symbol": "7731.T",
       "market_suffix": "T",
       "status": "unsupported_market",
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00951"
+        "US-TINY"
       ]
     },
     {
@@ -4493,7 +5856,8 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00951",
-        "TW-00954"
+        "TW-00954",
+        "US-TINY"
       ]
     },
     {
@@ -4572,6 +5936,16 @@
       ]
     },
     {
+      "holding_symbol": "8021.TW",
+      "market_suffix": "TW",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EWX"
+      ]
+    },
+    {
       "holding_symbol": "8031.T",
       "market_suffix": "T",
       "status": "unsupported_market",
@@ -4597,7 +5971,9 @@
         "TW-00941",
         "TW-00951",
         "TW-00954",
-        "US-CHIP"
+        "US-CHIP",
+        "US-KAIT",
+        "US-NUDM"
       ]
     },
     {
@@ -4614,7 +5990,8 @@
         "TW-00991A",
         "TW-00994A",
         "TW-00995A",
-        "TW-00999A"
+        "TW-00999A",
+        "US-EEMS"
       ]
     },
     {
@@ -4645,7 +6022,6 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-006201",
         "TW-00928"
       ]
     },
@@ -4706,8 +6082,11 @@
       "source_etf_ids": [
         "TW-00645",
         "US-EFA",
+        "US-FEDM",
+        "US-IDEV",
         "US-IEFA",
         "US-SCHF",
+        "US-VDG",
         "US-VEA"
       ]
     },
@@ -4729,7 +6108,9 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00645",
-        "TW-00956"
+        "TW-00956",
+        "US-NUDM",
+        "US-TLTD"
       ]
     },
     {
@@ -4744,13 +6125,24 @@
       ]
     },
     {
+      "holding_symbol": "8359.T",
+      "market_suffix": "T",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PDN"
+      ]
+    },
+    {
       "holding_symbol": "8411.T",
       "market_suffix": "T",
       "status": "unsupported_market",
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00645"
+        "TW-00645",
+        "US-NUDM"
       ]
     },
     {
@@ -4831,6 +6223,16 @@
       ]
     },
     {
+      "holding_symbol": "900948.SS",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-SDEM"
+      ]
+    },
+    {
       "holding_symbol": "9101.T",
       "market_suffix": "T",
       "status": "unsupported_market",
@@ -4871,7 +6273,8 @@
       "source_etf_ids": [
         "TW-00657",
         "TW-00657K",
-        "TW-00661"
+        "TW-00661",
+        "US-ICOW"
       ]
     },
     {
@@ -4895,13 +6298,34 @@
       ]
     },
     {
-      "holding_symbol": "992 HK",
-      "market_suffix": null,
-      "status": "unresolved",
-      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "holding_symbol": "9688.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00988A"
+        "US-ECNS"
+      ]
+    },
+    {
+      "holding_symbol": "9880.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-HUMN"
+      ]
+    },
+    {
+      "holding_symbol": "9888.HK",
+      "market_suffix": "HK",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-CQQQ",
+        "US-DRGN"
       ]
     },
     {
@@ -4957,7 +6381,8 @@
         "TW-00645",
         "TW-00657",
         "TW-00657K",
-        "TW-00661"
+        "TW-00661",
+        "US-NUDM"
       ]
     },
     {
@@ -4971,10 +6396,42 @@
         "TW-00703",
         "TW-00736",
         "TW-00752",
+        "US-BBEM",
+        "US-BKEM",
+        "US-DBEM",
+        "US-DFEM",
+        "US-DFSE",
+        "US-EEMX",
+        "US-EMC",
+        "US-EMCR",
+        "US-EMCS",
+        "US-EMES",
+        "US-EMGF",
+        "US-EMKT",
+        "US-EMMF",
+        "US-EMQQ",
+        "US-EMSF",
         "US-ENHE",
+        "US-EQLT",
+        "US-FEMR",
+        "US-FFEM",
+        "US-FNDE",
+        "US-FXI",
+        "US-GEM",
         "US-GEMQ",
+        "US-GSEE",
         "US-IEMG",
-        "US-VWO"
+        "US-JHEM",
+        "US-KEMQ",
+        "US-MEM",
+        "US-NTSE",
+        "US-PXH",
+        "US-SCHE",
+        "US-SPEM",
+        "US-TEMR",
+        "US-TLTE",
+        "US-VWO",
+        "US-XSOE"
       ]
     },
     {
@@ -4986,7 +6443,31 @@
       "source_etf_ids": [
         "TW-00700",
         "TW-00703",
-        "TW-00752"
+        "TW-00752",
+        "US-EMQQ",
+        "US-FXI",
+        "US-KEMQ",
+        "US-RWEM"
+      ]
+    },
+    {
+      "holding_symbol": "A5G.IR",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-RODM"
+      ]
+    },
+    {
+      "holding_symbol": "AAL.L",
+      "market_suffix": "L",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EMKT"
       ]
     },
     {
@@ -5023,6 +6504,27 @@
       ]
     },
     {
+      "holding_symbol": "ABX.TO",
+      "market_suffix": "TO",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "TW-009821",
+        "US-ICOW"
+      ]
+    },
+    {
+      "holding_symbol": "ADH.JO",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EWX"
+      ]
+    },
+    {
       "holding_symbol": "ADM.L",
       "market_suffix": "L",
       "status": "unsupported_market",
@@ -5039,7 +6541,8 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-009821"
+        "TW-009821",
+        "US-ICOW"
       ]
     },
     {
@@ -5053,6 +6556,19 @@
       ]
     },
     {
+      "holding_symbol": "AGPXX",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ROBX",
+        "US-STBQ",
+        "US-TKNQ",
+        "US-XQBT"
+      ]
+    },
+    {
       "holding_symbol": "AI.PA",
       "market_suffix": "PA",
       "status": "unsupported_market",
@@ -5060,6 +6576,17 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00941"
+      ]
+    },
+    {
+      "holding_symbol": "AIXA.DE",
+      "market_suffix": "DE",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-LAZR",
+        "US-LUMA"
       ]
     },
     {
@@ -5084,13 +6611,57 @@
       ]
     },
     {
+      "holding_symbol": "ALSYDB.CO",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-SCHC"
+      ]
+    },
+    {
+      "holding_symbol": "ALUP11",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BRF"
+      ]
+    },
+    {
       "holding_symbol": "ALV.DE",
       "market_suffix": "DE",
       "status": "unsupported_market",
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00660"
+        "TW-00660",
+        "US-LOEV",
+        "US-NUDM",
+        "US-TLTD",
+        "US-VDV"
+      ]
+    },
+    {
+      "holding_symbol": "ANTO.L",
+      "market_suffix": "L",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-MEM"
+      ]
+    },
+    {
+      "holding_symbol": "APRP",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BUFP"
       ]
     },
     {
@@ -5118,12 +6689,72 @@
         "US-CHPS",
         "US-DMXU",
         "US-EFA",
+        "US-FEDM",
+        "US-IDEV",
         "US-IEFA",
         "US-IXUS",
+        "US-NUDM",
+        "US-PBOT",
+        "US-PQNT",
+        "US-QLVD",
         "US-SCHF",
+        "US-SPTE",
+        "US-TINY",
+        "US-TLTD",
+        "US-VDG",
         "US-VEA",
         "US-VEU",
         "US-VXUS"
+      ]
+    },
+    {
+      "holding_symbol": "ASRNL.AS",
+      "market_suffix": "AS",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ISCF"
+      ]
+    },
+    {
+      "holding_symbol": "ATD.TO",
+      "market_suffix": "TO",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-LOEV"
+      ]
+    },
+    {
+      "holding_symbol": "ATRL.TO",
+      "market_suffix": "TO",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-TNUK"
+      ]
+    },
+    {
+      "holding_symbol": "AUDC.TA",
+      "market_suffix": "TA",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-IZRL"
+      ]
+    },
+    {
+      "holding_symbol": "AUTO.OL",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-RTOO"
       ]
     },
     {
@@ -5134,6 +6765,16 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00998A"
+      ]
+    },
+    {
+      "holding_symbol": "AVI.JO",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EWX"
       ]
     },
     {
@@ -5156,9 +6797,21 @@
         "TW-00709",
         "US-DMXU",
         "US-EFA",
+        "US-IDEV",
         "US-IEFA",
         "US-SCHF",
+        "US-VDV",
         "US-VEA"
+      ]
+    },
+    {
+      "holding_symbol": "BANDHANBNK.BO",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EMSF"
       ]
     },
     {
@@ -5172,6 +6825,18 @@
       ]
     },
     {
+      "holding_symbol": "BATS.L",
+      "market_suffix": "L",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-AIVI",
+        "US-PQNT",
+        "US-VDV"
+      ]
+    },
+    {
       "holding_symbol": "BAYN.DE",
       "market_suffix": "DE",
       "status": "unsupported_market",
@@ -5182,13 +6847,34 @@
       ]
     },
     {
+      "holding_symbol": "BBSE3.SA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-SDEM"
+      ]
+    },
+    {
       "holding_symbol": "BBVA.MC",
       "market_suffix": "MC",
       "status": "unsupported_market",
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00660"
+        "TW-00660",
+        "US-FEDM"
+      ]
+    },
+    {
+      "holding_symbol": "BCP.LS",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PDN"
       ]
     },
     {
@@ -5202,13 +6888,36 @@
       ]
     },
     {
+      "holding_symbol": "BEZ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PDN"
+      ]
+    },
+    {
+      "holding_symbol": "BH-R",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-FDEM"
+      ]
+    },
+    {
       "holding_symbol": "BHARTIARTL.NS",
       "market_suffix": "NS",
       "status": "unsupported_market",
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00652"
+        "TW-00652",
+        "US-PEMX",
+        "US-VEXC",
+        "US-XC"
       ]
     },
     {
@@ -5218,8 +6927,12 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
+        "US-BATT",
         "US-EFA",
-        "US-IEFA"
+        "US-IEFA",
+        "US-PXF",
+        "US-RCTR",
+        "US-VDV"
       ]
     },
     {
@@ -5243,6 +6956,26 @@
       ]
     },
     {
+      "holding_symbol": "BMED.MI",
+      "market_suffix": "MI",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-AIVI"
+      ]
+    },
+    {
+      "holding_symbol": "BMO.TO",
+      "market_suffix": "TO",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-RODM"
+      ]
+    },
+    {
       "holding_symbol": "BMW.DE",
       "market_suffix": "DE",
       "status": "unsupported_market",
@@ -5250,6 +6983,87 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "US-KARS"
+      ]
+    },
+    {
+      "holding_symbol": "BN.TO",
+      "market_suffix": "TO",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BCHP"
+      ]
+    },
+    {
+      "holding_symbol": "BNP.PA",
+      "market_suffix": "PA",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PQNT"
+      ]
+    },
+    {
+      "holding_symbol": "BOROUGE.AB",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EELV"
+      ]
+    },
+    {
+      "holding_symbol": "BOUBYAN.KW",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EELV"
+      ]
+    },
+    {
+      "holding_symbol": "BP.L",
+      "market_suffix": "L",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PXF"
+      ]
+    },
+    {
+      "holding_symbol": "BPAC11",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-RISE"
+      ]
+    },
+    {
+      "holding_symbol": "BRAZ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EMM"
+      ]
+    },
+    {
+      "holding_symbol": "BSOL",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-STBQ",
+        "US-TKNQ"
       ]
     },
     {
@@ -5263,6 +7077,26 @@
       ]
     },
     {
+      "holding_symbol": "CBA.AX",
+      "market_suffix": "AX",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-NUDM"
+      ]
+    },
+    {
+      "holding_symbol": "CBOE",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-HIAI"
+      ]
+    },
+    {
       "holding_symbol": "CCO.TO",
       "market_suffix": "TO",
       "status": "unsupported_market",
@@ -5271,7 +7105,14 @@
       "source_etf_ids": [
         "TW-009821",
         "US-NLR",
+        "US-NUKX",
+        "US-NUKZ",
+        "US-RACK",
+        "US-RCTR",
+        "US-SMRF",
+        "US-TNUK",
         "US-URA",
+        "US-URAN",
         "US-URNM"
       ]
     },
@@ -5296,6 +7137,37 @@
       ]
     },
     {
+      "holding_symbol": "CG.TO",
+      "market_suffix": "TO",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ISCF"
+      ]
+    },
+    {
+      "holding_symbol": "CHILE.SN",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-FRDM"
+      ]
+    },
+    {
+      "holding_symbol": "CIB",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EPEM",
+        "US-VEM"
+      ]
+    },
+    {
       "holding_symbol": "CLNX.MC",
       "market_suffix": "MC",
       "status": "unsupported_market",
@@ -5303,6 +7175,36 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "US-SRVR"
+      ]
+    },
+    {
+      "holding_symbol": "CLS.TO",
+      "market_suffix": "TO",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PJFM"
+      ]
+    },
+    {
+      "holding_symbol": "CM.TO",
+      "market_suffix": "TO",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-QLVD"
+      ]
+    },
+    {
+      "holding_symbol": "COFORGE.BO",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-RISE"
       ]
     },
     {
@@ -5336,6 +7238,136 @@
       ]
     },
     {
+      "holding_symbol": "CPSA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-CPSL"
+      ]
+    },
+    {
+      "holding_symbol": "CPSD",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-CPSL"
+      ]
+    },
+    {
+      "holding_symbol": "CPSF",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-CPSL"
+      ]
+    },
+    {
+      "holding_symbol": "CPSJ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-CPSL"
+      ]
+    },
+    {
+      "holding_symbol": "CPSN",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-CPSL"
+      ]
+    },
+    {
+      "holding_symbol": "CPSO",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-CPSL"
+      ]
+    },
+    {
+      "holding_symbol": "CPSP",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-CPSL"
+      ]
+    },
+    {
+      "holding_symbol": "CPSR",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-CPSL"
+      ]
+    },
+    {
+      "holding_symbol": "CPST",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-CPSL"
+      ]
+    },
+    {
+      "holding_symbol": "CPSY",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-CPSL"
+      ]
+    },
+    {
+      "holding_symbol": "CURY3.SA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BRF"
+      ]
+    },
+    {
+      "holding_symbol": "CYRE3.SA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BRF"
+      ]
+    },
+    {
+      "holding_symbol": "D05.SI",
+      "market_suffix": "SI",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-QLVD"
+      ]
+    },
+    {
       "holding_symbol": "DBK.DE",
       "market_suffix": "DE",
       "status": "unsupported_market",
@@ -5346,6 +7378,57 @@
       ]
     },
     {
+      "holding_symbol": "DECP",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BUFP"
+      ]
+    },
+    {
+      "holding_symbol": "DELTA-R",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EQLT",
+        "US-XC"
+      ]
+    },
+    {
+      "holding_symbol": "DGCXX",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-TEMX"
+      ]
+    },
+    {
+      "holding_symbol": "DHL.DE",
+      "market_suffix": "DE",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ICOW"
+      ]
+    },
+    {
+      "holding_symbol": "DIVISLAB.NS",
+      "market_suffix": "NS",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BCEM"
+      ]
+    },
+    {
       "holding_symbol": "DML.TO",
       "market_suffix": "TO",
       "status": "unsupported_market",
@@ -5353,6 +7436,57 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "US-URNM"
+      ]
+    },
+    {
+      "holding_symbol": "DNB.OL",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-AIVI"
+      ]
+    },
+    {
+      "holding_symbol": "DPLM.L",
+      "market_suffix": "L",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EAFG"
+      ]
+    },
+    {
+      "holding_symbol": "DPM.TO",
+      "market_suffix": "TO",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ISCF",
+        "US-SCHC"
+      ]
+    },
+    {
+      "holding_symbol": "DRO.AX",
+      "market_suffix": "AX",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-WAR"
+      ]
+    },
+    {
+      "holding_symbol": "DTRXX",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-NTSE"
       ]
     },
     {
@@ -5396,14 +7530,65 @@
       ]
     },
     {
+      "holding_symbol": "EEM",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-HEEM"
+      ]
+    },
+    {
+      "holding_symbol": "EFA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PQNT"
+      ]
+    },
+    {
       "holding_symbol": "EFR.TO",
       "market_suffix": "TO",
       "status": "unsupported_market",
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
+        "US-SMRF",
         "US-URA",
         "US-URNM"
+      ]
+    },
+    {
+      "holding_symbol": "ELD.TO",
+      "market_suffix": "TO",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-SCHC"
+      ]
+    },
+    {
+      "holding_symbol": "ELE.MC",
+      "market_suffix": "MC",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-NUKZ"
+      ]
+    },
+    {
+      "holding_symbol": "EMAARDEV.AE",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-FDEM"
       ]
     },
     {
@@ -5417,6 +7602,57 @@
       ]
     },
     {
+      "holding_symbol": "EQNR.OL",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-RODM"
+      ]
+    },
+    {
+      "holding_symbol": "ERIC-B.ST",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-RODM"
+      ]
+    },
+    {
+      "holding_symbol": "ESLT.TA",
+      "market_suffix": "TA",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ITEQ"
+      ]
+    },
+    {
+      "holding_symbol": "ETERNAL.BO",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BCEM"
+      ]
+    },
+    {
+      "holding_symbol": "ETHA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-STBQ",
+        "US-TKNQ"
+      ]
+    },
+    {
       "holding_symbol": "EVK.DE",
       "market_suffix": "DE",
       "status": "unsupported_market",
@@ -5427,6 +7663,56 @@
       ]
     },
     {
+      "holding_symbol": "EVO.ST",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EAFG"
+      ]
+    },
+    {
+      "holding_symbol": "FEBP",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BUFP"
+      ]
+    },
+    {
+      "holding_symbol": "FEMSAUBD.MX",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-DEM"
+      ]
+    },
+    {
+      "holding_symbol": "FFB.JO",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EWX"
+      ]
+    },
+    {
+      "holding_symbol": "FGBLZ26",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BEMD"
+      ]
+    },
+    {
       "holding_symbol": "FGXXX",
       "market_suffix": null,
       "status": "unresolved",
@@ -5434,20 +7720,58 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "US-AICH",
+        "US-AIHY",
         "US-AIMG",
+        "US-AIYY",
         "US-CAPA",
         "US-DRAM",
+        "US-EMAU",
+        "US-EMJL",
+        "US-EMJN",
+        "US-EMMY",
         "US-EMSE",
         "US-HWMV",
         "US-MAGS",
         "US-MUZ",
+        "US-NUKX",
         "US-PRAM",
+        "US-QAU",
+        "US-QDTE",
+        "US-QJL",
+        "US-QJN",
+        "US-QMY",
+        "US-QQAU",
+        "US-QQJL",
+        "US-QQJN",
+        "US-QQMY",
         "US-QQQB",
         "US-QQSE",
         "US-QSE",
+        "US-QTUP",
+        "US-RDTE",
+        "US-SCAU",
+        "US-SCJL",
+        "US-SCJN",
+        "US-SCMY",
         "US-SCSE",
+        "US-SNTQ",
+        "US-SPYT",
         "US-TGRZ",
-        "US-VOOB"
+        "US-UX",
+        "US-VOOB",
+        "US-WDTE",
+        "US-XA",
+        "US-XDTE"
+      ]
+    },
+    {
+      "holding_symbol": "FLRY3.SA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BRF"
       ]
     },
     {
@@ -5457,7 +7781,9 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "US-NLR"
+        "US-NLR",
+        "US-NUKZ",
+        "US-TNUK"
       ]
     },
     {
@@ -5471,6 +7797,121 @@
       ]
     },
     {
+      "holding_symbol": "FSR.JO",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-XC"
+      ]
+    },
+    {
+      "holding_symbol": "FTOXX",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-GEM",
+        "US-GSEE"
+      ]
+    },
+    {
+      "holding_symbol": "FTT.TO",
+      "market_suffix": "TO",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ISCF"
+      ]
+    },
+    {
+      "holding_symbol": "FUNO11.MX",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-FDEM"
+      ]
+    },
+    {
+      "holding_symbol": "FXFXX",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-IWMI"
+      ]
+    },
+    {
+      "holding_symbol": "GBK.KW",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EELV"
+      ]
+    },
+    {
+      "holding_symbol": "GFI.JO",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-FTHF",
+        "US-RISE"
+      ]
+    },
+    {
+      "holding_symbol": "GFNORTEO.MX",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-DEM",
+        "US-DVYE",
+        "US-RISE"
+      ]
+    },
+    {
+      "holding_symbol": "GGPS3.SA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BRF"
+      ]
+    },
+    {
+      "holding_symbol": "GLEN.L",
+      "market_suffix": "L",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PXF"
+      ]
+    },
+    {
+      "holding_symbol": "GLNK",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-STBQ",
+        "US-TKNQ"
+      ]
+    },
+    {
       "holding_symbol": "GMAB.CO",
       "market_suffix": null,
       "status": "unresolved",
@@ -5478,6 +7919,30 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00897"
+      ]
+    },
+    {
+      "holding_symbol": "GMEXICOB.MX",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BATT",
+        "US-JPEM",
+        "US-OAEM",
+        "US-STXE",
+        "US-XC"
+      ]
+    },
+    {
+      "holding_symbol": "GMIN.TO",
+      "market_suffix": "TO",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-SCHC"
       ]
     },
     {
@@ -5511,6 +7976,36 @@
       ]
     },
     {
+      "holding_symbol": "GTT.PA",
+      "market_suffix": "PA",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-SCHC"
+      ]
+    },
+    {
+      "holding_symbol": "HBR",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-TKNQ"
+      ]
+    },
+    {
+      "holding_symbol": "HCLTECH.NS",
+      "market_suffix": "NS",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-RISE"
+      ]
+    },
+    {
       "holding_symbol": "HDFCBANK.NS",
       "market_suffix": "NS",
       "status": "unsupported_market",
@@ -5519,7 +8014,13 @@
       "source_etf_ids": [
         "TW-00652",
         "TW-00736",
-        "US-VWO"
+        "US-SCHE",
+        "US-SPEM",
+        "US-STXE",
+        "US-VEXC",
+        "US-VWO",
+        "US-XC",
+        "US-XSOE"
       ]
     },
     {
@@ -5553,12 +8054,26 @@
         "TW-00917",
         "US-DMXU",
         "US-EFA",
+        "US-IDEV",
         "US-IEFA",
         "US-IXUS",
+        "US-PXF",
         "US-SCHF",
+        "US-TLTD",
+        "US-VDG",
         "US-VEA",
         "US-VEU",
         "US-VXUS"
+      ]
+    },
+    {
+      "holding_symbol": "IAU",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-DRAI"
       ]
     },
     {
@@ -5569,7 +8084,8 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00660",
-        "TW-00920"
+        "TW-00920",
+        "US-QLVD"
       ]
     },
     {
@@ -5579,7 +8095,21 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00652"
+        "TW-00652",
+        "US-PEMX",
+        "US-STXE",
+        "US-VEXC",
+        "US-XC"
+      ]
+    },
+    {
+      "holding_symbol": "IEFA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PQNT"
       ]
     },
     {
@@ -5611,7 +8141,8 @@
       "source_etf_ids": [
         "TW-00893",
         "TW-00895",
-        "TW-00986A"
+        "TW-00986A",
+        "US-MOTO"
       ]
     },
     {
@@ -5621,7 +8152,9 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00652"
+        "TW-00652",
+        "US-EQLT",
+        "US-EVLU"
       ]
     },
     {
@@ -5632,7 +8165,60 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "US-BITO",
+        "US-EUM",
+        "US-ISPY",
         "US-USD"
+      ]
+    },
+    {
+      "holding_symbol": "IQQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EDGQ"
+      ]
+    },
+    {
+      "holding_symbol": "ISCV",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BLUX"
+      ]
+    },
+    {
+      "holding_symbol": "ISP.MI",
+      "market_suffix": "MI",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PQNT"
+      ]
+    },
+    {
+      "holding_symbol": "ISS.CO",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ISCF"
+      ]
+    },
+    {
+      "holding_symbol": "ITSA4",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-DVYE",
+        "US-SDEM"
       ]
     },
     {
@@ -5642,7 +8228,54 @@
       "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00963"
+        "TW-00963",
+        "US-EMC"
+      ]
+    },
+    {
+      "holding_symbol": "ITUB4",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-FTHF",
+        "US-JPEM",
+        "US-PEMX",
+        "US-RISE",
+        "US-SDEM"
+      ]
+    },
+    {
+      "holding_symbol": "IUGXX",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PHDG",
+        "US-RSPA"
+      ]
+    },
+    {
+      "holding_symbol": "IVV",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PQUS",
+        "US-SPYT"
+      ]
+    },
+    {
+      "holding_symbol": "JANP",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BUFP"
       ]
     },
     {
@@ -5653,6 +8286,26 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "US-JEPI"
+      ]
+    },
+    {
+      "holding_symbol": "JULP",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BUFP"
+      ]
+    },
+    {
+      "holding_symbol": "JUNP",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BUFP"
       ]
     },
     {
@@ -5674,8 +8327,20 @@
       "source_etf_ids": [
         "TW-009821",
         "US-NLR",
+        "US-SMRF",
         "US-URA",
+        "US-URAN",
         "US-URNM"
+      ]
+    },
+    {
+      "holding_symbol": "KFH.KW",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EELV"
       ]
     },
     {
@@ -5686,6 +8351,16 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00717"
+      ]
+    },
+    {
+      "holding_symbol": "KLBN11",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-AVEE"
       ]
     },
     {
@@ -5719,6 +8394,16 @@
       ]
     },
     {
+      "holding_symbol": "LOGN.SW",
+      "market_suffix": "SW",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ISCF"
+      ]
+    },
+    {
       "holding_symbol": "LQDW",
       "market_suffix": null,
       "status": "unresolved",
@@ -5737,6 +8422,16 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00652"
+      ]
+    },
+    {
+      "holding_symbol": "LTM.SN",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-FRDM"
       ]
     },
     {
@@ -5770,6 +8465,16 @@
       ]
     },
     {
+      "holding_symbol": "MAYP",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BUFP"
+      ]
+    },
+    {
       "holding_symbol": "MCH.VN",
       "market_suffix": null,
       "status": "unresolved",
@@ -5777,6 +8482,16 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00885"
+      ]
+    },
+    {
+      "holding_symbol": "MDA.TO",
+      "market_suffix": "TO",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-MARS"
       ]
     },
     {
@@ -5790,6 +8505,66 @@
       ]
     },
     {
+      "holding_symbol": "MFC.TO",
+      "market_suffix": "TO",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-LOEV"
+      ]
+    },
+    {
+      "holding_symbol": "MG.TO",
+      "market_suffix": "TO",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-TCV"
+      ]
+    },
+    {
+      "holding_symbol": "MGMXX",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-JPMB"
+      ]
+    },
+    {
+      "holding_symbol": "MOL.BD",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-SDEM"
+      ]
+    },
+    {
+      "holding_symbol": "MRCP",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BUFP"
+      ]
+    },
+    {
+      "holding_symbol": "MSGK",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-VIOG"
+      ]
+    },
+    {
       "holding_symbol": "MSN.VN",
       "market_suffix": null,
       "status": "unresolved",
@@ -5797,6 +8572,46 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00885"
+      ]
+    },
+    {
+      "holding_symbol": "MTRX.TA",
+      "market_suffix": "TA",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-IZRL"
+      ]
+    },
+    {
+      "holding_symbol": "MVRXX",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-CVSM"
+      ]
+    },
+    {
+      "holding_symbol": "NAB.AX",
+      "market_suffix": "AX",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-AIVI"
+      ]
+    },
+    {
+      "holding_symbol": "NDIA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EMM"
       ]
     },
     {
@@ -5810,6 +8625,16 @@
       ]
     },
     {
+      "holding_symbol": "NED.JO",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EDIV"
+      ]
+    },
+    {
       "holding_symbol": "NESN.SW",
       "market_suffix": "SW",
       "status": "unsupported_market",
@@ -5818,7 +8643,10 @@
       "source_etf_ids": [
         "TW-00709",
         "US-EFA",
-        "US-IEFA"
+        "US-IDEV",
+        "US-IEFA",
+        "US-QLVD",
+        "US-VDV"
       ]
     },
     {
@@ -5842,6 +8670,26 @@
       ]
     },
     {
+      "holding_symbol": "NIND.KW",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EWX"
+      ]
+    },
+    {
+      "holding_symbol": "NKT.CO",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-SCHC"
+      ]
+    },
+    {
       "holding_symbol": "NOVN.SW",
       "market_suffix": "SW",
       "status": "unsupported_market",
@@ -5851,12 +8699,42 @@
         "TW-00709",
         "US-DMXU",
         "US-EFA",
+        "US-FEDM",
+        "US-IDEV",
         "US-IEFA",
         "US-IXUS",
+        "US-NUDM",
+        "US-PQNT",
+        "US-PXF",
+        "US-QLVD",
+        "US-RODM",
         "US-SCHF",
+        "US-TLTD",
         "US-VEA",
         "US-VEU",
         "US-VXUS"
+      ]
+    },
+    {
+      "holding_symbol": "NPN.JO",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EVLU",
+        "US-NTSE",
+        "US-RISE"
+      ]
+    },
+    {
+      "holding_symbol": "NTPC.BO",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PEMX"
       ]
     },
     {
@@ -5876,8 +8754,12 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
+        "TW-009821",
         "US-NLR",
+        "US-NUKX",
+        "US-SMRF",
         "US-URA",
+        "US-URAN",
         "US-URNM"
       ]
     },
@@ -5891,6 +8773,46 @@
         "US-DTCR",
         "US-SRVR",
         "US-VPN"
+      ]
+    },
+    {
+      "holding_symbol": "NYKAA.BO",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-OAEM"
+      ]
+    },
+    {
+      "holding_symbol": "O39.SI",
+      "market_suffix": "SI",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-AIVI"
+      ]
+    },
+    {
+      "holding_symbol": "OCTP",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BUFP"
+      ]
+    },
+    {
+      "holding_symbol": "OHB.DE",
+      "market_suffix": "DE",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-MARS"
       ]
     },
     {
@@ -5914,14 +8836,166 @@
       ]
     },
     {
+      "holding_symbol": "ORVR3.SA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BRF"
+      ]
+    },
+    {
+      "holding_symbol": "OTP.BD",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-XC"
+      ]
+    },
+    {
+      "holding_symbol": "PBAP",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PBFR"
+      ]
+    },
+    {
+      "holding_symbol": "PBDE",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PBFR"
+      ]
+    },
+    {
+      "holding_symbol": "PBFB",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PBFR"
+      ]
+    },
+    {
+      "holding_symbol": "PBJA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PBFR"
+      ]
+    },
+    {
+      "holding_symbol": "PBJL",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PBFR"
+      ]
+    },
+    {
+      "holding_symbol": "PBMR",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PBFR"
+      ]
+    },
+    {
+      "holding_symbol": "PBMY",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PBFR"
+      ]
+    },
+    {
+      "holding_symbol": "PBNV",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PBFR"
+      ]
+    },
+    {
+      "holding_symbol": "PBOC",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PBFR"
+      ]
+    },
+    {
+      "holding_symbol": "PBSE",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PBFR"
+      ]
+    },
+    {
+      "holding_symbol": "PCBT.TA",
+      "market_suffix": "TA",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-IZRL"
+      ]
+    },
+    {
       "holding_symbol": "PDN.AX",
       "market_suffix": "AX",
       "status": "unsupported_market",
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
+        "US-SMRF",
         "US-URA",
         "US-URNM"
+      ]
+    },
+    {
+      "holding_symbol": "PEO.WA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-FRDM",
+        "US-SDEM"
+      ]
+    },
+    {
+      "holding_symbol": "PETR3.SA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-FNDE"
       ]
     },
     {
@@ -5931,7 +9005,26 @@
       "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "US-ENHE"
+        "US-DVYE",
+        "US-ENHE",
+        "US-FDEM",
+        "US-FNDE",
+        "US-FTHF",
+        "US-JPEM",
+        "US-MFEM",
+        "US-PXH",
+        "US-QLVE",
+        "US-RISE"
+      ]
+    },
+    {
+      "holding_symbol": "PFCIBEST.CL",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-SDEM"
       ]
     },
     {
@@ -5945,6 +9038,57 @@
       ]
     },
     {
+      "holding_symbol": "PKN.WA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-DEM",
+        "US-DVYE"
+      ]
+    },
+    {
+      "holding_symbol": "PKO.WA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-DEM"
+      ]
+    },
+    {
+      "holding_symbol": "PME.AX",
+      "market_suffix": "AX",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EAFG"
+      ]
+    },
+    {
+      "holding_symbol": "PNDORA.CO",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EAFG"
+      ]
+    },
+    {
+      "holding_symbol": "PRX.AS",
+      "market_suffix": "AS",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-KEMQ"
+      ]
+    },
+    {
       "holding_symbol": "PRY.MI",
       "market_suffix": "MI",
       "status": "unsupported_market",
@@ -5952,6 +9096,16 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "US-GRID"
+      ]
+    },
+    {
+      "holding_symbol": "QQQM",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EDGQ"
       ]
     },
     {
@@ -5963,7 +9117,43 @@
       "source_etf_ids": [
         "TW-00652",
         "TW-00736",
-        "US-VWO"
+        "US-DFEV",
+        "US-EMQQ",
+        "US-SCHE",
+        "US-VEXC",
+        "US-VWO",
+        "US-XC"
+      ]
+    },
+    {
+      "holding_symbol": "RENT3.SA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EMDV"
+      ]
+    },
+    {
+      "holding_symbol": "RHM.DE",
+      "market_suffix": "DE",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-WAR"
+      ]
+    },
+    {
+      "holding_symbol": "RIGD",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-SPEM",
+        "US-XSOE"
       ]
     },
     {
@@ -5996,11 +9186,38 @@
         "TW-00709",
         "US-DMXU",
         "US-EFA",
+        "US-IDEV",
         "US-IEFA",
         "US-IXUS",
+        "US-PQNT",
+        "US-PXF",
+        "US-TLTD",
+        "US-VDV",
         "US-VEA",
         "US-VEU",
         "US-VXUS"
+      ]
+    },
+    {
+      "holding_symbol": "RR.L",
+      "market_suffix": "L",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-NUKZ",
+        "US-RCTR"
+      ]
+    },
+    {
+      "holding_symbol": "RSSL",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-RYLD",
+        "US-RYLG"
       ]
     },
     {
@@ -6014,6 +9231,26 @@
       ]
     },
     {
+      "holding_symbol": "RYCEY",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-TNUK"
+      ]
+    },
+    {
+      "holding_symbol": "SAB.MC",
+      "market_suffix": "MC",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ISCF"
+      ]
+    },
+    {
       "holding_symbol": "SAN.MC",
       "market_suffix": "MC",
       "status": "unsupported_market",
@@ -6021,7 +9258,28 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00660",
-        "TW-00709"
+        "TW-00709",
+        "US-TLTD"
+      ]
+    },
+    {
+      "holding_symbol": "SAN.PA",
+      "market_suffix": "PA",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-QLVD"
+      ]
+    },
+    {
+      "holding_symbol": "SANB11",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EDIV"
       ]
     },
     {
@@ -6032,7 +9290,29 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00660",
-        "TW-00709"
+        "TW-00709",
+        "US-NUDM",
+        "US-VDG"
+      ]
+    },
+    {
+      "holding_symbol": "SAPR11",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BRF"
+      ]
+    },
+    {
+      "holding_symbol": "SBGSY",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-IVEP"
       ]
     },
     {
@@ -6043,6 +9323,36 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00652"
+      ]
+    },
+    {
+      "holding_symbol": "SCHA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BLUX"
+      ]
+    },
+    {
+      "holding_symbol": "SCHG",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EDGQ"
+      ]
+    },
+    {
+      "holding_symbol": "SCZ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-HSCZ"
       ]
     },
     {
@@ -6057,6 +9367,36 @@
       ]
     },
     {
+      "holding_symbol": "SEB-A.ST",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-AIVI"
+      ]
+    },
+    {
+      "holding_symbol": "SEPP",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BUFP"
+      ]
+    },
+    {
+      "holding_symbol": "SGRO.L",
+      "market_suffix": "L",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-DTRE"
+      ]
+    },
+    {
       "holding_symbol": "SHEL.L",
       "market_suffix": "L",
       "status": "unsupported_market",
@@ -6064,14 +9404,32 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00709",
+        "US-AIVI",
         "US-DMXU",
         "US-EFA",
+        "US-FEDM",
+        "US-ICOW",
+        "US-IDEV",
         "US-IEFA",
         "US-IXUS",
+        "US-PXF",
+        "US-QLVD",
         "US-SCHF",
+        "US-TLTD",
+        "US-VDV",
         "US-VEA",
         "US-VEU",
         "US-VXUS"
+      ]
+    },
+    {
+      "holding_symbol": "SHP.JO",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EMDV"
       ]
     },
     {
@@ -6085,7 +9443,12 @@
         "TW-00709",
         "US-DMXU",
         "US-EFA",
-        "US-IEFA"
+        "US-FEDM",
+        "US-IDEV",
+        "US-IEFA",
+        "US-MOTO",
+        "US-NUDM",
+        "US-VDG"
       ]
     },
     {
@@ -6099,6 +9462,26 @@
       ]
     },
     {
+      "holding_symbol": "SKYD",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-RSPC"
+      ]
+    },
+    {
+      "holding_symbol": "SLM.JO",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EDIV"
+      ]
+    },
+    {
       "holding_symbol": "SMCIP",
       "market_suffix": null,
       "status": "unresolved",
@@ -6109,13 +9492,76 @@
       ]
     },
     {
+      "holding_symbol": "SMERY",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-IVEP"
+      ]
+    },
+    {
+      "holding_symbol": "SMFT3.SA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BRF"
+      ]
+    },
+    {
       "holding_symbol": "SMSN",
       "market_suffix": null,
       "status": "unresolved",
       "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "US-NECK"
+        "US-AVEM",
+        "US-AVSE",
+        "US-DEHP",
+        "US-DEXC",
+        "US-DFEM",
+        "US-DFEV",
+        "US-DFSE",
+        "US-EMC",
+        "US-EMKT",
+        "US-EMOP",
+        "US-LOEV",
+        "US-NECK",
+        "US-TEMR"
+      ]
+    },
+    {
+      "holding_symbol": "SOI.PA",
+      "market_suffix": "PA",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-LUMA"
+      ]
+    },
+    {
+      "holding_symbol": "SPXL",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-DRAI"
+      ]
+    },
+    {
+      "holding_symbol": "SPYM",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BLUX",
+        "US-XDIV"
       ]
     },
     {
@@ -6126,6 +9572,26 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00885"
+      ]
+    },
+    {
+      "holding_symbol": "SSRM.TO",
+      "market_suffix": "TO",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-OMFS"
+      ]
+    },
+    {
+      "holding_symbol": "STB.OL",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-SCHC"
       ]
     },
     {
@@ -6146,7 +9612,19 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00660",
-        "US-GRID"
+        "US-FEDM",
+        "US-GRID",
+        "US-VDG"
+      ]
+    },
+    {
+      "holding_symbol": "SU.TO",
+      "market_suffix": "TO",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ICOW"
       ]
     },
     {
@@ -6160,6 +9638,106 @@
       ]
     },
     {
+      "holding_symbol": "SWED-A.ST",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-AIVI"
+      ]
+    },
+    {
+      "holding_symbol": "TCEHY",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BREE"
+      ]
+    },
+    {
+      "holding_symbol": "TCS.NS",
+      "market_suffix": "NS",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EQLT"
+      ]
+    },
+    {
+      "holding_symbol": "TDEC",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BUFE"
+      ]
+    },
+    {
+      "holding_symbol": "TECK-B.TO",
+      "market_suffix": "TO",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BATT"
+      ]
+    },
+    {
+      "holding_symbol": "TEVA.TA",
+      "market_suffix": "TA",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-IZRL"
+      ]
+    },
+    {
+      "holding_symbol": "TISCO-R",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EELV"
+      ]
+    },
+    {
+      "holding_symbol": "TJUN",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BUFE"
+      ]
+    },
+    {
+      "holding_symbol": "TKA.DE",
+      "market_suffix": "DE",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-SCHC"
+      ]
+    },
+    {
+      "holding_symbol": "TLT",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-DRAI"
+      ]
+    },
+    {
       "holding_symbol": "TLTW",
       "market_suffix": null,
       "status": "unresolved",
@@ -6170,6 +9748,16 @@
         "TW-00983D",
         "TW-00985D",
         "TW-00986D"
+      ]
+    },
+    {
+      "holding_symbol": "TMAR",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BUFE"
       ]
     },
     {
@@ -6189,7 +9777,28 @@
       "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00998A"
+        "TW-00998A",
+        "US-EMSF"
+      ]
+    },
+    {
+      "holding_symbol": "TQQQ",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-DRAI"
+      ]
+    },
+    {
+      "holding_symbol": "TRI.TO",
+      "market_suffix": "TO",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-TDVI"
       ]
     },
     {
@@ -6203,13 +9812,51 @@
       ]
     },
     {
+      "holding_symbol": "TSEM.TA",
+      "market_suffix": "TA",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ITEQ",
+        "US-LAZR",
+        "US-LUMA",
+        "US-PDN"
+      ]
+    },
+    {
+      "holding_symbol": "TSEP",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BUFE"
+      ]
+    },
+    {
       "holding_symbol": "TTE.PA",
       "market_suffix": "PA",
       "status": "unsupported_market",
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "TW-00660"
+        "TW-00660",
+        "US-AIVI",
+        "US-PXF",
+        "US-RODM",
+        "US-TLTD",
+        "US-VDV"
+      ]
+    },
+    {
+      "holding_symbol": "TUPRS.IS",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-VEM"
       ]
     },
     {
@@ -6219,7 +9866,18 @@
       "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
       "candidate_security_ids": [],
       "source_etf_ids": [
-        "US-URNM"
+        "US-URNM",
+        "US-UX"
+      ]
+    },
+    {
+      "holding_symbol": "U11.SI",
+      "market_suffix": "SI",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-AIVI"
       ]
     },
     {
@@ -6230,6 +9888,111 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00998A"
+      ]
+    },
+    {
+      "holding_symbol": "ULVR.L",
+      "market_suffix": "L",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-QLVD"
+      ]
+    },
+    {
+      "holding_symbol": "UNIT",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-IDGT"
+      ]
+    },
+    {
+      "holding_symbol": "URA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-NUKX"
+      ]
+    },
+    {
+      "holding_symbol": "USDB.AS",
+      "market_suffix": "AS",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-SNTQ"
+      ]
+    },
+    {
+      "holding_symbol": "USDU",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-DRAI"
+      ]
+    },
+    {
+      "holding_symbol": "VACN.SW",
+      "market_suffix": "SW",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ISCF"
+      ]
+    },
+    {
+      "holding_symbol": "VAL.JO",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-FTHF"
+      ]
+    },
+    {
+      "holding_symbol": "VALE3.SA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-DVYE",
+        "US-FNDE",
+        "US-FRDM",
+        "US-JPEM",
+        "US-PXH"
+      ]
+    },
+    {
+      "holding_symbol": "VARO.ST",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EAFG",
+        "US-PDN"
+      ]
+    },
+    {
+      "holding_symbol": "VAVX",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-TKNQ"
       ]
     },
     {
@@ -6273,6 +10036,16 @@
       ]
     },
     {
+      "holding_symbol": "VIVT3.SA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-SDEM"
+      ]
+    },
+    {
       "holding_symbol": "VMRK",
       "market_suffix": null,
       "status": "unresolved",
@@ -6280,6 +10053,7 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00714",
+        "US-NUMV",
         "US-VNQ"
       ]
     },
@@ -6291,6 +10065,36 @@
       "candidate_security_ids": [],
       "source_etf_ids": [
         "TW-00885"
+      ]
+    },
+    {
+      "holding_symbol": "VOD.L",
+      "market_suffix": "L",
+      "status": "unsupported_market",
+      "reason_code": "MARKET_NOT_PRESENT_IN_AXIOM_REGISTRY",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-ICOW"
+      ]
+    },
+    {
+      "holding_symbol": "VOLV-B.ST",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-MOTO"
+      ]
+    },
+    {
+      "holding_symbol": "VOO",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-PQUS"
       ]
     },
     {
@@ -6324,6 +10128,17 @@
       ]
     },
     {
+      "holding_symbol": "VTWO",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-BLUX",
+        "US-IWMI"
+      ]
+    },
+    {
       "holding_symbol": "VWS.CO",
       "market_suffix": null,
       "status": "unresolved",
@@ -6332,6 +10147,38 @@
       "source_etf_ids": [
         "TW-00899",
         "TW-00920"
+      ]
+    },
+    {
+      "holding_symbol": "WARBABANK.KW",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-EELV"
+      ]
+    },
+    {
+      "holding_symbol": "WEEK",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-QDTE",
+        "US-RDTE",
+        "US-XDTE"
+      ]
+    },
+    {
+      "holding_symbol": "WEGE3.SA",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-FTHF"
       ]
     },
     {
@@ -6365,14 +10212,60 @@
       ]
     },
     {
+      "holding_symbol": "XCEM",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-TEMX"
+      ]
+    },
+    {
+      "holding_symbol": "XIACY",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-DRGN"
+      ]
+    },
+    {
+      "holding_symbol": "XLK",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-TYLG",
+        "US-XLKI"
+      ]
+    },
+    {
+      "holding_symbol": "XRP",
+      "market_suffix": null,
+      "status": "unresolved",
+      "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
+      "candidate_security_ids": [],
+      "source_etf_ids": [
+        "US-STBQ"
+      ]
+    },
+    {
       "holding_symbol": "XTSLA",
       "market_suffix": null,
       "status": "unresolved",
       "reason_code": "SECURITY_IDENTITY_NOT_FOUND",
       "candidate_security_ids": [],
       "source_etf_ids": [
+        "US-BEMB",
+        "US-EEMS",
+        "US-HSCZ",
         "US-IJR",
-        "US-IWM"
+        "US-IWM",
+        "US-SMLF",
+        "US-XJR"
       ]
     },
     {
