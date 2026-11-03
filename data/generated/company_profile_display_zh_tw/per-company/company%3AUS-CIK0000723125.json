@@ -214,5 +214,844 @@
       "裝置汰換"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "as_of": "2026-10-30",
+    "company": "Micron Technology, Inc.",
+    "symbol": "MU",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "MU Micron 產業鏈戰略地圖｜HBM4、DDR5、G9 NAND、台灣供應鏈",
+      "description": "Micron 美光產業鏈解析：HBM4、HBM4E、DDR5、SOCAMM2、G9 NAND、資料中心 SSD、台灣建廠與半導體設備供應鏈。"
+    },
+    "business_lines": [
+      {
+        "id": "HBM",
+        "name": "HBM3E、HBM4、HBM4E／NV-HBM 與 AI GPU"
+      },
+      {
+        "id": "CLOUD_DRAM",
+        "name": "雲端伺服器 DDR5、RDIMM 與 3D 堆疊"
+      },
+      {
+        "id": "SOCAMM",
+        "name": "LPDDR5X、SOCAMM2 與低功耗 AI 伺服器"
+      },
+      {
+        "id": "DC_SSD",
+        "name": "資料中心 SSD、PCIe Gen6、245TB QLC"
+      },
+      {
+        "id": "NAND",
+        "name": "G9 3D NAND、QLC 與儲存控制器"
+      },
+      {
+        "id": "CLIENT",
+        "name": "PC、筆電與用戶端 SSD（Crucial 零售已退出）"
+      },
+      {
+        "id": "MOBILE",
+        "name": "智慧手機 LPDDR5X、UFS 與 MCP"
+      },
+      {
+        "id": "AUTO",
+        "name": "汽車、機器人計程車與工業嵌入式"
+      },
+      {
+        "id": "FAB",
+        "name": "DRAM／NAND 晶圓廠、EUV、先進封裝與測試"
+      },
+      {
+        "id": "CHANNEL",
+        "name": "企業 OEM、通路與全球記憶體生態"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "competitor",
+      "supplier",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "HBM_customer_001",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "HBM",
+        "relationship": "customer",
+        "details": "2026 年具名 HBM 客戶；共同設計客製化 NV-HBM／HBM4E，支援次世代 GPU 與 NVLink Fusion 平台"
+      },
+      {
+        "id": "HBM_customer_002",
+        "name": "Anthropic",
+        "business_line": "HBM",
+        "relationship": "customer",
+        "details": "2026 年記憶體與儲存供應協議涵蓋資料中心產品；未單獨公布 HBM 採購數量"
+      },
+      {
+        "id": "HBM_partner_001",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "HBM",
+        "relationship": "partner",
+        "details": "合作開發 NV-HBM 客製化 HBM4E，結合 GPU 架構與記憶體共同最佳化"
+      },
+      {
+        "id": "HBM_partner_002",
+        "name": "Anthropic",
+        "business_line": "HBM",
+        "relationship": "partner",
+        "details": "共同規劃前沿 AI 模型所需記憶體與儲存架構，含策略投資"
+      },
+      {
+        "id": "HBM_competitor_001",
+        "name": "SK hynix（000660.KS）",
+        "business_line": "HBM",
+        "relationship": "competitor",
+        "details": "HBM3E、HBM4 與高階堆疊 DRAM 直接競爭"
+      },
+      {
+        "id": "HBM_competitor_002",
+        "name": "Samsung Electronics（005930.KS）",
+        "business_line": "HBM",
+        "relationship": "competitor",
+        "details": "HBM4、HBM3E、DRAM 產能與 AI GPU 認證競爭"
+      },
+      {
+        "id": "HBM_beneficiary_001",
+        "name": "力成（6239）",
+        "business_line": "HBM",
+        "relationship": "beneficiary",
+        "details": "記憶體封測產業受惠；不等同美光 HBM4 已具名委外封裝"
+      },
+      {
+        "id": "HBM_beneficiary_002",
+        "name": "南茂（8150）",
+        "business_line": "HBM",
+        "relationship": "beneficiary",
+        "details": "DRAM／記憶體測試與封裝產業受惠"
+      },
+      {
+        "id": "HBM_beneficiary_003",
+        "name": "華泰（2329）",
+        "business_line": "HBM",
+        "relationship": "beneficiary",
+        "details": "記憶體封測產業景氣與 AI 記憶體升級受惠"
+      },
+      {
+        "id": "HBM_beneficiary_004",
+        "name": "京元電子（2449）",
+        "business_line": "HBM",
+        "relationship": "beneficiary",
+        "details": "AI 半導體測試產能與先進測試需求受惠，非已確認美光 HBM 專案"
+      },
+      {
+        "id": "CLOUD_DRAM_partner_003",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "CLOUD_DRAM",
+        "relationship": "partner",
+        "details": "HBM／NV-HBM 具名合作方；伺服器 DDR5 平台記憶體生態延伸，不宣稱特定 DDR5 採購"
+      },
+      {
+        "id": "CLOUD_DRAM_customer_002",
+        "name": "Anthropic",
+        "business_line": "CLOUD_DRAM",
+        "relationship": "customer",
+        "details": "具名記憶體及儲存產品供應協議，涵蓋 AI 基礎架構所需資料中心產品"
+      },
+      {
+        "id": "CLOUD_DRAM_partner_001",
+        "name": "AMD（AMD）",
+        "business_line": "CLOUD_DRAM",
+        "relationship": "partner",
+        "details": "伺服器平台 DDR5 記憶體驗證與生態系合作"
+      },
+      {
+        "id": "CLOUD_DRAM_partner_002",
+        "name": "Intel（INTC）",
+        "business_line": "CLOUD_DRAM",
+        "relationship": "partner",
+        "details": "Xeon 伺服器平台 DDR5 RDIMM 相容性與生態系合作"
+      },
+      {
+        "id": "CLOUD_DRAM_competitor_001",
+        "name": "SK hynix",
+        "business_line": "CLOUD_DRAM",
+        "relationship": "competitor",
+        "details": "DDR5／RDIMM 高容量伺服器記憶體競爭"
+      },
+      {
+        "id": "CLOUD_DRAM_competitor_002",
+        "name": "Samsung Electronics",
+        "business_line": "CLOUD_DRAM",
+        "relationship": "competitor",
+        "details": "伺服器 DDR5、RDIMM 及高容量模組競爭"
+      },
+      {
+        "id": "CLOUD_DRAM_competitor_003",
+        "name": "Nanya Technology 南亞科（2408）",
+        "business_line": "CLOUD_DRAM",
+        "relationship": "competitor",
+        "details": "標準型 DRAM、DDR 系列競爭，製程與產品定位不同"
+      },
+      {
+        "id": "CLOUD_DRAM_competitor_004",
+        "name": "Winbond 華邦電（2344）",
+        "business_line": "CLOUD_DRAM",
+        "relationship": "competitor",
+        "details": "部分利基型 DRAM 市場競爭"
+      },
+      {
+        "id": "CLOUD_DRAM_beneficiary_001",
+        "name": "南亞科（2408）",
+        "business_line": "CLOUD_DRAM",
+        "relationship": "beneficiary",
+        "details": "DDR5／DRAM 供需與報價上行的同業受惠，非美光供應商"
+      },
+      {
+        "id": "CLOUD_DRAM_beneficiary_002",
+        "name": "華邦電（2344）",
+        "business_line": "CLOUD_DRAM",
+        "relationship": "beneficiary",
+        "details": "利基型 DRAM 與記憶體報價循環受惠"
+      },
+      {
+        "id": "CLOUD_DRAM_beneficiary_003",
+        "name": "威剛（3260）",
+        "business_line": "CLOUD_DRAM",
+        "relationship": "beneficiary",
+        "details": "DDR5 模組及記憶體通路受惠"
+      },
+      {
+        "id": "CLOUD_DRAM_beneficiary_004",
+        "name": "創見（2451）",
+        "business_line": "CLOUD_DRAM",
+        "relationship": "beneficiary",
+        "details": "工業與企業 DRAM 模組、SSD 需求受惠"
+      },
+      {
+        "id": "CLOUD_DRAM_beneficiary_005",
+        "name": "十銓（4967）",
+        "business_line": "CLOUD_DRAM",
+        "relationship": "beneficiary",
+        "details": "DDR5 消費／工業記憶體模組景氣受惠"
+      },
+      {
+        "id": "CLOUD_DRAM_beneficiary_006",
+        "name": "宇瞻（8271）",
+        "business_line": "CLOUD_DRAM",
+        "relationship": "beneficiary",
+        "details": "工業 DRAM／SSD 模組市場需求受惠"
+      },
+      {
+        "id": "SOCAMM_partner_001",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "SOCAMM",
+        "relationship": "partner",
+        "details": "SOCAMM／SOCAMM2 低功耗記憶體生態與 AI 伺服器平台"
+      },
+      {
+        "id": "SOCAMM_partner_002",
+        "name": "Dell Technologies（DELL）",
+        "business_line": "SOCAMM",
+        "relationship": "partner",
+        "details": "高密度低功耗伺服器記憶體平台相容性生態"
+      },
+      {
+        "id": "SOCAMM_competitor_001",
+        "name": "SK hynix",
+        "business_line": "SOCAMM",
+        "relationship": "competitor",
+        "details": "SOCAMM2／LPDDR5X 低功耗伺服器記憶體競爭"
+      },
+      {
+        "id": "SOCAMM_competitor_002",
+        "name": "Samsung Electronics",
+        "business_line": "SOCAMM",
+        "relationship": "competitor",
+        "details": "LPDDR5X、SOCAMM2 供應與平台認證競爭"
+      },
+      {
+        "id": "SOCAMM_beneficiary_001",
+        "name": "南亞科（2408）",
+        "business_line": "SOCAMM",
+        "relationship": "beneficiary",
+        "details": "低功耗 DRAM 應用擴張帶動同業技術與產品升級"
+      },
+      {
+        "id": "SOCAMM_beneficiary_002",
+        "name": "宜鼎（5289）",
+        "business_line": "SOCAMM",
+        "relationship": "beneficiary",
+        "details": "邊緣 AI 低功耗記憶體模組需求受惠"
+      },
+      {
+        "id": "DC_SSD_partner_001",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "DC_SSD",
+        "relationship": "partner",
+        "details": "AI 資料中心儲存架構、推論 KV cache 與高效能 SSD 生態"
+      },
+      {
+        "id": "DC_SSD_partner_002",
+        "name": "AMD（AMD）",
+        "business_line": "DC_SSD",
+        "relationship": "partner",
+        "details": "PCIe Gen5／Gen6 伺服器平台儲存相容性生態"
+      },
+      {
+        "id": "DC_SSD_competitor_001",
+        "name": "Samsung Electronics",
+        "business_line": "DC_SSD",
+        "relationship": "competitor",
+        "details": "企業 NVMe SSD、PCIe Gen6 與高容量 QLC SSD 競爭"
+      },
+      {
+        "id": "DC_SSD_competitor_002",
+        "name": "SK hynix / Solidigm",
+        "business_line": "DC_SSD",
+        "relationship": "competitor",
+        "details": "高容量 QLC、資料中心 NVMe SSD 競爭"
+      },
+      {
+        "id": "DC_SSD_competitor_003",
+        "name": "Kioxia（鎧俠）",
+        "business_line": "DC_SSD",
+        "relationship": "competitor",
+        "details": "企業級 NVMe SSD、QLC NAND 競爭"
+      },
+      {
+        "id": "DC_SSD_competitor_004",
+        "name": "Sandisk（SNDK）",
+        "business_line": "DC_SSD",
+        "relationship": "competitor",
+        "details": "資料中心 NAND SSD 與高密度儲存競爭"
+      },
+      {
+        "id": "DC_SSD_beneficiary_001",
+        "name": "群聯（8299）",
+        "business_line": "DC_SSD",
+        "relationship": "beneficiary",
+        "details": "企業 SSD 控制器與 PCIe Gen5／Gen6 儲存需求受惠，非已確認美光控制器供應"
+      },
+      {
+        "id": "DC_SSD_beneficiary_002",
+        "name": "慧榮（SIMO）",
+        "business_line": "DC_SSD",
+        "relationship": "beneficiary",
+        "details": "SSD 控制器與 NAND 產業需求受惠"
+      },
+      {
+        "id": "DC_SSD_beneficiary_003",
+        "name": "宜鼎（5289）",
+        "business_line": "DC_SSD",
+        "relationship": "beneficiary",
+        "details": "工業／企業 SSD、邊緣 AI 儲存需求受惠"
+      },
+      {
+        "id": "DC_SSD_beneficiary_004",
+        "name": "創見（2451）",
+        "business_line": "DC_SSD",
+        "relationship": "beneficiary",
+        "details": "企業及工業 SSD 儲存升級受惠"
+      },
+      {
+        "id": "NAND_competitor_001",
+        "name": "Samsung Electronics",
+        "business_line": "NAND",
+        "relationship": "competitor",
+        "details": "3D NAND 位元成本、層數與 QLC 技術競爭"
+      },
+      {
+        "id": "NAND_competitor_002",
+        "name": "Kioxia（鎧俠）",
+        "business_line": "NAND",
+        "relationship": "competitor",
+        "details": "3D NAND 晶圓與 BiCS 技術競爭"
+      },
+      {
+        "id": "NAND_competitor_003",
+        "name": "Sandisk（SNDK）",
+        "business_line": "NAND",
+        "relationship": "competitor",
+        "details": "NAND 晶圓與消費／企業儲存競爭"
+      },
+      {
+        "id": "NAND_competitor_004",
+        "name": "SK hynix / Solidigm",
+        "business_line": "NAND",
+        "relationship": "competitor",
+        "details": "高層數 NAND、QLC 及企業 SSD 競爭"
+      },
+      {
+        "id": "NAND_competitor_005",
+        "name": "YMTC 長江存儲",
+        "business_line": "NAND",
+        "relationship": "competitor",
+        "details": "3D NAND 製程與高密度快閃記憶體競爭"
+      },
+      {
+        "id": "NAND_beneficiary_001",
+        "name": "群聯（8299）",
+        "business_line": "NAND",
+        "relationship": "beneficiary",
+        "details": "NAND 價格及控制器市場需求受惠"
+      },
+      {
+        "id": "NAND_beneficiary_002",
+        "name": "慧榮（SIMO）",
+        "business_line": "NAND",
+        "relationship": "beneficiary",
+        "details": "NAND SSD 控制器與 UFS 控制器需求受惠"
+      },
+      {
+        "id": "NAND_beneficiary_003",
+        "name": "威剛（3260）",
+        "business_line": "NAND",
+        "relationship": "beneficiary",
+        "details": "NAND 現貨價格與 SSD 模組景氣受惠"
+      },
+      {
+        "id": "NAND_beneficiary_004",
+        "name": "十銓（4967）",
+        "business_line": "NAND",
+        "relationship": "beneficiary",
+        "details": "消費型 SSD、NAND 模組報價受惠"
+      },
+      {
+        "id": "CLIENT_partner_001",
+        "name": "Intel（INTC）",
+        "business_line": "CLIENT",
+        "relationship": "partner",
+        "details": "PC／筆電平台 DDR5、SSD 驗證與相容性生態"
+      },
+      {
+        "id": "CLIENT_competitor_001",
+        "name": "Samsung Electronics",
+        "business_line": "CLIENT",
+        "relationship": "competitor",
+        "details": "PC DDR5、LPDDR、消費級 SSD 競爭"
+      },
+      {
+        "id": "CLIENT_competitor_002",
+        "name": "SK hynix",
+        "business_line": "CLIENT",
+        "relationship": "competitor",
+        "details": "PC DRAM 與 SSD 市場競爭"
+      },
+      {
+        "id": "CLIENT_competitor_003",
+        "name": "Sandisk（SNDK）",
+        "business_line": "CLIENT",
+        "relationship": "competitor",
+        "details": "消費 SSD、NAND 儲存品牌競爭"
+      },
+      {
+        "id": "CLIENT_competitor_004",
+        "name": "Kingston Technology",
+        "business_line": "CLIENT",
+        "relationship": "competitor",
+        "details": "DRAM 模組與 SSD 通路品牌競爭"
+      },
+      {
+        "id": "CLIENT_competitor_005",
+        "name": "ADATA 威剛（3260）",
+        "business_line": "CLIENT",
+        "relationship": "competitor",
+        "details": "DRAM 模組與 SSD 消費品牌競爭"
+      },
+      {
+        "id": "CLIENT_competitor_006",
+        "name": "Phison 群聯（8299）",
+        "business_line": "CLIENT",
+        "relationship": "competitor",
+        "details": "部分 SSD 模組／控制器產品市場競合"
+      },
+      {
+        "id": "CLIENT_beneficiary_001",
+        "name": "威剛（3260）",
+        "business_line": "CLIENT",
+        "relationship": "beneficiary",
+        "details": "DRAM 模組、SSD 與記憶體通路需求受惠"
+      },
+      {
+        "id": "CLIENT_beneficiary_002",
+        "name": "十銓（4967）",
+        "business_line": "CLIENT",
+        "relationship": "beneficiary",
+        "details": "遊戲及 PC 記憶體／SSD 模組需求受惠"
+      },
+      {
+        "id": "CLIENT_beneficiary_003",
+        "name": "創見（2451）",
+        "business_line": "CLIENT",
+        "relationship": "beneficiary",
+        "details": "消費與工業 SSD、記憶體模組需求受惠"
+      },
+      {
+        "id": "MOBILE_partner_001",
+        "name": "Qualcomm（QCOM）",
+        "business_line": "MOBILE",
+        "relationship": "partner",
+        "details": "Snapdragon 行動平台 LPDDR5X 與 UFS 記憶體生態"
+      },
+      {
+        "id": "MOBILE_partner_002",
+        "name": "MediaTek 聯發科（2454）",
+        "business_line": "MOBILE",
+        "relationship": "partner",
+        "details": "Dimensity 行動 SoC 與 LPDDR／UFS 規格相容性及平台生態"
+      },
+      {
+        "id": "MOBILE_competitor_001",
+        "name": "Samsung Electronics",
+        "business_line": "MOBILE",
+        "relationship": "competitor",
+        "details": "行動 LPDDR5X、UFS、MCP 競爭"
+      },
+      {
+        "id": "MOBILE_competitor_002",
+        "name": "SK hynix",
+        "business_line": "MOBILE",
+        "relationship": "competitor",
+        "details": "智慧手機 LPDDR5X、UFS 記憶體競爭"
+      },
+      {
+        "id": "MOBILE_competitor_003",
+        "name": "Kioxia（鎧俠）",
+        "business_line": "MOBILE",
+        "relationship": "competitor",
+        "details": "UFS、嵌入式 NAND 儲存競爭"
+      },
+      {
+        "id": "MOBILE_beneficiary_001",
+        "name": "聯發科（2454）",
+        "business_line": "MOBILE",
+        "relationship": "beneficiary",
+        "details": "旗艦手機平台升級帶動 LPDDR5X／UFS 規格與記憶體搭載量"
+      },
+      {
+        "id": "MOBILE_beneficiary_002",
+        "name": "華邦電（2344）",
+        "business_line": "MOBILE",
+        "relationship": "beneficiary",
+        "details": "行動及嵌入式記憶體需求擴大帶動利基型市場"
+      },
+      {
+        "id": "AUTO_partner_001",
+        "name": "Qualcomm（QCOM）",
+        "business_line": "AUTO",
+        "relationship": "partner",
+        "details": "Snapdragon Digital Chassis 車用運算與記憶體生態"
+      },
+      {
+        "id": "AUTO_partner_002",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "AUTO",
+        "relationship": "partner",
+        "details": "DRIVE 車用 AI 運算與車用記憶體生態"
+      },
+      {
+        "id": "AUTO_partner_003",
+        "name": "NXP Semiconductors（NXPI）",
+        "business_line": "AUTO",
+        "relationship": "partner",
+        "details": "車用 MCU／SoC 與工規記憶體平台生態"
+      },
+      {
+        "id": "AUTO_competitor_001",
+        "name": "Samsung Electronics",
+        "business_line": "AUTO",
+        "relationship": "competitor",
+        "details": "車用 LPDDR、UFS 與記憶體競爭"
+      },
+      {
+        "id": "AUTO_competitor_002",
+        "name": "SK hynix",
+        "business_line": "AUTO",
+        "relationship": "competitor",
+        "details": "車用 DRAM／NAND 市場競爭"
+      },
+      {
+        "id": "AUTO_competitor_003",
+        "name": "Winbond 華邦電（2344）",
+        "business_line": "AUTO",
+        "relationship": "competitor",
+        "details": "車用／工業利基記憶體競爭"
+      },
+      {
+        "id": "AUTO_competitor_004",
+        "name": "Macronix 旺宏（2337）",
+        "business_line": "AUTO",
+        "relationship": "competitor",
+        "details": "車用非揮發性記憶體部分應用競爭"
+      },
+      {
+        "id": "AUTO_beneficiary_001",
+        "name": "華邦電（2344）",
+        "business_line": "AUTO",
+        "relationship": "beneficiary",
+        "details": "車用與工控利基型記憶體需求受惠"
+      },
+      {
+        "id": "AUTO_beneficiary_002",
+        "name": "旺宏（2337）",
+        "business_line": "AUTO",
+        "relationship": "beneficiary",
+        "details": "車用與工業非揮發性記憶體需求受惠"
+      },
+      {
+        "id": "AUTO_beneficiary_003",
+        "name": "宜鼎（5289）",
+        "business_line": "AUTO",
+        "relationship": "beneficiary",
+        "details": "車載、工業與邊緣 AI 儲存需求受惠"
+      },
+      {
+        "id": "FAB_partner_001",
+        "name": "力積電（6770）",
+        "business_line": "FAB",
+        "relationship": "partner",
+        "details": "2026 年美光收購銅鑼 P5 廠區，並規劃後段封裝及成熟 DRAM 長期策略合作"
+      },
+      {
+        "id": "FAB_partner_002",
+        "name": "Singapore Economic Development Board",
+        "business_line": "FAB",
+        "relationship": "partner",
+        "details": "新加坡 NAND／先進封裝製造投資與產業合作"
+      },
+      {
+        "id": "FAB_partner_003",
+        "name": "Taiwan semiconductor manufacturing ecosystem",
+        "business_line": "FAB",
+        "relationship": "partner",
+        "details": "台中后里、桃園與苗栗製造及封裝擴產產業生態"
+      },
+      {
+        "id": "FAB_supplier_001",
+        "name": "ASML（ASML）",
+        "business_line": "FAB",
+        "relationship": "supplier",
+        "details": "EUV／DUV 光刻設備供應商，支援先進 DRAM 製程"
+      },
+      {
+        "id": "FAB_supplier_002",
+        "name": "Applied Materials（AMAT）",
+        "business_line": "FAB",
+        "relationship": "supplier",
+        "details": "DRAM／NAND 薄膜沉積、材料工程設備供應商"
+      },
+      {
+        "id": "FAB_supplier_003",
+        "name": "Lam Research（LRCX）",
+        "business_line": "FAB",
+        "relationship": "supplier",
+        "details": "DRAM／NAND 蝕刻及沉積設備供應商"
+      },
+      {
+        "id": "FAB_supplier_004",
+        "name": "KLA（KLAC）",
+        "business_line": "FAB",
+        "relationship": "supplier",
+        "details": "晶圓缺陷檢測、量測與製程控制設備供應商"
+      },
+      {
+        "id": "FAB_supplier_005",
+        "name": "Tokyo Electron（8035.T）",
+        "business_line": "FAB",
+        "relationship": "supplier",
+        "details": "半導體製程設備供應商，涵蓋記憶體製造"
+      },
+      {
+        "id": "FAB_supplier_006",
+        "name": "帆宣（6196）",
+        "business_line": "FAB",
+        "relationship": "supplier",
+        "details": "美光台灣供應鏈夥伴，承作廠務監控、潔淨室與設備安裝相關工程"
+      },
+      {
+        "id": "FAB_supplier_007",
+        "name": "亞翔（6139）",
+        "business_line": "FAB",
+        "relationship": "supplier",
+        "details": "承作美光新加坡先進記憶體封裝廠工程"
+      },
+      {
+        "id": "FAB_supplier_008",
+        "name": "漢唐（2404）",
+        "business_line": "FAB",
+        "relationship": "supplier",
+        "details": "承作美光日本廣島新廠建設工程"
+      },
+      {
+        "id": "FAB_supplier_009",
+        "name": "聖暉*（5536）",
+        "business_line": "FAB",
+        "relationship": "supplier",
+        "details": "美光具名台灣潔淨室機電工程供應鏈夥伴"
+      },
+      {
+        "id": "FAB_supplier_010",
+        "name": "辛耘（3583）",
+        "business_line": "FAB",
+        "relationship": "supplier",
+        "details": "美光具名台灣先進封裝設備供應鏈夥伴"
+      },
+      {
+        "id": "FAB_supplier_011",
+        "name": "盟立（2464）",
+        "business_line": "FAB",
+        "relationship": "supplier",
+        "details": "美光具名台灣自動化設備供應鏈夥伴"
+      },
+      {
+        "id": "FAB_competitor_001",
+        "name": "Samsung Electronics",
+        "business_line": "FAB",
+        "relationship": "competitor",
+        "details": "DRAM／NAND 先進製程、HBM 封裝及產能投資競爭"
+      },
+      {
+        "id": "FAB_competitor_002",
+        "name": "SK hynix",
+        "business_line": "FAB",
+        "relationship": "competitor",
+        "details": "先進 DRAM、HBM 產能與封裝投資競爭"
+      },
+      {
+        "id": "FAB_beneficiary_001",
+        "name": "力積電（6770）",
+        "business_line": "FAB",
+        "relationship": "beneficiary",
+        "details": "美光銅鑼廠收購及後段封裝合作帶動產業鏈合作機會"
+      },
+      {
+        "id": "FAB_beneficiary_002",
+        "name": "帆宣（6196）",
+        "business_line": "FAB",
+        "relationship": "beneficiary",
+        "details": "具名美光廠務監控／潔淨室設備安裝供應鏈，受惠全球擴廠"
+      },
+      {
+        "id": "FAB_beneficiary_003",
+        "name": "亞翔（6139）",
+        "business_line": "FAB",
+        "relationship": "beneficiary",
+        "details": "具名承作美光新加坡先進封裝廠工程"
+      },
+      {
+        "id": "FAB_beneficiary_004",
+        "name": "漢唐（2404）",
+        "business_line": "FAB",
+        "relationship": "beneficiary",
+        "details": "具名承作美光日本廣島新廠工程"
+      },
+      {
+        "id": "FAB_beneficiary_005",
+        "name": "聖暉*（5536）",
+        "business_line": "FAB",
+        "relationship": "beneficiary",
+        "details": "具名美光潔淨室與機電工程合作夥伴"
+      },
+      {
+        "id": "FAB_beneficiary_006",
+        "name": "辛耘（3583）",
+        "business_line": "FAB",
+        "relationship": "beneficiary",
+        "details": "具名美光先進封裝設備供應鏈夥伴"
+      },
+      {
+        "id": "FAB_beneficiary_007",
+        "name": "盟立（2464）",
+        "business_line": "FAB",
+        "relationship": "beneficiary",
+        "details": "具名美光自動化設備供應鏈夥伴"
+      },
+      {
+        "id": "FAB_beneficiary_008",
+        "name": "弘塑（3131）",
+        "business_line": "FAB",
+        "relationship": "beneficiary",
+        "details": "先進封裝濕製程設備擴產受惠，非已確認美光直接採購"
+      },
+      {
+        "id": "FAB_beneficiary_009",
+        "name": "均華（6640）",
+        "business_line": "FAB",
+        "relationship": "beneficiary",
+        "details": "先進封裝與晶片製程設備擴產受惠"
+      },
+      {
+        "id": "FAB_beneficiary_010",
+        "name": "萬潤（6187）",
+        "business_line": "FAB",
+        "relationship": "beneficiary",
+        "details": "HBM／先進封裝設備產業需求受惠"
+      },
+      {
+        "id": "FAB_beneficiary_011",
+        "name": "家登（3680）",
+        "business_line": "FAB",
+        "relationship": "beneficiary",
+        "details": "先進製程與 EUV 晶圓載具產業受惠"
+      },
+      {
+        "id": "CHANNEL_partner_001",
+        "name": "Arrow Electronics（ARW）",
+        "business_line": "CHANNEL",
+        "relationship": "partner",
+        "details": "全球電子元件與記憶體通路生態"
+      },
+      {
+        "id": "CHANNEL_partner_002",
+        "name": "Avnet（AVT）",
+        "business_line": "CHANNEL",
+        "relationship": "partner",
+        "details": "全球電子元件／記憶體通路生態"
+      },
+      {
+        "id": "CHANNEL_competitor_001",
+        "name": "Samsung Electronics",
+        "business_line": "CHANNEL",
+        "relationship": "competitor",
+        "details": "跨 DRAM、NAND、SSD 全球市場競爭"
+      },
+      {
+        "id": "CHANNEL_competitor_002",
+        "name": "SK hynix",
+        "business_line": "CHANNEL",
+        "relationship": "competitor",
+        "details": "跨 HBM、DRAM、NAND、SSD 全球市場競爭"
+      },
+      {
+        "id": "CHANNEL_competitor_003",
+        "name": "Kingston Technology",
+        "business_line": "CHANNEL",
+        "relationship": "competitor",
+        "details": "記憶體模組與 SSD 通路品牌競爭"
+      },
+      {
+        "id": "CHANNEL_beneficiary_001",
+        "name": "威剛（3260）",
+        "business_line": "CHANNEL",
+        "relationship": "beneficiary",
+        "details": "記憶體價格循環與模組／通路需求受惠"
+      },
+      {
+        "id": "CHANNEL_beneficiary_002",
+        "name": "創見（2451）",
+        "business_line": "CHANNEL",
+        "relationship": "beneficiary",
+        "details": "工業記憶體與全球通路需求受惠"
+      },
+      {
+        "id": "CHANNEL_beneficiary_003",
+        "name": "宇瞻（8271）",
+        "business_line": "CHANNEL",
+        "relationship": "beneficiary",
+        "details": "工業記憶體模組與嵌入式儲存需求受惠"
+      }
+    ]
   }
 }

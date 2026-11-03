@@ -218,5 +218,399 @@
       "高容量硬碟產品週期"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "as_of": "2026-10-30",
+    "company": "Western Digital Corporation",
+    "symbol": "WDC",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "WDC Western Digital 產業鏈戰略地圖｜Nearline HDD、HAMR、台灣供應鏈",
+      "description": "Western Digital 產業鏈：雲端 Nearline HDD、ePMR、UltraSMR、HAMR、磁頭磁碟、精密零件、企業儲存與台灣 HDD 供應鏈。"
+    },
+    "business_lines": [
+      {
+        "id": "NEARLINE",
+        "name": "Ultrastar、雲端 Nearline HDD 與 Exabyte 儲存"
+      },
+      {
+        "id": "EPMR",
+        "name": "ePMR、UltraSMR、OptiNAND 與 40TB 升級"
+      },
+      {
+        "id": "HAMR",
+        "name": "HAMR、磁頭與高密度磁記錄"
+      },
+      {
+        "id": "COMPONENTS",
+        "name": "磁碟、音圈馬達、主軸與精密材料"
+      },
+      {
+        "id": "PLATFORM",
+        "name": "資料中心儲存平台、JBOD 與 AI 資料湖"
+      },
+      {
+        "id": "ENTERPRISE",
+        "name": "WD Gold、企業 OEM 與工作站"
+      },
+      {
+        "id": "NAS",
+        "name": "WD Red、NAS 與中小企業儲存"
+      },
+      {
+        "id": "SURVEILLANCE",
+        "name": "WD Purple、智慧監控與邊緣錄影"
+      },
+      {
+        "id": "CONSUMER",
+        "name": "WD Blue、外接硬碟與零售通路"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "competitor",
+      "supplier",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "NEARLINE_customer_001",
+        "name": "Dropbox（DBX）",
+        "business_line": "NEARLINE",
+        "relationship": "customer",
+        "details": "Magic Pocket 雲端儲存系統採用 Ultrastar UltraSMR HDD；曾完成 20TB 與 32TB 高容量硬碟認證"
+      },
+      {
+        "id": "NEARLINE_partner_001",
+        "name": "Dropbox（DBX）",
+        "business_line": "NEARLINE",
+        "relationship": "partner",
+        "details": "合作驗證 Host-Managed SMR／UltraSMR，提升雲端儲存密度與每 TB 成本效益"
+      },
+      {
+        "id": "NEARLINE_competitor_001",
+        "name": "Seagate Technology（STX）",
+        "business_line": "NEARLINE",
+        "relationship": "competitor",
+        "details": "Exos、Mozaic HAMR 高容量 Nearline HDD 直接競爭"
+      },
+      {
+        "id": "NEARLINE_competitor_002",
+        "name": "Toshiba Electronic Devices & Storage",
+        "business_line": "NEARLINE",
+        "relationship": "competitor",
+        "details": "MG 系列企業 HDD 與雲端高容量儲存競爭"
+      },
+      {
+        "id": "EPMR_competitor_001",
+        "name": "Seagate Technology（STX）",
+        "business_line": "EPMR",
+        "relationship": "competitor",
+        "details": "以 HAMR 技術路線爭奪高容量硬碟升級訂單"
+      },
+      {
+        "id": "EPMR_competitor_002",
+        "name": "Toshiba Electronic Devices & Storage",
+        "business_line": "EPMR",
+        "relationship": "competitor",
+        "details": "MAMR／FC-MAMR 等能量輔助磁記錄路線競爭"
+      },
+      {
+        "id": "HAMR_supplier_001",
+        "name": "TDK Corporation（6762.T）",
+        "business_line": "HAMR",
+        "relationship": "supplier",
+        "details": "獨立硬碟磁頭供應商，對 WD 提供磁頭補充產能，支援高密度 HDD 需求"
+      },
+      {
+        "id": "HAMR_competitor_001",
+        "name": "Seagate Technology（STX）",
+        "business_line": "HAMR",
+        "relationship": "competitor",
+        "details": "Mozaic HAMR 技術與 WDC HAMR 商用路線競爭"
+      },
+      {
+        "id": "HAMR_competitor_002",
+        "name": "Toshiba Electronic Devices & Storage",
+        "business_line": "HAMR",
+        "relationship": "competitor",
+        "details": "HAMR／MAMR 高密度硬碟技術路線競爭"
+      },
+      {
+        "id": "COMPONENTS_supplier_001",
+        "name": "銘異科技（3060.TW）",
+        "business_line": "COMPONENTS",
+        "relationship": "supplier",
+        "details": "WD 主要硬碟零組件供應商；提供音圈馬達 VCM、硬碟上蓋及精密機構件"
+      },
+      {
+        "id": "COMPONENTS_supplier_002",
+        "name": "光洋科（1785.TWO）",
+        "business_line": "COMPONENTS",
+        "relationship": "supplier",
+        "details": "硬碟磁性薄膜濺鍍靶材供應商；券商與產業資料具名 Western Digital 為硬碟客戶，不延伸推定個別 HAMR 新訂單"
+      },
+      {
+        "id": "COMPONENTS_supplier_003",
+        "name": "Nidec（6594.T）",
+        "business_line": "COMPONENTS",
+        "relationship": "supplier",
+        "details": "日本電產 HDD 主軸馬達供應商；其歷年年報曾具名 Western Digital 為硬碟馬達客戶"
+      },
+      {
+        "id": "COMPONENTS_supplier_004",
+        "name": "TDK Corporation（6762.T）",
+        "business_line": "COMPONENTS",
+        "relationship": "supplier",
+        "details": "HDD 磁頭與懸吊系統供應體系，並為少數獨立磁頭供應來源"
+      },
+      {
+        "id": "PLATFORM_partner_001",
+        "name": "Microsoft（MSFT）",
+        "business_line": "PLATFORM",
+        "relationship": "partner",
+        "details": "WD 官方技術聯盟：Azure Stack、Windows Server、Storage Spaces Direct 等儲存平台共同整合"
+      },
+      {
+        "id": "PLATFORM_partner_002",
+        "name": "AMD（AMD）",
+        "business_line": "PLATFORM",
+        "relationship": "partner",
+        "details": "WD 技術聯盟夥伴，推動運算與儲存平台相容整合"
+      },
+      {
+        "id": "PLATFORM_partner_003",
+        "name": "Broadcom（AVGO）",
+        "business_line": "PLATFORM",
+        "relationship": "partner",
+        "details": "WD 技術聯盟夥伴，涵蓋資料中心基礎設施與儲存互通"
+      },
+      {
+        "id": "PLATFORM_partner_004",
+        "name": "Oracle（ORCL）",
+        "business_line": "PLATFORM",
+        "relationship": "partner",
+        "details": "WD 官方技術聯盟，提供 Oracle 資料庫相關儲存整合方案"
+      },
+      {
+        "id": "PLATFORM_partner_005",
+        "name": "SAP（SAP）",
+        "business_line": "PLATFORM",
+        "relationship": "partner",
+        "details": "WD 官方技術聯盟，涵蓋企業資料與應用儲存整合"
+      },
+      {
+        "id": "PLATFORM_partner_006",
+        "name": "Veeam",
+        "business_line": "PLATFORM",
+        "relationship": "partner",
+        "details": "WD 官方技術聯盟，整合備份、資料保護及恢復工作負載"
+      },
+      {
+        "id": "PLATFORM_partner_007",
+        "name": "VMware（Broadcom）",
+        "business_line": "PLATFORM",
+        "relationship": "partner",
+        "details": "WD 官方技術聯盟，整合 vSphere／vSAN 等虛擬化與軟體定義儲存方案"
+      },
+      {
+        "id": "PLATFORM_competitor_001",
+        "name": "Seagate Technology（STX）",
+        "business_line": "PLATFORM",
+        "relationship": "competitor",
+        "details": "企業硬碟及資料中心儲存平台競爭"
+      },
+      {
+        "id": "PLATFORM_competitor_002",
+        "name": "Toshiba Electronic Devices & Storage",
+        "business_line": "PLATFORM",
+        "relationship": "competitor",
+        "details": "企業與雲端 HDD 系統競爭"
+      },
+      {
+        "id": "PLATFORM_competitor_003",
+        "name": "Pure Storage（PSTG）",
+        "business_line": "PLATFORM",
+        "relationship": "competitor",
+        "details": "以全快閃儲存架構競爭部分資料中心儲存容量與效能預算"
+      },
+      {
+        "id": "PLATFORM_competitor_004",
+        "name": "NetApp（NTAP）",
+        "business_line": "PLATFORM",
+        "relationship": "competitor",
+        "details": "企業級資料儲存系統及軟體定義儲存架構的替代競爭"
+      },
+      {
+        "id": "ENTERPRISE_partner_001",
+        "name": "Microsoft（MSFT）",
+        "business_line": "ENTERPRISE",
+        "relationship": "partner",
+        "details": "WD 與 Microsoft 長期共同工程合作，涵蓋 PC、伺服器及企業儲存生態"
+      },
+      {
+        "id": "ENTERPRISE_competitor_001",
+        "name": "Seagate Technology（STX）",
+        "business_line": "ENTERPRISE",
+        "relationship": "competitor",
+        "details": "Exos、IronWolf Pro 與企業級 HDD 競爭"
+      },
+      {
+        "id": "ENTERPRISE_competitor_002",
+        "name": "Toshiba Electronic Devices & Storage",
+        "business_line": "ENTERPRISE",
+        "relationship": "competitor",
+        "details": "MG 系列企業級 HDD 競爭"
+      },
+      {
+        "id": "NAS_partner_001",
+        "name": "Synology（群暉科技）",
+        "business_line": "NAS",
+        "relationship": "partner",
+        "details": "WD Red 系列經 NAS 相容性驗證，供群暉部分機種搭配使用；屬產品相容生態"
+      },
+      {
+        "id": "NAS_partner_002",
+        "name": "QNAP（威聯通）",
+        "business_line": "NAS",
+        "relationship": "partner",
+        "details": "WD Red 系列經 NAS 相容性驗證，供 QNAP NAS 搭配使用；屬產品相容生態"
+      },
+      {
+        "id": "NAS_competitor_001",
+        "name": "Seagate Technology（STX）",
+        "business_line": "NAS",
+        "relationship": "competitor",
+        "details": "IronWolf NAS HDD 與 WD Red 產品競爭"
+      },
+      {
+        "id": "NAS_competitor_002",
+        "name": "Toshiba Electronic Devices & Storage",
+        "business_line": "NAS",
+        "relationship": "competitor",
+        "details": "N300 NAS HDD 與 WD Red 產品競爭"
+      },
+      {
+        "id": "SURVEILLANCE_competitor_001",
+        "name": "Seagate Technology（STX）",
+        "business_line": "SURVEILLANCE",
+        "relationship": "competitor",
+        "details": "SkyHawk 監控硬碟與 WD Purple 競爭"
+      },
+      {
+        "id": "SURVEILLANCE_competitor_002",
+        "name": "Toshiba Electronic Devices & Storage",
+        "business_line": "SURVEILLANCE",
+        "relationship": "competitor",
+        "details": "S300 監控硬碟與 WD Purple 競爭"
+      },
+      {
+        "id": "CONSUMER_partner_001",
+        "name": "Microsoft（MSFT）",
+        "business_line": "CONSUMER",
+        "relationship": "partner",
+        "details": "WD 官方共同工程夥伴，Windows PC 與 Xbox 儲存產品生態"
+      },
+      {
+        "id": "CONSUMER_competitor_001",
+        "name": "Seagate Technology（STX）",
+        "business_line": "CONSUMER",
+        "relationship": "competitor",
+        "details": "Expansion、One Touch 等外接 HDD 及消費品牌競爭"
+      },
+      {
+        "id": "CONSUMER_competitor_002",
+        "name": "Toshiba Electronic Devices & Storage",
+        "business_line": "CONSUMER",
+        "relationship": "competitor",
+        "details": "Canvio 外接式 HDD 與 WD Elements／My Passport 競爭"
+      },
+      {
+        "id": "CONSUMER_competitor_003",
+        "name": "LaCie（Seagate 品牌）",
+        "business_line": "CONSUMER",
+        "relationship": "competitor",
+        "details": "創作者及高階外接 HDD 市場競爭"
+      },
+      {
+        "id": "COMPONENTS_beneficiary_001",
+        "name": "銘異科技（3060.TW）",
+        "business_line": "COMPONENTS",
+        "relationship": "beneficiary",
+        "details": "直接供應 WD 的 VCM、硬碟上蓋及精密機構件；Nearline HDD 顆數與產品規格升級受惠"
+      },
+      {
+        "id": "COMPONENTS_beneficiary_002",
+        "name": "光洋科（1785.TWO）",
+        "business_line": "COMPONENTS",
+        "relationship": "beneficiary",
+        "details": "HDD 磁性薄膜靶材供應鏈；高容量 HDD 與磁記錄密度提升增加材料需求"
+      },
+      {
+        "id": "PLATFORM_beneficiary_001",
+        "name": "神達（3706.TW）",
+        "business_line": "PLATFORM",
+        "relationship": "beneficiary",
+        "details": "企業與雲端伺服器平台；高密度 HDD 儲存節點市場需求受惠"
+      },
+      {
+        "id": "PLATFORM_beneficiary_002",
+        "name": "勤誠（8210.TW）",
+        "business_line": "PLATFORM",
+        "relationship": "beneficiary",
+        "details": "伺服器機殼與儲存機箱，受惠 HDD 密集型儲存伺服器部署"
+      },
+      {
+        "id": "PLATFORM_beneficiary_003",
+        "name": "晟銘電（3013.TW）",
+        "business_line": "PLATFORM",
+        "relationship": "beneficiary",
+        "details": "伺服器機殼及機構件；資料中心儲存擴容需求受惠"
+      },
+      {
+        "id": "PLATFORM_beneficiary_004",
+        "name": "營邦（3693.TWO）",
+        "business_line": "PLATFORM",
+        "relationship": "beneficiary",
+        "details": "儲存伺服器、機殼及機櫃產品，受惠高密度硬碟儲存系統建置"
+      },
+      {
+        "id": "PLATFORM_beneficiary_005",
+        "name": "迎廣（6117.TW）",
+        "business_line": "PLATFORM",
+        "relationship": "beneficiary",
+        "details": "伺服器及儲存機箱產品，受惠高密度儲存系統擴充"
+      },
+      {
+        "id": "PLATFORM_beneficiary_006",
+        "name": "台達電（2308.TW）",
+        "business_line": "PLATFORM",
+        "relationship": "beneficiary",
+        "details": "資料中心電源及能源管理，雲端儲存機櫃擴容受惠"
+      },
+      {
+        "id": "PLATFORM_beneficiary_007",
+        "name": "光寶科（2301.TW）",
+        "business_line": "PLATFORM",
+        "relationship": "beneficiary",
+        "details": "資料中心電源與電力設備，雲端儲存擴容受惠"
+      },
+      {
+        "id": "PLATFORM_beneficiary_008",
+        "name": "金像電（2368.TW）",
+        "business_line": "PLATFORM",
+        "relationship": "beneficiary",
+        "details": "伺服器高階 PCB，雲端儲存與運算基礎建設擴充受惠"
+      },
+      {
+        "id": "PLATFORM_beneficiary_009",
+        "name": "智邦（2345.TW）",
+        "business_line": "PLATFORM",
+        "relationship": "beneficiary",
+        "details": "資料中心交換器及網路設備，儲存流量及雲端網路建置受惠"
+      }
+    ]
   }
 }

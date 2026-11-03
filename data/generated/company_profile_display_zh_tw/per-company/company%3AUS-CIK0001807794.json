@@ -202,5 +202,417 @@
       "能源效率"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-02",
+    "company": "Credo Technology Group Holding Ltd",
+    "symbol": "CRDO",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "Credo（CRDO）AI 高速互連產業鏈",
+      "description": "涵蓋 AEC、ZeroFlap、光學 DSP、矽光子、PCIe/CXL 與 OmniConnect；區分已確認合作及間接受惠。"
+    },
+    "business_lines": [
+      {
+        "id": "AEC",
+        "name": "AI 叢集主動式電纜 AEC"
+      },
+      {
+        "id": "ZEROFLAP",
+        "name": "ZeroFlap 可靠性與 PILOT 軟體"
+      },
+      {
+        "id": "OPTICAL",
+        "name": "光學 PAM4 DSP 與 800G／1.6T"
+      },
+      {
+        "id": "SIPHO",
+        "name": "矽光子 PIC 與光收發模組"
+      },
+      {
+        "id": "ALC",
+        "name": "主動式光纜 ALC／SRMO"
+      },
+      {
+        "id": "RETIMER",
+        "name": "PCIe／CXL 重定時器"
+      },
+      {
+        "id": "SERDES",
+        "name": "SerDes 智財與 Chiplet"
+      },
+      {
+        "id": "OMNI",
+        "name": "OmniConnect 記憶體擴展互連"
+      },
+      {
+        "id": "PHY",
+        "name": "網路 PHY／線路卡晶片"
+      },
+      {
+        "id": "ECO",
+        "name": "資料中心網路生態系"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "ECO_partner_001",
+        "name": "Open Compute Project（OCP）",
+        "business_line": "ECO",
+        "relationship": "partner",
+        "details": "Credo 參與 OCP 開放互連規格與生態活動；屬標準合作，非訂單證據。"
+      },
+      {
+        "id": "OMNI_partner_001",
+        "name": "AMD",
+        "business_line": "OMNI",
+        "relationship": "partner",
+        "details": "官方於 OCP 2026 展示在 AMD Versal AI Edge Gen 2 平台上的 OmniConnect Weaver 技術示範；不等於 AMD 採購承諾。"
+      },
+      {
+        "id": "SIPHO_partner_001",
+        "name": "Open CPX MSA",
+        "business_line": "SIPHO",
+        "relationship": "partner",
+        "details": "參與光互連相關開放規格組織；非特定客戶關係。"
+      },
+      {
+        "id": "ALC_partner_001",
+        "name": "SRMO 標準化倡議",
+        "business_line": "ALC",
+        "relationship": "partner",
+        "details": "Credo 推動短距微型發射器光學標準化，為產業合作倡議。"
+      },
+      {
+        "id": "AEC_competitor_001",
+        "name": "Astera Labs（ALAB）",
+        "business_line": "AEC",
+        "relationship": "competitor",
+        "details": "在高速資料中心連接、訊號調理或線纜系統存在產品／預算競爭，非所有產品直接替代。"
+      },
+      {
+        "id": "AEC_competitor_002",
+        "name": "Marvell Technology（MRVL）",
+        "business_line": "AEC",
+        "relationship": "competitor",
+        "details": "在高速資料中心連接、訊號調理或線纜系統存在產品／預算競爭，非所有產品直接替代。"
+      },
+      {
+        "id": "AEC_competitor_003",
+        "name": "Broadcom（AVGO）",
+        "business_line": "AEC",
+        "relationship": "competitor",
+        "details": "在高速資料中心連接、訊號調理或線纜系統存在產品／預算競爭，非所有產品直接替代。"
+      },
+      {
+        "id": "AEC_competitor_004",
+        "name": "Amphenol（APH）",
+        "business_line": "AEC",
+        "relationship": "competitor",
+        "details": "在高速資料中心連接、訊號調理或線纜系統存在產品／預算競爭，非所有產品直接替代。"
+      },
+      {
+        "id": "OPTICAL_competitor_001",
+        "name": "Marvell Technology（MRVL）",
+        "business_line": "OPTICAL",
+        "relationship": "competitor",
+        "details": "光學 DSP、PAM4 或高速光通訊半導體競爭。"
+      },
+      {
+        "id": "OPTICAL_competitor_002",
+        "name": "Broadcom（AVGO）",
+        "business_line": "OPTICAL",
+        "relationship": "competitor",
+        "details": "光學 DSP、PAM4 或高速光通訊半導體競爭。"
+      },
+      {
+        "id": "OPTICAL_competitor_003",
+        "name": "MACOM（MTSI）",
+        "business_line": "OPTICAL",
+        "relationship": "competitor",
+        "details": "光學 DSP、PAM4 或高速光通訊半導體競爭。"
+      },
+      {
+        "id": "OPTICAL_competitor_004",
+        "name": "MaxLinear（MXL）",
+        "business_line": "OPTICAL",
+        "relationship": "competitor",
+        "details": "光學 DSP、PAM4 或高速光通訊半導體競爭。"
+      },
+      {
+        "id": "SIPHO_competitor_001",
+        "name": "Coherent（COHR）",
+        "business_line": "SIPHO",
+        "relationship": "competitor",
+        "details": "矽光子、光收發與高速光連接部分產品市場重疊。"
+      },
+      {
+        "id": "SIPHO_competitor_002",
+        "name": "Lumentum（LITE）",
+        "business_line": "SIPHO",
+        "relationship": "competitor",
+        "details": "矽光子、光收發與高速光連接部分產品市場重疊。"
+      },
+      {
+        "id": "SIPHO_competitor_003",
+        "name": "Marvell Technology（MRVL）",
+        "business_line": "SIPHO",
+        "relationship": "competitor",
+        "details": "矽光子、光收發與高速光連接部分產品市場重疊。"
+      },
+      {
+        "id": "RETIMER_competitor_001",
+        "name": "Astera Labs（ALAB）",
+        "business_line": "RETIMER",
+        "relationship": "competitor",
+        "details": "PCIe／CXL 重定時與訊號完整性相關產品競爭。"
+      },
+      {
+        "id": "RETIMER_competitor_002",
+        "name": "Broadcom（AVGO）",
+        "business_line": "RETIMER",
+        "relationship": "competitor",
+        "details": "PCIe／CXL 重定時與訊號完整性相關產品競爭。"
+      },
+      {
+        "id": "RETIMER_competitor_003",
+        "name": "Microchip Technology（MCHP）",
+        "business_line": "RETIMER",
+        "relationship": "competitor",
+        "details": "PCIe／CXL 重定時與訊號完整性相關產品競爭。"
+      },
+      {
+        "id": "SERDES_competitor_001",
+        "name": "Synopsys（SNPS）",
+        "business_line": "SERDES",
+        "relationship": "competitor",
+        "details": "高速 SerDes IP 或互連矽智財競爭；部分公司同時可能為生態合作方。"
+      },
+      {
+        "id": "SERDES_competitor_002",
+        "name": "Cadence Design Systems（CDNS）",
+        "business_line": "SERDES",
+        "relationship": "competitor",
+        "details": "高速 SerDes IP 或互連矽智財競爭；部分公司同時可能為生態合作方。"
+      },
+      {
+        "id": "SERDES_competitor_003",
+        "name": "Alphawave Semi",
+        "business_line": "SERDES",
+        "relationship": "competitor",
+        "details": "高速 SerDes IP 或互連矽智財競爭；部分公司同時可能為生態合作方。"
+      },
+      {
+        "id": "PHY_competitor_001",
+        "name": "Marvell Technology（MRVL）",
+        "business_line": "PHY",
+        "relationship": "competitor",
+        "details": "網路實體層及高速連接晶片的部分市場競爭。"
+      },
+      {
+        "id": "PHY_competitor_002",
+        "name": "Broadcom（AVGO）",
+        "business_line": "PHY",
+        "relationship": "competitor",
+        "details": "網路實體層及高速連接晶片的部分市場競爭。"
+      },
+      {
+        "id": "PHY_competitor_003",
+        "name": "Realtek 瑞昱（2379）",
+        "business_line": "PHY",
+        "relationship": "competitor",
+        "details": "網路實體層及高速連接晶片的部分市場競爭。"
+      },
+      {
+        "id": "AEC_beneficiary_001",
+        "name": "鴻海（2317）",
+        "business_line": "AEC",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器及交換設備的高速互連需求可能提升系統整合機會；未證實為 Credo 直接客戶或供應商。"
+      },
+      {
+        "id": "AEC_beneficiary_002",
+        "name": "廣達（2382）",
+        "business_line": "AEC",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器及交換設備的高速互連需求可能提升系統整合機會；未證實為 Credo 直接客戶或供應商。"
+      },
+      {
+        "id": "AEC_beneficiary_003",
+        "name": "緯創（3231）",
+        "business_line": "AEC",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器及交換設備的高速互連需求可能提升系統整合機會；未證實為 Credo 直接客戶或供應商。"
+      },
+      {
+        "id": "AEC_beneficiary_004",
+        "name": "緯穎（6669）",
+        "business_line": "AEC",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器及交換設備的高速互連需求可能提升系統整合機會；未證實為 Credo 直接客戶或供應商。"
+      },
+      {
+        "id": "AEC_beneficiary_005",
+        "name": "英業達（2356）",
+        "business_line": "AEC",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器及交換設備的高速互連需求可能提升系統整合機會；未證實為 Credo 直接客戶或供應商。"
+      },
+      {
+        "id": "OPTICAL_beneficiary_001",
+        "name": "智邦（2345）",
+        "business_line": "OPTICAL",
+        "relationship": "beneficiary",
+        "details": "高速交換器與網路設備升級帶動互連元件需求；不代表具名採購。"
+      },
+      {
+        "id": "OPTICAL_beneficiary_002",
+        "name": "啟碁（6285）",
+        "business_line": "OPTICAL",
+        "relationship": "beneficiary",
+        "details": "高速交換器與網路設備升級帶動互連元件需求；不代表具名採購。"
+      },
+      {
+        "id": "OPTICAL_beneficiary_003",
+        "name": "中磊（5388）",
+        "business_line": "OPTICAL",
+        "relationship": "beneficiary",
+        "details": "高速交換器與網路設備升級帶動互連元件需求；不代表具名採購。"
+      },
+      {
+        "id": "SIPHO_beneficiary_001",
+        "name": "光聖（6442）",
+        "business_line": "SIPHO",
+        "relationship": "beneficiary",
+        "details": "光互連／矽光子產業鏈可能受 800G／1.6T 擴產帶動；未證實供貨 Credo。"
+      },
+      {
+        "id": "SIPHO_beneficiary_002",
+        "name": "聯亞（3081）",
+        "business_line": "SIPHO",
+        "relationship": "beneficiary",
+        "details": "光互連／矽光子產業鏈可能受 800G／1.6T 擴產帶動；未證實供貨 Credo。"
+      },
+      {
+        "id": "SIPHO_beneficiary_003",
+        "name": "華星光（4979）",
+        "business_line": "SIPHO",
+        "relationship": "beneficiary",
+        "details": "光互連／矽光子產業鏈可能受 800G／1.6T 擴產帶動；未證實供貨 Credo。"
+      },
+      {
+        "id": "SIPHO_beneficiary_004",
+        "name": "上詮（3363）",
+        "business_line": "SIPHO",
+        "relationship": "beneficiary",
+        "details": "光互連／矽光子產業鏈可能受 800G／1.6T 擴產帶動；未證實供貨 Credo。"
+      },
+      {
+        "id": "SIPHO_beneficiary_005",
+        "name": "波若威（3163）",
+        "business_line": "SIPHO",
+        "relationship": "beneficiary",
+        "details": "光互連／矽光子產業鏈可能受 800G／1.6T 擴產帶動；未證實供貨 Credo。"
+      },
+      {
+        "id": "SIPHO_beneficiary_006",
+        "name": "聯鈞（3450）",
+        "business_line": "SIPHO",
+        "relationship": "beneficiary",
+        "details": "光互連／矽光子產業鏈可能受 800G／1.6T 擴產帶動；未證實供貨 Credo。"
+      },
+      {
+        "id": "ALC_beneficiary_001",
+        "name": "眾達-KY（4977）",
+        "business_line": "ALC",
+        "relationship": "beneficiary",
+        "details": "短距光連接與光電元件需求成長的間接受惠觀察，非 Credo 直接採購。"
+      },
+      {
+        "id": "ALC_beneficiary_002",
+        "name": "前鼎（4908）",
+        "business_line": "ALC",
+        "relationship": "beneficiary",
+        "details": "短距光連接與光電元件需求成長的間接受惠觀察，非 Credo 直接採購。"
+      },
+      {
+        "id": "ALC_beneficiary_003",
+        "name": "全新（2455）",
+        "business_line": "ALC",
+        "relationship": "beneficiary",
+        "details": "短距光連接與光電元件需求成長的間接受惠觀察，非 Credo 直接採購。"
+      },
+      {
+        "id": "RETIMER_beneficiary_001",
+        "name": "祥碩（5269）",
+        "business_line": "RETIMER",
+        "relationship": "beneficiary",
+        "details": "高速介面與訊號調理市場擴張可能受惠，部分產品亦存在競爭關係。"
+      },
+      {
+        "id": "RETIMER_beneficiary_002",
+        "name": "譜瑞-KY（4966）",
+        "business_line": "RETIMER",
+        "relationship": "beneficiary",
+        "details": "高速介面與訊號調理市場擴張可能受惠，部分產品亦存在競爭關係。"
+      },
+      {
+        "id": "ECO_beneficiary_001",
+        "name": "台積電（2330）",
+        "business_line": "ECO",
+        "relationship": "beneficiary",
+        "details": "高速半導體晶圓、封測及載板需求的產業受惠推論；不將其視為已確認 Credo 直接供應商。"
+      },
+      {
+        "id": "ECO_beneficiary_002",
+        "name": "日月光投控（3711）",
+        "business_line": "ECO",
+        "relationship": "beneficiary",
+        "details": "高速半導體晶圓、封測及載板需求的產業受惠推論；不將其視為已確認 Credo 直接供應商。"
+      },
+      {
+        "id": "ECO_beneficiary_003",
+        "name": "京元電子（2449）",
+        "business_line": "ECO",
+        "relationship": "beneficiary",
+        "details": "高速半導體晶圓、封測及載板需求的產業受惠推論；不將其視為已確認 Credo 直接供應商。"
+      },
+      {
+        "id": "ECO_beneficiary_004",
+        "name": "欣興（3037）",
+        "business_line": "ECO",
+        "relationship": "beneficiary",
+        "details": "高速半導體晶圓、封測及載板需求的產業受惠推論；不將其視為已確認 Credo 直接供應商。"
+      },
+      {
+        "id": "ECO_beneficiary_005",
+        "name": "南電（8046）",
+        "business_line": "ECO",
+        "relationship": "beneficiary",
+        "details": "高速半導體晶圓、封測及載板需求的產業受惠推論；不將其視為已確認 Credo 直接供應商。"
+      },
+      {
+        "id": "OMNI_beneficiary_001",
+        "name": "創意（3443）",
+        "business_line": "OMNI",
+        "relationship": "beneficiary",
+        "details": "記憶體擴展及客製化 ASIC 的互連需求可能帶來設計服務機會；未證實直接交易。"
+      },
+      {
+        "id": "OMNI_beneficiary_002",
+        "name": "世芯-KY（3661）",
+        "business_line": "OMNI",
+        "relationship": "beneficiary",
+        "details": "記憶體擴展及客製化 ASIC 的互連需求可能帶來設計服務機會；未證實直接交易。"
+      }
+    ]
   }
 }

@@ -208,5 +208,695 @@
       "排放控制"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-03",
+    "company": "Corning Incorporated",
+    "symbol": "GLW",
+    "locale": "zh-TW",
+    "business_lines": [
+      {
+        "id": "AI_OPTICAL",
+        "name": "AI資料中心光連接及光纖"
+      },
+      {
+        "id": "NVIDIA_PARTNERSHIP",
+        "name": "NVIDIA多年光連接合作及美國擴產"
+      },
+      {
+        "id": "META_AGREEMENT",
+        "name": "Meta最高60億美元多年協議"
+      },
+      {
+        "id": "TELCO_FIBER",
+        "name": "電信光纖寬頻 Verizon/AT&T"
+      },
+      {
+        "id": "DENSITY_CONNECT",
+        "name": "高密度光纖佈線與連接器"
+      },
+      {
+        "id": "CPO_SILICON_PHOTONICS",
+        "name": "CPO與矽光子技術相鄰機會"
+      },
+      {
+        "id": "US_CAPACITY",
+        "name": "美國光纖光纜製造擴產"
+      },
+      {
+        "id": "DISPLAY_GLASS",
+        "name": "顯示器玻璃基板"
+      },
+      {
+        "id": "GORILLA_GLASS",
+        "name": "Gorilla Glass與消費電子"
+      },
+      {
+        "id": "AUTO_CERAMICS",
+        "name": "汽車排放控制陶瓷"
+      },
+      {
+        "id": "LIFE_SCIENCES",
+        "name": "生命科學與藥用玻璃"
+      },
+      {
+        "id": "SOLAR",
+        "name": "美國太陽能材料業務"
+      },
+      {
+        "id": "FINANCIAL",
+        "name": "Springboard 20-30-40與資本配置"
+      },
+      {
+        "id": "OPTICAL_ECOSYSTEM",
+        "name": "光收發模組及台灣光通訊生態"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "META_AGREEMENT_customer_001",
+        "business_line": "META_AGREEMENT",
+        "relationship": "customer",
+        "name": "Meta Platforms",
+        "details": "官方最高60億美元多年光纖、光纜、連接產品供應協議；Meta為Hickory擴產anchor customer；協議上限不是已實現營收。",
+        "ticker": "META",
+        "source_url": "https://www.corning.com/worldwide/en/about-us/news-events/news-releases/2026/01/corning-and-meta-announce-multiyear-up-to-6-billion-agreement-to-accelerate-us-data-center-buildout.html"
+      },
+      {
+        "id": "NVIDIA_PARTNERSHIP_customer_001",
+        "business_line": "NVIDIA_PARTNERSHIP",
+        "relationship": "customer",
+        "name": "NVIDIA",
+        "details": "官方多年商業及技術合作，擴大美國AI光連接產能；未披露固定採購金額。",
+        "ticker": "NVDA",
+        "source_url": "https://www.corning.com/worldwide/en/about-us/news-events/news-releases/2026/05/nvidia-and-corning-announce-long-term-partnership-to-strengthen-us-manufacturing-for-ai-infrastructure.html"
+      },
+      {
+        "id": "NVIDIA_PARTNERSHIP_partner_001",
+        "business_line": "NVIDIA_PARTNERSHIP",
+        "relationship": "partner",
+        "name": "NVIDIA",
+        "details": "共同推進AI基礎設施光連接技術與美國製造，規劃光連接產能10倍擴張。",
+        "ticker": "NVDA",
+        "source_url": "https://www.corning.com/worldwide/en/about-us/news-events/news-releases/2026/05/nvidia-and-corning-announce-long-term-partnership-to-strengthen-us-manufacturing-for-ai-infrastructure.html"
+      },
+      {
+        "id": "TELCO_FIBER_customer_001",
+        "business_line": "TELCO_FIBER",
+        "relationship": "customer",
+        "name": "AT&T",
+        "details": "2026年9月官方宣布超過30億美元光纖合作協議，不能等同已認列收入。",
+        "ticker": "T",
+        "source_url": "https://www.corning.com/worldwide/en/about-us/news-events/news-releases.html"
+      },
+      {
+        "id": "TELCO_FIBER_customer_002",
+        "business_line": "TELCO_FIBER",
+        "relationship": "customer",
+        "name": "Verizon",
+        "details": "2026Q3官方公告四項多年大型協議中具名Verizon，未在此假定未披露交易條款。",
+        "ticker": "VZ",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/24741/000002474126000273/glw-20261027xex99xq32026.htm"
+      },
+      {
+        "id": "AI_OPTICAL_customer_001",
+        "business_line": "AI_OPTICAL",
+        "relationship": "customer",
+        "name": "Meta Platforms",
+        "details": "具名AI資料中心光纖與連接供應合約。",
+        "ticker": "META",
+        "source_url": "https://www.corning.com/worldwide/en/about-us/news-events/news-releases/2026/01/corning-and-meta-announce-multiyear-up-to-6-billion-agreement-to-accelerate-us-data-center-buildout.html"
+      },
+      {
+        "id": "AI_OPTICAL_customer_002",
+        "business_line": "AI_OPTICAL",
+        "relationship": "customer",
+        "name": "NVIDIA",
+        "details": "具名多年AI光連接商業與技術合作。",
+        "ticker": "NVDA",
+        "source_url": "https://www.corning.com/worldwide/en/about-us/news-events/news-releases/2026/05/nvidia-and-corning-announce-long-term-partnership-to-strengthen-us-manufacturing-for-ai-infrastructure.html"
+      },
+      {
+        "id": "US_CAPACITY_partner_001",
+        "business_line": "US_CAPACITY",
+        "relationship": "partner",
+        "name": "NVIDIA",
+        "details": "美國光連接製造產能10倍擴張計畫；計畫不等於現有產能。",
+        "ticker": "NVDA",
+        "source_url": "https://www.corning.com/worldwide/en/about-us/news-events/news-releases/2026/05/nvidia-and-corning-announce-long-term-partnership-to-strengthen-us-manufacturing-for-ai-infrastructure.html"
+      },
+      {
+        "id": "US_CAPACITY_customer_001",
+        "business_line": "US_CAPACITY",
+        "relationship": "customer",
+        "name": "Meta Platforms",
+        "details": "Hickory光纜產能擴張的錨定客戶。",
+        "ticker": "META",
+        "source_url": "https://www.corning.com/worldwide/en/about-us/news-events/news-releases/2026/01/corning-and-meta-announce-multiyear-up-to-6-billion-agreement-to-accelerate-us-data-center-buildout.html"
+      },
+      {
+        "id": "AI_OPTICAL_competitor_001",
+        "business_line": "AI_OPTICAL",
+        "relationship": "competitor",
+        "name": "CommScope",
+        "details": "在光纖、光連接、材料或相鄰光學產品市場部分競爭；不代表所有細分產品皆直接替代。",
+        "ticker": "COMM"
+      },
+      {
+        "id": "AI_OPTICAL_competitor_002",
+        "business_line": "AI_OPTICAL",
+        "relationship": "competitor",
+        "name": "Prysmian",
+        "details": "在光纖、光連接、材料或相鄰光學產品市場部分競爭；不代表所有細分產品皆直接替代。",
+        "ticker": "PRY.MI"
+      },
+      {
+        "id": "AI_OPTICAL_competitor_003",
+        "business_line": "AI_OPTICAL",
+        "relationship": "competitor",
+        "name": "Furukawa Electric",
+        "details": "在光纖、光連接、材料或相鄰光學產品市場部分競爭；不代表所有細分產品皆直接替代。",
+        "ticker": "5801.T"
+      },
+      {
+        "id": "TELCO_FIBER_competitor_001",
+        "business_line": "TELCO_FIBER",
+        "relationship": "competitor",
+        "name": "Prysmian",
+        "details": "在光纖、光連接、材料或相鄰光學產品市場部分競爭；不代表所有細分產品皆直接替代。",
+        "ticker": "PRY.MI"
+      },
+      {
+        "id": "TELCO_FIBER_competitor_002",
+        "business_line": "TELCO_FIBER",
+        "relationship": "competitor",
+        "name": "Sumitomo Electric",
+        "details": "在光纖、光連接、材料或相鄰光學產品市場部分競爭；不代表所有細分產品皆直接替代。",
+        "ticker": "5802.T"
+      },
+      {
+        "id": "TELCO_FIBER_competitor_003",
+        "business_line": "TELCO_FIBER",
+        "relationship": "competitor",
+        "name": "Furukawa Electric",
+        "details": "在光纖、光連接、材料或相鄰光學產品市場部分競爭；不代表所有細分產品皆直接替代。",
+        "ticker": "5801.T"
+      },
+      {
+        "id": "DENSITY_CONNECT_competitor_001",
+        "business_line": "DENSITY_CONNECT",
+        "relationship": "competitor",
+        "name": "CommScope",
+        "details": "在光纖、光連接、材料或相鄰光學產品市場部分競爭；不代表所有細分產品皆直接替代。",
+        "ticker": "COMM"
+      },
+      {
+        "id": "DENSITY_CONNECT_competitor_002",
+        "business_line": "DENSITY_CONNECT",
+        "relationship": "competitor",
+        "name": "Amphenol",
+        "details": "在光纖、光連接、材料或相鄰光學產品市場部分競爭；不代表所有細分產品皆直接替代。",
+        "ticker": "APH"
+      },
+      {
+        "id": "DENSITY_CONNECT_competitor_003",
+        "business_line": "DENSITY_CONNECT",
+        "relationship": "competitor",
+        "name": "Molex",
+        "details": "在光纖、光連接、材料或相鄰光學產品市場部分競爭；不代表所有細分產品皆直接替代。"
+      },
+      {
+        "id": "CPO_SILICON_PHOTONICS_competitor_001",
+        "business_line": "CPO_SILICON_PHOTONICS",
+        "relationship": "competitor",
+        "name": "Coherent",
+        "details": "在光纖、光連接、材料或相鄰光學產品市場部分競爭；不代表所有細分產品皆直接替代。",
+        "ticker": "COHR"
+      },
+      {
+        "id": "CPO_SILICON_PHOTONICS_competitor_002",
+        "business_line": "CPO_SILICON_PHOTONICS",
+        "relationship": "competitor",
+        "name": "Lumentum",
+        "details": "在光纖、光連接、材料或相鄰光學產品市場部分競爭；不代表所有細分產品皆直接替代。",
+        "ticker": "LITE"
+      },
+      {
+        "id": "CPO_SILICON_PHOTONICS_competitor_003",
+        "business_line": "CPO_SILICON_PHOTONICS",
+        "relationship": "competitor",
+        "name": "Broadcom",
+        "details": "在光纖、光連接、材料或相鄰光學產品市場部分競爭；不代表所有細分產品皆直接替代。",
+        "ticker": "AVGO"
+      },
+      {
+        "id": "DISPLAY_GLASS_competitor_001",
+        "business_line": "DISPLAY_GLASS",
+        "relationship": "competitor",
+        "name": "AGC",
+        "details": "在光纖、光連接、材料或相鄰光學產品市場部分競爭；不代表所有細分產品皆直接替代。",
+        "ticker": "5201.T"
+      },
+      {
+        "id": "DISPLAY_GLASS_competitor_002",
+        "business_line": "DISPLAY_GLASS",
+        "relationship": "competitor",
+        "name": "NEG Nippon Electric Glass",
+        "details": "在光纖、光連接、材料或相鄰光學產品市場部分競爭；不代表所有細分產品皆直接替代。",
+        "ticker": "5214.T"
+      },
+      {
+        "id": "GORILLA_GLASS_competitor_001",
+        "business_line": "GORILLA_GLASS",
+        "relationship": "competitor",
+        "name": "AGC",
+        "details": "在光纖、光連接、材料或相鄰光學產品市場部分競爭；不代表所有細分產品皆直接替代。",
+        "ticker": "5201.T"
+      },
+      {
+        "id": "GORILLA_GLASS_competitor_002",
+        "business_line": "GORILLA_GLASS",
+        "relationship": "competitor",
+        "name": "Schott",
+        "details": "在光纖、光連接、材料或相鄰光學產品市場部分競爭；不代表所有細分產品皆直接替代。"
+      },
+      {
+        "id": "AUTO_CERAMICS_competitor_001",
+        "business_line": "AUTO_CERAMICS",
+        "relationship": "competitor",
+        "name": "NGK Insulators",
+        "details": "在光纖、光連接、材料或相鄰光學產品市場部分競爭；不代表所有細分產品皆直接替代。",
+        "ticker": "5333.T"
+      },
+      {
+        "id": "LIFE_SCIENCES_competitor_001",
+        "business_line": "LIFE_SCIENCES",
+        "relationship": "competitor",
+        "name": "Schott Pharma",
+        "details": "在光纖、光連接、材料或相鄰光學產品市場部分競爭；不代表所有細分產品皆直接替代。",
+        "ticker": "1SXP.DE"
+      },
+      {
+        "id": "LIFE_SCIENCES_competitor_002",
+        "business_line": "LIFE_SCIENCES",
+        "relationship": "competitor",
+        "name": "Gerresheimer",
+        "details": "在光纖、光連接、材料或相鄰光學產品市場部分競爭；不代表所有細分產品皆直接替代。",
+        "ticker": "GXI.DE"
+      },
+      {
+        "id": "SOLAR_competitor_001",
+        "business_line": "SOLAR",
+        "relationship": "competitor",
+        "name": "First Solar",
+        "details": "在光纖、光連接、材料或相鄰光學產品市場部分競爭；不代表所有細分產品皆直接替代。",
+        "ticker": "FSLR"
+      },
+      {
+        "id": "OPTICAL_ECOSYSTEM_competitor_001",
+        "business_line": "OPTICAL_ECOSYSTEM",
+        "relationship": "competitor",
+        "name": "Coherent",
+        "details": "在光纖、光連接、材料或相鄰光學產品市場部分競爭；不代表所有細分產品皆直接替代。",
+        "ticker": "COHR"
+      },
+      {
+        "id": "OPTICAL_ECOSYSTEM_competitor_002",
+        "business_line": "OPTICAL_ECOSYSTEM",
+        "relationship": "competitor",
+        "name": "Lumentum",
+        "details": "在光纖、光連接、材料或相鄰光學產品市場部分競爭；不代表所有細分產品皆直接替代。",
+        "ticker": "LITE"
+      },
+      {
+        "id": "AI_OPTICAL_beneficiary_001",
+        "business_line": "AI_OPTICAL",
+        "relationship": "beneficiary",
+        "name": "光聖",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "6442.TW"
+      },
+      {
+        "id": "AI_OPTICAL_beneficiary_002",
+        "business_line": "AI_OPTICAL",
+        "relationship": "beneficiary",
+        "name": "上詮",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "3363.TWO"
+      },
+      {
+        "id": "AI_OPTICAL_beneficiary_003",
+        "business_line": "AI_OPTICAL",
+        "relationship": "beneficiary",
+        "name": "波若威",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "3163.TWO"
+      },
+      {
+        "id": "AI_OPTICAL_beneficiary_004",
+        "business_line": "AI_OPTICAL",
+        "relationship": "beneficiary",
+        "name": "聯亞",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "3081.TWO"
+      },
+      {
+        "id": "NVIDIA_PARTNERSHIP_beneficiary_001",
+        "business_line": "NVIDIA_PARTNERSHIP",
+        "relationship": "beneficiary",
+        "name": "光聖",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "6442.TW"
+      },
+      {
+        "id": "NVIDIA_PARTNERSHIP_beneficiary_002",
+        "business_line": "NVIDIA_PARTNERSHIP",
+        "relationship": "beneficiary",
+        "name": "華星光",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "4979.TWO"
+      },
+      {
+        "id": "META_AGREEMENT_beneficiary_001",
+        "business_line": "META_AGREEMENT",
+        "relationship": "beneficiary",
+        "name": "上詮",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "3363.TWO"
+      },
+      {
+        "id": "META_AGREEMENT_beneficiary_002",
+        "business_line": "META_AGREEMENT",
+        "relationship": "beneficiary",
+        "name": "波若威",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "3163.TWO"
+      },
+      {
+        "id": "TELCO_FIBER_beneficiary_001",
+        "business_line": "TELCO_FIBER",
+        "relationship": "beneficiary",
+        "name": "台通",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "8011.TWO"
+      },
+      {
+        "id": "TELCO_FIBER_beneficiary_002",
+        "business_line": "TELCO_FIBER",
+        "relationship": "beneficiary",
+        "name": "華新",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "1605.TW"
+      },
+      {
+        "id": "DENSITY_CONNECT_beneficiary_001",
+        "business_line": "DENSITY_CONNECT",
+        "relationship": "beneficiary",
+        "name": "光聖",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "6442.TW"
+      },
+      {
+        "id": "DENSITY_CONNECT_beneficiary_002",
+        "business_line": "DENSITY_CONNECT",
+        "relationship": "beneficiary",
+        "name": "上詮",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "3363.TWO"
+      },
+      {
+        "id": "DENSITY_CONNECT_beneficiary_003",
+        "business_line": "DENSITY_CONNECT",
+        "relationship": "beneficiary",
+        "name": "波若威",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "3163.TWO"
+      },
+      {
+        "id": "CPO_SILICON_PHOTONICS_beneficiary_001",
+        "business_line": "CPO_SILICON_PHOTONICS",
+        "relationship": "beneficiary",
+        "name": "聯亞",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "3081.TWO"
+      },
+      {
+        "id": "CPO_SILICON_PHOTONICS_beneficiary_002",
+        "business_line": "CPO_SILICON_PHOTONICS",
+        "relationship": "beneficiary",
+        "name": "上詮",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "3363.TWO"
+      },
+      {
+        "id": "CPO_SILICON_PHOTONICS_beneficiary_003",
+        "business_line": "CPO_SILICON_PHOTONICS",
+        "relationship": "beneficiary",
+        "name": "波若威",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "3163.TWO"
+      },
+      {
+        "id": "CPO_SILICON_PHOTONICS_beneficiary_004",
+        "business_line": "CPO_SILICON_PHOTONICS",
+        "relationship": "beneficiary",
+        "name": "光聖",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "6442.TW"
+      },
+      {
+        "id": "US_CAPACITY_beneficiary_001",
+        "business_line": "US_CAPACITY",
+        "relationship": "beneficiary",
+        "name": "台通",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "8011.TWO"
+      },
+      {
+        "id": "DISPLAY_GLASS_beneficiary_001",
+        "business_line": "DISPLAY_GLASS",
+        "relationship": "beneficiary",
+        "name": "友達",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "2409.TW"
+      },
+      {
+        "id": "DISPLAY_GLASS_beneficiary_002",
+        "business_line": "DISPLAY_GLASS",
+        "relationship": "beneficiary",
+        "name": "群創",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "3481.TW"
+      },
+      {
+        "id": "GORILLA_GLASS_beneficiary_001",
+        "business_line": "GORILLA_GLASS",
+        "relationship": "beneficiary",
+        "name": "鴻海",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "2317.TW"
+      },
+      {
+        "id": "GORILLA_GLASS_beneficiary_002",
+        "business_line": "GORILLA_GLASS",
+        "relationship": "beneficiary",
+        "name": "可成",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "2474.TW"
+      },
+      {
+        "id": "AUTO_CERAMICS_beneficiary_001",
+        "business_line": "AUTO_CERAMICS",
+        "relationship": "beneficiary",
+        "name": "台達電",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "2308.TW"
+      },
+      {
+        "id": "LIFE_SCIENCES_beneficiary_001",
+        "business_line": "LIFE_SCIENCES",
+        "relationship": "beneficiary",
+        "name": "台耀",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "4746.TW"
+      },
+      {
+        "id": "SOLAR_beneficiary_001",
+        "business_line": "SOLAR",
+        "relationship": "beneficiary",
+        "name": "聯合再生",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "3576.TW"
+      },
+      {
+        "id": "FINANCIAL_beneficiary_001",
+        "business_line": "FINANCIAL",
+        "relationship": "beneficiary",
+        "name": "光聖",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "6442.TW"
+      },
+      {
+        "id": "OPTICAL_ECOSYSTEM_beneficiary_001",
+        "business_line": "OPTICAL_ECOSYSTEM",
+        "relationship": "beneficiary",
+        "name": "華星光",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "4979.TWO"
+      },
+      {
+        "id": "OPTICAL_ECOSYSTEM_beneficiary_002",
+        "business_line": "OPTICAL_ECOSYSTEM",
+        "relationship": "beneficiary",
+        "name": "聯亞",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "3081.TWO"
+      },
+      {
+        "id": "OPTICAL_ECOSYSTEM_beneficiary_003",
+        "business_line": "OPTICAL_ECOSYSTEM",
+        "relationship": "beneficiary",
+        "name": "光聖",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "6442.TW"
+      },
+      {
+        "id": "OPTICAL_ECOSYSTEM_beneficiary_004",
+        "business_line": "OPTICAL_ECOSYSTEM",
+        "relationship": "beneficiary",
+        "name": "上詮",
+        "details": "產業需求或技術相鄰的潛在受惠觀察；無證據確認為康寧直接供應商、採購對象或合約受益人。",
+        "ticker": "3363.TWO"
+      }
+    ],
+    "research_audit": {
+      "primary_sources": [
+        {
+          "type": "SEC_10K",
+          "url": "https://www.sec.gov/Archives/edgar/data/24741/000002474126000124/glw-20251231.htm"
+        },
+        {
+          "type": "SEC_10Q",
+          "url": "https://www.sec.gov/Archives/edgar/data/24741/000002474126000279/glw-20260930.htm"
+        },
+        {
+          "type": "SEC_8K_EARNINGS_EXHIBIT",
+          "url": "https://www.sec.gov/Archives/edgar/data/24741/000002474126000273/glw-20261027xex99xq32026.htm"
+        },
+        {
+          "type": "OFFICIAL_NVIDIA",
+          "url": "https://www.corning.com/worldwide/en/about-us/news-events/news-releases/2026/05/nvidia-and-corning-announce-long-term-partnership-to-strengthen-us-manufacturing-for-ai-infrastructure.html"
+        },
+        {
+          "type": "OFFICIAL_META",
+          "url": "https://www.corning.com/worldwide/en/about-us/news-events/news-releases/2026/01/corning-and-meta-announce-multiyear-up-to-6-billion-agreement-to-accelerate-us-data-center-buildout.html"
+        },
+        {
+          "type": "OFFICIAL_NEWSROOM",
+          "url": "https://www.corning.com/worldwide/en/about-us/news-events/news-releases.html"
+        }
+      ],
+      "financial_snapshot_2026Q3": {
+        "GAAP_sales_usd_m": 4855,
+        "core_sales_usd_m": 5081,
+        "GAAP_gross_margin_pct": 37.3,
+        "core_gross_margin_pct": 40.5,
+        "optical_communications_sales_usd_m": 2380,
+        "optical_communications_yoy_pct": 44,
+        "enterprise_networks_yoy_pct": 84,
+        "core_EPS_usd": 0.91,
+        "2026Q4_core_sales_guidance_usd_m": [
+          5200,
+          5300
+        ]
+      },
+      "coverage": [
+        {
+          "topic": "2026Q3光通訊與GenAI成長",
+          "status": "已涵蓋",
+          "caveat": "區分GAAP與core"
+        },
+        {
+          "topic": "Meta最高60億美元多年協議",
+          "status": "已涵蓋",
+          "caveat": "協議上限不等於已實現收入"
+        },
+        {
+          "topic": "NVIDIA光連接合作與美國擴產",
+          "status": "已涵蓋",
+          "caveat": "產能擴張仍有建廠執行風險"
+        },
+        {
+          "topic": "AT&T與Verizon長約",
+          "status": "已涵蓋",
+          "caveat": "不虛構未披露採購額"
+        },
+        {
+          "topic": "CPO與矽光子",
+          "status": "證據不足",
+          "caveat": "光纖及連接產品並不等於CPO光引擎量產"
+        },
+        {
+          "topic": "台灣直接供應商",
+          "status": "證據不足",
+          "caveat": "無具名康寧採購證據"
+        },
+        {
+          "topic": "太陽能業務",
+          "status": "已涵蓋",
+          "caveat": "仍有產能爬坡與政策風險"
+        },
+        {
+          "topic": "AI/HBM先進封裝直接參與",
+          "status": "刻意排除",
+          "caveat": "沒有證據將康寧列為HBM封裝直接供應商"
+        },
+        {
+          "topic": "2026Q3最新財報與資本支出",
+          "status": "已涵蓋",
+          "caveat": "依SEC與IR核對"
+        },
+        {
+          "topic": "個別大型合約毛利率",
+          "status": "尚未研究",
+          "caveat": "公司未按具名合約揭露"
+        }
+      ],
+      "reflection_rounds": [
+        {
+          "round": 1,
+          "focus": "近90天熱門議題反查",
+          "result": "從10月27日Q3光通訊44%成長、GenAI超倍增及9月AT&T逾30億美元協議反向補入光纖及長約主線。"
+        },
+        {
+          "round": 2,
+          "focus": "十大投資人問題",
+          "result": "覆蓋營收、毛利、資本支出、競爭、技術、客戶、產能、供應鏈、催化劑及風險，分清GAAP與core。"
+        },
+        {
+          "round": 3,
+          "focus": "產品技術完整性",
+          "result": "分列AI光纖、連接器、高密度佈線、CPO相鄰機會、顯示玻璃、陶瓷、生命科學及太陽能。"
+        },
+        {
+          "round": 4,
+          "focus": "商業化反證",
+          "result": "Meta/NVIDIA/AT&T官方確認，協議額與擴產不當作收入；台灣受惠與直接供應商嚴格區分。"
+        },
+        {
+          "round": 5,
+          "focus": "缺漏審計",
+          "result": "CPO直接量產與台灣具名供應商證據不足，維持零supplier；個別合約毛利率列尚未研究。"
+        }
+      ]
+    }
   }
 }

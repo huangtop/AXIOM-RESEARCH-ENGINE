@@ -205,5 +205,353 @@
       "能源效率"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-02",
+    "company": "Qorvo（已併入 Skyworks Solutions）",
+    "symbol": "QRVO",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "Qorvo（QRVO）射頻、GaN 與 Skyworks 合併後產業鏈",
+      "description": "Qorvo 已於 2026 年 10 月 5 日完成與 Skyworks 合併並終止獨立上市；梳理其 RF 前端、濾波器、GaN、電源及台灣供應鏈。"
+    },
+    "business_lines": [
+      {
+        "id": "MOBILE_RF",
+        "name": "手機 RF 前端與功率放大器"
+      },
+      {
+        "id": "FILTER",
+        "name": "BAW／SAW 濾波器"
+      },
+      {
+        "id": "ANTENNA",
+        "name": "天線調諧與 RF 開關"
+      },
+      {
+        "id": "WIFI",
+        "name": "Wi-Fi／連接與感測"
+      },
+      {
+        "id": "DEFENSE",
+        "name": "航太國防 GaN／GaAs RF"
+      },
+      {
+        "id": "INFRA",
+        "name": "基地台／通訊基礎設施"
+      },
+      {
+        "id": "POWER",
+        "name": "SiC 功率與電源管理"
+      },
+      {
+        "id": "AUTO",
+        "name": "車用連接與電力"
+      },
+      {
+        "id": "FAB",
+        "name": "化合物半導體晶圓製造"
+      },
+      {
+        "id": "PACK",
+        "name": "封裝測試與 RF 材料"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "MOBILE_RF_customer_001",
+        "name": "Apple",
+        "business_line": "MOBILE_RF",
+        "relationship": "customer",
+        "details": "FY2026 10-K 確認最大終端客戶；經多家合約製造商出貨，約占 FY2026 營收 50%。",
+        "ticker": "AAPL"
+      },
+      {
+        "id": "MOBILE_RF_customer_002",
+        "name": "Samsung Electronics",
+        "business_line": "MOBILE_RF",
+        "relationship": "customer",
+        "details": "FY2026 10-K 確認終端客戶，約占 FY2026 營收 10%。",
+        "ticker": "005930.KS"
+      },
+      {
+        "id": "MOBILE_RF_partner_001",
+        "name": "Skyworks Solutions",
+        "business_line": "MOBILE_RF",
+        "relationship": "partner",
+        "details": "2026-10-05 合併完成；Qorvo 已成為 Skyworks 旗下公司，非仍獨立競爭的上市同業。",
+        "ticker": "SWKS"
+      },
+      {
+        "id": "DEFENSE_partner_001",
+        "name": "DARPA",
+        "business_line": "DEFENSE",
+        "relationship": "partner",
+        "details": "THREADS 計畫資助 X-band GaN 功率密度研發；屬政府研發合作，不等同產品採購。"
+      },
+      {
+        "id": "DEFENSE_partner_002",
+        "name": "Modelithics",
+        "business_line": "DEFENSE",
+        "relationship": "partner",
+        "details": "公開發布 Qorvo GaN 模型庫；屬設計生態與模型合作。"
+      },
+      {
+        "id": "MOBILE_RF_competitor_001",
+        "name": "Broadcom",
+        "business_line": "MOBILE_RF",
+        "relationship": "competitor",
+        "details": "手機 RF 元件與無線連接領域部分重疊。",
+        "ticker": "AVGO"
+      },
+      {
+        "id": "MOBILE_RF_competitor_002",
+        "name": "Murata Manufacturing",
+        "business_line": "MOBILE_RF",
+        "relationship": "competitor",
+        "details": "RF 濾波器與模組市場重疊。",
+        "ticker": "6981.T"
+      },
+      {
+        "id": "MOBILE_RF_competitor_003",
+        "name": "Qualcomm",
+        "business_line": "MOBILE_RF",
+        "relationship": "competitor",
+        "details": "部分射頻前端解決方案市場重疊。",
+        "ticker": "QCOM"
+      },
+      {
+        "id": "FILTER_competitor_001",
+        "name": "TDK",
+        "business_line": "FILTER",
+        "relationship": "competitor",
+        "details": "射頻濾波及被動元件競爭。",
+        "ticker": "6762.T"
+      },
+      {
+        "id": "FILTER_competitor_002",
+        "name": "Taiyo Yuden",
+        "business_line": "FILTER",
+        "relationship": "competitor",
+        "details": "射頻與被動元件產品市場部分重疊。",
+        "ticker": "6976.T"
+      },
+      {
+        "id": "WIFI_competitor_001",
+        "name": "NXP Semiconductors",
+        "business_line": "WIFI",
+        "relationship": "competitor",
+        "details": "無線連接、車用及 IoT 產品市場部分重疊。",
+        "ticker": "NXPI"
+      },
+      {
+        "id": "WIFI_competitor_002",
+        "name": "Infineon Technologies",
+        "business_line": "WIFI",
+        "relationship": "competitor",
+        "details": "無線連接及功率半導體部分重疊。",
+        "ticker": "IFX.DE"
+      },
+      {
+        "id": "DEFENSE_competitor_001",
+        "name": "MACOM",
+        "business_line": "DEFENSE",
+        "relationship": "competitor",
+        "details": "RF／微波及國防用化合物半導體競爭。",
+        "ticker": "MTSI"
+      },
+      {
+        "id": "DEFENSE_competitor_002",
+        "name": "Analog Devices",
+        "business_line": "DEFENSE",
+        "relationship": "competitor",
+        "details": "國防及通訊 RF 類比元件部分重疊。",
+        "ticker": "ADI"
+      },
+      {
+        "id": "POWER_competitor_001",
+        "name": "Wolfspeed",
+        "business_line": "POWER",
+        "relationship": "competitor",
+        "details": "SiC 功率材料與元件市場部分重疊。",
+        "ticker": "WOLF"
+      },
+      {
+        "id": "POWER_competitor_002",
+        "name": "onsemi",
+        "business_line": "POWER",
+        "relationship": "competitor",
+        "details": "SiC 功率半導體競爭。",
+        "ticker": "ON"
+      },
+      {
+        "id": "POWER_competitor_003",
+        "name": "STMicroelectronics",
+        "business_line": "POWER",
+        "relationship": "competitor",
+        "details": "SiC 功率與車用電源產品競爭。",
+        "ticker": "STM"
+      },
+      {
+        "id": "PACK_beneficiary_001",
+        "name": "日月光投控",
+        "business_line": "PACK",
+        "relationship": "beneficiary",
+        "details": "RF 封測與先進封裝產業受惠觀察；未證實直接 Qorvo 採購。",
+        "ticker": "3711"
+      },
+      {
+        "id": "PACK_beneficiary_002",
+        "name": "京元電子",
+        "business_line": "PACK",
+        "relationship": "beneficiary",
+        "details": "半導體測試產能受惠觀察，非已確認直接訂單。",
+        "ticker": "2449"
+      },
+      {
+        "id": "PACK_beneficiary_003",
+        "name": "矽格",
+        "business_line": "PACK",
+        "relationship": "beneficiary",
+        "details": "RF 與通訊晶片測試市場相關，非直接訂單證據。",
+        "ticker": "6257"
+      },
+      {
+        "id": "PACK_beneficiary_004",
+        "name": "頎邦",
+        "business_line": "PACK",
+        "relationship": "beneficiary",
+        "details": "封測產業間接受惠觀察，非直接訂單證據。",
+        "ticker": "6147"
+      },
+      {
+        "id": "MOBILE_RF_beneficiary_001",
+        "name": "穩懋",
+        "business_line": "MOBILE_RF",
+        "relationship": "beneficiary",
+        "details": "GaAs RF 晶圓代工市場受惠觀察，亦可能與自製產能競爭。",
+        "ticker": "3105"
+      },
+      {
+        "id": "MOBILE_RF_beneficiary_002",
+        "name": "宏捷科",
+        "business_line": "MOBILE_RF",
+        "relationship": "beneficiary",
+        "details": "GaAs RF 晶圓代工市場受惠觀察，未確認 Qorvo 直接關係。",
+        "ticker": "8086"
+      },
+      {
+        "id": "MOBILE_RF_beneficiary_003",
+        "name": "全新",
+        "business_line": "MOBILE_RF",
+        "relationship": "beneficiary",
+        "details": "化合物半導體磊晶產業受惠觀察，非直接供應商認定。",
+        "ticker": "2455"
+      },
+      {
+        "id": "MOBILE_RF_beneficiary_004",
+        "name": "立積",
+        "business_line": "MOBILE_RF",
+        "relationship": "beneficiary",
+        "details": "RF 前端及 Wi-Fi 相關產業受惠觀察，亦可能競爭。",
+        "ticker": "4968"
+      },
+      {
+        "id": "FILTER_beneficiary_001",
+        "name": "國巨",
+        "business_line": "FILTER",
+        "relationship": "beneficiary",
+        "details": "被動元件與通訊終端需求相關，非 Qorvo 直接供應。",
+        "ticker": "2327"
+      },
+      {
+        "id": "FILTER_beneficiary_002",
+        "name": "華新科",
+        "business_line": "FILTER",
+        "relationship": "beneficiary",
+        "details": "射頻終端被動元件需求受惠觀察。",
+        "ticker": "2492"
+      },
+      {
+        "id": "DEFENSE_beneficiary_001",
+        "name": "漢翔",
+        "business_line": "DEFENSE",
+        "relationship": "beneficiary",
+        "details": "國防電子與航太需求主題相關，無 Qorvo 訂單證據。",
+        "ticker": "2634"
+      },
+      {
+        "id": "DEFENSE_beneficiary_002",
+        "name": "雷虎",
+        "business_line": "DEFENSE",
+        "relationship": "beneficiary",
+        "details": "國防無人系統電子需求主題相關，無直接供應關係證據。",
+        "ticker": "8033"
+      },
+      {
+        "id": "INFRA_beneficiary_001",
+        "name": "啟碁",
+        "business_line": "INFRA",
+        "relationship": "beneficiary",
+        "details": "通訊設備及無線基礎設施需求受惠觀察。",
+        "ticker": "6285"
+      },
+      {
+        "id": "INFRA_beneficiary_002",
+        "name": "智易",
+        "business_line": "INFRA",
+        "relationship": "beneficiary",
+        "details": "寬頻與無線網通設備需求受惠觀察。",
+        "ticker": "3596"
+      },
+      {
+        "id": "INFRA_beneficiary_003",
+        "name": "中磊",
+        "business_line": "INFRA",
+        "relationship": "beneficiary",
+        "details": "寬頻通訊設備需求受惠觀察。",
+        "ticker": "5388"
+      },
+      {
+        "id": "POWER_beneficiary_001",
+        "name": "朋程",
+        "business_line": "POWER",
+        "relationship": "beneficiary",
+        "details": "車用電力電子需求相關，未確認 Qorvo 供應關係。",
+        "ticker": "8255"
+      },
+      {
+        "id": "POWER_beneficiary_002",
+        "name": "台達電",
+        "business_line": "POWER",
+        "relationship": "beneficiary",
+        "details": "能源效率與電力電子系統需求相關，非 Qorvo 直接訂單。",
+        "ticker": "2308"
+      },
+      {
+        "id": "FAB_beneficiary_001",
+        "name": "環球晶",
+        "business_line": "FAB",
+        "relationship": "beneficiary",
+        "details": "半導體基板產業相關，未確認 Qorvo 直接採購。",
+        "ticker": "6488"
+      },
+      {
+        "id": "FAB_beneficiary_002",
+        "name": "台積電",
+        "business_line": "FAB",
+        "relationship": "beneficiary",
+        "details": "全球矽晶圓代工能力與 RF／電源晶片產業相關；未證實 Qorvo 直接訂單。",
+        "ticker": "2330"
+      }
+    ]
   }
 }

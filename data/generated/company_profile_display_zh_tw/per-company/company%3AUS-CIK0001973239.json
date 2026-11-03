@@ -211,5 +211,600 @@
       "邊緣與物聯網成長"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-02",
+    "company": "Arm Holdings plc",
+    "symbol": "ARM",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "Arm（ARM）產業鏈：Neoverse、AGI CPU、行動 IP 與台灣供應鏈",
+      "description": "解析 Arm 的 CPU IP 授權、Neoverse CSS、AGI CPU、雲端客戶、EDA 夥伴、晶圓製造及台灣間接受惠供應鏈。"
+    },
+    "business_lines": [
+      {
+        "id": "IP",
+        "name": "Armv9 指令集與 CPU IP 授權"
+      },
+      {
+        "id": "CSS",
+        "name": "Neoverse CSS 與資料中心客製化 CPU"
+      },
+      {
+        "id": "AGI",
+        "name": "Arm AGI CPU 量產晶片與 AI 機櫃"
+      },
+      {
+        "id": "MOBILE",
+        "name": "Cortex／行動裝置 CPU 與 GPU IP"
+      },
+      {
+        "id": "EDGE",
+        "name": "Ethos NPU／邊緣 AI 與 IoT"
+      },
+      {
+        "id": "AUTO",
+        "name": "汽車運算與安全關鍵系統"
+      },
+      {
+        "id": "EDA",
+        "name": "EDA、設計驗證與軟體生態"
+      },
+      {
+        "id": "FOUNDRY",
+        "name": "晶圓代工、先進封裝與測試"
+      },
+      {
+        "id": "DPU",
+        "name": "網路處理器、DPU 與基礎設施運算"
+      },
+      {
+        "id": "CLOUD",
+        "name": "雲端運算實例與軟體生態"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "CSS_customer_001",
+        "name": "Amazon（AMZN）",
+        "business_line": "CSS",
+        "relationship": "customer",
+        "details": "AWS Graviton 系列採用 Neoverse 架構，屬公開確認的 Arm 技術採用者。",
+        "ticker": "AMZN"
+      },
+      {
+        "id": "CSS_customer_002",
+        "name": "Google（GOOGL）",
+        "business_line": "CSS",
+        "relationship": "customer",
+        "details": "Google Axion 使用 Neoverse CPU 技術，屬公開確認的雲端 CPU 採用者。",
+        "ticker": "GOOGL"
+      },
+      {
+        "id": "CSS_customer_003",
+        "name": "Microsoft（MSFT）",
+        "business_line": "CSS",
+        "relationship": "customer",
+        "details": "Azure Cobalt 系列採用 Neoverse／CSS 架構。",
+        "ticker": "MSFT"
+      },
+      {
+        "id": "CSS_customer_004",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "CSS",
+        "relationship": "customer",
+        "details": "Grace 與 Vera CPU 採用 Arm Neoverse 技術，兼具合作及其他領域競合。",
+        "ticker": "NVDA"
+      },
+      {
+        "id": "CSS_customer_005",
+        "name": "Alibaba（BABA）",
+        "business_line": "CSS",
+        "relationship": "customer",
+        "details": "倚天 710 以 Neoverse N2 為基礎。",
+        "ticker": "BABA"
+      },
+      {
+        "id": "AGI_customer_006",
+        "name": "Meta（META）",
+        "business_line": "AGI",
+        "relationship": "customer",
+        "details": "Arm AGI CPU 早期共同開發及部署合作夥伴。",
+        "ticker": "META"
+      },
+      {
+        "id": "AGI_customer_007",
+        "name": "Cloudflare（NET）",
+        "business_line": "AGI",
+        "relationship": "customer",
+        "details": "官方列為 Arm AGI CPU 早期導入合作夥伴。",
+        "ticker": "NET"
+      },
+      {
+        "id": "AGI_customer_008",
+        "name": "Cerebras Systems",
+        "business_line": "AGI",
+        "relationship": "customer",
+        "details": "官方列為 Arm AGI CPU 早期導入合作夥伴。"
+      },
+      {
+        "id": "AGI_customer_009",
+        "name": "OpenAI",
+        "business_line": "AGI",
+        "relationship": "customer",
+        "details": "官方列為 Arm AGI CPU 早期導入合作夥伴。"
+      },
+      {
+        "id": "AGI_customer_010",
+        "name": "SAP（SAP）",
+        "business_line": "AGI",
+        "relationship": "customer",
+        "details": "官方列為 Arm AGI CPU 早期導入合作夥伴。",
+        "ticker": "SAP"
+      },
+      {
+        "id": "AGI_customer_011",
+        "name": "SK Telecom（SKM）",
+        "business_line": "AGI",
+        "relationship": "customer",
+        "details": "官方列為 Arm AGI CPU 早期導入合作夥伴。",
+        "ticker": "SKM"
+      },
+      {
+        "id": "MOBILE_customer_012",
+        "name": "Apple（AAPL）",
+        "business_line": "MOBILE",
+        "relationship": "customer",
+        "details": "Apple 自研晶片採用 Arm 指令集授權架構；不等同使用 Arm 標準 CPU 核心。",
+        "ticker": "AAPL"
+      },
+      {
+        "id": "MOBILE_customer_013",
+        "name": "Qualcomm（QCOM）",
+        "business_line": "MOBILE",
+        "relationship": "customer",
+        "details": "Snapdragon 平台採用 Arm 指令集生態，具授權及架構爭議歷史。",
+        "ticker": "QCOM"
+      },
+      {
+        "id": "MOBILE_customer_014",
+        "name": "MediaTek／聯發科（2454）",
+        "business_line": "MOBILE",
+        "relationship": "customer",
+        "details": "天璣系列採用 Arm CPU／GPU IP 與指令集生態。",
+        "ticker": "2454"
+      },
+      {
+        "id": "MOBILE_customer_015",
+        "name": "Samsung Electronics（005930.KS）",
+        "business_line": "MOBILE",
+        "relationship": "customer",
+        "details": "Exynos 平台採用 Arm CPU IP／架構。",
+        "ticker": "005930.KS"
+      },
+      {
+        "id": "EDGE_customer_016",
+        "name": "NXP Semiconductors（NXPI）",
+        "business_line": "EDGE",
+        "relationship": "customer",
+        "details": "嵌入式及車用晶片使用 Arm 處理器 IP。",
+        "ticker": "NXPI"
+      },
+      {
+        "id": "EDGE_customer_017",
+        "name": "STMicroelectronics（STM）",
+        "business_line": "EDGE",
+        "relationship": "customer",
+        "details": "STM32 微控制器產品使用 Arm Cortex-M 架構。",
+        "ticker": "STM"
+      },
+      {
+        "id": "EDGE_customer_018",
+        "name": "Renesas Electronics（6723.T）",
+        "business_line": "EDGE",
+        "relationship": "customer",
+        "details": "嵌入式與車用產品使用 Arm CPU IP。",
+        "ticker": "6723.T"
+      },
+      {
+        "id": "AGI_partner_019",
+        "name": "ASRock Rack／永擎電子（3515）",
+        "business_line": "AGI",
+        "relationship": "partner",
+        "details": "官方公布提供 Arm AGI CPU 商用系統。",
+        "ticker": "3515"
+      },
+      {
+        "id": "AGI_partner_020",
+        "name": "Lenovo（0992.HK）",
+        "business_line": "AGI",
+        "relationship": "partner",
+        "details": "官方公布提供 Arm AGI CPU 商用系統。",
+        "ticker": "0992.HK"
+      },
+      {
+        "id": "AGI_partner_021",
+        "name": "Super Micro Computer（SMCI）",
+        "business_line": "AGI",
+        "relationship": "partner",
+        "details": "官方公布提供 Arm AGI CPU 商用系統。",
+        "ticker": "SMCI"
+      },
+      {
+        "id": "AGI_partner_022",
+        "name": "廣達電腦（2382）",
+        "business_line": "AGI",
+        "relationship": "partner",
+        "details": "Reuters 報導 Arm AGI CPU 完整伺服器系統合作；不視為 Arm 晶片直接供應商。",
+        "ticker": "2382"
+      },
+      {
+        "id": "EDA_partner_023",
+        "name": "Cadence Design Systems（CDNS）",
+        "business_line": "EDA",
+        "relationship": "partner",
+        "details": "Arm 生態系的 EDA 與晶片設計工具合作夥伴。",
+        "ticker": "CDNS"
+      },
+      {
+        "id": "EDA_partner_024",
+        "name": "Synopsys（SNPS）",
+        "business_line": "EDA",
+        "relationship": "partner",
+        "details": "Arm 生態系的 EDA／IP 設計驗證合作夥伴。",
+        "ticker": "SNPS"
+      },
+      {
+        "id": "EDA_partner_025",
+        "name": "Siemens EDA",
+        "business_line": "EDA",
+        "relationship": "partner",
+        "details": "Arm 晶片設計生態工具合作夥伴。"
+      },
+      {
+        "id": "EDA_partner_026",
+        "name": "Canonical",
+        "business_line": "EDA",
+        "relationship": "partner",
+        "details": "Arm Linux／雲端軟體生態合作。"
+      },
+      {
+        "id": "EDA_partner_027",
+        "name": "Red Hat（IBM）",
+        "business_line": "EDA",
+        "relationship": "partner",
+        "details": "Arm 企業 Linux 生態合作。",
+        "ticker": "IBM"
+      },
+      {
+        "id": "DPU_partner_028",
+        "name": "Marvell Technology（MRVL）",
+        "business_line": "DPU",
+        "relationship": "partner",
+        "details": "OCTEON DPU 採用 Arm Neoverse 架構。",
+        "ticker": "MRVL"
+      },
+      {
+        "id": "DPU_partner_029",
+        "name": "AMD（AMD）",
+        "business_line": "DPU",
+        "relationship": "partner",
+        "details": "Pensando Salina DPU 採用 Neoverse N1，CPU 產品線另有競爭。",
+        "ticker": "AMD"
+      },
+      {
+        "id": "DPU_partner_030",
+        "name": "Intel（INTC）",
+        "business_line": "DPU",
+        "relationship": "partner",
+        "details": "部分 IPU 採用 Neoverse N1，與 x86 CPU 亦有競爭。",
+        "ticker": "INTC"
+      },
+      {
+        "id": "DPU_partner_031",
+        "name": "Broadcom（AVGO）",
+        "business_line": "DPU",
+        "relationship": "partner",
+        "details": "Arm AGI CPU 官方生態系支持企業，不能據此推定直接採購。",
+        "ticker": "AVGO"
+      },
+      {
+        "id": "FOUNDRY_supplier_032",
+        "name": "台積電（2330）",
+        "business_line": "FOUNDRY",
+        "relationship": "supplier",
+        "details": "Reuters 指 Arm AGI CPU 由台積電 3nm 製程生產；屬量產晶片製造關係。",
+        "ticker": "2330"
+      },
+      {
+        "id": "IP_competitor_033",
+        "name": "SiFive",
+        "business_line": "IP",
+        "relationship": "competitor",
+        "details": "RISC-V CPU IP 與運算子系統競爭。"
+      },
+      {
+        "id": "IP_competitor_034",
+        "name": "Andes Technology／晶心科（6533）",
+        "business_line": "IP",
+        "relationship": "competitor",
+        "details": "RISC-V CPU IP 與嵌入式處理器 IP 競爭。",
+        "ticker": "6533"
+      },
+      {
+        "id": "IP_competitor_035",
+        "name": "Imagination Technologies",
+        "business_line": "IP",
+        "relationship": "competitor",
+        "details": "GPU IP／嵌入式運算 IP 競爭。"
+      },
+      {
+        "id": "IP_competitor_036",
+        "name": "Synopsys ARC",
+        "business_line": "IP",
+        "relationship": "competitor",
+        "details": "嵌入式 CPU IP 市場競爭。"
+      },
+      {
+        "id": "CSS_competitor_037",
+        "name": "Intel（INTC）",
+        "business_line": "CSS",
+        "relationship": "competitor",
+        "details": "Xeon x86 伺服器 CPU 與 Arm Neoverse 生態競爭。",
+        "ticker": "INTC"
+      },
+      {
+        "id": "CSS_competitor_038",
+        "name": "AMD（AMD）",
+        "business_line": "CSS",
+        "relationship": "competitor",
+        "details": "EPYC x86 伺服器 CPU 與 Arm Neoverse 生態競爭。",
+        "ticker": "AMD"
+      },
+      {
+        "id": "CSS_competitor_039",
+        "name": "IBM（IBM）",
+        "business_line": "CSS",
+        "relationship": "competitor",
+        "details": "POWER 架構在部分企業與高效能運算市場競爭。",
+        "ticker": "IBM"
+      },
+      {
+        "id": "CSS_competitor_040",
+        "name": "RISC-V International 生態",
+        "business_line": "CSS",
+        "relationship": "competitor",
+        "details": "開放指令集架構對 Arm 授權模式形成長期替代競爭。"
+      },
+      {
+        "id": "AGI_competitor_041",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "AGI",
+        "relationship": "competitor",
+        "details": "Grace／Vera 資料中心 CPU 在系統晶片市場與 Arm AGI CPU 存在潛在競合。",
+        "ticker": "NVDA"
+      },
+      {
+        "id": "AGI_competitor_042",
+        "name": "Ampere Computing",
+        "business_line": "AGI",
+        "relationship": "competitor",
+        "details": "Arm 架構資料中心 CPU 供應商，與 Arm AGI CPU 有產品層面競合。"
+      },
+      {
+        "id": "AGI_competitor_043",
+        "name": "Qualcomm（QCOM）",
+        "business_line": "AGI",
+        "relationship": "competitor",
+        "details": "資料中心 CPU 計畫與 Arm 自研 CPU 潛在競合。",
+        "ticker": "QCOM"
+      },
+      {
+        "id": "MOBILE_competitor_044",
+        "name": "晶心科（6533）",
+        "business_line": "MOBILE",
+        "relationship": "competitor",
+        "details": "RISC-V CPU IP 在低功耗裝置與 Arm Cortex IP 競爭。",
+        "ticker": "6533"
+      },
+      {
+        "id": "MOBILE_competitor_045",
+        "name": "Imagination Technologies",
+        "business_line": "MOBILE",
+        "relationship": "competitor",
+        "details": "行動 GPU IP 與 Arm Mali／Immortalis 競爭。"
+      },
+      {
+        "id": "EDGE_competitor_046",
+        "name": "SiFive",
+        "business_line": "EDGE",
+        "relationship": "competitor",
+        "details": "RISC-V 嵌入式 CPU IP 替代方案。"
+      },
+      {
+        "id": "EDGE_competitor_047",
+        "name": "晶心科（6533）",
+        "business_line": "EDGE",
+        "relationship": "competitor",
+        "details": "RISC-V 嵌入式處理器 IP 競爭。",
+        "ticker": "6533"
+      },
+      {
+        "id": "FOUNDRY_beneficiary_048",
+        "name": "台積電（2330）",
+        "business_line": "FOUNDRY",
+        "relationship": "beneficiary",
+        "details": "Arm AGI CPU 已確認的晶圓製造商，兼具直接供應與產能需求受惠。",
+        "ticker": "2330"
+      },
+      {
+        "id": "FOUNDRY_beneficiary_049",
+        "name": "日月光投控（3711）",
+        "business_line": "FOUNDRY",
+        "relationship": "beneficiary",
+        "details": "Arm 官方 AGI CPU 生態支持者；封裝測試產業受惠，不宣稱 AGI CPU 直接訂單。",
+        "ticker": "3711"
+      },
+      {
+        "id": "FOUNDRY_beneficiary_050",
+        "name": "京元電子（2449）",
+        "business_line": "FOUNDRY",
+        "relationship": "beneficiary",
+        "details": "高階運算晶片測試需求的潛在間接受惠，無 Arm AGI CPU 直接供貨證據。",
+        "ticker": "2449"
+      },
+      {
+        "id": "FOUNDRY_beneficiary_051",
+        "name": "欣興電子（3037）",
+        "business_line": "FOUNDRY",
+        "relationship": "beneficiary",
+        "details": "高階伺服器晶片載板需求間接受惠，非已確認 Arm AGI CPU 載板供應商。",
+        "ticker": "3037"
+      },
+      {
+        "id": "FOUNDRY_beneficiary_052",
+        "name": "南電（8046）",
+        "business_line": "FOUNDRY",
+        "relationship": "beneficiary",
+        "details": "高階 ABF 載板需求的間接受惠，不宣稱 Arm 直接訂單。",
+        "ticker": "8046"
+      },
+      {
+        "id": "MOBILE_beneficiary_053",
+        "name": "聯發科（2454）",
+        "business_line": "MOBILE",
+        "relationship": "beneficiary",
+        "details": "Arm 架構行動 SoC 採用者，屬授權生態營運受惠而非 Arm 供應商。",
+        "ticker": "2454"
+      },
+      {
+        "id": "MOBILE_beneficiary_054",
+        "name": "瑞昱半導體（2379）",
+        "business_line": "MOBILE",
+        "relationship": "beneficiary",
+        "details": "網通與消費性 SoC Arm 架構生態的間接受惠。",
+        "ticker": "2379"
+      },
+      {
+        "id": "MOBILE_beneficiary_055",
+        "name": "聯詠科技（3034）",
+        "business_line": "MOBILE",
+        "relationship": "beneficiary",
+        "details": "行動與顯示 SoC 運算生態間接受惠；非直接供應關係。",
+        "ticker": "3034"
+      },
+      {
+        "id": "AGI_beneficiary_056",
+        "name": "廣達電腦（2382）",
+        "business_line": "AGI",
+        "relationship": "beneficiary",
+        "details": "Reuters 報導 Arm AGI CPU 伺服器系統合作，受惠於新平台系統需求。",
+        "ticker": "2382"
+      },
+      {
+        "id": "AGI_beneficiary_057",
+        "name": "永擎電子（3515）",
+        "business_line": "AGI",
+        "relationship": "beneficiary",
+        "details": "Arm 官方確認的 AGI CPU 商用系統供應商。",
+        "ticker": "3515"
+      },
+      {
+        "id": "AGI_beneficiary_058",
+        "name": "緯穎科技（6669）",
+        "business_line": "AGI",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器及雲端 CPU 架構轉換需求的間接受惠；未證實 Arm AGI CPU 訂單。",
+        "ticker": "6669"
+      },
+      {
+        "id": "AGI_beneficiary_059",
+        "name": "鴻海精密（2317）",
+        "business_line": "AGI",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器與雲端機櫃需求的間接受惠；未證實 Arm AGI CPU 直接訂單。",
+        "ticker": "2317"
+      },
+      {
+        "id": "AGI_beneficiary_060",
+        "name": "緯創資通（3231）",
+        "business_line": "AGI",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器系統整合需求的間接受惠；未證實 AGI CPU 直接訂單。",
+        "ticker": "3231"
+      },
+      {
+        "id": "EDA_beneficiary_061",
+        "name": "創意電子（3443）",
+        "business_line": "EDA",
+        "relationship": "beneficiary",
+        "details": "Arm IP／CSS 客製化 SoC 設計需求的間接受惠；不推定 Arm 直接委託。",
+        "ticker": "3443"
+      },
+      {
+        "id": "EDA_beneficiary_062",
+        "name": "世芯-KY（3661）",
+        "business_line": "EDA",
+        "relationship": "beneficiary",
+        "details": "雲端 Arm 架構 ASIC 設計需求可能受惠，非已確認 Arm 直接客戶。",
+        "ticker": "3661"
+      },
+      {
+        "id": "EDA_beneficiary_063",
+        "name": "智原科技（3035）",
+        "business_line": "EDA",
+        "relationship": "beneficiary",
+        "details": "Arm IP 整合與 ASIC 設計服務生態受惠。",
+        "ticker": "3035"
+      },
+      {
+        "id": "EDA_beneficiary_064",
+        "name": "M31（6643）",
+        "business_line": "EDA",
+        "relationship": "beneficiary",
+        "details": "先進製程 IP 設計需求的間接受惠，非 Arm 直接供應商。",
+        "ticker": "6643"
+      },
+      {
+        "id": "CLOUD_beneficiary_065",
+        "name": "智邦科技（2345）",
+        "business_line": "CLOUD",
+        "relationship": "beneficiary",
+        "details": "Arm 雲端伺服器擴張伴隨高速網路需求的間接受惠。",
+        "ticker": "2345"
+      },
+      {
+        "id": "CLOUD_beneficiary_066",
+        "name": "台達電子（2308）",
+        "business_line": "CLOUD",
+        "relationship": "beneficiary",
+        "details": "AI／雲端伺服器電源與散熱基礎設施需求間接受惠。",
+        "ticker": "2308"
+      },
+      {
+        "id": "CLOUD_beneficiary_067",
+        "name": "奇鋐科技（3017）",
+        "business_line": "CLOUD",
+        "relationship": "beneficiary",
+        "details": "資料中心散熱需求間接受惠；無 Arm AGI CPU 直接採購證據。",
+        "ticker": "3017"
+      },
+      {
+        "id": "CLOUD_beneficiary_068",
+        "name": "雙鴻科技（3324）",
+        "business_line": "CLOUD",
+        "relationship": "beneficiary",
+        "details": "資料中心散熱需求間接受惠；非 Arm 直接供應商。",
+        "ticker": "3324"
+      }
+    ]
   }
 }

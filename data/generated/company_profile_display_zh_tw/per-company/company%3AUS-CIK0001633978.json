@@ -235,5 +235,473 @@
       "工業自動化"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-02",
+    "company": "Lumentum Holdings Inc.",
+    "symbol": "LITE",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "Lumentum（LITE）AI 光通訊產業鏈：雷射、1.6T、OCS、CPO 與台灣受惠股",
+      "description": "依 SEC FY2026 10-K 與 Lumentum 官方公告，區分具名客戶、技術合作、競爭對手與台灣光通訊產業間接受惠者。"
+    },
+    "business_lines": [
+      {
+        "id": "LASER",
+        "name": "資料中心高速雷射／EML／InP"
+      },
+      {
+        "id": "TRANSCEIVER",
+        "name": "800G／1.6T 雲端光收發模組"
+      },
+      {
+        "id": "OCS",
+        "name": "Optical Circuit Switch 光路交換"
+      },
+      {
+        "id": "CPO",
+        "name": "CPO／NPO 外部雷射光源"
+      },
+      {
+        "id": "VCSEL",
+        "name": "VCSEL 光學 Scale-up／PCIe"
+      },
+      {
+        "id": "COHERENT",
+        "name": "相干光通訊與 DCI"
+      },
+      {
+        "id": "ROADM",
+        "name": "ROADM／光放大器／傳輸網路"
+      },
+      {
+        "id": "INDUSTRIAL",
+        "name": "工業雷射／半導體加工"
+      },
+      {
+        "id": "SENSING",
+        "name": "3D 感測／消費光學"
+      },
+      {
+        "id": "MANUFACTURING",
+        "name": "光子晶片製造／封裝／測試"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "LASER_customer_001",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "LASER",
+        "relationship": "customer",
+        "details": "2026 年 3 月正式公布多年期先進雷射元件採購承諾與產能取得權；亦為策略投資及研發合作方。",
+        "ticker": "NVDA"
+      },
+      {
+        "id": "CPO_partner_001",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "CPO",
+        "relationship": "partner",
+        "details": "雙方公布多年期先進光學研發與 AI 基礎設施合作，NVIDIA 另宣布 20 億美元投資；不可把股權投資等同銷售營收。",
+        "ticker": "NVDA"
+      },
+      {
+        "id": "VCSEL_partner_001",
+        "name": "Astera Labs（ALAB）",
+        "business_line": "VCSEL",
+        "relationship": "partner",
+        "details": "2026 年 10 月共同展示 1060nm VCSEL PCIe-over-optics 機櫃級互連，屬技術展示而非確定量產採購。",
+        "ticker": "ALAB"
+      },
+      {
+        "id": "VCSEL_partner_002",
+        "name": "Corning（GLW）",
+        "business_line": "VCSEL",
+        "relationship": "partner",
+        "details": "2026 年 10 月與 Astera Labs 展示 VCSEL 光互連及多模光纖；亦參與 9 月光學 D2D 展示。",
+        "ticker": "GLW"
+      },
+      {
+        "id": "VCSEL_partner_003",
+        "name": "Qualcomm（QCOM）",
+        "business_line": "VCSEL",
+        "relationship": "partner",
+        "details": "2026 年 9 月共同展示 VCSEL 光學 die-to-die 連接與介面 IP，不能推定已形成量產訂單。",
+        "ticker": "QCOM"
+      },
+      {
+        "id": "COHERENT_competitor_001",
+        "name": "Coherent（COHR）",
+        "business_line": "COHERENT",
+        "relationship": "competitor",
+        "details": "雷射、光通訊模組及光學元件多領域直接競爭。",
+        "ticker": "COHR"
+      },
+      {
+        "id": "TRANSCEIVER_competitor_001",
+        "name": "Applied Optoelectronics（AAOI）",
+        "business_line": "TRANSCEIVER",
+        "relationship": "competitor",
+        "details": "雲端資料中心高速光收發器與光元件產品競爭。",
+        "ticker": "AAOI"
+      },
+      {
+        "id": "TRANSCEIVER_competitor_002",
+        "name": "Eoptolink（300502.SZ）",
+        "business_line": "TRANSCEIVER",
+        "relationship": "competitor",
+        "details": "高速資料中心光模組產品競爭；不代表所有產品規格完全重疊。",
+        "ticker": "300502.SZ"
+      },
+      {
+        "id": "TRANSCEIVER_competitor_003",
+        "name": "Accelink（002281.SZ）",
+        "business_line": "TRANSCEIVER",
+        "relationship": "competitor",
+        "details": "高速光收發模組及光通訊產品競爭。",
+        "ticker": "002281.SZ"
+      },
+      {
+        "id": "COHERENT_competitor_002",
+        "name": "Ciena（CIEN）",
+        "business_line": "COHERENT",
+        "relationship": "competitor",
+        "details": "相干光傳輸及光網路設備部分市場競爭，產業鏈定位不完全相同。",
+        "ticker": "CIEN"
+      },
+      {
+        "id": "ROADM_competitor_001",
+        "name": "Nokia（NOK）",
+        "business_line": "ROADM",
+        "relationship": "competitor",
+        "details": "光傳輸及光網路系統市場部分重疊，Nokia 同時具有設備整合商角色。",
+        "ticker": "NOK"
+      },
+      {
+        "id": "ROADM_competitor_002",
+        "name": "Cisco（CSCO）",
+        "business_line": "ROADM",
+        "relationship": "competitor",
+        "details": "光網路與資料中心互連系統方案存在部分競爭與上下游關係。",
+        "ticker": "CSCO"
+      },
+      {
+        "id": "OCS_competitor_001",
+        "name": "Calient",
+        "business_line": "OCS",
+        "relationship": "competitor",
+        "details": "光路交換設備技術競爭；為私人企業。"
+      },
+      {
+        "id": "LASER_competitor_001",
+        "name": "Broadcom（AVGO）",
+        "business_line": "LASER",
+        "relationship": "competitor",
+        "details": "資料中心光互連技術及部分光元件產品競爭，亦可能處於互補生態。",
+        "ticker": "AVGO"
+      },
+      {
+        "id": "CPO_competitor_001",
+        "name": "Marvell（MRVL）",
+        "business_line": "CPO",
+        "relationship": "competitor",
+        "details": "矽光子、光互連架構及相關元件／平台存在部分競合，不能視為完全同質產品。",
+        "ticker": "MRVL"
+      },
+      {
+        "id": "VCSEL_competitor_001",
+        "name": "ams OSRAM（AMS）",
+        "business_line": "VCSEL",
+        "relationship": "competitor",
+        "details": "VCSEL／光感測發射器領域部分競爭。",
+        "ticker": "AMS.SW"
+      },
+      {
+        "id": "SENSING_competitor_001",
+        "name": "Coherent（COHR）",
+        "business_line": "SENSING",
+        "relationship": "competitor",
+        "details": "3D 感測與半導體雷射元件部分競爭。",
+        "ticker": "COHR"
+      },
+      {
+        "id": "INDUSTRIAL_competitor_001",
+        "name": "IPG Photonics（IPGP）",
+        "business_line": "INDUSTRIAL",
+        "relationship": "competitor",
+        "details": "高功率工業光纖雷射市場競爭。",
+        "ticker": "IPGP"
+      },
+      {
+        "id": "INDUSTRIAL_competitor_002",
+        "name": "TRUMPF",
+        "business_line": "INDUSTRIAL",
+        "relationship": "competitor",
+        "details": "工業雷射加工設備及雷射技術市場競爭；私人企業。"
+      },
+      {
+        "id": "COHERENT_competitor_003",
+        "name": "Infinera（Nokia 旗下）",
+        "business_line": "COHERENT",
+        "relationship": "competitor",
+        "details": "相干光傳輸技術競爭；已納入 Nokia，不應當作獨立上市公司。",
+        "ticker": "NOK"
+      },
+      {
+        "id": "MANUFACTURING_competitor_001",
+        "name": "MACOM（MTSI）",
+        "business_line": "MANUFACTURING",
+        "relationship": "competitor",
+        "details": "光電半導體與高速光通訊元件部分競爭。",
+        "ticker": "MTSI"
+      },
+      {
+        "id": "LASER_beneficiary_001",
+        "name": "聯亞（3081）",
+        "business_line": "LASER",
+        "relationship": "beneficiary",
+        "details": "InP 磊晶與光通訊材料需求相關；未確認直接供貨 Lumentum。",
+        "ticker": "3081"
+      },
+      {
+        "id": "LASER_beneficiary_002",
+        "name": "全新（2455）",
+        "business_line": "LASER",
+        "relationship": "beneficiary",
+        "details": "III-V 族磊晶及光電元件產業需求受惠觀察，非具名直接供應。",
+        "ticker": "2455"
+      },
+      {
+        "id": "LASER_beneficiary_003",
+        "name": "光環（3234）",
+        "business_line": "LASER",
+        "relationship": "beneficiary",
+        "details": "光通訊雷射與光電元件需求擴張之產業觀察。",
+        "ticker": "3234"
+      },
+      {
+        "id": "LASER_beneficiary_004",
+        "name": "華星光（4979）",
+        "business_line": "LASER",
+        "relationship": "beneficiary",
+        "details": "高速光收發及光電元件產業受惠，未確認直接供貨關係。",
+        "ticker": "4979"
+      },
+      {
+        "id": "LASER_beneficiary_005",
+        "name": "光聖（6442）",
+        "business_line": "LASER",
+        "relationship": "beneficiary",
+        "details": "資料中心光通訊連接與光纖組件需求受惠觀察。",
+        "ticker": "6442"
+      },
+      {
+        "id": "TRANSCEIVER_beneficiary_001",
+        "name": "眾達-KY（4977）",
+        "business_line": "TRANSCEIVER",
+        "relationship": "beneficiary",
+        "details": "高速光模組需求與產品世代升級相關；非確認的 Lumentum 供應商。",
+        "ticker": "4977"
+      },
+      {
+        "id": "TRANSCEIVER_beneficiary_002",
+        "name": "前鼎（4908）",
+        "business_line": "TRANSCEIVER",
+        "relationship": "beneficiary",
+        "details": "光通訊收發模組市場需求受惠，亦可能存在競爭。",
+        "ticker": "4908"
+      },
+      {
+        "id": "TRANSCEIVER_beneficiary_003",
+        "name": "波若威（3163）",
+        "business_line": "TRANSCEIVER",
+        "relationship": "beneficiary",
+        "details": "光纖被動元件、分光與連接需求受惠觀察。",
+        "ticker": "3163"
+      },
+      {
+        "id": "TRANSCEIVER_beneficiary_004",
+        "name": "上詮（3363）",
+        "business_line": "TRANSCEIVER",
+        "relationship": "beneficiary",
+        "details": "光纖連接器及高密度光連接需求受惠觀察。",
+        "ticker": "3363"
+      },
+      {
+        "id": "TRANSCEIVER_beneficiary_005",
+        "name": "光聯（5315）",
+        "business_line": "TRANSCEIVER",
+        "relationship": "beneficiary",
+        "details": "光通訊相關模組與零組件需求觀察，未確認直接訂單。",
+        "ticker": "5315"
+      },
+      {
+        "id": "TRANSCEIVER_beneficiary_006",
+        "name": "聯鈞（3450）",
+        "business_line": "TRANSCEIVER",
+        "relationship": "beneficiary",
+        "details": "光通訊封裝與元件產業需求觀察。",
+        "ticker": "3450"
+      },
+      {
+        "id": "TRANSCEIVER_beneficiary_007",
+        "name": "訊芯-KY（6451）",
+        "business_line": "TRANSCEIVER",
+        "relationship": "beneficiary",
+        "details": "高速光模組及光電封裝供應鏈需求受惠觀察。",
+        "ticker": "6451"
+      },
+      {
+        "id": "OCS_beneficiary_001",
+        "name": "波若威（3163）",
+        "business_line": "OCS",
+        "relationship": "beneficiary",
+        "details": "光路切換系統增加光纖與被動光學連接需求的潛在受惠。",
+        "ticker": "3163"
+      },
+      {
+        "id": "OCS_beneficiary_002",
+        "name": "上詮（3363）",
+        "business_line": "OCS",
+        "relationship": "beneficiary",
+        "details": "高密度光纖配線與連接需求的間接受惠觀察。",
+        "ticker": "3363"
+      },
+      {
+        "id": "CPO_beneficiary_001",
+        "name": "台積電（2330）",
+        "business_line": "CPO",
+        "relationship": "beneficiary",
+        "details": "矽光子及先進封裝生態擴張之間接受惠；沒有證據確認 Lumentum 直接委託代工。",
+        "ticker": "2330"
+      },
+      {
+        "id": "CPO_beneficiary_002",
+        "name": "日月光投控（3711）",
+        "business_line": "CPO",
+        "relationship": "beneficiary",
+        "details": "光電共同封裝與先進封測技術發展的產業觀察。",
+        "ticker": "3711"
+      },
+      {
+        "id": "CPO_beneficiary_003",
+        "name": "上詮（3363）",
+        "business_line": "CPO",
+        "relationship": "beneficiary",
+        "details": "CPO 光纖陣列與連接需求可能提升；非確認 Lumentum 採購。",
+        "ticker": "3363"
+      },
+      {
+        "id": "CPO_beneficiary_004",
+        "name": "光聖（6442）",
+        "business_line": "CPO",
+        "relationship": "beneficiary",
+        "details": "高密度光纖連接需求隨 CPO／NPO 架構演進而擴大。",
+        "ticker": "6442"
+      },
+      {
+        "id": "CPO_beneficiary_005",
+        "name": "聯亞（3081）",
+        "business_line": "CPO",
+        "relationship": "beneficiary",
+        "details": "外部雷射光源所需 III-V 光電材料產業機會，未確認直接交易。",
+        "ticker": "3081"
+      },
+      {
+        "id": "VCSEL_beneficiary_001",
+        "name": "穩懋（3105）",
+        "business_line": "VCSEL",
+        "relationship": "beneficiary",
+        "details": "化合物半導體光電製程及 VCSEL 相關產業需求受惠觀察。",
+        "ticker": "3105"
+      },
+      {
+        "id": "VCSEL_beneficiary_002",
+        "name": "全新（2455）",
+        "business_line": "VCSEL",
+        "relationship": "beneficiary",
+        "details": "VCSEL 與光電磊晶相關需求受惠觀察。",
+        "ticker": "2455"
+      },
+      {
+        "id": "VCSEL_beneficiary_003",
+        "name": "光環（3234）",
+        "business_line": "VCSEL",
+        "relationship": "beneficiary",
+        "details": "VCSEL／光通訊光電元件需求相關產業觀察。",
+        "ticker": "3234"
+      },
+      {
+        "id": "COHERENT_beneficiary_001",
+        "name": "華星光（4979）",
+        "business_line": "COHERENT",
+        "relationship": "beneficiary",
+        "details": "高速光網路及相干傳輸擴張的產業需求觀察。",
+        "ticker": "4979"
+      },
+      {
+        "id": "COHERENT_beneficiary_002",
+        "name": "聯亞（3081）",
+        "business_line": "COHERENT",
+        "relationship": "beneficiary",
+        "details": "高速 InP 光電材料需求擴張之產業觀察。",
+        "ticker": "3081"
+      },
+      {
+        "id": "ROADM_beneficiary_001",
+        "name": "波若威（3163）",
+        "business_line": "ROADM",
+        "relationship": "beneficiary",
+        "details": "光纖被動元件與網路升級相關需求受惠。",
+        "ticker": "3163"
+      },
+      {
+        "id": "ROADM_beneficiary_002",
+        "name": "光聖（6442）",
+        "business_line": "ROADM",
+        "relationship": "beneficiary",
+        "details": "光纖連接與配線產品受網路擴張間接帶動。",
+        "ticker": "6442"
+      },
+      {
+        "id": "INDUSTRIAL_beneficiary_001",
+        "name": "上銀（2049）",
+        "business_line": "INDUSTRIAL",
+        "relationship": "beneficiary",
+        "details": "精密製造設備需求週期相關，屬寬泛產業連動而非 Lumentum 供應關係。",
+        "ticker": "2049"
+      },
+      {
+        "id": "MANUFACTURING_beneficiary_001",
+        "name": "京元電子（2449）",
+        "business_line": "MANUFACTURING",
+        "relationship": "beneficiary",
+        "details": "半導體與光電測試外包需求的間接產業觀察，無直接訂單證據。",
+        "ticker": "2449"
+      },
+      {
+        "id": "MANUFACTURING_beneficiary_002",
+        "name": "穎崴（6515）",
+        "business_line": "MANUFACTURING",
+        "relationship": "beneficiary",
+        "details": "高頻高速測試介面需求受惠觀察，無直接採購證據。",
+        "ticker": "6515"
+      },
+      {
+        "id": "MANUFACTURING_beneficiary_003",
+        "name": "致茂（2360）",
+        "business_line": "MANUFACTURING",
+        "relationship": "beneficiary",
+        "details": "光電／電子量測與自動測試設備產業需求受惠觀察。",
+        "ticker": "2360"
+      }
+    ]
   }
 }

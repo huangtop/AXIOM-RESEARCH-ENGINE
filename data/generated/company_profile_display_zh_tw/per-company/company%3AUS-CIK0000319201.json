@@ -211,5 +211,333 @@
       "晶圓廠投資"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-03",
+    "company": "KLA Corporation",
+    "symbol": "KLAC",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "KLA（KLAC）產業鏈：晶圓檢測、量測、先進封裝與台灣受惠股",
+      "description": "依 SEC 10-K／10-Q、官方產品與法說資訊區分具名客戶、競爭對手與台灣產業受惠者。"
+    },
+    "business_lines": [
+      {
+        "id": "WAFER",
+        "name": "晶圓光學缺陷檢測"
+      },
+      {
+        "id": "EBEAM",
+        "name": "電子束檢測與量測"
+      },
+      {
+        "id": "RETICLE",
+        "name": "EUV 光罩與圖形檢測"
+      },
+      {
+        "id": "METRO",
+        "name": "薄膜、套刻與關鍵尺寸量測"
+      },
+      {
+        "id": "PACK",
+        "name": "先進封裝與晶粒檢測"
+      },
+      {
+        "id": "PCB",
+        "name": "PCB／IC 載板檢測"
+      },
+      {
+        "id": "SPECIAL",
+        "name": "特殊半導體蝕刻與沉積"
+      },
+      {
+        "id": "SOFTWARE",
+        "name": "良率管理與資料分析"
+      },
+      {
+        "id": "SERVICE",
+        "name": "裝機維護與升級服務"
+      },
+      {
+        "id": "SUPPLY",
+        "name": "精密光學與設備供應鏈"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "WAFER_customer_001",
+        "name": "台積電（2330／TSM）",
+        "business_line": "WAFER",
+        "relationship": "customer",
+        "details": "KLA FY2026 10-K 明確列為連續三年占營收超過 10% 的具名客戶；不推定精確營收占比。"
+      },
+      {
+        "id": "WAFER_competitor_002",
+        "name": "Applied Materials（AMAT）",
+        "business_line": "WAFER",
+        "relationship": "competitor",
+        "details": "部分量測與製程設備市場重疊，主業也具有互補性；競爭限所述產品線。"
+      },
+      {
+        "id": "WAFER_competitor_003",
+        "name": "Onto Innovation（ONTO）",
+        "business_line": "WAFER",
+        "relationship": "competitor",
+        "details": "晶圓檢測與量測領域重疊；競爭限所述產品線。"
+      },
+      {
+        "id": "EBEAM_competitor_004",
+        "name": "ASML／HMI（ASML）",
+        "business_line": "EBEAM",
+        "relationship": "competitor",
+        "details": "電子束檢測與量測產品競爭；競爭限所述產品線。"
+      },
+      {
+        "id": "METRO_competitor_005",
+        "name": "Nova（NVMI）",
+        "business_line": "METRO",
+        "relationship": "competitor",
+        "details": "半導體製程量測競爭；競爭限所述產品線。"
+      },
+      {
+        "id": "METRO_competitor_006",
+        "name": "Camtek（CAMT）",
+        "business_line": "METRO",
+        "relationship": "competitor",
+        "details": "封裝及晶圓檢測重疊；競爭限所述產品線。"
+      },
+      {
+        "id": "WAFER_competitor_007",
+        "name": "Hitachi High-Tech",
+        "business_line": "WAFER",
+        "relationship": "competitor",
+        "details": "電子束與量測市場競爭；競爭限所述產品線。"
+      },
+      {
+        "id": "RETICLE_competitor_008",
+        "name": "Lasertec（6920.T）",
+        "business_line": "RETICLE",
+        "relationship": "competitor",
+        "details": "EUV 光罩檢測市場競爭；競爭限所述產品線。"
+      },
+      {
+        "id": "RETICLE_competitor_009",
+        "name": "Applied Materials（AMAT）",
+        "business_line": "RETICLE",
+        "relationship": "competitor",
+        "details": "光罩／製程控制相鄰領域競爭；競爭限所述產品線。"
+      },
+      {
+        "id": "SPECIAL_competitor_010",
+        "name": "Lam Research（LRCX）",
+        "business_line": "SPECIAL",
+        "relationship": "competitor",
+        "details": "部分蝕刻及製程設備重疊；競爭限所述產品線。"
+      },
+      {
+        "id": "SPECIAL_competitor_011",
+        "name": "Tokyo Electron（8035.T）",
+        "business_line": "SPECIAL",
+        "relationship": "competitor",
+        "details": "部分沉積與蝕刻市場重疊；競爭限所述產品線。"
+      },
+      {
+        "id": "PCB_competitor_012",
+        "name": "Camtek（CAMT）",
+        "business_line": "PCB",
+        "relationship": "competitor",
+        "details": "先進封裝檢測重疊；競爭限所述產品線。"
+      },
+      {
+        "id": "PACK_competitor_013",
+        "name": "Onto Innovation（ONTO）",
+        "business_line": "PACK",
+        "relationship": "competitor",
+        "details": "先進封裝檢測與量測重疊；競爭限所述產品線。"
+      },
+      {
+        "id": "SOFTWARE_competitor_014",
+        "name": "PDF Solutions（PDFS）",
+        "business_line": "SOFTWARE",
+        "relationship": "competitor",
+        "details": "良率分析與製程資料分析部分重疊；競爭限所述產品線。"
+      },
+      {
+        "id": "SUPPLY_beneficiary_015",
+        "name": "京鼎（3413）",
+        "business_line": "SUPPLY",
+        "relationship": "beneficiary",
+        "details": "半導體設備零組件與系統整合需求受惠；未證實為 KLA 直接供應商；屬產業關聯，非直接交易證明。"
+      },
+      {
+        "id": "SUPPLY_beneficiary_016",
+        "name": "帆宣（6196）",
+        "business_line": "SUPPLY",
+        "relationship": "beneficiary",
+        "details": "半導體設備整合、材料與廠務需求受惠；未證實直接訂單；屬產業關聯，非直接交易證明。"
+      },
+      {
+        "id": "SUPPLY_beneficiary_017",
+        "name": "漢唐（2404）",
+        "business_line": "SUPPLY",
+        "relationship": "beneficiary",
+        "details": "晶圓廠擴建與高階廠務工程受惠，非 KLA 供應商認定；屬產業關聯，非直接交易證明。"
+      },
+      {
+        "id": "SUPPLY_beneficiary_018",
+        "name": "亞翔（6139）",
+        "business_line": "SUPPLY",
+        "relationship": "beneficiary",
+        "details": "晶圓廠廠務與潔淨室工程需求受惠；屬產業關聯，非直接交易證明。"
+      },
+      {
+        "id": "SUPPLY_beneficiary_019",
+        "name": "洋基工程（6691）",
+        "business_line": "SUPPLY",
+        "relationship": "beneficiary",
+        "details": "晶圓廠機電與無塵室工程需求受惠；屬產業關聯，非直接交易證明。"
+      },
+      {
+        "id": "SUPPLY_beneficiary_020",
+        "name": "聖暉*（5536）",
+        "business_line": "SUPPLY",
+        "relationship": "beneficiary",
+        "details": "半導體廠務與潔淨室工程需求受惠；屬產業關聯，非直接交易證明。"
+      },
+      {
+        "id": "SUPPLY_beneficiary_021",
+        "name": "家登（3680）",
+        "business_line": "SUPPLY",
+        "relationship": "beneficiary",
+        "details": "光罩／晶圓載具與先進製程供應鏈受惠，非 KLA 直接供應商；屬產業關聯，非直接交易證明。"
+      },
+      {
+        "id": "SUPPLY_beneficiary_022",
+        "name": "中砂（1560）",
+        "business_line": "SUPPLY",
+        "relationship": "beneficiary",
+        "details": "先進製程耗材與精密加工需求受惠；屬產業關聯，非直接交易證明。"
+      },
+      {
+        "id": "SUPPLY_beneficiary_023",
+        "name": "光罩（2338）",
+        "business_line": "SUPPLY",
+        "relationship": "beneficiary",
+        "details": "光罩製造與檢測需求相關；屬產業關聯，非直接交易證明。"
+      },
+      {
+        "id": "PACK_beneficiary_024",
+        "name": "弘塑（3131）",
+        "business_line": "PACK",
+        "relationship": "beneficiary",
+        "details": "先進封裝製程設備需求受惠；屬產業關聯，非直接交易證明。"
+      },
+      {
+        "id": "PACK_beneficiary_025",
+        "name": "萬潤（6187）",
+        "business_line": "PACK",
+        "relationship": "beneficiary",
+        "details": "先進封裝設備需求受惠；屬產業關聯，非直接交易證明。"
+      },
+      {
+        "id": "PACK_beneficiary_026",
+        "name": "志聖（2467）",
+        "business_line": "PACK",
+        "relationship": "beneficiary",
+        "details": "先進封裝及載板設備需求受惠；屬產業關聯，非直接交易證明。"
+      },
+      {
+        "id": "PACK_beneficiary_027",
+        "name": "均華（6640）",
+        "business_line": "PACK",
+        "relationship": "beneficiary",
+        "details": "先進封裝設備需求受惠；屬產業關聯，非直接交易證明。"
+      },
+      {
+        "id": "PACK_beneficiary_028",
+        "name": "日月光投控（3711／ASX）",
+        "business_line": "PACK",
+        "relationship": "beneficiary",
+        "details": "先進封裝良率檢測需求相關，非未核實的 KLA 直接客戶聲明；屬產業關聯，非直接交易證明。"
+      },
+      {
+        "id": "PACK_beneficiary_029",
+        "name": "力成（6239）",
+        "business_line": "PACK",
+        "relationship": "beneficiary",
+        "details": "記憶體封裝與測試資本支出相關；屬產業關聯，非直接交易證明。"
+      },
+      {
+        "id": "PCB_beneficiary_030",
+        "name": "欣興（3037）",
+        "business_line": "PCB",
+        "relationship": "beneficiary",
+        "details": "高階 IC 載板製造檢測需求受惠；屬產業關聯，非直接交易證明。"
+      },
+      {
+        "id": "PCB_beneficiary_031",
+        "name": "南電（8046）",
+        "business_line": "PCB",
+        "relationship": "beneficiary",
+        "details": "高階 IC 載板檢測需求受惠；屬產業關聯，非直接交易證明。"
+      },
+      {
+        "id": "PCB_beneficiary_032",
+        "name": "景碩（3189）",
+        "business_line": "PCB",
+        "relationship": "beneficiary",
+        "details": "IC 載板檢測與良率提升需求相關；屬產業關聯，非直接交易證明。"
+      },
+      {
+        "id": "WAFER_beneficiary_033",
+        "name": "聯電（2303／UMC）",
+        "business_line": "WAFER",
+        "relationship": "beneficiary",
+        "details": "成熟製程晶圓廠資本支出與製程檢測需求相關；未確認個別採購；屬產業關聯，非直接交易證明。"
+      },
+      {
+        "id": "WAFER_beneficiary_034",
+        "name": "世界先進（5347）",
+        "business_line": "WAFER",
+        "relationship": "beneficiary",
+        "details": "成熟與特殊製程晶圓檢測需求相關；屬產業關聯，非直接交易證明。"
+      },
+      {
+        "id": "WAFER_beneficiary_035",
+        "name": "力積電（6770）",
+        "business_line": "WAFER",
+        "relationship": "beneficiary",
+        "details": "晶圓廠量測及檢測需求相關；屬產業關聯，非直接交易證明。"
+      },
+      {
+        "id": "METRO_beneficiary_036",
+        "name": "旺宏（2337）",
+        "business_line": "METRO",
+        "relationship": "beneficiary",
+        "details": "記憶體製造良率檢測需求相關；屬產業關聯，非直接交易證明。"
+      },
+      {
+        "id": "METRO_beneficiary_037",
+        "name": "華邦電（2344）",
+        "business_line": "METRO",
+        "relationship": "beneficiary",
+        "details": "記憶體製造良率檢測需求相關；屬產業關聯，非直接交易證明。"
+      },
+      {
+        "id": "PACK_beneficiary_038",
+        "name": "台積電（2330／TSM）",
+        "business_line": "PACK",
+        "relationship": "beneficiary",
+        "details": "先進封裝資本支出帶動檢測需求；另有 10-K 已確認直接客戶關係；屬產業關聯，非直接交易證明。"
+      }
+    ]
   }
 }

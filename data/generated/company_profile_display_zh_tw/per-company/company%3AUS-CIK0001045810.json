@@ -253,5 +253,822 @@
       "實體 AI 與機器人"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-10-31",
+    "company": "NVIDIA Corporation",
+    "symbol": "NVDA",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "NVIDIA（NVDA）產業鏈：AI GPU、Vera Rubin、網路、封裝與台灣供應鏈",
+      "description": "依 NVIDIA SEC 財報、官方 IR 與公開產品合作資訊，整理客戶、夥伴、供應商、競爭者與產業受惠企業。"
+    },
+    "business_lines": [
+      {
+        "id": "AI_COMPUTE",
+        "name": "Blackwell／Vera Rubin GPU 與 AI 加速運算"
+      },
+      {
+        "id": "AI_RACK",
+        "name": "GB200／Rubin NVL72 機櫃與 AI 工廠"
+      },
+      {
+        "id": "NETWORK",
+        "name": "Spectrum-X／InfiniBand／BlueField 網路"
+      },
+      {
+        "id": "SOFTWARE",
+        "name": "CUDA／NIM／AI Enterprise 軟體"
+      },
+      {
+        "id": "CLOUD",
+        "name": "DGX Cloud／雲端 AI 基礎設施"
+      },
+      {
+        "id": "GAMING",
+        "name": "GeForce RTX 遊戲顯示卡"
+      },
+      {
+        "id": "PROVIZ",
+        "name": "RTX PRO／Omniverse 專業視覺化"
+      },
+      {
+        "id": "AUTO",
+        "name": "DRIVE 自動駕駛平台"
+      },
+      {
+        "id": "ROBOT",
+        "name": "Isaac／Jetson 機器人與邊緣 AI"
+      },
+      {
+        "id": "PACKAGING",
+        "name": "先進製程／CoWoS／HBM 封裝供應鏈"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "CLOUD_customer_001",
+        "name": "Microsoft Azure",
+        "business_line": "CLOUD",
+        "relationship": "customer",
+        "details": "官方確認 Rubin 系統於 Azure 合作夥伴機櫃運行。",
+        "ticker": "MSFT"
+      },
+      {
+        "id": "CLOUD_customer_002",
+        "name": "Google Cloud",
+        "business_line": "CLOUD",
+        "relationship": "customer",
+        "details": "官方確認 Rubin 系統於 Google Cloud 合作夥伴機櫃運行。",
+        "ticker": "GOOGL"
+      },
+      {
+        "id": "CLOUD_customer_003",
+        "name": "Oracle Cloud Infrastructure",
+        "business_line": "CLOUD",
+        "relationship": "customer",
+        "details": "官方確認 Rubin 系統於 OCI 合作夥伴機櫃運行。",
+        "ticker": "ORCL"
+      },
+      {
+        "id": "CLOUD_customer_004",
+        "name": "CoreWeave",
+        "business_line": "CLOUD",
+        "relationship": "customer",
+        "details": "官方列為 Rubin 機櫃運行的雲端夥伴。",
+        "ticker": "CRWV"
+      },
+      {
+        "id": "CLOUD_customer_005",
+        "name": "Nebius",
+        "business_line": "CLOUD",
+        "relationship": "customer",
+        "details": "官方列為 Rubin 機櫃運行的雲端夥伴。",
+        "ticker": "NBIS"
+      },
+      {
+        "id": "CLOUD_customer_006",
+        "name": "Amazon Web Services",
+        "business_line": "CLOUD",
+        "relationship": "customer",
+        "details": "NVIDIA 加速運算基礎設施的主要雲端部署通路。",
+        "ticker": "AMZN"
+      },
+      {
+        "id": "AI_COMPUTE_customer_001",
+        "name": "Meta Platforms",
+        "business_line": "AI_COMPUTE",
+        "relationship": "customer",
+        "details": "使用 NVIDIA GPU 支援 AI 訓練與推論基礎設施。",
+        "ticker": "META"
+      },
+      {
+        "id": "AI_COMPUTE_customer_002",
+        "name": "OpenAI",
+        "business_line": "AI_COMPUTE",
+        "relationship": "customer",
+        "details": "採用 NVIDIA 加速運算平台建構模型運算能力。"
+      },
+      {
+        "id": "AI_COMPUTE_customer_003",
+        "name": "xAI",
+        "business_line": "AI_COMPUTE",
+        "relationship": "customer",
+        "details": "部署 NVIDIA GPU 叢集作為模型訓練基礎設施。"
+      },
+      {
+        "id": "AI_COMPUTE_customer_004",
+        "name": "Tesla",
+        "business_line": "AI_COMPUTE",
+        "relationship": "customer",
+        "details": "在 AI 訓練基礎設施採用 NVIDIA 加速運算，亦發展自研晶片。",
+        "ticker": "TSLA"
+      },
+      {
+        "id": "AI_RACK_partner_001",
+        "name": "鴻海（2317）",
+        "business_line": "AI_RACK",
+        "relationship": "partner",
+        "details": "NVIDIA 官方列名台灣 AI 系統製造合作夥伴；涉及機櫃與系統整合。",
+        "ticker": "2317"
+      },
+      {
+        "id": "AI_RACK_partner_002",
+        "name": "廣達（2382）／QCT",
+        "business_line": "AI_RACK",
+        "relationship": "partner",
+        "details": "NVIDIA 官方列名 AI 基礎設施製造與系統合作夥伴。",
+        "ticker": "2382"
+      },
+      {
+        "id": "AI_RACK_partner_003",
+        "name": "緯創（3231）",
+        "business_line": "AI_RACK",
+        "relationship": "partner",
+        "details": "NVIDIA 官方列名 AI 系統製造合作夥伴。",
+        "ticker": "3231"
+      },
+      {
+        "id": "AI_RACK_partner_004",
+        "name": "英業達（2356）",
+        "business_line": "AI_RACK",
+        "relationship": "partner",
+        "details": "NVIDIA 官方列名 AI 系統製造合作夥伴。",
+        "ticker": "2356"
+      },
+      {
+        "id": "AI_RACK_partner_005",
+        "name": "和碩（4938）",
+        "business_line": "AI_RACK",
+        "relationship": "partner",
+        "details": "NVIDIA 官方列名台灣 AI 基礎設施生態系合作夥伴。",
+        "ticker": "4938"
+      },
+      {
+        "id": "AI_RACK_partner_006",
+        "name": "Dell Technologies",
+        "business_line": "AI_RACK",
+        "relationship": "partner",
+        "details": "PowerEdge AI 伺服器整合 NVIDIA 加速運算平台。",
+        "ticker": "DELL"
+      },
+      {
+        "id": "AI_RACK_partner_007",
+        "name": "Hewlett Packard Enterprise",
+        "business_line": "AI_RACK",
+        "relationship": "partner",
+        "details": "HPE Private Cloud AI 與伺服器整合 NVIDIA 平台。",
+        "ticker": "HPE"
+      },
+      {
+        "id": "AI_RACK_partner_008",
+        "name": "Super Micro Computer",
+        "business_line": "AI_RACK",
+        "relationship": "partner",
+        "details": "提供整合 NVIDIA GPU 的 AI 伺服器與機櫃方案。",
+        "ticker": "SMCI"
+      },
+      {
+        "id": "PACKAGING_supplier_001",
+        "name": "台積電（2330）",
+        "business_line": "PACKAGING",
+        "relationship": "supplier",
+        "details": "NVIDIA 官方直接列名的關鍵晶圓及晶片合作夥伴；承擔先進製程與封裝供應。",
+        "ticker": "2330"
+      },
+      {
+        "id": "PACKAGING_supplier_002",
+        "name": "矽品精密／日月光投控（3711）",
+        "business_line": "PACKAGING",
+        "relationship": "supplier",
+        "details": "NVIDIA 官方列名 SPIL 為晶片生產生態系合作夥伴。",
+        "ticker": "3711"
+      },
+      {
+        "id": "PACKAGING_supplier_003",
+        "name": "景碩（3189）",
+        "business_line": "PACKAGING",
+        "relationship": "supplier",
+        "details": "NVIDIA 官方列名 Kinsus 為晶片供應生態系合作夥伴。",
+        "ticker": "3189"
+      },
+      {
+        "id": "PACKAGING_supplier_004",
+        "name": "京元電子（2449）",
+        "business_line": "PACKAGING",
+        "relationship": "supplier",
+        "details": "NVIDIA 官方列名 KYEC 為晶片測試生態系合作夥伴。",
+        "ticker": "2449"
+      },
+      {
+        "id": "PACKAGING_supplier_005",
+        "name": "欣銓（3264）",
+        "business_line": "PACKAGING",
+        "relationship": "supplier",
+        "details": "NVIDIA 官方列名 UMTC 為晶片測試生態系合作夥伴。",
+        "ticker": "3264"
+      },
+      {
+        "id": "PACKAGING_supplier_006",
+        "name": "SK hynix",
+        "business_line": "PACKAGING",
+        "relationship": "supplier",
+        "details": "AI GPU HBM 記憶體重要供應商。"
+      },
+      {
+        "id": "PACKAGING_supplier_007",
+        "name": "Micron Technology",
+        "business_line": "PACKAGING",
+        "relationship": "supplier",
+        "details": "AI GPU HBM 記憶體供應商。",
+        "ticker": "MU"
+      },
+      {
+        "id": "PACKAGING_supplier_008",
+        "name": "Samsung Electronics",
+        "business_line": "PACKAGING",
+        "relationship": "supplier",
+        "details": "HBM 與記憶體技術供應體系參與者；不表示所有世代均獲採用。"
+      },
+      {
+        "id": "NETWORK_partner_001",
+        "name": "Arista Networks",
+        "business_line": "NETWORK",
+        "relationship": "partner",
+        "details": "乙太網路 AI 資料中心架構的生態系與競爭並存。",
+        "ticker": "ANET"
+      },
+      {
+        "id": "NETWORK_partner_002",
+        "name": "Cisco Systems",
+        "business_line": "NETWORK",
+        "relationship": "partner",
+        "details": "AI 網路生態系整合與市場競爭並存。",
+        "ticker": "CSCO"
+      },
+      {
+        "id": "SOFTWARE_partner_001",
+        "name": "Red Hat",
+        "business_line": "SOFTWARE",
+        "relationship": "partner",
+        "details": "企業 AI 軟體與 Kubernetes 生態系整合。",
+        "ticker": "IBM"
+      },
+      {
+        "id": "SOFTWARE_partner_002",
+        "name": "Canonical",
+        "business_line": "SOFTWARE",
+        "relationship": "partner",
+        "details": "Ubuntu 與 NVIDIA AI 軟體堆疊的整合生態系。"
+      },
+      {
+        "id": "SOFTWARE_partner_003",
+        "name": "Hugging Face",
+        "business_line": "SOFTWARE",
+        "relationship": "partner",
+        "details": "AI 模型與推論工具生態系合作。"
+      },
+      {
+        "id": "AUTO_partner_001",
+        "name": "Mercedes-Benz",
+        "business_line": "AUTO",
+        "relationship": "partner",
+        "details": "NVIDIA DRIVE 自動駕駛與車用運算合作。"
+      },
+      {
+        "id": "AUTO_partner_002",
+        "name": "Hyundai Motor Group",
+        "business_line": "AUTO",
+        "relationship": "partner",
+        "details": "NVIDIA 官方財報會議提及汽車及 AI 合作。"
+      },
+      {
+        "id": "AUTO_partner_003",
+        "name": "Toyota",
+        "business_line": "AUTO",
+        "relationship": "partner",
+        "details": "NVIDIA 車用運算與自動駕駛生態系合作。"
+      },
+      {
+        "id": "ROBOT_partner_001",
+        "name": "Boston Dynamics",
+        "business_line": "ROBOT",
+        "relationship": "partner",
+        "details": "機器人及實體 AI 生態系技術合作。"
+      },
+      {
+        "id": "ROBOT_partner_002",
+        "name": "Siemens",
+        "business_line": "ROBOT",
+        "relationship": "partner",
+        "details": "工業數位孿生及 NVIDIA Omniverse 生態系合作。"
+      },
+      {
+        "id": "AI_COMPUTE_competitor_001",
+        "name": "Advanced Micro Devices",
+        "business_line": "AI_COMPUTE",
+        "relationship": "competitor",
+        "details": "Instinct GPU、ROCm 與 EPYC 平台競逐 AI 加速運算。",
+        "ticker": "AMD"
+      },
+      {
+        "id": "AI_COMPUTE_competitor_002",
+        "name": "Intel",
+        "business_line": "AI_COMPUTE",
+        "relationship": "competitor",
+        "details": "Gaudi／Xeon 與 AI 運算平台競爭。",
+        "ticker": "INTC"
+      },
+      {
+        "id": "AI_COMPUTE_competitor_003",
+        "name": "Broadcom",
+        "business_line": "AI_COMPUTE",
+        "relationship": "competitor",
+        "details": "客製化 AI XPU／ASIC 與網路加速市場競爭。",
+        "ticker": "AVGO"
+      },
+      {
+        "id": "AI_COMPUTE_competitor_004",
+        "name": "Google",
+        "business_line": "AI_COMPUTE",
+        "relationship": "competitor",
+        "details": "TPU 自研 AI 加速器競爭；同時是 NVIDIA 雲端客戶。",
+        "ticker": "GOOGL"
+      },
+      {
+        "id": "AI_COMPUTE_competitor_005",
+        "name": "Amazon",
+        "business_line": "AI_COMPUTE",
+        "relationship": "competitor",
+        "details": "Trainium／Inferentia 自研晶片競爭；AWS 同時部署 NVIDIA GPU。",
+        "ticker": "AMZN"
+      },
+      {
+        "id": "AI_COMPUTE_competitor_006",
+        "name": "Microsoft",
+        "business_line": "AI_COMPUTE",
+        "relationship": "competitor",
+        "details": "Maia 自研 AI 加速器競爭；Azure 同時採用 NVIDIA。",
+        "ticker": "MSFT"
+      },
+      {
+        "id": "AI_COMPUTE_competitor_007",
+        "name": "Meta Platforms",
+        "business_line": "AI_COMPUTE",
+        "relationship": "competitor",
+        "details": "MTIA 自研推論晶片競爭；同時使用 NVIDIA GPU。",
+        "ticker": "META"
+      },
+      {
+        "id": "AI_COMPUTE_competitor_008",
+        "name": "Cerebras Systems",
+        "business_line": "AI_COMPUTE",
+        "relationship": "competitor",
+        "details": "晶圓級 AI 加速器架構競爭。"
+      },
+      {
+        "id": "AI_COMPUTE_competitor_009",
+        "name": "Groq",
+        "business_line": "AI_COMPUTE",
+        "relationship": "competitor",
+        "details": "LPU AI 推論架構競爭。"
+      },
+      {
+        "id": "NETWORK_competitor_001",
+        "name": "Broadcom",
+        "business_line": "NETWORK",
+        "relationship": "competitor",
+        "details": "Tomahawk／Jericho 高速乙太網路交換晶片競爭。",
+        "ticker": "AVGO"
+      },
+      {
+        "id": "NETWORK_competitor_002",
+        "name": "Marvell Technology",
+        "business_line": "NETWORK",
+        "relationship": "competitor",
+        "details": "資料中心互連、網路 ASIC 與高速連接市場競爭。",
+        "ticker": "MRVL"
+      },
+      {
+        "id": "NETWORK_competitor_003",
+        "name": "Cisco Systems",
+        "business_line": "NETWORK",
+        "relationship": "competitor",
+        "details": "AI 資料中心交換及網路平台競爭。",
+        "ticker": "CSCO"
+      },
+      {
+        "id": "NETWORK_competitor_004",
+        "name": "Arista Networks",
+        "business_line": "NETWORK",
+        "relationship": "competitor",
+        "details": "AI 乙太網路網路系統競爭。",
+        "ticker": "ANET"
+      },
+      {
+        "id": "NETWORK_competitor_005",
+        "name": "Intel",
+        "business_line": "NETWORK",
+        "relationship": "competitor",
+        "details": "網路介面卡與 DPU／IPU 產品競爭。",
+        "ticker": "INTC"
+      },
+      {
+        "id": "GAMING_competitor_001",
+        "name": "AMD Radeon",
+        "business_line": "GAMING",
+        "relationship": "competitor",
+        "details": "消費 GPU 與遊戲顯示卡直接競爭。",
+        "ticker": "AMD"
+      },
+      {
+        "id": "GAMING_competitor_002",
+        "name": "Intel Arc",
+        "business_line": "GAMING",
+        "relationship": "competitor",
+        "details": "消費 GPU 與遊戲顯示卡競爭。",
+        "ticker": "INTC"
+      },
+      {
+        "id": "PROVIZ_competitor_001",
+        "name": "AMD Radeon PRO",
+        "business_line": "PROVIZ",
+        "relationship": "competitor",
+        "details": "專業工作站 GPU 競爭。",
+        "ticker": "AMD"
+      },
+      {
+        "id": "PROVIZ_competitor_002",
+        "name": "Intel Arc Pro",
+        "business_line": "PROVIZ",
+        "relationship": "competitor",
+        "details": "專業視覺化 GPU 競爭。",
+        "ticker": "INTC"
+      },
+      {
+        "id": "AUTO_competitor_001",
+        "name": "Qualcomm",
+        "business_line": "AUTO",
+        "relationship": "competitor",
+        "details": "Snapdragon Ride 車用運算平台競爭。",
+        "ticker": "QCOM"
+      },
+      {
+        "id": "AUTO_competitor_002",
+        "name": "Mobileye",
+        "business_line": "AUTO",
+        "relationship": "competitor",
+        "details": "ADAS 與自動駕駛運算平台競爭。",
+        "ticker": "MBLY"
+      },
+      {
+        "id": "AUTO_competitor_003",
+        "name": "Tesla",
+        "business_line": "AUTO",
+        "relationship": "competitor",
+        "details": "自研車用 FSD 晶片與自動駕駛技術競爭。",
+        "ticker": "TSLA"
+      },
+      {
+        "id": "ROBOT_competitor_001",
+        "name": "Qualcomm",
+        "business_line": "ROBOT",
+        "relationship": "competitor",
+        "details": "邊緣 AI 與機器人 SoC 市場競爭。",
+        "ticker": "QCOM"
+      },
+      {
+        "id": "ROBOT_competitor_002",
+        "name": "Intel",
+        "business_line": "ROBOT",
+        "relationship": "competitor",
+        "details": "工業邊緣 AI 平台競爭。",
+        "ticker": "INTC"
+      },
+      {
+        "id": "SOFTWARE_competitor_001",
+        "name": "AMD ROCm",
+        "business_line": "SOFTWARE",
+        "relationship": "competitor",
+        "details": "GPU 開發與 AI 軟體工具鏈競爭。",
+        "ticker": "AMD"
+      },
+      {
+        "id": "SOFTWARE_competitor_002",
+        "name": "Intel oneAPI",
+        "business_line": "SOFTWARE",
+        "relationship": "competitor",
+        "details": "異質運算軟體生態系競爭。",
+        "ticker": "INTC"
+      },
+      {
+        "id": "AI_RACK_beneficiary_001",
+        "name": "鴻海（2317）",
+        "business_line": "AI_RACK",
+        "relationship": "beneficiary",
+        "details": "已列名 NVIDIA AI 系統合作夥伴；AI 機櫃出貨與系統整合需求受惠。",
+        "ticker": "2317"
+      },
+      {
+        "id": "AI_RACK_beneficiary_002",
+        "name": "廣達（2382）",
+        "business_line": "AI_RACK",
+        "relationship": "beneficiary",
+        "details": "QCT AI 伺服器及整機櫃平台隨 AI 基礎設施建置受惠。",
+        "ticker": "2382"
+      },
+      {
+        "id": "AI_RACK_beneficiary_003",
+        "name": "緯創（3231）",
+        "business_line": "AI_RACK",
+        "relationship": "beneficiary",
+        "details": "NVIDIA 生態系系統製造與 AI 伺服器需求受惠。",
+        "ticker": "3231"
+      },
+      {
+        "id": "AI_RACK_beneficiary_004",
+        "name": "英業達（2356）",
+        "business_line": "AI_RACK",
+        "relationship": "beneficiary",
+        "details": "NVIDIA 生態系伺服器與系統製造需求受惠。",
+        "ticker": "2356"
+      },
+      {
+        "id": "AI_RACK_beneficiary_005",
+        "name": "和碩（4938）",
+        "business_line": "AI_RACK",
+        "relationship": "beneficiary",
+        "details": "官方列名 AI 基礎設施合作夥伴，受惠程度依專案而異。",
+        "ticker": "4938"
+      },
+      {
+        "id": "AI_RACK_beneficiary_006",
+        "name": "緯穎（6669）",
+        "business_line": "AI_RACK",
+        "relationship": "beneficiary",
+        "details": "雲端 AI 伺服器整機系統需求的間接受惠者，非據此認定直接供應 NVIDIA。",
+        "ticker": "6669"
+      },
+      {
+        "id": "AI_RACK_beneficiary_007",
+        "name": "技嘉（2376）",
+        "business_line": "AI_RACK",
+        "relationship": "beneficiary",
+        "details": "GPU 伺服器與 AI 運算系統生態系需求受惠。",
+        "ticker": "2376"
+      },
+      {
+        "id": "AI_RACK_beneficiary_008",
+        "name": "華碩（2357）",
+        "business_line": "AI_RACK",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器與 RTX 顯示卡產品受惠。",
+        "ticker": "2357"
+      },
+      {
+        "id": "AI_RACK_beneficiary_009",
+        "name": "微星（2377）",
+        "business_line": "AI_RACK",
+        "relationship": "beneficiary",
+        "details": "RTX 顯示卡與 AI 伺服器需求受惠。",
+        "ticker": "2377"
+      },
+      {
+        "id": "AI_RACK_beneficiary_010",
+        "name": "台達電（2308）",
+        "business_line": "AI_RACK",
+        "relationship": "beneficiary",
+        "details": "資料中心高功率電源與散熱基礎設施需求受惠；不等於直接供應 NVIDIA。",
+        "ticker": "2308"
+      },
+      {
+        "id": "AI_RACK_beneficiary_011",
+        "name": "光寶科（2301）",
+        "business_line": "AI_RACK",
+        "relationship": "beneficiary",
+        "details": "資料中心電源需求間接受惠；具名 NVIDIA 直接供應關係未確認。",
+        "ticker": "2301"
+      },
+      {
+        "id": "AI_RACK_beneficiary_012",
+        "name": "奇鋐（3017）",
+        "business_line": "AI_RACK",
+        "relationship": "beneficiary",
+        "details": "AI 機櫃液冷與散熱市場需求受惠，非據此認定 NVIDIA 直接供應商。",
+        "ticker": "3017"
+      },
+      {
+        "id": "AI_RACK_beneficiary_013",
+        "name": "雙鴻（3324）",
+        "business_line": "AI_RACK",
+        "relationship": "beneficiary",
+        "details": "高功率 GPU 伺服器散熱需求受惠。",
+        "ticker": "3324"
+      },
+      {
+        "id": "AI_RACK_beneficiary_014",
+        "name": "建準（2421）",
+        "business_line": "AI_RACK",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器風扇與散熱需求受惠。",
+        "ticker": "2421"
+      },
+      {
+        "id": "PACKAGING_beneficiary_001",
+        "name": "台積電（2330）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "官方直接列名晶圓與晶片合作夥伴；先進製程及先進封裝需求受惠。",
+        "ticker": "2330"
+      },
+      {
+        "id": "PACKAGING_beneficiary_002",
+        "name": "日月光投控（3711）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "旗下 SPIL 獲 NVIDIA 官方列名；先進封裝與測試生態系受惠。",
+        "ticker": "3711"
+      },
+      {
+        "id": "PACKAGING_beneficiary_003",
+        "name": "景碩（3189）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "Kinsus 獲 NVIDIA 官方列名；封裝載板需求受惠。",
+        "ticker": "3189"
+      },
+      {
+        "id": "PACKAGING_beneficiary_004",
+        "name": "京元電子（2449）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "KYEC 獲 NVIDIA 官方列名；晶片測試需求受惠。",
+        "ticker": "2449"
+      },
+      {
+        "id": "PACKAGING_beneficiary_005",
+        "name": "欣銓（3264）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "UMTC 獲 NVIDIA 官方列名；晶片測試需求受惠。",
+        "ticker": "3264"
+      },
+      {
+        "id": "PACKAGING_beneficiary_006",
+        "name": "欣興（3037）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "高階 IC 載板與 AI 晶片封裝需求受惠，未據此認定直接供應 NVIDIA。",
+        "ticker": "3037"
+      },
+      {
+        "id": "PACKAGING_beneficiary_007",
+        "name": "南電（8046）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "高階 ABF 載板產業需求間接受惠。",
+        "ticker": "8046"
+      },
+      {
+        "id": "PACKAGING_beneficiary_008",
+        "name": "旺矽（6223）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "高階 GPU／AI 晶片測試與探針卡產業需求受惠。",
+        "ticker": "6223"
+      },
+      {
+        "id": "PACKAGING_beneficiary_009",
+        "name": "穎崴（6515）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "高效能運算晶片測試介面需求受惠。",
+        "ticker": "6515"
+      },
+      {
+        "id": "PACKAGING_beneficiary_010",
+        "name": "弘塑（3131）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "先進封裝製程設備資本支出受惠。",
+        "ticker": "3131"
+      },
+      {
+        "id": "PACKAGING_beneficiary_011",
+        "name": "辛耘（3583）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "先進封裝與半導體製程設備需求受惠。",
+        "ticker": "3583"
+      },
+      {
+        "id": "PACKAGING_beneficiary_012",
+        "name": "萬潤（6187）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "先進封裝自動化設備需求受惠。",
+        "ticker": "6187"
+      },
+      {
+        "id": "NETWORK_beneficiary_001",
+        "name": "智邦（2345）",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "AI 資料中心高速交換器需求受惠，並非據此確認直接供應 NVIDIA。",
+        "ticker": "2345"
+      },
+      {
+        "id": "NETWORK_beneficiary_002",
+        "name": "啟碁（6285）",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "資料中心及網通升級需求間接受惠。",
+        "ticker": "6285"
+      },
+      {
+        "id": "NETWORK_beneficiary_003",
+        "name": "光聖（6442）",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "AI 光通訊連接需求受惠。",
+        "ticker": "6442"
+      },
+      {
+        "id": "NETWORK_beneficiary_004",
+        "name": "聯亞（3081）",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "高速光通訊元件需求受惠。",
+        "ticker": "3081"
+      },
+      {
+        "id": "NETWORK_beneficiary_005",
+        "name": "波若威（3163）",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "高速光纖被動元件需求受惠。",
+        "ticker": "3163"
+      },
+      {
+        "id": "NETWORK_beneficiary_006",
+        "name": "上詮（3363）",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "高速光通訊與 CPO 相關光纖連接需求受惠。",
+        "ticker": "3363"
+      },
+      {
+        "id": "GAMING_beneficiary_001",
+        "name": "華碩（2357）",
+        "business_line": "GAMING",
+        "relationship": "beneficiary",
+        "details": "GeForce RTX 顯示卡品牌及通路生態系受惠。",
+        "ticker": "2357"
+      },
+      {
+        "id": "GAMING_beneficiary_002",
+        "name": "微星（2377）",
+        "business_line": "GAMING",
+        "relationship": "beneficiary",
+        "details": "GeForce RTX 顯示卡產品線受惠。",
+        "ticker": "2377"
+      },
+      {
+        "id": "GAMING_beneficiary_003",
+        "name": "技嘉（2376）",
+        "business_line": "GAMING",
+        "relationship": "beneficiary",
+        "details": "GeForce RTX 顯示卡產品線受惠。",
+        "ticker": "2376"
+      }
+    ]
   }
 }

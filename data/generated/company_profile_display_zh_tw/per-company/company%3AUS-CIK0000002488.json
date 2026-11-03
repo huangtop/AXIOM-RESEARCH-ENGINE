@@ -220,5 +220,599 @@
       "嵌入式運算"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-02",
+    "company": "Advanced Micro Devices, Inc.",
+    "symbol": "AMD",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "AMD 產業鏈｜AI GPU、EPYC、Helios、ROCm 與台灣供應鏈",
+      "description": "AMD Instinct、Helios、EPYC、Ryzen、Pensando、FPGA 與先進封裝產業鏈，區分客戶、合作夥伴、供應商、競爭者及受惠股。"
+    },
+    "business_lines": [
+      {
+        "id": "AI_GPU",
+        "name": "Instinct MI350／MI400 AI 加速器與 HBM"
+      },
+      {
+        "id": "HELIOS",
+        "name": "Helios／Helion 機架級 AI 基礎設施"
+      },
+      {
+        "id": "EPYC",
+        "name": "EPYC Turin／Venice 伺服器 CPU"
+      },
+      {
+        "id": "ROCM",
+        "name": "ROCm AI 軟體生態"
+      },
+      {
+        "id": "PENSANDO",
+        "name": "Pensando DPU／AI 網路"
+      },
+      {
+        "id": "RYZEN",
+        "name": "Ryzen／Ryzen AI PC 處理器"
+      },
+      {
+        "id": "RADEON",
+        "name": "Radeon 顯示卡與工作站"
+      },
+      {
+        "id": "CONSOLE",
+        "name": "遊戲主機半客製化 SoC"
+      },
+      {
+        "id": "ADAPTIVE",
+        "name": "Versal／Zynq FPGA 自適應運算"
+      },
+      {
+        "id": "PACKAGING",
+        "name": "先進製程／HBM／封裝與測試"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "AI_GPU_customer_001",
+        "name": "Microsoft",
+        "business_line": "AI_GPU",
+        "relationship": "customer",
+        "details": "Azure 提供 AMD Instinct 加速器雲端執行個體"
+      },
+      {
+        "id": "AI_GPU_customer_002",
+        "name": "Meta Platforms",
+        "business_line": "AI_GPU",
+        "relationship": "customer",
+        "details": "公開宣布多代 AMD AI 基礎設施合作"
+      },
+      {
+        "id": "AI_GPU_customer_003",
+        "name": "OpenAI",
+        "business_line": "AI_GPU",
+        "relationship": "customer",
+        "details": "公開宣布 AMD GPU 大規模部署合作"
+      },
+      {
+        "id": "AI_GPU_customer_004",
+        "name": "Oracle",
+        "business_line": "AI_GPU",
+        "relationship": "customer",
+        "details": "OCI 採用 AMD Instinct GPU 提供 AI 雲端服務"
+      },
+      {
+        "id": "HELIOS_partner_001",
+        "name": "緯穎（6669）",
+        "business_line": "HELIOS",
+        "relationship": "partner",
+        "details": "AMD 官方確認的 Helios ODM 系統合作夥伴"
+      },
+      {
+        "id": "HELIOS_partner_002",
+        "name": "緯創（3231）",
+        "business_line": "HELIOS",
+        "relationship": "partner",
+        "details": "AMD 官方確認的 Helios ODM 系統合作夥伴"
+      },
+      {
+        "id": "HELIOS_partner_003",
+        "name": "英業達（2356）",
+        "business_line": "HELIOS",
+        "relationship": "partner",
+        "details": "AMD 官方確認的 Helios ODM 系統合作夥伴"
+      },
+      {
+        "id": "HELIOS_partner_004",
+        "name": "Sanmina",
+        "business_line": "HELIOS",
+        "relationship": "partner",
+        "details": "AMD 官方確認的 Helios 系統製造合作夥伴"
+      },
+      {
+        "id": "HELIOS_partner_005",
+        "name": "HPE",
+        "business_line": "HELIOS",
+        "relationship": "partner",
+        "details": "提供 AMD EPYC／Instinct 相關伺服器平台"
+      },
+      {
+        "id": "HELIOS_partner_006",
+        "name": "Dell Technologies",
+        "business_line": "HELIOS",
+        "relationship": "partner",
+        "details": "提供搭載 AMD EPYC／Instinct 的伺服器"
+      },
+      {
+        "id": "HELIOS_partner_007",
+        "name": "Supermicro",
+        "business_line": "HELIOS",
+        "relationship": "partner",
+        "details": "提供搭載 AMD Instinct／EPYC 的伺服器"
+      },
+      {
+        "id": "AI_GPU_partner_001",
+        "name": "Hugging Face",
+        "business_line": "AI_GPU",
+        "relationship": "partner",
+        "details": "AI 模型與 ROCm 生態合作"
+      },
+      {
+        "id": "AI_GPU_partner_002",
+        "name": "Cerebras Systems",
+        "business_line": "AI_GPU",
+        "relationship": "partner",
+        "details": "AMD 官方 Advancing AI 公告列為合作生態夥伴"
+      },
+      {
+        "id": "ROCM_partner_001",
+        "name": "PyTorch／Meta",
+        "business_line": "ROCM",
+        "relationship": "partner",
+        "details": "ROCm 支援 PyTorch 生態"
+      },
+      {
+        "id": "ROCM_partner_002",
+        "name": "Red Hat",
+        "business_line": "ROCM",
+        "relationship": "partner",
+        "details": "ROCm 與企業 AI 軟體平台生態"
+      },
+      {
+        "id": "ROCM_partner_003",
+        "name": "Canonical",
+        "business_line": "ROCM",
+        "relationship": "partner",
+        "details": "Ubuntu 與 ROCm 軟體生態"
+      },
+      {
+        "id": "EPYC_customer_001",
+        "name": "Microsoft Azure",
+        "business_line": "EPYC",
+        "relationship": "customer",
+        "details": "Azure AMD EPYC 雲端 VM"
+      },
+      {
+        "id": "EPYC_customer_002",
+        "name": "Google Cloud",
+        "business_line": "EPYC",
+        "relationship": "customer",
+        "details": "Google Cloud 提供 AMD EPYC VM"
+      },
+      {
+        "id": "EPYC_customer_003",
+        "name": "Amazon Web Services",
+        "business_line": "EPYC",
+        "relationship": "customer",
+        "details": "EC2 提供 AMD EPYC VM"
+      },
+      {
+        "id": "EPYC_customer_004",
+        "name": "Oracle Cloud Infrastructure",
+        "business_line": "EPYC",
+        "relationship": "customer",
+        "details": "OCI 提供 AMD EPYC 運算執行個體"
+      },
+      {
+        "id": "EPYC_partner_001",
+        "name": "Lenovo",
+        "business_line": "EPYC",
+        "relationship": "partner",
+        "details": "ThinkSystem AMD EPYC 伺服器"
+      },
+      {
+        "id": "EPYC_partner_002",
+        "name": "Cisco",
+        "business_line": "EPYC",
+        "relationship": "partner",
+        "details": "UCS AMD EPYC 伺服器"
+      },
+      {
+        "id": "EPYC_partner_003",
+        "name": "HPE",
+        "business_line": "EPYC",
+        "relationship": "partner",
+        "details": "ProLiant AMD EPYC 伺服器"
+      },
+      {
+        "id": "EPYC_partner_004",
+        "name": "Dell Technologies",
+        "business_line": "EPYC",
+        "relationship": "partner",
+        "details": "PowerEdge AMD EPYC 伺服器"
+      },
+      {
+        "id": "RYZEN_partner_001",
+        "name": "Lenovo",
+        "business_line": "RYZEN",
+        "relationship": "partner",
+        "details": "Ryzen 筆電與桌機 OEM"
+      },
+      {
+        "id": "RYZEN_partner_002",
+        "name": "HP Inc.",
+        "business_line": "RYZEN",
+        "relationship": "partner",
+        "details": "Ryzen 商用及消費 PC OEM"
+      },
+      {
+        "id": "RYZEN_partner_003",
+        "name": "Dell Technologies",
+        "business_line": "RYZEN",
+        "relationship": "partner",
+        "details": "Ryzen PC OEM"
+      },
+      {
+        "id": "RYZEN_partner_004",
+        "name": "ASUS 華碩（2357）",
+        "business_line": "RYZEN",
+        "relationship": "partner",
+        "details": "Ryzen PC 與主機板生態"
+      },
+      {
+        "id": "RYZEN_partner_005",
+        "name": "Acer 宏碁（2353）",
+        "business_line": "RYZEN",
+        "relationship": "partner",
+        "details": "Ryzen PC OEM"
+      },
+      {
+        "id": "CONSOLE_customer_001",
+        "name": "Sony Group",
+        "business_line": "CONSOLE",
+        "relationship": "customer",
+        "details": "PlayStation 主機 AMD 半客製化 SoC"
+      },
+      {
+        "id": "CONSOLE_customer_002",
+        "name": "Microsoft Xbox",
+        "business_line": "CONSOLE",
+        "relationship": "customer",
+        "details": "Xbox 主機 AMD 半客製化 SoC"
+      },
+      {
+        "id": "PACKAGING_supplier_001",
+        "name": "台積電（2330）",
+        "business_line": "PACKAGING",
+        "relationship": "supplier",
+        "details": "AMD 先進 CPU／GPU 晶圓代工主要合作夥伴"
+      },
+      {
+        "id": "PACKAGING_supplier_002",
+        "name": "SK hynix",
+        "business_line": "PACKAGING",
+        "relationship": "supplier",
+        "details": "AI GPU HBM 記憶體供應生態"
+      },
+      {
+        "id": "AI_GPU_competitor_001",
+        "name": "NVIDIA",
+        "business_line": "AI_GPU",
+        "relationship": "competitor",
+        "details": "AI GPU、CUDA 與機架級 AI 平台主要競爭者"
+      },
+      {
+        "id": "AI_GPU_competitor_002",
+        "name": "Intel",
+        "business_line": "AI_GPU",
+        "relationship": "competitor",
+        "details": "資料中心加速器與 GPU 競爭"
+      },
+      {
+        "id": "AI_GPU_competitor_003",
+        "name": "Broadcom",
+        "business_line": "AI_GPU",
+        "relationship": "competitor",
+        "details": "客製化 AI ASIC 在部分部署場景替代 GPU"
+      },
+      {
+        "id": "AI_GPU_competitor_004",
+        "name": "Google",
+        "business_line": "AI_GPU",
+        "relationship": "competitor",
+        "details": "TPU 自研加速器競爭"
+      },
+      {
+        "id": "AI_GPU_competitor_005",
+        "name": "Amazon",
+        "business_line": "AI_GPU",
+        "relationship": "competitor",
+        "details": "Trainium 自研加速器競爭"
+      },
+      {
+        "id": "EPYC_competitor_001",
+        "name": "Intel",
+        "business_line": "EPYC",
+        "relationship": "competitor",
+        "details": "Xeon 伺服器 CPU 主要競爭者"
+      },
+      {
+        "id": "EPYC_competitor_002",
+        "name": "Ampere Computing",
+        "business_line": "EPYC",
+        "relationship": "competitor",
+        "details": "Arm 伺服器 CPU 競爭者"
+      },
+      {
+        "id": "EPYC_competitor_003",
+        "name": "NVIDIA",
+        "business_line": "EPYC",
+        "relationship": "competitor",
+        "details": "Grace／Vera CPU 平台競爭者"
+      },
+      {
+        "id": "PENSANDO_competitor_001",
+        "name": "NVIDIA",
+        "business_line": "PENSANDO",
+        "relationship": "competitor",
+        "details": "BlueField DPU／網路方案競爭"
+      },
+      {
+        "id": "PENSANDO_competitor_002",
+        "name": "Broadcom",
+        "business_line": "PENSANDO",
+        "relationship": "competitor",
+        "details": "網路晶片／DPU 相鄰市場競爭"
+      },
+      {
+        "id": "PENSANDO_competitor_003",
+        "name": "Marvell Technology",
+        "business_line": "PENSANDO",
+        "relationship": "competitor",
+        "details": "DPU／網路控制晶片競爭"
+      },
+      {
+        "id": "RYZEN_competitor_001",
+        "name": "Intel",
+        "business_line": "RYZEN",
+        "relationship": "competitor",
+        "details": "Core／Core Ultra PC CPU 競爭"
+      },
+      {
+        "id": "RYZEN_competitor_002",
+        "name": "Qualcomm",
+        "business_line": "RYZEN",
+        "relationship": "competitor",
+        "details": "Snapdragon X Arm AI PC 平台競爭"
+      },
+      {
+        "id": "RYZEN_competitor_003",
+        "name": "Apple",
+        "business_line": "RYZEN",
+        "relationship": "competitor",
+        "details": "Apple Silicon 在高階個人運算市場競爭"
+      },
+      {
+        "id": "RADEON_competitor_001",
+        "name": "NVIDIA",
+        "business_line": "RADEON",
+        "relationship": "competitor",
+        "details": "GeForce／RTX PRO 顯示卡競爭"
+      },
+      {
+        "id": "RADEON_competitor_002",
+        "name": "Intel",
+        "business_line": "RADEON",
+        "relationship": "competitor",
+        "details": "Arc 獨立 GPU 競爭"
+      },
+      {
+        "id": "ADAPTIVE_competitor_001",
+        "name": "Intel Altera",
+        "business_line": "ADAPTIVE",
+        "relationship": "competitor",
+        "details": "FPGA 與自適應運算競爭"
+      },
+      {
+        "id": "ADAPTIVE_competitor_002",
+        "name": "Lattice Semiconductor",
+        "business_line": "ADAPTIVE",
+        "relationship": "competitor",
+        "details": "低功耗 FPGA 競爭"
+      },
+      {
+        "id": "ADAPTIVE_competitor_003",
+        "name": "Microchip Technology",
+        "business_line": "ADAPTIVE",
+        "relationship": "competitor",
+        "details": "FPGA 與嵌入式晶片競爭"
+      },
+      {
+        "id": "PACKAGING_beneficiary_001",
+        "name": "台積電（2330）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "先進製程與先進封裝需求受惠；亦為已確認代工夥伴"
+      },
+      {
+        "id": "PACKAGING_beneficiary_002",
+        "name": "日月光投控（3711）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "先進封裝與測試需求間接受惠，非特定 AMD 訂單確認"
+      },
+      {
+        "id": "PACKAGING_beneficiary_003",
+        "name": "欣興（3037）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "高階 ABF 載板需求間接受惠，非 AMD 直接採購確認"
+      },
+      {
+        "id": "PACKAGING_beneficiary_004",
+        "name": "南電（8046）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "高階 IC 載板需求間接受惠，非 AMD 直接採購確認"
+      },
+      {
+        "id": "PACKAGING_beneficiary_005",
+        "name": "景碩（3189）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "高階載板需求間接受惠，非 AMD 直接採購確認"
+      },
+      {
+        "id": "PACKAGING_beneficiary_006",
+        "name": "京元電子（2449）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "高階晶片測試需求受惠，未確認特定 AMD 直接訂單"
+      },
+      {
+        "id": "PACKAGING_beneficiary_007",
+        "name": "旺矽（6223）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "GPU／HPC 測試介面產業需求受惠，未確認 AMD 直接訂單"
+      },
+      {
+        "id": "PACKAGING_beneficiary_008",
+        "name": "穎崴（6515）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "高階晶片測試座產業需求受惠，未確認 AMD 直接訂單"
+      },
+      {
+        "id": "HELIOS_beneficiary_001",
+        "name": "緯穎（6669）",
+        "business_line": "HELIOS",
+        "relationship": "beneficiary",
+        "details": "官方確認 Helios ODM 合作，系統部署規模擴大受惠"
+      },
+      {
+        "id": "HELIOS_beneficiary_002",
+        "name": "緯創（3231）",
+        "business_line": "HELIOS",
+        "relationship": "beneficiary",
+        "details": "官方確認 Helios ODM 合作，機櫃級系統需求受惠"
+      },
+      {
+        "id": "HELIOS_beneficiary_003",
+        "name": "英業達（2356）",
+        "business_line": "HELIOS",
+        "relationship": "beneficiary",
+        "details": "官方確認 Helios ODM 合作，AI 系統製造需求受惠"
+      },
+      {
+        "id": "HELIOS_beneficiary_004",
+        "name": "鴻海（2317）",
+        "business_line": "HELIOS",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器產業需求間接受惠，不等同 AMD Helios 直接合作公告"
+      },
+      {
+        "id": "HELIOS_beneficiary_005",
+        "name": "廣達（2382）",
+        "business_line": "HELIOS",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器 ODM 產業需求間接受惠，未確認特定 Helios 訂單"
+      },
+      {
+        "id": "HELIOS_beneficiary_006",
+        "name": "奇鋐（3017）",
+        "business_line": "HELIOS",
+        "relationship": "beneficiary",
+        "details": "AI 機櫃液冷與散熱產業需求間接受惠"
+      },
+      {
+        "id": "HELIOS_beneficiary_007",
+        "name": "雙鴻（3324）",
+        "business_line": "HELIOS",
+        "relationship": "beneficiary",
+        "details": "AI 機櫃散熱產業需求間接受惠"
+      },
+      {
+        "id": "HELIOS_beneficiary_008",
+        "name": "台達電（2308）",
+        "business_line": "HELIOS",
+        "relationship": "beneficiary",
+        "details": "資料中心電源與散熱需求間接受惠"
+      },
+      {
+        "id": "HELIOS_beneficiary_009",
+        "name": "光寶科（2301）",
+        "business_line": "HELIOS",
+        "relationship": "beneficiary",
+        "details": "資料中心電源供應需求間接受惠"
+      },
+      {
+        "id": "PENSANDO_beneficiary_001",
+        "name": "智邦（2345）",
+        "business_line": "PENSANDO",
+        "relationship": "beneficiary",
+        "details": "資料中心交換器產業需求受惠；未確認 AMD 直接供應關係"
+      },
+      {
+        "id": "PENSANDO_beneficiary_002",
+        "name": "啟碁（6285）",
+        "business_line": "PENSANDO",
+        "relationship": "beneficiary",
+        "details": "網通設備需求間接受惠；未確認 AMD 直接供應關係"
+      },
+      {
+        "id": "RYZEN_beneficiary_001",
+        "name": "華碩（2357）",
+        "business_line": "RYZEN",
+        "relationship": "beneficiary",
+        "details": "Ryzen PC／主機板合作生態受惠"
+      },
+      {
+        "id": "RYZEN_beneficiary_002",
+        "name": "宏碁（2353）",
+        "business_line": "RYZEN",
+        "relationship": "beneficiary",
+        "details": "Ryzen PC OEM 生態受惠"
+      },
+      {
+        "id": "RYZEN_beneficiary_003",
+        "name": "微星（2377）",
+        "business_line": "RYZEN",
+        "relationship": "beneficiary",
+        "details": "Ryzen 主機板與電競 PC 生態受惠"
+      },
+      {
+        "id": "RYZEN_beneficiary_004",
+        "name": "技嘉（2376）",
+        "business_line": "RYZEN",
+        "relationship": "beneficiary",
+        "details": "Ryzen 主機板與 Radeon 產品生態受惠"
+      },
+      {
+        "id": "AI_GPU_beneficiary_001",
+        "name": "群聯（8299）",
+        "business_line": "AI_GPU",
+        "relationship": "beneficiary",
+        "details": "AI 資料中心儲存需求間接受惠，未確認 AMD 直接供應關係"
+      }
+    ]
   }
 }

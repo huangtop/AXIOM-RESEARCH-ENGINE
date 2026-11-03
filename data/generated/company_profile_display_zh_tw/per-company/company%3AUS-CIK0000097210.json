@@ -356,5 +356,780 @@
       "製造與物流自動化"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-03",
+    "company": "Teradyne, Inc.",
+    "symbol": "TER",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "TER Teradyne AI ATE、HBM、CPO矽光子與機器人產業鏈",
+      "description": "SEC與官方IR起始，涵蓋2026Q3、FormFactor 3億美元合作、Technoprobe、MultiLane、Magnum E2、Titan HP、UltraFLEXplus S、CPO與台灣測試供應鏈。"
+    },
+    "business_lines": [
+      {
+        "id": "AI_COMPUTE",
+        "name": "AI GPU／CPU／ASIC 與高電流 UltraFLEXplus 測試"
+      },
+      {
+        "id": "MEMORY_HBM",
+        "name": "HBM／DRAM／NAND Magnum E2 記憶體測試"
+      },
+      {
+        "id": "ADV_PACKAGING",
+        "name": "Chiplet／2.5D／3D 先進封裝與 KGD"
+      },
+      {
+        "id": "FORMFACTOR",
+        "name": "FormFactor 探針／介面策略合作"
+      },
+      {
+        "id": "TECHNOPROBE",
+        "name": "Technoprobe 探針卡股權與生態"
+      },
+      {
+        "id": "PHOTONICS_CPO",
+        "name": "矽光子／CPO／NPO 光學互連測試"
+      },
+      {
+        "id": "MULTILANE",
+        "name": "MultiLane 高速 SerDes／乙太網測試"
+      },
+      {
+        "id": "TITAN_HP",
+        "name": "Titan HP AI 資料中心系統老化測試"
+      },
+      {
+        "id": "EDGE_AI",
+        "name": "UltraFLEXplus S Edge AI／MCU"
+      },
+      {
+        "id": "STORAGE",
+        "name": "HDD／SSD 儲存裝置測試"
+      },
+      {
+        "id": "WIRELESS",
+        "name": "RF／無線通訊測試"
+      },
+      {
+        "id": "AUTO_ANALOG",
+        "name": "車用／類比／功率半導體測試"
+      },
+      {
+        "id": "BOARD_DEFENSE",
+        "name": "電路板／航太國防測試"
+      },
+      {
+        "id": "ROBOT_UR",
+        "name": "Universal Robots 協作機器手臂"
+      },
+      {
+        "id": "ROBOT_MIR",
+        "name": "MiR 自主移動機器人"
+      },
+      {
+        "id": "MICROLED",
+        "name": "Iris 100 MicroLED 測試"
+      },
+      {
+        "id": "TAIWAN_TEST",
+        "name": "台灣測試／探針／設備產業鏈"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "FORMFACTOR_partner_001",
+        "name": "FormFactor",
+        "business_line": "FORMFACTOR",
+        "relationship": "partner",
+        "details": "2026-10-06 簽署合作及擬投資3億美元少數股權；合作涵蓋HBM、HPC、先進封裝、矽光子；投資仍待交割。",
+        "ticker": "FORM"
+      },
+      {
+        "id": "TECHNOPROBE_partner_001",
+        "name": "Technoprobe",
+        "business_line": "TECHNOPROBE",
+        "relationship": "partner",
+        "details": "2024取得10%股權與董事席次；探針卡與ATE介面策略協作，2026年仍以權益法認列。"
+      },
+      {
+        "id": "MULTILANE_partner_001",
+        "name": "MultiLane",
+        "business_line": "MULTILANE",
+        "relationship": "partner",
+        "details": "2026年4月8日成立MultiLane Test Products合資企業，擴充高速互連與光學測試產品。"
+      },
+      {
+        "id": "PHOTONICS_CPO_partner_001",
+        "name": "FormFactor",
+        "business_line": "PHOTONICS_CPO",
+        "relationship": "partner",
+        "details": "官方確認合作開發矽光子測試與探針介面，不等同已有CPO大規模量產收入。",
+        "ticker": "FORM"
+      },
+      {
+        "id": "PHOTONICS_CPO_partner_002",
+        "name": "MultiLane Test Products",
+        "business_line": "PHOTONICS_CPO",
+        "relationship": "partner",
+        "details": "合資企業產品組合涵蓋高速連接測試，與光互連測試市場相關。"
+      },
+      {
+        "id": "MEMORY_HBM_partner_001",
+        "name": "FormFactor",
+        "business_line": "MEMORY_HBM",
+        "relationship": "partner",
+        "details": "合作涵蓋HBM與高密度探針介面；未公開具名HBM量產客戶。",
+        "ticker": "FORM"
+      },
+      {
+        "id": "ADV_PACKAGING_partner_001",
+        "name": "FormFactor",
+        "business_line": "ADV_PACKAGING",
+        "relationship": "partner",
+        "details": "先進封裝測試架構與probe/interface共同開發，仍需區分合作研發和量產採用。",
+        "ticker": "FORM"
+      },
+      {
+        "id": "AI_COMPUTE_partner_001",
+        "name": "Technoprobe",
+        "business_line": "AI_COMPUTE",
+        "relationship": "partner",
+        "details": "探針卡股權合作生態，不能將全部AI測試機客戶視為Technoprobe採購客戶。"
+      },
+      {
+        "id": "AI_COMPUTE_competitor_001",
+        "name": "Advantest 愛德萬",
+        "business_line": "AI_COMPUTE",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。",
+        "ticker": "ATE"
+      },
+      {
+        "id": "AI_COMPUTE_competitor_002",
+        "name": "Cohu",
+        "business_line": "AI_COMPUTE",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。",
+        "ticker": "COHU"
+      },
+      {
+        "id": "MEMORY_HBM_competitor_001",
+        "name": "Advantest 愛德萬",
+        "business_line": "MEMORY_HBM",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。",
+        "ticker": "ATE"
+      },
+      {
+        "id": "MEMORY_HBM_competitor_002",
+        "name": "UniTest",
+        "business_line": "MEMORY_HBM",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。"
+      },
+      {
+        "id": "ADV_PACKAGING_competitor_001",
+        "name": "Advantest 愛德萬",
+        "business_line": "ADV_PACKAGING",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。",
+        "ticker": "ATE"
+      },
+      {
+        "id": "PHOTONICS_CPO_competitor_001",
+        "name": "Keysight 是德",
+        "business_line": "PHOTONICS_CPO",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。",
+        "ticker": "KEYS"
+      },
+      {
+        "id": "PHOTONICS_CPO_competitor_002",
+        "name": "Anritsu 安立",
+        "business_line": "PHOTONICS_CPO",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。"
+      },
+      {
+        "id": "MULTILANE_competitor_001",
+        "name": "Keysight 是德",
+        "business_line": "MULTILANE",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。",
+        "ticker": "KEYS"
+      },
+      {
+        "id": "MULTILANE_competitor_002",
+        "name": "Viavi",
+        "business_line": "MULTILANE",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。",
+        "ticker": "VIAV"
+      },
+      {
+        "id": "TITAN_HP_competitor_001",
+        "name": "Advantest 愛德萬",
+        "business_line": "TITAN_HP",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。",
+        "ticker": "ATE"
+      },
+      {
+        "id": "EDGE_AI_competitor_001",
+        "name": "Advantest 愛德萬",
+        "business_line": "EDGE_AI",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。",
+        "ticker": "ATE"
+      },
+      {
+        "id": "EDGE_AI_competitor_002",
+        "name": "Cohu",
+        "business_line": "EDGE_AI",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。",
+        "ticker": "COHU"
+      },
+      {
+        "id": "STORAGE_competitor_001",
+        "name": "Advantest 愛德萬",
+        "business_line": "STORAGE",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。",
+        "ticker": "ATE"
+      },
+      {
+        "id": "WIRELESS_competitor_001",
+        "name": "Keysight 是德",
+        "business_line": "WIRELESS",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。",
+        "ticker": "KEYS"
+      },
+      {
+        "id": "WIRELESS_competitor_002",
+        "name": "Anritsu 安立",
+        "business_line": "WIRELESS",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。"
+      },
+      {
+        "id": "AUTO_ANALOG_competitor_001",
+        "name": "Cohu",
+        "business_line": "AUTO_ANALOG",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。",
+        "ticker": "COHU"
+      },
+      {
+        "id": "AUTO_ANALOG_competitor_002",
+        "name": "Advantest 愛德萬",
+        "business_line": "AUTO_ANALOG",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。",
+        "ticker": "ATE"
+      },
+      {
+        "id": "BOARD_DEFENSE_competitor_001",
+        "name": "Keysight 是德",
+        "business_line": "BOARD_DEFENSE",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。",
+        "ticker": "KEYS"
+      },
+      {
+        "id": "ROBOT_UR_competitor_001",
+        "name": "FANUC 發那科",
+        "business_line": "ROBOT_UR",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。"
+      },
+      {
+        "id": "ROBOT_UR_competitor_002",
+        "name": "ABB Robotics",
+        "business_line": "ROBOT_UR",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。"
+      },
+      {
+        "id": "ROBOT_UR_competitor_003",
+        "name": "Doosan Robotics",
+        "business_line": "ROBOT_UR",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。"
+      },
+      {
+        "id": "ROBOT_MIR_competitor_001",
+        "name": "OMRON Automation",
+        "business_line": "ROBOT_MIR",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。"
+      },
+      {
+        "id": "ROBOT_MIR_competitor_002",
+        "name": "Geek+ 極智嘉",
+        "business_line": "ROBOT_MIR",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。"
+      },
+      {
+        "id": "MICROLED_competitor_001",
+        "name": "Chroma 致茂",
+        "business_line": "MICROLED",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。",
+        "ticker": "2360.TW"
+      },
+      {
+        "id": "TAIWAN_TEST_competitor_001",
+        "name": "Chroma 致茂",
+        "business_line": "TAIWAN_TEST",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。",
+        "ticker": "2360.TW"
+      },
+      {
+        "id": "TAIWAN_TEST_competitor_002",
+        "name": "MPI 旺矽",
+        "business_line": "TAIWAN_TEST",
+        "relationship": "competitor",
+        "details": "相關測試、量測或機器人產品有部分市場競爭；不同產品及應用不一定直接替代。",
+        "ticker": "6223.TW"
+      },
+      {
+        "id": "AI_COMPUTE_beneficiary_001",
+        "name": "京元電子",
+        "business_line": "AI_COMPUTE",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "2449.TW"
+      },
+      {
+        "id": "AI_COMPUTE_beneficiary_002",
+        "name": "旺矽",
+        "business_line": "AI_COMPUTE",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "6223.TW"
+      },
+      {
+        "id": "AI_COMPUTE_beneficiary_003",
+        "name": "穎崴",
+        "business_line": "AI_COMPUTE",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "6515.TW"
+      },
+      {
+        "id": "AI_COMPUTE_beneficiary_004",
+        "name": "精測",
+        "business_line": "AI_COMPUTE",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "6510.TW"
+      },
+      {
+        "id": "MEMORY_HBM_beneficiary_001",
+        "name": "旺矽",
+        "business_line": "MEMORY_HBM",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "6223.TW"
+      },
+      {
+        "id": "MEMORY_HBM_beneficiary_002",
+        "name": "穎崴",
+        "business_line": "MEMORY_HBM",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "6515.TW"
+      },
+      {
+        "id": "MEMORY_HBM_beneficiary_003",
+        "name": "力成",
+        "business_line": "MEMORY_HBM",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "6239.TW"
+      },
+      {
+        "id": "ADV_PACKAGING_beneficiary_001",
+        "name": "日月光投控",
+        "business_line": "ADV_PACKAGING",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "3711.TW"
+      },
+      {
+        "id": "ADV_PACKAGING_beneficiary_002",
+        "name": "京元電子",
+        "business_line": "ADV_PACKAGING",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "2449.TW"
+      },
+      {
+        "id": "ADV_PACKAGING_beneficiary_003",
+        "name": "欣興",
+        "business_line": "ADV_PACKAGING",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "3037.TW"
+      },
+      {
+        "id": "FORMFACTOR_beneficiary_001",
+        "name": "旺矽",
+        "business_line": "FORMFACTOR",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "6223.TW"
+      },
+      {
+        "id": "FORMFACTOR_beneficiary_002",
+        "name": "精測",
+        "business_line": "FORMFACTOR",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "6510.TW"
+      },
+      {
+        "id": "TECHNOPROBE_beneficiary_001",
+        "name": "穎崴",
+        "business_line": "TECHNOPROBE",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "6515.TW"
+      },
+      {
+        "id": "PHOTONICS_CPO_beneficiary_001",
+        "name": "上詮",
+        "business_line": "PHOTONICS_CPO",
+        "relationship": "beneficiary",
+        "details": "台灣光學互連／CPO生態觀察；無證據顯示此公司是Teradyne直接供應商或已獲CPO測試訂單。",
+        "ticker": "3363.TWO"
+      },
+      {
+        "id": "PHOTONICS_CPO_beneficiary_002",
+        "name": "聯亞",
+        "business_line": "PHOTONICS_CPO",
+        "relationship": "beneficiary",
+        "details": "台灣光學互連／CPO生態觀察；無證據顯示此公司是Teradyne直接供應商或已獲CPO測試訂單。",
+        "ticker": "3081.TWO"
+      },
+      {
+        "id": "PHOTONICS_CPO_beneficiary_003",
+        "name": "波若威",
+        "business_line": "PHOTONICS_CPO",
+        "relationship": "beneficiary",
+        "details": "台灣光學互連／CPO生態觀察；無證據顯示此公司是Teradyne直接供應商或已獲CPO測試訂單。",
+        "ticker": "3163.TWO"
+      },
+      {
+        "id": "PHOTONICS_CPO_beneficiary_004",
+        "name": "光聖",
+        "business_line": "PHOTONICS_CPO",
+        "relationship": "beneficiary",
+        "details": "台灣光學互連／CPO生態觀察；無證據顯示此公司是Teradyne直接供應商或已獲CPO測試訂單。",
+        "ticker": "6442.TW"
+      },
+      {
+        "id": "MULTILANE_beneficiary_001",
+        "name": "智邦",
+        "business_line": "MULTILANE",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "2345.TW"
+      },
+      {
+        "id": "MULTILANE_beneficiary_002",
+        "name": "華星光",
+        "business_line": "MULTILANE",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "4979.TWO"
+      },
+      {
+        "id": "TITAN_HP_beneficiary_001",
+        "name": "京元電子",
+        "business_line": "TITAN_HP",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "2449.TW"
+      },
+      {
+        "id": "TITAN_HP_beneficiary_002",
+        "name": "穎崴",
+        "business_line": "TITAN_HP",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "6515.TW"
+      },
+      {
+        "id": "EDGE_AI_beneficiary_001",
+        "name": "致茂",
+        "business_line": "EDGE_AI",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "2360.TW"
+      },
+      {
+        "id": "EDGE_AI_beneficiary_002",
+        "name": "矽格",
+        "business_line": "EDGE_AI",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "6257.TW"
+      },
+      {
+        "id": "STORAGE_beneficiary_001",
+        "name": "群聯",
+        "business_line": "STORAGE",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "8299.TWO"
+      },
+      {
+        "id": "STORAGE_beneficiary_002",
+        "name": "慧榮科技",
+        "business_line": "STORAGE",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "SIMO"
+      },
+      {
+        "id": "WIRELESS_beneficiary_001",
+        "name": "致茂",
+        "business_line": "WIRELESS",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "2360.TW"
+      },
+      {
+        "id": "AUTO_ANALOG_beneficiary_001",
+        "name": "致茂",
+        "business_line": "AUTO_ANALOG",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "2360.TW"
+      },
+      {
+        "id": "AUTO_ANALOG_beneficiary_002",
+        "name": "矽格",
+        "business_line": "AUTO_ANALOG",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "6257.TW"
+      },
+      {
+        "id": "BOARD_DEFENSE_beneficiary_001",
+        "name": "致茂",
+        "business_line": "BOARD_DEFENSE",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "2360.TW"
+      },
+      {
+        "id": "ROBOT_UR_beneficiary_001",
+        "name": "上銀",
+        "business_line": "ROBOT_UR",
+        "relationship": "beneficiary",
+        "details": "台灣工業自動化生態觀察，未證實供應Teradyne機器人產品。",
+        "ticker": "2049.TW"
+      },
+      {
+        "id": "ROBOT_UR_beneficiary_002",
+        "name": "台達電",
+        "business_line": "ROBOT_UR",
+        "relationship": "beneficiary",
+        "details": "台灣工業自動化生態觀察，未證實供應Teradyne機器人產品。",
+        "ticker": "2308.TW"
+      },
+      {
+        "id": "ROBOT_MIR_beneficiary_001",
+        "name": "台達電",
+        "business_line": "ROBOT_MIR",
+        "relationship": "beneficiary",
+        "details": "台灣工業自動化生態觀察，未證實供應Teradyne機器人產品。",
+        "ticker": "2308.TW"
+      },
+      {
+        "id": "ROBOT_MIR_beneficiary_002",
+        "name": "研華",
+        "business_line": "ROBOT_MIR",
+        "relationship": "beneficiary",
+        "details": "台灣工業自動化生態觀察，未證實供應Teradyne機器人產品。",
+        "ticker": "2395.TW"
+      },
+      {
+        "id": "MICROLED_beneficiary_001",
+        "name": "錼創科技-KY創",
+        "business_line": "MICROLED",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "6854.TW"
+      },
+      {
+        "id": "TAIWAN_TEST_beneficiary_001",
+        "name": "京元電子",
+        "business_line": "TAIWAN_TEST",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "2449.TW"
+      },
+      {
+        "id": "TAIWAN_TEST_beneficiary_002",
+        "name": "旺矽",
+        "business_line": "TAIWAN_TEST",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "6223.TW"
+      },
+      {
+        "id": "TAIWAN_TEST_beneficiary_003",
+        "name": "穎崴",
+        "business_line": "TAIWAN_TEST",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "6515.TW"
+      },
+      {
+        "id": "TAIWAN_TEST_beneficiary_004",
+        "name": "精測",
+        "business_line": "TAIWAN_TEST",
+        "relationship": "beneficiary",
+        "details": "相關半導體測試、探針、封裝或設備需求之產業受惠觀察；未取得Teradyne具名直接供應商或採購證據。",
+        "ticker": "6510.TW"
+      }
+    ],
+    "research_audit": {
+      "as_of": "2026-11-03",
+      "primary_sources": [
+        {
+          "type": "SEC_10K",
+          "url": "https://www.sec.gov/Archives/edgar/data/97210/000119312526059002/ter-20251231.htm"
+        },
+        {
+          "type": "SEC_10Q",
+          "url": "https://www.sec.gov/Archives/edgar/data/97210/000119312526441091/ter-20260927.htm"
+        },
+        {
+          "type": "SEC_8K_Q3",
+          "url": "https://investors.teradyne.com/sec-filings/all-sec-filings/content/0001193125-26-434981/ter-ex99_1.htm"
+        },
+        {
+          "type": "IR_Q3",
+          "url": "https://investors.teradyne.com/news-events/press-releases/detail/455/teradyne-reports-third-quarter-2026-results"
+        },
+        {
+          "type": "IR_TRANSCRIPT",
+          "url": "https://www.fool.com/earnings/call-transcripts/2026/10/28/teradyne-ter-q3-2026-earnings-call-transcript/"
+        },
+        {
+          "type": "OFFICIAL_NEWSROOM",
+          "url": "https://www.teradyne.com/company/newsroom/"
+        },
+        {
+          "type": "FORMFACTOR_COLLAB",
+          "url": "https://formfactorinc.gcs-web.com/news-releases/news-release-details/formfactor-and-teradyne-announce-strategic-collaboration"
+        },
+        {
+          "type": "ULTRAFLEX_INSTRUMENTS",
+          "url": "https://investors.teradyne.com/news-events/press-releases/detail/447/teradyne-launches-advanced-ultraflexplus-instruments-engineered-for-ai-and-data-center-computing-devices"
+        }
+      ],
+      "investor_metrics": {
+        "2026_Q3_revenue_usd_m": 1306,
+        "2026_Q3_semiconductor_test_usd_m": 1072,
+        "2026_Q3_product_test_usd_m": 138,
+        "2026_Q3_robotics_usd_m": 96,
+        "2026_Q3_memory_test_usd_m": 301,
+        "2026_Q3_gaap_eps_usd": 2.17,
+        "2026_Q4_revenue_guidance_usd_m_low": 1250,
+        "2026_Q4_revenue_guidance_usd_m_high": 1350
+      },
+      "coverage": [
+        {
+          "topic": "FormFactor 3億美元投資及CPO/HBM合作",
+          "status": "已涵蓋",
+          "caveat": "投資截至10-Q仍待完成；合作不代表商業化收入"
+        },
+        {
+          "topic": "MultiLane 2026合資",
+          "status": "已涵蓋",
+          "caveat": "產品測試成長不能全部歸因合資"
+        },
+        {
+          "topic": "Magnum E2、Titan HP、UltraFLEXplus S",
+          "status": "已涵蓋",
+          "caveat": "發表產品與量產客戶採用分開"
+        },
+        {
+          "topic": "CPO／矽光子測試",
+          "status": "已涵蓋",
+          "caveat": "管理層明言CPO測試時間與成本限制普及速度"
+        },
+        {
+          "topic": "AI記憶體與HBM測試",
+          "status": "已涵蓋",
+          "caveat": "301百萬美元為整體記憶體測試收入，不等於全數HBM"
+        },
+        {
+          "topic": "Technoprobe股權",
+          "status": "已涵蓋",
+          "caveat": "股權法投資與直接供應採購不同"
+        },
+        {
+          "topic": "台灣具名直接供應商",
+          "status": "證據不足",
+          "caveat": "不將京元電、旺矽、穎崴、精測視為已確認供應商"
+        },
+        {
+          "topic": "具名終端客戶",
+          "status": "證據不足",
+          "caveat": "10-Q揭露客戶集中度，但未據此推定NVIDIA、AMD、TSMC為直接買方"
+        },
+        {
+          "topic": "機器人獲利轉正",
+          "status": "已涵蓋",
+          "caveat": "單季獲利不等於長期穩定獲利"
+        }
+      ],
+      "reflection_rounds": [
+        {
+          "round": 1,
+          "focus": "90天熱門議題反向檢查",
+          "result": "補入FormFactor投資、MultiLane、Magnum E2、Titan HP、UltraFLEXplus S、MicroLED Iris100。"
+        },
+        {
+          "round": 2,
+          "focus": "十大投資人問題",
+          "result": "檢查營收、毛利、資本支出、競爭、技術、客戶、產能、供應鏈、催化劑與風險，並記錄AI測試需求集中度。"
+        },
+        {
+          "round": 3,
+          "focus": "技術與產品完整性",
+          "result": "拆分HBM、AI高電流ATE、KGD、CPO/NPO、SerDes、系統老化、Edge AI與機器人。"
+        },
+        {
+          "round": 4,
+          "focus": "反證與競爭",
+          "result": "CPO市場機會非量產收入，FormFactor投資未交割；台灣廠商不得未經證實列為供應商。"
+        },
+        {
+          "round": 5,
+          "focus": "缺漏審計",
+          "result": "無公開可確認具名終端客戶與台灣直接供應商，維持0 customer、0 supplier並揭露證據缺口。"
+        }
+      ]
+    }
   }
 }

@@ -211,5 +211,647 @@
       "數位內容成長"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "as_of": "2026-10-30",
+    "company": "Sandisk Corporation",
+    "symbol": "SNDK",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "SNDK Sandisk 產業鏈戰略地圖｜BiCS NAND、資料中心 SSD、HBF、台灣受惠股",
+      "description": "Sandisk SNDK 產業鏈解析：Kioxia 合資晶圓、企業 SSD、HBF、消費儲存、控制器與台灣 NAND 相關供應鏈。"
+    },
+    "business_lines": [
+      {
+        "id": "NAND",
+        "name": "BiCS NAND、Kioxia 合資晶圓與先進製程"
+      },
+      {
+        "id": "DATACENTER",
+        "name": "資料中心 SSD、雲端與 AI 儲存"
+      },
+      {
+        "id": "HBF",
+        "name": "HBF 高頻寬快閃與 AI 推論"
+      },
+      {
+        "id": "CLIENT",
+        "name": "PC、筆電與遊戲 SSD"
+      },
+      {
+        "id": "EMBEDDED",
+        "name": "行動、嵌入式、汽車與工業"
+      },
+      {
+        "id": "CONSUMER",
+        "name": "記憶卡、USB 與消費品牌"
+      },
+      {
+        "id": "CONTROLLER",
+        "name": "SSD 控制器、韌體與封裝測試"
+      },
+      {
+        "id": "CHANNEL",
+        "name": "全球通路、零售與 OEM 生態"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "competitor",
+      "supplier",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "NAND_supplier_001",
+        "name": "Kioxia Corporation（鎧俠）",
+        "business_line": "NAND",
+        "relationship": "supplier",
+        "details": "透過 Flash Ventures 合資體系提供 NAND 晶圓製造服務；雙方共同研發 BiCS 3D NAND 與 CBA 製程"
+      },
+      {
+        "id": "NAND_partner_001",
+        "name": "Kioxia Corporation（鎧俠）",
+        "business_line": "NAND",
+        "relationship": "partner",
+        "details": "Flash Partners、Flash Alliance、Flash Forward 三家合資企業共同開發及製造 NAND；四日市與北上工廠合作延長至 2034 年"
+      },
+      {
+        "id": "NAND_partner_002",
+        "name": "Flash Partners Ltd.",
+        "business_line": "NAND",
+        "relationship": "partner",
+        "details": "與鎧俠共同持有之 NAND 晶圓製造合資企業，屬內部製造合作體系"
+      },
+      {
+        "id": "NAND_partner_003",
+        "name": "Flash Alliance Ltd.",
+        "business_line": "NAND",
+        "relationship": "partner",
+        "details": "與鎧俠共同持有之 NAND 晶圓製造合資企業，屬內部製造合作體系"
+      },
+      {
+        "id": "NAND_partner_004",
+        "name": "Flash Forward Ltd.",
+        "business_line": "NAND",
+        "relationship": "partner",
+        "details": "與鎧俠共同持有之 NAND 晶圓製造合資企業，屬內部製造合作體系"
+      },
+      {
+        "id": "CONTROLLER_supplier_001",
+        "name": "JCET Group（長電科技）",
+        "business_line": "CONTROLLER",
+        "relationship": "supplier",
+        "details": "與 Sandisk 共同持有 SDSS 封裝測試合資企業；JCET 管理公司持股 80%，Sandisk 持股 20%"
+      },
+      {
+        "id": "CONTROLLER_partner_001",
+        "name": "SDSS 封裝測試合資企業",
+        "business_line": "CONTROLLER",
+        "relationship": "partner",
+        "details": "Sandisk 與 JCET 集團之封裝測試合作體系，為 NAND 產品後段製造提供產能"
+      },
+      {
+        "id": "NAND_competitor_001",
+        "name": "Samsung Electronics（三星電子）",
+        "business_line": "NAND",
+        "relationship": "competitor",
+        "details": "全球 NAND 製造與 3D V-NAND 技術競爭者"
+      },
+      {
+        "id": "NAND_competitor_002",
+        "name": "SK hynix（SK 海力士）",
+        "business_line": "NAND",
+        "relationship": "competitor",
+        "details": "全球 NAND 與高密度儲存技術競爭者"
+      },
+      {
+        "id": "NAND_competitor_003",
+        "name": "Micron Technology（美光）",
+        "business_line": "NAND",
+        "relationship": "competitor",
+        "details": "全球 3D NAND 晶圓、QLC 與資料中心儲存競爭者"
+      },
+      {
+        "id": "NAND_competitor_004",
+        "name": "YMTC（長江存儲）",
+        "business_line": "NAND",
+        "relationship": "competitor",
+        "details": "以 Xtacking 3D NAND 技術競爭快閃記憶體市場"
+      },
+      {
+        "id": "NAND_competitor_005",
+        "name": "Kioxia Holdings（鎧俠控股）",
+        "business_line": "NAND",
+        "relationship": "competitor",
+        "details": "雖為核心合資製造夥伴，亦在對外 NAND 與 SSD 產品市場存在競爭"
+      },
+      {
+        "id": "DATACENTER_competitor_001",
+        "name": "Samsung Electronics（三星電子）",
+        "business_line": "DATACENTER",
+        "relationship": "competitor",
+        "details": "以 PM 系列企業級 SSD 與高容量 QLC SSD 競爭"
+      },
+      {
+        "id": "DATACENTER_competitor_002",
+        "name": "Micron Technology（美光）",
+        "business_line": "DATACENTER",
+        "relationship": "competitor",
+        "details": "以資料中心 NVMe SSD、QLC SSD 與企業儲存解決方案競爭"
+      },
+      {
+        "id": "DATACENTER_competitor_003",
+        "name": "SK hynix / Solidigm",
+        "business_line": "DATACENTER",
+        "relationship": "competitor",
+        "details": "以 D5、D7 等企業 SSD 與高容量 QLC 平台競爭"
+      },
+      {
+        "id": "DATACENTER_competitor_004",
+        "name": "Kioxia（鎧俠）",
+        "business_line": "DATACENTER",
+        "relationship": "competitor",
+        "details": "以 CM、CD 等企業級 SSD 競爭雲端與伺服器儲存採購"
+      },
+      {
+        "id": "DATACENTER_competitor_005",
+        "name": "Pure Storage（Pure Storage）",
+        "business_line": "DATACENTER",
+        "relationship": "competitor",
+        "details": "以全快閃儲存系統與大型企業儲存架構競爭部分儲存支出"
+      },
+      {
+        "id": "DATACENTER_competitor_006",
+        "name": "Seagate Technology（希捷）",
+        "business_line": "DATACENTER",
+        "relationship": "competitor",
+        "details": "以近線 HDD 與資料中心高容量儲存方案競爭部分容量型儲存預算"
+      },
+      {
+        "id": "DATACENTER_competitor_007",
+        "name": "Western Digital（威騰）",
+        "business_line": "DATACENTER",
+        "relationship": "competitor",
+        "details": "以資料中心 HDD 競爭大規模容量型儲存支出；2025 年後與 Sandisk 為獨立上市公司"
+      },
+      {
+        "id": "HBF_competitor_001",
+        "name": "SK hynix（SK 海力士）",
+        "business_line": "HBF",
+        "relationship": "competitor",
+        "details": "以 HBM 與記憶體階層解決方案競爭 AI 系統的高頻寬資料存取預算；產品技術定位不同"
+      },
+      {
+        "id": "HBF_competitor_002",
+        "name": "Samsung Electronics（三星電子）",
+        "business_line": "HBF",
+        "relationship": "competitor",
+        "details": "以 HBM、企業 SSD 與 AI 記憶體階層技術競爭"
+      },
+      {
+        "id": "HBF_competitor_003",
+        "name": "Micron Technology（美光）",
+        "business_line": "HBF",
+        "relationship": "competitor",
+        "details": "以 HBM、資料中心 SSD 與記憶體架構產品競爭 AI 儲存需求"
+      },
+      {
+        "id": "CLIENT_competitor_001",
+        "name": "Samsung Electronics（三星電子）",
+        "business_line": "CLIENT",
+        "relationship": "competitor",
+        "details": "990／9100 等消費與高效能 NVMe SSD 系列"
+      },
+      {
+        "id": "CLIENT_competitor_002",
+        "name": "Crucial（美光）",
+        "business_line": "CLIENT",
+        "relationship": "competitor",
+        "details": "以 Crucial 品牌消費級 NVMe SSD 競爭零售及升級市場"
+      },
+      {
+        "id": "CLIENT_competitor_003",
+        "name": "Kingston Technology（金士頓）",
+        "business_line": "CLIENT",
+        "relationship": "competitor",
+        "details": "以 KC、FURY 與 NV 系列 SSD 競爭 PC 與遊戲儲存市場"
+      },
+      {
+        "id": "CLIENT_competitor_004",
+        "name": "ADATA Technology（威剛，3260）",
+        "business_line": "CLIENT",
+        "relationship": "competitor",
+        "details": "以 XPG 與 ADATA 品牌 SSD 競爭 PC 升級與遊戲市場"
+      },
+      {
+        "id": "CLIENT_competitor_005",
+        "name": "TeamGroup（十銓，4967）",
+        "business_line": "CLIENT",
+        "relationship": "competitor",
+        "details": "以 T-FORCE 與 T-CREATE SSD 競爭遊戲與創作者市場"
+      },
+      {
+        "id": "CLIENT_competitor_006",
+        "name": "Corsair（海盜船）",
+        "business_line": "CLIENT",
+        "relationship": "competitor",
+        "details": "以 MP 系列 NVMe SSD 競爭高階 PC 儲存"
+      },
+      {
+        "id": "CLIENT_competitor_007",
+        "name": "Seagate Technology（希捷）",
+        "business_line": "CLIENT",
+        "relationship": "competitor",
+        "details": "以 FireCuda SSD 競爭高階遊戲與消費儲存"
+      },
+      {
+        "id": "CLIENT_competitor_008",
+        "name": "Lexar（雷克沙）",
+        "business_line": "CLIENT",
+        "relationship": "competitor",
+        "details": "以 NM 與 Professional 系列 SSD 競爭消費儲存"
+      },
+      {
+        "id": "EMBEDDED_competitor_001",
+        "name": "Samsung Electronics（三星電子）",
+        "business_line": "EMBEDDED",
+        "relationship": "competitor",
+        "details": "以 eUFS、車規 NAND 與嵌入式快閃競爭"
+      },
+      {
+        "id": "EMBEDDED_competitor_002",
+        "name": "Micron Technology（美光）",
+        "business_line": "EMBEDDED",
+        "relationship": "competitor",
+        "details": "以車用、工業用與行動裝置 NAND／UFS 競爭"
+      },
+      {
+        "id": "EMBEDDED_competitor_003",
+        "name": "Kioxia（鎧俠）",
+        "business_line": "EMBEDDED",
+        "relationship": "competitor",
+        "details": "以 UFS、e-MMC 與車用嵌入式 NAND 競爭"
+      },
+      {
+        "id": "EMBEDDED_competitor_004",
+        "name": "SK hynix（SK 海力士）",
+        "business_line": "EMBEDDED",
+        "relationship": "competitor",
+        "details": "以行動 UFS、嵌入式 NAND 產品競爭"
+      },
+      {
+        "id": "CONSUMER_competitor_001",
+        "name": "Kingston Technology（金士頓）",
+        "business_line": "CONSUMER",
+        "relationship": "competitor",
+        "details": "以 Canvas 記憶卡與 DataTraveler 隨身碟競爭"
+      },
+      {
+        "id": "CONSUMER_competitor_002",
+        "name": "Samsung Electronics（三星電子）",
+        "business_line": "CONSUMER",
+        "relationship": "competitor",
+        "details": "以 EVO、PRO 記憶卡與 USB 隨身碟競爭"
+      },
+      {
+        "id": "CONSUMER_competitor_003",
+        "name": "Lexar（雷克沙）",
+        "business_line": "CONSUMER",
+        "relationship": "competitor",
+        "details": "以 Professional 記憶卡、USB 與外接儲存競爭"
+      },
+      {
+        "id": "CONSUMER_competitor_004",
+        "name": "Transcend（創見，2451）",
+        "business_line": "CONSUMER",
+        "relationship": "competitor",
+        "details": "以記憶卡、USB 與外接 SSD 競爭消費儲存"
+      },
+      {
+        "id": "CONSUMER_competitor_005",
+        "name": "ADATA（威剛，3260）",
+        "business_line": "CONSUMER",
+        "relationship": "competitor",
+        "details": "以記憶卡、USB 與外接 SSD 競爭"
+      },
+      {
+        "id": "CONSUMER_competitor_006",
+        "name": "PNY Technologies",
+        "business_line": "CONSUMER",
+        "relationship": "competitor",
+        "details": "以記憶卡、USB 隨身碟與外接 SSD 競爭"
+      },
+      {
+        "id": "CONSUMER_competitor_007",
+        "name": "TeamGroup（十銓，4967）",
+        "business_line": "CONSUMER",
+        "relationship": "competitor",
+        "details": "以記憶卡、隨身碟與消費型 SSD 競爭"
+      },
+      {
+        "id": "CHANNEL_competitor_001",
+        "name": "Kingston Technology（金士頓）",
+        "business_line": "CHANNEL",
+        "relationship": "competitor",
+        "details": "以全球經銷與零售通路競爭記憶體產品貨架及企業採購"
+      },
+      {
+        "id": "CHANNEL_competitor_002",
+        "name": "Samsung Electronics（三星電子）",
+        "business_line": "CHANNEL",
+        "relationship": "competitor",
+        "details": "以全球 OEM、電商與零售渠道競爭儲存產品"
+      },
+      {
+        "id": "CHANNEL_competitor_003",
+        "name": "Lexar（雷克沙）",
+        "business_line": "CHANNEL",
+        "relationship": "competitor",
+        "details": "以全球專業攝影與消費通路競爭"
+      },
+      {
+        "id": "CONTROLLER_competitor_001",
+        "name": "Phison Electronics（群聯，8299）",
+        "business_line": "CONTROLLER",
+        "relationship": "competitor",
+        "details": "以 SSD 控制器、韌體及整合儲存解決方案競爭部分技術平台"
+      },
+      {
+        "id": "CONTROLLER_competitor_002",
+        "name": "Silicon Motion（慧榮科技，SIMO）",
+        "business_line": "CONTROLLER",
+        "relationship": "competitor",
+        "details": "以 SSD、eMMC 與 UFS 控制器技術競爭相關儲存控制器市場"
+      },
+      {
+        "id": "CHANNEL_partner_001",
+        "name": "Amazon",
+        "business_line": "CHANNEL",
+        "relationship": "partner",
+        "details": "Sandisk 品牌記憶卡、SSD 與 USB 產品的重要線上零售通路"
+      },
+      {
+        "id": "CHANNEL_partner_002",
+        "name": "Best Buy",
+        "business_line": "CHANNEL",
+        "relationship": "partner",
+        "details": "Sandisk 消費儲存產品在北美的零售通路"
+      },
+      {
+        "id": "CHANNEL_partner_003",
+        "name": "B&H Photo Video",
+        "business_line": "CHANNEL",
+        "relationship": "partner",
+        "details": "Sandisk 專業攝影記憶卡與外接儲存產品零售通路"
+      },
+      {
+        "id": "CHANNEL_partner_004",
+        "name": "Newegg",
+        "business_line": "CHANNEL",
+        "relationship": "partner",
+        "details": "Sandisk PC SSD、記憶卡與 USB 產品電商銷售通路"
+      },
+      {
+        "id": "CHANNEL_partner_005",
+        "name": "Walmart",
+        "business_line": "CHANNEL",
+        "relationship": "partner",
+        "details": "Sandisk 消費儲存產品零售通路"
+      },
+      {
+        "id": "NAND_beneficiary_001",
+        "name": "台積電（2330）",
+        "business_line": "NAND",
+        "relationship": "beneficiary",
+        "details": "NAND 控制器與儲存運算晶片之晶圓代工產業受惠股"
+      },
+      {
+        "id": "NAND_beneficiary_002",
+        "name": "聯電（2303）",
+        "business_line": "NAND",
+        "relationship": "beneficiary",
+        "details": "成熟製程與特殊製程半導體代工受惠於記憶體周邊晶片需求"
+      },
+      {
+        "id": "NAND_beneficiary_003",
+        "name": "旺宏（2337）",
+        "business_line": "NAND",
+        "relationship": "beneficiary",
+        "details": "非揮發性記憶體廠，受惠記憶體產業景氣與價格循環；產品以 NOR 為主"
+      },
+      {
+        "id": "NAND_beneficiary_004",
+        "name": "華邦電（2344）",
+        "business_line": "NAND",
+        "relationship": "beneficiary",
+        "details": "利基型記憶體廠，受惠記憶體供需改善；DRAM／NOR 業務與 Sandisk NAND 不同"
+      },
+      {
+        "id": "NAND_beneficiary_005",
+        "name": "南亞科（2408）",
+        "business_line": "NAND",
+        "relationship": "beneficiary",
+        "details": "DRAM 廠，屬記憶體景氣與資金輪動受惠標的"
+      },
+      {
+        "id": "NAND_beneficiary_006",
+        "name": "力積電（6770）",
+        "business_line": "NAND",
+        "relationship": "beneficiary",
+        "details": "記憶體相關製造與晶圓代工題材受惠"
+      },
+      {
+        "id": "DATACENTER_beneficiary_001",
+        "name": "群聯（8299）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "企業 SSD 控制器、韌體與 NAND 儲存平台受惠 AI 資料中心高容量快閃需求；同時在部分控制器市場競爭"
+      },
+      {
+        "id": "DATACENTER_beneficiary_002",
+        "name": "慧榮科技（SIMO）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "SSD 控制器設計受惠企業及用戶端 NAND 出貨成長"
+      },
+      {
+        "id": "DATACENTER_beneficiary_003",
+        "name": "宜鼎（5289）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "工業級 SSD 與邊緣 AI 儲存受惠 NAND 容量、可靠度需求提升"
+      },
+      {
+        "id": "DATACENTER_beneficiary_004",
+        "name": "宇瞻（8271）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "工業 SSD 與企業儲存模組受惠 NAND 需求與產品升級"
+      },
+      {
+        "id": "DATACENTER_beneficiary_005",
+        "name": "創見（2451）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "工業 SSD、企業級儲存模組受惠資料中心與工控快閃需求"
+      },
+      {
+        "id": "HBF_beneficiary_001",
+        "name": "群聯（8299）",
+        "business_line": "HBF",
+        "relationship": "beneficiary",
+        "details": "以 AI 儲存與控制器架構參與 GPU／NAND 儲存階層擴張趨勢"
+      },
+      {
+        "id": "HBF_beneficiary_002",
+        "name": "宜鼎（5289）",
+        "business_line": "HBF",
+        "relationship": "beneficiary",
+        "details": "工業與 AI 邊緣儲存產品受惠記憶體階層與推論資料快取需求"
+      },
+      {
+        "id": "CLIENT_beneficiary_001",
+        "name": "威剛（3260）",
+        "business_line": "CLIENT",
+        "relationship": "beneficiary",
+        "details": "消費級 SSD、DRAM 模組與 NAND 價格循環受惠，亦為 Sandisk 競爭品牌"
+      },
+      {
+        "id": "CLIENT_beneficiary_002",
+        "name": "十銓（4967）",
+        "business_line": "CLIENT",
+        "relationship": "beneficiary",
+        "details": "遊戲與創作者 SSD 品牌受惠 PC 儲存升級，亦為 Sandisk 競爭品牌"
+      },
+      {
+        "id": "CLIENT_beneficiary_003",
+        "name": "廣穎（4973）",
+        "business_line": "CLIENT",
+        "relationship": "beneficiary",
+        "details": "消費與商用 SSD、記憶卡產品受惠 NAND 儲存需求"
+      },
+      {
+        "id": "CLIENT_beneficiary_004",
+        "name": "宇瞻（8271）",
+        "business_line": "CLIENT",
+        "relationship": "beneficiary",
+        "details": "工業及消費 SSD 受惠 SSD 滲透率與儲存升級"
+      },
+      {
+        "id": "CLIENT_beneficiary_005",
+        "name": "創見（2451）",
+        "business_line": "CLIENT",
+        "relationship": "beneficiary",
+        "details": "SSD 與記憶卡受惠 NAND 價格及容量升級，亦在消費產品競爭"
+      },
+      {
+        "id": "EMBEDDED_beneficiary_001",
+        "name": "宜鼎（5289）",
+        "business_line": "EMBEDDED",
+        "relationship": "beneficiary",
+        "details": "車載、工控、邊緣 AI 嵌入式儲存受惠長生命週期與高可靠度需求"
+      },
+      {
+        "id": "EMBEDDED_beneficiary_002",
+        "name": "宇瞻（8271）",
+        "business_line": "EMBEDDED",
+        "relationship": "beneficiary",
+        "details": "工業級 eMMC、SSD 與儲存模組受惠車用／工控儲存需求"
+      },
+      {
+        "id": "EMBEDDED_beneficiary_003",
+        "name": "創見（2451）",
+        "business_line": "EMBEDDED",
+        "relationship": "beneficiary",
+        "details": "工業儲存及嵌入式快閃產品受惠工控與邊緣裝置需求"
+      },
+      {
+        "id": "CONSUMER_beneficiary_001",
+        "name": "威剛（3260）",
+        "business_line": "CONSUMER",
+        "relationship": "beneficiary",
+        "details": "記憶卡、USB 與外接 SSD 品牌受惠 NAND 需求及價格變化；亦為競爭者"
+      },
+      {
+        "id": "CONSUMER_beneficiary_002",
+        "name": "十銓（4967）",
+        "business_line": "CONSUMER",
+        "relationship": "beneficiary",
+        "details": "記憶卡、USB 與 SSD 品牌受惠消費儲存需求；亦為競爭者"
+      },
+      {
+        "id": "CONSUMER_beneficiary_003",
+        "name": "創見（2451）",
+        "business_line": "CONSUMER",
+        "relationship": "beneficiary",
+        "details": "記憶卡、USB 與外接儲存受惠攝影與消費儲存需求；亦為競爭者"
+      },
+      {
+        "id": "CONSUMER_beneficiary_004",
+        "name": "廣穎（4973）",
+        "business_line": "CONSUMER",
+        "relationship": "beneficiary",
+        "details": "記憶卡、USB 與外接 SSD 受惠消費儲存升級"
+      },
+      {
+        "id": "CONTROLLER_beneficiary_001",
+        "name": "群聯（8299）",
+        "business_line": "CONTROLLER",
+        "relationship": "beneficiary",
+        "details": "NAND 控制器與 SSD 韌體平台受惠 NAND 容量、通道數與效能提升"
+      },
+      {
+        "id": "CONTROLLER_beneficiary_002",
+        "name": "慧榮科技（SIMO）",
+        "business_line": "CONTROLLER",
+        "relationship": "beneficiary",
+        "details": "SSD、eMMC 與 UFS 控制器受惠 NAND 產業出貨及產品升級"
+      },
+      {
+        "id": "CONTROLLER_beneficiary_003",
+        "name": "點序（6485）",
+        "business_line": "CONTROLLER",
+        "relationship": "beneficiary",
+        "details": "快閃記憶體控制晶片受惠儲存介面與控制器需求"
+      },
+      {
+        "id": "CONTROLLER_beneficiary_004",
+        "name": "安國（8054）",
+        "business_line": "CONTROLLER",
+        "relationship": "beneficiary",
+        "details": "快閃記憶體控制器及相關 IC 受惠消費儲存應用"
+      },
+      {
+        "id": "CONTROLLER_beneficiary_005",
+        "name": "智微（4925）",
+        "business_line": "CONTROLLER",
+        "relationship": "beneficiary",
+        "details": "儲存介面與控制器相關晶片受惠 SSD／USB 高速傳輸升級"
+      },
+      {
+        "id": "CHANNEL_beneficiary_001",
+        "name": "威剛（3260）",
+        "business_line": "CHANNEL",
+        "relationship": "beneficiary",
+        "details": "全球儲存品牌及通路商，受惠 NAND 儲存產品市場擴張"
+      },
+      {
+        "id": "CHANNEL_beneficiary_002",
+        "name": "創見（2451）",
+        "business_line": "CHANNEL",
+        "relationship": "beneficiary",
+        "details": "全球記憶卡、SSD 通路及工業儲存品牌，受惠市場滲透"
+      },
+      {
+        "id": "CHANNEL_beneficiary_003",
+        "name": "十銓（4967）",
+        "business_line": "CHANNEL",
+        "relationship": "beneficiary",
+        "details": "國際消費與電競儲存通路品牌，受惠 NAND 產品需求"
+      }
+    ]
   }
 }

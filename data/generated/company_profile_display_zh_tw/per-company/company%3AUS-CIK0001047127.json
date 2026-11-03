@@ -226,5 +226,749 @@
       "微型化"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-03",
+    "company": "Amkor Technology, Inc.",
+    "symbol": "AMKR",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "AMKR Amkor 先進封裝、NVIDIA AI、TSMC 與 Arizona 產業鏈",
+      "description": "以 SEC 10-K/10-Q、2026Q3 法說與官方合作公告為基礎，分析 NVIDIA 30 億美元多年協議、Arizona 120 億美元投資、TSMC 十年合作、2.5D、SWIFT、HBM 與台灣封裝設備供應鏈；明確區分已確認交易與潛在受惠。"
+    },
+    "business_lines": [
+      {
+        "id": "AI_HPC_25D",
+        "name": "AI/HPC 2.5D 異質整合與先進封裝"
+      },
+      {
+        "id": "NVIDIA_CAPACITY",
+        "name": "NVIDIA AI 封裝產能與預付款"
+      },
+      {
+        "id": "ARIZONA_US",
+        "name": "Arizona 美國先進封裝園區"
+      },
+      {
+        "id": "KOREA_CAPACITY",
+        "name": "韓國先進封裝產能"
+      },
+      {
+        "id": "TSMC_COLLAB",
+        "name": "TSMC 美國晶圓製造與封裝合作"
+      },
+      {
+        "id": "SWIFT_FANOUT",
+        "name": "SWIFT 高密度扇出封裝"
+      },
+      {
+        "id": "SCONNECT",
+        "name": "S-Connect 晶片互連"
+      },
+      {
+        "id": "HBM_MEMORY",
+        "name": "HBM 與記憶體封裝"
+      },
+      {
+        "id": "WAFER_LEVEL",
+        "name": "晶圓級凸塊與探針"
+      },
+      {
+        "id": "TEST_BURNIN",
+        "name": "先進測試、老化與系統級測試"
+      },
+      {
+        "id": "MOBILE_SIP",
+        "name": "行動裝置與 SiP"
+      },
+      {
+        "id": "AUTO_POWER",
+        "name": "汽車、工業與功率半導體"
+      },
+      {
+        "id": "CPO_OPTICAL",
+        "name": "CPO／矽光子封裝潛在機會"
+      },
+      {
+        "id": "SUBSTRATES",
+        "name": "ABF／封裝基板及材料"
+      },
+      {
+        "id": "CAPEX_CASHFLOW",
+        "name": "資本支出、資金與產能利用率"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "NVIDIA_CAPACITY_customer_001",
+        "name": "NVIDIA",
+        "business_line": "NVIDIA_CAPACITY",
+        "relationship": "customer",
+        "details": "2026-10-21 官方確認美國與韓國多年協議合計30億美元，含產能擴張預付款；不可直接視為已認列營收。",
+        "ticker": "NVDA",
+        "source_url": "https://ir.amkor.com/news-releases/news-release-details/amkor-technology-and-nvidia-advance-strategic-partnership-ai"
+      },
+      {
+        "id": "NVIDIA_CAPACITY_partner_001",
+        "name": "NVIDIA",
+        "business_line": "NVIDIA_CAPACITY",
+        "relationship": "partner",
+        "details": "共同規劃 AI 加速運算封裝及測試技術與長期產能；同時為已確認商業客戶。",
+        "ticker": "NVDA",
+        "source_url": "https://ir.amkor.com/news-releases/news-release-details/amkor-technology-and-nvidia-advance-strategic-partnership-ai"
+      },
+      {
+        "id": "TSMC_COLLAB_partner_001",
+        "name": "TSMC 台積電",
+        "business_line": "TSMC_COLLAB",
+        "relationship": "partner",
+        "details": "2026-06-16 十年協議建立台積電向 Amkor 採購先進封裝及測試服務的合作框架；不等於保證採購額。",
+        "ticker": "TSM",
+        "source_url": "https://ir.amkor.com/news-releases/news-release-details/tsmc-and-amkor-technology-announce-long-term-partnership"
+      },
+      {
+        "id": "TSMC_COLLAB_customer_001",
+        "name": "TSMC 台積電",
+        "business_line": "TSMC_COLLAB",
+        "relationship": "customer",
+        "details": "十年協議明確建立向 Amkor 採購先進封裝與測試服務框架；實際訂單與營收仍須區分。",
+        "ticker": "TSM",
+        "source_url": "https://ir.amkor.com/news-releases/news-release-details/tsmc-and-amkor-technology-announce-long-term-partnership"
+      },
+      {
+        "id": "ARIZONA_US_partner_001",
+        "name": "NVIDIA",
+        "business_line": "ARIZONA_US",
+        "relationship": "partner",
+        "details": "支持美國先進封裝產能擴張的多年協議，Arizona 第二期仍屬建設規劃。",
+        "ticker": "NVDA",
+        "source_url": "https://ir.amkor.com/news-releases/news-release-details/amkor-technology-and-nvidia-advance-strategic-partnership-ai"
+      },
+      {
+        "id": "ARIZONA_US_partner_002",
+        "name": "TSMC 台積電",
+        "business_line": "ARIZONA_US",
+        "relationship": "partner",
+        "details": "Arizona 晶圓製造與 Amkor 封裝測試銜接的官方合作框架。",
+        "ticker": "TSM",
+        "source_url": "https://ir.amkor.com/news-releases/news-release-details/tsmc-and-amkor-technology-announce-long-term-partnership"
+      },
+      {
+        "id": "KOREA_CAPACITY_partner_001",
+        "name": "NVIDIA",
+        "business_line": "KOREA_CAPACITY",
+        "relationship": "partner",
+        "details": "2026年10月追加13億美元協議支持韓國產能；屬長期產能安排，非當期收入。",
+        "ticker": "NVDA",
+        "source_url": "https://ir.amkor.com/news-releases/news-release-details/amkor-technology-and-nvidia-advance-strategic-partnership-ai"
+      },
+      {
+        "id": "AI_HPC_25D_competitor_001",
+        "name": "ASE Technology 日月光投控",
+        "business_line": "AI_HPC_25D",
+        "relationship": "competitor",
+        "details": "在相關封裝、測試或異質整合產品存在部分業務競爭；不代表所有產品線直接競爭。",
+        "ticker": "ASX"
+      },
+      {
+        "id": "AI_HPC_25D_competitor_002",
+        "name": "JCET 長電科技",
+        "business_line": "AI_HPC_25D",
+        "relationship": "competitor",
+        "details": "在相關封裝、測試或異質整合產品存在部分業務競爭；不代表所有產品線直接競爭。"
+      },
+      {
+        "id": "AI_HPC_25D_competitor_003",
+        "name": "Tongfu Microelectronics 通富微電",
+        "business_line": "AI_HPC_25D",
+        "relationship": "competitor",
+        "details": "在相關封裝、測試或異質整合產品存在部分業務競爭；不代表所有產品線直接競爭。"
+      },
+      {
+        "id": "ARIZONA_US_competitor_001",
+        "name": "Intel Foundry 封裝",
+        "business_line": "ARIZONA_US",
+        "relationship": "competitor",
+        "details": "在相關封裝、測試或異質整合產品存在部分業務競爭；不代表所有產品線直接競爭。",
+        "ticker": "INTC"
+      },
+      {
+        "id": "SWIFT_FANOUT_competitor_001",
+        "name": "ASE Technology 日月光投控",
+        "business_line": "SWIFT_FANOUT",
+        "relationship": "competitor",
+        "details": "在相關封裝、測試或異質整合產品存在部分業務競爭；不代表所有產品線直接競爭。",
+        "ticker": "ASX"
+      },
+      {
+        "id": "SWIFT_FANOUT_competitor_002",
+        "name": "JCET 長電科技",
+        "business_line": "SWIFT_FANOUT",
+        "relationship": "competitor",
+        "details": "在相關封裝、測試或異質整合產品存在部分業務競爭；不代表所有產品線直接競爭。"
+      },
+      {
+        "id": "SWIFT_FANOUT_competitor_003",
+        "name": "TSMC InFO / CoWoS",
+        "business_line": "SWIFT_FANOUT",
+        "relationship": "competitor",
+        "details": "在相關封裝、測試或異質整合產品存在部分業務競爭；不代表所有產品線直接競爭。",
+        "ticker": "TSM"
+      },
+      {
+        "id": "SCONNECT_competitor_001",
+        "name": "ASE Technology 日月光投控",
+        "business_line": "SCONNECT",
+        "relationship": "competitor",
+        "details": "在相關封裝、測試或異質整合產品存在部分業務競爭；不代表所有產品線直接競爭。",
+        "ticker": "ASX"
+      },
+      {
+        "id": "SCONNECT_competitor_002",
+        "name": "Intel EMIB / Foveros",
+        "business_line": "SCONNECT",
+        "relationship": "competitor",
+        "details": "在相關封裝、測試或異質整合產品存在部分業務競爭；不代表所有產品線直接競爭。",
+        "ticker": "INTC"
+      },
+      {
+        "id": "HBM_MEMORY_competitor_001",
+        "name": "SK hynix 記憶體封裝",
+        "business_line": "HBM_MEMORY",
+        "relationship": "competitor",
+        "details": "在相關封裝、測試或異質整合產品存在部分業務競爭；不代表所有產品線直接競爭。"
+      },
+      {
+        "id": "HBM_MEMORY_competitor_002",
+        "name": "Samsung Electronics 封裝",
+        "business_line": "HBM_MEMORY",
+        "relationship": "competitor",
+        "details": "在相關封裝、測試或異質整合產品存在部分業務競爭；不代表所有產品線直接競爭。"
+      },
+      {
+        "id": "HBM_MEMORY_competitor_003",
+        "name": "Powertech Technology 力成",
+        "business_line": "HBM_MEMORY",
+        "relationship": "competitor",
+        "details": "在相關封裝、測試或異質整合產品存在部分業務競爭；不代表所有產品線直接競爭。",
+        "ticker": "6239.TW"
+      },
+      {
+        "id": "WAFER_LEVEL_competitor_001",
+        "name": "ASE Technology 日月光投控",
+        "business_line": "WAFER_LEVEL",
+        "relationship": "competitor",
+        "details": "在相關封裝、測試或異質整合產品存在部分業務競爭；不代表所有產品線直接競爭。",
+        "ticker": "ASX"
+      },
+      {
+        "id": "WAFER_LEVEL_competitor_002",
+        "name": "ChipMOS 南茂",
+        "business_line": "WAFER_LEVEL",
+        "relationship": "competitor",
+        "details": "在相關封裝、測試或異質整合產品存在部分業務競爭；不代表所有產品線直接競爭。",
+        "ticker": "8150.TW"
+      },
+      {
+        "id": "TEST_BURNIN_competitor_001",
+        "name": "ASE Technology 日月光投控",
+        "business_line": "TEST_BURNIN",
+        "relationship": "competitor",
+        "details": "在相關封裝、測試或異質整合產品存在部分業務競爭；不代表所有產品線直接競爭。",
+        "ticker": "ASX"
+      },
+      {
+        "id": "TEST_BURNIN_competitor_002",
+        "name": "Powertech Technology 力成",
+        "business_line": "TEST_BURNIN",
+        "relationship": "competitor",
+        "details": "在相關封裝、測試或異質整合產品存在部分業務競爭；不代表所有產品線直接競爭。",
+        "ticker": "6239.TW"
+      },
+      {
+        "id": "TEST_BURNIN_competitor_003",
+        "name": "King Yuan Electronics 京元電子",
+        "business_line": "TEST_BURNIN",
+        "relationship": "competitor",
+        "details": "在相關封裝、測試或異質整合產品存在部分業務競爭；不代表所有產品線直接競爭。",
+        "ticker": "2449.TW"
+      },
+      {
+        "id": "MOBILE_SIP_competitor_001",
+        "name": "ASE Technology 日月光投控",
+        "business_line": "MOBILE_SIP",
+        "relationship": "competitor",
+        "details": "在相關封裝、測試或異質整合產品存在部分業務競爭；不代表所有產品線直接競爭。",
+        "ticker": "ASX"
+      },
+      {
+        "id": "MOBILE_SIP_competitor_002",
+        "name": "JCET 長電科技",
+        "business_line": "MOBILE_SIP",
+        "relationship": "competitor",
+        "details": "在相關封裝、測試或異質整合產品存在部分業務競爭；不代表所有產品線直接競爭。"
+      },
+      {
+        "id": "AUTO_POWER_competitor_001",
+        "name": "ASE Technology 日月光投控",
+        "business_line": "AUTO_POWER",
+        "relationship": "competitor",
+        "details": "在相關封裝、測試或異質整合產品存在部分業務競爭；不代表所有產品線直接競爭。",
+        "ticker": "ASX"
+      },
+      {
+        "id": "AUTO_POWER_competitor_002",
+        "name": "UTAC",
+        "business_line": "AUTO_POWER",
+        "relationship": "competitor",
+        "details": "在相關封裝、測試或異質整合產品存在部分業務競爭；不代表所有產品線直接競爭。"
+      },
+      {
+        "id": "CPO_OPTICAL_competitor_001",
+        "name": "ASE Technology 日月光投控",
+        "business_line": "CPO_OPTICAL",
+        "relationship": "competitor",
+        "details": "在相關封裝、測試或異質整合產品存在部分業務競爭；不代表所有產品線直接競爭。",
+        "ticker": "ASX"
+      },
+      {
+        "id": "CPO_OPTICAL_competitor_002",
+        "name": "TSMC COUPE",
+        "business_line": "CPO_OPTICAL",
+        "relationship": "competitor",
+        "details": "在相關封裝、測試或異質整合產品存在部分業務競爭；不代表所有產品線直接競爭。",
+        "ticker": "TSM"
+      },
+      {
+        "id": "AI_HPC_25D_beneficiary_001",
+        "name": "欣興",
+        "business_line": "AI_HPC_25D",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "3037.TW"
+      },
+      {
+        "id": "AI_HPC_25D_beneficiary_002",
+        "name": "南電",
+        "business_line": "AI_HPC_25D",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "8046.TW"
+      },
+      {
+        "id": "AI_HPC_25D_beneficiary_003",
+        "name": "景碩",
+        "business_line": "AI_HPC_25D",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "3189.TW"
+      },
+      {
+        "id": "AI_HPC_25D_beneficiary_004",
+        "name": "弘塑",
+        "business_line": "AI_HPC_25D",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "3131.TW"
+      },
+      {
+        "id": "NVIDIA_CAPACITY_beneficiary_001",
+        "name": "萬潤",
+        "business_line": "NVIDIA_CAPACITY",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "6187.TW"
+      },
+      {
+        "id": "NVIDIA_CAPACITY_beneficiary_002",
+        "name": "均華",
+        "business_line": "NVIDIA_CAPACITY",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "6640.TW"
+      },
+      {
+        "id": "ARIZONA_US_beneficiary_001",
+        "name": "帆宣",
+        "business_line": "ARIZONA_US",
+        "relationship": "beneficiary",
+        "details": "美國先進封裝廠務與設備建設題材觀察；沒有 Amkor Arizona 具名承包或採購證據。",
+        "ticker": "6196.TW"
+      },
+      {
+        "id": "ARIZONA_US_beneficiary_002",
+        "name": "漢唐",
+        "business_line": "ARIZONA_US",
+        "relationship": "beneficiary",
+        "details": "美國先進封裝廠務與設備建設題材觀察；沒有 Amkor Arizona 具名承包或採購證據。",
+        "ticker": "2404.TW"
+      },
+      {
+        "id": "ARIZONA_US_beneficiary_003",
+        "name": "亞翔",
+        "business_line": "ARIZONA_US",
+        "relationship": "beneficiary",
+        "details": "美國先進封裝廠務與設備建設題材觀察；沒有 Amkor Arizona 具名承包或採購證據。",
+        "ticker": "6139.TW"
+      },
+      {
+        "id": "KOREA_CAPACITY_beneficiary_001",
+        "name": "京鼎",
+        "business_line": "KOREA_CAPACITY",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "3413.TW"
+      },
+      {
+        "id": "TSMC_COLLAB_beneficiary_001",
+        "name": "台積電",
+        "business_line": "TSMC_COLLAB",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "2330.TW"
+      },
+      {
+        "id": "TSMC_COLLAB_beneficiary_002",
+        "name": "家登",
+        "business_line": "TSMC_COLLAB",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "3680.TW"
+      },
+      {
+        "id": "SWIFT_FANOUT_beneficiary_001",
+        "name": "志聖",
+        "business_line": "SWIFT_FANOUT",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "2467.TW"
+      },
+      {
+        "id": "SWIFT_FANOUT_beneficiary_002",
+        "name": "均華",
+        "business_line": "SWIFT_FANOUT",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "6640.TW"
+      },
+      {
+        "id": "SCONNECT_beneficiary_001",
+        "name": "萬潤",
+        "business_line": "SCONNECT",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "6187.TW"
+      },
+      {
+        "id": "SCONNECT_beneficiary_002",
+        "name": "弘塑",
+        "business_line": "SCONNECT",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "3131.TW"
+      },
+      {
+        "id": "HBM_MEMORY_beneficiary_001",
+        "name": "力成",
+        "business_line": "HBM_MEMORY",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "6239.TW"
+      },
+      {
+        "id": "HBM_MEMORY_beneficiary_002",
+        "name": "南茂",
+        "business_line": "HBM_MEMORY",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "8150.TW"
+      },
+      {
+        "id": "HBM_MEMORY_beneficiary_003",
+        "name": "欣興",
+        "business_line": "HBM_MEMORY",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "3037.TW"
+      },
+      {
+        "id": "WAFER_LEVEL_beneficiary_001",
+        "name": "辛耘",
+        "business_line": "WAFER_LEVEL",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "3583.TW"
+      },
+      {
+        "id": "WAFER_LEVEL_beneficiary_002",
+        "name": "弘塑",
+        "business_line": "WAFER_LEVEL",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "3131.TW"
+      },
+      {
+        "id": "TEST_BURNIN_beneficiary_001",
+        "name": "京元電子",
+        "business_line": "TEST_BURNIN",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "2449.TW"
+      },
+      {
+        "id": "TEST_BURNIN_beneficiary_002",
+        "name": "旺矽",
+        "business_line": "TEST_BURNIN",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "6223.TW"
+      },
+      {
+        "id": "TEST_BURNIN_beneficiary_003",
+        "name": "穎崴",
+        "business_line": "TEST_BURNIN",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "6515.TW"
+      },
+      {
+        "id": "TEST_BURNIN_beneficiary_004",
+        "name": "精測",
+        "business_line": "TEST_BURNIN",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "6510.TW"
+      },
+      {
+        "id": "MOBILE_SIP_beneficiary_001",
+        "name": "日月光投控",
+        "business_line": "MOBILE_SIP",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "3711.TW"
+      },
+      {
+        "id": "MOBILE_SIP_beneficiary_002",
+        "name": "矽格",
+        "business_line": "MOBILE_SIP",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "6257.TW"
+      },
+      {
+        "id": "AUTO_POWER_beneficiary_001",
+        "name": "同欣電",
+        "business_line": "AUTO_POWER",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "6271.TW"
+      },
+      {
+        "id": "AUTO_POWER_beneficiary_002",
+        "name": "菱生",
+        "business_line": "AUTO_POWER",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "2369.TW"
+      },
+      {
+        "id": "CPO_OPTICAL_beneficiary_001",
+        "name": "上詮",
+        "business_line": "CPO_OPTICAL",
+        "relationship": "beneficiary",
+        "details": "矽光子/CPO 光纖耦合及光學元件生態觀察；Amkor 未確認具體 CPO 量產營收，亦未證實對此公司的採購。",
+        "ticker": "3363.TWO"
+      },
+      {
+        "id": "CPO_OPTICAL_beneficiary_002",
+        "name": "波若威",
+        "business_line": "CPO_OPTICAL",
+        "relationship": "beneficiary",
+        "details": "矽光子/CPO 光纖耦合及光學元件生態觀察；Amkor 未確認具體 CPO 量產營收，亦未證實對此公司的採購。",
+        "ticker": "3163.TWO"
+      },
+      {
+        "id": "CPO_OPTICAL_beneficiary_003",
+        "name": "聯亞",
+        "business_line": "CPO_OPTICAL",
+        "relationship": "beneficiary",
+        "details": "矽光子/CPO 光纖耦合及光學元件生態觀察；Amkor 未確認具體 CPO 量產營收，亦未證實對此公司的採購。",
+        "ticker": "3081.TWO"
+      },
+      {
+        "id": "CPO_OPTICAL_beneficiary_004",
+        "name": "光聖",
+        "business_line": "CPO_OPTICAL",
+        "relationship": "beneficiary",
+        "details": "矽光子/CPO 光纖耦合及光學元件生態觀察；Amkor 未確認具體 CPO 量產營收，亦未證實對此公司的採購。",
+        "ticker": "6442.TW"
+      },
+      {
+        "id": "SUBSTRATES_beneficiary_001",
+        "name": "欣興",
+        "business_line": "SUBSTRATES",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "3037.TW"
+      },
+      {
+        "id": "SUBSTRATES_beneficiary_002",
+        "name": "南電",
+        "business_line": "SUBSTRATES",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "8046.TW"
+      },
+      {
+        "id": "SUBSTRATES_beneficiary_003",
+        "name": "景碩",
+        "business_line": "SUBSTRATES",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "3189.TW"
+      },
+      {
+        "id": "SUBSTRATES_beneficiary_004",
+        "name": "台燿",
+        "business_line": "SUBSTRATES",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "6274.TW"
+      },
+      {
+        "id": "CAPEX_CASHFLOW_beneficiary_001",
+        "name": "帆宣",
+        "business_line": "CAPEX_CASHFLOW",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "6196.TW"
+      },
+      {
+        "id": "CAPEX_CASHFLOW_beneficiary_002",
+        "name": "漢唐",
+        "business_line": "CAPEX_CASHFLOW",
+        "relationship": "beneficiary",
+        "details": "依產品技術與半導體產業鏈需求的潛在受惠觀察，未證實為 Amkor 直接供應商或已取得訂單。",
+        "ticker": "2404.TW"
+      }
+    ],
+    "research_audit": {
+      "as_of": "2026-11-03",
+      "primary_sources": [
+        {
+          "type": "SEC_10K",
+          "url": "https://www.sec.gov/Archives/edgar/data/1047127/000104712726000014/amkr-20251231.htm"
+        },
+        {
+          "type": "SEC_10Q",
+          "url": "https://www.sec.gov/Archives/edgar/data/1047127/000104712726000052/amkr-20260930.htm"
+        },
+        {
+          "type": "IR_Q3_2026",
+          "url": "https://ir.amkor.com/news-releases/news-release-details/amkor-technology-reports-financial-results-third-quarter-2026"
+        },
+        {
+          "type": "IR_EARNINGS_TRANSCRIPT",
+          "url": "https://ir.amkor.com/static-files/70fef79b-6e7c-4f65-91d1-2ee19e575e3c"
+        },
+        {
+          "type": "NVIDIA_AGREEMENT",
+          "url": "https://ir.amkor.com/news-releases/news-release-details/amkor-technology-and-nvidia-advance-strategic-partnership-ai"
+        },
+        {
+          "type": "TSMC_PARTNERSHIP",
+          "url": "https://ir.amkor.com/news-releases/news-release-details/tsmc-and-amkor-technology-announce-long-term-partnership"
+        },
+        {
+          "type": "ARIZONA_PHASE_2",
+          "url": "https://ir.amkor.com/news-releases/news-release-details/amkor-technology-announces-phase-2-arizona-advanced-packaging"
+        }
+      ],
+      "investor_metrics": {
+        "2026_Q3_revenue_usd_m": 1991,
+        "2026_Q3_gross_margin_pct": 18.3,
+        "2026_Q3_computing_revenue_mix_pct": 26,
+        "2026_Q3_top_ten_customer_mix_pct": 66,
+        "2026_capex_guidance_usd_b": 2.5,
+        "arizona_total_planned_investment_usd_b": 12
+      },
+      "coverage": [
+        {
+          "topic": "NVIDIA 美國及韓國協議",
+          "status": "已涵蓋",
+          "caveat": "30億美元多年協議非已認列營收"
+        },
+        {
+          "topic": "Arizona Phase 1/2",
+          "status": "已涵蓋",
+          "caveat": "2027年底一期施工完成目標；二期2029年底完成目標，並非目前量產"
+        },
+        {
+          "topic": "TSMC十年合作",
+          "status": "已涵蓋",
+          "caveat": "採購框架不代表保證最低營收"
+        },
+        {
+          "topic": "HBM 2.5D SWIFT S-Connect",
+          "status": "已涵蓋",
+          "caveat": "技術能力與各客戶量產採用需分開"
+        },
+        {
+          "topic": "CPO/矽光子",
+          "status": "證據不足",
+          "caveat": "僅列技術相鄰及潛在機會，不聲稱已有CPO量產收入"
+        },
+        {
+          "topic": "具名台灣供應商",
+          "status": "證據不足",
+          "caveat": "未確認Amkor直接採購；只列產業受惠觀察"
+        },
+        {
+          "topic": "2026Q3營收毛利率與資本支出",
+          "status": "已涵蓋",
+          "caveat": "CapEx與營收時間差及利用率風險"
+        },
+        {
+          "topic": "NVIDIA預付款的收入認列",
+          "status": "刻意排除",
+          "caveat": "不把預付款或協議額視為已實現營收"
+        }
+      ],
+      "reflection_rounds": [
+        {
+          "round": 1,
+          "focus": "近90天反向檢查",
+          "result": "從2026-10-21 NVIDIA 韓國13億美元新增協議、2026-09-08 Arizona二期、2026-10-26 Q3出發，補入NVIDIA_CAPACITY、KOREA_CAPACITY、ARIZONA_US。"
+        },
+        {
+          "round": 2,
+          "focus": "十大投資問題",
+          "result": "涵蓋營收、毛利、CapEx、競爭、技術、客戶、產能、供應鏈、催化劑、風險；強調2026年CapEx約25億美元與2027資本支出上升。"
+        },
+        {
+          "round": 3,
+          "focus": "技術完整性",
+          "result": "分別列出2.5D、SWIFT、S-Connect、HBM、晶圓級、測試與CPO相鄰機會；不將CPO寫成已確認商業化產品。"
+        },
+        {
+          "round": 4,
+          "focus": "反證與競爭",
+          "result": "NVIDIA30億美元是多年協議含預付款，非當期收入；台積電合作框架非保證訂單；同業競爭依產品線區分。"
+        },
+        {
+          "round": 5,
+          "focus": "交付前缺漏審計",
+          "result": "台灣直接供應商與CPO量產仍缺乏證據，維持零具名supplier並標記證據不足。"
+        }
+      ]
+    }
   }
 }

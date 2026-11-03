@@ -190,5 +190,672 @@
       "良率提升"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-03",
+    "company": "Entegris, Inc.",
+    "symbol": "ENTG",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "Entegris ENTG 半導體材料、EUV 過濾、CMP、HBM 與先進封裝產業鏈",
+      "description": "SEC 2026 Q3、官方 IR、法說逐字稿交叉核實，區分實際營收、POR 設計導入、競爭者與台灣產業受惠觀察。"
+    },
+    "business_lines": [
+      {
+        "id": "EUV_FILTER",
+        "name": "EUV／2nm 高階液體與氣體過濾"
+      },
+      {
+        "id": "CMP",
+        "name": "CMP 漿料／清洗與缺陷控制"
+      },
+      {
+        "id": "DEPOSITION",
+        "name": "ALD／CVD 先進沉積前驅物"
+      },
+      {
+        "id": "ADVANCED_LOGIC",
+        "name": "GAA／背面供電先進邏輯材料"
+      },
+      {
+        "id": "HBM_DRAM",
+        "name": "HBM／DRAM 材料與污染控制"
+      },
+      {
+        "id": "NAND",
+        "name": "3D NAND／AI 儲存材料"
+      },
+      {
+        "id": "WAFER_HANDLING",
+        "name": "FOUP／晶圓與光罩運輸"
+      },
+      {
+        "id": "GAS_DELIVERY",
+        "name": "高純度氣體／化學品輸送"
+      },
+      {
+        "id": "ADV_PACKAGING",
+        "name": "先進封裝／混合鍵合潔淨"
+      },
+      {
+        "id": "FAB_CAPEX",
+        "name": "晶圓廠新建／材料廠擴產"
+      },
+      {
+        "id": "INSTALLED_BASE",
+        "name": "晶圓開工率／耗材週期"
+      },
+      {
+        "id": "TAIWAN_ECOSYSTEM",
+        "name": "台灣半導體材料生態"
+      },
+      {
+        "id": "CAPITAL_RISK",
+        "name": "資本配置／負債／營運風險"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "EUV_FILTER_competitor_001",
+        "name": "Pall Corporation",
+        "business_line": "EUV_FILTER",
+        "relationship": "competitor",
+        "details": "半導體液體過濾與潔淨製程產品重疊；非 Entegris 具名客戶。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/"
+      },
+      {
+        "id": "EUV_FILTER_competitor_002",
+        "name": "Donaldson Company",
+        "business_line": "EUV_FILTER",
+        "relationship": "competitor",
+        "details": "高純度過濾與製程氣體潔淨產品重疊，產品競爭範圍需逐型號比較。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "DCI"
+      },
+      {
+        "id": "EUV_FILTER_beneficiary_001",
+        "name": "台積電",
+        "business_line": "EUV_FILTER",
+        "relationship": "beneficiary",
+        "details": "2nm／EUV 節點提升潔淨與缺陷控制需求；法說未具名 2nm 過濾客戶，不能宣稱台積電取得該新 POR。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "TSM"
+      },
+      {
+        "id": "EUV_FILTER_beneficiary_002",
+        "name": "Samsung Electronics",
+        "business_line": "EUV_FILTER",
+        "relationship": "beneficiary",
+        "details": "先進邏輯 EUV 節點增加高純度過濾需求；不是該 POR 具名客戶。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "005930.KS"
+      },
+      {
+        "id": "EUV_FILTER_beneficiary_003",
+        "name": "Intel",
+        "business_line": "EUV_FILTER",
+        "relationship": "beneficiary",
+        "details": "先進製程 EUV 推動超高純度材料需求；沒有本次具名訂單證據。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "INTC"
+      },
+      {
+        "id": "CMP_competitor_001",
+        "name": "Fujimi Incorporated",
+        "business_line": "CMP",
+        "relationship": "competitor",
+        "details": "CMP 研磨液與材料相關競爭。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "5384.T"
+      },
+      {
+        "id": "CMP_competitor_002",
+        "name": "Resonac Holdings",
+        "business_line": "CMP",
+        "relationship": "competitor",
+        "details": "半導體 CMP 材料領域存在競爭。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "4004.T"
+      },
+      {
+        "id": "CMP_competitor_003",
+        "name": "DuPont",
+        "business_line": "CMP",
+        "relationship": "competitor",
+        "details": "CMP 材料與先進材料產品存在競爭。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "DD"
+      },
+      {
+        "id": "CMP_beneficiary_001",
+        "name": "SK hynix",
+        "business_line": "CMP",
+        "relationship": "beneficiary",
+        "details": "記憶體技術轉換提高 CMP 需求；法說未披露獲得 POR 的具名記憶體客戶。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "000660.KS"
+      },
+      {
+        "id": "CMP_beneficiary_002",
+        "name": "Micron Technology",
+        "business_line": "CMP",
+        "relationship": "beneficiary",
+        "details": "DRAM／HBM 製程複雜化推升 CMP 材料市場需求，非特定 POR 證據。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "MU"
+      },
+      {
+        "id": "CMP_beneficiary_003",
+        "name": "Samsung Electronics",
+        "business_line": "CMP",
+        "relationship": "beneficiary",
+        "details": "記憶體製程迭代帶動 CMP 市場需求，非具名訂單。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "005930.KS"
+      },
+      {
+        "id": "CMP_beneficiary_004",
+        "name": "長興材料",
+        "business_line": "CMP",
+        "relationship": "beneficiary",
+        "details": "台灣電子材料／CMP 相關生態觀察，非 Entegris 客戶或供應商證明。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "1717.TW"
+      },
+      {
+        "id": "DEPOSITION_competitor_001",
+        "name": "Merck KGaA",
+        "business_line": "DEPOSITION",
+        "relationship": "competitor",
+        "details": "電子材料與沉積前驅物競爭。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/"
+      },
+      {
+        "id": "DEPOSITION_competitor_002",
+        "name": "Air Liquide",
+        "business_line": "DEPOSITION",
+        "relationship": "competitor",
+        "details": "電子材料與高純度氣體相關競爭，非所有產品重疊。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "AI.PA"
+      },
+      {
+        "id": "DEPOSITION_competitor_003",
+        "name": "SK materials",
+        "business_line": "DEPOSITION",
+        "relationship": "competitor",
+        "details": "半導體特用氣體／前驅物競爭。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/"
+      },
+      {
+        "id": "DEPOSITION_beneficiary_001",
+        "name": "台積電",
+        "business_line": "DEPOSITION",
+        "relationship": "beneficiary",
+        "details": "GAA／先進邏輯 ALD／CVD 製程材料需求，非具名新訂單。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "TSM"
+      },
+      {
+        "id": "DEPOSITION_beneficiary_002",
+        "name": "Intel",
+        "business_line": "DEPOSITION",
+        "relationship": "beneficiary",
+        "details": "先進邏輯與先進材料研發帶動沉積材料需求，非已確認採購。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "INTC"
+      },
+      {
+        "id": "DEPOSITION_beneficiary_003",
+        "name": "Samsung Electronics",
+        "business_line": "DEPOSITION",
+        "relationship": "beneficiary",
+        "details": "先進邏輯／記憶體沉積材料市場需求，非已確認採購。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "005930.KS"
+      },
+      {
+        "id": "ADVANCED_LOGIC_beneficiary_001",
+        "name": "台積電",
+        "business_line": "ADVANCED_LOGIC",
+        "relationship": "beneficiary",
+        "details": "2nm GAA、EUV 與先進節點的材料純度提升；未揭露獲獎 POR 客戶身分。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "TSM"
+      },
+      {
+        "id": "ADVANCED_LOGIC_beneficiary_002",
+        "name": "Intel",
+        "business_line": "ADVANCED_LOGIC",
+        "relationship": "beneficiary",
+        "details": "18A／背面供電增加新材料與潔淨需求，不能推定獲得 Entegris 特定訂單。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "INTC"
+      },
+      {
+        "id": "ADVANCED_LOGIC_beneficiary_003",
+        "name": "Samsung Electronics",
+        "business_line": "ADVANCED_LOGIC",
+        "relationship": "beneficiary",
+        "details": "GAA 製程提升污染控制材料強度，非直接供應證據。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "005930.KS"
+      },
+      {
+        "id": "HBM_DRAM_beneficiary_001",
+        "name": "SK hynix",
+        "business_line": "HBM_DRAM",
+        "relationship": "beneficiary",
+        "details": "HBM／DRAM 擴產帶動材料與晶圓潔淨市場，非具名訂單。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "000660.KS"
+      },
+      {
+        "id": "HBM_DRAM_beneficiary_002",
+        "name": "Micron Technology",
+        "business_line": "HBM_DRAM",
+        "relationship": "beneficiary",
+        "details": "HBM 產能與材料強度提升；未核實特定新 POR 對象。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "MU"
+      },
+      {
+        "id": "HBM_DRAM_beneficiary_003",
+        "name": "Samsung Electronics",
+        "business_line": "HBM_DRAM",
+        "relationship": "beneficiary",
+        "details": "HBM／DRAM 轉型帶動材料市場需求；不推定採購。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "005930.KS"
+      },
+      {
+        "id": "HBM_DRAM_beneficiary_004",
+        "name": "南亞科",
+        "business_line": "HBM_DRAM",
+        "relationship": "beneficiary",
+        "details": "台灣 DRAM 生產商，材料純度升級的產業需求觀察，非已確認交易。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "2408.TW"
+      },
+      {
+        "id": "NAND_beneficiary_001",
+        "name": "Kioxia Holdings",
+        "business_line": "NAND",
+        "relationship": "beneficiary",
+        "details": "3D NAND 高層數蝕刻／沉積提高材料與過濾需求。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "285A.T"
+      },
+      {
+        "id": "NAND_beneficiary_002",
+        "name": "Western Digital",
+        "business_line": "NAND",
+        "relationship": "beneficiary",
+        "details": "NAND 品牌／儲存生態曝險；不代表其本身直接採購晶圓製程材料。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "WDC"
+      },
+      {
+        "id": "NAND_beneficiary_003",
+        "name": "SanDisk",
+        "business_line": "NAND",
+        "relationship": "beneficiary",
+        "details": "NAND 產品供應鏈曝險，並非直接 Entegris 採購證據。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "SNDK"
+      },
+      {
+        "id": "NAND_beneficiary_004",
+        "name": "Micron Technology",
+        "business_line": "NAND",
+        "relationship": "beneficiary",
+        "details": "3D NAND 製程材料市場需求；非具名客戶。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "MU"
+      },
+      {
+        "id": "WAFER_HANDLING_competitor_001",
+        "name": "Miraial",
+        "business_line": "WAFER_HANDLING",
+        "relationship": "competitor",
+        "details": "晶圓載具與晶圓運輸相關產品競爭。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "4238.T"
+      },
+      {
+        "id": "WAFER_HANDLING_competitor_002",
+        "name": "Shin-Etsu Polymer",
+        "business_line": "WAFER_HANDLING",
+        "relationship": "competitor",
+        "details": "晶圓載具／高純度聚合物部件產品重疊。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "7970.T"
+      },
+      {
+        "id": "WAFER_HANDLING_beneficiary_001",
+        "name": "家登精密",
+        "business_line": "WAFER_HANDLING",
+        "relationship": "beneficiary",
+        "details": "台灣光罩／晶圓載具生態與 Entegris 有部分產品競爭，不能單純列為供應商。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "3680.TW"
+      },
+      {
+        "id": "WAFER_HANDLING_beneficiary_002",
+        "name": "台積電",
+        "business_line": "WAFER_HANDLING",
+        "relationship": "beneficiary",
+        "details": "先進製程擴產增加 FOUP／光罩載具潔淨需求；非具名新訂單。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "TSM"
+      },
+      {
+        "id": "GAS_DELIVERY_competitor_001",
+        "name": "MKS Instruments",
+        "business_line": "GAS_DELIVERY",
+        "relationship": "competitor",
+        "details": "高純度流體與氣體輸送子系統部分重疊。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "MKSI"
+      },
+      {
+        "id": "GAS_DELIVERY_competitor_002",
+        "name": "Ichor Holdings",
+        "business_line": "GAS_DELIVERY",
+        "relationship": "competitor",
+        "details": "半導體設備流體輸送系統競爭。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "ICHR"
+      },
+      {
+        "id": "GAS_DELIVERY_competitor_003",
+        "name": "Ultra Clean Holdings",
+        "business_line": "GAS_DELIVERY",
+        "relationship": "competitor",
+        "details": "氣體輸送與設備子系統部分競爭。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "UCTT"
+      },
+      {
+        "id": "GAS_DELIVERY_beneficiary_001",
+        "name": "帆宣系統科技",
+        "business_line": "GAS_DELIVERY",
+        "relationship": "beneficiary",
+        "details": "台灣廠務氣體／化學品供應系統生態，與 Entegris 可能互補或局部競爭；非具名供應關係。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "6196.TW"
+      },
+      {
+        "id": "GAS_DELIVERY_beneficiary_002",
+        "name": "漢唐集成",
+        "business_line": "GAS_DELIVERY",
+        "relationship": "beneficiary",
+        "details": "晶圓廠機電與高純度系統工程受擴廠帶動，非 Entegris 供應商。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "2404.TW"
+      },
+      {
+        "id": "GAS_DELIVERY_beneficiary_003",
+        "name": "亞翔工程",
+        "business_line": "GAS_DELIVERY",
+        "relationship": "beneficiary",
+        "details": "高科技廠房無塵室與管線系統，屬同一擴廠支出鏈而非直接交易。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "6139.TW"
+      },
+      {
+        "id": "ADV_PACKAGING_competitor_001",
+        "name": "DuPont",
+        "business_line": "ADV_PACKAGING",
+        "relationship": "competitor",
+        "details": "先進封裝材料／清洗材料競爭。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "DD"
+      },
+      {
+        "id": "ADV_PACKAGING_competitor_002",
+        "name": "Resonac Holdings",
+        "business_line": "ADV_PACKAGING",
+        "relationship": "competitor",
+        "details": "先進封裝化學材料市場競爭。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "4004.T"
+      },
+      {
+        "id": "ADV_PACKAGING_beneficiary_001",
+        "name": "台積電",
+        "business_line": "ADV_PACKAGING",
+        "relationship": "beneficiary",
+        "details": "CoWoS／SoIC 等先進封裝需要高純度化學品與潔淨管理；不等於具名訂單。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "TSM"
+      },
+      {
+        "id": "ADV_PACKAGING_beneficiary_002",
+        "name": "日月光投控",
+        "business_line": "ADV_PACKAGING",
+        "relationship": "beneficiary",
+        "details": "先進封裝與測試擴產推動材料市場需求，非直接採購確認。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "ASX"
+      },
+      {
+        "id": "ADV_PACKAGING_beneficiary_003",
+        "name": "力成科技",
+        "business_line": "ADV_PACKAGING",
+        "relationship": "beneficiary",
+        "details": "先進封裝／記憶體封裝需求觀察；非直接客戶。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "6239.TW"
+      },
+      {
+        "id": "ADV_PACKAGING_beneficiary_004",
+        "name": "弘塑科技",
+        "business_line": "ADV_PACKAGING",
+        "relationship": "beneficiary",
+        "details": "濕製程／封裝設備生態，與材料純化互補，非已核實供應關係。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "3131.TW"
+      },
+      {
+        "id": "ADV_PACKAGING_beneficiary_005",
+        "name": "萬潤科技",
+        "business_line": "ADV_PACKAGING",
+        "relationship": "beneficiary",
+        "details": "封裝自動化設備需求觀察，非 Entegris 供應商。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "6187.TW"
+      },
+      {
+        "id": "FAB_CAPEX_beneficiary_001",
+        "name": "台積電",
+        "business_line": "FAB_CAPEX",
+        "relationship": "beneficiary",
+        "details": "先進廠房建置帶動高純度材料及輸送設備採購市場；不推定 Entegris 特定新訂單。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "TSM"
+      },
+      {
+        "id": "FAB_CAPEX_beneficiary_002",
+        "name": "Applied Materials",
+        "business_line": "FAB_CAPEX",
+        "relationship": "beneficiary",
+        "details": "沉積／蝕刻設備擴產可能推動材料與污染控制配套需求；不是直接客戶證據。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "AMAT"
+      },
+      {
+        "id": "FAB_CAPEX_beneficiary_003",
+        "name": "Lam Research",
+        "business_line": "FAB_CAPEX",
+        "relationship": "beneficiary",
+        "details": "半導體設備出貨增加高純度輸送／污染控制市場需求；不是具名交易。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "LRCX"
+      },
+      {
+        "id": "FAB_CAPEX_beneficiary_004",
+        "name": "Tokyo Electron",
+        "business_line": "FAB_CAPEX",
+        "relationship": "beneficiary",
+        "details": "設備擴產相關高純度製程材料市場需求，非直接客戶證據。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "8035.T"
+      },
+      {
+        "id": "INSTALLED_BASE_beneficiary_001",
+        "name": "台積電",
+        "business_line": "INSTALLED_BASE",
+        "relationship": "beneficiary",
+        "details": "晶圓開工與先進製程良率要求推動耗材需求。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "TSM"
+      },
+      {
+        "id": "INSTALLED_BASE_beneficiary_002",
+        "name": "Micron Technology",
+        "business_line": "INSTALLED_BASE",
+        "relationship": "beneficiary",
+        "details": "DRAM／NAND 開工率及材料使用量提升。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "MU"
+      },
+      {
+        "id": "INSTALLED_BASE_beneficiary_003",
+        "name": "SK hynix",
+        "business_line": "INSTALLED_BASE",
+        "relationship": "beneficiary",
+        "details": "HBM／DRAM 產能使用率提升。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "000660.KS"
+      },
+      {
+        "id": "TAIWAN_ECOSYSTEM_competitor_001",
+        "name": "崇越科技",
+        "business_line": "TAIWAN_ECOSYSTEM",
+        "relationship": "competitor",
+        "details": "台灣半導體材料代理／供應服務市場部分競合，非相同產品全面競爭。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "5434.TW"
+      },
+      {
+        "id": "TAIWAN_ECOSYSTEM_competitor_002",
+        "name": "華立企業",
+        "business_line": "TAIWAN_ECOSYSTEM",
+        "relationship": "competitor",
+        "details": "台灣高科技材料供應鏈部分市場重疊，不能直接認定具名供應商。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "3010.TW"
+      },
+      {
+        "id": "TAIWAN_ECOSYSTEM_competitor_003",
+        "name": "三福化工",
+        "business_line": "TAIWAN_ECOSYSTEM",
+        "relationship": "competitor",
+        "details": "台灣高純度化學品與電子材料市場部分重疊。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "4755.TW"
+      },
+      {
+        "id": "TAIWAN_ECOSYSTEM_competitor_004",
+        "name": "勝一化工",
+        "business_line": "TAIWAN_ECOSYSTEM",
+        "relationship": "competitor",
+        "details": "電子級溶劑與化學品市場可能部分競爭，非全產品直接競爭。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "1773.TW"
+      },
+      {
+        "id": "TAIWAN_ECOSYSTEM_beneficiary_001",
+        "name": "聯華電子",
+        "business_line": "TAIWAN_ECOSYSTEM",
+        "relationship": "beneficiary",
+        "details": "成熟／特殊製程晶圓開工率回升可能帶動材料需求，非具名客戶。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "UMC"
+      },
+      {
+        "id": "TAIWAN_ECOSYSTEM_beneficiary_002",
+        "name": "世界先進",
+        "business_line": "TAIWAN_ECOSYSTEM",
+        "relationship": "beneficiary",
+        "details": "晶圓廠材料消耗與高純度管理需求觀察，非具名客戶。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "5347.TW"
+      },
+      {
+        "id": "TAIWAN_ECOSYSTEM_beneficiary_003",
+        "name": "台灣特品化學",
+        "business_line": "TAIWAN_ECOSYSTEM",
+        "relationship": "beneficiary",
+        "details": "高純度特殊氣體／半導體材料生態，與 Entegris 可能競合，非其直接供應商。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "ticker": "4772.TW"
+      },
+      {
+        "id": "CAPITAL_RISK_beneficiary_001",
+        "name": "半導體材料供應鏈（非單一公司）",
+        "business_line": "CAPITAL_RISK",
+        "relationship": "beneficiary",
+        "details": "供應瓶頸及高純度材料資格認證使產能規劃具重要性；本節點僅為產業背景，不代表可投資標的。",
+        "source_url": "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/"
+      },
+      {
+        "id": "EUV_FILTER_partner_001",
+        "name": "JSR Corporation / Inpria Corporation",
+        "business_line": "EUV_FILTER",
+        "relationship": "partner",
+        "details": "2026-05-26 官方公告 EUV 微影非獨家交叉授權；屬 IP／技術合作，不等於供應合約。",
+        "source_url": "https://investor.entegris.com/news/"
+      },
+      {
+        "id": "CMP_competitor_004",
+        "name": "台灣／中國 CMP 專利訴訟相關競爭者（未具名）",
+        "business_line": "CMP",
+        "relationship": "competitor",
+        "details": "2026-08-18 Entegris 公告台灣與中國 CMP 膠體二氧化矽研磨液專利獲維持；未核實對手名稱，避免杜撰。",
+        "source_url": "https://www.entegris.com/en/home/about-us/news/news-archive.html"
+      }
+    ],
+    "research_notes": {
+      "latest_sec": "2026-10-29 10-Q accession 0001101302-26-000162",
+      "latest_earnings": "2026-10-29 Q3 2026",
+      "confirmed_facts": [
+        "Q3 2026 revenue 1005.7 USD million; GAAP GM 49.7%; adjusted GM 48.9%",
+        "2nm EUV filtration application won, customer not named",
+        "Memory CMP multiple POR wins, customers not named",
+        "Backlog more than doubled YoY and rose over 35% QoQ per call",
+        "Taiwan largest regional growth contributor per call",
+        "2026-05-26 JSR/Inpria nonexclusive EUV lithography cross-license",
+        "2026-08-18 Taiwan/China CMP slurry patent defense",
+        "Kaohsiung Science Park facility produces advanced liquid filters, high-purity drums and deposition materials; official says bulk gases 100% and chemicals >90% locally procured without naming suppliers",
+        "Nov 9 2026 Capital Markets Day not yet held as of as_of"
+      ],
+      "excluded_unverified": [
+        "未將 2nm 過濾新客戶直接認定為台積電",
+        "未將匿名智慧手機科技客戶直接認定為 Apple",
+        "未將台灣化學品或廠務公司認定為 Entegris 直接供應商",
+        "未將 POR 視為已全額認列收入",
+        "未將 2026-11-09 未來資本市場日當作已公布指引",
+        "未將 JSR EUV 交叉授權認定為產品銷售或供應",
+        "未將高雄在地採購比例歸屬於未具名台灣供應商"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1101302/000110130226000162/entg-20260926.htm",
+        "https://investor.entegris.com/news/news-details/2026/Entegris-Reports-Results-for-Third-Quarter-of-2026/default.aspx",
+        "https://stockanalysis.com/stocks/entg/transcripts/723803-q3-2026/",
+        "https://www.sec.gov/Archives/edgar/data/1101302/000110130226000012/entg-20251231.htm",
+        "https://www.entegris.com/en/home/about-us/manufacturing/kaohsiung-science-park.html",
+        "https://www.entegris.com/en/home/about-us/news/news-archive.html"
+      ]
+    }
   }
 }

@@ -324,5 +324,654 @@
       "國防電子需求"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-03",
+    "company": "Amphenol Corporation",
+    "symbol": "APH",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "Amphenol (APH) 產業鏈：AI 224G／1.6T、CPO／光纖、CommScope 併購及高速互連",
+      "description": "SEC 2026 Q3、法說及官方產品研究；分辨AI datacom有機成長、併購、CPO商業化、全球競爭及台灣產業機會。"
+    },
+    "business_lines": [
+      {
+        "id": "AI_SCALEUP",
+        "name": "AI Scale-up 高速銅纜／背板／224G PAM4"
+      },
+      {
+        "id": "AI_SCALEOUT",
+        "name": "AI Scale-out 800G／1.6T 網路互連"
+      },
+      {
+        "id": "POWER",
+        "name": "AI 機櫃電源／高電流連接"
+      },
+      {
+        "id": "OPTICAL",
+        "name": "光纖／光纜／光纖配線與 CommScope"
+      },
+      {
+        "id": "CPO",
+        "name": "CPO／Near-Packaged Optics／XPO-LPO"
+      },
+      {
+        "id": "TRANSCEIVER",
+        "name": "1.6T OSFP 光收發／AOC"
+      },
+      {
+        "id": "COMM_NETWORK",
+        "name": "電信寬頻／FTTH／網路基礎設施"
+      },
+      {
+        "id": "MOBILE",
+        "name": "行動裝置／RF 天線／精密機構"
+      },
+      {
+        "id": "AUTO",
+        "name": "汽車高壓／感測／Empire Electronics"
+      },
+      {
+        "id": "INDUSTRIAL",
+        "name": "工業／機器人／自動化"
+      },
+      {
+        "id": "AEROSPACE",
+        "name": "商用航太互連"
+      },
+      {
+        "id": "DEFENSE",
+        "name": "國防軍工／高可靠 PCB"
+      },
+      {
+        "id": "SENSORS",
+        "name": "精密感測／Humanetics Sensors"
+      },
+      {
+        "id": "ACQUISITIONS",
+        "name": "併購整合／CommScope／CIT／Andrew"
+      },
+      {
+        "id": "PCB",
+        "name": "AdvancedPCB 高階電路板"
+      },
+      {
+        "id": "FINANCIAL",
+        "name": "訂單、現金流、獲利率與資本配置"
+      },
+      {
+        "id": "HBM_ADJACENCY",
+        "name": "HBM／先進封裝周邊互連（非 HBM 製造）"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "AI_SCALEUP_competitor_001",
+        "name": "TE Connectivity",
+        "business_line": "AI_SCALEUP",
+        "relationship": "competitor",
+        "details": "直接競爭的高速連接器與高速線纜廠商",
+        "ticker": "TEL"
+      },
+      {
+        "id": "AI_SCALEUP_competitor_002",
+        "name": "Molex",
+        "business_line": "AI_SCALEUP",
+        "relationship": "competitor",
+        "details": "直接競爭的高速互連廠商"
+      },
+      {
+        "id": "AI_SCALEUP_competitor_003",
+        "name": "Credo Technology",
+        "business_line": "AI_SCALEUP",
+        "relationship": "competitor",
+        "details": "AEC／SerDes 主動電纜技術在部分應用競爭或互補",
+        "ticker": "CRDO"
+      },
+      {
+        "id": "AI_SCALEUP_competitor_004",
+        "name": "Luxshare Precision／立訊精密",
+        "business_line": "AI_SCALEUP",
+        "relationship": "competitor",
+        "details": "高速線束與互連競爭",
+        "ticker": "002475.SZ"
+      },
+      {
+        "id": "AI_SCALEUP_beneficiary_001",
+        "name": "BizLink／貿聯-KY",
+        "business_line": "AI_SCALEUP",
+        "relationship": "beneficiary",
+        "details": "高速線纜組件產業機會；未證實供應 Amphenol",
+        "ticker": "3665.TW"
+      },
+      {
+        "id": "AI_SCALEUP_beneficiary_002",
+        "name": "JPC／佳必琪",
+        "business_line": "AI_SCALEUP",
+        "relationship": "beneficiary",
+        "details": "高速連接器與線纜產業機會；非具名 APH 供應商",
+        "ticker": "6197.TW"
+      },
+      {
+        "id": "AI_SCALEOUT_competitor_001",
+        "name": "TE Connectivity",
+        "business_line": "AI_SCALEOUT",
+        "relationship": "competitor",
+        "details": "高速連接器競爭",
+        "ticker": "TEL"
+      },
+      {
+        "id": "AI_SCALEOUT_competitor_002",
+        "name": "Molex",
+        "business_line": "AI_SCALEOUT",
+        "relationship": "competitor",
+        "details": "高速網通連接器競爭"
+      },
+      {
+        "id": "AI_SCALEOUT_competitor_003",
+        "name": "Foxconn Interconnect Technology／鴻騰精密",
+        "business_line": "AI_SCALEOUT",
+        "relationship": "competitor",
+        "details": "互連產品競爭",
+        "ticker": "6088.HK"
+      },
+      {
+        "id": "AI_SCALEOUT_beneficiary_001",
+        "name": "Accton／智邦",
+        "business_line": "AI_SCALEOUT",
+        "relationship": "beneficiary",
+        "details": "AI 交換器市場擴張帶動互連需求，但與 APH 無已證實直接交易",
+        "ticker": "2345.TW"
+      },
+      {
+        "id": "AI_SCALEOUT_beneficiary_002",
+        "name": "Delta Electronics／台達電",
+        "business_line": "AI_SCALEOUT",
+        "relationship": "beneficiary",
+        "details": "AI 網通與機櫃基礎設施受惠觀察，非 APH 直接供應商",
+        "ticker": "2308.TW"
+      },
+      {
+        "id": "POWER_competitor_001",
+        "name": "TE Connectivity",
+        "business_line": "POWER",
+        "relationship": "competitor",
+        "details": "高功率連接器競爭",
+        "ticker": "TEL"
+      },
+      {
+        "id": "POWER_competitor_002",
+        "name": "Molex",
+        "business_line": "POWER",
+        "relationship": "competitor",
+        "details": "機櫃電源互連競爭"
+      },
+      {
+        "id": "POWER_beneficiary_001",
+        "name": "Delta Electronics／台達電",
+        "business_line": "POWER",
+        "relationship": "beneficiary",
+        "details": "機櫃供電系統生態，未確認 APH 採購",
+        "ticker": "2308.TW"
+      },
+      {
+        "id": "POWER_beneficiary_002",
+        "name": "Chicony Power／群光電能",
+        "business_line": "POWER",
+        "relationship": "beneficiary",
+        "details": "伺服器電源市場需求觀察",
+        "ticker": "6412.TW"
+      },
+      {
+        "id": "OPTICAL_competitor_001",
+        "name": "Corning／康寧",
+        "business_line": "OPTICAL",
+        "relationship": "competitor",
+        "details": "光纖光纜與連接解決方案競合",
+        "ticker": "GLW"
+      },
+      {
+        "id": "OPTICAL_competitor_002",
+        "name": "Belden",
+        "business_line": "OPTICAL",
+        "relationship": "competitor",
+        "details": "網路佈線與光纖基礎設施競爭",
+        "ticker": "BDC"
+      },
+      {
+        "id": "OPTICAL_competitor_003",
+        "name": "FiberHome／烽火通信",
+        "business_line": "OPTICAL",
+        "relationship": "competitor",
+        "details": "光纖網路與佈線市場競爭",
+        "ticker": "600498.SS"
+      },
+      {
+        "id": "OPTICAL_beneficiary_001",
+        "name": "FOCI／上詮",
+        "business_line": "OPTICAL",
+        "relationship": "beneficiary",
+        "details": "光纖耦合／陣列產業受惠觀察，非 APH 直接供應商",
+        "ticker": "3363.TWO"
+      },
+      {
+        "id": "OPTICAL_beneficiary_002",
+        "name": "Browave／波若威",
+        "business_line": "OPTICAL",
+        "relationship": "beneficiary",
+        "details": "光纖被動元件產業受惠觀察",
+        "ticker": "3163.TWO"
+      },
+      {
+        "id": "CPO_beneficiary_001",
+        "name": "Broadcom",
+        "business_line": "CPO",
+        "relationship": "beneficiary",
+        "details": "CPO 交換晶片與系統架構相鄰，非 APH 直接同質競品",
+        "ticker": "AVGO"
+      },
+      {
+        "id": "CPO_beneficiary_002",
+        "name": "NVIDIA",
+        "business_line": "CPO",
+        "relationship": "beneficiary",
+        "details": "CPO 網路平台系統級競合，非 APH 直接供應證據",
+        "ticker": "NVDA"
+      },
+      {
+        "id": "CPO_beneficiary_003",
+        "name": "Coherent",
+        "business_line": "CPO",
+        "relationship": "beneficiary",
+        "details": "光引擎／光模組生態競合",
+        "ticker": "COHR"
+      },
+      {
+        "id": "CPO_beneficiary_004",
+        "name": "Lumentum",
+        "business_line": "CPO",
+        "relationship": "beneficiary",
+        "details": "雷射與光學元件產業生態",
+        "ticker": "LITE"
+      },
+      {
+        "id": "CPO_beneficiary_005",
+        "name": "FOCI／上詮",
+        "business_line": "CPO",
+        "relationship": "beneficiary",
+        "details": "CPO 光纖陣列產業機會，非已確認 APH 採購",
+        "ticker": "3363.TWO"
+      },
+      {
+        "id": "CPO_competitor_001",
+        "name": "Senko Advanced Components",
+        "business_line": "CPO",
+        "relationship": "competitor",
+        "details": "光纖連接器及 CPO 光纖介面競爭"
+      },
+      {
+        "id": "TRANSCEIVER_competitor_001",
+        "name": "Coherent",
+        "business_line": "TRANSCEIVER",
+        "relationship": "competitor",
+        "details": "光收發模組競爭",
+        "ticker": "COHR"
+      },
+      {
+        "id": "TRANSCEIVER_competitor_002",
+        "name": "Lumentum",
+        "business_line": "TRANSCEIVER",
+        "relationship": "competitor",
+        "details": "光模組與光學元件競合",
+        "ticker": "LITE"
+      },
+      {
+        "id": "TRANSCEIVER_competitor_003",
+        "name": "Eoptolink／中際旭創",
+        "business_line": "TRANSCEIVER",
+        "relationship": "competitor",
+        "details": "800G／1.6T 光模組競爭",
+        "ticker": "300308.SZ"
+      },
+      {
+        "id": "TRANSCEIVER_competitor_004",
+        "name": "Applied Optoelectronics",
+        "business_line": "TRANSCEIVER",
+        "relationship": "competitor",
+        "details": "資料中心光收發模組競爭",
+        "ticker": "AAOI"
+      },
+      {
+        "id": "TRANSCEIVER_beneficiary_001",
+        "name": "Eoptolink Taiwan peer／華星光",
+        "business_line": "TRANSCEIVER",
+        "relationship": "beneficiary",
+        "details": "光收發產業需求觀察，非 APH 具名供應商",
+        "ticker": "4979.TWO"
+      },
+      {
+        "id": "COMM_NETWORK_competitor_001",
+        "name": "Corning",
+        "business_line": "COMM_NETWORK",
+        "relationship": "competitor",
+        "details": "光纖接入網路競爭",
+        "ticker": "GLW"
+      },
+      {
+        "id": "COMM_NETWORK_competitor_002",
+        "name": "Belden",
+        "business_line": "COMM_NETWORK",
+        "relationship": "competitor",
+        "details": "佈線與電信基礎設施競爭",
+        "ticker": "BDC"
+      },
+      {
+        "id": "MOBILE_competitor_001",
+        "name": "TE Connectivity",
+        "business_line": "MOBILE",
+        "relationship": "competitor",
+        "details": "行動裝置互連競爭",
+        "ticker": "TEL"
+      },
+      {
+        "id": "MOBILE_competitor_002",
+        "name": "Luxshare Precision／立訊精密",
+        "business_line": "MOBILE",
+        "relationship": "competitor",
+        "details": "消費電子連接與精密組裝競爭",
+        "ticker": "002475.SZ"
+      },
+      {
+        "id": "MOBILE_competitor_003",
+        "name": "Foxconn Interconnect Technology／鴻騰精密",
+        "business_line": "MOBILE",
+        "relationship": "competitor",
+        "details": "連接器競爭",
+        "ticker": "6088.HK"
+      },
+      {
+        "id": "MOBILE_beneficiary_001",
+        "name": "Cheng Uei／正崴",
+        "business_line": "MOBILE",
+        "relationship": "beneficiary",
+        "details": "消費電子連接器產業觀察，未確認 APH 採購",
+        "ticker": "2392.TW"
+      },
+      {
+        "id": "AUTO_competitor_001",
+        "name": "TE Connectivity",
+        "business_line": "AUTO",
+        "relationship": "competitor",
+        "details": "汽車高壓連接器競爭",
+        "ticker": "TEL"
+      },
+      {
+        "id": "AUTO_competitor_002",
+        "name": "Aptiv",
+        "business_line": "AUTO",
+        "relationship": "competitor",
+        "details": "汽車電子連接與架構競爭",
+        "ticker": "APTV"
+      },
+      {
+        "id": "AUTO_competitor_003",
+        "name": "Yazaki",
+        "business_line": "AUTO",
+        "relationship": "competitor",
+        "details": "汽車線束與連接器競爭"
+      },
+      {
+        "id": "AUTO_beneficiary_001",
+        "name": "BizLink／貿聯-KY",
+        "business_line": "AUTO",
+        "relationship": "beneficiary",
+        "details": "汽車線束電動化產業觀察",
+        "ticker": "3665.TW"
+      },
+      {
+        "id": "INDUSTRIAL_competitor_001",
+        "name": "TE Connectivity",
+        "business_line": "INDUSTRIAL",
+        "relationship": "competitor",
+        "details": "工業互連競爭",
+        "ticker": "TEL"
+      },
+      {
+        "id": "INDUSTRIAL_competitor_002",
+        "name": "Molex",
+        "business_line": "INDUSTRIAL",
+        "relationship": "competitor",
+        "details": "工業連接器競爭"
+      },
+      {
+        "id": "INDUSTRIAL_competitor_003",
+        "name": "Phoenix Contact",
+        "business_line": "INDUSTRIAL",
+        "relationship": "competitor",
+        "details": "工業控制連接競爭"
+      },
+      {
+        "id": "AEROSPACE_competitor_001",
+        "name": "TE Connectivity",
+        "business_line": "AEROSPACE",
+        "relationship": "competitor",
+        "details": "航太連接器競爭",
+        "ticker": "TEL"
+      },
+      {
+        "id": "AEROSPACE_competitor_002",
+        "name": "Eaton",
+        "business_line": "AEROSPACE",
+        "relationship": "competitor",
+        "details": "航太電氣互連部分市場競爭",
+        "ticker": "ETN"
+      },
+      {
+        "id": "DEFENSE_competitor_001",
+        "name": "TE Connectivity",
+        "business_line": "DEFENSE",
+        "relationship": "competitor",
+        "details": "軍規高可靠連接器競爭",
+        "ticker": "TEL"
+      },
+      {
+        "id": "SENSORS_competitor_001",
+        "name": "TE Connectivity",
+        "business_line": "SENSORS",
+        "relationship": "competitor",
+        "details": "感測器市場競爭",
+        "ticker": "TEL"
+      },
+      {
+        "id": "SENSORS_competitor_002",
+        "name": "Sensata Technologies",
+        "business_line": "SENSORS",
+        "relationship": "competitor",
+        "details": "車用與工業感測競爭",
+        "ticker": "ST"
+      },
+      {
+        "id": "PCB_competitor_001",
+        "name": "TTM Technologies",
+        "business_line": "PCB",
+        "relationship": "competitor",
+        "details": "國防與工業高階 PCB 競爭",
+        "ticker": "TTMI"
+      },
+      {
+        "id": "HBM_ADJACENCY_beneficiary_001",
+        "name": "ASE Technology／日月光投控",
+        "business_line": "HBM_ADJACENCY",
+        "relationship": "beneficiary",
+        "details": "HBM 封裝市場間接受惠觀察，非 APH HBM 封裝供應商",
+        "ticker": "3711.TW"
+      },
+      {
+        "id": "HBM_ADJACENCY_beneficiary_002",
+        "name": "Unimicron／欣興",
+        "business_line": "HBM_ADJACENCY",
+        "relationship": "beneficiary",
+        "details": "高階封裝載板產業相關，非 APH 直接交易證據",
+        "ticker": "3037.TW"
+      }
+    ],
+    "research_audit": {
+      "as_of": "2026-11-03",
+      "primary_sources": [
+        {
+          "type": "SEC_10K",
+          "url": "https://www.sec.gov/Archives/edgar/data/820313/000110465926013549/aph-20251231x10k.htm"
+        },
+        {
+          "type": "SEC_10Q",
+          "url": "https://www.sec.gov/Archives/edgar/data/820313/000110465926120646/aph-20260930x10q.htm"
+        },
+        {
+          "type": "SEC_8K_Q3",
+          "url": "https://www.sec.gov/Archives/edgar/data/820313/000110465926119421/aph-ex99d1.htm"
+        },
+        {
+          "type": "SEC_8K_COMMSCOPE",
+          "url": "https://www.sec.gov/Archives/edgar/data/820313/000110465926002737/tm262701d1_8k.htm"
+        },
+        {
+          "type": "IR_Q3",
+          "url": "https://investor.amphenol.com/news-and-events/news-details/2026/Amphenol-Reports-Record-Third-Quarter-2026-Results-and-Announces-Dividend-Increase-and-New-Stock-Repurchase-Program/default.aspx"
+        },
+        {
+          "type": "EARNINGS_CALL_TRANSCRIPT",
+          "url": "https://www.fool.com/earnings/call-transcripts/2026/10/28/amphenol-aph-q3-2026-earnings-call-transcript/"
+        },
+        {
+          "type": "PRODUCT_OFFICIAL",
+          "url": "https://www.amphenol-cs.com/media/wysiwyg/files/documentation/datasheet/general/full-spectrum-data-center-connectivity-brochure.pdf"
+        }
+      ],
+      "investor_metrics": {
+        "q3_2026_revenue_usd_m": 10229.7,
+        "q3_2026_yoy_growth_pct": 65,
+        "q3_2026_organic_growth_pct": 37,
+        "q3_2026_orders_usd_m_approx": 12200,
+        "q3_2026_book_to_bill": 1.19,
+        "q3_2026_adjusted_operating_margin_pct": 29.7,
+        "q3_2026_it_datacom_organic_growth_pct": 77,
+        "q3_2026_ai_share_of_it_datacom_approx_pct": 75,
+        "q3_2026_communications_networks_organic_growth_pct": -28,
+        "2026_commscope_sales_guidance_usd_m": 5100,
+        "q4_2026_sales_guidance_usd_m_range": [
+          10300,
+          10500
+        ],
+        "2026_sales_guidance_usd_m_range": [
+          36900,
+          37100
+        ],
+        "capex": "參見SEC 10-Q現金流量表，未在此推定產品別資本支出",
+        "valuation_catalysts": "AI IT datacom訂單轉換、CommScope整合、光學互連產品商業化",
+        "risks": "寬頻有機需求下滑、併購整合、客戶集中度未知、AI需求週期及CPO替代風險"
+      },
+      "coverage": [
+        {
+          "topic": "AI IT datacom 77%有機成長",
+          "status": "已涵蓋",
+          "caveat": "法說明示；AI 占 IT datacom 約75%，非全公司營收75%"
+        },
+        {
+          "topic": "2026 Q3 訂單與獲利",
+          "status": "已涵蓋",
+          "caveat": "營收102.297億美元、訂單約122億美元、調整營業利益率29.7%"
+        },
+        {
+          "topic": "CommScope CCS 併購",
+          "status": "已涵蓋",
+          "caveat": "2026-01-09 已交割；51億美元為2026預估銷售"
+        },
+        {
+          "topic": "1.6T OSFP／224G XPO-LPO",
+          "status": "已涵蓋",
+          "caveat": "官方產品手冊列示，未披露各品項營收"
+        },
+        {
+          "topic": "CPO／NPO",
+          "status": "已涵蓋",
+          "caveat": "官方技術產品布局，未證實個別超大規模客戶大規模部署"
+        },
+        {
+          "topic": "2026 Q3 通訊網路疲弱",
+          "status": "已涵蓋",
+          "caveat": "Q3 communications networks 有機衰退28%，與AI datacom景氣不同"
+        },
+        {
+          "topic": "2026 Q3 併購簽約未交割",
+          "status": "已涵蓋",
+          "caveat": "AdvancedPCB、Dexgreen、Humanetics Sensors 不得列已併入"
+        },
+        {
+          "topic": "具名 AI 客戶及採購額",
+          "status": "證據不足",
+          "caveat": "SEC及法說未公開可核實的個別AI客戶訂單"
+        },
+        {
+          "topic": "台灣公司直接供應 APH",
+          "status": "證據不足",
+          "caveat": "沒有逐一證實具名採購，僅產業機會觀察"
+        },
+        {
+          "topic": "HBM 晶粒／CoWoS 製造",
+          "status": "刻意排除",
+          "caveat": "Amphenol主要為互連，不應誤寫為HBM製造或CoWoS代工"
+        },
+        {
+          "topic": "各產品線CPO已認列營收",
+          "status": "證據不足",
+          "caveat": "產品手冊不能當作量產出貨及收入證據"
+        },
+        {
+          "topic": "單一客戶營收集中度",
+          "status": "尚未研究",
+          "caveat": "未能核實個別客戶對2026 Q3營收貢獻"
+        },
+        {
+          "topic": "台灣逐家供應合約原始文件",
+          "status": "尚未研究",
+          "caveat": "沒有足夠原始交易證據"
+        }
+      ],
+      "reflection_rounds": [
+        {
+          "round": 1,
+          "focus": "近90天SEC／IR／產品重大議題獨立盤點",
+          "result": "補入CommScope整合、AI IT datacom有機成長、通訊網路負成長及CPO產品線，不以舊JSON主線為唯一依據"
+        },
+        {
+          "round": 2,
+          "focus": "投資人十大問題",
+          "result": "逐項處理成長、毛利與營業利潤、資本配置、競爭、技術、客戶、產能、供應鏈、催化劑及風險；未揭露資料標示缺口"
+        },
+        {
+          "round": 3,
+          "focus": "AI／HBM／CPO／先進封裝產品完整性",
+          "result": "核實官方1.6T OSFP、XPO-LPO、CPO及NPO；HBM/CoWoS只列周邊互連，不宣稱APH製造"
+        },
+        {
+          "round": 4,
+          "focus": "反證與競爭",
+          "result": "不以產品手冊等同量產營收，不將競爭者當作受惠股；不臆造具名AI客戶或台灣直接供應商"
+        },
+        {
+          "round": 5,
+          "focus": "交付前缺漏審計",
+          "result": "重要議題依已涵蓋、證據不足、刻意排除、尚未研究四態揭露；待交割公司與已交割公司分開"
+        }
+      ]
+    }
   }
 }

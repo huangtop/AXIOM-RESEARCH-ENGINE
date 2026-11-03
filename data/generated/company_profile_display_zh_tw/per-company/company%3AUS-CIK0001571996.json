@@ -616,5 +616,863 @@
       "生成式AI"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-10-30",
+    "company": "Dell Technologies Inc.",
+    "symbol": "DELL",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "DELL Dell Technologies 產業鏈戰略地圖",
+      "description": "Dell AI Factory、PowerRack、PowerEdge、PowerStore、AI PC、PowerCool 與台灣供應鏈分析"
+    },
+    "business_lines": [
+      {
+        "id": "AI_RACK",
+        "name": "AI Factory、PowerRack、Vera Rubin／GB300"
+      },
+      {
+        "id": "POWEREDGE",
+        "name": "PowerEdge 傳統伺服器與企業運算"
+      },
+      {
+        "id": "STORAGE",
+        "name": "PowerStore、PowerScale、PowerMax、ObjectScale"
+      },
+      {
+        "id": "NETWORK",
+        "name": "PowerSwitch、SONiC、乙太網路"
+      },
+      {
+        "id": "PC",
+        "name": "Dell Pro、Latitude、OptiPlex 商用 PC"
+      },
+      {
+        "id": "WORKSTATION",
+        "name": "Dell Pro Max、Precision AI 工作站"
+      },
+      {
+        "id": "CONSUMER",
+        "name": "XPS、Alienware、顯示器與消費裝置"
+      },
+      {
+        "id": "APEX",
+        "name": "Dell APEX、多雲與服務訂閱"
+      },
+      {
+        "id": "COOLING",
+        "name": "PowerCool、機櫃電力與液冷"
+      },
+      {
+        "id": "CHANNEL",
+        "name": "台灣 ODM、通路與全球交付"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "competitor",
+      "supplier",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "AI_RACK_customer_001",
+        "name": "CoreWeave（CRWV）",
+        "business_line": "AI_RACK",
+        "relationship": "customer",
+        "details": "2026 年 Dell 向 CoreWeave 交付 NVIDIA Vera Rubin NVL72 PowerRack，先前亦交付 GB200／GB300 系統"
+      },
+      {
+        "id": "AI_RACK_customer_002",
+        "name": "xAI",
+        "business_line": "AI_RACK",
+        "relationship": "customer",
+        "details": "Dell 為 xAI 大型 AI 基礎設施建置供應 AI 伺服器，與其他整機供應商共同參與"
+      },
+      {
+        "id": "AI_RACK_customer_003",
+        "name": "Samsung Electronics（005930.KS）",
+        "business_line": "AI_RACK",
+        "relationship": "customer",
+        "details": "2026 年宣布採用 Dell AI 基礎設施支援全球半導體設計、製造與自動化"
+      },
+      {
+        "id": "AI_RACK_partner_001",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "AI_RACK",
+        "relationship": "partner",
+        "details": "Dell AI Factory、GB300／Vera Rubin GPU、Spectrum-X 網路與 CUDA 軟體生態策略合作"
+      },
+      {
+        "id": "AI_RACK_partner_002",
+        "name": "AMD（AMD）",
+        "business_line": "AI_RACK",
+        "relationship": "partner",
+        "details": "PowerEdge AI 伺服器支援 AMD Instinct GPU 與 EPYC 處理器"
+      },
+      {
+        "id": "AI_RACK_partner_003",
+        "name": "Cohere",
+        "business_line": "AI_RACK",
+        "relationship": "partner",
+        "details": "Dell AI Factory 企業 Agentic AI 解決方案合作"
+      },
+      {
+        "id": "AI_RACK_partner_004",
+        "name": "DataRobot",
+        "business_line": "AI_RACK",
+        "relationship": "partner",
+        "details": "Dell Agentic AI 平台整合與企業 AI 應用合作"
+      },
+      {
+        "id": "AI_RACK_partner_005",
+        "name": "ClearML",
+        "business_line": "AI_RACK",
+        "relationship": "partner",
+        "details": "Dell AI Factory 代理式 AI 平台生態合作"
+      },
+      {
+        "id": "POWEREDGE_partner_001",
+        "name": "Intel（INTC）",
+        "business_line": "POWEREDGE",
+        "relationship": "partner",
+        "details": "PowerEdge Xeon 平台與 Intel 伺服器生態整合"
+      },
+      {
+        "id": "POWEREDGE_partner_002",
+        "name": "AMD（AMD）",
+        "business_line": "POWEREDGE",
+        "relationship": "partner",
+        "details": "PowerEdge EPYC 伺服器平台合作"
+      },
+      {
+        "id": "STORAGE_partner_001",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "STORAGE",
+        "relationship": "partner",
+        "details": "Dell AI Data Platform、ObjectScale 與 NVIDIA AI 基礎設施整合"
+      },
+      {
+        "id": "STORAGE_partner_002",
+        "name": "Red Hat（IBM）",
+        "business_line": "STORAGE",
+        "relationship": "partner",
+        "details": "OpenShift 與 Dell 基礎設施、容器化企業工作負載整合"
+      },
+      {
+        "id": "STORAGE_partner_003",
+        "name": "Microsoft（MSFT）",
+        "business_line": "STORAGE",
+        "relationship": "partner",
+        "details": "Azure Local 與 Dell APEX／PowerEdge 多雲整合"
+      },
+      {
+        "id": "NETWORK_partner_001",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "NETWORK",
+        "relationship": "partner",
+        "details": "Spectrum-X、InfiniBand 與 PowerSwitch AI 網路平台合作"
+      },
+      {
+        "id": "NETWORK_partner_002",
+        "name": "Broadcom（AVGO）",
+        "business_line": "NETWORK",
+        "relationship": "partner",
+        "details": "PowerSwitch 交換器晶片與開放網路系統生態"
+      },
+      {
+        "id": "PC_partner_001",
+        "name": "Microsoft（MSFT）",
+        "business_line": "PC",
+        "relationship": "partner",
+        "details": "Windows 11、Copilot+ PC 與商用裝置生態"
+      },
+      {
+        "id": "PC_partner_002",
+        "name": "Intel（INTC）",
+        "business_line": "PC",
+        "relationship": "partner",
+        "details": "Core Ultra 平台與商用 AI PC 合作"
+      },
+      {
+        "id": "PC_partner_003",
+        "name": "AMD（AMD）",
+        "business_line": "PC",
+        "relationship": "partner",
+        "details": "Ryzen AI PC 與商用裝置平台合作"
+      },
+      {
+        "id": "PC_partner_004",
+        "name": "Qualcomm（QCOM）",
+        "business_line": "PC",
+        "relationship": "partner",
+        "details": "Snapdragon X 系列 Windows on Arm AI PC 生態"
+      },
+      {
+        "id": "APEX_partner_001",
+        "name": "Microsoft（MSFT）",
+        "business_line": "APEX",
+        "relationship": "partner",
+        "details": "Dell APEX 與 Microsoft Azure Local、混合雲整合"
+      },
+      {
+        "id": "APEX_partner_002",
+        "name": "Red Hat（IBM）",
+        "business_line": "APEX",
+        "relationship": "partner",
+        "details": "OpenShift 與 Dell APEX Cloud Platform 整合"
+      },
+      {
+        "id": "COOLING_partner_001",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "COOLING",
+        "relationship": "partner",
+        "details": "NVIDIA 高密度 AI 機櫃散熱與 Dell PowerCool 液冷系統共同設計"
+      },
+      {
+        "id": "CHANNEL_partner_001",
+        "name": "TD SYNNEX（SNX）",
+        "business_line": "CHANNEL",
+        "relationship": "partner",
+        "details": "Dell 全球 IT 通路及企業解決方案銷售合作"
+      },
+      {
+        "id": "AI_RACK_supplier_001",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "AI_RACK",
+        "relationship": "supplier",
+        "details": "Dell PowerRack／PowerEdge AI 伺服器使用 NVIDIA GPU、NVLink 與網路技術"
+      },
+      {
+        "id": "AI_RACK_supplier_002",
+        "name": "AMD（AMD）",
+        "business_line": "AI_RACK",
+        "relationship": "supplier",
+        "details": "Dell AI 伺服器使用 AMD Instinct GPU 與 EPYC CPU"
+      },
+      {
+        "id": "POWEREDGE_supplier_001",
+        "name": "Intel（INTC）",
+        "business_line": "POWEREDGE",
+        "relationship": "supplier",
+        "details": "Dell PowerEdge 與 PC 使用 Intel Xeon／Core 處理器"
+      },
+      {
+        "id": "POWEREDGE_supplier_002",
+        "name": "AMD（AMD）",
+        "business_line": "POWEREDGE",
+        "relationship": "supplier",
+        "details": "Dell PowerEdge 使用 AMD EPYC CPU"
+      },
+      {
+        "id": "NETWORK_supplier_001",
+        "name": "Broadcom（AVGO）",
+        "business_line": "NETWORK",
+        "relationship": "supplier",
+        "details": "Dell PowerSwitch 部分網通平台採用 Broadcom 交換器晶片"
+      },
+      {
+        "id": "PC_supplier_001",
+        "name": "Qualcomm（QCOM）",
+        "business_line": "PC",
+        "relationship": "supplier",
+        "details": "Dell AI PC 採用 Snapdragon X 系列處理器"
+      },
+      {
+        "id": "PC_supplier_002",
+        "name": "Intel（INTC）",
+        "business_line": "PC",
+        "relationship": "supplier",
+        "details": "Dell PC 使用 Intel Core／Core Ultra 處理器"
+      },
+      {
+        "id": "PC_supplier_003",
+        "name": "AMD（AMD）",
+        "business_line": "PC",
+        "relationship": "supplier",
+        "details": "Dell PC 使用 AMD Ryzen 系列處理器"
+      },
+      {
+        "id": "STORAGE_supplier_001",
+        "name": "Western Digital（WDC）",
+        "business_line": "STORAGE",
+        "relationship": "supplier",
+        "details": "Dell 伺服器及儲存產品的硬碟／記憶體採購生態涵蓋該公司產品；公開資料不足以證實各產品線或採購占比，不應解讀為獨家供應。"
+      },
+      {
+        "id": "STORAGE_supplier_002",
+        "name": "Seagate（STX）",
+        "business_line": "STORAGE",
+        "relationship": "supplier",
+        "details": "Dell 伺服器及儲存產品的硬碟／記憶體採購生態涵蓋該公司產品；公開資料不足以證實各產品線或採購占比，不應解讀為獨家供應。"
+      },
+      {
+        "id": "STORAGE_supplier_003",
+        "name": "Samsung Electronics（005930.KS）",
+        "business_line": "STORAGE",
+        "relationship": "supplier",
+        "details": "Dell 伺服器及儲存產品的硬碟／記憶體採購生態涵蓋該公司產品；公開資料不足以證實各產品線或採購占比，不應解讀為獨家供應。"
+      },
+      {
+        "id": "STORAGE_supplier_004",
+        "name": "Micron（MU）",
+        "business_line": "STORAGE",
+        "relationship": "supplier",
+        "details": "Dell 伺服器及儲存產品的硬碟／記憶體採購生態涵蓋該公司產品；公開資料不足以證實各產品線或採購占比，不應解讀為獨家供應。"
+      },
+      {
+        "id": "AI_RACK_competitor_001",
+        "name": "Supermicro（SMCI）",
+        "business_line": "AI_RACK",
+        "relationship": "competitor",
+        "details": "AI GPU 伺服器與機櫃系統競爭"
+      },
+      {
+        "id": "AI_RACK_competitor_002",
+        "name": "HPE（HPE）",
+        "business_line": "AI_RACK",
+        "relationship": "competitor",
+        "details": "AI Factory／Cray 與液冷 AI 系統競爭"
+      },
+      {
+        "id": "AI_RACK_competitor_003",
+        "name": "Lenovo（0992.HK）",
+        "business_line": "AI_RACK",
+        "relationship": "competitor",
+        "details": "AI 伺服器與高密度機櫃競爭"
+      },
+      {
+        "id": "AI_RACK_competitor_004",
+        "name": "Quanta Cloud Technology／廣達（2382）",
+        "business_line": "AI_RACK",
+        "relationship": "competitor",
+        "details": "大型 CSP AI 機櫃與雲端 GPU 系統競爭"
+      },
+      {
+        "id": "AI_RACK_competitor_005",
+        "name": "Wiwynn／緯穎（6669）",
+        "business_line": "AI_RACK",
+        "relationship": "competitor",
+        "details": "大型雲端客製 AI 伺服器競爭"
+      },
+      {
+        "id": "POWEREDGE_competitor_001",
+        "name": "HPE（HPE）",
+        "business_line": "POWEREDGE",
+        "relationship": "competitor",
+        "details": "ProLiant 企業伺服器競爭"
+      },
+      {
+        "id": "POWEREDGE_competitor_002",
+        "name": "Lenovo（0992.HK）",
+        "business_line": "POWEREDGE",
+        "relationship": "competitor",
+        "details": "ThinkSystem 企業伺服器競爭"
+      },
+      {
+        "id": "POWEREDGE_competitor_003",
+        "name": "Supermicro（SMCI）",
+        "business_line": "POWEREDGE",
+        "relationship": "competitor",
+        "details": "x86 伺服器競爭"
+      },
+      {
+        "id": "POWEREDGE_competitor_004",
+        "name": "Cisco（CSCO）",
+        "business_line": "POWEREDGE",
+        "relationship": "competitor",
+        "details": "UCS 伺服器競爭"
+      },
+      {
+        "id": "STORAGE_competitor_001",
+        "name": "NetApp（NTAP）",
+        "business_line": "STORAGE",
+        "relationship": "competitor",
+        "details": "企業儲存與資料管理競爭"
+      },
+      {
+        "id": "STORAGE_competitor_002",
+        "name": "Pure Storage（PSTG）",
+        "business_line": "STORAGE",
+        "relationship": "competitor",
+        "details": "企業全快閃儲存競爭"
+      },
+      {
+        "id": "STORAGE_competitor_003",
+        "name": "HPE（HPE）",
+        "business_line": "STORAGE",
+        "relationship": "competitor",
+        "details": "Alletra 與企業儲存競爭"
+      },
+      {
+        "id": "STORAGE_competitor_004",
+        "name": "IBM（IBM）",
+        "business_line": "STORAGE",
+        "relationship": "competitor",
+        "details": "企業儲存競爭"
+      },
+      {
+        "id": "STORAGE_competitor_005",
+        "name": "Hitachi Vantara",
+        "business_line": "STORAGE",
+        "relationship": "competitor",
+        "details": "企業儲存陣列競爭"
+      },
+      {
+        "id": "NETWORK_competitor_001",
+        "name": "Cisco（CSCO）",
+        "business_line": "NETWORK",
+        "relationship": "competitor",
+        "details": "企業與資料中心網路設備競爭"
+      },
+      {
+        "id": "NETWORK_competitor_002",
+        "name": "Arista Networks（ANET）",
+        "business_line": "NETWORK",
+        "relationship": "competitor",
+        "details": "高速資料中心交換器競爭"
+      },
+      {
+        "id": "NETWORK_competitor_003",
+        "name": "HPE Juniper（HPE）",
+        "business_line": "NETWORK",
+        "relationship": "competitor",
+        "details": "企業交換器及資料中心網路競爭"
+      },
+      {
+        "id": "NETWORK_competitor_004",
+        "name": "Nokia（NOK）",
+        "business_line": "NETWORK",
+        "relationship": "competitor",
+        "details": "企業及資料中心網路競爭"
+      },
+      {
+        "id": "PC_competitor_001",
+        "name": "HP Inc.（HPQ）",
+        "business_line": "PC",
+        "relationship": "competitor",
+        "details": "商用 PC 市場競爭"
+      },
+      {
+        "id": "PC_competitor_002",
+        "name": "Lenovo（0992.HK）",
+        "business_line": "PC",
+        "relationship": "competitor",
+        "details": "商用 PC 市場競爭"
+      },
+      {
+        "id": "PC_competitor_003",
+        "name": "Apple（AAPL）",
+        "business_line": "PC",
+        "relationship": "competitor",
+        "details": "高階個人電腦競爭"
+      },
+      {
+        "id": "PC_competitor_004",
+        "name": "ASUS 華碩（2357）",
+        "business_line": "PC",
+        "relationship": "competitor",
+        "details": "商用與消費筆電競爭"
+      },
+      {
+        "id": "PC_competitor_005",
+        "name": "Acer 宏碁（2353）",
+        "business_line": "PC",
+        "relationship": "competitor",
+        "details": "商用與消費筆電競爭"
+      },
+      {
+        "id": "WORKSTATION_competitor_001",
+        "name": "HP Inc.（HPQ）",
+        "business_line": "WORKSTATION",
+        "relationship": "competitor",
+        "details": "Z 工作站競爭"
+      },
+      {
+        "id": "WORKSTATION_competitor_002",
+        "name": "Lenovo（0992.HK）",
+        "business_line": "WORKSTATION",
+        "relationship": "competitor",
+        "details": "ThinkStation 工作站競爭"
+      },
+      {
+        "id": "WORKSTATION_competitor_003",
+        "name": "Apple（AAPL）",
+        "business_line": "WORKSTATION",
+        "relationship": "competitor",
+        "details": "高階創作與 AI 工作站競爭"
+      },
+      {
+        "id": "CONSUMER_competitor_001",
+        "name": "HP Inc.（HPQ）",
+        "business_line": "CONSUMER",
+        "relationship": "competitor",
+        "details": "消費型 PC 競爭"
+      },
+      {
+        "id": "CONSUMER_competitor_002",
+        "name": "Lenovo（0992.HK）",
+        "business_line": "CONSUMER",
+        "relationship": "competitor",
+        "details": "消費筆電與電競競爭"
+      },
+      {
+        "id": "CONSUMER_competitor_003",
+        "name": "ASUS 華碩（2357）",
+        "business_line": "CONSUMER",
+        "relationship": "competitor",
+        "details": "ROG 與消費電競裝置競爭"
+      },
+      {
+        "id": "CONSUMER_competitor_004",
+        "name": "MSI 微星（2377）",
+        "business_line": "CONSUMER",
+        "relationship": "competitor",
+        "details": "電競筆電與周邊競爭"
+      },
+      {
+        "id": "APEX_competitor_001",
+        "name": "HPE GreenLake（HPE）",
+        "business_line": "APEX",
+        "relationship": "competitor",
+        "details": "企業 IT 即服務競爭"
+      },
+      {
+        "id": "APEX_competitor_002",
+        "name": "Nutanix（NTNX）",
+        "business_line": "APEX",
+        "relationship": "competitor",
+        "details": "混合雲與超融合基礎設施競爭"
+      },
+      {
+        "id": "APEX_competitor_003",
+        "name": "Cisco（CSCO）",
+        "business_line": "APEX",
+        "relationship": "competitor",
+        "details": "企業基礎設施訂閱與服務競爭"
+      },
+      {
+        "id": "COOLING_competitor_001",
+        "name": "Vertiv（VRT）",
+        "business_line": "COOLING",
+        "relationship": "competitor",
+        "details": "資料中心液冷、電力與機櫃基礎設施競爭"
+      },
+      {
+        "id": "COOLING_competitor_002",
+        "name": "Schneider Electric（SU.PA）",
+        "business_line": "COOLING",
+        "relationship": "competitor",
+        "details": "資料中心電力與冷卻整合競爭"
+      },
+      {
+        "id": "AI_RACK_beneficiary_001",
+        "name": "台達電（2308）",
+        "business_line": "AI_RACK",
+        "relationship": "beneficiary",
+        "details": "AI 機櫃高功率電源、配電與液冷相關基礎設施受惠",
+        "ticker": "2308",
+        "beneficiary_priority": "★★★★★"
+      },
+      {
+        "id": "AI_RACK_beneficiary_002",
+        "name": "光寶科（2301）",
+        "business_line": "AI_RACK",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器電源及資料中心電力管理需求受惠",
+        "ticker": "2301",
+        "beneficiary_priority": "★★★★"
+      },
+      {
+        "id": "AI_RACK_beneficiary_003",
+        "name": "奇鋐（3017）",
+        "business_line": "AI_RACK",
+        "relationship": "beneficiary",
+        "details": "高密度 GPU 伺服器散熱、液冷模組需求受惠",
+        "ticker": "3017",
+        "beneficiary_priority": "★★★★★"
+      },
+      {
+        "id": "AI_RACK_beneficiary_004",
+        "name": "雙鴻（3324）",
+        "business_line": "AI_RACK",
+        "relationship": "beneficiary",
+        "details": "液冷冷板、伺服器散熱模組受惠",
+        "ticker": "3324",
+        "beneficiary_priority": "★★★★★"
+      },
+      {
+        "id": "AI_RACK_beneficiary_005",
+        "name": "緯穎（6669）",
+        "business_line": "AI_RACK",
+        "relationship": "beneficiary",
+        "details": "大型 CSP AI 伺服器 ODM 需求受惠；亦與 Dell 競爭，非推定 Dell 供應商",
+        "ticker": "6669",
+        "beneficiary_priority": "★★★"
+      },
+      {
+        "id": "AI_RACK_beneficiary_006",
+        "name": "廣達（2382）",
+        "business_line": "AI_RACK",
+        "relationship": "beneficiary",
+        "details": "AI 機櫃與 GPU 伺服器製造需求受惠；非推定 Dell 直接供應商",
+        "ticker": "2382",
+        "beneficiary_priority": "★★★"
+      },
+      {
+        "id": "AI_RACK_beneficiary_007",
+        "name": "緯創（3231）",
+        "business_line": "AI_RACK",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器整機及機櫃代工需求受惠",
+        "ticker": "3231",
+        "beneficiary_priority": "★★★★"
+      },
+      {
+        "id": "AI_RACK_beneficiary_008",
+        "name": "鴻海（2317）",
+        "business_line": "AI_RACK",
+        "relationship": "beneficiary",
+        "details": "GPU 伺服器、機櫃及液冷系統需求受惠",
+        "ticker": "2317",
+        "beneficiary_priority": "★★★★"
+      },
+      {
+        "id": "AI_RACK_beneficiary_009",
+        "name": "英業達（2356）",
+        "business_line": "AI_RACK",
+        "relationship": "beneficiary",
+        "details": "企業伺服器與 AI 伺服器組裝產業需求受惠",
+        "ticker": "2356",
+        "beneficiary_priority": "★★★"
+      },
+      {
+        "id": "COOLING_beneficiary_001",
+        "name": "健策（3653）",
+        "business_line": "COOLING",
+        "relationship": "beneficiary",
+        "details": "高功率運算散熱金屬零件需求受惠",
+        "ticker": "3653",
+        "beneficiary_priority": "★★★★"
+      },
+      {
+        "id": "COOLING_beneficiary_002",
+        "name": "高力（8996）",
+        "business_line": "COOLING",
+        "relationship": "beneficiary",
+        "details": "資料中心液冷換熱器需求受惠",
+        "ticker": "8996",
+        "beneficiary_priority": "★★★★"
+      },
+      {
+        "id": "COOLING_beneficiary_003",
+        "name": "富世達（6805）",
+        "business_line": "COOLING",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器機構及液冷快接頭產業需求受惠",
+        "ticker": "6805",
+        "beneficiary_priority": "★★★★"
+      },
+      {
+        "id": "COOLING_beneficiary_004",
+        "name": "晟銘電（3013）",
+        "business_line": "COOLING",
+        "relationship": "beneficiary",
+        "details": "AI 機櫃與機構件需求受惠",
+        "ticker": "3013",
+        "beneficiary_priority": "★★★"
+      },
+      {
+        "id": "COOLING_beneficiary_005",
+        "name": "勤誠（8210）",
+        "business_line": "COOLING",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器機殼與機櫃需求受惠",
+        "ticker": "8210",
+        "beneficiary_priority": "★★★"
+      },
+      {
+        "id": "COOLING_beneficiary_006",
+        "name": "營邦（3693）",
+        "business_line": "COOLING",
+        "relationship": "beneficiary",
+        "details": "GPU 伺服器機殼及高密度儲存機箱需求受惠",
+        "ticker": "3693",
+        "beneficiary_priority": "★★★"
+      },
+      {
+        "id": "COOLING_beneficiary_007",
+        "name": "群電（6412）",
+        "business_line": "COOLING",
+        "relationship": "beneficiary",
+        "details": "伺服器及企業運算電源供應器產業受惠",
+        "ticker": "6412",
+        "beneficiary_priority": "★★★"
+      },
+      {
+        "id": "PC_beneficiary_001",
+        "name": "仁寶（2324）",
+        "business_line": "PC",
+        "relationship": "beneficiary",
+        "details": "全球筆電 ODM，受惠 Dell 與其他品牌 PC 換機需求；不推定特定訂單",
+        "ticker": "2324",
+        "beneficiary_priority": "★★★★"
+      },
+      {
+        "id": "PC_beneficiary_002",
+        "name": "緯創（3231）",
+        "business_line": "PC",
+        "relationship": "beneficiary",
+        "details": "Dell 等品牌 PC 與企業裝置 ODM 供應鏈",
+        "ticker": "3231",
+        "beneficiary_priority": "★★★★"
+      },
+      {
+        "id": "PC_beneficiary_003",
+        "name": "廣達（2382）",
+        "business_line": "PC",
+        "relationship": "beneficiary",
+        "details": "筆電 ODM 產業受惠 Dell 等品牌 PC 需求",
+        "ticker": "2382",
+        "beneficiary_priority": "★★★★"
+      },
+      {
+        "id": "PC_beneficiary_004",
+        "name": "英業達（2356）",
+        "business_line": "PC",
+        "relationship": "beneficiary",
+        "details": "筆電 ODM 與企業終端裝置出貨受惠",
+        "ticker": "2356",
+        "beneficiary_priority": "★★★★"
+      },
+      {
+        "id": "PC_beneficiary_005",
+        "name": "和碩（4938）",
+        "business_line": "PC",
+        "relationship": "beneficiary",
+        "details": "PC 與消費電子組裝供應鏈受惠",
+        "ticker": "4938",
+        "beneficiary_priority": "★★★"
+      },
+      {
+        "id": "PC_beneficiary_006",
+        "name": "群光（2385）",
+        "business_line": "PC",
+        "relationship": "beneficiary",
+        "details": "鍵盤、攝影機與 PC 周邊零組件需求受惠",
+        "ticker": "2385",
+        "beneficiary_priority": "★★★★"
+      },
+      {
+        "id": "PC_beneficiary_007",
+        "name": "精元（2387）",
+        "business_line": "PC",
+        "relationship": "beneficiary",
+        "details": "筆電鍵盤與輸入裝置需求受惠",
+        "ticker": "2387",
+        "beneficiary_priority": "★★★"
+      },
+      {
+        "id": "PC_beneficiary_008",
+        "name": "新日興（3376）",
+        "business_line": "PC",
+        "relationship": "beneficiary",
+        "details": "筆電轉軸與精密機構需求受惠",
+        "ticker": "3376",
+        "beneficiary_priority": "★★★"
+      },
+      {
+        "id": "PC_beneficiary_009",
+        "name": "兆利（3548）",
+        "business_line": "PC",
+        "relationship": "beneficiary",
+        "details": "筆電轉軸與精密機構需求受惠",
+        "ticker": "3548",
+        "beneficiary_priority": "★★★"
+      },
+      {
+        "id": "PC_beneficiary_010",
+        "name": "順達（3211）",
+        "business_line": "PC",
+        "relationship": "beneficiary",
+        "details": "筆電電池模組需求受惠",
+        "ticker": "3211",
+        "beneficiary_priority": "★★★"
+      },
+      {
+        "id": "PC_beneficiary_011",
+        "name": "新普（6121）",
+        "business_line": "PC",
+        "relationship": "beneficiary",
+        "details": "筆電電池模組需求受惠",
+        "ticker": "6121",
+        "beneficiary_priority": "★★★"
+      },
+      {
+        "id": "PC_beneficiary_012",
+        "name": "瑞昱（2379）",
+        "business_line": "PC",
+        "relationship": "beneficiary",
+        "details": "PC 網路、音效及介面晶片需求受惠",
+        "ticker": "2379",
+        "beneficiary_priority": "★★★"
+      },
+      {
+        "id": "PC_beneficiary_013",
+        "name": "義隆（2458）",
+        "business_line": "PC",
+        "relationship": "beneficiary",
+        "details": "觸控板與人機介面控制晶片需求受惠",
+        "ticker": "2458",
+        "beneficiary_priority": "★★★"
+      },
+      {
+        "id": "STORAGE_beneficiary_001",
+        "name": "群聯（8299）",
+        "business_line": "STORAGE",
+        "relationship": "beneficiary",
+        "details": "企業 SSD 控制器與快閃儲存產業需求受惠；非推定 Dell 直接採購",
+        "ticker": "8299",
+        "beneficiary_priority": "★★★"
+      },
+      {
+        "id": "NETWORK_beneficiary_001",
+        "name": "智邦（2345）",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "資料中心交換器與開放網路設備需求受惠；非推定 Dell 供應商",
+        "ticker": "2345",
+        "beneficiary_priority": "★★★★"
+      },
+      {
+        "id": "NETWORK_beneficiary_002",
+        "name": "啟碁（6285）",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "企業網通與無線連線設備需求受惠",
+        "ticker": "6285",
+        "beneficiary_priority": "★★★"
+      },
+      {
+        "id": "CHANNEL_beneficiary_001",
+        "name": "聯強（2347）",
+        "business_line": "CHANNEL",
+        "relationship": "beneficiary",
+        "details": "Dell PC、伺服器及企業 IT 通路銷售受惠",
+        "ticker": "2347",
+        "beneficiary_priority": "★★★"
+      },
+      {
+        "id": "CHANNEL_beneficiary_002",
+        "name": "精技（2414）",
+        "business_line": "CHANNEL",
+        "relationship": "beneficiary",
+        "details": "台灣企業 IT 通路與商用電腦設備銷售需求受惠",
+        "ticker": "2414",
+        "beneficiary_priority": "★★★"
+      }
+    ]
   }
 }

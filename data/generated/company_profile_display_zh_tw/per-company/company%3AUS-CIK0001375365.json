@@ -211,5 +211,417 @@
       "雲端運算"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-03",
+    "company": "Super Micro Computer, Inc.",
+    "symbol": "SMCI",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "Supermicro（SMCI）產業鏈：GPU 伺服器、機架級 AI、液冷與台灣供應鏈",
+      "description": "區分 Supermicro 具名直接供應商、公開技術合作、競爭對手與台灣產業受惠股。"
+    },
+    "business_lines": [
+      {
+        "id": "GPU",
+        "name": "GPU 加速伺服器"
+      },
+      {
+        "id": "RACK",
+        "name": "機架級 AI 工廠"
+      },
+      {
+        "id": "DLC",
+        "name": "直接液冷與熱管理"
+      },
+      {
+        "id": "POWER",
+        "name": "配電與備援電源"
+      },
+      {
+        "id": "NETWORK",
+        "name": "AI 網路與交換"
+      },
+      {
+        "id": "STORAGE",
+        "name": "AI 儲存"
+      },
+      {
+        "id": "CPU",
+        "name": "通用伺服器與 CPU"
+      },
+      {
+        "id": "EDGE",
+        "name": "邊緣與電信"
+      },
+      {
+        "id": "SOFTWARE",
+        "name": "管理軟體與服務"
+      },
+      {
+        "id": "MFG",
+        "name": "製造及系統整合"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "GPU_partner_001",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "GPU",
+        "relationship": "partner",
+        "details": "公開 NVIDIA Vera Rubin NVL72 等加速平台系統；屬技術與產品生態合作，非終端客戶。"
+      },
+      {
+        "id": "GPU_partner_002",
+        "name": "AMD（AMD）",
+        "business_line": "GPU",
+        "relationship": "partner",
+        "details": "提供 AMD EPYC 與 Instinct 加速平台伺服器，為產品平台合作。"
+      },
+      {
+        "id": "CPU_partner_003",
+        "name": "Intel（INTC）",
+        "business_line": "CPU",
+        "relationship": "partner",
+        "details": "Supermicro 伺服器支援 Intel Xeon 平台，屬產品技術生態。"
+      },
+      {
+        "id": "EDGE_partner_004",
+        "name": "Nokia（NOK）",
+        "business_line": "EDGE",
+        "relationship": "partner",
+        "details": "2026 年 10 月共同公布 NVIDIA Aerial RAN 邊緣方案。"
+      },
+      {
+        "id": "MFG_supplier_005",
+        "name": "Ablecom",
+        "business_line": "MFG",
+        "relationship": "supplier",
+        "details": "FY2026 10-K 直接揭露之關係人合約製造商，供應機殼及特定零組件。"
+      },
+      {
+        "id": "POWER_supplier_006",
+        "name": "Compuware",
+        "business_line": "POWER",
+        "relationship": "supplier",
+        "details": "FY2026 10-K 直接揭露之關係人供應商，主要製造電源供應器等元件。"
+      },
+      {
+        "id": "RACK_competitor_007",
+        "name": "Dell Technologies（DELL）",
+        "business_line": "RACK",
+        "relationship": "competitor",
+        "details": "在伺服器、機架級整合或相鄰產品市場具有競爭／替代關係；不代表各產品全面重疊。"
+      },
+      {
+        "id": "RACK_competitor_008",
+        "name": "Hewlett Packard Enterprise（HPE）",
+        "business_line": "RACK",
+        "relationship": "competitor",
+        "details": "在伺服器、機架級整合或相鄰產品市場具有競爭／替代關係；不代表各產品全面重疊。"
+      },
+      {
+        "id": "RACK_competitor_009",
+        "name": "Lenovo（0992.HK）",
+        "business_line": "RACK",
+        "relationship": "competitor",
+        "details": "在伺服器、機架級整合或相鄰產品市場具有競爭／替代關係；不代表各產品全面重疊。"
+      },
+      {
+        "id": "GPU_competitor_010",
+        "name": "Gigabyte Technology（2376）",
+        "business_line": "GPU",
+        "relationship": "competitor",
+        "details": "在伺服器、機架級整合或相鄰產品市場具有競爭／替代關係；不代表各產品全面重疊。"
+      },
+      {
+        "id": "GPU_competitor_011",
+        "name": "ASUS（2357）",
+        "business_line": "GPU",
+        "relationship": "competitor",
+        "details": "在伺服器、機架級整合或相鄰產品市場具有競爭／替代關係；不代表各產品全面重疊。"
+      },
+      {
+        "id": "GPU_competitor_012",
+        "name": "ASRock Rack／華擎（3515）",
+        "business_line": "GPU",
+        "relationship": "competitor",
+        "details": "在伺服器、機架級整合或相鄰產品市場具有競爭／替代關係；不代表各產品全面重疊。"
+      },
+      {
+        "id": "GPU_competitor_013",
+        "name": "Quanta Cloud Technology／廣達（2382）",
+        "business_line": "GPU",
+        "relationship": "competitor",
+        "details": "在伺服器、機架級整合或相鄰產品市場具有競爭／替代關係；不代表各產品全面重疊。"
+      },
+      {
+        "id": "GPU_competitor_014",
+        "name": "Wiwynn／緯穎（6669）",
+        "business_line": "GPU",
+        "relationship": "competitor",
+        "details": "在伺服器、機架級整合或相鄰產品市場具有競爭／替代關係；不代表各產品全面重疊。"
+      },
+      {
+        "id": "GPU_competitor_015",
+        "name": "Inventec／英業達（2356）",
+        "business_line": "GPU",
+        "relationship": "competitor",
+        "details": "在伺服器、機架級整合或相鄰產品市場具有競爭／替代關係；不代表各產品全面重疊。"
+      },
+      {
+        "id": "GPU_competitor_016",
+        "name": "Foxconn／鴻海（2317）",
+        "business_line": "GPU",
+        "relationship": "competitor",
+        "details": "在伺服器、機架級整合或相鄰產品市場具有競爭／替代關係；不代表各產品全面重疊。"
+      },
+      {
+        "id": "STORAGE_competitor_017",
+        "name": "NetApp（NTAP）",
+        "business_line": "STORAGE",
+        "relationship": "competitor",
+        "details": "在伺服器、機架級整合或相鄰產品市場具有競爭／替代關係；不代表各產品全面重疊。"
+      },
+      {
+        "id": "STORAGE_competitor_018",
+        "name": "Pure Storage（PSTG）",
+        "business_line": "STORAGE",
+        "relationship": "competitor",
+        "details": "在伺服器、機架級整合或相鄰產品市場具有競爭／替代關係；不代表各產品全面重疊。"
+      },
+      {
+        "id": "EDGE_competitor_019",
+        "name": "Cisco（CSCO）",
+        "business_line": "EDGE",
+        "relationship": "competitor",
+        "details": "在伺服器、機架級整合或相鄰產品市場具有競爭／替代關係；不代表各產品全面重疊。"
+      },
+      {
+        "id": "RACK_competitor_020",
+        "name": "Inspur／浪潮資訊（000977.SZ）",
+        "business_line": "RACK",
+        "relationship": "competitor",
+        "details": "在伺服器、機架級整合或相鄰產品市場具有競爭／替代關係；不代表各產品全面重疊。"
+      },
+      {
+        "id": "DLC_beneficiary_021",
+        "name": "奇鋐（3017）",
+        "business_line": "DLC",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "DLC_beneficiary_022",
+        "name": "雙鴻（3324）",
+        "business_line": "DLC",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "DLC_beneficiary_023",
+        "name": "健策（3653）",
+        "business_line": "DLC",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "DLC_beneficiary_024",
+        "name": "高力（8996）",
+        "business_line": "DLC",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "DLC_beneficiary_025",
+        "name": "尼得科超眾（6230）",
+        "business_line": "DLC",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "POWER_beneficiary_026",
+        "name": "台達電（2308）",
+        "business_line": "POWER",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "POWER_beneficiary_027",
+        "name": "光寶科（2301）",
+        "business_line": "POWER",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "POWER_beneficiary_028",
+        "name": "群電（6412）",
+        "business_line": "POWER",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "POWER_beneficiary_029",
+        "name": "康舒（6282）",
+        "business_line": "POWER",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "NETWORK_beneficiary_030",
+        "name": "智邦（2345）",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "NETWORK_beneficiary_031",
+        "name": "啟碁（6285）",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "NETWORK_beneficiary_032",
+        "name": "明泰（3380）",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "STORAGE_beneficiary_033",
+        "name": "群聯（8299）",
+        "business_line": "STORAGE",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "STORAGE_beneficiary_034",
+        "name": "威剛（3260）",
+        "business_line": "STORAGE",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "STORAGE_beneficiary_035",
+        "name": "創見（2451）",
+        "business_line": "STORAGE",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "MFG_beneficiary_036",
+        "name": "金像電（2368）",
+        "business_line": "MFG",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "MFG_beneficiary_037",
+        "name": "台光電（2383）",
+        "business_line": "MFG",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "MFG_beneficiary_038",
+        "name": "欣興（3037）",
+        "business_line": "MFG",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "MFG_beneficiary_039",
+        "name": "南電（8046）",
+        "business_line": "MFG",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "MFG_beneficiary_040",
+        "name": "景碩（3189）",
+        "business_line": "MFG",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "MFG_beneficiary_041",
+        "name": "嘉澤（3533）",
+        "business_line": "MFG",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "MFG_beneficiary_042",
+        "name": "貿聯-KY（3665）",
+        "business_line": "MFG",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "MFG_beneficiary_043",
+        "name": "信邦（3023）",
+        "business_line": "MFG",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "MFG_beneficiary_044",
+        "name": "勤誠（8210）",
+        "business_line": "MFG",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "MFG_beneficiary_045",
+        "name": "迎廣（6117）",
+        "business_line": "MFG",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "MFG_beneficiary_046",
+        "name": "晟銘電（3013）",
+        "business_line": "MFG",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "MFG_beneficiary_047",
+        "name": "川湖（2059）",
+        "business_line": "MFG",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "MFG_beneficiary_048",
+        "name": "廣達（2382）",
+        "business_line": "MFG",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "MFG_beneficiary_049",
+        "name": "緯創（3231）",
+        "business_line": "MFG",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      },
+      {
+        "id": "MFG_beneficiary_050",
+        "name": "緯穎（6669）",
+        "business_line": "MFG",
+        "relationship": "beneficiary",
+        "details": "屬 AI 資料中心相關產品與需求的產業受惠／競爭觀察；未經證實為 Supermicro 直接供應商或已取得其訂單。"
+      }
+    ]
   }
 }

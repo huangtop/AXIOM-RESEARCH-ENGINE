@@ -328,5 +328,806 @@
       "先進製程良率與產能"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-03",
+    "company": "Intel Corporation",
+    "symbol": "INTC",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "Intel (INTC) 產業鏈：Xeon、18A／14A、EMIB-T、矽光子 OCI／CPO、AI 推論與 ABF 載板",
+      "description": "從 SEC 2026 Q3 10-Q、最新法說會、Intel Foundry 封裝與光學 I/O 技術公告，追蹤 Intel CPU、晶圓代工、EMIB／Foveros、矽光子與供應瓶頸；區分實際採用、原型、合作與產業受惠。"
+    },
+    "business_lines": [
+      {
+        "id": "SERVER_CPU",
+        "name": "Xeon Granite Rapids／Clearwater Forest／Diamond Rapids／Agentic AI"
+      },
+      {
+        "id": "CLIENT_CPU",
+        "name": "Core Ultra Panther Lake／Wildcat Lake／Nova Lake AI PC"
+      },
+      {
+        "id": "FOUNDRY_18A",
+        "name": "Intel Foundry 18A／18A-P／14A"
+      },
+      {
+        "id": "PACKAGING",
+        "name": "EMIB／EMIB-T／EMIB 3.5D／Foveros Direct／HBM 異質整合"
+      },
+      {
+        "id": "AI_ACCEL",
+        "name": "Crescent Island GPU／Gaudi／推論加速器"
+      },
+      {
+        "id": "NETWORK_EDGE",
+        "name": "網路、邊緣與 Physical AI"
+      },
+      {
+        "id": "EDA_IP",
+        "name": "代工設計生態與 EDA"
+      },
+      {
+        "id": "LITHO",
+        "name": "High-NA EUV 與先進設備"
+      },
+      {
+        "id": "SUBSTRATE",
+        "name": "EMIB 高階有機載板／ABF 供應缺口與記憶體瓶頸"
+      },
+      {
+        "id": "MANUFACTURING",
+        "name": "美國製造擴建與資本支出"
+      },
+      {
+        "id": "SILICON_PHOTONICS_OCI",
+        "name": "Silicon Photonics／Optical Compute Interconnect (OCI)／CPO 光學 I/O"
+      },
+      {
+        "id": "GLASS_SUBSTRATE",
+        "name": "玻璃基板／光學玻璃耦合／先進封裝材料"
+      },
+      {
+        "id": "CUSTOM_SILICON",
+        "name": "客製化晶片／Purpose-built Silicon／UCIe 生態"
+      },
+      {
+        "id": "SUPPLY_AND_RISK",
+        "name": "以色列晶圓廠中斷／產能／資本支出／營運風險"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "SERVER_CPU_customer_001",
+        "name": "Oracle Cloud Infrastructure",
+        "business_line": "SERVER_CPU",
+        "relationship": "customer",
+        "details": "Intel 2026-10-27 官方揭露 OCI 使用 Xeon 的雲端合作；既有 Xeon 採用與未來 Diamond Rapids X14 部署計畫必須區分。OCI 此處為 Oracle Cloud Infrastructure，不是 Optical Compute Interconnect。",
+        "ticker": "ORCL"
+      },
+      {
+        "id": "SERVER_CPU_partner_001",
+        "name": "Oracle Cloud Infrastructure",
+        "business_line": "SERVER_CPU",
+        "relationship": "partner",
+        "details": "Intel 官方 2026-10-27 宣布合作規劃；同時是 Xeon 生態採用方。",
+        "ticker": "ORCL"
+      },
+      {
+        "id": "SERVER_CPU_competitor_001",
+        "name": "AMD",
+        "business_line": "SERVER_CPU",
+        "relationship": "competitor",
+        "details": "EPYC 與 Xeon 直接競爭",
+        "ticker": "AMD"
+      },
+      {
+        "id": "SERVER_CPU_competitor_002",
+        "name": "Arm",
+        "business_line": "SERVER_CPU",
+        "relationship": "competitor",
+        "details": "Neoverse Arm 伺服器 CPU 架構競爭",
+        "ticker": "ARM"
+      },
+      {
+        "id": "SERVER_CPU_competitor_003",
+        "name": "NVIDIA",
+        "business_line": "SERVER_CPU",
+        "relationship": "competitor",
+        "details": "Grace／Vera CPU 與 AI 伺服器平台競爭",
+        "ticker": "NVDA"
+      },
+      {
+        "id": "SERVER_CPU_beneficiary_001",
+        "name": "Dell Technologies",
+        "business_line": "SERVER_CPU",
+        "relationship": "beneficiary",
+        "details": "Xeon 伺服器與機架系統生態；未將特定出貨訂單歸因於 Intel。",
+        "ticker": "DELL"
+      },
+      {
+        "id": "SERVER_CPU_beneficiary_002",
+        "name": "Hewlett Packard Enterprise",
+        "business_line": "SERVER_CPU",
+        "relationship": "beneficiary",
+        "details": "Xeon 伺服器與機架系統生態；未將特定出貨訂單歸因於 Intel。",
+        "ticker": "HPE"
+      },
+      {
+        "id": "SERVER_CPU_beneficiary_003",
+        "name": "Supermicro",
+        "business_line": "SERVER_CPU",
+        "relationship": "beneficiary",
+        "details": "Xeon 伺服器與機架系統生態；未將特定出貨訂單歸因於 Intel。",
+        "ticker": "SMCI"
+      },
+      {
+        "id": "SERVER_CPU_beneficiary_004",
+        "name": "Quanta Computer／廣達",
+        "business_line": "SERVER_CPU",
+        "relationship": "beneficiary",
+        "details": "Xeon 伺服器與機架系統生態；未將特定出貨訂單歸因於 Intel。",
+        "ticker": "2382.TW"
+      },
+      {
+        "id": "SERVER_CPU_beneficiary_005",
+        "name": "Wiwynn／緯穎",
+        "business_line": "SERVER_CPU",
+        "relationship": "beneficiary",
+        "details": "Xeon 伺服器與機架系統生態；未將特定出貨訂單歸因於 Intel。",
+        "ticker": "6669.TW"
+      },
+      {
+        "id": "CLIENT_CPU_competitor_001",
+        "name": "AMD",
+        "business_line": "CLIENT_CPU",
+        "relationship": "competitor",
+        "details": "PC／筆電運算平台競爭；市場份額與產品規格依型號而異。",
+        "ticker": "AMD"
+      },
+      {
+        "id": "CLIENT_CPU_competitor_002",
+        "name": "Qualcomm",
+        "business_line": "CLIENT_CPU",
+        "relationship": "competitor",
+        "details": "PC／筆電運算平台競爭；市場份額與產品規格依型號而異。",
+        "ticker": "QCOM"
+      },
+      {
+        "id": "CLIENT_CPU_competitor_003",
+        "name": "Apple",
+        "business_line": "CLIENT_CPU",
+        "relationship": "competitor",
+        "details": "PC／筆電運算平台競爭；市場份額與產品規格依型號而異。",
+        "ticker": "AAPL"
+      },
+      {
+        "id": "CLIENT_CPU_beneficiary_001",
+        "name": "ASUSTeK／華碩",
+        "business_line": "CLIENT_CPU",
+        "relationship": "beneficiary",
+        "details": "PC OEM／ODM 與 AI PC 換機循環相關；非宣稱新增訂單。",
+        "ticker": "2357.TW"
+      },
+      {
+        "id": "CLIENT_CPU_beneficiary_002",
+        "name": "Acer／宏碁",
+        "business_line": "CLIENT_CPU",
+        "relationship": "beneficiary",
+        "details": "PC OEM／ODM 與 AI PC 換機循環相關；非宣稱新增訂單。",
+        "ticker": "2353.TW"
+      },
+      {
+        "id": "CLIENT_CPU_beneficiary_003",
+        "name": "Lenovo／聯想",
+        "business_line": "CLIENT_CPU",
+        "relationship": "beneficiary",
+        "details": "PC OEM／ODM 與 AI PC 換機循環相關；非宣稱新增訂單。",
+        "ticker": "0992.HK"
+      },
+      {
+        "id": "CLIENT_CPU_beneficiary_004",
+        "name": "Compal／仁寶",
+        "business_line": "CLIENT_CPU",
+        "relationship": "beneficiary",
+        "details": "PC OEM／ODM 與 AI PC 換機循環相關；非宣稱新增訂單。",
+        "ticker": "2324.TW"
+      },
+      {
+        "id": "CLIENT_CPU_beneficiary_005",
+        "name": "Inventec／英業達",
+        "business_line": "CLIENT_CPU",
+        "relationship": "beneficiary",
+        "details": "PC OEM／ODM 與 AI PC 換機循環相關；非宣稱新增訂單。",
+        "ticker": "2356.TW"
+      },
+      {
+        "id": "FOUNDRY_18A_competitor_001",
+        "name": "TSMC／台積電",
+        "business_line": "FOUNDRY_18A",
+        "relationship": "competitor",
+        "details": "先進邏輯晶圓代工競爭；Intel 外部 Foundry 營收須排除內部交易。",
+        "ticker": "TSM"
+      },
+      {
+        "id": "FOUNDRY_18A_competitor_002",
+        "name": "Samsung Foundry",
+        "business_line": "FOUNDRY_18A",
+        "relationship": "competitor",
+        "details": "先進邏輯晶圓代工競爭；Intel 外部 Foundry 營收須排除內部交易。",
+        "ticker": "005930.KS"
+      },
+      {
+        "id": "FOUNDRY_18A_competitor_003",
+        "name": "GlobalFoundries",
+        "business_line": "FOUNDRY_18A",
+        "relationship": "competitor",
+        "details": "成熟及特殊製程市場存在部分競爭，並非所有先進節點直接競爭。",
+        "ticker": "GFS"
+      },
+      {
+        "id": "FOUNDRY_18A_competitor_004",
+        "name": "UMC／聯電",
+        "business_line": "FOUNDRY_18A",
+        "relationship": "competitor",
+        "details": "成熟及特殊製程市場存在部分競爭，並非所有先進節點直接競爭。",
+        "ticker": "2303.TW"
+      },
+      {
+        "id": "PACKAGING_competitor_001",
+        "name": "ASE Technology／日月光投控",
+        "business_line": "PACKAGING",
+        "relationship": "competitor",
+        "details": "部分先進封裝／測試服務替代競爭；技術路線並不完全相同。",
+        "ticker": "ASX"
+      },
+      {
+        "id": "PACKAGING_competitor_002",
+        "name": "Amkor Technology",
+        "business_line": "PACKAGING",
+        "relationship": "competitor",
+        "details": "部分先進封裝／測試服務替代競爭；技術路線並不完全相同。",
+        "ticker": "AMKR"
+      },
+      {
+        "id": "PACKAGING_beneficiary_005",
+        "name": "ChipMOS／南茂",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "南茂具封測業務，但非 EMIB／Foveros 先進封裝的已確認直接競品；僅能視為封測領域間接競合，不能作為 EMIB 直接競爭者。",
+        "ticker": "8150.TW"
+      },
+      {
+        "id": "PACKAGING_beneficiary_001",
+        "name": "ASE Technology／日月光投控",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "日月光具異質整合／先進封裝能力，屬技術競合與產業需求觀察；沒有證據證明 Intel EMIB 訂單。",
+        "ticker": "ASX"
+      },
+      {
+        "id": "PACKAGING_beneficiary_002",
+        "name": "Unimicron／欣興",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "EMIB／Foveros 帶動先進封裝與高階載板產業需求；未確認 Intel 直接採購。",
+        "ticker": "3037.TW"
+      },
+      {
+        "id": "PACKAGING_beneficiary_003",
+        "name": "Nan Ya PCB／南電",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "EMIB／Foveros 帶動先進封裝與高階載板產業需求；未確認 Intel 直接採購。",
+        "ticker": "8046.TW"
+      },
+      {
+        "id": "PACKAGING_beneficiary_004",
+        "name": "Kinsus／景碩",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "EMIB／Foveros 帶動先進封裝與高階載板產業需求；未確認 Intel 直接採購。",
+        "ticker": "3189.TW"
+      },
+      {
+        "id": "AI_ACCEL_competitor_001",
+        "name": "NVIDIA",
+        "business_line": "AI_ACCEL",
+        "relationship": "competitor",
+        "details": "AI 加速與資料中心運算方案競爭；產品成熟度及市占不同。",
+        "ticker": "NVDA"
+      },
+      {
+        "id": "AI_ACCEL_competitor_002",
+        "name": "AMD",
+        "business_line": "AI_ACCEL",
+        "relationship": "competitor",
+        "details": "AI 加速與資料中心運算方案競爭；產品成熟度及市占不同。",
+        "ticker": "AMD"
+      },
+      {
+        "id": "AI_ACCEL_competitor_003",
+        "name": "Broadcom",
+        "business_line": "AI_ACCEL",
+        "relationship": "competitor",
+        "details": "AI 加速與資料中心運算方案競爭；產品成熟度及市占不同。",
+        "ticker": "AVGO"
+      },
+      {
+        "id": "NETWORK_EDGE_competitor_001",
+        "name": "NVIDIA",
+        "business_line": "NETWORK_EDGE",
+        "relationship": "competitor",
+        "details": "邊緣 AI／網路運算領域有部分重疊。",
+        "ticker": "NVDA"
+      },
+      {
+        "id": "NETWORK_EDGE_competitor_002",
+        "name": "AMD",
+        "business_line": "NETWORK_EDGE",
+        "relationship": "competitor",
+        "details": "邊緣 AI／網路運算領域有部分重疊。",
+        "ticker": "AMD"
+      },
+      {
+        "id": "NETWORK_EDGE_competitor_003",
+        "name": "Qualcomm",
+        "business_line": "NETWORK_EDGE",
+        "relationship": "competitor",
+        "details": "邊緣 AI／網路運算領域有部分重疊。",
+        "ticker": "QCOM"
+      },
+      {
+        "id": "NETWORK_EDGE_beneficiary_001",
+        "name": "Cisco",
+        "business_line": "NETWORK_EDGE",
+        "relationship": "beneficiary",
+        "details": "網路與邊緣運算基礎設施需求關聯，非 Intel 直接訂單。",
+        "ticker": "CSCO"
+      },
+      {
+        "id": "NETWORK_EDGE_beneficiary_002",
+        "name": "Arista Networks",
+        "business_line": "NETWORK_EDGE",
+        "relationship": "beneficiary",
+        "details": "網路與邊緣運算基礎設施需求關聯，非 Intel 直接訂單。",
+        "ticker": "ANET"
+      },
+      {
+        "id": "NETWORK_EDGE_beneficiary_003",
+        "name": "Accton／智邦",
+        "business_line": "NETWORK_EDGE",
+        "relationship": "beneficiary",
+        "details": "網路與邊緣運算基礎設施需求關聯，非 Intel 直接訂單。",
+        "ticker": "2345.TW"
+      },
+      {
+        "id": "EDA_IP_partner_001",
+        "name": "Synopsys",
+        "business_line": "EDA_IP",
+        "relationship": "partner",
+        "details": "Intel Foundry 設計啟用生態相關 EDA 供應商；此處不宣稱 14A 已取得具名量產客戶。",
+        "ticker": "SNPS"
+      },
+      {
+        "id": "EDA_IP_partner_002",
+        "name": "Cadence Design Systems",
+        "business_line": "EDA_IP",
+        "relationship": "partner",
+        "details": "Intel Foundry 設計啟用生態相關 EDA 供應商；此處不宣稱 14A 已取得具名量產客戶。",
+        "ticker": "CDNS"
+      },
+      {
+        "id": "EDA_IP_partner_003",
+        "name": "Siemens EDA",
+        "business_line": "EDA_IP",
+        "relationship": "partner",
+        "details": "Intel Foundry 設計啟用生態相關 EDA 供應商；此處不宣稱 14A 已取得具名量產客戶。",
+        "ticker": "SIE.DE"
+      },
+      {
+        "id": "LITHO_partner_001",
+        "name": "ASML",
+        "business_line": "LITHO",
+        "relationship": "partner",
+        "details": "2026-09 Intel 與 ASML 官方聯合發布 High-NA EUV 量產應用與技術合作。",
+        "ticker": "ASML"
+      },
+      {
+        "id": "LITHO_supplier_001",
+        "name": "ASML",
+        "business_line": "LITHO",
+        "relationship": "supplier",
+        "details": "High-NA EUV 微影設備供應商，Intel／ASML 雙方官方公告證實設備已用於製造。",
+        "ticker": "ASML"
+      },
+      {
+        "id": "LITHO_beneficiary_001",
+        "name": "Applied Materials",
+        "business_line": "LITHO",
+        "relationship": "beneficiary",
+        "details": "Applied Materials 與 Intel 在2026年官方揭露新設施／製程研發合作；此處為先進製程資本支出受惠觀察，不能以設備商身份推定個別新訂單。",
+        "ticker": "AMAT"
+      },
+      {
+        "id": "LITHO_beneficiary_002",
+        "name": "Lam Research",
+        "business_line": "LITHO",
+        "relationship": "beneficiary",
+        "details": "半導體製造設備支出相關；未逐項核實特定 Intel 採購合約。",
+        "ticker": "LRCX"
+      },
+      {
+        "id": "LITHO_beneficiary_003",
+        "name": "KLA Corporation",
+        "business_line": "LITHO",
+        "relationship": "beneficiary",
+        "details": "半導體製造設備支出相關；未逐項核實特定 Intel 採購合約。",
+        "ticker": "KLAC"
+      },
+      {
+        "id": "LITHO_beneficiary_004",
+        "name": "Tokyo Electron",
+        "business_line": "LITHO",
+        "relationship": "beneficiary",
+        "details": "半導體製造設備支出相關；未逐項核實特定 Intel 採購合約。",
+        "ticker": "8035.T"
+      },
+      {
+        "id": "SUBSTRATE_beneficiary_001",
+        "name": "Unimicron／欣興",
+        "business_line": "SUBSTRATE",
+        "relationship": "beneficiary",
+        "details": "台灣 ABF 載板製造商；2026 Intel 法說會證實 EMIB 高階有機載板短缺，但未具名確認此公司為 Intel EMIB 直接供應商。僅列產業需求受惠觀察。",
+        "ticker": "3037.TW"
+      },
+      {
+        "id": "SUBSTRATE_beneficiary_002",
+        "name": "Nan Ya PCB／南電",
+        "business_line": "SUBSTRATE",
+        "relationship": "beneficiary",
+        "details": "台灣 ABF 載板製造商；2026 Intel 法說會證實 EMIB 高階有機載板短缺，但未具名確認此公司為 Intel EMIB 直接供應商。僅列產業需求受惠觀察。",
+        "ticker": "8046.TW"
+      },
+      {
+        "id": "SUBSTRATE_beneficiary_003",
+        "name": "Kinsus／景碩",
+        "business_line": "SUBSTRATE",
+        "relationship": "beneficiary",
+        "details": "台灣 ABF 載板製造商；2026 Intel 法說會證實 EMIB 高階有機載板短缺，但未具名確認此公司為 Intel EMIB 直接供應商。僅列產業需求受惠觀察。",
+        "ticker": "3189.TW"
+      },
+      {
+        "id": "SUBSTRATE_beneficiary_004",
+        "name": "Ibiden",
+        "business_line": "SUBSTRATE",
+        "relationship": "beneficiary",
+        "details": "2026 Q3 法說會明示先進有機載板短缺影響 EMIB 產能；個別供應商未獲 Intel 具名確認。",
+        "ticker": "4062.T"
+      },
+      {
+        "id": "SUBSTRATE_beneficiary_005",
+        "name": "Shinko Electric Industries",
+        "business_line": "SUBSTRATE",
+        "relationship": "beneficiary",
+        "details": "2026 Q3 法說會明示先進有機載板短缺影響 EMIB 產能；個別供應商未獲 Intel 具名確認。",
+        "ticker": "6967.T"
+      },
+      {
+        "id": "MANUFACTURING_beneficiary_001",
+        "name": "ASML",
+        "business_line": "MANUFACTURING",
+        "relationship": "beneficiary",
+        "details": "美國晶圓廠擴建及設備、材料、工程需求潛在受惠；不等同直接供貨關係。",
+        "ticker": "ASML"
+      },
+      {
+        "id": "MANUFACTURING_beneficiary_002",
+        "name": "Applied Materials",
+        "business_line": "MANUFACTURING",
+        "relationship": "beneficiary",
+        "details": "美國晶圓廠擴建及設備、材料、工程需求潛在受惠；不等同直接供貨關係。",
+        "ticker": "AMAT"
+      },
+      {
+        "id": "MANUFACTURING_beneficiary_003",
+        "name": "Lam Research",
+        "business_line": "MANUFACTURING",
+        "relationship": "beneficiary",
+        "details": "美國晶圓廠擴建及設備、材料、工程需求潛在受惠；不等同直接供貨關係。",
+        "ticker": "LRCX"
+      },
+      {
+        "id": "MANUFACTURING_beneficiary_004",
+        "name": "KLA Corporation",
+        "business_line": "MANUFACTURING",
+        "relationship": "beneficiary",
+        "details": "美國晶圓廠擴建及設備、材料、工程需求潛在受惠；不等同直接供貨關係。",
+        "ticker": "KLAC"
+      },
+      {
+        "id": "MANUFACTURING_beneficiary_005",
+        "name": "Entegris",
+        "business_line": "MANUFACTURING",
+        "relationship": "beneficiary",
+        "details": "美國晶圓廠擴建及設備、材料、工程需求潛在受惠；不等同直接供貨關係。",
+        "ticker": "ENTG"
+      },
+      {
+        "id": "MANUFACTURING_beneficiary_006",
+        "name": "GlobalWafers／環球晶",
+        "business_line": "MANUFACTURING",
+        "relationship": "beneficiary",
+        "details": "美國晶圓廠擴建及設備、材料、工程需求潛在受惠；不等同直接供貨關係。",
+        "ticker": "6488.TWO"
+      },
+      {
+        "id": "MANUFACTURING_beneficiary_007",
+        "name": "Foxsemicon／京鼎",
+        "business_line": "MANUFACTURING",
+        "relationship": "beneficiary",
+        "details": "美國晶圓廠擴建及設備、材料、工程需求潛在受惠；不等同直接供貨關係。",
+        "ticker": "3413.TW"
+      },
+      {
+        "id": "MANUFACTURING_beneficiary_008",
+        "name": "Marketech／帆宣",
+        "business_line": "MANUFACTURING",
+        "relationship": "beneficiary",
+        "details": "美國晶圓廠擴建及設備、材料、工程需求潛在受惠；不等同直接供貨關係。",
+        "ticker": "6196.TW"
+      },
+      {
+        "id": "SILICON_PHOTONICS_OCI_competitor_001",
+        "name": "Broadcom",
+        "business_line": "SILICON_PHOTONICS_OCI",
+        "relationship": "competitor",
+        "details": "CPO／光學互連生態與 Intel OCI 具有部分技術及商業競爭；產品成熟度和客戶部署不能等同。",
+        "ticker": "AVGO"
+      },
+      {
+        "id": "SILICON_PHOTONICS_OCI_competitor_002",
+        "name": "NVIDIA",
+        "business_line": "SILICON_PHOTONICS_OCI",
+        "relationship": "competitor",
+        "details": "AI 互連及光學網路方案與 Intel 光學 I/O 路線存在系統架構競合；不代表雙方 OCI 晶粒已同級量產。",
+        "ticker": "NVDA"
+      },
+      {
+        "id": "SILICON_PHOTONICS_OCI_competitor_003",
+        "name": "Marvell Technology",
+        "business_line": "SILICON_PHOTONICS_OCI",
+        "relationship": "competitor",
+        "details": "矽光子／光引擎／光 DSP 與 Intel OCI 互連有部分市場重疊，具競合性。",
+        "ticker": "MRVL"
+      },
+      {
+        "id": "SILICON_PHOTONICS_OCI_competitor_004",
+        "name": "Ayar Labs",
+        "business_line": "SILICON_PHOTONICS_OCI",
+        "relationship": "competitor",
+        "details": "光學 I/O chiplet 技術路線競爭；非 Intel 已確認客戶或供應商。"
+      },
+      {
+        "id": "SILICON_PHOTONICS_OCI_competitor_005",
+        "name": "Celestial AI",
+        "business_line": "SILICON_PHOTONICS_OCI",
+        "relationship": "competitor",
+        "details": "光學互連與記憶體連接架構屬競爭性替代方案；不表示與 Intel 有直接交易。"
+      },
+      {
+        "id": "SILICON_PHOTONICS_OCI_beneficiary_001",
+        "name": "Coherent",
+        "business_line": "SILICON_PHOTONICS_OCI",
+        "relationship": "beneficiary",
+        "details": "光通訊元件與光學材料產業曝險；Intel OCI 官方未揭露採購 Coherent，非 Intel 直接供應商。",
+        "ticker": "COHR"
+      },
+      {
+        "id": "SILICON_PHOTONICS_OCI_beneficiary_002",
+        "name": "Lumentum",
+        "business_line": "SILICON_PHOTONICS_OCI",
+        "relationship": "beneficiary",
+        "details": "光學元件與雷射相關技術受 AI 光互連趨勢影響；無 Intel OCI 具名採購證據。",
+        "ticker": "LITE"
+      },
+      {
+        "id": "SILICON_PHOTONICS_OCI_beneficiary_003",
+        "name": "GlobalWafers／環球晶",
+        "business_line": "SILICON_PHOTONICS_OCI",
+        "relationship": "beneficiary",
+        "details": "矽晶圓上游材料產業曝險；不等於 Intel 光子晶片直接採購。",
+        "ticker": "6488.TW"
+      },
+      {
+        "id": "SILICON_PHOTONICS_OCI_beneficiary_004",
+        "name": "聯亞光電",
+        "business_line": "SILICON_PHOTONICS_OCI",
+        "relationship": "beneficiary",
+        "details": "台灣磊晶／光通訊產業需求觀察；無 Intel OCI 直接供應鏈證據。",
+        "ticker": "3081.TWO"
+      },
+      {
+        "id": "SILICON_PHOTONICS_OCI_beneficiary_005",
+        "name": "光聖",
+        "business_line": "SILICON_PHOTONICS_OCI",
+        "relationship": "beneficiary",
+        "details": "台灣光纖連接與光通訊元件產業觀察；不能宣稱 Intel OCI 客戶或供應商。",
+        "ticker": "6442.TW"
+      },
+      {
+        "id": "SILICON_PHOTONICS_OCI_beneficiary_006",
+        "name": "波若威",
+        "business_line": "SILICON_PHOTONICS_OCI",
+        "relationship": "beneficiary",
+        "details": "台灣光纖被動元件與資料中心光互連產業觀察；Intel OCI 直接交易未證實。",
+        "ticker": "3163.TWO"
+      },
+      {
+        "id": "SILICON_PHOTONICS_OCI_beneficiary_007",
+        "name": "上詮",
+        "business_line": "SILICON_PHOTONICS_OCI",
+        "relationship": "beneficiary",
+        "details": "光纖陣列與光耦合相關產業曝險；未證實 Intel OCI 直接採購。",
+        "ticker": "3363.TWO"
+      },
+      {
+        "id": "SILICON_PHOTONICS_OCI_beneficiary_008",
+        "name": "華星光",
+        "business_line": "SILICON_PHOTONICS_OCI",
+        "relationship": "beneficiary",
+        "details": "光收發與光通訊產業觀察；Intel OCI 直接供應關係未證實。",
+        "ticker": "4979.TWO"
+      },
+      {
+        "id": "SILICON_PHOTONICS_OCI_beneficiary_009",
+        "name": "眾達-KY",
+        "business_line": "SILICON_PHOTONICS_OCI",
+        "relationship": "beneficiary",
+        "details": "光通訊模組產業觀察；OCI／CPO 可能與可插拔模組存在替代關係，受惠方向並非保證。",
+        "ticker": "4977.TW"
+      },
+      {
+        "id": "GLASS_SUBSTRATE_partner_001",
+        "name": "Lens Technology／藍思科技",
+        "business_line": "GLASS_SUBSTRATE",
+        "relationship": "partner",
+        "details": "Intel 2026-07-24 官方宣布合作研發玻璃基板先進封裝；研發合作不是量產採購合約。",
+        "ticker": "300433.SZ"
+      },
+      {
+        "id": "GLASS_SUBSTRATE_competitor_001",
+        "name": "Samsung Electro-Mechanics",
+        "business_line": "GLASS_SUBSTRATE",
+        "relationship": "competitor",
+        "details": "玻璃基板與先進封裝基板方案具有產業競合，不能推定與 Intel 已簽採購。"
+      },
+      {
+        "id": "GLASS_SUBSTRATE_beneficiary_001",
+        "name": "欣興電子",
+        "business_line": "GLASS_SUBSTRATE",
+        "relationship": "beneficiary",
+        "details": "高階 IC 載板擴產可受先進封裝趨勢影響；未證實參與 Intel／Lens 玻璃基板合作。",
+        "ticker": "3037.TW"
+      },
+      {
+        "id": "GLASS_SUBSTRATE_beneficiary_002",
+        "name": "景碩科技",
+        "business_line": "GLASS_SUBSTRATE",
+        "relationship": "beneficiary",
+        "details": "高階載板與先進封裝產業需求觀察；非已確認 Intel 玻璃基板合作夥伴。",
+        "ticker": "3189.TW"
+      },
+      {
+        "id": "GLASS_SUBSTRATE_beneficiary_003",
+        "name": "群創光電",
+        "business_line": "GLASS_SUBSTRATE",
+        "relationship": "beneficiary",
+        "details": "玻璃基板加工產業能力可能形成技術關聯；Intel 玻璃封裝商業訂單未確認。",
+        "ticker": "3481.TW"
+      },
+      {
+        "id": "PACKAGING_competitor_003",
+        "name": "TSMC CoWoS／SoIC",
+        "business_line": "PACKAGING",
+        "relationship": "competitor",
+        "details": "CoWoS 2.5D、SoIC 3D 與 Intel EMIB／Foveros 是部分競爭的先進封裝架構；兩者不完全等價。",
+        "ticker": "TSM"
+      },
+      {
+        "id": "PACKAGING_beneficiary_006",
+        "name": "Unimicron／欣興—EMIB 載板供應缺口",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "Intel 2026 Q3 法說確認 EMIB 高階有機載板供應不足；欣興 2026-09 公開表示高階 ABF 需求與產能預約強勁，未證實 Intel 直接採購。",
+        "ticker": "3037.TW"
+      },
+      {
+        "id": "PACKAGING_beneficiary_007",
+        "name": "HBM 生態—SK hynix",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "EMIB-T 針對 HBM4e 等高頻寬記憶體整合；SK hynix 為 HBM 產業重要供應者，但 Intel 具名 HBM 訂單未確認。"
+      },
+      {
+        "id": "PACKAGING_beneficiary_008",
+        "name": "HBM 生態—Micron",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "EMIB-T 與 HBM4e 封裝需求相關；Micron 受 AI HBM 產業需求影響，不能宣稱 Intel EMIB-T 訂單。",
+        "ticker": "MU"
+      },
+      {
+        "id": "CUSTOM_SILICON_competitor_001",
+        "name": "Broadcom",
+        "business_line": "CUSTOM_SILICON",
+        "relationship": "competitor",
+        "details": "客製化 AI ASIC 與目的型晶片市場競爭；Intel 法說稱該業務快速成長，但未公布具名 AI Lab 訂單。",
+        "ticker": "AVGO"
+      },
+      {
+        "id": "CUSTOM_SILICON_competitor_002",
+        "name": "Marvell Technology",
+        "business_line": "CUSTOM_SILICON",
+        "relationship": "competitor",
+        "details": "客製化雲端 ASIC、互連與 chiplet 生態競爭。",
+        "ticker": "MRVL"
+      },
+      {
+        "id": "CUSTOM_SILICON_partner_001",
+        "name": "UCIe Consortium 生態",
+        "business_line": "CUSTOM_SILICON",
+        "relationship": "partner",
+        "details": "Intel 參與推動 UCIe chiplet 互連標準；標準生態合作不代表任一成員為 Intel 直接客戶。"
+      },
+      {
+        "id": "CUSTOM_SILICON_beneficiary_001",
+        "name": "台積電／TSMC",
+        "business_line": "CUSTOM_SILICON",
+        "relationship": "beneficiary",
+        "details": "異質 chiplet 系統可結合多家晶圓廠晶粒；此為產業生態互補觀察，非 Intel 外部代工訂單。",
+        "ticker": "TSM"
+      },
+      {
+        "id": "SUPPLY_AND_RISK_beneficiary_001",
+        "name": "ASML",
+        "business_line": "SUPPLY_AND_RISK",
+        "relationship": "beneficiary",
+        "details": "Intel 14A／High-NA EUV 研發與產能投入可能帶來設備需求；新訂單與營收實現需個別確認。",
+        "ticker": "ASML"
+      },
+      {
+        "id": "SUPPLY_AND_RISK_beneficiary_002",
+        "name": "欣興／ABF 載板產能",
+        "business_line": "SUPPLY_AND_RISK",
+        "relationship": "beneficiary",
+        "details": "EMIB 封裝有機載板短缺已由管理層確認，可能推動產能投資；Intel 未揭露欣興具名供貨。",
+        "ticker": "3037.TW"
+      },
+      {
+        "id": "SUPPLY_AND_RISK_beneficiary_003",
+        "name": "Lam Research",
+        "business_line": "SUPPLY_AND_RISK",
+        "relationship": "beneficiary",
+        "details": "Intel 2026 官方披露合作新設施及製程設備研發；供應鏈曝險不等於已確認增量採購。",
+        "ticker": "LRCX"
+      },
+      {
+        "id": "SUPPLY_AND_RISK_beneficiary_004",
+        "name": "Applied Materials",
+        "business_line": "SUPPLY_AND_RISK",
+        "relationship": "beneficiary",
+        "details": "Intel 2026 官方披露製程設備研發合作；資本支出成長與商業訂單應分開判讀。",
+        "ticker": "AMAT"
+      }
+    ]
   }
 }

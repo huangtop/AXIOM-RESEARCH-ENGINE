@@ -205,5 +205,508 @@
       "企業資料保存"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "as_of": "2026-10-30",
+    "company": "Seagate Technology Holdings plc",
+    "symbol": "STX",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "STX Seagate 希捷產業鏈戰略地圖",
+      "description": "Seagate Mozaic HAMR、Exos HDD、企業儲存、NAS 與台灣精密機構供應鏈"
+    },
+    "business_lines": [
+      {
+        "id": "HAMR",
+        "name": "Mozaic 3+/4+、HAMR 雷射與高密度磁記錄"
+      },
+      {
+        "id": "NEARLINE",
+        "name": "Exos Nearline HDD、雲端 AI 資料湖"
+      },
+      {
+        "id": "HEAD_MEDIA",
+        "name": "磁頭、磁碟、主軸馬達與精密機構件"
+      },
+      {
+        "id": "SYSTEMS",
+        "name": "Exos CORVAULT、JBOD 與企業儲存系統"
+      },
+      {
+        "id": "NAS",
+        "name": "IronWolf／IronWolf Pro NAS 儲存"
+      },
+      {
+        "id": "SURVEILLANCE",
+        "name": "SkyHawk／SkyHawk AI 影像監控"
+      },
+      {
+        "id": "CLIENT",
+        "name": "BarraCuda、FireCuda、LaCie、One Touch"
+      },
+      {
+        "id": "SSD",
+        "name": "Nytro 企業級 SSD 與快閃儲存"
+      },
+      {
+        "id": "CHANNEL",
+        "name": "台灣與全球儲存通路、生態合作"
+      },
+      {
+        "id": "CLOUD",
+        "name": "雲端儲存策略合作與 Lyve Cloud 業務移轉"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "NEARLINE_customer_001",
+        "name": "Dropbox（DBX）",
+        "business_line": "NEARLINE",
+        "relationship": "customer",
+        "details": "Magic Pocket 儲存架構部署 Seagate Exos SMR 高容量 HDD，屬公開具名使用案例"
+      },
+      {
+        "id": "NEARLINE_customer_002",
+        "name": "Backblaze",
+        "business_line": "NEARLINE",
+        "relationship": "customer",
+        "details": "雲端備份儲存叢集長期部署多款 Seagate Exos HDD，定期公布硬碟可靠性統計"
+      },
+      {
+        "id": "SYSTEMS_customer_001",
+        "name": "Pixitmedia",
+        "business_line": "SYSTEMS",
+        "relationship": "customer",
+        "details": "媒體工作流程儲存方案與 Seagate Exos 系列儲存系統整合"
+      },
+      {
+        "id": "CLIENT_partner_001",
+        "name": "Synology 群暉科技",
+        "business_line": "CLIENT",
+        "relationship": "partner",
+        "details": "2026 年合作為合格 Seagate One Touch 外接硬碟提供 Synology Deep Search 使用權"
+      },
+      {
+        "id": "CLOUD_partner_001",
+        "name": "Wasabi Technologies",
+        "business_line": "CLOUD",
+        "relationship": "partner",
+        "details": "2026 年 4 月完成收購 Seagate Lyve Cloud 業務；Seagate 取得 Wasabi 股權，屬交易後策略及股權關係"
+      },
+      {
+        "id": "NAS_partner_001",
+        "name": "QNAP 威聯通",
+        "business_line": "NAS",
+        "relationship": "partner",
+        "details": "NAS 平台提供 IronWolf／IronWolf Pro 硬碟相容性與整合測試生態"
+      },
+      {
+        "id": "NAS_partner_002",
+        "name": "Synology 群暉科技",
+        "business_line": "NAS",
+        "relationship": "partner",
+        "details": "NAS 儲存系統與 Seagate IronWolf／IronWolf Pro 硬碟形成裝置相容與通路生態"
+      },
+      {
+        "id": "CHANNEL_partner_001",
+        "name": "捷元電腦／鑫聯大（3709）",
+        "business_line": "CHANNEL",
+        "relationship": "partner",
+        "details": "台灣 Seagate 儲存產品代理與通路合作"
+      },
+      {
+        "id": "NAS_partner_003",
+        "name": "ASUSTOR 華芸科技",
+        "business_line": "NAS",
+        "relationship": "partner",
+        "details": "NAS 系統與 Seagate IronWolf 硬碟相容性整合"
+      },
+      {
+        "id": "HEAD_MEDIA_supplier_001",
+        "name": "百達-KY（2236）／Bigl",
+        "business_line": "HEAD_MEDIA",
+        "relationship": "supplier",
+        "details": "2024 年底收購 Bigl 後成為 Seagate HDD 一線供應商，提供硬碟夾取臂金屬零件及組裝"
+      },
+      {
+        "id": "HEAD_MEDIA_supplier_002",
+        "name": "銘異（3060）",
+        "business_line": "HEAD_MEDIA",
+        "relationship": "supplier",
+        "details": "硬碟精密機構件與懸臂相關零件供應鏈，產業報導將其列為希捷 HDD 零件供應商"
+      },
+      {
+        "id": "HEAD_MEDIA_supplier_003",
+        "name": "和勤（1586）",
+        "business_line": "HEAD_MEDIA",
+        "relationship": "supplier",
+        "details": "HDD 精密金屬零件供應鏈，產業報導列為希捷與威騰相關零件供應商"
+      },
+      {
+        "id": "HEAD_MEDIA_supplier_004",
+        "name": "金寶（2312）",
+        "business_line": "HEAD_MEDIA",
+        "relationship": "supplier",
+        "details": "硬碟產品及零組件代工供應鏈，產業報導列入 Seagate／WD HDD 代工體系"
+      },
+      {
+        "id": "HEAD_MEDIA_supplier_005",
+        "name": "廣明（6188）",
+        "business_line": "HEAD_MEDIA",
+        "relationship": "supplier",
+        "details": "儲存裝置與 HDD 代工供應鏈，產業報導列入 Seagate／WD HDD 代工體系"
+      },
+      {
+        "id": "HAMR_competitor_001",
+        "name": "Western Digital（WDC）",
+        "business_line": "HAMR",
+        "relationship": "competitor",
+        "details": "高容量 Nearline HDD 與能量輔助磁記錄路線直接競爭"
+      },
+      {
+        "id": "HAMR_competitor_002",
+        "name": "Toshiba（6502.T）",
+        "business_line": "HAMR",
+        "relationship": "competitor",
+        "details": "企業高容量 HDD、磁記錄密度與雲端近線儲存技術競爭"
+      },
+      {
+        "id": "NEARLINE_competitor_001",
+        "name": "Western Digital（WDC）",
+        "business_line": "NEARLINE",
+        "relationship": "competitor",
+        "details": "Ultrastar 與 Exos 在 CSP／雲端近線儲存市場直接競爭"
+      },
+      {
+        "id": "NEARLINE_competitor_002",
+        "name": "Toshiba（6502.T）",
+        "business_line": "NEARLINE",
+        "relationship": "competitor",
+        "details": "MG 系列企業級 HDD 競爭"
+      },
+      {
+        "id": "NEARLINE_competitor_003",
+        "name": "Samsung Electronics（005930.KS）",
+        "business_line": "NEARLINE",
+        "relationship": "competitor",
+        "details": "企業 SSD 在部分資料儲存工作負載與大容量 HDD 構成替代競爭"
+      },
+      {
+        "id": "NEARLINE_competitor_004",
+        "name": "Micron（MU）",
+        "business_line": "NEARLINE",
+        "relationship": "competitor",
+        "details": "企業級高容量 SSD 在熱資料與儲存階層中與 HDD 競爭預算"
+      },
+      {
+        "id": "NEARLINE_competitor_005",
+        "name": "Sandisk（SNDK）",
+        "business_line": "NEARLINE",
+        "relationship": "competitor",
+        "details": "企業級 NAND SSD 在高效能儲存場景與 HDD 形成替代競爭"
+      },
+      {
+        "id": "SYSTEMS_competitor_001",
+        "name": "Dell Technologies（DELL）",
+        "business_line": "SYSTEMS",
+        "relationship": "competitor",
+        "details": "PowerVault／PowerScale 等企業儲存系統競爭"
+      },
+      {
+        "id": "SYSTEMS_competitor_002",
+        "name": "Hewlett Packard Enterprise（HPE）",
+        "business_line": "SYSTEMS",
+        "relationship": "competitor",
+        "details": "Alletra、StoreOnce 與企業資料儲存解決方案競爭"
+      },
+      {
+        "id": "SYSTEMS_competitor_003",
+        "name": "NetApp（NTAP）",
+        "business_line": "SYSTEMS",
+        "relationship": "competitor",
+        "details": "企業儲存陣列及資料管理競爭"
+      },
+      {
+        "id": "SYSTEMS_competitor_004",
+        "name": "Pure Storage（PSTG）",
+        "business_line": "SYSTEMS",
+        "relationship": "competitor",
+        "details": "企業全快閃儲存陣列競爭"
+      },
+      {
+        "id": "SYSTEMS_competitor_005",
+        "name": "IBM（IBM）",
+        "business_line": "SYSTEMS",
+        "relationship": "competitor",
+        "details": "企業資料儲存與備份架構競爭"
+      },
+      {
+        "id": "SYSTEMS_competitor_006",
+        "name": "Hitachi Vantara",
+        "business_line": "SYSTEMS",
+        "relationship": "competitor",
+        "details": "企業儲存系統與資料基礎設施競爭"
+      },
+      {
+        "id": "NAS_competitor_001",
+        "name": "Western Digital（WDC）",
+        "business_line": "NAS",
+        "relationship": "competitor",
+        "details": "WD Red／Red Pro 與 IronWolf NAS 硬碟競爭"
+      },
+      {
+        "id": "NAS_competitor_002",
+        "name": "Toshiba（6502.T）",
+        "business_line": "NAS",
+        "relationship": "competitor",
+        "details": "N300 NAS HDD 與 IronWolf 系列競爭"
+      },
+      {
+        "id": "SURVEILLANCE_competitor_001",
+        "name": "Western Digital（WDC）",
+        "business_line": "SURVEILLANCE",
+        "relationship": "competitor",
+        "details": "WD Purple 與 SkyHawk 影像監控 HDD 競爭"
+      },
+      {
+        "id": "SURVEILLANCE_competitor_002",
+        "name": "Toshiba（6502.T）",
+        "business_line": "SURVEILLANCE",
+        "relationship": "competitor",
+        "details": "S300 監控專用 HDD 競爭"
+      },
+      {
+        "id": "CLIENT_competitor_001",
+        "name": "Western Digital（WDC）",
+        "business_line": "CLIENT",
+        "relationship": "competitor",
+        "details": "WD Blue、WD Black 與 Seagate BarraCuda／FireCuda 競爭"
+      },
+      {
+        "id": "CLIENT_competitor_002",
+        "name": "Samsung Electronics（005930.KS）",
+        "business_line": "CLIENT",
+        "relationship": "competitor",
+        "details": "消費級 SSD 與 Seagate SSD／混合儲存需求競爭"
+      },
+      {
+        "id": "CLIENT_competitor_003",
+        "name": "Kingston Technology",
+        "business_line": "CLIENT",
+        "relationship": "competitor",
+        "details": "消費級 SSD 與行動儲存市場競爭"
+      },
+      {
+        "id": "CLIENT_competitor_004",
+        "name": "ADATA 威剛（3260）",
+        "business_line": "CLIENT",
+        "relationship": "competitor",
+        "details": "消費型 SSD／外接式儲存市場競爭"
+      },
+      {
+        "id": "CLIENT_competitor_005",
+        "name": "Transcend 創見（2451）",
+        "business_line": "CLIENT",
+        "relationship": "competitor",
+        "details": "外接式儲存與消費級儲存裝置競爭"
+      },
+      {
+        "id": "SSD_competitor_001",
+        "name": "Samsung Electronics（005930.KS）",
+        "business_line": "SSD",
+        "relationship": "competitor",
+        "details": "PM 系列企業 SSD 與 Nytro SSD 競爭"
+      },
+      {
+        "id": "SSD_competitor_002",
+        "name": "Micron（MU）",
+        "business_line": "SSD",
+        "relationship": "competitor",
+        "details": "企業級 SSD 及 NAND 解決方案競爭"
+      },
+      {
+        "id": "SSD_competitor_003",
+        "name": "Sandisk（SNDK）",
+        "business_line": "SSD",
+        "relationship": "competitor",
+        "details": "企業級 SSD 產品與通路競爭"
+      },
+      {
+        "id": "SSD_competitor_004",
+        "name": "Kioxia（285A.T）",
+        "business_line": "SSD",
+        "relationship": "competitor",
+        "details": "企業級 NAND SSD 競爭"
+      },
+      {
+        "id": "SSD_competitor_005",
+        "name": "Solidigm",
+        "business_line": "SSD",
+        "relationship": "competitor",
+        "details": "企業級 SSD 與大容量快閃儲存競爭"
+      },
+      {
+        "id": "SSD_competitor_006",
+        "name": "SK hynix（000660.KS）",
+        "business_line": "SSD",
+        "relationship": "competitor",
+        "details": "企業級 NAND 與 SSD 競爭"
+      },
+      {
+        "id": "HAMR_beneficiary_001",
+        "name": "全新光電（2455）",
+        "business_line": "HAMR",
+        "relationship": "beneficiary",
+        "details": "2026 年已切入 HAMR 高密度儲存光學元件供應鏈並與客戶共同開發；Seagate 部分雷射逐步內製，受惠幅度視外購比例而定"
+      },
+      {
+        "id": "HEAD_MEDIA_beneficiary_001",
+        "name": "百達-KY（2236）",
+        "business_line": "HEAD_MEDIA",
+        "relationship": "beneficiary",
+        "details": "Bigl 取得 Seagate 一線 HDD 夾取臂零件及組裝供應關係，受惠高容量 HDD 放量"
+      },
+      {
+        "id": "HEAD_MEDIA_beneficiary_002",
+        "name": "銘異（3060）",
+        "business_line": "HEAD_MEDIA",
+        "relationship": "beneficiary",
+        "details": "HDD 精密零件及機構件需求受惠高容量硬碟出貨"
+      },
+      {
+        "id": "HEAD_MEDIA_beneficiary_003",
+        "name": "和勤（1586）",
+        "business_line": "HEAD_MEDIA",
+        "relationship": "beneficiary",
+        "details": "HDD 精密金屬零件供應鏈受惠"
+      },
+      {
+        "id": "HEAD_MEDIA_beneficiary_004",
+        "name": "光洋科（1785）",
+        "business_line": "HEAD_MEDIA",
+        "relationship": "beneficiary",
+        "details": "磁性薄膜與濺鍍靶材產業受惠高密度 HDD 磁性材料升級"
+      },
+      {
+        "id": "HEAD_MEDIA_beneficiary_005",
+        "name": "金寶（2312）",
+        "business_line": "HEAD_MEDIA",
+        "relationship": "beneficiary",
+        "details": "HDD 及周邊裝置代工受惠硬碟需求回升"
+      },
+      {
+        "id": "HEAD_MEDIA_beneficiary_006",
+        "name": "廣明（6188）",
+        "business_line": "HEAD_MEDIA",
+        "relationship": "beneficiary",
+        "details": "硬碟相關精密機構及代工業務受惠儲存設備需求"
+      },
+      {
+        "id": "NEARLINE_beneficiary_001",
+        "name": "緯穎（6669）",
+        "business_line": "NEARLINE",
+        "relationship": "beneficiary",
+        "details": "雲端伺服器及資料中心建置，受惠 CSP 大容量儲存擴充"
+      },
+      {
+        "id": "NEARLINE_beneficiary_002",
+        "name": "廣達（2382）",
+        "business_line": "NEARLINE",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器與雲端儲存設備建置需求受惠"
+      },
+      {
+        "id": "NEARLINE_beneficiary_003",
+        "name": "緯創（3231）",
+        "business_line": "NEARLINE",
+        "relationship": "beneficiary",
+        "details": "雲端伺服器及儲存平台代工，受惠資料中心容量擴張"
+      },
+      {
+        "id": "NEARLINE_beneficiary_004",
+        "name": "鴻海（2317）",
+        "business_line": "NEARLINE",
+        "relationship": "beneficiary",
+        "details": "伺服器與資料中心基礎設施需求受惠"
+      },
+      {
+        "id": "NEARLINE_beneficiary_005",
+        "name": "英業達（2356）",
+        "business_line": "NEARLINE",
+        "relationship": "beneficiary",
+        "details": "企業伺服器與雲端運算設備需求受惠"
+      },
+      {
+        "id": "SYSTEMS_beneficiary_001",
+        "name": "神達（3706）",
+        "business_line": "SYSTEMS",
+        "relationship": "beneficiary",
+        "details": "資料中心伺服器與儲存平台製造，受惠高密度 HDD 系統需求"
+      },
+      {
+        "id": "SYSTEMS_beneficiary_002",
+        "name": "營邦（3693）",
+        "business_line": "SYSTEMS",
+        "relationship": "beneficiary",
+        "details": "儲存伺服器機箱與高密度 HDD JBOD 機構需求受惠"
+      },
+      {
+        "id": "SYSTEMS_beneficiary_003",
+        "name": "勤誠（8210）",
+        "business_line": "SYSTEMS",
+        "relationship": "beneficiary",
+        "details": "資料中心伺服器與儲存機箱需求受惠"
+      },
+      {
+        "id": "SYSTEMS_beneficiary_004",
+        "name": "迎廣（6117）",
+        "business_line": "SYSTEMS",
+        "relationship": "beneficiary",
+        "details": "伺服器／儲存機箱與高密度機構件需求受惠"
+      },
+      {
+        "id": "SYSTEMS_beneficiary_005",
+        "name": "台達電（2308）",
+        "business_line": "SYSTEMS",
+        "relationship": "beneficiary",
+        "details": "資料中心電源與散熱系統受惠儲存設備機架密度提高"
+      },
+      {
+        "id": "NAS_beneficiary_001",
+        "name": "華芸科技（華碩集團）",
+        "business_line": "NAS",
+        "relationship": "beneficiary",
+        "details": "NAS 與硬碟相容生態，受惠企業及家庭儲存容量升級"
+      },
+      {
+        "id": "NAS_beneficiary_002",
+        "name": "群暉科技（未上市）",
+        "business_line": "NAS",
+        "relationship": "beneficiary",
+        "details": "NAS 儲存容量升級及 IronWolf 生態需求受惠"
+      },
+      {
+        "id": "CHANNEL_beneficiary_001",
+        "name": "捷元／鑫聯大（3709）",
+        "business_line": "CHANNEL",
+        "relationship": "beneficiary",
+        "details": "Seagate 台灣通路代理與銷售需求受惠"
+      },
+      {
+        "id": "SSD_beneficiary_001",
+        "name": "群聯（8299）",
+        "business_line": "SSD",
+        "relationship": "beneficiary",
+        "details": "企業級 SSD 控制器與 NAND 生態需求受惠"
+      }
+    ]
   }
 }

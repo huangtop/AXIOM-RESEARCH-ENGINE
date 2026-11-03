@@ -238,5 +238,438 @@
       "顯示技術"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-03",
+    "company": "Applied Materials, Inc.",
+    "symbol": "AMAT",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "應用材料（AMAT）產業鏈：GAA、DRAM、先進封裝、設備與台灣受惠股",
+      "description": "以 SEC 申報、官方法說會及 EPIC Center 公告區分材料工程設備的合作、競爭及產業受惠關係。"
+    },
+    "business_lines": [
+      {
+        "id": "DEPOSITION",
+        "name": "薄膜沉積與材料工程"
+      },
+      {
+        "id": "ETCH",
+        "name": "電漿蝕刻與選擇性移除"
+      },
+      {
+        "id": "GAA",
+        "name": "GAA／先進邏輯"
+      },
+      {
+        "id": "DRAM",
+        "name": "DRAM／HBM 製程"
+      },
+      {
+        "id": "NAND",
+        "name": "3D NAND"
+      },
+      {
+        "id": "PACKAGING",
+        "name": "先進封裝／混合鍵合"
+      },
+      {
+        "id": "METROLOGY",
+        "name": "量測與檢測"
+      },
+      {
+        "id": "IMPLANT",
+        "name": "離子植入／熱製程"
+      },
+      {
+        "id": "DISPLAY",
+        "name": "顯示器製程"
+      },
+      {
+        "id": "SERVICES",
+        "name": "設備服務／工廠自動化"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "GAA_partner_001",
+        "name": "台積電（2330／TSM）",
+        "business_line": "GAA",
+        "relationship": "partner",
+        "details": "官方 EPIC Center 創始或創新合作名單；合作研發不等於已確認設備採購。"
+      },
+      {
+        "id": "GAA_partner_002",
+        "name": "Intel（INTC）",
+        "business_line": "GAA",
+        "relationship": "partner",
+        "details": "官方 EPIC Center 創始或創新合作名單；合作研發不等於已確認設備採購。"
+      },
+      {
+        "id": "DRAM_partner_001",
+        "name": "SK hynix（000660.KS）",
+        "business_line": "DRAM",
+        "relationship": "partner",
+        "details": "官方 EPIC Center 創始或創新合作名單；合作研發不等於已確認設備採購。"
+      },
+      {
+        "id": "DRAM_partner_002",
+        "name": "Micron（MU）",
+        "business_line": "DRAM",
+        "relationship": "partner",
+        "details": "官方 EPIC Center 創始或創新合作名單；合作研發不等於已確認設備採購。"
+      },
+      {
+        "id": "DRAM_partner_003",
+        "name": "Samsung Electronics（005930.KS）",
+        "business_line": "DRAM",
+        "relationship": "partner",
+        "details": "官方 EPIC Center 創始或創新合作名單；合作研發不等於已確認設備採購。"
+      },
+      {
+        "id": "PACKAGING_partner_001",
+        "name": "Besi（BESI.AS）",
+        "business_line": "PACKAGING",
+        "relationship": "partner",
+        "details": "2020 年起共同研發混合鍵合；2026 年 10 月擴大合作。增持約 20% 股權的交易仍有監管先決條件。"
+      },
+      {
+        "id": "PACKAGING_partner_002",
+        "name": "Broadcom（AVGO）",
+        "business_line": "PACKAGING",
+        "relationship": "partner",
+        "details": "官方 EPIC Center 創始或創新合作名單；合作研發不等於已確認設備採購。"
+      },
+      {
+        "id": "METROLOGY_partner_001",
+        "name": "Advantest（6857.T）",
+        "business_line": "METROLOGY",
+        "relationship": "partner",
+        "details": "官方 EPIC Center 創始或創新合作名單；合作研發不等於已確認設備採購。"
+      },
+      {
+        "id": "ETCH_partner_001",
+        "name": "SCREEN Holdings（7735.T）",
+        "business_line": "ETCH",
+        "relationship": "partner",
+        "details": "官方 EPIC Center 創始或創新合作名單；合作研發不等於已確認設備採購。"
+      },
+      {
+        "id": "NAND_partner_001",
+        "name": "Kioxia（285A.T）",
+        "business_line": "NAND",
+        "relationship": "partner",
+        "details": "官方 EPIC Center 創始或創新合作名單；合作研發不等於已確認設備採購。"
+      },
+      {
+        "id": "DEPOSITION_competitor_001",
+        "name": "Lam Research（LRCX）",
+        "business_line": "DEPOSITION",
+        "relationship": "competitor",
+        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+      },
+      {
+        "id": "ETCH_competitor_001",
+        "name": "Lam Research（LRCX）",
+        "business_line": "ETCH",
+        "relationship": "competitor",
+        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+      },
+      {
+        "id": "METROLOGY_competitor_001",
+        "name": "KLA（KLAC）",
+        "business_line": "METROLOGY",
+        "relationship": "competitor",
+        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+      },
+      {
+        "id": "METROLOGY_competitor_002",
+        "name": "ASML（ASML）",
+        "business_line": "METROLOGY",
+        "relationship": "competitor",
+        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+      },
+      {
+        "id": "DEPOSITION_competitor_002",
+        "name": "Tokyo Electron（8035.T）",
+        "business_line": "DEPOSITION",
+        "relationship": "competitor",
+        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+      },
+      {
+        "id": "ETCH_competitor_002",
+        "name": "Tokyo Electron（8035.T）",
+        "business_line": "ETCH",
+        "relationship": "competitor",
+        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+      },
+      {
+        "id": "IMPLANT_competitor_001",
+        "name": "Axcelis Technologies（ACLS）",
+        "business_line": "IMPLANT",
+        "relationship": "competitor",
+        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+      },
+      {
+        "id": "IMPLANT_competitor_002",
+        "name": "Nissin Electric（日新電機）",
+        "business_line": "IMPLANT",
+        "relationship": "competitor",
+        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+      },
+      {
+        "id": "PACKAGING_competitor_001",
+        "name": "ASMPT（0522.HK）",
+        "business_line": "PACKAGING",
+        "relationship": "competitor",
+        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+      },
+      {
+        "id": "PACKAGING_competitor_002",
+        "name": "Besi（BESI.AS）",
+        "business_line": "PACKAGING",
+        "relationship": "competitor",
+        "details": "先進封裝設備領域部分重疊；同時存在已確認策略合作，屬競合關係。"
+      },
+      {
+        "id": "METROLOGY_competitor_003",
+        "name": "Hitachi High-Tech（日立高新）",
+        "business_line": "METROLOGY",
+        "relationship": "competitor",
+        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+      },
+      {
+        "id": "DISPLAY_competitor_001",
+        "name": "ULVAC（6728.T）",
+        "business_line": "DISPLAY",
+        "relationship": "competitor",
+        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+      },
+      {
+        "id": "DISPLAY_competitor_002",
+        "name": "Canon（7751.T）",
+        "business_line": "DISPLAY",
+        "relationship": "competitor",
+        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+      },
+      {
+        "id": "SERVICES_competitor_001",
+        "name": "Lam Research（LRCX）",
+        "business_line": "SERVICES",
+        "relationship": "competitor",
+        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+      },
+      {
+        "id": "DEPOSITION_beneficiary_001",
+        "name": "京鼎（3413）",
+        "business_line": "DEPOSITION",
+        "relationship": "beneficiary",
+        "details": "台灣半導體設備模組與零組件製造商；不據此推定本次有新增 AMAT 訂單。"
+      },
+      {
+        "id": "DEPOSITION_beneficiary_002",
+        "name": "帆宣（6196）",
+        "business_line": "DEPOSITION",
+        "relationship": "beneficiary",
+        "details": "廠務工程、設備整合與材料服務的需求相關受惠觀察。"
+      },
+      {
+        "id": "DEPOSITION_beneficiary_003",
+        "name": "迅得（6438）",
+        "business_line": "DEPOSITION",
+        "relationship": "beneficiary",
+        "details": "半導體自動化設備相關受惠觀察。"
+      },
+      {
+        "id": "DEPOSITION_beneficiary_004",
+        "name": "弘塑（3131）",
+        "business_line": "DEPOSITION",
+        "relationship": "beneficiary",
+        "details": "濕製程設備與先進製程資本支出相關。"
+      },
+      {
+        "id": "ETCH_beneficiary_001",
+        "name": "辛耘（3583）",
+        "business_line": "ETCH",
+        "relationship": "beneficiary",
+        "details": "半導體製程設備及再生晶圓相關需求。"
+      },
+      {
+        "id": "ETCH_beneficiary_002",
+        "name": "均華（6640）",
+        "business_line": "ETCH",
+        "relationship": "beneficiary",
+        "details": "半導體設備自動化與封裝設備需求。"
+      },
+      {
+        "id": "GAA_beneficiary_001",
+        "name": "台積電（2330／TSM）",
+        "business_line": "GAA",
+        "relationship": "beneficiary",
+        "details": "先進邏輯製程設備投資需求方，並為官方 EPIC 合作夥伴。"
+      },
+      {
+        "id": "GAA_beneficiary_002",
+        "name": "聯電（2303）",
+        "business_line": "GAA",
+        "relationship": "beneficiary",
+        "details": "晶圓製造設備需求相關；非先進 GAA 訂單主張。"
+      },
+      {
+        "id": "GAA_beneficiary_003",
+        "name": "世界先進（5347）",
+        "business_line": "GAA",
+        "relationship": "beneficiary",
+        "details": "成熟及特殊製程晶圓設備需求相關。"
+      },
+      {
+        "id": "DRAM_beneficiary_001",
+        "name": "南亞科（2408）",
+        "business_line": "DRAM",
+        "relationship": "beneficiary",
+        "details": "DRAM 設備資本支出循環受惠觀察。"
+      },
+      {
+        "id": "DRAM_beneficiary_002",
+        "name": "華邦電（2344）",
+        "business_line": "DRAM",
+        "relationship": "beneficiary",
+        "details": "記憶體晶圓製程設備投資需求。"
+      },
+      {
+        "id": "DRAM_beneficiary_003",
+        "name": "力積電（6770）",
+        "business_line": "DRAM",
+        "relationship": "beneficiary",
+        "details": "記憶體及晶圓製造資本支出相關。"
+      },
+      {
+        "id": "NAND_beneficiary_001",
+        "name": "群聯（8299）",
+        "business_line": "NAND",
+        "relationship": "beneficiary",
+        "details": "NAND 供需與資本支出間接連動，非設備供應關係。"
+      },
+      {
+        "id": "PACKAGING_beneficiary_001",
+        "name": "日月光投控（3711／ASX）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "先進封裝設備需求方，非直接供應商證據。"
+      },
+      {
+        "id": "PACKAGING_beneficiary_002",
+        "name": "矽品精密（ASE 旗下）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "先進封裝製程擴產相關。"
+      },
+      {
+        "id": "PACKAGING_beneficiary_003",
+        "name": "萬潤（6187）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "先進封裝設備需求相關。"
+      },
+      {
+        "id": "PACKAGING_beneficiary_004",
+        "name": "志聖（2467）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "先進封裝製程設備需求相關。"
+      },
+      {
+        "id": "PACKAGING_beneficiary_005",
+        "name": "均豪（5443）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "半導體封裝與檢測自動化設備相關。"
+      },
+      {
+        "id": "PACKAGING_beneficiary_006",
+        "name": "家登（3680）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "晶圓與光罩載具等先進製程耗材需求。"
+      },
+      {
+        "id": "PACKAGING_beneficiary_007",
+        "name": "弘塑（3131）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "先進封裝濕製程設備相關。"
+      },
+      {
+        "id": "METROLOGY_beneficiary_001",
+        "name": "精測（6510）",
+        "business_line": "METROLOGY",
+        "relationship": "beneficiary",
+        "details": "半導體測試介面及量測生態相關，非 AMAT 直接供應證據。"
+      },
+      {
+        "id": "METROLOGY_beneficiary_002",
+        "name": "旺矽（6223）",
+        "business_line": "METROLOGY",
+        "relationship": "beneficiary",
+        "details": "探針與測試介面需求相關。"
+      },
+      {
+        "id": "METROLOGY_beneficiary_003",
+        "name": "致茂（2360）",
+        "business_line": "METROLOGY",
+        "relationship": "beneficiary",
+        "details": "測試量測設備生態相關。"
+      },
+      {
+        "id": "IMPLANT_beneficiary_001",
+        "name": "漢唐（2404）",
+        "business_line": "IMPLANT",
+        "relationship": "beneficiary",
+        "details": "晶圓廠無塵室與廠務工程擴建需求。"
+      },
+      {
+        "id": "IMPLANT_beneficiary_002",
+        "name": "亞翔（6139）",
+        "business_line": "IMPLANT",
+        "relationship": "beneficiary",
+        "details": "半導體廠務與無塵室建置需求。"
+      },
+      {
+        "id": "SERVICES_beneficiary_001",
+        "name": "帆宣（6196）",
+        "business_line": "SERVICES",
+        "relationship": "beneficiary",
+        "details": "晶圓廠工程與設備整合服務相關。"
+      },
+      {
+        "id": "SERVICES_beneficiary_002",
+        "name": "漢科（3402）",
+        "business_line": "SERVICES",
+        "relationship": "beneficiary",
+        "details": "半導體廠務工程需求相關。"
+      },
+      {
+        "id": "DISPLAY_beneficiary_001",
+        "name": "群創（3481）",
+        "business_line": "DISPLAY",
+        "relationship": "beneficiary",
+        "details": "顯示器製程設備投資需求方，非 AMAT 訂單確認。"
+      },
+      {
+        "id": "DISPLAY_beneficiary_002",
+        "name": "友達（2409）",
+        "business_line": "DISPLAY",
+        "relationship": "beneficiary",
+        "details": "顯示器製程設備投資需求方，非 AMAT 訂單確認。"
+      }
+    ]
   }
 }

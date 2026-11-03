@@ -178,5 +178,495 @@
       "碳化矽普及"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-02",
+    "company": "Wolfspeed, Inc.",
+    "symbol": "WOLF",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "Wolfspeed（WOLF）碳化矽產業鏈：200mm 晶圓、SiC 功率元件與 AI 電源",
+      "description": "梳理 Wolfspeed 的碳化矽材料、200mm 製造、電動車功率元件與 AI 資料中心 800VDC 產業鏈，區分直接客戶、合作夥伴、競爭者及台灣產業受惠觀察。"
+    },
+    "business_lines": [
+      {
+        "id": "SIC_SUBSTRATE",
+        "name": "150／200mm 碳化矽晶圓與基板"
+      },
+      {
+        "id": "SIC_MOSFET",
+        "name": "SiC MOSFET／Gen 5 功率元件"
+      },
+      {
+        "id": "SIC_DIODE",
+        "name": "SiC 蕭特基二極體"
+      },
+      {
+        "id": "POWER_MODULE",
+        "name": "SiC 功率模組與電動車逆變器"
+      },
+      {
+        "id": "EV",
+        "name": "800V 電動車電驅與快充"
+      },
+      {
+        "id": "AI_POWER",
+        "name": "AI 資料中心 800VDC／高壓電源"
+      },
+      {
+        "id": "ENERGY",
+        "name": "電網／儲能／再生能源"
+      },
+      {
+        "id": "RF",
+        "name": "半絕緣 SiC／RF 材料"
+      },
+      {
+        "id": "TSIC",
+        "name": "透明 SiC／AR／量子光學"
+      },
+      {
+        "id": "FAB",
+        "name": "200mm 製程、長晶與設備"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "SIC_SUBSTRATE_customer_001",
+        "name": "Infineon Technologies",
+        "business_line": "SIC_SUBSTRATE",
+        "relationship": "customer",
+        "details": "2026 年 10 月官方宣布多年期 200mm SiC 晶圓供應協議；同時在 SiC 功率元件市場與 Wolfspeed 存在競爭。",
+        "ticker": "IFX.DE"
+      },
+      {
+        "id": "EV_customer_001",
+        "name": "BorgWarner",
+        "business_line": "EV",
+        "relationship": "customer",
+        "details": "2026 年 10 月多年期供貨協議；Wolfspeed 的 1200V SiC 元件支援其下一代 800V 逆變器。",
+        "ticker": "BWA"
+      },
+      {
+        "id": "AI_POWER_customer_001",
+        "name": "光寶科技（LITEON）",
+        "business_line": "AI_POWER",
+        "relationship": "customer",
+        "details": "2026 年 8 月官方宣布共同開發 800VDC AI 資料中心電源；公司電話會議提及相關 design wins。",
+        "ticker": "2301"
+      },
+      {
+        "id": "AI_POWER_customer_002",
+        "name": "深圳麥格米特（Megmeet）",
+        "business_line": "AI_POWER",
+        "relationship": "customer",
+        "details": "FY2026 Q4 管理層電話會議提及 AI 電源領域的設計導入；具體營收及訂單量未披露。",
+        "ticker": "002851.SZ"
+      },
+      {
+        "id": "SIC_SUBSTRATE_customer_002",
+        "name": "Renesas Electronics",
+        "business_line": "SIC_SUBSTRATE",
+        "relationship": "customer",
+        "details": "歷史 SiC 晶圓長期供應協議；後續股權與重整安排須與供貨關係分開看待。",
+        "ticker": "6723.T"
+      },
+      {
+        "id": "AI_POWER_partner_001",
+        "name": "光寶科技（LITEON）",
+        "business_line": "AI_POWER",
+        "relationship": "partner",
+        "details": "雙方共同推進 800VDC 資料中心供電架構；此節點描述策略技術合作，不代表所有產品已量產。",
+        "ticker": "2301"
+      },
+      {
+        "id": "ENERGY_partner_001",
+        "name": "GE Aerospace",
+        "business_line": "ENERGY",
+        "relationship": "partner",
+        "details": "2026 年公布諒解備忘錄，涉及高壓功率技術；MOU 不等於已確認營收。",
+        "ticker": "GE"
+      },
+      {
+        "id": "SIC_SUBSTRATE_partner_001",
+        "name": "Renesas Electronics",
+        "business_line": "SIC_SUBSTRATE",
+        "relationship": "partner",
+        "details": "2025 年財務重整與 2026 年後續股權安排涉及 Renesas；其身分亦包含 SiC 材料客戶。",
+        "ticker": "6723.T"
+      },
+      {
+        "id": "SIC_SUBSTRATE_competitor_001",
+        "name": "Coherent",
+        "business_line": "SIC_SUBSTRATE",
+        "relationship": "competitor",
+        "details": "SiC 基板與材料競爭業者",
+        "ticker": "COHR"
+      },
+      {
+        "id": "SIC_SUBSTRATE_competitor_002",
+        "name": "ROHM",
+        "business_line": "SIC_SUBSTRATE",
+        "relationship": "competitor",
+        "details": "SiC 材料與垂直整合競爭業者",
+        "ticker": "6963.T"
+      },
+      {
+        "id": "SIC_SUBSTRATE_competitor_003",
+        "name": "SK Siltron",
+        "business_line": "SIC_SUBSTRATE",
+        "relationship": "competitor",
+        "details": "SiC 基板競爭業者"
+      },
+      {
+        "id": "SIC_SUBSTRATE_competitor_004",
+        "name": "環球晶",
+        "business_line": "SIC_SUBSTRATE",
+        "relationship": "competitor",
+        "details": "SiC 晶圓材料及基板競爭／替代供應鏈",
+        "ticker": "6488"
+      },
+      {
+        "id": "SIC_MOSFET_competitor_001",
+        "name": "Infineon",
+        "business_line": "SIC_MOSFET",
+        "relationship": "competitor",
+        "details": "SiC 功率元件競爭者，亦是 Wolfspeed 晶圓客戶",
+        "ticker": "IFX.DE"
+      },
+      {
+        "id": "SIC_MOSFET_competitor_002",
+        "name": "onsemi",
+        "business_line": "SIC_MOSFET",
+        "relationship": "competitor",
+        "details": "SiC MOSFET 及電動車功率競爭者",
+        "ticker": "ON"
+      },
+      {
+        "id": "SIC_MOSFET_competitor_003",
+        "name": "STMicroelectronics",
+        "business_line": "SIC_MOSFET",
+        "relationship": "competitor",
+        "details": "SiC 功率元件競爭者",
+        "ticker": "STM"
+      },
+      {
+        "id": "SIC_MOSFET_competitor_004",
+        "name": "ROHM",
+        "business_line": "SIC_MOSFET",
+        "relationship": "competitor",
+        "details": "SiC MOSFET 競爭者",
+        "ticker": "6963.T"
+      },
+      {
+        "id": "SIC_MOSFET_competitor_005",
+        "name": "Navitas Semiconductor",
+        "business_line": "SIC_MOSFET",
+        "relationship": "competitor",
+        "details": "GaN／SiC 功率半導體競爭者；2026 年亦涉及專利爭議",
+        "ticker": "NVTS"
+      },
+      {
+        "id": "POWER_MODULE_competitor_001",
+        "name": "Mitsubishi Electric",
+        "business_line": "POWER_MODULE",
+        "relationship": "competitor",
+        "details": "功率模組競爭者",
+        "ticker": "6503.T"
+      },
+      {
+        "id": "POWER_MODULE_competitor_002",
+        "name": "Fuji Electric",
+        "business_line": "POWER_MODULE",
+        "relationship": "competitor",
+        "details": "功率半導體模組競爭者",
+        "ticker": "6504.T"
+      },
+      {
+        "id": "POWER_MODULE_competitor_003",
+        "name": "Semikron Danfoss",
+        "business_line": "POWER_MODULE",
+        "relationship": "competitor",
+        "details": "功率模組競爭者"
+      },
+      {
+        "id": "EV_competitor_001",
+        "name": "BYD Semiconductor",
+        "business_line": "EV",
+        "relationship": "competitor",
+        "details": "電動車功率半導體競爭者"
+      },
+      {
+        "id": "EV_competitor_002",
+        "name": "Bosch",
+        "business_line": "EV",
+        "relationship": "competitor",
+        "details": "車用 SiC 功率器件競爭者"
+      },
+      {
+        "id": "AI_POWER_competitor_001",
+        "name": "Navitas Semiconductor",
+        "business_line": "AI_POWER",
+        "relationship": "competitor",
+        "details": "AI 資料中心高效率功率元件競爭者",
+        "ticker": "NVTS"
+      },
+      {
+        "id": "AI_POWER_competitor_002",
+        "name": "Infineon",
+        "business_line": "AI_POWER",
+        "relationship": "competitor",
+        "details": "AI 電源 SiC／GaN 產品競爭者",
+        "ticker": "IFX.DE"
+      },
+      {
+        "id": "AI_POWER_competitor_003",
+        "name": "onsemi",
+        "business_line": "AI_POWER",
+        "relationship": "competitor",
+        "details": "資料中心功率半導體競爭者",
+        "ticker": "ON"
+      },
+      {
+        "id": "RF_competitor_001",
+        "name": "Coherent",
+        "business_line": "RF",
+        "relationship": "competitor",
+        "details": "半絕緣 SiC 材料供應競爭者",
+        "ticker": "COHR"
+      },
+      {
+        "id": "TSIC_competitor_001",
+        "name": "Coherent",
+        "business_line": "TSIC",
+        "relationship": "competitor",
+        "details": "光學材料與化合物半導體相鄰競爭者",
+        "ticker": "COHR"
+      },
+      {
+        "id": "SIC_SUBSTRATE_beneficiary_001",
+        "name": "環球晶",
+        "business_line": "SIC_SUBSTRATE",
+        "relationship": "beneficiary",
+        "details": "SiC 基板擴產與第三方材料替代需求受惠觀察",
+        "ticker": "6488"
+      },
+      {
+        "id": "SIC_SUBSTRATE_beneficiary_002",
+        "name": "中美晶",
+        "business_line": "SIC_SUBSTRATE",
+        "relationship": "beneficiary",
+        "details": "SiC 材料與能源轉型相關布局的產業觀察",
+        "ticker": "5483"
+      },
+      {
+        "id": "SIC_SUBSTRATE_beneficiary_003",
+        "name": "嘉晶",
+        "business_line": "SIC_SUBSTRATE",
+        "relationship": "beneficiary",
+        "details": "SiC 磊晶與化合物半導體需求相關",
+        "ticker": "3016"
+      },
+      {
+        "id": "SIC_SUBSTRATE_beneficiary_004",
+        "name": "漢磊",
+        "business_line": "SIC_SUBSTRATE",
+        "relationship": "beneficiary",
+        "details": "SiC 晶圓及功率半導體製程相關",
+        "ticker": "3707"
+      },
+      {
+        "id": "SIC_MOSFET_beneficiary_001",
+        "name": "朋程",
+        "business_line": "SIC_MOSFET",
+        "relationship": "beneficiary",
+        "details": "車用功率元件及 SiC 應用需求受惠觀察",
+        "ticker": "8255"
+      },
+      {
+        "id": "SIC_MOSFET_beneficiary_002",
+        "name": "強茂",
+        "business_line": "SIC_MOSFET",
+        "relationship": "beneficiary",
+        "details": "功率半導體與車用電力轉換受惠觀察",
+        "ticker": "2481"
+      },
+      {
+        "id": "SIC_MOSFET_beneficiary_003",
+        "name": "台半",
+        "business_line": "SIC_MOSFET",
+        "relationship": "beneficiary",
+        "details": "功率半導體及車用電源需求受惠觀察",
+        "ticker": "5425"
+      },
+      {
+        "id": "POWER_MODULE_beneficiary_001",
+        "name": "台達電",
+        "business_line": "POWER_MODULE",
+        "relationship": "beneficiary",
+        "details": "車用／工業電力電子及能源效率升級相關",
+        "ticker": "2308"
+      },
+      {
+        "id": "POWER_MODULE_beneficiary_002",
+        "name": "致茂",
+        "business_line": "POWER_MODULE",
+        "relationship": "beneficiary",
+        "details": "功率元件與電動車電力電子測試需求相關",
+        "ticker": "2360"
+      },
+      {
+        "id": "EV_beneficiary_001",
+        "name": "和大",
+        "business_line": "EV",
+        "relationship": "beneficiary",
+        "details": "電動車電驅系統供應鏈需求相關，非 Wolfspeed 直接客戶",
+        "ticker": "1536"
+      },
+      {
+        "id": "EV_beneficiary_002",
+        "name": "台達電",
+        "business_line": "EV",
+        "relationship": "beneficiary",
+        "details": "電動車充電及電力轉換市場相關",
+        "ticker": "2308"
+      },
+      {
+        "id": "AI_POWER_beneficiary_001",
+        "name": "光寶科技",
+        "business_line": "AI_POWER",
+        "relationship": "beneficiary",
+        "details": "已確認 800VDC 合作，亦是 AI 電源架構成長受惠者",
+        "ticker": "2301"
+      },
+      {
+        "id": "AI_POWER_beneficiary_002",
+        "name": "台達電",
+        "business_line": "AI_POWER",
+        "relationship": "beneficiary",
+        "details": "AI 資料中心高效率電源及 800VDC 趨勢受惠觀察",
+        "ticker": "2308"
+      },
+      {
+        "id": "AI_POWER_beneficiary_003",
+        "name": "群電",
+        "business_line": "AI_POWER",
+        "relationship": "beneficiary",
+        "details": "伺服器及高功率電源需求相關",
+        "ticker": "6412"
+      },
+      {
+        "id": "AI_POWER_beneficiary_004",
+        "name": "康舒",
+        "business_line": "AI_POWER",
+        "relationship": "beneficiary",
+        "details": "資料中心及工業電源市場需求相關",
+        "ticker": "6282"
+      },
+      {
+        "id": "AI_POWER_beneficiary_005",
+        "name": "貿聯-KY",
+        "business_line": "AI_POWER",
+        "relationship": "beneficiary",
+        "details": "高功率線纜與資料中心供電升級相關",
+        "ticker": "3665"
+      },
+      {
+        "id": "ENERGY_beneficiary_001",
+        "name": "中興電",
+        "business_line": "ENERGY",
+        "relationship": "beneficiary",
+        "details": "電網與儲能基礎建設相關",
+        "ticker": "1513"
+      },
+      {
+        "id": "ENERGY_beneficiary_002",
+        "name": "士電",
+        "business_line": "ENERGY",
+        "relationship": "beneficiary",
+        "details": "電網設備與電力系統升級相關",
+        "ticker": "1503"
+      },
+      {
+        "id": "ENERGY_beneficiary_003",
+        "name": "華城",
+        "business_line": "ENERGY",
+        "relationship": "beneficiary",
+        "details": "高壓電網及電力基礎設施相關",
+        "ticker": "1519"
+      },
+      {
+        "id": "RF_beneficiary_001",
+        "name": "穩懋",
+        "business_line": "RF",
+        "relationship": "beneficiary",
+        "details": "化合物半導體 RF 供應鏈相關，非確認 Wolfspeed 採購",
+        "ticker": "3105"
+      },
+      {
+        "id": "RF_beneficiary_002",
+        "name": "全新",
+        "business_line": "RF",
+        "relationship": "beneficiary",
+        "details": "化合物半導體磊晶及 RF 應用相關",
+        "ticker": "2455"
+      },
+      {
+        "id": "TSIC_beneficiary_001",
+        "name": "玉晶光",
+        "business_line": "TSIC",
+        "relationship": "beneficiary",
+        "details": "AR 光學市場潛在應用觀察；未證實與 Wolfspeed 交易",
+        "ticker": "3406"
+      },
+      {
+        "id": "TSIC_beneficiary_002",
+        "name": "佳凌",
+        "business_line": "TSIC",
+        "relationship": "beneficiary",
+        "details": "AR 光學鏡片及光學元件市場相關",
+        "ticker": "4976"
+      },
+      {
+        "id": "FAB_beneficiary_001",
+        "name": "中碳",
+        "business_line": "FAB",
+        "relationship": "beneficiary",
+        "details": "SiC 長晶高純石墨耗材供應鏈機會，非確認 Wolfspeed 供應商",
+        "ticker": "1723"
+      },
+      {
+        "id": "FAB_beneficiary_002",
+        "name": "漢民",
+        "business_line": "FAB",
+        "relationship": "beneficiary",
+        "details": "SiC 製程設備與材料供應鏈觀察",
+        "ticker": "未上市"
+      },
+      {
+        "id": "FAB_beneficiary_003",
+        "name": "帆宣",
+        "business_line": "FAB",
+        "relationship": "beneficiary",
+        "details": "半導體廠務與設備需求相關，未確認 Wolfspeed 訂單",
+        "ticker": "6196"
+      },
+      {
+        "id": "FAB_beneficiary_004",
+        "name": "家登",
+        "business_line": "FAB",
+        "relationship": "beneficiary",
+        "details": "半導體載具與製程升級需求相關，未確認 Wolfspeed 訂單",
+        "ticker": "3680"
+      }
+    ]
   }
 }

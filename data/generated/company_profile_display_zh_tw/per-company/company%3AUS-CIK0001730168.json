@@ -217,5 +217,713 @@
       "企業軟體現代化"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-10-31",
+    "company": "Broadcom Inc.",
+    "symbol": "AVGO",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "AVGO Broadcom 博通產業鏈戰略地圖",
+      "description": "Broadcom AI 客製化 XPU、Tomahawk／Jericho Ethernet、光互連、先進封裝、無線射頻與 VMware 企業軟體產業鏈"
+    },
+    "business_lines": [
+      {
+        "id": "XPU",
+        "name": "客製化 AI XPU／Google TPU／Meta MTIA／OpenAI"
+      },
+      {
+        "id": "ETHERNET",
+        "name": "Tomahawk、Jericho AI 乙太網路交換"
+      },
+      {
+        "id": "OPTICAL",
+        "name": "CPO、光 DSP、光收發與 SerDes"
+      },
+      {
+        "id": "PCIE",
+        "name": "PCIe 交換器、Thor 網路介面卡"
+      },
+      {
+        "id": "PACKAGING",
+        "name": "晶圓代工、先進封裝、FC-BGA 載板"
+      },
+      {
+        "id": "WIRELESS",
+        "name": "Wi-Fi、RF 前端與行動通訊"
+      },
+      {
+        "id": "BROADBAND",
+        "name": "PON、寬頻接取與機上盒"
+      },
+      {
+        "id": "STORAGE",
+        "name": "Fibre Channel、SAS／RAID 儲存連接"
+      },
+      {
+        "id": "VMWARE",
+        "name": "VMware Cloud Foundation、Tanzu"
+      },
+      {
+        "id": "SECURITY",
+        "name": "Symantec、Carbon Black、CA 軟體"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "competitor",
+      "supplier",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "XPU_customer_001",
+        "name": "Google／Alphabet（GOOGL）",
+        "business_line": "XPU",
+        "relationship": "customer",
+        "details": "2026 年雙方續簽客製化 TPU 與次世代 AI 機櫃元件長期合作，供應規劃延伸至 2031 年"
+      },
+      {
+        "id": "XPU_customer_002",
+        "name": "Meta Platforms（META）",
+        "business_line": "XPU",
+        "relationship": "customer",
+        "details": "2026 年公開擴大 MTIA 多世代客製化加速器合作，涵蓋晶片設計、先進封裝與乙太網路"
+      },
+      {
+        "id": "XPU_customer_003",
+        "name": "OpenAI",
+        "business_line": "XPU",
+        "relationship": "customer",
+        "details": "2025 年宣布共同開發客製化 AI 加速器與乙太網路機櫃系統，目標自 2026 下半年開始部署"
+      },
+      {
+        "id": "VMWARE_customer_001",
+        "name": "London Stock Exchange Group／LSEG（LSEG）",
+        "business_line": "VMWARE",
+        "relationship": "customer",
+        "details": "2026 年續約 Broadcom 企業技術基礎設施及 VMware 合作"
+      },
+      {
+        "id": "VMWARE_customer_002",
+        "name": "Google Cloud／Alphabet（GOOGL）",
+        "business_line": "VMWARE",
+        "relationship": "customer",
+        "details": "Google Cloud VMware Engine 提供 VMware 工作負載遷移與雲端服務整合"
+      },
+      {
+        "id": "WIRELESS_customer_001",
+        "name": "Apple（AAPL）",
+        "business_line": "WIRELESS",
+        "relationship": "customer",
+        "details": "Broadcom 與 Apple 具多年期美國製造 5G 射頻與無線連接元件供應協議"
+      },
+      {
+        "id": "ETHERNET_customer_001",
+        "name": "Arista Networks（ANET）",
+        "business_line": "ETHERNET",
+        "relationship": "customer",
+        "details": "Arista 多款資料中心交換器使用 Broadcom 商用交換 ASIC 平台"
+      },
+      {
+        "id": "PACKAGING_partner_001",
+        "name": "TSMC 台積電（2330）",
+        "business_line": "PACKAGING",
+        "relationship": "partner",
+        "details": "先進製程及 CoWoS 等封裝生態的重要晶圓代工合作方；不同 XPU 世代製造配置可能不同"
+      },
+      {
+        "id": "PACKAGING_partner_002",
+        "name": "TOPPAN Holdings（7911.T）",
+        "business_line": "PACKAGING",
+        "relationship": "partner",
+        "details": "與 Broadcom 合資 Advanced Substrate Technologies，2026 年新加坡 FC-BGA 載板廠開幕"
+      },
+      {
+        "id": "XPU_partner_001",
+        "name": "OpenAI",
+        "business_line": "XPU",
+        "relationship": "partner",
+        "details": "10GW 客製化加速器及 Ethernet 系統共同開發；屬合作與潛在採用，不等於 10GW 已出貨"
+      },
+      {
+        "id": "XPU_partner_002",
+        "name": "Meta Platforms（META）",
+        "business_line": "XPU",
+        "relationship": "partner",
+        "details": "MTIA 多世代 XPU 共同設計及先進封裝整合合作"
+      },
+      {
+        "id": "XPU_partner_003",
+        "name": "Google／Alphabet（GOOGL）",
+        "business_line": "XPU",
+        "relationship": "partner",
+        "details": "長期合作設計及供應 TPU／AI 機櫃元件，規劃至 2031 年"
+      },
+      {
+        "id": "ETHERNET_partner_001",
+        "name": "Ultra Ethernet Consortium",
+        "business_line": "ETHERNET",
+        "relationship": "partner",
+        "details": "參與開放式 AI Ethernet 互連標準與 RoCE 生態"
+      },
+      {
+        "id": "ETHERNET_partner_002",
+        "name": "Open Compute Project",
+        "business_line": "ETHERNET",
+        "relationship": "partner",
+        "details": "2026 OCP 展示 ORV3、Tomahawk、Jericho 與 CPO 開放式網路方案"
+      },
+      {
+        "id": "VMWARE_partner_001",
+        "name": "Google Cloud（GOOGL）",
+        "business_line": "VMWARE",
+        "relationship": "partner",
+        "details": "VMware Cloud Foundation 與 Google Cloud VMware Engine 生態整合"
+      },
+      {
+        "id": "VMWARE_partner_002",
+        "name": "Microsoft Azure（MSFT）",
+        "business_line": "VMWARE",
+        "relationship": "partner",
+        "details": "Azure VMware Solution 提供 VMware 工作負載雲端遷移與服務"
+      },
+      {
+        "id": "VMWARE_partner_003",
+        "name": "Amazon Web Services（AMZN）",
+        "business_line": "VMWARE",
+        "relationship": "partner",
+        "details": "VMware Cloud on AWS 歷史合作與客戶遷移生態；產品授權模式持續調整"
+      },
+      {
+        "id": "OPTICAL_partner_001",
+        "name": "OCP 光互連生態",
+        "business_line": "OPTICAL",
+        "relationship": "partner",
+        "details": "CPO、光 DSP 與 800G／1.6T 光連接開放標準合作"
+      },
+      {
+        "id": "PACKAGING_supplier_001",
+        "name": "TSMC 台積電（2330）",
+        "business_line": "PACKAGING",
+        "relationship": "supplier",
+        "details": "為高階 ASIC／網通晶片提供先進製程晶圓代工與先進封裝能力；實際製程依產品而異"
+      },
+      {
+        "id": "PACKAGING_supplier_002",
+        "name": "Advanced Substrate Technologies／TOPPAN",
+        "business_line": "PACKAGING",
+        "relationship": "supplier",
+        "details": "Broadcom 與 TOPPAN 合資的高階 FC-BGA 載板製造平台，2026 年新加坡新廠啟用"
+      },
+      {
+        "id": "XPU_competitor_001",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "XPU",
+        "relationship": "competitor",
+        "details": "GPU 與 NVLink／NVSwitch 全堆疊 AI 運算平台競爭"
+      },
+      {
+        "id": "XPU_competitor_002",
+        "name": "AMD（AMD）",
+        "business_line": "XPU",
+        "relationship": "competitor",
+        "details": "Instinct AI GPU 與加速器競爭"
+      },
+      {
+        "id": "XPU_competitor_003",
+        "name": "Marvell（MRVL）",
+        "business_line": "XPU",
+        "relationship": "competitor",
+        "details": "客製化資料中心 ASIC 與 AI XPU 設計服務競爭"
+      },
+      {
+        "id": "XPU_competitor_004",
+        "name": "Intel（INTC）",
+        "business_line": "XPU",
+        "relationship": "competitor",
+        "details": "AI 加速器與資料中心處理器競爭"
+      },
+      {
+        "id": "ETHERNET_competitor_001",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "ETHERNET",
+        "relationship": "competitor",
+        "details": "Spectrum-X Ethernet 與 NVLink 網路系統競爭"
+      },
+      {
+        "id": "ETHERNET_competitor_002",
+        "name": "Marvell（MRVL）",
+        "business_line": "ETHERNET",
+        "relationship": "competitor",
+        "details": "Teralynx Ethernet 交換器與網路晶片競爭"
+      },
+      {
+        "id": "ETHERNET_competitor_003",
+        "name": "Cisco（CSCO）",
+        "business_line": "ETHERNET",
+        "relationship": "competitor",
+        "details": "Silicon One 交換 ASIC 競爭"
+      },
+      {
+        "id": "ETHERNET_competitor_004",
+        "name": "Intel（INTC）",
+        "business_line": "ETHERNET",
+        "relationship": "competitor",
+        "details": "資料中心網路連接晶片競爭"
+      },
+      {
+        "id": "OPTICAL_competitor_001",
+        "name": "Marvell（MRVL）",
+        "business_line": "OPTICAL",
+        "relationship": "competitor",
+        "details": "光 DSP、PAM4 與 CPO 技術競爭"
+      },
+      {
+        "id": "OPTICAL_competitor_002",
+        "name": "Credo Technology（CRDO）",
+        "business_line": "OPTICAL",
+        "relationship": "competitor",
+        "details": "高速 SerDes 與 AEC／光互連替代方案競爭"
+      },
+      {
+        "id": "OPTICAL_competitor_003",
+        "name": "Coherent（COHR）",
+        "business_line": "OPTICAL",
+        "relationship": "competitor",
+        "details": "光學元件與高速光互連技術競爭"
+      },
+      {
+        "id": "OPTICAL_competitor_004",
+        "name": "Lumentum（LITE）",
+        "business_line": "OPTICAL",
+        "relationship": "competitor",
+        "details": "雷射與光學互連產品在部分光子整合市場競爭"
+      },
+      {
+        "id": "PCIE_competitor_001",
+        "name": "Astera Labs（ALAB）",
+        "business_line": "PCIE",
+        "relationship": "competitor",
+        "details": "PCIe／CXL 交換器及連接平台競爭"
+      },
+      {
+        "id": "PCIE_competitor_002",
+        "name": "Microchip（MCHP）",
+        "business_line": "PCIE",
+        "relationship": "competitor",
+        "details": "PCIe switch 與儲存互連晶片競爭"
+      },
+      {
+        "id": "PCIE_competitor_003",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "PCIE",
+        "relationship": "competitor",
+        "details": "BlueField DPU 與網路加速器競爭"
+      },
+      {
+        "id": "PCIE_competitor_004",
+        "name": "Intel（INTC）",
+        "business_line": "PCIE",
+        "relationship": "competitor",
+        "details": "乙太網路 NIC 與加速卡競爭"
+      },
+      {
+        "id": "WIRELESS_competitor_001",
+        "name": "Qualcomm（QCOM）",
+        "business_line": "WIRELESS",
+        "relationship": "competitor",
+        "details": "手機 RF 前端、Wi-Fi／Bluetooth 與連接晶片競爭"
+      },
+      {
+        "id": "WIRELESS_competitor_002",
+        "name": "Skyworks（SWKS）",
+        "business_line": "WIRELESS",
+        "relationship": "competitor",
+        "details": "射頻前端與手機 PA 模組競爭"
+      },
+      {
+        "id": "WIRELESS_competitor_003",
+        "name": "Qorvo（QRVO）",
+        "business_line": "WIRELESS",
+        "relationship": "competitor",
+        "details": "手機射頻前端模組競爭"
+      },
+      {
+        "id": "WIRELESS_competitor_004",
+        "name": "MediaTek 聯發科（2454）",
+        "business_line": "WIRELESS",
+        "relationship": "competitor",
+        "details": "Wi-Fi 與無線連接 SoC 市場競爭"
+      },
+      {
+        "id": "BROADBAND_competitor_001",
+        "name": "MaxLinear（MXL）",
+        "business_line": "BROADBAND",
+        "relationship": "competitor",
+        "details": "PON、寬頻存取與家庭連接晶片競爭"
+      },
+      {
+        "id": "BROADBAND_competitor_002",
+        "name": "MediaTek 聯發科（2454）",
+        "business_line": "BROADBAND",
+        "relationship": "competitor",
+        "details": "家庭 Wi-Fi 與寬頻閘道 SoC 競爭"
+      },
+      {
+        "id": "BROADBAND_competitor_003",
+        "name": "Qualcomm（QCOM）",
+        "business_line": "BROADBAND",
+        "relationship": "competitor",
+        "details": "家庭 Wi-Fi 與寬頻設備連接晶片競爭"
+      },
+      {
+        "id": "STORAGE_competitor_001",
+        "name": "Marvell（MRVL）",
+        "business_line": "STORAGE",
+        "relationship": "competitor",
+        "details": "儲存控制器與資料中心連接晶片競爭"
+      },
+      {
+        "id": "STORAGE_competitor_002",
+        "name": "Microchip（MCHP）",
+        "business_line": "STORAGE",
+        "relationship": "competitor",
+        "details": "SAS／PCIe／儲存連接產品競爭"
+      },
+      {
+        "id": "STORAGE_competitor_003",
+        "name": "Cisco（CSCO）",
+        "business_line": "STORAGE",
+        "relationship": "competitor",
+        "details": "MDS Fibre Channel SAN 交換器競爭"
+      },
+      {
+        "id": "VMWARE_competitor_001",
+        "name": "Nutanix（NTNX）",
+        "business_line": "VMWARE",
+        "relationship": "competitor",
+        "details": "AHV／Nutanix Cloud Platform 與 VMware 虛擬化競爭"
+      },
+      {
+        "id": "VMWARE_competitor_002",
+        "name": "Microsoft（MSFT）",
+        "business_line": "VMWARE",
+        "relationship": "competitor",
+        "details": "Hyper-V／Azure Stack HCI 與 VCF 競爭"
+      },
+      {
+        "id": "VMWARE_competitor_003",
+        "name": "Red Hat／IBM（IBM）",
+        "business_line": "VMWARE",
+        "relationship": "competitor",
+        "details": "OpenShift Virtualization 與私有雲競爭"
+      },
+      {
+        "id": "VMWARE_competitor_004",
+        "name": "Proxmox Server Solutions",
+        "business_line": "VMWARE",
+        "relationship": "competitor",
+        "details": "Proxmox VE 虛擬化替代方案"
+      },
+      {
+        "id": "VMWARE_competitor_005",
+        "name": "Oracle（ORCL）",
+        "business_line": "VMWARE",
+        "relationship": "competitor",
+        "details": "Oracle Linux Virtualization 與企業私有雲競爭"
+      },
+      {
+        "id": "SECURITY_competitor_001",
+        "name": "Palo Alto Networks（PANW）",
+        "business_line": "SECURITY",
+        "relationship": "competitor",
+        "details": "企業網路安全與端點保護競爭"
+      },
+      {
+        "id": "SECURITY_competitor_002",
+        "name": "CrowdStrike（CRWD）",
+        "business_line": "SECURITY",
+        "relationship": "competitor",
+        "details": "端點安全與威脅偵測競爭"
+      },
+      {
+        "id": "SECURITY_competitor_003",
+        "name": "Fortinet（FTNT）",
+        "business_line": "SECURITY",
+        "relationship": "competitor",
+        "details": "企業資安平台競爭"
+      },
+      {
+        "id": "SECURITY_competitor_004",
+        "name": "IBM（IBM）",
+        "business_line": "SECURITY",
+        "relationship": "competitor",
+        "details": "大型主機軟體及企業自動化競爭"
+      },
+      {
+        "id": "PACKAGING_beneficiary_001",
+        "name": "台積電",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "Broadcom 客製化 XPU 與高速網通 ASIC 先進製程／CoWoS 供應鏈，具直接晶圓代工關係",
+        "ticker": "2330",
+        "beneficiary_priority": "★★★★★"
+      },
+      {
+        "id": "PACKAGING_beneficiary_002",
+        "name": "日月光投控",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "高階半導體封裝測試與異質整合產業需求受惠；未核實指定 Broadcom XPU 直接委託",
+        "ticker": "3711",
+        "beneficiary_priority": "★★★☆☆"
+      },
+      {
+        "id": "PACKAGING_beneficiary_003",
+        "name": "欣興",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "AI ASIC ABF 載板與高階封裝產業需求受惠；非宣稱已確認 Broadcom 直接訂單",
+        "ticker": "3037",
+        "beneficiary_priority": "★★★★☆"
+      },
+      {
+        "id": "PACKAGING_beneficiary_004",
+        "name": "南電",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "高階 ABF 載板產業受惠；與 Broadcom 特定 XPU 的直接交易未確認",
+        "ticker": "8046",
+        "beneficiary_priority": "★★★☆☆"
+      },
+      {
+        "id": "PACKAGING_beneficiary_005",
+        "name": "景碩",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "ABF／FC-BGA 載板需求受惠，未證實特定 Broadcom 訂單",
+        "ticker": "3189",
+        "beneficiary_priority": "★★★☆☆"
+      },
+      {
+        "id": "PACKAGING_beneficiary_006",
+        "name": "志聖",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "先進封裝製程設備受惠 CoWoS／ABF 擴產；屬上游產業受惠",
+        "ticker": "2467",
+        "beneficiary_priority": "★★★☆☆"
+      },
+      {
+        "id": "PACKAGING_beneficiary_007",
+        "name": "均華",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "先進封裝設備需求受惠，未證實 Broadcom 直接採購",
+        "ticker": "6640",
+        "beneficiary_priority": "★★★☆☆"
+      },
+      {
+        "id": "PACKAGING_beneficiary_008",
+        "name": "弘塑",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "半導體濕製程與先進封裝設備需求受惠",
+        "ticker": "3131",
+        "beneficiary_priority": "★★★☆☆"
+      },
+      {
+        "id": "PACKAGING_beneficiary_009",
+        "name": "辛耘",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "先進封裝與晶圓設備需求受惠",
+        "ticker": "3583",
+        "beneficiary_priority": "★★★☆☆"
+      },
+      {
+        "id": "PACKAGING_beneficiary_010",
+        "name": "萬潤",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "半導體封裝設備受惠 AI ASIC 封裝需求",
+        "ticker": "6187",
+        "beneficiary_priority": "★★★☆☆"
+      },
+      {
+        "id": "XPU_beneficiary_001",
+        "name": "聯發科",
+        "business_line": "XPU",
+        "relationship": "beneficiary",
+        "details": "Google TPU 世代設計合作與 ASIC 設計服務布局可能形成 AI ASIC 產業鏈受惠；不可推定為 Broadcom 直接供應商",
+        "ticker": "2454",
+        "beneficiary_priority": "★★★★☆"
+      },
+      {
+        "id": "XPU_beneficiary_002",
+        "name": "旺矽",
+        "business_line": "XPU",
+        "relationship": "beneficiary",
+        "details": "AI ASIC 晶圓測試探針卡與測試設備需求受惠",
+        "ticker": "6223",
+        "beneficiary_priority": "★★★★☆"
+      },
+      {
+        "id": "XPU_beneficiary_003",
+        "name": "穎崴",
+        "business_line": "XPU",
+        "relationship": "beneficiary",
+        "details": "高階 AI ASIC 測試座與測試介面需求受惠",
+        "ticker": "6515",
+        "beneficiary_priority": "★★★★☆"
+      },
+      {
+        "id": "XPU_beneficiary_004",
+        "name": "精測",
+        "business_line": "XPU",
+        "relationship": "beneficiary",
+        "details": "高階晶片測試介面板與 AI ASIC 測試需求受惠",
+        "ticker": "6510",
+        "beneficiary_priority": "★★★☆☆"
+      },
+      {
+        "id": "XPU_beneficiary_005",
+        "name": "致茂",
+        "business_line": "XPU",
+        "relationship": "beneficiary",
+        "details": "高階晶片測試與電源測試需求受惠",
+        "ticker": "2360",
+        "beneficiary_priority": "★★★☆☆"
+      },
+      {
+        "id": "OPTICAL_beneficiary_001",
+        "name": "光聖",
+        "business_line": "OPTICAL",
+        "relationship": "beneficiary",
+        "details": "AI 光互連與高速光模組產業受惠；未確認 Broadcom 直接供應",
+        "ticker": "6442",
+        "beneficiary_priority": "★★★★☆"
+      },
+      {
+        "id": "OPTICAL_beneficiary_002",
+        "name": "聯亞",
+        "business_line": "OPTICAL",
+        "relationship": "beneficiary",
+        "details": "高速光通訊 EML／InP 磊晶材料需求受惠",
+        "ticker": "3081",
+        "beneficiary_priority": "★★★★☆"
+      },
+      {
+        "id": "OPTICAL_beneficiary_003",
+        "name": "全新",
+        "business_line": "OPTICAL",
+        "relationship": "beneficiary",
+        "details": "高速光通訊化合物半導體需求受惠",
+        "ticker": "2455",
+        "beneficiary_priority": "★★★☆☆"
+      },
+      {
+        "id": "OPTICAL_beneficiary_004",
+        "name": "上詮",
+        "business_line": "OPTICAL",
+        "relationship": "beneficiary",
+        "details": "光纖被動元件與 CPO 封裝技術發展受惠",
+        "ticker": "3363",
+        "beneficiary_priority": "★★★★☆"
+      },
+      {
+        "id": "OPTICAL_beneficiary_005",
+        "name": "波若威",
+        "business_line": "OPTICAL",
+        "relationship": "beneficiary",
+        "details": "光纖被動元件與 CPO／高速互連需求受惠",
+        "ticker": "3163",
+        "beneficiary_priority": "★★★★☆"
+      },
+      {
+        "id": "OPTICAL_beneficiary_006",
+        "name": "華星光",
+        "business_line": "OPTICAL",
+        "relationship": "beneficiary",
+        "details": "高速光收發模組與資料中心光連接需求受惠",
+        "ticker": "4979",
+        "beneficiary_priority": "★★★★☆"
+      },
+      {
+        "id": "OPTICAL_beneficiary_007",
+        "name": "眾達-KY",
+        "business_line": "OPTICAL",
+        "relationship": "beneficiary",
+        "details": "資料中心高速光通訊模組需求受惠",
+        "ticker": "4977",
+        "beneficiary_priority": "★★★☆☆"
+      },
+      {
+        "id": "ETHERNET_beneficiary_001",
+        "name": "智邦",
+        "business_line": "ETHERNET",
+        "relationship": "beneficiary",
+        "details": "AI 資料中心交換器 ODM 生態，受惠 Broadcom Tomahawk／Jericho 平台需求",
+        "ticker": "2345",
+        "beneficiary_priority": "★★★★★"
+      },
+      {
+        "id": "ETHERNET_beneficiary_002",
+        "name": "啟碁",
+        "business_line": "ETHERNET",
+        "relationship": "beneficiary",
+        "details": "企業網通、Wi-Fi 與寬頻設備需求受惠；非確認 Broadcom 指定晶片訂單",
+        "ticker": "6285",
+        "beneficiary_priority": "★★★☆☆"
+      },
+      {
+        "id": "ETHERNET_beneficiary_003",
+        "name": "中磊",
+        "business_line": "ETHERNET",
+        "relationship": "beneficiary",
+        "details": "寬頻與企業網路設備需求受惠",
+        "ticker": "5388",
+        "beneficiary_priority": "★★★☆☆"
+      },
+      {
+        "id": "ETHERNET_beneficiary_004",
+        "name": "明泰",
+        "business_line": "ETHERNET",
+        "relationship": "beneficiary",
+        "details": "資料中心與企業交換器需求受惠",
+        "ticker": "3380",
+        "beneficiary_priority": "★★★☆☆"
+      },
+      {
+        "id": "PCIE_beneficiary_001",
+        "name": "信驊",
+        "business_line": "PCIE",
+        "relationship": "beneficiary",
+        "details": "伺服器管理晶片受惠 AI 伺服器與交換器平台擴充；非 Broadcom 晶片供應",
+        "ticker": "5274",
+        "beneficiary_priority": "★★★☆☆"
+      },
+      {
+        "id": "PCIE_beneficiary_002",
+        "name": "嘉澤",
+        "business_line": "PCIE",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器高速連接器需求受惠",
+        "ticker": "3533",
+        "beneficiary_priority": "★★★☆☆"
+      },
+      {
+        "id": "PCIE_beneficiary_003",
+        "name": "貿聯-KY",
+        "business_line": "PCIE",
+        "relationship": "beneficiary",
+        "details": "高速線纜與資料中心互連需求受惠",
+        "ticker": "3665",
+        "beneficiary_priority": "★★★★☆"
+      }
+    ]
   }
 }

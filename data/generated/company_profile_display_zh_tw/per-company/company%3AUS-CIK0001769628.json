@@ -349,5 +349,536 @@
       "大型模型資本支出"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-02",
+    "company": "CoreWeave, Inc.",
+    "symbol": "CRWV",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "CoreWeave（CRWV）AI 雲端算力產業鏈",
+      "description": "CoreWeave GPU 雲端、AI 訓練推論、資料中心、互連與台灣產業受惠公司關係。"
+    },
+    "business_lines": [
+      {
+        "id": "GPU",
+        "name": "NVIDIA GPU 雲端運算與裸金屬算力"
+      },
+      {
+        "id": "TRAIN",
+        "name": "AI 模型訓練與大型模型服務"
+      },
+      {
+        "id": "INFER",
+        "name": "AI 推論與企業應用"
+      },
+      {
+        "id": "DC",
+        "name": "資料中心機房、電力與液冷"
+      },
+      {
+        "id": "NET",
+        "name": "AI 叢集高速網路與互連"
+      },
+      {
+        "id": "STORAGE",
+        "name": "AI 資料與物件儲存"
+      },
+      {
+        "id": "SOFT",
+        "name": "Kubernetes、Mission Control 與雲端軟體"
+      },
+      {
+        "id": "FIN",
+        "name": "GPU 擔保融資與基礎設施資本"
+      },
+      {
+        "id": "CROSS",
+        "name": "跨雲互連與資料遷移"
+      },
+      {
+        "id": "ROBOT",
+        "name": "機器人與實體 AI 工作負載"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "TRAIN_customer_001",
+        "name": "OpenAI",
+        "business_line": "TRAIN",
+        "relationship": "customer",
+        "details": "已公開宣布多年 AI 算力合作；客戶需求及交付節點影響資本支出。"
+      },
+      {
+        "id": "TRAIN_customer_002",
+        "name": "Microsoft",
+        "business_line": "TRAIN",
+        "relationship": "customer",
+        "details": "已披露雲端運算服務合作及重大客戶關係；仍須留意客戶集中度。"
+      },
+      {
+        "id": "TRAIN_customer_003",
+        "name": "Cognition",
+        "business_line": "TRAIN",
+        "relationship": "customer",
+        "details": "2026 年第二季官方揭露擴大既有客戶關係。"
+      },
+      {
+        "id": "TRAIN_customer_004",
+        "name": "Databricks",
+        "business_line": "TRAIN",
+        "relationship": "customer",
+        "details": "2026 年第二季官方揭露擴大既有客戶關係。"
+      },
+      {
+        "id": "TRAIN_customer_005",
+        "name": "Runway",
+        "business_line": "TRAIN",
+        "relationship": "customer",
+        "details": "2026 年第二季官方揭露擴大既有客戶關係。"
+      },
+      {
+        "id": "TRAIN_customer_006",
+        "name": "Rescale",
+        "business_line": "TRAIN",
+        "relationship": "customer",
+        "details": "2026 年第二季官方揭露擴大既有客戶關係。"
+      },
+      {
+        "id": "INFER_customer_001",
+        "name": "Grammarly",
+        "business_line": "INFER",
+        "relationship": "customer",
+        "details": "2026 年第二季官方公告列為新企業客戶。"
+      },
+      {
+        "id": "INFER_customer_002",
+        "name": "Bentley Systems",
+        "business_line": "INFER",
+        "relationship": "customer",
+        "details": "2026 年第二季官方公告列為企業客戶。"
+      },
+      {
+        "id": "INFER_customer_003",
+        "name": "Caterpillar",
+        "business_line": "INFER",
+        "relationship": "customer",
+        "details": "2026 年第二季官方公告列為企業客戶。"
+      },
+      {
+        "id": "INFER_customer_004",
+        "name": "Isomorphic Labs",
+        "business_line": "INFER",
+        "relationship": "customer",
+        "details": "2026 年第二季官方公告列為 AI 相關客戶。"
+      },
+      {
+        "id": "INFER_customer_005",
+        "name": "Hudson River Trading",
+        "business_line": "INFER",
+        "relationship": "customer",
+        "details": "2026 年第二季官方公告擴大既有客戶關係。"
+      },
+      {
+        "id": "ROBOT_customer_001",
+        "name": "Sunday Robotics",
+        "business_line": "ROBOT",
+        "relationship": "customer",
+        "details": "2026 年第二季官方公告列為客戶。"
+      },
+      {
+        "id": "GPU_partner_001",
+        "name": "NVIDIA",
+        "business_line": "GPU",
+        "relationship": "partner",
+        "details": "GPU 平台與 AI 基礎設施策略合作；2026 年追加股權投資，不等同 CoreWeave 獲得無條件 GPU 供貨。"
+      },
+      {
+        "id": "CROSS_partner_001",
+        "name": "Google Cloud",
+        "business_line": "CROSS",
+        "relationship": "partner",
+        "details": "CoreWeave Interconnect 官方宣布先由 Google Cloud 開始跨雲私有光纖互連。"
+      },
+      {
+        "id": "FIN_partner_001",
+        "name": "Jane Street",
+        "business_line": "FIN",
+        "relationship": "partner",
+        "details": "2026 年官方披露擴大商業關係及策略投資；不將其誤標為雲端服務客戶。"
+      },
+      {
+        "id": "GPU_supplier_001",
+        "name": "NVIDIA",
+        "business_line": "GPU",
+        "relationship": "supplier",
+        "details": "CoreWeave 採用 NVIDIA GPU 與 Grace Blackwell／Vera Rubin 系統，是 AI 算力的關鍵技術供應來源。"
+      },
+      {
+        "id": "GPU_competitor_001",
+        "name": "Amazon Web Services",
+        "business_line": "GPU",
+        "relationship": "competitor",
+        "details": "在 GPU 雲端算力租賃或 AI 基礎設施服務市場競爭；產品規模與客群不完全相同。"
+      },
+      {
+        "id": "GPU_competitor_002",
+        "name": "Microsoft Azure",
+        "business_line": "GPU",
+        "relationship": "competitor",
+        "details": "在 GPU 雲端算力租賃或 AI 基礎設施服務市場競爭；產品規模與客群不完全相同。"
+      },
+      {
+        "id": "GPU_competitor_003",
+        "name": "Google Cloud",
+        "business_line": "GPU",
+        "relationship": "competitor",
+        "details": "在 GPU 雲端算力租賃或 AI 基礎設施服務市場競爭；產品規模與客群不完全相同。"
+      },
+      {
+        "id": "GPU_competitor_004",
+        "name": "Oracle Cloud Infrastructure",
+        "business_line": "GPU",
+        "relationship": "competitor",
+        "details": "在 GPU 雲端算力租賃或 AI 基礎設施服務市場競爭；產品規模與客群不完全相同。"
+      },
+      {
+        "id": "GPU_competitor_005",
+        "name": "Lambda",
+        "business_line": "GPU",
+        "relationship": "competitor",
+        "details": "在 GPU 雲端算力租賃或 AI 基礎設施服務市場競爭；產品規模與客群不完全相同。"
+      },
+      {
+        "id": "GPU_competitor_006",
+        "name": "Nebius",
+        "business_line": "GPU",
+        "relationship": "competitor",
+        "details": "在 GPU 雲端算力租賃或 AI 基礎設施服務市場競爭；產品規模與客群不完全相同。"
+      },
+      {
+        "id": "GPU_competitor_007",
+        "name": "Crusoe",
+        "business_line": "GPU",
+        "relationship": "competitor",
+        "details": "在 GPU 雲端算力租賃或 AI 基礎設施服務市場競爭；產品規模與客群不完全相同。"
+      },
+      {
+        "id": "GPU_competitor_008",
+        "name": "Fluidstack",
+        "business_line": "GPU",
+        "relationship": "competitor",
+        "details": "在 GPU 雲端算力租賃或 AI 基礎設施服務市場競爭；產品規模與客群不完全相同。"
+      },
+      {
+        "id": "GPU_competitor_009",
+        "name": "Voltage Park",
+        "business_line": "GPU",
+        "relationship": "competitor",
+        "details": "在 GPU 雲端算力租賃或 AI 基礎設施服務市場競爭；產品規模與客群不完全相同。"
+      },
+      {
+        "id": "SOFT_competitor_001",
+        "name": "Databricks",
+        "business_line": "SOFT",
+        "relationship": "competitor",
+        "details": "在 AI 開發平台、模型託管或雲端軟體層存在部分競爭。"
+      },
+      {
+        "id": "SOFT_competitor_002",
+        "name": "Together AI",
+        "business_line": "SOFT",
+        "relationship": "competitor",
+        "details": "在 AI 開發平台、模型託管或雲端軟體層存在部分競爭。"
+      },
+      {
+        "id": "SOFT_competitor_003",
+        "name": "Fireworks AI",
+        "business_line": "SOFT",
+        "relationship": "competitor",
+        "details": "在 AI 開發平台、模型託管或雲端軟體層存在部分競爭。"
+      },
+      {
+        "id": "SOFT_competitor_004",
+        "name": "Baseten",
+        "business_line": "SOFT",
+        "relationship": "competitor",
+        "details": "在 AI 開發平台、模型託管或雲端軟體層存在部分競爭。"
+      },
+      {
+        "id": "STORAGE_competitor_001",
+        "name": "Amazon S3",
+        "business_line": "STORAGE",
+        "relationship": "competitor",
+        "details": "在雲端儲存與 AI 資料服務有部分替代競爭。"
+      },
+      {
+        "id": "STORAGE_competitor_002",
+        "name": "Google Cloud Storage",
+        "business_line": "STORAGE",
+        "relationship": "competitor",
+        "details": "在雲端儲存與 AI 資料服務有部分替代競爭。"
+      },
+      {
+        "id": "STORAGE_competitor_003",
+        "name": "Azure Blob Storage",
+        "business_line": "STORAGE",
+        "relationship": "competitor",
+        "details": "在雲端儲存與 AI 資料服務有部分替代競爭。"
+      },
+      {
+        "id": "DC_competitor_001",
+        "name": "IREN",
+        "business_line": "DC",
+        "relationship": "competitor",
+        "details": "在 AI 資料中心容量取得與算力基礎設施競爭。"
+      },
+      {
+        "id": "DC_competitor_002",
+        "name": "Applied Digital",
+        "business_line": "DC",
+        "relationship": "competitor",
+        "details": "在 AI 資料中心容量取得與算力基礎設施競爭。"
+      },
+      {
+        "id": "DC_competitor_003",
+        "name": "DigitalOcean",
+        "business_line": "DC",
+        "relationship": "competitor",
+        "details": "在 AI 資料中心容量取得與算力基礎設施競爭。"
+      },
+      {
+        "id": "GPU_beneficiary_001",
+        "name": "鴻海（2317）",
+        "business_line": "GPU",
+        "relationship": "beneficiary",
+        "details": "AI GPU 伺服器與系統需求可能帶動相關台灣 ODM／零組件營收；未確認為 CoreWeave 直接供應商。"
+      },
+      {
+        "id": "GPU_beneficiary_002",
+        "name": "廣達（2382）",
+        "business_line": "GPU",
+        "relationship": "beneficiary",
+        "details": "AI GPU 伺服器與系統需求可能帶動相關台灣 ODM／零組件營收；未確認為 CoreWeave 直接供應商。"
+      },
+      {
+        "id": "GPU_beneficiary_003",
+        "name": "緯創（3231）",
+        "business_line": "GPU",
+        "relationship": "beneficiary",
+        "details": "AI GPU 伺服器與系統需求可能帶動相關台灣 ODM／零組件營收；未確認為 CoreWeave 直接供應商。"
+      },
+      {
+        "id": "GPU_beneficiary_004",
+        "name": "緯穎（6669）",
+        "business_line": "GPU",
+        "relationship": "beneficiary",
+        "details": "AI GPU 伺服器與系統需求可能帶動相關台灣 ODM／零組件營收；未確認為 CoreWeave 直接供應商。"
+      },
+      {
+        "id": "GPU_beneficiary_005",
+        "name": "英業達（2356）",
+        "business_line": "GPU",
+        "relationship": "beneficiary",
+        "details": "AI GPU 伺服器與系統需求可能帶動相關台灣 ODM／零組件營收；未確認為 CoreWeave 直接供應商。"
+      },
+      {
+        "id": "GPU_beneficiary_006",
+        "name": "和碩（4938）",
+        "business_line": "GPU",
+        "relationship": "beneficiary",
+        "details": "AI GPU 伺服器與系統需求可能帶動相關台灣 ODM／零組件營收；未確認為 CoreWeave 直接供應商。"
+      },
+      {
+        "id": "GPU_beneficiary_007",
+        "name": "技嘉（2376）",
+        "business_line": "GPU",
+        "relationship": "beneficiary",
+        "details": "AI GPU 伺服器與系統需求可能帶動相關台灣 ODM／零組件營收；未確認為 CoreWeave 直接供應商。"
+      },
+      {
+        "id": "GPU_beneficiary_008",
+        "name": "華碩（2357）",
+        "business_line": "GPU",
+        "relationship": "beneficiary",
+        "details": "AI GPU 伺服器與系統需求可能帶動相關台灣 ODM／零組件營收；未確認為 CoreWeave 直接供應商。"
+      },
+      {
+        "id": "DC_beneficiary_001",
+        "name": "台達電（2308）",
+        "business_line": "DC",
+        "relationship": "beneficiary",
+        "details": "AI 資料中心擴建提高電力、散熱或機櫃需求的產業曝險；非 CoreWeave 具名直接訂單。"
+      },
+      {
+        "id": "DC_beneficiary_002",
+        "name": "奇鋐（3017）",
+        "business_line": "DC",
+        "relationship": "beneficiary",
+        "details": "AI 資料中心擴建提高電力、散熱或機櫃需求的產業曝險；非 CoreWeave 具名直接訂單。"
+      },
+      {
+        "id": "DC_beneficiary_003",
+        "name": "雙鴻（3324）",
+        "business_line": "DC",
+        "relationship": "beneficiary",
+        "details": "AI 資料中心擴建提高電力、散熱或機櫃需求的產業曝險；非 CoreWeave 具名直接訂單。"
+      },
+      {
+        "id": "DC_beneficiary_004",
+        "name": "建準（2421）",
+        "business_line": "DC",
+        "relationship": "beneficiary",
+        "details": "AI 資料中心擴建提高電力、散熱或機櫃需求的產業曝險；非 CoreWeave 具名直接訂單。"
+      },
+      {
+        "id": "DC_beneficiary_005",
+        "name": "勤誠（8210）",
+        "business_line": "DC",
+        "relationship": "beneficiary",
+        "details": "AI 資料中心擴建提高電力、散熱或機櫃需求的產業曝險；非 CoreWeave 具名直接訂單。"
+      },
+      {
+        "id": "DC_beneficiary_006",
+        "name": "晟銘電（3013）",
+        "business_line": "DC",
+        "relationship": "beneficiary",
+        "details": "AI 資料中心擴建提高電力、散熱或機櫃需求的產業曝險；非 CoreWeave 具名直接訂單。"
+      },
+      {
+        "id": "DC_beneficiary_007",
+        "name": "光寶科（2301）",
+        "business_line": "DC",
+        "relationship": "beneficiary",
+        "details": "AI 資料中心擴建提高電力、散熱或機櫃需求的產業曝險；非 CoreWeave 具名直接訂單。"
+      },
+      {
+        "id": "DC_beneficiary_008",
+        "name": "高力（8996）",
+        "business_line": "DC",
+        "relationship": "beneficiary",
+        "details": "AI 資料中心擴建提高電力、散熱或機櫃需求的產業曝險；非 CoreWeave 具名直接訂單。"
+      },
+      {
+        "id": "NET_beneficiary_001",
+        "name": "智邦（2345）",
+        "business_line": "NET",
+        "relationship": "beneficiary",
+        "details": "高速網路與光通訊擴建的產業受惠觀察，不能推定 CoreWeave 直接採購。"
+      },
+      {
+        "id": "NET_beneficiary_002",
+        "name": "啟碁（6285）",
+        "business_line": "NET",
+        "relationship": "beneficiary",
+        "details": "高速網路與光通訊擴建的產業受惠觀察，不能推定 CoreWeave 直接採購。"
+      },
+      {
+        "id": "NET_beneficiary_003",
+        "name": "光聖（6442）",
+        "business_line": "NET",
+        "relationship": "beneficiary",
+        "details": "高速網路與光通訊擴建的產業受惠觀察，不能推定 CoreWeave 直接採購。"
+      },
+      {
+        "id": "NET_beneficiary_004",
+        "name": "聯亞（3081）",
+        "business_line": "NET",
+        "relationship": "beneficiary",
+        "details": "高速網路與光通訊擴建的產業受惠觀察，不能推定 CoreWeave 直接採購。"
+      },
+      {
+        "id": "NET_beneficiary_005",
+        "name": "上詮（3363）",
+        "business_line": "NET",
+        "relationship": "beneficiary",
+        "details": "高速網路與光通訊擴建的產業受惠觀察，不能推定 CoreWeave 直接採購。"
+      },
+      {
+        "id": "NET_beneficiary_006",
+        "name": "波若威（3163）",
+        "business_line": "NET",
+        "relationship": "beneficiary",
+        "details": "高速網路與光通訊擴建的產業受惠觀察，不能推定 CoreWeave 直接採購。"
+      },
+      {
+        "id": "NET_beneficiary_007",
+        "name": "華星光（4979）",
+        "business_line": "NET",
+        "relationship": "beneficiary",
+        "details": "高速網路與光通訊擴建的產業受惠觀察，不能推定 CoreWeave 直接採購。"
+      },
+      {
+        "id": "NET_beneficiary_008",
+        "name": "全新（2455）",
+        "business_line": "NET",
+        "relationship": "beneficiary",
+        "details": "高速網路與光通訊擴建的產業受惠觀察，不能推定 CoreWeave 直接採購。"
+      },
+      {
+        "id": "STORAGE_beneficiary_001",
+        "name": "群聯（8299）",
+        "business_line": "STORAGE",
+        "relationship": "beneficiary",
+        "details": "AI 叢集儲存及高速傳輸需求的間接受惠觀察。"
+      },
+      {
+        "id": "STORAGE_beneficiary_002",
+        "name": "威剛（3260）",
+        "business_line": "STORAGE",
+        "relationship": "beneficiary",
+        "details": "AI 叢集儲存及高速傳輸需求的間接受惠觀察。"
+      },
+      {
+        "id": "STORAGE_beneficiary_003",
+        "name": "宜鼎（5289）",
+        "business_line": "STORAGE",
+        "relationship": "beneficiary",
+        "details": "AI 叢集儲存及高速傳輸需求的間接受惠觀察。"
+      },
+      {
+        "id": "GPU_beneficiary_009",
+        "name": "台積電（2330）",
+        "business_line": "GPU",
+        "relationship": "beneficiary",
+        "details": "GPU 晶片先進製程、封裝與測試擴產的間接受惠觀察；不是 CoreWeave 直接晶片採購。"
+      },
+      {
+        "id": "GPU_beneficiary_010",
+        "name": "日月光投控（3711）",
+        "business_line": "GPU",
+        "relationship": "beneficiary",
+        "details": "GPU 晶片先進製程、封裝與測試擴產的間接受惠觀察；不是 CoreWeave 直接晶片採購。"
+      },
+      {
+        "id": "GPU_beneficiary_011",
+        "name": "京元電子（2449）",
+        "business_line": "GPU",
+        "relationship": "beneficiary",
+        "details": "GPU 晶片先進製程、封裝與測試擴產的間接受惠觀察；不是 CoreWeave 直接晶片採購。"
+      },
+      {
+        "id": "GPU_beneficiary_012",
+        "name": "欣興（3037）",
+        "business_line": "GPU",
+        "relationship": "beneficiary",
+        "details": "GPU 晶片先進製程、封裝與測試擴產的間接受惠觀察；不是 CoreWeave 直接晶片採購。"
+      },
+      {
+        "id": "GPU_beneficiary_013",
+        "name": "南電（8046）",
+        "business_line": "GPU",
+        "relationship": "beneficiary",
+        "details": "GPU 晶片先進製程、封裝與測試擴產的間接受惠觀察；不是 CoreWeave 直接晶片採購。"
+      }
+    ]
   }
 }

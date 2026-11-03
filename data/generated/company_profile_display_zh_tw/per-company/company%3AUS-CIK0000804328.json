@@ -214,5 +214,480 @@
       "邊緣運算"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-03",
+    "company": "QUALCOMM Incorporated",
+    "symbol": "QCOM",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "Qualcomm（QCOM）產業鏈：Snapdragon、AI PC、汽車、資料中心與台灣供應鏈",
+      "description": "SEC、官方法說及產品公告核對 Qualcomm 的客戶、合作夥伴、晶圓代工與封測供應商、競爭對手及產業受惠股。"
+    },
+    "business_lines": [
+      {
+        "id": "MOBILE",
+        "name": "Snapdragon 手機 SoC／裝置端 AI"
+      },
+      {
+        "id": "MODEM",
+        "name": "5G／6G 數據機與專利授權"
+      },
+      {
+        "id": "RF",
+        "name": "RF 前端／濾波器"
+      },
+      {
+        "id": "PC",
+        "name": "Snapdragon X AI PC"
+      },
+      {
+        "id": "AUTO",
+        "name": "Snapdragon Digital Chassis 汽車"
+      },
+      {
+        "id": "IOT",
+        "name": "Dragonwing 工業／物聯網"
+      },
+      {
+        "id": "EDGE",
+        "name": "機器人與邊緣 AI"
+      },
+      {
+        "id": "DC",
+        "name": "Dragonfly AI 推論／客製晶片"
+      },
+      {
+        "id": "OPTICAL",
+        "name": "資料中心 SerDes／光學 DSP"
+      },
+      {
+        "id": "FOUNDRY",
+        "name": "晶圓代工與封裝測試"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "MOBILE_customer_001",
+        "name": "Samsung（三星）",
+        "business_line": "MOBILE",
+        "relationship": "customer",
+        "details": "Snapdragon 行動平台公開採用者；品牌採用不代表全機型獨家供應。"
+      },
+      {
+        "id": "MOBILE_customer_002",
+        "name": "小米（1810.HK）",
+        "business_line": "MOBILE",
+        "relationship": "customer",
+        "details": "Snapdragon 行動平台公開採用者；品牌採用不代表全機型獨家供應。"
+      },
+      {
+        "id": "MOBILE_customer_003",
+        "name": "OPPO",
+        "business_line": "MOBILE",
+        "relationship": "customer",
+        "details": "Snapdragon 行動平台公開採用者；品牌採用不代表全機型獨家供應。"
+      },
+      {
+        "id": "MOBILE_customer_004",
+        "name": "vivo",
+        "business_line": "MOBILE",
+        "relationship": "customer",
+        "details": "Snapdragon 行動平台公開採用者；品牌採用不代表全機型獨家供應。"
+      },
+      {
+        "id": "MODEM_customer_005",
+        "name": "Apple（AAPL）",
+        "business_line": "MODEM",
+        "relationship": "customer",
+        "details": "既有 iPhone 數據機供應關係；2026 年管理層預期未來 iPhone 採用率顯著下降。"
+      },
+      {
+        "id": "PC_customer_006",
+        "name": "華碩（2357）",
+        "business_line": "PC",
+        "relationship": "customer",
+        "details": "公開搭載 Snapdragon X 系列平台的 PC／裝置品牌。"
+      },
+      {
+        "id": "PC_customer_007",
+        "name": "聯想（0992.HK）",
+        "business_line": "PC",
+        "relationship": "customer",
+        "details": "公開搭載 Snapdragon X 系列平台的 PC／裝置品牌。"
+      },
+      {
+        "id": "PC_customer_008",
+        "name": "Microsoft Surface",
+        "business_line": "PC",
+        "relationship": "customer",
+        "details": "公開搭載 Snapdragon X 系列平台的 PC／裝置品牌。"
+      },
+      {
+        "id": "DC_partner_009",
+        "name": "Amazon／AWS（AMZN）",
+        "business_line": "DC",
+        "relationship": "partner",
+        "details": "2026-09 官方公告多世代客製晶片與 AI 資料中心互連合作；同時 AWS 也提供 Qualcomm EDA 雲端服務。"
+      },
+      {
+        "id": "AUTO_partner_010",
+        "name": "Google（GOOGL）",
+        "business_line": "AUTO",
+        "relationship": "partner",
+        "details": "2026 CES 公布 Snapdragon Digital Chassis 與車用軟體合作。"
+      },
+      {
+        "id": "FOUNDRY_supplier_011",
+        "name": "台積電（2330／TSM）",
+        "business_line": "FOUNDRY",
+        "relationship": "supplier",
+        "details": "FY2025 10-K 明列主要晶圓代工供應商；個別晶片製程分配不公開。"
+      },
+      {
+        "id": "FOUNDRY_supplier_012",
+        "name": "Samsung Foundry",
+        "business_line": "FOUNDRY",
+        "relationship": "supplier",
+        "details": "FY2025 10-K 明列主要晶圓代工供應商；個別晶片製程分配不公開。"
+      },
+      {
+        "id": "FOUNDRY_supplier_013",
+        "name": "GlobalFoundries（GFS）",
+        "business_line": "FOUNDRY",
+        "relationship": "supplier",
+        "details": "FY2025 10-K 明列主要晶圓代工供應商；個別晶片製程分配不公開。"
+      },
+      {
+        "id": "FOUNDRY_supplier_014",
+        "name": "日月光（3711／ASE）",
+        "business_line": "FOUNDRY",
+        "relationship": "supplier",
+        "details": "FY2025 10-K 明列主要半導體封裝與測試服務供應商。"
+      },
+      {
+        "id": "FOUNDRY_supplier_015",
+        "name": "矽品精密工業（ASE 集團）",
+        "business_line": "FOUNDRY",
+        "relationship": "supplier",
+        "details": "FY2025 10-K 明列主要半導體封裝與測試服務供應商。"
+      },
+      {
+        "id": "FOUNDRY_supplier_016",
+        "name": "Amkor（AMKR）",
+        "business_line": "FOUNDRY",
+        "relationship": "supplier",
+        "details": "FY2025 10-K 明列主要半導體封裝與測試服務供應商。"
+      },
+      {
+        "id": "FOUNDRY_supplier_017",
+        "name": "STATS ChipPAC",
+        "business_line": "FOUNDRY",
+        "relationship": "supplier",
+        "details": "FY2025 10-K 明列主要半導體封裝與測試服務供應商。"
+      },
+      {
+        "id": "MOBILE_competitor_018",
+        "name": "聯發科（2454）",
+        "business_line": "MOBILE",
+        "relationship": "competitor",
+        "details": "行動 SoC 與數據機競爭；不同產品世代定位有別。"
+      },
+      {
+        "id": "MOBILE_competitor_019",
+        "name": "Samsung Exynos",
+        "business_line": "MOBILE",
+        "relationship": "competitor",
+        "details": "行動 SoC 與數據機競爭；不同產品世代定位有別。"
+      },
+      {
+        "id": "MOBILE_competitor_020",
+        "name": "紫光展銳",
+        "business_line": "MOBILE",
+        "relationship": "competitor",
+        "details": "行動 SoC 與數據機競爭；不同產品世代定位有別。"
+      },
+      {
+        "id": "PC_competitor_021",
+        "name": "Intel（INTC）",
+        "business_line": "PC",
+        "relationship": "competitor",
+        "details": "PC 處理器與 AI PC 運算平台競爭。"
+      },
+      {
+        "id": "PC_competitor_022",
+        "name": "AMD（AMD）",
+        "business_line": "PC",
+        "relationship": "competitor",
+        "details": "PC 處理器與 AI PC 運算平台競爭。"
+      },
+      {
+        "id": "PC_competitor_023",
+        "name": "Apple Silicon（AAPL）",
+        "business_line": "PC",
+        "relationship": "competitor",
+        "details": "PC 處理器與 AI PC 運算平台競爭。"
+      },
+      {
+        "id": "AUTO_competitor_024",
+        "name": "NVIDIA DRIVE（NVDA）",
+        "business_line": "AUTO",
+        "relationship": "competitor",
+        "details": "車用座艙／ADAS／車載運算領域競爭。"
+      },
+      {
+        "id": "AUTO_competitor_025",
+        "name": "Mobileye（MBLY）",
+        "business_line": "AUTO",
+        "relationship": "competitor",
+        "details": "車用座艙／ADAS／車載運算領域競爭。"
+      },
+      {
+        "id": "AUTO_competitor_026",
+        "name": "瑞薩電子（6723.T）",
+        "business_line": "AUTO",
+        "relationship": "competitor",
+        "details": "車用座艙／ADAS／車載運算領域競爭。"
+      },
+      {
+        "id": "RF_competitor_027",
+        "name": "Broadcom（AVGO）",
+        "business_line": "RF",
+        "relationship": "competitor",
+        "details": "RF 前端與連接產品領域的部分重疊競爭。"
+      },
+      {
+        "id": "RF_competitor_028",
+        "name": "Skyworks（SWKS）",
+        "business_line": "RF",
+        "relationship": "competitor",
+        "details": "RF 前端與連接產品領域的部分重疊競爭。"
+      },
+      {
+        "id": "DC_competitor_029",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "DC",
+        "relationship": "competitor",
+        "details": "資料中心推論加速器與客製晶片市場競爭；Qualcomm 新產品仍處於分階段推出期。"
+      },
+      {
+        "id": "DC_competitor_030",
+        "name": "AMD Instinct（AMD）",
+        "business_line": "DC",
+        "relationship": "competitor",
+        "details": "資料中心推論加速器與客製晶片市場競爭；Qualcomm 新產品仍處於分階段推出期。"
+      },
+      {
+        "id": "DC_competitor_031",
+        "name": "Broadcom 客製 ASIC（AVGO）",
+        "business_line": "DC",
+        "relationship": "competitor",
+        "details": "資料中心推論加速器與客製晶片市場競爭；Qualcomm 新產品仍處於分階段推出期。"
+      },
+      {
+        "id": "DC_competitor_032",
+        "name": "Marvell 客製 ASIC（MRVL）",
+        "business_line": "DC",
+        "relationship": "competitor",
+        "details": "資料中心推論加速器與客製晶片市場競爭；Qualcomm 新產品仍處於分階段推出期。"
+      },
+      {
+        "id": "MOBILE_beneficiary_033",
+        "name": "大立光（3008）",
+        "business_line": "MOBILE",
+        "relationship": "beneficiary",
+        "details": "智慧手機高階化相關產業受惠觀察；不代表 Qualcomm 直接採購。"
+      },
+      {
+        "id": "MOBILE_beneficiary_034",
+        "name": "玉晶光（3406）",
+        "business_line": "MOBILE",
+        "relationship": "beneficiary",
+        "details": "智慧手機高階化相關產業受惠觀察；不代表 Qualcomm 直接採購。"
+      },
+      {
+        "id": "MOBILE_beneficiary_035",
+        "name": "臻鼎-KY（4958）",
+        "business_line": "MOBILE",
+        "relationship": "beneficiary",
+        "details": "智慧手機高階化相關產業受惠觀察；不代表 Qualcomm 直接採購。"
+      },
+      {
+        "id": "MOBILE_beneficiary_036",
+        "name": "欣興（3037）",
+        "business_line": "MOBILE",
+        "relationship": "beneficiary",
+        "details": "智慧手機高階化相關產業受惠觀察；不代表 Qualcomm 直接採購。"
+      },
+      {
+        "id": "PC_beneficiary_037",
+        "name": "廣達（2382）",
+        "business_line": "PC",
+        "relationship": "beneficiary",
+        "details": "AI PC 與終端裝置生態受惠觀察；非全部確認為 Snapdragon X 採用機型。"
+      },
+      {
+        "id": "PC_beneficiary_038",
+        "name": "仁寶（2324）",
+        "business_line": "PC",
+        "relationship": "beneficiary",
+        "details": "AI PC 與終端裝置生態受惠觀察；非全部確認為 Snapdragon X 採用機型。"
+      },
+      {
+        "id": "PC_beneficiary_039",
+        "name": "緯創（3231）",
+        "business_line": "PC",
+        "relationship": "beneficiary",
+        "details": "AI PC 與終端裝置生態受惠觀察；非全部確認為 Snapdragon X 採用機型。"
+      },
+      {
+        "id": "PC_beneficiary_040",
+        "name": "英業達（2356）",
+        "business_line": "PC",
+        "relationship": "beneficiary",
+        "details": "AI PC 與終端裝置生態受惠觀察；非全部確認為 Snapdragon X 採用機型。"
+      },
+      {
+        "id": "PC_beneficiary_041",
+        "name": "宏碁（2353）",
+        "business_line": "PC",
+        "relationship": "beneficiary",
+        "details": "AI PC 與終端裝置生態受惠觀察；非全部確認為 Snapdragon X 採用機型。"
+      },
+      {
+        "id": "AUTO_beneficiary_042",
+        "name": "台達電（2308）",
+        "business_line": "AUTO",
+        "relationship": "beneficiary",
+        "details": "車用電力電子／連接與智慧車需求間接受惠；不等同直接客戶。"
+      },
+      {
+        "id": "AUTO_beneficiary_043",
+        "name": "貿聯-KY（3665）",
+        "business_line": "AUTO",
+        "relationship": "beneficiary",
+        "details": "車用電力電子／連接與智慧車需求間接受惠；不等同直接客戶。"
+      },
+      {
+        "id": "AUTO_beneficiary_044",
+        "name": "同致（3552）",
+        "business_line": "AUTO",
+        "relationship": "beneficiary",
+        "details": "車用電力電子／連接與智慧車需求間接受惠；不等同直接客戶。"
+      },
+      {
+        "id": "IOT_beneficiary_045",
+        "name": "研華（2395）",
+        "business_line": "IOT",
+        "relationship": "beneficiary",
+        "details": "工業邊緣 AI 及 IoT 生態潛在受惠，未聲稱已採購 Qualcomm。"
+      },
+      {
+        "id": "IOT_beneficiary_046",
+        "name": "樺漢（6414）",
+        "business_line": "IOT",
+        "relationship": "beneficiary",
+        "details": "工業邊緣 AI 及 IoT 生態潛在受惠，未聲稱已採購 Qualcomm。"
+      },
+      {
+        "id": "IOT_beneficiary_047",
+        "name": "振樺電（8114）",
+        "business_line": "IOT",
+        "relationship": "beneficiary",
+        "details": "工業邊緣 AI 及 IoT 生態潛在受惠，未聲稱已採購 Qualcomm。"
+      },
+      {
+        "id": "DC_beneficiary_048",
+        "name": "鴻海（2317）",
+        "business_line": "DC",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器產業需求受惠觀察，未核實 Qualcomm 資料中心晶片直接訂單。"
+      },
+      {
+        "id": "DC_beneficiary_049",
+        "name": "緯穎（6669）",
+        "business_line": "DC",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器產業需求受惠觀察，未核實 Qualcomm 資料中心晶片直接訂單。"
+      },
+      {
+        "id": "DC_beneficiary_050",
+        "name": "技嘉（2376）",
+        "business_line": "DC",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器產業需求受惠觀察，未核實 Qualcomm 資料中心晶片直接訂單。"
+      },
+      {
+        "id": "DC_beneficiary_051",
+        "name": "華碩（2357）",
+        "business_line": "DC",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器產業需求受惠觀察，未核實 Qualcomm 資料中心晶片直接訂單。"
+      },
+      {
+        "id": "OPTICAL_beneficiary_052",
+        "name": "光聖（6442）",
+        "business_line": "OPTICAL",
+        "relationship": "beneficiary",
+        "details": "高速光互連需求受惠觀察，不代表 Qualcomm 直接採購。"
+      },
+      {
+        "id": "OPTICAL_beneficiary_053",
+        "name": "聯亞（3081）",
+        "business_line": "OPTICAL",
+        "relationship": "beneficiary",
+        "details": "高速光互連需求受惠觀察，不代表 Qualcomm 直接採購。"
+      },
+      {
+        "id": "OPTICAL_beneficiary_054",
+        "name": "華星光（4979）",
+        "business_line": "OPTICAL",
+        "relationship": "beneficiary",
+        "details": "高速光互連需求受惠觀察，不代表 Qualcomm 直接採購。"
+      },
+      {
+        "id": "OPTICAL_beneficiary_055",
+        "name": "波若威（3163）",
+        "business_line": "OPTICAL",
+        "relationship": "beneficiary",
+        "details": "高速光互連需求受惠觀察，不代表 Qualcomm 直接採購。"
+      },
+      {
+        "id": "FOUNDRY_beneficiary_056",
+        "name": "京元電子（2449）",
+        "business_line": "FOUNDRY",
+        "relationship": "beneficiary",
+        "details": "先進晶片測試與載板需求的產業受惠觀察，無直接 Qualcomm 訂單證據。"
+      },
+      {
+        "id": "FOUNDRY_beneficiary_057",
+        "name": "力成（6239）",
+        "business_line": "FOUNDRY",
+        "relationship": "beneficiary",
+        "details": "先進晶片測試與載板需求的產業受惠觀察，無直接 Qualcomm 訂單證據。"
+      },
+      {
+        "id": "FOUNDRY_beneficiary_058",
+        "name": "景碩（3189）",
+        "business_line": "FOUNDRY",
+        "relationship": "beneficiary",
+        "details": "先進晶片測試與載板需求的產業受惠觀察，無直接 Qualcomm 訂單證據。"
+      },
+      {
+        "id": "FOUNDRY_beneficiary_059",
+        "name": "南電（8046）",
+        "business_line": "FOUNDRY",
+        "relationship": "beneficiary",
+        "details": "先進晶片測試與載板需求的產業受惠觀察，無直接 Qualcomm 訂單證據。"
+      }
+    ]
   }
 }
