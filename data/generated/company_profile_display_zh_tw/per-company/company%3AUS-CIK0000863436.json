@@ -1053,5 +1053,963 @@
     "ai_exposure": null,
     "demand_drivers": [],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-05",
+    "company": "Benchmark Electronics, Inc.",
+    "symbol": "BHE",
+    "locale": "zh-TW",
+    "business_lines": [
+      {
+        "id": "SEMI_CAP_PMM",
+        "name": "半導體設備精密金屬加工、電子束焊接與無塵室組裝",
+        "details": "半導體資本設備用精密機構、流體、測試及電控子系統",
+        "commercialization_stage": "commercial_volume",
+        "downstream_applications": [
+          "製程設備"
+        ]
+      },
+      {
+        "id": "SEMI_CAP_ELECTRONICS",
+        "name": "半導體設備用電子製造、PCBA與系統整合",
+        "details": "高可靠性電子控制板、子系統與整機設計製造",
+        "commercialization_stage": "commercial_volume",
+        "downstream_applications": [
+          "電子設備OEM製造與整合"
+        ]
+      },
+      {
+        "id": "AI_LIQUID_COOLED",
+        "name": "AI液冷刀鋒伺服器製造與整合",
+        "details": "HPE高功率液冷blade級組裝測試與驗證，Benchmark不等於GPU或HBM晶片製造商",
+        "commercialization_stage": "commercial_volume",
+        "downstream_applications": [
+          "AI叢集"
+        ]
+      },
+      {
+        "id": "RACK_CLOUD",
+        "name": "整機櫃私有雲／on-prem雲端設備",
+        "details": "Oxide高密度rack-scale系統機構、散熱、電源、供應鏈和測試",
+        "commercialization_stage": "commercial_volume_capacity_expansion_2026_11",
+        "downstream_applications": [
+          "本地私有雲"
+        ]
+      },
+      {
+        "id": "HPC_SUBSYSTEM",
+        "name": "HPC與液冷超算子系統",
+        "details": "Intel Aurora液冷超算子系統工程、測試與製造；已完成歷史專案",
+        "commercialization_stage": "commercial_historical_delivered",
+        "downstream_applications": [
+          "電子設備OEM製造與整合"
+        ]
+      },
+      {
+        "id": "OPTICAL_MICRO",
+        "name": "微電子封裝與精密光學組裝",
+        "details": "SiP、陶瓷封裝、Flip-chip、精密光學對位、光電混合組裝",
+        "commercialization_stage": "commercial_capability_no_CPO_engine_quantified",
+        "downstream_applications": [
+          "電子設備OEM製造與整合"
+        ]
+      },
+      {
+        "id": "LIDAR_PHYSICAL_AI",
+        "name": "Physical AI光達和感測器量產",
+        "details": "Ouster Rev8高度自動化精密光學/微電子組裝，年產能聲明逾10萬台",
+        "commercialization_stage": "commercial_volume",
+        "downstream_applications": [
+          "工業機器人/智慧基建"
+        ]
+      },
+      {
+        "id": "SATCOM",
+        "name": "衛星通信終端設備代工",
+        "details": "Iridium衛星電話/通訊終端的開發、設備製造與維修",
+        "commercialization_stage": "commercial_customer_verified",
+        "downstream_applications": [
+          "電子設備OEM製造與整合"
+        ]
+      },
+      {
+        "id": "MEDICAL_ULTRASOUND",
+        "name": "醫療超音波探頭製造",
+        "details": "Butterfly Network手持超音波探頭於泰國組裝/測試/出貨",
+        "commercialization_stage": "commercial_customer_verified",
+        "downstream_applications": [
+          "電子設備OEM製造與整合"
+        ]
+      },
+      {
+        "id": "MEDICAL_CELL",
+        "name": "醫療細胞處理設備設計與製造",
+        "details": "Fresenius Kabi LOVO血液細胞處理機設計/生產",
+        "commercialization_stage": "commercial_customer_verified",
+        "downstream_applications": [
+          "電子設備OEM製造與整合"
+        ]
+      },
+      {
+        "id": "MEDICAL_BCI",
+        "name": "腦部監測醫療產品開發",
+        "details": "CoMind非侵入式腦部監測設備開發與擴量合作",
+        "commercialization_stage": "engineering_and_scale_up_announced",
+        "downstream_applications": [
+          "電子設備OEM製造與整合"
+        ]
+      },
+      {
+        "id": "DEFENSE_SURVEILLANCE",
+        "name": "國防安控與AI感測器整合",
+        "details": "美國CBP和FAA MVSS-R 24套雷達、AI視頻、EO/IR移動監視系統",
+        "commercialization_stage": "delivered_2025",
+        "downstream_applications": [
+          "電子設備OEM製造與整合"
+        ]
+      },
+      {
+        "id": "INDUSTRIAL_AUTOMATION",
+        "name": "工業設備、IoT與自助設備",
+        "details": "KeyMe商用鑰匙複製機構/電控設計及供應，其他工業OEM",
+        "commercialization_stage": "commercial_historical_customer",
+        "downstream_applications": [
+          "電子設備OEM製造與整合"
+        ]
+      },
+      {
+        "id": "ENGINEERING_NPI",
+        "name": "設計、DFM、測試與NPI轉量產",
+        "details": "跨醫療、半導體、國防、雲端的設計工程與NPI量產轉換",
+        "commercialization_stage": "commercial",
+        "downstream_applications": [
+          "電子設備OEM製造與整合"
+        ]
+      },
+      {
+        "id": "AFTERMARKET_SUPPLY",
+        "name": "供應鏈採購、交付與售後",
+        "details": "全球採購、BTO/CTO、履約、維修服務",
+        "commercialization_stage": "commercial",
+        "downstream_applications": [
+          "電子設備OEM製造與整合"
+        ]
+      },
+      {
+        "id": "FUTURE_HPC_2027",
+        "name": "下一代HPC擴產計畫",
+        "details": "管理層預計2027年中後新HPC專案開始貢獻，未按2026收入記錄",
+        "commercialization_stage": "guidance_not_delivered",
+        "downstream_applications": [
+          "電子設備OEM製造與整合"
+        ]
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "supplier",
+      "partner",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "SEMI_CAP_PMM_customer_001",
+        "business_line": "SEMI_CAP_PMM",
+        "relationship": "customer",
+        "name": "Applied Materials（AMAT）",
+        "description": "2025 10-K直接具名最大客戶：2025及2024年度各佔總營收14%，2023為12%；不能由比例推定全部為PMM，兩類Semi-cap製造皆可能。",
+        "evidence_level": "SEC_explicit_revenue_named_customer",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "fy2025_share_pct": 14
+      },
+      {
+        "id": "AI_LIQUID_COOLED_customer_001",
+        "business_line": "AI_LIQUID_COOLED",
+        "relationship": "customer",
+        "name": "Hewlett Packard Enterprise（HPE）",
+        "description": "2026-06 HPE頒發製造夥伴獎，具體產品包含高功率液冷伺服器blade assembly/testing；是直接生產客戶，非透過HPE自動將其雲端終端客戶列為BHE客戶。",
+        "evidence_level": "two_sided_official_manufacturing_relationship",
+        "source_ids": [
+          "IR_HPE_JUN_17"
+        ]
+      },
+      {
+        "id": "RACK_CLOUD_customer_001",
+        "business_line": "RACK_CLOUD",
+        "relationship": "customer",
+        "name": "Oxide Computer Company",
+        "description": "2026-11-02官方公告於第二座美國廠擴大Oxide Cloud Computer機櫃系統量產，始於2023工程合作；2026已有量產出貨。",
+        "evidence_level": "official_direct_manufacturing_customer_active",
+        "source_ids": [
+          "IR_OXIDE_NOV_2"
+        ]
+      },
+      {
+        "id": "LIDAR_PHYSICAL_AI_customer_001",
+        "business_line": "LIDAR_PHYSICAL_AI",
+        "relationship": "customer",
+        "name": "Ouster（OUST）",
+        "description": "2026-06擴大Rev8 OS光達量產合作；年產能大於100,000是Ouster聲明可用製造產能，不等於BHE已實際交付10萬台。",
+        "evidence_level": "two_sided_official_long_term_customer",
+        "source_ids": [
+          "IR_OUSTER_JUN_15",
+          "SEC_OUSTER_2026_Q2"
+        ]
+      },
+      {
+        "id": "SATCOM_customer_001",
+        "business_line": "SATCOM",
+        "relationship": "customer",
+        "name": "Iridium Communications（IRDM）",
+        "description": "2025 Iridium 10-K明確列Benchmark為其衛星通信終端策略技術及製造供應商，歷史設備主要由泰國廠製造。",
+        "evidence_level": "customer_counterparty_SEC_verified",
+        "source_ids": [
+          "SEC_IRIDIUM_2025_10K"
+        ]
+      },
+      {
+        "id": "MEDICAL_ULTRASOUND_customer_001",
+        "business_line": "MEDICAL_ULTRASOUND",
+        "relationship": "customer",
+        "name": "Butterfly Network（BFLY）",
+        "description": "2025年度SEC報告證明Benchmark在泰國製造、測試、出貨其手持超音波探頭；相同文件說TSMC製造Butterfly晶片，不表示TSMC直接向BHE供貨。",
+        "evidence_level": "customer_counterparty_SEC_manufacturing_agreement",
+        "source_ids": [
+          "SEC_BUTTERFLY_2025_10K"
+        ]
+      },
+      {
+        "id": "MEDICAL_CELL_customer_001",
+        "business_line": "MEDICAL_CELL",
+        "relationship": "customer",
+        "name": "Fresenius Kabi",
+        "description": "Benchmark官方LOVO案例確認為Fresenius Kabi設計並製造自動細胞處理設備；時間屬歷史產品商用，不推定2026新增訂單金額。",
+        "evidence_level": "official_client_named_historical",
+        "source_ids": [
+          "OFFICIAL_FRESENIUS_LOVO"
+        ]
+      },
+      {
+        "id": "MEDICAL_BCI_customer_001",
+        "business_line": "MEDICAL_BCI",
+        "relationship": "customer",
+        "name": "CoMind",
+        "description": "公司資源/案例資料明示非侵入腦部監測裝置的產品開發與放量合作；具名商業合作不代表已量產收入。",
+        "evidence_level": "official_named_engineering_customer",
+        "source_ids": [
+          "OFFICIAL_COMIND_RESOURCE"
+        ]
+      },
+      {
+        "id": "HPC_SUBSYSTEM_customer_001",
+        "business_line": "HPC_SUBSYSTEM",
+        "relationship": "customer",
+        "name": "Intel（INTC）",
+        "description": "2025-07官方公告Intel選定Benchmark參與Aurora超算液冷HPC子系統測試及生產；Intel是直接委任方，Argonne最終使用方。",
+        "evidence_level": "official_direct_manufacturing_customer_historical_completed",
+        "source_ids": [
+          "OFFICIAL_INTEL_AURORA"
+        ]
+      },
+      {
+        "id": "DEFENSE_SURVEILLANCE_customer_001",
+        "business_line": "DEFENSE_SURVEILLANCE",
+        "relationship": "customer",
+        "name": "U.S. Customs and Border Protection（CBP）",
+        "description": "2025-08公司公告已與FAA合作完成交付24座MVSS-R移動監視系統，政府單位具名，並非2026新增訂單。",
+        "evidence_level": "official_named_government_delivered",
+        "source_ids": [
+          "OFFICIAL_CBP"
+        ],
+        "delivered_systems": 24
+      },
+      {
+        "id": "DEFENSE_SURVEILLANCE_partner_001",
+        "business_line": "DEFENSE_SURVEILLANCE",
+        "relationship": "partner",
+        "name": "Federal Aviation Administration（FAA）",
+        "description": "Benchmark公告FAA與CBP為MVSS-R方案涉及機構；付款/採購法律主體未分列，不臆造FAA獨立採購數量。",
+        "evidence_level": "official_named_government_project_participant",
+        "source_ids": [
+          "OFFICIAL_CBP"
+        ]
+      },
+      {
+        "id": "INDUSTRIAL_AUTOMATION_customer_001",
+        "business_line": "INDUSTRIAL_AUTOMATION",
+        "relationship": "customer",
+        "name": "KeyMe, Inc.",
+        "description": "Benchmark官方案例指出為KeyMe自助鑰匙複製Kiosk設計、測試、自動化生產合作；屬歷史具名案件。",
+        "evidence_level": "official_named_historical_manufacturing_client",
+        "source_ids": [
+          "OFFICIAL_KEYME"
+        ]
+      },
+      {
+        "id": "ENGINEERING_NPI_competitor_001",
+        "business_line": "ENGINEERING_NPI",
+        "relationship": "competitor",
+        "name": "Celestica（CLS）",
+        "description": "與BHE在高複雜EMS/AI基礎設施製造競爭",
+        "evidence_level": "SEC_2025_explicit_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "ENGINEERING_NPI_competitor_002",
+        "business_line": "ENGINEERING_NPI",
+        "relationship": "competitor",
+        "name": "Flex（FLEX）",
+        "description": "與BHE在高可靠電子代工與工業製造競爭",
+        "evidence_level": "SEC_2025_explicit_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "ENGINEERING_NPI_competitor_003",
+        "business_line": "ENGINEERING_NPI",
+        "relationship": "competitor",
+        "name": "Jabil（JBL）",
+        "description": "EMS系統整合與先進工業/運算競爭",
+        "evidence_level": "SEC_2025_explicit_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "ENGINEERING_NPI_competitor_004",
+        "business_line": "ENGINEERING_NPI",
+        "relationship": "competitor",
+        "name": "Kimball Electronics（KE）",
+        "description": "高可靠醫療與工業EMS競爭",
+        "evidence_level": "SEC_2025_explicit_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "ENGINEERING_NPI_competitor_005",
+        "business_line": "ENGINEERING_NPI",
+        "relationship": "competitor",
+        "name": "Plexus（PLXS）",
+        "description": "醫療、工業與國防高複雜度EMS競爭",
+        "evidence_level": "SEC_2025_explicit_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "ENGINEERING_NPI_competitor_006",
+        "business_line": "ENGINEERING_NPI",
+        "relationship": "competitor",
+        "name": "Sanmina（SANM）",
+        "description": "半導體設備、通訊與高可靠EMS競爭",
+        "evidence_level": "SEC_2025_explicit_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "AI_LIQUID_COOLED_competitor_001",
+        "business_line": "AI_LIQUID_COOLED",
+        "relationship": "competitor",
+        "name": "鴻海（2317.TW）",
+        "description": "台灣大型伺服器ODM或EMS在AI運算裝配具相鄰競爭與產業受惠性質；未獲BHE直接採購證據，不能放入supplier。",
+        "evidence_level": "industry_overlap_not_direct_procurement",
+        "source_ids": [
+          "SEC_2025_10K",
+          "TAIWAN_MONEYDJ"
+        ]
+      },
+      {
+        "id": "AI_LIQUID_COOLED_competitor_002",
+        "business_line": "AI_LIQUID_COOLED",
+        "relationship": "competitor",
+        "name": "緯創（3231.TW）",
+        "description": "台灣大型伺服器ODM或EMS在AI運算裝配具相鄰競爭與產業受惠性質；未獲BHE直接採購證據，不能放入supplier。",
+        "evidence_level": "industry_overlap_not_direct_procurement",
+        "source_ids": [
+          "SEC_2025_10K",
+          "TAIWAN_MONEYDJ"
+        ]
+      },
+      {
+        "id": "AI_LIQUID_COOLED_competitor_003",
+        "business_line": "AI_LIQUID_COOLED",
+        "relationship": "competitor",
+        "name": "廣達（2382.TW）",
+        "description": "台灣大型伺服器ODM或EMS在AI運算裝配具相鄰競爭與產業受惠性質；未獲BHE直接採購證據，不能放入supplier。",
+        "evidence_level": "industry_overlap_not_direct_procurement",
+        "source_ids": [
+          "SEC_2025_10K",
+          "TAIWAN_MONEYDJ"
+        ]
+      }
+    ],
+    "research": {
+      "source_commit": "b45029a1e",
+      "source_blob_sha": "11d81df88129153287b308a0ce0f032e962a3488",
+      "latest_filed_10k": "FY2025 filed 2026-02-24",
+      "latest_filed_10q": "2026 Q3 filed 2026-10-28",
+      "latest_earnings_8k": "2026-10-28",
+      "latest_earnings_call": "2026-10-28",
+      "q3_2026_revenue_usd": 810898000,
+      "q3_2026_gaap_gross_margin_pct": 10.4,
+      "q3_2026_yoy_growth_pct_rounded": 19,
+      "q3_2026_business_segments_usd_millions": {
+        "semi_cap": 241,
+        "advanced_computing_communications": 132,
+        "industrial": 172,
+        "medical": 138,
+        "aerospace_defense": 128
+      },
+      "fy2025_top_customer": "Applied Materials",
+      "fy2025_top_customer_revenue_pct": 14,
+      "fy2025_top_ten_revenue_pct": 51,
+      "fy2026_revenue_guidance_lower_bound_usd": 3000000000,
+      "q4_2026_revenue_guidance_low_usd": 815000000,
+      "q4_2026_revenue_guidance_high_usd": 855000000,
+      "taiwan_named_direct_supplier_status": "no_verified_named_direct_supplier",
+      "named_customer_policy": "Direct OEM or agency with SEC/counterparty filing/official case study; date/stage documented; buyer groups not customer nodes.",
+      "supplier_evidence_policy": "No direct named Taiwanese or global supplier established; exclude inferential GPU/HBM/TSMC component shipments",
+      "commercialization_warning": "manufacturing capacity, order announcements, actual deliveries and realized revenues are separate states"
+    },
+    "five_gate_audit": {
+      "gate_1_hot_topics_reverse_check": {
+        "performed": true,
+        "as_of": "2026-11-05",
+        "window": "2026-08-07 to 2026-11-05",
+        "independent_topics": [
+          "2026 Q3 10-Q",
+          "HPE AI液冷叢集",
+          "Oxide Computer 11月美國擴廠",
+          "Ouster Rev8擴量",
+          "Semi-cap訂單與庫存",
+          "檳城/泰國擴廠",
+          "2027 HPC量產預期",
+          "政府AI雷達及醫療",
+          "台灣上游證據"
+        ],
+        "result": "reviewed_with_gaps"
+      },
+      "gate_2_investor_top_ten_questions": {
+        "performed": true,
+        "questions": [
+          {
+            "topic": "營收成長",
+            "finding": "2026Q3營收810.898M美元，年增19%；需依5市場分類比較而非全歸AI。"
+          },
+          {
+            "topic": "毛利率",
+            "finding": "2026Q3 GAAP 10.4%、non-GAAP 10.5%，不是以同業高毛利半導體材料口徑替代。"
+          },
+          {
+            "topic": "資本支出",
+            "finding": "Q3 capex約15M美元，用於馬來西亞檳城、泰國擴廠，區別資本支出與固定採購承諾。"
+          },
+          {
+            "topic": "競爭力",
+            "finding": "高複雜低量/高可靠EMS、PMM、精密光學與液冷伺服器整合，不等於製造GPU。"
+          },
+          {
+            "topic": "技術轉折",
+            "finding": "液冷刀鋒伺服器、Rev8 Physical AI光達、精密光學與微電子SiP，而非已量產CPO光引擎。"
+          },
+          {
+            "topic": "客戶採用",
+            "finding": "Applied Materials 14%、HPE、Oxide、Ouster、Iridium、Butterfly等具名且分證據層級。"
+          },
+          {
+            "topic": "產能",
+            "finding": "檳城與泰國擴產，Oxide第二座美國廠投產；Ouster年產能>10萬非已交付數。"
+          },
+          {
+            "topic": "供應鏈",
+            "finding": "客製料件可能單一來源；台灣公司直接採購供應商缺可驗證具名證據。"
+          },
+          {
+            "topic": "估值催化",
+            "finding": "2027 HPC新專案、2026全年逾30億美元指引及Semi-cap持續復甦。"
+          },
+          {
+            "topic": "風險",
+            "finding": "Applied Materials占比14%、客戶集中、存貨增長、重組、地緣政治與醫療/軍工法規。"
+          }
+        ]
+      },
+      "gate_3_technology_product_completeness": {
+        "performed": true,
+        "topics": [
+          "AI液冷刀鋒伺服器",
+          "on-prem機櫃雲端",
+          "Intel Aurora HPC",
+          "SiP/flip-chip/wire-bond",
+          "晶圓級CSP",
+          "精密光學對位",
+          "Lidar Rev8",
+          "醫療超音波",
+          "國防AI邊境監控",
+          "HBM及CoWoS的非直接角色",
+          "CPO證據不足"
+        ]
+      },
+      "gate_4_falsification_competition": {
+        "performed": true,
+        "tests": [
+          "HPE/Oxide/Ouster有直接雙向證據",
+          "AMAT占14%是2025數值",
+          "Ouster年產能不是當期出貨",
+          "Intel Aurora為2025歷史已交付",
+          "TSMC不是可核實BHE直接supplier",
+          "2027 HPC是未來預測",
+          "競爭公司不冒充供應商",
+          "未具名Hyperscaler不冒充直接客戶"
+        ]
+      },
+      "gate_5_missing_topic_audit": {
+        "performed": true,
+        "important_issue_coverage_table": [
+          {
+            "topic": "2026 Q3正式10-Q與8-K",
+            "status": "covered",
+            "finding": "10-Q營收810.898M、GAAP毛利10.4%，2026/10/28發布8-K財報，非未審計前瞻收入。",
+            "source_ids": [
+              "SEC_2026_Q3_10Q",
+              "SEC_2026_Q3_EARNINGS_8K"
+            ]
+          },
+          {
+            "topic": "2026 Q3各終端市場成長",
+            "status": "covered",
+            "finding": "Semi-cap 241M/+30%；AC&C 132M/+50%；Industrial 172M/+13%；Medical 138M/+9%；A&D 128M/-1%。",
+            "source_ids": [
+              "Q3_2026_CALL"
+            ]
+          },
+          {
+            "topic": "2026全年營收指引",
+            "status": "covered",
+            "finding": "管理層上調為逾3B美元及約16%成長，仍屬預測。",
+            "source_ids": [
+              "Q3_2026_CALL"
+            ]
+          },
+          {
+            "topic": "2026 Q4指引",
+            "status": "covered",
+            "finding": "營收815–855M美元、non-GAAP EPS 0.85–0.91為前瞻。",
+            "source_ids": [
+              "IR_Q3_2026"
+            ]
+          },
+          {
+            "topic": "Applied Materials具名收入集中",
+            "status": "covered",
+            "finding": "2025 SEC明列14%收入；僅揭露年度總客戶占比，不推定季當期。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "HPE液冷AI刀鋒組裝",
+            "status": "covered",
+            "finding": "HPE 2026製造夥伴獎，直接供應高功率液冷blade組裝、測試、驗證。",
+            "source_ids": [
+              "IR_HPE_JUN_17"
+            ]
+          },
+          {
+            "topic": "Oxide新第二座美國工廠",
+            "status": "covered",
+            "finding": "2026/11/02公司宣布擴增Oxide rack-scale on-prem cloud系統第二生產廠。",
+            "source_ids": [
+              "IR_OXIDE_NOV_2"
+            ]
+          },
+          {
+            "topic": "Ouster Rev8量產",
+            "status": "covered",
+            "finding": "共同公告2026已擴量，製造架構可支援每年逾10萬台，非已出貨數。",
+            "source_ids": [
+              "IR_OUSTER_JUN_15"
+            ]
+          },
+          {
+            "topic": "Iridium衛星通訊終端",
+            "status": "covered",
+            "finding": "客戶2025 SEC具名Benchmark為策略技術及製造供應商。",
+            "source_ids": [
+              "SEC_IRIDIUM_2025_10K"
+            ]
+          },
+          {
+            "topic": "Butterfly醫療超音波設備",
+            "status": "covered",
+            "finding": "客戶2025 SEC揭露泰國委託製造/測試/出貨及歷史製造協議。",
+            "source_ids": [
+              "SEC_BUTTERFLY_2025_10K"
+            ]
+          },
+          {
+            "topic": "Fresenius Kabi LOVO系統",
+            "status": "covered",
+            "finding": "Benchmark官方醫療個案確認產品設計與製造，非泛化成所有醫療客戶皆具名。",
+            "source_ids": [
+              "OFFICIAL_FRESENIUS_LOVO"
+            ]
+          },
+          {
+            "topic": "CoMind腦部監測合作",
+            "status": "covered",
+            "finding": "官方資源列有具名腦監測裝置開發合作，商業量產規模未核實。",
+            "source_ids": [
+              "OFFICIAL_COMIND_RESOURCE"
+            ]
+          },
+          {
+            "topic": "Intel Aurora液冷超算",
+            "status": "covered",
+            "finding": "2025公司公告Intel選定供應HPC子系統生產和測試，當期已完成里程碑。",
+            "source_ids": [
+              "OFFICIAL_INTEL_AURORA"
+            ]
+          },
+          {
+            "topic": "CBP邊境AI雷達監控",
+            "status": "covered",
+            "finding": "2025年交付24座MVSS-R，涉及CBP與FAA；政府單位具名。",
+            "source_ids": [
+              "OFFICIAL_CBP"
+            ]
+          },
+          {
+            "topic": "KeyMe歷史自助設備",
+            "status": "covered",
+            "finding": "官方歷史案例有具名KeyMe，無2026年度採購金額。",
+            "source_ids": [
+              "OFFICIAL_KEYME"
+            ]
+          },
+          {
+            "topic": "Semi-cap精密金屬與電子束焊接",
+            "status": "covered",
+            "finding": "公司10-K確認PMM、e-beam welding、clean-room及子系統整合。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "微電子SiP與先進封裝",
+            "status": "covered",
+            "finding": "官方具名SiP、wafer-level CSP、flip-chip及wire bond等封裝/組裝能力。",
+            "source_ids": [
+              "OFFICIAL_MICROELECTRONICS",
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "CoWoS與HBM晶片製造",
+            "status": "intentionally_excluded",
+            "finding": "BHE不是HBM原廠或台積電CoWoS封裝商；不能把代工組裝混同先進晶圓級堆疊製造。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "CPO光引擎量產與獨立收入",
+            "status": "evidence_insufficient",
+            "finding": "精密光學對位、SiP/光機整合能力不證明已經商轉CPO光引擎或光模組獨立營收。",
+            "source_ids": [
+              "OFFICIAL_MICROELECTRONICS"
+            ]
+          },
+          {
+            "topic": "2027 HPC新專案",
+            "status": "covered",
+            "finding": "管理層預計2027年中/後新專案起貢獻，不等於2026已認列收入。",
+            "source_ids": [
+              "Q3_2026_CALL"
+            ]
+          },
+          {
+            "topic": "Q3營業現金與自由現金",
+            "status": "covered",
+            "finding": "Q3現金流30M、自由現金14M，非整年數字。",
+            "source_ids": [
+              "IR_Q3_2026"
+            ]
+          },
+          {
+            "topic": "Q3資本支出與工廠擴充",
+            "status": "covered",
+            "finding": "Q3 capex約15M、檳城及泰國設備投資。",
+            "source_ids": [
+              "Q3_2026_CALL"
+            ]
+          },
+          {
+            "topic": "存貨與11個全球量產提升計畫",
+            "status": "covered",
+            "finding": "存貨季增16%並有11個製造爬坡案，應關注庫存/交付風險。",
+            "source_ids": [
+              "Q3_2026_CALL"
+            ]
+          },
+          {
+            "topic": "台灣直接零件供應商名單",
+            "status": "evidence_insufficient",
+            "finding": "無台灣具名公司雙向直接供貨證據；不將台灣ODM競爭同業編成供應商。",
+            "source_ids": [
+              "SEC_2025_10K",
+              "TAIWAN_MONEYDJ"
+            ]
+          },
+          {
+            "topic": "TSMC的台灣晶片交易",
+            "status": "intentionally_excluded",
+            "finding": "Butterfly的SEC揭露TSMC是Butterfly晶片供應商，不支持TSMC與BHE兩者直接採購關係。",
+            "source_ids": [
+              "SEC_BUTTERFLY_2025_10K"
+            ]
+          },
+          {
+            "topic": "四大雲端平台是否BHE直接買家",
+            "status": "evidence_insufficient",
+            "finding": "HPE與Oxide是具名直接客戶；最終AWS/Meta/Google/Microsoft供應鏈沒有直接採購證據。",
+            "source_ids": [
+              "IR_HPE_JUN_17",
+              "IR_OXIDE_NOV_2"
+            ]
+          },
+          {
+            "topic": "產能100K出貨混淆",
+            "status": "covered",
+            "finding": "Ouster宣稱成熟產能大於100K/年，非已售或已出貨100K顆。",
+            "source_ids": [
+              "IR_OUSTER_JUN_15"
+            ]
+          },
+          {
+            "topic": "美國、亞洲與歐洲製造版圖",
+            "status": "covered",
+            "finding": "截至2025年報位於美洲、亞洲與歐洲，2026年繼續加碼檳城與泰國。",
+            "source_ids": [
+              "SEC_2025_10K",
+              "Q3_2026_CALL"
+            ]
+          },
+          {
+            "topic": "SEC前十大客戶集中",
+            "status": "covered",
+            "finding": "2025十大客戶占51%；不能推定僅AMAT為全部具名。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "固定式AI伺服器散熱與ASIC",
+            "status": "evidence_insufficient",
+            "finding": "提供液冷伺服器blade組裝及高功率測試，缺可確認的自研ASIC/HBM/冷板專利商用收入。",
+            "source_ids": [
+              "IR_HPE_JUN_17"
+            ]
+          },
+          {
+            "topic": "OEM未具名受限客戶",
+            "status": "covered",
+            "finding": "對於NDA未具名客戶，只留在downstream_applications，不建立虛構customer。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "TSMC與台灣半導體設備間接曝險",
+            "status": "covered",
+            "finding": "AMAT買BHE設備子系統，AMAT賣給TSMC等晶圓廠；TSMC非BHE直接證實客戶。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "競爭者",
+            "status": "covered",
+            "finding": "10-K直接列出Celestica、Flex、Jabil、Kimball、Plexus、Sanmina；台灣ODM屬鄰近競爭。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "Reuters/Bloomberg/The Information",
+            "status": "not_researched",
+            "finding": "未找到可核實新增BHE具名採購方的當期原始報導，不以付費媒體無法核對段落補證據。",
+            "source_ids": []
+          },
+          {
+            "topic": "ServeTheHome/Tom's Hardware技術評測",
+            "status": "not_researched",
+            "finding": "沒有能對應特定BHE製造型號之可驗證第三方實測；官方工程產品頁仍供產品面證據。",
+            "source_ids": []
+          },
+          {
+            "topic": "客戶最新單筆採購金額",
+            "status": "evidence_insufficient",
+            "finding": "公開資料僅AMAT 2025年度14%濃度，其他具名客戶無個別營收可核。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          }
+        ],
+        "coverage_counts": {
+          "covered": 27,
+          "intentionally_excluded": 2,
+          "evidence_insufficient": 5,
+          "not_researched": 2
+        },
+        "material_unresolved": [
+          "CPO光引擎量產與獨立收入",
+          "台灣直接零件供應商名單",
+          "四大雲端平台是否BHE直接買家",
+          "固定式AI伺服器散熱與ASIC",
+          "Reuters/Bloomberg/The Information",
+          "ServeTheHome/Tom's Hardware技術評測",
+          "客戶最新單筆採購金額"
+        ],
+        "all_material_issues_resolved": false
+      },
+      "reflection_iterations": [
+        {
+          "round": 1,
+          "check": "原始JSON業務分類與近90天熱門議題是否一致",
+          "finding": "原檔產品堆疊誤留A&D、軟體字詞，漏掉2026已認證的HPE液冷AI伺服器、Oxide新廠及Ouster Rev8",
+          "correction": "不改原檔，於industry_chain補足16條具體製造/工程主線和stage。"
+        },
+        {
+          "round": 2,
+          "check": "客戶是否真的具名、是否有採購證據",
+          "finding": "AMAT 14%由年報直接確認；HPE/Oxide/Ouster等由官網、客戶自己的SEC文件確認，未具名hyperscaler不得算客戶",
+          "correction": "所有customer列具體公司或政府機構且標證據分級。"
+        },
+        {
+          "round": 3,
+          "check": "台灣代工、台積電與供應商方向是否弄反",
+          "finding": "Butterfly披露TSMC是其晶片供應商而BHE是成品製造商；未證明TSMC直接向BHE出貨",
+          "correction": "不建立任何無證據台灣supplier，台灣ODM放相鄰競爭節點。"
+        },
+        {
+          "round": 4,
+          "check": "AI、CPO、HBM、先進封裝是否誇大商業化",
+          "finding": "液冷blade製造、SiP/Flip-Chip與Ouster光學對位為現有服務；CPO/HBM/CoWoS直接收入未證實",
+          "correction": "AI已商轉業務與無直接收入CPO/HBM分開標記。"
+        },
+        {
+          "round": 5,
+          "check": "產能和財務數據是否混同",
+          "finding": "Ouster >100K年產能不等於出貨，2027 HPC預期不等於2026收入，non-GAAP毛利不能冒充GAAP",
+          "correction": "財務及產品節點分開記載現況、指引、產能與實際交付。"
+        },
+        {
+          "round": 6,
+          "check": "是否遺漏半導體設備及非AI現金流主線",
+          "finding": "AMAT佔營收14%，Semi-cap Q3 241M高於AC&C 132M，工業/醫療/國防也是大營收",
+          "correction": "審計表逐一納入醫療、軍工、工業、半導體設備與現金/庫存。"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "id": "SEC_2025_10K",
+        "url": "https://www.sec.gov/Archives/edgar/data/863436/000119312526064849/bhe-20251231.htm"
+      },
+      {
+        "id": "SEC_2026_Q3_10Q",
+        "url": "https://www.sec.gov/Archives/edgar/data/863436/000119312526436286/bhe-20260930.htm"
+      },
+      {
+        "id": "SEC_2026_Q3_EARNINGS_8K",
+        "url": "https://www.sec.gov/Archives/edgar/data/863436/000119312526436278/bhe-ex99_1.htm"
+      },
+      {
+        "id": "IR_Q3_2026",
+        "url": "https://ir.bench.com/news/news-details/2026/Benchmark-Delivers-Record-Third-Quarter-Revenue-and-Strong-Earnings-Growth-Raises-Fiscal-Year-2026-Outlook/default.aspx"
+      },
+      {
+        "id": "Q3_2026_CALL",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/10/29/benchmark-electronics-bhe-q3-2026-earnings-call-transcript/"
+      },
+      {
+        "id": "IR_OXIDE_NOV_2",
+        "url": "https://ir.bench.com/news/news-details/2026/Benchmark-Expands-U-S--Manufacturing-for-Oxide-Computer-Company/default.aspx"
+      },
+      {
+        "id": "IR_HPE_JUN_17",
+        "url": "https://ir.bench.com/news/news-details/2026/HPE-Names-Benchmark-as-Its-Manufacturing-Partner-of-the-Year/default.aspx"
+      },
+      {
+        "id": "IR_OUSTER_JUN_15",
+        "url": "https://ir.bench.com/news/news-details/2026/Ouster-and-Benchmark-Expand-Partnership-to-Scale-Volume-Production-of-New-REV8-Digital-Lidar-Sensors-2026-qOfVnUr1or/default.aspx"
+      },
+      {
+        "id": "SEC_IRIDIUM_2025_10K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1418819/000141881926000009/irdm-20251231.htm"
+      },
+      {
+        "id": "SEC_OUSTER_2026_Q2",
+        "url": "https://www.sec.gov/Archives/edgar/data/1816581/000162828026054467/oust-20260630.htm"
+      },
+      {
+        "id": "SEC_BUTTERFLY_2025_10K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1804176/000114036126017121/ny20068165x3_ars.pdf"
+      },
+      {
+        "id": "OFFICIAL_FRESENIUS_LOVO",
+        "url": "https://www.bench.com/lovo-case-study"
+      },
+      {
+        "id": "OFFICIAL_KEYME",
+        "url": "https://www.bench.com/hubfs/Benchmark-content-files/Case-Studies/Benchmark-KeyMe-Kiosk-Case-Study.pdf"
+      },
+      {
+        "id": "OFFICIAL_INTEL_AURORA",
+        "url": "https://ir.bench.com/news/news-details/2025/Benchmark-Completes-Key-Role-in-U-S--Manufacturing-and-Testing-for-Intels-Aurora-Exascale-Supercomputer/default.aspx"
+      },
+      {
+        "id": "OFFICIAL_CBP",
+        "url": "https://ir.bench.com/news/news-details/2025/Benchmark-Completes-Delivery-of-the-Next-Phase-of-High-Tech-Surveillance-Solutions-for-U-S--Customs-and-Border-Protection/default.aspx"
+      },
+      {
+        "id": "OFFICIAL_COMIND_RESOURCE",
+        "url": "https://www.bench.com/benchmark-resources"
+      },
+      {
+        "id": "OFFICIAL_MICROELECTRONICS",
+        "url": "https://www.bench.com/microelectronics"
+      },
+      {
+        "id": "IR_EVENTS",
+        "url": "https://ir.bench.com/overview/"
+      },
+      {
+        "id": "TAIWAN_MONEYDJ",
+        "url": "https://www.moneydj.com/us/basic/basic0001/bhe"
+      },
+      {
+        "id": "IR_2026_Q1_PRESENTATION",
+        "url": "https://s203.q4cdn.com/219528228/files/doc_financials/2026/q1/BHE-Q1-2026-Investor-Presentation-vFF.pdf"
+      },
+      {
+        "id": "IR_SEMICAP",
+        "url": "https://www.bench.com/semiconductor-capital-equipment"
+      },
+      {
+        "id": "IR_MEDTECH",
+        "url": "https://www.bench.com/medical-technologies"
+      }
+    ]
   }
 }

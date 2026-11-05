@@ -133,5 +133,861 @@
     "ai_exposure": null,
     "demand_drivers": [],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-05",
+    "company": "Bel Fuse Inc.",
+    "symbol": "BELFA",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "Bel Fuse（BELFA）產業鏈：AI資料中心電源、MagJack、dataMate、Enercon與具名OEM客戶",
+      "description": "用2026年SEC、官方產品及法說核實AI資料中心電源/網路磁性、航太國防連接器、具名客戶與台灣同業競爭，不把hyperscaler冒充直接採購者。"
+    },
+    "business_lines": [
+      {
+        "id": "DATA_POWER",
+        "name": "AI／資料中心電源轉換與電源機櫃",
+        "description": "CRPS、AC-DC電源、48V/12V OCP power shelf、DC-DC；伺服器/交換器/存儲設備用途。",
+        "downstream_customer_types": [
+          "伺服器ODM與OEM",
+          "網路交換機OEM",
+          "資料中心硬體系統整合商"
+        ],
+        "commercialization": "已出貨的產品家族；2026Q3需求成長，尚未具名揭露個別AI專案客戶"
+      },
+      {
+        "id": "DATA_MAGNETICS",
+        "name": "高速網路磁性與MagJack整合接頭",
+        "description": "整合磁性RJ45、MagJack、PoE電感、磁性變壓器、Ethernet EMI濾波。",
+        "downstream_customer_types": [
+          "交換器與路由器OEM",
+          "網路設備製造商"
+        ],
+        "commercialization": "長期已量產並有具名歷史採購客戶"
+      },
+      {
+        "id": "DATA_CONNECTIVITY",
+        "name": "高速資料連接器與銅纜／光纖線組",
+        "description": "Stewart與Cinch高速連接、RF與fiber連接器、線纜組件；不是光引擎或CoWoS封裝服務。",
+        "downstream_customer_types": [
+          "資料中心設備OEM",
+          "通訊設備OEM",
+          "航空航太製造商"
+        ],
+        "commercialization": "成熟已營收產品，逐專案800G/1.6T導入金額未公開"
+      },
+      {
+        "id": "DATAMATE",
+        "name": "dataMate單對乙太網、G.hn、GPON、工業連網",
+        "description": "SPE、G.hn、SFP/SFP+、GPON fiber link extender；2026-03-05已完成併購。",
+        "downstream_customer_types": [
+          "工業自動化廠",
+          "智慧樓宇網路設備商",
+          "寬頻基礎設施OEM"
+        ],
+        "commercialization": "已收購營收，2026前9個月收購後認列1,070萬美元"
+      },
+      {
+        "id": "AERO_CONNECTIVITY",
+        "name": "航太、國防與太空高可靠連接器",
+        "description": "Cinch微波/RF/expanded beam fiber與耐嚴苛環境線組、QPS/TRL9相關元件。",
+        "downstream_customer_types": [
+          "航太OEM",
+          "國防主承包商",
+          "衛星及太空任務總承包商"
+        ],
+        "commercialization": "成熟供應，單一客戶當期銷售額未揭露"
+      },
+      {
+        "id": "ENERCON_DEFENSE",
+        "name": "Enercon軍規電源與任務關鍵系統",
+        "description": "軍規電源、電力系統與機電集成，2024取得80% Enercon權益，剩餘20%為後續買入規畫。",
+        "downstream_customer_types": [
+          "國防系統整合商",
+          "軍事電子裝備OEM"
+        ],
+        "commercialization": "已併表營收，剩餘20%未確認交割"
+      },
+      {
+        "id": "INDUSTRIAL_POWER",
+        "name": "工業、醫療、交通用電源",
+        "description": "CUI及Bel AC-DC/DC-DC、板載電源、功率模組及充電設備應用。",
+        "downstream_customer_types": [
+          "工業OEM",
+          "醫療設備OEM",
+          "交通及eMobility設備商"
+        ],
+        "commercialization": "已量產商用"
+      },
+      {
+        "id": "CIRCUIT_PROTECTION",
+        "name": "保險絲、過流保護、PTC與電路安全",
+        "description": "surface mount fuse、管式保險絲、resettable PTC。",
+        "downstream_customer_types": [
+          "電子設備OEM",
+          "分銷商",
+          "電源及儲能系統製造商"
+        ],
+        "commercialization": "成熟已量產"
+      },
+      {
+        "id": "SPACE_RF",
+        "name": "太空任務RF／光纖／同軸連接",
+        "description": "Cinch太空歷史flight heritage、耐環境連接及RF元件，與衛星光通訊CPO光引擎不同。",
+        "downstream_customer_types": [
+          "航太主承包商",
+          "太空機構工程採購"
+        ],
+        "commercialization": "既有flight heritage，但不可由mission logo推定現在的新採購額"
+      },
+      {
+        "id": "DISTRIBUTION_CHANNEL",
+        "name": "全球授權零件經銷通路",
+        "description": "Arrow、Avnet、DigiKey、Mouser等屬已確認商業通路；區分經銷採購與終端設備OEM客戶。",
+        "downstream_customer_types": [
+          "授權電子零件分銷商",
+          "電子工程設計採購團隊"
+        ],
+        "commercialization": "多年成熟營運"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "DATA_MAGNETICS_customer_001",
+        "name": "Cisco Systems（CSCO）",
+        "business_line": "DATA_MAGNETICS",
+        "relationship": "customer",
+        "details": "2004年Bel本身SEC相關文件明示Cisco為前兩大客戶之一，採購MagJack類網路磁性接頭。這是歷史直接採購證據，不推定2026年排名或金額。",
+        "evidence_level": "SEC_historical_explicit_customer",
+        "source_ids": [
+          "SEC_HISTORICAL_CUSTOMER_DISCLOSURE"
+        ],
+        "relationship_as_of": "2004"
+      },
+      {
+        "id": "DATA_MAGNETICS_customer_002",
+        "name": "Dell Technologies／Dell EMC（DELL）",
+        "business_line": "DATA_MAGNETICS",
+        "relationship": "customer",
+        "details": "Bel 2004 SEC資料具名Dell前兩大客戶之一；2026年投資人會議亦列舉Dell EMC為代表性客戶。未披露2026年單一客戶銷售。",
+        "evidence_level": "SEC_historical_and_2026_investor_mention",
+        "source_ids": [
+          "SEC_HISTORICAL_CUSTOMER_DISCLOSURE",
+          "FEB_2026_INVESTOR_PRESENTATION"
+        ]
+      },
+      {
+        "id": "AERO_CONNECTIVITY_customer_001",
+        "name": "Lockheed Martin（LMT）",
+        "business_line": "AERO_CONNECTIVITY",
+        "relationship": "customer",
+        "details": "2026-02投資人會議代表性客戶名單具名；僅確認歷史/代表性客戶關係，非已確認2026個別新訂單或營收金額。",
+        "evidence_level": "2026_investor_conference_named_customer",
+        "source_ids": [
+          "FEB_2026_INVESTOR_PRESENTATION"
+        ]
+      },
+      {
+        "id": "AERO_CONNECTIVITY_customer_002",
+        "name": "RTX／Raytheon（RTX）",
+        "business_line": "AERO_CONNECTIVITY",
+        "relationship": "customer",
+        "details": "2026-02投資人會議代表性客戶名單具名；僅確認歷史/代表性客戶關係，非已確認2026個別新訂單或營收金額。",
+        "evidence_level": "2026_investor_conference_named_customer",
+        "source_ids": [
+          "FEB_2026_INVESTOR_PRESENTATION"
+        ]
+      },
+      {
+        "id": "AERO_CONNECTIVITY_customer_003",
+        "name": "Boeing（BA）",
+        "business_line": "AERO_CONNECTIVITY",
+        "relationship": "customer",
+        "details": "2026-02投資人會議代表性客戶名單具名；僅確認歷史/代表性客戶關係，非已確認2026個別新訂單或營收金額。",
+        "evidence_level": "2026_investor_conference_named_customer",
+        "source_ids": [
+          "FEB_2026_INVESTOR_PRESENTATION"
+        ]
+      },
+      {
+        "id": "INDUSTRIAL_POWER_customer_001",
+        "name": "Deere & Company／John Deere（DE）",
+        "business_line": "INDUSTRIAL_POWER",
+        "relationship": "customer",
+        "details": "2026-02投資人會議列入代表性藍籌客戶；具名歷史客戶，不據此推定2026當期採購額或直接採購產品線。",
+        "evidence_level": "2026_investor_conference_named_customer",
+        "source_ids": [
+          "FEB_2026_INVESTOR_PRESENTATION"
+        ]
+      },
+      {
+        "id": "DISTRIBUTION_CHANNEL_partner_001",
+        "name": "Arrow Electronics（ARW）",
+        "business_line": "DISTRIBUTION_CHANNEL",
+        "relationship": "partner",
+        "details": "Bel官方授權經銷商資料與管理層會議確認；屬實際供貨經銷通路，不將其當成已具名的hyperscaler終端客戶，未披露個別通路銷售。",
+        "evidence_level": "official_authorized_distributor",
+        "source_ids": [
+          "OFFICIAL_DISTRIBUTORS",
+          "Q3_EARNINGS_CALL"
+        ]
+      },
+      {
+        "id": "DISTRIBUTION_CHANNEL_partner_002",
+        "name": "Avnet（AVT）",
+        "business_line": "DISTRIBUTION_CHANNEL",
+        "relationship": "partner",
+        "details": "Bel官方授權經銷商資料與管理層會議確認；屬實際供貨經銷通路，不將其當成已具名的hyperscaler終端客戶，未披露個別通路銷售。",
+        "evidence_level": "official_authorized_distributor",
+        "source_ids": [
+          "OFFICIAL_DISTRIBUTORS",
+          "Q3_EARNINGS_CALL"
+        ]
+      },
+      {
+        "id": "DISTRIBUTION_CHANNEL_partner_003",
+        "name": "DigiKey",
+        "business_line": "DISTRIBUTION_CHANNEL",
+        "relationship": "partner",
+        "details": "Bel官方授權經銷商資料與管理層會議確認；屬實際供貨經銷通路，不將其當成已具名的hyperscaler終端客戶，未披露個別通路銷售。",
+        "evidence_level": "official_authorized_distributor",
+        "source_ids": [
+          "OFFICIAL_DISTRIBUTORS",
+          "Q3_EARNINGS_CALL"
+        ]
+      },
+      {
+        "id": "DISTRIBUTION_CHANNEL_partner_004",
+        "name": "Mouser Electronics",
+        "business_line": "DISTRIBUTION_CHANNEL",
+        "relationship": "partner",
+        "details": "Bel官方授權經銷商資料與管理層會議確認；屬實際供貨經銷通路，不將其當成已具名的hyperscaler終端客戶，未披露個別通路銷售。",
+        "evidence_level": "official_authorized_distributor",
+        "source_ids": [
+          "OFFICIAL_DISTRIBUTORS",
+          "Q3_EARNINGS_CALL"
+        ]
+      },
+      {
+        "id": "DATAMATE_partner_001",
+        "name": "Methode Electronics（MEI）",
+        "business_line": "DATAMATE",
+        "relationship": "partner",
+        "details": "2026-03-05以約1,600萬美元向Methode買入dataMate，屬已完成資產收購賣方，非當期下游客戶。",
+        "evidence_level": "SEC_and_company_confirmed_completed_acquisition",
+        "source_ids": [
+          "OFFICIAL_DATAMATE",
+          "SEC_Q3_2026_10Q"
+        ],
+        "transaction_usd": 16000000
+      },
+      {
+        "id": "ENERCON_DEFENSE_partner_001",
+        "name": "Enercon Technologies",
+        "business_line": "ENERCON_DEFENSE",
+        "relationship": "partner",
+        "details": "Bel已於2024取得約80%持股；管理層計畫在2027 Q1前後購買其餘20%，交易未確認完成。Enercon是集團業務，不是外部直接supplier。",
+        "evidence_level": "SEC_confirmed_majority_owned_business",
+        "source_ids": [
+          "SEC_FY2025_10K",
+          "Q3_EARNINGS_CALL_SUMMARY"
+        ]
+      },
+      {
+        "id": "AERO_CONNECTIVITY_competitor_001",
+        "name": "Amphenol（APH）",
+        "business_line": "AERO_CONNECTIVITY",
+        "relationship": "competitor",
+        "details": "連接器、RF及高速線組市場重疊；不能推定每一款產品可互換。",
+        "evidence_level": "technology_market_overlap",
+        "source_ids": [
+          "SEC_FY2025_10K",
+          "OFFICIAL_DATASOLUTIONS_PRODUCTS"
+        ]
+      },
+      {
+        "id": "AERO_CONNECTIVITY_competitor_002",
+        "name": "TE Connectivity（TEL）",
+        "business_line": "AERO_CONNECTIVITY",
+        "relationship": "competitor",
+        "details": "高可靠連接器和工業網路互連相鄰競爭。",
+        "evidence_level": "technology_market_overlap",
+        "source_ids": [
+          "SEC_FY2025_10K",
+          "OFFICIAL_DATASOLUTIONS_PRODUCTS"
+        ]
+      },
+      {
+        "id": "CIRCUIT_PROTECTION_competitor_001",
+        "name": "Littelfuse（LFUS）",
+        "business_line": "CIRCUIT_PROTECTION",
+        "relationship": "competitor",
+        "details": "保險絲、過流保護、PTC等產品領域競爭。",
+        "evidence_level": "technology_market_overlap",
+        "source_ids": [
+          "SEC_FY2025_10K",
+          "OFFICIAL_DATASOLUTIONS_PRODUCTS"
+        ]
+      },
+      {
+        "id": "CIRCUIT_PROTECTION_competitor_002",
+        "name": "Vishay Intertechnology（VSH）",
+        "business_line": "CIRCUIT_PROTECTION",
+        "relationship": "competitor",
+        "details": "被動元件及部分電力保護相關的競爭者。",
+        "evidence_level": "technology_market_overlap",
+        "source_ids": [
+          "SEC_FY2025_10K",
+          "OFFICIAL_DATASOLUTIONS_PRODUCTS"
+        ]
+      },
+      {
+        "id": "DATA_POWER_competitor_001",
+        "name": "台達電／Delta Electronics（2308.TW）",
+        "business_line": "DATA_POWER",
+        "relationship": "competitor",
+        "details": "資料中心電源供應器同業；沒有證據證明它向Bel Fuse直接供貨。",
+        "evidence_level": "technology_market_overlap",
+        "source_ids": [
+          "SEC_FY2025_10K",
+          "OFFICIAL_DATASOLUTIONS_PRODUCTS"
+        ]
+      },
+      {
+        "id": "DATA_POWER_competitor_002",
+        "name": "光寶科技／Lite-On（2301.TW）",
+        "business_line": "DATA_POWER",
+        "relationship": "competitor",
+        "details": "伺服器／資料中心電源相鄰競爭，非Bel直接供應商。",
+        "evidence_level": "technology_market_overlap",
+        "source_ids": [
+          "SEC_FY2025_10K",
+          "OFFICIAL_DATASOLUTIONS_PRODUCTS"
+        ]
+      },
+      {
+        "id": "DATA_MAGNETICS_competitor_001",
+        "name": "台灣國巨／Yageo（2327.TW）",
+        "business_line": "DATA_MAGNETICS",
+        "relationship": "competitor",
+        "details": "磁性與被動元件相關競爭觀察，非確認Bel直接供應商。",
+        "evidence_level": "technology_market_overlap",
+        "source_ids": [
+          "SEC_FY2025_10K",
+          "OFFICIAL_DATASOLUTIONS_PRODUCTS"
+        ]
+      },
+      {
+        "id": "DATA_POWER_competitor_003",
+        "name": "Advanced Energy Industries（AEIS）",
+        "business_line": "DATA_POWER",
+        "relationship": "competitor",
+        "details": "高效率AC-DC及工業電源產品線競爭。",
+        "evidence_level": "technology_market_overlap",
+        "source_ids": [
+          "SEC_FY2025_10K",
+          "OFFICIAL_DATASOLUTIONS_PRODUCTS"
+        ]
+      }
+    ],
+    "research": {
+      "source_commit": "b45029a1e",
+      "source_blob_sha": "35014635ef8135a57752ab40c3ff26a90d641495",
+      "latest_10k": "FY2025 filed 2026-02-24",
+      "latest_10q": "Q3 2026 filed 2026-11-03",
+      "latest_8k": "2026-10-28 earnings release",
+      "latest_quarter": "2026-Q3",
+      "q3_gaap_revenue_usd": 220510000,
+      "q3_yoy_revenue_growth_pct": 23.2,
+      "q3_gaap_gross_margin_pct": 40.9,
+      "q3_itds_revenue_usd": 113914000,
+      "q3_adrs_revenue_usd": 106596000,
+      "backlog_2026_09_30_usd": 680300000,
+      "backlog_2026_10_31_usd": 742400000,
+      "q4_sales_guidance_usd_low": 220000000,
+      "q4_sales_guidance_usd_high": 240000000,
+      "acquired_datamate_closed": true,
+      "datamate_acquisition_amount_usd_approx": 16000000,
+      "hyperscaler_direct_customer_status": "CEO expressly denied direct exposure 2026-10-29",
+      "taiwan_direct_supplier_status": "evidence_insufficient_do_not_invent",
+      "counterparty_rule": "named OEM via SEC/historical or 2026 investor presentation; no unverified latest revenue attribution; resellers as partner"
+    },
+    "five_gate_audit": {
+      "gate_1_hot_topics_reverse_check": {
+        "performed": true,
+        "period": "2026-08-07至2026-11-05",
+        "status": "reviewed",
+        "independently_identified_topics": [
+          "Q3 10-Q財務",
+          "data solutions與AI訂單",
+          "10月backlog",
+          "新部門報表口徑",
+          "dataMate收購並表",
+          "Enercon剩餘20%",
+          "產能地理調整",
+          "AI直接客戶是否具名"
+        ]
+      },
+      "gate_2_investor_top_ten_questions": {
+        "performed": true,
+        "questions": [
+          {
+            "topic": "營收成長",
+            "finding": "2026Q3年增23.2%，ITDS增37.8%，需拆分有機與收購成長。"
+          },
+          {
+            "topic": "毛利率",
+            "finding": "Q3 GAAP 40.9%，業務組合可導致分部毛利不同。"
+          },
+          {
+            "topic": "資本支出",
+            "finding": "管理層說進行工廠自動化與產能投資，不能以2026的股權融資額冒充CAPEX。"
+          },
+          {
+            "topic": "競爭力",
+            "finding": "高可靠元件、合規認證、客製化、高功率密度和全球工廠。"
+          },
+          {
+            "topic": "技術轉折",
+            "finding": "CRPS/OCP 48V、SPE/G.hn與高可靠RF連接；800V/CPO須另立證據門檻。"
+          },
+          {
+            "topic": "客戶採用",
+            "finding": "Cisco/Dell歷史SEC具名，Lockheed/RTX/Boeing/Deere在2026年會議具名；不是hyperscaler直接採購。"
+          },
+          {
+            "topic": "產能",
+            "finding": "中國、印度、以色列、斯洛伐克工廠整合；管理層表示沒有現階段顯著產能限制。"
+          },
+          {
+            "topic": "供應鏈",
+            "finding": "主要原料及零件風險存在，台灣直接supplier無公開足以核實的具名名單。"
+          },
+          {
+            "topic": "估值催化劑",
+            "finding": "2027交貨backlog、dataMate整合、Enercon剩餘20%股權交易及Q4指引。"
+          },
+          {
+            "topic": "風險",
+            "finding": "關稅、匯率、客戶設計轉換、訂單取消、股權稀釋及併購整合。"
+          }
+        ]
+      },
+      "gate_3_technology_product_completeness": {
+        "performed": true,
+        "areas": [
+          "CRPS",
+          "AC-DC",
+          "OCP 12V/48V",
+          "DC-DC",
+          "RJ45磁性整合",
+          "高可靠RF連接",
+          "SPE",
+          "G.hn",
+          "GPON",
+          "800V HVDC證據缺口",
+          "CPO證據缺口",
+          "HBM/CoWoS非直接業務"
+        ]
+      },
+      "gate_4_falsification_competition": {
+        "performed": true,
+        "tests": [
+          "歷史具名客戶不等於當期排名",
+          "hyperscaler不是直接客戶",
+          "授權分銷與設備OEM分離",
+          "台灣同業競爭不等於直接供應",
+          "48V產品不是800V量產",
+          "Backlog不是已認列收入",
+          "Enercon尚未100%持有"
+        ]
+      },
+      "gate_5_missing_topic_audit": {
+        "performed": true,
+        "important_issue_coverage_table": [
+          {
+            "topic": "2026Q3營收與GAAP毛利",
+            "status": "covered",
+            "finding": "11/03正式10-Q營收220.510M美元、YoY+23.2%、毛利率40.9%。",
+            "source_ids": [
+              "SEC_Q3_2026_10Q",
+              "OFFICIAL_Q3_2026_RESULTS"
+            ]
+          },
+          {
+            "topic": "新兩部門財報口徑",
+            "status": "covered",
+            "finding": "2026-03-31起ADRS/ITDS，不能把2025舊三產品事業群比例當成2026報告部門。",
+            "source_ids": [
+              "SEC_Q3_2026_10Q",
+              "OFFICIAL_REORGANIZATION"
+            ]
+          },
+          {
+            "topic": "2026Q3資料解決方案成長",
+            "status": "covered",
+            "finding": "ITDS當季113.914M美元、年增37.8%，A&D當季106.596M、年增10.7%。",
+            "source_ids": [
+              "OFFICIAL_Q3_2026_RESULTS"
+            ]
+          },
+          {
+            "topic": "2026年10月backlog創高",
+            "status": "covered",
+            "finding": "9/30為680.3M美元，10/31進一步742.4M；尚未認列收入。",
+            "source_ids": [
+              "SEC_Q3_2026_10Q"
+            ]
+          },
+          {
+            "topic": "2026Q4指引",
+            "status": "covered",
+            "finding": "營收220–240M美元、GAAP毛利40.0–42.0%為前瞻，不是已實現數。",
+            "source_ids": [
+              "OFFICIAL_Q3_2026_RESULTS"
+            ]
+          },
+          {
+            "topic": "dataMate併購與已認列收入",
+            "status": "covered",
+            "finding": "3/05已完成16M美元併購，9月止九個月期間認列dataMate銷售10.7M。",
+            "source_ids": [
+              "SEC_Q3_2026_10Q",
+              "OFFICIAL_DATAMATE"
+            ]
+          },
+          {
+            "topic": "dataMate SPE及G.hn商用",
+            "status": "covered",
+            "finding": "已有產品並可銷售；未單獨披露SPE新產品營收及逐客戶採用。",
+            "source_ids": [
+              "OFFICIAL_DATAMATE_TECH"
+            ]
+          },
+          {
+            "topic": "Enercon 20%後續收購",
+            "status": "covered",
+            "finding": "僅80%權益已取得，剩餘20%預期2027 Q1交割，不能寫成已100%持有。",
+            "source_ids": [
+              "SEC_FY2025_10K",
+              "Q3_EARNINGS_CALL_SUMMARY"
+            ]
+          },
+          {
+            "topic": "AI資料中心直接客戶身分",
+            "status": "covered",
+            "finding": "10/29管理層明確表示並非直接對接hyperscalers，不能列MSFT/META/AMZN/GOOGL直接客戶。",
+            "source_ids": [
+              "Q3_EARNINGS_CALL"
+            ]
+          },
+          {
+            "topic": "資料中心AI營收獨立認列",
+            "status": "evidence_insufficient",
+            "finding": "2026Q3法說討論AI相關訂單增長，但沒有可信足夠的逐AI客戶、逐產品營收拆分。",
+            "source_ids": [
+              "Q3_EARNINGS_CALL"
+            ]
+          },
+          {
+            "topic": "2026具名網通客戶",
+            "status": "covered",
+            "finding": "Cisco及Dell有Bel自身2004年SEC具名歷史客戶證據；不能冒充當期前二大。",
+            "source_ids": [
+              "SEC_HISTORICAL_CUSTOMER_DISCLOSURE"
+            ]
+          },
+          {
+            "topic": "具名航太國防客戶",
+            "status": "covered",
+            "finding": "2026投資人會議具名Lockheed、Raytheon、Boeing等代表性客戶，不等同逐筆新合約。",
+            "source_ids": [
+              "FEB_2026_INVESTOR_PRESENTATION"
+            ]
+          },
+          {
+            "topic": "具名工業客戶",
+            "status": "covered",
+            "finding": "2026會議提及John Deere，未披露個別2026收入。",
+            "source_ids": [
+              "FEB_2026_INVESTOR_PRESENTATION"
+            ]
+          },
+          {
+            "topic": "授權分銷商",
+            "status": "covered",
+            "finding": "Arrow、Avnet、DigiKey、Mouser官方具名，是經銷通路而非直接hyperscaler。",
+            "source_ids": [
+              "OFFICIAL_DISTRIBUTORS"
+            ]
+          },
+          {
+            "topic": "2025年單客戶集中度",
+            "status": "covered",
+            "finding": "SEC稱2025無單一直接客戶超10%營收，並不代表沒有具名客戶。",
+            "source_ids": [
+              "SEC_FY2025_10K"
+            ]
+          },
+          {
+            "topic": "CRPS/OCP/48V電源完整性",
+            "status": "covered",
+            "finding": "依官方產品資料包含CRPS、Power Shelf、DC-DC、12V/48V；不能當成800V HVDC已量產。",
+            "source_ids": [
+              "OFFICIAL_DATASOLUTIONS_PRODUCTS"
+            ]
+          },
+          {
+            "topic": "800V HVDC新架構商業化",
+            "status": "evidence_insufficient",
+            "finding": "找不到Bel官方當期量產型號/直接收入證據，不能把OCP 48V產品誤稱800V電源量產。",
+            "source_ids": [
+              "OFFICIAL_DATASOLUTIONS_PRODUCTS"
+            ]
+          },
+          {
+            "topic": "800G/1.6T與CPO",
+            "status": "evidence_insufficient",
+            "finding": "連接器和線組有高速互連應用，沒有逐型號可確認CPO光引擎出貨與營收。",
+            "source_ids": [
+              "SEC_FY2025_10K"
+            ]
+          },
+          {
+            "topic": "HBM與CoWoS直接供應",
+            "status": "intentionally_excluded",
+            "finding": "公司並非HBM晶片/CoWoS封裝業者；僅經AI伺服器電源與互連間接受惠。",
+            "source_ids": [
+              "SEC_FY2025_10K"
+            ]
+          },
+          {
+            "topic": "航太太空零組件flight heritage",
+            "status": "covered",
+            "finding": "Cinch官方太空目錄有TR L9/QPS等資料；過往太空任務不自動推定2026年NASA新訂單。",
+            "source_ids": [
+              "OFFICIAL_CINCH_SPACE"
+            ]
+          },
+          {
+            "topic": "中國、印度及斯洛伐克製造",
+            "status": "covered",
+            "finding": "公司Q3法說提到工廠負載移轉及斯洛伐克、以色列、印度協作。",
+            "source_ids": [
+              "Q3_EARNINGS_CALL",
+              "SEC_Q3_2026_10Q"
+            ]
+          },
+          {
+            "topic": "台灣直接零組件供應商",
+            "status": "evidence_insufficient",
+            "finding": "查到官方桃園辦公室，但非台灣特定外部零組件廠直接供貨證據，supplier維持空。",
+            "source_ids": [
+              "OFFICIAL_TAIWAN_OFFICE"
+            ]
+          },
+          {
+            "topic": "台灣台達/光寶/國巨角色",
+            "status": "covered",
+            "finding": "可比較競爭者，沒有證據可推定為Bel Fuse直接供應商。",
+            "source_ids": [
+              "SEC_FY2025_10K"
+            ]
+          },
+          {
+            "topic": "中國關稅、匯率與原料風險",
+            "status": "covered",
+            "finding": "SEC與法說揭露FX、產能地理配置和進料成本風險，不能只歸因AI。",
+            "source_ids": [
+              "SEC_Q3_2026_10Q",
+              "Q3_EARNINGS_CALL"
+            ]
+          },
+          {
+            "topic": "原料與電力系統產能瓶頸",
+            "status": "covered",
+            "finding": "管理層未認為當前主要受產能限制，訂單增長需觀察轉收入效率。",
+            "source_ids": [
+              "Q3_EARNINGS_CALL"
+            ]
+          },
+          {
+            "topic": "Q3 SG&A與Enercon負債調整",
+            "status": "covered",
+            "finding": "Enercon可贖回非控制權益變化會影響歸屬股東淨利比較。",
+            "source_ids": [
+              "SEC_Q3_2026_10Q"
+            ]
+          },
+          {
+            "topic": "研究外部報導Reuters/Bloomberg/The Information",
+            "status": "not_researched",
+            "finding": "未取得可以逐條核實的付費全文或獨立新的具名客戶證據；不臆造。",
+            "source_ids": []
+          },
+          {
+            "topic": "ServeTheHome/Tom's Hardware量測",
+            "status": "not_researched",
+            "finding": "沒有可對應Bel特定電源/連接器型號的原始實測證據，不標註為有測試數據。",
+            "source_ids": []
+          },
+          {
+            "topic": "供應商具名零組件關係",
+            "status": "evidence_insufficient",
+            "finding": "公司SEC只列原物料類別及風險，缺可核實的具名台灣直接供應商名單。",
+            "source_ids": [
+              "SEC_FY2025_10K"
+            ]
+          },
+          {
+            "topic": "估值催化及2027展望",
+            "status": "covered",
+            "finding": "2027年交貨backlog、新部門結構、dataMate及Enercon後續收購可能影響預期；不提供無數據的股價目標。",
+            "source_ids": [
+              "SEC_Q3_2026_10Q",
+              "Q3_EARNINGS_CALL"
+            ]
+          }
+        ],
+        "coverage_counts": {
+          "covered": 22,
+          "evidence_insufficient": 5,
+          "intentionally_excluded": 1,
+          "not_researched": 2
+        },
+        "material_open_topics": [
+          "資料中心AI營收獨立認列",
+          "800V HVDC新架構商業化",
+          "800G/1.6T與CPO",
+          "台灣直接零組件供應商",
+          "研究外部報導Reuters/Bloomberg/The Information",
+          "ServeTheHome/Tom's Hardware量測",
+          "供應商具名零組件關係"
+        ],
+        "all_material_issues_resolved": false
+      },
+      "reflection_iterations": [
+        {
+          "round": 1,
+          "question": "原始JSON只有電力/磁性/連接器，是否漏掉2026部門與併購？",
+          "finding": "Q3 SEC確認兩大部門、dataMate並表、Enercon後續股權義務。",
+          "correction": "建立ITDS、ADRS與dataMate/國防電源多條獨立業務主線。"
+        },
+        {
+          "round": 2,
+          "question": "是否因AI需求成長而直接把四大hyperscalers列成客戶？",
+          "finding": "2026-10-29 CEO明言未直接對接hyperscalers。",
+          "correction": "僅收錄具有具名歷史SEC或投資人會議基礎的OEM；Cloud類別放downstream_customer_types。"
+        },
+        {
+          "round": 3,
+          "question": "是否把台達、光寶、國巨當成Bel供應商？",
+          "finding": "官方桃園辦公室不代表對這些台廠直接採購。",
+          "correction": "三家分類為競爭比較；具名直接supplier空白並明列證據缺口。"
+        },
+        {
+          "round": 4,
+          "question": "是否把2026/10的742.4M backlog全當成已賺取收入？",
+          "finding": "SEC說是2027客戶要求交貨的未實現訂單，可能延期、修改或取消。",
+          "correction": "營收與backlog分別記錄並標示前瞻風險。"
+        },
+        {
+          "round": 5,
+          "question": "是否把48V/OCP產品錯寫成800V或CPO已出貨？",
+          "finding": "技術公開資料支持48V電源及高速互連，卻無可靠800V及CPO獨立量產營收。",
+          "correction": "相關議題標示證據不足，HBM/CoWoS直接製造標記刻意排除。"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "id": "SEC_FY2025_10K",
+        "url": "https://www.sec.gov/Archives/edgar/data/729580/000143774926005354/belfb20251231d_10k.htm"
+      },
+      {
+        "id": "SEC_Q3_2026_10Q",
+        "url": "https://www.sec.gov/Archives/edgar/data/729580/000143774926034634/belfa20260930_10q.htm"
+      },
+      {
+        "id": "SEC_Q3_2026_8K",
+        "url": "https://www.sec.gov/Archives/edgar/data/729580/000143774926033795/0001437749-26-033795-index.htm"
+      },
+      {
+        "id": "OFFICIAL_Q3_2026_RESULTS",
+        "url": "https://ir.belfuse.com/news-releases/news-release-details/bel-reports-third-quarter-2026-results"
+      },
+      {
+        "id": "IR_FINANCIALS",
+        "url": "https://ir.belfuse.com/financial-information"
+      },
+      {
+        "id": "Q3_EARNINGS_CALL",
+        "url": "https://stockanalysis.com/stocks/belfa/transcripts/719793-q3-2026/"
+      },
+      {
+        "id": "Q3_EARNINGS_CALL_SUMMARY",
+        "url": "https://quartr.com/events/bel-fuse-inc-belfb-q3-2026_ozr61TXm"
+      },
+      {
+        "id": "FEB_2026_INVESTOR_PRESENTATION",
+        "url": "https://quartr.com/events/bel-fuse-inc-belfb-16th-annual-midwest-ideas-conference_ozr6Rak2"
+      },
+      {
+        "id": "SEC_HISTORICAL_CUSTOMER_DISCLOSURE",
+        "url": "https://www.sec.gov/Archives/edgar/data/729580/000114420404015147/v07051_425.htm"
+      },
+      {
+        "id": "OFFICIAL_DISTRIBUTORS",
+        "url": "https://www.belfuse.com/company/contact-distribution"
+      },
+      {
+        "id": "OFFICIAL_TAIWAN_OFFICE",
+        "url": "https://www.belfuse.com/company/locations/apac"
+      },
+      {
+        "id": "OFFICIAL_DATAMATE",
+        "url": "https://ir.belfuse.com/news-releases/news-release-details/bel-fuse-inc-announces-acquisition-datamate-advanced-ethernet"
+      },
+      {
+        "id": "OFFICIAL_DATAMATE_TECH",
+        "url": "https://www.belfuse.com/company/brands/datamate"
+      },
+      {
+        "id": "OFFICIAL_REORGANIZATION",
+        "url": "https://ir.belfuse.com/node/18316"
+      },
+      {
+        "id": "OFFICIAL_DATASOLUTIONS_PRODUCTS",
+        "url": "https://www.belfuse.com/resources/faq/data-solutions-faq"
+      },
+      {
+        "id": "OFFICIAL_CUI",
+        "url": "https://www.belfuse.com/company/brands/cui-inc"
+      },
+      {
+        "id": "OFFICIAL_CINCH_SPACE",
+        "url": "https://www.cinch.com/media/brochures/products/rf-microwave/attenuators/br-ccs-space-applications-guide.pdf"
+      },
+      {
+        "id": "OFFICIAL_Q2_2026_RESULTS",
+        "url": "https://belfuse.gcs-web.com/news-releases/news-release-details/bel-reports-second-quarter-and-first-half-2026-results"
+      },
+      {
+        "id": "AVNET_BEL_PORTFOLIO",
+        "url": "https://www.avnet.com/apac/manufacturers/m/bel/"
+      },
+      {
+        "id": "DIGIKEY_BEL_PORTFOLIO",
+        "url": "https://www.digikey.com/en/supplier-centers/bel-fuse"
+      }
+    ]
   }
 }

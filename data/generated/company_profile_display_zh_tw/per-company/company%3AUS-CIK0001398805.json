@@ -175,5 +175,902 @@
       "政府電動化"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-05",
+    "company": "Beam Global",
+    "symbol": "BEEM",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "Beam Global（BEEM）產業鏈：具名政府客戶、EV ARC、AllCell電池、ScoutDI待收購",
+      "description": "以SEC年報季報、8-K及法說確認採購客戶、離網充電、電池、智慧城市與ScoutDI待交割；不虛構台灣供應商。"
+    },
+    "business_lines": [
+      {
+        "id": "EV_ARC",
+        "name": "EV ARC 離網太陽能電動車充電",
+        "description": "單機太陽能、儲能、可移動充電基礎設施",
+        "downstream_customer_types": "政府車隊、城市、企業、校園；採購單位需具名",
+        "commercialization_stage": "commercial_product_or_related_service"
+      },
+      {
+        "id": "EV_ARC_MOBILITY",
+        "name": "ARC Mobility Trailer／移動充電",
+        "description": "拖車式可移動支援與災時部署",
+        "downstream_customer_types": "地方政府及大型車隊",
+        "commercialization_stage": "commercial_product_or_related_service"
+      },
+      {
+        "id": "EV_ARC_DCFAST",
+        "name": "EV ARC 組合式直流快充",
+        "description": "多單元組合，非每套EV ARC均為DC快充",
+        "downstream_customer_types": "交通運輸與公共充電",
+        "commercialization_stage": "commercial_product_or_related_service"
+      },
+      {
+        "id": "BEAM_SPOT",
+        "name": "BeamSpot／Solar Tree／風光互補",
+        "description": "太陽能樹、既有基礎改造、風力輔助",
+        "downstream_customer_types": "零售停車場、景觀及城市設施",
+        "commercialization_stage": "commercial_product_or_related_service"
+      },
+      {
+        "id": "BATTERY_ALLCELL",
+        "name": "Beam AllCell 電池與熱管理",
+        "description": "適用無人機、工業機器人及儲能的高功率電池",
+        "downstream_customer_types": "軍用無人系統及機器人製造商；未具名採購者不建立customer",
+        "commercialization_stage": "commercial_product_or_related_service"
+      },
+      {
+        "id": "DRONE_POWER",
+        "name": "無人機及機器人能源供給",
+        "description": "高功率電池與充電系統，不等於已出售整套無人機",
+        "downstream_customer_types": "航空、公共安全及工業客戶",
+        "commercialization_stage": "commercial_product_or_related_service"
+      },
+      {
+        "id": "SCOUTDI_PENDING",
+        "name": "ScoutDI 工業巡檢無人機（待併購）",
+        "description": "2026-10已簽SPA，是否正式交割待確認；原ScoutDI收入／客戶不得回溯歸入BEEM",
+        "downstream_customer_types": "工業巡檢、FPSO、海事與能源",
+        "commercialization_stage": "pending_acquisition_not_beem_sales"
+      },
+      {
+        "id": "SMART_CITIES",
+        "name": "歐洲智慧城市及金屬結構",
+        "description": "Amiga鋼構、智慧街燈、電信塔、路燈與城市裝置",
+        "downstream_customer_types": "城市公共工程及系統整合",
+        "commercialization_stage": "commercial_product_or_related_service"
+      },
+      {
+        "id": "EUROPE_RENTALS",
+        "name": "歐洲租賃與充電服務",
+        "description": "部分EV ARC採租賃及贊助模式；租賃收入與系統銷售分開",
+        "downstream_customer_types": "企業車隊、公共場所",
+        "commercialization_stage": "commercial_product_or_related_service"
+      },
+      {
+        "id": "RESILIENCE",
+        "name": "停電／緊急能源韌性",
+        "description": "離網充電、移動儲能與緊急供電",
+        "downstream_customer_types": "應變單位及政府",
+        "commercialization_stage": "commercial_product_or_related_service"
+      },
+      {
+        "id": "AI_DATACENTER_PROSPECT",
+        "name": "AI 資料中心電池設計（研究／商機）",
+        "description": "2026研究提案獲IECON會議發表，不等於已商用或獲超大規模雲端訂單",
+        "downstream_customer_types": "資料中心電源設備及電池研究，沒有具名直接客戶",
+        "commercialization_stage": "research_only"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "supplier",
+      "partner",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "EV_ARC_customer_001",
+        "business_line": "EV_ARC",
+        "relationship": "customer",
+        "name": "City of Dallas（德州達拉斯市政府）",
+        "details": "2025 SEC明確揭露Dallas約占年度營收4%，2026 Q2官方披露第四次EV ARC訂單10套；是真實付費採購方。",
+        "evidence_level": "SEC_named_customer_and_2026_orders",
+        "source_ids": [
+          "SEC_2025_10K",
+          "SEC_2026_Q2_8K"
+        ],
+        "historical_fy2025_revenue_share_pct": 4
+      },
+      {
+        "id": "EV_ARC_customer_002",
+        "business_line": "EV_ARC",
+        "relationship": "customer",
+        "name": "City of Long Beach（加州長灘市政府）",
+        "details": "2026-06再部署六套EV ARC，四套用於市府車隊，兩套用於長灘機場；已部署非僅框架。",
+        "evidence_level": "company_disclosed_deployed_customer",
+        "source_ids": [
+          "LONG_BEACH",
+          "IR_Q2_2026"
+        ],
+        "units_recent": 6
+      },
+      {
+        "id": "EV_ARC_customer_003",
+        "business_line": "EV_ARC",
+        "relationship": "customer",
+        "name": "Stanislaus County（加州斯坦尼斯勞斯郡）",
+        "details": "2026 Q2官方列出十套EV ARC及一輛ARC Mobility Trailer訂單，屬具名實際採購。",
+        "evidence_level": "company_disclosed_order",
+        "source_ids": [
+          "SEC_2026_Q2_8K"
+        ],
+        "units_recent": 10
+      },
+      {
+        "id": "EV_ARC_MOBILITY_customer_001",
+        "business_line": "EV_ARC_MOBILITY",
+        "relationship": "customer",
+        "name": "Stanislaus County（加州斯坦尼斯勞斯郡）",
+        "details": "同一採購案含一輛ARC Mobility拖車；與EV ARC十套分開列示，並非增加第二名獨立客戶。",
+        "evidence_level": "company_disclosed_order",
+        "source_ids": [
+          "SEC_2026_Q2_8K"
+        ]
+      },
+      {
+        "id": "EV_ARC_customer_004",
+        "business_line": "EV_ARC",
+        "relationship": "customer",
+        "name": "Dry Creek Rancheria Band of Pomo Indians（波莫族部落）",
+        "details": "2026-10-21公告五套EV ARC已部署，另訂購一台ARC Mobility拖車。",
+        "evidence_level": "company_disclosed_deployment_and_order",
+        "source_ids": [
+          "TRIBES_DEPLOYMENT"
+        ],
+        "units_deployed": 5
+      },
+      {
+        "id": "EV_ARC_customer_005",
+        "business_line": "EV_ARC",
+        "relationship": "customer",
+        "name": "Twenty-Nine Palms Band of Mission Indians（部落政府）",
+        "details": "2026-10-21公告三套EV ARC已部署於加州Coachella。",
+        "evidence_level": "company_disclosed_deployed_customer",
+        "source_ids": [
+          "TRIBES_DEPLOYMENT"
+        ],
+        "units_deployed": 3
+      },
+      {
+        "id": "EV_ARC_customer_006",
+        "business_line": "EV_ARC",
+        "relationship": "customer",
+        "name": "U.S. Department of State（美國國務院）",
+        "details": "2025 SEC明確具名，占2025收入約3%；不推定2026訂單金額。",
+        "evidence_level": "SEC_named_historical_customer",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "historical_fy2025_revenue_share_pct": 3
+      },
+      {
+        "id": "EV_ARC_customer_007",
+        "business_line": "EV_ARC",
+        "relationship": "customer",
+        "name": "U.S. Army（美國陸軍）",
+        "details": "2024財年SEC具名為主要銷售對象之一；2025聯邦採購明顯萎縮，不能視為2026新增訂單。",
+        "evidence_level": "SEC_named_historical_customer",
+        "source_ids": [
+          "OLD_2024_10K",
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "EV_ARC_customer_008",
+        "business_line": "EV_ARC",
+        "relationship": "customer",
+        "name": "U.S. Department of Homeland Security（美國國土安全部）",
+        "details": "2024年10-K具名主要採購方，2025新訂單另行核對。",
+        "evidence_level": "SEC_named_historical_customer",
+        "source_ids": [
+          "OLD_2024_10K"
+        ]
+      },
+      {
+        "id": "EV_ARC_customer_009",
+        "business_line": "EV_ARC",
+        "relationship": "customer",
+        "name": "U.S. Department of Veterans Affairs（美國退伍軍人事務部）",
+        "details": "過往 SEC 年報具名實際客戶，沒有公開證據證明2026同額採購。",
+        "evidence_level": "SEC_named_historical_customer",
+        "source_ids": [
+          "OLD_2024_10K"
+        ]
+      },
+      {
+        "id": "EV_ARC_customer_010",
+        "business_line": "EV_ARC",
+        "relationship": "customer",
+        "name": "U.S. Marine Corps（美國海軍陸戰隊）",
+        "details": "過往 SEC 年報列為聯邦政府具名採購部門；不把框架額度視為目前新收入。",
+        "evidence_level": "SEC_named_historical_customer",
+        "source_ids": [
+          "OLD_2024_10K"
+        ]
+      },
+      {
+        "id": "EV_ARC_partner_007",
+        "business_line": "EV_ARC",
+        "relationship": "partner",
+        "name": "California Department of General Services（加州總務廳／採購架構）",
+        "details": "加州DGS採購合約讓各地方機關採購，但DGS是採購平台／框架管理方，非所有設備的單一最終付款方。",
+        "evidence_level": "SEC_named_government_procurement_vehicle",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "procurement_role": "framework_administrator_not_single_buyer"
+      },
+      {
+        "id": "EV_ARC_customer_012",
+        "business_line": "EV_ARC",
+        "relationship": "customer",
+        "name": "Northwest Indian College（華盛頓州）",
+        "details": "2026-10官方公告提及過往已銷售系統給學院，屬歷史具名採用者。",
+        "evidence_level": "company_disclosed_historical_customer",
+        "source_ids": [
+          "TRIBES_DEPLOYMENT"
+        ]
+      },
+      {
+        "id": "EV_ARC_customer_013",
+        "business_line": "EV_ARC",
+        "relationship": "customer",
+        "name": "Confederated Tribes of Grand Ronde（奧勒岡部落政府）",
+        "details": "2026-10官方公告提及歷史供貨，非當季新增訂單。",
+        "evidence_level": "company_disclosed_historical_customer",
+        "source_ids": [
+          "TRIBES_DEPLOYMENT"
+        ]
+      },
+      {
+        "id": "EV_ARC_customer_014",
+        "business_line": "EV_ARC",
+        "relationship": "customer",
+        "name": "Upscale Developers",
+        "details": "2025 SEC具名大客戶、約3%年度營收；無法確定所購產品款式，僅記載跨EV ARC／工程產品關係，不臆定設備型號。",
+        "evidence_level": "SEC_named_customer_product_unverified",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "historical_fy2025_revenue_share_pct": 3
+      },
+      {
+        "id": "EV_ARC_partner_001",
+        "business_line": "EV_ARC",
+        "relationship": "partner",
+        "name": "Sourcewell（政府聯合採購平台）",
+        "details": "2025-11合作採購合約屬公部門通路，50,000家會員是採購資格池，不能當作50,000個Beam實際客戶。",
+        "evidence_level": "official_procurement_channel",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "EV_ARC_partner_002",
+        "business_line": "EV_ARC",
+        "relationship": "partner",
+        "name": "General Services Administration／GSA（美國總務署）",
+        "details": "MAS及BPA為聯邦採購合約（延長至2030-10），不等同GSA本體購買全部設備。",
+        "evidence_level": "SEC_procurement_channel",
+        "source_ids": [
+          "SEC_2025_10K",
+          "SEC_2026_Q2_10Q"
+        ]
+      },
+      {
+        "id": "EV_ARC_partner_003",
+        "business_line": "EV_ARC",
+        "relationship": "partner",
+        "name": "ChargePoint（CHPT）",
+        "details": "公司10-K明確說可將該品牌充電器於出貨前整合至EV ARC；屬充電產品整合夥伴，不能自動列為充電站買家或BEEM競爭者。",
+        "evidence_level": "SEC_product_integration",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "EV_ARC_partner_004",
+        "business_line": "EV_ARC",
+        "relationship": "partner",
+        "name": "Blink Charging（BLNK）",
+        "details": "公司10-K明確說可將該品牌充電器於出貨前整合至EV ARC；屬充電產品整合夥伴，不能自動列為充電站買家或BEEM競爭者。",
+        "evidence_level": "SEC_product_integration",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "EV_ARC_partner_005",
+        "business_line": "EV_ARC",
+        "relationship": "partner",
+        "name": "Enel X",
+        "details": "公司10-K明確說可將該品牌充電器於出貨前整合至EV ARC；屬充電產品整合夥伴，不能自動列為充電站買家或BEEM競爭者。",
+        "evidence_level": "SEC_product_integration",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "EV_ARC_partner_006",
+        "business_line": "EV_ARC",
+        "relationship": "partner",
+        "name": "Electrify America",
+        "details": "公司10-K明確說可將該品牌充電器於出貨前整合至EV ARC；屬充電產品整合夥伴，不能自動列為充電站買家或BEEM競爭者。",
+        "evidence_level": "SEC_product_integration",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "SCOUTDI_PENDING_partner_001",
+        "business_line": "SCOUTDI_PENDING",
+        "relationship": "partner",
+        "name": "ScoutDI AS（挪威）",
+        "details": "2026-10-06已簽2,400萬美元基礎對價的收購協議（90%現金、10%股份），11/05尚未查得明確已交割SEC公告；故暫保留待收購，不把ScoutDI既有客戶列為BEEM客戶。",
+        "evidence_level": "SEC_pending_acquisition",
+        "source_ids": [
+          "SEC_SCOUTDI_8K",
+          "SCOUTDI_ACQUISITION_OFFICIAL"
+        ],
+        "purchase_base_usd": 24000000,
+        "closing_status": "not_verified_as_closed"
+      },
+      {
+        "id": "SCOUTDI_PENDING_partner_002",
+        "business_line": "SCOUTDI_PENDING",
+        "relationship": "partner",
+        "name": "Equinor Ventures／DNV（ScoutDI既有股東）",
+        "details": "公告為ScoutDI股東；非Beam能源客戶，也不是Beam購買設備的供應商。",
+        "evidence_level": "official_investor_relation_to_target",
+        "source_ids": [
+          "SCOUTDI_ACQUISITION_OFFICIAL"
+        ]
+      },
+      {
+        "id": "EV_ARC_competitor_001",
+        "business_line": "EV_ARC",
+        "relationship": "competitor",
+        "name": "ChargePoint（CHPT）",
+        "details": "固定式EV充電網路與設備有相鄰市場，但Beam SEC表明彼此可整合，非純粹直接替代。",
+        "evidence_level": "adjacent_solution_competition_not_equivalent",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "EV_ARC_competitor_002",
+        "business_line": "EV_ARC",
+        "relationship": "competitor",
+        "name": "Blink Charging（BLNK）",
+        "details": "固定充電設備相鄰競爭與合作關係，EV ARC可整合Blink設備。",
+        "evidence_level": "adjacent_solution_competition_not_equivalent",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "EV_ARC_competitor_003",
+        "business_line": "EV_ARC",
+        "relationship": "competitor",
+        "name": "Wallbox（WBX）",
+        "details": "固定或可移動EV充電硬體相鄰方案，非同等離網太陽能整合系統。",
+        "evidence_level": "adjacent_solution_competition_not_equivalent",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "EV_ARC_competitor_004",
+        "business_line": "EV_ARC",
+        "relationship": "competitor",
+        "name": "Tesla Supercharger／Tesla（TSLA）",
+        "details": "傳統依賴電網的高速充電網路與Beam站點交付方案在客戶預算競爭；不是等同設備。",
+        "evidence_level": "adjacent_solution_competition_not_equivalent",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "EV_ARC_competitor_005",
+        "business_line": "EV_ARC",
+        "relationship": "competitor",
+        "name": "Enphase Energy（ENPH）",
+        "details": "儲能／分散式能源產品部分重疊，並非EV ARC完整同質競品。",
+        "evidence_level": "adjacent_solution_competition_not_equivalent",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      }
+    ],
+    "research": {
+      "baseline_commit": "b45029a1e",
+      "source_blob_sha": "a0fbb7dc606b68cd1fd301a8c1590c369c69b0cd",
+      "latest_filed_10k": "2025-12-31",
+      "latest_filed_10q": "2026-06-30",
+      "latest_verified_reported_quarter": "2026Q2",
+      "q2_revenue_usd": 8562000,
+      "q2_gaap_gross_margin_pct": 17.8,
+      "q2_yoy_growth_pct": 21,
+      "q2_backlog_usd": 5400000,
+      "q3_preliminary_revenue_usd_approx": 6200000,
+      "q3_revenue_status": "preliminary_unaudited_not_form_10q",
+      "scoutdi_acquisition_status": "agreement_signed_closing_unverified_as_of_2026-11-05",
+      "named_customer_rule": "政府單位和B2B企業必須具名且核實採購／合約／歷史採用，採購渠道及未具名類型不得算customer",
+      "taiwan_supply_chain": "no_verified_named_direct_suppliers",
+      "source_ids_financials": [
+        "SEC_2026_Q2_10Q",
+        "SEC_2026_Q2_8K",
+        "PRELIM_Q3_2026"
+      ],
+      "scoutdi_existing_customers_not_beem_customers": [
+        "ExxonMobil",
+        "Chevron",
+        "Oceaneering",
+        "Ørsted",
+        "DEKRA",
+        "Shell"
+      ]
+    },
+    "five_gate_audit": {
+      "gate_1_hot_topics_reverse_check": {
+        "performed": true,
+        "status": "covered_with_explicit_evidence_gaps",
+        "period": "2026-08-07 至 2026-11-05",
+        "hot_topics": [
+          "Q2營收與backlog",
+          "Q3初步未審計營收",
+          "ScoutDI簽約及交割不確定性",
+          "10月原住民族部落採購",
+          "無人機電池單週訂單",
+          "AI資料中心電池研究",
+          "歐洲租賃和Smart Cities",
+          "政府採購下滑",
+          "流動性及生產遷移"
+        ],
+        "method": "SEC和IR獨立整理，再比對原始JSON主線。"
+      },
+      "gate_2_investor_top_ten_questions": {
+        "performed": true,
+        "questions": [
+          {
+            "topic": "營收成長",
+            "finding": "Q2營收8.562M美元、年增21%，Q3僅初步6.2M美元年增8%，嚴守公告層級"
+          },
+          {
+            "topic": "毛利率",
+            "finding": "Q2 GAAP 17.8%，調整後26.2%不得混稱"
+          },
+          {
+            "topic": "資本支出",
+            "finding": "Yuma搬遷節省為5年預計；缺精準季度capex須標註"
+          },
+          {
+            "topic": "競爭力",
+            "finding": "離網免基建EV ARC與固定式電網充電是不同設計取捨"
+          },
+          {
+            "topic": "技術轉折",
+            "finding": "AllCell電池、無人機電池、ScoutDI潛在AI巡檢，須分階段"
+          },
+          {
+            "topic": "客戶採用",
+            "finding": "具名Dallas、Long Beach、Stanislaus、部落政府、歷史聯邦採購"
+          },
+          {
+            "topic": "產能",
+            "finding": "Yuma遷廠與歐洲工廠，未經核實不得宣稱產能增倍"
+          },
+          {
+            "topic": "供應鏈",
+            "finding": "直接台灣供應商無可驗證具名資料，不能借用台灣太陽能概念股"
+          },
+          {
+            "topic": "催化劑",
+            "finding": "ScoutDI交割結果、Q3正式財報、海外租賃/Smart City訂單"
+          },
+          {
+            "topic": "風險",
+            "finding": "政策逆風、流動性、融資稀釋、客戶集中與收購執行"
+          }
+        ]
+      },
+      "gate_3_technology_product_completeness": {
+        "performed": true,
+        "status": "covered_with_gaps",
+        "topics": [
+          "EV ARC",
+          "DCFC多單元",
+          "ARC Mobility Trailer",
+          "Solar Tree / BeamSpot",
+          "AllCell Battery",
+          "電池熱管理",
+          "UAV/Autonomous Robot Battery",
+          "Smart Cities",
+          "租賃服務",
+          "ScoutDI待收購巡檢無人機",
+          "AI資料中心電池研究",
+          "HBM/CPO非直接業務"
+        ]
+      },
+      "gate_4_falsification_competition": {
+        "performed": true,
+        "status": "covered_with_gaps",
+        "tests": [
+          "只列可證明的具名客戶",
+          "區分GSA通路與政府採購付款方",
+          "ScoutDI交割及原有客戶不能提前合併",
+          "訂單/出貨/營收三者分離",
+          "競爭者可能同時為設備整合夥伴",
+          "台灣直接供應商證據不足不補空"
+        ]
+      },
+      "gate_5_missing_topic_audit": {
+        "performed": true,
+        "status": "open_issues_explicit",
+        "important_issue_coverage_table": [
+          {
+            "topic": "2026 Q2已申報GAAP財報",
+            "status": "covered",
+            "finding": "8.562M美元營收、GAAP毛利率17.8%；同比+21%，未將26.2%調整後毛利率誤稱GAAP。",
+            "source_ids": [
+              "SEC_2026_Q2_10Q",
+              "SEC_2026_Q2_8K"
+            ]
+          },
+          {
+            "topic": "2026 Q3初步營收",
+            "status": "covered",
+            "finding": "10/13公布初步未審計約6.2M美元、同比約8%，不是正式10-Q或確定Q3營收。",
+            "source_ids": [
+              "PRELIM_Q3_2026"
+            ]
+          },
+          {
+            "topic": "2026 Q3正式10-Q",
+            "status": "not_yet_available",
+            "finding": "至11/05尚未見BEEM公司2026Q3正式申報；不得使用Beam Therapeutics BEAM的10-Q。",
+            "source_ids": []
+          },
+          {
+            "topic": "2025年報與聯邦補助風險",
+            "status": "covered",
+            "finding": "2025營收28.2M美元，較2024減43%；聯邦訂單回落及補助政策影響。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "ScoutDI收購/期限",
+            "status": "evidence_insufficient",
+            "finding": "10/07已簽SPA、基礎對價24M；11/04終止權門檻已到，仍未核實交割或延期。",
+            "source_ids": [
+              "SEC_SCOUTDI_8K",
+              "SCOUTDI_ACQUISITION_OFFICIAL"
+            ]
+          },
+          {
+            "topic": "無人機與AI巡檢軟體",
+            "status": "covered",
+            "finding": "ScoutDI產品及客戶屬待收購標的，不能算BEEM現有業務收入。",
+            "source_ids": [
+              "SCOUTDI_ACQUISITION_OFFICIAL"
+            ]
+          },
+          {
+            "topic": "無人機電池單週訂單",
+            "status": "covered",
+            "finding": "Q2官方披露一週逾0.5M美元電池訂單，未具名客戶，與已認列營收分離。",
+            "source_ids": [
+              "SEC_2026_Q2_8K"
+            ]
+          },
+          {
+            "topic": "AI資料中心電池設計",
+            "status": "evidence_insufficient",
+            "finding": "IECON論文獲收錄並非雲端客戶採購/量產/財報收入。",
+            "source_ids": [
+              "SEC_2026_Q2_8K"
+            ]
+          },
+          {
+            "topic": "Dallas具名採購",
+            "status": "covered",
+            "finding": "2025 SEC明列Dallas約4%收入；2026第4批訂單10套。",
+            "source_ids": [
+              "SEC_2025_10K",
+              "SEC_2026_Q2_8K"
+            ]
+          },
+          {
+            "topic": "Stanislaus County與長灘市",
+            "status": "covered",
+            "finding": "Q2新訂單及部署數量分別核對。",
+            "source_ids": [
+              "SEC_2026_Q2_8K",
+              "LONG_BEACH"
+            ]
+          },
+          {
+            "topic": "2026部落客戶",
+            "status": "covered",
+            "finding": "Dry Creek5套+Twenty-Nine Palms3套，並將歷史教育客戶另列。",
+            "source_ids": [
+              "TRIBES_DEPLOYMENT"
+            ]
+          },
+          {
+            "topic": "GSA與Sourcewell採購框架",
+            "status": "covered",
+            "finding": "採購管道不是一次性設備全部銷售額，亦非把參與機關全部當客戶。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "政府訂單集中",
+            "status": "covered",
+            "finding": "2025年政府收入約29%，加州機關與市政約14%；按不同分類保留分母。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "2026Q2期末backlog",
+            "status": "covered",
+            "finding": "5.4M美元，不將2025年6.0M當成最新。",
+            "source_ids": [
+              "SEC_2026_Q2_8K"
+            ]
+          },
+          {
+            "topic": "現金與資本取得",
+            "status": "covered",
+            "finding": "2025年報揭露近期融資需求及稀釋風險；信用額度未動用不等於現金。",
+            "source_ids": [
+              "SEC_2025_10K",
+              "SEC_2026_Q2_10Q"
+            ]
+          },
+          {
+            "topic": "Yuma製造遷移",
+            "status": "covered",
+            "finding": "2026 Q2遷移完工，5年租金節省預期約2.7M美元，不等於本季已節省2.7M。",
+            "source_ids": [
+              "SEC_2026_Q2_8K",
+              "Q2_CALL_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "歐洲智慧城市與租賃",
+            "status": "covered",
+            "finding": "Serbia/Barcelona/Madrid/Montenegro展開，租賃和產品銷售分開。",
+            "source_ids": [
+              "SEC_2026_Q2_8K"
+            ]
+          },
+          {
+            "topic": "智慧街燈/電信塔",
+            "status": "covered",
+            "finding": "Amiga結構業務及30多城市部署不是由EV ARC一項代表。",
+            "source_ids": [
+              "SEC_2025_10K",
+              "SEC_2026_Q2_8K"
+            ]
+          },
+          {
+            "topic": "EV ARC、移動拖車、DCFC完整性",
+            "status": "covered",
+            "finding": "將EV ARC、多機串接快充和Trailer拆分，避免把全部單機當DC快充。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "電池熱管理及AllCell",
+            "status": "covered",
+            "finding": "適用無人機與機器人；實際具名客戶不明，僅列訂單類型。",
+            "source_ids": [
+              "SEC_2025_10K",
+              "SEC_2026_Q2_8K"
+            ]
+          },
+          {
+            "topic": "台灣具名直接供應商",
+            "status": "evidence_insufficient",
+            "finding": "SEC提及多數在地供應與原料供應鏈，未查得台灣特定公司直接供貨足以交叉驗證的公開證據，supplier維持空。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "Bloomberg/The Information深度報導",
+            "status": "not_researched",
+            "finding": "未取得可驗證完整報導，不臆造客戶或供應商。",
+            "source_ids": []
+          },
+          {
+            "topic": "ServeTheHome/Tom's Hardware技術實測",
+            "status": "intentionally_excluded",
+            "finding": "本公司離網充電與移動能源設備不屬這兩家主要PC/伺服器硬體實測範圍；不以不相干文章充當證據。",
+            "source_ids": []
+          },
+          {
+            "topic": "CPO/HBM/CoWoS先進封裝",
+            "status": "intentionally_excluded",
+            "finding": "非公司直接製造或供應項目；僅AI用電/電池設計作間接機會，不混淆成記憶體/封裝收入。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "同業競爭與技術取代",
+            "status": "covered",
+            "finding": "與固定式充電站存在客戶預算競爭，但官方SEC披露整合ChargePoint/Blink/Enel/Electrify America，不宜簡單視為純競爭。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "ScoutDI實際交割",
+            "status": "evidence_insufficient",
+            "finding": "11/05未找到可靠交割公告；即使原SPA日期11/04仍不能推定自動終止或交割。",
+            "source_ids": [
+              "SEC_SCOUTDI_8K"
+            ]
+          },
+          {
+            "topic": "來源中BEAM/BEEM混淆",
+            "status": "covered",
+            "finding": "BEAM是Beam Therapeutics，不是BEEM Beam Global；排除其2026 Q3生技財報。",
+            "source_ids": []
+          },
+          {
+            "topic": "無人機客戶名稱",
+            "status": "evidence_insufficient",
+            "finding": "Beam Q2僅披露訂單類型與金額，缺具名買家，不臆造。",
+            "source_ids": [
+              "SEC_2026_Q2_8K"
+            ]
+          },
+          {
+            "topic": "研發和資本支出細項",
+            "status": "evidence_insufficient",
+            "finding": "需要按最新10-Q細分研發費用與現金資本支出，未將公司承諾融資額當作capex。",
+            "source_ids": [
+              "SEC_2026_Q2_10Q"
+            ]
+          },
+          {
+            "topic": "台灣產業受惠股",
+            "status": "intentionally_excluded",
+            "finding": "未查明直接商務關係，不為填滿節點而列台灣概念股。",
+            "source_ids": []
+          }
+        ],
+        "counts": {
+          "covered": 19,
+          "not_yet_available": 1,
+          "evidence_insufficient": 6,
+          "not_researched": 1,
+          "intentionally_excluded": 3
+        },
+        "material_unresolved_topics": [
+          "2026 Q3正式10-Q",
+          "ScoutDI收購/期限",
+          "AI資料中心電池設計",
+          "台灣具名直接供應商",
+          "Bloomberg/The Information深度報導",
+          "ScoutDI實際交割",
+          "無人機客戶名稱",
+          "研發和資本支出細項"
+        ],
+        "all_material_topics_resolved": false
+      },
+      "reflection_iterations": [
+        {
+          "round": 1,
+          "question": "是否把2026Q3初步6.2M當成正式SEC營收？",
+          "finding": "10/13只為初步未審計資訊；正式最近10-Q是2026Q2。",
+          "correction": "財務快照區分reported與preliminary，Q3不可填GAAP毛利。"
+        },
+        {
+          "round": 2,
+          "question": "是否把採購框架會員當成付費客戶？",
+          "finding": "GSA/Sourcewell是採購渠道；只列實際具名採購單位為customer。",
+          "correction": "GSA及Sourcewell放partner，Dallas等另列customer。"
+        },
+        {
+          "round": 3,
+          "question": "是否把ScoutDI的ExxonMobil等既有客戶當作BEEM客戶？",
+          "finding": "至11/05仍無確認完成交割；且10/27原始公告仍稱pending acquisition。",
+          "correction": "ScoutDI獨立主線註記pending，原標的客戶僅作非BEEM既有用戶的觀察節點。"
+        },
+        {
+          "round": 4,
+          "question": "競爭者ChargePoint、Blink是否也與BEEM合作？",
+          "finding": "SEC明確列這些充電品牌為EV ARC可整合設備。",
+          "correction": "同時標記整合合作和相鄰方案競爭，並非直接等價競爭。"
+        },
+        {
+          "round": 5,
+          "question": "AI資料中心及台灣供應鏈有無直接營收或證據？",
+          "finding": "IECON論文入選非商用採購；未查得台灣具名直接供貨證據。",
+          "correction": "AI列研究商機，台灣supplier不虛構。"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "id": "SEC_2025_10K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1398805/000143774926011890/beem20251231_10k.htm"
+      },
+      {
+        "id": "SEC_2026_Q2_10Q",
+        "url": "https://www.sec.gov/Archives/edgar/data/1398805/000143774926028530/beem20260630_10q.htm"
+      },
+      {
+        "id": "SEC_2026_Q2_8K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1398805/000143774926028564/ex_1007197.htm"
+      },
+      {
+        "id": "SEC_SCOUTDI_8K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1398805/000143774926032264/beem20261007_8k.htm"
+      },
+      {
+        "id": "IR_Q2_2026",
+        "url": "https://beamforall.com/beam-global-reports-second-quarter-2026-operating-results/"
+      },
+      {
+        "id": "Q2_CALL_TRANSCRIPT",
+        "url": "https://stockanalysis.com/stocks/beem/transcripts/672341-q2-2026/"
+      },
+      {
+        "id": "Q2_CALL_MOTLEY_FOOL",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/08/26/beam-global-beem-q2-2026-earnings-call-transcript/"
+      },
+      {
+        "id": "PRELIM_Q3_2026",
+        "url": "https://www.globenewswire.com/news-release/2026/10/13/3379977/0/en/update-beam-global-announces-preliminary-third-quarter-2026-revenue-growth-of-8-year-over-year-advancing-strong-core-business-for-strategic-expansion-into-drone-technology.html"
+      },
+      {
+        "id": "SCOUTDI_ACQUISITION_OFFICIAL",
+        "url": "https://beamforall.com/beam-global-signs-definitive-agreement-to-acquire-drone-technology-company-scoutdi-creating-a-vertically-integrated-u-s-drone-platform-for-industrial-and-defense-markets/"
+      },
+      {
+        "id": "SCOUTDI_WEST_AFRICA",
+        "url": "https://beamforall.com/beam-globals-pending-acquisition-drone-company-scoutdi-receives-new-orders-for-offshore-fpso-inspections-in-west-africa/"
+      },
+      {
+        "id": "TRIBES_DEPLOYMENT",
+        "url": "https://beamforall.com/beam-global-expands-deployments-across-native-american-tribal-communities-with-eight-ev-arc-systems-in-california/"
+      },
+      {
+        "id": "LONG_BEACH",
+        "url": "https://www.globenewswire.com/news-release/2026/06/02/3304930/0/en/Beam-Global-Deploys-Six-More-EV-ARC-Systems-for-the-City-of-Long-Beach.html"
+      },
+      {
+        "id": "OLD_2024_10K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1398805/000168316825002475/beam_i10k-123124.htm"
+      },
+      {
+        "id": "SEC_2026_SEPT_8K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1398805/000143774926030857/0001437749-26-030857-index.htm"
+      }
+    ]
   }
 }

@@ -446,5 +446,1071 @@
       "生成式AI"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-05",
+    "company": "Baidu Inc.（百度）",
+    "symbol": "BIDU",
+    "locale": "zh-TW",
+    "business_lines": [
+      {
+        "id": "AI_CLOUD",
+        "name": "百度智能雲 GPU Cloud／AI Cloud Infra",
+        "description": "雲端AI算力、百舸異構計算平台、企業私有雲與部署；Q2 2026收入73億元年增50%。",
+        "commercialization_stage": "commercial_paid",
+        "downstream_applications": "企業、政府、模型開發商"
+      },
+      {
+        "id": "QIANFAN",
+        "name": "千帆 MaaS 與模型推論服務",
+        "description": "模型開放平台、模型推理token計費；外部客戶token收入年增超9倍，但未單獨披露絕對金額。",
+        "commercialization_stage": "commercial_paid",
+        "downstream_applications": "企業研發與模型API用戶"
+      },
+      {
+        "id": "ERNIE",
+        "name": "文心 ERNIE 基礎模型",
+        "description": "ERNIE 5.1 與2026-11-05 ERNIE 5.5 Flash Base；模型發布不等於專屬產品營收。",
+        "commercialization_stage": "released_models",
+        "downstream_applications": "企業AI應用及開發者"
+      },
+      {
+        "id": "AI_APPS",
+        "name": "AI 應用、DuMate、妙搭、文庫、網盤",
+        "description": "DuMate企業版、Miaoda、GenFlow、文庫/網盤、數字人與智能體；Q2 AI Apps收入25億元。",
+        "commercialization_stage": "commercial_mixed",
+        "downstream_applications": "企業知識工作、辦公與創作"
+      },
+      {
+        "id": "KUNLUNXIN",
+        "name": "昆侖芯 AI 加速器、M100／M300",
+        "description": "第三代AI晶片已商用、M100推理產品路線、M300後續計畫；分拆上市尚未完成。",
+        "commercialization_stage": "existing_products_and_roadmap",
+        "downstream_applications": "AI服務基礎設施與外部晶片買家"
+      },
+      {
+        "id": "SEARCH_ADS",
+        "name": "搜尋、資訊流、AI-native廣告",
+        "description": "百度App、搜尋與信息流，Q2在線營銷131億元年減19%。",
+        "commercialization_stage": "commercial_paid",
+        "downstream_applications": "具名廣告主（未能逐一核實，不建立客戶）"
+      },
+      {
+        "id": "BAIDU_MAPS",
+        "name": "百度地圖、導航、企業定位API",
+        "description": "地圖導航、位置資料、智慧出行平台。",
+        "commercialization_stage": "commercial_product",
+        "downstream_applications": "企業定位整合與一般使用者"
+      },
+      {
+        "id": "APOLLO_GO",
+        "name": "蘿蔔快跑 Apollo Go／RT6 自駕計程車",
+        "description": "Dubai已開始完全無人駕駛商運；London有安全員測試，香港為測試，Swiss PostBus亦測試。",
+        "commercialization_stage": "commercial_in_selected_cities",
+        "downstream_applications": "乘客、車隊運營商與叫車平台合作夥伴"
+      },
+      {
+        "id": "APOLLO_WORLD",
+        "name": "Apollo World 世界模型／仿真平台",
+        "description": "2026-11-03 Reuters確認已投入自家Apollo Go訓練，對外軟體銷售未見可靠具名收入。",
+        "commercialization_stage": "internal_deployment",
+        "downstream_applications": "無人駕駛訓練研發"
+      },
+      {
+        "id": "AUTO_SOLUTIONS",
+        "name": "Apollo 智駕與DuerOS Auto",
+        "description": "汽車廠整合Apollo駕駛輔助、車載智能助理與座艙技術。",
+        "commercialization_stage": "commercial_or_pilots",
+        "downstream_applications": "具名汽車製造商"
+      },
+      {
+        "id": "IQIYI",
+        "name": "愛奇藝 iQIYI 串流內容",
+        "description": "影片訂閱與廣告，2026Q2營收63億元；屬集團獨立商業板塊，與百度AI雲部門不同。",
+        "commercialization_stage": "commercial_paid",
+        "downstream_applications": "影音廣告主、一般訂閱消費者"
+      },
+      {
+        "id": "PADDLE",
+        "name": "飛槳 PaddlePaddle 與模型開發套件",
+        "description": "深度學習框架與產業AI訓練生態；免費框架採用本身不是直接銷售收入。",
+        "commercialization_stage": "open_ecosystem",
+        "downstream_applications": "開發者、產業公司、學研機構"
+      },
+      {
+        "id": "SMART_CITY",
+        "name": "智能交通、城市AI中台與工業AI",
+        "description": "政府城市治理、電網巡檢、金融智能化與製造AI的落地案例。",
+        "commercialization_stage": "commercial_project_cases",
+        "downstream_applications": "具名公部門與企業"
+      },
+      {
+        "id": "DATA_INFRA",
+        "name": "IDC、AI資料中心與伺服器叢集",
+        "description": "數據中心、GPU雲叢集、Kunlunxin芯片及資本支出；HBM和CPO非百度直接製造業務。",
+        "commercialization_stage": "operational_infrastructure",
+        "downstream_applications": "雲端業務內部能力"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "AI_CLOUD_customer_001",
+        "business_line": "AI_CLOUD",
+        "relationship": "customer",
+        "name": "Samsung Electronics／中國三星",
+        "details": "文心模型與Galaxy AI合作，官方具名導入；未公開個別2026採購額，不推定當期營收。",
+        "evidence_level": "official_deployed_customer",
+        "source_ids": [
+          "BAIDU_CLOUD_NAMED_CASES",
+          "BAIDU_CLOUD_ENGLISH_CASES"
+        ]
+      },
+      {
+        "id": "AI_CLOUD_customer_002",
+        "business_line": "AI_CLOUD",
+        "relationship": "customer",
+        "name": "蔚來汽車 NIO",
+        "details": "NOMI GPT智能座艙AI方案，官方案例；未公開個別2026採購額，不推定當期營收。",
+        "evidence_level": "official_deployed_customer",
+        "source_ids": [
+          "BAIDU_CLOUD_NAMED_CASES",
+          "BAIDU_CLOUD_ENGLISH_CASES"
+        ]
+      },
+      {
+        "id": "SMART_CITY_customer_001",
+        "business_line": "SMART_CITY",
+        "relationship": "customer",
+        "name": "山東省港口集團",
+        "details": "港口大模型統一入口及智慧營運，官方案例；未公開個別2026採購額，不推定當期營收。",
+        "evidence_level": "official_deployed_customer",
+        "source_ids": [
+          "BAIDU_CLOUD_NAMED_CASES",
+          "BAIDU_CLOUD_ENGLISH_CASES"
+        ]
+      },
+      {
+        "id": "AI_CLOUD_customer_003",
+        "business_line": "AI_CLOUD",
+        "relationship": "customer",
+        "name": "上海交通大學",
+        "details": "AI for Science科學數據平台案例，學研機構具名；未公開個別2026採購額，不推定當期營收。",
+        "evidence_level": "official_deployed_educational_customer",
+        "source_ids": [
+          "BAIDU_CLOUD_NAMED_CASES",
+          "BAIDU_CLOUD_ENGLISH_CASES"
+        ]
+      },
+      {
+        "id": "AI_CLOUD_customer_004",
+        "business_line": "AI_CLOUD",
+        "relationship": "customer",
+        "name": "浦發銀行",
+        "details": "金融數字人及知識中台實例，官方具名；未公開個別2026採購額，不推定當期營收。",
+        "evidence_level": "official_deployed_customer",
+        "source_ids": [
+          "BAIDU_CLOUD_NAMED_CASES",
+          "BAIDU_CLOUD_ENGLISH_CASES"
+        ]
+      },
+      {
+        "id": "AI_CLOUD_customer_005",
+        "business_line": "AI_CLOUD",
+        "relationship": "customer",
+        "name": "泰康人壽",
+        "details": "OCR/語音等AI平台官方實施案例；未公開個別2026採購額，不推定當期營收。",
+        "evidence_level": "official_historical_customer",
+        "source_ids": [
+          "BAIDU_CLOUD_NAMED_CASES",
+          "BAIDU_CLOUD_ENGLISH_CASES"
+        ]
+      },
+      {
+        "id": "SMART_CITY_customer_002",
+        "business_line": "SMART_CITY",
+        "relationship": "customer",
+        "name": "國網新疆電力有限公司",
+        "details": "智能巡檢及電網AI中台官方實施案例；未公開個別2026採購額，不推定當期營收。",
+        "evidence_level": "official_historical_customer",
+        "source_ids": [
+          "BAIDU_CLOUD_NAMED_CASES",
+          "BAIDU_CLOUD_ENGLISH_CASES"
+        ]
+      },
+      {
+        "id": "AI_CLOUD_customer_006",
+        "business_line": "AI_CLOUD",
+        "relationship": "customer",
+        "name": "吉利汽車集團",
+        "details": "雲智一體企業數位底座案例；未公開個別2026採購額，不推定當期營收。",
+        "evidence_level": "official_historical_customer",
+        "source_ids": [
+          "BAIDU_CLOUD_NAMED_CASES",
+          "BAIDU_CLOUD_ENGLISH_CASES"
+        ]
+      },
+      {
+        "id": "AI_CLOUD_customer_007",
+        "business_line": "AI_CLOUD",
+        "relationship": "customer",
+        "name": "廣汽本田汽車有限公司",
+        "details": "AI視覺品管落地案例；未公開個別2026採購額，不推定當期營收。",
+        "evidence_level": "official_historical_customer",
+        "source_ids": [
+          "BAIDU_CLOUD_NAMED_CASES",
+          "BAIDU_CLOUD_ENGLISH_CASES"
+        ]
+      },
+      {
+        "id": "AI_CLOUD_customer_008",
+        "business_line": "AI_CLOUD",
+        "relationship": "customer",
+        "name": "中國聯通",
+        "details": "智能客服AI平台整合實例；未公開個別2026採購額，不推定當期營收。",
+        "evidence_level": "official_historical_customer",
+        "source_ids": [
+          "BAIDU_CLOUD_NAMED_CASES",
+          "BAIDU_CLOUD_ENGLISH_CASES"
+        ]
+      },
+      {
+        "id": "AI_CLOUD_customer_009",
+        "business_line": "AI_CLOUD",
+        "relationship": "customer",
+        "name": "中國電信",
+        "details": "AI電話及智能客服公開案例；未公開個別2026採購額，不推定當期營收。",
+        "evidence_level": "official_historical_customer",
+        "source_ids": [
+          "BAIDU_CLOUD_NAMED_CASES",
+          "BAIDU_CLOUD_ENGLISH_CASES"
+        ]
+      },
+      {
+        "id": "AI_CLOUD_customer_010",
+        "business_line": "AI_CLOUD",
+        "relationship": "customer",
+        "name": "百勝中國 Yum China",
+        "details": "文心AI客服系統應用案例；未公開個別2026採購額，不推定當期營收。",
+        "evidence_level": "official_historical_customer",
+        "source_ids": [
+          "BAIDU_CLOUD_NAMED_CASES",
+          "BAIDU_CLOUD_ENGLISH_CASES"
+        ]
+      },
+      {
+        "id": "AI_CLOUD_customer_011",
+        "business_line": "AI_CLOUD",
+        "relationship": "customer",
+        "name": "榮耀 Honor",
+        "details": "AI智能助手大模型整合案例；未公開個別2026採購額，不推定當期營收。",
+        "evidence_level": "official_historical_customer",
+        "source_ids": [
+          "BAIDU_CLOUD_NAMED_CASES",
+          "BAIDU_CLOUD_ENGLISH_CASES"
+        ]
+      },
+      {
+        "id": "AI_CLOUD_customer_012",
+        "business_line": "AI_CLOUD",
+        "relationship": "customer",
+        "name": "生數科技 Shengshu Technology",
+        "details": "百舸訓練算力客戶案例；未公開個別2026採購額，不推定當期營收。",
+        "evidence_level": "official_historical_customer",
+        "source_ids": [
+          "BAIDU_CLOUD_NAMED_CASES",
+          "BAIDU_CLOUD_ENGLISH_CASES"
+        ]
+      },
+      {
+        "id": "SMART_CITY_customer_003",
+        "business_line": "SMART_CITY",
+        "relationship": "customer",
+        "name": "龍源電力",
+        "details": "新能源生產智慧管理及影像AI檢測案例；未公開個別2026採購額，不推定當期營收。",
+        "evidence_level": "official_historical_customer",
+        "source_ids": [
+          "BAIDU_CLOUD_NAMED_CASES",
+          "BAIDU_CLOUD_ENGLISH_CASES"
+        ]
+      },
+      {
+        "id": "SMART_CITY_customer_004",
+        "business_line": "SMART_CITY",
+        "relationship": "customer",
+        "name": "中國寶武鋼鐵集團",
+        "details": "天工IoT及智能製造案例；未公開個別2026採購額，不推定當期營收。",
+        "evidence_level": "official_historical_customer",
+        "source_ids": [
+          "BAIDU_CLOUD_NAMED_CASES",
+          "BAIDU_CLOUD_ENGLISH_CASES"
+        ]
+      },
+      {
+        "id": "AUTO_SOLUTIONS_customer_001",
+        "business_line": "AUTO_SOLUTIONS",
+        "relationship": "customer",
+        "name": "Mercedes-Benz／梅賽德斯-奔馳",
+        "details": "百度智能雲官方展示智能汽車案例，採用產品及收入需分案核對；未公開個別2026採購額，不推定當期營收。",
+        "evidence_level": "official_case_relationship_product_scope_limited",
+        "source_ids": [
+          "BAIDU_CLOUD_NAMED_CASES",
+          "BAIDU_CLOUD_ENGLISH_CASES"
+        ]
+      },
+      {
+        "id": "APOLLO_GO_partner_001",
+        "business_line": "APOLLO_GO",
+        "relationship": "partner",
+        "name": "Uber Technologies（UBER）",
+        "details": "Dubai App叫車分銷及全球策略合作，已實際在Dubai營運；非已證實Uber直接購買百度車輛",
+        "evidence_level": "verified_partner_stage_specific",
+        "source_ids": [
+          "APOLLO_UBER_OFFICIAL"
+        ]
+      },
+      {
+        "id": "APOLLO_GO_partner_002",
+        "business_line": "APOLLO_GO",
+        "relationship": "partner",
+        "name": "New Horizon Luxury Transport",
+        "details": "Dubai Apollo Go當地車隊運營商（Uber官方），合約結算/採購金額不公開",
+        "evidence_level": "verified_partner_stage_specific",
+        "source_ids": [
+          "APOLLO_UBER_OFFICIAL"
+        ]
+      },
+      {
+        "id": "APOLLO_GO_partner_003",
+        "business_line": "APOLLO_GO",
+        "relationship": "partner",
+        "name": "Lyft／Freenow",
+        "details": "倫敦安全員道路測試合作，2027商用仍待監管許可",
+        "evidence_level": "verified_partner_stage_specific",
+        "source_ids": [
+          "REUTERS_LONDON"
+        ]
+      },
+      {
+        "id": "APOLLO_GO_partner_004",
+        "business_line": "APOLLO_GO",
+        "relationship": "partner",
+        "name": "PostBus Switzerland",
+        "details": "瑞士公開道路測試合作，非已確定營運收入",
+        "evidence_level": "verified_partner_stage_specific",
+        "source_ids": [
+          "IR_Q2_2026"
+        ]
+      },
+      {
+        "id": "APOLLO_GO_partner_005",
+        "business_line": "APOLLO_GO",
+        "relationship": "partner",
+        "name": "Turlov Private Holding",
+        "details": "哈薩克探索合作MOU，非已營運",
+        "evidence_level": "verified_partner_stage_specific",
+        "source_ids": [
+          "IR_Q2_2026"
+        ]
+      },
+      {
+        "id": "KUNLUNXIN_partner_001",
+        "business_line": "KUNLUNXIN",
+        "relationship": "partner",
+        "name": "昆侖芯（北京）科技有限公司",
+        "details": "百度非全資子公司／集團AI晶片業務，非獨立於集團的外部供應商；分拆保留控股計畫。",
+        "evidence_level": "controlled_subsidiary_not_external_supplier",
+        "source_ids": [
+          "KUNLUNXIN_SPINOFF"
+        ]
+      },
+      {
+        "id": "ERNIE_competitor_001",
+        "business_line": "ERNIE",
+        "relationship": "competitor",
+        "name": "阿里巴巴／Qwen",
+        "details": "中國模型與雲端服務主要競爭者，沒有將其寫成百度客戶",
+        "evidence_level": "market_competition",
+        "source_ids": [
+          "SEC_20F_2025",
+          "REUTERS_APOLLO_WORLD"
+        ]
+      },
+      {
+        "id": "ERNIE_competitor_002",
+        "business_line": "ERNIE",
+        "relationship": "competitor",
+        "name": "字節跳動／豆包",
+        "details": "中國模型／AI應用競爭者",
+        "evidence_level": "market_competition",
+        "source_ids": [
+          "SEC_20F_2025",
+          "REUTERS_APOLLO_WORLD"
+        ]
+      },
+      {
+        "id": "ERNIE_competitor_003",
+        "business_line": "ERNIE",
+        "relationship": "competitor",
+        "name": "DeepSeek",
+        "details": "開源模型及推論價格壓力",
+        "evidence_level": "market_competition",
+        "source_ids": [
+          "SEC_20F_2025",
+          "REUTERS_APOLLO_WORLD"
+        ]
+      },
+      {
+        "id": "AI_CLOUD_competitor_001",
+        "business_line": "AI_CLOUD",
+        "relationship": "competitor",
+        "name": "騰訊雲／Tencent Cloud",
+        "details": "中國企業雲與模型平台競爭",
+        "evidence_level": "market_competition",
+        "source_ids": [
+          "SEC_20F_2025",
+          "REUTERS_APOLLO_WORLD"
+        ]
+      },
+      {
+        "id": "APOLLO_GO_competitor_001",
+        "business_line": "APOLLO_GO",
+        "relationship": "competitor",
+        "name": "Pony.ai（PONY）",
+        "details": "Robotaxi自駕技術與城市營運競爭",
+        "evidence_level": "market_competition",
+        "source_ids": [
+          "SEC_20F_2025",
+          "REUTERS_APOLLO_WORLD"
+        ]
+      },
+      {
+        "id": "APOLLO_GO_competitor_002",
+        "business_line": "APOLLO_GO",
+        "relationship": "competitor",
+        "name": "WeRide（WRD）",
+        "details": "Robotaxi自駕技術與城市營運競爭",
+        "evidence_level": "market_competition",
+        "source_ids": [
+          "SEC_20F_2025",
+          "REUTERS_APOLLO_WORLD"
+        ]
+      },
+      {
+        "id": "APOLLO_GO_competitor_003",
+        "business_line": "APOLLO_GO",
+        "relationship": "competitor",
+        "name": "Waymo／Alphabet",
+        "details": "國際無人駕駛市場競爭",
+        "evidence_level": "market_competition",
+        "source_ids": [
+          "SEC_20F_2025",
+          "REUTERS_APOLLO_WORLD"
+        ]
+      },
+      {
+        "id": "SEARCH_ADS_competitor_001",
+        "business_line": "SEARCH_ADS",
+        "relationship": "competitor",
+        "name": "字節跳動／抖音",
+        "details": "廣告預算與搜尋／資訊流競爭",
+        "evidence_level": "market_competition",
+        "source_ids": [
+          "SEC_20F_2025",
+          "REUTERS_APOLLO_WORLD"
+        ]
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "supplier",
+      "partner",
+      "competitor"
+    ],
+    "research": {
+      "git_original_blob_sha": "f968a84e1e43143ce9dc67add64c04d77e9dbd55",
+      "baseline_commit": "b45029a1e",
+      "latest_20f": "2025 FY filed 2026-03-17",
+      "latest_6k": "2026-11-04 monthly capital report",
+      "latest_results": "2026-Q2 released 2026-08-18; Q3 pending 2026-11-16",
+      "q2_total_revenue_rmb_billions": 31.3,
+      "q2_total_yoy_pct": -4,
+      "q2_ai_cloud_infra_rmb_billions": 7.3,
+      "q2_ai_cloud_infra_yoy_pct": 50,
+      "q2_gpu_cloud_yoy_pct": 283,
+      "q2_ai_apps_rmb_billions": 2.5,
+      "q2_marketing_services_rmb_billions": 13.1,
+      "q2_marketing_services_yoy_pct": -19,
+      "q2_iqiyi_revenue_rmb_billions": 6.3,
+      "q2_ai_powered_business_rmb_billions": 12.5,
+      "kunlunxin_spinoff": "confidential_application_not_confirmed_listed",
+      "taiwan_direct_named_suppliers": "none_publicly_verified",
+      "customer_definition": "name must correspond to a verified named organization with a published case/transaction; no invented current revenue or automatic client inference",
+      "source_date_cutoff": "2026-11-05"
+    },
+    "five_gate_audit": {
+      "gate_1_hot_topics_reverse_check": {
+        "performed": true,
+        "period": "2026-08-07至2026-11-05",
+        "independent_topics": [
+          "Q2業績與AI Cloud +50%",
+          "GPU Cloud+283%",
+          "搜索廣告-19%",
+          "2026雙重主要上市",
+          "11/03 Apollo World",
+          "10月倫敦RT6上路測試",
+          "08月Dubai Uber商轉",
+          "昆侖芯M100與M300",
+          "11/05 ERNIE 5.5 Flash Base",
+          "Q3 11/16才發布"
+        ]
+      },
+      "gate_2_investor_top_ten_questions": {
+        "performed": true,
+        "questions": [
+          {
+            "topic": "營收成長",
+            "finding": "Q2總營收313億元同比減4%，AI Cloud 73億元同比增50%；把結構變化和總體壓力同時披露。"
+          },
+          {
+            "topic": "毛利率",
+            "finding": "公司整體與雲端GPU服務毛利結構不同，未公開GPU雲精準毛利率不能捏造。"
+          },
+          {
+            "topic": "資本支出",
+            "finding": "算力IDC與AI晶片為主要capex主線；維持成本、折舊及現金流風險。"
+          },
+          {
+            "topic": "競爭力",
+            "finding": "全堆疊昆侖芯/雲/文心/應用、Robotaxi實地運營；面對國內大模型及雲價格競爭。"
+          },
+          {
+            "topic": "技術轉折",
+            "finding": "M100與M300、ERNIE 5.5、Apollo World；產品可用與量產分級。"
+          },
+          {
+            "topic": "客戶採用",
+            "finding": "百度雲官方具名Galaxy AI、NIO、浦發銀行與多家工業案例，過往與當期分開。"
+          },
+          {
+            "topic": "產能",
+            "finding": "資料中心可用GPU算力和昆侖芯製造產能，不推定台灣外包工廠供貨。"
+          },
+          {
+            "topic": "供應鏈",
+            "finding": "中國國產加速晶片優勢與出口限制風險；臺灣直接代工供應尚無具名確證。"
+          },
+          {
+            "topic": "估值催化劑",
+            "finding": "Q3 11/16業績、昆侖芯分拆、雙重主要上市、Robotaxi海外商轉擴張。"
+          },
+          {
+            "topic": "風險",
+            "finding": "廣告下行、AI capex回收、AI模型競爭、Robotaxi監管、跨國資料合規。"
+          }
+        ]
+      },
+      "gate_3_technology_product_completeness": {
+        "performed": true,
+        "reviewed": [
+          "AI Cloud GPU Cluster",
+          "GPU token計費",
+          "Kunlunxin M100/M300",
+          "ERNIE 5.1/5.5 Flash Base",
+          "Apollo World",
+          "Apollo Go RT6",
+          "Heterogeneous compute",
+          "HBM nonmanufacturer",
+          "CPO nonmanufacturer",
+          "CoWoS nonmanufacturer",
+          "DuMate",
+          "Miaoda",
+          "PaddlePaddle"
+        ]
+      },
+      "gate_4_falsification_competition": {
+        "performed": true,
+        "tests": [
+          "實際雲服務與當期收入分開",
+          "地區Robotaxi商轉和測試區分",
+          "M100產品與M300未來量產區分",
+          "集團子公司與外部供應商分開",
+          "Uber平台合作與B2B設備採購不同",
+          "臺灣ODM/代工沒有具名供應證據不列入",
+          "同業競爭公司不冒充客戶"
+        ]
+      },
+      "gate_5_missing_topic_audit": {
+        "performed": true,
+        "important_issue_coverage_table": [
+          {
+            "topic": "2025 SEC 20-F財報基準",
+            "status": "covered",
+            "finding": "使用2025財年20-F、2026/03/17 filed；外國發行人不套用10-K。",
+            "source_ids": [
+              "SEC_20F_2025"
+            ]
+          },
+          {
+            "topic": "2026 Q2正式6-K收入",
+            "status": "covered",
+            "finding": "2026 Q2營收313億元，年減4%；6-K附件未經審計、不能推定Q3。",
+            "source_ids": [
+              "SEC_6K_Q2_2026"
+            ]
+          },
+          {
+            "topic": "AI Cloud Infra+50%",
+            "status": "covered",
+            "finding": "Q2營收73億元、年增50%，屬百度一般業務的其中一個子分類。",
+            "source_ids": [
+              "IR_Q2_2026"
+            ]
+          },
+          {
+            "topic": "GPU Cloud增283%",
+            "status": "covered",
+            "finding": "GPU Cloud子業務同比增283%，公司未披露確切絕對收入，不能乘以73億元。",
+            "source_ids": [
+              "IR_Q2_2026"
+            ]
+          },
+          {
+            "topic": "AI Powered業務佔比",
+            "status": "covered",
+            "finding": "Q2 AI-powered business 125億元，佔Baidu General Business 50%，不是全集團營收的50%。",
+            "source_ids": [
+              "IR_Q2_2026"
+            ]
+          },
+          {
+            "topic": "AI應用營收",
+            "status": "covered",
+            "finding": "Q2 AI Apps 25億元年增3%，含DuMate/文庫網盤等但未分拆產品別。",
+            "source_ids": [
+              "IR_Q2_2026"
+            ]
+          },
+          {
+            "topic": "AI Native營銷",
+            "status": "covered",
+            "finding": "Q2 AI native marketing 26億元同比近持平，和傳統廣告131億元不同。",
+            "source_ids": [
+              "IR_Q2_2026"
+            ]
+          },
+          {
+            "topic": "傳統網路廣告壓力",
+            "status": "covered",
+            "finding": "Q2在線營銷131億元同比減19%，廣告核心業務仍有壓力。",
+            "source_ids": [
+              "IR_Q2_2026",
+              "REUTERS_Q2"
+            ]
+          },
+          {
+            "topic": "昆侖芯M100/M300",
+            "status": "covered",
+            "finding": "第三代晶片商用，M100路線與後續M300分開描述，沒有證明M300已量產。",
+            "source_ids": [
+              "Q2_CALL_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "昆侖芯香港分拆",
+            "status": "covered",
+            "finding": "2026/01已提出保密上市申請，11月初未確認上市完成。",
+            "source_ids": [
+              "KUNLUNXIN_SPINOFF"
+            ]
+          },
+          {
+            "topic": "千帆MaaS token",
+            "status": "covered",
+            "finding": "外部客戶token收入年增9倍以上，但未見具名客戶逐客戶金額。",
+            "source_ids": [
+              "Q2_CALL_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "DuMate企業版與Miaoda",
+            "status": "covered",
+            "finding": "2026/06 DuMate企業版已推出，Miaoda/文庫網盤AI功能使用率提升。",
+            "source_ids": [
+              "IR_Q2_2026"
+            ]
+          },
+          {
+            "topic": "文心模型11月新品",
+            "status": "covered",
+            "finding": "2026/11/05官方ERNIE 5.5 Flash Base上線，模型版本發布不等於新增獨立營收。",
+            "source_ids": [
+              "ERNIE_OFFICIAL"
+            ]
+          },
+          {
+            "topic": "Apollo World模擬模型",
+            "status": "covered",
+            "finding": "2026/11/03 Reuters: 生成道路場景、自家Apollo Go訓練已使用，未核實對外販售。",
+            "source_ids": [
+              "REUTERS_APOLLO_WORLD"
+            ]
+          },
+          {
+            "topic": "Dubai Robotaxi商轉",
+            "status": "covered",
+            "finding": "Uber及New Horizon官方2026/08/20證實Dubai特定區域完全無人營運。",
+            "source_ids": [
+              "APOLLO_UBER_OFFICIAL"
+            ]
+          },
+          {
+            "topic": "London Robotaxi測試",
+            "status": "covered",
+            "finding": "倫敦與Freenow及Lyft合作，測試有安全員，2027目標非現有無人商轉。",
+            "source_ids": [
+              "REUTERS_LONDON"
+            ]
+          },
+          {
+            "topic": "Hong Kong Robotaxi測試",
+            "status": "covered",
+            "finding": "香港Airport Island為無人測試許可，不等同全面商用。",
+            "source_ids": [
+              "IR_Q2_2026"
+            ]
+          },
+          {
+            "topic": "瑞士及哈薩克",
+            "status": "covered",
+            "finding": "PostBus為道路測試、哈薩克Turlov為MoU，商業化階段不同。",
+            "source_ids": [
+              "IR_Q2_2026"
+            ]
+          },
+          {
+            "topic": "百度智能雲具名客戶案例",
+            "status": "covered",
+            "finding": "Samsung/NIO/浦發/寶武/山東港口等官方具名實施，並非都於2026新簽。",
+            "source_ids": [
+              "BAIDU_CLOUD_NAMED_CASES"
+            ]
+          },
+          {
+            "topic": "雙重主要上市",
+            "status": "covered",
+            "finding": "2026/09/01香港雙重主要上市生效，不等於重新募資。",
+            "source_ids": [
+              "DUAL_PRIMARY_LISTING"
+            ]
+          },
+          {
+            "topic": "11月4日最新6-K",
+            "status": "covered",
+            "finding": "2026/11/04僅月度股本變動申報，不是Q3業績。",
+            "source_ids": [
+              "SEC_6K_NOV4_2026"
+            ]
+          },
+          {
+            "topic": "2026 Q2 企業現金流",
+            "status": "covered",
+            "finding": "Q2營運現金流34億元，投資仍需關注算力資本支出與資本效率。",
+            "source_ids": [
+              "Q2_CALL_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "愛奇藝收入",
+            "status": "covered",
+            "finding": "Q2愛奇藝收入63億元，是獨立業務，不與百度AI雲重複計算。",
+            "source_ids": [
+              "IR_Q2_2026"
+            ]
+          },
+          {
+            "topic": "廣告與AI模型競爭",
+            "status": "covered",
+            "finding": "廣告受字節等注意力競爭、文心模型面臨阿里/DeepSeek等價格與效果壓力。",
+            "source_ids": [
+              "SEC_20F_2025",
+              "REUTERS_Q2"
+            ]
+          },
+          {
+            "topic": "雲上昆侖芯與GPU成本",
+            "status": "covered",
+            "finding": "自研晶片提供成本與本地供應差異化，但雲服務收入不能全當對外晶片銷售。",
+            "source_ids": [
+              "Q2_CALL_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "消費者與企業區別",
+            "status": "covered",
+            "finding": "Baidu App/地圖/愛奇藝面向消費者；AI雲B2B customer節點必須具名。",
+            "source_ids": [
+              "SEC_20F_2025"
+            ]
+          },
+          {
+            "topic": "台灣直接供應商反證",
+            "status": "covered",
+            "finding": "找不到官方+台灣上市公司雙向確證的昆侖芯代工、封裝、雲端伺服器直接訂單；不列supplier。",
+            "source_ids": [
+              "SEC_20F_2025"
+            ]
+          },
+          {
+            "topic": "H100/H200/HBM代工與CPO",
+            "status": "covered",
+            "finding": "沒有百度直接製造HBM、CPO或CoWoS的證據，不能偷換成百度產品。",
+            "source_ids": [
+              "SEC_20F_2025"
+            ]
+          },
+          {
+            "topic": "自駕服務搭乘量與營收",
+            "status": "covered",
+            "finding": "Q2約100萬次無人駕駛乘車；未單獨揭露Apollo Go營收，不可將趟次按任意單價估算收入。",
+            "source_ids": [
+              "Q2_CALL_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "自研硬體生態和軟體",
+            "status": "covered",
+            "finding": "百度全堆疊含晶片、模型、雲、應用，但晶片子公司營收與集團內交易須避免重複統計。",
+            "source_ids": [
+              "SEC_20F_2025",
+              "Q2_CALL_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "昆侖芯M300量產與客戶",
+            "status": "evidence_insufficient",
+            "finding": "產品路線圖有待推出型號，但外部客戶訂單、HBM設計與量產未公開可靠明細。",
+            "source_ids": [
+              "Q2_CALL_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "AI雲客戶2026逐家收入",
+            "status": "evidence_insufficient",
+            "finding": "官方案例多為歷史，未提供逐家2026採購額或付費期。",
+            "source_ids": [
+              "BAIDU_CLOUD_NAMED_CASES"
+            ]
+          },
+          {
+            "topic": "Apollo Go單城市盈利",
+            "status": "evidence_insufficient",
+            "finding": "有管理層特定城市unit economics break-even表述，未見全球合併Robotaxi獲利數。",
+            "source_ids": [
+              "Q2_CALL_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "昆侖芯台灣代工／封裝",
+            "status": "evidence_insufficient",
+            "finding": "未查得可核實台灣直接晶圓廠、封裝或ODM供貨公司名稱。",
+            "source_ids": [
+              "SEC_20F_2025"
+            ]
+          },
+          {
+            "topic": "ERNIE 5.5 Flash Base商業收入",
+            "status": "evidence_insufficient",
+            "finding": "2026/11/05發布新模型，但尚無明確此單一模型客戶/銷售金額。",
+            "source_ids": [
+              "ERNIE_OFFICIAL"
+            ]
+          },
+          {
+            "topic": "數據中心資本支出與折舊",
+            "status": "evidence_insufficient",
+            "finding": "缺乏可以直接按AI雲各產品精準分解的capex及設備採購。",
+            "source_ids": [
+              "SEC_6K_Q2_2026"
+            ]
+          },
+          {
+            "topic": "HBM製造業務",
+            "status": "intentionally_excluded",
+            "finding": "百度是算力及晶片設計/服務方，非HBM記憶體製造商。",
+            "source_ids": [
+              "SEC_20F_2025"
+            ]
+          },
+          {
+            "topic": "CPO及CoWoS代工業務",
+            "status": "intentionally_excluded",
+            "finding": "無官方證據支持百度直接提供光電共封裝製造及CoWoS封裝服務。",
+            "source_ids": [
+              "SEC_20F_2025"
+            ]
+          },
+          {
+            "topic": "台灣僅概念受惠股",
+            "status": "intentionally_excluded",
+            "finding": "不能將聯想中的台灣ODM、IC設計或晶圓廠當作已驗證supplier。",
+            "source_ids": [
+              "SEC_20F_2025"
+            ]
+          },
+          {
+            "topic": "Bloomberg/The Information付費完整報導",
+            "status": "not_researched",
+            "finding": "無法取得可全文驗證的獨家合作或訂單細節，不虛構證據。",
+            "source_ids": []
+          },
+          {
+            "topic": "ServerTheHome/Tom Hardware對Kunlun M100實測",
+            "status": "not_researched",
+            "finding": "缺乏具名型號可復現硬體評測及性能數據，不臆造benchmark。",
+            "source_ids": []
+          },
+          {
+            "topic": "2026 Q3正式業績",
+            "status": "not_yet_available",
+            "finding": "百度官方排定2026/11/16發表，11/05不能提前填入Q3實績。",
+            "source_ids": [
+              "IR_Q3_SCHEDULE"
+            ]
+          }
+        ],
+        "coverage_counts": {
+          "covered": 30,
+          "evidence_insufficient": 6,
+          "intentionally_excluded": 3,
+          "not_researched": 2,
+          "not_yet_available": 1
+        },
+        "major_unresolved": [
+          "昆侖芯M300量產與客戶",
+          "AI雲客戶2026逐家收入",
+          "Apollo Go單城市盈利",
+          "昆侖芯台灣代工／封裝",
+          "ERNIE 5.5 Flash Base商業收入",
+          "數據中心資本支出與折舊",
+          "Bloomberg/The Information付費完整報導",
+          "ServerTheHome/Tom Hardware對Kunlun M100實測",
+          "2026 Q3正式業績"
+        ],
+        "all_material_issues_resolved": false
+      },
+      "reflection_iterations": [
+        {
+          "round": 1,
+          "question": "Q3 11月4日6-K是否等於第三季財報？",
+          "finding": "11/04僅股本月度報告，Q3財報排定11/16。",
+          "correction": "財務快照僅用Q2，Q3標not_yet_available。"
+        },
+        {
+          "round": 2,
+          "question": "是否把GPU Cloud 283%增長當成百度總營收或雲全體增速？",
+          "finding": "GPU Cloud是AI Cloud Infra的子分類，雲整體同比50%，集團總收入同比-4%。",
+          "correction": "採三種不同分母，避免重複計數。"
+        },
+        {
+          "round": 3,
+          "question": "Uber、Lyft是否必然是直接支付百度的B2B客戶？",
+          "finding": "Uber為上架合作通路，New Horizon是Dubai運營商；Lyft倫敦仍測試。",
+          "correction": "分類partner，不冒充已證實的設備購買客戶。"
+        },
+        {
+          "round": 4,
+          "question": "台灣晶圓廠、ODM是否直接供應百度AI芯片？",
+          "finding": "公開來源沒有可雙向核實交易，不能由晶片架構/供應鏈概念推導。",
+          "correction": "supplier空白並標證據不足；昆侖芯歸集團子公司。"
+        },
+        {
+          "round": 5,
+          "question": "AI/HBM/CPO及ERNIE模型發布是否都已有量產/收入？",
+          "finding": "ERNIE 5.5 11/05官方發布；Apollo World自家部署；未見獨立收入；HBM/CPO不屬百度直接製造。",
+          "correction": "產品發布、内部研發、商用量產、收入逐項分級。"
+        },
+        {
+          "round": 6,
+          "question": "是否漏掉Apollo World、香港雙重主要上市和雲官方客戶案例？",
+          "finding": "近90天Reuters、SEC/IR和官方案例能證實，原JSON並未完整記載。",
+          "correction": "新增Apollo World、dual primary及具名案例作為重要業務主線與事件。"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "id": "SEC_20F_2025",
+        "url": "https://www.sec.gov/Archives/edgar/data/1329099/000119312526109289/d38065d20f.htm"
+      },
+      {
+        "id": "SEC_6K_Q2_2026",
+        "url": "https://www.sec.gov/Archives/edgar/data/1329099/000119312526355431/d112854dex991.htm"
+      },
+      {
+        "id": "SEC_6K_NOV4_2026",
+        "url": "https://ir.baidu.com/static-files/7f21cb05-4b6e-4901-835d-929d6c888c88"
+      },
+      {
+        "id": "IR_Q2_2026",
+        "url": "https://ir.baidu.com/news-releases/news-release-details/baidu-announces-second-quarter-2026-results"
+      },
+      {
+        "id": "IR_Q3_SCHEDULE",
+        "url": "https://ir.baidu.com/index.php/news-releases/news-release-details/baidu-report-third-quarter-2026-financial-results-november-16"
+      },
+      {
+        "id": "Q2_CALL_TRANSCRIPT",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/08/18/baidu-bidu-q2-2026-earnings-call-transcript/"
+      },
+      {
+        "id": "Q2_CALL_SECOND",
+        "url": "https://stockanalysis.com/quote/hkg/9888/transcripts/673679-q2-2026/"
+      },
+      {
+        "id": "BAIDU_CLOUD_NAMED_CASES",
+        "url": "https://cloud.baidu.com/case/index.html"
+      },
+      {
+        "id": "BAIDU_CLOUD_ENGLISH_CASES",
+        "url": "https://cloud.baidu.com/en/case/index.html"
+      },
+      {
+        "id": "ERNIE_OFFICIAL",
+        "url": "https://ernie.baidu.com/zh/"
+      },
+      {
+        "id": "ERNIE_RESEARCH",
+        "url": "https://ernie.baidu.com/research/"
+      },
+      {
+        "id": "APOLLO_UBER_OFFICIAL",
+        "url": "https://investor.uber.com/news-events/news/press-release-details/2026/Uber-Launches-Baidus-Fully-Driverless-Apollo-Go-in-Dubai-Establishing-the-First-Multi-Partner-Autonomous-Network-Globally/default.aspx"
+      },
+      {
+        "id": "REUTERS_APOLLO_WORLD",
+        "url": "https://www.reuters.com/technology/chinas-baidu-launches-ai-model-simulating-road-environment-robotaxis-2026-11-03/"
+      },
+      {
+        "id": "REUTERS_LONDON",
+        "url": "https://www.reuters.com/business/finance/chinas-baidu-tests-robotaxi-london-streets-2026-10-23/"
+      },
+      {
+        "id": "REUTERS_Q2",
+        "url": "https://www.reuters.com/world/asia-pacific/chinas-baidu-misses-second-quarter-revenue-estimates-2026-08-18/"
+      },
+      {
+        "id": "KUNLUNXIN_SPINOFF",
+        "url": "https://ir.baidu.com/news-releases/news-release-details/baidu-announces-proposed-spin-and-separate-listing-kunlunxin/"
+      },
+      {
+        "id": "DUAL_PRIMARY_LISTING",
+        "url": "https://www.sec.gov/Archives/edgar/data/1329099/000119312526369462/d117226dex991.htm"
+      },
+      {
+        "id": "REUTERS_KUNLUN_SPINOFF",
+        "url": "https://www.reuters.com/world/asia-pacific/baidus-ai-chip-arm-kunlunxin-files-confidentially-hong-kong-listing-2026-01-01/"
+      }
+    ]
   }
 }

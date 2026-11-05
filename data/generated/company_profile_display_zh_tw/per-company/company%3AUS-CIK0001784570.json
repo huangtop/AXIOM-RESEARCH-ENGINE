@@ -371,5 +371,948 @@
       "人工智慧"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-05",
+    "company": "BETA Technologies, Inc.",
+    "symbol": "BETA",
+    "locale": "zh-TW",
+    "business_lines": [
+      {
+        "id": "CTOL_CX300",
+        "name": "ALIA CTOL / CX300 固定翼電動飛機",
+        "description": "商用貨運/醫療/未來短程載客；仍進行FAA型別認證",
+        "commercialization_stage": "certification_and_eipp_no_certified_aircraft_sale_revenue",
+        "downstream_applications": [
+          "物流航空公司",
+          "醫療航空營運商",
+          "地區性航空公司"
+        ]
+      },
+      {
+        "id": "VTOL_A250",
+        "name": "ALIA VTOL / A250 垂直起降飛機",
+        "description": "2026-10 FAA特別適航市場展示許可，非型別認證",
+        "commercialization_stage": "market_survey_authorized_not_type_certified",
+        "downstream_applications": [
+          "醫療航空業者",
+          "貨運與客運營運商"
+        ]
+      },
+      {
+        "id": "MILITARY_MV250",
+        "name": "MV250混合動力自主國防飛機",
+        "description": "GE混合電力與自主/適應軍用補給，尚非已量產軍用機",
+        "commercialization_stage": "development_demonstration_paid_rd",
+        "downstream_applications": [
+          "國防機構",
+          "軍工主承包商"
+        ]
+      },
+      {
+        "id": "ELECTRIC_MOTORS",
+        "name": "H500A/H500B電動馬達與螺旋槳推進",
+        "description": "自用與OEM供貨、Eve pusher motors可達10億美元十年機會",
+        "commercialization_stage": "third_party_component_sales_active_certification_ongoing",
+        "downstream_applications": [
+          "eVTOL OEM",
+          "船用推進OEM"
+        ]
+      },
+      {
+        "id": "BATTERY_SYSTEMS",
+        "name": "航空電池模組與熱管理",
+        "description": "自製電池包、對外供應及未來替換電池/energy-by-the-hour",
+        "commercialization_stage": "commercial_component_business_future_aftermarket",
+        "downstream_applications": [
+          "航空系統OEM",
+          "航空營運商"
+        ]
+      },
+      {
+        "id": "FLIGHT_CONTROLS",
+        "name": "飛控電腦、逆變器、電機控制",
+        "description": "FCC、逆變器、線束與軟體；GE與Eve工程合作支援",
+        "commercialization_stage": "commercial_component_and_engineering_services",
+        "downstream_applications": [
+          "航空製造商",
+          "國防研發機構"
+        ]
+      },
+      {
+        "id": "GSE_CHARGING",
+        "name": "Charge Cube、Mini Cube及地面設備",
+        "description": "168充電站、14國；充電設備已銷售，仍多為商業試營運",
+        "commercialization_stage": "commercial_product_and_infrastructure_revenue",
+        "downstream_applications": [
+          "機場",
+          "航空營運商",
+          "地面服務商"
+        ]
+      },
+      {
+        "id": "CHARGING_NETWORK",
+        "name": "充電服務、ACES互通網路",
+        "description": "Archer/Macquarie支援eIPP部署，250地點是規畫上限非目前已安裝",
+        "commercialization_stage": "operational_network_168_sites",
+        "downstream_applications": [
+          "機場",
+          "航空公司",
+          "充電運營商"
+        ]
+      },
+      {
+        "id": "EIPP_OPERATIONS",
+        "name": "FAA eIPP示範營運與第三方工程支援",
+        "description": "2026Q3啟動7項中的6項，飛行不等於已核准Part135常態售票營運",
+        "commercialization_stage": "pilot_program_revenue_from_services_not_certified_aircraft_sales",
+        "downstream_applications": [
+          "政府pilot夥伴",
+          "醫療服務企業"
+        ]
+      },
+      {
+        "id": "BETA_OPERATE",
+        "name": "BETA Operate SaaS/AI預測保養",
+        "description": "Maintenance模組已供內部/少量使用，其他模組陸續部署；未具名公開獨立SaaS收入",
+        "commercialization_stage": "early_internal_use_precommercial_modules",
+        "downstream_applications": [
+          "航空機隊營運商"
+        ]
+      },
+      {
+        "id": "HYBRID_TURBOGEN",
+        "name": "GE混合式渦輪發電機",
+        "description": "雙方共同研發，配合軍規MV250，航空高度測試不代表商業批量出貨",
+        "commercialization_stage": "engineering_development",
+        "downstream_applications": [
+          "航空OEM",
+          "軍方"
+        ]
+      },
+      {
+        "id": "UNDERSEA_PROPULSION",
+        "name": "水下電動推進與軍工研發",
+        "description": "General Dynamics Applied Physical Sciences 具名合約",
+        "commercialization_stage": "paid_defense_research_and_component_contracts",
+        "downstream_applications": [
+          "國防承包商"
+        ]
+      }
+    ],
+    "nodes": [
+      {
+        "id": "VTOL_A250_customer_01",
+        "business_line": "VTOL_A250",
+        "relationship": "customer",
+        "name": "United Parcel Service / UPS（UPS）",
+        "evidence_level": "SEC_explicit_firm_order",
+        "note": "公司10-K具名已下firm aircraft orders；航空器尚未完成型別認證及交付。",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "VTOL_A250_customer_02",
+        "business_line": "VTOL_A250",
+        "relationship": "customer",
+        "name": "Bristow Group（VTOL）",
+        "evidence_level": "SEC_explicit_firm_order",
+        "note": "10-K具名firm order；不把總backlog全部分配給此公司。",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "CTOL_CX300_customer_01",
+        "business_line": "CTOL_CX300",
+        "relationship": "customer",
+        "name": "United Therapeutics（UTHR）",
+        "evidence_level": "SEC_firm_order_and_current_demonstration",
+        "note": "10-K具名firm aircraft orders；2026 Q2與eIPP實際運送製造器官作飛行示範，與已交機收入分開。",
+        "source_ids": [
+          "SEC_2025_10K",
+          "OFFICIAL_Q2"
+        ]
+      },
+      {
+        "id": "CTOL_CX300_customer_02",
+        "business_line": "CTOL_CX300",
+        "relationship": "customer",
+        "name": "Air New Zealand（AIR.NZ）",
+        "evidence_level": "SEC_named_aircraft_customer",
+        "note": "10-K具名現有民航客戶；機型/交付日和收入金額不能由總backlog推定。",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "VTOL_A250_customer_03",
+        "business_line": "VTOL_A250",
+        "relationship": "customer",
+        "name": "Metro Aviation / Metro Air Services",
+        "evidence_level": "SEC_firm_order",
+        "note": "10-K明言醫療類firm order；2026 Florida eIPP飛行另屬合作。",
+        "source_ids": [
+          "SEC_2025_10K",
+          "OFFICIAL_FLORIDA"
+        ]
+      },
+      {
+        "id": "VTOL_A250_customer_04",
+        "business_line": "VTOL_A250",
+        "relationship": "customer",
+        "name": "New Zealand Air Ambulance",
+        "evidence_level": "SEC_firm_order",
+        "note": "10-K具名已下firm order醫療運輸客戶，商用機交付仍待認證。",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "VTOL_A250_customer_05",
+        "business_line": "VTOL_A250",
+        "relationship": "customer",
+        "name": "FlyNYON",
+        "evidence_level": "SEC_named_orders",
+        "note": "10-K具名乘客業務飛機訂單，未公開交付收入。",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "CTOL_CX300_customer_03",
+        "business_line": "CTOL_CX300",
+        "relationship": "customer",
+        "name": "Surf Air Mobility（SRFM）",
+        "evidence_level": "signed_firm_aircraft_purchase_agreement",
+        "note": "2026-03協議firm order 25架CX300及75架選擇權；option非確定交付。",
+        "source_ids": [
+          "OFFICIAL_SURF_AIR"
+        ],
+        "firm_units": 25,
+        "optional_units": 75
+      },
+      {
+        "id": "CTOL_CX300_customer_04",
+        "business_line": "CTOL_CX300",
+        "relationship": "customer",
+        "name": "Loganair",
+        "evidence_level": "signed_term_sheet_not_unconditional_firm_contract",
+        "note": "2026-07簽term sheet五架及五架選擇權，預計2029服役；term sheet與已簽不可撤銷firm order不等同。",
+        "source_ids": [
+          "OFFICIAL_LOGANAIR"
+        ],
+        "term_sheet_units": 5,
+        "option_units": 5
+      },
+      {
+        "id": "ELECTRIC_MOTORS_customer_01",
+        "business_line": "ELECTRIC_MOTORS",
+        "relationship": "customer",
+        "name": "Eve Air Mobility（EVEX）",
+        "evidence_level": "named_motor_purchaser_and_supply_agreement",
+        "note": "2025-12具名motor供應協議，10年最高10億美元為潛在額度；實際交付測試用電機但尚未全額營收。",
+        "source_ids": [
+          "OFFICIAL_EVE",
+          "SEC_2025_10K",
+          "Q3_CALL_TRANSCRIPT"
+        ]
+      },
+      {
+        "id": "ELECTRIC_MOTORS_customer_02",
+        "business_line": "ELECTRIC_MOTORS",
+        "relationship": "customer",
+        "name": "Textron eAviation（Textron）",
+        "evidence_level": "SEC_named_component_customer",
+        "note": "10-K具名推進系統對外供貨對象；金額與現行採購量未披露。",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "UNDERSEA_PROPULSION_customer_01",
+        "business_line": "UNDERSEA_PROPULSION",
+        "relationship": "customer",
+        "name": "General Dynamics Applied Physical Sciences（GD）",
+        "evidence_level": "company_disclosed_contract",
+        "note": "2026 Q1官方表示新增水下推進合約，為具名已付費軍工研發/供貨關係。",
+        "source_ids": [
+          "OFFICIAL_GD"
+        ]
+      },
+      {
+        "id": "MILITARY_MV250_customer_01",
+        "business_line": "MILITARY_MV250",
+        "relationship": "customer",
+        "name": "U.S. Army DEVCOM（美國陸軍作戰能力發展司令部）",
+        "evidence_level": "call_disclosed_paid_development",
+        "note": "2026 Q3法說確認已在付費研究hybridization與autonomy；不是已採購大量MV250成品。",
+        "source_ids": [
+          "Q3_CALL_TRANSCRIPT"
+        ]
+      },
+      {
+        "id": "HYBRID_TURBOGEN_partner_01",
+        "business_line": "HYBRID_TURBOGEN",
+        "relationship": "partner",
+        "name": "GE Aerospace（GE）",
+        "evidence_level": "named_technology_development_partner",
+        "note": "合作開發混合電推進渦輪發電機並進行飛行驗證；可能互為工程收入相關方，無法當作固定的飛機買家。",
+        "source_ids": [
+          "OFFICIAL_Q2",
+          "Q3_CALL_TRANSCRIPT"
+        ]
+      },
+      {
+        "id": "CHARGING_NETWORK_partner_01",
+        "business_line": "CHARGING_NETWORK",
+        "relationship": "partner",
+        "name": "Archer Aviation（ACHR）",
+        "evidence_level": "named_consortium_partner",
+        "note": "ACES互通充電聯盟；Archer同時是eVTOL飛機競爭者，不自動視為BETA已付款的充電客戶。",
+        "source_ids": [
+          "ARCHER_ACES"
+        ]
+      },
+      {
+        "id": "CHARGING_NETWORK_partner_02",
+        "business_line": "CHARGING_NETWORK",
+        "relationship": "partner",
+        "name": "Macquarie Capital",
+        "evidence_level": "named_consortium_partner",
+        "note": "ACES融資及建設聯盟夥伴，不把規畫250站寫成現在已收款。",
+        "source_ids": [
+          "ARCHER_ACES"
+        ]
+      },
+      {
+        "id": "EIPP_OPERATIONS_partner_01",
+        "business_line": "EIPP_OPERATIONS",
+        "relationship": "partner",
+        "name": "Florida Department of Transportation（FDOT）",
+        "evidence_level": "public_eipp_program_lead",
+        "note": "政府pilot主導者；非已核實飛機購買客戶。",
+        "source_ids": [
+          "OFFICIAL_FLORIDA"
+        ]
+      },
+      {
+        "id": "EIPP_OPERATIONS_partner_02",
+        "business_line": "EIPP_OPERATIONS",
+        "relationship": "partner",
+        "name": "Republic Airways",
+        "evidence_level": "SEC_named_operating_agreement",
+        "note": "10-K具名使用飛機執行任務合作；沒有明確firm order等級，故暫放partner。",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "EIPP_OPERATIONS_partner_03",
+        "business_line": "EIPP_OPERATIONS",
+        "relationship": "partner",
+        "name": "NASA",
+        "evidence_level": "named_government_research_partner",
+        "note": "混合電飛行驗證計畫參與機構，未有直接飛機購置證據。",
+        "source_ids": [
+          "OFFICIAL_Q2"
+        ]
+      },
+      {
+        "id": "CTOL_CX300_supplier_01",
+        "business_line": "CTOL_CX300",
+        "relationship": "supplier",
+        "name": "Solvay",
+        "evidence_level": "counterparty_official_named_direct_material_supplier",
+        "note": "Solvay官方說明其為BETA主要先進複材供應商，供應NCAMP合格輕量材料給飛機家族；未見2026個別採購額。",
+        "source_ids": [
+          "OFFICIAL_SOLVAY"
+        ]
+      },
+      {
+        "id": "VTOL_A250_competitor_01",
+        "business_line": "VTOL_A250",
+        "relationship": "competitor",
+        "name": "Joby Aviation（JOBY）",
+        "evidence_level": "comparable_aircraft_developer",
+        "note": "美國eVTOL型別認證及商轉競爭者",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "VTOL_A250_competitor_02",
+        "business_line": "VTOL_A250",
+        "relationship": "competitor",
+        "name": "Archer Aviation（ACHR）",
+        "evidence_level": "comparable_aircraft_developer",
+        "note": "同業eVTOL客運競爭，同時在ACES充電建設合作",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "VTOL_A250_competitor_03",
+        "business_line": "VTOL_A250",
+        "relationship": "competitor",
+        "name": "Eve Air Mobility（EVEX）",
+        "evidence_level": "comparable_aircraft_developer",
+        "note": "下游客戶買入BETA馬達，但自身eVTOL整機與BETA競爭",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "CTOL_CX300_competitor_01",
+        "business_line": "CTOL_CX300",
+        "relationship": "competitor",
+        "name": "Heart Aerospace",
+        "evidence_level": "comparable_aircraft_developer",
+        "note": "電動短程地區客機相鄰競爭，載重/航程定位有別",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "CTOL_CX300_competitor_02",
+        "business_line": "CTOL_CX300",
+        "relationship": "competitor",
+        "name": "Electra.aero",
+        "evidence_level": "comparable_aircraft_developer",
+        "note": "短距起降混合電機型競爭，技術架構不同",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      }
+    ],
+    "relationships": [
+      "customer",
+      "supplier",
+      "partner",
+      "competitor"
+    ],
+    "research": {
+      "source_commit": "b45029a1e",
+      "source_blob_sha": "6f9b1da6e37b55ea56060d5e3322d654a6b0ca0e",
+      "latest_10k": "FY2025 2026-03-09",
+      "latest_10q": "2026Q3 2026-11-03",
+      "latest_8k": "2026-11-03 Q3 results",
+      "latest_earnings_call": "2026-11-03",
+      "q3_revenue_usd": 17672000,
+      "q3_product_revenue_usd": 5184000,
+      "q3_service_revenue_usd": 12488000,
+      "q3_gross_profit_usd": 12739000,
+      "q3_net_loss_usd": -119119000,
+      "q3_capex_usd": 28781000,
+      "q3_cash_usd": 1343055000,
+      "q3_gaap_gross_margin_pct_approx": 72.1,
+      "q3_yoy_revenue_growth_pct_approx": 98,
+      "commercial_aircraft_backlog_usd_approx": 4000000000,
+      "commercial_aircraft_firm_and_option_units": 1040,
+      "remaining_performance_obligations_usd": 28889000,
+      "charging_sites": 168,
+      "faa_type_certificate_issued": false,
+      "FAA_A250_market_survey_authorized": true,
+      "taiwan_direct_supplier_evidence": "insufficient",
+      "named_customer_policy": "B2B/government nodes require identified counterparty and explicit transaction status; customer types only downstream_applications"
+    },
+    "five_gate_audit": {
+      "gate_1_independent_last_90_days_topics": {
+        "period": "2026-08-07 to 2026-11-05",
+        "performed": true,
+        "topics": [
+          "11月Q3 SEC 10-Q/收入",
+          "10月FAA A250市場展示許可",
+          "eIPP六項啟動與佛州14架次",
+          "168充電站",
+          "4B美元飛機backlog",
+          "量產產能驗證4.5架/月",
+          "GE/MV250/EXIM項目",
+          "機隊AI維護"
+        ]
+      },
+      "gate_2_investor_top_ten_questions": {
+        "performed": true,
+        "questions": [
+          {
+            "topic": "營收成長",
+            "finding": "Q3同比98%，但主要產品是充電設備與零件及工程服務非已交付認證民航機"
+          },
+          {
+            "topic": "毛利率",
+            "finding": "Q3毛利約72.1%，服務營收佔比高且量產飛機尚無收入，未來產品結構會改變"
+          },
+          {
+            "topic": "資本支出",
+            "finding": "Q3房地產及設備Capex28.781M、另有航空部件資本化，EXIM待核不能當現金"
+          },
+          {
+            "topic": "競爭力",
+            "finding": "自製電池/馬達/飛控/充電站網，認證與交付量產能力需驗證"
+          },
+          {
+            "topic": "技術轉折",
+            "finding": "CTOL、VTOL、hybrid軍規、H500A/B、BETA Operate逐項檢驗認證狀態"
+          },
+          {
+            "topic": "客戶採用",
+            "finding": "UPS、United Therapeutics、Bristow、Surf Air、Eve各有具名簽約但不同交付階段"
+          },
+          {
+            "topic": "產能",
+            "finding": "4.5架/月是關鍵零件線等效能力，並非整架穩定實際月產量"
+          },
+          {
+            "topic": "供應鏈",
+            "finding": "Solvay具名供材，亞洲1%非等於台灣具名supplier"
+          },
+          {
+            "topic": "催化劑",
+            "finding": "FAA TIA與型別認證、eIPP轉Part135、EXIM審核、交機及Eve零件放量"
+          },
+          {
+            "topic": "風險",
+            "finding": "認證延宕、資本消耗、集中客戶、訂單撤銷、供應瓶頸與競爭"
+          }
+        ]
+      },
+      "gate_3_technical_and_product_completeness": {
+        "performed": true,
+        "products": [
+          "CX300",
+          "A250",
+          "MV250",
+          "H500A/H500B",
+          "FC computer",
+          "Battery packs",
+          "Charge Cube/Mini Cube",
+          "Thermal management",
+          "AI BETA Operate",
+          "GE turbogenerator",
+          "undersea propulsion"
+        ],
+        "not_direct_business": [
+          "HBM",
+          "CPO",
+          "CoWoS"
+        ]
+      },
+      "gate_4_counterevidence_and_competition": {
+        "performed": true,
+        "rules": [
+          "no certification equals market survey",
+          "do not count all option units as firm",
+          "do not convert backlog to GAAP recognized revenue",
+          "do not equate parts production rate to aircraft deliveries",
+          "named customer only",
+          "no inferred Taiwanese suppliers",
+          "dual-role Eve and Archer are distinct partner/competitor relationships"
+        ]
+      },
+      "gate_5_coverage_audit": {
+        "performed": true,
+        "important_issue_coverage_table": [
+          {
+            "topic": "2026Q3最新SEC 10-Q",
+            "status": "covered",
+            "finding": "11/03 10-Q涵蓋9月季度；營收17.672M、產品5.184M、服務12.488M，年增98%。",
+            "source_ids": [
+              "SEC_2026_Q3_10Q"
+            ]
+          },
+          {
+            "topic": "Q3毛利率與構成",
+            "status": "covered",
+            "finding": "合計12.739M/17.672M約72.1%，但工程服務占比較高，不代表量產飛機毛利率。",
+            "source_ids": [
+              "SEC_2026_Q3_10Q"
+            ]
+          },
+          {
+            "topic": "Q3淨虧損與研發",
+            "status": "covered",
+            "finding": "GAAP淨虧損119.119M，研發90.536M，支出仍高。",
+            "source_ids": [
+              "SEC_Q3_EARNINGS_EXHIBIT"
+            ]
+          },
+          {
+            "topic": "Q3 Capex",
+            "status": "covered",
+            "finding": "財報列28.781M購買廠房設備，與資本化9.702M飛機元件分開。",
+            "source_ids": [
+              "IR_Q3_RESULTS"
+            ]
+          },
+          {
+            "topic": "期末現金與融資",
+            "status": "covered",
+            "finding": "9/30現金1,343.055M，EXIM額外830M仍為審核中，非已撥款現金。",
+            "source_ids": [
+              "SEC_2026_Q3_10Q",
+              "Q3_CALL_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "2026全年指引",
+            "status": "covered",
+            "finding": "2026營收指引52–57M，屬預測非已認列。",
+            "source_ids": [
+              "IR_Q3_RESULTS"
+            ]
+          },
+          {
+            "topic": "Q3逾40億美元飛機backlog",
+            "status": "covered",
+            "finding": "含1,040架firm及option並有財務承諾；不等於SEC會計上28.889M剩餘履約義務。",
+            "source_ids": [
+              "IR_Q3_RESULTS",
+              "SEC_2026_Q3_10Q"
+            ]
+          },
+          {
+            "topic": "單客戶營收集中",
+            "status": "covered",
+            "finding": "Q3 Customer A/B/C分占28/23/22%，是匿名SEC類別，無法精確對到UPS或Eve。",
+            "source_ids": [
+              "SEC_2026_Q3_10Q"
+            ]
+          },
+          {
+            "topic": "FAA A250市場展示許可",
+            "status": "covered",
+            "finding": "2026-10首次FAA特別適航市場展示許可，不是型別認證或常態載客營業。",
+            "source_ids": [
+              "FAA_MARKET_SURVEY",
+              "OFFICIAL_MARKET_SURVEY"
+            ]
+          },
+          {
+            "topic": "CX300型別認證及H500A/H500B",
+            "status": "covered",
+            "finding": "FAA認證仍進行；H500B延伸申請並不等於已正式核准量產。",
+            "source_ids": [
+              "Q3_CALL_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "eIPP 6/7專案啟動",
+            "status": "covered",
+            "finding": "六項已運作，一項未啟動；Florida 14次飛行及Utah/NC醫療配送均與正式Part135營運不同。",
+            "source_ids": [
+              "IR_Q3_RESULTS",
+              "OFFICIAL_FLORIDA"
+            ]
+          },
+          {
+            "topic": "充電站數168",
+            "status": "covered",
+            "finding": "實際設置168處，跨14國；ACES規畫250處是未來目標，不能相加成418個已完工站點。",
+            "source_ids": [
+              "Q3_CALL_TRANSCRIPT",
+              "ARCHER_ACES"
+            ]
+          },
+          {
+            "topic": "生產速率4.5架/月",
+            "status": "covered",
+            "finding": "管理層僅稱已在關鍵零件生產線證明等效速率，未達整架持續商業量產。",
+            "source_ids": [
+              "Q3_CALL_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "Eve motor最高十億美元",
+            "status": "covered",
+            "finding": "供貨協議10年潛在值最高10億，不是已收營收，已交付測試馬達。",
+            "source_ids": [
+              "OFFICIAL_EVE"
+            ]
+          },
+          {
+            "topic": "2026 Surf Air實際合約",
+            "status": "covered",
+            "finding": "25架firm及75架選擇權，別混成100架已確定交貨。",
+            "source_ids": [
+              "OFFICIAL_SURF_AIR"
+            ]
+          },
+          {
+            "topic": "Loganair 2026 term sheet",
+            "status": "covered",
+            "finding": "5架意向及5架options，預定2029投入，未推定為2026財報正式firm backlog。",
+            "source_ids": [
+              "OFFICIAL_LOGANAIR"
+            ]
+          },
+          {
+            "topic": "UPS/Bristow等五家客戶",
+            "status": "covered",
+            "finding": "10-K具有具名實際firm aircraft orders，未認列已交機收入。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "General Dynamics水下電驅",
+            "status": "covered",
+            "finding": "2026Q1官方公告新增合約，不能只寫航空。",
+            "source_ids": [
+              "OFFICIAL_GD"
+            ]
+          },
+          {
+            "topic": "美軍MV250及DEVCOM",
+            "status": "covered",
+            "finding": "軍用混合機開發和付費研究，不是已確定軍方成品機訂單。",
+            "source_ids": [
+              "Q3_CALL_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "GE hybrid turbogenerator",
+            "status": "covered",
+            "finding": "GE/NASA測試確有進度，合作研發不等於已出售引擎批量。",
+            "source_ids": [
+              "OFFICIAL_Q2"
+            ]
+          },
+          {
+            "topic": "Solvay直接材料供應",
+            "status": "covered",
+            "finding": "供應商官方具名主要複材供應；採購額未知。",
+            "source_ids": [
+              "OFFICIAL_SOLVAY"
+            ]
+          },
+          {
+            "topic": "台灣具名直接供應商",
+            "status": "evidence_insufficient",
+            "finding": "10-K亞洲供應商占1%，未查得可雙方確認的台灣直接供貨公司。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "台灣間接受惠概念股",
+            "status": "intentionally_excluded",
+            "finding": "無明確供應契約，不將台灣電池/馬達/航空股當直接供應商。",
+            "source_ids": []
+          },
+          {
+            "topic": "AI/BETA Operate",
+            "status": "covered",
+            "finding": "AI預測維護軟體屬新產品模組，獨立商業收入缺乏披露。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "BETA Operate獨立收入",
+            "status": "evidence_insufficient",
+            "finding": "Maintenance已有內部使用，其他模組的客戶數、ARPU及獨立收入未公開。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "HBM/CoWoS先進封裝",
+            "status": "intentionally_excluded",
+            "finding": "非BETA的航空電力電子核心製造業務，不把AI機房半導體需求混為BETA收入。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "CPO光互連",
+            "status": "intentionally_excluded",
+            "finding": "航空飛控與充電系統並非CPO光學封裝供應鏈。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "Reuters/Bloomberg/The Information獨立採訪",
+            "status": "not_researched",
+            "finding": "未找到可直接證實額外具名採購對象的可核實報導全文，不造引文。",
+            "source_ids": []
+          },
+          {
+            "topic": "ServeTheHome/TomsHardware",
+            "status": "intentionally_excluded",
+            "finding": "伺服器/PC實測範疇不匹配電動航空適航認證，優先FAA技術原始文件。",
+            "source_ids": []
+          },
+          {
+            "topic": "替換電池與energy by the hour",
+            "status": "evidence_insufficient",
+            "finding": "10-K描繪未來aftermarket；機隊未型別認證，不宣稱已有大規模替換電池收入。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "船用與水下推進收入占比",
+            "status": "evidence_insufficient",
+            "finding": "General Dynamics已具名，季報未獨立披露水下推進收入。",
+            "source_ids": [
+              "OFFICIAL_GD",
+              "SEC_2026_Q3_10Q"
+            ]
+          },
+          {
+            "topic": "EXIM 8.3億美元進度",
+            "status": "covered",
+            "finding": "仍在審核中，不能視為到位資本或無條件銀行授信。",
+            "source_ids": [
+              "Q3_CALL_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "訂單到交付的認證風險",
+            "status": "covered",
+            "finding": "商用機未取得完整型別認證，backlog可能延期/取消。",
+            "source_ids": [
+              "SEC_2025_10K",
+              "Q3_CALL_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "關鍵供應國別構成",
+            "status": "covered",
+            "finding": "2025年報約北美90%、歐洲9%、亞洲1%，不能把1%視為全台灣。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          }
+        ],
+        "status_counts": {
+          "covered": 25,
+          "evidence_insufficient": 4,
+          "intentionally_excluded": 4,
+          "not_researched": 1
+        },
+        "material_gaps": [
+          "台灣具名直接供應商",
+          "BETA Operate獨立收入",
+          "Reuters/Bloomberg/The Information獨立採訪",
+          "替換電池與energy by the hour",
+          "船用與水下推進收入占比"
+        ],
+        "all_material_gaps_resolved": false
+      },
+      "independent_reflection_rounds": [
+        {
+          "round": 1,
+          "finding": "最新10-Q收入17.672M，其中服務12.488M；並非認證飛機已出貨",
+          "correction": "收入拆產品/服務，訂單與實收營收分離"
+        },
+        {
+          "round": 2,
+          "finding": "FAA A250 market survey證書不是Type Certificate；4.5架/月是零件線等效產能",
+          "correction": "機型stage設定為demo/certification，產能不標實際月度商業交機"
+        },
+        {
+          "round": 3,
+          "finding": "4.0B飛機backlog含options，SEC remaining performance obligations僅28.889M",
+          "correction": "兩個指標不同會計意涵，各自標明不得混用"
+        },
+        {
+          "round": 4,
+          "finding": "Solvay有直接公開材料供貨證據，但台灣具名直接供應商缺乏",
+          "correction": "supplier包含Solvay，台灣supplier不憑亞洲1%猜測"
+        },
+        {
+          "round": 5,
+          "finding": "2026年新客戶Loganair是term sheet，Surf Air才簽firm aircraft purchase agreement；Eve上限10億只潛在額",
+          "correction": "客戶各自保留order commitment、term_sheet、option、motor shipment證據層級"
+        },
+        {
+          "round": 6,
+          "finding": "FAA eIPP醫療試飛和整合工程服務已產生收入，但還沒有獲准定期收費載客的Part135全面營運",
+          "correction": "醫療示範與規模化定期商業航線分開"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "id": "SEC_2025_10K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1784570/000162828026015838/bta-20251231.htm"
+      },
+      {
+        "id": "SEC_2026_Q3_10Q",
+        "url": "https://www.sec.gov/Archives/edgar/data/1784570/000162828026069152/bta-20260930.htm"
+      },
+      {
+        "id": "SEC_Q3_EARNINGS_EXHIBIT",
+        "url": "https://www.sec.gov/Archives/edgar/data/1784570/000162828026069120/q32026earningsrelease.htm"
+      },
+      {
+        "id": "IR_Q3_RESULTS",
+        "url": "https://investors.beta.team/news-events/press-releases/detail/123/beta-technologies-inc-announces-third-quarter-2026-results"
+      },
+      {
+        "id": "IR_FINANCIAL_RESULTS",
+        "url": "https://investors.beta.team/financials/financial-results"
+      },
+      {
+        "id": "Q3_CALL_TRANSCRIPT",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/11/03/beta-technologies-beta-q3-2026-earnings-call-transcript/"
+      },
+      {
+        "id": "Q3_CALL_TRANSCRIPT_ALT",
+        "url": "https://stockanalysis.com/stocks/beta/transcripts/731184-q3-2026/"
+      },
+      {
+        "id": "FAA_MARKET_SURVEY",
+        "url": "https://www.faa.gov/newsroom/trumps-transportation-secretary-sean-p-duffy-announces-first-ever-special-airworthiness"
+      },
+      {
+        "id": "OFFICIAL_MARKET_SURVEY",
+        "url": "https://investors.beta.team/news-events/press-releases/detail/121/beta-becomes-first-company-to-secure-landmark-faa-authorization-to-conduct-flight-operations-with-prospective-customers-in-electric-vtol-aircraft"
+      },
+      {
+        "id": "OFFICIAL_Q2",
+        "url": "https://investors.beta.team/news-events/press-releases/detail/116/beta-technologies-inc-announces-second-quarter-2026-results"
+      },
+      {
+        "id": "OFFICIAL_FLORIDA",
+        "url": "https://beta.team/stories/beta-completes-14-all-electric-flights-across-florida-under-u.s.-dot-and-faas-evtol-integration-pilot-program"
+      },
+      {
+        "id": "ARCHER_ACES",
+        "url": "https://www.investors.archer.com/news/news-details/2026/Archer-BETA-Plan-to-Bring-Air-Taxi-Charging-Infrastructure-to-Texas-to-Support-TxDOTs-eIPP-Operations-with-Americas-Consortium-for-Electric-Skyways/default.aspx"
+      },
+      {
+        "id": "OFFICIAL_SURF_AIR",
+        "url": "https://investors.beta.team/news-events/press-releases/detail/101/beta-technologies-announces-aircraft-purchase-agreement-and-launch-passenger-operations-partnership-with-surf-air-mobility"
+      },
+      {
+        "id": "OFFICIAL_LOGANAIR",
+        "url": "https://investors.beta.team/news-events/press-releases/detail/113/loganair-adds-beta-technologies-alia-ctol-aircraft-to-its-fleet-following-successful-demonstrations-in-united-kingdom"
+      },
+      {
+        "id": "OFFICIAL_EVE",
+        "url": "https://investors.beta.team/news-events/press-releases/detail/93/eve-air-mobility-selects-beta-technologies-as-pusher-motor-supplier"
+      },
+      {
+        "id": "OFFICIAL_GD",
+        "url": "https://www.sec.gov/Archives/edgar/data/1784570/000162828026033824/a2026q1earningsrelease.htm"
+      },
+      {
+        "id": "OFFICIAL_SOLVAY",
+        "url": "https://www.solvay.com/en/press-release/solvay-partners-beta-technologies-advanced-air-mobility-platform"
+      },
+      {
+        "id": "OFFICIAL_PRODUCT",
+        "url": "https://beta.team/"
+      },
+      {
+        "id": "Q3_IR_Q3_10Q",
+        "url": "https://investors.beta.team/financials/annual-reports/content/0001628280-26-069152/bta-20260930.htm"
+      }
+    ]
   }
 }
