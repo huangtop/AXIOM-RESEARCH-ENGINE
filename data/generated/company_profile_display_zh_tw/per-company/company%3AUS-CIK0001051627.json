@@ -166,5 +166,818 @@
       "化合物半導體普及"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-05",
+    "company": "AXT, Inc.",
+    "symbol": "AXTI",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "AXTI 產業鏈｜InP 光通訊基板、Coherent／Lumentum、英特磊、通美擴產與出口管制",
+      "description": "SEC與公司IR交叉核實AI光通訊磷化銦、6吋晶圓量產時程、具名客戶供貨合約、台灣英特磊年報及中國出口風險。"
+    },
+    "business_lines": [
+      {
+        "id": "INP_OPTICAL",
+        "name": "磷化銦 InP：AI 光通訊、800G／1.6T／CPO 雷射",
+        "downstream_applications": "3／4吋成熟出貨；6吋InP進入試產和量產資格認證，供連續波雷射、EML、光偵測元件；AXT供應基板而非完整光模組。"
+      },
+      {
+        "id": "INP_5G",
+        "name": "磷化銦 InP：5G／PON／通訊元件",
+        "downstream_applications": "高速光通訊、被動光網路、5G基地台及感測元件所需基板。"
+      },
+      {
+        "id": "GAAS_RF",
+        "name": "砷化鎵 GaAs：無線射頻與PA",
+        "downstream_applications": "半絕緣GaAs用於功率放大器與高速RF元件；不可把手機終端品牌當作直接基板客戶。"
+      },
+      {
+        "id": "GAAS_VCSEL",
+        "name": "砷化鎵 GaAs：VCSEL、機器人與資料中心雷射",
+        "downstream_applications": "6吋、8吋低缺陷密度晶圓，用於VCSEL、感測與光學；高階8吋的採用仍應逐項追蹤。"
+      },
+      {
+        "id": "GERMANIUM",
+        "name": "鍺 Ge：衛星太陽能及光學",
+        "downstream_applications": "鍺基板用於太空太陽能電池與其他光學／半導體元件，Q3營收較小。"
+      },
+      {
+        "id": "RAW_MATERIALS",
+        "name": "原料垂直整合：高純銦、鎵、砷、鍺與pBN",
+        "downstream_applications": "透過中國原料子公司／合資企業供應高純度銦、鎵、砷與pBN坩堝等；JinMei、BoYu實際製造。"
+      },
+      {
+        "id": "CAPACITY_CHINA",
+        "name": "中國製造、InP產能擴張與出口許可",
+        "downstream_applications": "Tongmei北京／中國製造；出口許可、6吋量產驗證、內銷配額與融資條件共同決定供貨。"
+      },
+      {
+        "id": "COMMERCIAL_CONTRACTS",
+        "name": "具名供貨合約、預付款與產能預留",
+        "downstream_applications": "Coherent、Lumentum、Casela長期合約；定金、backlog與收入逐期區分。"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "COMMERCIAL_CONTRACTS_customer_001",
+        "name": "Coherent Corp.（COHR）",
+        "business_line": "COMMERCIAL_CONTRACTS",
+        "relationship": "customer",
+        "details": "2026-06-25簽署三年期6吋InP量產開發與供貨協議，預付款2,228.85萬美元；不得全數認列收入。",
+        "evidence_level": "SEC_signed_supply_and_development_contract",
+        "commercialization": "development_and_capacity_ramp",
+        "source_ids": [
+          "SEC_2026_COHR_AGREEMENT",
+          "SEC_2026_Q2_10Q"
+        ]
+      },
+      {
+        "id": "COMMERCIAL_CONTRACTS_customer_002",
+        "name": "Lumentum Operations／Lumentum（LITE）",
+        "business_line": "COMMERCIAL_CONTRACTS",
+        "relationship": "customer",
+        "details": "2026-07-26多年期InP產能預留合約：首次4,350萬美元、2028另預定4,350萬美元；作未來出貨抵扣。",
+        "evidence_level": "SEC_signed_capacity_reservation_contract",
+        "commercialization": "capacity_committed_not_immediate_revenue",
+        "source_ids": [
+          "SEC_2026_LITE_8K",
+          "SEC_2026_LITE_ANNOUNCEMENT"
+        ]
+      },
+      {
+        "id": "COMMERCIAL_CONTRACTS_customer_003",
+        "name": "Nanjing Casela Technologies（南京 Casela）",
+        "business_line": "COMMERCIAL_CONTRACTS",
+        "relationship": "customer",
+        "details": "2026-06-11簽約2027年固定數量InP供應，合約總值約人民幣1.73億元，預付50%；2027尚未完成出貨，應列已簽訂未來銷售合約。",
+        "evidence_level": "SEC_signed_future_purchase_agreement",
+        "commercialization": "firm_2027_supply_commitment",
+        "source_ids": [
+          "SEC_2026_CASELA"
+        ]
+      },
+      {
+        "id": "INP_OPTICAL_customer_001",
+        "name": "英特磊科技 IntelliEPI（4971）",
+        "business_line": "INP_OPTICAL",
+        "relationship": "customer",
+        "details": "台灣英特磊2023年年報在「基板供應廠商」表明列AXT（並列Sumitomo、Freiberger等）；不代表2026採購額或最新第一大供應商。",
+        "evidence_level": "Taiwan_listed_company_annual_named_substrate_supplier",
+        "commercialization": "documented_historical_supplier_relationship",
+        "source_ids": [
+          "TW_INTELLIEPI_ANNUAL"
+        ]
+      },
+      {
+        "id": "RAW_MATERIALS_supplier_001",
+        "name": "JinMei（AXT／Tongmei旗下原料企業）",
+        "business_line": "RAW_MATERIALS",
+        "relationship": "supplier",
+        "details": "Q3法說確認JinMei已開始精煉高純度銦，直接支援InP晶體生長；為旗下原料企業而非獨立台灣供應股。",
+        "evidence_level": "company_disclosed_controlled_raw_material_supplier",
+        "commercialization": "operating",
+        "source_ids": [
+          "Q3_TRANSCRIPT",
+          "SEC_2026_Q2_10Q"
+        ]
+      },
+      {
+        "id": "RAW_MATERIALS_supplier_002",
+        "name": "BoYu（AXT／Tongmei旗下原料企業）",
+        "business_line": "RAW_MATERIALS",
+        "relationship": "supplier",
+        "details": "2025年報及2026Q2 10-Q確認其pBN坩堝與OLED製程相關器件；屬集團內整合原料供應及對外銷售。",
+        "evidence_level": "SEC_named_controlled_raw_material_supplier",
+        "commercialization": "operating",
+        "source_ids": [
+          "SEC_2025_10K",
+          "SEC_2026_Q2_10Q"
+        ]
+      },
+      {
+        "id": "CAPACITY_CHINA_partner_001",
+        "name": "Beijing Tongmei Xtal Technology（北京通美）",
+        "business_line": "CAPACITY_CHINA",
+        "relationship": "partner",
+        "details": "AXT控制的中國製造子公司而非獨立外包晶圓代工廠；10/27簽募資協議，尚待交割。",
+        "evidence_level": "SEC_controlled_manufacturing_subsidiary",
+        "commercialization": "existing_operations_fundraise_pending",
+        "source_ids": [
+          "SEC_2026_TONGMEI",
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "CAPACITY_CHINA_partner_002",
+        "name": "BNK-B3 HK Holdings",
+        "business_line": "CAPACITY_CHINA",
+        "relationship": "partner",
+        "details": "2026-10-27簽署通美股權投資協議的領投方；RMB19.12億至36.69億為擬投資範圍，非已完成募資。",
+        "evidence_level": "SEC_signed_financing_agreement",
+        "commercialization": "agreement_pending_closing",
+        "source_ids": [
+          "SEC_2026_TONGMEI"
+        ]
+      },
+      {
+        "id": "INP_OPTICAL_competitor_001",
+        "name": "Sumitomo Electric／Sumitomo Semiconductor",
+        "business_line": "INP_OPTICAL",
+        "relationship": "competitor",
+        "details": "2025 SEC年報列作基板競爭來源；依InP／GaAs產品分類，不能將所有材料完全互換。",
+        "evidence_level": "SEC_named_competitor",
+        "commercialization": null,
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "INP_OPTICAL_competitor_002",
+        "name": "JX Advanced Metals／JX Nippon Mining",
+        "business_line": "INP_OPTICAL",
+        "relationship": "competitor",
+        "details": "2025 SEC年報列作基板競爭來源；依InP／GaAs產品分類，不能將所有材料完全互換。",
+        "evidence_level": "SEC_named_competitor",
+        "commercialization": null,
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "INP_OPTICAL_competitor_003",
+        "name": "Freiberger Compound Materials",
+        "business_line": "INP_OPTICAL",
+        "relationship": "competitor",
+        "details": "2025 SEC年報列作基板競爭來源；依InP／GaAs產品分類，不能將所有材料完全互換。",
+        "evidence_level": "SEC_named_competitor",
+        "commercialization": null,
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "GAAS_RF_competitor_001",
+        "name": "Freiberger Compound Materials",
+        "business_line": "GAAS_RF",
+        "relationship": "competitor",
+        "details": "2025 SEC年報列作基板競爭來源；依InP／GaAs產品分類，不能將所有材料完全互換。",
+        "evidence_level": "SEC_named_competitor",
+        "commercialization": null,
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "GAAS_RF_competitor_002",
+        "name": "Umicore",
+        "business_line": "GAAS_RF",
+        "relationship": "competitor",
+        "details": "2025 SEC年報列作基板競爭來源；依InP／GaAs產品分類，不能將所有材料完全互換。",
+        "evidence_level": "SEC_named_competitor",
+        "commercialization": null,
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "GAAS_RF_competitor_003",
+        "name": "Vital Materials",
+        "business_line": "GAAS_RF",
+        "relationship": "competitor",
+        "details": "2025 SEC年報列作基板競爭來源；依InP／GaAs產品分類，不能將所有材料完全互換。",
+        "evidence_level": "SEC_named_competitor",
+        "commercialization": null,
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "GAAS_RF_competitor_004",
+        "name": "CCTC",
+        "business_line": "GAAS_RF",
+        "relationship": "competitor",
+        "details": "2025 SEC年報列作基板競爭來源；依InP／GaAs產品分類，不能將所有材料完全互換。",
+        "evidence_level": "SEC_named_competitor",
+        "commercialization": null,
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "INP_OPTICAL_beneficiary_001",
+        "name": "聯亞光電（3081）",
+        "business_line": "INP_OPTICAL",
+        "relationship": "beneficiary",
+        "details": "台灣光電／磊晶／RF產業鏈相關公司；此節點僅表示相鄰應用及可能受惠，並非已確證AXT向其採購或2026訂單；英特磊另有歷史具名基板客戶證據。",
+        "evidence_level": "sector_exposure_not_direct_AXT_supplier",
+        "commercialization": null,
+        "source_ids": [
+          "TW_WIN_SEMI_ANNUAL",
+          "TW_INTELLIEPI_ANNUAL"
+        ]
+      },
+      {
+        "id": "INP_OPTICAL_beneficiary_002",
+        "name": "英特磊科技（4971）",
+        "business_line": "INP_OPTICAL",
+        "relationship": "beneficiary",
+        "details": "台灣光電／磊晶／RF產業鏈相關公司；此節點僅表示相鄰應用及可能受惠，並非已確證AXT向其採購或2026訂單；英特磊另有歷史具名基板客戶證據。",
+        "evidence_level": "sector_exposure_not_direct_AXT_supplier",
+        "commercialization": null,
+        "source_ids": [
+          "TW_WIN_SEMI_ANNUAL",
+          "TW_INTELLIEPI_ANNUAL"
+        ]
+      },
+      {
+        "id": "INP_OPTICAL_beneficiary_003",
+        "name": "環宇-KY（4991）",
+        "business_line": "INP_OPTICAL",
+        "relationship": "beneficiary",
+        "details": "台灣光電／磊晶／RF產業鏈相關公司；此節點僅表示相鄰應用及可能受惠，並非已確證AXT向其採購或2026訂單；英特磊另有歷史具名基板客戶證據。",
+        "evidence_level": "sector_exposure_not_direct_AXT_supplier",
+        "commercialization": null,
+        "source_ids": [
+          "TW_WIN_SEMI_ANNUAL",
+          "TW_INTELLIEPI_ANNUAL"
+        ]
+      },
+      {
+        "id": "INP_OPTICAL_beneficiary_004",
+        "name": "光聖（6442）",
+        "business_line": "INP_OPTICAL",
+        "relationship": "beneficiary",
+        "details": "台灣光電／磊晶／RF產業鏈相關公司；此節點僅表示相鄰應用及可能受惠，並非已確證AXT向其採購或2026訂單；英特磊另有歷史具名基板客戶證據。",
+        "evidence_level": "sector_exposure_not_direct_AXT_supplier",
+        "commercialization": null,
+        "source_ids": [
+          "TW_WIN_SEMI_ANNUAL",
+          "TW_INTELLIEPI_ANNUAL"
+        ]
+      },
+      {
+        "id": "GAAS_RF_beneficiary_001",
+        "name": "穩懋（3105）",
+        "business_line": "GAAS_RF",
+        "relationship": "beneficiary",
+        "details": "台灣光電／磊晶／RF產業鏈相關公司；此節點僅表示相鄰應用及可能受惠，並非已確證AXT向其採購或2026訂單；英特磊另有歷史具名基板客戶證據。",
+        "evidence_level": "sector_exposure_not_direct_AXT_supplier",
+        "commercialization": null,
+        "source_ids": [
+          "TW_WIN_SEMI_ANNUAL",
+          "TW_INTELLIEPI_ANNUAL"
+        ]
+      },
+      {
+        "id": "GAAS_RF_beneficiary_002",
+        "name": "宏捷科（8086）",
+        "business_line": "GAAS_RF",
+        "relationship": "beneficiary",
+        "details": "台灣光電／磊晶／RF產業鏈相關公司；此節點僅表示相鄰應用及可能受惠，並非已確證AXT向其採購或2026訂單；英特磊另有歷史具名基板客戶證據。",
+        "evidence_level": "sector_exposure_not_direct_AXT_supplier",
+        "commercialization": null,
+        "source_ids": [
+          "TW_WIN_SEMI_ANNUAL",
+          "TW_INTELLIEPI_ANNUAL"
+        ]
+      },
+      {
+        "id": "GAAS_VCSEL_beneficiary_001",
+        "name": "全新光電（2455）",
+        "business_line": "GAAS_VCSEL",
+        "relationship": "beneficiary",
+        "details": "台灣光電／磊晶／RF產業鏈相關公司；此節點僅表示相鄰應用及可能受惠，並非已確證AXT向其採購或2026訂單；英特磊另有歷史具名基板客戶證據。",
+        "evidence_level": "sector_exposure_not_direct_AXT_supplier",
+        "commercialization": null,
+        "source_ids": [
+          "TW_WIN_SEMI_ANNUAL",
+          "TW_INTELLIEPI_ANNUAL"
+        ]
+      }
+    ],
+    "research": {
+      "review_window": "2026-08-07/2026-11-05",
+      "financial_facts": {
+        "quarter": "2026Q3",
+        "quarter_end": "2026-09-30",
+        "q3_revenue_usd_millions": 73.4,
+        "yoy_growth_pct": 162,
+        "qoq_growth_pct": 54,
+        "gaap_gross_margin_pct": 56.0,
+        "non_gaap_gross_margin_pct": 56.1,
+        "gaap_net_income_usd_millions": 25.7,
+        "q3_inp_usd_millions": 54.3,
+        "q3_gaas_usd_millions": 9.1,
+        "q3_ge_usd_millions": 0.344,
+        "q3_consolidated_raw_material_usd_millions": 9.7,
+        "top_five_customers_revenue_share_pct_approx": 35,
+        "one_customer_above_ten_pct": true,
+        "backlog_usd_millions_lower_bound": 500,
+        "q4_2026_revenue_expectation_usd_millions_approx": 90,
+        "q4_2026_expectation_is_guidance": true,
+        "source_ids": [
+          "IR_2026_Q3_RESULTS",
+          "Q3_TRANSCRIPT"
+        ]
+      },
+      "evidence_policy": "非一般消費電子/全民供電業務，所有customer必須為具名法律實體或具名上市公司。客戶、原料子公司、競爭者及產業受惠嚴格分開。",
+      "technical_positioning": "AXT為InP/GaAs/Ge基板廠，不是完整光模組、HBM或CoWoS直接供應商。",
+      "reflections": [
+        {
+          "round": 1,
+          "finding": "原始 JSON 僅列InP/GaAs/Ge，90天逆向議題須補Coherent、Lumentum、Casela、通美募資及出口許可。",
+          "correction": "增設合約、供應鏈與中國產能主線。"
+        },
+        {
+          "round": 2,
+          "finding": "6吋InP開始pilot production，預付及產能預留不等於當季已實現營收。",
+          "correction": "逐節點商業化分級並標示backlog/訂金非營收。"
+        },
+        {
+          "round": 3,
+          "finding": "台灣英特磊年報具名AXT供應基板，但未列其分項採購額；其他台股為相鄰產業。",
+          "correction": "英特磊列customer，其餘僅beneficiary，不虛構供應合約。"
+        },
+        {
+          "round": 4,
+          "finding": "JinMei/BoYu為旗下原料企業，通美是控制中的製造子公司；並非獨立台灣供應商。",
+          "correction": "供應商與子公司角色及證據區分，跨公司節點不重複計數。"
+        },
+        {
+          "round": 5,
+          "finding": "2026Q3 8-K已公布但Q3完整10-Q尚未查到；管理層Q4數字屬指引。",
+          "correction": "SEC文種及實績日期分開，不假稱Q3 10-Q已核實。"
+        }
+      ]
+    },
+    "five_gate_audit": {
+      "gate_1_hot_topics_reverse_check": {
+        "performed": true,
+        "result": "pass_with_open_items",
+        "independent_90_day_topics": [
+          "Q3營收與InP毛利上升",
+          "5億美元以上backlog",
+          "Lumentum長約",
+          "Coherent 6吋晶圓",
+          "Casela 2027訂單",
+          "通美融資/香港上市",
+          "中國出口許可",
+          "JinMei高純銦"
+        ],
+        "note": "從最新SEC/法說和新聞先找熱門議題，再比對舊display缺口。"
+      },
+      "gate_2_investor_top_ten_questions": {
+        "performed": true,
+        "result": "reviewed",
+        "questions": [
+          {
+            "topic": "營收成長",
+            "finding": "Q3 7,340萬美元、年增162%，InP5,430萬為主力。"
+          },
+          {
+            "topic": "毛利率",
+            "finding": "Q3 GAAP56.0%，4吋InP占比提升及產品售價影響。"
+          },
+          {
+            "topic": "資本支出",
+            "finding": "產能擴張與通美募資協議，不能把擬融資當已實現現金。"
+          },
+          {
+            "topic": "競爭力",
+            "finding": "高品質VGF及晶體缺陷控制、4/6吋規模化、原料垂直整合；Sumitomo/JX競爭。"
+          },
+          {
+            "topic": "技術轉折",
+            "finding": "800G/1.6T InP光源、6吋試產、GaAs 8吋VCSEL。"
+          },
+          {
+            "topic": "客戶採用",
+            "finding": "Coherent、Lumentum、Casela合約及英特磊歷史基板供應文件。"
+          },
+          {
+            "topic": "產能",
+            "finding": "2026已超越InP倍增目標，管理層計畫2027再次倍增，區分規劃與已裝設產能。"
+          },
+          {
+            "topic": "供應鏈",
+            "finding": "通美、JinMei/BoYu以及中國出口許可；台灣英特磊有直接交易歷史證據。"
+          },
+          {
+            "topic": "估值催化劑",
+            "finding": "2027放量、6吋量產資格認證、光通訊需求、通美融資交割。"
+          },
+          {
+            "topic": "風險",
+            "finding": "中國出口核准、客戶預付款返還、backlog轉換、競爭與製程良率。"
+          }
+        ]
+      },
+      "gate_3_technology_product_completeness": {
+        "performed": true,
+        "result": "pass_with_open_items",
+        "areas": [
+          "3/4吋InP量產",
+          "6吋InP試產",
+          "800G/1.6T雷射材料",
+          "CPO相關但未驗證獨立收入",
+          "GaAs 6/8吋VCSEL",
+          "5G/PA",
+          "Ge衛星太陽能",
+          "HBM非直接收入",
+          "CoWoS非直接收入"
+        ]
+      },
+      "gate_4_falsification_competition": {
+        "performed": true,
+        "result": "pass_with_open_items",
+        "tests": [
+          "訂金不等於營收",
+          "6吋pilot不等於量產",
+          "合約對象是否真具名",
+          "中國出境需許可",
+          "台灣台股是否直接AXT客戶",
+          "材料產業地位與模組整機區分"
+        ],
+        "unresolved": [
+          "6吋獨立量產營收",
+          "台灣2026分項採購",
+          "資料中心終端具名客戶"
+        ]
+      },
+      "gate_5_missing_topic_audit": {
+        "performed": true,
+        "result": "pass_with_material_gaps_disclosed",
+        "important_issue_coverage_table": [
+          {
+            "topic": "2026Q3財報收入與GAAP毛利率",
+            "status": "covered",
+            "finding": "Q3 7,340萬美元／GAAP毛利56.0%，年增162%；來源是SEC 8-K與官方IR。",
+            "source_ids": [
+              "SEC_2026_Q3_8K",
+              "IR_2026_Q3_RESULTS"
+            ]
+          },
+          {
+            "topic": "最新Q3 10-Q",
+            "status": "not_yet_available",
+            "finding": "截至11/05能核對Q3 8-K及財報；最近已取得完整10-Q為Q2 2026，不虛構Q3 10-Q。",
+            "source_ids": [
+              "SEC_2026_Q2_10Q",
+              "SEC_2026_Q3_8K"
+            ]
+          },
+          {
+            "topic": "InP產品收入占比與AI需求",
+            "status": "covered",
+            "finding": "Q3 InP營收5,430萬美元，主要資料中心，未把全數認作CPO營收。",
+            "source_ids": [
+              "Q3_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "GaAs／VCSEL／機器人／RF",
+            "status": "covered",
+            "finding": "Q3 GaAs營收910萬美元，部分6吋/8吋VCSEL處於展示與採用階段。",
+            "source_ids": [
+              "Q3_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "鍺基板與太陽能",
+            "status": "covered",
+            "finding": "Q3鍺基板34.4萬美元；應用衛星太陽能等。",
+            "source_ids": [
+              "Q3_TRANSCRIPT",
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "垂直整合原料",
+            "status": "covered",
+            "finding": "JinMei高純度銦與BoYu pBN；旗下企業與第三方供應鏈分開。",
+            "source_ids": [
+              "Q3_TRANSCRIPT",
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "6吋InP量產商業化",
+            "status": "evidence_insufficient",
+            "finding": "2026Q3管理層稱pilot production，Coherent合約談Mass Production路線；尚不可宣稱6吋全面量產及獨立營收。",
+            "source_ids": [
+              "Q3_TRANSCRIPT",
+              "SEC_2026_COHR_AGREEMENT"
+            ]
+          },
+          {
+            "topic": "4吋／3吋InP供給結構",
+            "status": "covered",
+            "finding": "4吋占比及售價上升推升Q3毛利，區分6吋pilot。",
+            "source_ids": [
+              "Q3_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "Coherent具名客戶",
+            "status": "covered",
+            "finding": "簽署6吋InP三年供貨與開發、預付22.2885百萬美元，預付款不是銷售收入。",
+            "source_ids": [
+              "SEC_2026_COHR_AGREEMENT"
+            ]
+          },
+          {
+            "topic": "Lumentum具名客戶",
+            "status": "covered",
+            "finding": "簽署多年產能預留：43.5百萬美元初期+43.5百萬美元未來預付，不等於當季營收。",
+            "source_ids": [
+              "SEC_2026_LITE_8K"
+            ]
+          },
+          {
+            "topic": "Casela具名客戶",
+            "status": "covered",
+            "finding": "2027年1.73億人民幣已簽InP供貨約，須區分當期及未來履約。",
+            "source_ids": [
+              "SEC_2026_CASELA"
+            ]
+          },
+          {
+            "topic": "英特磊台灣具名直接採購關係",
+            "status": "covered",
+            "finding": "台灣4971歷史年報具名AXT為基板供應商之一；未量化AXT分項採購。",
+            "source_ids": [
+              "TW_INTELLIEPI_ANNUAL"
+            ]
+          },
+          {
+            "topic": "台灣其他具名直接客戶",
+            "status": "evidence_insufficient",
+            "finding": "其他台灣光電公司未取得可支持與AXT直接交易文件，不能列customer。",
+            "source_ids": [
+              "TW_WIN_SEMI_ANNUAL"
+            ]
+          },
+          {
+            "topic": "AI 800G／1.6T 光模組上游位置",
+            "status": "covered",
+            "finding": "供應InP基板，非成品光模組與交換晶片；需求部分連動AI光互連。",
+            "source_ids": [
+              "SEC_2025_10K",
+              "Q3_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "CPO量產獨立收入",
+            "status": "evidence_insufficient",
+            "finding": "連續波雷射與InP有CPO相關性，未確認直接CPO獨立營收及客戶。",
+            "source_ids": [
+              "Q3_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "HBM/CoWoS直接供應",
+            "status": "intentionally_excluded",
+            "finding": "AXT不製造HBM堆疊記憶體或CoWoS封裝設備；列為間接AI需求而非直接供應。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "出口管制及中國境內外發貨差異",
+            "status": "covered",
+            "finding": "境外InP需許可、境內銷售不需同類出口許可；許可週期影響backlog轉收入。",
+            "source_ids": [
+              "REUTERS_INP_EXPORT",
+              "Q3_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "5億美元以上backlog",
+            "status": "covered",
+            "finding": "Q3法說表示backlog超過5億美元，混合現貨PO、短期及多年合約；未來履約且並非保證營收。",
+            "source_ids": [
+              "Q3_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "2026 Q4指引",
+            "status": "covered",
+            "finding": "管理層稱Q4約9,000萬美元具高度可行性、毛利率逾60%為展望。",
+            "source_ids": [
+              "Q3_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "通美股權融資與稀釋",
+            "status": "covered",
+            "finding": "RMB19.12億-36.69億簽約但未交割；若最大交易完成，母公司持有約73.4%。",
+            "source_ids": [
+              "SEC_2026_TONGMEI"
+            ]
+          },
+          {
+            "topic": "通美IPO由STAR轉香港",
+            "status": "covered",
+            "finding": "Q2 10-Q確認7月撤回STAR申請，準備轉向香港市場。",
+            "source_ids": [
+              "SEC_2026_Q2_10Q"
+            ]
+          },
+          {
+            "topic": "資本支出與擴產進度",
+            "status": "evidence_insufficient",
+            "finding": "已確認產能倍增且2027再倍增目標，但尚未逐子公司核實2026全年實際資本支出。",
+            "source_ids": [
+              "Q3_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "競爭者與替代基板",
+            "status": "covered",
+            "finding": "SEC列Sumitomo、JX、Freiberger、Umicore、Vital、CCTC，光元件設計替代另有風險。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "具名終端雲端客戶",
+            "status": "evidence_insufficient",
+            "finding": "Coherent/Lumentum為直接基板客戶，不能倒推Microsoft/Meta/NVIDIA為AXT直接客戶。",
+            "source_ids": [
+              "SEC_2026_LITE_8K"
+            ]
+          },
+          {
+            "topic": "Reuters中國InP出口",
+            "status": "covered",
+            "finding": "6/11專題報導許可瓶頸、國際供需；以管理層及SEC更新資料交叉核實。",
+            "source_ids": [
+              "REUTERS_INP_EXPORT"
+            ]
+          },
+          {
+            "topic": "Tom’s Hardware／ServeTheHome逐料號測試",
+            "status": "not_researched",
+            "finding": "未取得可追溯到AXT基板指定料號的技術拆機驗證，不推測。",
+            "source_ids": []
+          },
+          {
+            "topic": "Bloomberg／The Information付費獨家",
+            "status": "not_researched",
+            "finding": "未取得可核對的全文，不引用不具來源的訂單傳聞。",
+            "source_ids": []
+          },
+          {
+            "topic": "台灣當期AXT採購金額",
+            "status": "evidence_insufficient",
+            "finding": "英特磊具名供應資料屬2023年報，未取得2026 AXTI對台分項營收。",
+            "source_ids": [
+              "TW_INTELLIEPI_ANNUAL"
+            ]
+          },
+          {
+            "topic": "鎵、銦、砷供料瓶頸",
+            "status": "covered",
+            "finding": "JinMei與BoYu垂直整合，部分原物料依賴少數供應商。",
+            "source_ids": [
+              "SEC_2025_10K",
+              "Q3_TRANSCRIPT"
+            ]
+          }
+        ],
+        "material_open_topics": [
+          "6吋InP量產商業化",
+          "台灣其他具名直接客戶",
+          "CPO量產獨立收入",
+          "資本支出與擴產進度",
+          "具名終端雲端客戶",
+          "Tom’s Hardware／ServeTheHome逐料號測試",
+          "Bloomberg／The Information付費獨家",
+          "台灣當期AXT採購金額"
+        ],
+        "completion_claim": "evidence_graded_not_exhaustive"
+      }
+    },
+    "sources": [
+      {
+        "id": "SEC_2025_10K",
+        "category": "SEC_10K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1051627/000143774926008612/axti20251231_10k.htm"
+      },
+      {
+        "id": "SEC_2026_Q2_10Q",
+        "category": "SEC_10Q",
+        "url": "https://www.sec.gov/Archives/edgar/data/1051627/000143774926027677/axti20260630_10q.htm"
+      },
+      {
+        "id": "SEC_2026_Q3_8K",
+        "category": "SEC_8K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1051627/000143774926033941/ex_1013304.htm"
+      },
+      {
+        "id": "SEC_2026_COHR_AGREEMENT",
+        "category": "SEC_contract",
+        "url": "https://www.sec.gov/Archives/edgar/data/1051627/000143774926027677/ex_996841.htm"
+      },
+      {
+        "id": "SEC_2026_LITE_8K",
+        "category": "SEC_contract",
+        "url": "https://www.sec.gov/Archives/edgar/data/1051627/000143774926024883/axti20260715_8k.htm"
+      },
+      {
+        "id": "SEC_2026_CASELA",
+        "category": "SEC_contract",
+        "url": "https://www.sec.gov/Archives/edgar/data/1051627/000143774926027677/axti20260630_10q.htm"
+      },
+      {
+        "id": "SEC_2026_TONGMEI",
+        "category": "SEC_8K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1051627/000121390026113058/ea0309774-8k_axt.htm"
+      },
+      {
+        "id": "IR_2026_Q3_RESULTS",
+        "category": "IR",
+        "url": "https://investors.axt.com/Investors/news/news-details/2026/AXT-Inc--Announces-Third-Quarter-2026-Financial-Results/default.aspx"
+      },
+      {
+        "id": "IR_EVENTS",
+        "category": "IR",
+        "url": "https://investors.axt.com/Investors/Overview/default.aspx"
+      },
+      {
+        "id": "Q3_TRANSCRIPT",
+        "category": "earnings_call_transcript",
+        "url": "https://stockanalysis.com/stocks/axti/transcripts/720226-q3-2026/"
+      },
+      {
+        "id": "REUTERS_INP_EXPORT",
+        "category": "Reuters",
+        "url": "https://www.reuters.com/world/china/chinas-control-over-indium-phosphide-exports-threatens-ai-data-centre-rollout-2026-06-11/"
+      },
+      {
+        "id": "TW_INTELLIEPI_ANNUAL",
+        "category": "Taiwan_public_filing",
+        "url": "https://www.intelliepi.com/tw/doc/stockholderMeeting/2024/annualReport.pdf"
+      },
+      {
+        "id": "TW_WIN_SEMI_ANNUAL",
+        "category": "Taiwan_public_filing",
+        "url": "https://www.winfoundry.com/zh-TW/Base/DownLoadFile/397?TargetTable=Articleattachment&filename=%E7%A9%A9%E6%87%8B110%E5%B9%B4%E5%BA%A6%E5%B9%B4%E5%A0%B1.pdf"
+      },
+      {
+        "id": "SEC_2026_LITE_ANNOUNCEMENT",
+        "category": "SEC_8K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1051627/000143774926024883/ex_993544.htm"
+      }
+    ]
   }
 }

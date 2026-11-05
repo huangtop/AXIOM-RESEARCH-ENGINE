@@ -217,5 +217,898 @@
       "乙太網路擴展"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-04",
+    "company": "Astera Labs, Inc.",
+    "symbol": "ALAB",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "ALAB 產業鏈｜Scorpio X、Aries 7、NPO／CPO、CXL 記憶體、Orion 與台灣供應鏈",
+      "description": "以 SEC、Astera Q3 2026 法說及官方 PCIe7／光學發表為起點，辨識量產、送樣、路線圖及台灣供應鏈證據等級。"
+    },
+    "business_lines": [
+      {
+        "id": "SCORPIO_X",
+        "name": "Scorpio X-Series 320-lane AI fabric switch"
+      },
+      {
+        "id": "SCORPIO_P",
+        "name": "Scorpio P-Series PCIe switch"
+      },
+      {
+        "id": "ARIES",
+        "name": "Aries PCIe 5／6 retimers、copper connectivity"
+      },
+      {
+        "id": "ARIES7",
+        "name": "Aries PCIe 7 retimer／redriver／optical driver／TIA"
+      },
+      {
+        "id": "TAURUS",
+        "name": "Taurus 400G／800G Ethernet 智慧纜線"
+      },
+      {
+        "id": "LEO",
+        "name": "Leo 2 E／P 與 Leo X-Series 記憶體控制器"
+      },
+      {
+        "id": "OPTICS",
+        "name": "NPO／LPO／未來 CPO 光學互連"
+      },
+      {
+        "id": "ORION",
+        "name": "Orion rack-scale AI reference architecture"
+      },
+      {
+        "id": "COSMOS",
+        "name": "COSMOS Rack／Fabric／Link Manager"
+      },
+      {
+        "id": "CUSTOM",
+        "name": "NVLink Fusion／UALink／custom fabric／I/O chiplet"
+      },
+      {
+        "id": "SUPPLY",
+        "name": "無晶圓廠供應鏈、封裝及台灣生態"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "SCORPIO_X_customer_001",
+        "business_line": "SCORPIO_X",
+        "relationship": "customer",
+        "name": "匿名 hyperscaler 平台",
+        "details": "2026 Q3 Scorpio X-Series 量產放量；兩個客戶有出貨，僅其中一部分量產，具名身分未證實。",
+        "evidence_level": "company_disclosed_anonymous",
+        "source_ids": [
+          "CALL",
+          "Q3_RELEASE"
+        ],
+        "commercialization": "high_volume_production"
+      },
+      {
+        "id": "SCORPIO_X_competitor_002",
+        "business_line": "SCORPIO_X",
+        "relationship": "competitor",
+        "name": "Broadcom／Marvell",
+        "details": "AI fabric 與 PCIe／客製化 switching 相鄰競爭；無逐案勝率證據。",
+        "evidence_level": "industry_competition",
+        "source_ids": [
+          "CALL"
+        ]
+      },
+      {
+        "id": "SCORPIO_P_customer_003",
+        "business_line": "SCORPIO_P",
+        "relationship": "customer",
+        "name": "兩家美國 hyperscaler（未具名）",
+        "details": "Q3 2026 P-Series 於兩家美國 hyperscaler 平台部署；不得填寫具名客戶。",
+        "evidence_level": "company_disclosed_anonymous",
+        "source_ids": [
+          "CALL"
+        ],
+        "commercialization": "shipping"
+      },
+      {
+        "id": "SCORPIO_P_competitor_004",
+        "business_line": "SCORPIO_P",
+        "relationship": "competitor",
+        "name": "Broadcom／Microchip",
+        "details": "PCIe switch 技術與供應商競爭，不能以應用重疊推定每顆晶片互為替代。",
+        "evidence_level": "industry_competition",
+        "source_ids": [
+          "K25"
+        ]
+      },
+      {
+        "id": "ARIES_partner_005",
+        "business_line": "ARIES",
+        "relationship": "partner",
+        "name": "AMD",
+        "details": "AMD 官方平台已驗證 Aries PCIe 4–6 retimer；PCIe 7 合作開發不等於新一代大量出貨。",
+        "evidence_level": "company_official_partner",
+        "source_ids": [
+          "ARIES7"
+        ],
+        "commercialization": "PCIe 4–6 validated"
+      },
+      {
+        "id": "ARIES_partner_006",
+        "business_line": "ARIES",
+        "relationship": "partner",
+        "name": "Intel",
+        "details": "Intel 平台驗證 Aries PCIe 4–6 retimer，並共同推動 PCIe 7。",
+        "evidence_level": "company_official_partner",
+        "source_ids": [
+          "ARIES7"
+        ],
+        "commercialization": "PCIe 4–6 validated"
+      },
+      {
+        "id": "ARIES_customer_007",
+        "business_line": "ARIES",
+        "relationship": "customer",
+        "name": "AI 伺服器／加速器平台 OEM",
+        "details": "PCIe Gen6 Aries 已為營收成長動能；未公開分 OEM 訂單。",
+        "evidence_level": "company_disclosed_anonymous",
+        "source_ids": [
+          "CALL"
+        ],
+        "commercialization": "revenue_generating"
+      },
+      {
+        "id": "ARIES_competitor_008",
+        "business_line": "ARIES",
+        "relationship": "competitor",
+        "name": "Credo／Montage Technology／Parade",
+        "details": "重定時／重驅與高速互連類別競爭，規格與場景可能不同。",
+        "evidence_level": "industry_competition",
+        "source_ids": [
+          "ARIES7"
+        ]
+      },
+      {
+        "id": "ARIES7_partner_009",
+        "business_line": "ARIES7",
+        "relationship": "partner",
+        "name": "AMD／Intel",
+        "details": "官方公布 PCIe7 協作；Aries7 預計 Q4 2026 送樣，非量產商業認列。",
+        "evidence_level": "company_official_partner",
+        "source_ids": [
+          "ARIES7"
+        ],
+        "commercialization": "sampling_planned"
+      },
+      {
+        "id": "ARIES7_customer_010",
+        "business_line": "ARIES7",
+        "relationship": "customer",
+        "name": "選定 hyperscalers／OEM／NPO 客戶",
+        "details": "公司預計 Q4 2026 向特定客戶送樣，尚無新系列大規模出貨數字。",
+        "evidence_level": "company_disclosed_anonymous",
+        "source_ids": [
+          "Q3_RELEASE"
+        ],
+        "commercialization": "sampling_planned"
+      },
+      {
+        "id": "TAURUS_customer_011",
+        "business_line": "TAURUS",
+        "relationship": "customer",
+        "name": "單一未具名 800G 領先客戶",
+        "details": "Taurus 800G 已完成認證並大量出貨，其他客戶在送樣。",
+        "evidence_level": "company_disclosed_anonymous",
+        "source_ids": [
+          "CALL"
+        ],
+        "commercialization": "volume_shipping"
+      },
+      {
+        "id": "TAURUS_competitor_012",
+        "business_line": "TAURUS",
+        "relationship": "competitor",
+        "name": "Credo／Marvell／Broadcom",
+        "details": "800G Ethernet 訊號調理與 AEC 相關方案競爭。",
+        "evidence_level": "industry_competition",
+        "source_ids": [
+          "K25"
+        ]
+      },
+      {
+        "id": "LEO_customer_013",
+        "business_line": "LEO",
+        "relationship": "customer",
+        "name": "兩家未具名 hyperscaler",
+        "details": "Leo 設計認證涵蓋兩家 hyperscaler；Leo 2 前量產出貨，預期 2027 年中大量放量。",
+        "evidence_level": "company_disclosed_anonymous",
+        "source_ids": [
+          "CALL"
+        ],
+        "commercialization": "preproduction"
+      },
+      {
+        "id": "LEO_partner_014",
+        "business_line": "LEO",
+        "relationship": "partner",
+        "name": "DDR4／DDR5 DIMM 生態",
+        "details": "Leo2 E/P 支援 CXL 3.2、PCIe6 與 DDR4/DDR5；不代表 HBM 晶片供應商。",
+        "evidence_level": "product_capability",
+        "source_ids": [
+          "Q3_RELEASE"
+        ],
+        "commercialization": "preproduction"
+      },
+      {
+        "id": "LEO_competitor_015",
+        "business_line": "LEO",
+        "relationship": "competitor",
+        "name": "Rambus／Microchip／其他 CXL 方案",
+        "details": "記憶體擴充與 CXL 控制器的市場競爭，未核實特定 design-win 比例。",
+        "evidence_level": "industry_competition",
+        "source_ids": [
+          "K25"
+        ]
+      },
+      {
+        "id": "OPTICS_partner_016",
+        "business_line": "OPTICS",
+        "relationship": "partner",
+        "name": "智邦 Accton（2345）",
+        "details": "公司官方 2026 OCP NPO switch tray 展示明列 Accton 為生態元件合作夥伴；不代表 Astera 直接量產採購或金額。",
+        "evidence_level": "official_demo_ecosystem_partner",
+        "source_ids": [
+          "OPTICS"
+        ],
+        "commercialization": "demonstrated_only"
+      },
+      {
+        "id": "OPTICS_partner_017",
+        "business_line": "OPTICS",
+        "relationship": "partner",
+        "name": "Coherent",
+        "details": "官方 NPO 示範合作供應生態，未公開逐廠成本或量產分工。",
+        "evidence_level": "official_demo_ecosystem_partner",
+        "source_ids": [
+          "OPTICS"
+        ],
+        "commercialization": "demonstrated_only"
+      },
+      {
+        "id": "OPTICS_partner_018",
+        "business_line": "OPTICS",
+        "relationship": "partner",
+        "name": "TE Connectivity／Molex／Samtec",
+        "details": "NPO tray 參展組件生態，並非經驗證的指定 ASIC 供應商。",
+        "evidence_level": "official_demo_ecosystem_partner",
+        "source_ids": [
+          "OPTICS"
+        ],
+        "commercialization": "demonstrated_only"
+      },
+      {
+        "id": "OPTICS_partner_019",
+        "business_line": "OPTICS",
+        "relationship": "partner",
+        "name": "US Conec／aiXscale Photonics",
+        "details": "公司表示收購 aiXscale、與 US Conec 合作推進可拆式 CPO fiber-to-chip coupler，技術仍在開發。",
+        "evidence_level": "official_technology_collaboration",
+        "source_ids": [
+          "OPTICS"
+        ],
+        "commercialization": "development"
+      },
+      {
+        "id": "OPTICS_customer_020",
+        "business_line": "OPTICS",
+        "relationship": "customer",
+        "name": "未具名 NPO 光連接潛在客戶",
+        "details": "2026 OCP PCIe6 50m SiPh NPO 展示；光學驅動/TIA 預計 Q4 送樣，初步營收可能於 2027 年末。",
+        "evidence_level": "future_opportunity_not_revenue",
+        "source_ids": [
+          "OPTICS",
+          "CALL"
+        ],
+        "commercialization": "demonstrated_or_sampling"
+      },
+      {
+        "id": "OPTICS_competitor_021",
+        "business_line": "OPTICS",
+        "relationship": "competitor",
+        "name": "Broadcom／Marvell／光通訊 DSP 與光引擎業者",
+        "details": "NPO/CPO 有光模組、封裝、光電控制與交換器多層競爭，不能把單一 demo 等於整機出貨。",
+        "evidence_level": "industry_competition",
+        "source_ids": [
+          "OPTICS"
+        ]
+      },
+      {
+        "id": "ORION_customer_022",
+        "business_line": "ORION",
+        "relationship": "customer",
+        "name": "neocloud／企業推論運營者",
+        "details": "Orion 是 8–160 加速器級參考架構，透過 OEM/ODM 預定 2027 Q1 供貨；目前不是已認列機架營收。",
+        "evidence_level": "target_customer_class",
+        "source_ids": [
+          "Q3_RELEASE",
+          "CALL"
+        ],
+        "commercialization": "planned_2027"
+      },
+      {
+        "id": "ORION_partner_023",
+        "business_line": "ORION",
+        "relationship": "partner",
+        "name": "未具名 OEM／ODM 系統夥伴",
+        "details": "官方只稱透過 OEM/ODM 於 2027 提供，缺可確證的指定台灣 ODM 名單。",
+        "evidence_level": "unidentified_partner_class",
+        "source_ids": [
+          "Q3_RELEASE"
+        ],
+        "commercialization": "not_yet_available"
+      },
+      {
+        "id": "ORION_competitor_024",
+        "business_line": "ORION",
+        "relationship": "competitor",
+        "name": "NVIDIA／AMD／Broadcom AI rack 生態",
+        "details": "機架級參考系統與各運算、交換架構平台競合；Orion 可搭不同 GPU/CPU。",
+        "evidence_level": "industry_competition",
+        "source_ids": [
+          "Q3_RELEASE"
+        ]
+      },
+      {
+        "id": "COSMOS_customer_025",
+        "business_line": "COSMOS",
+        "relationship": "customer",
+        "name": "使用 Astera 控制器和交換器的機架部署者",
+        "details": "COSMOS 提供 Rack/Fabric/Link manager 與 telemetry，沒有官方單獨軟體營收金額。",
+        "evidence_level": "product_capability",
+        "source_ids": [
+          "Q3_RELEASE"
+        ]
+      },
+      {
+        "id": "COSMOS_competitor_026",
+        "business_line": "COSMOS",
+        "relationship": "competitor",
+        "name": "交換器廠自有管理軟體／開放式 telemetry 工具",
+        "details": "COSMOS 與其他管理平台互補與競爭，獨立市場份額不可得。",
+        "evidence_level": "industry_competition",
+        "source_ids": [
+          "IR"
+        ]
+      },
+      {
+        "id": "CUSTOM_partner_027",
+        "business_line": "CUSTOM",
+        "relationship": "partner",
+        "name": "NVIDIA NVLink Fusion",
+        "details": "2025 官方公布 NVLink Fusion 生態合作，不能把 NVIDIA 視為已確認的最終採購付款客戶。",
+        "evidence_level": "official_ecosystem_collaboration",
+        "source_ids": [
+          "NVIDIA"
+        ]
+      },
+      {
+        "id": "CUSTOM_partner_028",
+        "business_line": "CUSTOM",
+        "relationship": "partner",
+        "name": "UALink 聯盟生態",
+        "details": "公司正在研發 UALink 產品；尚不能確認具體 UALink switch 量產收入。",
+        "evidence_level": "official_roadmap",
+        "source_ids": [
+          "CALL"
+        ],
+        "commercialization": "development"
+      },
+      {
+        "id": "CUSTOM_customer_029",
+        "business_line": "CUSTOM",
+        "relationship": "customer",
+        "name": "超過 10 個未具名客製化方案接洽",
+        "details": "依最新法說，custom fabric／memory controller／IO chiplets 預計 2027 末開始出貨、2028 大量量產。",
+        "evidence_level": "future_opportunity_not_revenue",
+        "source_ids": [
+          "CALL"
+        ],
+        "commercialization": "future"
+      },
+      {
+        "id": "CUSTOM_competitor_030",
+        "business_line": "CUSTOM",
+        "relationship": "competitor",
+        "name": "Broadcom／Marvell／NVIDIA 自有互連",
+        "details": "客製化互連、NVLink/UALink 生態與 ASIC 實作存在競爭及互補。",
+        "evidence_level": "industry_competition",
+        "source_ids": [
+          "CALL"
+        ]
+      },
+      {
+        "id": "SUPPLY_supplier_031",
+        "business_line": "SUPPLY",
+        "relationship": "supplier",
+        "name": "晶圓代工與 OSAT（廠商未具名）",
+        "details": "10-K 說明無晶圓廠模式與外包製造；本次未找到足以把特定台廠列成已確認直接晶圓代工或封裝商的公開文件。",
+        "evidence_level": "supplier_category_only",
+        "source_ids": [
+          "K25"
+        ]
+      },
+      {
+        "id": "SUPPLY_beneficiary_032",
+        "business_line": "SUPPLY",
+        "relationship": "beneficiary",
+        "name": "台積電（2330）",
+        "details": "AI 高速 I/O 晶片代工的產業受惠可能，非證實 ALAB 直接晶圓訂單。",
+        "evidence_level": "possible_beneficiary_not_direct_supplier",
+        "source_ids": [
+          "K25"
+        ]
+      },
+      {
+        "id": "SUPPLY_beneficiary_033",
+        "business_line": "SUPPLY",
+        "relationship": "beneficiary",
+        "name": "日月光投控（3711）",
+        "details": "封裝測試產業可能受惠，不代表已證實承接 Scorpio X 320-lane 專案。",
+        "evidence_level": "possible_beneficiary_not_direct_supplier",
+        "source_ids": [
+          "K25"
+        ]
+      },
+      {
+        "id": "SUPPLY_beneficiary_034",
+        "business_line": "SUPPLY",
+        "relationship": "beneficiary",
+        "name": "欣興（3037）／南電（8046）",
+        "details": "高階載板受 AI 機架需求帶動的產業推論，非 Astera 直接採購確認。",
+        "evidence_level": "possible_beneficiary_not_direct_supplier",
+        "source_ids": [
+          "K25"
+        ]
+      },
+      {
+        "id": "SUPPLY_beneficiary_035",
+        "business_line": "SUPPLY",
+        "relationship": "beneficiary",
+        "name": "廣達（2382）／緯穎（6669）／緯創（3231）",
+        "details": "AI 伺服器 ODM 可參與採用相關互連產品之平台，但沒有本次已確認的 Orion OEM/ODM 直接合作聲明。",
+        "evidence_level": "possible_beneficiary_not_direct_supplier",
+        "source_ids": [
+          "Q3_RELEASE"
+        ]
+      },
+      {
+        "id": "SUPPLY_beneficiary_036",
+        "business_line": "SUPPLY",
+        "relationship": "beneficiary",
+        "name": "智邦（2345）",
+        "details": "除了官方已確認 NPO 展示生態關係外，其其他 AI 交換器業務可能受惠；展示合作不可自動升級直接大額訂單。",
+        "evidence_level": "possible_beneficiary_not_direct_supplier",
+        "source_ids": [
+          "OPTICS"
+        ]
+      }
+    ],
+    "research": {
+      "window": "2026-08-06/2026-11-04",
+      "financial_snapshot_as_of": "2026-Q3",
+      "q3_revenue_usd_million": 584.899,
+      "q3_revenue_qoq_pct": 49,
+      "q3_revenue_yoy_pct": 154,
+      "q3_gaap_gross_margin_pct": 72.3,
+      "q3_non_gaap_gross_margin_pct": 72.4,
+      "q3_gaap_operating_income_usd_million": 179.1,
+      "q3_gaap_net_income_usd_million": 182.9,
+      "q4_revenue_guidance_usd_million": [
+        730,
+        750
+      ],
+      "customer_concentration": {
+        "customer_A_q3_revenue_pct": 53,
+        "customer_name": "undisclosed",
+        "verification_note": "來自最新 10-Q 摘要；未獨立全文校對，不推斷客戶身分。"
+      },
+      "commercialization": {
+        "Scorpio_X": "2026 Q3 high-volume production",
+        "Scorpio_P": "shipping",
+        "Aries_PCIe6": "shipping",
+        "Taurus_800G": "volume shipping to lead customer",
+        "Aries7_PCIe7_optical": "Q4 2026 sampling expected",
+        "Leo2": "preproduction; mid-2027 volume target",
+        "Orion": "Q1 2027 OEM/ODM availability expected",
+        "NPO": "OCP demonstrated; first optics revenue expected late 2027",
+        "CPO": "technology roadmap and components under development",
+        "custom_IO_chiplets": "late 2027 initial shipments / 2028 volume expected"
+      },
+      "evidence_policy": "官方已出貨與量產、測試展示、未來期望及可能受惠必須分級；匿名客戶不可自行命名。"
+    },
+    "five_gate_audit": {
+      "gate_1_hot_topics_reverse_check": {
+        "performed": true,
+        "result": "pass_with_gaps",
+        "method": "獨立從 2026-08-06 起 SEC、11/03 法說、OCP 產品公告及技術 blog 蒐集主題，之後才比對原 display。",
+        "independent_topics": [
+          "Scorpio X 量產和客戶",
+          "Aries7 光銅互連",
+          "Orion 系統設計",
+          "Leo2/Leo X",
+          "NPO/CPO 光學 roadmap",
+          "Taurus800G",
+          "NVLink Fusion/UALink",
+          "匿名大客戶與毛利率"
+        ],
+        "missing_in_existing_display": [
+          "PCIe7",
+          "NPO/LPO/CPO",
+          "Orion",
+          "Leo2",
+          "320-lane switch",
+          "Taurus 800G 量產"
+        ]
+      },
+      "gate_2_ten_investor_questions": {
+        "performed": true,
+        "result": "pass_with_capex_gap",
+        "questions": [
+          {
+            "topic": "營收成長",
+            "assessment": "Q3 5.849 億美元，YoY +154%，QoQ +49%；Q4 7.3–7.5 億美元是指引非實現。"
+          },
+          {
+            "topic": "毛利率",
+            "assessment": "Q3 GAAP 72.3%，非 GAAP 72.4%；客戶權證／庫存與製造結構可能影響。"
+          },
+          {
+            "topic": "資本支出",
+            "assessment": "不以研發支出當 CapEx；資本支出完整數據尚待逐項查證。"
+          },
+          {
+            "topic": "競爭力",
+            "assessment": "Scorpio 320-lane、Aries7 多介質、COSMOS 系統軟體與機架互連整合。"
+          },
+          {
+            "topic": "技術轉折",
+            "assessment": "PCIe7 光互連、NPO/LPO、CPO 路線、CXL3.2、NVLink Fusion、UALink。"
+          },
+          {
+            "topic": "客戶採用",
+            "assessment": "Scorpio X 兩客戶、P 兩家美國 hyperscaler；Taurus 800G 一家領先客戶大量出貨。"
+          },
+          {
+            "topic": "產能",
+            "assessment": "Scorpio 已高量產；Leo2 前量產；Aries7 光學元件送樣；Orion 計畫2027推出。"
+          },
+          {
+            "topic": "供應鏈",
+            "assessment": "智邦只證實 NPO 展示；其他台廠供應商不明，不能從 AI 題材反推訂單。"
+          },
+          {
+            "topic": "估值催化劑",
+            "assessment": "Scorpio 批量擴客、Taurus800G、2027 Leo／Orion、光學與客製化首次收入。"
+          },
+          {
+            "topic": "風險",
+            "assessment": "匿名大客戶集中、毛利率、PCIe7 採用速度、CPO 尚早、庫存、供應鏈及資本支出。"
+          }
+        ]
+      },
+      "gate_3_technology_product_completeness": {
+        "performed": true,
+        "result": "pass_with_commercialization_gaps",
+        "included": [
+          "PCIe6/7",
+          "NPO",
+          "LPO",
+          "CPO",
+          "HBM boundary",
+          "CXL3.2",
+          "DDR4/DDR5",
+          "320-lane switch",
+          "UALink",
+          "NVLink Fusion",
+          "COSMOS",
+          "custom I/O chiplet"
+        ],
+        "classification_rule": "shipping / high-volume / preproduction / sampling / prototype / roadmap 皆須分開。"
+      },
+      "gate_4_falsification_competition": {
+        "performed": true,
+        "result": "pass_with_unverified_customers",
+        "checks": [
+          "Scorpio X 已量產、其餘產品不可照抄",
+          "NPO demo 不等於CPO營收",
+          "Customer A 只知匿名不猜名字",
+          "Accton 為 OCP 生態展示夥伴非訂單證實",
+          "台灣受惠公司不等於直接供應商",
+          "Leo內部性能測試不可當全市場已達"
+        ],
+        "competition_scope": [
+          "Broadcom",
+          "Marvell",
+          "Credo",
+          "Microchip",
+          "NVIDIA 自有互連"
+        ]
+      },
+      "gate_5_delivery_missing_topic_audit": {
+        "performed": true,
+        "result": "material_gaps_remain",
+        "coverage_table": [
+          {
+            "topic": "Q3 2026 8-K／10-Q、營收與毛利率",
+            "status": "covered",
+            "finding": "Q3 5.849 億美元，GAAP GM 72.3%，稀釋 EPS 0.99；Q4 收入指引 7.30–7.50 億美元。",
+            "source_ids": [
+              "8K",
+              "Q3_RELEASE",
+              "Q326"
+            ]
+          },
+          {
+            "topic": "Scorpio X 320 lanes 高量產",
+            "status": "covered",
+            "finding": "已達高量產並成為最大產品家族；X 已出貨兩客戶，需拆分量產與前量產。",
+            "source_ids": [
+              "CALL",
+              "Q3_RELEASE"
+            ]
+          },
+          {
+            "topic": "Scorpio P 多 hyperscaler",
+            "status": "covered",
+            "finding": "P 已涵蓋兩家美國 hyperscaler，沒有可證實具名身分。",
+            "source_ids": [
+              "CALL"
+            ]
+          },
+          {
+            "topic": "Aries PCIe6 商業化",
+            "status": "covered",
+            "finding": "Gen6 retimer 需求強，已產生營收。",
+            "source_ids": [
+              "CALL"
+            ]
+          },
+          {
+            "topic": "Aries PCIe7 與光學驅動 TIA",
+            "status": "covered",
+            "finding": "2026/10 發表，預計 Q4 送樣，非大規模量產。",
+            "source_ids": [
+              "ARIES7"
+            ]
+          },
+          {
+            "topic": "Taurus Ethernet 800G",
+            "status": "covered",
+            "finding": "領先客戶大量出貨，其他客戶送樣。",
+            "source_ids": [
+              "CALL"
+            ]
+          },
+          {
+            "topic": "Leo2／Leo X、CXL3.2 記憶體池化",
+            "status": "covered",
+            "finding": "Leo2 前量產出貨，2027 中高量產預期；62% TTFT 是內部測試而非產業普遍實現。",
+            "source_ids": [
+              "Q3_RELEASE",
+              "CALL"
+            ]
+          },
+          {
+            "topic": "Orion rack-scale AI 架構",
+            "status": "covered",
+            "finding": "Q1 2027 ODM/OEM 可用目標，不是已認列完整機架收入。",
+            "source_ids": [
+              "Q3_RELEASE"
+            ]
+          },
+          {
+            "topic": "NPO／LPO SiPh、VCSEL 展示",
+            "status": "covered",
+            "finding": "NPO 50m PCIe6 demo、VCSEL 20m demo；分清測試規格和量產。",
+            "source_ids": [
+              "OPTICS"
+            ]
+          },
+          {
+            "topic": "CPO 光引擎與可拆式光連接",
+            "status": "covered",
+            "finding": "尚在 roadmap、coupler 開發階段，不宣稱 2026 CPO 收入。",
+            "source_ids": [
+              "OPTICS",
+              "CALL"
+            ]
+          },
+          {
+            "topic": "NVLink Fusion、UALink與客製化 chiplet",
+            "status": "covered",
+            "finding": "NVLink 合作證實、UALink 研發中；客製化預期 2027 末初出貨。",
+            "source_ids": [
+              "NVIDIA",
+              "CALL"
+            ]
+          },
+          {
+            "topic": "NVIDIA 是否 ALAB 直接採購客戶",
+            "status": "evidence_insufficient",
+            "finding": "官方僅證實 NVLink 生態合作；不能推定具名營收或客戶身分。",
+            "source_ids": [
+              "NVIDIA"
+            ]
+          },
+          {
+            "topic": "Customer A 53% 收入集中",
+            "status": "covered",
+            "finding": "10-Q 二手摘要列 Q3 單一匿名客戶 53%；保留匿名，待 SEC 內文逐字核對。",
+            "source_ids": [
+              "Q326"
+            ]
+          },
+          {
+            "topic": "毛利率風險與 customer warrants",
+            "status": "covered",
+            "finding": "Q3 GM 降至72.3%，10-Q 摘要提及庫存、製造成本、customer warrants；逐項比例未披露。",
+            "source_ids": [
+              "Q326"
+            ]
+          },
+          {
+            "topic": "營運資本與資本支出",
+            "status": "evidence_insufficient",
+            "finding": "已核實 2026 Q3 營運現金 1.792 億美元、現金投資 13.8 億美元，資本支出逐項金額未充分覆核。",
+            "source_ids": [
+              "CALL"
+            ]
+          },
+          {
+            "topic": "台灣 Accton 官方 NPO demo",
+            "status": "covered",
+            "finding": "官方 OCP blog 列智邦 Accton 展示生態合作，非 ALAB 直接訂單。",
+            "source_ids": [
+              "OPTICS"
+            ]
+          },
+          {
+            "topic": "台灣晶圓代工與封測直接供應商",
+            "status": "evidence_insufficient",
+            "finding": "缺少可歸屬公告確認直接合約，僅列產業受惠候選。",
+            "source_ids": [
+              "K25"
+            ]
+          },
+          {
+            "topic": "台灣 ODM Orion 指定合作名單",
+            "status": "evidence_insufficient",
+            "finding": "公告未具名 OEM/ODM，不猜測緯穎、廣達、鴻海為指定採購對象。",
+            "source_ids": [
+              "Q3_RELEASE"
+            ]
+          },
+          {
+            "topic": "HBM 是否直接產品線",
+            "status": "intentionally_excluded",
+            "finding": "Leo X 是 DDR/記憶體層級控制器，沒有足夠依據把 ALAB 列成 HBM 製造商。",
+            "source_ids": [
+              "Q3_RELEASE"
+            ]
+          },
+          {
+            "topic": "大型模型、GPU 晶片及製造",
+            "status": "intentionally_excluded",
+            "finding": "ALAB 核心是 connectivity，不把它錯誤歸類 GPU、HBM、整機 ODM 廠。",
+            "source_ids": [
+              "K25"
+            ]
+          },
+          {
+            "topic": "Bloomberg／The Information 付費獨家",
+            "status": "not_researched",
+            "finding": "未取得可完整歸屬核對內容，不以二手轉載作已確認直接供應證據。",
+            "source_ids": []
+          },
+          {
+            "topic": "Reuters 與 ServeTheHome／Tom’s Hardware 技術交叉驗證",
+            "status": "evidence_insufficient",
+            "finding": "有官方與 call 強證據，但未找到可引用之同期對應深度技術實測，未宣稱完成媒體交叉驗證。",
+            "source_ids": []
+          },
+          {
+            "topic": "客製化設計勝出與量產轉換率",
+            "status": "evidence_insufficient",
+            "finding": "10+ engagements 不等於 10 筆量產合約，沒有已確認逐案收入。",
+            "source_ids": [
+              "CALL"
+            ]
+          }
+        ],
+        "unresolved": [
+          "2026 Q3 10-Q 細節再次核對",
+          "特定 foundry/OSAT",
+          "Orion 具名 ODM",
+          "CPO/NPO 光產品真實量產收入",
+          "Reuters/技術媒體同期深度交叉驗證"
+        ],
+        "completion_claim": "research_draft_with_material_evidence_gaps"
+      }
+    },
+    "sources": [
+      {
+        "id": "K25",
+        "url": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000010/alab-20251231.htm",
+        "source_type": "SEC"
+      },
+      {
+        "id": "Q326",
+        "url": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000045/0001736297-26-000045-index.html",
+        "source_type": "SEC"
+      },
+      {
+        "id": "Q226",
+        "url": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000035/0001736297-26-000035-index.html",
+        "source_type": "SEC"
+      },
+      {
+        "id": "8K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000044/q326exhibit991.htm",
+        "source_type": "SEC"
+      },
+      {
+        "id": "IR",
+        "url": "https://ir.asteralabs.com/",
+        "source_type": "IR / company"
+      },
+      {
+        "id": "Q3_RELEASE",
+        "url": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-third-quarter-2026-financial-results",
+        "source_type": "IR / company"
+      },
+      {
+        "id": "CALL",
+        "url": "https://stockanalysis.com/stocks/alab/transcripts/723924-q3-2026/",
+        "source_type": "earnings call transcript"
+      },
+      {
+        "id": "ARIES7",
+        "url": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-announces-aries-7-industrys-first-pcie-7-signal",
+        "source_type": "IR / company"
+      },
+      {
+        "id": "OPTICS",
+        "url": "https://www.asteralabs.com/resources/blog/lighting-the-way-demonstrated-progress-on-our-optical-roadmap-to-npo-and-cpo/",
+        "source_type": "IR / company"
+      },
+      {
+        "id": "ORION",
+        "url": "https://ir.asteralabs.com/news-events/news-releases",
+        "source_type": "IR / company"
+      },
+      {
+        "id": "NVIDIA",
+        "url": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-expands-collaboration-nvidia-advance-nvlink-fusion",
+        "source_type": "IR / company"
+      },
+      {
+        "id": "NPO",
+        "url": "https://www.asteralabs.com/solutions/ai-servers-and-clustering/near-packaged-optics-npo/",
+        "source_type": "IR / company"
+      },
+      {
+        "id": "FILING_INDEX",
+        "url": "https://asteralabs.gcs-web.com/financials/sec-filings",
+        "source_type": "IR / company"
+      }
+    ]
   }
 }

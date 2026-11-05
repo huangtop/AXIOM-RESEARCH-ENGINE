@@ -638,5 +638,1084 @@
       "代理式人工智慧"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-04",
+    "company": "Adobe Inc.",
+    "symbol": "ADBE",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "ADBE Adobe 產業鏈｜Firefly、Creative Cloud、Acrobat、CX Enterprise、Semrush 與 NVIDIA AI",
+      "description": "SEC 10-K/10-Q、最新 8-K 與法說、Adobe/NVIDIA 官方公告、Reuters 交叉核對；直接供應與台灣間接受惠嚴格分開。"
+    },
+    "business_lines": [
+      {
+        "id": "CREATIVE",
+        "name": "Creative Cloud／Photoshop／Illustrator／Lightroom／Premiere／After Effects"
+      },
+      {
+        "id": "FIREFLY",
+        "name": "Adobe Firefly 生成式影像／影片／API／AI 點數"
+      },
+      {
+        "id": "EXPRESS",
+        "name": "Adobe Express／行動與免費增值創作"
+      },
+      {
+        "id": "DOCUMENT",
+        "name": "Acrobat／PDF／Acrobat AI Assistant／電子簽署"
+      },
+      {
+        "id": "CXM",
+        "name": "Adobe Experience Platform／Experience Manager／Customer Journey"
+      },
+      {
+        "id": "GENSTUDIO",
+        "name": "GenStudio／Firefly Services／品牌化內容供應鏈"
+      },
+      {
+        "id": "GEO",
+        "name": "Semrush／LLM Optimizer／搜尋與 AI 品牌可見度"
+      },
+      {
+        "id": "AGENTS",
+        "name": "CX Enterprise CoWorker／Creative Agent／Brand Concierge"
+      },
+      {
+        "id": "FRAME3D",
+        "name": "Frame.io／Substance 3D／專業影片及 3D 工作流程"
+      },
+      {
+        "id": "AI_INFRA",
+        "name": "GPU 加速／模型訓練與推論／雲端基礎設施"
+      },
+      {
+        "id": "GO_TO_MARKET",
+        "name": "企業渠道／系統整合／代理商／商業合作"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "CREATIVE_customer_001",
+        "name": "專業創作者與設計團隊",
+        "business_line": "CREATIVE",
+        "relationship": "customer",
+        "details": "Creative Cloud 旗艦應用為核心付費訂閱需求；財報未按單一應用公布訂閱 ARR。",
+        "commercial_stage": "commercial",
+        "evidence_level": "company_disclosed",
+        "source_ids": [
+          "SEC_10K_2025",
+          "Q3_CALL"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "CREATIVE_competitor_002",
+        "name": "Canva",
+        "business_line": "CREATIVE",
+        "relationship": "competitor",
+        "details": "設計與模板、協作及 AI 內容生成競爭；不能以 Adobe 總 ARR 直接衡量 Canva 份額。",
+        "commercial_stage": "commercial",
+        "evidence_level": "industry_competitor",
+        "source_ids": [
+          "REUTERS"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "CREATIVE_competitor_003",
+        "name": "Affinity／Serif",
+        "business_line": "CREATIVE",
+        "relationship": "competitor",
+        "details": "插畫、影像與排版工具可能替代部分專業工作流程。",
+        "commercial_stage": "commercial",
+        "evidence_level": "industry_competitor",
+        "source_ids": [
+          "SEC_10K_2025"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "CREATIVE_competitor_004",
+        "name": "Figma",
+        "business_line": "CREATIVE",
+        "relationship": "competitor",
+        "details": "UI／產品設計、多人協作與 AI 設計工作流程競爭。",
+        "commercial_stage": "commercial",
+        "evidence_level": "industry_competitor",
+        "source_ids": [
+          "REUTERS"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "FIREFLY_customer_005",
+        "name": "Firefly 訂閱、點數與企業採用者",
+        "business_line": "FIREFLY",
+        "relationship": "customer",
+        "details": "AI-first Ending ARR >6.5 億美元是包含多項 AI-first 方案的年度化指標，非 Firefly 單一產品營收；Firefly App 與 credit packs 的 ARR 季增 40%。",
+        "commercial_stage": "commercial",
+        "evidence_level": "company_disclosed",
+        "source_ids": [
+          "Q3_CALL"
+        ],
+        "caveat": "不得將 AI-first ARR 全額歸給 Firefly，也非季度營收"
+      },
+      {
+        "id": "FIREFLY_partner_006",
+        "name": "NVIDIA",
+        "business_line": "FIREFLY",
+        "relationship": "partner",
+        "details": "2026-03 公布 Firefly Foundry 及 CUDA-X／NeMo 合作，10 月進一步加速創意代理工作流程。",
+        "commercial_stage": "product_integration",
+        "evidence_level": "direct_official_partnership",
+        "source_ids": [
+          "NVIDIA_TW",
+          "NVIDIA_OCT"
+        ],
+        "caveat": "不等於 Adobe 已直接採購特定 GPU 數量"
+      },
+      {
+        "id": "FIREFLY_competitor_007",
+        "name": "OpenAI／Google／Midjourney／Runway",
+        "business_line": "FIREFLY",
+        "relationship": "competitor",
+        "details": "影像、影片生成服務、模型品質、版權與定價競爭；部分同時是可整合的模型平台。",
+        "commercial_stage": "commercial",
+        "evidence_level": "industry_competitor",
+        "source_ids": [
+          "AGENTS_JUN"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "EXPRESS_customer_008",
+        "name": "個人、中小企業與社群創作者",
+        "business_line": "EXPRESS",
+        "relationship": "customer",
+        "details": "免費增值策略擴大頂部漏斗；Q3 creative freemium MAU >1 億、年增 >70%，不等於付費訂戶。",
+        "commercial_stage": "commercial",
+        "evidence_level": "company_disclosed",
+        "source_ids": [
+          "Q3_CALL"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "EXPRESS_competitor_009",
+        "name": "Canva／CapCut",
+        "business_line": "EXPRESS",
+        "relationship": "competitor",
+        "details": "快製作、社群短影音與模板式設計競爭。",
+        "commercial_stage": "commercial",
+        "evidence_level": "industry_competitor",
+        "source_ids": [
+          "REUTERS"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "DOCUMENT_customer_010",
+        "name": "Acrobat／PDF 個人與企業客戶",
+        "business_line": "DOCUMENT",
+        "relationship": "customer",
+        "details": "Acrobat 與 Express 合計 MAU >9 億、年增 >25%；Acrobat AI Assistant MAU 季增倍數增長；未提供獨立 AI Assistant 收入。",
+        "commercial_stage": "commercial",
+        "evidence_level": "company_disclosed",
+        "source_ids": [
+          "Q3_CALL"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "DOCUMENT_competitor_011",
+        "name": "Microsoft 365 Copilot／Foxit",
+        "business_line": "DOCUMENT",
+        "relationship": "competitor",
+        "details": "PDF、文件協作與智能文件分析競爭。",
+        "commercial_stage": "commercial",
+        "evidence_level": "industry_competitor",
+        "source_ids": [
+          "SEC_10K_2025"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "CXM_customer_012",
+        "name": "BNP Paribas／IKEA／Marriott／Wells Fargo 等具名客戶",
+        "business_line": "CXM",
+        "relationship": "customer",
+        "details": "Q3 法說確認的企業客戶案列，不能直接推定各客戶每年合約金額。",
+        "commercial_stage": "commercial",
+        "evidence_level": "company_disclosed",
+        "source_ids": [
+          "Q3_CALL"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "CXM_partner_013",
+        "name": "Accenture／Deloitte／Capgemini／Cognizant／Infosys",
+        "business_line": "CXM",
+        "relationship": "partner",
+        "details": "Adobe 官方公告的系統整合夥伴，協助導入 CX Enterprise。",
+        "commercial_stage": "commercial",
+        "evidence_level": "direct_official_partnership",
+        "source_ids": [
+          "PARTNERS_APR"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "CXM_competitor_014",
+        "name": "Salesforce／Oracle／SAP",
+        "business_line": "CXM",
+        "relationship": "competitor",
+        "details": "CRM、CDP、客戶旅程與行銷平台競爭，競合依產品模組不同。",
+        "commercial_stage": "commercial",
+        "evidence_level": "industry_competitor",
+        "source_ids": [
+          "SEC_10K_2025"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "GENSTUDIO_customer_015",
+        "name": "企業品牌、零售商與行銷代理商",
+        "business_line": "GENSTUDIO",
+        "relationship": "customer",
+        "details": "內容生成、管理、個人化與成效衡量；GenStudio ending ARR 年增 >20% 為法說公布增幅，未給獨立絕對 ARR。",
+        "commercial_stage": "commercial",
+        "evidence_level": "company_disclosed",
+        "source_ids": [
+          "Q3_CALL"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "GENSTUDIO_partner_016",
+        "name": "Publicis Groupe／dentsu／WPP／Omnicom",
+        "business_line": "GENSTUDIO",
+        "relationship": "partner",
+        "details": "Adobe 官方列出的代理商生態合作夥伴；合作不等於全數為直接付費客戶。",
+        "commercial_stage": "commercial",
+        "evidence_level": "direct_official_partnership",
+        "source_ids": [
+          "PARTNERS_APR"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "GEO_partner_017",
+        "name": "Semrush",
+        "business_line": "GEO",
+        "relationship": "partner",
+        "details": "2026-04-28 收購完成，SEC 記載約 18.74 億美元收購價格；品牌可見度／GEO 產品已整合。",
+        "commercial_stage": "integrated",
+        "evidence_level": "acquired_business",
+        "source_ids": [
+          "SEMRUSH",
+          "SEC_10Q_Q3_2026",
+          "Q3_CALL"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "GEO_competitor_018",
+        "name": "Ahrefs／Conductor／BrightEdge",
+        "business_line": "GEO",
+        "relationship": "competitor",
+        "details": "SEO、品牌內容分析與生成式搜尋能見度工具競爭。",
+        "commercial_stage": "commercial",
+        "evidence_level": "industry_competitor",
+        "source_ids": [
+          "SEMRUSH"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "AGENTS_customer_019",
+        "name": "CX Enterprise CoWorker 企業採用者",
+        "business_line": "AGENTS",
+        "relationship": "customer",
+        "details": "6 月 GA，Q3 法說提及逾 1700 家客戶與 early adopters，非 1700 個付費獨立授權。",
+        "commercial_stage": "general_availability",
+        "evidence_level": "company_disclosed",
+        "source_ids": [
+          "Q3_CALL"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "AGENTS_partner_020",
+        "name": "Microsoft／Google Cloud／AWS／Anthropic／OpenAI",
+        "business_line": "AGENTS",
+        "relationship": "partner",
+        "details": "Adobe 在 2026 Adobe Summit 官方確認擴大代理式協作生態，特定模型與服務可競合。",
+        "commercial_stage": "ecosystem",
+        "evidence_level": "direct_official_partnership",
+        "source_ids": [
+          "PARTNERS_APR"
+        ],
+        "caveat": "不能將各公司自動判定為 Adobe 的直接晶片供應商"
+      },
+      {
+        "id": "AGENTS_partner_021",
+        "name": "NVIDIA Nemotron",
+        "business_line": "AGENTS",
+        "relationship": "partner",
+        "details": "Adobe 10 月表示 Brand Concierge 優化 NVIDIA Nemotron，但新版「今年稍後供企業使用」，截至 11/4 未證明已一般上市。",
+        "commercial_stage": "announced_not_general_availability",
+        "evidence_level": "direct_official_partnership",
+        "source_ids": [
+          "NVIDIA_OCT"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "AGENTS_competitor_022",
+        "name": "Salesforce Agentforce／Microsoft Copilot Studio",
+        "business_line": "AGENTS",
+        "relationship": "competitor",
+        "details": "企業 AI agent 建置、治理、行銷流程自動化的競爭。",
+        "commercial_stage": "commercial",
+        "evidence_level": "industry_competitor",
+        "source_ids": [
+          "PARTNERS_APR"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "FRAME3D_partner_023",
+        "name": "Topaz Labs",
+        "business_line": "FRAME3D",
+        "relationship": "partner",
+        "details": "Adobe 官方 2026-09-23 宣布完成收購；Topaz 影像與影片增強模型及 Neurostream 端側推論能力進入產品組合。",
+        "commercial_stage": "acquired",
+        "evidence_level": "acquired_business",
+        "source_ids": [
+          "TOPAZ_DONE"
+        ],
+        "caveat": "不可沿用 8 月 10-Q 尚未完成的舊狀態"
+      },
+      {
+        "id": "FRAME3D_partner_024",
+        "name": "NVIDIA RTX Spark／NVDEC／TensorRT",
+        "business_line": "FRAME3D",
+        "relationship": "partner",
+        "details": "Adobe 10 月公告 Premiere、Photoshop、Substance 3D 與 Frame.io 的 RTX 最佳化，宣稱特定測試負載加速；非 Adobe 裝置硬體產品出貨。",
+        "commercial_stage": "optimized_product",
+        "evidence_level": "direct_official_partnership",
+        "source_ids": [
+          "NVIDIA_OCT"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "FRAME3D_competitor_025",
+        "name": "Autodesk／Blackmagic Design／Epic Games",
+        "business_line": "FRAME3D",
+        "relationship": "competitor",
+        "details": "3D 創作、影視後製與即時內容工作流程競爭，產品重疊有限。",
+        "commercial_stage": "commercial",
+        "evidence_level": "industry_competitor",
+        "source_ids": [
+          "SEC_10K_2025"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "AI_INFRA_supplier_026",
+        "name": "第三方雲端代管與資料中心服務商（未具名）",
+        "business_line": "AI_INFRA",
+        "relationship": "supplier",
+        "details": "SEC 10-Q 明確揭露訂閱成本含第三方 hosting、AI inferencing 以及研發 AI training，未披露其供應商分攤額。",
+        "commercial_stage": "ongoing",
+        "evidence_level": "supplier_category_disclosed",
+        "source_ids": [
+          "SEC_10Q_Q3_2026"
+        ],
+        "caveat": "供應商名稱及採購金額不公開"
+      },
+      {
+        "id": "AI_INFRA_partner_027",
+        "name": "NVIDIA",
+        "business_line": "AI_INFRA",
+        "relationship": "partner",
+        "details": "可確證的軟硬體平台最佳化與 Firefly Foundry 技術合作；非 Adobe 自建 HBM、CPO 或 GPU 製造業務。",
+        "commercial_stage": "partnership",
+        "evidence_level": "direct_official_partnership",
+        "source_ids": [
+          "NVIDIA_OCT",
+          "NVIDIA_TW"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "AI_INFRA_beneficiary_028",
+        "name": "台積電（2330）",
+        "business_line": "AI_INFRA",
+        "relationship": "beneficiary",
+        "details": "若 Adobe 工作負載增加 NVIDIA GPU 需求，台積電可能透過晶圓代工間接受惠，無 Adobe 直接訂單證據。",
+        "commercial_stage": "hypothesis",
+        "evidence_level": "possible_indirect_beneficiary",
+        "source_ids": [
+          "NVIDIA_OCT"
+        ],
+        "caveat": "不可標記為 Adobe 直接 supplier"
+      },
+      {
+        "id": "AI_INFRA_beneficiary_029",
+        "name": "緯穎（6669）／廣達（2382）／緯創（3231）",
+        "business_line": "AI_INFRA",
+        "relationship": "beneficiary",
+        "details": "AI 資料中心伺服器需求可能間接受益；無可歸屬 Adobe 採購／ODM 合約證據。",
+        "commercial_stage": "hypothesis",
+        "evidence_level": "possible_indirect_beneficiary",
+        "source_ids": [
+          "SEC_10Q_Q3_2026"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "AI_INFRA_beneficiary_030",
+        "name": "日月光投控（3711）／欣興（3037）",
+        "business_line": "AI_INFRA",
+        "relationship": "beneficiary",
+        "details": "加速器先進封裝／載板供應市場之間接受惠假設；未確認 Adobe 直接供應關係。",
+        "commercial_stage": "hypothesis",
+        "evidence_level": "possible_indirect_beneficiary",
+        "source_ids": [
+          "NVIDIA_TW"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "AI_INFRA_beneficiary_031",
+        "name": "HBM 記憶體供應生態（SK hynix／Samsung／Micron）",
+        "business_line": "AI_INFRA",
+        "relationship": "beneficiary",
+        "details": "雲端 GPU 加速模型推論及訓練可使用 HBM，但 Adobe 未公開具名 HBM 採購或裝機量。",
+        "commercial_stage": "hypothesis",
+        "evidence_level": "industry_exposure",
+        "source_ids": [
+          "SEC_10Q_Q3_2026",
+          "NVIDIA_TW"
+        ],
+        "caveat": "不標記為直接供應商"
+      },
+      {
+        "id": "GO_TO_MARKET_partner_032",
+        "name": "AWS／Google Cloud／Microsoft",
+        "business_line": "GO_TO_MARKET",
+        "relationship": "partner",
+        "details": "Adobe 官方 2026 Summit 多 AI 平台生態公告；不能把產品整合視為直接購置全部對方基礎設施。",
+        "commercial_stage": "active_collaboration",
+        "evidence_level": "direct_official_partnership",
+        "source_ids": [
+          "PARTNERS_APR"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "GO_TO_MARKET_partner_033",
+        "name": "經銷商／加值服務商／SI",
+        "business_line": "GO_TO_MARKET",
+        "relationship": "partner",
+        "details": "SEC 10-K 列出直接銷售、經銷、行動商店、系統整合及 OEM 管道；各管道不必然提供 Adobe 雲端運算。",
+        "commercial_stage": "ongoing",
+        "evidence_level": "company_disclosed",
+        "source_ids": [
+          "SEC_10K_2025"
+        ],
+        "caveat": ""
+      },
+      {
+        "id": "GO_TO_MARKET_competitor_034",
+        "name": "Canva／Figma／Salesforce／Microsoft",
+        "business_line": "GO_TO_MARKET",
+        "relationship": "competitor",
+        "details": "不同業務線各自競爭；Adobe 不是晶片公司，也不能把半導體供應鏈當收入主軸。",
+        "commercial_stage": "commercial",
+        "evidence_level": "industry_competitor",
+        "source_ids": [
+          "REUTERS",
+          "SEC_10K_2025"
+        ],
+        "caveat": ""
+      }
+    ],
+    "research": {
+      "as_of": "2026-11-04",
+      "hot_topics_lookback_days": 90,
+      "sec_first": true,
+      "financial_snapshot": {
+        "fiscal_period": "2026-Q3",
+        "period_ended": "2026-08-28",
+        "currency": "USD",
+        "unit": "million",
+        "quarter_revenue": 6760,
+        "quarter_revenue_yoy_pct": 13,
+        "quarter_subscription_revenue": 6582,
+        "quarter_cost_of_revenue": 763,
+        "quarter_gross_profit": 5997,
+        "quarter_gross_margin_pct_derived": 88.71,
+        "quarter_net_income": 1830,
+        "quarter_r_and_d": 1288,
+        "quarter_operating_cash_flow": 2520,
+        "nine_month_operating_cash_flow": 7646,
+        "nine_month_property_equipment_purchases": 180,
+        "nine_month_r_and_d": 3596,
+        "ending_arr": 27500,
+        "ending_arr_yoy_pct": 11.2,
+        "ai_first_ending_arr_lower_bound": 650,
+        "ai_first_ending_arr_yoy_growth_lower_bound_pct": 150,
+        "remaining_performance_obligations": 22160,
+        "q4_revenue_guidance_range": [
+          6800,
+          6850
+        ],
+        "fy2026_revenue_guidance_range": [
+          26576,
+          26626
+        ],
+        "notes": "ARR 是年度化期末訂閱指標，不等同單季營收；AI-first ARR >650M 非 Firefly 單品營收，Q4 為指引非實現。",
+        "source_ids": [
+          "SEC_10Q_Q3_2026",
+          "SEC_8K_EARNINGS",
+          "Q3_CALL"
+        ]
+      },
+      "product_stage_notes": [
+        {
+          "topic": "CX Enterprise CoWorker",
+          "stage": "general_available_from_June_2026",
+          "source_ids": [
+            "Q3_CALL"
+          ]
+        },
+        {
+          "topic": "Topaz Labs acquisition",
+          "stage": "closed_2026_09_23",
+          "source_ids": [
+            "TOPAZ_DONE"
+          ]
+        },
+        {
+          "topic": "Semrush",
+          "stage": "closed_2026_04_28",
+          "source_ids": [
+            "SEC_10Q_Q3_2026"
+          ]
+        },
+        {
+          "topic": "Brand Concierge on Nemotron",
+          "stage": "announced_availability_later_2026",
+          "source_ids": [
+            "NVIDIA_OCT"
+          ]
+        },
+        {
+          "topic": "Adobe MAX",
+          "stage": "future_conference_2026_11_10_to_12",
+          "source_ids": [
+            "MAX_2026"
+          ]
+        }
+      ],
+      "management_update": "Anil Chakravarthy announced as CEO effective 2026-12-01; Shantanu Narayen transitions to executive chair. Not effective as of 2026-11-04.",
+      "segments_note": "FY2026 Q1 起 SEC 列單一 reportable segment；目前客戶群訂閱劃分不可混稱舊財報分部。",
+      "evidence_levels": {
+        "company_disclosed": "公司 SEC／法說披露",
+        "direct_official_partnership": "官方新聞確認合作",
+        "acquired_business": "收購完成",
+        "supplier_category_disclosed": "確認供應商類型但未揭露公司名",
+        "industry_competitor": "產品市場競爭",
+        "possible_indirect_beneficiary": "間接產業受惠假設非直接供應",
+        "industry_exposure": "技術或產業供應生態非 Adobe 直接採購"
+      },
+      "review_note": "Adobe 主要銷售 SaaS 與軟體，硬體供應鏈嚴格視為支援 AI 運算而非直接產品。"
+    },
+    "five_gate_audit": {
+      "gate_1_hot_topic_reverse_check": {
+        "performed": true,
+        "result": "pass_with_gaps",
+        "window": "2026-08-06 to 2026-11-04",
+        "method": "先從 SEC、法說、Reuters、Adobe 新品與 NVIDIA 官方發布獨立整理，不從現有 JSON 展開；再映射 business_lines。",
+        "found": [
+          "Q3 營收／ARR／AI-first ARR",
+          "CEO 交接",
+          "Topaz Labs 已完成收購",
+          "Semrush 品牌可見度",
+          "AI Agents 與 1700 客戶／試用者",
+          "NVIDIA RTX Spark／Nemotron",
+          "MAX 尚未舉行",
+          "AI 雲端成本"
+        ],
+        "initial_json_gap": [
+          "原始 markets 空白",
+          "product_stack 存在雜訊片語",
+          "沒有 Semrush／Topaz／RTX Spark、當季 AI ARR、agentic 商業化資料"
+        ]
+      },
+      "gate_2_investor_ten_questions": {
+        "performed": true,
+        "result": "pass",
+        "questions": [
+          {
+            "key": "revenue_growth",
+            "question": "營收成長",
+            "analysis": "FY26 Q3 +13%，客戶群訂閱 +14%；總 ARR 11.2% 增幅與 AI-first ARR >150% 應分開解讀。",
+            "status": "reviewed",
+            "source_ids": [
+              "SEC_10Q_Q3_2026",
+              "Q3_CALL"
+            ]
+          },
+          {
+            "key": "gross_margin",
+            "question": "毛利率",
+            "analysis": "GAAP 毛利率 5997/6760 ≈ 88.71%；subscription hosting 與 inferencing 成本增加。",
+            "status": "reviewed",
+            "source_ids": [
+              "SEC_10Q_Q3_2026"
+            ]
+          },
+          {
+            "key": "capital_spending",
+            "question": "資本支出",
+            "analysis": "前九月 PP&E 180M USD，不等同 AI 訓練／推論總成本；研發 3596M USD。",
+            "status": "reviewed",
+            "source_ids": [
+              "SEC_10Q_Q3_2026"
+            ]
+          },
+          {
+            "key": "competitive_moat",
+            "question": "競爭力",
+            "analysis": "Creative Cloud／Acrobat 工作流程、品牌可信賴與生態系，挑戰是 Canva/Figma/AI 原生工具。",
+            "status": "reviewed",
+            "source_ids": [
+              "REUTERS",
+              "SEC_10K_2025"
+            ]
+          },
+          {
+            "key": "technology_inflection",
+            "question": "技術轉折",
+            "analysis": "代理式 AI、Firefly Foundry、RTX Spark、端側 Topaz 模型及 GEO。",
+            "status": "reviewed",
+            "source_ids": [
+              "NVIDIA_OCT",
+              "TOPAZ_DONE"
+            ]
+          },
+          {
+            "key": "adoption",
+            "question": "客戶採用",
+            "analysis": "1B MAU、>100M creative freemium MAU、>1700 CoWorker customers and early adopters，勿誤認全部為付費用戶。",
+            "status": "reviewed",
+            "source_ids": [
+              "Q3_CALL"
+            ]
+          },
+          {
+            "key": "capacity",
+            "question": "產能／推論資源",
+            "analysis": "Adobe 為軟體商，擴展 GPU / hosting 為算力供給而非晶圓產能；未揭露 GPU 數量。",
+            "status": "reviewed",
+            "source_ids": [
+              "SEC_10Q_Q3_2026"
+            ]
+          },
+          {
+            "key": "supply_chain",
+            "question": "供應鏈",
+            "analysis": "已確認 NVIDIA 模型／加速合作，未確認台灣 ODM/HBM 廠對 Adobe 直接採購。",
+            "status": "reviewed",
+            "source_ids": [
+              "NVIDIA_OCT",
+              "NVIDIA_TW"
+            ]
+          },
+          {
+            "key": "valuation_catalyst",
+            "question": "估值催化",
+            "analysis": "Q4 指引 6.80–6.85B、AI-first 變現、Semrush 整合、Firefly 增長、RPO/ARR 趨勢；不提供目標價。",
+            "status": "reviewed",
+            "source_ids": [
+              "Q3_EARNINGS",
+              "REUTERS"
+            ]
+          },
+          {
+            "key": "risks",
+            "question": "風險",
+            "analysis": "競爭／版權／訴訟／AI 算力成本、GA 前產品、CEO 交接、收購整合。",
+            "status": "reviewed",
+            "source_ids": [
+              "SEC_10Q_Q3_2026",
+              "REUTERS"
+            ]
+          }
+        ]
+      },
+      "gate_3_technology_product_completeness": {
+        "performed": true,
+        "result": "pass_with_gaps",
+        "topics": [
+          "Firefly 第一方與夥伴模型",
+          "Firefly Foundry／API／點數變現",
+          "Creative Agent／CoWorker／Brand Concierge",
+          "NVIDIA RTX Spark 與影視推論",
+          "Topaz Neurostream 端側推論",
+          "Semrush GEO",
+          "GPU／HBM／先進封裝／CPO 供應鏈是否為真正直接業務"
+        ],
+        "commercialization_rule": "已發布、一般可用、客戶試用、預告及已認列財務指標分開呈現。"
+      },
+      "gate_4_falsification_competition": {
+        "performed": true,
+        "result": "pass_with_gaps",
+        "questions": [
+          "真的 GA／開始出貨了嗎",
+          "有真實收入還是只有 ARR、MAU 或測試效能",
+          "具名客戶是否有合約揭露",
+          "競爭平台與切換成本",
+          "台廠為直接 supply、合作 partner 還是間接受惠？"
+        ],
+        "examples": [
+          "Brand Concierge Nemotron 版本尚待上市",
+          "Firefly ending ARR 與 AI-first ending ARR 不可互相替代",
+          "台積電透過 NVIDIA 可能間接受惠，不是已確認 Adobe 直接供應商",
+          "OEM GPU 基準測試效能不等於商業出貨增量"
+        ]
+      },
+      "gate_5_delivery_missing_topic_audit": {
+        "performed": true,
+        "result": "pass_with_material_open_items",
+        "coverage_table": [
+          {
+            "topic": "2026-09 最新 SEC 10-Q、8-K",
+            "status": "covered",
+            "assessment": "Q3 67.60 億美元，營收年增 13%，訂閱收入 65.82 億美元；最新 Q4 尚未發布。",
+            "source_ids": [
+              "SEC_10Q_Q3_2026",
+              "SEC_8K_EARNINGS"
+            ]
+          },
+          {
+            "topic": "ARR／AI-first ARR 指標",
+            "status": "covered",
+            "assessment": "期末 ARR 275 億美元、同比 11.2%；AI-first ending ARR 超過 6.5 億美元、同比 >150%；不同於季度營收。",
+            "source_ids": [
+              "SEC_10Q_Q3_2026",
+              "Q3_CALL"
+            ]
+          },
+          {
+            "topic": "毛利率及 AI 託管成本",
+            "status": "covered",
+            "assessment": "Q3 毛利 59.97 億美元、成本 7.63 億美元，GAAP 毛利率約 88.71%；雲端推論與代管成本上升。",
+            "source_ids": [
+              "SEC_10Q_Q3_2026"
+            ]
+          },
+          {
+            "topic": "資本支出、研發和 GPU 訓練",
+            "status": "covered",
+            "assessment": "2026 前三季 PP&E 購置 1.80 億美元；研發 35.96 億美元；AI 資本需求包含雲端費用並非全列 PP&E。",
+            "source_ids": [
+              "SEC_10Q_Q3_2026"
+            ]
+          },
+          {
+            "topic": "Creative Cloud 與企業訂閱",
+            "status": "covered",
+            "assessment": "專業與行銷訂閱營收 46.51 億美元，非 Creative Cloud 單一營收。",
+            "source_ids": [
+              "SEC_10Q_Q3_2026"
+            ]
+          },
+          {
+            "topic": "Acrobat／Express 消費業務",
+            "status": "covered",
+            "assessment": "Business Professionals & Consumers 訂閱營收 19.05 億美元，年增 16%；MAU 不等於付費訂戶。",
+            "source_ids": [
+              "SEC_10Q_Q3_2026",
+              "Q3_CALL"
+            ]
+          },
+          {
+            "topic": "Firefly 應用、AI 點數商業化",
+            "status": "covered",
+            "assessment": "AI-first ARR 與 Firefly ARR 增速已公開，未公布 Firefly 單品完整分解。",
+            "source_ids": [
+              "Q3_CALL"
+            ]
+          },
+          {
+            "topic": "NVIDIA RTX Spark、Nemotron、Frame.io",
+            "status": "covered",
+            "assessment": "10/15 官方技術合作及產品最佳化；Brand Concierge Nemotron 版本尚未正式 GA。",
+            "source_ids": [
+              "NVIDIA_OCT"
+            ]
+          },
+          {
+            "topic": "Semrush 收購與 GEO／AI 搜尋",
+            "status": "covered",
+            "assessment": "4/28 已完成，2026 Q3 SEC 追認 18.74 億美元收購與整合。",
+            "source_ids": [
+              "SEC_10Q_Q3_2026",
+              "SEMRUSH"
+            ]
+          },
+          {
+            "topic": "Topaz Labs 收購及端側 AI",
+            "status": "covered",
+            "assessment": "9/23 已完成收購，不可沿用 8 月 10-Q 的待完成說法。",
+            "source_ids": [
+              "TOPAZ_DONE"
+            ]
+          },
+          {
+            "topic": "CX Enterprise CoWorker 及客戶採用",
+            "status": "covered",
+            "assessment": "6 月 GA，法說說明超過 1700 客戶與 early adopters；無逐客戶 ARR。",
+            "source_ids": [
+              "Q3_CALL"
+            ]
+          },
+          {
+            "topic": "單一營運分部改列",
+            "status": "covered",
+            "assessment": "2026 Q1 起合併原 Digital Media、Digital Experience、Publishing 為單一 reportable segment。",
+            "source_ids": [
+              "SEC_10Q_Q3_2026"
+            ]
+          },
+          {
+            "topic": "CEO 與高階管理層交接",
+            "status": "covered",
+            "assessment": "Anil Chakravarthy 預計 12/1 就任 CEO，Shantanu Narayen 轉執行董事長；截至 11/4 尚未生效。",
+            "source_ids": [
+              "SEC_8K_MANAGEMENT",
+              "Q3_CALL"
+            ]
+          },
+          {
+            "topic": "Adobe MAX 2026 潛在新品",
+            "status": "covered",
+            "assessment": "11/10–12 尚未舉行，不把可能發表功能寫成已 GA 或已有收入。",
+            "source_ids": [
+              "MAX_2026",
+              "NVIDIA_OCT"
+            ]
+          },
+          {
+            "topic": "GPU 數量、HBM 訂單、CPO／封裝",
+            "status": "evidence_insufficient",
+            "assessment": "僅能證明 Adobe GPU 最佳化與雲端 AI 成本，無 Adobe 自己採購 HBM、CPO 及先進封裝資料。",
+            "source_ids": [
+              "NVIDIA_OCT",
+              "SEC_10Q_Q3_2026"
+            ]
+          },
+          {
+            "topic": "台灣 AI 伺服器 ODM 直接供應",
+            "status": "evidence_insufficient",
+            "assessment": "未找到可歸屬證據證明鴻海、緯穎、廣達、緯創直接供應 Adobe 雲端伺服器。",
+            "source_ids": [
+              "NVIDIA_TW",
+              "SEC_10Q_Q3_2026"
+            ]
+          },
+          {
+            "topic": "台灣晶圓與半導體供應商",
+            "status": "evidence_insufficient",
+            "assessment": "台積電／日月光／欣興僅為 NVIDIA 下游晶片擴產的間接受惠可能，不是 Adobe 確認直接供應商。",
+            "source_ids": [
+              "NVIDIA_TW"
+            ]
+          },
+          {
+            "topic": "Adobe 自售 HBM／CPO 產品",
+            "status": "intentionally_excluded",
+            "assessment": "Adobe 核心業務為軟體與服務，無 10-K/10-Q 證明經營 HBM/CPO 硬體商品，避免套用 AMD 類型產業鏈。",
+            "source_ids": [
+              "SEC_10K_2025"
+            ]
+          },
+          {
+            "topic": "Bloomberg／The Information 付費獨家",
+            "status": "not_researched",
+            "assessment": "未取得可驗證全文，拒用匿名供應鏈傳聞填補證據空白。",
+            "source_ids": []
+          },
+          {
+            "topic": "ServeTheHome/Tom’s Hardware 詳細實測",
+            "status": "evidence_insufficient",
+            "assessment": "未取得與 Adobe 新合作逐項對應的獨立可複驗硬體 benchmark，官方 2x/5x 僅視為受限情境測試數據。",
+            "source_ids": [
+              "NVIDIA_OCT"
+            ]
+          },
+          {
+            "topic": "反壟斷、智慧財產與生成內容訴訟",
+            "status": "covered",
+            "assessment": "納入 SEC 風險揭露；不將個案法律結果當成已定案。",
+            "source_ids": [
+              "SEC_10Q_Q3_2026",
+              "SEC_10K_2025"
+            ]
+          },
+          {
+            "topic": "收購整合與股東回報",
+            "status": "covered",
+            "assessment": "Semrush 已入帳，Topaz 於 Q4 完成；Q3 股票回購約 950 萬股、餘下授權約 245.5 億美元。",
+            "source_ids": [
+              "SEC_10Q_Q3_2026",
+              "Q3_CALL"
+            ]
+          },
+          {
+            "topic": "AI-first 長期滲透與估值催化",
+            "status": "covered",
+            "assessment": "Freemium→付費、Firefly 計費、Acrobat AI 採用、RPO/ARR 動能及平台競爭為變動因素，未編造目標價。",
+            "source_ids": [
+              "Q3_CALL",
+              "REUTERS"
+            ]
+          }
+        ],
+        "counts": {
+          "covered": 17,
+          "evidence_insufficient": 4,
+          "intentionally_excluded": 1,
+          "not_researched": 1
+        },
+        "material_unresolved": [
+          "GPU 供應商直接採購金額與每季運算單位成本",
+          "Adobe 與台灣 AI ODM、晶圓與封裝商是否有具名直接交易",
+          "Brand Concierge 新版 Nemotron 上線與可計費收入",
+          "Firefly／CoWorker 產品獨立 ARR 與付費轉換",
+          "獨立實驗室技術 benchmark"
+        ],
+        "claim": "交付完整研究 JSON，非宣稱所有證據問題均有答案。"
+      }
+    },
+    "sources": [
+      {
+        "id": "SEC_10K_2025",
+        "url": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000003/adbe-20251128.htm",
+        "source_type": "SEC",
+        "status": "used"
+      },
+      {
+        "id": "SEC_10Q_Q3_2026",
+        "url": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000156/adbe-20260828.htm",
+        "source_type": "SEC",
+        "status": "used"
+      },
+      {
+        "id": "SEC_8K_EARNINGS",
+        "url": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000147/adbe-20260910.htm",
+        "source_type": "SEC",
+        "status": "used"
+      },
+      {
+        "id": "SEC_8K_MANAGEMENT",
+        "url": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000144/0000796343-26-000144-index.html",
+        "source_type": "SEC",
+        "status": "used"
+      },
+      {
+        "id": "IR",
+        "url": "https://www.adobe.com/investor-relations.html",
+        "source_type": "official_company",
+        "status": "used"
+      },
+      {
+        "id": "Q3_EARNINGS",
+        "url": "https://www.stocktitan.net/sec-filings/ADBE/8-k-adobe-inc-reports-material-event-9ead8cae065a.html",
+        "source_type": "earnings_release",
+        "status": "used"
+      },
+      {
+        "id": "Q3_CALL",
+        "url": "https://stockanalysis.com/stocks/adbe/transcripts/690050-q3-2026/",
+        "source_type": "earnings_transcript",
+        "status": "used"
+      },
+      {
+        "id": "REUTERS",
+        "url": "https://www.reuters.com/business/adobe-beats-third-quarter-revenue-estimates-2026-09-10/",
+        "source_type": "Reuters",
+        "status": "used"
+      },
+      {
+        "id": "NVIDIA_OCT",
+        "url": "https://news.adobe.com/news/2026/10/adobe-and-nvidia-expand-collaboration-to-speed-agentic-creation",
+        "source_type": "official_company",
+        "status": "used"
+      },
+      {
+        "id": "NVIDIA_TW",
+        "url": "https://blogs.nvidia.com.tw/blog/adobe-and-nvidia-partnership-creative-marketing-agentic-workflows/",
+        "source_type": "official_company",
+        "status": "used"
+      },
+      {
+        "id": "PARTNERS_APR",
+        "url": "https://news.adobe.com/news/2026/04/adobe-expands-partner-ecosystem",
+        "source_type": "official_company",
+        "status": "used"
+      },
+      {
+        "id": "AGENTS_JUN",
+        "url": "https://news.adobe.com/news/2026/06/adobe-unveils-major-expansion",
+        "source_type": "official_company",
+        "status": "used"
+      },
+      {
+        "id": "TOPAZ_DONE",
+        "url": "https://blog.adobe.com/en/publish/2026/09/23/adobe-completes-acquisition-of-topaz-labs",
+        "source_type": "official_company",
+        "status": "used"
+      },
+      {
+        "id": "SEMRUSH",
+        "url": "https://news.adobe.com/news/downloads/pdfs/2026/04/04282026-adobecompletessemrush-acquisition.pdf",
+        "source_type": "official_company",
+        "status": "used"
+      },
+      {
+        "id": "MAX_2026",
+        "url": "https://www.max.adobe.com/faq/",
+        "source_type": "official_company",
+        "status": "used"
+      },
+      {
+        "id": "TECH",
+        "url": "https://www.tomshardware.com/pc-components/gpus",
+        "source_type": "technical_background_not_used_for_hard_claims",
+        "status": "background_only"
+      },
+      {
+        "id": "INVESTOR_QA",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/09/11/adobe-adbe-q3-2026-earnings-call-transcript/",
+        "source_type": "earnings_transcript",
+        "status": "used"
+      }
+    ]
   }
 }

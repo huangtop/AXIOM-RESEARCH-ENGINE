@@ -241,54 +241,64 @@
   },
   "industry_chain": {
     "schema_version": "axiom-industry-chain.research.v1",
-    "as_of": "2026-11-03",
+    "as_of": "2026-11-05",
     "company": "Applied Materials, Inc.",
     "symbol": "AMAT",
     "locale": "zh-TW",
     "seo": {
-      "title": "應用材料（AMAT）產業鏈：GAA、DRAM、先進封裝、設備與台灣受惠股",
-      "description": "以 SEC 申報、官方法說會及 EPIC Center 公告區分材料工程設備的合作、競爭及產業受惠關係。"
+      "title": "AMAT 應用材料產業鏈：台積電／三星／Intel具名客戶、京鼎／Ichor具名供應商、GAA、HBM、混合鍵合",
+      "description": "將公司名稱與實際角色分開：具名設備客戶、供應商、EPIC研發合作、競爭者及產業受惠。"
     },
     "business_lines": [
       {
         "id": "DEPOSITION",
-        "name": "薄膜沉積與材料工程"
+        "name": "薄膜沉積與材料工程",
+        "downstream_applications": "CVD／PVD／ALD／磊晶；先進邏輯、DRAM、NAND 的薄膜形成"
       },
       {
         "id": "ETCH",
-        "name": "電漿蝕刻與選擇性移除"
+        "name": "電漿蝕刻與選擇性移除",
+        "downstream_applications": "原子尺度選擇性移除、3D NAND 深孔與 GAA 結構製程"
       },
       {
         "id": "GAA",
-        "name": "GAA／先進邏輯"
+        "name": "GAA／先進邏輯",
+        "downstream_applications": "晶體管通道、背面供電、互連與先進節點材料工程"
       },
       {
         "id": "DRAM",
-        "name": "DRAM／HBM 製程"
+        "name": "DRAM／HBM 製程",
+        "downstream_applications": "DRAM 電容、先進記憶體材料製程；HBM 的晶圓製程與封裝設備"
       },
       {
         "id": "NAND",
-        "name": "3D NAND"
+        "name": "3D NAND",
+        "downstream_applications": "高層數堆疊、選擇性移除及沉積"
       },
       {
         "id": "PACKAGING",
-        "name": "先進封裝／混合鍵合"
+        "name": "先進封裝／混合鍵合",
+        "downstream_applications": "晶圓／晶粒堆疊、hybrid bonding 與晶片互連"
       },
       {
         "id": "METROLOGY",
-        "name": "量測與檢測"
+        "name": "量測與檢測",
+        "downstream_applications": "VeritySEM／PROVision eBeam 量測與缺陷控制"
       },
       {
         "id": "IMPLANT",
-        "name": "離子植入／熱製程"
+        "name": "離子植入／熱製程",
+        "downstream_applications": "離子植入、摻雜及相關熱處理"
       },
       {
         "id": "DISPLAY",
-        "name": "顯示器製程"
+        "name": "顯示器製程",
+        "downstream_applications": "顯示器沉積與製造設備"
       },
       {
         "id": "SERVICES",
-        "name": "設備服務／工廠自動化"
+        "name": "設備服務／工廠自動化",
+        "downstream_applications": "Applied Global Services、維修備品、製程最佳化軟體"
       }
     ],
     "relationship_categories": [
@@ -304,371 +314,1117 @@
         "name": "台積電（2330／TSM）",
         "business_line": "GAA",
         "relationship": "partner",
-        "details": "官方 EPIC Center 創始或創新合作名單；合作研發不等於已確認設備採購。"
+        "details": "官方 EPIC 研發合作關係；此節點保留合作分類，採購關係另建 customer 節點。",
+        "evidence_level": "official_partnership",
+        "source_ids": [
+          "AMAT_EPIC"
+        ]
       },
       {
         "id": "GAA_partner_002",
         "name": "Intel（INTC）",
         "business_line": "GAA",
         "relationship": "partner",
-        "details": "官方 EPIC Center 創始或創新合作名單；合作研發不等於已確認設備採購。"
+        "details": "官方 EPIC 研發合作關係；此節點保留合作分類，採購關係另建 customer 節點。",
+        "evidence_level": "official_partnership",
+        "source_ids": [
+          "AMAT_EPIC"
+        ]
       },
       {
         "id": "DRAM_partner_001",
         "name": "SK hynix（000660.KS）",
         "business_line": "DRAM",
         "relationship": "partner",
-        "details": "官方 EPIC Center 創始或創新合作名單；合作研發不等於已確認設備採購。"
+        "details": "官方 EPIC 研發合作關係；此節點保留合作分類，採購關係另建 customer 節點。",
+        "evidence_level": "official_partnership",
+        "source_ids": [
+          "AMAT_EPIC"
+        ]
       },
       {
         "id": "DRAM_partner_002",
         "name": "Micron（MU）",
         "business_line": "DRAM",
         "relationship": "partner",
-        "details": "官方 EPIC Center 創始或創新合作名單；合作研發不等於已確認設備採購。"
+        "details": "官方 EPIC 研發合作關係；此節點保留合作分類，採購關係另建 customer 節點。",
+        "evidence_level": "official_partnership",
+        "source_ids": [
+          "AMAT_EPIC"
+        ]
       },
       {
         "id": "DRAM_partner_003",
         "name": "Samsung Electronics（005930.KS）",
         "business_line": "DRAM",
         "relationship": "partner",
-        "details": "官方 EPIC Center 創始或創新合作名單；合作研發不等於已確認設備採購。"
+        "details": "官方 EPIC 研發合作關係；此節點保留合作分類，採購關係另建 customer 節點。",
+        "evidence_level": "official_partnership",
+        "source_ids": [
+          "AMAT_EPIC"
+        ]
       },
       {
         "id": "PACKAGING_partner_001",
         "name": "Besi（BESI.AS）",
         "business_line": "PACKAGING",
         "relationship": "partner",
-        "details": "2020 年起共同研發混合鍵合；2026 年 10 月擴大合作。增持約 20% 股權的交易仍有監管先決條件。"
+        "details": "混合鍵合自 2020 年合作；2026-10-26 增持至約20%的股票收購協議仍有反壟斷審核條件。",
+        "evidence_level": "official_partnership",
+        "source_ids": [
+          "AMAT_BESI_8K"
+        ]
       },
       {
         "id": "PACKAGING_partner_002",
         "name": "Broadcom（AVGO）",
         "business_line": "PACKAGING",
         "relationship": "partner",
-        "details": "官方 EPIC Center 創始或創新合作名單；合作研發不等於已確認設備採購。"
+        "details": "官方 EPIC 研發合作關係；此節點保留合作分類，採購關係另建 customer 節點。",
+        "evidence_level": "official_partnership",
+        "source_ids": [
+          "AMAT_EPIC"
+        ]
       },
       {
         "id": "METROLOGY_partner_001",
         "name": "Advantest（6857.T）",
         "business_line": "METROLOGY",
         "relationship": "partner",
-        "details": "官方 EPIC Center 創始或創新合作名單；合作研發不等於已確認設備採購。"
+        "details": "官方 EPIC 研發合作關係；此節點保留合作分類，採購關係另建 customer 節點。",
+        "evidence_level": "official_partnership",
+        "source_ids": [
+          "AMAT_EPIC"
+        ]
       },
       {
         "id": "ETCH_partner_001",
         "name": "SCREEN Holdings（7735.T）",
         "business_line": "ETCH",
         "relationship": "partner",
-        "details": "官方 EPIC Center 創始或創新合作名單；合作研發不等於已確認設備採購。"
+        "details": "官方 EPIC 研發合作關係；此節點保留合作分類，採購關係另建 customer 節點。",
+        "evidence_level": "official_partnership",
+        "source_ids": [
+          "AMAT_EPIC"
+        ]
       },
       {
         "id": "NAND_partner_001",
         "name": "Kioxia（285A.T）",
         "business_line": "NAND",
         "relationship": "partner",
-        "details": "官方 EPIC Center 創始或創新合作名單；合作研發不等於已確認設備採購。"
+        "details": "官方 EPIC 研發合作關係；此節點保留合作分類，採購關係另建 customer 節點。",
+        "evidence_level": "official_partnership",
+        "source_ids": [
+          "AMAT_EPIC"
+        ]
       },
       {
         "id": "DEPOSITION_competitor_001",
         "name": "Lam Research（LRCX）",
         "business_line": "DEPOSITION",
         "relationship": "competitor",
-        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+        "details": "同領域或相鄰設備／製程競爭，非每項產品可互相替代。",
+        "evidence_level": "market_comparison",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "ETCH_competitor_001",
         "name": "Lam Research（LRCX）",
         "business_line": "ETCH",
         "relationship": "competitor",
-        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+        "details": "同領域或相鄰設備／製程競爭，非每項產品可互相替代。",
+        "evidence_level": "market_comparison",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "METROLOGY_competitor_001",
         "name": "KLA（KLAC）",
         "business_line": "METROLOGY",
         "relationship": "competitor",
-        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+        "details": "同領域或相鄰設備／製程競爭，非每項產品可互相替代。",
+        "evidence_level": "market_comparison",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "METROLOGY_competitor_002",
         "name": "ASML（ASML）",
         "business_line": "METROLOGY",
         "relationship": "competitor",
-        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+        "details": "同領域或相鄰設備／製程競爭，非每項產品可互相替代。",
+        "evidence_level": "market_comparison",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "DEPOSITION_competitor_002",
         "name": "Tokyo Electron（8035.T）",
         "business_line": "DEPOSITION",
         "relationship": "competitor",
-        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+        "details": "同領域或相鄰設備／製程競爭，非每項產品可互相替代。",
+        "evidence_level": "market_comparison",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "ETCH_competitor_002",
         "name": "Tokyo Electron（8035.T）",
         "business_line": "ETCH",
         "relationship": "competitor",
-        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+        "details": "同領域或相鄰設備／製程競爭，非每項產品可互相替代。",
+        "evidence_level": "market_comparison",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "IMPLANT_competitor_001",
         "name": "Axcelis Technologies（ACLS）",
         "business_line": "IMPLANT",
         "relationship": "competitor",
-        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+        "details": "同領域或相鄰設備／製程競爭，非每項產品可互相替代。",
+        "evidence_level": "market_comparison",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "IMPLANT_competitor_002",
         "name": "Nissin Electric（日新電機）",
         "business_line": "IMPLANT",
         "relationship": "competitor",
-        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+        "details": "同領域或相鄰設備／製程競爭，非每項產品可互相替代。",
+        "evidence_level": "market_comparison",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "PACKAGING_competitor_001",
         "name": "ASMPT（0522.HK）",
         "business_line": "PACKAGING",
         "relationship": "competitor",
-        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+        "details": "同領域或相鄰設備／製程競爭，非每項產品可互相替代。",
+        "evidence_level": "market_comparison",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "PACKAGING_competitor_002",
         "name": "Besi（BESI.AS）",
         "business_line": "PACKAGING",
         "relationship": "competitor",
-        "details": "先進封裝設備領域部分重疊；同時存在已確認策略合作，屬競合關係。"
+        "details": "同領域或相鄰設備／製程競爭，非每項產品可互相替代。",
+        "evidence_level": "market_comparison",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "METROLOGY_competitor_003",
         "name": "Hitachi High-Tech（日立高新）",
         "business_line": "METROLOGY",
         "relationship": "competitor",
-        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+        "details": "同領域或相鄰設備／製程競爭，非每項產品可互相替代。",
+        "evidence_level": "market_comparison",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "DISPLAY_competitor_001",
         "name": "ULVAC（6728.T）",
         "business_line": "DISPLAY",
         "relationship": "competitor",
-        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+        "details": "同領域或相鄰設備／製程競爭，非每項產品可互相替代。",
+        "evidence_level": "market_comparison",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "DISPLAY_competitor_002",
         "name": "Canon（7751.T）",
         "business_line": "DISPLAY",
         "relationship": "competitor",
-        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+        "details": "同領域或相鄰設備／製程競爭，非每項產品可互相替代。",
+        "evidence_level": "market_comparison",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "SERVICES_competitor_001",
         "name": "Lam Research（LRCX）",
         "business_line": "SERVICES",
         "relationship": "competitor",
-        "details": "此產品領域存在競爭或產品重疊；不代表全部產品直接可替代。"
+        "details": "同領域或相鄰設備／製程競爭，非每項產品可互相替代。",
+        "evidence_level": "market_comparison",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "DEPOSITION_beneficiary_001",
         "name": "京鼎（3413）",
         "business_line": "DEPOSITION",
         "relationship": "beneficiary",
-        "details": "台灣半導體設備模組與零組件製造商；不據此推定本次有新增 AMAT 訂單。"
+        "details": "京鼎為公開財經報導的 AMAT 主要供應鏈廠；此受惠節點保留，並另建 supplier 節點。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "MONEYDJ_FOXSEMICON",
+          "FOXSEMICON_2025_ANNUAL"
+        ]
       },
       {
         "id": "DEPOSITION_beneficiary_002",
         "name": "帆宣（6196）",
         "business_line": "DEPOSITION",
         "relationship": "beneficiary",
-        "details": "廠務工程、設備整合與材料服務的需求相關受惠觀察。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "DEPOSITION_beneficiary_003",
         "name": "迅得（6438）",
         "business_line": "DEPOSITION",
         "relationship": "beneficiary",
-        "details": "半導體自動化設備相關受惠觀察。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "DEPOSITION_beneficiary_004",
         "name": "弘塑（3131）",
         "business_line": "DEPOSITION",
         "relationship": "beneficiary",
-        "details": "濕製程設備與先進製程資本支出相關。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "ETCH_beneficiary_001",
         "name": "辛耘（3583）",
         "business_line": "ETCH",
         "relationship": "beneficiary",
-        "details": "半導體製程設備及再生晶圓相關需求。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "ETCH_beneficiary_002",
         "name": "均華（6640）",
         "business_line": "ETCH",
         "relationship": "beneficiary",
-        "details": "半導體設備自動化與封裝設備需求。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "GAA_beneficiary_001",
         "name": "台積電（2330／TSM）",
         "business_line": "GAA",
         "relationship": "beneficiary",
-        "details": "先進邏輯製程設備投資需求方，並為官方 EPIC 合作夥伴。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "GAA_beneficiary_002",
         "name": "聯電（2303）",
         "business_line": "GAA",
         "relationship": "beneficiary",
-        "details": "晶圓製造設備需求相關；非先進 GAA 訂單主張。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "GAA_beneficiary_003",
         "name": "世界先進（5347）",
         "business_line": "GAA",
         "relationship": "beneficiary",
-        "details": "成熟及特殊製程晶圓設備需求相關。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "DRAM_beneficiary_001",
         "name": "南亞科（2408）",
         "business_line": "DRAM",
         "relationship": "beneficiary",
-        "details": "DRAM 設備資本支出循環受惠觀察。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "DRAM_beneficiary_002",
         "name": "華邦電（2344）",
         "business_line": "DRAM",
         "relationship": "beneficiary",
-        "details": "記憶體晶圓製程設備投資需求。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "DRAM_beneficiary_003",
         "name": "力積電（6770）",
         "business_line": "DRAM",
         "relationship": "beneficiary",
-        "details": "記憶體及晶圓製造資本支出相關。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "NAND_beneficiary_001",
         "name": "群聯（8299）",
         "business_line": "NAND",
         "relationship": "beneficiary",
-        "details": "NAND 供需與資本支出間接連動，非設備供應關係。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "PACKAGING_beneficiary_001",
         "name": "日月光投控（3711／ASX）",
         "business_line": "PACKAGING",
         "relationship": "beneficiary",
-        "details": "先進封裝設備需求方，非直接供應商證據。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "PACKAGING_beneficiary_002",
         "name": "矽品精密（ASE 旗下）",
         "business_line": "PACKAGING",
         "relationship": "beneficiary",
-        "details": "先進封裝製程擴產相關。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "PACKAGING_beneficiary_003",
         "name": "萬潤（6187）",
         "business_line": "PACKAGING",
         "relationship": "beneficiary",
-        "details": "先進封裝設備需求相關。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "PACKAGING_beneficiary_004",
         "name": "志聖（2467）",
         "business_line": "PACKAGING",
         "relationship": "beneficiary",
-        "details": "先進封裝製程設備需求相關。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "PACKAGING_beneficiary_005",
         "name": "均豪（5443）",
         "business_line": "PACKAGING",
         "relationship": "beneficiary",
-        "details": "半導體封裝與檢測自動化設備相關。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "PACKAGING_beneficiary_006",
         "name": "家登（3680）",
         "business_line": "PACKAGING",
         "relationship": "beneficiary",
-        "details": "晶圓與光罩載具等先進製程耗材需求。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "PACKAGING_beneficiary_007",
         "name": "弘塑（3131）",
         "business_line": "PACKAGING",
         "relationship": "beneficiary",
-        "details": "先進封裝濕製程設備相關。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "METROLOGY_beneficiary_001",
         "name": "精測（6510）",
         "business_line": "METROLOGY",
         "relationship": "beneficiary",
-        "details": "半導體測試介面及量測生態相關，非 AMAT 直接供應證據。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "METROLOGY_beneficiary_002",
         "name": "旺矽（6223）",
         "business_line": "METROLOGY",
         "relationship": "beneficiary",
-        "details": "探針與測試介面需求相關。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "METROLOGY_beneficiary_003",
         "name": "致茂（2360）",
         "business_line": "METROLOGY",
         "relationship": "beneficiary",
-        "details": "測試量測設備生態相關。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "IMPLANT_beneficiary_001",
         "name": "漢唐（2404）",
         "business_line": "IMPLANT",
         "relationship": "beneficiary",
-        "details": "晶圓廠無塵室與廠務工程擴建需求。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "IMPLANT_beneficiary_002",
         "name": "亞翔（6139）",
         "business_line": "IMPLANT",
         "relationship": "beneficiary",
-        "details": "半導體廠務與無塵室建置需求。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "SERVICES_beneficiary_001",
         "name": "帆宣（6196）",
         "business_line": "SERVICES",
         "relationship": "beneficiary",
-        "details": "晶圓廠工程與設備整合服務相關。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "SERVICES_beneficiary_002",
         "name": "漢科（3402）",
         "business_line": "SERVICES",
         "relationship": "beneficiary",
-        "details": "半導體廠務工程需求相關。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "DISPLAY_beneficiary_001",
         "name": "群創（3481）",
         "business_line": "DISPLAY",
         "relationship": "beneficiary",
-        "details": "顯示器製程設備投資需求方，非 AMAT 訂單確認。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
       },
       {
         "id": "DISPLAY_beneficiary_002",
         "name": "友達（2409）",
         "business_line": "DISPLAY",
         "relationship": "beneficiary",
-        "details": "顯示器製程設備投資需求方，非 AMAT 訂單確認。"
+        "details": "產業受惠觀察／設備投資相關，不由此推定直接訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "AMAT_2025_10K"
+        ]
+      },
+      {
+        "id": "GAA_customer_001",
+        "name": "台積電 TSMC（2330／TSM）",
+        "business_line": "GAA",
+        "relationship": "customer",
+        "details": "AMAT 2023年 10-K 具名披露台積電占2023營收19%；2024年為11%。2025年的19%匿名最大客戶不能擅自指認為台積電。2026年另有官方EPIC合作。",
+        "evidence_level": "SEC_named_historical_customer_and_current_collaboration",
+        "source_ids": [
+          "AMAT_2023_10K",
+          "AMAT_2024_10K_CUSTOMERS",
+          "AMAT_TSMC_EPIC"
+        ],
+        "historical_customer_sales_share_pct": {
+          "FY2023": 19,
+          "FY2024": 11
+        }
+      },
+      {
+        "id": "DRAM_customer_001",
+        "name": "Samsung Electronics（三星電子）",
+        "business_line": "DRAM",
+        "relationship": "customer",
+        "details": "AMAT官方SEC歷史年報：2023營收占15%，2024約12%；2026年屬EPIC創始合作夥伴，未披露個別2026採購額。",
+        "evidence_level": "SEC_named_historical_customer",
+        "source_ids": [
+          "AMAT_2023_10K",
+          "AMAT_2024_10K_CUSTOMERS",
+          "AMAT_EPIC"
+        ],
+        "historical_customer_sales_share_pct": {
+          "FY2023": 15,
+          "FY2024": 12
+        }
+      },
+      {
+        "id": "GAA_customer_002",
+        "name": "Intel（INTC）",
+        "business_line": "GAA",
+        "relationship": "customer",
+        "details": "2022 SEC曾揭露占AMAT營收10%；2025 Intel供應商獎確認設備供應商關係，2026年官方合作延續；2026購買額未披露。",
+        "evidence_level": "SEC_named_historical_customer_and_recent_supplier_award",
+        "source_ids": [
+          "AMAT_2023_10K",
+          "AMAT_INTEL_AWARD",
+          "AMAT_INTEL_2026"
+        ],
+        "historical_customer_sales_share_pct": {
+          "FY2022": 10
+        }
+      },
+      {
+        "id": "DRAM_customer_002",
+        "name": "Micron Technology（MU）",
+        "business_line": "DRAM",
+        "relationship": "customer",
+        "details": "AMAT與Micron官方2026-03確認長期材料工程及HBM／NAND共同開發；此節點是公開具名的長期設備供應關係，不聲稱特定2026訂單金額。",
+        "evidence_level": "company_disclosed_longstanding_customer_relationship",
+        "source_ids": [
+          "AMAT_MICRON",
+          "AMAT_EPIC"
+        ]
+      },
+      {
+        "id": "DRAM_customer_003",
+        "name": "SK hynix（海力士）",
+        "business_line": "DRAM",
+        "relationship": "customer",
+        "details": "AMAT官方2026-03公布DRAM/HBM長期共同研發與部署合作；具名下游記憶體廠，但未直接揭露2026買入設備金額。",
+        "evidence_level": "named_industry_customer_and_official_collaboration",
+        "source_ids": [
+          "AMAT_SK",
+          "AMAT_EPIC"
+        ]
+      },
+      {
+        "id": "DEPOSITION_supplier_001",
+        "name": "Ichor Holdings（ICHR）",
+        "business_line": "DEPOSITION",
+        "relationship": "supplier",
+        "details": "Ichor FY2025 10-K確認AMAT為其20多年設備子系統客戶；2025對AMAT銷售3.71697億美元。",
+        "evidence_level": "SEC_confirmed_direct_supplier",
+        "source_ids": [
+          "ICHOR_2025_10K"
+        ],
+        "fy2025_sales_to_amat_usd_thousands": 371697
+      },
+      {
+        "id": "DEPOSITION_supplier_002",
+        "name": "京鼎／Foxsemicon（3413）",
+        "business_line": "DEPOSITION",
+        "relationship": "supplier",
+        "details": "MoneyDJ 2026-06報導AMAT為京鼎最大客戶，約占京鼎營收80%；京鼎年報將最大客戶匿名列甲公司占2025營收79.08%，媒體辨識與公司匿名揭露應分開。",
+        "evidence_level": "named_financial_media_supplier_corresponds_to_anonymous_filing",
+        "source_ids": [
+          "MONEYDJ_FOXSEMICON",
+          "FOXSEMICON_2025_ANNUAL"
+        ]
+      },
+      {
+        "id": "SERVICES_supplier_001",
+        "name": "Celestica（CLS）",
+        "business_line": "SERVICES",
+        "relationship": "supplier",
+        "details": "Celestica FY2025 10-K將AMAT列為ATS部門具名客戶，屬已確認設備組裝／工程服務供應關係。",
+        "evidence_level": "SEC_named_supplier_via_counterparty",
+        "source_ids": [
+          "CELESTICA_2025_10K"
+        ]
+      },
+      {
+        "id": "DEPOSITION_supplier_003",
+        "name": "Flex（FLEX）",
+        "business_line": "DEPOSITION",
+        "relationship": "supplier",
+        "details": "Flex FY2025 SEC年報具名指出AMAT及其子公司占其營收14%，確認電子製造服務供應。",
+        "evidence_level": "SEC_named_supplier_via_counterparty",
+        "source_ids": [
+          "FLEX_2025_10K"
+        ]
+      }
+    ],
+    "research": {
+      "as_of": "2026-11-05",
+      "baseline_commit": "a81b8a5f",
+      "original_blob_sha": "69aef4af0e5c155b961f5e12524531b8191ab2a1",
+      "latest_sec_10k": "FY2025",
+      "latest_sec_10q": "FY2026_Q3",
+      "latest_gaap_quarter_revenue_usd_billion": 9.12,
+      "latest_gaap_quarter_gross_margin_pct": 50.3,
+      "latest_quarter_yoy_revenue_growth_pct": 25,
+      "fy2025_customer_concentration_pct_unnamed": [
+        19,
+        15
+      ],
+      "fy2026_9m_customer_concentration_pct_unnamed": [
+        20,
+        14
+      ],
+      "named_customer_rule": "SEC歷史具名客戶和可靠官方/媒體採購關係可列入customer，但不推定最新匿名客戶身份或最新訂單份額。",
+      "direct_supplier_rule": "相對方SEC或具名財經媒體可列入supplier，對匿名年報與媒體辨識保留不同證據等級。",
+      "no_generic_customer_nodes": true,
+      "next_earnings_release_date": "2026-11-12",
+      "business_line_not_customer_type": true
+    },
+    "five_gate_audit": {
+      "gate_1_hot_topics_reverse_check": {
+        "performed": true,
+        "status": "covered_with_open_items",
+        "method": "先由90天SEC、IR、官方EPIC及10/26 Besi交易獨立找熱點，後與JSON主線核對。",
+        "hot_topics": [
+          "Q3創紀錄營收與兩大匿名客戶",
+          "10月EPIC正式揭幕",
+          "Besi約20%股權協議",
+          "HBM與DRAM",
+          "3D NAND選擇性移除",
+          "台灣具名供應商京鼎",
+          "中國出口管制"
+        ]
+      },
+      "gate_2_investor_top_ten_questions": {
+        "performed": true,
+        "status": "reviewed",
+        "questions": [
+          {
+            "topic": "營收成長",
+            "finding": "FY2026 Q3 91.2億美元、年增25%；半導體設備需求與地區結構須追蹤。"
+          },
+          {
+            "topic": "毛利率",
+            "finding": "Q3 GAAP 50.3%，不能與 non-GAAP 50.4%混同。"
+          },
+          {
+            "topic": "資本支出",
+            "finding": "區分AMAT自有EPIC研發投資、半導體客戶WFE資本支出及已付現金。"
+          },
+          {
+            "topic": "競爭力",
+            "finding": "材料工程、ALD/CVD/PVD、蝕刻、電測；競爭者依製程不同。"
+          },
+          {
+            "topic": "技術轉折",
+            "finding": "GAA、背面供電、3D NAND、DRAM/HBM、混合鍵合及3D IC。"
+          },
+          {
+            "topic": "客戶採用",
+            "finding": "TSMC、Samsung、Intel歷史SEC具名，Micron、SK海力士具名長期合作。"
+          },
+          {
+            "topic": "產能",
+            "finding": "設備出貨不等於客戶實際量產產能，留意交期和導入節奏。"
+          },
+          {
+            "topic": "供應鏈",
+            "finding": "Ichor、京鼎、Celestica、Flex按獨立公開證據列為供應商。"
+          },
+          {
+            "topic": "估值催化劑",
+            "finding": "11/12 Q4財報、Besi交易進度、EPIC導入、先進封裝與HBM投資。"
+          },
+          {
+            "topic": "風險",
+            "finding": "客戶集中、出口管制、先進製程採用不及預期、供應瓶頸與交易審查。"
+          }
+        ]
+      },
+      "gate_3_technology_product_completeness": {
+        "performed": true,
+        "status": "reviewed_with_gaps",
+        "areas": [
+          "GAA",
+          "背面供電",
+          "HBM/DRAM",
+          "3D NAND",
+          "混合鍵合",
+          "3D IC",
+          "CPO間接關聯而非直接營收",
+          "量產設備節點追蹤"
+        ]
+      },
+      "gate_4_falsification_competition": {
+        "performed": true,
+        "status": "reviewed_with_gaps",
+        "tests": [
+          "客戶是否具名及關係確認時間",
+          "匿名最新大客戶是否被錯指認",
+          "合作是否實際購買設備",
+          "供應商是否有逆向SEC或財經媒體佐證",
+          "Besi是否完成股權交割",
+          "量產與營收是否已實現"
+        ]
+      },
+      "gate_5_missing_topic_audit": {
+        "performed": true,
+        "status": "open_items_disclosed_not_fully_complete",
+        "important_issue_coverage_table": [
+          {
+            "topic": "FY2025 10-K客戶集中度",
+            "status": "covered",
+            "finding": "兩名匿名客戶占FY2025營收19%與15%；不能推斷匿名身份。",
+            "source_ids": [
+              "AMAT_2025_10K"
+            ]
+          },
+          {
+            "topic": "2026 Q3 SEC 10-Q客戶集中度",
+            "status": "covered",
+            "finding": "截至2026-07-26九個月兩名匿名客戶20%、14%，不推定具名排序。",
+            "source_ids": [
+              "AMAT_2026_Q3_10Q"
+            ]
+          },
+          {
+            "topic": "具名客戶台積電",
+            "status": "covered",
+            "finding": "FY2023 19%、FY2024 11%歷史SEC可核；2026仍有研發合作。",
+            "source_ids": [
+              "AMAT_2023_10K",
+              "AMAT_TSMC_EPIC"
+            ]
+          },
+          {
+            "topic": "具名客戶三星",
+            "status": "covered",
+            "finding": "FY2023 15%、FY2024約12%，非2026最新市場占比。",
+            "source_ids": [
+              "AMAT_2023_10K",
+              "AMAT_2024_10K_CUSTOMERS"
+            ]
+          },
+          {
+            "topic": "具名客戶Intel",
+            "status": "covered",
+            "finding": "FY2022 10%，2025供應商獎；2026採購金額不明。",
+            "source_ids": [
+              "AMAT_2023_10K",
+              "AMAT_INTEL_AWARD"
+            ]
+          },
+          {
+            "topic": "具名客戶Micron與SK hynix",
+            "status": "covered",
+            "finding": "官方長期技術合作與材料工程關係，未披露個別最新採購金額。",
+            "source_ids": [
+              "AMAT_MICRON",
+              "AMAT_SK"
+            ]
+          },
+          {
+            "topic": "客戶Kioxia是否已確認直接設備採購",
+            "status": "evidence_insufficient",
+            "finding": "有EPIC合作，公開資料尚不足以對特定設備及交易作當期確認，故不放進customer。",
+            "source_ids": [
+              "AMAT_KIOXIA"
+            ]
+          },
+          {
+            "topic": "直接供應商Ichor",
+            "status": "covered",
+            "finding": "Ichor 2025 SEC逐名披露AMAT為客戶，並有3.71697億美元銷售。",
+            "source_ids": [
+              "ICHOR_2025_10K"
+            ]
+          },
+          {
+            "topic": "台灣直接供應商京鼎",
+            "status": "covered",
+            "finding": "MoneyDJ具名AMAT、京鼎法說／年報匿名甲公司；證據層次明確保留。",
+            "source_ids": [
+              "MONEYDJ_FOXSEMICON",
+              "FOXSEMICON_2025_ANNUAL"
+            ]
+          },
+          {
+            "topic": "直接供應商Flex、Celestica",
+            "status": "covered",
+            "finding": "相對方SEC年報揭露AMAT直接採購關係。",
+            "source_ids": [
+              "FLEX_2025_10K",
+              "CELESTICA_2025_10K"
+            ]
+          },
+          {
+            "topic": "2026 Q3營收與毛利",
+            "status": "covered",
+            "finding": "Q3營收91.2億美元、GAAP毛利率50.3%；Q4尚未公布。",
+            "source_ids": [
+              "AMAT_2026_Q3_IR"
+            ]
+          },
+          {
+            "topic": "最新Q4財報上市時點",
+            "status": "not_yet_available",
+            "finding": "2026-11-12預定公布，不能在2026-11-05視為已發布。",
+            "source_ids": [
+              "AMAT_Q4_DATE"
+            ]
+          },
+          {
+            "topic": "GAA與背面供電",
+            "status": "covered",
+            "finding": "先進邏輯材料工程主線；設計導入、試產、量產須區分。",
+            "source_ids": [
+              "AMAT_EPIC"
+            ]
+          },
+          {
+            "topic": "HBM與DRAM設備",
+            "status": "covered",
+            "finding": "AMAT提供記憶體製造／堆疊材料工程，非HBM成品供應商。",
+            "source_ids": [
+              "AMAT_MICRON",
+              "AMAT_SK"
+            ]
+          },
+          {
+            "topic": "3D NAND原子尺度選擇性移除",
+            "status": "covered",
+            "finding": "9月官網技術文章列為技術主線。",
+            "source_ids": [
+              "AMAT_TECH"
+            ]
+          },
+          {
+            "topic": "Besi混合鍵合與20%持股",
+            "status": "covered",
+            "finding": "10/26簽股權增持協議，尚須競爭法審查；不可列為已完成20%持股。",
+            "source_ids": [
+              "AMAT_BESI_8K",
+              "REUTERS_BESI"
+            ]
+          },
+          {
+            "topic": "EPIC Center 50億美元",
+            "status": "covered",
+            "finding": "10/12揭幕為研發中心，非已投入固定資產全部認列；合作名單已涵蓋。",
+            "source_ids": [
+              "AMAT_EPIC"
+            ]
+          },
+          {
+            "topic": "CPO光共同封裝",
+            "status": "intentionally_excluded",
+            "finding": "AMAT的直接主線是先進製程及封裝設備，不把CPO光引擎或光模組收入硬歸入AMAT。",
+            "source_ids": [
+              "AMAT_2025_10K"
+            ]
+          },
+          {
+            "topic": "產品別量產設備出貨",
+            "status": "evidence_insufficient",
+            "finding": "缺逐機型設備出貨數及每客戶台數。",
+            "source_ids": [
+              "AMAT_2026_Q3_IR"
+            ]
+          },
+          {
+            "topic": "中國出口管制／地緣風險",
+            "status": "covered",
+            "finding": "SEC法規及中國半導體資本支出政策敏感度納入風險。",
+            "source_ids": [
+              "AMAT_2025_10K",
+              "AMAT_2026_Q3_10Q"
+            ]
+          },
+          {
+            "topic": "台灣其他28家概念供應股",
+            "status": "evidence_insufficient",
+            "finding": "除京鼎已有財經具名供應報導，其餘原有受惠節點不自動升格為AMAT直接供應商。",
+            "source_ids": [
+              "MONEYDJ_FOXSEMICON"
+            ]
+          },
+          {
+            "topic": "Bloomberg與The Information付費專有內容",
+            "status": "not_researched",
+            "finding": "未取得可逐字核實的全文，並未憑空提及具名新訂單。",
+            "source_ids": []
+          },
+          {
+            "topic": "設備產業競爭與市占率",
+            "status": "covered",
+            "finding": "Lam、TEL、KLA、Axcelis、ASMPT、Besi分場景，不將全部視為等價。",
+            "source_ids": [
+              "AMAT_2025_10K"
+            ]
+          },
+          {
+            "topic": "產能、資本支出與投資報酬",
+            "status": "evidence_insufficient",
+            "finding": "尚未逐設備追蹤客戶實際產能與EPIC研發支出對應；財報總額需單獨核對。",
+            "source_ids": [
+              "AMAT_2026_Q3_10Q"
+            ]
+          }
+        ],
+        "material_open_topics": [
+          "客戶Kioxia是否已確認直接設備採購",
+          "產品別量產設備出貨",
+          "台灣其他28家概念供應股",
+          "Bloomberg與The Information付費專有內容",
+          "產能、資本支出與投資報酬"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "AMAT_2025_10K",
+        "url": "https://www.sec.gov/Archives/edgar/data/6951/000162828025056742/amat-20251026.htm"
+      },
+      {
+        "id": "AMAT_2026_Q3_10Q",
+        "url": "https://www.sec.gov/Archives/edgar/data/6951/000162828026058235/amat-20260726.htm"
+      },
+      {
+        "id": "AMAT_2026_Q3_IR",
+        "url": "https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-announces-third-quarter-2026-results"
+      },
+      {
+        "id": "AMAT_Q3_2026_EARNINGS",
+        "url": "https://investor.appliedmaterials.com/financial-information/quarterly-results"
+      },
+      {
+        "id": "AMAT_2023_10K",
+        "url": "https://ir.appliedmaterials.com/static-files/e2406fc0-93e9-4b0a-8277-7e316c5a14b2"
+      },
+      {
+        "id": "AMAT_2024_10K_CUSTOMERS",
+        "url": "https://hollsteen.com/company/amat/customers"
+      },
+      {
+        "id": "AMAT_EPIC",
+        "url": "https://investor.appliedmaterials.com/news-releases/news-release-details/applied-materials-unveils-5-billion-epic-center-silicon-valley"
+      },
+      {
+        "id": "AMAT_TSMC_EPIC",
+        "url": "https://www.appliedmaterials.com/tw/zh_tw/news-and-media/press-releases/260512-epic-tsmc-tw.html"
+      },
+      {
+        "id": "AMAT_INTEL_AWARD",
+        "url": "https://www.appliedmaterials.com/us/en/newsroom/blogs/applied-materials-earns-intel-s-2025-epic-supplier-award.html"
+      },
+      {
+        "id": "AMAT_INTEL_2026",
+        "url": "https://www.appliedmaterials.com/tw/zh_tw/news-and-media/press-releases/261007-epic-intel-tw.html"
+      },
+      {
+        "id": "AMAT_SK",
+        "url": "https://www.appliedmaterials.com/us/en/newsroom/press-releases/031026-applied-materials-and-sk-hynix-announce-long-term-rd-partnership.html"
+      },
+      {
+        "id": "AMAT_MICRON",
+        "url": "https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-and-micron-partner-advance-us-innovation-next/"
+      },
+      {
+        "id": "AMAT_KIOXIA",
+        "url": "https://www.appliedmaterials.com/tw/zh_tw/news-and-media/press-releases/260930-epic-kioxia-tw.html"
+      },
+      {
+        "id": "AMAT_BESI_8K",
+        "url": "https://www.sec.gov/Archives/edgar/data/6951/000162828026067303/amat-20261026.htm"
+      },
+      {
+        "id": "REUTERS_BESI",
+        "url": "https://www.reuters.com/business/shares-be-semiconductor-jump-over-9-after-applied-materials-raises-stake-20-2026-10-27/"
+      },
+      {
+        "id": "ICHOR_2025_10K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1652535/000165253526000012/ichr-20251226.htm"
+      },
+      {
+        "id": "CELESTICA_2025_10K",
+        "url": "https://hollsteen.com/company/cls/customers"
+      },
+      {
+        "id": "FLEX_2025_10K",
+        "url": "https://content-archive.fast-edgar.com/20260224/AI2ZJG2CZZ2RFZZA22TP2ZYN6T7RZZ22ZS82/"
+      },
+      {
+        "id": "FOXSEMICON_2025_ANNUAL",
+        "url": "https://financialfilings.com/filings/fiti-3413/annual-report/2026/48045956/"
+      },
+      {
+        "id": "MONEYDJ_FOXSEMICON",
+        "url": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=c857b75a-f3f3-4b57-b38a-6da2d02c3ec7"
+      },
+      {
+        "id": "AMAT_Q4_DATE",
+        "url": "https://investors.appliedmaterials.com/events"
+      },
+      {
+        "id": "AMAT_TECH",
+        "url": "https://www.appliedmaterials.com/tw/zh_tw/news-and-media.html"
       }
     ]
   }

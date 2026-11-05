@@ -205,5 +205,988 @@
       "氫氣需求"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-05",
+    "company": "Bloom Energy Corporation",
+    "symbol": "BE",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "Bloom Energy（BE）產業鏈：Oracle／AEP／Nebius／神達具名客戶、台灣四大供應商、800V DC與SOFC",
+      "description": "SEC最新財報與公司及台灣政府公告交叉驗證，區分直接客戶、通路、PPA終端、融資夥伴和台灣直接供應鏈；訂單與交付不混同。"
+    },
+    "business_lines": [
+      {
+        "id": "SOFC",
+        "name": "固態氧化物燃料電池與 Bloom Energy Server",
+        "downstream_customer_types": "天然氣、生質氣、氫氣燃料的現場發電；銷售或長期維運"
+      },
+      {
+        "id": "AI_DC",
+        "name": "AI 資料中心與雲端現場供電",
+        "downstream_customer_types": "大型雲商、AI neocloud、資料中心，具名實際採購方另外列 customer"
+      },
+      {
+        "id": "800V_DC",
+        "name": "800V DC 直接供電架構",
+        "downstream_customer_types": "直流配電、減少轉換級數；成本效益是公司模型估算，不自動等於已訂購"
+      },
+      {
+        "id": "MICROGRID",
+        "name": "孤島式微電網、Power Connect 與快速佈署",
+        "downstream_customer_types": "微電網、工業製造、電網延遲下的機架供電與安裝時間"
+      },
+      {
+        "id": "UTILITY",
+        "name": "電力公用事業與電網旁路供電",
+        "downstream_customer_types": "大型集中式 SOFC 專案、公用事業銷售與第三方終端購電"
+      },
+      {
+        "id": "CARBON",
+        "name": "天然氣 SOFC 與碳捕集整合",
+        "downstream_customer_types": "將碳捕集整合應用分開列示；避免誤稱全生命週期零碳"
+      },
+      {
+        "id": "SOEC_H2",
+        "name": "Bloom Electrolyzer 與 SOEC 氫氣",
+        "downstream_customer_types": "高溫電解製氫，與營收主力 SOFC 分開"
+      },
+      {
+        "id": "SERVICES",
+        "name": "設備維保、長期服務與保固",
+        "downstream_customer_types": "遠端監控、設備維護、服務成本與合約履約"
+      },
+      {
+        "id": "SUPPLY_CHAIN",
+        "name": "陶瓷電池與電源零組件供應",
+        "downstream_customer_types": "高溫陶瓷、金屬互連板、熱交換器、開關電源及製造供應鏈"
+      },
+      {
+        "id": "KOREA",
+        "name": "韓國通路與發電部署",
+        "downstream_customer_types": "SK ecoplant／SK eternix 的分銷承諾與韓國電力營運客戶"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "AI_DC_customer_001",
+        "name": "Oracle Corporation（ORCL）",
+        "business_line": "AI_DC",
+        "relationship": "customer",
+        "details": "2026-04 官方案例：已簽初始1.2GW部署，2.8GW是主協議上限，不能當作已交付或已入帳。",
+        "evidence_level": "company_contract_confirmed",
+        "source_ids": [
+          "ORACLE_2026"
+        ],
+        "contracted_initial_gw": 1.2,
+        "master_agreement_up_to_gw": 2.8
+      },
+      {
+        "id": "AI_DC_customer_002",
+        "name": "Nebius Group（NBIS）",
+        "business_line": "AI_DC",
+        "relationship": "customer",
+        "details": "2026-05雙方公告簽署美國資料中心供電協議；328MW為當年計畫設置容量，非已完成裝置證明。",
+        "evidence_level": "counterparty_company_contract",
+        "source_ids": [
+          "NEBIUS_2026"
+        ],
+        "announced_site_planned_mw": 328
+      },
+      {
+        "id": "MICROGRID_customer_001",
+        "name": "神達電腦 MiTAC Computing／神達投控（3706）",
+        "business_line": "MICROGRID",
+        "relationship": "customer",
+        "details": "2026-08官方宣布於Fremont AI伺服器製造園區部署孤島式燃料電池微電網；具名台灣直接使用客戶。",
+        "evidence_level": "official_customer_deployment",
+        "source_ids": [
+          "MITAC_2026"
+        ]
+      },
+      {
+        "id": "UTILITY_customer_001",
+        "name": "American Electric Power（AEP）／Cheyenne Fuel Cell",
+        "business_line": "UTILITY",
+        "relationship": "customer",
+        "details": "2026-10 Reuters：約702MW Wyoming專案由AEP主導投資並向Bloom購買SOFC；Google為20年PPA終端購電方，不是此專案Bloom設備直接買方。",
+        "evidence_level": "financial_press_named_direct_project_buyer",
+        "source_ids": [
+          "REUTERS_AEP_GOOGLE",
+          "EARNINGS_TRANSCRIPT"
+        ],
+        "wyoming_project_mw": 702
+      },
+      {
+        "id": "AI_DC_customer_003",
+        "name": "Equinix（EQIX）",
+        "business_line": "AI_DC",
+        "relationship": "customer",
+        "details": "Bloom官網列為已採用企業資料中心客戶；最新單季銷售額及新安裝容量未披露。",
+        "evidence_level": "company_customer_reference",
+        "source_ids": [
+          "BLOOM_CUSTOMERS"
+        ]
+      },
+      {
+        "id": "SOFC_customer_001",
+        "name": "Apple Inc.（AAPL）",
+        "business_line": "SOFC",
+        "relationship": "customer",
+        "details": "Bloom與美國政府公報過往具名企業用戶；非2026新增AI資料中心採購聲明。",
+        "evidence_level": "historical_company_customer",
+        "source_ids": [
+          "TAIWAN_GOV_REPORT"
+        ]
+      },
+      {
+        "id": "SOFC_customer_002",
+        "name": "Morgan Stanley（MS）",
+        "business_line": "SOFC",
+        "relationship": "customer",
+        "details": "Bloom官網具名歷史企業客戶；無法推定2026新增設備訂單。",
+        "evidence_level": "company_customer_reference",
+        "source_ids": [
+          "BLOOM_CUSTOMERS"
+        ]
+      },
+      {
+        "id": "SOFC_customer_003",
+        "name": "Verizon Communications（VZ）",
+        "business_line": "SOFC",
+        "relationship": "customer",
+        "details": "Bloom官網列為既有企業採用者；不代表2026新合約。",
+        "evidence_level": "company_customer_reference",
+        "source_ids": [
+          "BLOOM_CUSTOMERS"
+        ]
+      },
+      {
+        "id": "SOFC_customer_004",
+        "name": "The Home Depot（HD）",
+        "business_line": "SOFC",
+        "relationship": "customer",
+        "details": "Bloom官網具名零售設施供電客戶；歷史採用者，未揭露2026逐客戶收入。",
+        "evidence_level": "company_customer_reference",
+        "source_ids": [
+          "BLOOM_CUSTOMERS"
+        ]
+      },
+      {
+        "id": "SOFC_customer_005",
+        "name": "IKEA",
+        "business_line": "SOFC",
+        "relationship": "customer",
+        "details": "Bloom官網具名商業零售客戶；未確認新容量及2026採購額。",
+        "evidence_level": "company_customer_reference",
+        "source_ids": [
+          "BLOOM_CUSTOMERS"
+        ]
+      },
+      {
+        "id": "SOFC_customer_006",
+        "name": "Keysight Technologies（KEYS）",
+        "business_line": "SOFC",
+        "relationship": "customer",
+        "details": "Bloom官網具名工業用電客戶；已部署案例不等於最新重複訂購。",
+        "evidence_level": "company_customer_reference",
+        "source_ids": [
+          "BLOOM_CUSTOMERS"
+        ]
+      },
+      {
+        "id": "KOREA_customer_001",
+        "name": "SK ecoplant（SK 生態工廠）",
+        "business_line": "KOREA",
+        "relationship": "customer",
+        "details": "Bloom 2025年10-K：長期韓國獨家分銷及一定購買承諾，為通路合約買家；非最終電力消費者。",
+        "evidence_level": "SEC_distributor_purchase_commitment",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "KOREA_customer_002",
+        "name": "Korea South-East Power（韓國南東發電）",
+        "business_line": "KOREA",
+        "relationship": "customer",
+        "details": "Bloom 10-K具名2018年對韓國南東發電之設備銷售，屬歷史政府電力營運商客戶。",
+        "evidence_level": "SEC_historical_direct_sale",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "KOREA_customer_003",
+        "name": "SK eternix",
+        "business_line": "KOREA",
+        "relationship": "customer",
+        "details": "Bloom 10-K披露原SK D&D分銷協議移轉予SK eternix，至2027年；角色為韓國設備通路買家。",
+        "evidence_level": "SEC_named_distributor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "UTILITY_partner_001",
+        "name": "Google（GOOGL）",
+        "business_line": "UTILITY",
+        "relationship": "partner",
+        "details": "Reuters 2026-10：Wyoming 702MW計畫長達20年購電方；與Bloom設備採購主體AEP不同。此處僅列終端購電利害關係，不宣稱Bloom直接賣給Google。",
+        "evidence_level": "end_power_offtaker_not_direct_equipment_customer",
+        "source_ids": [
+          "REUTERS_AEP_GOOGLE"
+        ]
+      },
+      {
+        "id": "AI_DC_partner_001",
+        "name": "Brookfield Asset Management（BAM）",
+        "business_line": "AI_DC",
+        "relationship": "partner",
+        "details": "最高250億美元全球融資與專案平台擴大框架，非已全部投入現金或公司已確認產品營收。",
+        "evidence_level": "project_financing_partner",
+        "source_ids": [
+          "REUTERS_BROOKFIELD"
+        ]
+      },
+      {
+        "id": "KOREA_partner_001",
+        "name": "SK ecoplant",
+        "business_line": "KOREA",
+        "relationship": "partner",
+        "details": "韓國通路及商業化合作，既有採購承諾已另列customer。",
+        "evidence_level": "SEC_distribution_partner",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "SUPPLY_CHAIN_supplier_001",
+        "name": "高力（8996）／Kaori Heat Treatment",
+        "business_line": "SUPPLY_CHAIN",
+        "relationship": "supplier",
+        "details": "臺灣政府訪察報告具名Bloom SOFC關鍵零組件供應；2026媒體仍認列為主要供應商，具體2026供貨營收以公司最新公告為準。",
+        "evidence_level": "taiwan_government_named_supplier_and_financial_media",
+        "source_ids": [
+          "TAIWAN_GOV_REPORT",
+          "TAIWAN_MEDIA_2026"
+        ]
+      },
+      {
+        "id": "SUPPLY_CHAIN_supplier_002",
+        "name": "康舒科技（6282）／AcBel Polytech",
+        "business_line": "SUPPLY_CHAIN",
+        "relationship": "supplier",
+        "details": "臺灣政府報告具名為Bloom交換式電源供應器供應鏈。不能以此推定全體燃料電池核心電堆由康舒代工。",
+        "evidence_level": "taiwan_government_named_supplier",
+        "source_ids": [
+          "TAIWAN_GOV_REPORT",
+          "TAIWAN_MEDIA_2026"
+        ]
+      },
+      {
+        "id": "SUPPLY_CHAIN_supplier_003",
+        "name": "宏進金屬",
+        "business_line": "SUPPLY_CHAIN",
+        "relationship": "supplier",
+        "details": "臺灣政府報告具名SOFC熱噴塗供應環節，未揭露2026具體採購額。",
+        "evidence_level": "taiwan_government_named_supplier",
+        "source_ids": [
+          "TAIWAN_GOV_REPORT",
+          "TAIWAN_MEDIA_2026"
+        ]
+      },
+      {
+        "id": "SUPPLY_CHAIN_supplier_004",
+        "name": "台灣保來得／Porite Taiwan",
+        "business_line": "SUPPLY_CHAIN",
+        "relationship": "supplier",
+        "details": "臺灣政府報告具名Bloom SOFC互連板（interconnect）供應；2026媒體有延續供應鏈敘述。",
+        "evidence_level": "taiwan_government_named_supplier_and_financial_media",
+        "source_ids": [
+          "TAIWAN_GOV_REPORT",
+          "TAIWAN_MEDIA_2026"
+        ]
+      },
+      {
+        "id": "SOFC_competitor_001",
+        "name": "Ceres Power",
+        "business_line": "SOFC",
+        "relationship": "competitor",
+        "details": "SOFC授權技術競爭，與Bloom銷售型態不同",
+        "evidence_level": "industry_competitor_comparison",
+        "source_ids": [
+          "TAIWAN_MEDIA_2026",
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "SOFC_competitor_002",
+        "name": "FuelCell Energy（FCEL）",
+        "business_line": "SOFC",
+        "relationship": "competitor",
+        "details": "其他燃料電池技術及固定式發電市場競爭",
+        "evidence_level": "industry_competitor_comparison",
+        "source_ids": [
+          "TAIWAN_MEDIA_2026",
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "SOFC_competitor_003",
+        "name": "Plug Power（PLUG）",
+        "business_line": "SOFC",
+        "relationship": "competitor",
+        "details": "氫經濟及燃料電池部分客群重疊，技術及主力市場不同",
+        "evidence_level": "industry_competitor_comparison",
+        "source_ids": [
+          "TAIWAN_MEDIA_2026",
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "SOFC_competitor_004",
+        "name": "GE Vernova（GEV）",
+        "business_line": "SOFC",
+        "relationship": "competitor",
+        "details": "大型燃氣發電設備與電力設備替代路徑",
+        "evidence_level": "industry_competitor_comparison",
+        "source_ids": [
+          "TAIWAN_MEDIA_2026",
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "SOFC_competitor_005",
+        "name": "Caterpillar（CAT）",
+        "business_line": "SOFC",
+        "relationship": "competitor",
+        "details": "大型柴油／天然氣發電機和儲能設備快速供電方案",
+        "evidence_level": "industry_competitor_comparison",
+        "source_ids": [
+          "TAIWAN_MEDIA_2026",
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "SOFC_competitor_006",
+        "name": "Cummins（CMI）",
+        "business_line": "SOFC",
+        "relationship": "competitor",
+        "details": "大型現場發電設備與燃氣機組替代競爭",
+        "evidence_level": "industry_competitor_comparison",
+        "source_ids": [
+          "TAIWAN_MEDIA_2026",
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "SOFC_competitor_007",
+        "name": "台達電（2308）",
+        "business_line": "SOFC",
+        "relationship": "competitor",
+        "details": "台灣媒體指出布局Ceres體系SOFC，為競爭技術生態而非Bloom確定供應商",
+        "evidence_level": "industry_competitor_comparison",
+        "source_ids": [
+          "TAIWAN_MEDIA_2026",
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "SOEC_H2_competitor_001",
+        "name": "Nel ASA",
+        "business_line": "SOEC_H2",
+        "relationship": "competitor",
+        "details": "電解氫設備不同技術路線之競爭參考，未把總市場直接視為Bloom既有訂單。",
+        "evidence_level": "industry_competitor_comparison",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "SUPPLY_CHAIN_beneficiary_001",
+        "name": "崇越（5434）",
+        "business_line": "SUPPLY_CHAIN",
+        "relationship": "beneficiary",
+        "details": "2026媒體列示SOFC產業通路及安裝合作生態；未能由Bloom SEC確認直接零組件供應合約。",
+        "evidence_level": "possible_ecosystem_beneficiary",
+        "source_ids": [
+          "TAIWAN_MEDIA_2026"
+        ]
+      },
+      {
+        "id": "SUPPLY_CHAIN_beneficiary_002",
+        "name": "雲豹能源（6869）",
+        "business_line": "SUPPLY_CHAIN",
+        "relationship": "beneficiary",
+        "details": "台灣報導指出SOFC代理／安裝生態布局，但不構成Bloom直接材料供應證據。",
+        "evidence_level": "possible_ecosystem_beneficiary",
+        "source_ids": [
+          "TAIWAN_MEDIA_2026"
+        ]
+      },
+      {
+        "id": "MICROGRID_beneficiary_001",
+        "name": "欣興電子（3037）",
+        "business_line": "MICROGRID",
+        "relationship": "beneficiary",
+        "details": "台灣媒體提及SOFC場域採用；屬已報導應用示例，不作2026新採購之斷言。",
+        "evidence_level": "taiwan_reported_user_site",
+        "source_ids": [
+          "TAIWAN_MEDIA_2026"
+        ]
+      }
+    ],
+    "research": {
+      "baseline_commit": "a81b8a5f",
+      "github_blob_sha": "0132ca8ad356962807bc4fc6c8319050f3cb37e8",
+      "latest_form_10k": "2025_FY_filed_2026-02-09",
+      "latest_form_10q": "2026_Q3_filed_2026-10-22",
+      "latest_form_8k": "2026-10-22_earnings",
+      "latest_earnings_call": "2026-10-22_Q3",
+      "q3_2026_revenue_usd_millions": 1235.837,
+      "q3_2026_revenue_yoy_pct": 138.1,
+      "q3_2026_gaap_gross_margin_pct": 33.8,
+      "q3_2026_nongaap_gross_margin_pct": 34.5,
+      "fy2026_revenue_guidance_usd_billions": [
+        4.4,
+        4.6
+      ],
+      "customer_rule": "除真正對一般消費者供電之業務外，所有customer都須具名企業或政府；目前節點皆具名。",
+      "relationship_proof_rule": "每個節點引用sources及證據等級，合作方、融資方、PPA用電方與設備買家明確區分。",
+      "taiwan_supply_note": "台灣政府具名的四家Bloom供應商具有歷史直接合作證據；2026採購金額仍須逐家法說確認。",
+      "no_customer_types_as_nodes": true
+    },
+    "five_gate_audit": {
+      "gate_1_hot_topics_reverse_check": {
+        "performed": true,
+        "period": "2026-08-07_to_2026-11-05",
+        "status": "reviewed",
+        "independent_topics": [
+          "2026Q3創紀錄營收與GAAP毛利",
+          "AEP／Google 702MW Wyoming專案",
+          "神達MiTAC新AI伺服器工廠",
+          "800V DC-native架構",
+          "Power Connect快速施工",
+          "Brookfield擴至$25B融資",
+          "原料供應爭議",
+          "2GW產能目標"
+        ],
+        "cross_checked_business_line_ids": [
+          "SOFC",
+          "AI_DC",
+          "800V_DC",
+          "MICROGRID",
+          "UTILITY",
+          "CARBON",
+          "SOEC_H2",
+          "SERVICES",
+          "SUPPLY_CHAIN",
+          "KOREA"
+        ]
+      },
+      "gate_2_top_ten_investor_questions": {
+        "performed": true,
+        "questions": [
+          {
+            "dimension": "營收成長",
+            "finding": "Q3 $1.2358B / +138.1% YoY，Oracle與AEP大型專案拉動。"
+          },
+          {
+            "dimension": "毛利率",
+            "finding": "GAAP 33.8%與non-GAAP 34.5%分開，產品出貨組合風險。"
+          },
+          {
+            "dimension": "資本支出",
+            "finding": "產能擴至2GW/年是目標，核對實際新增資本支出及自由現金流。"
+          },
+          {
+            "dimension": "競爭力",
+            "finding": "SOFC高效率、無燃燒、可現場部署，競爭者包括氣渦輪與燃氣機組。"
+          },
+          {
+            "dimension": "技術轉折",
+            "finding": "800V DC、Power Connect、SOEC、CCS都是不同成熟度。"
+          },
+          {
+            "dimension": "客戶採用",
+            "finding": "Oracle、AEP、Nebius、MiTAC以及歷史商業客戶可具名。"
+          },
+          {
+            "dimension": "產能",
+            "finding": "2GW是產能計畫，不是2026已交貨的功率。"
+          },
+          {
+            "dimension": "供應鏈",
+            "finding": "高力、康舒、宏進、保來得，台灣政府與財經媒體相互核實。"
+          },
+          {
+            "dimension": "估值催化劑",
+            "finding": "大型合約轉化營收、毛利提升、專案交貨及第三方資金動員。"
+          },
+          {
+            "dimension": "風險",
+            "finding": "天然氣和碳排、原料供應爭議、估值、營運資金、電力許可及客戶集中。"
+          }
+        ]
+      },
+      "gate_3_technology_product_completeness": {
+        "performed": true,
+        "status": "reviewed_with_evidence_gaps",
+        "technologies": [
+          "SOFC",
+          "SOEC",
+          "800V DC",
+          "Power Connect",
+          "微電網孤島模式",
+          "碳捕集整合",
+          "燃料與製造陶瓷",
+          "HBM/CPO/先進封裝為間接需求而非Bloom產品"
+        ]
+      },
+      "gate_4_falsification_competition": {
+        "performed": true,
+        "tests": [
+          "具名設備購買方是否與最終PPA用電方不同",
+          "GW是否實際簽約、部署或只為上限",
+          "$25B是否僅融資上限",
+          "800V技術論證是否代表實際每案節省",
+          "台灣四家是否政府資料具名供應",
+          "台達電與Ceres競爭生態是否誤列供應",
+          "天然氣是否誤寫零碳",
+          "2026做空指控是否被誤寫定論"
+        ]
+      },
+      "gate_5_missing_topic_audit": {
+        "performed": true,
+        "status": "open_items_explicit_not_omitted",
+        "important_issue_coverage_table": [
+          {
+            "topic": "2026Q3營收與獲利",
+            "status": "covered",
+            "finding": "Q3營收12.358億美元、年增138.1%，GAAP毛利率33.8%，稀釋EPS 0.78；non-GAAP另列。",
+            "source_ids": [
+              "SEC_Q3_2026_EARNINGS"
+            ]
+          },
+          {
+            "topic": "2026財測與估值催化",
+            "status": "covered",
+            "finding": "全年營收指引$4.4B–$4.6B（44–46億美元），屬指引非實績。",
+            "source_ids": [
+              "SEC_Q3_2026_EARNINGS"
+            ]
+          },
+          {
+            "topic": "最新10-Q現金流與資本支出",
+            "status": "evidence_insufficient",
+            "finding": "Q3 10-Q已取到，但逐項年度累積資本支出及現金流尚未在本研究中完整摘算。",
+            "source_ids": [
+              "SEC_Q3_2026_10Q"
+            ]
+          },
+          {
+            "topic": "Q3最新法說逐字稿",
+            "status": "covered",
+            "finding": "2026-10-22逐字稿已核對，包括CCS/AEP、800V DC及產能時程。",
+            "source_ids": [
+              "EARNINGS_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "Oracle 1.2GW實際簽約",
+            "status": "covered",
+            "finding": "初始1.2GW簽約並部署中，主協議2.8GW是最高可能容量。",
+            "source_ids": [
+              "ORACLE_2026"
+            ]
+          },
+          {
+            "topic": "Oracle上限2.8GW與認列收入",
+            "status": "covered",
+            "finding": "不能把2.8GW全部等同已交付或已入帳。",
+            "source_ids": [
+              "ORACLE_2026"
+            ]
+          },
+          {
+            "topic": "Nebius 328MW",
+            "status": "covered",
+            "finding": "328MW為Nebius現場規畫容量，需追蹤實際商轉/驗收。",
+            "source_ids": [
+              "NEBIUS_2026"
+            ]
+          },
+          {
+            "topic": "AEP/Google 702MW Wyoming",
+            "status": "covered",
+            "finding": "AEP是設備專案買方，Google為20年PPA購電方；至2028年底目標營運。",
+            "source_ids": [
+              "REUTERS_AEP_GOOGLE"
+            ]
+          },
+          {
+            "topic": "Brookfield $25B融資框架",
+            "status": "covered",
+            "finding": "是最高約250億美元合作融資額，不是已認列營收。",
+            "source_ids": [
+              "REUTERS_BROOKFIELD"
+            ]
+          },
+          {
+            "topic": "神達MiTAC台灣具名客戶",
+            "status": "covered",
+            "finding": "2026-08官方宣布Fremont AI伺服器工廠孤島微電網。",
+            "source_ids": [
+              "MITAC_2026"
+            ]
+          },
+          {
+            "topic": "台灣高力直接供應商",
+            "status": "covered",
+            "finding": "台灣政府公開報告具名高力為Bloom供應商，2026媒體交叉核對。",
+            "source_ids": [
+              "TAIWAN_GOV_REPORT",
+              "TAIWAN_MEDIA_2026"
+            ]
+          },
+          {
+            "topic": "台灣康舒直接供應商",
+            "status": "covered",
+            "finding": "台灣政府具名電源供應零件合作，未認定整套電堆代工。",
+            "source_ids": [
+              "TAIWAN_GOV_REPORT"
+            ]
+          },
+          {
+            "topic": "台灣保來得直接供應商",
+            "status": "covered",
+            "finding": "台灣政府具名SOFC互連板供應。",
+            "source_ids": [
+              "TAIWAN_GOV_REPORT"
+            ]
+          },
+          {
+            "topic": "台灣宏進金屬直接供應商",
+            "status": "covered",
+            "finding": "台灣政府具名熱噴塗材料環節。",
+            "source_ids": [
+              "TAIWAN_GOV_REPORT"
+            ]
+          },
+          {
+            "topic": "台灣供應鏈2026實際銷售額",
+            "status": "evidence_insufficient",
+            "finding": "政府報告歷史24%材料支出不能宣稱2026即時份額；需逐家最新法說佐證。",
+            "source_ids": [
+              "TAIWAN_GOV_REPORT",
+              "TAIWAN_MEDIA_2026"
+            ]
+          },
+          {
+            "topic": "800V DC Native架構",
+            "status": "covered",
+            "finding": "2026-09官方發布技術/成本模型；節省36億美元等是1GW模型推估。",
+            "source_ids": [
+              "BLOOM_800V"
+            ]
+          },
+          {
+            "topic": "800V DC直接商業收入",
+            "status": "evidence_insufficient",
+            "finding": "尚未見公開拆分的800V DC-native單獨已認列營收。",
+            "source_ids": [
+              "BLOOM_800V"
+            ]
+          },
+          {
+            "topic": "Power Connect快速安裝",
+            "status": "covered",
+            "finding": "2026-08官方推出，聲稱現場安裝時間降低逾40%；不等於每案已實測。",
+            "source_ids": [
+              "IR_PRESS_RELEASES"
+            ]
+          },
+          {
+            "topic": "SOEC製氫",
+            "status": "covered",
+            "finding": "10-Q列為商業供應產品，但與SOFC主力營收規模必須區分。",
+            "source_ids": [
+              "SEC_Q3_2026_10Q"
+            ]
+          },
+          {
+            "topic": "SOEC製氫個別營收",
+            "status": "evidence_insufficient",
+            "finding": "尚無直接可核實足夠的SOEC單項產品營收拆分。",
+            "source_ids": [
+              "SEC_Q3_2026_10Q"
+            ]
+          },
+          {
+            "topic": "CCS天然氣碳捕集",
+            "status": "covered",
+            "finding": "2026法說提及Wyoming整合碳捕集，不能把所有天然氣SOFC宣稱零排放。",
+            "source_ids": [
+              "EARNINGS_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "2026年2GW產能目標",
+            "status": "covered",
+            "finding": "公司目標於2026年底年產能達2GW，不能當作既成實際出貨2GW。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "實際產能與交付MW",
+            "status": "evidence_insufficient",
+            "finding": "需再取得逐季實際生產與已驗收MW數量，不能以規畫/訂單MW代替。",
+            "source_ids": [
+              "SEC_Q3_2026_10Q"
+            ]
+          },
+          {
+            "topic": "原料供應做空指控與反駁",
+            "status": "covered",
+            "finding": "2026-07有做空報告指控，公司在8-K正式反駁；爭議無定論。",
+            "source_ids": [
+              "SHORT_SELLER_DISCLOSURE"
+            ]
+          },
+          {
+            "topic": "天然氣碳排與燃料可得性",
+            "status": "covered",
+            "finding": "SOFC使用天然氣並非零碳；CCS必須逐案驗證。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "AI HBM/CPO先進封裝",
+            "status": "intentionally_excluded",
+            "finding": "Bloom是資料中心電源設備公司，不製造HBM/CPO或CoWoS；僅能源需求間接受惠。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "台達電是否Bloom供應商",
+            "status": "intentionally_excluded",
+            "finding": "2026媒體指台達主要走Ceres SOFC技轉路線，不能當作Bloom已確認直接供應。",
+            "source_ids": [
+              "TAIWAN_MEDIA_2026"
+            ]
+          },
+          {
+            "topic": "Tesla Energy與天然氣機組競爭",
+            "status": "covered",
+            "finding": "區分電池儲能、燃氣引擎、燃氣渦輪與SOFC的調度屬性。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "Bloom全球未公開大客戶名單",
+            "status": "evidence_insufficient",
+            "finding": "10-Q未披露逐客戶出貨收入與總採購額，缺口維持證據不足。",
+            "source_ids": [
+              "SEC_Q3_2026_10Q"
+            ]
+          },
+          {
+            "topic": "Bloomberg/The Information付費內容",
+            "status": "not_researched",
+            "finding": "未能驗證完整內容，不假設存在新合約。",
+            "source_ids": []
+          },
+          {
+            "topic": "ServeTheHome/Tom Hardware獨立現場實測",
+            "status": "not_researched",
+            "finding": "未找到可引用的Bloom設備實地技術驗測；不以公司宣稱取代第三方實測。",
+            "source_ids": []
+          }
+        ],
+        "material_evidence_gaps": [
+          {
+            "topic": "最新10-Q現金流與資本支出",
+            "status": "evidence_insufficient",
+            "finding": "Q3 10-Q已取到，但逐項年度累積資本支出及現金流尚未在本研究中完整摘算。",
+            "source_ids": [
+              "SEC_Q3_2026_10Q"
+            ]
+          },
+          {
+            "topic": "台灣供應鏈2026實際銷售額",
+            "status": "evidence_insufficient",
+            "finding": "政府報告歷史24%材料支出不能宣稱2026即時份額；需逐家最新法說佐證。",
+            "source_ids": [
+              "TAIWAN_GOV_REPORT",
+              "TAIWAN_MEDIA_2026"
+            ]
+          },
+          {
+            "topic": "800V DC直接商業收入",
+            "status": "evidence_insufficient",
+            "finding": "尚未見公開拆分的800V DC-native單獨已認列營收。",
+            "source_ids": [
+              "BLOOM_800V"
+            ]
+          },
+          {
+            "topic": "SOEC製氫個別營收",
+            "status": "evidence_insufficient",
+            "finding": "尚無直接可核實足夠的SOEC單項產品營收拆分。",
+            "source_ids": [
+              "SEC_Q3_2026_10Q"
+            ]
+          },
+          {
+            "topic": "實際產能與交付MW",
+            "status": "evidence_insufficient",
+            "finding": "需再取得逐季實際生產與已驗收MW數量，不能以規畫/訂單MW代替。",
+            "source_ids": [
+              "SEC_Q3_2026_10Q"
+            ]
+          },
+          {
+            "topic": "Bloom全球未公開大客戶名單",
+            "status": "evidence_insufficient",
+            "finding": "10-Q未披露逐客戶出貨收入與總採購額，缺口維持證據不足。",
+            "source_ids": [
+              "SEC_Q3_2026_10Q"
+            ]
+          }
+        ],
+        "not_researched_topics": [
+          {
+            "topic": "Bloomberg/The Information付費內容",
+            "status": "not_researched",
+            "finding": "未能驗證完整內容，不假設存在新合約。",
+            "source_ids": []
+          },
+          {
+            "topic": "ServeTheHome/Tom Hardware獨立現場實測",
+            "status": "not_researched",
+            "finding": "未找到可引用的Bloom設備實地技術驗測；不以公司宣稱取代第三方實測。",
+            "source_ids": []
+          }
+        ]
+      },
+      "reflection_iterations": [
+        {
+          "iteration": 1,
+          "issue": "熱門題材與原JSON反向比對",
+          "correction": "原JSON僅概稱資料中心，補入Oracle契約容量、Nebius、AEP/Google、MiTAC、800V DC、Power Connect與CCS；保留不同商業化狀態。"
+        },
+        {
+          "iteration": 2,
+          "issue": "具名客戶驗證",
+          "correction": "Oracle、AEP、Nebius與MiTAC均有個別證據；Google在AEP專案是下游PPA購電方，Brookfield是融資方，不冒充Bloom直接設備客戶。"
+        },
+        {
+          "iteration": 3,
+          "issue": "台灣供應鏈反證",
+          "correction": "臺灣政府官方報告具名高力、康舒、宏進金屬、保來得，可分類supplier；台達電Ceres生態不可冒充Bloom直接供貨。"
+        },
+        {
+          "iteration": 4,
+          "issue": "商業化和財務反證",
+          "correction": "2.8GW協議上限、$25B融資框架、2GW年產能目標、800V成本模擬，均不能算作已完成裝機或已認列收入。"
+        },
+        {
+          "iteration": 5,
+          "issue": "原料、碳排及證據缺漏",
+          "correction": "7月做空指控與公司反駁並記；天然氣SOFC非零碳；2026台廠採購金額、800V單項收入及實測仍標證據不足。"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "id": "SEC_2025_10K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1664703/000162828026006516/be-20251231.htm"
+      },
+      {
+        "id": "SEC_Q3_2026_10Q",
+        "url": "https://www.sec.gov/Archives/edgar/data/1664703/000162828026066931/be-20260930.htm"
+      },
+      {
+        "id": "SEC_Q3_2026_8K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1664703/000162828026066890/be-20261022.htm"
+      },
+      {
+        "id": "SEC_Q3_2026_EARNINGS",
+        "url": "https://www.sec.gov/Archives/edgar/data/1664703/000162828026066890/ex991_q326financialresults.htm"
+      },
+      {
+        "id": "EARNINGS_TRANSCRIPT",
+        "url": "https://stockanalysis.com/stocks/be/transcripts/717313-q3-2026/"
+      },
+      {
+        "id": "IR_SEC",
+        "url": "https://investor.bloomenergy.com/financials-and-filings/sec-filings/default.aspx"
+      },
+      {
+        "id": "ORACLE_2026",
+        "url": "https://www.bloomenergy.com/news/bloom-energy-and-oracle-expand-strategic-partnership-to-deploy-up-to-2.8-gw-to-accelerate-ai-infrastructure-build-out/"
+      },
+      {
+        "id": "NEBIUS_2026",
+        "url": "https://nebius.com/newsroom/nebius-and-bloom-energy-partner-to-power-ai-infrastructure-build-out"
+      },
+      {
+        "id": "MITAC_2026",
+        "url": "https://investor.bloomenergy.com/press-releases/press-release-details/2026/Bloom-Energy-Continues-to-Set-the-Standard-for-AI-Onsite-Power-with-Expanded-MiTAC-Partnership/default.aspx"
+      },
+      {
+        "id": "REUTERS_AEP_GOOGLE",
+        "url": "https://www.reuters.com/business/energy/american-electric-power-to-invest-4-billion-fuel-cell-project-power-google-2026-10-14/"
+      },
+      {
+        "id": "REUTERS_BROOKFIELD",
+        "url": "https://www.reuters.com/business/energy/bloom-energy-brookfield-expand-ai-infrastructure-power-partnership-25-billion-2026-06-30/"
+      },
+      {
+        "id": "BLOOM_CUSTOMERS",
+        "url": "https://www.bloomenergy.com/customers/"
+      },
+      {
+        "id": "BLOOM_800V",
+        "url": "https://investor.bloomenergy.com/press-releases/press-release-details/2026/Bloom-Energys-800V-DC-Native-Power-Can-Cut-Billions-from-AI-Data-Center-Costs-Reduce-Power-Use-and-Eliminate-Need-for-Transformers/default.aspx"
+      },
+      {
+        "id": "BLOOM_POWER_CONNECT",
+        "url": "https://www.bloomenergy.com/newsroom/"
+      },
+      {
+        "id": "TAIWAN_GOV_REPORT",
+        "url": "https://report.ndc.gov.tw/ReportFront/PageSystem/reportFileDownload/C11200129/001"
+      },
+      {
+        "id": "TAIWAN_MEDIA_2026",
+        "url": "https://fnc.ebc.net.tw/fncnews/else/214491"
+      },
+      {
+        "id": "SHORT_SELLER_DISCLOSURE",
+        "url": "https://www.sec.gov/Archives/edgar/data/1664703/000162828026050247/be-20260630.htm"
+      },
+      {
+        "id": "BLOOM_KOREA",
+        "url": "https://www.sec.gov/Archives/edgar/data/1664703/000162828026006516/be-20251231.htm"
+      },
+      {
+        "id": "IR_PRESS_RELEASES",
+        "url": "https://investor.bloomenergy.com/press-releases/2026/"
+      }
+    ]
   }
 }

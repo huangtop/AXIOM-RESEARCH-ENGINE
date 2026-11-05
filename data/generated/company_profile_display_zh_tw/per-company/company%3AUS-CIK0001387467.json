@@ -360,5 +360,934 @@
       "AI"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-05",
+    "company": "Alpha and Omega Semiconductor Limited",
+    "symbol": "AOSL",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "AOSL產業鏈｜AI核心供電、600V/800V、台灣大聯大／豐藝／ODM客戶與Kaynes供應鏈",
+      "description": "SEC與官方產品、法說獨立查證；客戶列具名公司，供應商列可核對供貨者，產品與市場歸業務主線。"
+    },
+    "business_lines": [
+      {
+        "id": "AI_CORE",
+        "name": "AI 核心供電與伺服器 DrMOS／多相控制",
+        "description": "SmartClamp保護型DrMOS、低壓功率MOSFET、GPU/CPU多相控制，面向AI加速器、主板與核心供電",
+        "downstream_customer_types": [
+          "AI伺服器系統商",
+          "高效能GPU/CPU平台"
+        ]
+      },
+      {
+        "id": "AI_RACK_POWER",
+        "name": "AI 資料中心電力架構：48V、54V、800VDC",
+        "description": "熱插拔、高SOA MOSFET、SiC/GaN、電源保護、IBC中間匯流排；架構相容性不等於量產收入",
+        "downstream_customer_types": [
+          "資料中心電源廠",
+          "機架與電源模組設計商"
+        ]
+      },
+      {
+        "id": "POWER_MOSFET",
+        "name": "功率 MOSFET 與 αMOS E2 600V",
+        "description": "Shielded-Gate、SuperJunction、25/80V、600V MOSFET與伺服器、通訊、太陽能及工業電源",
+        "downstream_customer_types": [
+          "電源供應器與工業電源設備商"
+        ]
+      },
+      {
+        "id": "PC_GPU",
+        "name": "PC／GPU／顯示卡電源",
+        "description": "Intel IMVP 9.1、AMD SVI3、Panther Lake/Wildcat Lake 等電源控制與MOSFET",
+        "downstream_customer_types": [
+          "筆記型電腦、顯示卡及主板OEM/ODM"
+        ]
+      },
+      {
+        "id": "SMARTPHONE",
+        "name": "智慧手機電池保護與充電",
+        "description": "高階手機電池保護、USB Type-C 240W、eFuse與充電電源管理",
+        "downstream_customer_types": [
+          "手機OEM及電池保護模組廠"
+        ]
+      },
+      {
+        "id": "INDUSTRIAL",
+        "name": "工業電源、馬達驅動與再生能源",
+        "description": "IGBT、SiC、IPM、太陽能逆變器、工業馬達、UPS及家電",
+        "downstream_customer_types": [
+          "電機、家電、太陽能和工業系統廠"
+        ]
+      },
+      {
+        "id": "IPM_PACKAGING",
+        "name": "IPM5 模組與 AmpStack 功率封裝",
+        "description": "17晶粒IPM5、功率MOSFET熱管理與高密度封裝，不是GPU的CoWoS",
+        "downstream_customer_types": [
+          "馬達控制與高功率工業系統廠"
+        ]
+      },
+      {
+        "id": "CONSUMER",
+        "name": "消費電子、遊戲主機、電視與穿戴",
+        "description": "遊戲、電視、家電、穿戴電源IC與分離式MOSFET",
+        "downstream_customer_types": [
+          "消費電子及穿戴式裝置廠"
+        ]
+      },
+      {
+        "id": "DISTRIBUTION",
+        "name": "亞太經銷與 ODM 交付網路",
+        "description": "大聯大WPG、豐藝Promate及ODM設計導入，財報收入通路與最終OEM應區分",
+        "downstream_customer_types": [
+          "經銷商及設計型ODM"
+        ]
+      },
+      {
+        "id": "WAFER_OSAT",
+        "name": "晶圓製造、代工與封測產能",
+        "description": "奧勒岡8吋fab、自有上海封測、重慶JV12吋製程、Kaynes印度IPM5 OSAT及第三方代工",
+        "downstream_customer_types": [
+          "AOSL內外製造生態"
+        ]
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "DISTRIBUTION_customer_001",
+        "name": "大聯大控股 WPG Holdings（3702）",
+        "business_line": "DISTRIBUTION",
+        "relationship": "customer",
+        "details": "AOSL FY2026 SEC 10-K直接具名經銷商；占總營收53.0%。是直接交易通路，不能視作53%最終使用者需求。",
+        "evidence_level": "SEC_named_direct_distributor",
+        "source_ids": [
+          "SEC_FY26_10K"
+        ],
+        "fy2026_revenue_share_pct": 53.0
+      },
+      {
+        "id": "DISTRIBUTION_customer_002",
+        "name": "豐藝電子 Promate Electronic（6189）",
+        "business_line": "DISTRIBUTION",
+        "relationship": "customer",
+        "details": "AOSL FY2026 SEC 10-K直接具名經銷商；占FY2026營收19.3%。",
+        "evidence_level": "SEC_named_direct_distributor",
+        "source_ids": [
+          "SEC_FY26_10K"
+        ],
+        "fy2026_revenue_share_pct": 19.3
+      },
+      {
+        "id": "PC_GPU_customer_001",
+        "name": "仁寶電腦 Compal Electronics（2324）",
+        "business_line": "PC_GPU",
+        "relationship": "customer",
+        "details": "AOSL 2026 10-K列為具名ODM客戶；可能經由經銷商交付，不代表所有訂單由AOSL直銷。",
+        "evidence_level": "SEC_named_ODM_customer",
+        "source_ids": [
+          "SEC_FY26_10K"
+        ]
+      },
+      {
+        "id": "PC_GPU_customer_002",
+        "name": "鴻海精密／Foxconn（2317）",
+        "business_line": "PC_GPU",
+        "relationship": "customer",
+        "details": "AOSL FY2026 SEC 10-K直接列為ODM客戶之一；與供應商關係不同。",
+        "evidence_level": "SEC_named_ODM_customer",
+        "source_ids": [
+          "SEC_FY26_10K"
+        ]
+      },
+      {
+        "id": "PC_GPU_customer_003",
+        "name": "廣達電腦 Quanta Computer（2382）",
+        "business_line": "PC_GPU",
+        "relationship": "customer",
+        "details": "AOSL 2026 10-K列為具名ODM客戶，具體AI伺服器機種訂單未披露。",
+        "evidence_level": "SEC_named_ODM_customer",
+        "source_ids": [
+          "SEC_FY26_10K"
+        ]
+      },
+      {
+        "id": "PC_GPU_customer_004",
+        "name": "緯創資通 Wistron（3231）",
+        "business_line": "PC_GPU",
+        "relationship": "customer",
+        "details": "AOSL 2026 10-K列為ODM客戶，未公布個別電源晶片採購金額。",
+        "evidence_level": "SEC_named_ODM_customer",
+        "source_ids": [
+          "SEC_FY26_10K"
+        ]
+      },
+      {
+        "id": "INDUSTRIAL_customer_001",
+        "name": "台達電子 Delta Electronics（2308）",
+        "business_line": "INDUSTRIAL",
+        "relationship": "customer",
+        "details": "AOSL 2026 10-K列為具名ODM客戶；不把其資料中心電源相關曝光等同AOSL 800V指定訂單。",
+        "evidence_level": "SEC_named_ODM_customer",
+        "source_ids": [
+          "SEC_FY26_10K"
+        ]
+      },
+      {
+        "id": "PC_GPU_customer_005",
+        "name": "Dell Technologies",
+        "business_line": "PC_GPU",
+        "relationship": "customer",
+        "details": "2026 10-K具名披露之重要OEM關係；多透過通路及ODM供貨。",
+        "evidence_level": "SEC_named_end_OEM",
+        "source_ids": [
+          "SEC_FY26_10K"
+        ]
+      },
+      {
+        "id": "PC_GPU_customer_006",
+        "name": "HP Inc.／Hewlett-Packard",
+        "business_line": "PC_GPU",
+        "relationship": "customer",
+        "details": "SEC 2026 10-K具名重要OEM關係；文中為Hewlett-Packard Company的歷史名稱，不將其錯指為HPE當期買方。",
+        "evidence_level": "SEC_named_end_OEM_legacy_company_name",
+        "source_ids": [
+          "SEC_FY26_10K"
+        ]
+      },
+      {
+        "id": "SMARTPHONE_customer_001",
+        "name": "Samsung Group（三星集團）",
+        "business_line": "SMARTPHONE",
+        "relationship": "customer",
+        "details": "AOSL 2026 10-K具名的OEM集團關係；不推定單一手機型號或與Samsung Foundry存在直接代工採購。",
+        "evidence_level": "SEC_named_end_OEM",
+        "source_ids": [
+          "SEC_FY26_10K"
+        ]
+      },
+      {
+        "id": "INDUSTRIAL_customer_002",
+        "name": "Stanley Black & Decker",
+        "business_line": "INDUSTRIAL",
+        "relationship": "customer",
+        "details": "AOSL 2026 10-K具名OEM客戶關係；不公布個別產品營收。",
+        "evidence_level": "SEC_named_end_OEM",
+        "source_ids": [
+          "SEC_FY26_10K"
+        ]
+      },
+      {
+        "id": "WAFER_OSAT_supplier_001",
+        "name": "Chongqing Alpha and Omega Semiconductor Limited（重慶合資晶圓廠）",
+        "business_line": "WAFER_OSAT",
+        "relationship": "supplier",
+        "details": "SEC 10-K與合資契約確認向AOSL提供晶圓製造及部分封測產能；2026年AOSL持股降至18.9%，不應列為完全自有子公司。",
+        "evidence_level": "SEC_named_equity_method_manufacturing_supplier",
+        "source_ids": [
+          "SEC_FY26_10K",
+          "SEC_CQJV_NAME",
+          "SEC_CQJV_DISPOSAL"
+        ]
+      },
+      {
+        "id": "IPM_PACKAGING_supplier_001",
+        "name": "Kaynes Semicon（印度）",
+        "business_line": "IPM_PACKAGING",
+        "relationship": "supplier",
+        "details": "AOSL與Kaynes官方公告明確確認IPM5產品在印度Sanand封測設施進入商業／大量生產，屬直接具名OSAT關係。",
+        "evidence_level": "two_sided_official_OSAT_production",
+        "source_ids": [
+          "SUPPLIER_KAYNES",
+          "SUPPLIER_KAYNES_CONFIRM"
+        ]
+      },
+      {
+        "id": "WAFER_OSAT_partner_001",
+        "name": "SIMIC Holdings Co., Ltd.（重慶JV投資人）",
+        "business_line": "WAFER_OSAT",
+        "relationship": "partner",
+        "details": "SEC 2026-05-11確認AOSL出售20.3%重慶合資廠股權予SIMIC，總價1.5億美元已完成；SIMIC是股權投資對象而非晶圓製造供應商。",
+        "evidence_level": "SEC_named_equity_investor",
+        "source_ids": [
+          "SEC_CQJV_DISPOSAL"
+        ]
+      },
+      {
+        "id": "IPM_PACKAGING_partner_001",
+        "name": "Kaynes Technology India／Kaynes Semicon",
+        "business_line": "IPM_PACKAGING",
+        "relationship": "partner",
+        "details": "共同推進IPM5封裝量產；與supplier雙重關係有雙方官方文件佐證，不當成獨立終端客戶。",
+        "evidence_level": "joint_product_manufacturing",
+        "source_ids": [
+          "SUPPLIER_KAYNES",
+          "SUPPLIER_KAYNES_CONFIRM"
+        ]
+      },
+      {
+        "id": "POWER_MOSFET_competitor_001",
+        "name": "Infineon Technologies",
+        "business_line": "POWER_MOSFET",
+        "relationship": "competitor",
+        "details": "與AOSL在相關功率分離元件、電源IC或工業模組市場直接或部分重疊；不代表所有產品都可替換。",
+        "evidence_level": "SEC_named_category_competitor",
+        "source_ids": [
+          "SEC_FY26_10K"
+        ]
+      },
+      {
+        "id": "POWER_MOSFET_competitor_002",
+        "name": "onsemi",
+        "business_line": "POWER_MOSFET",
+        "relationship": "competitor",
+        "details": "與AOSL在相關功率分離元件、電源IC或工業模組市場直接或部分重疊；不代表所有產品都可替換。",
+        "evidence_level": "SEC_named_category_competitor",
+        "source_ids": [
+          "SEC_FY26_10K"
+        ]
+      },
+      {
+        "id": "POWER_MOSFET_competitor_003",
+        "name": "STMicroelectronics",
+        "business_line": "POWER_MOSFET",
+        "relationship": "competitor",
+        "details": "與AOSL在相關功率分離元件、電源IC或工業模組市場直接或部分重疊；不代表所有產品都可替換。",
+        "evidence_level": "SEC_named_category_competitor",
+        "source_ids": [
+          "SEC_FY26_10K"
+        ]
+      },
+      {
+        "id": "POWER_MOSFET_competitor_004",
+        "name": "Toshiba",
+        "business_line": "POWER_MOSFET",
+        "relationship": "competitor",
+        "details": "與AOSL在相關功率分離元件、電源IC或工業模組市場直接或部分重疊；不代表所有產品都可替換。",
+        "evidence_level": "SEC_named_category_competitor",
+        "source_ids": [
+          "SEC_FY26_10K"
+        ]
+      },
+      {
+        "id": "POWER_MOSFET_competitor_005",
+        "name": "Diodes Incorporated",
+        "business_line": "POWER_MOSFET",
+        "relationship": "competitor",
+        "details": "與AOSL在相關功率分離元件、電源IC或工業模組市場直接或部分重疊；不代表所有產品都可替換。",
+        "evidence_level": "SEC_named_category_competitor",
+        "source_ids": [
+          "SEC_FY26_10K"
+        ]
+      },
+      {
+        "id": "POWER_MOSFET_competitor_006",
+        "name": "Vishay Intertechnology",
+        "business_line": "POWER_MOSFET",
+        "relationship": "competitor",
+        "details": "與AOSL在相關功率分離元件、電源IC或工業模組市場直接或部分重疊；不代表所有產品都可替換。",
+        "evidence_level": "SEC_named_category_competitor",
+        "source_ids": [
+          "SEC_FY26_10K"
+        ]
+      },
+      {
+        "id": "AI_CORE_competitor_001",
+        "name": "Monolithic Power Systems（MPWR）",
+        "business_line": "AI_CORE",
+        "relationship": "competitor",
+        "details": "與AOSL在相關功率分離元件、電源IC或工業模組市場直接或部分重疊；不代表所有產品都可替換。",
+        "evidence_level": "SEC_named_category_competitor",
+        "source_ids": [
+          "SEC_FY26_10K"
+        ]
+      },
+      {
+        "id": "AI_CORE_competitor_002",
+        "name": "Texas Instruments（TXN）",
+        "business_line": "AI_CORE",
+        "relationship": "competitor",
+        "details": "與AOSL在相關功率分離元件、電源IC或工業模組市場直接或部分重疊；不代表所有產品都可替換。",
+        "evidence_level": "SEC_named_category_competitor",
+        "source_ids": [
+          "SEC_FY26_10K"
+        ]
+      },
+      {
+        "id": "AI_CORE_competitor_003",
+        "name": "Richtek Technology／立錡（MediaTek集團）",
+        "business_line": "AI_CORE",
+        "relationship": "competitor",
+        "details": "與AOSL在相關功率分離元件、電源IC或工業模組市場直接或部分重疊；不代表所有產品都可替換。",
+        "evidence_level": "SEC_named_category_competitor",
+        "source_ids": [
+          "SEC_FY26_10K"
+        ]
+      },
+      {
+        "id": "AI_CORE_competitor_004",
+        "name": "Semtech",
+        "business_line": "AI_CORE",
+        "relationship": "competitor",
+        "details": "與AOSL在相關功率分離元件、電源IC或工業模組市場直接或部分重疊；不代表所有產品都可替換。",
+        "evidence_level": "SEC_named_category_competitor",
+        "source_ids": [
+          "SEC_FY26_10K"
+        ]
+      },
+      {
+        "id": "INDUSTRIAL_competitor_001",
+        "name": "Infineon Technologies",
+        "business_line": "INDUSTRIAL",
+        "relationship": "competitor",
+        "details": "與AOSL在相關功率分離元件、電源IC或工業模組市場直接或部分重疊；不代表所有產品都可替換。",
+        "evidence_level": "SEC_named_category_competitor",
+        "source_ids": [
+          "SEC_FY26_10K"
+        ]
+      },
+      {
+        "id": "INDUSTRIAL_competitor_002",
+        "name": "STMicroelectronics",
+        "business_line": "INDUSTRIAL",
+        "relationship": "competitor",
+        "details": "與AOSL在相關功率分離元件、電源IC或工業模組市場直接或部分重疊；不代表所有產品都可替換。",
+        "evidence_level": "SEC_named_category_competitor",
+        "source_ids": [
+          "SEC_FY26_10K"
+        ]
+      }
+    ],
+    "research": {
+      "as_of": "2026-11-05",
+      "lookback_90d_from": "2026-08-07",
+      "baseline_commit": "a81b8a5f",
+      "original_git_blob_sha": "397cceb91ae535cb4ef86820e4f7f3174d3a8444",
+      "financials": {
+        "unit": "USD thousands",
+        "fy2026_revenue": 678927,
+        "fy2025_revenue": 696162,
+        "fy2026_gaap_gross_margin_pct": 22.3,
+        "fy2026_net_loss": -42265,
+        "fy2026_r_and_d": 103858,
+        "fy2026_capex_ppe_cash": 51752,
+        "fy2026_operating_cashflow": -16320,
+        "fy2026_power_discrete_revenue": 437787,
+        "fy2026_power_ic_revenue": 233870,
+        "fy2026_packaging_services_revenue": 7270,
+        "fy2026_computing_revenue": 342952,
+        "fy2026_communications_revenue": 132278,
+        "fy2026_consumer_revenue": 83008,
+        "fy2026_power_supply_industrial_revenue": 113419,
+        "q4_fy2026_revenue": 170400,
+        "q4_fy2026_gaap_gross_margin_pct": 23.1,
+        "q4_fy2026_non_gaap_gross_margin_pct": 23.7,
+        "q1_fy2027_revenue_guidance_usd_millions": [
+          166,
+          186
+        ]
+      },
+      "distribution_concentration": {
+        "wpg_share_fy2026_pct": 53.0,
+        "promate_share_fy2026_pct": 19.3,
+        "combined_share_fy2026_pct": 72.3
+      },
+      "manufacturing": {
+        "own_oregon_wafer_fab": "8-inch, Hillsboro Oregon",
+        "own_shanghai_packaging": "自有上海封測；不得列為供應商節點",
+        "third_party_fab_wafer_pct_approx": 35,
+        "chongqing_jv_ownership_2026_pct": 18.9,
+        "packaging_test_capacity_over_million_parts_per_month": 600,
+        "kaynes_india_ipm5": "官方確認已量產"
+      },
+      "technology_commercialization": {
+        "alphaMOS_E2_600V": "2026-09-08 官方報價與量產數量供應，無單獨收入",
+        "smartclamp_DrMOS": "2026-04 發表，具單獨商業收入數字未披露",
+        "ampstack": "2026-07 發表，非CoWoS",
+        "800v": "2025-10支援NVIDIA公布電源架構；未核實NVIDIA直接向AOSL採購",
+        "ipm5_kaynes": "2026-04正式量產",
+        "AI_server_revenue": "Q4法說討論AI伺服器上升；公司未公布每型號毛利"
+      },
+      "relationship_policy": "customer只列具名交易經銷商/ODM/OEM，通路與終端客戶分層；supplier只列具名採購／製造證據；未具名的第三方晶圓代工不能臆測TSMC；個別投資概念股不冒充客戶／供應商。"
+    },
+    "five_gate_audit": {
+      "gate_1_hot_topics_reverse_check": {
+        "performed": true,
+        "status": "reviewed_with_evidence_gaps",
+        "method": "先以SEC FY2026 10-K、Q4 8-K、8/12法說、9/8與10/29官方產品公告產生熱門議題，再對照舊display；不從舊JSON導出題目。",
+        "independent_hot_topics": [
+          "FY2026財務與利潤",
+          "advanced computing 31% vs 全公司收入",
+          "新一季尚待公告",
+          "SmartClamp/25V/80V",
+          "600V alphaMOS E2生產",
+          "AmpStack與IPM5",
+          "800V AI機架",
+          "經銷商72.3%集中",
+          "中國JV股權變動"
+        ]
+      },
+      "gate_2_top_ten_investor_questions": {
+        "performed": true,
+        "status": "reviewed",
+        "questions": [
+          {
+            "question": "營收成長",
+            "assessment": "FY2026營收678.927M美元、年減2.5%；不能拿AI題材抵銷總體收入下降。"
+          },
+          {
+            "question": "毛利率",
+            "assessment": "FY2026 GAAP 22.3%、Q4 GAAP 23.1%，非GAAP 23.7%，製造利用率、材料成本影響顯著。"
+          },
+          {
+            "question": "資本支出",
+            "assessment": "FY2026 PPE採購51.752M美元，重慶JV股份出售所得150M不可等同營收或持續現金流。"
+          },
+          {
+            "question": "競爭力",
+            "assessment": "Shielded Gate、SuperJunction、DrMOS保護、差異化功率封裝；與TI/MPS/Infineon逐品項競爭。"
+          },
+          {
+            "question": "技術轉折",
+            "assessment": "AI 48V／800V、SiC/GaN、AmpStack、SmartClamp、IPM5、Intel/AMD核心供電方案。"
+          },
+          {
+            "question": "客戶採用",
+            "assessment": "2026 SEC具名11家通路/OEM/ODM客戶，不能把匿名美國手機客戶指定為Apple。"
+          },
+          {
+            "question": "產能",
+            "assessment": "奧勒岡8吋自廠，重慶JV與上海封測；外部晶圓約35%，實際良率/稼動率未知。"
+          },
+          {
+            "question": "供應鏈",
+            "assessment": "直接具名Kaynes OSAT與重慶JV，台灣大聯大/豐藝為銷售通路而非AOSL供應商。"
+          },
+          {
+            "question": "估值催化劑",
+            "assessment": "FY2027 Q1即將發布、AI核心供電占比、產品毛利率、SiC/GaN供貨與IPM5擴產；均非保證。"
+          },
+          {
+            "question": "風險",
+            "assessment": "FY2026營收與毛利率下滑、通路集中72.3%、客戶季節性、產能與中美地緣風險。"
+          }
+        ]
+      },
+      "gate_3_technology_product_completeness": {
+        "performed": true,
+        "status": "reviewed_with_gaps",
+        "product_roadmap": [
+          "48V/54V/800V架構",
+          "SmartClamp DrMOS",
+          "AmpStack MOSFET封裝",
+          "αMOS E2 600V可量產供貨",
+          "IPM5 OSAT量產",
+          "SiC/GaN",
+          "HBM/CoWoS/CPO排除非直接收入"
+        ],
+        "commercialization_rule": "正式公告、量產供貨與獨立收入分別標註，禁止把展示、支援架構當成已量產"
+      },
+      "gate_4_falsification_and_competition": {
+        "performed": true,
+        "status": "reviewed_with_gaps",
+        "tests": [
+          "有無確實供貨及營收",
+          "下游對象是否具名",
+          "通路營收不能代表終端市場份額",
+          "Intel/AMD/NVIDIA平台支援不是自動直接客戶",
+          "Kaynes/IPM5量產可兩邊官方核對",
+          "台灣ODM是具名客戶不是台灣代工供應商",
+          "第三方晶圓匿名不可猜台積電"
+        ],
+        "named_competitor_categories": [
+          "Infineon/onsemi/STM/Toshiba/Diodes/Vishay功率器件",
+          "MPS/TI/Richtek/Semtech電源IC"
+        ]
+      },
+      "gate_5_missing_topic_audit": {
+        "performed": true,
+        "status": "completed_with_material_evidence_gaps",
+        "important_issue_coverage_table": [
+          {
+            "topic": "FY2026 10-K與Q4 8-K",
+            "status": "covered",
+            "summary": "2026-08-27 10-K、8/12 Q4 8-K及官方業績均已交叉核實。",
+            "source_ids": [
+              "SEC_FY26_10K",
+              "SEC_FY26_Q4_8K",
+              "IR_FY26_Q4"
+            ]
+          },
+          {
+            "topic": "FY2027 Q1即將公布",
+            "status": "not_yet_available",
+            "summary": "美東2026-11-05下午5點才開法說；本研究截至台灣上午，不能填入未發布實績。",
+            "source_ids": [
+              "IR_UPCOMING_FY27_Q1"
+            ]
+          },
+          {
+            "topic": "FY2026收入與利潤",
+            "status": "covered",
+            "summary": "FY2026 678.927M美元、毛利率22.3%、淨損42.265M美元；FY2025收入696.162M美元。",
+            "source_ids": [
+              "SEC_FY26_10K"
+            ]
+          },
+          {
+            "topic": "FY2026 Q4財報",
+            "status": "covered",
+            "summary": "Q4 170.4M美元收入，GAAP毛利率23.1%，GAAP淨損13.1M；non-GAAP GM 23.7%。",
+            "source_ids": [
+              "IR_FY26_Q4",
+              "SEC_FY26_Q4_8K_EXHIBIT"
+            ]
+          },
+          {
+            "topic": "FY2026分類營收",
+            "status": "covered",
+            "summary": "power discrete 437.787M、power IC 233.870M、封測服務7.270M美元；不可拿某一項全歸AI。",
+            "source_ids": [
+              "SEC_FY26_10K"
+            ]
+          },
+          {
+            "topic": "Q4 Advanced Computing成長",
+            "status": "covered",
+            "summary": "Advanced Computing約為Computing收入31%，AI與伺服器預期下季+60%屬公司展望，非已實現收入。",
+            "source_ids": [
+              "CALL_Q4_2026"
+            ]
+          },
+          {
+            "topic": "800VDC AI機架架構",
+            "status": "covered",
+            "summary": "2025/10公告技術支援，沒有公開獨立800V量產收入。",
+            "source_ids": [
+              "TECH_800V",
+              "SEC_FY26_10K"
+            ]
+          },
+          {
+            "topic": "SmartClamp DrMOS／AI供電",
+            "status": "covered",
+            "summary": "2026/4正式發表、公司披露設計導入；沒有單一料號客戶採購金額。",
+            "source_ids": [
+              "SEC_FY26_10K",
+              "TECH_NEWSROOM"
+            ]
+          },
+          {
+            "topic": "25V／80V、48V hot swap",
+            "status": "covered",
+            "summary": "2026 10-K明確列為已推出產品；48V屬用途、尚無逐SKU出貨。",
+            "source_ids": [
+              "SEC_FY26_10K"
+            ]
+          },
+          {
+            "topic": "αMOS E2 600V生產",
+            "status": "covered",
+            "summary": "2026/9/8 GTPAK型號可按量產數量購買、交期16週，非宣布大型客戶已採購。",
+            "source_ids": [
+              "TECH_600V"
+            ]
+          },
+          {
+            "topic": "AmpStack 功率MOSFET封裝",
+            "status": "covered",
+            "summary": "2026/7發表，需區分功率封裝與AI GPU CoWoS。",
+            "source_ids": [
+              "TECH_NEWSROOM"
+            ]
+          },
+          {
+            "topic": "electronica 2026展示",
+            "status": "covered",
+            "summary": "2026/10/29公告將於展會展示，不能將未來展出當作已大量出貨。",
+            "source_ids": [
+              "TECH_ELECTRONICA",
+              "TECH_NEWSROOM"
+            ]
+          },
+          {
+            "topic": "Intel／AMD／NVIDIA電源平台",
+            "status": "covered",
+            "summary": "Intel IMVP、AMD SVI3、NVIDIA電力架構是設計相容或控制家族，不自動等於具名直接採購客戶。",
+            "source_ids": [
+              "SEC_FY26_10K",
+              "TECH_800V"
+            ]
+          },
+          {
+            "topic": "大聯大／豐藝通路集中",
+            "status": "covered",
+            "summary": "兩家為已確認直接經銷商，FY2026各占53.0%、19.3%。",
+            "source_ids": [
+              "SEC_FY26_10K"
+            ]
+          },
+          {
+            "topic": "具名台灣ODM客戶",
+            "status": "covered",
+            "summary": "仁寶、鴻海、廣達、緯創、台達電五家由SEC 10-K逐名列出。",
+            "source_ids": [
+              "SEC_FY26_10K"
+            ]
+          },
+          {
+            "topic": "具名國際OEM",
+            "status": "covered",
+            "summary": "Dell、HP/Hewlett-Packard、Samsung Group、Stanley Black & Decker由SEC列名。",
+            "source_ids": [
+              "SEC_FY26_10K"
+            ]
+          },
+          {
+            "topic": "美系手機Tier1實際身份",
+            "status": "evidence_insufficient",
+            "summary": "管理層未具名；不可直接猜Apple。",
+            "source_ids": [
+              "CALL_Q4_2026"
+            ]
+          },
+          {
+            "topic": "HBM直接供應",
+            "status": "intentionally_excluded",
+            "summary": "AOSL是電源半導體供應，不製造HBM記憶體晶粒；只會受AI供電需求帶動。",
+            "source_ids": [
+              "SEC_FY26_10K"
+            ]
+          },
+          {
+            "topic": "CPO光電互連直接收入",
+            "status": "intentionally_excluded",
+            "summary": "尚無AOSL自有CPO光引擎或光網路產品經驗證的主線，避免錯列。",
+            "source_ids": [
+              "SEC_FY26_10K"
+            ]
+          },
+          {
+            "topic": "CoWoS先進封裝直接角色",
+            "status": "intentionally_excluded",
+            "summary": "AOSL的AmpStack及IPM5與GPU先進封裝不同。",
+            "source_ids": [
+              "TECH_NEWSROOM",
+              "SUPPLIER_KAYNES"
+            ]
+          },
+          {
+            "topic": "Kaynes IPM5量產",
+            "status": "covered",
+            "summary": "2026/4雙方官方資料確認在印度商用／大量封裝生產。",
+            "source_ids": [
+              "SUPPLIER_KAYNES",
+              "SUPPLIER_KAYNES_CONFIRM"
+            ]
+          },
+          {
+            "topic": "重慶JV 20.3%股權處分",
+            "status": "covered",
+            "summary": "2026/5完成收款與股權轉移，AOSL JV持股約18.9%；不可記作完全自有12吋廠。",
+            "source_ids": [
+              "SEC_CQJV_DISPOSAL",
+              "SEC_FY26_10K"
+            ]
+          },
+          {
+            "topic": "第三方晶圓代工份額",
+            "status": "covered",
+            "summary": "公司表示約35%晶圓來自第三方foundry；不能任意具名台積電。",
+            "source_ids": [
+              "SEC_FY26_10K"
+            ]
+          },
+          {
+            "topic": "台灣晶圓代工指定供應商",
+            "status": "evidence_insufficient",
+            "summary": "公開10-K未具名TSMC/UMC實際投片份額；不能只因業界常識認定為現有供應商。",
+            "source_ids": [
+              "SEC_FY26_10K"
+            ]
+          },
+          {
+            "topic": "產能與資本支出",
+            "status": "covered",
+            "summary": "2026資本支出51.752M美元，封測合計月產能可處理逾6億顆，實際稼動率不等於滿載。",
+            "source_ids": [
+              "SEC_FY26_10K"
+            ]
+          },
+          {
+            "topic": "銷售市場和AI實際收入區分",
+            "status": "covered",
+            "summary": "Computing是最大終端市場，但不能把全部Computing收入當AI。",
+            "source_ids": [
+              "SEC_FY26_10K",
+              "CALL_Q4_2026"
+            ]
+          },
+          {
+            "topic": "毛利率下滑與PC/記憶體成本",
+            "status": "covered",
+            "summary": "FY2026毛利率22.3%，低於2025年23.1%；Q4有產品mix改善。",
+            "source_ids": [
+              "SEC_FY26_10K",
+              "CALL_Q4_2026"
+            ]
+          },
+          {
+            "topic": "中國供應鏈與地緣政策",
+            "status": "covered",
+            "summary": "自有上海封測、重慶JV以及中國／美國跨境供應鏈風險已納入。",
+            "source_ids": [
+              "SEC_FY26_10K"
+            ]
+          },
+          {
+            "topic": "Reuters當期獨家具名供應鏈",
+            "status": "not_researched",
+            "summary": "搜尋未取得可交叉核對的AOSL具體客戶／供應商獨家報導；不臆造。",
+            "source_ids": []
+          },
+          {
+            "topic": "Bloomberg與The Information付費獨家",
+            "status": "not_researched",
+            "summary": "無可核對的完整原文，不能寫成已查證內容。",
+            "source_ids": []
+          },
+          {
+            "topic": "ServeTheHome／TomsHardware料號實測",
+            "status": "not_researched",
+            "summary": "未獲得可信且直接對應AOSL各個MOSFET型號的實測紀錄。",
+            "source_ids": []
+          },
+          {
+            "topic": "SiC與GaN商業化分項營收",
+            "status": "evidence_insufficient",
+            "summary": "AOSL提供產品與架構相容資料，但未揭露SiC/GaN獨立營收及專案合約。",
+            "source_ids": [
+              "TECH_800V",
+              "SEC_FY26_10K"
+            ]
+          }
+        ],
+        "material_open_items": [
+          "美系手機Tier1實際身份",
+          "台灣晶圓代工指定供應商",
+          "Reuters當期獨家具名供應鏈",
+          "Bloomberg與The Information付費獨家",
+          "ServeTheHome／TomsHardware料號實測",
+          "SiC與GaN商業化分項營收"
+        ],
+        "completion_claim": "evidence_graded_file_not_all_questions_resolved"
+      }
+    },
+    "sources": [
+      {
+        "id": "SEC_FY26_10K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1387467/000162828026059261/aosl-20260630.htm",
+        "category": "SEC"
+      },
+      {
+        "id": "SEC_FY26_10K_INDEX",
+        "url": "https://www.sec.gov/Archives/edgar/data/1387467/000162828026059261/0001628280-26-059261-index.html",
+        "category": "SEC"
+      },
+      {
+        "id": "SEC_FY26_Q4_8K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1387467/000162828026056197/aosl-20260812.htm",
+        "category": "SEC"
+      },
+      {
+        "id": "SEC_FY26_Q4_8K_EXHIBIT",
+        "url": "https://www.sec.gov/Archives/edgar/data/1387467/000162828026056197/exhibit991earningreleaseju.htm",
+        "category": "SEC"
+      },
+      {
+        "id": "SEC_FY26_Q3_10Q",
+        "url": "https://www.sec.gov/Archives/edgar/data/1387467/000162828026031360/aosl-20260331.htm",
+        "category": "SEC"
+      },
+      {
+        "id": "SEC_CQJV_DISPOSAL",
+        "url": "https://www.sec.gov/Archives/edgar/data/1387467/000162828026034090/aosl-20260511.htm",
+        "category": "SEC"
+      },
+      {
+        "id": "SEC_CQJV_NAME",
+        "url": "https://www.sec.gov/Archives/edgar/data/1387467/000138746716000185/ex101-aosl03312016q3201610.htm",
+        "category": "SEC"
+      },
+      {
+        "id": "IR_FY26_Q4",
+        "url": "https://investor.aosmd.com/press-releases/press-release-details/2026/Alpha-and-Omega-Semiconductor-Reports-Financial-Results-for-Fiscal-Fourth-Quarter-and-Fiscal-Year-Ended-June-30-2026/default.aspx",
+        "category": "company_IR"
+      },
+      {
+        "id": "IR_UPCOMING_FY27_Q1",
+        "url": "https://investor.aosmd.com/overview/default.aspx",
+        "category": "company_IR"
+      },
+      {
+        "id": "IR_RELEASES",
+        "url": "https://investor.aosmd.com/press-releases/default.aspx",
+        "category": "company_IR"
+      },
+      {
+        "id": "CALL_Q4_2026",
+        "url": "https://stockanalysis.com/stocks/aosl/transcripts/661732-q4-2026/",
+        "category": "earnings_transcript"
+      },
+      {
+        "id": "TECH_600V",
+        "url": "https://investor.aosmd.com/press-releases/press-release-details/2026/Alpha-and-Omega-Semiconductors-New-MOS-E2-600V-Super-Junction-MOSFETs-Support-Optimized-ElectricalThermal-Paths-Boosted-System-Performance-and-Long-Term-Reliability/default.aspx",
+        "category": "official_product_or_technology"
+      },
+      {
+        "id": "TECH_800V",
+        "url": "https://investor.aosmd.com/press-releases/press-release-details/2025/Alpha-and-Omega-Semiconductor-Supports-800-VDC-Power-Architecture-for-Next-Generation-AI-Factories-with-Innovative-SiC-and-GaN-Power-MOSFET-and-Power-IC-Solutions/default.aspx",
+        "category": "official_product_or_technology"
+      },
+      {
+        "id": "TECH_NEWSROOM",
+        "url": "https://www.aosmd.com/newsroom",
+        "category": "official_product_or_technology"
+      },
+      {
+        "id": "TECH_RESOURCE_LIBRARY",
+        "url": "https://www.aosmd.com/resource-library",
+        "category": "official_product_or_technology"
+      },
+      {
+        "id": "TECH_ELECTRONICA",
+        "url": "https://www.nasdaq.com/press-release/aos-showcase-breakthrough-power-solutions-ai-core-power-ai-data-center-and-industrial",
+        "category": "official_product_or_technology"
+      },
+      {
+        "id": "SUPPLIER_KAYNES",
+        "url": "https://investor.aosmd.com/press-releases/press-release-details/2026/Alpha-and-Omega-Semiconductor-Announces-Commencement-of-Production-of-Intelligent-Power-Module-IPM5-Products-at-Kaynes-Semicon-Inaugural-Opening-in-Sanand-Gujarat/default.aspx",
+        "category": "direct_supplier_official"
+      },
+      {
+        "id": "SUPPLIER_KAYNES_CONFIRM",
+        "url": "https://www.kaynestechnology.co.in/doc/Stock-Exchange-Disclosures/Press%20release-%20Kaynes%20Semicon%2C%20AOS%20and%20Mitsui.pdf",
+        "category": "direct_supplier_official"
+      },
+      {
+        "id": "IR_Q4_OTHER_TRANSCRIPT",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/08/19/alpha-omega-aosl-q4-2026-earnings-call-transcript/",
+        "category": "company_IR"
+      }
+    ]
   }
 }

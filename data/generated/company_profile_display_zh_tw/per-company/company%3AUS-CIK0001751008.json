@@ -215,5 +215,1050 @@
       "廣告主投資報酬率"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-05",
+    "company": "AppLovin Corporation",
+    "symbol": "APP",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "APP AppLovin 產業鏈：Axon廣告、MAX、Adjust、Wurl、具名客戶、AI廣告競爭",
+      "description": "2026 Q3財報、最新法說與SEC優先；公司案例證實具名廣告主，供應商未證實者不寫入。"
+    },
+    "business_lines": [
+      {
+        "id": "AXON_ADS",
+        "name": "AppLovin Ads／Axon AI 推薦引擎",
+        "downstream_applications": "廣告主在行動遊戲流量投放獲客，按成效及廣告活動收費。",
+        "customer_policy": "企業客戶需具名；客戶類型只作業務說明"
+      },
+      {
+        "id": "ECOMMERCE",
+        "name": "電商品牌廣告、增量歸因與跨通路 ROAS",
+        "downstream_applications": "2026-06-22 全面開放自助帳戶；服務品牌、DTC、零售與訂閱商，非消費者本身為付費客戶。",
+        "customer_policy": "企業客戶需具名；客戶類型只作業務說明"
+      },
+      {
+        "id": "GAMING",
+        "name": "遊戲廣告主獲客、AppDiscovery、模型優化",
+        "downstream_applications": "行動遊戲應用安裝、再行銷和新模型；Q3遊戲業務約年增50%（法說口述）。",
+        "customer_policy": "企業客戶需具名；客戶類型只作業務說明"
+      },
+      {
+        "id": "MAX",
+        "name": "MAX 競價／App 內廣告媒體變現",
+        "downstream_applications": "App發行商提供廣告版位，MAX 聚合買方競價，收入依中標競價支出抽成。",
+        "customer_policy": "企業客戶需具名；客戶類型只作業務說明"
+      },
+      {
+        "id": "ADJUST",
+        "name": "Adjust 歸因、量測、反作弊",
+        "downstream_applications": "廣告主與遊戲／App開發者 SaaS 訂閱，不能等同Axon廣告營收。",
+        "customer_policy": "企業客戶需具名；客戶類型只作業務說明"
+      },
+      {
+        "id": "CTV",
+        "name": "Wurl／連網電視 CTV 廣告",
+        "downstream_applications": "串流內容分銷、廣告變現；2026Q3管理層稱新型績效廣告仍在試點。",
+        "customer_policy": "企業客戶需具名；客戶類型只作業務說明"
+      },
+      {
+        "id": "AI_INFRA",
+        "name": "Axon 模型訓練、推論與廣告推薦基礎設施",
+        "downstream_applications": "大模型、訓練資料與算力成本是內部研發／運營，不是對外出售 GPU、HBM、CPO。",
+        "customer_policy": "企業客戶需具名；客戶類型只作業務說明"
+      },
+      {
+        "id": "ECOSYSTEM",
+        "name": "廣告生態、隱私歸因及網路合作",
+        "downstream_applications": "與 Apple App Store、Google Play、Shopify、第三方量測及媒體供給的整合與治理。",
+        "customer_policy": "企業客戶需具名；客戶類型只作業務說明"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "ECOMMERCE_customer_001",
+        "name": "Wayfair",
+        "business_line": "ECOMMERCE",
+        "relationship": "customer",
+        "details": "AppLovin 公開案例列名 Wayfair 採用廣告獲客；不得由案例推估支出或份額。",
+        "evidence_level": "official_named_advertiser_case_study",
+        "source_ids": [
+          "OFFICIAL_WAYFAIR",
+          "OFFICIAL_CUSTOMERS"
+        ],
+        "commercialization": "advertising_campaign_active_or_historical"
+      },
+      {
+        "id": "ECOMMERCE_customer_002",
+        "name": "Kitsch",
+        "business_line": "ECOMMERCE",
+        "relationship": "customer",
+        "details": "AppLovin具名案例披露Kitsch投放年增3.4倍，為已實施而非營收占比。",
+        "evidence_level": "official_named_advertiser_case_study",
+        "source_ids": [
+          "OFFICIAL_KITSCH"
+        ],
+        "commercialization": "advertising_campaign_active_or_historical"
+      },
+      {
+        "id": "ECOMMERCE_customer_003",
+        "name": "Ridge",
+        "business_line": "ECOMMERCE",
+        "relationship": "customer",
+        "details": "AppLovin官方Ridge案例披露2026地區對照增量實驗與後續廣告擴張。",
+        "evidence_level": "official_named_advertiser_case_study",
+        "source_ids": [
+          "OFFICIAL_RIDGE"
+        ],
+        "commercialization": "advertising_campaign_active_or_historical"
+      },
+      {
+        "id": "ECOMMERCE_customer_004",
+        "name": "IPSY",
+        "business_line": "ECOMMERCE",
+        "relationship": "customer",
+        "details": "AppLovin官方具名案例披露2026訂閱獲客投放及對照實驗。",
+        "evidence_level": "official_named_advertiser_case_study",
+        "source_ids": [
+          "OFFICIAL_IPSY"
+        ],
+        "commercialization": "advertising_campaign_active_or_historical"
+      },
+      {
+        "id": "ECOMMERCE_customer_005",
+        "name": "The Woobles",
+        "business_line": "ECOMMERCE",
+        "relationship": "customer",
+        "details": "AppLovin官方具名案例披露2026全通路增量測試，非平台自身GAAP營收。",
+        "evidence_level": "official_named_advertiser_case_study",
+        "source_ids": [
+          "OFFICIAL_WOOBLES"
+        ],
+        "commercialization": "advertising_campaign_active_or_historical"
+      },
+      {
+        "id": "ECOMMERCE_customer_006",
+        "name": "Wuffes",
+        "business_line": "ECOMMERCE",
+        "relationship": "customer",
+        "details": "AppLovin官方具名案例披露DTC寵物產品廣告客戶。",
+        "evidence_level": "official_named_advertiser_case_study",
+        "source_ids": [
+          "OFFICIAL_WUFFES"
+        ],
+        "commercialization": "advertising_campaign_active_or_historical"
+      },
+      {
+        "id": "ECOMMERCE_customer_007",
+        "name": "Mellow",
+        "business_line": "ECOMMERCE",
+        "relationship": "customer",
+        "details": "AppLovin官方案例列名Mellow品牌在平台投放。",
+        "evidence_level": "official_named_advertiser_case_study",
+        "source_ids": [
+          "OFFICIAL_MELLOW"
+        ],
+        "commercialization": "advertising_campaign_active_or_historical"
+      },
+      {
+        "id": "ECOMMERCE_customer_008",
+        "name": "Tumble",
+        "business_line": "ECOMMERCE",
+        "relationship": "customer",
+        "details": "AppLovin官方案例列表列名 Tumble，屬實際廣告採用案例。",
+        "evidence_level": "official_named_advertiser_case_study",
+        "source_ids": [
+          "OFFICIAL_CUSTOMERS"
+        ],
+        "commercialization": "advertising_campaign_active_or_historical"
+      },
+      {
+        "id": "ECOMMERCE_customer_009",
+        "name": "The Pets Table",
+        "business_line": "ECOMMERCE",
+        "relationship": "customer",
+        "details": "AppLovin官方案例列表列名 The Pets Table，屬廣告採用案例。",
+        "evidence_level": "official_named_advertiser_case_study",
+        "source_ids": [
+          "OFFICIAL_CUSTOMERS"
+        ],
+        "commercialization": "advertising_campaign_active_or_historical"
+      },
+      {
+        "id": "ECOMMERCE_customer_010",
+        "name": "HOLOS",
+        "business_line": "ECOMMERCE",
+        "relationship": "customer",
+        "details": "AppLovin官方案例列表列名 HOLOS，屬廣告採用案例。",
+        "evidence_level": "official_named_advertiser_case_study",
+        "source_ids": [
+          "OFFICIAL_CUSTOMERS"
+        ],
+        "commercialization": "advertising_campaign_active_or_historical"
+      },
+      {
+        "id": "GAMING_customer_011",
+        "name": "Gamehaus Holdings（GMHS）",
+        "business_line": "GAMING",
+        "relationship": "customer",
+        "details": "Gamehaus 2026-09-29 SEC 20-F具名：AppLovin為2025重要廣告服務供應商；2026年其應付帳款主要供應商名單已改變。僅確認歷史採購關係，不推定2026續約或份額。",
+        "evidence_level": "counterparty_SEC_named_historical_advertiser",
+        "source_ids": [
+          "GAMEHAUS_20F"
+        ],
+        "commercialization": "historical_contract_and_services"
+      },
+      {
+        "id": "GAMING_customer_012",
+        "name": "Meta Platforms（META）",
+        "business_line": "GAMING",
+        "relationship": "customer",
+        "details": "AppLovin 2026 SEC披露 Meta 為包含在其廣告客戶中的大型網路平台；亦是廣告競爭者。",
+        "evidence_level": "company_SEC_named_advertising_client",
+        "source_ids": [
+          "SEC_Q3_10Q",
+          "SEC_10K"
+        ],
+        "commercialization": "existing_client_no_disclosed_amount"
+      },
+      {
+        "id": "GAMING_customer_013",
+        "name": "Alphabet／Google（GOOGL）",
+        "business_line": "GAMING",
+        "relationship": "customer",
+        "details": "AppLovin 2026 SEC披露 Google 為具名廣告客戶；亦有平台及廣告競爭／合作關係，無單客戶營收。",
+        "evidence_level": "company_SEC_named_advertising_client",
+        "source_ids": [
+          "SEC_Q3_10Q",
+          "SEC_10K"
+        ],
+        "commercialization": "existing_client_no_disclosed_amount"
+      },
+      {
+        "id": "ECOMMERCE_customer_014",
+        "name": "True Classic",
+        "business_line": "ECOMMERCE",
+        "relationship": "customer",
+        "details": "2025 WorkMagic具名增量測試案例披露使用Axon；媒體／合作方案例，非AppLovin官方當期客戶收入。",
+        "evidence_level": "third_party_named_historical_client",
+        "source_ids": [
+          "WORKMAGIC_TRUECLASSIC"
+        ],
+        "commercialization": "historical_campaign"
+      },
+      {
+        "id": "ECOSYSTEM_partner_015",
+        "name": "Shopify（SHOP）",
+        "business_line": "ECOSYSTEM",
+        "relationship": "partner",
+        "details": "AppLovin 2026平台產品及歷史法說提到 Shopify整合支援電商轉換與帳戶接入；不代表 Shopify 本身就是已付費廣告主。",
+        "evidence_level": "product_integration_not_customer",
+        "source_ids": [
+          "OFFICIAL_SELF_SERVE",
+          "SEC_10K"
+        ],
+        "commercialization": null
+      },
+      {
+        "id": "ECOSYSTEM_partner_016",
+        "name": "Apple（AAPL）",
+        "business_line": "ECOSYSTEM",
+        "relationship": "partner",
+        "details": "iOS App Store、SKAdNetwork及隱私規範之平台依賴／技術整合；非已證實AppLovin供應商合同。",
+        "evidence_level": "platform_dependency",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": null
+      },
+      {
+        "id": "ECOSYSTEM_partner_017",
+        "name": "Google（GOOGL）",
+        "business_line": "ECOSYSTEM",
+        "relationship": "partner",
+        "details": "Android、Google Play 與廣告生態平台依賴；另具客戶與競爭的多重角色。",
+        "evidence_level": "platform_dependency_and_competition",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": null
+      },
+      {
+        "id": "ADJUST_partner_018",
+        "name": "Haus",
+        "business_line": "ADJUST",
+        "relationship": "partner",
+        "details": "多個AppLovin具名客戶使用Haus實施GeoLift增量測試；非已確認AppLovin對Haus直接採購或獨家合作。",
+        "evidence_level": "shared_customer_measurement_ecosystem",
+        "source_ids": [
+          "OFFICIAL_IPSY",
+          "OFFICIAL_RIDGE"
+        ],
+        "commercialization": null
+      },
+      {
+        "id": "AXON_ADS_competitor_019",
+        "name": "Meta Platforms（META）",
+        "business_line": "AXON_ADS",
+        "relationship": "competitor",
+        "details": "相關廣告、媒體競價或歸因產品競爭；並非全部服務完全替代，部分公司兼有客戶或平台合作角色。",
+        "evidence_level": "competitive_overlap",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": null
+      },
+      {
+        "id": "AXON_ADS_competitor_020",
+        "name": "Alphabet／Google（GOOGL）",
+        "business_line": "AXON_ADS",
+        "relationship": "competitor",
+        "details": "相關廣告、媒體競價或歸因產品競爭；並非全部服務完全替代，部分公司兼有客戶或平台合作角色。",
+        "evidence_level": "competitive_overlap",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": null
+      },
+      {
+        "id": "AXON_ADS_competitor_021",
+        "name": "Unity（U）",
+        "business_line": "AXON_ADS",
+        "relationship": "competitor",
+        "details": "相關廣告、媒體競價或歸因產品競爭；並非全部服務完全替代，部分公司兼有客戶或平台合作角色。",
+        "evidence_level": "competitive_overlap",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": null
+      },
+      {
+        "id": "AXON_ADS_competitor_022",
+        "name": "Liftoff Mobile",
+        "business_line": "AXON_ADS",
+        "relationship": "competitor",
+        "details": "相關廣告、媒體競價或歸因產品競爭；並非全部服務完全替代，部分公司兼有客戶或平台合作角色。",
+        "evidence_level": "competitive_overlap",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": null
+      },
+      {
+        "id": "AXON_ADS_competitor_023",
+        "name": "Moloco",
+        "business_line": "AXON_ADS",
+        "relationship": "competitor",
+        "details": "相關廣告、媒體競價或歸因產品競爭；並非全部服務完全替代，部分公司兼有客戶或平台合作角色。",
+        "evidence_level": "competitive_overlap",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": null
+      },
+      {
+        "id": "MAX_competitor_024",
+        "name": "Unity LevelPlay",
+        "business_line": "MAX",
+        "relationship": "competitor",
+        "details": "相關廣告、媒體競價或歸因產品競爭；並非全部服務完全替代，部分公司兼有客戶或平台合作角色。",
+        "evidence_level": "competitive_overlap",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": null
+      },
+      {
+        "id": "MAX_competitor_025",
+        "name": "Liftoff／Vungle",
+        "business_line": "MAX",
+        "relationship": "competitor",
+        "details": "相關廣告、媒體競價或歸因產品競爭；並非全部服務完全替代，部分公司兼有客戶或平台合作角色。",
+        "evidence_level": "competitive_overlap",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": null
+      },
+      {
+        "id": "ADJUST_competitor_026",
+        "name": "AppsFlyer",
+        "business_line": "ADJUST",
+        "relationship": "competitor",
+        "details": "相關廣告、媒體競價或歸因產品競爭；並非全部服務完全替代，部分公司兼有客戶或平台合作角色。",
+        "evidence_level": "competitive_overlap",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": null
+      },
+      {
+        "id": "ADJUST_competitor_027",
+        "name": "Singular",
+        "business_line": "ADJUST",
+        "relationship": "competitor",
+        "details": "相關廣告、媒體競價或歸因產品競爭；並非全部服務完全替代，部分公司兼有客戶或平台合作角色。",
+        "evidence_level": "competitive_overlap",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": null
+      },
+      {
+        "id": "ECOMMERCE_competitor_028",
+        "name": "Meta Platforms（META）",
+        "business_line": "ECOMMERCE",
+        "relationship": "competitor",
+        "details": "相關廣告、媒體競價或歸因產品競爭；並非全部服務完全替代，部分公司兼有客戶或平台合作角色。",
+        "evidence_level": "competitive_overlap",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": null
+      },
+      {
+        "id": "ECOMMERCE_competitor_029",
+        "name": "Alphabet／Google Ads（GOOGL）",
+        "business_line": "ECOMMERCE",
+        "relationship": "competitor",
+        "details": "相關廣告、媒體競價或歸因產品競爭；並非全部服務完全替代，部分公司兼有客戶或平台合作角色。",
+        "evidence_level": "competitive_overlap",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": null
+      },
+      {
+        "id": "ECOMMERCE_competitor_030",
+        "name": "Amazon Ads（AMZN）",
+        "business_line": "ECOMMERCE",
+        "relationship": "competitor",
+        "details": "相關廣告、媒體競價或歸因產品競爭；並非全部服務完全替代，部分公司兼有客戶或平台合作角色。",
+        "evidence_level": "competitive_overlap",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": null
+      },
+      {
+        "id": "ECOMMERCE_competitor_031",
+        "name": "Appier（4180.T）",
+        "business_line": "ECOMMERCE",
+        "relationship": "competitor",
+        "details": "相關廣告、媒體競價或歸因產品競爭；並非全部服務完全替代，部分公司兼有客戶或平台合作角色。",
+        "evidence_level": "competitive_overlap",
+        "source_ids": [
+          "APPIER_TW",
+          "SEC_10K"
+        ],
+        "commercialization": null
+      },
+      {
+        "id": "CTV_competitor_032",
+        "name": "The Trade Desk（TTD）",
+        "business_line": "CTV",
+        "relationship": "competitor",
+        "details": "相關廣告、媒體競價或歸因產品競爭；並非全部服務完全替代，部分公司兼有客戶或平台合作角色。",
+        "evidence_level": "competitive_overlap",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": null
+      },
+      {
+        "id": "CTV_competitor_033",
+        "name": "Magnite（MGNI）",
+        "business_line": "CTV",
+        "relationship": "competitor",
+        "details": "相關廣告、媒體競價或歸因產品競爭；並非全部服務完全替代，部分公司兼有客戶或平台合作角色。",
+        "evidence_level": "competitive_overlap",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": null
+      }
+    ],
+    "research": {
+      "window": "2026-08-07/2026-11-05",
+      "baseline_commit": "a81b8a5f",
+      "original_blob_sha": "1a45703b404fda93bd4160eb7fdb3666c69c3740",
+      "financial_snapshot": {
+        "quarter": "2026-Q3",
+        "revenue_usd_thousands": 2184815,
+        "revenue_yoy_growth_pct": 55,
+        "net_income_usd_thousands": 1438902,
+        "adjusted_ebitda_usd_thousands": 1842000,
+        "adjusted_ebitda_margin_pct": 84,
+        "net_margin_pct": 66,
+        "cost_of_revenue_usd_thousands": 240765,
+        "derived_gaap_gross_margin_pct_approx": 88.98,
+        "operating_cash_flow_usd_thousands": 1428842,
+        "quarter_ppe_capex_usd_thousands": 7476,
+        "free_cash_flow_usd_thousands": 1418443,
+        "fy2025_revenue_usd_thousands": 5480717,
+        "q4_2026_revenue_guidance_usd_millions": [
+          2365,
+          2395
+        ],
+        "q3_repurchase_and_withholding_usd_millions_approx": 1400
+      },
+      "commercialization": {
+        "applovin_ads_self_service": "2026-06-22向所有廣告主開放；已商業化",
+        "axon_next_generation": "2026-Q3部分推出，未全部上線",
+        "max": "既有成熟競價媒體工具",
+        "adjust": "既有訂閱制歸因產品",
+        "wurl_existing": "現有CTV服務",
+        "next_generation_ctv_performance": "試點期，管理層稱短期不預期重大收入",
+        "formerly_owned_apps": "已出售，非現存廣告業務直接等價",
+        "wurl_2026_content_intelligence": "2026-09-15正式發布內容智慧平台；不能推定特定已認列收入"
+      },
+      "no_fabricated_suppliers": true,
+      "named_customer_definition": "客户節點一律具名法人或品牌，不收AI伺服器、廣告主、電商品牌等通稱。",
+      "taiwan_cross_check": "Appier(4180.T)屬台灣市場競爭者，無APP直接合約證據，未建直接供應商。",
+      "cloud_service_commitment": {
+        "contract_minimum_usd_billion": 1.3,
+        "period_years": 3,
+        "payments_made_as_of_2026_09_30_usd_billion_approx": 1.1,
+        "vendor_named": false,
+        "source_id": "SEC_Q3_10Q"
+      },
+      "latest_10q_official_sec": "https://www.sec.gov/Archives/edgar/data/1751008/000175100826000069/app-20260930.htm"
+    },
+    "five_gate_audit": {
+      "gate_1_hot_topics_reverse_check": {
+        "performed": true,
+        "result": "covered_with_disclosed_gaps",
+        "independent_90d_topics": [
+          "Q3 55%營收成長",
+          "Q3新模型僅部分上線",
+          "Q4展望",
+          "電商自助廣告平台全面上線",
+          "CTV仍屬試點",
+          "App廣告競價與增量歸因",
+          "SEC調查報導、平台與隱私規範",
+          "Wurl 9月 Content Intelligence",
+          "Wurl 10月 CTV資料透明度",
+          "2026-09投資人集體訴訟報導"
+        ],
+        "reverse_comparison": "原始display未列Wurl、CTV試點、Q3模型部署階段及具名廣告主，已全部納入新增欄位。"
+      },
+      "gate_2_ten_investor_questions": {
+        "performed": true,
+        "result": "reviewed",
+        "questions": [
+          {
+            "topic": "營收成長",
+            "finding": "2026Q3營收21.84815億美元，年增55%；2026前9月59.5095億。"
+          },
+          {
+            "topic": "毛利率",
+            "finding": "Q3成本2.40765億、營收21.84815億，推算GAAP毛利率約89.0%；GAAP淨利率66%和Adjusted EBITDA率84%不可當毛利率。"
+          },
+          {
+            "topic": "資本支出",
+            "finding": "Q3 PP&E 747.6萬美元；另財務租賃本金292.3萬美元。模型訓練算力成本不可全部歸為CapEx。 另SEC Q3揭示匿名雲端運算服務商三年最低購買承諾13億美元，為未來運營負擔，不能誤列本季資本支出。"
+          },
+          {
+            "topic": "競爭力",
+            "finding": "Axon運行資料、模型與移動遊戲流量；跟Meta、Google、Unity、Moloco逐產品競爭。"
+          },
+          {
+            "topic": "技術轉折",
+            "finding": "新一代Axon架構僅部分上線、訓練更大模型、稀疏數據廣告主提升；非全量新模型完成。"
+          },
+          {
+            "topic": "客戶採用",
+            "finding": "具名廣告客戶案例：Wayfair、Kitsch、Ridge、IPSY、Woobles等，Gamehaus SEC歷史證據，Meta/Google SEC具名。"
+          },
+          {
+            "topic": "產能",
+            "finding": "數位廣告平台無晶圓量產產能；供給要看遊戲媒體廣告版位、算力可用性及競價效率。"
+          },
+          {
+            "topic": "供應鏈",
+            "finding": "沒有可驗證台廠直接硬體供貨名單；Appier屬競爭同業。"
+          },
+          {
+            "topic": "估值催化劑",
+            "finding": "新模型擴張、Q4營收指引23.65–23.95億美元、電商廣告擴張與CTV驗證；不設股價目標。"
+          },
+          {
+            "topic": "風險",
+            "finding": "隱私政策、平台依賴、訴訟調查、廣告主ROAS、依賴手機遊戲流量、新模型不達預期。 Bloomberg Law 9月投資人訴訟仍是指控而非確定違法。"
+          }
+        ]
+      },
+      "gate_3_technology_product_completeness": {
+        "performed": true,
+        "result": "covered_with_gaps",
+        "technologies": [
+          "Axon推薦與模型訓練",
+          "MAX競價",
+          "Adjust歸因",
+          "Wurl CTV",
+          "用戶隱私與Apple SKAN",
+          "HBM直接銷售排除",
+          "CPO直接銷售排除",
+          "先進封裝直接銷售排除"
+        ],
+        "commercialization_rule": "平台已上線／部分模型部署／CTV試點／實際廣告案例各自分開，不推定無資料之銷售。"
+      },
+      "gate_4_falsification_competition": {
+        "performed": true,
+        "result": "reviewed_with_gaps",
+        "checks": [
+          "新模型是否全量（否）",
+          "CTV是否具重大認列收入（無證據）",
+          "客戶是否具名（13個以上來源支持）",
+          "哪些企業兼有客戶及競爭身份（Meta、Google）",
+          "台灣公司是否確有直接供應合約（無）"
+        ],
+        "rule": "除面向大眾的消費品與居民電力外，B2B customer只收具名公司／品牌。"
+      },
+      "gate_5_delivery_missing_topic_audit": {
+        "performed": true,
+        "result": "covered_with_material_open_items",
+        "important_issue_coverage_table": [
+          {
+            "topic": "FY2025 SEC 10-K與Apps業務出售",
+            "status": "covered",
+            "finding": "2025全年營收54.80717億美元，已出售Apps業務；舊JSON的Apps業務標籤不得當最新營運分部。",
+            "source_ids": [
+              "SEC_10K"
+            ]
+          },
+          {
+            "topic": "最新2026 Q3 IR與Q3財報",
+            "status": "covered",
+            "finding": "11/04 IR公布Q3營收21.848億、淨利14.389億、Adjusted EBITDA18.42億。",
+            "source_ids": [
+              "IR_Q3"
+            ]
+          },
+          {
+            "topic": "最新 Q3 SEC 10-Q原文檔案",
+            "status": "covered",
+            "finding": "2026-11-04 SEC Q3 10-Q 已直接核實；營收21.84815億美元，對照11/04 IR財報。",
+            "source_ids": [
+              "SEC_Q3_10Q",
+              "IR_Q3"
+            ]
+          },
+          {
+            "topic": "上一份官方可直接查證的Q2 SEC 10-Q／8-K",
+            "status": "covered",
+            "finding": "2026-08-05可直接核實Q2 10-Q與8-K，和Q3財報並列而不混用期間。",
+            "source_ids": [
+              "SEC_Q2_10Q",
+              "SEC_Q2_8K"
+            ]
+          },
+          {
+            "topic": "2026 Q3 earnings call transcript",
+            "status": "covered",
+            "finding": "2026-11-04最新Q3法說，已核對模型部分上線與CTV早期試點。",
+            "source_ids": [
+              "TRANSCRIPT_Q3"
+            ]
+          },
+          {
+            "topic": "Q4 2026財測",
+            "status": "covered",
+            "finding": "收入23.65–23.95億美元，Adjusted EBITDA率84–85%，不是實際實績。",
+            "source_ids": [
+              "IR_Q3"
+            ]
+          },
+          {
+            "topic": "Axon Ads 2026/6公開自助平台及品牌重命名",
+            "status": "covered",
+            "finding": "AppLovin Ads取代對外品牌Axon Ads Manager，Axon仍是內部推薦引擎。",
+            "source_ids": [
+              "OFFICIAL_SELF_SERVE"
+            ]
+          },
+          {
+            "topic": "新一代模型部分推出",
+            "status": "covered",
+            "finding": "Q3部分推出，新模型為進展而非全量部署。",
+            "source_ids": [
+              "TRANSCRIPT_Q3"
+            ]
+          },
+          {
+            "topic": "廣告主實際客戶",
+            "status": "covered",
+            "finding": "官方案例具名Wayfair、Kitsch、Ridge、IPSY、Woobles、Wuffes等。",
+            "source_ids": [
+              "OFFICIAL_CUSTOMERS"
+            ]
+          },
+          {
+            "topic": "Meta／Google既是客戶也是競爭者",
+            "status": "covered",
+            "finding": "SEC具名廣告網路客戶；多重關係不單憑對手名義推斷。",
+            "source_ids": [
+              "SEC_Q2_10Q",
+              "SEC_10K"
+            ]
+          },
+          {
+            "topic": "Gamehaus客戶反向SEC交叉驗證",
+            "status": "covered",
+            "finding": "Gamehaus 2026 20-F確認2025應付帳款與AppLovin服務關係，未證明2026仍為最大供應方。",
+            "source_ids": [
+              "GAMEHAUS_20F"
+            ]
+          },
+          {
+            "topic": "廣告投放效果與增量測試",
+            "status": "covered",
+            "finding": "官方案例有ROAS、GeoLift及跨Amazon/Shopify銷售，不等於APP單客戶收入。",
+            "source_ids": [
+              "OFFICIAL_RIDGE",
+              "OFFICIAL_IPSY"
+            ]
+          },
+          {
+            "topic": "MAX媒體供給與收入",
+            "status": "covered",
+            "finding": "MAX主要對App發布者競價和撮合，不能把所有媒體發布者當成廣告費付款客戶。",
+            "source_ids": [
+              "SEC_Q2_10Q"
+            ]
+          },
+          {
+            "topic": "Adjust訂閱歸因與反作弊",
+            "status": "covered",
+            "finding": "Adjust訂閱費和Axon動態廣告費不同商業模式。",
+            "source_ids": [
+              "SEC_Q2_10Q"
+            ]
+          },
+          {
+            "topic": "Wurl及CTV新產品",
+            "status": "covered",
+            "finding": "Wurl已屬既有服務；新的CTV績效廣告僅試點，管理層不預期短期明顯收入。",
+            "source_ids": [
+              "TRANSCRIPT_Q3",
+              "SEC_10K"
+            ]
+          },
+          {
+            "topic": "Q3財務與CapEx/FCF",
+            "status": "covered",
+            "finding": "Q3營收、成本、淨利、營業現金流與自由現金流區分；季度PPE支出747.6萬美元。",
+            "source_ids": [
+              "IR_Q3"
+            ]
+          },
+          {
+            "topic": "回購和資本配置",
+            "status": "covered",
+            "finding": "Q3回購及扣繳合計14億美元、10月底可動用回購授權36億美元。",
+            "source_ids": [
+              "IR_Q3"
+            ]
+          },
+          {
+            "topic": "隱私法規和調查",
+            "status": "covered",
+            "finding": "2026-09-17 Bloomberg Law報導投資人集體訴訟指控AI宣稱誇大；尚屬訴訟主張而非裁判。Reuters 2月轉述SEC調查尚未被獨立證實。",
+            "source_ids": [
+              "BLOOMBERG_LAW_SUITS",
+              "REUTERS_BLOOMBERG_PROBE",
+              "SEC_Q3_10Q"
+            ]
+          },
+          {
+            "topic": "台灣競爭者Appier",
+            "status": "covered",
+            "finding": "Appier官網確認其AI廣告與行銷定位；為市場比較而非APP供應商。",
+            "source_ids": [
+              "APPIER_TW"
+            ]
+          },
+          {
+            "topic": "台灣具名直接供應商",
+            "status": "evidence_insufficient",
+            "finding": "截至研究日無公開具名台灣直接供應商；雖有總計13億美元的雲端算力服務承諾，但SEC未具名對方，不推定為NVIDIA、TSMC、台灣ODM。",
+            "source_ids": [
+              "SEC_Q3_10Q"
+            ]
+          },
+          {
+            "topic": "AppLovin晶圓代工、HBM、CPO及先進封裝銷售",
+            "status": "intentionally_excluded",
+            "finding": "APP是廣告平台，無向外提供半導體、HBM、CPO或CoWoS商業產品證據。",
+            "source_ids": [
+              "SEC_10K"
+            ]
+          },
+          {
+            "topic": "雲端GPU／TPU具名供應商",
+            "status": "evidence_insufficient",
+            "finding": "AI模型使用算力但未核到直接GPU伺服器供應商，不能套用NVIDIA/TSMC供應鏈。",
+            "source_ids": [
+              "TRANSCRIPT_Q3"
+            ]
+          },
+          {
+            "topic": "Nexqual自動產生的Wayfair SEC具名客戶判讀",
+            "status": "intentionally_excluded",
+            "finding": "該網站把SEC的Wayfair州稅案例敘述誤判為客戶；本研究以AppLovin官方案例確認Wayfair。",
+            "source_ids": [
+              "OFFICIAL_CUSTOMERS"
+            ]
+          },
+          {
+            "topic": "Bloomberg／The Information付費獨家全文",
+            "status": "not_researched",
+            "finding": "尚未取得可驗證全文，僅用Reuters轉述且明示未獨立核實之調查報導。",
+            "source_ids": [
+              "REUTERS_BLOOMBERG_PROBE"
+            ]
+          },
+          {
+            "topic": "MAX當期逐發行商應付分潤",
+            "status": "evidence_insufficient",
+            "finding": "沒有逐公司或逐App確證2026媒體費結算及採購合約。",
+            "source_ids": [
+              "SEC_Q2_10Q"
+            ]
+          },
+          {
+            "topic": "Appier／台灣公司的APP直接收入鏈",
+            "status": "intentionally_excluded",
+            "finding": "沒有直接合約或收入證據；只做同業比對。",
+            "source_ids": [
+              "APPIER_TW"
+            ]
+          },
+          {
+            "topic": "2026 Q3最新SEC雲端運算購買承諾",
+            "status": "covered",
+            "finding": "SEC 10-Q指出與匿名雲端服務供應商修約，三年最低承諾13億美元；已支付約11億美元。供應商未具名，不能擅指NVIDIA、AWS或Google。",
+            "source_ids": [
+              "SEC_Q3_10Q"
+            ]
+          },
+          {
+            "topic": "Wurl 2026-09-15 CTV Content Intelligence Platform",
+            "status": "covered",
+            "finding": "9月新產品已有官方新聞發表；與AppLovin本體新CTV成效廣告試點、短期收入預期不同。",
+            "source_ids": [
+              "WURL_CONTENT_2026",
+              "TRANSCRIPT_Q3"
+            ]
+          },
+          {
+            "topic": "Wurl 2026-10-28 CTV透明度研究",
+            "status": "covered",
+            "finding": "Wurl官方研究揭示CTV內容標識資料不完整；技術市場需求證據，不等於Wurl增量收入。",
+            "source_ids": [
+              "WURL_TRENDS_2026"
+            ]
+          },
+          {
+            "topic": "2026-09-17投資人訴訟",
+            "status": "covered",
+            "finding": "Bloomberg Law報導指控AI模型改進說明過度；未經法院認定，屬風險而非已證實違法。",
+            "source_ids": [
+              "BLOOMBERG_LAW_SUITS"
+            ]
+          }
+        ],
+        "material_open_topics": [
+          "最新 Q3 SEC 10-Q原文檔案",
+          "台灣具名直接供應商",
+          "雲端GPU／TPU具名供應商",
+          "MAX當期逐發行商應付分潤"
+        ],
+        "completion_claim": "可用研究版；證據缺口明列，不能宣稱盡查全部付費來源。"
+      },
+      "independent_reflection_rounds": [
+        {
+          "round": 1,
+          "finding": "把Axon Ads Manager、AppLovin Ads、Axon推薦引擎混為一談",
+          "correction": "對外AppLovin Ads與底層Axon模型分開，保留舊原始資料不動。"
+        },
+        {
+          "round": 2,
+          "finding": "誤將所有App發行商當付費廣告主；把Google或Meta只列競爭對手會失去其廣告客戶身份",
+          "correction": "MAX供給端放業務主線；SEC具名Meta/Google建customer與competitor雙關係。"
+        },
+        {
+          "round": 3,
+          "finding": "CTV已有Wurl不代表新CTV成效廣告量產貢獻；新Axon模型亦未全量上線",
+          "correction": "分別標示既有Wurl、CTV pilot、新模型部分上線。"
+        },
+        {
+          "round": 4,
+          "finding": "Appier是台灣同業但無APP直接採購合同；半導體供應鏈不可套用APP",
+          "correction": "列為競爭者，不新增臆測supplier或HBM/CPO受惠鏈。"
+        },
+        {
+          "round": 5,
+          "finding": "第三方自動抽取將SEC裡Wayfair州稅案例誤判為客戶",
+          "correction": "用官方AppLovin Wayfair案例列表交叉核對，拒用錯誤SEC文字證據。"
+        },
+        {
+          "round": 6,
+          "finding": "Q3 10-Q官方原文已於11/4提交，且披露匿名雲端算力承諾；若只用Q2 10-Q會漏掉當期風險",
+          "correction": "用SEC accession 0001751008-26-000069更新來源並補入13億美元供應商未具名承諾。"
+        },
+        {
+          "round": 7,
+          "finding": "Wurl 2026年9月新平台與10月市場研究是近期熱門議題；不能只沿用2025 Wurl產品分類",
+          "correction": "補兩個發布事件，分開商業化狀態與報告觀察。"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "id": "SEC_10K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1751008/000175100826000010/app-20251231.htm",
+        "classification": "SEC"
+      },
+      {
+        "id": "SEC_Q2_10Q",
+        "url": "https://www.sec.gov/Archives/edgar/data/1751008/000175100826000059/app-20260630.htm",
+        "classification": "SEC"
+      },
+      {
+        "id": "SEC_Q2_8K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1751008/000175100826000057/app-20260805.htm",
+        "classification": "SEC"
+      },
+      {
+        "id": "IR_Q3",
+        "url": "https://investors.applovin.com/news/news-details/2026/AppLovin-Announces-Third-Quarter-2026-Financial-Results/default.aspx",
+        "classification": "IR"
+      },
+      {
+        "id": "TRANSCRIPT_Q3",
+        "url": "https://stockanalysis.com/stocks/app/transcripts/725385-q3-2026/",
+        "classification": "earnings_transcript"
+      },
+      {
+        "id": "Q3_Q_3RD_PARTY",
+        "url": "https://www.stocktitan.net/sec-filings/APP/10-q-app-lovin-corp-quarterly-earnings-report-805a52560ee8.html",
+        "classification": "third_party"
+      },
+      {
+        "id": "OFFICIAL_SELF_SERVE",
+        "url": "https://applovin.com/en/blog/applovin-ads-now-open",
+        "classification": "company_product_or_case"
+      },
+      {
+        "id": "OFFICIAL_CUSTOMERS",
+        "url": "https://applovin.com/en/resources/case-study",
+        "classification": "company_product_or_case"
+      },
+      {
+        "id": "OFFICIAL_KITSCH",
+        "url": "https://applovin.com/en/resources/case-study-kitsch",
+        "classification": "company_product_or_case"
+      },
+      {
+        "id": "OFFICIAL_RIDGE",
+        "url": "https://www.applovin.com/en/resources/ridge",
+        "classification": "company_product_or_case"
+      },
+      {
+        "id": "OFFICIAL_IPSY",
+        "url": "https://www.applovin.com/en/resources/ipsy",
+        "classification": "company_product_or_case"
+      },
+      {
+        "id": "OFFICIAL_WOOBLES",
+        "url": "https://new.applovin.com/en/resources/the-woobles",
+        "classification": "company_product_or_case"
+      },
+      {
+        "id": "OFFICIAL_WUFFES",
+        "url": "https://new.applovin.com/en/resources/wuffes",
+        "classification": "company_product_or_case"
+      },
+      {
+        "id": "OFFICIAL_MELLOW",
+        "url": "https://new.applovin.com/en/resources/founderstories-mellow",
+        "classification": "company_product_or_case"
+      },
+      {
+        "id": "OFFICIAL_WAYFAIR",
+        "url": "https://new.applovin.com/en/resources/case-study",
+        "classification": "company_product_or_case"
+      },
+      {
+        "id": "GAMEHAUS_20F",
+        "url": "https://www.sec.gov/Archives/edgar/data/2000530/000149315226044775/form20-f.htm",
+        "classification": "SEC"
+      },
+      {
+        "id": "WORKMAGIC_TRUECLASSIC",
+        "url": "https://www.workmagic.io/case-study/true-classic-applovin",
+        "classification": "third_party"
+      },
+      {
+        "id": "REUTERS_BLOOMBERG_PROBE",
+        "url": "https://www.reuters.com/business/sec-probe-involving-applovin-still-active-bloomberg-news-reports-2026-02-20/",
+        "classification": "Reuters"
+      },
+      {
+        "id": "OFFICIAL_MAX",
+        "url": "https://www.applovin.com/en/max/",
+        "classification": "company_product_or_case"
+      },
+      {
+        "id": "OFFICIAL_ADJUST",
+        "url": "https://www.adjust.com/",
+        "classification": "company_product_or_case"
+      },
+      {
+        "id": "OFFICIAL_WURL",
+        "url": "https://www.wurl.com/",
+        "classification": "company_product_or_case"
+      },
+      {
+        "id": "APPIER_TW",
+        "url": "https://www.appier.com/zh-tw/",
+        "classification": "Taiwan_official"
+      },
+      {
+        "id": "OFFICIAL_LEGAL",
+        "url": "https://investors.applovin.com/financial-information/sec-filings",
+        "classification": "company_product_or_case"
+      },
+      {
+        "id": "SEC_Q3_10Q",
+        "url": "https://www.sec.gov/Archives/edgar/data/1751008/000175100826000069/app-20260930.htm",
+        "classification": "SEC"
+      },
+      {
+        "id": "WURL_CONTENT_2026",
+        "url": "https://www.stocktitan.net/news/APP/wurl-launches-content-intelligence-platform-to-scale-advanced-6s2yrf0daf4a.html",
+        "classification": "official_press_via_distributor"
+      },
+      {
+        "id": "WURL_TRENDS_2026",
+        "url": "https://www.stocktitan.net/news/APP/wurl-s-latest-ctv-trends-report-reveals-significant-gaps-in-9462e4qt9g1f.html",
+        "classification": "official_press_via_distributor"
+      },
+      {
+        "id": "BLOOMBERG_LAW_SUITS",
+        "url": "https://news.bloomberglaw.com/privacy-and-data-security/applovin-overhyped-ai-improvements-revenue-prospects-suit-says",
+        "classification": "Bloomberg_Law"
+      }
+    ]
   }
 }

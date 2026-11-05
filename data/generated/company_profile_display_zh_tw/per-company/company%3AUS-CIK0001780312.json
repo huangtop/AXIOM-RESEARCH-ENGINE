@@ -172,5 +172,792 @@
       "緊急與政府通訊"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-05",
+    "company": "AST SpaceMobile, Inc.",
+    "symbol": "ASTS",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "ASTS產業鏈｜AT&T Verizon Vodafone STC具名電信客戶、BlueBird衛星、地面閘道器、SpaceX發射與商業化查證",
+      "description": "以SEC 2025 10-K、2026 Q2 10-Q/8-K、8月法說及官方發射資料區分合約、測試、正式營收與商用時程。"
+    },
+    "business_lines": [
+      {
+        "id": "MNO_US",
+        "name": "美國直連手機電信批發",
+        "downstream_applications": "AT&T、Verizon 與美國電信網頻譜、網路整合；終端訂戶透過電信業者使用服務。"
+      },
+      {
+        "id": "MNO_EU",
+        "name": "歐洲與英國衛星電信服務",
+        "downstream_applications": "Vodafone/SatCo 經銷安排與歐盟多國網路整合、監管許可。"
+      },
+      {
+        "id": "MNO_ASIA",
+        "name": "日本與亞洲中東直連服務",
+        "downstream_applications": "Rakuten、STC 等具名電信業者及地方頻譜監理。"
+      },
+      {
+        "id": "GATEWAY",
+        "name": "地面閘道器與核心網整合",
+        "downstream_applications": "已交付 gateways、地面射頻與核心網，區分設備收入及衛星訂閱收入。"
+      },
+      {
+        "id": "BLUEBIRD",
+        "name": "BlueBird 衛星與大型相位陣列",
+        "downstream_applications": "Block 1/Block 2 量產、ASIC、空基陣列、太空側無線電、衛星組裝與在軌數量。"
+      },
+      {
+        "id": "LAUNCH",
+        "name": "火箭發射與軌道部署",
+        "downstream_applications": "SpaceX Falcon 9、Blue Origin New Glenn、ISRO LVM3，分辨已發射與未發射任務。"
+      },
+      {
+        "id": "SPECTRUM",
+        "name": "頻譜與許可",
+        "downstream_applications": "美國 FCC SCS 許可、MSS L/S 頻段、合作 MNO 頻譜與各國落地審批。"
+      },
+      {
+        "id": "GOV",
+        "name": "政府、國防及公共安全合約",
+        "downstream_applications": "美國政府複數獎項、第一線安全通訊及非通信應用，與民用訂閱分開。"
+      },
+      {
+        "id": "AI_EDGE",
+        "name": "太空 AI 與 ASIC 技術",
+        "downstream_applications": "衛星自製 ASIC AI-enabled 頻譜管理；AI edge compute 為延伸用例而非已量產 GPU/HBM。"
+      },
+      {
+        "id": "MANUFACTURE",
+        "name": "衛星垂直整合製造與資本支出",
+        "downstream_applications": "德州 Midland 廠、衛星材料、系統整合、產能、成本和現金需求。"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "MNO_US_customer_001",
+        "name": "AT&T",
+        "business_line": "MNO_US",
+        "relationship": "customer",
+        "details": "SEC 10-Q記載具有法律效力的space-based connectivity商業協議，整合AT&T頻譜與核心網；不能把未來用戶月租算成已實現收入。",
+        "evidence_level": "SEC_signed_commercial_agreement",
+        "source_ids": [
+          "SEC_2026_Q2_10Q"
+        ],
+        "commercialization": "contracted_pre_general_consumer_launch"
+      },
+      {
+        "id": "MNO_US_customer_002",
+        "name": "Verizon Communications",
+        "business_line": "MNO_US",
+        "relationship": "customer",
+        "details": "2025-10簽訂正式商業協議；原協議含4,500萬美元可抵未來服務的預付安排，2026Q2 10-Q指出當時仍為應收；不等於已經收款、已經一般商用。",
+        "evidence_level": "SEC_signed_commercial_agreement",
+        "source_ids": [
+          "SEC_2026_Q2_10Q"
+        ],
+        "commercialization": "contracted_with_conditions"
+      },
+      {
+        "id": "MNO_EU_customer_003",
+        "name": "Vodafone Group",
+        "business_line": "MNO_EU",
+        "relationship": "customer",
+        "details": "具名電信夥伴；SatCo合資公司與AST於2025-12締結歐洲等市場獨家經銷安排，海外市場亦另訂服務條件。",
+        "evidence_level": "SEC_telecom_agreement",
+        "source_ids": [
+          "SEC_2026_Q2_10Q"
+        ],
+        "commercialization": "contracted_deployment"
+      },
+      {
+        "id": "MNO_ASIA_customer_004",
+        "name": "Saudi Telecom Company（stc）",
+        "business_line": "MNO_ASIA",
+        "relationship": "customer",
+        "details": "2025-10-29簽署10年商業協議，覆蓋沙烏地與部分區域市場；應區別已簽合約與全面提供一般訂戶服務。",
+        "evidence_level": "SEC_ten_year_contract",
+        "source_ids": [
+          "SEC_2026_Q2_10Q"
+        ],
+        "commercialization": "signed_contract"
+      },
+      {
+        "id": "MNO_ASIA_customer_005",
+        "name": "Rakuten Mobile（樂天行動）",
+        "business_line": "MNO_ASIA",
+        "relationship": "customer",
+        "details": "AST SEC具名記錄在日完成一般智慧手機雙向衛星視訊測試；J-LEO是初步遴選，不能將潛在約10億美元政府資金寫成確定收款。",
+        "evidence_level": "SEC_named_MNO_and_trial",
+        "source_ids": [
+          "SEC_2026_Q2_10Q",
+          "SEC_Q2_8K_RELEASE"
+        ],
+        "commercialization": "technical_testing_and_preliminary_program"
+      },
+      {
+        "id": "MNO_EU_customer_006",
+        "name": "Orange",
+        "business_line": "MNO_EU",
+        "relationship": "customer",
+        "details": "2026-08 Q2公告列為歐洲網路整合與測試MNO之一；尚未公開逐公司商用訂閱收入或正式採購額。",
+        "evidence_level": "company_named_integration_partner",
+        "source_ids": [
+          "SEC_Q2_8K_RELEASE"
+        ],
+        "commercialization": "integration_testing"
+      },
+      {
+        "id": "MNO_EU_customer_007",
+        "name": "Telefónica",
+        "business_line": "MNO_EU",
+        "relationship": "customer",
+        "details": "2026-08 Q2公告列為歐洲網路整合與測試MNO之一，現階段不得推定已繳付商業服務費。",
+        "evidence_level": "company_named_integration_partner",
+        "source_ids": [
+          "SEC_Q2_8K_RELEASE"
+        ],
+        "commercialization": "integration_testing"
+      },
+      {
+        "id": "MNO_EU_customer_008",
+        "name": "Deutsche Telekom",
+        "business_line": "MNO_EU",
+        "relationship": "customer",
+        "details": "公司Q2公告列入電信網整合測試；有具名技術對接但未確認最新已收款合約。",
+        "evidence_level": "company_named_integration_partner",
+        "source_ids": [
+          "SEC_Q2_8K_RELEASE"
+        ],
+        "commercialization": "integration_testing"
+      },
+      {
+        "id": "MNO_EU_customer_009",
+        "name": "Vodafone Ukraine",
+        "business_line": "MNO_EU",
+        "relationship": "customer",
+        "details": "Q2公告具名列入歐洲網路整合；此節點非獨立已認列訂閱收入的聲明。",
+        "evidence_level": "company_named_integration_partner",
+        "source_ids": [
+          "SEC_Q2_8K_RELEASE"
+        ],
+        "commercialization": "integration_testing"
+      },
+      {
+        "id": "MNO_ASIA_customer_010",
+        "name": "Bell Canada",
+        "business_line": "MNO_ASIA",
+        "relationship": "customer",
+        "details": "SEC披露2025-10完成加拿大衛星4G VoLTE及數據測試，屬已確認具名電信合作；目前無獨立收入金額。",
+        "evidence_level": "SEC_named_test_partner",
+        "source_ids": [
+          "SEC_2026_Q2_10Q"
+        ],
+        "commercialization": "successful_test"
+      },
+      {
+        "id": "GOV_customer_011",
+        "name": "美國聯邦政府（United States Government）",
+        "business_line": "GOV",
+        "relationship": "customer",
+        "details": "Q2公告指超過1.25億美元的政府合約獎項，未披露全部機構名稱；屬有具名主權採購主體而非杜撰特定部會。",
+        "evidence_level": "SEC_government_contract_awards",
+        "source_ids": [
+          "SEC_Q2_8K_RELEASE"
+        ],
+        "commercialization": "funded_contract_awards"
+      },
+      {
+        "id": "GOV_partner_012",
+        "name": "FirstNet（美國公共安全通訊網）",
+        "business_line": "GOV",
+        "relationship": "partner",
+        "details": "具名公共安全用例與頻段整合，未單列FirstNet對AST之已實現淨購買金額。",
+        "evidence_level": "company_named_program",
+        "source_ids": [
+          "SEC_Q2_8K_RELEASE"
+        ],
+        "commercialization": "development_testing"
+      },
+      {
+        "id": "LAUNCH_supplier_013",
+        "name": "SpaceX",
+        "business_line": "LAUNCH",
+        "relationship": "supplier",
+        "details": "2026-06及08月Falcon 9任務已發射BlueBird 8–13；是火箭發射服務供應商，不是已確認ASIC或相控陣晶片供應商。",
+        "evidence_level": "official_verified_launch_provider",
+        "source_ids": [
+          "OFFICIAL_JOURNEY",
+          "IR_EVENTS"
+        ],
+        "commercialization": "launched"
+      },
+      {
+        "id": "LAUNCH_supplier_014",
+        "name": "Blue Origin",
+        "business_line": "LAUNCH",
+        "relationship": "supplier",
+        "details": "2026-04-19 BlueBird 7透過New Glenn發射；發射服務，不是衛星零組件供應。",
+        "evidence_level": "official_verified_launch_provider",
+        "source_ids": [
+          "OFFICIAL_JOURNEY"
+        ],
+        "commercialization": "launched"
+      },
+      {
+        "id": "LAUNCH_supplier_015",
+        "name": "ISRO / NSIL（印度航太發射服務）",
+        "business_line": "LAUNCH",
+        "relationship": "supplier",
+        "details": "2025-12 LVM3任務成功部署下一代BlueBird衛星；屬發射能力供應。",
+        "evidence_level": "national_space_agency_launch_evidence",
+        "source_ids": [
+          "ISRO_BLOCK2",
+          "OFFICIAL_JOURNEY"
+        ],
+        "commercialization": "launched"
+      },
+      {
+        "id": "MNO_US_competitor_016",
+        "name": "SpaceX Starlink Direct to Cell",
+        "business_line": "MNO_US",
+        "relationship": "competitor",
+        "details": "低軌直連手機替代方案；衛星規格、頻譜、手機連線型式及MNO合作模式不完全相同。",
+        "evidence_level": "competitive_market_comparison",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "MNO_US_competitor_017",
+        "name": "Lynk Global",
+        "business_line": "MNO_US",
+        "relationship": "competitor",
+        "details": "D2D直接裝置連接市場競爭，部署與商用規模須逐時點比較。",
+        "evidence_level": "competitive_market_comparison",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "MNO_US_competitor_018",
+        "name": "Globalstar / Apple 衛星功能",
+        "business_line": "MNO_US",
+        "relationship": "competitor",
+        "details": "衛星緊急訊息及部分D2D功能相鄰競爭，與AST全寬頻服務不完全同質。",
+        "evidence_level": "adjacent_competition",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "MNO_EU_partner_019",
+        "name": "SatCo（AST／Vodafone 50:50歐洲合資公司）",
+        "business_line": "MNO_EU",
+        "relationship": "partner",
+        "details": "具名歐洲獨家轉售夥伴；合資公司非第三方付費終端客戶。",
+        "evidence_level": "SEC_jv_reseller",
+        "source_ids": [
+          "SEC_2026_Q2_10Q"
+        ],
+        "commercialization": "reseller_agreement_signed"
+      },
+      {
+        "id": "SPECTRUM_partner_020",
+        "name": "FCC（美國聯邦通訊委員會）",
+        "business_line": "SPECTRUM",
+        "relationship": "partner",
+        "details": "監管機關非公司客戶或供應商；已授權SCS商業業務，國際市場仍需分別取得許可。",
+        "evidence_level": "regulator_not_commercial_counterparty",
+        "source_ids": [
+          "SEC_2026_Q2_10Q"
+        ],
+        "commercialization": "authorizations_received"
+      },
+      {
+        "id": "BLUEBIRD_partner_021",
+        "name": "AST SpaceMobile 德州Midland自有製造業務",
+        "business_line": "BLUEBIRD",
+        "relationship": "partner",
+        "details": "衛星垂直整合自有工廠非第三方供應商；約六顆/月為管理層2026產能說法。",
+        "evidence_level": "self_manufactured",
+        "source_ids": [
+          "SEC_Q2_8K_RELEASE",
+          "TRANSCRIPT_Q2"
+        ],
+        "commercialization": "production_scaling"
+      },
+      {
+        "id": "GATEWAY_partner_022",
+        "name": "全球地面閘道器部署網路",
+        "business_line": "GATEWAY",
+        "relationship": "partner",
+        "details": "Q2法說稱已對七名未具名客戶交付13座gateways相關項目，不能列成13座全部已交付啟用。",
+        "evidence_level": "company_operational_disclosure",
+        "source_ids": [
+          "TRANSCRIPT_Q2"
+        ],
+        "commercialization": "hardware_delivery_revenue"
+      },
+      {
+        "id": "AI_EDGE_partner_023",
+        "name": "BlueBird Block 2自研ASIC",
+        "business_line": "AI_EDGE",
+        "relationship": "partner",
+        "details": "單衛星設計10GHz處理頻寬、相對Block1目標十倍；AI頻譜管理非AI資料中心HBM晶片供應。",
+        "evidence_level": "company_technology_disclosure",
+        "source_ids": [
+          "SEC_Q2_8K_RELEASE"
+        ],
+        "commercialization": "designed_and_in_production"
+      },
+      {
+        "id": "MANUFACTURE_partner_024",
+        "name": "BlueBird 14–46生產管線",
+        "business_line": "MANUFACTURE",
+        "relationship": "partner",
+        "details": "8月公司公告14–16準備出貨、17–46處於不同生產階段；不可全部算已在軌或已可服務。",
+        "evidence_level": "company_production_guidance",
+        "source_ids": [
+          "SEC_Q2_8K_RELEASE"
+        ],
+        "commercialization": "in_production_not_launched"
+      }
+    ],
+    "research": {
+      "review_window": "2026-08-07/2026-11-05",
+      "latest_quarter_ending": "2026-06-30",
+      "q2_2026_revenue_usd_thousands": 31520,
+      "q2_products_revenue_usd_thousands": 24428,
+      "q2_services_revenue_usd_thousands": 7092,
+      "q2_capex_usd_millions_approx": 610,
+      "q2_in_orbit_satellite_count": 13,
+      "q2_2026_backlog_usd_millions_approx": 1300,
+      "fy2026_revenue_guidance_usd_millions": [
+        150,
+        200
+      ],
+      "q3_earnings_scheduled": "2026-11-09",
+      "customer_node_policy": "customer節點僅具名MNO/採購主體；測試/合約/訂閱收入以commercialization標記。",
+      "taiwan_direct_supply_verification": "截至研究日未確認具名台灣直接供應商；勿將概念股稱供貨。",
+      "sources_period": "截至2026-11-05"
+    },
+    "five_gate_audit": {
+      "gate_1_hot_topics_reverse_check": {
+        "performed": true,
+        "method": "獨立由SEC/官方IR/最近90日8-K/技術公告與法說檢索，不先照舊JSON列主線",
+        "topics": [
+          "8/10 Q2 3152萬美元",
+          "13架BlueBird在軌",
+          "1.3B backlog",
+          "約60+ MNO",
+          "Gateway交貨",
+          "6顆/月產能",
+          "J-LEO初步選定",
+          "Q3預定11/9",
+          "衛星ASIC/AI頻譜",
+          "Q2 CapEx 6.1億"
+        ],
+        "result": "reviewed_with_evidence_gaps"
+      },
+      "gate_2_investor_top_ten_questions": {
+        "performed": true,
+        "questions": [
+          {
+            "topic": "營收成長",
+            "finding": "Q2 3152萬美元，YoY大幅增長但基期極低；應拆產品gateway與服務，不視為訂閱商轉。"
+          },
+          {
+            "topic": "毛利率",
+            "finding": "早期硬體與服務組合尚不代表成熟衛星寬頻單位經濟；不以假設推估經常性毛利率。"
+          },
+          {
+            "topic": "資本支出",
+            "finding": "Q2約6.1億美元，Q3預期3.5–4.25億，發射付款時間點令季度波動大。"
+          },
+          {
+            "topic": "競爭力",
+            "finding": "大型相位陣列與MNO頻譜整合、普通手機直連相對Starlink/Lynk差異。"
+          },
+          {
+            "topic": "技術轉折",
+            "finding": "Block2 2400平方英尺相控陣、自研10GHz ASIC、98.9Mbps演示與近200Mbps目標。"
+          },
+          {
+            "topic": "客戶採用",
+            "finding": "AT&T/Verizon/Vodafone/STC正式協議；Orange/Telefónica/DT測試；政府訂單另計。"
+          },
+          {
+            "topic": "產能",
+            "finding": "13架在軌，14–16待發，17–46多階段生產；6架/月產能不等於全數在軌。"
+          },
+          {
+            "topic": "供應鏈",
+            "finding": "三家具名發射服務商；未確認台灣零組件直供，不虛構supplier。"
+          },
+          {
+            "topic": "估值催化劑",
+            "finding": "11/9 Q3披露、增加在軌衛星、MNO beta轉商用、政府採購認列。"
+          },
+          {
+            "topic": "風險",
+            "finding": "資本密集、發射失敗、頻譜審批、合作方轉付費、競爭、稀釋。"
+          }
+        ],
+        "result": "reviewed"
+      },
+      "gate_3_technology_product_completeness": {
+        "performed": true,
+        "areas": [
+          "Block1/Block2分期",
+          "2400平方英尺衛星相控陣",
+          "10GHz ASIC",
+          "SCS低頻段許可",
+          "98.9Mbps實測",
+          "200Mbps目標",
+          "AI頻譜優化",
+          "HBM/CPO非直接產品"
+        ],
+        "result": "reviewed_with_stage_tags"
+      },
+      "gate_4_falsification_competition": {
+        "performed": true,
+        "tests": [
+          "已在軌或只是備產",
+          "已演示頻寬或未來目標",
+          "MNO正式合約或整合試驗",
+          "營收是否一般手機訂閱",
+          "政府backlog與實際收入分離",
+          "發射商≠衛星晶片供應商",
+          "台灣是否直接供貨"
+        ],
+        "result": "reviewed_with_open_items"
+      },
+      "gate_5_delivery_missing_topic_audit": {
+        "performed": true,
+        "important_issue_coverage_table": [
+          {
+            "topic": "2026最新SEC文件",
+            "status": "covered",
+            "finding": "截至11/5最新10-Q為2026Q2，Q3預定11/9，未提前把Q3當已發布。",
+            "source_ids": [
+              "SEC_2026_Q2_10Q",
+              "IR_EVENTS"
+            ]
+          },
+          {
+            "topic": "2026Q2營收拆分",
+            "status": "covered",
+            "finding": "3152萬美元：產品2442.8萬、服務709.2萬；不等於衛星手機月租收入。",
+            "source_ids": [
+              "SEC_2026_Q2_10Q"
+            ]
+          },
+          {
+            "topic": "Q2法說與CapEx",
+            "status": "covered",
+            "finding": "法說揭露單季CapEx約6.1億美元，Q3展望3.5–4.25億美元；展望不等於實績。",
+            "source_ids": [
+              "TRANSCRIPT_Q2"
+            ]
+          },
+          {
+            "topic": "2026年度營收指引",
+            "status": "covered",
+            "finding": "2026年1.5–2億美元指引，非已實現收入。",
+            "source_ids": [
+              "SEC_Q2_8K_RELEASE"
+            ]
+          },
+          {
+            "topic": "合約與訂單積壓",
+            "status": "covered",
+            "finding": "約13億美元為商業合約及美國政府獎項合計，非已實現營收。",
+            "source_ids": [
+              "SEC_Q2_8K_RELEASE"
+            ]
+          },
+          {
+            "topic": "AT&T正式服務協議",
+            "status": "covered",
+            "finding": "具名已簽訂商業協議，不等於訂戶已廣泛付費。",
+            "source_ids": [
+              "SEC_2026_Q2_10Q"
+            ]
+          },
+          {
+            "topic": "Verizon合約與預付款",
+            "status": "covered",
+            "finding": "4500萬美元待收預付條款有明文，不能作已收現金。",
+            "source_ids": [
+              "SEC_2026_Q2_10Q"
+            ]
+          },
+          {
+            "topic": "Vodafone與SatCo",
+            "status": "covered",
+            "finding": "SatCo歐洲獨家轉售合約及Vodafone其他市場安排。",
+            "source_ids": [
+              "SEC_2026_Q2_10Q"
+            ]
+          },
+          {
+            "topic": "STC十年合約",
+            "status": "covered",
+            "finding": "2025-10簽署正式商業協議。",
+            "source_ids": [
+              "SEC_2026_Q2_10Q"
+            ]
+          },
+          {
+            "topic": "Rakuten與J-LEO",
+            "status": "evidence_insufficient",
+            "finding": "有具名測試及初步選定，但政府近10億美元預計金額尚非已收款。",
+            "source_ids": [
+              "SEC_Q2_8K_RELEASE"
+            ]
+          },
+          {
+            "topic": "Orange/Telefónica/Deutsche Telekom",
+            "status": "covered",
+            "finding": "網路整合與測試，尚非逐公司已認列訂閱收入。",
+            "source_ids": [
+              "SEC_Q2_8K_RELEASE"
+            ]
+          },
+          {
+            "topic": "政府國防合約",
+            "status": "covered",
+            "finding": "美國政府合約獎額逾1.25億美元，具名部會與逐專案收入不足。",
+            "source_ids": [
+              "SEC_Q2_8K_RELEASE"
+            ]
+          },
+          {
+            "topic": "衛星在軌數量",
+            "status": "covered",
+            "finding": "8/5完成11–13發射，Q2公告13架在軌；未確認後續14–16是否發射。",
+            "source_ids": [
+              "OFFICIAL_JOURNEY",
+              "SEC_Q2_8K_RELEASE"
+            ]
+          },
+          {
+            "topic": "高頻寬通訊技術實證",
+            "status": "covered",
+            "finding": "Block1已演示98.9Mbps，Block2約200Mbps屬預期能力。",
+            "source_ids": [
+              "SEC_Q2_8K_RELEASE"
+            ]
+          },
+          {
+            "topic": "自研ASIC/AI頻譜管理",
+            "status": "covered",
+            "finding": "10GHz相對Block1設計提升，並非GPU HBM或CPO產品。",
+            "source_ids": [
+              "SEC_Q2_8K_RELEASE"
+            ]
+          },
+          {
+            "topic": "衛星產能與衛星單位成本",
+            "status": "covered",
+            "finding": "管理層約6顆/月產能，90顆以上規劃成本每顆約2100–2300萬美元含發射，時程受限。",
+            "source_ids": [
+              "TRANSCRIPT_Q2"
+            ]
+          },
+          {
+            "topic": "SpaceX/Blue Origin/ISRO發射",
+            "status": "covered",
+            "finding": "三家具名已執行任務，非晶片供應商。",
+            "source_ids": [
+              "OFFICIAL_JOURNEY",
+              "ISRO_BLOCK2"
+            ]
+          },
+          {
+            "topic": "台灣直接供應商",
+            "status": "evidence_insufficient",
+            "finding": "未發現兩邊公開資料可明確驗證某台廠直接供應，故不列供應商。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "台灣股概念供應鏈",
+            "status": "intentionally_excluded",
+            "finding": "沒有ASTS訂單證據的低軌衛星題材公司不自動列入supplier或customer。",
+            "source_ids": []
+          },
+          {
+            "topic": "FCC與跨國許可",
+            "status": "covered",
+            "finding": "美國SCS授權及MNO頻譜安排；各國審批仍異。",
+            "source_ids": [
+              "SEC_2026_Q2_10Q"
+            ]
+          },
+          {
+            "topic": "現金與稀釋",
+            "status": "covered",
+            "finding": "截至6/30表內現金22.88億美元，7月融資後pro forma逾37億美元須分開。",
+            "source_ids": [
+              "SEC_2026_Q2_10Q",
+              "SEC_Q2_8K_RELEASE"
+            ]
+          },
+          {
+            "topic": "手機一般商用收入",
+            "status": "evidence_insufficient",
+            "finding": "2026 beta試驗以非商業使用為主，未提供一般付費訂閱收入獨立拆分。",
+            "source_ids": [
+              "SEC_Q2_8K_RELEASE"
+            ]
+          },
+          {
+            "topic": "Starlink/Lynk競爭",
+            "status": "covered",
+            "finding": "比較技術與MNO分銷，避免推定規格相等。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "AI/HBM/CPO及CoWoS",
+            "status": "intentionally_excluded",
+            "finding": "未有ASTS直接出貨HBM/CPO光引擎或CoWoS產品證據；衛星ASIC屬不同產業鏈。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "Bloomberg/The Information獨家",
+            "status": "not_researched",
+            "finding": "付費資料未逐篇全文交叉驗證，不引用未核實資料。",
+            "source_ids": []
+          },
+          {
+            "topic": "台灣媒體逐料號",
+            "status": "not_researched",
+            "finding": "尚無可查的ASTS與台灣廠雙向認證訂單或料號。",
+            "source_ids": []
+          },
+          {
+            "topic": "2026Q3財報",
+            "status": "not_yet_available",
+            "finding": "官方IR預定美東11/9發布，截至11/5尚無正式數字。",
+            "source_ids": [
+              "IR_EVENTS"
+            ]
+          },
+          {
+            "topic": "美國國防客戶逐機構",
+            "status": "evidence_insufficient",
+            "finding": "僅已確認美國聯邦政府總體獎項，無足夠機構和採購額逐案資料。",
+            "source_ids": [
+              "SEC_Q2_8K_RELEASE"
+            ]
+          }
+        ],
+        "material_open_topics": [
+          "Rakuten與J-LEO",
+          "台灣直接供應商",
+          "手機一般商用收入",
+          "Bloomberg/The Information獨家",
+          "台灣媒體逐料號",
+          "美國國防客戶逐機構"
+        ],
+        "completion_claim": "evidence_graded_not_exhaustively_verified"
+      },
+      "reflection_rounds": [
+        {
+          "round": 1,
+          "correction": "將一般消費者及匿名MNO類型移回下游應用，customer只保留具名企業及美國聯邦政府主體。"
+        },
+        {
+          "round": 2,
+          "correction": "區別Gateway產品收入與未商用手機衛星訂閱收入，區分1.3B backlog和已認列營收。"
+        },
+        {
+          "round": 3,
+          "correction": "13顆在軌與14–46號生產管線分離，不把Block2預期200Mbps當實測。"
+        },
+        {
+          "round": 4,
+          "correction": "三家發射商列supplier但明確其性質；未具名台灣零組件商一律不列直接供應商。"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "id": "SEC_2025_10K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1780312/000178031226000006/asts-20251231.htm",
+        "category": "SEC"
+      },
+      {
+        "id": "SEC_2026_Q2_10Q",
+        "url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526342550/asts-20260630.htm",
+        "category": "SEC"
+      },
+      {
+        "id": "SEC_Q2_8K_RELEASE",
+        "url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526342540/asts-ex99_1.htm",
+        "category": "SEC"
+      },
+      {
+        "id": "IR_EVENTS",
+        "url": "https://investors.ast-science.com/events",
+        "category": "official_IR"
+      },
+      {
+        "id": "IR_QUARTERLY",
+        "url": "https://investors.ast-science.com/",
+        "category": "official_IR"
+      },
+      {
+        "id": "IR_PARTNERS",
+        "url": "https://ast-science.com/partners/",
+        "category": "official_IR"
+      },
+      {
+        "id": "OFFICIAL_JOURNEY",
+        "url": "https://ast-science.com/our-journey/",
+        "category": "official_technical"
+      },
+      {
+        "id": "OFFICIAL_BLUEBIRD",
+        "url": "https://ast-science.com/next-gen-bluebird/",
+        "category": "official_technical"
+      },
+      {
+        "id": "TRANSCRIPT_Q2",
+        "url": "https://stockanalysis.com/stocks/asts/transcripts/665997-q2-2026/",
+        "category": "transcript_or_technical_media"
+      },
+      {
+        "id": "TRANSCRIPT_FOOL",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/08/17/ast-spacemobile-asts-q2-2026-earnings-call-transcript/",
+        "category": "transcript_or_technical_media"
+      },
+      {
+        "id": "ISRO_BLOCK2",
+        "url": "https://www.isro.gov.in/LVM3_M6_BlueBird_Block2_Mission.html",
+        "category": "official_technical"
+      },
+      {
+        "id": "ZACKS_PRE_Q3",
+        "url": "https://www.zacks.com/stock/news/3023349/should-you-buy-sell-or-hold-asts-stock-ahead-of-q3-earnings",
+        "category": "transcript_or_technical_media"
+      }
+    ]
   }
 }

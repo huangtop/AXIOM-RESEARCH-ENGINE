@@ -214,5 +214,949 @@
       "低功耗推論"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-05",
+    "company": "Ambarella, Inc.",
+    "symbol": "AMBA",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "Ambarella AMBA 產業鏈｜X7、CVflow、Hanwha、Insta360、文曄、Samsung Foundry 與台灣封測",
+      "description": "SEC 10-K/10-Q、IR 法說及 90 天產品消息，嚴格區分具名客戶、通路、ODM、合作夥伴、直接供應商、競爭者。"
+    },
+    "business_lines": [
+      {
+        "id": "CV_SECURITY",
+        "name": "CV5／CV7／CV72／CV75 智慧影像安全與影像辨識",
+        "downstream_applications": "企業／家用影像安全、IP 攝影機、邊緣感知、視訊分析",
+        "downstream_customer_types": [
+          "專業影像安全 OEM",
+          "智慧相機 ODM",
+          "系統整合商"
+        ]
+      },
+      {
+        "id": "PORTABLE",
+        "name": "Insta360、可攜式影像、運動攝影與消費影像",
+        "downstream_applications": "360 度攝影機、運動相機、低功耗影像處理",
+        "downstream_customer_types": [
+          "攝影機品牌",
+          "ODM"
+        ]
+      },
+      {
+        "id": "AUTOMOTIVE",
+        "name": "CV3／CVflow 車用 ADAS 與車內感知",
+        "downstream_applications": "行車感知、駕駛監控、商用車感測、L2+ 車載控制",
+        "downstream_customer_types": [
+          "車廠 OEM",
+          "Tier-1 車電系統商"
+        ]
+      },
+      {
+        "id": "ROBOTICS",
+        "name": "CV72／CV7／CVflow 機器人與實體 AI",
+        "downstream_applications": "四足／人形／AMR 的多感測器感知與低功耗端側推論",
+        "downstream_customer_types": [
+          "機器人 OEM",
+          "工業設備製造商"
+        ]
+      },
+      {
+        "id": "X7_ACCELERATOR",
+        "name": "X7 獨立 AI 加速器",
+        "downstream_applications": "Arm／x86 主機升級、2–5W 邊緣視覺與多模態推論",
+        "downstream_customer_types": [
+          "嵌入式系統製造商",
+          "工業控制系統供應商"
+        ]
+      },
+      {
+        "id": "EDGE_INFRA",
+        "name": "N1／CVflow 邊緣 AI 基礎設施",
+        "downstream_applications": "智慧閘道、網路邊緣、工業邊緣系統及視訊 AI 整合",
+        "downstream_customer_types": [
+          "嵌入式設備 OEM",
+          "邊緣運算設備商"
+        ]
+      },
+      {
+        "id": "AI_SOFTWARE",
+        "name": "Cooper 平台、DevZone、AI 模型與雲端協作",
+        "downstream_applications": "CVflow SDK、Google Cloud 開發工作流程、YOLO 模型部署、ZEDEDA OTA 管理",
+        "downstream_customer_types": [
+          "開發者",
+          "AI 模型商",
+          "SI 系統整合商"
+        ]
+      },
+      {
+        "id": "CUSTOM_SILICON",
+        "name": "半客製化 SoC 與低功耗感知架構",
+        "downstream_applications": "專案客製 AI、ISP、編解碼器和推論硬體 IP 組合",
+        "downstream_customer_types": [
+          "半客製化 OEM 設計團隊"
+        ]
+      },
+      {
+        "id": "SEMICONDUCTOR_SUPPLY",
+        "name": "晶圓、封裝、測試與經銷網路",
+        "downstream_applications": "Samsung Foundry、ASE、矽格、京元電子、文曄；設備類別與具名企業分開",
+        "downstream_customer_types": [
+          "晶圓代工",
+          "封測廠",
+          "通路經銷"
+        ]
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "CV_SECURITY_customer_001",
+        "name": "Hanwha Group／Hanwha Vision",
+        "business_line": "CV_SECURITY",
+        "relationship": "customer",
+        "details": "2026-05-28 已簽跨產業 SoC 採購及共同開發十年以上 LTA，潛在收入逾 8 億美元；不等於保證採購額，也非已實現營收。",
+        "evidence_level": "named_contract_customer",
+        "source_ids": [
+          "HANWHA"
+        ],
+        "commercialization": "long_term_agreement_potential_value_not_booked_revenue",
+        "relationship_evidence_scope": "具名客戶／通路／ODM 關係依 node.details 與 source_ids 所示揭露；不保證當期仍有採購額。"
+      },
+      {
+        "id": "CV_SECURITY_customer_002",
+        "name": "Axis Communications",
+        "business_line": "CV_SECURITY",
+        "relationship": "customer",
+        "details": "舊年度 Ambarella SEC 客戶披露確認產品設計導入；不推論 2026 仍在供應或本季出貨額。",
+        "evidence_level": "historical_named_end_customer",
+        "source_ids": [
+          "OLD_NAMED"
+        ],
+        "commercialization": "historical_design_in_only",
+        "relationship_evidence_scope": "具名客戶／通路／ODM 關係依 node.details 與 source_ids 所示揭露；不保證當期仍有採購額。"
+      },
+      {
+        "id": "CV_SECURITY_customer_003",
+        "name": "Bosch",
+        "business_line": "CV_SECURITY",
+        "relationship": "customer",
+        "details": "歷年 SEC 資料中列名視訊產品 OEM；2026 當期指定型號與營收未驗證。",
+        "evidence_level": "historical_named_end_customer",
+        "source_ids": [
+          "OLD_NAMED"
+        ],
+        "commercialization": "historical_design_in_only",
+        "relationship_evidence_scope": "具名客戶／通路／ODM 關係依 node.details 與 source_ids 所示揭露；不保證當期仍有採購額。"
+      },
+      {
+        "id": "CV_SECURITY_customer_004",
+        "name": "Vivotek 晶睿通訊（3454）",
+        "business_line": "CV_SECURITY",
+        "relationship": "customer",
+        "details": "歷史 SEC OEM 列名；台灣終端品牌關係不等於當期每項產品使用 Ambarella SoC。",
+        "evidence_level": "historical_named_end_customer",
+        "source_ids": [
+          "OLD_NAMED"
+        ],
+        "commercialization": "historical_design_in_only",
+        "relationship_evidence_scope": "具名客戶／通路／ODM 關係依 node.details 與 source_ids 所示揭露；不保證當期仍有採購額。"
+      },
+      {
+        "id": "PORTABLE_customer_005",
+        "name": "Arashi Vision／Insta360 影石創新",
+        "business_line": "PORTABLE",
+        "relationship": "customer",
+        "details": "2026 財年 SEC 10-K 明確指認最大終端客戶；透過文曄及數家 ODM 間接供應。",
+        "evidence_level": "verified_named_end_customer_indirect",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": "recognized_product_revenue_via_channel_no_separate_customer_value",
+        "relationship_evidence_scope": "具名客戶／通路／ODM 關係依 node.details 與 source_ids 所示揭露；不保證當期仍有採購額。"
+      },
+      {
+        "id": "PORTABLE_customer_006",
+        "name": "GoPro",
+        "business_line": "PORTABLE",
+        "relationship": "customer",
+        "details": "較早年度 SEC 列名使用 Ambarella 影像處理技術的 OEM；不能當作 2026 新款採購確認。",
+        "evidence_level": "historical_named_end_customer",
+        "source_ids": [
+          "OLD_NAMED"
+        ],
+        "commercialization": "historical_only",
+        "relationship_evidence_scope": "具名客戶／通路／ODM 關係依 node.details 與 source_ids 所示揭露；不保證當期仍有採購額。"
+      },
+      {
+        "id": "AUTOMOTIVE_customer_007",
+        "name": "Denso Ten",
+        "business_line": "AUTOMOTIVE",
+        "relationship": "customer",
+        "details": "早年 SEC 已列名車用影像客戶，2026 CV3／CV7 採購狀態未公開。",
+        "evidence_level": "historical_named_end_customer",
+        "source_ids": [
+          "OLD_NAMED"
+        ],
+        "commercialization": "historical_only",
+        "relationship_evidence_scope": "具名客戶／通路／ODM 關係依 node.details 與 source_ids 所示揭露；不保證當期仍有採購額。"
+      },
+      {
+        "id": "AUTOMOTIVE_customer_008",
+        "name": "Garmin",
+        "business_line": "AUTOMOTIVE",
+        "relationship": "customer",
+        "details": "早年公司 SEC 具名影像／車用終端客戶；未證明當期 CV3 量產採購。",
+        "evidence_level": "historical_named_end_customer",
+        "source_ids": [
+          "OLD_NAMED"
+        ],
+        "commercialization": "historical_only",
+        "relationship_evidence_scope": "具名客戶／通路／ODM 關係依 node.details 與 source_ids 所示揭露；不保證當期仍有採購額。"
+      },
+      {
+        "id": "ROBOTICS_partner_009",
+        "name": "Hanwha Group／Hanwha Vision",
+        "business_line": "ROBOTICS",
+        "relationship": "partner",
+        "details": "同一 2026-05-28 LTA 擴及機器人與工業自動化；現階段不可拆算機器人收入。",
+        "evidence_level": "documented_joint_development",
+        "source_ids": [
+          "HANWHA"
+        ],
+        "commercialization": "long_term_joint_development"
+      },
+      {
+        "id": "ROBOTICS_competitor_010",
+        "name": "NVIDIA／Qualcomm",
+        "business_line": "ROBOTICS",
+        "relationship": "competitor",
+        "details": "自主機器人與端側推論 SoC、感知運算競爭；管理層法說具名提及 NVIDIA、Qualcomm。",
+        "evidence_level": "management_named_competitor",
+        "source_ids": [
+          "IR_TRANSCRIPT"
+        ],
+        "commercialization": null
+      },
+      {
+        "id": "X7_ACCELERATOR_competitor_011",
+        "name": "NVIDIA／Qualcomm",
+        "business_line": "X7_ACCELERATOR",
+        "relationship": "competitor",
+        "details": "邊緣 AI 加速器、低功耗處理器競爭，產品功率與軟體生態需逐工作負載比對。",
+        "evidence_level": "management_named_competitor",
+        "source_ids": [
+          "IR_TRANSCRIPT"
+        ],
+        "commercialization": null
+      },
+      {
+        "id": "EDGE_INFRA_partner_012",
+        "name": "Capgemini",
+        "business_line": "EDGE_INFRA",
+        "relationship": "partner",
+        "details": "2026-09-03 公告工程與系統整合合作，協助產業導入端側與 Physical AI；尚非被核實直接 SoC 買方。",
+        "evidence_level": "official_channel_collaboration",
+        "source_ids": [
+          "CAPGEMINI"
+        ],
+        "commercialization": "integration_partnership"
+      },
+      {
+        "id": "EDGE_INFRA_partner_013",
+        "name": "Macnica（Macnica Americas／ATD Europe）",
+        "business_line": "EDGE_INFRA",
+        "relationship": "partner",
+        "details": "2026-09-03 簽多年策略經銷協議；合作管道潛在增額不能認列為已達成收入。",
+        "evidence_level": "official_distribution_agreement",
+        "source_ids": [
+          "MACNICA"
+        ],
+        "commercialization": "new_channel_rollout"
+      },
+      {
+        "id": "AI_SOFTWARE_partner_014",
+        "name": "ZEDEDA",
+        "business_line": "AI_SOFTWARE",
+        "relationship": "partner",
+        "details": "2026-09-15 公告 ZEDEDA Edge Intelligence 在 Ambarella SoC 運行，支援設備群管理與安全部署。",
+        "evidence_level": "official_technical_partnership",
+        "source_ids": [
+          "ZEDEDA"
+        ],
+        "commercialization": "software_integrated_demo"
+      },
+      {
+        "id": "AI_SOFTWARE_partner_015",
+        "name": "Ultralytics",
+        "business_line": "AI_SOFTWARE",
+        "relationship": "partner",
+        "details": "2026-09-15 公告把 YOLO 模型導入 CVflow，方便模型部署；不等於特定客戶量產或付費授權收入。",
+        "evidence_level": "official_model_collaboration",
+        "source_ids": [
+          "ULTRALYTICS"
+        ],
+        "commercialization": "model_porting_collaboration"
+      },
+      {
+        "id": "AI_SOFTWARE_partner_016",
+        "name": "Google Cloud／Gemini Enterprise",
+        "business_line": "AI_SOFTWARE",
+        "relationship": "partner",
+        "details": "2026-09-15 DevZone 新增 GCP 雲端 IDE、遠端實體晶片及 Gemini Enterprise 代理式開發能力；不代表 Google 是 Ambarella 晶片採購客戶。",
+        "evidence_level": "official_cloud_technology_collaboration",
+        "source_ids": [
+          "DEVZONE"
+        ],
+        "commercialization": "developer_platform_available"
+      },
+      {
+        "id": "AI_SOFTWARE_partner_017",
+        "name": "Roboflow／Liquid AI",
+        "business_line": "AI_SOFTWARE",
+        "relationship": "partner",
+        "details": "ZEDEDA 官方案例提及聯合展示；不是直接收入或出貨保證。",
+        "evidence_level": "official_joint_demonstration",
+        "source_ids": [
+          "ZEDEDA"
+        ],
+        "commercialization": "demo"
+      },
+      {
+        "id": "CV_SECURITY_customer_018",
+        "name": "Chicony Electronics 群光電子（2385）",
+        "business_line": "CV_SECURITY",
+        "relationship": "customer",
+        "details": "SEC FY2026 10-K 具名主要 ODM，替多個終端品牌製造採用 Ambarella 的設備；不推算其個別 SoC 採購額。",
+        "evidence_level": "verified_named_odm_customer",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": "existing_order_flow",
+        "relationship_evidence_scope": "具名客戶／通路／ODM 關係依 node.details 與 source_ids 所示揭露；不保證當期仍有採購額。"
+      },
+      {
+        "id": "SEMICONDUCTOR_SUPPLY_customer_019",
+        "name": "WT Microelectronics 文曄科技（3036）",
+        "business_line": "SEMICONDUCTOR_SUPPLY",
+        "relationship": "customer",
+        "details": "公司 FY2026 SEC 10-K 具名亞洲（日本除外）非獨家銷售／履約夥伴、約占全年營收 70%；這是通路收入集中度，不是單一終端客戶 70%。",
+        "evidence_level": "verified_named_distributor_channel",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": "recognized_channel_revenue",
+        "relationship_evidence_scope": "具名客戶／通路／ODM 關係依 node.details 與 source_ids 所示揭露；不保證當期仍有採購額。"
+      },
+      {
+        "id": "SEMICONDUCTOR_SUPPLY_supplier_020",
+        "name": "Samsung Electronics／Samsung Foundry",
+        "business_line": "SEMICONDUCTOR_SUPPLY",
+        "relationship": "supplier",
+        "details": "Ambarella FY2026 10-K 揭露絕大部分 SoC 由三星位於美國德州 Austin 和韓國的設施供應；屬具名供應商，不代表每款 2nm 新晶片都已量產。",
+        "evidence_level": "verified_named_primary_foundry",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": "active_mass_production"
+      },
+      {
+        "id": "SEMICONDUCTOR_SUPPLY_supplier_021",
+        "name": "Advanced Semiconductor Engineering／ASE 日月光（3711）",
+        "business_line": "SEMICONDUCTOR_SUPPLY",
+        "relationship": "supplier",
+        "details": "2026 10-K 具名：從 Samsung 取得已測晶粒時，Ambarella 委由 ASE 組裝封裝；為確認的直接供應商。",
+        "evidence_level": "verified_named_assembly_supplier",
+        "source_ids": [
+          "SEC_10K",
+          "CES_BRIEF"
+        ],
+        "commercialization": "active_assembly"
+      },
+      {
+        "id": "SEMICONDUCTOR_SUPPLY_supplier_022",
+        "name": "Sigurd／矽格（6257）",
+        "business_line": "SEMICONDUCTOR_SUPPLY",
+        "relationship": "supplier",
+        "details": "2026 SEC 10-K 具名主要終測承包商之一；為確認直接測試供應商。",
+        "evidence_level": "verified_named_test_supplier",
+        "source_ids": [
+          "SEC_10K",
+          "CES_BRIEF"
+        ],
+        "commercialization": "active_final_testing"
+      },
+      {
+        "id": "SEMICONDUCTOR_SUPPLY_supplier_023",
+        "name": "King Yuan Electronics／京元電子（2449）",
+        "business_line": "SEMICONDUCTOR_SUPPLY",
+        "relationship": "supplier",
+        "details": "2026 SEC 10-K 具名主要終測承包商之一；為確認直接測試供應商。",
+        "evidence_level": "verified_named_test_supplier",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": "active_final_testing"
+      },
+      {
+        "id": "SEMICONDUCTOR_SUPPLY_supplier_024",
+        "name": "Signetics Corporation",
+        "business_line": "SEMICONDUCTOR_SUPPLY",
+        "relationship": "supplier",
+        "details": "Samsung 委外封裝與初測供應商，屬 Samsung 分包鏈；與 Ambarella 直接簽約關係未確認。",
+        "evidence_level": "verified_upstream_subcontractor",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": "subcontracted_testing"
+      },
+      {
+        "id": "SEMICONDUCTOR_SUPPLY_supplier_025",
+        "name": "STATS ChipPAC",
+        "business_line": "SEMICONDUCTOR_SUPPLY",
+        "relationship": "supplier",
+        "details": "Samsung 委外封裝與初測供應商，非必然直接與 Ambarella 簽採購。",
+        "evidence_level": "verified_upstream_subcontractor",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": "subcontracted_testing"
+      },
+      {
+        "id": "CV_SECURITY_competitor_026",
+        "name": "Qualcomm／Novatek 聯詠（3034）",
+        "business_line": "CV_SECURITY",
+        "relationship": "competitor",
+        "details": "影像 ISP／AI 視覺處理市場部分競爭，非宣稱所有 SoC 規格相同。",
+        "evidence_level": "market_comparison",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": null
+      },
+      {
+        "id": "AUTOMOTIVE_competitor_027",
+        "name": "Mobileye／Qualcomm／NVIDIA",
+        "business_line": "AUTOMOTIVE",
+        "relationship": "competitor",
+        "details": "ADAS 與汽車感知處理市場競爭；並非 Ambarella 直接產品客戶。",
+        "evidence_level": "market_comparison",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "commercialization": null
+      },
+      {
+        "id": "ROBOTICS_competitor_028",
+        "name": "Hailo／NVIDIA",
+        "business_line": "ROBOTICS",
+        "relationship": "competitor",
+        "details": "邊緣 AI 推論加速器市場部分重疊，缺產品層級可直接替代驗證。",
+        "evidence_level": "industry_comparison",
+        "source_ids": [
+          "IR_TRANSCRIPT"
+        ],
+        "commercialization": null
+      }
+    ],
+    "research": {
+      "window": "2026-08-07/2026-11-05",
+      "facts": {
+        "fy2027_q2_end": "2026-07-31",
+        "fy2027_q2_revenue_usd_million": 108.1,
+        "fy2027_q2_revenue_yoy_pct": 13.2,
+        "fy2027_q2_gaap_gross_margin_pct": 57.7,
+        "fy2027_q2_non_gaap_gross_margin_pct": 59.3,
+        "fy2027_q2_gaap_net_loss_usd_million": 6.7,
+        "fy2027_q3_revenue_guidance_usd_million_range": [
+          115,
+          124
+        ],
+        "fy2026_distributor_wt_revenue_pct_approximately": 70,
+        "fy2026_largest_named_end_customer": "Arashi Vision／Insta360",
+        "hanwha_potential_lta_value_usd_million_more_than": 800,
+        "hanwha_potential_lta_duration_years_more_than": 10,
+        "data_sources": [
+          "SEC_10K",
+          "SEC_10Q",
+          "SEC_8K",
+          "IR_Q2",
+          "IR_TRANSCRIPT",
+          "HANWHA"
+        ]
+      },
+      "source_priority": [
+        "SEC 10-K/10-Q/8-K",
+        "公司 IR 與法說",
+        "公司官網產品公告",
+        "正式經銷／技術合作公告",
+        "產業技術報導及台灣跨證"
+      ],
+      "relationship_semantics": {
+        "customer": "只具名公司；另外標明直接通路／ODM／終端／合約／歷史證據",
+        "partner": "具名技術／經銷／生態合作，不自動等於購買方",
+        "supplier": "SEC 直接具名的上游晶圓、組裝及最終測試供應商為確認供應商；製程產能可用性與實際供貨份額分別描述。",
+        "competitor": "依產品市場有重疊，非全部可相互替代",
+        "beneficiary": "僅間接受惠且與交易無證據者，避免任意點名"
+      },
+      "customer_evidence_policy": {
+        "primary_disclosure": "SEC、公司 IR、雙方官網及官方技術案例可確認商業關係；公司未披露金額時不得填入確定營收。",
+        "reported_named_relationship": "主流財經媒體或可追溯的產業媒體已具名報導，即可列入 customer 或 partner 節點；需附文章 URL、日期、報導所述角色及 media_reported 證據層級。",
+        "unnamed_relationship": "匿名客戶仍列客戶集中度的財務事實，不猜測公司名稱。",
+        "category_only": "AI 伺服器、影像安全、汽車 OEM 等類別放在 business_lines 的下游應用，不代替具名公司。",
+        "financial_numbers": "不能把框架協議／潛在合約規模當成已認列營收。"
+      },
+      "document_presentation_policy": "industry_chain 主線及節點只寫公司／產品／技術與可歸屬事實；待查問題限於 five_gate_audit 的未解缺口，避免以問題句當作對外產業鏈節點。"
+    },
+    "five_gate_audit": {
+      "gate_1_hot_topics_reverse_check": {
+        "performed": true,
+        "status": "passed_with_disclosed_gaps",
+        "independent_hot_topics": [
+          "SEC 通路集中與最大終端客戶",
+          "FY27 Q2 營收／毛利",
+          "Hanwha 長期協議",
+          "9/15 X7 accelerator",
+          "9/15 Ultralytics/ZEDEDA/DevZone",
+          "9/3 Macnica/Capgemini",
+          "Samsung／台灣 ASE/Sigurd/KYEC",
+          "記憶體漲價與 2nm tapeout"
+        ],
+        "compare_to_original_display": "原始資料沒有獨立 X7、Hanwha、ZEDEDA、Google DevZone、具名通路與台灣供應商資訊，均已新增進 industry_chain。"
+      },
+      "gate_2_investor_top_ten_questions": {
+        "performed": true,
+        "status": "passed_with_capex_gap",
+        "questions": [
+          {
+            "topic": "營收成長",
+            "finding": "Q2 FY2027 108.1M 美元、+13.2%，全年過去趨勢需結合 IoT 與汽車配置。"
+          },
+          {
+            "topic": "毛利率",
+            "finding": "GAAP Q2 57.7%、non-GAAP 59.3%；產品組合是法說焦點，記憶體不由 AMBA 直接買賣。"
+          },
+          {
+            "topic": "資本支出",
+            "finding": "fabless；外包製造降低自有資本支出，但未逐期核實 capex 數字並列為缺口。"
+          },
+          {
+            "topic": "競爭力",
+            "finding": "CVflow 低功耗、ISP、影像 codec、NPU 與軟體生態；和 NVIDIA、Qualcomm、Hailo 按應用競爭。"
+          },
+          {
+            "topic": "技術轉折",
+            "finding": "X7 獨立 AI 加速器、N1、CV7/72/75、2nm tape-out、Google Cloud DevZone。"
+          },
+          {
+            "topic": "客戶採用",
+            "finding": "文曄、Insta360、群光為 SEC 具名；Hanwha LTA 有供應／共同開發約定，但營收不是 8 億已實現。"
+          },
+          {
+            "topic": "產能",
+            "finding": "Samsung 主力代工、ASE 封裝、矽格／KYEC 終測，關注供應商排程與 2nm 良率。"
+          },
+          {
+            "topic": "供應鏈",
+            "finding": "FY2026 SEC 直接具名日月光、矽格、京元電子；主要 SoC 製造來源為三星。各先進節點供貨份額若未披露，則不填寫推估數字。"
+          },
+          {
+            "topic": "估值催化劑",
+            "finding": "X7 客戶轉量產、Hanwha 履約、機器人 design wins、汽車創高與下一季指引落地。"
+          },
+          {
+            "topic": "風險",
+            "finding": "文曄通路集中、Insta360 終端集中、Samsung 晶圓供應、記憶體影響終端需求、競爭與採用延後。"
+          }
+        ]
+      },
+      "gate_3_technology_and_product_completeness": {
+        "performed": true,
+        "status": "passed_with_maturation_gaps",
+        "products": [
+          {
+            "product": "X7",
+            "commercialization": "2026-09-15 發表；客戶設計驗證，不等於量產銷售"
+          },
+          {
+            "product": "CV7/CV72/CV75",
+            "commercialization": "既有產品主線；逐型號營收未揭露"
+          },
+          {
+            "product": "N1",
+            "commercialization": "既有 Edge AI 基礎設施線；逐產品收入未揭露"
+          },
+          {
+            "product": "2nm SoC",
+            "commercialization": "10-K 已 tape-out，不能當量產"
+          },
+          {
+            "product": "HBM",
+            "commercialization": "非 Ambarella 自家 HBM 產品"
+          },
+          {
+            "product": "CPO",
+            "commercialization": "無獲證實直接商業產品"
+          },
+          {
+            "product": "advanced packaging",
+            "commercialization": "有 ASE 正式供應，但 CoWoS 採用未證實"
+          }
+        ]
+      },
+      "gate_4_falsification_and_competition": {
+        "performed": true,
+        "status": "passed_with_open_questions",
+        "checks": [
+          "每節點需要具名公司，不使用純客戶類型冒充客戶",
+          "區分 distributor、ODM、final end customer",
+          "Hanwha 合約潛在價值非認列收入",
+          "X7 design-in 非量產收入",
+          "依 FY2026 10-K 確認 Samsung 為絕大部分 SoC 的供應來源；台積電被提及為具先進節點能力的晶圓代工業者，不能由此推定特定產品供貨額。",
+          "ASE/Sigurd/KYEC 是已確認直接供應商",
+          "付費模型合作不冒充晶片採購"
+        ],
+        "named_customer_policy": "具名公司優先：SEC、官方 IR／產品案例或具體財經及產業媒體報導均可納入；每一關係需標示來源類型、是否已確認採購、時間及信心程度。通路商、ODM、終端品牌和研發合作夥伴分開，不以客戶類型占用 customer 節點。"
+      },
+      "gate_5_delivery_missing_topic_audit": {
+        "performed": true,
+        "status": "passed_with_material_gaps_disclosed",
+        "important_issue_coverage_table": [
+          {
+            "topic": "2026 FY 10-K、FY2027 Q2 10-Q／8-K",
+            "status": "covered",
+            "finding": "SEC 10-K 03/23；10-Q 09/04；8-K 09/03，Q2 財報期末 07/31。",
+            "source_ids": [
+              "SEC_10K",
+              "SEC_10Q",
+              "SEC_8K"
+            ]
+          },
+          {
+            "topic": "最新法說與第三季指引",
+            "status": "covered",
+            "finding": "9/3 FY2027 Q2 法說；Q3 指引 1.15–1.24 億美元，非已實現營收。",
+            "source_ids": [
+              "IR_Q2",
+              "IR_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "FY2027 Q2 營收與毛利",
+            "status": "covered",
+            "finding": "1.081 億美元、年增 13.2%；GAAP 毛利 57.7%；GAAP 淨損 670 萬美元。",
+            "source_ids": [
+              "IR_Q2"
+            ]
+          },
+          {
+            "topic": "FY2026 文曄 70% 營收集中",
+            "status": "covered",
+            "finding": "年度通路／履約營收比例，不是單一實際終端客戶。",
+            "source_ids": [
+              "SEC_10K"
+            ]
+          },
+          {
+            "topic": "FY2026 最大終端客戶 Insta360",
+            "status": "covered",
+            "finding": "SEC 確認最大終端客戶、透過文曄與 ODM；未披露具體營收占比。",
+            "source_ids": [
+              "SEC_10K"
+            ]
+          },
+          {
+            "topic": "Hanwha 潛在逾 8 億美元 LTA",
+            "status": "covered",
+            "finding": "逾十年潛在收入，包含跨產業供貨與共同開發，不當成積壓訂單或已認列收入。",
+            "source_ids": [
+              "HANWHA"
+            ]
+          },
+          {
+            "topic": "X7 首款獨立 AI 加速器",
+            "status": "covered",
+            "finding": "9/15 發表、客戶設計中、約 2–5W，未獨立揭露量產營收。",
+            "source_ids": [
+              "X7"
+            ]
+          },
+          {
+            "topic": "CV7／CV72／CV75／CV3／N1 新產品採用",
+            "status": "evidence_insufficient",
+            "finding": "各晶片逐型號毛利、量產良率與客戶別營收未公開。",
+            "source_ids": [
+              "SEC_10K",
+              "IR_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "ZEDEDA 雲端部署",
+            "status": "covered",
+            "finding": "9/15 技術合作與展示，不當成終端營收。",
+            "source_ids": [
+              "ZEDEDA"
+            ]
+          },
+          {
+            "topic": "Ultralytics YOLO 模型",
+            "status": "covered",
+            "finding": "9/15 模型相容合作，不能當成新付費席次。",
+            "source_ids": [
+              "ULTRALYTICS"
+            ]
+          },
+          {
+            "topic": "Google Cloud／Gemini DevZone",
+            "status": "covered",
+            "finding": "9/15 開發工具與遠端矽晶片使用；GCP 非具名晶片買方。",
+            "source_ids": [
+              "DEVZONE"
+            ]
+          },
+          {
+            "topic": "Capgemini／Macnica 渠道",
+            "status": "covered",
+            "finding": "9/3 工程整合與經銷協議，潛在營收不可作實際已實現營收。",
+            "source_ids": [
+              "CAPGEMINI",
+              "MACNICA"
+            ]
+          },
+          {
+            "topic": "機器人 15+ design wins",
+            "status": "covered",
+            "finding": "法說提及設計勝出及目標潛力，設計導入≠量產出貨。",
+            "source_ids": [
+              "IR_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "ADAS 車載商用車量產",
+            "status": "evidence_insufficient",
+            "finding": "Q2 汽車營收刷新紀錄，但沒有逐車廠與車款明細。",
+            "source_ids": [
+              "IR_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "主要晶圓代工 Samsung",
+            "status": "covered",
+            "finding": "10-K 明確確認絕大部分晶片由 Samsung Foundry 生產。",
+            "source_ids": [
+              "SEC_10K"
+            ]
+          },
+          {
+            "topic": "台灣封裝 ASE",
+            "status": "covered",
+            "finding": "10-K 明確確認從 Samsung 購得測試晶粒後委託 ASE 封裝。",
+            "source_ids": [
+              "SEC_10K",
+              "CES_BRIEF"
+            ]
+          },
+          {
+            "topic": "台灣終測 矽格／京元電子",
+            "status": "covered",
+            "finding": "10-K 明確確認主要終測供應商。",
+            "source_ids": [
+              "SEC_10K"
+            ]
+          },
+          {
+            "topic": "晶圓代工配置與台積電角色",
+            "status": "evidence_insufficient",
+            "finding": "截至 FY2026 10-K，Ambarella 揭露絕大部分 SoC 由 Samsung Electronics 的德州 Austin 與韓國設施供應；亦提及台積電為少數可提供特定先進製程技術的業者之一。現有揭露沒有提供台積電當期製造占比。",
+            "source_ids": [
+              "SEC_10K"
+            ]
+          },
+          {
+            "topic": "2nm 晶片商業化",
+            "status": "evidence_insufficient",
+            "finding": "2026 10-K 僅稱首顆 2nm SoC 已 tape-out；不是已量產。",
+            "source_ids": [
+              "SEC_10K"
+            ]
+          },
+          {
+            "topic": "HBM 與 CPO",
+            "status": "intentionally_excluded",
+            "finding": "本公司沒有確認直接生產 HBM 或 CPO 光引擎；應用可間接受 AI 算力需求影響但不是核心產品。",
+            "source_ids": [
+              "SEC_10K"
+            ]
+          },
+          {
+            "topic": "先進封裝 CoWoS／HBM 專案",
+            "status": "intentionally_excluded",
+            "finding": "已知封裝供應商 ASE 不等於證明採用 CoWoS 或特定 AI GPU 先進封裝。",
+            "source_ids": [
+              "SEC_10K"
+            ]
+          },
+          {
+            "topic": "記憶體短缺對毛利與需求",
+            "status": "covered",
+            "finding": "管理層指出不直接購買／轉售記憶體，非直接毛利衝擊；可能削弱終端需求與出貨。",
+            "source_ids": [
+              "IR_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "資本支出與現金流細節",
+            "status": "evidence_insufficient",
+            "finding": "可在 SEC 現金流表取得，但本次未逐期整理已驗證數字，禁止杜撰。",
+            "source_ids": [
+              "SEC_10Q"
+            ]
+          },
+          {
+            "topic": "Reuters／Bloomberg／The Information 具體 90 天報導",
+            "status": "not_researched",
+            "finding": "公開查詢未得到可逐篇核對的當期新聞全文；不以傳聞填補。",
+            "source_ids": []
+          },
+          {
+            "topic": "ServeTheHome／Tom’s Hardware 技術實測",
+            "status": "not_researched",
+            "finding": "未取得可驗證的 X7 實機獨立性能與功率量測。",
+            "source_ids": []
+          },
+          {
+            "topic": "訂單、design win 與未來潛在價值",
+            "status": "covered",
+            "finding": "所有規劃、簽約、設計勝出與已認列收入個別分級。",
+            "source_ids": [
+              "HANWHA",
+              "IR_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "日本 Hakuto 經銷與集中度",
+            "status": "evidence_insufficient",
+            "finding": "10-Q XBRL 有此通路欄位；本次未可靠抽取其當季營收占比。",
+            "source_ids": [
+              "SEC_10Q"
+            ]
+          },
+          {
+            "topic": "台灣以外代工封測曝險",
+            "status": "covered",
+            "finding": "Samsung 韓國／美國製造、Signetics、STATS ChipPAC；具體供應關係於 10-K。",
+            "source_ids": [
+              "SEC_10K"
+            ]
+          }
+        ],
+        "material_open_topics": [
+          "CV7／CV72／CV75／CV3／N1 新產品採用",
+          "ADAS 車載商用車量產",
+          "晶圓代工廠分製程節點的供貨配置",
+          "2nm 晶片商業化",
+          "資本支出與現金流細節",
+          "Reuters／Bloomberg／The Information 具體 90 天報導",
+          "ServeTheHome／Tom’s Hardware 技術實測",
+          "日本 Hakuto 經銷與集中度"
+        ],
+        "completion_claim": "research_version_with_material_open_questions_not_exhaustive"
+      }
+    },
+    "sources": [
+      {
+        "id": "SEC_10K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1280263/000119312526119321/amba-20260131.htm",
+        "category": "SEC"
+      },
+      {
+        "id": "SEC_10Q",
+        "url": "https://www.sec.gov/Archives/edgar/data/1280263/000119312526383365/amba-20260731.htm",
+        "category": "SEC"
+      },
+      {
+        "id": "SEC_8K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1280263/000119312526381923/d88952dex991.htm",
+        "category": "SEC"
+      },
+      {
+        "id": "IR_Q2",
+        "url": "https://investor.ambarella.com/news-releases/news-release-details/ambarella-inc-announces-second-quarter-fiscal-year-2027",
+        "category": "Official"
+      },
+      {
+        "id": "IR_TRANSCRIPT",
+        "url": "https://stockanalysis.com/stocks/amba/transcripts/682015-q2-2027/",
+        "category": "Transcript or historical primary-source"
+      },
+      {
+        "id": "IR_CALL",
+        "url": "https://investor.ambarella.com/events/event-details/ambarellas-q2-fy2027-earnings-call",
+        "category": "Official"
+      },
+      {
+        "id": "HANWHA",
+        "url": "https://investor.ambarella.com/node/17106",
+        "category": "Official"
+      },
+      {
+        "id": "X7",
+        "url": "https://www.ambarella.com/news/ambarella-launches-x7-its-first-standalone-ai-accelerator-to-add-physical-ai-to-any-host-processor/",
+        "category": "Official"
+      },
+      {
+        "id": "ZEDEDA",
+        "url": "https://www.ambarella.com/news/ambarella-and-zededa-partner-to-bring-cloud-orchestrated-ai-to-billions-of-devices-at-the-physical-edge/",
+        "category": "Official"
+      },
+      {
+        "id": "ULTRALYTICS",
+        "url": "https://www.ambarella.com/news/ambarella-and-ultralytics-collaborate-to-bring-ultralytics-yolo-models-to-cvflow-powered-edge-devices/",
+        "category": "Official"
+      },
+      {
+        "id": "DEVZONE",
+        "url": "https://www.ambarella.com/news/ambarella-expands-its-developer-zone-with-remote-access-to-live-silicon-and-agentic-ai-development-on-google-cloud-platform/",
+        "category": "Official"
+      },
+      {
+        "id": "CAPGEMINI",
+        "url": "https://www.ambarella.com.tw/news/ambarella-engages-capgemini-to-help-accelerate-enterprise-adoption-of-edge-and-physical-ai/",
+        "category": "Official"
+      },
+      {
+        "id": "MACNICA",
+        "url": "https://www.ambarella.com.tw/news/ambarella-and-macnica-enter-a-long-term-strategic-distribution-agreement-to-accelerate-edge-ai-infrastructure-and-physical-ai-adoption/",
+        "category": "Official"
+      },
+      {
+        "id": "CES_BRIEF",
+        "url": "https://www.ambarella.com/wp-content/uploads/CES-2026_Product-and-Technology-Briefing_Final_No-Video.pdf",
+        "category": "Official"
+      },
+      {
+        "id": "OLD_NAMED",
+        "url": "https://investor.ambarella.com/static-files/30198fda-7e00-47c5-b5b1-7c600606a3bc",
+        "category": "Transcript or historical primary-source"
+      },
+      {
+        "id": "IR_FINANCIALS",
+        "url": "https://investor.ambarella.com/financial-information",
+        "category": "Official"
+      },
+      {
+        "id": "TECH_TRANSCRIPT",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/09/09/ambarella-amba-q2-2027-earnings-call-transcript/",
+        "category": "Transcript or historical primary-source"
+      }
+    ]
   }
 }

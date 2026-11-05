@@ -341,5 +341,860 @@
     "ai_exposure": null,
     "demand_drivers": [],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-04",
+    "company": "Apple Inc.",
+    "symbol": "AAPL",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "Apple AAPL 產業鏈｜iPhone Duo、A20 Pro、M6、Siri AI、台灣供應鏈",
+      "description": "以 SEC、2026 Q4 法說、官方產品、Reuters 與歷史供應商名單核對 Apple 產業鏈，嚴格區分供應商、競爭者及受惠股。"
+    },
+    "business_lines": [
+      {
+        "id": "IPHONE",
+        "name": "iPhone 18 Pro／Pro Max、摺疊 iPhone Duo"
+      },
+      {
+        "id": "MAC",
+        "name": "Mac mini／Mac Studio／iMac／OLED 觸控 MacBook"
+      },
+      {
+        "id": "IPAD",
+        "name": "iPad 與平板運算"
+      },
+      {
+        "id": "WEARABLES",
+        "name": "Apple Watch／AirPods／健康穿戴"
+      },
+      {
+        "id": "HOME",
+        "name": "HomeView／HomePod mini／智慧家庭"
+      },
+      {
+        "id": "SERVICES",
+        "name": "App Store／廣告／iCloud／媒體／支付"
+      },
+      {
+        "id": "AI",
+        "name": "Apple Intelligence／Siri AI／模型與私有雲"
+      },
+      {
+        "id": "SILICON",
+        "name": "A20 Pro／M6／M5 Ultra／C2 modem"
+      },
+      {
+        "id": "SUPPLY",
+        "name": "晶圓／封裝／記憶體／面板／鏡頭／組裝"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "IPHONE_customer_001",
+        "name": "全球 iPhone 終端消費與企業客戶",
+        "business_line": "IPHONE",
+        "relationship": "customer",
+        "details": "FY2026 iPhone 營收 2540.98 億美元；iPhone Duo 獨立營收未揭露。",
+        "evidence_level": "confirmed",
+        "source_ids": [
+          "SEC",
+          "DUO_SALES"
+        ]
+      },
+      {
+        "id": "IPHONE_partner_002",
+        "name": "電信營運商與 Apple 經銷通路",
+        "business_line": "IPHONE",
+        "relationship": "partner",
+        "details": "直營、電信商、經銷與企業客戶構成渠道；不推算 Duo 個別渠道銷量。",
+        "evidence_level": "confirmed",
+        "source_ids": [
+          "SEC"
+        ]
+      },
+      {
+        "id": "IPHONE_competitor_003",
+        "name": "Samsung Electronics",
+        "business_line": "IPHONE",
+        "relationship": "competitor",
+        "details": "Galaxy 高階與摺疊手機直接競爭；Duo 上市不等於獲得特定市占。",
+        "evidence_level": "industry_comparison",
+        "source_ids": [
+          "DUO",
+          "REUTERS_FOLD"
+        ]
+      },
+      {
+        "id": "IPHONE_competitor_004",
+        "name": "Google／Huawei／Honor／Xiaomi",
+        "business_line": "IPHONE",
+        "relationship": "competitor",
+        "details": "Android、旗艦機與摺疊機競爭群。",
+        "evidence_level": "industry_comparison",
+        "source_ids": [
+          "REUTERS_FOLD"
+        ]
+      },
+      {
+        "id": "MAC_customer_005",
+        "name": "Mac 消費、教育與企業客戶",
+        "business_line": "MAC",
+        "relationship": "customer",
+        "details": "FY2026 Mac 營收 379.29 億美元；2026-11-06 上市的新機不可算入 11-04 已實現營收。",
+        "evidence_level": "confirmed",
+        "source_ids": [
+          "SEC",
+          "IMAC",
+          "MACBOOK"
+        ]
+      },
+      {
+        "id": "MAC_partner_006",
+        "name": "macOS 應用開發者與企業軟體生態",
+        "business_line": "MAC",
+        "relationship": "partner",
+        "details": "Apple silicon／macOS 生態形成產品黏著；開發者不是晶片供應商。",
+        "evidence_level": "confirmed",
+        "source_ids": [
+          "IMAC"
+        ]
+      },
+      {
+        "id": "MAC_competitor_007",
+        "name": "Microsoft／Windows PC OEM／AMD／Intel／Qualcomm",
+        "business_line": "MAC",
+        "relationship": "competitor",
+        "details": "AI PC、桌面運算、企業設備與觸控筆電競爭。",
+        "evidence_level": "industry_comparison",
+        "source_ids": [
+          "MACBOOK"
+        ]
+      },
+      {
+        "id": "IPAD_customer_008",
+        "name": "平板終端客戶",
+        "business_line": "IPAD",
+        "relationship": "customer",
+        "details": "FY2026 iPad 營收 279.29 億美元，年增幅約持平。",
+        "evidence_level": "confirmed",
+        "source_ids": [
+          "SEC"
+        ]
+      },
+      {
+        "id": "IPAD_competitor_009",
+        "name": "Samsung／Lenovo",
+        "business_line": "IPAD",
+        "relationship": "competitor",
+        "details": "Android 平板與混合式生產力終端競爭。",
+        "evidence_level": "industry_comparison",
+        "source_ids": [
+          "SEC"
+        ]
+      },
+      {
+        "id": "WEARABLES_customer_010",
+        "name": "Apple Watch／AirPods 使用者",
+        "business_line": "WEARABLES",
+        "relationship": "customer",
+        "details": "穿戴、家庭與配件 FY2026 合併營收 355.77 億美元；單一產品營收未獨立揭露。",
+        "evidence_level": "confirmed",
+        "source_ids": [
+          "SEC"
+        ]
+      },
+      {
+        "id": "WEARABLES_competitor_011",
+        "name": "Samsung／Garmin／Sony",
+        "business_line": "WEARABLES",
+        "relationship": "competitor",
+        "details": "智慧手錶、運動健康穿戴與耳機類別競爭。",
+        "evidence_level": "industry_comparison",
+        "source_ids": [
+          "SEC"
+        ]
+      },
+      {
+        "id": "HOME_customer_012",
+        "name": "智慧家庭消費者",
+        "business_line": "HOME",
+        "relationship": "customer",
+        "details": "HomeView 2026-10-13 發表，2026-11-13 預計開始供貨；目前尚非已出貨營收。",
+        "evidence_level": "confirmed",
+        "source_ids": [
+          "HOME"
+        ]
+      },
+      {
+        "id": "HOME_competitor_013",
+        "name": "Amazon／Google",
+        "business_line": "HOME",
+        "relationship": "competitor",
+        "details": "智慧家庭螢幕、語音助手與家庭平台競爭。",
+        "evidence_level": "industry_comparison",
+        "source_ids": [
+          "HOME"
+        ]
+      },
+      {
+        "id": "SERVICES_customer_014",
+        "name": "App Store／iCloud／Apple Music／Apple TV 付費用戶",
+        "business_line": "SERVICES",
+        "relationship": "customer",
+        "details": "FY2026 Services 營收 1233.01 億美元，服務毛利率 76.2%，並非全屬 AI 收入。",
+        "evidence_level": "confirmed",
+        "source_ids": [
+          "SEC"
+        ]
+      },
+      {
+        "id": "SERVICES_partner_015",
+        "name": "內容商與第三方應用開發者",
+        "business_line": "SERVICES",
+        "relationship": "partner",
+        "details": "App Store 與訂閱服務的雙邊生態；存在分潤規則和監管風險。",
+        "evidence_level": "confirmed",
+        "source_ids": [
+          "SEC",
+          "CALL"
+        ]
+      },
+      {
+        "id": "SERVICES_competitor_016",
+        "name": "Google／Microsoft／Spotify／Netflix",
+        "business_line": "SERVICES",
+        "relationship": "competitor",
+        "details": "商店、雲端、支付、影音與音樂服務之類別競爭。",
+        "evidence_level": "industry_comparison",
+        "source_ids": [
+          "SEC"
+        ]
+      },
+      {
+        "id": "AI_customer_017",
+        "name": "iPhone／Mac／iPad／Watch／Vision 使用者",
+        "business_line": "AI",
+        "relationship": "customer",
+        "details": "Siri AI 及新一代 Apple Intelligence 2026-09-14 正式推出；使用不等於獨立收費。",
+        "evidence_level": "confirmed",
+        "source_ids": [
+          "AI"
+        ]
+      },
+      {
+        "id": "AI_partner_018",
+        "name": "Apple 開發者及第三方模型應用生態",
+        "business_line": "AI",
+        "relationship": "partner",
+        "details": "裝置端與受保護雲端 AI 的軟體生態，無證據宣稱第三方模型供應商獨家合作。",
+        "evidence_level": "confirmed",
+        "source_ids": [
+          "AI"
+        ]
+      },
+      {
+        "id": "AI_competitor_019",
+        "name": "Google Gemini／OpenAI ChatGPT／Microsoft Copilot",
+        "business_line": "AI",
+        "relationship": "competitor",
+        "details": "智慧助理、模型、代理 AI 場景競爭；存在跨平台合作可能。",
+        "evidence_level": "industry_comparison",
+        "source_ids": [
+          "AI"
+        ]
+      },
+      {
+        "id": "SILICON_partner_020",
+        "name": "Apple 自研晶片設計團隊",
+        "business_line": "SILICON",
+        "relationship": "partner",
+        "details": "A20 Pro、M6、C2 為 Apple 設計；代工與封裝分工不等於 Apple 擁有晶圓廠。",
+        "evidence_level": "confirmed",
+        "source_ids": [
+          "TECH_A20",
+          "M6"
+        ]
+      },
+      {
+        "id": "SILICON_competitor_021",
+        "name": "Qualcomm／MediaTek／Samsung System LSI",
+        "business_line": "SILICON",
+        "relationship": "competitor",
+        "details": "手機 SoC、數據機及 Arm／AI 計算平台競爭。",
+        "evidence_level": "industry_comparison",
+        "source_ids": [
+          "TECH_A20"
+        ]
+      },
+      {
+        "id": "SUPPLY_supplier_022",
+        "name": "台積電 TSMC（2330）",
+        "business_line": "SUPPLY",
+        "relationship": "supplier",
+        "details": "Apple 官方歷史供應商名單列名；2nm 晶片技術報導不能推得 A20 Pro／M6 各廠訂單比例。",
+        "evidence_level": "historical_supplier",
+        "source_ids": [
+          "SUPPLIERS",
+          "TECH_A20"
+        ]
+      },
+      {
+        "id": "SUPPLY_supplier_023",
+        "name": "鴻海 Hon Hai／Foxconn（2317）",
+        "business_line": "SUPPLY",
+        "relationship": "supplier",
+        "details": "Apple 官方歷史供應商列名及組裝生態；不可推定 iPhone Duo 型號份額。",
+        "evidence_level": "historical_supplier",
+        "source_ids": [
+          "SUPPLIERS"
+        ]
+      },
+      {
+        "id": "SUPPLY_supplier_024",
+        "name": "和碩 Pegatron（4938）",
+        "business_line": "SUPPLY",
+        "relationship": "supplier",
+        "details": "Apple FY2022 官方供應商名單列名，2026 iPhone Duo 專案分配未知。",
+        "evidence_level": "historical_supplier",
+        "source_ids": [
+          "SUPPLIERS"
+        ]
+      },
+      {
+        "id": "SUPPLY_supplier_025",
+        "name": "廣達 Quanta（2382）",
+        "business_line": "SUPPLY",
+        "relationship": "supplier",
+        "details": "Apple 官方歷史供應商名單列名，2026 Mac 特定型號之採購仍待證實。",
+        "evidence_level": "historical_supplier",
+        "source_ids": [
+          "SUPPLIERS"
+        ]
+      },
+      {
+        "id": "SUPPLY_supplier_026",
+        "name": "緯創 Wistron（3231）",
+        "business_line": "SUPPLY",
+        "relationship": "supplier",
+        "details": "Apple 官方歷史供應名單列名，不推定 2026 新型號組裝任務。",
+        "evidence_level": "historical_supplier",
+        "source_ids": [
+          "SUPPLIERS"
+        ]
+      },
+      {
+        "id": "SUPPLY_supplier_027",
+        "name": "可成 Catcher（2474）",
+        "business_line": "SUPPLY",
+        "relationship": "supplier",
+        "details": "Apple 官方歷史供應商名單列名，未確認 Duo 轉軸或外殼料號。",
+        "evidence_level": "historical_supplier",
+        "source_ids": [
+          "SUPPLIERS"
+        ]
+      },
+      {
+        "id": "SUPPLY_supplier_028",
+        "name": "玉晶光 Genius Electronic Optical（3406）",
+        "business_line": "SUPPLY",
+        "relationship": "supplier",
+        "details": "Apple FY2022 官方供應名單列名；不代表特定 A20 Pro 產品鏡頭份額。",
+        "evidence_level": "historical_supplier",
+        "source_ids": [
+          "SUPPLIERS"
+        ]
+      },
+      {
+        "id": "SUPPLY_partner_029",
+        "name": "Samsung Display／LG Display",
+        "business_line": "SUPPLY",
+        "relationship": "partner",
+        "details": "摺疊 OLED 顯示供應生態相關者，但無型號級可歸屬證據，不指定 Duo 獨家面板。",
+        "evidence_level": "evidence_insufficient",
+        "source_ids": [
+          "DUO"
+        ]
+      },
+      {
+        "id": "SUPPLY_partner_030",
+        "name": "SK hynix／Samsung／Micron",
+        "business_line": "SUPPLY",
+        "relationship": "partner",
+        "details": "記憶體市場相關者；Apple 法說確認記憶體成本壓力，但未披露逐廠採購配比。",
+        "evidence_level": "industry_exposure",
+        "source_ids": [
+          "CALL"
+        ]
+      },
+      {
+        "id": "SUPPLY_beneficiary_031",
+        "name": "日月光投控 ASE（3711）",
+        "business_line": "SUPPLY",
+        "relationship": "beneficiary",
+        "details": "先進封裝與測試可能受惠，非已驗證 A20 Pro／M6 2nm 封裝承包商。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "TECH_A20"
+        ]
+      },
+      {
+        "id": "SUPPLY_beneficiary_032",
+        "name": "欣興 Unimicron（3037）",
+        "business_line": "SUPPLY",
+        "relationship": "beneficiary",
+        "details": "ABF 載板相關產業可能受惠；無特定 Apple 2026 訂單確認。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "TECH_A20"
+        ]
+      },
+      {
+        "id": "SUPPLY_beneficiary_033",
+        "name": "臻鼎-KY（4958）",
+        "business_line": "SUPPLY",
+        "relationship": "beneficiary",
+        "details": "PCB／FPC 供應鏈關聯，未證實 iPhone Duo 分機型訂單。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "DUO"
+        ]
+      },
+      {
+        "id": "SUPPLY_beneficiary_034",
+        "name": "大立光 Largan（3008）",
+        "business_line": "SUPPLY",
+        "relationship": "beneficiary",
+        "details": "高階鏡頭產業關聯；未查得 Duo 可變光圈鏡頭獨家直接供應證據。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "IPHONE"
+        ]
+      },
+      {
+        "id": "SUPPLY_beneficiary_035",
+        "name": "精材 Xintec（3374）",
+        "business_line": "SUPPLY",
+        "relationship": "beneficiary",
+        "details": "晶圓級封裝市場受惠候選；非已確認 Apple 特定晶片料號供應商。",
+        "evidence_level": "possible_beneficiary",
+        "source_ids": [
+          "TECH_A20"
+        ]
+      }
+    ],
+    "research": {
+      "period": "2026-08-06 至 2026-11-04",
+      "source_priority": [
+        "SEC 年度及即時申報",
+        "Apple IR 與法說",
+        "官方產品公告",
+        "Reuters",
+        "技術媒體",
+        "台灣供應鏈公開資訊"
+      ],
+      "financial_facts": {
+        "unit": "USD million",
+        "fiscal_year": 2026,
+        "revenue": 478834,
+        "prior_year_revenue": 416161,
+        "iphone_revenue": 254098,
+        "mac_revenue": 37929,
+        "ipad_revenue": 27929,
+        "wearables_home_accessories_revenue": 35577,
+        "services_revenue": 123301,
+        "gross_margin_pct": 48.8,
+        "products_gross_margin_pct": 39.3,
+        "services_gross_margin_pct": 76.2,
+        "r_and_d": 45765,
+        "ppe_capex": 9041,
+        "operating_cashflow": 145097,
+        "source_ids": [
+          "SEC"
+        ]
+      },
+      "quarterly_snapshot": {
+        "period": "FY2026 Q4",
+        "revenue_usd_billion": 114.5,
+        "gross_margin_pct": 47.9,
+        "tariff_refund_benefit_approx_ppt": 1,
+        "december_quarter_revenue_growth_guidance_pct": [
+          7,
+          10
+        ],
+        "december_quarter_gross_margin_guidance_pct": [
+          45,
+          46
+        ],
+        "source_ids": [
+          "EARNINGS",
+          "CALL"
+        ]
+      },
+      "commercialization": {
+        "iphone_duo": "2026-10-23 已上市，無單獨披露營收",
+        "iphone_18_pro": "2026-09-18 已上市",
+        "siri_ai": "2026-09-14 正式推出",
+        "m6_mac_mini": "2026-09-22 已供貨",
+        "m6_imac": "2026-11-06 預定供貨",
+        "homeview": "2026-11-13 預定供貨",
+        "oled_touch_macbook": "2026-10-28 發表、11-06 預定供貨"
+      },
+      "evidence_policy": "confirmed=已明確官方確認；historical_supplier=舊版 Apple 供應商清單；industry_comparison=競爭關係分析；industry_exposure=產業曝光；possible_beneficiary=可能受惠而非直接訂單。"
+    },
+    "audit": {
+      "gate_1_hot_topic_reverse_check": {
+        "performed": true,
+        "result": "pass_with_evidence_gaps",
+        "method": "先由 2026-08-06 以後 SEC、法說、Apple Newsroom、Reuters 與技術媒體獨立整理熱門議題，再與原 JSON 比對。",
+        "topics": [
+          "2026 財報與毛利率",
+          "記憶體成本與關稅",
+          "摺疊 iPhone Duo",
+          "A20 Pro／M6 2nm",
+          "Siri AI",
+          "觸控 OLED MacBook",
+          "HomeView",
+          "Services 與 App Store 監管"
+        ]
+      },
+      "gate_2_top_ten_investor_questions": {
+        "performed": true,
+        "result": "pass",
+        "questions": [
+          {
+            "question": "營收成長",
+            "assessment": "FY2026 營收 +15%，iPhone +21%，Services +13%；後續須看假日季動能。"
+          },
+          {
+            "question": "毛利率",
+            "assessment": "FY2026 48.8%、Q4 47.9%；下一季指引 45–46%，受記憶體漲價影響。"
+          },
+          {
+            "question": "資本支出",
+            "assessment": "FY2026 PP&E capex 90.41 億美元，不代表全部 AI 投資。"
+          },
+          {
+            "question": "競爭力",
+            "assessment": "Apple silicon、OS、服務、品牌及生態；與 Android／Windows 競爭。"
+          },
+          {
+            "question": "技術轉折",
+            "assessment": "2nm、摺疊 iPhone Duo、Siri AI、觸控 OLED MacBook。"
+          },
+          {
+            "question": "客戶採用",
+            "assessment": "新品上市非獨立營收，AI 上線非訂閱收入。"
+          },
+          {
+            "question": "產能",
+            "assessment": "供應限制有披露，未取得 Duo 良率、出貨分配與實際產能。"
+          },
+          {
+            "question": "供應鏈",
+            "assessment": "歷史供應商、當期指定直接供應與概念受惠分類。"
+          },
+          {
+            "question": "估值催化劑",
+            "assessment": "節慶季需求、服務增長、AI 商業化、摺疊滲透及毛利恢復；不提供未證明估值。"
+          },
+          {
+            "question": "風險",
+            "assessment": "關稅、記憶體成本、App Store 監管、地緣政治、AI 運營成本、新機可靠度。"
+          }
+        ]
+      },
+      "gate_3_technology_product_completeness": {
+        "performed": true,
+        "result": "pass_with_evidence_gaps",
+        "topics": [
+          "Apple Intelligence 與私有雲",
+          "Apple silicon 2nm",
+          "統一記憶體與 HBM 不同",
+          "先進封裝具體代工未定",
+          "摺疊 OLED／鉸鏈",
+          "觸控 MacBook",
+          "CPO 非現有商業主線"
+        ],
+        "rule": "發表、預購、開始出貨、營收實現分開"
+      },
+      "gate_4_falsification_competition": {
+        "performed": true,
+        "result": "pass_with_evidence_gaps",
+        "checks": [
+          "已量產／已供貨嗎",
+          "有獨立確認營收嗎",
+          "具名客戶是誰",
+          "競爭者是誰",
+          "台灣公司是直接供應還是可能受惠"
+        ],
+        "finding": "歷史 Apple 供應商名單不足以斷言 2026 新機供貨。"
+      },
+      "gate_5_missing_topics_audit": {
+        "performed": true,
+        "result": "pass_with_material_open_items",
+        "important_issue_coverage_table": [
+          {
+            "topic": "2026 財年 10-K、全年營收",
+            "status": "covered",
+            "note": "FY2026 revenue 478834 百萬美元，FY2025 416161 百萬美元。",
+            "source_ids": [
+              "SEC"
+            ]
+          },
+          {
+            "topic": "最新 Q4 8-K、IR、法說與財測",
+            "status": "covered",
+            "note": "Q4 revenue 1145 億美元、毛利率 47.9%；下一季毛利率指引 45–46%。",
+            "source_ids": [
+              "EARNINGS",
+              "CALL"
+            ]
+          },
+          {
+            "topic": "記憶體上漲、關稅退費對毛利影響",
+            "status": "covered",
+            "note": "Q4 毛利率含約 1ppt 關稅退費；法說指向更高記憶體成本。",
+            "source_ids": [
+              "EARNINGS",
+              "CALL"
+            ]
+          },
+          {
+            "topic": "iPhone 18 Pro 與 A20 Pro 2nm",
+            "status": "covered",
+            "note": "2026-09 官方發表與技術媒體報導；不能由晶片世代推算 Apple 訂單份額。",
+            "source_ids": [
+              "IPHONE",
+              "TECH_A20"
+            ]
+          },
+          {
+            "topic": "iPhone Duo 摺疊上市",
+            "status": "covered",
+            "note": "10/23 已上市，獨立營收與良率未公開。",
+            "source_ids": [
+              "DUO",
+              "DUO_SALES"
+            ]
+          },
+          {
+            "topic": "iPhone Duo 鉸鏈、摺疊 OLED 直接供應商",
+            "status": "evidence_insufficient",
+            "note": "無可歸屬的 2026 型號別採購量、供應配比及良率。",
+            "source_ids": [
+              "DUO"
+            ]
+          },
+          {
+            "topic": "Siri AI／Apple Intelligence",
+            "status": "covered",
+            "note": "9/14 上線；獨立 AI 增量營收尚未揭露。",
+            "source_ids": [
+              "AI"
+            ]
+          },
+          {
+            "topic": "Private Cloud Compute AI 伺服器採購鏈",
+            "status": "evidence_insufficient",
+            "note": "沒有經驗證 2026 年 BOM／ASIC 代工與供應配比。",
+            "source_ids": [
+              "SEC",
+              "AI"
+            ]
+          },
+          {
+            "topic": "M6／M5 Ultra、Mac mini、iMac",
+            "status": "covered",
+            "note": "新 Mac mini 9/22 已出貨；新 iMac 11/6 預定上市。",
+            "source_ids": [
+              "M6",
+              "IMAC",
+              "TECH_M6"
+            ]
+          },
+          {
+            "topic": "觸控 OLED MacBook",
+            "status": "covered",
+            "note": "10/28 新機報導，11/6 預定上市，未將未來上市當作已出貨。",
+            "source_ids": [
+              "MACBOOK"
+            ]
+          },
+          {
+            "topic": "HomeView 與家庭產品",
+            "status": "covered",
+            "note": "10/13 發表，預計 11/13 上市。",
+            "source_ids": [
+              "HOME"
+            ]
+          },
+          {
+            "topic": "Services、App Store 生態與監管",
+            "status": "covered",
+            "note": "2026 Services 收入 123301 百萬美元、毛利率 76.2%，監管風險保留。",
+            "source_ids": [
+              "SEC",
+              "CALL"
+            ]
+          },
+          {
+            "topic": "2026 當期台灣直接供應商交叉證明",
+            "status": "evidence_insufficient",
+            "note": "Apple 舊版 FY2022 供應商名單僅能證明歷史供應關係。",
+            "source_ids": [
+              "SUPPLIERS"
+            ]
+          },
+          {
+            "topic": "先進封裝與 2nm 指定料號",
+            "status": "evidence_insufficient",
+            "note": "台積電晶圓供應、其他封裝和 ABF 載板須分開歸屬。",
+            "source_ids": [
+              "TECH_A20",
+              "SUPPLIERS"
+            ]
+          },
+          {
+            "topic": "HBM",
+            "status": "intentionally_excluded",
+            "note": "Apple 統一記憶體不能直接稱 HBM，未確認 HBM 為核心商業產品。",
+            "source_ids": [
+              "M6"
+            ]
+          },
+          {
+            "topic": "CPO",
+            "status": "intentionally_excluded",
+            "note": "未確認 Apple CPO 商業產品或獨立營收，勿從 AI 供應鏈移植。",
+            "source_ids": [
+              "SEC"
+            ]
+          },
+          {
+            "topic": "Bloomberg／The Information 完整付費文章",
+            "status": "not_researched",
+            "note": "未取得足以全文核對的付費內容，沒有引用未驗證獨家傳聞。",
+            "source_ids": []
+          },
+          {
+            "topic": "供應鏈分散、關稅、海外製造",
+            "status": "covered",
+            "note": "SEC 風險披露與 Reuters 美國製造合作報導；不捏造轉單份額。",
+            "source_ids": [
+              "SEC",
+              "US_MANUFACTURING"
+            ]
+          }
+        ],
+        "material_unresolved": [
+          "Duo OLED 與鉸鏈直接供應商／良率",
+          "Apple 2nm 封裝採購配比",
+          "Private Cloud Compute 伺服器 BOM",
+          "2026 台灣公司分機型確認直接訂單"
+        ],
+        "overall": "research_version_with_unresolved_evidence_not_unqualified_complete"
+      }
+    },
+    "sources": [
+      {
+        "id": "SEC",
+        "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000026/aapl-20260926.htm",
+        "kind": "SEC"
+      },
+      {
+        "id": "IR",
+        "url": "https://investor.apple.com/investor-relations/default.aspx",
+        "kind": "Apple official IR / Newsroom"
+      },
+      {
+        "id": "EARNINGS",
+        "url": "https://www.apple.com/newsroom/2026/11/apple-reports-fourth-quarter-results/",
+        "kind": "Apple official IR / Newsroom"
+      },
+      {
+        "id": "CALL",
+        "url": "https://stockanalysis.com/stocks/aapl/transcripts/702819-q4-2026/",
+        "kind": "Earnings call transcript"
+      },
+      {
+        "id": "DUO",
+        "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+        "kind": "Apple official IR / Newsroom"
+      },
+      {
+        "id": "DUO_SALES",
+        "url": "https://www.apple.com/newsroom/2026/10/open-up-to-new-possibilities-with-iphone-duo/",
+        "kind": "Apple official IR / Newsroom"
+      },
+      {
+        "id": "IPHONE",
+        "url": "https://images.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+        "kind": "Apple official IR / Newsroom"
+      },
+      {
+        "id": "AI",
+        "url": "https://www.apple.com/newsroom/2026/09/siri-ai-a-profoundly-more-capable-and-personal-assistant-is-here/",
+        "kind": "Apple official IR / Newsroom"
+      },
+      {
+        "id": "M6",
+        "url": "https://www.apple.com/tw/newsroom/2026/08/apple-unveils-a-more-powerful-mac-mini-featuring-the-all-new-m6-and-m5-pro/",
+        "kind": "Apple official IR / Newsroom"
+      },
+      {
+        "id": "IMAC",
+        "url": "https://www.apple.com/newsroom/2026/10/apple-unveils-new-imac-with-m6/",
+        "kind": "Apple official IR / Newsroom"
+      },
+      {
+        "id": "HOME",
+        "url": "https://www.apple.com/newsroom/2026/10/meet-apple-homeview-a-new-way-to-enjoy-entertainment-and-manage-the-home/",
+        "kind": "Apple official IR / Newsroom"
+      },
+      {
+        "id": "SUPPLIERS",
+        "url": "https://www.apple.com/tw/supplier-responsibility/pdf/Apple-Supplier-List.pdf",
+        "kind": "Apple historical list"
+      },
+      {
+        "id": "REUTERS",
+        "url": "https://www.reuters.com/business/retail-consumer/apples-new-ceo-ternus-face-first-earnings-test-memory-costs-surge-2026-11-02/",
+        "kind": "Reuters"
+      },
+      {
+        "id": "REUTERS_FOLD",
+        "url": "https://www.reuters.com/technology/foldable-iphone-pricier-18-pro-unveiled-apples-first-event-under-ternus-2026-09-09/",
+        "kind": "Reuters"
+      },
+      {
+        "id": "MACBOOK",
+        "url": "https://www.reuters.com/business/retail-consumer/apple-shows-first-touchscreen-laptops-amid-product-blitz-2026-10-28/",
+        "kind": "Reuters"
+      },
+      {
+        "id": "TECH_A20",
+        "url": "https://www.tomshardware.com/pc-components/cpus/apple-a20-pro-powers-iphone-18-pro-the-companys-first-2-nanometer-smartphone-chip",
+        "kind": "technical media"
+      },
+      {
+        "id": "TECH_M6",
+        "url": "https://www.tomshardware.com/pc-components/cpus/apple-launches-new-m6-and-m5-ultra-apple-silicon-chips-debuting-in-new-mac-mini-and-mac-studio",
+        "kind": "technical media"
+      },
+      {
+        "id": "US_MANUFACTURING",
+        "url": "https://www.reuters.com/business/apple-adds-bosch-cirrus-logic-others-us-manufacturing-program-invest-400-million-2026-03-26/",
+        "kind": "Reuters"
+      }
+    ]
   }
 }

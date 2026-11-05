@@ -202,5 +202,1049 @@
       "通訊頻寬"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-04",
+    "company": "Analog Devices, Inc.",
+    "symbol": "ADI",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "ADI 產業鏈｜AI 資料中心電源、800V、OCS／CPO、高速光控制、Alif 邊緣 AI、台灣代工",
+      "description": "以 SEC FY2025 10-K、FY2026 Q3 10-Q／8-K、8/19 法說及 11/3 Alif 完成交割公告為基礎，區分確定供應商、公開合作夥伴、競爭者及間接受惠。"
+    },
+    "business_lines": [
+      {
+        "id": "DATA_CENTER_OPTICS",
+        "name": "AI 資料中心高速光通訊：光模組精準控制、時脈、OCS、CPO",
+        "downstream_customer_types": [
+          {
+            "type": "資料中心光模組及光網路設備製造商",
+            "details": "ADI 電源、時脈、監測、精密雷射控制位於電光資料路徑控制側；財報未披露具名客戶採購額。",
+            "source_ids": [
+              "IR_Q3_TRANSCRIPT"
+            ],
+            "evidence_level": "customer_type"
+          }
+        ]
+      },
+      {
+        "id": "AI_POWER",
+        "name": "AI 資料中心 grid-to-core、800V／48V、Power Management",
+        "downstream_customer_types": [
+          {
+            "type": "AI 伺服器電源與機架基礎設施製造商",
+            "details": "ADI 控制、PMIC、telemetry 與供電設計元件服務 48V／800V 架構需求；未揭露具名 hyperscaler 直接供貨。",
+            "source_ids": [
+              "IR_Q3_TRANSCRIPT",
+              "OFFICIAL_800V"
+            ],
+            "evidence_level": "customer_type"
+          }
+        ]
+      },
+      {
+        "id": "ENERGY",
+        "name": "電網與能源儲存、BESS 與電池管理",
+        "downstream_customer_types": [
+          {
+            "type": "電網公用事業與儲能系統整合商",
+            "details": "電池管理、能源量測、控制及儲能產業應用；資料中心微電網需求不等於特定已交貨數。",
+            "source_ids": [
+              "IR_Q3_TRANSCRIPT"
+            ],
+            "evidence_level": "customer_type"
+          }
+        ]
+      },
+      {
+        "id": "INDUSTRIAL",
+        "name": "工業自動化、精密量測、工業儀器及機器人",
+        "downstream_customer_types": [
+          {
+            "type": "工業設備／量測與自動化 OEM",
+            "details": "FY2026 Q3 工業終端營收約 19.72 億美元、占 49%、年增 53%；涵蓋多類設備，不是純機器人營收。",
+            "source_ids": [
+              "IR_Q3_RESULTS"
+            ],
+            "evidence_level": "end_market_disclosure"
+          }
+        ]
+      },
+      {
+        "id": "EDGE_AI",
+        "name": "Alif AI 原生 MCU／融合處理器與 Physical Intelligence",
+        "downstream_customer_types": [
+          {
+            "type": "工業／消費 AI 邊緣運算 OEM",
+            "details": "Alif 原產品已有工業／消費客戶 design wins，未公開具名終端客戶及收購後產品營收。",
+            "source_ids": [
+              "IR_ALIF_AGREEMENT"
+            ],
+            "evidence_level": "customer_type"
+          }
+        ]
+      },
+      {
+        "id": "AUTOMOTIVE",
+        "name": "電動車 BMS、ADAS、GMSL、車載乙太網及 A²B",
+        "downstream_customer_types": [
+          {
+            "type": "汽車 OEM 與 Tier-1 車電供應商",
+            "details": "FY2026 Q3 汽車終端營收 9.982 億美元、占 25%，年增 16%。",
+            "source_ids": [
+              "IR_Q3_RESULTS"
+            ],
+            "evidence_level": "end_market_disclosure"
+          }
+        ]
+      },
+      {
+        "id": "WIRELESS_RF",
+        "name": "無線通訊與 RF 收發器、資料轉換器",
+        "downstream_customer_types": [
+          {
+            "type": "5G／無線設備製造商",
+            "details": "通訊部門 2026Q3 營收 6.545 億美元，包含資料中心與無線；不能將全數視為 RF 或光通訊。",
+            "source_ids": [
+              "IR_Q3_RESULTS",
+              "IR_Q3_TRANSCRIPT"
+            ],
+            "evidence_level": "end_market_disclosure"
+          }
+        ]
+      },
+      {
+        "id": "CONSUMER",
+        "name": "消費／專業音訊、感測與可攜裝置",
+        "downstream_customer_types": [
+          {
+            "type": "消費與專業音訊設備 OEM",
+            "details": "FY2026 Q3 消費終端營收 3.972 億美元、占 10%，年增 6%；不揭露單一裝置客戶營收。",
+            "source_ids": [
+              "IR_Q3_RESULTS"
+            ],
+            "evidence_level": "end_market_disclosure"
+          }
+        ]
+      },
+      {
+        "id": "DEFENSE_HEALTH",
+        "name": "航太國防、醫療與化學感測",
+        "downstream_customer_types": [
+          {
+            "type": "航太國防／醫療裝置 OEM",
+            "details": "以精密轉換器、RF／感測處理供應系統應用；公司未單獨揭露此交叉市場營收。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ],
+            "evidence_level": "customer_type"
+          }
+        ]
+      },
+      {
+        "id": "FAB",
+        "name": "晶圓代工、內部製造、封測及供應鏈"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "DATA_CENTER_OPTICS_partner_002",
+        "name": "OCS 光路交換供應鏈",
+        "business_line": "DATA_CENTER_OPTICS",
+        "relationship": "partner",
+        "details": "管理層稱 OCS 已有 design wins 與客戶承諾，預期 FY2026 OCS 營收近乎倍增；屬指引而非已實現全年數字。",
+        "evidence_level": "management_guidance",
+        "commercialization": "design_wins_with_revenue_and_future_guidance",
+        "source_ids": [
+          "IR_Q3_TRANSCRIPT"
+        ]
+      },
+      {
+        "id": "DATA_CENTER_OPTICS_partner_003",
+        "name": "CPO 光電共封裝生態",
+        "business_line": "DATA_CENTER_OPTICS",
+        "relationship": "partner",
+        "details": "ADI 精密控制可為 CPO 光學及熱管理提供元件；公司稱 CPO 尚處早期，未拆出 CPO 營收。",
+        "evidence_level": "technology_exposure",
+        "commercialization": "nascent_no_separate_revenue",
+        "source_ids": [
+          "IR_Q3_TRANSCRIPT"
+        ]
+      },
+      {
+        "id": "DATA_CENTER_OPTICS_competitor_004",
+        "name": "Texas Instruments",
+        "business_line": "DATA_CENTER_OPTICS",
+        "relationship": "competitor",
+        "details": "類比時脈、資料轉換、PMIC 與控制 IC 競爭。",
+        "evidence_level": "market_comparison",
+        "commercialization": null,
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "DATA_CENTER_OPTICS_competitor_005",
+        "name": "Marvell Technology／Broadcom",
+        "business_line": "DATA_CENTER_OPTICS",
+        "relationship": "competitor",
+        "details": "資料中心訊號鏈／光互連相關市場存在部分產品相鄰競爭；不能視為每種 IC 直接可替代。",
+        "evidence_level": "adjacent_market_competition",
+        "commercialization": null,
+        "source_ids": [
+          "IR_Q3_TRANSCRIPT"
+        ]
+      },
+      {
+        "id": "AI_POWER_partner_007",
+        "name": "Empower Semiconductor",
+        "business_line": "AI_POWER",
+        "relationship": "partner",
+        "details": "2026-07-07 已完成收購；擴充 AI 運算核心供電能力。",
+        "evidence_level": "acquired_business",
+        "commercialization": "acquired_closed",
+        "source_ids": [
+          "OFFICIAL_EMPOWER"
+        ]
+      },
+      {
+        "id": "AI_POWER_competitor_008",
+        "name": "Texas Instruments／Monolithic Power Systems",
+        "business_line": "AI_POWER",
+        "relationship": "competitor",
+        "details": "資料中心電源控制、PMIC、熱插拔、穩壓器競爭。",
+        "evidence_level": "market_comparison",
+        "commercialization": null,
+        "source_ids": [
+          "OFFICIAL_800V"
+        ]
+      },
+      {
+        "id": "AI_POWER_competitor_009",
+        "name": "Infineon／Renesas",
+        "business_line": "AI_POWER",
+        "relationship": "competitor",
+        "details": "部分高壓配電、功率控制與電源 IC 競爭。",
+        "evidence_level": "market_comparison",
+        "commercialization": null,
+        "source_ids": [
+          "OFFICIAL_800V"
+        ]
+      },
+      {
+        "id": "ENERGY_partner_010",
+        "name": "InoBat",
+        "business_line": "ENERGY",
+        "relationship": "partner",
+        "details": "2026-10-19 簽署探索 i-Power+ 智慧電池儲能的 MOU，2026-10 展開原型試驗；沒有量產或已實現銷售證據。",
+        "evidence_level": "official_mou",
+        "commercialization": "prototype_not_mass_production",
+        "source_ids": [
+          "OFFICIAL_INOBAT"
+        ]
+      },
+      {
+        "id": "ENERGY_competitor_012",
+        "name": "Texas Instruments／Infineon",
+        "business_line": "ENERGY",
+        "relationship": "competitor",
+        "details": "能源量測、BMS 與電源管理部分產品競爭。",
+        "evidence_level": "market_comparison",
+        "commercialization": null,
+        "source_ids": [
+          "OFFICIAL_INOBAT"
+        ]
+      },
+      {
+        "id": "INDUSTRIAL_partner_014",
+        "name": "NVIDIA",
+        "business_line": "INDUSTRIAL",
+        "relationship": "partner",
+        "details": "2026-10-21 官方技術文章揭露共同擴充 cuVSLAM 的輪編碼器、IMU 與自適應感測融合，不代表 NVIDIA 已向 ADI 直接採購特定 IC。",
+        "evidence_level": "documented_technical_collaboration",
+        "commercialization": "demo_research",
+        "source_ids": [
+          "OFFICIAL_CUVSLAM"
+        ]
+      },
+      {
+        "id": "INDUSTRIAL_competitor_015",
+        "name": "Texas Instruments／STMicroelectronics／NXP",
+        "business_line": "INDUSTRIAL",
+        "relationship": "competitor",
+        "details": "工業類比、感測與 MCU／邊緣控制相鄰或重疊競爭。",
+        "evidence_level": "market_comparison",
+        "commercialization": null,
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "EDGE_AI_partner_016",
+        "name": "Alif Semiconductor",
+        "business_line": "EDGE_AI",
+        "relationship": "partner",
+        "details": "2026-11-03 已完成 13.5 億美元現金收購（另有可能或有對價）；Alif 原有 AI-native MCU 已出貨，但不能等同 ADI 整合產品已形成重大新增營收。",
+        "evidence_level": "acquired_business",
+        "commercialization": "alif_existing_silicon_in_production_integration_early",
+        "source_ids": [
+          "IR_ALIF_AGREEMENT",
+          "IR_ALIF_COMPLETE"
+        ]
+      },
+      {
+        "id": "EDGE_AI_competitor_018",
+        "name": "NXP／STMicroelectronics／Renesas／Ambiq",
+        "business_line": "EDGE_AI",
+        "relationship": "competitor",
+        "details": "超低功耗 MCU、邊緣 AI 與工業智能控制競爭。",
+        "evidence_level": "market_comparison",
+        "commercialization": null,
+        "source_ids": [
+          "IR_ALIF_COMPLETE"
+        ]
+      },
+      {
+        "id": "AUTOMOTIVE_partner_020",
+        "name": "A²B 2.0 車載音訊生態",
+        "business_line": "AUTOMOTIVE",
+        "relationship": "partner",
+        "details": "官方 2026-04-28 宣布 fully released to production；仍不能由此推算個別 OEM 當季採購營收。",
+        "evidence_level": "product_general_availability",
+        "commercialization": "released_to_production",
+        "source_ids": [
+          "OFFICIAL_A2B"
+        ]
+      },
+      {
+        "id": "AUTOMOTIVE_competitor_021",
+        "name": "NXP／Infineon／Texas Instruments",
+        "business_line": "AUTOMOTIVE",
+        "relationship": "competitor",
+        "details": "車用 BMS、雷達、車載網路／類比電源晶片競爭。",
+        "evidence_level": "market_comparison",
+        "commercialization": null,
+        "source_ids": [
+          "OFFICIAL_AUTO"
+        ]
+      },
+      {
+        "id": "WIRELESS_RF_competitor_023",
+        "name": "Skyworks／Qorvo／Broadcom",
+        "business_line": "WIRELESS_RF",
+        "relationship": "competitor",
+        "details": "部分 RF 訊號鏈及通訊前端應用相鄰競爭，元件功能與市場不完全相同。",
+        "evidence_level": "market_comparison",
+        "commercialization": null,
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "CONSUMER_competitor_025",
+        "name": "Cirrus Logic／Texas Instruments",
+        "business_line": "CONSUMER",
+        "relationship": "competitor",
+        "details": "音訊、低功耗類比及電源子市場競爭。",
+        "evidence_level": "market_comparison",
+        "commercialization": null,
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "DEFENSE_HEALTH_partner_026",
+        "name": "Moët Hennessy／UC Davis",
+        "business_line": "DEFENSE_HEALTH",
+        "relationship": "partner",
+        "details": "2026-10-07 宣布合作 AI 化學特徵感測研究；不等於商業化大規模感測器訂單。",
+        "evidence_level": "official_collaboration",
+        "commercialization": "research_pilot",
+        "source_ids": [
+          "OFFICIAL_SENSING"
+        ]
+      },
+      {
+        "id": "FAB_supplier_028",
+        "name": "台積電 TSMC（2330）",
+        "business_line": "FAB",
+        "relationship": "supplier",
+        "details": "ADI 2025 10-K 明文列舉 TSMC 為外部晶圓代工廠之一；全年超過一半晶圓需求由各外部代工廠合計提供，但不是說 TSMC 單獨超過一半。",
+        "evidence_level": "verified_named_supplier",
+        "commercialization": null,
+        "source_ids": [
+          "SEC_2025_10K",
+          "TSMC_2025_ANNUAL"
+        ]
+      },
+      {
+        "id": "FAB_partner_029",
+        "name": "ADI 內部晶圓廠（美國／愛爾蘭）",
+        "business_line": "FAB",
+        "relationship": "partner",
+        "details": "SEC 披露 Wilmington、Camas、Beaverton、Limerick 自有製造，混合自製與外包模式。",
+        "evidence_level": "company_operated_facilities",
+        "commercialization": null,
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "FAB_partner_030",
+        "name": "馬來西亞／菲律賓／泰國與外部封測廠",
+        "business_line": "FAB",
+        "relationship": "partner",
+        "details": "SEC 披露馬來西亞 Penang 及菲律賓、泰國測試與外包封測；未具名外包廠不可直接指定日月光等。",
+        "evidence_level": "manufacturing_geography",
+        "commercialization": null,
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "FAB_beneficiary_031",
+        "name": "日月光投控 ASE（3711）",
+        "business_line": "FAB",
+        "relationship": "beneficiary",
+        "details": "OSAT 產業可能受惠 ADI 外包封測需求，但無足夠公開證據將其列為 ADI 已確認直接訂單廠。",
+        "evidence_level": "possible_beneficiary",
+        "commercialization": null,
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "FAB_beneficiary_032",
+        "name": "京元電子 KYEC（2449）",
+        "business_line": "FAB",
+        "relationship": "beneficiary",
+        "details": "半導體測試產業可能受惠類比晶片需求，未確認 ADI 2026 直接採購或指定製程。",
+        "evidence_level": "possible_beneficiary",
+        "commercialization": null,
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "FAB_beneficiary_033",
+        "name": "力成 PTI（6239）",
+        "business_line": "FAB",
+        "relationship": "beneficiary",
+        "details": "封測產業概念相關，並無具名 ADI 訂單證據；不得列為 supplier。",
+        "evidence_level": "possible_beneficiary",
+        "commercialization": null,
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "AUTOMOTIVE_customer_named_001",
+        "name": "BMW Group",
+        "business_line": "AUTOMOTIVE",
+        "relationship": "customer",
+        "details": "已由 ADI 官方新聞稿確認 BMW 將在車輛智慧座艙環境照明採用 ADI E²B 10BASE-T1S；設計採用／官方合作不代表已公布具體購貨金額。",
+        "evidence_level": "official_named_customer_adoption",
+        "commercialization": "documented_named_adoption_no_recent_revenue_disclosure",
+        "source_ids": [
+          "OFFICIAL_NAMED_CUSTOMER_1"
+        ]
+      },
+      {
+        "id": "AUTOMOTIVE_customer_named_002",
+        "name": "Jaguar Land Rover (JLR)",
+        "business_line": "AUTOMOTIVE",
+        "relationship": "customer",
+        "details": "ADI 官方客戶案例證實雙方長期供應技術合作、JLR Supplier Excellence Award，以及車輛降噪與 Ethernet-to-Edge Bus 應用；未披露 2026 採購額。",
+        "evidence_level": "official_named_customer_supplier_relationship",
+        "commercialization": "documented_named_adoption_no_recent_revenue_disclosure",
+        "source_ids": [
+          "OFFICIAL_NAMED_CUSTOMER_2"
+        ]
+      },
+      {
+        "id": "INDUSTRIAL_customer_named_003",
+        "name": "Keysight Technologies",
+        "business_line": "INDUSTRIAL",
+        "relationship": "customer",
+        "details": "ADI 官方案例確認 Keysight 於 5G 測試設備使用 ADI 射頻、資料轉換與精密訊號鏈技術；此為具名客戶採用案例，未披露 2026 採購額。",
+        "evidence_level": "official_named_customer_adoption",
+        "commercialization": "documented_named_adoption_no_recent_revenue_disclosure",
+        "source_ids": [
+          "OFFICIAL_NAMED_CUSTOMER_3"
+        ]
+      },
+      {
+        "id": "INDUSTRIAL_customer_named_004",
+        "name": "Universal Robots (Teradyne Robotics)",
+        "business_line": "INDUSTRIAL",
+        "relationship": "customer",
+        "details": "ADI 官方介紹其感測、控制元件用於 Universal Robots 協作機器人關節及動作控制；屬具名應用客戶案例，未披露採購額。",
+        "evidence_level": "official_named_customer_adoption",
+        "commercialization": "documented_named_adoption_no_recent_revenue_disclosure",
+        "source_ids": [
+          "OFFICIAL_NAMED_CUSTOMER_4"
+        ]
+      },
+      {
+        "id": "AUTOMOTIVE_partner_named_001",
+        "name": "Hon Hai Technology Group／鴻海（2317）",
+        "business_line": "AUTOMOTIVE",
+        "relationship": "partner",
+        "details": "鴻海官方 2023-07-20 宣布 ADI 與鴻海就車輛數位座艙及高效能 BMS 簽署 MOU；僅能驗證具名合作意向，未證明目前直接採購、指定量產或收入。",
+        "evidence_level": "official_mou_not_customer_order",
+        "commercialization": "mou_no_verified_commercial_revenue",
+        "source_ids": [
+          "FOXCONN_MOU_2023"
+        ]
+      }
+    ],
+    "research": {
+      "review_window": "2026-08-06/2026-11-04",
+      "financial_facts": {
+        "fy2026_q3_end": "2026-08-01",
+        "revenue_usd_thousands": 4021899,
+        "year_over_year_revenue_growth_pct_approx": 40,
+        "gross_margin_gaap_pct": 72.5,
+        "industrial_revenue_usd_thousands": 1971926,
+        "automotive_revenue_usd_thousands": 998227,
+        "communications_revenue_usd_thousands": 654515,
+        "consumer_revenue_usd_thousands": 397231,
+        "data_center_pct_of_communications_approx": 80,
+        "ttm_capex_usd_thousands": 607830,
+        "q3_capex_usd_thousands": 145662,
+        "q4_revenue_guidance_usd_millions": {
+          "midpoint": 4300,
+          "range_plus_minus": 100
+        },
+        "data_source_ids": [
+          "IR_Q3_RESULTS",
+          "IR_Q3_TRANSCRIPT"
+        ]
+      },
+      "evidence_grading": {
+        "verified_named_supplier": "公司向 SEC 具名揭露的直接供應商",
+        "company_disclosure": "官方事實，不保證逐客戶出貨",
+        "customer_type": "終端客戶類別非已查明單一具名客戶",
+        "management_guidance": "管理層預期／設計勝出，不能當已實現營收",
+        "official_mou": "MOU／試驗，不是已量產",
+        "possible_beneficiary": "僅產業可能受惠，非 ADI 直接訂單",
+        "market_comparison": "競爭產品或應用重疊，非供應商關係"
+      },
+      "technical_validation": {
+        "optics": "ADI 控制 path 與功率／時序，非完整雷射、CPO 光引擎供應商",
+        "cpo": "市場萌芽；無獨立營收與直接量產證據",
+        "ocs": "有 design wins；收入倍增是預測",
+        "800v": "下一代供電架構，實際採用需逐客戶查證",
+        "hbm": "與 GPU 記憶體需求相鄰，非 ADI HBM 出貨",
+        "advanced_packaging": "非 CoWoS 封裝供應商證據",
+        "physical_ai": "Alif 原有 MCU 在量產與收購完成，但整合營收未確證"
+      },
+      "relationship_taxonomy": {
+        "business_lines": "市場、產品路線和下游應用；不等於具名購買公司",
+        "business_lines.downstream_customer_types": "客戶群組／下游設備類型，不列在 nodes.customer",
+        "nodes.customer": "有官方文件可確認採用或供應往來的具名公司；設計導入仍不代表目前銷售收入或金額",
+        "nodes.partner": "具名共同開發、技術合作或 MOU；不自動升格為採購客戶",
+        "unknown_named_clients": "沒有文件具名的 hyperscaler、OCS、CPO 客戶維持不公開；不得推定 NVIDIA、AWS、Google 或 Meta 是已確認直接買方",
+        "sales_channel_caveat": "ADI FY2025 10-K 公布經銷商收入約56%、直接客戶約43%，未在分項表揭示所有直接客戶或個別採購額。"
+      }
+    },
+    "five_gate_audit": {
+      "gate_1_hot_topics_reverse_check": {
+        "performed": true,
+        "result": "pass_with_gaps",
+        "independent_topics": [
+          "40.22億美元財報與工業回升",
+          "資料中心占通訊 80%",
+          "800G→3.2T 光控制、OCS 與 CPO",
+          "800V 配電與 Empower",
+          "Alif 11/3 完成收購",
+          "InoBat MOU",
+          "NVIDIA cuVSLAM",
+          "車用 A²B 與 BMS"
+        ],
+        "missing_from_original_display": [
+          "Alif",
+          "OCS",
+          "CPO",
+          "800V",
+          "Empower",
+          "InoBat",
+          "NVIDIA cuVSLAM"
+        ],
+        "method": "先檢索最近90天 SEC、官方法說與公告，再對照原始業務主線"
+      },
+      "gate_2_investor_top_ten_questions": {
+        "performed": true,
+        "result": "pass",
+        "questions": [
+          {
+            "topic": "營收成長",
+            "finding": "2026Q3 40.21899 億美元，年增約 40%；工業 +53%、通訊 +84%、汽車 +16%、消費 +6%；Q4 43 億美元±1 億屬展望。"
+          },
+          {
+            "topic": "毛利率",
+            "finding": "Q3 GAAP 毛利率約 72.5%；Q4 管理層預估約 74% 毛利率（法說口徑），區分實績與預估及 GAAP/non-GAAP。"
+          },
+          {
+            "topic": "資本支出",
+            "finding": "截至 2026-08-01 過去十二個月資本支出 6.0783 億美元；2026Q3 單季 1.45662 億美元，單位與期間明確。"
+          },
+          {
+            "topic": "競爭力",
+            "finding": "高精度類比、混合訊號、data conversion、控制／PMIC、數十年設計基礎，與 TI、MPS、Infineon、NXP 等逐場景競爭。"
+          },
+          {
+            "topic": "技術轉折",
+            "finding": "800V/48V 電源、OCS、CPO 控制、800G→3.2T 光學、Empower 核心供電、Alif 邊緣 AI。"
+          },
+          {
+            "topic": "客戶採用",
+            "finding": "OCS 已有 design wins；沒有揭露具名 hyperscaler 光控訂單。Alif 舊產品已有量產，收購整合後新收入未核實。"
+          },
+          {
+            "topic": "產能",
+            "finding": "混合自有與外部晶圓製造；庫存、fab loading、封測可用性影響毛利與交期，不推定滿載。"
+          },
+          {
+            "topic": "供應鏈",
+            "finding": "TSMC 為 SEC 具名直接代工夥伴；其餘台灣 OSAT 僅可能受惠，不推斷 AMD/NVIDIA 的共同供應商就是 ADI 供應商。"
+          },
+          {
+            "topic": "估值催化劑",
+            "finding": "Q4 2026 11/24 財報、AI 資料中心光／電持續增長、OCS 設計轉營收、Alif 整合、工業週期復甦。"
+          },
+          {
+            "topic": "風險",
+            "finding": "財測落差、AI 客戶集中與週期、800V/CPO 採用時程、競爭、外包晶圓與地緣風險、Alif 整合成本及投資報酬。"
+          }
+        ]
+      },
+      "gate_3_technology_product_completeness": {
+        "performed": true,
+        "result": "pass_with_gaps",
+        "areas": [
+          "800V/48V 架構",
+          "grid-to-core 電源",
+          "OCS",
+          "CPO",
+          "800G/1.6T/3.2T",
+          "AI MCU/Alif",
+          "NVIDIA 具名協作",
+          "A²B/GMSL/BMS",
+          "HBM 非直接供應",
+          "CoWoS 直接曝險無證據"
+        ],
+        "note": "量產、合作、MOU、訂單、營收與未來計畫分開"
+      },
+      "gate_4_falsification_competition": {
+        "performed": true,
+        "result": "pass_with_gaps",
+        "tests": [
+          "是否已量產",
+          "是否有可單列收入",
+          "有無具名客戶",
+          "有哪些競爭企業",
+          "台灣公司是具名供應商或只是受惠"
+        ],
+        "resolved": [
+          "TSMC 直接具名供應商",
+          "Alif 11/3 已交割",
+          "OCS 仍需驗證絕對營收",
+          "InoBat 僅 MOU",
+          "ASE/KYEC/PTI 僅可能受惠",
+          "非具名客戶類型移到業務主線；BMW、JLR、Keysight、Universal Robots 為具名官方採用案例，逐一區分收入證據；鴻海 MOU 列 partner"
+        ],
+        "outstanding": [
+          "CPO 商業化與具名客戶",
+          "OCS 營收絕對值",
+          "台灣封測直接訂單"
+        ]
+      },
+      "gate_5_delivery_missing_topic_audit": {
+        "performed": true,
+        "result": "pass_with_material_open_items",
+        "important_issue_coverage_table": [
+          {
+            "topic": "SEC 最新 10-K 與 2026Q3 10-Q／8-K",
+            "status": "covered",
+            "finding": "10-K 業務與代工模式、10-Q 期間、8-K Q3 財務公告已核實。",
+            "source_ids": [
+              "SEC_2025_10K",
+              "SEC_2026_10Q",
+              "SEC_Q3_8K"
+            ]
+          },
+          {
+            "topic": "Q3 2026 財報／法說與 Q4 指引",
+            "status": "covered",
+            "finding": "Q3 收入 40.22 億；Q4 43 億±1億屬指引，Q4 正式財報預定 11/24。",
+            "source_ids": [
+              "IR_Q3_RESULTS",
+              "IR_Q3_TRANSCRIPT",
+              "IR_FY26_Q4_DATE"
+            ]
+          },
+          {
+            "topic": "各終端市場營收與增幅",
+            "status": "covered",
+            "finding": "工業 19.719 億、汽車 9.982 億、通訊 6.545 億、消費 3.972 億美元；合計 40.219 億。",
+            "source_ids": [
+              "IR_Q3_RESULTS"
+            ]
+          },
+          {
+            "topic": "資料中心占通訊約 80%",
+            "status": "covered",
+            "finding": "管理層法說披露；不能將整個通訊收入都稱 AI。",
+            "source_ids": [
+              "IR_Q3_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "800G→3.2T 光模組與控制側",
+            "status": "covered",
+            "finding": "定位在電源、精密時脈、雷射控制與監測，非宣稱 ADI 製造完整模組。",
+            "source_ids": [
+              "IR_Q3_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "OCS 收入增長",
+            "status": "covered",
+            "finding": "法說預期 FY2026 營收約倍增、FY2027 類似目標；未發佈 OCS 絕對營收。",
+            "source_ids": [
+              "IR_Q3_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "CPO 商業化",
+            "status": "evidence_insufficient",
+            "finding": "公司稱 nascent，未單獨披露量產模組、CPO 營收、客戶訂單。",
+            "source_ids": [
+              "IR_Q3_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "800V／48V 資料中心供配電",
+            "status": "covered",
+            "finding": "公司技術路線，供應需求與已部署規模分開。",
+            "source_ids": [
+              "OFFICIAL_800V",
+              "IR_Q3_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "Empower Semiconductor 收購",
+            "status": "covered",
+            "finding": "7/7 已完成，補強核心供電技術；合併後收入未單列。",
+            "source_ids": [
+              "OFFICIAL_EMPOWER"
+            ]
+          },
+          {
+            "topic": "Alif Semiconductor 收購",
+            "status": "covered",
+            "finding": "9/9 宣布 13.5 億美元收購、11/3 宣布完成；原產品已有量產，不推定整合新增營收。",
+            "source_ids": [
+              "IR_ALIF_AGREEMENT",
+              "IR_ALIF_COMPLETE",
+              "REUTERS_ALIF"
+            ]
+          },
+          {
+            "topic": "InoBat i-Power+ BESS",
+            "status": "covered",
+            "finding": "10/19 MOU，原型試驗；不是量產合約。",
+            "source_ids": [
+              "OFFICIAL_INOBAT"
+            ]
+          },
+          {
+            "topic": "NVIDIA cuVSLAM 機器人融合",
+            "status": "covered",
+            "finding": "10/21 官方技術合作，與 NVIDIA 實際採購關係不同。",
+            "source_ids": [
+              "OFFICIAL_CUVSLAM"
+            ]
+          },
+          {
+            "topic": "工業 AI 與智慧感測",
+            "status": "covered",
+            "finding": "工業 49% 營收、量測與化學分析試驗案例。",
+            "source_ids": [
+              "IR_Q3_RESULTS",
+              "OFFICIAL_SENSING"
+            ]
+          },
+          {
+            "topic": "汽車 BMS／ADAS／GMSL／A²B",
+            "status": "covered",
+            "finding": "A²B 2.0 4/28 已釋出量產，與車用季度營收區分。",
+            "source_ids": [
+              "OFFICIAL_AUTO",
+              "OFFICIAL_A2B"
+            ]
+          },
+          {
+            "topic": "RF／無線",
+            "status": "covered",
+            "finding": "通訊混含無線及資料中心，不得全歸 AI 光網路。",
+            "source_ids": [
+              "IR_Q3_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "毛利、資本支出、庫存與產能",
+            "status": "covered",
+            "finding": "Q3 毛利與資本支出、內外製造模式、庫存及供應限制風險。",
+            "source_ids": [
+              "IR_Q3_RESULTS",
+              "IR_Q3_TRANSCRIPT",
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "HBM",
+            "status": "intentionally_excluded",
+            "finding": "ADI 不是 HBM 記憶體直接供應商；AI GPU/HBM 製造鏈不可照搬至 ADI。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "先進封裝／CoWoS 直接曝險",
+            "status": "evidence_insufficient",
+            "finding": "沒有確認 ADI 對 NVIDIA GPU 的先進封裝或 CoWoS 供應商地位。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "台積電外部晶圓代工",
+            "status": "covered",
+            "finding": "ADI 2025 SEC 10-K 明文具名台積電；逾半委外比率指所有 foundries 合計。",
+            "source_ids": [
+              "SEC_2025_10K",
+              "TSMC_2025_ANNUAL"
+            ]
+          },
+          {
+            "topic": "台灣封測廠直接訂單",
+            "status": "evidence_insufficient",
+            "finding": "未取得具名日月光、京元電子、力成對 ADI 2026 供應文件；僅可標示產業可能受惠。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "Q4 2026 最新法說",
+            "status": "not_yet_available",
+            "finding": "公司已定 11/24 發表，截至 11/04 不存在此法說實績。",
+            "source_ids": [
+              "IR_FY26_Q4_DATE"
+            ]
+          },
+          {
+            "topic": "Bloomberg／The Information 付費獨家",
+            "status": "not_researched",
+            "finding": "未取得可核對全文，不引用未確認的獨家供應鏈傳聞。",
+            "source_ids": []
+          },
+          {
+            "topic": "資料中心具名終端客戶",
+            "status": "evidence_insufficient",
+            "finding": "法說披露客戶群與承諾，但缺個別 hyperscaler 對 ADI 訂單數額。",
+            "source_ids": [
+              "IR_Q3_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "台灣媒體逐料號認證",
+            "status": "not_researched",
+            "finding": "沒有完成台灣逐料號、逐專案、法說雙向確認，不能冒充完成。",
+            "source_ids": []
+          },
+          {
+            "topic": "具名客戶與下游客群分類校正",
+            "status": "covered",
+            "finding": "原本 customer 型態節點轉移至 business_lines.downstream_customer_types；BMW、JLR、Keysight、Universal Robots 有具名官方案例；無採購額則不捏造。",
+            "source_ids": [
+              "OFFICIAL_NAMED_CUSTOMER_1",
+              "OFFICIAL_NAMED_CUSTOMER_2",
+              "OFFICIAL_NAMED_CUSTOMER_3",
+              "OFFICIAL_NAMED_CUSTOMER_4"
+            ]
+          },
+          {
+            "topic": "AI hyperscaler、OCS／CPO 具名直接客戶",
+            "status": "evidence_insufficient",
+            "finding": "尚無當期可歸屬證據確認具名直接採購公司與金額；沒有把應用市場或 NVIDIA 技術合作寫成直接客戶。",
+            "source_ids": [
+              "SEC_2025_10K",
+              "IR_Q3_TRANSCRIPT"
+            ]
+          }
+        ],
+        "material_open_topics": [
+          "CPO 直接收入與量產",
+          "具名 hyperscaler 訂單",
+          "台灣 OSAT 供應合同",
+          "台灣逐料號認證"
+        ],
+        "completion_claim": "evidence_graded_research_version_not_exhaustively_verified"
+      }
+    },
+    "sources": [
+      {
+        "id": "SEC_2025_10K",
+        "url": "https://www.sec.gov/Archives/edgar/data/6281/000000628125000153/adi-20251101.htm",
+        "category": "SEC"
+      },
+      {
+        "id": "SEC_2026_10Q",
+        "url": "https://www.sec.gov/Archives/edgar/data/6281/000000628126000073/adi-20260801.htm",
+        "category": "SEC"
+      },
+      {
+        "id": "SEC_Q3_8K",
+        "url": "https://www.sec.gov/Archives/edgar/data/6281/000000628126000072/adi3q26exhibit991earnings.htm",
+        "category": "SEC"
+      },
+      {
+        "id": "SEC_ALIF_8K",
+        "url": "https://www.sec.gov/Archives/edgar/data/6281/000119312526385938/d924057d8k.htm",
+        "category": "SEC"
+      },
+      {
+        "id": "IR_Q3_RESULTS",
+        "url": "https://investor.analog.com/news-releases/news-release-details/analog-devices-reports-record-fiscal-third-quarter-2026",
+        "category": "official_IR_or_transcript"
+      },
+      {
+        "id": "IR_Q3_TRANSCRIPT",
+        "url": "https://stockanalysis.com/stocks/adi/transcripts/676062-q3-2026/",
+        "category": "official_IR_or_transcript"
+      },
+      {
+        "id": "IR_EVENTS",
+        "url": "https://investor.analog.com/events",
+        "category": "official_IR_or_transcript"
+      },
+      {
+        "id": "IR_FY26_Q4_DATE",
+        "url": "https://investor.analog.com/news-releases/news-release-details/analog-devices-report-fourth-quarter-fiscal-year-2026-financial",
+        "category": "official_IR_or_transcript"
+      },
+      {
+        "id": "IR_ALIF_COMPLETE",
+        "url": "https://investor.analog.com/news-releases/news-release-details/analog-devices-completes-acquisition-alif-semiconductor",
+        "category": "official_IR_or_transcript"
+      },
+      {
+        "id": "IR_ALIF_AGREEMENT",
+        "url": "https://investor.analog.com/news-releases/news-release-details/analog-devices-acquire-alif-semiconductor-adding-ai-native",
+        "category": "official_IR_or_transcript"
+      },
+      {
+        "id": "OFFICIAL_EMPOWER",
+        "url": "https://www.analog.com/en/newsroom/press-releases/2026/7-7-26-adi-completes-acquisition-of-empower-semiconductor.html",
+        "category": "ADI_product_technical_official"
+      },
+      {
+        "id": "OFFICIAL_800V",
+        "url": "https://www.analog.com/en/signals/articles/800-volts-powering-future-hyperscale-data-centers.html",
+        "category": "ADI_product_technical_official"
+      },
+      {
+        "id": "OFFICIAL_INOBAT",
+        "url": "https://www.analog.com/en/newsroom/press-releases/2026/10-19-2026-inobat-announces-mou-with-analog-devices-to-explore-i-power.html",
+        "category": "ADI_product_technical_official"
+      },
+      {
+        "id": "OFFICIAL_CUVSLAM",
+        "url": "https://www.analog.com/en/newsroom/press-releases/2026/10-21-26-adi-ext-for-nvidia-cuvslam-blog.html",
+        "category": "ADI_product_technical_official"
+      },
+      {
+        "id": "OFFICIAL_AUTO",
+        "url": "https://www.analog.com/en/solutions/automotive.html",
+        "category": "ADI_product_technical_official"
+      },
+      {
+        "id": "OFFICIAL_A2B",
+        "url": "https://www.analog.com/en/newsroom/press-releases/2026/4-28-2026-adi-launches-a2b-20.html",
+        "category": "ADI_product_technical_official"
+      },
+      {
+        "id": "OFFICIAL_SENSING",
+        "url": "https://www.analog.com/en/newsroom/press-releases/2026/10-7-2026-moet-hennessy-ad-uc-davis-join-forces.html",
+        "category": "ADI_product_technical_official"
+      },
+      {
+        "id": "REUTERS_ALIF",
+        "url": "https://www.reuters.com/technology/analog-devices-buy-alif-semiconductor-135-billion-2026-09-09/",
+        "category": "Reuters"
+      },
+      {
+        "id": "TECH_2026_CALL",
+        "url": "https://openfilings.org/companies/us/ADI/transcripts/a08e748d-cd17-4727-946b-11d41d9d47de",
+        "category": "technology_or_secondary"
+      },
+      {
+        "id": "TSMC_2025_ANNUAL",
+        "url": "https://investor.tsmc.com/static/annualReports/2025/english/index.html",
+        "category": "Taiwan_official_cross_check"
+      },
+      {
+        "id": "OFFICIAL_NAMED_CUSTOMER_1",
+        "url": "https://www.prnewswire.com/apac/zh/news-releases/adibmw10mb-302085138.html",
+        "category": "official_named_customer_case"
+      },
+      {
+        "id": "OFFICIAL_NAMED_CUSTOMER_2",
+        "url": "https://www.analog.com/en/signals/videos/driving-automotive-innovation-jlr.html",
+        "category": "official_named_customer_case"
+      },
+      {
+        "id": "OFFICIAL_NAMED_CUSTOMER_3",
+        "url": "https://www.analog.com/en/lp/001/testing-5g-the-birth-of-a-network-on-a-bench.html",
+        "category": "official_named_customer_case"
+      },
+      {
+        "id": "OFFICIAL_NAMED_CUSTOMER_4",
+        "url": "https://www.analog.com/en/signals/articles/are-cobots-the-new-co-workers.html",
+        "category": "official_named_customer_case"
+      },
+      {
+        "id": "FOXCONN_MOU_2023",
+        "url": "https://www.foxconn.com/zh-tw/press-center/press-releases/latest-news/1085",
+        "category": "Taiwan_official_named_partnership"
+      }
+    ],
+    "customer_node_taxonomy_revision": {
+      "revised_at": "2026-11-05",
+      "reason": "修正客戶類型被放成具名客戶節點的資料模型錯誤",
+      "moved_to_business_line_ids": [
+        "DATA_CENTER_OPTICS_customer_001",
+        "AI_POWER_customer_006",
+        "ENERGY_customer_011",
+        "INDUSTRIAL_customer_013",
+        "EDGE_AI_customer_017",
+        "AUTOMOTIVE_customer_019",
+        "WIRELESS_RF_customer_022",
+        "CONSUMER_customer_024",
+        "DEFENSE_HEALTH_customer_027"
+      ],
+      "confirmed_named_customer_count": 4,
+      "confirmed_named_customer_scope": "官方已公開過的具名設計導入／供應案例，不代表 FY2026 當期採購額或新訂單"
+    }
   }
 }

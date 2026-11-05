@@ -644,5 +644,937 @@
       "自主式人工智慧"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-05",
+    "company": "Arista Networks, Inc.",
+    "symbol": "ANET",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "Arista Networks ANET 產業鏈：Microsoft、Meta、Oracle、Broadcom、鴻海與AI Ethernet",
+      "description": "2026 Q3最新SEC／法說，具名客戶與供應商，AI scale-up/out/across、1.6T、CPO及供應鏈交叉驗證。"
+    },
+    "business_lines": [
+      {
+        "id": "AI_SCALE_OUT",
+        "name": "AI資料中心 Ethernet scale-out／Etherlink",
+        "downstream_applications": "800G／1.6T 交換器、RoCE負載均衡、EOS與高密度訓練／推論網路"
+      },
+      {
+        "id": "AI_SCALE_UP",
+        "name": "AI rack-scale Ethernet scale-up／SU-144",
+        "downstream_applications": "ESUN 開放互連、單機架144 XPU、跨機架1024 XPU；2027試驗、2028預期量產"
+      },
+      {
+        "id": "AI_SCALE_ACROSS",
+        "name": "AI跨資料中心scale-across／7800 AI Spine",
+        "downstream_applications": "7800 AI Spine、SRv6、多平面路由與地理分散的訓練／推論資源"
+      },
+      {
+        "id": "OPTICS",
+        "name": "800G／1.6T 光收發與開放CPO路線",
+        "downstream_applications": "OSFP、LPO、XPO、未來 Open CPO；Arista 系統非宣稱自製全部光晶片"
+      },
+      {
+        "id": "CAMPUS",
+        "name": "企業園區網路／Wi-Fi",
+        "downstream_applications": "園區交換器、PoE、Wi-Fi接入、CloudVision管理"
+      },
+      {
+        "id": "ROUTING_WAN",
+        "name": "路由／WAN／Cloud Edge",
+        "downstream_applications": "Cloud EOS、雲互連、WAN routing及網路自動化"
+      },
+      {
+        "id": "SOFTWARE",
+        "name": "EOS／CloudVision／NetDL／網路可觀測性",
+        "downstream_applications": "網路作業系統、管理、遙測、資料湖與AI營運"
+      },
+      {
+        "id": "SECURITY",
+        "name": "網路安全與AI驅動zero trust",
+        "downstream_applications": "企業邊界資安、ETM for VeloCloud、軟體研發的AI安全偵測"
+      },
+      {
+        "id": "SUPPLY_CHAIN",
+        "name": "網通交換器ASIC、ODM組裝、供應鏈",
+        "downstream_applications": "Broadcom交換晶片、鴻海等EMS製造、長交期零件與記憶體／PCB供應"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "AI_SCALE_OUT_customer_001",
+        "name": "Microsoft（微軟 Azure）",
+        "business_line": "AI_SCALE_OUT",
+        "relationship": "customer",
+        "details": "Arista 官方1.6T產品公告具名微軟Azure硬體主管，明確提到Azure Maia及Fairwater與Arista合作；財經媒體亦列其為主要客戶，未披露2026單家公司營收。",
+        "evidence_level": "official_named_customer_and_financial_media",
+        "source_ids": [
+          "IR_1PT6T",
+          "INVESTORS_CUSTOMERS"
+        ],
+        "commercialization": "active_relationship"
+      },
+      {
+        "id": "AI_SCALE_OUT_customer_002",
+        "name": "Meta Platforms（META）",
+        "business_line": "AI_SCALE_OUT",
+        "relationship": "customer",
+        "details": "Arista官方1.6T產品公告有Meta基礎設施高管引言，2026-10架構聯合開發；財經媒體確認為主要客戶；不得擅自對應10-K匿名26%／16%。",
+        "evidence_level": "official_named_customer_and_financial_media",
+        "source_ids": [
+          "IR_1PT6T",
+          "IR_RACK_SCALE",
+          "INVESTORS_CUSTOMERS"
+        ],
+        "commercialization": "active_relationship"
+      },
+      {
+        "id": "AI_SCALE_OUT_customer_003",
+        "name": "Oracle（ORCL）",
+        "business_line": "AI_SCALE_OUT",
+        "relationship": "customer",
+        "details": "Arista 2026-06官方1.6T產品公告以Meta、Microsoft及Oracle作AI networking客戶案例；沒有逐客戶採購額。",
+        "evidence_level": "official_named_customer_reference",
+        "source_ids": [
+          "IR_1PT6T"
+        ],
+        "commercialization": "customer_named_no_revenue_amount"
+      },
+      {
+        "id": "AI_SCALE_OUT_customer_004",
+        "name": "Google（Alphabet）",
+        "business_line": "AI_SCALE_OUT",
+        "relationship": "customer",
+        "details": "2026-11財經媒體將Google列為成長中的Arista客戶；非該公司10-K自行列名，2026產品收入與占比不詳。",
+        "evidence_level": "financial_media_named_customer",
+        "source_ids": [
+          "INVESTORS_CUSTOMERS"
+        ],
+        "commercialization": "media_reported"
+      },
+      {
+        "id": "AI_SCALE_UP_partner_001",
+        "name": "Advanced Micro Devices（AMD）",
+        "business_line": "AI_SCALE_UP",
+        "relationship": "partner",
+        "details": "Helios AI加速器和開放Ethernet機架共設計，並非此公告證明AMD向ANET付款",
+        "evidence_level": "official_named_technical_partnership",
+        "source_ids": [
+          "IR_RACK_SCALE"
+        ],
+        "commercialization": "announced_architecture_not_scaleup_sales"
+      },
+      {
+        "id": "AI_SCALE_UP_partner_002",
+        "name": "Arm",
+        "business_line": "AI_SCALE_UP",
+        "relationship": "partner",
+        "details": "開放scale-up軟硬體互連生態",
+        "evidence_level": "official_named_technical_partnership",
+        "source_ids": [
+          "IR_RACK_SCALE"
+        ],
+        "commercialization": "announced_architecture_not_scaleup_sales"
+      },
+      {
+        "id": "AI_SCALE_UP_partner_003",
+        "name": "Broadcom",
+        "business_line": "AI_SCALE_UP",
+        "relationship": "partner",
+        "details": "交換晶片供應商，同時共同設計開放rack architecture",
+        "evidence_level": "official_named_technical_partnership",
+        "source_ids": [
+          "IR_RACK_SCALE"
+        ],
+        "commercialization": "announced_architecture_not_scaleup_sales"
+      },
+      {
+        "id": "AI_SCALE_UP_partner_004",
+        "name": "d-Matrix",
+        "business_line": "AI_SCALE_UP",
+        "relationship": "partner",
+        "details": "AI推論加速器生態合作",
+        "evidence_level": "official_named_technical_partnership",
+        "source_ids": [
+          "IR_RACK_SCALE"
+        ],
+        "commercialization": "announced_architecture_not_scaleup_sales"
+      },
+      {
+        "id": "AI_SCALE_UP_partner_005",
+        "name": "Qualcomm",
+        "business_line": "AI_SCALE_UP",
+        "relationship": "partner",
+        "details": "AI運算平台／互連生態合作",
+        "evidence_level": "official_named_technical_partnership",
+        "source_ids": [
+          "IR_RACK_SCALE"
+        ],
+        "commercialization": "announced_architecture_not_scaleup_sales"
+      },
+      {
+        "id": "AI_SCALE_UP_partner_006",
+        "name": "Meta Platforms（MTIA）",
+        "business_line": "AI_SCALE_UP",
+        "relationship": "partner",
+        "details": "Meta MTIA XPU為rack-scale共設計生態；Meta買方關係另列customer。",
+        "evidence_level": "official_named_technical_partnership",
+        "source_ids": [
+          "IR_RACK_SCALE",
+          "IR_Q3_TRANSCRIPT"
+        ],
+        "commercialization": "partner_and_named_customer"
+      },
+      {
+        "id": "AI_SCALE_UP_partner_007",
+        "name": "Microsoft（Maia）",
+        "business_line": "AI_SCALE_UP",
+        "relationship": "partner",
+        "details": "Microsoft Maia為開放機架共設計生態；Microsoft買方關係另列customer。",
+        "evidence_level": "official_named_technical_partnership",
+        "source_ids": [
+          "IR_RACK_SCALE",
+          "IR_Q3_TRANSCRIPT"
+        ],
+        "commercialization": "partner_and_named_customer"
+      },
+      {
+        "id": "SOFTWARE_partner_001",
+        "name": "Anthropic",
+        "business_line": "SOFTWARE",
+        "relationship": "partner",
+        "details": "官方Q3結果提及共同於Arista軟體開發週期導入AI驅動弱點偵測；非網通採購客戶。",
+        "evidence_level": "official_collaboration",
+        "source_ids": [
+          "IR_Q3_RESULTS"
+        ],
+        "commercialization": "software_security_collaboration"
+      },
+      {
+        "id": "SOFTWARE_partner_002",
+        "name": "OpenAI",
+        "business_line": "SOFTWARE",
+        "relationship": "partner",
+        "details": "官方Q3結果提及安全開發用AI harness協作，並非網路設備採購關係。",
+        "evidence_level": "official_collaboration",
+        "source_ids": [
+          "IR_Q3_RESULTS"
+        ],
+        "commercialization": "software_security_collaboration"
+      },
+      {
+        "id": "SOFTWARE_partner_003",
+        "name": "Google",
+        "business_line": "SOFTWARE",
+        "relationship": "partner",
+        "details": "官方Q3結果提及軟體安全AI harness協作；Google的客戶報導關係另列。",
+        "evidence_level": "official_collaboration",
+        "source_ids": [
+          "IR_Q3_RESULTS"
+        ],
+        "commercialization": "security_collaboration"
+      },
+      {
+        "id": "SECURITY_partner_001",
+        "name": "Broadcom／VeloCloud",
+        "business_line": "SECURITY",
+        "relationship": "partner",
+        "details": "2026-07推出AI驅動Edge Threat Management for VeloCloud SD-WAN，服務企業分支。",
+        "evidence_level": "official_product_interoperability",
+        "source_ids": [
+          "ARISTA_BRANCH"
+        ],
+        "commercialization": "released"
+      },
+      {
+        "id": "SUPPLY_CHAIN_supplier_001",
+        "name": "Broadcom（AVGO）",
+        "business_line": "SUPPLY_CHAIN",
+        "relationship": "supplier",
+        "details": "Arista 2025 SEC 10-K明文稱Broadcom為主要merchant switching silicon廠，ASIC高度依賴；晶片是否專用逐料號未披露。",
+        "evidence_level": "SEC_named_primary_silicon_supplier",
+        "source_ids": [
+          "SEC_FY2025_10K",
+          "ARISTA_OFFICIAL_2025_REPORT"
+        ],
+        "commercialization": "commercial_supplier"
+      },
+      {
+        "id": "SUPPLY_CHAIN_supplier_002",
+        "name": "鴻海精密／Foxconn Hon Hai（2317）",
+        "business_line": "SUPPLY_CHAIN",
+        "relationship": "supplier",
+        "details": "Arista 2025 SEC 10-K明文列為主要委外製造夥伴之一，主要製造地在馬來西亞、越南、墨西哥等，不能推論每台設備都在台灣製造。",
+        "evidence_level": "SEC_named_contract_manufacturer",
+        "source_ids": [
+          "SEC_FY2025_10K",
+          "ARISTA_OFFICIAL_2025_REPORT"
+        ],
+        "commercialization": "active_manufacturing"
+      },
+      {
+        "id": "SUPPLY_CHAIN_supplier_003",
+        "name": "Jabil（JBL）",
+        "business_line": "SUPPLY_CHAIN",
+        "relationship": "supplier",
+        "details": "Arista 2025 SEC 10-K明文列為主要委外製造夥伴。",
+        "evidence_level": "SEC_named_contract_manufacturer",
+        "source_ids": [
+          "SEC_FY2025_10K"
+        ],
+        "commercialization": "active_manufacturing"
+      },
+      {
+        "id": "SUPPLY_CHAIN_supplier_004",
+        "name": "Sanmina（SANM）",
+        "business_line": "SUPPLY_CHAIN",
+        "relationship": "supplier",
+        "details": "Arista 2025 SEC 10-K明文列為主要委外製造夥伴。",
+        "evidence_level": "SEC_named_contract_manufacturer",
+        "source_ids": [
+          "SEC_FY2025_10K"
+        ],
+        "commercialization": "active_manufacturing"
+      },
+      {
+        "id": "AI_SCALE_OUT_competitor_001",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "AI_SCALE_OUT",
+        "relationship": "competitor",
+        "details": "Spectrum-X Ethernet和InfiniBand與Arista Ethernet AI Fabric存在競爭；NVIDIA NVLink亦是scale-up專有替代方案。",
+        "evidence_level": "industry_product_competition",
+        "source_ids": [
+          "FIERCE_SCALEUP",
+          "IR_RACK_SCALE"
+        ]
+      },
+      {
+        "id": "AI_SCALE_UP_competitor_001",
+        "name": "NVIDIA（NVLink）",
+        "business_line": "AI_SCALE_UP",
+        "relationship": "competitor",
+        "details": "NVLink/NVSwitch現為scale-up專有高帶寬網路；Arista的ESUN方向預期2027試驗、2028生產，不能用相同目前營收比較。",
+        "evidence_level": "industry_product_competition",
+        "source_ids": [
+          "FIERCE_SCALEUP",
+          "IR_Q3_TRANSCRIPT"
+        ]
+      },
+      {
+        "id": "AI_SCALE_OUT_competitor_002",
+        "name": "Cisco Systems（CSCO）",
+        "business_line": "AI_SCALE_OUT",
+        "relationship": "competitor",
+        "details": "資料中心交換器、Silicon One、AI Fabric與Ethernet網路市場競爭。",
+        "evidence_level": "industry_product_competition",
+        "source_ids": [
+          "INVESTORS_CUSTOMERS"
+        ]
+      },
+      {
+        "id": "AI_SCALE_OUT_competitor_003",
+        "name": "HPE／Juniper Networks（HPE）",
+        "business_line": "AI_SCALE_OUT",
+        "relationship": "competitor",
+        "details": "Juniper AI資料中心交換、路由與企業網路競爭。",
+        "evidence_level": "industry_product_competition",
+        "source_ids": [
+          "INVESTORS_CUSTOMERS"
+        ]
+      },
+      {
+        "id": "AI_SCALE_UP_competitor_002",
+        "name": "Astera Labs（ALAB）",
+        "business_line": "AI_SCALE_UP",
+        "relationship": "competitor",
+        "details": "Scorpio Smart Fabric Switches在AI互連scale-up與部分PCIe／Ethernet生態相鄰競爭，非逐款產品直接替代。",
+        "evidence_level": "adjacent_market_competition",
+        "source_ids": [
+          "FIERCE_SCALEUP"
+        ]
+      },
+      {
+        "id": "AI_SCALE_OUT_competitor_004",
+        "name": "Celestica／白牌網通ODM",
+        "business_line": "AI_SCALE_OUT",
+        "relationship": "competitor",
+        "details": "hyperscaler自建軟硬體及白牌交換器替代方案，不能將Celestica當ANET具名供應商。",
+        "evidence_level": "industry_product_competition",
+        "source_ids": [
+          "FIERCE_SCALEUP"
+        ]
+      },
+      {
+        "id": "CAMPUS_competitor_001",
+        "name": "Cisco Systems（CSCO）",
+        "business_line": "CAMPUS",
+        "relationship": "competitor",
+        "details": "企業園區交換與Wi-Fi的成熟競爭者。",
+        "evidence_level": "industry_product_competition",
+        "source_ids": [
+          "SEC_FY2025_10K"
+        ]
+      },
+      {
+        "id": "CAMPUS_competitor_002",
+        "name": "HPE Aruba Networking",
+        "business_line": "CAMPUS",
+        "relationship": "competitor",
+        "details": "企業園區、Wi-Fi、零信任與網管競爭。",
+        "evidence_level": "industry_product_competition",
+        "source_ids": [
+          "SEC_FY2025_10K"
+        ]
+      },
+      {
+        "id": "OPTICS_competitor_001",
+        "name": "Coherent／Lumentum（光元件市場）",
+        "business_line": "OPTICS",
+        "relationship": "competitor",
+        "details": "部分光學系統方案與供應鏈相鄰，不表示Arista自行製造雷射、光模組內所有元件；將其視為相鄰競爭／生態而非確認直接供應商。",
+        "evidence_level": "adjacent_market_competition",
+        "source_ids": [
+          "ARISTA_2026_OPTICAL"
+        ]
+      },
+      {
+        "id": "SUPPLY_CHAIN_beneficiary_001",
+        "name": "智邦科技 Accton（2345）",
+        "business_line": "SUPPLY_CHAIN",
+        "relationship": "beneficiary",
+        "details": "台灣AI網通ODM相關且為公開產業受惠觀察，未找到足夠可歸屬證據證明目前是Arista具名直接供應商。",
+        "evidence_level": "industry_possible_beneficiary_not_verified_supplier",
+        "source_ids": [
+          "SEC_FY2025_10K"
+        ]
+      },
+      {
+        "id": "SUPPLY_CHAIN_beneficiary_002",
+        "name": "台光電（2383）",
+        "business_line": "SUPPLY_CHAIN",
+        "relationship": "beneficiary",
+        "details": "高階CCL需求隨高速交換器升級可能受惠，並非Arista已核實直接供應商。",
+        "evidence_level": "industry_possible_beneficiary_not_verified_supplier",
+        "source_ids": [
+          "IR_1PT6T"
+        ]
+      },
+      {
+        "id": "SUPPLY_CHAIN_beneficiary_003",
+        "name": "欣興（3037）",
+        "business_line": "SUPPLY_CHAIN",
+        "relationship": "beneficiary",
+        "details": "高階PCB／載板需求與AI網通相關，但沒有Arista特定訂單可核資料。",
+        "evidence_level": "industry_possible_beneficiary_not_verified_supplier",
+        "source_ids": [
+          "IR_1PT6T"
+        ]
+      },
+      {
+        "id": "SUPPLY_CHAIN_beneficiary_004",
+        "name": "貿聯-KY（3665）",
+        "business_line": "SUPPLY_CHAIN",
+        "relationship": "beneficiary",
+        "details": "高速電纜／電源連接生態相關，Arista的具體出貨認證缺證據。",
+        "evidence_level": "industry_possible_beneficiary_not_verified_supplier",
+        "source_ids": [
+          "IR_RACK_SCALE"
+        ]
+      },
+      {
+        "id": "OPTICS_beneficiary_001",
+        "name": "光聖（6442）",
+        "business_line": "OPTICS",
+        "relationship": "beneficiary",
+        "details": "光通訊零件可能受益1.6T網通發展，但無Arista直接供應證據。",
+        "evidence_level": "industry_possible_beneficiary_not_verified_supplier",
+        "source_ids": [
+          "IR_1PT6T"
+        ]
+      },
+      {
+        "id": "OPTICS_beneficiary_002",
+        "name": "波若威（3163）",
+        "business_line": "OPTICS",
+        "relationship": "beneficiary",
+        "details": "光纖被動元件與高密度光互連有產業關聯；並非已確認Arista直接供應商。",
+        "evidence_level": "industry_possible_beneficiary_not_verified_supplier",
+        "source_ids": [
+          "IR_1PT6T"
+        ]
+      },
+      {
+        "id": "SUPPLY_CHAIN_beneficiary_005",
+        "name": "金像電（2368）",
+        "business_line": "SUPPLY_CHAIN",
+        "relationship": "beneficiary",
+        "details": "高速多層PCB產業受惠可能，沒有公開Arista料號／採購紀錄。",
+        "evidence_level": "industry_possible_beneficiary_not_verified_supplier",
+        "source_ids": [
+          "IR_1PT6T"
+        ]
+      },
+      {
+        "id": "AI_SCALE_OUT_beneficiary_001",
+        "name": "廣達電腦（2382）",
+        "business_line": "AI_SCALE_OUT",
+        "relationship": "beneficiary",
+        "details": "雲端伺服器擴產可能推動交換網路需求，但非Arista直接客戶／供應商認證。",
+        "evidence_level": "industry_possible_beneficiary_not_verified_supplier",
+        "source_ids": [
+          "IR_Q3_RESULTS"
+        ]
+      }
+    ],
+    "research": {
+      "baseline_commit": "a81b8a5f",
+      "baseline_git_blob_sha": "fadf9f5800931273e26b1cb1130c17b1e46ce025",
+      "time_window": "2026-08-07 to 2026-11-05",
+      "customer_inclusion_policy": "僅具名公司，依官方SEC／IR或可靠財經媒體分級；不以產業分類冒充客戶",
+      "customer_concentration_fy2025_two_unnamed_pct": [
+        26,
+        16
+      ],
+      "quarter_2026_q3": {
+        "revenue_usd_millions": 3657.6,
+        "revenue_yoy_pct": 58.5,
+        "product_revenue_usd_millions": 3190.0,
+        "service_revenue_usd_millions": 467.6,
+        "gaap_gross_margin_pct": 63.6,
+        "non_gaap_gross_margin_pct": 64.0,
+        "gaap_operating_margin_pct": 44.9,
+        "non_gaap_operating_margin_pct": 49.1,
+        "quarter_capex_usd_millions": 100.7,
+        "ending_inventory_usd_millions": 3209.8,
+        "purchase_commitments_usd_millions_approx": 11400
+      },
+      "quarter_2026_q4_guidance": {
+        "revenue_usd_millions_range": [
+          3900,
+          4000
+        ],
+        "non_gaap_operating_margin_pct_range": [
+          48,
+          49
+        ]
+      },
+      "technology_timelines": {
+        "SU_144": "2026-10 launched rack architecture, 2027 expected trials, 2028 expected production",
+        "7060XE7_64PS_PRS": "Q4 2026 expected availability",
+        "7060XE7_64PRS_RV3_L": "Q1 2027 expected availability",
+        "7060XE7_128PE": "Q1 2027 expected availability",
+        "open_CPO": "future roadmap only; no independently disclosed mass-production revenue"
+      },
+      "disclosure_integrity": "NVIDIA合作生態不當成客戶；Broadcom同時供應商與技術合作；台股受惠不當成直接供應。"
+    },
+    "five_gate_audit": {
+      "gate_1_hot_topics_reverse_check": {
+        "performed": true,
+        "result": "pass_with_open_evidence",
+        "period": "2026-08-07/2026-11-05",
+        "independently_discovered": [
+          "Q3營收58.5%增長",
+          "10/7 SU-144機架產品",
+          "Q3 AI安全軟體協作",
+          "2027客戶試驗2028 scale-up生產",
+          "1.6T和未來open CPO",
+          "供應承諾與庫存",
+          "大客戶集中"
+        ],
+        "method": "先以SEC、IR、近90天官方產品公告、財經媒體反向列熱點，再對照業務主線"
+      },
+      "gate_2_investor_ten_questions": {
+        "performed": true,
+        "result": "reviewed",
+        "questions": [
+          {
+            "topic": "營收成長",
+            "finding": "FY2026 Q3 36.576億美元，較去年成長58.5%；產品31.90億、服務4.676億。"
+          },
+          {
+            "topic": "毛利率",
+            "finding": "Q3 GAAP毛利率63.6%、non-GAAP毛利率64.0%，不得混用。"
+          },
+          {
+            "topic": "資本支出",
+            "finding": "Q3 capex 1.007億美元，重點還有庫存32億和採購承諾114億美元。"
+          },
+          {
+            "topic": "競爭力",
+            "finding": "EOS、CloudVision、Etherlink與高速交換器網路軟硬整合；對手Cisco、HPE Juniper、NVIDIA。"
+          },
+          {
+            "topic": "技術轉折",
+            "finding": "1.6T、ESUN SU-144、SRv6 scale-across、LPO／XPO及尚屬未來的CPO。"
+          },
+          {
+            "topic": "客戶採用",
+            "finding": "具名Microsoft、Meta、Oracle，Google屬財經報導客戶；2025匿名26%/16%不對應個別名稱。"
+          },
+          {
+            "topic": "產能",
+            "finding": "Foxconn／Jabil／Sanmina外包組裝；長期採購承諾、供應鏈時程及高庫存值得監測。"
+          },
+          {
+            "topic": "供應鏈",
+            "finding": "Broadcom具名晶片廠、鴻海具名代工；其他台股概念不升格直接供應。"
+          },
+          {
+            "topic": "估值催化劑",
+            "finding": "2026 Q4 39–40億美元收入展望、FY2027增長展望；scale-up正式量產預期2028。"
+          },
+          {
+            "topic": "風險",
+            "finding": "主要客戶集中、Broadcom依賴、產品遞延認列、產能及庫存、AI CAPEX循環、競爭與出口風險。"
+          }
+        ]
+      },
+      "gate_3_technology_product_completeness": {
+        "performed": true,
+        "result": "pass_with_evidence_gaps",
+        "areas": [
+          "AI Scale-up ESUN",
+          "Scale-out Ethernet",
+          "Scale-across SRv6",
+          "1.6T光學模組系統",
+          "CPO future",
+          "HBM非直接業務",
+          "先進封裝非直接業務",
+          "EOS NetDL網管",
+          "資料中心液冷機架"
+        ],
+        "commercialization_rule": "新品發表、供貨計畫、試驗、已量產營收嚴格區分"
+      },
+      "gate_4_falsification_competition": {
+        "performed": true,
+        "result": "pass_with_evidence_gaps",
+        "questions": [
+          "具名客戶是否有官方或可信媒體來源",
+          "當期或歷史採購金額是否揭露",
+          "scale-up是否量產",
+          "供應廠是否直接具名",
+          "和NVIDIA專有互連的競爭是什麼",
+          "台廠直接供應或產業受惠"
+        ],
+        "notes": [
+          "Microsoft、Meta、Oracle具名官方；Google主要憑財經媒體",
+          "匿名26%與16%不指定公司",
+          "SU-144正式生產預期2028",
+          "Broadcom與鴻海／Jabil／Sanmina為具名供應鏈",
+          "智邦等台廠無明確Arista直接採購佐證"
+        ]
+      },
+      "gate_5_missing_topic_audit": {
+        "performed": true,
+        "result": "not_unconditionally_complete",
+        "important_issue_coverage_table": [
+          {
+            "topic": "2025 SEC 10-K 年報與2026最新SEC文件",
+            "status": "covered",
+            "finding": "10-K有客戶與供應商揭露；Q3 8-K官方申報可查，Q3 10-Q最新索引仍須核對全文。",
+            "source_ids": [
+              "SEC_FY2025_10K",
+              "SEC_FY2026_Q3_8K",
+              "SEC_FY2026_Q3_10Q_INDEX"
+            ]
+          },
+          {
+            "topic": "2026 Q3業績與Q4財測",
+            "status": "covered",
+            "finding": "3.6576B GAAP營收、63.6% GAAP毛利；Q4 3.9–4.0B屬展望。",
+            "source_ids": [
+              "IR_Q3_RESULTS"
+            ]
+          },
+          {
+            "topic": "Q3財報與11/3法說",
+            "status": "covered",
+            "finding": "來源包含11/3法說逐字稿及IR結果表。",
+            "source_ids": [
+              "IR_Q3_RESULTS",
+              "IR_Q3_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "匿名大客戶與具名實際客戶",
+            "status": "covered",
+            "finding": "2025 26%及16%為SEC匿名；Microsoft、Meta、Oracle另有官方公開資料，Google為財經媒體。",
+            "source_ids": [
+              "SEC_FY2025_10K",
+              "IR_1PT6T",
+              "INVESTORS_CUSTOMERS"
+            ]
+          },
+          {
+            "topic": "AI Etherlink scale-out",
+            "status": "covered",
+            "finding": "已營運產品主線，當季AI營收未按每代單獨拆出。",
+            "source_ids": [
+              "IR_Q3_RESULTS",
+              "IR_RACK_SCALE"
+            ]
+          },
+          {
+            "topic": "AI SU-144 scale-up",
+            "status": "covered",
+            "finding": "10/7已發表架構、2027預計客戶試驗、2028預期生產，不是2026大量量產營收。",
+            "source_ids": [
+              "IR_RACK_SCALE",
+              "IR_Q3_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "Scale-across 7800 Spine",
+            "status": "covered",
+            "finding": "SRv6、多地AI網路與單一／跨區域算力池路線。",
+            "source_ids": [
+              "ARISTA_SCALE_ACROSS_BLOG"
+            ]
+          },
+          {
+            "topic": "800G與1.6T交換器上市時間",
+            "status": "covered",
+            "finding": "7060XE7系列依機種Q4 2026／Q1 2027供貨；不能以公告即全部已出貨。",
+            "source_ids": [
+              "IR_1PT6T"
+            ]
+          },
+          {
+            "topic": "1.6T光路線與LPO／XPO",
+            "status": "covered",
+            "finding": "官方光學歷程與系統效益，Arista非所有光學元件製造商。",
+            "source_ids": [
+              "ARISTA_2026_OPTICAL"
+            ]
+          },
+          {
+            "topic": "開放CPO",
+            "status": "evidence_insufficient",
+            "finding": "官方明列未來，缺已量產、獨立收入、具名CPO量產客戶。",
+            "source_ids": [
+              "ARISTA_2026_OPTICAL",
+              "FIERCE_SCALEUP"
+            ]
+          },
+          {
+            "topic": "HBM與GPU先進封裝",
+            "status": "intentionally_excluded",
+            "finding": "Arista供應AI網路，不是HBM記憶體或CoWoS封裝供應商；需求可能間接受惠。",
+            "source_ids": [
+              "SEC_FY2025_10K"
+            ]
+          },
+          {
+            "topic": "EOS CloudVision軟體",
+            "status": "covered",
+            "finding": "網路營運、可觀測性、管理軟體與NetDL。",
+            "source_ids": [
+              "SEC_FY2025_10K"
+            ]
+          },
+          {
+            "topic": "AI軟體安全Anthropic Google OpenAI",
+            "status": "covered",
+            "finding": "官方明確披露安全開發協作，非三家都是網通產品客戶。",
+            "source_ids": [
+              "IR_Q3_RESULTS"
+            ]
+          },
+          {
+            "topic": "企業園區與Wi-Fi",
+            "status": "covered",
+            "finding": "非所有營收都屬AI資料中心。",
+            "source_ids": [
+              "SEC_FY2025_10K"
+            ]
+          },
+          {
+            "topic": "VeloCloud分支零信任",
+            "status": "covered",
+            "finding": "2026-07正式產品公告，但獨立收入未揭露。",
+            "source_ids": [
+              "ARISTA_BRANCH"
+            ]
+          },
+          {
+            "topic": "廣域WAN與Cloud Edge",
+            "status": "covered",
+            "finding": "CloudVision/EOS加上分散式路由與雲端互連。",
+            "source_ids": [
+              "SEC_FY2025_10K"
+            ]
+          },
+          {
+            "topic": "Broadcom ASIC直接供應",
+            "status": "covered",
+            "finding": "10-K具名主要merchant silicon廠；產業晶片供應集中風險。",
+            "source_ids": [
+              "SEC_FY2025_10K"
+            ]
+          },
+          {
+            "topic": "鴻海Jabil Sanmina代工",
+            "status": "covered",
+            "finding": "SEC具名主要合約製造，非所有產品都在台灣製造。",
+            "source_ids": [
+              "SEC_FY2025_10K"
+            ]
+          },
+          {
+            "topic": "台灣智邦與高速PCB直接訂單",
+            "status": "evidence_insufficient",
+            "finding": "未取得可歸屬ANET與個別台廠逐料號的採購證據，僅受惠關聯。",
+            "source_ids": [
+              "SEC_FY2025_10K"
+            ]
+          },
+          {
+            "topic": "2025客戶集中度26%／16%",
+            "status": "covered",
+            "finding": "兩名大客戶身份不可自行指定。",
+            "source_ids": [
+              "SEC_FY2025_10K"
+            ]
+          },
+          {
+            "topic": "2026 Q3庫存與採購承諾",
+            "status": "covered",
+            "finding": "庫存約3.21B、採購承諾約11.4B，供應排程需注意。",
+            "source_ids": [
+              "IR_Q3_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "2027收入展望",
+            "status": "covered",
+            "finding": "法說談到2027約38–40%成長展望，非已實現數。",
+            "source_ids": [
+              "IR_Q3_TRANSCRIPT"
+            ]
+          },
+          {
+            "topic": "2026 Q3 10-Q逐段覆核",
+            "status": "evidence_insufficient",
+            "finding": "雖有SEC申報線索，未能本輪完整讀取並覆核所有內文頁。",
+            "source_ids": [
+              "SEC_FY2026_Q3_10Q_INDEX"
+            ]
+          },
+          {
+            "topic": "Reuters Bloomberg The Information獨家內容",
+            "status": "not_researched",
+            "finding": "未取得可可靠核對的相關付費全文，未採用臆測。",
+            "source_ids": []
+          },
+          {
+            "topic": "ServeTheHome Tom Hardware實測",
+            "status": "not_researched",
+            "finding": "未核實最新SU-144交換器第三方實測；主要依官方技術與Fierce報導。",
+            "source_ids": [
+              "FIERCE_SCALEUP"
+            ]
+          },
+          {
+            "topic": "NVIDIA的競合與替代",
+            "status": "covered",
+            "finding": "NVIDIA Spectrum-X Ethernet及NVLink/NVSwitch不同層網路競爭，亦有AI運算生態相依。",
+            "source_ids": [
+              "FIERCE_SCALEUP"
+            ]
+          }
+        ],
+        "open_issues": [
+          "開放CPO",
+          "台灣智邦與高速PCB直接訂單",
+          "2026 Q3 10-Q逐段覆核",
+          "Reuters Bloomberg The Information獨家內容",
+          "ServeTheHome Tom Hardware實測"
+        ],
+        "note": "重大缺漏明確揭露；不宣稱所有媒體和最新10-Q全文皆完成"
+      }
+    },
+    "sources": [
+      {
+        "id": "SEC_FY2025_10K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1596532/000159653226000013/anet-20251231.htm"
+      },
+      {
+        "id": "SEC_FY2026_Q2_10Q",
+        "url": "https://www.sec.gov/Archives/edgar/data/1596532/000159653226000175/anet-20260630.htm"
+      },
+      {
+        "id": "SEC_FY2026_Q3_8K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1596532/000159653226000252/ex991q326-earningsrelease.htm"
+      },
+      {
+        "id": "SEC_FY2026_Q3_10Q_INDEX",
+        "url": "https://www.sec.gov/Archives/edgar/data/1596532/000159653226000254/0001596532-26-000254-index.htm"
+      },
+      {
+        "id": "IR_Q3_RESULTS",
+        "url": "https://investors.arista.com/Communications/Press-Releases-and-Events/Press-Release-Detail/2026/Arista-Networks-Inc--Reports-Third-Quarter-2026-Financial-Results/default.aspx"
+      },
+      {
+        "id": "IR_Q3_TRANSCRIPT",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/11/04/arista-anet-q3-2026-earnings-call-transcript/"
+      },
+      {
+        "id": "IR_Q3_TRANSCRIPT_ALT",
+        "url": "https://stockanalysis.com/stocks/anet/transcripts/723971-q3-2026/"
+      },
+      {
+        "id": "IR_RACK_SCALE",
+        "url": "https://www.arista.com/company/news/press-release/24818-pr-20261007"
+      },
+      {
+        "id": "IR_RACK_SCALE_INV",
+        "url": "https://investors.arista.com/Communications/Press-Releases-and-Events/Press-Release-Detail/2026/Arista-Announces-Rack-Scale-Architectures-for-Scale-Up-and-Scale-Out-AI-Fabrics/default.aspx"
+      },
+      {
+        "id": "IR_1PT6T",
+        "url": "https://investors.arista.com/Communications/Press-Releases-and-Events/Press-Release-Detail/2026/Arista-Introduces-Next-Generation-1-6Terabit-Portfolio-for-AI-Fabrics/default.aspx"
+      },
+      {
+        "id": "ARISTA_SCALE_ACROSS_BLOG",
+        "url": "https://blogs.arista.com/blog/the-next-frontier-for-ai-fabrics-scale-across-networking"
+      },
+      {
+        "id": "ARISTA_IR",
+        "url": "https://investors.arista.com/"
+      },
+      {
+        "id": "ARISTA_OFFICIAL_2025_REPORT",
+        "url": "https://s21.q4cdn.com/861911615/files/doc_financials/2025/ar/Arista-2026-Proxy-Statement-2025-Annual-Report-Bookmarked.pdf"
+      },
+      {
+        "id": "ARISTA_2026_OPTICAL",
+        "url": "https://s21.q4cdn.com/861911615/files/doc_financials/2026/q1/ANET_Investor_Presentation_Q126.pdf"
+      },
+      {
+        "id": "ARISTA_BRANCH",
+        "url": "https://www.arista.com/zh/company/news/press-release/pr-2026?start=0"
+      },
+      {
+        "id": "FIERCE_SCALEUP",
+        "url": "https://www.fierce-network.com/cloud/arista-gets-scale-game-accelerator-landscape-diversifies"
+      },
+      {
+        "id": "INVESTORS_CUSTOMERS",
+        "url": "https://www.investors.com/news/technology/arista-stock-anet-arista-earnings-news-q3226/"
+      },
+      {
+        "id": "REUTERS",
+        "url": "https://www.reuters.com/site-search/?query=Arista%20Networks%20November%202026"
+      }
+    ]
   }
 }

@@ -316,5 +316,847 @@
       "核醫療同位素需求"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-05",
+    "company": "BWX Technologies, Inc.",
+    "symbol": "BWXT",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "BWXT核能產業鏈｜美國海軍核動力、Janus、Project Pele、TRISO、CANDU及核醫業務出售",
+      "description": "SEC FY2025 10-K、2026Q3 10-Q與11/03 8-K及法說，核對具名客戶、選型和實際營收、加拿大核電及核醫業務出售。"
+    },
+    "business_lines": [
+      {
+        "id": "NAVAL",
+        "name": "海軍核動力反應爐組件及核燃料",
+        "downstream_applications": "潛艦、航艦核反應爐、核燃料製造，主要合約對象為DOE/NNSA海軍核動力體系"
+      },
+      {
+        "id": "GOV_MATERIAL",
+        "name": "美國政府核材料、鈾處理及國防燃料",
+        "downstream_applications": "鈾濃度調整、核安全材料與特殊國防組件"
+      },
+      {
+        "id": "JANUS",
+        "name": "Janus 軍用微型反應爐 BANR",
+        "downstream_applications": "Fort Campbell選型與許可、工程、TRISO燃料；尚未開始實際商用發電"
+      },
+      {
+        "id": "PELE",
+        "name": "Project Pele 可移動微型反應爐",
+        "downstream_applications": "2026Q3完成core barrel組裝，管理層預計2027交付 Idaho National Laboratory"
+      },
+      {
+        "id": "ANTARES",
+        "name": "TRISO/HALEU 燃料與 Antares",
+        "downstream_applications": "已簽多年生產框架合約、1公噸初始配置，具體交貨依工作訂單"
+      },
+      {
+        "id": "PRODIGY",
+        "name": "加拿大Pro​digy移動核電廠選型",
+        "downstream_applications": "BANR被選用於新不倫瑞克省計畫，商業建設與核准尚待推進"
+      },
+      {
+        "id": "NUCLEAR_CANDU",
+        "name": "加拿大CANDU核電機組延壽及蒸汽產生器",
+        "downstream_applications": "OPG Pickering/Darlington、Bruce Power更新與重製；工程產能與合約"
+      },
+      {
+        "id": "SMR",
+        "name": "商用SMR及重型核組件",
+        "downstream_applications": "壓力容器、大型核電設備、Cambridge擴產、PCG收購"
+      },
+      {
+        "id": "FUEL_SERVICE",
+        "name": "核電設施運營、退役與核燃料服務",
+        "downstream_applications": "Kinectrics、核級材料、場站技術及除污；按專案辨識"
+      },
+      {
+        "id": "MEDICAL_PENDING_SALE",
+        "name": "核醫放射性同位素與藥物（簽約出售未交割）",
+        "downstream_applications": "Bayer/Bracco/Boston Scientific等已揭露交易；2026Q3列為待出售資產，交易未關閉"
+      },
+      {
+        "id": "SUPPLY",
+        "name": "核級材料、精密設備及供應鏈",
+        "downstream_applications": "核級鋼鐵、合金與單一來源風險；未取得台灣直接採購名單"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "NAVAL_customer_001",
+        "name": "美國能源部／國家核安全管理局 DOE／NNSA（Naval Reactors）",
+        "business_line": "NAVAL",
+        "relationship": "customer",
+        "details": "2025年美國政府整體占BWXT合併營收約68%；DOE/NNSA海軍核動力計畫是已長期認列收入的主要政府客戶；68%並非此單一部門。",
+        "evidence_level": "SEC_named_government_customer",
+        "source_ids": [
+          "SEC_2025_10K",
+          "SEC_2026_Q3_10Q"
+        ],
+        "commercialization": "recognized_government_revenue"
+      },
+      {
+        "id": "GOV_MATERIAL_customer_001",
+        "name": "美國能源部 DOE／NNSA",
+        "business_line": "GOV_MATERIAL",
+        "relationship": "customer",
+        "details": "核材料加工及核安、場站管理服務；屬明確政府機構，個別任務訂單金額需與政府合約逐項比對。",
+        "evidence_level": "SEC_named_government_customer",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "commercialization": "government_contracts"
+      },
+      {
+        "id": "JANUS_customer_001",
+        "name": "美國陸軍 U.S. Army（Janus／Fort Campbell）",
+        "business_line": "JANUS",
+        "relationship": "customer",
+        "details": "2026-08-26陸軍選定BWXT Advanced Technologies的BANR部署Fort Campbell；處在選型與第一階段，不能將所有5處基地、20餘座計畫全當BWXT的確定收入。",
+        "evidence_level": "government_official_selection",
+        "source_ids": [
+          "US_ARMY_JANUS",
+          "OFFICIAL_JANUS",
+          "TRANSCRIPT_2026_Q3"
+        ],
+        "commercialization": "selection_phase_not_operational"
+      },
+      {
+        "id": "PELE_customer_001",
+        "name": "美國國防部 Department of War／Project Pele",
+        "business_line": "PELE",
+        "relationship": "customer",
+        "details": "BWXT是Project Pele反應爐執行單位，2026Q3 core barrel已組裝，預計2027向Idaho National Laboratory交付；非2026已運轉。",
+        "evidence_level": "government_program_and_management_status",
+        "source_ids": [
+          "TRANSCRIPT_2026_Q3"
+        ],
+        "commercialization": "prototype_manufacturing"
+      },
+      {
+        "id": "ANTARES_customer_001",
+        "name": "Antares Nuclear, Inc.",
+        "business_line": "ANTARES",
+        "relationship": "customer",
+        "details": "2026-10-27正式多年TRISO燃料採購框架，初始配置1 MTU；將依未來task orders確定交付量和時程。與2026年Mark-0臨界達成相關的已交貨燃料區分。",
+        "evidence_level": "signed_commercial_contract",
+        "source_ids": [
+          "OFFICIAL_ANTARES_TRISO",
+          "COUNTERPARTY_ANTARES"
+        ],
+        "commercialization": "contract_framework_existing_fuel_used"
+      },
+      {
+        "id": "PRODIGY_customer_001",
+        "name": "Prodigy Clean Energy Ltd.",
+        "business_line": "PRODIGY",
+        "relationship": "customer",
+        "details": "2026-10-05選定BANR用於加拿大Belledune運輸式核電廠，預計需許可及工程，不能當成已完成反應爐銷售或電力收入。",
+        "evidence_level": "official_technology_selection",
+        "source_ids": [
+          "COUNTERPARTY_PRODIGY",
+          "OFFICIAL_PRODIGY",
+          "TRANSCRIPT_2026_Q3"
+        ],
+        "commercialization": "selected_not_operational"
+      },
+      {
+        "id": "NUCLEAR_CANDU_customer_001",
+        "name": "Ontario Power Generation（OPG）",
+        "business_line": "NUCLEAR_CANDU",
+        "relationship": "customer",
+        "details": "2025官方公告兩項合約總額超過加幣10億，含Pickering 48座蒸汽產生器及Darlington新SMR核組件工程；不等於全部在2026單季認列。",
+        "evidence_level": "official_signed_customer_contract",
+        "source_ids": [
+          "OFFICIAL_OPG_CONTRACT"
+        ],
+        "commercialization": "contract_execution"
+      },
+      {
+        "id": "NUCLEAR_CANDU_customer_002",
+        "name": "Bruce Power",
+        "business_line": "NUCLEAR_CANDU",
+        "relationship": "customer",
+        "details": "2016官方具名加幣約1.30億蒸汽產生器合約；屬已確認歷史客戶，不以2026安省核電延壽新聞推定BWXT新增份額。",
+        "evidence_level": "historical_official_named_contract",
+        "source_ids": [
+          "OFFICIAL_BRUCE_CONTRACT",
+          "ONTARIO_BRUCE_2026"
+        ],
+        "commercialization": "historical_customer_relationship"
+      },
+      {
+        "id": "MEDICAL_PENDING_SALE_customer_001",
+        "name": "Bayer AG",
+        "business_line": "MEDICAL_PENDING_SALE",
+        "relationship": "customer",
+        "details": "2022年起BWXT Medical供應高純度Ac-225，核醫標靶療法用；出售交易完成前仍屬待出售的醫療業務。",
+        "evidence_level": "official_named_supply_or_manufacturing",
+        "source_ids": [
+          "OFFICIAL_MEDICAL_COLLAB",
+          "SEC_2026_Q3_10Q"
+        ],
+        "commercialization": "existing_supply_pending_sale"
+      },
+      {
+        "id": "MEDICAL_PENDING_SALE_customer_002",
+        "name": "Boston Scientific",
+        "business_line": "MEDICAL_PENDING_SALE",
+        "relationship": "customer",
+        "details": "官方揭露製造TheraSphere長期排他合作；不是BWXT全部集團的普通設備客戶。",
+        "evidence_level": "official_named_supply_or_manufacturing",
+        "source_ids": [
+          "OFFICIAL_MEDICAL_COLLAB",
+          "SEC_2026_Q3_10Q"
+        ],
+        "commercialization": "existing_manufacturing_agreement_pending_sale"
+      },
+      {
+        "id": "MEDICAL_PENDING_SALE_customer_003",
+        "name": "Fusion Pharmaceuticals（AstraZeneca旗下）",
+        "business_line": "MEDICAL_PENDING_SALE",
+        "relationship": "customer",
+        "details": "BWXT Medical供應Ac-225 generator技術於其研發；製程合作和已上市藥物收入不得混淆。",
+        "evidence_level": "official_named_supply_or_manufacturing",
+        "source_ids": [
+          "OFFICIAL_MEDICAL_COLLAB",
+          "SEC_2026_Q3_10Q"
+        ],
+        "commercialization": "research_supply_pending_sale"
+      },
+      {
+        "id": "MEDICAL_PENDING_SALE_customer_004",
+        "name": "Bracco Diagnostics Inc.",
+        "business_line": "MEDICAL_PENDING_SALE",
+        "relationship": "customer",
+        "details": "官方具名供應Sr-82供製作Rb-82產生器；屬已確認核醫核種供貨。",
+        "evidence_level": "official_named_supply_or_manufacturing",
+        "source_ids": [
+          "OFFICIAL_MEDICAL_COLLAB",
+          "SEC_2026_Q3_10Q"
+        ],
+        "commercialization": "existing_isotope_supply_pending_sale"
+      },
+      {
+        "id": "MEDICAL_PENDING_SALE_partner_001",
+        "name": "Nordic Capital",
+        "business_line": "MEDICAL_PENDING_SALE",
+        "relationship": "partner",
+        "details": "2026-07-31簽署醫療業務最高8億美元出售合約，2026Q3已列待出售；11/05未宣布交割。Nordic是買方而非醫療用品的customer。",
+        "evidence_level": "definitive_asset_sale_agreement",
+        "source_ids": [
+          "SEC_2026_Q3_10Q",
+          "OFFICIAL_MEDICAL_SALE"
+        ],
+        "commercialization": "signed_not_closed"
+      },
+      {
+        "id": "NUCLEAR_CANDU_partner_001",
+        "name": "Kinectrics（BWXT集團業務）",
+        "business_line": "NUCLEAR_CANDU",
+        "relationship": "partner",
+        "details": "Kinectrics為BWXT近年擴充的核能工程與測試服務集團平台，不可虛稱與BWXT相互獨立採購；其stable isotope醫療部分在Nordic出售交易範圍。",
+        "evidence_level": "consolidated_group_capability",
+        "source_ids": [
+          "SEC_2026_Q3_10Q",
+          "TRANSCRIPT_2026_Q3"
+        ]
+      },
+      {
+        "id": "SMR_partner_001",
+        "name": "Precision Components Group（PCG）",
+        "business_line": "SMR",
+        "relationship": "partner",
+        "details": "2026-07-01已完成收購，增加美國重型核設備製造能量；是集團整合產能，非2026未交割。",
+        "evidence_level": "acquired_operating_company",
+        "source_ids": [
+          "OFFICIAL_PCQ",
+          "SEC_2026_Q3_10Q"
+        ],
+        "commercialization": "acquired_completed"
+      },
+      {
+        "id": "NAVAL_competitor_001",
+        "name": "Huntington Ingalls Industries（HII）",
+        "business_line": "NAVAL",
+        "relationship": "competitor",
+        "details": "核動力艦艇生產及國防專案領域相鄰競爭／合作；並非所有反應爐零組件替代者。",
+        "evidence_level": "SEC_market_peer",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "GOV_MATERIAL_competitor_001",
+        "name": "Bechtel National／Amentum／Fluor",
+        "business_line": "GOV_MATERIAL",
+        "relationship": "competitor",
+        "details": "政府核設施工程、管理與核廢清理標案競爭，按合約類型辨識。",
+        "evidence_level": "SEC_named_competitors",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "NUCLEAR_CANDU_competitor_001",
+        "name": "Framatome",
+        "business_line": "NUCLEAR_CANDU",
+        "relationship": "competitor",
+        "details": "商用核能設備、核燃料與維修服務領域部分直接競爭。",
+        "evidence_level": "SEC_named_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "SMR_competitor_001",
+        "name": "Westinghouse Electric／Cameco",
+        "business_line": "SMR",
+        "relationship": "competitor",
+        "details": "商用核能及先進反應爐生態有競爭和互補；不能將Cameco自動當成BWXT直接上游供應商。",
+        "evidence_level": "SEC_named_competitors",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "MEDICAL_PENDING_SALE_competitor_001",
+        "name": "Curium Pharma／SHINE Technologies",
+        "business_line": "MEDICAL_PENDING_SALE",
+        "relationship": "competitor",
+        "details": "核醫同位素／放射性藥物領域對手；BWXT醫療業務正待出售。",
+        "evidence_level": "SEC_named_competitors",
+        "source_ids": [
+          "SEC_2025_10K",
+          "SEC_2026_Q3_10Q"
+        ]
+      }
+    ],
+    "research": {
+      "baseline_commit": "a81b8a5f",
+      "original_blob_sha": "d899c1bcc7b2dc5833e4bc34841d9ae2085e1dc9",
+      "review_window": "2026-08-07/2026-11-05",
+      "financials": {
+        "quarter": "2026Q3",
+        "revenue_usd_thousands": 952972,
+        "gaap_gross_margin_pct_approx": 23.84,
+        "gaap_net_income_usd_millions": 102.0,
+        "government_operations_revenue_usd_thousands": 639076,
+        "commercial_operations_revenue_usd_thousands": 314202,
+        "quarter_capex_usd_thousands": 52264,
+        "nine_month_capex_usd_thousands": 136200,
+        "backlog_usd_thousands": 8556190,
+        "2026_revenue_guidance_usd_millions_approx": 3800,
+        "2027_growth_guidance": "high-single-digit revenue; not actual results"
+      },
+      "government_customer_revenue_share_fy2025_pct": 68,
+      "medical_business_status": "definitive agreement signed July 31, 2026; held for sale Sep 30; not yet closed as of Nov 5",
+      "direct_named_supplier_status": "public filings mention limited/single-source suppliers without identities; no verified external named supplier node inserted",
+      "taiwan_direct_suppliers": [],
+      "customer_nodes_are_specific_entities": true
+    },
+    "five_gate_audit": {
+      "gate_1_hot_topics_reverse_check": {
+        "performed": true,
+        "result": "performed_with_gaps",
+        "window": "2026-08-07/2026-11-05",
+        "independently_sourced_topics": [
+          "11/02 Q3財報及85.56億backlog",
+          "10/27 Antares TRISO",
+          "10/05 Prodigy BANR",
+          "08/26美陸軍Janus",
+          "11/03與11/04再融資",
+          "08/03 Nordic Capital出售醫療",
+          "Project Pele未交付",
+          "Cambridge擴產及PCG"
+        ],
+        "reconciliation_to_original": [
+          "原摘要未區分醫療出售時程",
+          "微型反應爐未分選型與量產",
+          "缺具名客戶及後續工作訂單"
+        ]
+      },
+      "gate_2_investor_top_ten_questions": {
+        "performed": true,
+        "result": "reviewed",
+        "questions": [
+          {
+            "topic": "營收成長",
+            "finding": "Q3營收9.53億美元，年增約10%；商業核能年增25%，政府營運年增4%。"
+          },
+          {
+            "topic": "毛利率",
+            "finding": "Q3 GAAP毛利率約23.84%；分部mix、費用及調整項需分開。"
+          },
+          {
+            "topic": "資本支出",
+            "finding": "Q3 Capex 5,226.4萬，9M 1.362億美元；Cambridge已擴產，美國新廠仍待決定。"
+          },
+          {
+            "topic": "競爭力",
+            "finding": "核級精密製造、軍方核安全認證、TRISO燃料線及大型組件製造壁壘。"
+          },
+          {
+            "topic": "技術轉折",
+            "finding": "BANR、Janus、Project Pele、TRISO/HALEU、CANDU與核醫業務出售。"
+          },
+          {
+            "topic": "客戶採用",
+            "finding": "DOE/NNSA、U.S. Army、Antares、Prodigy、OPG、Bruce Power、具名核醫企業；合約及選型區分。"
+          },
+          {
+            "topic": "產能",
+            "finding": "Cambridge擴張約50%，PCG7月收購，新重設備廠決定尚待。"
+          },
+          {
+            "topic": "供應鏈",
+            "finding": "核級鋼材與單一來源風險，台灣直接廠商無雙向具名證據。"
+          },
+          {
+            "topic": "估值催化劑",
+            "finding": "Janus/Prodigy合約轉換、Antares交貨、核電延壽、醫療資產出售完成、2027指引。"
+          },
+          {
+            "topic": "風險",
+            "finding": "政府預算、核管許可、固定價合約成本、原料取得、醫療交割及利息、資本支出。"
+          }
+        ]
+      },
+      "gate_3_technology_product_completeness": {
+        "performed": true,
+        "result": "reviewed_with_gaps",
+        "topics": [
+          "Naval nuclear components",
+          "TRISO fuel",
+          "HALEU",
+          "BANR",
+          "Janus",
+          "Project Pele",
+          "CANDU",
+          "SMR",
+          "大型蒸汽產生器",
+          "核醫待出售",
+          "AI用電間接需求",
+          "HBM/CPO非直接產品"
+        ],
+        "commercialization_rule": "選型、框架、建廠、量產製造、認列營收分層"
+      },
+      "gate_4_falsification_competition": {
+        "performed": true,
+        "result": "reviewed_with_gaps",
+        "checks": [
+          "11/05醫療資產是否已交割：否",
+          "Janus能否認列20座全部收入：否",
+          "TRISO 1 MTU是否全已交付：否",
+          "Cambridge擴張50%是否已滿載：未證實",
+          "醫療客戶是否長期屬BWXT持續業務：取決交割",
+          "台灣核能概念股是否直接供應：無證據",
+          "競爭者在政府核與商用設備分場景"
+        ]
+      },
+      "gate_5_delivery_missing_topic_audit": {
+        "performed": true,
+        "result": "material_open_items_disclosed",
+        "important_issue_coverage_table": [
+          {
+            "topic": "最新FY2025 10-K與Q3 10-Q/8-K",
+            "status": "covered",
+            "finding": "截至2026-09-30的10-Q、11/02財報8-K和11/03融資8-K均已研究。",
+            "source_ids": [
+              "SEC_2025_10K",
+              "SEC_2026_Q3_10Q",
+              "SEC_2026_Q3_8K",
+              "SEC_NOV3_CREDIT_8K"
+            ]
+          },
+          {
+            "topic": "2026 Q3營收與毛利",
+            "status": "covered",
+            "finding": "Q3營收9.52972億美元，GAAP毛利率約23.84%，分部收入政府6.39076億、商業3.14202億美元。",
+            "source_ids": [
+              "IR_2026_Q3",
+              "SEC_2026_Q3_10Q"
+            ]
+          },
+          {
+            "topic": "2026 Q3資本支出與backlog",
+            "status": "covered",
+            "finding": "Q3 Capex 5,226.4萬美元、9M 1.362億；backlog約85.562億，非即時現金流。",
+            "source_ids": [
+              "IR_2026_Q3"
+            ]
+          },
+          {
+            "topic": "FY2026及初步FY2027指引",
+            "status": "covered",
+            "finding": "FY26收入約38億美元，2027高個位數收入成長是展望，不是實績。",
+            "source_ids": [
+              "IR_2026_Q3",
+              "PRESS_2026_QUARTER_PRESENTATION"
+            ]
+          },
+          {
+            "topic": "美國政府歷史客戶集中",
+            "status": "covered",
+            "finding": "FY2025美國政府占總營收68%；公司未逐政府部門公開完整採購分拆。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "10/01海軍燃料1.89億美元合約",
+            "status": "covered",
+            "finding": "官方公布明確合約，納入Naval主線；未視為已全數確認收入。",
+            "source_ids": [
+              "BWXT_NEWS_ARCHIVE"
+            ]
+          },
+          {
+            "topic": "陸軍Janus選定Fort Campbell",
+            "status": "covered",
+            "finding": "官方宣布部署選型；計畫初期許可及TRISO燃料，尚未運轉。",
+            "source_ids": [
+              "US_ARMY_JANUS",
+              "OFFICIAL_JANUS"
+            ]
+          },
+          {
+            "topic": "Project Pele核心桶與預計2027交付",
+            "status": "covered",
+            "finding": "Q3法說稱core barrel完成、2027交付INL；2026未商用。",
+            "source_ids": [
+              "TRANSCRIPT_2026_Q3"
+            ]
+          },
+          {
+            "topic": "Antares多年TRISO合約",
+            "status": "covered",
+            "finding": "初期配置1 MTU，實際交貨依後續訂單；公司先前燃料曾支持Mark-0里程碑。",
+            "source_ids": [
+              "OFFICIAL_ANTARES_TRISO",
+              "COUNTERPARTY_ANTARES"
+            ]
+          },
+          {
+            "topic": "Prodigy加拿大BANR選型",
+            "status": "covered",
+            "finding": "技術選用和實際核電交付、併網營收不同。",
+            "source_ids": [
+              "OFFICIAL_PRODIGY",
+              "COUNTERPARTY_PRODIGY"
+            ]
+          },
+          {
+            "topic": "OPG/Darlington與Pickering",
+            "status": "covered",
+            "finding": "歷史官方逾C$10億簽約，逐工程進度收入另計。",
+            "source_ids": [
+              "OFFICIAL_OPG_CONTRACT"
+            ]
+          },
+          {
+            "topic": "Bruce Power核電延壽",
+            "status": "covered",
+            "finding": "有具名歷史合約，未證實FY2026新直接採購額。",
+            "source_ids": [
+              "OFFICIAL_BRUCE_CONTRACT"
+            ]
+          },
+          {
+            "topic": "Cambridge重設備製造擴充50%",
+            "status": "covered",
+            "finding": "Q3法說披露已擴產並開始使用新區域；不等於產能立即滿載。",
+            "source_ids": [
+              "TRANSCRIPT_2026_Q3"
+            ]
+          },
+          {
+            "topic": "PCG收購與新美國廠",
+            "status": "covered",
+            "finding": "PCG 7/1完成收購；美國新廠仍待2026年底最終投資決定。",
+            "source_ids": [
+              "OFFICIAL_PCQ",
+              "TRANSCRIPT_2026_Q3"
+            ]
+          },
+          {
+            "topic": "Nordic Capital醫療業務出售",
+            "status": "covered",
+            "finding": "2026-07-31簽署；2026Q3持有待售；年底或2027Q1預期交割，11/5未完成。",
+            "source_ids": [
+              "SEC_2026_Q3_10Q",
+              "OFFICIAL_MEDICAL_SALE"
+            ]
+          },
+          {
+            "topic": "Bayer/Bracco/Boston Scientific/Fusion",
+            "status": "covered",
+            "finding": "官方具名核醫客戶／合作者，保留不同營運性質及未交割醫療業務標記。",
+            "source_ids": [
+              "OFFICIAL_MEDICAL_COLLAB"
+            ]
+          },
+          {
+            "topic": "11/03最新8-K信貸額度",
+            "status": "covered",
+            "finding": "12.5億美元循環信貸到期延至2031年，非新核能設備訂單。",
+            "source_ids": [
+              "SEC_NOV3_CREDIT_8K"
+            ]
+          },
+          {
+            "topic": "11/04債券發行與回購",
+            "status": "covered",
+            "finding": "公司官方公告融資活動，與營運合約不同。",
+            "source_ids": [
+              "BWXT_IR_NOV4_FINANCE"
+            ]
+          },
+          {
+            "topic": "核級原材料供應商具名證據",
+            "status": "evidence_insufficient",
+            "finding": "SEC只說部分單一來源／有限供應商，未公布完整直接公司名單；不虛構supplier。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "台灣直接供應商名單",
+            "status": "evidence_insufficient",
+            "finding": "未找到核級材料/零組件與BWXT有直接合約及雙向文件的台灣企業；不列一般台灣核能概念股。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "AI/HBM/CPO/CoWoS連結",
+            "status": "intentionally_excluded",
+            "finding": "BWXT非HBM、CPO或先進晶片封裝供應商；AI電力需求屬間接核電需求來源。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "BANR量產收入及核准時程",
+            "status": "evidence_insufficient",
+            "finding": "Janus與Prodigy的早期選型不等於2026年實際穩態營收或已許可併網。",
+            "source_ids": [
+              "TRANSCRIPT_2026_Q3"
+            ]
+          },
+          {
+            "topic": "Project Pele量產交付",
+            "status": "evidence_insufficient",
+            "finding": "至2026Q3只確認組裝進度，尚待2027交付。",
+            "source_ids": [
+              "TRANSCRIPT_2026_Q3"
+            ]
+          },
+          {
+            "topic": "Taiwan nuclear medical market potential",
+            "status": "not_researched",
+            "finding": "無可核實的台灣BWXT直接採購／經銷合約，不能當已確認供應鏈。",
+            "source_ids": []
+          },
+          {
+            "topic": "Bloomberg/The Information獨家",
+            "status": "not_researched",
+            "finding": "未取得可核查正文的獨家交易／客戶資訊，不以傳聞填充。",
+            "source_ids": []
+          },
+          {
+            "topic": "ServeTheHome/Tom’s Hardware",
+            "status": "intentionally_excluded",
+            "finding": "技術領域與核工業設備、燃料合約不高度相關，優先以SEC與核工程官方來源。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "核工業競爭者",
+            "status": "covered",
+            "finding": "依政府核設施、商業核設備、核醫分市場競爭。",
+            "source_ids": [
+              "SEC_2025_10K"
+            ]
+          },
+          {
+            "topic": "醫療業務剝離後2027分部可比性",
+            "status": "covered",
+            "finding": "2027商業營運成長指引含醫療出售影響，不能簡單拿2026全年度醫療收入長期外推。",
+            "source_ids": [
+              "PRESS_2026_QUARTER_PRESENTATION"
+            ]
+          }
+        ],
+        "material_open_topics": [
+          "核級原材料供應商具名證據",
+          "台灣直接供應商名單",
+          "BANR量產收入及核准時程",
+          "Project Pele量產交付",
+          "Taiwan nuclear medical market potential",
+          "Bloomberg/The Information獨家"
+        ]
+      },
+      "reflection_iterations": [
+        {
+          "number": 1,
+          "focus": "獨立近90天逆向查漏",
+          "correction": "補入Janus/Prodigy、PCG及2026Q3財報，不止依2025公司簡介"
+        },
+        {
+          "number": 2,
+          "focus": "具名客戶與商業化",
+          "correction": "將Antares、OPG、醫療客戶逐一列名，選型與交貨分開"
+        },
+        {
+          "number": 3,
+          "focus": "業務出售反證",
+          "correction": "核醫出售已簽但未完成，避免錯把買方Nordic Capital列為客戶"
+        },
+        {
+          "number": 4,
+          "focus": "供應商及科技反證",
+          "correction": "不虛構台灣直接核級供應商，HBM/CPO為不相關直接製造"
+        },
+        {
+          "number": 5,
+          "focus": "財務風險與最新8-K",
+          "correction": "11/03信貸修約與11/04債券動作歸資本結構，非新增產品營收"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "id": "SEC_2025_10K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1486957/000148695726000007/bwxt-20251231.htm",
+        "category": "SEC"
+      },
+      {
+        "id": "SEC_2026_Q3_10Q",
+        "url": "https://www.sec.gov/Archives/edgar/data/1486957/000148695726000051/bwxt-20260930.htm",
+        "category": "SEC"
+      },
+      {
+        "id": "SEC_2026_Q3_8K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1486957/000148695726000053/bwxt_93026x8k.htm",
+        "category": "SEC"
+      },
+      {
+        "id": "SEC_NOV3_CREDIT_8K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1486957/000110465926121983/tm2628825d1_8k.htm",
+        "category": "SEC"
+      },
+      {
+        "id": "IR_2026_Q3",
+        "url": "https://investors.bwxt.com/news-releases/news-release-details/bwx-technologies-reports-third-quarter-2026-results",
+        "category": "company_or_counterparty_primary"
+      },
+      {
+        "id": "TRANSCRIPT_2026_Q3",
+        "url": "https://stockanalysis.com/stocks/bwxt/transcripts/722804-q3-2026/",
+        "category": "transcript_or_public_context"
+      },
+      {
+        "id": "IR_2026_INVESTOR_EVENTS",
+        "url": "https://investors.bwxt.com/news-events/events",
+        "category": "company_or_counterparty_primary"
+      },
+      {
+        "id": "OFFICIAL_MEDICAL_SALE",
+        "url": "https://bwxt.gcs-web.com/news-releases/news-release-details/bwxt-selling-medical-business-nordic-capital-transaction-valued",
+        "category": "company_or_counterparty_primary"
+      },
+      {
+        "id": "BUYER_MEDICAL_SALE",
+        "url": "https://www.nordiccapital.com/insights/press-releases/bwxt-to-sell-medical-business-to-nordic-capital/",
+        "category": "transcript_or_public_context"
+      },
+      {
+        "id": "OFFICIAL_ANTARES_TRISO",
+        "url": "https://bwxt.gcs-web.com/news-releases/news-release-details/bwxt-announces-contract-antares-triso-nuclear-fuel-production",
+        "category": "company_or_counterparty_primary"
+      },
+      {
+        "id": "COUNTERPARTY_ANTARES",
+        "url": "https://www.nasdaq.com/press-release/antares-signs-triso-fuel-agreement-bwxt-securing-fabrication-through-end-decade-2026",
+        "category": "company_or_counterparty_primary"
+      },
+      {
+        "id": "OFFICIAL_JANUS",
+        "url": "https://bwxt.gcs-web.com/news-releases/news-release-details/us-army-chooses-bwxt-advanced-nuclear-reactor-banr-janus-program",
+        "category": "company_or_counterparty_primary"
+      },
+      {
+        "id": "US_ARMY_JANUS",
+        "url": "https://www.army.mil/article-amp/294891/army_reaches_agreement_with_private_industry_for_nuclear_micro_reactors",
+        "category": "company_or_counterparty_primary"
+      },
+      {
+        "id": "OFFICIAL_PRODIGY",
+        "url": "https://www.bwxt.com/media/news/2026-news-archive/",
+        "category": "company_or_counterparty_primary"
+      },
+      {
+        "id": "COUNTERPARTY_PRODIGY",
+        "url": "https://www.prodigy.energy/news",
+        "category": "company_or_counterparty_primary"
+      },
+      {
+        "id": "OFFICIAL_MEDICAL_COLLAB",
+        "url": "https://www.bwxtmedical.com/collaborators/",
+        "category": "company_or_counterparty_primary"
+      },
+      {
+        "id": "OFFICIAL_OPG_CONTRACT",
+        "url": "https://www.bwxt.com/bwxt-awarded-historic-manufacturing-contracts-to-support-pickering-life-extension-and-darlington-new-build-projects-2/",
+        "category": "company_or_counterparty_primary"
+      },
+      {
+        "id": "OFFICIAL_BRUCE_CONTRACT",
+        "url": "https://www.bwxt.com/bwxt-subsidiary-awarded-steam-generator-design-and-supply-contract-from-bruce-power/",
+        "category": "company_or_counterparty_primary"
+      },
+      {
+        "id": "Q3_EARNINGS_TRANSCRIPT_MF",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/11/02/bwxt-q3-2026-earnings-call-transcript/",
+        "category": "transcript_or_public_context"
+      },
+      {
+        "id": "BWXT_NEWS_ARCHIVE",
+        "url": "https://www.bwxt.com/media/news/2026-news-archive/",
+        "category": "transcript_or_public_context"
+      },
+      {
+        "id": "BWXT_IR_NOV4_FINANCE",
+        "url": "https://investors.bwxt.com/news-events/news-releases",
+        "category": "company_or_counterparty_primary"
+      },
+      {
+        "id": "PRESS_2026_QUARTER_PRESENTATION",
+        "url": "https://investors.bwxt.com/static-files/664d825b-7f69-46d5-aa8a-f48b4f0ce65b",
+        "category": "transcript_or_public_context"
+      },
+      {
+        "id": "OFFICIAL_PCQ",
+        "url": "https://investors.bwxt.com/news-releases/news-release-details/bwx-technologies-reports-second-quarter-2026-results",
+        "category": "company_or_counterparty_primary"
+      },
+      {
+        "id": "ONTARIO_BRUCE_2026",
+        "url": "https://news.ontario.ca/en/release/1007558/ontario_delivers_record_setting_nuclear_refurbishment_at_bruce_ahead_of_schedule_and_under_budget",
+        "category": "transcript_or_public_context"
+      }
+    ]
   }
 }

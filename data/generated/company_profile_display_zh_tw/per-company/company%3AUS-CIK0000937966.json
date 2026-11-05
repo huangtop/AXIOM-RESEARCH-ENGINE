@@ -316,5 +316,913 @@
       "High-NA 導入"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-05",
+    "company": "ASML Holding N.V.",
+    "symbol": "ASML",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "ASML 產業鏈｜台積電／Intel／Samsung 客戶、EUV High-NA、HBM、Zeiss供應商",
+      "description": "以SEC 20-F與2026 Q3 6-K、官方產品路線、Reuters及台灣台積電公告區分具名客戶、供應商、商業化和展望。"
+    },
+    "business_lines": [
+      {
+        "id": "EUV_NXE",
+        "name": "0.33 NA EUV／NXE 高量產微影",
+        "products_and_applications": "NXE:3800E/F; 2nm邏輯、先進DRAM；已實現設備和升級服務收入"
+      },
+      {
+        "id": "HIGH_NA",
+        "name": "0.55 NA High-NA EUV／EXE",
+        "products_and_applications": "EXE:5000／5200B；Intel特定層量產；Samsung計畫2028、TSMC 2030，不混為同進度"
+      },
+      {
+        "id": "DUV",
+        "name": "DUV 浸潤／乾式曝光",
+        "products_and_applications": "ArFi、ArF、KrF、i-line；成熟、特殊製程及與EUV多重圖案化互補"
+      },
+      {
+        "id": "METROLOGY",
+        "name": "量測、電子束檢測與套刻控制",
+        "products_and_applications": "YieldStar 550、光學量測、e-beam檢測與良率管理"
+      },
+      {
+        "id": "COMPUTATIONAL",
+        "name": "計算微影與製程控制軟體",
+        "products_and_applications": "計算微影、光罩最佳化、協同軟體"
+      },
+      {
+        "id": "INSTALLED_BASE",
+        "name": "裝機基礎服務與現場升級",
+        "products_and_applications": "2026Q3 32.89億歐元已認列收入；提升吞吐量與產能"
+      },
+      {
+        "id": "MASK_12_INCH",
+        "name": "12 吋 High-NA 光罩生態",
+        "products_and_applications": "TSMC/ASML倡議，2031試產線與2033節點導入目標，不是現成出貨"
+      },
+      {
+        "id": "PACKAGING",
+        "name": "3D 整合與封裝曝光",
+        "products_and_applications": "XT:260等封裝曝光產品，並非CoWoS封裝代工"
+      },
+      {
+        "id": "SUPPLY",
+        "name": "超精密光學、雷射、機電與製造產能",
+        "products_and_applications": "Carl Zeiss SMT、TRUMPF、VDL；2027/2028產能瓶頸與擴廠"
+      },
+      {
+        "id": "MEMORY",
+        "name": "DRAM／HBM 微影強度",
+        "products_and_applications": "記憶體製造商的EUV/DUV採購需求；ASML不生產HBM記憶體晶片"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "EUV_NXE_customer_001",
+        "name": "台積電 TSMC（2330／TSM）",
+        "business_line": "EUV_NXE",
+        "relationship": "customer",
+        "details": "ASML台灣官網明確記載服務台積電超過30年；最新雙方共同宣布High-NA光罩倡議。台積電High-NA預計2030年才導入先進節點量產，與現行NXE設備採購須區別。",
+        "evidence_level": "direct_customer_and_official_partner",
+        "commercialization": "existing_euv_customer;high_na_hvm_2030_target",
+        "source_ids": [
+          "ASML_TW",
+          "TSMC_HNA",
+          "TSMC_TW"
+        ]
+      },
+      {
+        "id": "HIGH_NA_customer_002",
+        "name": "Intel／Intel Foundry（INTC）",
+        "business_line": "HIGH_NA",
+        "relationship": "customer",
+        "details": "官方確認High-NA EXE:5200B驗收、Intel18A Panther Lake部分特定層已開始高量產；累積超過100萬片晶圓包含認證、研發及部分量產，非全部為銷售晶圓。",
+        "evidence_level": "named_HNA_customer_production_verified",
+        "commercialization": "select_layers_in_hvm",
+        "source_ids": [
+          "INTEL_HNA",
+          "INTEL_HVM"
+        ]
+      },
+      {
+        "id": "MEMORY_customer_003",
+        "name": "Samsung Electronics（三星電子）",
+        "business_line": "MEMORY",
+        "relationship": "customer",
+        "details": "ASML官方明確長期客戶與2026-09合作關係；計畫於2028年把High-NA用於DRAM製造，非2026年已量產。",
+        "evidence_level": "named_customer_official_partnership",
+        "commercialization": "planned_high_na_memory_2028",
+        "source_ids": [
+          "SAMSUNG_HNA",
+          "REUTERS_HNA"
+        ]
+      },
+      {
+        "id": "MEMORY_customer_004",
+        "name": "SK hynix（SK海力士）",
+        "business_line": "MEMORY",
+        "relationship": "customer",
+        "details": "Reuters指出SK hynix規畫2028開始High-NA記憶體製程；具名記憶體設備客戶，型號別High-NA設備收入未公開。",
+        "evidence_level": "financial_media_named_customer",
+        "commercialization": "future_HNA_plan_not_hvm",
+        "source_ids": [
+          "REUTERS_HNA",
+          "SEC_20F"
+        ]
+      },
+      {
+        "id": "MEMORY_customer_005",
+        "name": "Micron Technology（美光）",
+        "business_line": "MEMORY",
+        "relationship": "customer",
+        "details": "Reuters報導Micron已訂購High-NA設備但尚未公布生產時程；不得把訂購當作已認列收入或量產。",
+        "evidence_level": "financial_media_named_customer_order",
+        "commercialization": "ordered_not_hvm_confirmed",
+        "source_ids": [
+          "REUTERS_HNA"
+        ]
+      },
+      {
+        "id": "MASK_12_INCH_partner_006",
+        "name": "台積電 TSMC（2330／TSM）",
+        "business_line": "MASK_12_INCH",
+        "relationship": "partner",
+        "details": "2026-09共推12吋High-NA光罩：2031試產線、2033先進節點目標；與TSMC既有customer關係並存。",
+        "evidence_level": "official_technical_collaboration",
+        "commercialization": "pilot_planned_2031",
+        "source_ids": [
+          "TSMC_HNA",
+          "TSMC_TW"
+        ]
+      },
+      {
+        "id": "HIGH_NA_partner_007",
+        "name": "Intel Foundry（INTC）",
+        "business_line": "HIGH_NA",
+        "relationship": "partner",
+        "details": "共同處理High-NA stitching、reticle及量產可用性；現有部分層進入量產，不能擴大到所有產品。",
+        "evidence_level": "official_technical_collaboration",
+        "commercialization": "select_layer_hvm",
+        "source_ids": [
+          "INTEL_HNA"
+        ]
+      },
+      {
+        "id": "HIGH_NA_partner_008",
+        "name": "Samsung Electronics",
+        "business_line": "HIGH_NA",
+        "relationship": "partner",
+        "details": "2026-09擴大High-NA DRAM研發及12吋光罩合作；2028為規畫而非實際量產。",
+        "evidence_level": "official_technical_collaboration",
+        "commercialization": "planned_2028",
+        "source_ids": [
+          "SAMSUNG_HNA"
+        ]
+      },
+      {
+        "id": "SUPPLY_supplier_009",
+        "name": "Carl Zeiss SMT",
+        "business_line": "SUPPLY",
+        "relationship": "supplier",
+        "details": "ASML 2025 20-F具名獨家微影光學供應商，提供核心鏡頭、反射鏡、照明與收集光學件；高集中供應瓶頸。",
+        "evidence_level": "sec_named_sole_source_supplier",
+        "commercialization": "commercial_supplier",
+        "source_ids": [
+          "SEC_20F",
+          "ASML_SUPPLYCHAIN"
+        ]
+      },
+      {
+        "id": "SUPPLY_supplier_010",
+        "name": "TRUMPF",
+        "business_line": "SUPPLY",
+        "relationship": "supplier",
+        "details": "TRUMPF官方2025-10揭露ASML供應商獎及EUV高能雷射合作；新雷射預計2026系列化生產，不能推定已出貨量。",
+        "evidence_level": "counterparty_confirmed_named_supplier",
+        "commercialization": "existing_supply;new_laser_hvm_2026_plan",
+        "source_ids": [
+          "TRUMPF"
+        ]
+      },
+      {
+        "id": "SUPPLY_supplier_011",
+        "name": "VDL Groep",
+        "business_line": "SUPPLY",
+        "relationship": "supplier",
+        "details": "ASML官網展示VDL為EUV source vessel組件供應生態；未公開本季度採購金額。",
+        "evidence_level": "asml_official_supplier_reference",
+        "commercialization": "component_supply",
+        "source_ids": [
+          "ASML_SUPPLYCHAIN"
+        ]
+      },
+      {
+        "id": "DUV_competitor_012",
+        "name": "Nikon",
+        "business_line": "DUV",
+        "relationship": "competitor",
+        "details": "DUV步進機與浸潤式曝光相鄰產品競爭；不是商業EUV同級替代品。",
+        "evidence_level": "industry_comparison",
+        "commercialization": null,
+        "source_ids": [
+          "SEC_20F"
+        ]
+      },
+      {
+        "id": "DUV_competitor_013",
+        "name": "Canon",
+        "business_line": "DUV",
+        "relationship": "competitor",
+        "details": "DUV及奈米壓印曝光具競合；商用EUV仍無等價量產替代。",
+        "evidence_level": "industry_comparison",
+        "commercialization": null,
+        "source_ids": [
+          "SEC_20F"
+        ]
+      },
+      {
+        "id": "DUV_competitor_014",
+        "name": "上海微電子 SMEE",
+        "business_line": "DUV",
+        "relationship": "competitor",
+        "details": "中國本土曝光設備的部分DUV領域競爭，不能宣稱已大規模取代ASML EUV。",
+        "evidence_level": "industry_comparison",
+        "commercialization": null,
+        "source_ids": [
+          "SEC_20F"
+        ]
+      },
+      {
+        "id": "PACKAGING_competitor_015",
+        "name": "Canon",
+        "business_line": "PACKAGING",
+        "relationship": "competitor",
+        "details": "奈米壓印／特殊曝光於部分封裝應用相鄰競爭，非全面替代。",
+        "evidence_level": "adjacent_market_competitor",
+        "commercialization": null,
+        "source_ids": [
+          "SEC_20F"
+        ]
+      },
+      {
+        "id": "METROLOGY_competitor_016",
+        "name": "KLA（KLAC）",
+        "business_line": "METROLOGY",
+        "relationship": "competitor",
+        "details": "缺陷檢查和製程控制部分功能交集；ASML光學套刻與KLA全系列不可全視為等價。",
+        "evidence_level": "adjacent_market_competitor",
+        "commercialization": null,
+        "source_ids": [
+          "SEC_20F"
+        ]
+      },
+      {
+        "id": "PACKAGING_competitor_017",
+        "name": "Tokyo Electron（TEL）",
+        "business_line": "PACKAGING",
+        "relationship": "competitor",
+        "details": "部分半導體封裝周邊製程相鄰，不等於微影機直接競爭。",
+        "evidence_level": "adjacent_market_competitor",
+        "commercialization": null,
+        "source_ids": [
+          "SEC_20F"
+        ]
+      },
+      {
+        "id": "SUPPLY_partner_018",
+        "name": "ASML 台灣子公司與製造據點",
+        "business_line": "SUPPLY",
+        "relationship": "partner",
+        "details": "ASML官方列出台灣林口工廠、新北園區、新竹及台南等據點；這是ASML自身營運，不是台廠外部供應商。",
+        "evidence_level": "company_owned_internal_operations",
+        "commercialization": "established",
+        "source_ids": [
+          "ASML_LOCATIONS",
+          "ASML_TW"
+        ]
+      },
+      {
+        "id": "PACKAGING_beneficiary_019",
+        "name": "日月光投控 ASE（3711）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "先進封裝系統受半導體資本支出驅動，未取得逐設備證據確認ASE直接購買ASML XT:260。",
+        "evidence_level": "industry_beneficiary_not_direct_customer",
+        "commercialization": null,
+        "source_ids": [
+          "ASML_FINANCIALS"
+        ]
+      },
+      {
+        "id": "HIGH_NA_beneficiary_020",
+        "name": "家登 Gudeng（3680）",
+        "business_line": "HIGH_NA",
+        "relationship": "beneficiary",
+        "details": "光罩載具及先進製程題材間接受惠可能；未取得ASML直接採購或12吋光罩特定委託證據。",
+        "evidence_level": "possible_industry_beneficiary",
+        "commercialization": null,
+        "source_ids": [
+          "TSMC_TW"
+        ]
+      },
+      {
+        "id": "MASK_12_INCH_beneficiary_021",
+        "name": "光罩／曝光周邊產業",
+        "business_line": "MASK_12_INCH",
+        "relationship": "beneficiary",
+        "details": "未具名公司僅作技術方向說明，不列 customer 或 supplier；12吋光罩受益者仍待驗證。",
+        "evidence_level": "industry_theme_not_named_supplier",
+        "commercialization": null,
+        "source_ids": [
+          "TSMC_TW"
+        ]
+      }
+    ],
+    "research": {
+      "original_commit": "a81b8a5f",
+      "original_blob_sha": "5fc1941291dafd99947563364d005f26f81166a2",
+      "source_priority": [
+        "SEC 20-F/6-K",
+        "ASML IR和官方產品",
+        "台積電/Intel官方",
+        "Reuters/Bloomberg",
+        "其他公開技術和供應鏈資料"
+      ],
+      "facts": {
+        "currency": "EUR",
+        "unit": "million",
+        "q3_2026_net_sales": 11662,
+        "q3_2026_gross_profit": 6700,
+        "q3_2026_gross_margin_pct": 57.5,
+        "q3_2026_net_income": 4960,
+        "q3_2026_new_lithography_systems_units": 113,
+        "q3_2026_used_lithography_systems_units": 8,
+        "q3_2026_installed_base_management_sales": 3289,
+        "q4_2026_revenue_guidance_range": [
+          14200,
+          15200
+        ],
+        "fy2026_revenue_guidance_range": [
+          44000,
+          45000
+        ],
+        "fy2026_gross_margin_guidance_approx_pct": 56,
+        "fy2025_net_sales": 32667.3,
+        "fy2025_gross_margin_pct": 52.8,
+        "fy2025_total_R_and_D_investments": 4698.8,
+        "fy2025_total_suppliers": 5100,
+        "sources": [
+          "SEC_Q3_EXHIBIT",
+          "SEC_20F",
+          "IR_ANNUAL"
+        ]
+      },
+      "commercialization": [
+        {
+          "topic": "NXE 0.33 NA",
+          "status": "mass_production_with_recognized_system_sales",
+          "note": "NXE晶圓製造設備與產品升級已實現銷售；未披露客戶各型號份額"
+        },
+        {
+          "topic": "High-NA Intel 18A",
+          "status": "limited_layers_high_volume_production",
+          "note": "Intel Panther Lake部分產品的部分層已量產，並非所有Intel製程全面轉High-NA"
+        },
+        {
+          "topic": "High-NA Samsung DRAM",
+          "status": "future_target_2028",
+          "note": "官方宣告計畫，非已認列2028 High-NA DRAM量產"
+        },
+        {
+          "topic": "High-NA TSMC",
+          "status": "future_target_2030",
+          "note": "台積電官宣2030先進節點量產使用；目前不是TSMC High-NA大規模量產收入"
+        },
+        {
+          "topic": "12-inch photomasks",
+          "status": "pilot_2031_then_advanced_production_2033_target",
+          "note": "12吋光罩不能當2026現有產業營收"
+        },
+        {
+          "topic": "YieldStar 550",
+          "status": "shipped_q3_2026",
+          "note": "2026Q3官方展示已出貨，收入未獨立列示"
+        },
+        {
+          "topic": "Installed Base Management",
+          "status": "recognized_revenue",
+          "note": "Q3已認列32.89億歐元"
+        },
+        {
+          "topic": "HBM/CoWoS",
+          "status": "indirect_equipment_exposure",
+          "note": "ASML為記憶體/先進節點微影設備供應商，非HBM晶片或CoWoS封裝代工廠"
+        }
+      ],
+      "classification_rules": {
+        "customer": "僅具名公司，並按採購、合作及未來量產階段區分",
+        "supplier": "具名且有官方或可靠媒體證據，ASML在台自有廠不列供應商",
+        "partner": "雙方公開共同研發，非自動證明銷售收入",
+        "beneficiary": "題材與需求相關，不代表已核實供貨",
+        "not_a_supplier": "台積電在此為ASML客戶，不是ASML的晶圓代工供應商"
+      }
+    },
+    "five_gate_audit": {
+      "gate_1_hot_topics_reverse_check": {
+        "performed": true,
+        "result": "reviewed_with_open_items",
+        "source_first": true,
+        "hot_topics": [
+          "2026Q3創紀錄收入",
+          "2027/2028設備供應不足",
+          "Intel部分High-NA產品高量產",
+          "Samsung預計2028",
+          "TSMC預計2030",
+          "2031/2033十二吋光罩",
+          "YieldStar 550",
+          "Zeiss與雷射瓶頸",
+          "出口管制"
+        ]
+      },
+      "gate_2_investor_top_ten_questions": {
+        "performed": true,
+        "result": "reviewed",
+        "questions": [
+          {
+            "topic": "營收成長",
+            "finding": "2026Q3 116.62億歐元；FY2026預估440–450億歐元，已實現與指引分離。"
+          },
+          {
+            "topic": "毛利率",
+            "finding": "Q3 57.5%，需分辨已裝機升級高毛利與High-NA早期導入成本。"
+          },
+          {
+            "topic": "資本支出",
+            "finding": "Eindhoven新園區、Zeiss產能與ASML本體現金CapEx不能加總混同。"
+          },
+          {
+            "topic": "競爭力",
+            "finding": "EUV目前商用獨占、DUV有Canon/Nikon部分競爭；Zeiss單一來源構成風險。"
+          },
+          {
+            "topic": "技術轉折",
+            "finding": "High-NA EXE、NXE量產、12吋光罩、YieldStar 550、3D封裝曝光。"
+          },
+          {
+            "topic": "客戶採用",
+            "finding": "TSMC、Intel、Samsung、SK hynix、Micron均具名，量產時程分開註明。"
+          },
+          {
+            "topic": "產能",
+            "finding": "2027–2028 ASML已有需求超過已規畫供給的風險；擴產不等於立即量產。"
+          },
+          {
+            "topic": "供應鏈",
+            "finding": "Zeiss SMT獨家光學；TRUMPF雷射；VDL組件；台廠不可無證據升格。"
+          },
+          {
+            "topic": "估值催化劑",
+            "finding": "訂單可見度至2029/2030、High-NA採用、HBM、2027資本市場日。"
+          },
+          {
+            "topic": "風險",
+            "finding": "出口管制、高NA成本／採用節奏、單一供應商、產能擴大與客戶資本支出週期。"
+          }
+        ]
+      },
+      "gate_3_technology_and_product_completeness": {
+        "performed": true,
+        "result": "reviewed_with_gaps",
+        "technologies": [
+          "0.33NA EUV",
+          "0.55NA High NA",
+          "DUV",
+          "YieldStar 550",
+          "12-inch mask",
+          "3D integration",
+          "HBM as end-market",
+          "CPO not directly manufactured",
+          "Zeiss optics"
+        ],
+        "commercialization": [
+          {
+            "topic": "NXE 0.33 NA",
+            "status": "mass_production_with_recognized_system_sales",
+            "note": "NXE晶圓製造設備與產品升級已實現銷售；未披露客戶各型號份額"
+          },
+          {
+            "topic": "High-NA Intel 18A",
+            "status": "limited_layers_high_volume_production",
+            "note": "Intel Panther Lake部分產品的部分層已量產，並非所有Intel製程全面轉High-NA"
+          },
+          {
+            "topic": "High-NA Samsung DRAM",
+            "status": "future_target_2028",
+            "note": "官方宣告計畫，非已認列2028 High-NA DRAM量產"
+          },
+          {
+            "topic": "High-NA TSMC",
+            "status": "future_target_2030",
+            "note": "台積電官宣2030先進節點量產使用；目前不是TSMC High-NA大規模量產收入"
+          },
+          {
+            "topic": "12-inch photomasks",
+            "status": "pilot_2031_then_advanced_production_2033_target",
+            "note": "12吋光罩不能當2026現有產業營收"
+          },
+          {
+            "topic": "YieldStar 550",
+            "status": "shipped_q3_2026",
+            "note": "2026Q3官方展示已出貨，收入未獨立列示"
+          },
+          {
+            "topic": "Installed Base Management",
+            "status": "recognized_revenue",
+            "note": "Q3已認列32.89億歐元"
+          },
+          {
+            "topic": "HBM/CoWoS",
+            "status": "indirect_equipment_exposure",
+            "note": "ASML為記憶體/先進節點微影設備供應商，非HBM晶片或CoWoS封裝代工廠"
+          }
+        ]
+      },
+      "gate_4_falsification_and_competition": {
+        "performed": true,
+        "result": "reviewed_with_gaps",
+        "counterchecks": [
+          "Intel高量產僅部分層和產品，100萬片含認證研發",
+          "TSMC High-NA 2030才規畫量產",
+          "三星2028仍為計畫",
+          "Micron已訂購不等於已量產",
+          "自有台灣工廠不是獨立供應商",
+          "EUV競爭格局與DUV區分",
+          "沒有具名台廠供貨證據就不列supplier"
+        ]
+      },
+      "gate_5_missing_topic_audit": {
+        "performed": true,
+        "result": "not_fully_complete_material_gaps_disclosed",
+        "important_issue_coverage_table": [
+          {
+            "topic": "SEC 2025 20-F",
+            "status": "covered",
+            "finding": "2026-02-25申報，財務、產品、供應商、風險章節。",
+            "source_ids": [
+              "SEC_20F"
+            ]
+          },
+          {
+            "topic": "SEC 2026 Q3 6-K",
+            "status": "covered",
+            "finding": "2026-10-14 6-K與附件，包括已認列營收、展望及投資人簡報。",
+            "source_ids": [
+              "SEC_6K_Q3",
+              "SEC_Q3_EXHIBIT"
+            ]
+          },
+          {
+            "topic": "最新法說會逐字稿",
+            "status": "covered",
+            "finding": "2026-10-14投資人法說；服務升級、擴產及2027–2028訂單強勁。",
+            "source_ids": [
+              "Q3_CALL",
+              "IR_Q3"
+            ]
+          },
+          {
+            "topic": "具名客戶台積電",
+            "status": "covered",
+            "finding": "官網長期裝機及9/8雙方聯合聲明；2030 High-NA應用為計畫。",
+            "source_ids": [
+              "ASML_TW",
+              "TSMC_HNA"
+            ]
+          },
+          {
+            "topic": "具名客戶Intel",
+            "status": "covered",
+            "finding": "Intel18A特定層Panther Lake已高量產，超過100萬片含研發及認證。",
+            "source_ids": [
+              "INTEL_HNA",
+              "INTEL_HVM"
+            ]
+          },
+          {
+            "topic": "具名客戶Samsung",
+            "status": "covered",
+            "finding": "9/8官宣High-NA DRAM合作，2028導入為計畫。",
+            "source_ids": [
+              "SAMSUNG_HNA"
+            ]
+          },
+          {
+            "topic": "具名客戶SK hynix",
+            "status": "covered",
+            "finding": "Reuters揭露2028 High-NA記憶體計畫，單筆設備訂單量未披露。",
+            "source_ids": [
+              "REUTERS_HNA"
+            ]
+          },
+          {
+            "topic": "具名客戶Micron",
+            "status": "covered",
+            "finding": "Reuters揭露已訂購High-NA，但量產時程未知。",
+            "source_ids": [
+              "REUTERS_HNA"
+            ]
+          },
+          {
+            "topic": "ZEISS獨家光學供應",
+            "status": "covered",
+            "finding": "20-F明確具名獨家供應商及單點瓶頸。",
+            "source_ids": [
+              "SEC_20F"
+            ]
+          },
+          {
+            "topic": "TRUMPF雷射供應",
+            "status": "covered",
+            "finding": "TRUMPF與ASML供應商獎官方公告；新雷射2026量產預期。",
+            "source_ids": [
+              "TRUMPF"
+            ]
+          },
+          {
+            "topic": "VDL EUV source vessel",
+            "status": "covered",
+            "finding": "ASML官網具名展示VDL供應生態，未核出當期採購額。",
+            "source_ids": [
+              "ASML_SUPPLYCHAIN"
+            ]
+          },
+          {
+            "topic": "Low-NA EUV/DUV擴產",
+            "status": "covered",
+            "finding": "2027/2028供應量仍可能低於需求，擴產計畫不是現有產能。",
+            "source_ids": [
+              "IR_Q3",
+              "Q3_CALL"
+            ]
+          },
+          {
+            "topic": "Q3已實現營收與毛利",
+            "status": "covered",
+            "finding": "116.62億歐元、57.5%，服務32.89億歐元。",
+            "source_ids": [
+              "SEC_Q3_EXHIBIT"
+            ]
+          },
+          {
+            "topic": "2026全年財測",
+            "status": "covered",
+            "finding": "440–450億歐元，非已認列全年營收。",
+            "source_ids": [
+              "IR_Q3"
+            ]
+          },
+          {
+            "topic": "Intel High-NA 已有限量產",
+            "status": "covered",
+            "finding": "官方雙向確認部分層量產，防止把研發、訂單和整廠量產混為一談。",
+            "source_ids": [
+              "INTEL_HNA"
+            ]
+          },
+          {
+            "topic": "12吋High-NA光罩",
+            "status": "covered",
+            "finding": "2031試產、2033先進節點生產，2026沒有此收入。",
+            "source_ids": [
+              "TSMC_HNA",
+              "TSMC_TW"
+            ]
+          },
+          {
+            "topic": "Samsung High-NA DRAM",
+            "status": "covered",
+            "finding": "2028採用計畫，不是已實現銷售。",
+            "source_ids": [
+              "SAMSUNG_HNA"
+            ]
+          },
+          {
+            "topic": "AI晶片與HBM製造",
+            "status": "covered",
+            "finding": "微影設備資本支出需求，不是ASML直接生產HBM。",
+            "source_ids": [
+              "ASML_FINANCIALS"
+            ]
+          },
+          {
+            "topic": "YieldStar 550及量測",
+            "status": "covered",
+            "finding": "Q3宣布已出貨新系統；未獨立披露收入。",
+            "source_ids": [
+              "Q3_SLIDES"
+            ]
+          },
+          {
+            "topic": "3D整合XT:260",
+            "status": "covered",
+            "finding": "ASML先進封裝曝光產品，不等於CoWoS代工。",
+            "source_ids": [
+              "IR_ANNUAL"
+            ]
+          },
+          {
+            "topic": "台灣自有工廠與台灣外包供應商",
+            "status": "covered",
+            "finding": "ASML在台林口工廠為自身據點，非台灣獨立供應商。",
+            "source_ids": [
+              "ASML_LOCATIONS",
+              "ASML_TW"
+            ]
+          },
+          {
+            "topic": "具名台灣獨立ASML供應商",
+            "status": "evidence_insufficient",
+            "finding": "公開資訊尚不足以逐名確證台廠向ASML供應EUV專用機械、光學或裝配料號；不得任意升格。",
+            "source_ids": [
+              "ASML_SUPPLYCHAIN"
+            ]
+          },
+          {
+            "topic": "商業EUV直接競爭格局",
+            "status": "covered",
+            "finding": "EUV缺直接量產競爭者；Canon/Nikon主要在DUV及相鄰技術競爭。",
+            "source_ids": [
+              "SEC_20F"
+            ]
+          },
+          {
+            "topic": "中國出口管制與地緣風險",
+            "status": "covered",
+            "finding": "SEC 20-F風險與中國市場政策不確定性。",
+            "source_ids": [
+              "SEC_20F"
+            ]
+          },
+          {
+            "topic": "ASML自有資本支出與2030投資",
+            "status": "evidence_insufficient",
+            "finding": "尚未完成逐現金流分類的2026九個月CapEx數字核對；不得將研發與產能擴建全部混算。",
+            "source_ids": [
+              "SEC_6K_Q3"
+            ]
+          },
+          {
+            "topic": "Bloomberg High-NA",
+            "status": "covered",
+            "finding": "2026-09-08 Bloomberg可閱讀摘要與ASML雙方公告相符，未複製付費全文。",
+            "source_ids": [
+              "BLOOMBERG_HNA",
+              "TSMC_HNA"
+            ]
+          },
+          {
+            "topic": "The Information報導",
+            "status": "not_researched",
+            "finding": "沒有可核驗全文的ASML設備採購獨家細節，不採用傳言。",
+            "source_ids": []
+          },
+          {
+            "topic": "ServeTheHome/Tom’s Hardware技術評測",
+            "status": "not_researched",
+            "finding": "未取得足以獨立驗證High-NA設備產能的技術實測，未冒稱已閱讀。",
+            "source_ids": []
+          },
+          {
+            "topic": "High-NA Micron採購金額與時程",
+            "status": "evidence_insufficient",
+            "finding": "可查證訂購存在，但未有當期獨立採購數字與量產時程。",
+            "source_ids": [
+              "REUTERS_HNA"
+            ]
+          },
+          {
+            "topic": "Eindhoven新園區實際擴建與供應",
+            "status": "covered",
+            "finding": "2026-09開工，第一階段預定2029完工；非2026新增量產。",
+            "source_ids": [
+              "ASML_NEWS"
+            ]
+          }
+        ],
+        "material_open_items": [
+          "具名台灣獨立ASML供應商",
+          "ASML自有資本支出與2030投資",
+          "High-NA Micron採購金額與時程"
+        ],
+        "not_researched": [
+          "The Information報導",
+          "ServeTheHome/Tom’s Hardware技術評測"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "SEC_20F",
+        "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/asml-20251231.htm"
+      },
+      {
+        "id": "SEC_6K_Q3",
+        "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026065813/form6-kquarterlyfilings.htm"
+      },
+      {
+        "id": "SEC_Q3_EXHIBIT",
+        "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026065813/pressreleasefinancialresul.htm"
+      },
+      {
+        "id": "IR_Q3",
+        "url": "https://www.investor.asml.com/news-releases/news-release-details/asml-reports-eu11.7-billion-total-net-sales-and-eu5.0-billion-net-income-q3-2026"
+      },
+      {
+        "id": "Q3_CALL",
+        "url": "https://stockanalysis.com/quote/ams/ASML/transcripts/651248-q3-2026-investor-call/"
+      },
+      {
+        "id": "Q3_SLIDES",
+        "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026065813/a2026_10x14xpresentation.htm"
+      },
+      {
+        "id": "IR_ANNUAL",
+        "url": "https://www.investor.asml.com/annual-reports/2025"
+      },
+      {
+        "id": "INTEL_HNA",
+        "url": "https://www.investor.asml.com/news-releases/news-release-details/intel-foundry-and-asml-collaborate-accelerate-industry-readiness-high-na-euv"
+      },
+      {
+        "id": "INTEL_HVM",
+        "url": "https://investor.asml.com/news-releases/news-release-details/high-na-euv-reaches-new-readiness-milestone"
+      },
+      {
+        "id": "SAMSUNG_HNA",
+        "url": "https://www.investor.asml.com/news-releases/news-release-details/samsung-electronics-and-asml-expand-strategic-collaboration-next-generation-semiconductor-manufacturing"
+      },
+      {
+        "id": "TSMC_HNA",
+        "url": "https://www.investor.asml.com/news-releases/news-release-details/asml-and-tsmc-announce-initiative-pioneer-industry-transition-large-format-photomasks-high-na-euv"
+      },
+      {
+        "id": "TSMC_TW",
+        "url": "https://pr.tsmc.com/english/news/3338"
+      },
+      {
+        "id": "REUTERS_HNA",
+        "url": "https://www.reuters.com/world/asia-pacific/asml-extends-chipmaking-dominance-customers-embrace-high-na-2026-09-14/"
+      },
+      {
+        "id": "BLOOMBERG_HNA",
+        "url": "https://bloomberg.com/news/articles/2026-09-08/asml-tsmc-samsung-intel-back-12-inch-masks-for-ai-chips"
+      },
+      {
+        "id": "ASML_PRODUCTS",
+        "url": "https://www.asml.com/en/products/euv-lithography-systems"
+      },
+      {
+        "id": "ASML_TW",
+        "url": "https://www.asml.com/zh-tw"
+      },
+      {
+        "id": "ASML_LOCATIONS",
+        "url": "https://www.asml.com/en/company/about-asml/locations"
+      },
+      {
+        "id": "ASML_SUPPLYCHAIN",
+        "url": "https://www.asml.com/en/technology/how-we-innovate"
+      },
+      {
+        "id": "TRUMPF",
+        "url": "https://www.trumpf.com/zh_INT/newsroom/global-press-releases/press-release-detail-page/release/asml-honors-trumpf-for-new-euv-laser-9838/"
+      },
+      {
+        "id": "ASML_FINANCIALS",
+        "url": "https://www.asml.com/investors/annual-report/2025/financials"
+      },
+      {
+        "id": "ASML_NEWS",
+        "url": "https://www.investor.asml.com/news/press-releases-and-announcements"
+      },
+      {
+        "id": "ASML_TW_MEDIA",
+        "url": "https://focustaiwan.tw/business/202609080020"
+      },
+      {
+        "id": "REUTERS_OLDER",
+        "url": "https://www.reuters.com/world/asia-pacific/asml-extends-chipmaking-dominance-customers-embrace-high-na-2026-09-14/"
+      }
+    ]
   }
 }
