@@ -187,5 +187,488 @@
       "相機複雜度提升"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "as_of": "2026-11-06",
+    "company": "Cirrus Logic, Inc.",
+    "symbol": "CRUS",
+    "locale": "zh-TW",
+    "business_lines": [
+      {
+        "id": "SMARTPHONE_AUDIO",
+        "name": "智慧型手機音訊",
+        "description": "客製化智慧功率放大器、22nm smart codec 與聲音處理"
+      },
+      {
+        "id": "SMARTPHONE_CAMERA",
+        "name": "智慧型手機相機控制",
+        "description": "第三代相機控制器量產滲透、第四代完成 tape-out"
+      },
+      {
+        "id": "SMARTPHONE_HAPTICS",
+        "name": "觸覺回饋與感測",
+        "description": "智慧型手機觸覺驅動與感測混合訊號 IC"
+      },
+      {
+        "id": "SMARTPHONE_POWER",
+        "name": "手機電源與3D感測",
+        "description": "3D 感測智慧電源與客製電池／電源 IC 開發"
+      },
+      {
+        "id": "PC_AUDIO",
+        "name": "AI PC／筆電音訊",
+        "description": "筆電多喇叭放大器、smart codec 與音訊擷取"
+      },
+      {
+        "id": "PRO_AUDIO",
+        "name": "專業音訊",
+        "description": "高精度 ADC、DAC、音訊 codec"
+      },
+      {
+        "id": "INDUSTRIAL",
+        "name": "工業影像／智慧電表",
+        "description": "工業影像 IC 與智慧電表類比前端"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "SMARTPHONE_AUDIO_customer_001",
+        "business_line": "SMARTPHONE_AUDIO",
+        "relationship": "customer",
+        "name": "Apple Inc.（AAPL）",
+        "details": "Apple 採購 Cirrus Logic 的客製化音訊及高效能混合訊號晶片，用於其終端產品；2026 會計年度約占 Cirrus Logic 總營收 91%。",
+        "description": "Apple 透過多家代工廠採購；91% 為 FY2026 全年終端客戶營收占比，並非特定晶片占比。",
+        "evidence_level": "SEC_explicit_named_end_customer",
+        "source_ids": [
+          "SEC_FY2026_10K",
+          "SEC_FY2026_10K_MIRROR"
+        ],
+        "ticker": "AAPL"
+      },
+      {
+        "id": "PC_AUDIO_supplier_001",
+        "business_line": "PC_AUDIO",
+        "relationship": "supplier",
+        "name": "GlobalFoundries（GFS）",
+        "details": "GlobalFoundries 為 Cirrus Logic 代工製造晶圓，雙方簽有涵蓋至 2026 年的產能預留及晶圓供應協議。",
+        "description": "GlobalFoundries 為 Cirrus Logic 代工製造晶圓，雙方簽有涵蓋至 2026 年的產能預留及晶圓供應協議。",
+        "evidence_level": "SEC_explicit_named_direct_supplier",
+        "source_ids": [
+          "SEC_FY2026_10K"
+        ],
+        "ticker": "GFS"
+      },
+      {
+        "id": "SMARTPHONE_AUDIO_supplier_001",
+        "business_line": "SMARTPHONE_AUDIO",
+        "relationship": "supplier",
+        "name": "台積電 TSMC（2330）",
+        "details": "台積電是 Cirrus Logic 主要晶圓代工供應商，承接其混合訊號半導體的晶圓製造。",
+        "description": "台積電是 Cirrus Logic 主要晶圓代工供應商，承接其混合訊號半導體的晶圓製造。",
+        "evidence_level": "SEC_explicit_named_direct_supplier",
+        "source_ids": [
+          "SEC_FY2026_10K"
+        ],
+        "ticker": "2330.TW"
+      },
+      {
+        "id": "SMARTPHONE_AUDIO_supplier_002",
+        "business_line": "SMARTPHONE_AUDIO",
+        "relationship": "supplier",
+        "name": "日月光 ASE（3711）",
+        "details": "日月光是 Cirrus Logic 在 10-K 具名的主要委外封裝及測試供應商，負責晶片後段封測服務。",
+        "description": "日月光是 Cirrus Logic 在 10-K 具名的主要委外封裝及測試供應商，負責晶片後段封測服務。",
+        "evidence_level": "SEC_explicit_named_direct_supplier",
+        "source_ids": [
+          "SEC_FY2026_10K"
+        ],
+        "ticker": "3711.TW"
+      },
+      {
+        "id": "SMARTPHONE_AUDIO_supplier_003",
+        "business_line": "SMARTPHONE_AUDIO",
+        "relationship": "supplier",
+        "name": "Amkor Technology（AMKR）",
+        "details": "Amkor 是 Cirrus Logic 具名的主要委外封裝及測試供應商，承接晶片封裝與測試服務。",
+        "description": "Amkor 是 Cirrus Logic 具名的主要委外封裝及測試供應商，承接晶片封裝與測試服務。",
+        "evidence_level": "SEC_explicit_named_direct_supplier",
+        "source_ids": [
+          "SEC_FY2026_10K"
+        ],
+        "ticker": "AMKR"
+      },
+      {
+        "id": "SMARTPHONE_AUDIO_supplier_004",
+        "business_line": "SMARTPHONE_AUDIO",
+        "relationship": "supplier",
+        "name": "STATS ChipPAC",
+        "details": "STATS ChipPAC 為 Cirrus Logic 具名的封裝與測試代工廠，提供半導體後段製造服務。",
+        "description": "STATS ChipPAC 為 Cirrus Logic 具名的封裝與測試代工廠，提供半導體後段製造服務。",
+        "evidence_level": "SEC_explicit_named_direct_supplier",
+        "source_ids": [
+          "SEC_FY2026_10K"
+        ]
+      },
+      {
+        "id": "SMARTPHONE_AUDIO_supplier_005",
+        "business_line": "SMARTPHONE_AUDIO",
+        "relationship": "supplier",
+        "name": "SFA Semicon",
+        "details": "SFA Semicon 是 Cirrus Logic 10-K 列出的主要委外封裝與測試服務供應商。",
+        "description": "SFA Semicon 是 Cirrus Logic 10-K 列出的主要委外封裝與測試服務供應商。",
+        "evidence_level": "SEC_explicit_named_direct_supplier",
+        "source_ids": [
+          "SEC_FY2026_10K"
+        ]
+      },
+      {
+        "id": "SMARTPHONE_AUDIO_supplier_006",
+        "business_line": "SMARTPHONE_AUDIO",
+        "relationship": "supplier",
+        "name": "矽品精密 SPIL（日月光投控旗下）",
+        "details": "矽品精密是 Cirrus Logic 10-K 具名的主要封裝與測試服務供應商，承接半導體後段製造。",
+        "description": "矽品精密是 Cirrus Logic 10-K 具名的主要封裝與測試服務供應商，承接半導體後段製造。",
+        "evidence_level": "SEC_explicit_named_direct_supplier",
+        "source_ids": [
+          "SEC_FY2026_10K"
+        ],
+        "ticker": "3711.TW"
+      },
+      {
+        "id": "PRO_AUDIO_competitor_001",
+        "business_line": "PRO_AUDIO",
+        "relationship": "competitor",
+        "name": "AKM Semiconductor",
+        "details": "AKM 與 Cirrus Logic 在高性能音訊轉換器、codec 與音訊混合訊號晶片市場競爭。",
+        "description": "AKM 與 Cirrus Logic 在高性能音訊轉換器、codec 與音訊混合訊號晶片市場競爭。",
+        "evidence_level": "SEC_explicit_competitor_with_product_market_mapping",
+        "source_ids": [
+          "SEC_FY2026_10K"
+        ]
+      },
+      {
+        "id": "PRO_AUDIO_competitor_002",
+        "business_line": "PRO_AUDIO",
+        "relationship": "competitor",
+        "name": "Analog Devices（ADI）",
+        "details": "ADI 與 Cirrus Logic 在高精度音訊 ADC／DAC、類比與混合訊號晶片市場競爭。",
+        "description": "ADI 與 Cirrus Logic 在高精度音訊 ADC／DAC、類比與混合訊號晶片市場競爭。",
+        "evidence_level": "SEC_explicit_competitor_with_product_market_mapping",
+        "source_ids": [
+          "SEC_FY2026_10K"
+        ]
+      },
+      {
+        "id": "SMARTPHONE_AUDIO_competitor_001",
+        "business_line": "SMARTPHONE_AUDIO",
+        "relationship": "competitor",
+        "name": "Qualcomm（QCOM）",
+        "details": "Qualcomm 與 Cirrus Logic 在智慧型手機音訊及行動終端混合訊號解決方案市場競爭。",
+        "description": "Qualcomm 與 Cirrus Logic 在智慧型手機音訊及行動終端混合訊號解決方案市場競爭。",
+        "evidence_level": "SEC_explicit_competitor_with_product_market_mapping",
+        "source_ids": [
+          "SEC_FY2026_10K"
+        ]
+      },
+      {
+        "id": "PC_AUDIO_competitor_001",
+        "business_line": "PC_AUDIO",
+        "relationship": "competitor",
+        "name": "瑞昱 Realtek（2379）",
+        "details": "瑞昱與 Cirrus Logic 在 PC 音訊 codec、音訊處理晶片與終端音效方案市場競爭。",
+        "description": "瑞昱與 Cirrus Logic 在 PC 音訊 codec、音訊處理晶片與終端音效方案市場競爭。",
+        "evidence_level": "SEC_explicit_competitor_with_product_market_mapping",
+        "source_ids": [
+          "SEC_FY2026_10K"
+        ]
+      },
+      {
+        "id": "SMARTPHONE_POWER_competitor_001",
+        "business_line": "SMARTPHONE_POWER",
+        "relationship": "competitor",
+        "name": "Renesas Electronics",
+        "details": "Renesas 與 Cirrus Logic 在消費性電子混合訊號與電源控制晶片市場競爭。",
+        "description": "Renesas 與 Cirrus Logic 在消費性電子混合訊號與電源控制晶片市場競爭。",
+        "evidence_level": "SEC_explicit_competitor_with_product_market_mapping",
+        "source_ids": [
+          "SEC_FY2026_10K"
+        ]
+      },
+      {
+        "id": "SMARTPHONE_HAPTICS_competitor_001",
+        "business_line": "SMARTPHONE_HAPTICS",
+        "relationship": "competitor",
+        "name": "上海艾為電子 Awinic",
+        "details": "艾為電子與 Cirrus Logic 在手機音訊功率放大器、觸覺回饋與電源管理晶片市場競爭。",
+        "description": "艾為電子與 Cirrus Logic 在手機音訊功率放大器、觸覺回饋與電源管理晶片市場競爭。",
+        "evidence_level": "SEC_explicit_competitor_with_product_market_mapping",
+        "source_ids": [
+          "SEC_FY2026_10K"
+        ]
+      },
+      {
+        "id": "SMARTPHONE_HAPTICS_competitor_002",
+        "business_line": "SMARTPHONE_HAPTICS",
+        "relationship": "competitor",
+        "name": "深圳匯頂 Goodix",
+        "details": "匯頂與 Cirrus Logic 在手機感測、觸覺與混合訊號控制晶片市場競爭。",
+        "description": "匯頂與 Cirrus Logic 在手機感測、觸覺與混合訊號控制晶片市場競爭。",
+        "evidence_level": "SEC_explicit_competitor_with_product_market_mapping",
+        "source_ids": [
+          "SEC_FY2026_10K"
+        ]
+      },
+      {
+        "id": "SMARTPHONE_AUDIO_competitor_002",
+        "business_line": "SMARTPHONE_AUDIO",
+        "relationship": "competitor",
+        "name": "Skyworks Solutions（SWKS）",
+        "details": "Skyworks 與 Cirrus Logic 在智慧型手機高性能類比與混合訊號晶片市場競爭。",
+        "description": "Skyworks 與 Cirrus Logic 在智慧型手機高性能類比與混合訊號晶片市場競爭。",
+        "evidence_level": "SEC_explicit_competitor_with_product_market_mapping",
+        "source_ids": [
+          "SEC_FY2026_10K"
+        ]
+      },
+      {
+        "id": "SMARTPHONE_HAPTICS_competitor_003",
+        "business_line": "SMARTPHONE_HAPTICS",
+        "relationship": "competitor",
+        "name": "STMicroelectronics（STM）",
+        "details": "ST 與 Cirrus Logic 在感測、觸覺回饋與電源管理 IC 市場競爭。",
+        "description": "ST 與 Cirrus Logic 在感測、觸覺回饋與電源管理 IC 市場競爭。",
+        "evidence_level": "SEC_explicit_competitor_with_product_market_mapping",
+        "source_ids": [
+          "SEC_FY2026_10K"
+        ]
+      },
+      {
+        "id": "PC_AUDIO_competitor_002",
+        "business_line": "PC_AUDIO",
+        "relationship": "competitor",
+        "name": "Synaptics（SYNA）",
+        "details": "Synaptics 與 Cirrus Logic 在 PC 與行動裝置音訊、感測及混合訊號晶片市場競爭。",
+        "description": "Synaptics 與 Cirrus Logic 在 PC 與行動裝置音訊、感測及混合訊號晶片市場競爭。",
+        "evidence_level": "SEC_explicit_competitor_with_product_market_mapping",
+        "source_ids": [
+          "SEC_FY2026_10K"
+        ]
+      },
+      {
+        "id": "PRO_AUDIO_competitor_003",
+        "business_line": "PRO_AUDIO",
+        "relationship": "competitor",
+        "name": "Texas Instruments（TXN）",
+        "details": "TI 與 Cirrus Logic 在音訊放大器、資料轉換器及電源管理類比 IC 市場競爭。",
+        "description": "TI 與 Cirrus Logic 在音訊放大器、資料轉換器及電源管理類比 IC 市場競爭。",
+        "evidence_level": "SEC_explicit_competitor_with_product_market_mapping",
+        "source_ids": [
+          "SEC_FY2026_10K"
+        ]
+      },
+      {
+        "id": "SMARTPHONE_POWER_beneficiary_001",
+        "business_line": "SMARTPHONE_POWER",
+        "relationship": "beneficiary",
+        "name": "聯發科 MediaTek（2454）",
+        "details": "聯發科與 Cirrus Logic 同處手機及消費性電子半導體景氣鏈；手機新機與端側 AI 升級有機會同步帶動其行動平台晶片需求。",
+        "description": "聯發科與 Cirrus Logic 同處手機及消費性電子半導體景氣鏈；手機新機與端側 AI 升級有機會同步帶動其行動平台晶片需求。",
+        "evidence_level": "industry_cycle_indirect_no_transaction",
+        "source_ids": [
+          "TW_MEDIATEK",
+          "IR_Q2_FY2027"
+        ],
+        "ticker": "2454.TW"
+      },
+      {
+        "id": "SMARTPHONE_CAMERA_beneficiary_001",
+        "business_line": "SMARTPHONE_CAMERA",
+        "relationship": "beneficiary",
+        "name": "聯詠 Novatek（3034）",
+        "details": "聯詠的顯示驅動及影音 IC 與 Cirrus Logic 的相機、音訊混合訊號晶片共同受智慧型手機升級及高階顯示需求帶動。",
+        "description": "聯詠的顯示驅動及影音 IC 與 Cirrus Logic 的相機、音訊混合訊號晶片共同受智慧型手機升級及高階顯示需求帶動。",
+        "evidence_level": "industry_cycle_indirect_no_transaction",
+        "source_ids": [
+          "TW_NOVATEK",
+          "IR_Q2_FY2027"
+        ],
+        "ticker": "3034.TW"
+      }
+    ],
+    "research": {
+      "executive_summary": "2026 10-K 具名 Apple 占 FY2026 營收 91%；GlobalFoundries 與台積電為主要晶圓代工，日月光、矽品、Amkor、STATS ChipPAC、SFA Semicon 為具名封測廠。2026-11-04 財報確認新手機客製化音訊與相機控制器滲透，PC AI 音訊與工業影像是分散客戶集中度的方向。",
+      "latest_quarter": {
+        "period": "FY2027 Q2",
+        "ended": "2026-09-26",
+        "revenue_usd_millions": 559.5,
+        "gaap_gross_margin_pct": 53.7,
+        "highlights": [
+          "第三代相機控制器在新手機中的採用率提升",
+          "第四代相機控制器完成 tape-out",
+          "第二代 AI PC smart codec 完成 tape-out",
+          "智慧電表類比前端開始送樣",
+          "工業影像晶片取得首批量產訂單"
+        ]
+      },
+      "strategic_events": [
+        {
+          "date": "2026-10-06",
+          "event": "收購義大利 INVENTVM Semiconductor，擴大電源管理與音訊混合訊號研發及 IP",
+          "source_ids": [
+            "SEC_ACQUISITION"
+          ]
+        }
+      ],
+      "taiwan_supply_chain_rule": "僅納入 10-K 明確具名之台積電、日月光、矽品等直接供應商；聯發科、聯詠僅為產業受惠推論，不列供應商。",
+      "customer_policy": "只有公開具名客戶 Apple；不將匿名 PC、手機或 NVIDIA RTX Spark 平台裝置 OEM 擅自推定為具名客戶。",
+      "reflection_rounds": [
+        {
+          "round": 1,
+          "focus": "SEC 客戶覆核",
+          "finding": "Apple 是 10-K 唯一具名重大終端客戶；匿名手機 OEM 不得推定。",
+          "action": "僅建立 Apple customer 節點。"
+        },
+        {
+          "round": 2,
+          "focus": "台灣供應鏈覆核",
+          "finding": "TSMC、ASE、SPIL 於 10-K 直接列名；聯發科、聯詠無對 CRUS 直接供貨證據。",
+          "action": "前三者列 supplier，後兩者僅列 beneficiary。"
+        },
+        {
+          "round": 3,
+          "focus": "競爭與近期事件覆核",
+          "finding": "10-K 列出 11 家競爭者；INVENTVM 為已收購公司而非一般技術合作夥伴。",
+          "action": "11 家全數列競爭者；收購列研究事件，不虛增 partner。"
+        },
+        {
+          "round": 4,
+          "focus": "前端可讀性覆核",
+          "finding": "AMD 前端使用 details 顯示關係說明。",
+          "action": "所有節點保留 description，並填入具體簡潔 details。"
+        }
+      ],
+      "limitations": [
+        "本次核對的獨立核心來源未達 100 份，未宣稱完成使用者指定的全量來源審計。",
+        "部分競爭者的產品市場對應屬基於公司業務範圍之分類，並非每一產品都由 10-K 逐一指名。",
+        "台灣受惠股屬產業機制推論，非 CRUS 交易對手。"
+      ]
+    },
+    "five_gate_audit": {
+      "gate_1_recent_events": {
+        "status": "pass",
+        "notes": "核對 2026-11-04 財報、10-Q、股東信及 2026-10-06 收購公告。"
+      },
+      "gate_2_investor_questions": {
+        "status": "partial",
+        "notes": "涵蓋 Apple 91% 集中度、手機相機控制器、PC 成長、封測及晶圓代工依賴。"
+      },
+      "gate_3_product_completeness": {
+        "status": "partial",
+        "notes": "覆蓋手機音訊、相機、觸覺、電源、PC、專業音訊與工業產品線。"
+      },
+      "gate_4_counterevidence": {
+        "status": "pass",
+        "notes": "未將匿名 OEM 轉成具名客戶；收購不誤標合作；台灣受惠股不誤標供應商。"
+      },
+      "gate_5_missingness": {
+        "status": "partial",
+        "notes": "11 家 10-K 競爭者及 7 家直接供應商均列入，但 100 份獨立來源要求未達成。"
+      },
+      "overall": "PARTIAL_NOT_100_SOURCE_PASS"
+    },
+    "sources": [
+      {
+        "id": "SEC_FY2026_10K",
+        "url": "https://financialfilings.com/filings/cirrus-logic-inc/annual-report/2026/46752864/",
+        "type": "SEC_10K",
+        "date": "2026-05-21",
+        "description": "2026 10-K 客戶、競爭者、晶圓代工及封測名單"
+      },
+      {
+        "id": "SEC_FY2026_10K_MIRROR",
+        "url": "https://d1f19qmytqk9eo.cloudfront.net/edgar0105/2026/05/21/772406/000077240626000018/document/crus-20260328.htm",
+        "type": "SEC_10K",
+        "date": "2026-05-21",
+        "description": "2026 10-K 第二入口交叉確認"
+      },
+      {
+        "id": "IR_Q2_FY2027",
+        "url": "https://investor.cirrus.com/news-and-events/investor-news/news-details/2026/Cirrus-Logic-Reports-Fiscal-Second-Quarter-Revenue-of-559-5-Million/default.aspx",
+        "type": "Official_IR",
+        "date": "2026-11-04",
+        "description": "FY2027 Q2 營收與產品進展"
+      },
+      {
+        "id": "SEC_Q2_FY2027",
+        "url": "https://www.stocktitan.net/sec-filings/CRUS/10-q-cirrus-logic-inc-quarterly-earnings-report-15797962fbda.html",
+        "type": "SEC_10Q_mirror",
+        "date": "2026-11-04",
+        "description": "2026-09-26 季度 10-Q"
+      },
+      {
+        "id": "IR_SHAREHOLDER_Q2",
+        "url": "https://financialfilings.com/filings/cirrus-logic-inc/earnings-release/2026/75610474/",
+        "type": "Official_Shareholder_Letter_mirror",
+        "date": "2026-11-04",
+        "description": "新智慧型手機放大器、22nm codec、相機控制器、NVIDIA RTX Spark 平台筆電"
+      },
+      {
+        "id": "EARNINGS_Q2",
+        "url": "https://www.earningswhispers.com/transcript/CRUS/Q22027",
+        "type": "Earnings_Call_Transcript",
+        "date": "2026-11-04",
+        "description": "FY2027 Q2 法說逐字稿及相機控制器量產時間"
+      },
+      {
+        "id": "SEC_ACQUISITION",
+        "url": "https://www.sec.gov/Archives/edgar/data/772406/000077240626000045/oct2026pressrelease.htm",
+        "type": "SEC_8K_Official_Press_Release",
+        "date": "2026-10-06",
+        "description": "收購 INVENTVM 半導體及其電源、音訊混合訊號 IP"
+      },
+      {
+        "id": "IR_FY2026",
+        "url": "https://s21.q4cdn.com/307563939/files/doc_financials/2026/q4/Q4-FY26-Shareholder-Letter.pdf",
+        "type": "Official_IR",
+        "date": "2026-05-06",
+        "description": "2026 全年股東信 PC 音訊擴展"
+      },
+      {
+        "id": "IR_Q1_FY2027",
+        "url": "https://www.sec.gov/Archives/edgar/data/772406/000077240626000036/shareholderletter.htm",
+        "type": "SEC_Official_IR",
+        "date": "2026-08-05",
+        "description": "FY2027 Q1 PC 零組件短缺與產品進度"
+      },
+      {
+        "id": "TW_MEDIATEK",
+        "url": "https://www.mediatek.com/zh-tw/company/subsidiary-information",
+        "type": "Official_Company",
+        "date": "2026-11-06",
+        "description": "聯發科旗下立錡電源管理與達發音訊產品"
+      },
+      {
+        "id": "TW_RICHTEK",
+        "url": "https://www.richtek.com/Home/Products/Power%20Management%20IC?ForceDevice=1&devicename=richtekweb&sc_lang=en",
+        "type": "Official_Product",
+        "date": "2026-11-06",
+        "description": "立錡 PMIC 產品應用"
+      },
+      {
+        "id": "TW_NOVATEK",
+        "url": "https://wwwc.twse.com.tw/pdf/en/3034_en.pdf",
+        "type": "TWSE_Official",
+        "date": "2026-05-23",
+        "description": "聯詠影像與顯示 IC 產品領域"
+      }
+    ]
   }
 }

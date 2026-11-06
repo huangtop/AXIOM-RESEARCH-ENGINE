@@ -316,5 +316,456 @@
       "能源轉換效率"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.v1",
+    "as_of": "2026-11-06",
+    "company": "onsemi",
+    "symbol": "ON",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "onsemi（ON）產業鏈、具名客戶、競爭者與台灣受惠股",
+      "description": "2025 10-K、2026 Q3 10-Q 與近三月重大併購及產品採用核對。"
+    },
+    "business_lines": [
+      {
+        "id": "PSG_SIC",
+        "name": "碳化矽功率半導體與 EliteSiC 模組",
+        "segment": "PSG"
+      },
+      {
+        "id": "PSG_POWER",
+        "name": "高壓電源轉換與功率模組",
+        "segment": "PSG"
+      },
+      {
+        "id": "PSG_EPP",
+        "name": "Embedded Power Platform 與 AI 電源",
+        "segment": "PSG"
+      },
+      {
+        "id": "AMG",
+        "name": "類比及混合訊號電源管理",
+        "segment": "AMG"
+      },
+      {
+        "id": "ISG",
+        "name": "車用及工業 CMOS 影像感測",
+        "segment": "ISG"
+      },
+      {
+        "id": "INDUSTRIAL",
+        "name": "工業能源儲存及逆變器",
+        "segment": "PSG"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "INDUSTRIAL_customer_001",
+        "business_line": "INDUSTRIAL",
+        "relationship": "customer",
+        "name": "Sungrow（陽光電源）",
+        "details": "陽光電源的 PowerTitan 3.0 大型儲能系統採用 onsemi EliteSiC 混合功率模組，以提升儲能變流效率與功率密度。",
+        "description": "陽光電源的 PowerTitan 3.0 大型儲能系統採用 onsemi EliteSiC 混合功率模組，以提升儲能變流效率與功率密度。",
+        "evidence_level": "official_explicit",
+        "source_ids": [
+          "IR_SUNGROW"
+        ]
+      },
+      {
+        "id": "PSG_EPP_partner_002",
+        "business_line": "PSG_EPP",
+        "relationship": "partner",
+        "name": "Subaru（速霸陸）",
+        "details": "Subaru 已取得 onsemi Embedded Power Platform 工程樣品與模擬模型，評估將其整合至下一代電動車電源架構。",
+        "description": "Subaru 已取得 onsemi Embedded Power Platform 工程樣品與模擬模型，評估將其整合至下一代電動車電源架構。",
+        "evidence_level": "official_evaluation_not_volume_purchase",
+        "source_ids": [
+          "IR_SUBARU"
+        ]
+      },
+      {
+        "id": "PSG_SIC_competitor_003",
+        "business_line": "PSG_SIC",
+        "relationship": "competitor",
+        "name": "Infineon Technologies",
+        "details": "英飛凌與 onsemi 在 SiC MOSFET、功率模組及車用高壓功率半導體市場直接競爭。",
+        "description": "英飛凌與 onsemi 在 SiC MOSFET、功率模組及車用高壓功率半導體市場直接競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "PSG_SIC_competitor_004",
+        "business_line": "PSG_SIC",
+        "relationship": "competitor",
+        "name": "STMicroelectronics",
+        "details": "意法半導體與 onsemi 在 SiC 功率元件、車用逆變器及功率半導體市場競爭。",
+        "description": "意法半導體與 onsemi 在 SiC 功率元件、車用逆變器及功率半導體市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "PSG_SIC_competitor_005",
+        "business_line": "PSG_SIC",
+        "relationship": "competitor",
+        "name": "Wolfspeed",
+        "details": "Wolfspeed 與 onsemi 在碳化矽材料及 SiC 功率元件市場競爭。",
+        "description": "Wolfspeed 與 onsemi 在碳化矽材料及 SiC 功率元件市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "PSG_POWER_competitor_006",
+        "business_line": "PSG_POWER",
+        "relationship": "competitor",
+        "name": "ROHM Semiconductor",
+        "details": "ROHM 與 onsemi 在功率元件、SiC MOSFET 及電動車功率模組市場競爭。",
+        "description": "ROHM 與 onsemi 在功率元件、SiC MOSFET 及電動車功率模組市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "PSG_POWER_competitor_007",
+        "business_line": "PSG_POWER",
+        "relationship": "competitor",
+        "name": "Nexperia",
+        "details": "Nexperia 與 onsemi 在功率分離元件、MOSFET 及車用半導體市場競爭。",
+        "description": "Nexperia 與 onsemi 在功率分離元件、MOSFET 及車用半導體市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "AMG_competitor_008",
+        "business_line": "AMG",
+        "relationship": "competitor",
+        "name": "Texas Instruments",
+        "details": "德州儀器與 onsemi 在類比電源管理、訊號鏈及工業混合訊號 IC 市場競爭。",
+        "description": "德州儀器與 onsemi 在類比電源管理、訊號鏈及工業混合訊號 IC 市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "AMG_competitor_009",
+        "business_line": "AMG",
+        "relationship": "competitor",
+        "name": "Analog Devices",
+        "details": "亞德諾與 onsemi 在高效能類比、電源管理及工業混合訊號 IC 市場競爭。",
+        "description": "亞德諾與 onsemi 在高效能類比、電源管理及工業混合訊號 IC 市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "AMG_competitor_010",
+        "business_line": "AMG",
+        "relationship": "competitor",
+        "name": "Renesas Electronics",
+        "details": "瑞薩與 onsemi 在車用電源管理、類比 IC 及工業半導體市場競爭。",
+        "description": "瑞薩與 onsemi 在車用電源管理、類比 IC 及工業半導體市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "AMG_competitor_011",
+        "business_line": "AMG",
+        "relationship": "competitor",
+        "name": "Monolithic Power Systems",
+        "details": "MPS 與 onsemi 在高效率電源管理 IC、AI 伺服器供電及高密度電源方案市場競爭。",
+        "description": "MPS 與 onsemi 在高效率電源管理 IC、AI 伺服器供電及高密度電源方案市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "AMG_competitor_012",
+        "business_line": "AMG",
+        "relationship": "competitor",
+        "name": "NXP Semiconductors",
+        "details": "恩智浦與 onsemi 在車用與工業類比、電源管理及嵌入式半導體市場競爭。",
+        "description": "恩智浦與 onsemi 在車用與工業類比、電源管理及嵌入式半導體市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "ISG_competitor_013",
+        "business_line": "ISG",
+        "relationship": "competitor",
+        "name": "Sony Semiconductor Solutions",
+        "details": "Sony 與 onsemi 在 CMOS 影像感測器及車用影像感測市場競爭。",
+        "description": "Sony 與 onsemi 在 CMOS 影像感測器及車用影像感測市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "ISG_competitor_014",
+        "business_line": "ISG",
+        "relationship": "competitor",
+        "name": "Samsung Electronics",
+        "details": "三星與 onsemi 在 CMOS 影像感測器及相關影像半導體市場競爭。",
+        "description": "三星與 onsemi 在 CMOS 影像感測器及相關影像半導體市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "ISG_competitor_015",
+        "business_line": "ISG",
+        "relationship": "competitor",
+        "name": "OmniVision（豪威科技）",
+        "details": "豪威與 onsemi 在車用及工業 CMOS 影像感測器市場競爭。",
+        "description": "豪威與 onsemi 在車用及工業 CMOS 影像感測器市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "PSG_POWER_beneficiary_016",
+        "business_line": "PSG_POWER",
+        "relationship": "beneficiary",
+        "name": "台達電（2308）",
+        "details": "台達電的 AI 資料中心高效率電源、電力分配及散熱產品受益於伺服器功率密度提升，與 onsemi 的電源效率需求具有同一成長驅動。",
+        "description": "台達電的 AI 資料中心高效率電源、電力分配及散熱產品受益於伺服器功率密度提升，與 onsemi 的電源效率需求具有同一成長驅動。",
+        "evidence_level": "industry_thesis_not_direct_transaction",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "research_note": "台灣產業受惠主題；非 onsemi 供應商或直接交易對手。"
+      },
+      {
+        "id": "PSG_POWER_beneficiary_017",
+        "business_line": "PSG_POWER",
+        "relationship": "beneficiary",
+        "name": "光寶科（2301）",
+        "details": "光寶科伺服器電源與高功率電源轉換產品受 AI 機櫃用電升級帶動，與 onsemi 功率元件市場共享電源升級趨勢。",
+        "description": "光寶科伺服器電源與高功率電源轉換產品受 AI 機櫃用電升級帶動，與 onsemi 功率元件市場共享電源升級趨勢。",
+        "evidence_level": "industry_thesis_not_direct_transaction",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "research_note": "台灣產業受惠主題；非 onsemi 供應商或直接交易對手。"
+      },
+      {
+        "id": "PSG_SIC_beneficiary_018",
+        "business_line": "PSG_SIC",
+        "relationship": "beneficiary",
+        "name": "漢磊（3707）",
+        "details": "漢磊的功率半導體與 SiC 製程業務受惠於電動車及工業高效率功率元件滲透，與 onsemi 具相近產業需求循環。",
+        "description": "漢磊的功率半導體與 SiC 製程業務受惠於電動車及工業高效率功率元件滲透，與 onsemi 具相近產業需求循環。",
+        "evidence_level": "industry_thesis_not_direct_transaction",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "research_note": "台灣產業受惠主題；非 onsemi 供應商或直接交易對手。"
+      },
+      {
+        "id": "PSG_SIC_beneficiary_019",
+        "business_line": "PSG_SIC",
+        "relationship": "beneficiary",
+        "name": "朋程（8255）",
+        "details": "朋程車用功率半導體產品受電動化與車載高效率功率轉換需求帶動，與 onsemi 的車用功率業務共享終端需求。",
+        "description": "朋程車用功率半導體產品受電動化與車載高效率功率轉換需求帶動，與 onsemi 的車用功率業務共享終端需求。",
+        "evidence_level": "industry_thesis_not_direct_transaction",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "research_note": "台灣產業受惠主題；非 onsemi 供應商或直接交易對手。"
+      },
+      {
+        "id": "ISG_beneficiary_020",
+        "business_line": "ISG",
+        "relationship": "beneficiary",
+        "name": "原相（3227）",
+        "details": "原相影像感測與光學感測 IC 受機器視覺與智慧感測應用成長帶動，與 onsemi 感測業務同屬感測半導體需求鏈。",
+        "description": "原相影像感測與光學感測 IC 受機器視覺與智慧感測應用成長帶動，與 onsemi 感測業務同屬感測半導體需求鏈。",
+        "evidence_level": "industry_thesis_not_direct_transaction",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "research_note": "台灣產業受惠主題；非 onsemi 供應商或直接交易對手。"
+      }
+    ],
+    "sources": {
+      "SEC_2025_10K": {
+        "tier": "A",
+        "title": "onsemi FY2025 Form 10-K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1097864/000109786426000006/on-20251231.htm",
+        "date": "2026-02-09"
+      },
+      "SEC_2026_Q3_10Q": {
+        "tier": "A",
+        "title": "onsemi Q3 2026 Form 10-Q",
+        "url": "https://www.sec.gov/Archives/edgar/data/1097864/000109786426000021/on-20261002.htm",
+        "date": "2026-11-02"
+      },
+      "IR_Q3_2026": {
+        "tier": "A",
+        "title": "onsemi Q3 2026 earnings",
+        "url": "https://investor.onsemi.com/news-releases/news-release-details/onsemi-reports-third-quarter-2026-results",
+        "date": "2026-11-02"
+      },
+      "IR_FERRIC": {
+        "tier": "A",
+        "title": "onsemi Ferric acquisition announcement",
+        "url": "https://www.onsemi.com/company/newsroom/news-and-insights/onsemi-to-acquire-ferric-establishing-leadership-in-power-delivery-for-next-generation-ai-processors",
+        "date": "2026-11-02"
+      },
+      "IR_SYNA": {
+        "tier": "A",
+        "title": "onsemi Synaptics revised merger",
+        "url": "https://www.onsemi.com/company/newsroom/news-and-insights/onsemi-and-synaptics-announce-revised-merger-agreement",
+        "date": "2026-10-01"
+      },
+      "IR_SUNGROW": {
+        "tier": "A",
+        "title": "Sungrow adopts EliteSiC in PowerTitan 3.0",
+        "url": "https://investor.onsemi.com/news-releases/news-release-details/onsemi-and-sungrow-advance-utility-scale-energy-storage",
+        "date": "2026-10-14"
+      },
+      "IR_SUBARU": {
+        "tier": "A",
+        "title": "Subaru EPP early engineering evaluation",
+        "url": "https://www.onsemi.com/company/newsroom/news-and-insights/subaru-to-evaluate-onsemi-s-embedded-power-platform-for-future-evs",
+        "date": "2026-09-16"
+      },
+      "IR_EPP": {
+        "tier": "A",
+        "title": "onsemi Embedded Power Platform launch",
+        "url": "https://www.onsemi.com/company/newsroom/news-and-insights/onsemi-introduces-the-embedded-power-platform-a-breakthrough-architecture-for-the-ai-era",
+        "date": "2026-09-16"
+      },
+      "IR_Q2_2026": {
+        "tier": "A",
+        "title": "onsemi Q2 2026 earnings",
+        "url": "https://www.onsemi.com/company/newsroom/news-and-insights/onsemi-reports-second-quarter-2026-results",
+        "date": "2026-08-03"
+      }
+    },
+    "research": {
+      "latest_quarter": {
+        "period": "2026 Q3",
+        "revenue_usd_million": 1722.3,
+        "revenue_yoy_pct": 11,
+        "ai_datacenter_revenue_yoy_pct": 175,
+        "source_ids": [
+          "IR_Q3_2026",
+          "SEC_2026_Q3_10Q"
+        ]
+      },
+      "recent_material_events": [
+        {
+          "date": "2026-11-02",
+          "event": "宣布以 6 億美元現金加最高 1.75 億美元里程碑對價收購 Ferric；預計 2026 年底完成，尚未完成。",
+          "source_ids": [
+            "IR_FERRIC"
+          ]
+        },
+        {
+          "date": "2026-10-01",
+          "event": "修訂收購 Synaptics 協議，現金每股 123 美元、交易約 57 億美元，預計 2027 年中完成，尚未完成。",
+          "source_ids": [
+            "IR_SYNA",
+            "SEC_2026_Q3_10Q"
+          ]
+        },
+        {
+          "date": "2026-10-14",
+          "event": "Sungrow PowerTitan 3.0 正式採用 EliteSiC 混合功率模組。",
+          "source_ids": [
+            "IR_SUNGROW"
+          ]
+        },
+        {
+          "date": "2026-09-16",
+          "event": "Subaru 評估 EPP 工程樣品，屬前期技術驗證，不等於量產訂單。",
+          "source_ids": [
+            "IR_SUBARU"
+          ]
+        }
+      ],
+      "supply_chain_screen": "本輪未取得可直接證實的具名台灣供應商交易，supplier 留空；台達電等只列 beneficiary。",
+      "customer_classification": "Sungrow 已產品採用列 customer；Subaru 僅 EPP 工程樣品評估，列 partner 而非量產客戶。",
+      "transcript_check": "已核對 2026-11-02 官方 Q3 法說活動及發布資料；未取得可獨立驗證的逐字稿全文。"
+    },
+    "five_gate_audit": {
+      "status": "PARTIAL",
+      "gates": [
+        {
+          "name": "SEC and financial",
+          "status": "PASS"
+        },
+        {
+          "name": "named relationship provenance",
+          "status": "PARTIAL"
+        },
+        {
+          "name": "Taiwan supplier strictness",
+          "status": "PASS"
+        },
+        {
+          "name": "recent 90-day news",
+          "status": "PASS"
+        },
+        {
+          "name": "100-source deep research",
+          "status": "NOT_MET"
+        }
+      ],
+      "reflection_rounds": [
+        {
+          "round": 1,
+          "finding": "10-K 列出 13 家競爭者，按 PSG／AMG／ISG 市場分組，避免競爭者空白。"
+        },
+        {
+          "round": 2,
+          "finding": "Subaru EPP 為工程驗證，不應描述為量產訂單；Sungrow 為明確平台採用。"
+        },
+        {
+          "round": 3,
+          "finding": "Ferric 與 Synaptics 均是已簽署但尚未完成的收購，不能當作已合併公司。"
+        },
+        {
+          "round": 4,
+          "finding": "台灣供應鏈需要具名直接交易證據；沒有就保持 supplier 空白，受惠股另列。"
+        },
+        {
+          "round": 5,
+          "finding": "2026 Q3 AI 資料中心成長 175% 為公司業務數據，不可推定任何台廠已取得 onsemi 訂單。"
+        }
+      ],
+      "limitations": [
+        "本輪來源數未達 100 份；未取得完整法說逐字稿。",
+        "未取得具名台灣直接供應商官方採購證據。",
+        "台灣受惠股為產業主題推論，未完成每家公司最新法說的逐一反向核實。"
+      ]
+    }
   }
 }

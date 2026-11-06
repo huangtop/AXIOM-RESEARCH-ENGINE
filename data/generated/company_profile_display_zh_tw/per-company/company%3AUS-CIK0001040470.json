@@ -211,5 +211,540 @@
       "高量產老化測試"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-05",
+    "company": "Aehr Test Systems",
+    "symbol": "AEHR",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "AEHR 產業鏈｜AI FOX-XP 晶圓級老化、Sonoma 封裝級測試、矽光子、台灣 OSAT",
+      "description": "SEC FY2026 10-K、2026-11-02 最新財報及法說逐字稿、2026 量產訂單與台灣部署；嚴格區分已交貨、已下單與待量產驗證。"
+    },
+    "business_lines": [
+      {
+        "id": "AI_WLBI",
+        "name": "AI 處理器 FOX-XP 晶圓級老化與 WaferPak",
+        "details": "九片 300mm 晶圓平行老化；已量產出貨的客戶需求與新客戶量產評估須分開"
+      },
+      {
+        "id": "AI_PLBI",
+        "name": "Sonoma AI 高功率封裝級老化",
+        "details": "2026Q1 已持續出貨 Sonoma 至台灣封測端；第二代 AI 處理器完成資格認證"
+      },
+      {
+        "id": "OPTICS",
+        "name": "矽光子／光 I/O 晶圓級老化",
+        "details": "FOX-XP、FOX-NP、WaferPak 已獲光互連領域重複量產訂單"
+      },
+      {
+        "id": "POWER",
+        "name": "SiC／GaN 功率元件測試",
+        "details": "電動車與功率半導體可靠度測試；不可將電動車品牌推成直接客戶"
+      },
+      {
+        "id": "MANUFACTURING",
+        "name": "美國最終組裝／東南亞委外製造／台灣部署",
+        "details": "封裝級 Sonoma 委外組裝後可直送台灣；晶圓級設備仍在美國最終組裝"
+      },
+      {
+        "id": "CONSUMABLES",
+        "name": "WaferPak 接觸器與自動對準機",
+        "details": "系統安裝後因新晶片版型更換產生接觸器重複採購需求"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "MANUFACTURING_acquired_001",
+        "name": "Incal Technology, Inc.",
+        "business_line": "MANUFACTURING",
+        "relationship": "partner",
+        "details": "Aehr 於 2024 年收購 Incal Technology，取得 Sonoma 高功率封裝級老化系統及 Tahoe、Echo 產品線，擴展 AI GPU、ASIC 與高效能處理器的封裝後老化測試業務。",
+        "evidence_level": "sec_completed_acquisition",
+        "commercialization": "acquired_closed",
+        "source_ids": [
+          "SEC_INCAL",
+          "IR_INCAL"
+        ],
+        "description": "2024-07-31 SEC 8-K 確認完成收購，取得 Sonoma 等高功率封裝級老化測試技術；Incal 是已收購子公司，非 AEHR 的外部採購客戶。"
+      },
+      {
+        "id": "AI_WLBI_competitor_002",
+        "name": "Advantest Corporation",
+        "business_line": "AI_WLBI",
+        "relationship": "competitor",
+        "details": "Advantest 提供半導體 SoC 與記憶體自動化測試設備，與 Aehr 在晶片量產測試設備市場競爭；Aehr 主要聚焦 FOX 晶圓級老化與 Sonoma 高功率封裝級老化。",
+        "evidence_level": "earnings_call_market_comparison",
+        "commercialization": "adjacent_competition",
+        "source_ids": [
+          "CALL_Q1"
+        ],
+        "description": "半導體測試設備相鄰競爭；93K ATE 與 FOX 長時間晶圓老化並非完全可替代。不得以競爭關係推論 AEHR 供應商。"
+      },
+      {
+        "id": "AI_WLBI_competitor_003",
+        "name": "Teradyne, Inc.",
+        "business_line": "AI_WLBI",
+        "relationship": "competitor",
+        "details": "Teradyne 以 UltraFLEX 等平台提供複雜半導體量產測試設備，與 Aehr 競爭晶片製造商的測試設備投資；Aehr 著重晶圓級與封裝級老化及可靠度篩選。",
+        "evidence_level": "market_comparison_not_direct_contract",
+        "commercialization": "adjacent_competition",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "description": "半導體 ATE 測試領域相鄰競爭；不宣稱全部 FOX 老化功能可替代。"
+      },
+      {
+        "id": "HISTORICAL_CUSTOMER_001",
+        "name": "Apple Inc.",
+        "business_line": "AI_WLBI",
+        "relationship": "customer",
+        "details": "Apple 是 Aehr FOX 測試平台客戶，雙方曾有晶圓級測試與老化設備的商業往來。",
+        "evidence_level": "ceo_explicitly_named_on_earnings_call",
+        "commercialization": "historical_confirmed_customer_not_current_2026_order_attribution",
+        "evidence_date": "2022-10-06",
+        "source_ids": [
+          "CALL_2022_APPLE_INTEL_ST"
+        ],
+        "description": "歷史 FOX 測試平台具名客戶；執行長稱其曾為該平台主要客戶且曾達營收 10% 門檻。不得推論為 2026 Sonoma AI ASIC 訂單買方。"
+      },
+      {
+        "id": "HISTORICAL_CUSTOMER_002",
+        "name": "Intel Corporation",
+        "business_line": "AI_WLBI",
+        "relationship": "customer",
+        "details": "Intel 是 Aehr FOX 測試平台的具名客戶，雙方曾有半導體晶圓測試與老化設備的商業往來。",
+        "evidence_level": "ceo_explicitly_named_on_earnings_call",
+        "commercialization": "historical_confirmed_customer_not_current_2026_order_attribution",
+        "evidence_date": "2022-10-06",
+        "source_ids": [
+          "CALL_2022_APPLE_INTEL_ST"
+        ],
+        "description": "歷史 FOX 測試平台具名客戶；執行長在 FY2023 Q1 法說直接列名。未證實參與 2026 AI 訂單。"
+      },
+      {
+        "id": "HISTORICAL_CUSTOMER_003",
+        "name": "STMicroelectronics N.V.",
+        "business_line": "AI_WLBI",
+        "relationship": "customer",
+        "details": "STMicroelectronics 是 Aehr FOX 測試平台的具名客戶，雙方曾有晶圓級半導體測試與老化設備的商業往來。",
+        "evidence_level": "ceo_explicitly_named_on_earnings_call",
+        "commercialization": "historical_confirmed_customer_not_current_2026_order_attribution",
+        "evidence_date": "2022-10-06",
+        "source_ids": [
+          "CALL_2022_APPLE_INTEL_ST"
+        ],
+        "description": "歷史 FOX 測試平台具名客戶；執行長在 FY2023 Q1 法說直接列名。不得視為 2026 光子新客戶。"
+      },
+      {
+        "id": "HISTORICAL_CUSTOMER_004",
+        "name": "onsemi",
+        "business_line": "POWER",
+        "relationship": "customer",
+        "details": "onsemi 是 Aehr 的具名客戶，雙方在功率半導體測試與老化設備領域有商業往來，相關應用包括碳化矽（SiC）元件的可靠度篩選。",
+        "evidence_level": "ceo_explicitly_named_on_earnings_call",
+        "commercialization": "historical_confirmed_customer_not_current_2026_order_attribution",
+        "evidence_date": "2022-01-06",
+        "source_ids": [
+          "CALL_2022_ONSEMI"
+        ],
+        "description": "執行長在 FY2022 Q2 法說直接確認 onsemi 是營收占比超過 10% 的客戶；與 SiC 功率元件老化測試相關。不能將 2026 新客戶訂單自動歸屬 onsemi。"
+      },
+      {
+        "id": "CHROMA",
+        "name": "Chroma ATE Inc.（致茂電子）",
+        "business_line": "POWER",
+        "relationship": "competitor",
+        "details": "致茂電子提供功率半導體與 SiC 元件測試、可靠度及燒機設備，與 Aehr FOX 晶圓級老化設備在功率元件測試市場競爭。",
+        "description": "致茂提供功率半導體／SiC 元件測試、可靠度與燒機相關設備，與 Aehr FOX 晶圓級老化在功率元件品質篩選的客戶設備預算上部分競爭；但致茂測試平台與 Aehr 全晶圓 WaferPak 接觸老化架構不同，未證實兩家公司逐案互相取代。",
+        "evidence_level": "industry_product_overlap_not_sec_named",
+        "source_ids": [
+          "SEC_10K"
+        ]
+      },
+      {
+        "id": "PENTAMASTER",
+        "name": "Pentamaster Corporation Berhad",
+        "business_line": "POWER",
+        "relationship": "competitor",
+        "details": "Pentamaster 提供半導體自動化測試及老化設備，與 Aehr FOX／Sonoma 在功率元件與封裝後可靠度測試設備市場競爭。",
+        "description": "Pentamaster 提供半導體自動化測試與老化設備，涵蓋功率元件與封裝後測試自動化；與 Aehr 的 FOX／Sonoma 在可靠度測試設備市場有相鄰競爭，但未取得公開資料證實雙方競逐同一筆 FOX-XP 訂單。",
+        "evidence_level": "industry_product_overlap_not_sec_named",
+        "source_ids": [
+          "SEC_10K"
+        ]
+      },
+      {
+        "id": "FORMFACTOR",
+        "name": "FormFactor, Inc.",
+        "business_line": "AI_WLBI",
+        "relationship": "competitor",
+        "details": "FormFactor 提供晶圓探針卡與晶圓接觸測試介面，與 Aehr WaferPak 全晶圓接觸器在晶圓測試接觸技術市場部分競爭。",
+        "description": "FormFactor 的晶圓探針卡與晶圓接觸測試技術，與 Aehr WaferPak 全晶圓接觸器在晶圓接觸及測試介面領域有技術重疊；FormFactor 主要供應探針卡，Aehr 供應整套高溫老化系統與專用接觸器，屬局部競爭而非整機同質對手。",
+        "evidence_level": "industry_product_overlap_not_sec_named",
+        "source_ids": [
+          "SEC_10K"
+        ]
+      },
+      {
+        "id": "AEHR_BENEFICIARY_ON",
+        "name": "onsemi",
+        "business_line": "POWER",
+        "relationship": "beneficiary",
+        "details": "onsemi 的 SiC 功率半導體產線可透過 Aehr FOX 晶圓級老化設備進行可靠度篩選，支援車用與工業功率元件的品質控制。",
+        "description": "onsemi 是 Aehr 歷史具名客戶，SiC 功率元件在車用逆變器、充電與工業電力轉換需進行可靠度篩選；若其 SiC 產能擴張，Aehr FOX 類設備可支援更高晶圓測試吞吐量。這是產能／良率的潛在受惠機制，不代表 onsemi 已公布新的 Aehr 採購單。",
+        "evidence_level": "historical_customer_plus_industry_mechanism",
+        "source_ids": [
+          "SEC_10K",
+          "CALL_2022_ONSEMI"
+        ]
+      },
+      {
+        "id": "AEHR_BENEFICIARY_ST",
+        "name": "STMicroelectronics N.V.",
+        "business_line": "POWER",
+        "relationship": "beneficiary",
+        "details": "STMicroelectronics 的功率半導體製造可透過 Aehr FOX 晶圓級老化設備提前篩除早期失效元件，提升後續封裝流程的測試效率。",
+        "description": "STMicroelectronics 是 Aehr 管理層歷史具名 FOX 客戶；功率半導體的高溫晶圓級老化有助於提前剔除早期失效元件、改善後段封裝成本與可靠度。其受惠於設備測試效率的機制合理，但不能推定 2026 年追加採購。",
+        "evidence_level": "historical_customer_plus_industry_mechanism",
+        "source_ids": [
+          "SEC_10K",
+          "CALL_2022_APPLE_INTEL_ST"
+        ]
+      }
+    ],
+    "research": {
+      "review_window": "2026-07-27/2026-11-05",
+      "latest_reported_period": "FY2027 Q1 ended 2026-09-25",
+      "financial_facts": {
+        "revenue_usd_millions": 33.0,
+        "revenue_growth_yoy_pct": 200,
+        "gaap_gross_margin_pct": 47.5,
+        "gaap_net_income_usd_millions": 7.2,
+        "non_gaap_net_income_usd_millions": 9.4,
+        "bookings_usd_millions": 46.7,
+        "quarter_end_backlog_usd_millions": 100.9,
+        "effective_backlog_as_of_2026_11_01_usd_millions": 109.3,
+        "fy2027_revenue_guidance_usd_millions": 150,
+        "fy2027_non_gaap_net_income_pct_of_revenue_guidance_min": 20,
+        "source_ids": [
+          "IR_Q1",
+          "CALL_Q1"
+        ]
+      },
+      "commercial_relationship_evidence": [
+        {
+          "business_line": "AI_WLBI",
+          "event_date": "2026-08-12",
+          "counterparty_type": "AI 處理器製造商",
+          "transaction": "2,200 萬美元 FOX-XP、WaferPak 追加量產訂單，設備預計六個月內交付台灣製造夥伴",
+          "status": "confirmed_order",
+          "named_company_verified": false,
+          "source_ids": [
+            "IR_WLBI"
+          ]
+        },
+        {
+          "business_line": "AI_PLBI",
+          "event_date": "2026-11-02",
+          "counterparty_type": "AI hyperscaler",
+          "transaction": "Sonoma 每月十餘套供應第一代 AI 處理器量產；第二代完成資格認證並有初期訂單，2027 年量產爬坡仍屬預期",
+          "status": "first_generation_production_second_generation_qualified",
+          "named_company_verified": false,
+          "source_ids": [
+            "IR_Q1",
+            "CALL_Q1"
+          ]
+        },
+        {
+          "business_line": "OPTICS",
+          "event_date": "2026-03-31/2026-07-09",
+          "counterparty_type": "光收發器及網通設備商",
+          "transaction": "FOX-XP、FOX-NP 及接觸器初次與多次追加量產訂單",
+          "status": "confirmed_repeated_orders",
+          "named_company_verified": false,
+          "source_ids": [
+            "IR_OPTICAL",
+            "IR_OPTICAL_FOLLOW",
+            "IR_OPTICAL_JUL",
+            "MEDIA_OPTICAL"
+          ]
+        },
+        {
+          "business_line": "MANUFACTURING",
+          "event_date": "2026-11-02",
+          "counterparty_type": "台灣 OSAT",
+          "transaction": "法說確認本季多套 Sonoma 已由東南亞委外製造端交付台灣 OSAT，並於新竹簽租約擴充客戶支援",
+          "status": "actual_deliveries_confirmed",
+          "named_company_verified": false,
+          "source_ids": [
+            "CALL_Q1",
+            "TECH_CALL"
+          ]
+        },
+        {
+          "business_line": "AI_WLBI",
+          "event_date": "2026-11-02",
+          "counterparty_type": "AI 加速器、CPU、網路處理器供應商",
+          "transaction": "已決定購買 FOX-XP test cell，預定 2027 年初裝於台灣 OSAT 進行高產量環境驗證；量產擴充尚未核准",
+          "status": "purchase_decision_production_validation_pending",
+          "named_company_verified": false,
+          "source_ids": [
+            "IR_Q1",
+            "CALL_Q1"
+          ]
+        }
+      ],
+      "customer_concentration": {
+        "fy2026_top_five_pct_approx": 70,
+        "fy2026_top_three_disclosed_pct_approx": [
+          26,
+          14,
+          11
+        ],
+        "source_ids": [
+          "SEC_10K"
+        ]
+      },
+      "production_model": {
+        "wafer_level_final_assembly": "美國 Fremont",
+        "sonoma_package_level_final_assembly": "東南亞委外製造商可完成整機組裝及直接交貨",
+        "taiwan_footprint": "台灣 OSAT 已接收 Sonoma；新竹支援團隊擴編",
+        "source_ids": [
+          "SEC_10K",
+          "CALL_Q1"
+        ]
+      },
+      "contract_name_validation": "逐筆搜尋 SEC、官方新聞、法說與獨立產業媒體，未獲可核實的企業客戶實名；不以推測企業充作 customer 節點。此限制意味本標的無法滿足「所有企業客戶必須具名」的嚴格完整性標準。",
+      "named_customer_findings": {
+        "verified_named_historical_customers": [
+          "Apple Inc.",
+          "Intel Corporation",
+          "STMicroelectronics N.V.",
+          "onsemi"
+        ],
+        "verification_basis": "AEHR CEO Gayn Erickson explicitly named these customers in FY2023 Q1 and FY2022 Q2 earnings calls; these are historical confirmed relationships, not 2026 order identification",
+        "current_2026_ai_order_customers_named": false,
+        "2026_customer_name_attribution": "Not established; do not map 2026 Sonoma, FOX-XP, or silicon photonics orders to historical named customers",
+        "taiwan_osat_name_verified": false,
+        "candidate_names_excluded": "William Blair offered Cisco, Broadcom, Marvell, Coherent, Lumentum as alternatives, not confirmed counterparty names"
+      },
+      "relationship_quality_standard": "details 必須寫出具體產品、交易或技術重疊與商業機制；不能用免責文字替代關係說明。具名歷史客戶不等於當期匿名大客戶。",
+      "current_named_customer_caveat": "FY2026 10-K 未具名當期主要客戶；2026-11-02 FY2027 Q1 的 Sonoma hyperscaler、FOX-XP AI 處理器與光子客戶均未公開公司名稱，禁止自行對應 AMD/NVIDIA/Google/Meta 等。",
+      "latest_confirmed_orders": [
+        {
+          "date": "2026-11-02",
+          "product": "Sonoma 高功率封裝級老化",
+          "details": "管理層表示每月交付並安裝超過十套，支援匿名 hyperscaler 第一款 AI 處理器量產；第二款已完成認證且取得初期訂單，2027 年量產仍屬預期。",
+          "source_ids": [
+            "IR_Q1"
+          ]
+        },
+        {
+          "date": "2026-11-02",
+          "product": "FOX-XP 晶圓級老化",
+          "details": "一家匿名 AI 加速器／CPU／網路處理器供應商通過基準評估，將採購 FOX-XP 測試單元並送至台灣 OSAT，預計 2027 年初安裝；尚非量產導入完成。",
+          "source_ids": [
+            "IR_Q1"
+          ]
+        },
+        {
+          "date": "2026-03-31",
+          "product": "FOX-XP / FOX-NP / WaferPak",
+          "details": "匿名全球網通供應商訂購 9 片晶圓平行 FOX-XP、FOX-NP、WaferPak 自動對準及接觸器，供矽光子光收發器工程驗證與量產。",
+          "source_ids": [
+            "IR_OPTICAL"
+          ]
+        },
+        {
+          "date": "2026-08-04",
+          "product": "FOX-XP 光子晶圓老化",
+          "details": "匿名既有矽光子客戶追加 9 片晶圓平行、每片最高 3500W 的全自動產線設備，預計 2027 上半年交付。",
+          "source_ids": [
+            "IR_OPTICAL_AUG"
+          ]
+        }
+      ],
+      "supplier_disclosure": "未發現具名、可反向驗證的 Aehr 零組件直接供應商；不得把台灣 OSAT（客戶代工夥伴）、已收購 Incal 或設備使用者假扮成直接供應商。"
+    },
+    "five_gate_audit": {
+      "gate_1_sec_and_filing": {
+        "performed": true,
+        "result": "pass",
+        "finding": "FY2026 10-K 客戶集中度及已完成 Incal 收購分別以 SEC 原文核對"
+      },
+      "gate_2_latest_quarter": {
+        "performed": true,
+        "result": "pass",
+        "finding": "FY2027 Q1 財報營收、毛利、淨利、訂單、backlog、全年指引分開"
+      },
+      "gate_3_named_relationships": {
+        "performed": true,
+        "result": "historical_named_customers_verified_current_orders_not_attributable",
+        "finding": "歷史具名客戶 Apple、Intel、STMicroelectronics、onsemi 各有管理層法說來源；2026/27 重大 AI/光子訂單仍匿名。競爭者為相鄰／局部產品競爭，未冒稱 SEC 逐一具名。"
+      },
+      "gate_4_technical_and_taiwan": {
+        "performed": true,
+        "result": "pass",
+        "finding": "已交貨台灣 Sonoma 與 2027 年初待安裝 FOX-XP 是不同專案，不可混為同一筆訂單"
+      },
+      "gate_5_reflection": {
+        "performed": true,
+        "rounds": [
+          {
+            "round": 1,
+            "issue": "將 OSAT 匿名視為無實際出貨",
+            "correction": "法說確認 Sonoma 本季已出貨至台灣 OSAT；另案 FOX-XP 尚待驗證"
+          },
+          {
+            "round": 2,
+            "issue": "將 Sonoma 第二代驗證當成已大規模量產",
+            "correction": "第一代已量產，第二代僅資格認證完成並取得初期訂單"
+          },
+          {
+            "round": 3,
+            "issue": "將 AI 處理器製造商和 hyperscaler 推為特定公司",
+            "correction": "無 SEC／官方／獨立財經報導證實時，不建立虛構 customer 節點"
+          },
+          {
+            "round": 4,
+            "issue": "將 1.093 億美元有效 backlog 視為季度營收",
+            "correction": "明列 3,300 萬營收、4,670 萬接單及兩種不同日期 backlog"
+          },
+          {
+            "round": 5,
+            "issue": "把 Incal 當供應商或尚未完成併購",
+            "correction": "依 2024-07-31 SEC 8-K 標為已完成收購業務"
+          },
+          {
+            "round": 6,
+            "issue": "先前認定完全沒有具名客戶",
+            "correction": "回溯管理層歷年法說，找出 Apple、Intel、STMicroelectronics、onsemi 四家執行長親口證實的歷史客戶"
+          },
+          {
+            "round": 7,
+            "issue": "把 2022 年歷史客戶視為 2026 年新訂單買方",
+            "correction": "客戶節點均標 historical_confirmed；2026 新訂單不歸屬任何未獲證實的公司"
+          },
+          {
+            "round": 8,
+            "issue": "將分析師列出的光通訊廠商候選名單當作成交對象",
+            "correction": "William Blair 使用候選公司清單，並非已確認訂單；不建立虛構客戶節點"
+          },
+          {
+            "round": 6,
+            "issue": "圖譜雖有節點卻只有空泛說明",
+            "correction": "所有節點提供具體 details，寫出產品、商業機制及已確認／未確認的界線"
+          }
+        ]
+      },
+      "gate_6_schema_preservation": {
+        "performed": true,
+        "result": "pass",
+        "finding": "原有 11 個頂層欄位以舊檔直接複製，只新增 industry_chain 為第 12 欄"
+      },
+      "overall_result": "qualified_for_frontend_display_with_explicit_evidence_gaps_not_100_source_pass",
+      "outstanding": "未達 100 份獨立來源審計；直接具名供應商缺乏公開證據，不虛構。"
+    },
+    "sources": [
+      {
+        "id": "SEC_10K",
+        "title": "SEC FY2026 Form 10-K",
+        "date": "2026-07-27",
+        "url": "https://www.sec.gov/Archives/edgar/data/1040470/000165495426006919/aehr_10k.htm"
+      },
+      {
+        "id": "IR_Q1",
+        "title": "FY2027 Q1 official results",
+        "date": "2026-11-02",
+        "url": "https://www.aehr.com/2026/11/aehr-test-systems-reports-record-first-quarter-fiscal-2027-revenue-of-33-0-million-raises-full-year-revenue-outlook-to-150-million-triple-fiscal-2026-revenue/"
+      },
+      {
+        "id": "CALL_Q1",
+        "title": "FY2027 Q1 earnings call transcript",
+        "date": "2026-11-02",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/11/03/aehr-test-systems-aehr-q1-2027-earnings-call-transcript/"
+      },
+      {
+        "id": "IR_WLBI",
+        "title": "AI processor $22M FOX-XP follow-on order",
+        "date": "2026-08-12",
+        "url": "https://www.aehr.com/2026/08/aehr-receives-22-million-follow-on-order-for-ai-processor-wafer-level-burn-in-systems/"
+      },
+      {
+        "id": "IR_OPTICAL",
+        "title": "New silicon photonics customer order",
+        "date": "2026-03-31",
+        "url": "https://www.aehr.com/2026/03/aehr-wins-major-new-silicon-photonics-customer-with-high-power-fox-xp-wafer-level-burn-in-system-for-hyperscale-data-center-optical-interconnect-market/"
+      },
+      {
+        "id": "IR_OPTICAL_FOLLOW",
+        "title": "Silicon photonics follow-on order",
+        "date": "2026-06-17",
+        "url": "https://www.aehr.com/2026/06/aehr-receives-follow-on-order-from-major-silicon-photonics-customer-for-fully-automated-wafer-level-burn-in-system-for-hyperscale-data-center-optical-interconnect/"
+      },
+      {
+        "id": "IR_OPTICAL_JUL",
+        "title": "Additional optical FOX-XP production order",
+        "date": "2026-07-09",
+        "url": "https://www.aehr.com/2026/07/aehr-receives-follow-on-production-order-from-lead-silicon-photonics-customer-for-fully-automated-fox-xp-wafer-level-burn-in-system/"
+      },
+      {
+        "id": "SEC_INCAL",
+        "title": "SEC 8-K acquisition completion",
+        "date": "2024-07-31",
+        "url": "https://www.sec.gov/Archives/edgar/data/1040470/000165495424009808/aehr_8k.htm"
+      },
+      {
+        "id": "IR_INCAL",
+        "title": "Incal acquisition completion announcement",
+        "date": "2024-08-01",
+        "url": "https://www.aehr.com/2024/07/aehr-test-systems-completes-acquisition-of-incal-technology/"
+      },
+      {
+        "id": "TECH_CALL",
+        "title": "Earnings call technical detail and Taiwan OSAT",
+        "date": "2026-11-02",
+        "url": "https://earningsapi.io/transcripts/aehr-test-systems-inc_aehr_earnings_call_transcript_2026-11-02"
+      },
+      {
+        "id": "MEDIA_OPTICAL",
+        "title": "Semiconductor Today independent report",
+        "date": "2026-06-18",
+        "url": "https://www.semiconductor-today.com/news_items/2026/jun/aehr-180626.shtml"
+      },
+      {
+        "id": "CALL_2022_APPLE_INTEL_ST",
+        "title": "AEHR FY2023 Q1 earnings call: CEO explicitly names Apple Intel STMicroelectronics as prior platform customers",
+        "date": "2022-10-06",
+        "url": "https://stockanalysis.com/stocks/aehr/transcripts/29638-q1-2023/"
+      },
+      {
+        "id": "CALL_2022_ONSEMI",
+        "title": "AEHR FY2022 Q2 earnings call: CEO confirms onsemi as >10% revenue customer",
+        "date": "2022-01-06",
+        "url": "https://www.marketbeat.com/earnings/reports/2022-1-6-aehr-test-systems-stock/"
+      },
+      {
+        "id": "MEDIA_2026_WILLIAM_BLAIR",
+        "title": "William Blair notes March 2026 optical customer is one of multiple candidates, not identified",
+        "date": "2026-03-31",
+        "url": "https://ca.investing.com/news/analyst-ratings/william-blair-reiterates-aehr-test-systems-stock-rating-on-new-ai-customer-win-93CH-4543305"
+      },
+      {
+        "id": "IR_OPTICAL_AUG",
+        "title": "Aehr silicon photonics follow-on production order",
+        "date": "2026-08-04",
+        "url": "https://www.aehr.com/2026/08/aehr-test-systems-expands-silicon-photonics-production-momentum-with-follow-on-production-order-from-lead-customer/"
+      }
+    ]
   }
 }

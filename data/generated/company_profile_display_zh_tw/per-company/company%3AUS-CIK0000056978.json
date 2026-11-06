@@ -554,5 +554,507 @@
       "機器人技術"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "as_of": "2026-11-06",
+    "company": "Kulicke and Soffa Industries",
+    "symbol": "KLIC",
+    "locale": "zh-TW",
+    "business_lines": [
+      {
+        "id": "wire_bond",
+        "name": "打線接合設備"
+      },
+      {
+        "id": "advanced_packaging",
+        "name": "先進封裝與 TCB"
+      },
+      {
+        "id": "consumables",
+        "name": "封裝耗材"
+      },
+      {
+        "id": "electronics_assembly",
+        "name": "退出中電子組裝設備"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "cust_huatian",
+        "business_line": "wire_bond",
+        "relationship": "customer",
+        "name": "天水華天科技",
+        "description": "天水華天科技為 K&S 具名設備客戶，2026 財年前九個月占 K&S 營收 13.8%，為已發生的直接採購關係。",
+        "details": "天水華天科技為 K&S 具名設備客戶，2026 財年前九個月占 K&S 營收 13.8%，為已發生的直接採購關係。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s02"
+        ]
+      },
+      {
+        "id": "cust_haoseng",
+        "business_line": "wire_bond",
+        "relationship": "customer",
+        "name": "Haoseng Industrial",
+        "description": "Haoseng Industrial 為 K&S 具名客戶，2026 財年前九個月占 K&S 營收 14.8%，且期末應收帳款占比 26.1%。",
+        "details": "Haoseng Industrial 為 K&S 具名客戶，2026 財年前九個月占 K&S 營收 14.8%，且期末應收帳款占比 26.1%。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s02"
+        ]
+      },
+      {
+        "id": "cust_changjin",
+        "business_line": "wire_bond",
+        "relationship": "customer",
+        "name": "Changjin Technology (Shanghai)",
+        "description": "上海暢金科技為 K&S 具名客戶，2026 財年前九個月占 K&S 營收 10.4%，證實實際銷售關係。",
+        "details": "上海暢金科技為 K&S 具名客戶，2026 財年前九個月占 K&S 營收 10.4%，證實實際銷售關係。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s02"
+        ]
+      },
+      {
+        "id": "cust_forehope",
+        "business_line": "wire_bond",
+        "relationship": "customer",
+        "name": "Forehope Electronic (Ningbo)",
+        "description": "甬矽電子於 2025 年 6 月期末占 K&S 應收帳款 16.2%，屬歷史已發生銷售關係；2026 年 7 月占比已低於揭露門檻。",
+        "details": "甬矽電子於 2025 年 6 月期末占 K&S 應收帳款 16.2%，屬歷史已發生銷售關係；2026 年 7 月占比已低於揭露門檻。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s02"
+        ],
+        "historical": true
+      },
+      {
+        "id": "comp_01",
+        "business_line": "wire_bond",
+        "relationship": "competitor",
+        "name": "ASMPT",
+        "description": "ASMPT 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為封裝設備與打線／先進封裝設備。",
+        "details": "ASMPT 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為封裝設備與打線／先進封裝設備。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "comp_02",
+        "business_line": "wire_bond",
+        "relationship": "competitor",
+        "name": "Hesse GmbH",
+        "description": "Hesse GmbH 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為楔形打線及超音波接合設備。",
+        "details": "Hesse GmbH 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為楔形打線及超音波接合設備。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "comp_03",
+        "business_line": "wire_bond",
+        "relationship": "competitor",
+        "name": "Han’s Laser Technology",
+        "description": "Han’s Laser Technology 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為雷射及半導體封裝相關設備。",
+        "details": "Han’s Laser Technology 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為雷射及半導體封裝相關設備。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "comp_04",
+        "business_line": "advanced_packaging",
+        "relationship": "competitor",
+        "name": "BE Semiconductor Industries (BESI)",
+        "description": "BE Semiconductor Industries (BESI) 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為先進封裝及混合接合設備。",
+        "details": "BE Semiconductor Industries (BESI) 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為先進封裝及混合接合設備。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "comp_05",
+        "business_line": "wire_bond",
+        "relationship": "competitor",
+        "name": "Hanwha Precision Machinery",
+        "description": "Hanwha Precision Machinery 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為封裝組裝與貼裝設備。",
+        "details": "Hanwha Precision Machinery 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為封裝組裝與貼裝設備。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "comp_06",
+        "business_line": "wire_bond",
+        "relationship": "competitor",
+        "name": "Panasonic Holdings",
+        "description": "Panasonic Holdings 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為電子封裝與精密組裝設備。",
+        "details": "Panasonic Holdings 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為電子封裝與精密組裝設備。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "comp_07",
+        "business_line": "wire_bond",
+        "relationship": "competitor",
+        "name": "Yamaha Robotics Holdings",
+        "description": "Yamaha Robotics Holdings 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為電子組裝與自動化設備。",
+        "details": "Yamaha Robotics Holdings 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為電子組裝與自動化設備。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "comp_08",
+        "business_line": "advanced_packaging",
+        "relationship": "competitor",
+        "name": "Nordson",
+        "description": "Nordson 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為精密封裝製程與點膠設備。",
+        "details": "Nordson 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為精密封裝製程與點膠設備。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "comp_09",
+        "business_line": "consumables",
+        "relationship": "competitor",
+        "name": "PECO Co., Ltd.",
+        "description": "PECO Co., Ltd. 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為封裝耗材。",
+        "details": "PECO Co., Ltd. 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為封裝耗材。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "comp_10",
+        "business_line": "consumables",
+        "relationship": "competitor",
+        "name": "DISCO Corporation",
+        "description": "DISCO Corporation 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為晶片加工及封裝耗材。",
+        "details": "DISCO Corporation 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為晶片加工及封裝耗材。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "comp_11",
+        "business_line": "consumables",
+        "relationship": "competitor",
+        "name": "Small Precision Tools",
+        "description": "Small Precision Tools 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為打線毛細管及精密工具。",
+        "details": "Small Precision Tools 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為打線毛細管及精密工具。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "comp_12",
+        "business_line": "consumables",
+        "relationship": "competitor",
+        "name": "Chaozhou Three-Circle",
+        "description": "Chaozhou Three-Circle 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為陶瓷封裝材料及工具。",
+        "details": "Chaozhou Three-Circle 為 K&S 2025 年 10-K 明列競爭者，競爭範圍為陶瓷封裝材料及工具。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "benef_3711",
+        "business_line": "advanced_packaging",
+        "relationship": "beneficiary",
+        "name": "日月光投控",
+        "description": "日月光投控（3711）與 K&S 的關聯是產業受惠：先進封裝、測試與高階互連資本支出提高 TCB、打線與封裝設備需求；無證據證明其直接供貨 K&S。",
+        "details": "日月光投控（3711）與 K&S 的關聯是產業受惠：先進封裝、測試與高階互連資本支出提高 TCB、打線與封裝設備需求；無證據證明其直接供貨 K&S。",
+        "evidence_level": "B",
+        "source_ids": [
+          "s05",
+          "s06",
+          "s07"
+        ],
+        "ticker": "3711",
+        "direct_supplier_verified": false
+      },
+      {
+        "id": "benef_2449",
+        "business_line": "advanced_packaging",
+        "relationship": "beneficiary",
+        "name": "京元電子",
+        "description": "京元電子（2449）與 K&S 的關聯是產業受惠：AI 與記憶體測試產能投資與半導體設備景氣同步；無證據證明其直接供貨 K&S。",
+        "details": "京元電子（2449）與 K&S 的關聯是產業受惠：AI 與記憶體測試產能投資與半導體設備景氣同步；無證據證明其直接供貨 K&S。",
+        "evidence_level": "B",
+        "source_ids": [
+          "s05",
+          "s06",
+          "s07"
+        ],
+        "ticker": "2449",
+        "direct_supplier_verified": false
+      },
+      {
+        "id": "benef_6239",
+        "business_line": "advanced_packaging",
+        "relationship": "beneficiary",
+        "name": "力成科技",
+        "description": "力成科技（6239）與 K&S 的關聯是產業受惠：記憶體封裝及先進封裝產能與封裝設備需求同向；無證據證明其直接供貨 K&S。",
+        "details": "力成科技（6239）與 K&S 的關聯是產業受惠：記憶體封裝及先進封裝產能與封裝設備需求同向；無證據證明其直接供貨 K&S。",
+        "evidence_level": "B",
+        "source_ids": [
+          "s05",
+          "s06",
+          "s07"
+        ],
+        "ticker": "6239",
+        "direct_supplier_verified": false
+      },
+      {
+        "id": "benef_6257",
+        "business_line": "advanced_packaging",
+        "relationship": "beneficiary",
+        "name": "矽格",
+        "description": "矽格（6257）與 K&S 的關聯是產業受惠：封測設備投資受半導體產能利用率與高階封裝需求影響；無證據證明其直接供貨 K&S。",
+        "details": "矽格（6257）與 K&S 的關聯是產業受惠：封測設備投資受半導體產能利用率與高階封裝需求影響；無證據證明其直接供貨 K&S。",
+        "evidence_level": "B",
+        "source_ids": [
+          "s05",
+          "s06",
+          "s07"
+        ],
+        "ticker": "6257",
+        "direct_supplier_verified": false
+      },
+      {
+        "id": "benef_6187",
+        "business_line": "advanced_packaging",
+        "relationship": "beneficiary",
+        "name": "萬潤",
+        "description": "萬潤（6187）與 K&S 的關聯是產業受惠：台灣半導體封裝自動化設備同業，受先進封裝投資擴張帶動；無證據證明其直接供貨 K&S。",
+        "details": "萬潤（6187）與 K&S 的關聯是產業受惠：台灣半導體封裝自動化設備同業，受先進封裝投資擴張帶動；無證據證明其直接供貨 K&S。",
+        "evidence_level": "B",
+        "source_ids": [
+          "s05",
+          "s06",
+          "s07"
+        ],
+        "ticker": "6187",
+        "direct_supplier_verified": false
+      },
+      {
+        "id": "benef_6640",
+        "business_line": "advanced_packaging",
+        "relationship": "beneficiary",
+        "name": "均華",
+        "description": "均華（6640）與 K&S 的關聯是產業受惠：封裝設備與先進製程自動化投資的同產業受惠標的；無證據證明其直接供貨 K&S。",
+        "details": "均華（6640）與 K&S 的關聯是產業受惠：封裝設備與先進製程自動化投資的同產業受惠標的；無證據證明其直接供貨 K&S。",
+        "evidence_level": "B",
+        "source_ids": [
+          "s05",
+          "s06",
+          "s07"
+        ],
+        "ticker": "6640",
+        "direct_supplier_verified": false
+      }
+    ],
+    "corporate_events": [
+      {
+        "id": "event_ea_exit",
+        "date": "2025-03-25",
+        "event_type": "business_exit",
+        "status": "winding_down",
+        "title": "退出電子組裝設備業務",
+        "details": "2025 年董事會批准停止 EA 設備業務；2026 年 7 月 10-Q 顯示仍在履行最後訂單及售後服務，不能視為已完全退出。",
+        "source_ids": [
+          "s02"
+        ]
+      },
+      {
+        "id": "event_cpo",
+        "date": "2026-09-01",
+        "event_type": "product_strategy",
+        "status": "announced",
+        "title": "TCB 先進封裝進入 CPO 應用",
+        "details": "公司公告熱壓接合設備瞄準共同封裝光學；未公開具名 NVIDIA 採購或 CPO 訂單，故不建立 NVIDIA 客戶節點。",
+        "source_ids": [
+          "s05"
+        ]
+      },
+      {
+        "id": "event_ceo",
+        "date": "2026-08-17",
+        "event_type": "leadership",
+        "status": "announced",
+        "title": "任命 Raj Talluri 為總裁暨執行長",
+        "details": "公司 IR 公告新任總裁暨執行長；屬經營團隊變動，不屬收購或新客戶。",
+        "source_ids": [
+          "s04"
+        ]
+      },
+      {
+        "id": "event_q3",
+        "date": "2026-08-05",
+        "event_type": "earnings",
+        "status": "reported",
+        "title": "FY2026 Q3 營收 3.304 億美元",
+        "details": "第三季營收 3.304 億美元，年增約 122.6%；第四季公司指引 3.75 億美元正負 0.20 億美元，尚非實際營收。",
+        "source_ids": [
+          "s03"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "s01",
+        "tier": "A",
+        "title": "SEC FY2025 10-K",
+        "date": "2025-11-20",
+        "url": "https://www.sec.gov/Archives/edgar/data/56978/000005697825000081/klic-20251004.htm"
+      },
+      {
+        "id": "s02",
+        "tier": "A",
+        "title": "SEC FY2026 Q3 10-Q",
+        "date": "2026-08-06",
+        "url": "https://www.sec.gov/Archives/edgar/data/56978/000005697826000032/klic-20260704.htm"
+      },
+      {
+        "id": "s03",
+        "tier": "A",
+        "title": "SEC FY2026 Q3 earnings",
+        "date": "2026-08-05",
+        "url": "https://www.sec.gov/Archives/edgar/data/56978/000005697826000030/ex991liveq32026.htm"
+      },
+      {
+        "id": "s04",
+        "tier": "A",
+        "title": "K&S official IR news and governance",
+        "date": "2026-11-06",
+        "url": "https://investor.kns.com/"
+      },
+      {
+        "id": "s05",
+        "tier": "A",
+        "title": "K&S CPO TCB announcement",
+        "date": "2026-09-01",
+        "url": "https://www.prnewswire.com/news-releases/kulicke--soffa-advances-ai-infrastructure-through-co-packaged-optics-cpo-and-advanced-packaging-leadership-302865846.html"
+      },
+      {
+        "id": "s06",
+        "tier": "B",
+        "title": "TrendForce CPO volume ramp",
+        "date": "2026-07-27",
+        "url": "https://www.trendforce.com/presscenter/news/20260727-13151.html"
+      },
+      {
+        "id": "s07",
+        "tier": "C",
+        "title": "CTIMES Taiwan K&S packaging",
+        "date": "2024-09-04",
+        "url": "https://ctimes.com.tw/DispNews-tw.asp?O=HK894BZSR2MSAA00NO"
+      },
+      {
+        "id": "s08",
+        "tier": "A",
+        "title": "SEMI Taiwan 2026 K&S exhibitor",
+        "date": "2026-09-01",
+        "url": "https://expo.semi.org/taiwan2026/public/eBooth.aspx?BoothID=655471&FromPage=Exhibitors.aspx&IndexInList=535&ListByBooth=true"
+      },
+      {
+        "id": "s09",
+        "tier": "A",
+        "title": "K&S annual report directory",
+        "date": "2026-11-06",
+        "url": "https://investor.kns.com/annual-reports"
+      },
+      {
+        "id": "s10",
+        "tier": "A",
+        "title": "K&S SEC filing index",
+        "date": "2026-11-06",
+        "url": "https://investor.kns.com/sec-filings?cat=2"
+      },
+      {
+        "id": "s11",
+        "tier": "B",
+        "title": "SEC-based KLIC customer analysis",
+        "date": "2026-11-06",
+        "url": "https://thebuildout.co/company/KLIC"
+      },
+      {
+        "id": "s12",
+        "tier": "B",
+        "title": "KLIC earnings release chronology",
+        "date": "2026-11-06",
+        "url": "https://www.marketbeat.com/stocks/NASDAQ/KLIC/earnings/"
+      }
+    ],
+    "research_audit": {
+      "status": "PARTIAL",
+      "source_count": 12,
+      "reflection_rounds": [
+        {
+          "round": 1,
+          "focus": "SEC 10-K 業務與競爭",
+          "result": "設備與耗材競爭者分開，12 家均以 10-K 具名為依據。"
+        },
+        {
+          "round": 2,
+          "focus": "最新 10-Q 客戶營收",
+          "result": "加入天水華天、Haoseng、暢金與歷史甬矽；不把市場猜測寫成客戶。"
+        },
+        {
+          "round": 3,
+          "focus": "最近三個月新聞",
+          "result": "納入 CPO TCB、CEO 異動、季報；沒有查證到可確認的重大收購完成或具名客戶流失。"
+        },
+        {
+          "round": 4,
+          "focus": "業務退出與時點",
+          "result": "EA 業務退出仍有最後訂單與服務，不能寫為已完全結束。"
+        },
+        {
+          "round": 5,
+          "focus": "台灣供應鏈與受惠股",
+          "result": "台灣封測與設備公司僅列產業受惠；K&S 新竹據點不是台灣上市供應商。"
+        },
+        {
+          "round": 6,
+          "focus": "前端關係節點可見性",
+          "result": "客戶與競爭者建成 nodes；重大產品及退出事件另列 corporate_events。"
+        },
+        {
+          "round": 7,
+          "focus": "來源與未核實事項",
+          "result": "尚無足夠直接證據建立台灣供應商，並未取得最新完整法說逐字稿。"
+        }
+      ],
+      "limitations": [
+        "未逐一完成 100 個獨立來源查核",
+        "台灣受惠標的為產業推論，非 K&S 直接交易對手",
+        "沒有確認 K&S 對 NVIDIA 或台積電具名銷售",
+        "2026 財年第四季財報截至 11 月 6 日尚未發布"
+      ]
+    }
   }
 }

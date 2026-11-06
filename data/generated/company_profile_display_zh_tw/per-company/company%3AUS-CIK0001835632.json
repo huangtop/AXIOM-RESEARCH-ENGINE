@@ -213,59 +213,50 @@
     "strategy_changes": []
   },
   "industry_chain": {
-    "schema_version": "axiom-industry-chain.research.v1",
-    "as_of": "2026-11-03",
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "as_of": "2026-11-06",
     "company": "Marvell Technology, Inc.",
     "symbol": "MRVL",
     "locale": "zh-TW",
     "seo": {
-      "title": "Marvell（MRVL）產業鏈：客製化 ASIC、光互連、CXL、Lumentum 待交割收購與全球產業受惠",
-      "description": "追蹤 Marvell ASIC、DSP、Photonic Fabric、CXL 與 2026-11-02 公告之 Lumentum 全股票收購案；收購仍待交割，不將 LITE 誤列為既有子公司或供應商。"
+      "title": "Marvell MRVL 產業鏈｜客戶、競爭者、供應商與台灣受惠股",
+      "description": "依 SEC、公司公告與最新併購事件整理 Marvell 客製化 AI ASIC、光通訊與資料中心互連產業鏈。"
     },
     "business_lines": [
       {
-        "id": "ASIC",
-        "name": "客製化 AI ASIC／XPU"
+        "id": "CUSTOM_ASIC",
+        "name": "客製化 AI ASIC／XPU",
+        "description": "資料中心客製化 AI 推論／運算 ASIC、TPU 周邊控制器"
       },
       {
-        "id": "OPTICAL",
-        "name": "PAM4／相干光 DSP 與光通訊"
+        "id": "OPTICAL_DSP",
+        "name": "光通訊 DSP／SerDes",
+        "description": "PAM4 光 DSP、高速 SerDes、1.6T AEC DSP"
       },
       {
-        "id": "SCALEUP",
-        "name": "Photonic Fabric／光學 Scale-up"
-      },
-      {
-        "id": "CXL",
-        "name": "PCIe／CXL／UALink 交換"
-      },
-      {
-        "id": "ETH",
-        "name": "Prestera／Alaska 乙太網路"
+        "id": "ETHERNET",
+        "name": "資料中心乙太網路",
+        "description": "Prestera 交換器、Alaska PHY 與高速網路晶片"
       },
       {
         "id": "DPU",
-        "name": "OCTEON DPU 與安全"
+        "name": "DPU／基礎設施處理器",
+        "description": "OCTEON DPU、網路卸載及安全"
       },
       {
         "id": "STORAGE",
-        "name": "Bravera 儲存控制器"
+        "name": "儲存與記憶體互連",
+        "description": "Bravera 控制器、記憶體介面與 CXL"
       },
       {
-        "id": "SERDES",
-        "name": "高速 SerDes／Retimer／AEC"
-      },
-      {
-        "id": "PACKAGING",
-        "name": "晶圓代工與先進封裝"
+        "id": "PHOTONICS",
+        "name": "矽光子／光學互連",
+        "description": "光學 I/O、光引擎與光學整合"
       },
       {
         "id": "CARRIER",
-        "name": "電信與資料中心互連"
-      },
-      {
-        "id": "OPTICAL_MA",
-        "name": "Lumentum（LITE）待交割收購／光學垂直整合（非現有營收）"
+        "name": "電信／企業網路",
+        "description": "電信設備、企業交換與路由晶片"
       }
     ],
     "relationship_categories": [
@@ -277,502 +268,624 @@
     ],
     "nodes": [
       {
-        "id": "ASIC_partner_002",
-        "name": "NVIDIA（NVDA）",
-        "business_line": "ASIC",
-        "relationship": "partner",
-        "details": "2026 年官方揭露策略合作，將客製化 XPU 與相容 scale-up 網路連接至 NVIDIA AI 生態。"
+        "id": "CUSTOM_ASIC_customer_001",
+        "business_line": "CUSTOM_ASIC",
+        "relationship": "customer",
+        "name": "Google（Alphabet）",
+        "details": "Google 與 Marvell 簽訂客製化半導體商業協議，涵蓋 TPU 生態系的 AI 推論加速器、儲存控制器、網路介面與記憶體介面控制晶片。",
+        "description": "Google 與 Marvell 簽訂客製化半導體商業協議，涵蓋 TPU 生態系的 AI 推論加速器、儲存控制器、網路介面與記憶體介面控制晶片。",
+        "evidence_level": "official_direct",
+        "source_ids": [
+          "SEC_GOOGLE_8K"
+        ]
       },
       {
-        "id": "ASIC_partner_003",
-        "name": "Arm（ARM）",
-        "business_line": "ASIC",
-        "relationship": "partner",
-        "details": "Marvell ASIC 平台可整合 Arm 運算 IP，屬架構／技術生態合作。"
+        "id": "CUSTOM_ASIC_customer_002",
+        "business_line": "CUSTOM_ASIC",
+        "relationship": "customer",
+        "name": "Amazon Web Services（AWS）",
+        "details": "AWS 與 Marvell 簽訂五年、多世代供應協議，採用其客製化 AI 晶片、光通訊 DSP、AEC DSP、PCIe retimer 與乙太網路交換晶片。",
+        "description": "AWS 與 Marvell 簽訂五年、多世代供應協議，採用其客製化 AI 晶片、光通訊 DSP、AEC DSP、PCIe retimer 與乙太網路交換晶片。",
+        "evidence_level": "official_direct",
+        "source_ids": [
+          "AWS_RELEASE"
+        ]
       },
       {
-        "id": "CXL_partner_004",
-        "name": "UALink Consortium",
-        "business_line": "CXL",
+        "id": "DPU_partner_001",
+        "business_line": "DPU",
         "relationship": "partner",
-        "details": "Marvell 參與開放式 AI scale-up 互連規格生態。"
+        "name": "Microsoft",
+        "details": "Microsoft 與 Marvell、Oracle 共同成立 OCP 資料中心硬體安全標準工作小組，合作推進雲端硬體安全規範。",
+        "description": "Microsoft 與 Marvell、Oracle 共同成立 OCP 資料中心硬體安全標準工作小組，合作推進雲端硬體安全規範。",
+        "evidence_level": "official_direct",
+        "source_ids": [
+          "OCP_RELEASE"
+        ]
       },
       {
-        "id": "ETH_partner_005",
-        "name": "Microsoft（MSFT）",
-        "business_line": "ETH",
+        "id": "DPU_partner_002",
+        "business_line": "DPU",
         "relationship": "partner",
-        "details": "2026 年與 Oracle、Marvell 推動 OCP 資料中心硬體安全標準工作小組。"
+        "name": "Oracle",
+        "details": "Oracle 與 Marvell、Microsoft 共同推動 OCP 資料中心硬體安全標準工作小組。",
+        "description": "Oracle 與 Marvell、Microsoft 共同推動 OCP 資料中心硬體安全標準工作小組。",
+        "evidence_level": "official_direct",
+        "source_ids": [
+          "OCP_RELEASE"
+        ]
       },
       {
-        "id": "ETH_partner_006",
-        "name": "Oracle（ORCL）",
-        "business_line": "ETH",
-        "relationship": "partner",
-        "details": "2026 年與 Microsoft、Marvell 推動 OCP 資料中心硬體安全標準工作小組。"
-      },
-      {
-        "id": "PACKAGING_supplier_007",
-        "name": "台積電（2330／TSM）",
-        "business_line": "PACKAGING",
+        "id": "CUSTOM_ASIC_supplier_001",
+        "business_line": "CUSTOM_ASIC",
         "relationship": "supplier",
-        "details": "2026 Q2 10-Q 指出台積電是全部先進製程晶圓的唯一晶圓代工來源。"
+        "name": "台積電 TSMC（2330）",
+        "details": "台積電是 Marvell 先進製程晶圓的唯一晶圓代工來源，雙方另有多年期晶圓產能預留協議。",
+        "description": "台積電是 Marvell 先進製程晶圓的唯一晶圓代工來源，雙方另有多年期晶圓產能預留協議。",
+        "evidence_level": "official_direct",
+        "source_ids": [
+          "SEC_10Q_AUG"
+        ]
       },
       {
-        "id": "ASIC_competitor_008",
-        "name": "博通 Broadcom（AVGO）",
-        "business_line": "ASIC",
+        "id": "CUSTOM_ASIC_competitor_001",
+        "business_line": "CUSTOM_ASIC",
         "relationship": "competitor",
-        "details": "在資料中心客製化 ASIC、AI 加速器或相關設計服務市場存在產品／技術競爭。"
+        "name": "Broadcom",
+        "details": "Broadcom 與 Marvell 在客製化 AI ASIC、交換晶片與高速 SerDes市場競爭。",
+        "description": "Broadcom 與 Marvell 在客製化 AI ASIC、交換晶片與高速 SerDes市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
       },
       {
-        "id": "ASIC_competitor_009",
-        "name": "輝達 NVIDIA（NVDA）",
-        "business_line": "ASIC",
+        "id": "CUSTOM_ASIC_competitor_002",
+        "business_line": "CUSTOM_ASIC",
         "relationship": "competitor",
-        "details": "在資料中心客製化 ASIC、AI 加速器或相關設計服務市場存在產品／技術競爭。"
-      },
-      {
-        "id": "ASIC_competitor_010",
-        "name": "超微 AMD（AMD）",
-        "business_line": "ASIC",
-        "relationship": "competitor",
-        "details": "在資料中心客製化 ASIC、AI 加速器或相關設計服務市場存在產品／技術競爭。"
-      },
-      {
-        "id": "ASIC_competitor_011",
         "name": "Alchip 世芯-KY（3661）",
-        "business_line": "ASIC",
-        "relationship": "competitor",
-        "details": "在資料中心客製化 ASIC、AI 加速器或相關設計服務市場存在產品／技術競爭。"
+        "details": "Alchip 世芯-KY（3661） 與 Marvell 在客製化 ASIC 設計服務與 AI 晶片開發市場競爭。",
+        "description": "Alchip 世芯-KY（3661） 與 Marvell 在客製化 ASIC 設計服務與 AI 晶片開發市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
       },
       {
-        "id": "ASIC_competitor_012",
-        "name": "創意電子（3443）",
-        "business_line": "ASIC",
+        "id": "CUSTOM_ASIC_competitor_003",
+        "business_line": "CUSTOM_ASIC",
         "relationship": "competitor",
-        "details": "在資料中心客製化 ASIC、AI 加速器或相關設計服務市場存在產品／技術競爭。"
+        "name": "GUC 創意電子（3443）",
+        "details": "GUC 創意電子（3443） 與 Marvell 在客製化 ASIC／SoC 設計服務市場競爭。",
+        "description": "GUC 創意電子（3443） 與 Marvell 在客製化 ASIC／SoC 設計服務市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
       },
       {
-        "id": "ASIC_competitor_013",
-        "name": "智原科技（3035）",
-        "business_line": "ASIC",
+        "id": "CUSTOM_ASIC_competitor_004",
+        "business_line": "CUSTOM_ASIC",
         "relationship": "competitor",
-        "details": "在資料中心客製化 ASIC、AI 加速器或相關設計服務市場存在產品／技術競爭。"
+        "name": "MediaTek 聯發科（2454）",
+        "details": "MediaTek 聯發科（2454） 與 Marvell 在資料中心 ASIC 與高速網路晶片市場競爭。",
+        "description": "MediaTek 聯發科（2454） 與 Marvell 在資料中心 ASIC 與高速網路晶片市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
       },
       {
-        "id": "OPTICAL_competitor_014",
-        "name": "Broadcom（AVGO）",
-        "business_line": "OPTICAL",
+        "id": "CUSTOM_ASIC_competitor_005",
+        "business_line": "CUSTOM_ASIC",
         "relationship": "competitor",
-        "details": "高速光通訊 DSP、互連 IC 或相關元件的競爭與替代方案供應商。"
+        "name": "Socionext",
+        "details": "Socionext 與 Marvell 在客製化 SoC 與先進製程 ASIC市場競爭。",
+        "description": "Socionext 與 Marvell 在客製化 SoC 與先進製程 ASIC市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
       },
       {
-        "id": "OPTICAL_competitor_015",
-        "name": "Credo Technology（CRDO）",
-        "business_line": "OPTICAL",
+        "id": "CUSTOM_ASIC_competitor_006",
+        "business_line": "CUSTOM_ASIC",
         "relationship": "competitor",
-        "details": "高速光通訊 DSP、互連 IC 或相關元件的競爭與替代方案供應商。"
+        "name": "AMD",
+        "details": "AMD 與 Marvell 在AI 運算晶片及資料中心加速器市場競爭。",
+        "description": "AMD 與 Marvell 在AI 運算晶片及資料中心加速器市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
       },
       {
-        "id": "OPTICAL_competitor_016",
-        "name": "MACOM（MTSI）",
-        "business_line": "OPTICAL",
+        "id": "CUSTOM_ASIC_competitor_007",
+        "business_line": "CUSTOM_ASIC",
         "relationship": "competitor",
-        "details": "高速光通訊 DSP、互連 IC 或相關元件的競爭與替代方案供應商。"
+        "name": "NVIDIA",
+        "details": "NVIDIA 與 Marvell 在資料中心 AI 加速器與高速網路互連市場競爭。",
+        "description": "NVIDIA 與 Marvell 在資料中心 AI 加速器與高速網路互連市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
       },
       {
-        "id": "OPTICAL_competitor_017",
-        "name": "Coherent（COHR）",
-        "business_line": "OPTICAL",
+        "id": "STORAGE_competitor_008",
+        "business_line": "STORAGE",
         "relationship": "competitor",
-        "details": "高速光通訊 DSP、互連 IC 或相關元件的競爭與替代方案供應商。"
+        "name": "Astera Labs",
+        "details": "Astera Labs 與 Marvell 在PCIe／CXL 互連與資料中心連接晶片市場競爭。",
+        "description": "Astera Labs 與 Marvell 在PCIe／CXL 互連與資料中心連接晶片市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
       },
       {
-        "id": "CXL_competitor_018",
-        "name": "Broadcom（AVGO）",
-        "business_line": "CXL",
+        "id": "OPTICAL_DSP_competitor_009",
+        "business_line": "OPTICAL_DSP",
         "relationship": "competitor",
-        "details": "PCIe／CXL 交換、重定時或高速互連領域競爭。"
+        "name": "Credo",
+        "details": "Credo 與 Marvell 在高速 SerDes、AEC 及資料中心連接 DSP市場競爭。",
+        "description": "Credo 與 Marvell 在高速 SerDes、AEC 及資料中心連接 DSP市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
       },
       {
-        "id": "CXL_competitor_019",
-        "name": "Astera Labs（ALAB）",
-        "business_line": "CXL",
+        "id": "ETHERNET_competitor_010",
+        "business_line": "ETHERNET",
         "relationship": "competitor",
-        "details": "PCIe／CXL 交換、重定時或高速互連領域競爭。"
+        "name": "Cisco",
+        "details": "Cisco 與 Marvell 在乙太網路交換器與網路系統晶片市場競爭。",
+        "description": "Cisco 與 Marvell 在乙太網路交換器與網路系統晶片市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
       },
       {
-        "id": "CXL_competitor_020",
-        "name": "Microchip（MCHP）",
-        "business_line": "CXL",
+        "id": "ETHERNET_competitor_011",
+        "business_line": "ETHERNET",
         "relationship": "competitor",
-        "details": "PCIe／CXL 交換、重定時或高速互連領域競爭。"
+        "name": "Intel",
+        "details": "Intel 與 Marvell 在網路、資料中心處理器與連接晶片市場競爭。",
+        "description": "Intel 與 Marvell 在網路、資料中心處理器與連接晶片市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
       },
       {
-        "id": "ETH_competitor_021",
-        "name": "Broadcom（AVGO）",
-        "business_line": "ETH",
+        "id": "OPTICAL_DSP_competitor_012",
+        "business_line": "OPTICAL_DSP",
         "relationship": "competitor",
-        "details": "乙太網路交換、PHY 或資料中心網路半導體產品競爭。"
+        "name": "MACOM",
+        "details": "MACOM 與 Marvell 在光通訊類比／高速介面半導體市場競爭。",
+        "description": "MACOM 與 Marvell 在光通訊類比／高速介面半導體市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
       },
       {
-        "id": "ETH_competitor_022",
-        "name": "NVIDIA（NVDA）",
-        "business_line": "ETH",
+        "id": "OPTICAL_DSP_competitor_013",
+        "business_line": "OPTICAL_DSP",
         "relationship": "competitor",
-        "details": "乙太網路交換、PHY 或資料中心網路半導體產品競爭。"
+        "name": "Semtech",
+        "details": "Semtech 與 Marvell 在光通訊與高速訊號處理晶片市場競爭。",
+        "description": "Semtech 與 Marvell 在光通訊與高速訊號處理晶片市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
       },
       {
-        "id": "ETH_competitor_023",
+        "id": "ETHERNET_competitor_014",
+        "business_line": "ETHERNET",
+        "relationship": "competitor",
         "name": "Realtek 瑞昱（2379）",
-        "business_line": "ETH",
-        "relationship": "competitor",
-        "details": "乙太網路交換、PHY 或資料中心網路半導體產品競爭。"
+        "details": "Realtek 瑞昱（2379） 與 Marvell 在乙太網路 PHY 與交換控制晶片市場競爭。",
+        "description": "Realtek 瑞昱（2379） 與 Marvell 在乙太網路 PHY 與交換控制晶片市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
       },
       {
-        "id": "ETH_competitor_024",
-        "name": "Microchip（MCHP）",
-        "business_line": "ETH",
-        "relationship": "competitor",
-        "details": "乙太網路交換、PHY 或資料中心網路半導體產品競爭。"
-      },
-      {
-        "id": "STORAGE_competitor_025",
-        "name": "Silicon Motion 慧榮（SIMO）",
+        "id": "STORAGE_competitor_015",
         "business_line": "STORAGE",
         "relationship": "competitor",
-        "details": "儲存控制器或儲存連接半導體產品競爭。"
-      },
-      {
-        "id": "STORAGE_competitor_026",
         "name": "Phison 群聯（8299）",
+        "details": "Phison 群聯（8299） 與 Marvell 在儲存控制器市場競爭。",
+        "description": "Phison 群聯（8299） 與 Marvell 在儲存控制器市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
+      },
+      {
+        "id": "STORAGE_competitor_016",
         "business_line": "STORAGE",
         "relationship": "competitor",
-        "details": "儲存控制器或儲存連接半導體產品競爭。"
+        "name": "Silicon Motion 慧榮",
+        "details": "Silicon Motion 慧榮 與 Marvell 在SSD 與儲存控制器市場競爭。",
+        "description": "Silicon Motion 慧榮 與 Marvell 在SSD 與儲存控制器市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
       },
       {
-        "id": "STORAGE_competitor_027",
-        "name": "Broadcom（AVGO）",
+        "id": "STORAGE_competitor_017",
         "business_line": "STORAGE",
         "relationship": "competitor",
-        "details": "儲存控制器或儲存連接半導體產品競爭。"
+        "name": "Rambus",
+        "details": "Rambus 與 Marvell 在記憶體介面與安全 IP市場競爭。",
+        "description": "Rambus 與 Marvell 在記憶體介面與安全 IP市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
       },
       {
-        "id": "DPU_competitor_028",
-        "name": "NVIDIA（NVDA）",
-        "business_line": "DPU",
+        "id": "ETHERNET_competitor_018",
+        "business_line": "ETHERNET",
         "relationship": "competitor",
-        "details": "資料處理器、智慧網卡或基礎設施卸載方案競爭。"
+        "name": "Microchip",
+        "details": "Microchip 與 Marvell 在網路介面與嵌入式半導體市場競爭。",
+        "description": "Microchip 與 Marvell 在網路介面與嵌入式半導體市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
       },
       {
-        "id": "DPU_competitor_029",
-        "name": "AMD（AMD）",
-        "business_line": "DPU",
+        "id": "ETHERNET_competitor_019",
+        "business_line": "ETHERNET",
         "relationship": "competitor",
-        "details": "資料處理器、智慧網卡或基礎設施卸載方案競爭。"
+        "name": "NXP",
+        "details": "NXP 與 Marvell 在網路與通訊處理器市場競爭。",
+        "description": "NXP 與 Marvell 在網路與通訊處理器市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
       },
       {
-        "id": "DPU_competitor_030",
-        "name": "Intel（INTC）",
-        "business_line": "DPU",
+        "id": "ETHERNET_competitor_020",
+        "business_line": "ETHERNET",
         "relationship": "competitor",
-        "details": "資料處理器、智慧網卡或基礎設施卸載方案競爭。"
+        "name": "Qualcomm",
+        "details": "Qualcomm 與 Marvell 在網路連接與通訊 SoC市場競爭。",
+        "description": "Qualcomm 與 Marvell 在網路連接與通訊 SoC市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
       },
       {
-        "id": "PACKAGING_beneficiary_031",
-        "name": "台積電（2330）",
-        "business_line": "PACKAGING",
+        "id": "STORAGE_competitor_021",
+        "business_line": "STORAGE",
+        "relationship": "competitor",
+        "name": "Montage Technology",
+        "details": "Montage Technology 與 Marvell 在記憶體介面晶片市場競爭。",
+        "description": "Montage Technology 與 Marvell 在記憶體介面晶片市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
+      },
+      {
+        "id": "PHOTONICS_competitor_022",
+        "business_line": "PHOTONICS",
+        "relationship": "competitor",
+        "name": "Ayar Labs",
+        "details": "Ayar Labs 與 Marvell 在光學 I/O 與矽光子互連市場競爭。",
+        "description": "Ayar Labs 與 Marvell 在光學 I/O 與矽光子互連市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
+      },
+      {
+        "id": "PHOTONICS_competitor_023",
+        "business_line": "PHOTONICS",
+        "relationship": "competitor",
+        "name": "Lightmatter",
+        "details": "Lightmatter 與 Marvell 在光學互連與光子運算市場競爭。",
+        "description": "Lightmatter 與 Marvell 在光學互連與光子運算市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
+      },
+      {
+        "id": "PHOTONICS_competitor_024",
+        "business_line": "PHOTONICS",
+        "relationship": "competitor",
+        "name": "Ranovus",
+        "details": "Ranovus 與 Marvell 在光學互連與光引擎市場競爭。",
+        "description": "Ranovus 與 Marvell 在光學互連與光引擎市場競爭。",
+        "evidence_level": "SEC_explicit_competitor",
+        "source_ids": [
+          "SEC_10K_2026"
+        ]
+      },
+      {
+        "id": "CUSTOM_ASIC_beneficiary_001",
+        "business_line": "CUSTOM_ASIC",
         "relationship": "beneficiary",
-        "details": "先進製程晶圓直接代工，10-Q 明確確認。"
+        "name": "創意電子 GUC（3443）",
+        "details": "AI ASIC 設計外包與先進製程晶片開發需求增加，有利同類客製化晶片設計服務市場。",
+        "description": "同產業景氣／產品族群受惠推論，未主張與 Marvell 有直接交易。",
+        "evidence_level": "sector_exposure_inference",
+        "source_ids": [
+          "Q2_RELEASE"
+        ]
       },
       {
-        "id": "PACKAGING_beneficiary_032",
-        "name": "日月光投控（3711）",
-        "business_line": "PACKAGING",
+        "id": "CUSTOM_ASIC_beneficiary_002",
+        "business_line": "CUSTOM_ASIC",
         "relationship": "beneficiary",
-        "details": "封測與先進封裝產業需求受惠；不推定為 Marvell 具名供應商。"
+        "name": "世芯-KY Alchip（3661）",
+        "details": "雲端業者持續投資客製化 AI 加速器，擴大高階 ASIC 設計服務的市場需求。",
+        "description": "同產業景氣／產品族群受惠推論，未主張與 Marvell 有直接交易。",
+        "evidence_level": "sector_exposure_inference",
+        "source_ids": [
+          "Q2_RELEASE"
+        ]
       },
       {
-        "id": "PACKAGING_beneficiary_033",
-        "name": "欣興（3037）",
-        "business_line": "PACKAGING",
+        "id": "PHOTONICS_beneficiary_003",
+        "business_line": "PHOTONICS",
         "relationship": "beneficiary",
-        "details": "高階 ABF 載板需求受惠，未確認 Marvell 直接採購。"
+        "name": "聯亞光電（3081）",
+        "details": "資料中心光互連升級帶動磷化銦與高速光通訊磊晶材料需求。",
+        "description": "同產業景氣／產品族群受惠推論，未主張與 Marvell 有直接交易。",
+        "evidence_level": "sector_exposure_inference",
+        "source_ids": [
+          "Q2_RELEASE"
+        ]
       },
       {
-        "id": "PACKAGING_beneficiary_034",
-        "name": "南電（8046）",
-        "business_line": "PACKAGING",
+        "id": "PHOTONICS_beneficiary_004",
+        "business_line": "PHOTONICS",
         "relationship": "beneficiary",
-        "details": "AI ASIC 高階載板產業受惠，非具名直接供應證據。"
-      },
-      {
-        "id": "PACKAGING_beneficiary_035",
-        "name": "景碩（3189）",
-        "business_line": "PACKAGING",
-        "relationship": "beneficiary",
-        "details": "高階 IC 載板需求潛在受惠，非已確認訂單。"
-      },
-      {
-        "id": "PACKAGING_beneficiary_036",
-        "name": "京元電子（2449）",
-        "business_line": "PACKAGING",
-        "relationship": "beneficiary",
-        "details": "高階半導體測試需求潛在受惠，非已確認直接合作。"
-      },
-      {
-        "id": "OPTICAL_beneficiary_037",
-        "name": "光聖（6442）",
-        "business_line": "OPTICAL",
-        "relationship": "beneficiary",
-        "details": "高速光互連光被動元件需求受惠；不等同 Marvell 直接供應商。"
-      },
-      {
-        "id": "OPTICAL_beneficiary_038",
-        "name": "聯亞（3081）",
-        "business_line": "OPTICAL",
-        "relationship": "beneficiary",
-        "details": "光通訊磊晶需求受惠；直接 Marvell 採購關係未證實。"
-      },
-      {
-        "id": "OPTICAL_beneficiary_039",
-        "name": "華星光（4979）",
-        "business_line": "OPTICAL",
-        "relationship": "beneficiary",
-        "details": "800G／1.6T 光模組升級需求受惠。"
-      },
-      {
-        "id": "OPTICAL_beneficiary_040",
         "name": "上詮（3363）",
-        "business_line": "OPTICAL",
-        "relationship": "beneficiary",
-        "details": "光纖連接與 CPO 生態升級需求受惠。"
+        "details": "AI 叢集光纖互連密度提高，帶動光纖連接與光通訊零組件需求。",
+        "description": "同產業景氣／產品族群受惠推論，未主張與 Marvell 有直接交易。",
+        "evidence_level": "sector_exposure_inference",
+        "source_ids": [
+          "Q2_RELEASE"
+        ]
       },
       {
-        "id": "OPTICAL_beneficiary_041",
+        "id": "OPTICAL_DSP_beneficiary_005",
+        "business_line": "OPTICAL_DSP",
+        "relationship": "beneficiary",
+        "name": "華星光（4979）",
+        "details": "800G／1.6T 光收發模組升級帶動高速光通訊元件需求。",
+        "description": "同產業景氣／產品族群受惠推論，未主張與 Marvell 有直接交易。",
+        "evidence_level": "sector_exposure_inference",
+        "source_ids": [
+          "Q2_RELEASE"
+        ]
+      },
+      {
+        "id": "PHOTONICS_beneficiary_006",
+        "business_line": "PHOTONICS",
+        "relationship": "beneficiary",
         "name": "波若威（3163）",
-        "business_line": "OPTICAL",
-        "relationship": "beneficiary",
-        "details": "高速光通訊被動元件升級需求受惠。"
-      },
-      {
-        "id": "OPTICAL_beneficiary_042",
-        "name": "眾達-KY（4977）",
-        "business_line": "OPTICAL",
-        "relationship": "beneficiary",
-        "details": "光收發模組與高速連接需求受惠。"
-      },
-      {
-        "id": "OPTICAL_beneficiary_043",
-        "name": "前鼎（4908）",
-        "business_line": "OPTICAL",
-        "relationship": "beneficiary",
-        "details": "高速光收發產品需求受惠。"
-      },
-      {
-        "id": "OPTICAL_beneficiary_044",
-        "name": "全新（2455）",
-        "business_line": "OPTICAL",
-        "relationship": "beneficiary",
-        "details": "光通訊 III-V 族化合物半導體需求受惠。"
-      },
-      {
-        "id": "OPTICAL_beneficiary_045",
-        "name": "環宇-KY（4991）",
-        "business_line": "OPTICAL",
-        "relationship": "beneficiary",
-        "details": "光通訊相關磊晶與元件需求潛在受惠。"
-      },
-      {
-        "id": "SERDES_beneficiary_046",
-        "name": "貿聯-KY（3665）",
-        "business_line": "SERDES",
-        "relationship": "beneficiary",
-        "details": "AI 伺服器高速線纜與連接需求受惠，非直接採購證據。"
-      },
-      {
-        "id": "SERDES_beneficiary_047",
-        "name": "嘉澤（3533）",
-        "business_line": "SERDES",
-        "relationship": "beneficiary",
-        "details": "高速連接器升級需求受惠。"
-      },
-      {
-        "id": "SERDES_beneficiary_048",
-        "name": "信邦（3023）",
-        "business_line": "SERDES",
-        "relationship": "beneficiary",
-        "details": "高速線束與連接需求受惠。"
-      },
-      {
-        "id": "ETH_beneficiary_049",
-        "name": "智邦（2345）",
-        "business_line": "ETH",
-        "relationship": "beneficiary",
-        "details": "交換器升級與 AI 乙太網路布建受惠；可能採不同供應商晶片。"
-      },
-      {
-        "id": "ETH_beneficiary_050",
-        "name": "啟碁（6285）",
-        "business_line": "ETH",
-        "relationship": "beneficiary",
-        "details": "企業／電信網通設備升級需求受惠。"
-      },
-      {
-        "id": "ETH_beneficiary_051",
-        "name": "中磊（5388）",
-        "business_line": "ETH",
-        "relationship": "beneficiary",
-        "details": "寬頻與網路設備升級需求受惠。"
-      },
-      {
-        "id": "ASIC_beneficiary_052",
-        "name": "廣達（2382）",
-        "business_line": "ASIC",
-        "relationship": "beneficiary",
-        "details": "AI 伺服器擴建間接受惠；不代表採用 Marvell ASIC。"
-      },
-      {
-        "id": "ASIC_beneficiary_053",
-        "name": "緯穎（6669）",
-        "business_line": "ASIC",
-        "relationship": "beneficiary",
-        "details": "雲端伺服器擴建間接受惠；非已確認 ASIC 客戶。"
-      },
-      {
-        "id": "ASIC_beneficiary_054",
-        "name": "鴻海（2317）",
-        "business_line": "ASIC",
-        "relationship": "beneficiary",
-        "details": "AI 伺服器製造與機櫃需求間接受惠。"
-      },
-      {
-        "id": "ASIC_beneficiary_055",
-        "name": "緯創（3231）",
-        "business_line": "ASIC",
-        "relationship": "beneficiary",
-        "details": "AI 伺服器擴建間接受惠。"
-      },
-      {
-        "id": "ASIC_beneficiary_056",
-        "name": "英業達（2356）",
-        "business_line": "ASIC",
-        "relationship": "beneficiary",
-        "details": "伺服器平台升級間接受惠。"
+        "details": "AI 資料中心光纖連接架構升級，帶動光被動元件需求。",
+        "description": "同產業景氣／產品族群受惠推論，未主張與 Marvell 有直接交易。",
+        "evidence_level": "sector_exposure_inference",
+        "source_ids": [
+          "Q2_RELEASE"
+        ]
       }
     ],
     "corporate_events": [
       {
-        "id": "MRVL_LITE_2026_11_02",
-        "event_type": "definitive_acquisition_agreement",
-        "announcement_date": "2026-11-02",
-        "agreement_date": "2026-11-01",
-        "acquirer": "Marvell Technology, Inc.",
-        "target": "Lumentum Holdings Inc.",
-        "target_ticker": "LITE",
-        "status": "signed_pending_close",
-        "expected_close": "2028-H1（曆年；非保證）",
-        "consideration": "全股票；每股 LITE 普通股交換 4.500 股 MRVL 普通股",
-        "implied_enterprise_value_usd": 115000000000,
-        "implied_equity_value_usd": null,
-        "ownership_post_close_estimate": {
-          "existing_MRVL_holders": "約67%",
-          "existing_LITE_holders": "約33%"
-        },
-        "strategic_rationale": [
-          "整合 Marvell 高速電訊號處理、ASIC、網路交換及光互連與 Lumentum 雷射、光收發器、OCS 及化合物半導體製造",
-          "拓展 AI scale-up、scale-in、scale-out 與跨資料中心光連接；屬管理層預期，非已實現業績"
-        ],
-        "business_line": "OPTICAL_MA",
-        "revenue_recognition": "交易尚未完成；不得將 LITE 歷史營收併入 MRVL 已報告營收",
-        "commercialization_status": "交易已簽署但未交割；產品整合、成本綜效及獲利增厚均為前瞻預期",
-        "key_risks": [
-          "股東及監管批准",
-          "交易估值與 MRVL 股價變動",
-          "整合執行及客戶／供應鏈連續性",
-          "光學技術競爭及資本支出循環"
-        ],
-        "sources": [
-          {
-            "type": "SEC_8K",
-            "date": "2026-11-02",
-            "url": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526442717/d352474d8k.htm"
-          },
-          {
-            "type": "SEC_EXHIBIT_99_1",
-            "date": "2026-11-02",
-            "url": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526442714/d81187dex991.htm"
-          },
-          {
-            "type": "SEC_FORM_425_SUPPLIER_LETTER",
-            "date": "2026-11-02",
-            "url": "https://investor.marvell.com/sec-filings/all-sec-filings/content/0001193125-26-443832/d188652d425.htm"
-          }
-        ],
-        "classification_note": "LITE 是待交割收購標的，不是 supplier、customer、beneficiary 或已完成合併子公司；因此記錄在 corporate_events，而非強行塞入五種 relationship nodes。"
+        "date": "2026-11-02",
+        "type": "merger_agreement",
+        "status": "signed_not_closed",
+        "counterparty": "Lumentum",
+        "details": "宣布以約 1,150 億美元企業價值之全股票交易收購 Lumentum；每股 Lumentum 換 4.5 股 Marvell；預計 2028 年上半年完成，仍須股東與監管核准。",
+        "source_ids": [
+          "SEC_LITE_8K",
+          "LITE_RELEASE",
+          "REUTERS_MERGER"
+        ]
+      },
+      {
+        "date": "2026-08-19",
+        "type": "customer_contract",
+        "status": "signed",
+        "counterparty": "Google",
+        "details": "與 Google 簽訂 TPU 生態系客製化半導體商業協議。",
+        "source_ids": [
+          "SEC_GOOGLE_8K"
+        ]
+      },
+      {
+        "date": "2026-10-13",
+        "type": "product_launch",
+        "status": "announced",
+        "details": "公布 3.2T retimer 及第二代 1.6T AEC DSP。",
+        "source_ids": [
+          "PRODUCT_RELEASE"
+        ]
+      },
+      {
+        "date": "2026-08-27",
+        "type": "earnings",
+        "status": "reported",
+        "details": "FY2027 Q2 營收 27.393 億美元，年增 37%；資料中心營收 21.715 億美元，年增 46%。",
+        "source_ids": [
+          "Q2_RELEASE"
+        ]
       }
     ],
-    "research_audit": {
-      "as_of": "2026-11-03",
-      "scope": "本次為 LITE 交易的增量更新與五項事件專項反思；不宣稱重做全公司全部研究",
+    "sources": [
+      {
+        "id": "SEC_10K_2026",
+        "grade": "A",
+        "title": "Marvell FY2026 10-K",
+        "date": "2026-03-11",
+        "url": "https://investor.marvell.com/sec-filings/all-sec-filings/content/0001835632-26-000011/mrvl-20260131.htm"
+      },
+      {
+        "id": "SEC_10Q_AUG",
+        "grade": "A",
+        "title": "Marvell FY2027 Q2 10-Q",
+        "date": "2026-08-28",
+        "url": "https://investor.marvell.com/sec-filings/all-sec-filings/content/0001835632-26-000025/mrvl-20260801.htm"
+      },
+      {
+        "id": "SEC_GOOGLE_8K",
+        "grade": "A",
+        "title": "Marvell–Google custom silicon commercial agreement 8-K",
+        "date": "2026-08-19",
+        "url": "https://investor.marvell.com/sec-filings/all-sec-filings/content/0001193125-26-356217/0001193125-26-356217.pdf"
+      },
+      {
+        "id": "AWS_RELEASE",
+        "grade": "A",
+        "title": "Marvell–AWS five-year strategic supplier agreement",
+        "date": "2024-12-02",
+        "url": "https://www.marvell.com/company/newsroom/marvell-expands-strategic-collaboration-aws-enable-accelerated-infrastructure-ai-cloud.html"
+      },
+      {
+        "id": "SEC_LITE_8K",
+        "grade": "A",
+        "title": "Marvell–Lumentum merger agreement 8-K",
+        "date": "2026-11-02",
+        "url": "https://investor.marvell.com/sec-filings/all-sec-filings/content/0001193125-26-442717/d352474d8k.htm"
+      },
+      {
+        "id": "LITE_RELEASE",
+        "grade": "A",
+        "title": "Marvell–Lumentum joint announcement",
+        "date": "2026-11-02",
+        "url": "https://investor.marvell.com/news-events/press-releases/detail/1040/marvell-and-lumentum-to-combine-creating-a-category-leader-in-ai-connectivity"
+      },
+      {
+        "id": "Q2_RELEASE",
+        "grade": "A",
+        "title": "Marvell FY2027 Q2 financial results",
+        "date": "2026-08-27",
+        "url": "https://investor.marvell.com/news-events/press-releases/detail/1031/marvell-technology-inc-reports-second-quarter-of-fiscal-year-2027-financial-results"
+      },
+      {
+        "id": "OCP_RELEASE",
+        "grade": "A",
+        "title": "Marvell Microsoft Oracle OCP security working group",
+        "date": "2026-10-13",
+        "url": "https://www.marvell.com/company/newsroom/marvell-microsoft-oracle-ocp-data-center-hardware-security.html"
+      },
+      {
+        "id": "PRODUCT_RELEASE",
+        "grade": "A",
+        "title": "Marvell 3.2T retimer and 1.6T AEC DSP announcement",
+        "date": "2026-10-13",
+        "url": "https://www.marvell.com/company/newsroom/press-releases.html"
+      },
+      {
+        "id": "REUTERS_MERGER",
+        "grade": "B",
+        "title": "Reuters coverage of Marvell–Lumentum deal",
+        "date": "2026-11-02",
+        "url": "https://www.reuters.com/legal/transactional/marvell-buy-lumentum-115-billion-deal-ai-data-center-bet-2026-11-02/"
+      },
+      {
+        "id": "Q2_8K",
+        "grade": "A",
+        "title": "Marvell Q2 FY2027 earnings 8-K",
+        "date": "2026-08-27",
+        "url": "https://investor.marvell.com/sec-filings/all-sec-filings/content/0001835632-26-000022/q227_8kx812026ex-991.htm"
+      }
+    ],
+    "research": {
+      "sec_start": "SEC FY2026 10-K；FY2027 Q2 10-Q；Google 商業協議 8-K；Lumentum 合併協議 8-K",
+      "latest_reporting": "2026-08-27 FY2027 Q2 results；2026-11-02 merger filing",
+      "relationship_rules": {
+        "customer": "僅具名採購、設計導入、商業協議或官方供應公告",
+        "partner": "無直接買賣的技術標準合作；未完成併購標記為待完成",
+        "supplier": "只納入具名且有直接供應證據者",
+        "beneficiary": "僅代表台灣同產業受惠，不代表直接供應商"
+      },
+      "source_count": 11,
+      "limitations": [
+        "未逐一取得所有競爭者反向公司公告；競爭關係以 Marvell 10-K 直接列名為依據。",
+        "台灣受惠股依技術／市場機制推論，不主張供貨 Marvell。",
+        "尚未完成使用者期待的全面來源廣度及所有法說逐字稿檢核。"
+      ]
+    },
+    "five_gate_audit": {
+      "status": "PARTIAL",
       "checks": [
         {
-          "name": "熱門議題反向檢查",
-          "result": "pass_event_scope",
-          "finding": "2026-11-02 Lumentum 收購公告已列為新增獨立業務主線，未被既有光學 DSP 主線掩蓋。"
+          "gate": "原始資料保留",
+          "result": "PASS",
+          "notes": "11 個頂層欄位原樣保留，僅新增第 12 欄 industry_chain。"
         },
         {
-          "name": "投資人十大問題",
-          "result": "pass_event_scope",
-          "finding": "交易估值、股份稀釋、光學競爭力、交割條件、潛在綜效、風險均有標記；綜效不計入已實現財務。"
+          "gate": "SEC 與近三月重大事件",
+          "result": "PASS",
+          "notes": "已核對 2026-11-02 Lumentum 收購協議與 2026-08 Google 合約。"
         },
         {
-          "name": "技術與產品完整性",
-          "result": "pass_event_scope",
-          "finding": "分別記錄雷射、光收發器、OCS、化合物半導體與 MRVL ASIC/DSP/交換晶片互補；不宣稱整合量產。"
+          "gate": "具名客戶與供應商",
+          "result": "PASS_WITH_LIMITATIONS",
+          "notes": "Google、AWS 有直接合約；台積電有唯一先進晶圓代工來源證據。"
         },
         {
-          "name": "反證與競爭檢查",
-          "result": "pass_event_scope",
-          "finding": "SEC Form 425 確認交割前獨立營運；不將 LITE 標為現有供應商或已併表子公司。"
+          "gate": "競爭與台灣受惠分離",
+          "result": "PASS",
+          "notes": "10-K 具名競爭者與台灣產業受惠分開，不把台灣受惠股列為供應商。"
         },
         {
-          "name": "交付前缺漏審計",
-          "result": "pass_event_scope",
-          "finding": "交易事件已完整記錄；未公開具名整合客戶、訂單、已實現營收、台灣直接供應商均標記證據不足。"
-        }
-      ],
-      "issue_coverage": [
-        {
-          "topic": "LITE 交易條件與 SEC 文件",
-          "status": "covered"
-        },
-        {
-          "topic": "2028-H1 預期交割與監管風險",
-          "status": "covered"
-        },
-        {
-          "topic": "雷射、光收發器、OCS 與 Photonic Fabric 技術互補",
-          "status": "covered"
-        },
-        {
-          "topic": "收購完成後實際整合產品收入",
-          "status": "insufficient_evidence"
-        },
-        {
-          "topic": "台灣公司直接參與收購後供應鏈",
-          "status": "insufficient_evidence"
-        },
-        {
-          "topic": "將 LITE 視為現有 MRVL 子公司",
-          "status": "intentionally_excluded"
-        },
-        {
-          "topic": "全公司近90天其餘議題重新全面審計",
-          "status": "not_researched_in_this_increment"
+          "gate": "來源完整性",
+          "result": "PARTIAL",
+          "notes": "本次列出 11 份核心文件／公告，未達全面深度來源審計。"
         }
       ]
-    }
+    },
+    "reflections": [
+      {
+        "round": 1,
+        "focus": "SEC 競爭名單",
+        "finding": "2026 10-K 具名多達 25 家競爭者，需依 ASIC、光 DSP、交換器、儲存等市場分群。"
+      },
+      {
+        "round": 2,
+        "focus": "客戶與合作區分",
+        "finding": "Google 與 AWS 為直接商業供應客戶；Microsoft、Oracle 僅有 OCP 標準工作組合作證據。"
+      },
+      {
+        "round": 3,
+        "focus": "台灣直接供應商",
+        "finding": "10-Q 明確指名台積電為唯一先進製程晶圓來源；其餘台灣光通訊股不得據產業相近列為供應商。"
+      },
+      {
+        "round": 4,
+        "focus": "近三個月重大併購",
+        "finding": "Lumentum 11 月合併協議重大，尚未完成，須保留條件與 2028 年上半年預計完成時點。"
+      },
+      {
+        "round": 5,
+        "focus": "投資敘事與財務",
+        "finding": "FY2027 Q2 資料中心營收年增 46%，但不能據此推定 Google 或 AWS 個別貢獻。"
+      },
+      {
+        "round": 6,
+        "focus": "雙重分類",
+        "finding": "創意、世芯同時是 10-K 列名競爭者及台灣 ASIC 景氣受惠者，兩種關係應獨立顯示。"
+      }
+    ]
   }
 }

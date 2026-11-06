@@ -221,5 +221,780 @@
       "相干光模組採用"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-05",
+    "company": "Ciena Corporation",
+    "symbol": "CIEN",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "CIEN Ciena WaveLogic 6、Lumen、Verizon 與 AI 光網路產業鏈",
+      "description": "以SEC及Ciena官方公告核對2026Q3業績、具名電信客戶、WaveLogic 6、Waveserver、Blue Planet和雲端光互連。"
+    },
+    "business_lines": [
+      {
+        "id": "WL6E",
+        "name": "WaveLogic 6 Extreme 相干光DSP與1.6Tb/s傳輸"
+      },
+      {
+        "id": "WL6N",
+        "name": "WaveLogic 6 Nano 800ZR相干可插拔模組"
+      },
+      {
+        "id": "RLS",
+        "name": "Reconfigurable Line System與Hyper-Rail"
+      },
+      {
+        "id": "WAVESERVER",
+        "name": "Waveserver DCI與雲端互連"
+      },
+      {
+        "id": "PACKET6500",
+        "name": "6500 Packet-Optical光封包平台"
+      },
+      {
+        "id": "WAVEROUTER",
+        "name": "WaveRouter與IP路由交換"
+      },
+      {
+        "id": "NAVIGATOR",
+        "name": "Navigator Network Control Suite"
+      },
+      {
+        "id": "BLUEPLANET",
+        "name": "Blue Planet AI Studio及OSS自動化"
+      },
+      {
+        "id": "SUBSEA",
+        "name": "海纜與跨洋光纖網路"
+      },
+      {
+        "id": "METRO",
+        "name": "電信骨幹與都會光網路"
+      },
+      {
+        "id": "HYPERSCALER",
+        "name": "雲端與AI hyperscaler連線"
+      },
+      {
+        "id": "CPO_NUBIS",
+        "name": "Nubis CPO/NPO及資料中心內互連"
+      },
+      {
+        "id": "QUANTUM",
+        "name": "量子安全光傳輸及加密"
+      },
+      {
+        "id": "SUPPLY",
+        "name": "外包製造與光學元件供應鏈"
+      },
+      {
+        "id": "FINANCE",
+        "name": "訂單、backlog、產能及財務風險"
+      },
+      {
+        "id": "COMPETITION",
+        "name": "光傳輸及IP網路競爭"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "COHERENT_customer_001",
+        "name": "Lumen Technologies",
+        "business_line": "WL6E",
+        "relationship": "customer",
+        "details": "Lumen 採用 Ciena WaveLogic 6 Extreme 相干光傳輸技術擴充骨幹光網路容量，以支援 AI 與雲端流量。",
+        "evidence_level": "official_named_commercial_relationship",
+        "source_ids": [
+          "LUMEN_OPTICAL"
+        ],
+        "source_url": "https://www.ciena.com/about/newsroom/press-releases/lumen-selects-ciena-optical-tech-to-support-ai-workloads",
+        "ticker": "LUMN",
+        "description": "2025-02 官方確認選用 WaveLogic 6 Extreme，Ciena 為優先光網路供應商；2026年仍有延伸合作。"
+      },
+      {
+        "id": "SOFTWARE_customer_002",
+        "name": "Lumen Technologies",
+        "business_line": "BLUEPLANET",
+        "relationship": "customer",
+        "details": "Lumen 採用 Ciena Blue Planet AI Studio 與 AI agents，推動網路服務管理及營運流程自動化。",
+        "evidence_level": "official_named_commercial_relationship",
+        "source_ids": [
+          "LUMEN_AI"
+        ],
+        "source_url": "https://investor.ciena.com/news/news-details/2026/Lumen-Boosts-AI-Network-Transformation-with-Blue-Planets-AI-Studio-and-Agents-02-19-2026/default.aspx",
+        "ticker": "LUMN",
+        "description": "2026-02 官方確認採用 Blue Planet AI Studio 與 AI agents，屬具名實際採用，不是匿名雲端客戶。"
+      },
+      {
+        "id": "COHERENT_customer_003",
+        "name": "Verizon Communications",
+        "business_line": "WL6E",
+        "relationship": "customer",
+        "details": "Verizon 與 Ciena 在 Verizon 現役光纖網路完成 WaveLogic 6 Extreme 1.6Tb/s 傳輸測試，驗證高速光傳輸能力。",
+        "evidence_level": "official_named_commercial_relationship",
+        "source_ids": [
+          "VERIZON_TRIAL"
+        ],
+        "source_url": "https://www.ciena.com/about/newsroom/press-releases/verizon-advances-its-fiber-network-for-ai-workloads",
+        "ticker": "VZ",
+        "description": "2024-11 Verizon 現網 1.6Tb/s WaveLogic 6 Extreme 測試；Ciena 亦獲 Verizon 供應商獎，證明歷史商業供應關係，但試驗不等於2026量產金額。"
+      },
+      {
+        "id": "DCI_customer_004",
+        "name": "Verizon Communications",
+        "business_line": "WAVESERVER",
+        "relationship": "customer",
+        "details": "Verizon 是 Ciena 長期電信網路設備合作客戶，曾頒發供應商環境卓越獎予 Ciena。",
+        "evidence_level": "official_named_commercial_relationship",
+        "source_ids": [
+          "VERIZON_SUPPLIER"
+        ],
+        "source_url": "https://www.ciena.com/insights/articles/2022/verizon-honors-ciena-with-supplier-environmental-excellence-award",
+        "ticker": "VZ",
+        "description": "2022 Verizon 供應商獎公告確認 Ciena 為長期供應商；不推定最新季訂單規模。"
+      },
+      {
+        "id": "COHERENT_customer_005",
+        "name": "Bharti Airtel",
+        "business_line": "WL6E",
+        "relationship": "customer",
+        "details": "Bharti Airtel 與 Ciena 合作建設及升級電信光傳輸網路，運用 Ciena 光網路解決方案提升網路容量。",
+        "evidence_level": "official_named_commercial_relationship",
+        "source_ids": [
+          "AIRTEL"
+        ],
+        "source_url": "https://www.ciena.com/bharti",
+        "description": "Ciena 官方 Airtel 專頁確認雙方合作及網路解決方案支援；未揭露2026年各產品採購金額。"
+      },
+      {
+        "id": "ROUTING_customer_006",
+        "name": "AT&T",
+        "business_line": "WAVEROUTER",
+        "relationship": "customer",
+        "details": "AT&T 採用 Ciena 網路路由與軟體技術支援無線網路基礎設施，雙方亦曾進行 Vyatta 相關技術交易。",
+        "evidence_level": "official_named_commercial_relationship",
+        "source_ids": [
+          "ATT"
+        ],
+        "source_url": "https://www.ciena.com/about/newsroom/press-releases/ciena-expands-edge-and-5g-capabilities-with-acquisition-of-vyatta-routing-and-switching-technology-from-att.html",
+        "ticker": "T",
+        "description": "2021 Vyatta 技術交易同時包含 Ciena 支援 AT&T 無線網路路由平台的安排；屬歷史具名商業關係，非2026新訂單。"
+      },
+      {
+        "id": "SOFTWARE_customer_007",
+        "name": "IRIS Networks",
+        "business_line": "BLUEPLANET",
+        "relationship": "customer",
+        "details": "IRIS Networks 採用 Ciena 網路技術與服務推動光纖網路升級及網路轉型。",
+        "evidence_level": "official_named_commercial_relationship",
+        "source_ids": [
+          "IRIS"
+        ],
+        "source_url": "https://www.ciena.com/solutions/network-transformation-services",
+        "description": "Ciena 官方服務案例確認協助 IRIS Networks 網路轉型。"
+      },
+      {
+        "id": "COHERENT_competitor_008",
+        "name": "Nokia",
+        "business_line": "WL6E",
+        "relationship": "competitor",
+        "details": "Nokia 與 Ciena 在相干光傳輸、波長分波多工及電信骨幹光網路設備市場直接競爭。",
+        "evidence_level": "market_competition",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "source_url": "https://www.sec.gov/Archives/edgar/data/936395/000162828025056698/cien-20251101.htm",
+        "ticker": "NOK",
+        "description": "相干光傳輸／光網路產品市場競爭；此處為競爭者，非Ciena客戶。"
+      },
+      {
+        "id": "COHERENT_competitor_009",
+        "name": "Cisco Systems",
+        "business_line": "WL6E",
+        "relationship": "competitor",
+        "details": "Cisco 與 Ciena 在光傳輸、IP 路由及網路自動化市場競爭，爭取電信商與大型網路營運商設備部署。",
+        "evidence_level": "market_competition",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "source_url": "https://www.sec.gov/Archives/edgar/data/936395/000162828025056698/cien-20251101.htm",
+        "ticker": "CSCO",
+        "description": "相干光傳輸／光網路產品市場競爭；此處為競爭者，非Ciena客戶。"
+      },
+      {
+        "id": "COHERENT_competitor_010",
+        "name": "Infinera（已併入 Nokia）",
+        "business_line": "WL6E",
+        "relationship": "competitor",
+        "details": "Infinera 的相干光傳輸與光網路系統和 Ciena 直接競爭；Infinera 已併入 Nokia。",
+        "evidence_level": "market_competition",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "source_url": "https://www.sec.gov/Archives/edgar/data/936395/000162828025056698/cien-20251101.htm",
+        "description": "相干光傳輸／光網路產品市場競爭；此處為競爭者，非Ciena客戶。"
+      },
+      {
+        "id": "COHERENT_competitor_011",
+        "name": "Huawei Technologies",
+        "business_line": "WL6E",
+        "relationship": "competitor",
+        "details": "Huawei 與 Ciena 在電信商光傳輸系統、骨幹網路及高速相干光通訊設備市場競爭。",
+        "evidence_level": "market_competition",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "source_url": "https://www.sec.gov/Archives/edgar/data/936395/000162828025056698/cien-20251101.htm",
+        "description": "相干光傳輸／光網路產品市場競爭；此處為競爭者，非Ciena客戶。"
+      },
+      {
+        "id": "SUBSEA_customer_NEW_001",
+        "business_line": "SUBSEA",
+        "relationship": "customer",
+        "name": "Space Norway",
+        "description": "2026-10-13 正式授予Ciena Svalbard既有海纜現代化及Arctic Way新海纜turnkey合約；包含6500、WL6e及Navigator，合約不等於已完成全部部署。",
+        "evidence_level": "official_awarded_contract",
+        "source_ids": [
+          "SPACE_NORWAY"
+        ],
+        "details": "Space Norway 選用 Ciena 6500 光傳輸平台、WaveLogic 6 Extreme 與 Navigator，升級 Svalbard 海底電纜並建設 Arctic Way 海纜。"
+      },
+      {
+        "id": "WAVESERVER_customer_NEW_002",
+        "business_line": "WAVESERVER",
+        "relationship": "customer",
+        "name": "Spark New Zealand",
+        "description": "2026-09-08 Spark Wholesale宣布以WL6e建立奧克蘭資料中心互連服務；服務推出及全面收入認列仍須區分。",
+        "evidence_level": "official_named_service_deployment",
+        "source_ids": [
+          "SPARK_NZ"
+        ],
+        "details": "Spark New Zealand 選用 Ciena WaveLogic 6 Extreme 建置奧克蘭資料中心互連網路，提供高速光纖連接服務。"
+      },
+      {
+        "id": "WL6E_customer_NEW_003",
+        "business_line": "WL6E",
+        "relationship": "customer",
+        "name": "Telstra",
+        "description": "2026-09-08在Telstra現役網路以WL6e完成1.6Tb/s、1100公里傳輸測試；現役網路使用技術，但本次速率里程碑是測試。",
+        "evidence_level": "official_live_network_trial",
+        "source_ids": [
+          "TELSTRA"
+        ],
+        "details": "Telstra 與 Ciena 在 Telstra 現役網路完成 WaveLogic 6 Extreme 1.6Tb/s、1,100 公里光傳輸測試。"
+      },
+      {
+        "id": "SUBSEA_customer_NEW_004",
+        "business_line": "SUBSEA",
+        "relationship": "customer",
+        "name": "ION Network / PT Parsaoran Global Datatrans",
+        "description": "2026-08-20宣告ICS1海纜採用Ciena 6500及WL6e，預計2026年底上線；截至截止日不可當成已正式營運。",
+        "evidence_level": "official_named_deployment_in_progress",
+        "source_ids": [
+          "ION"
+        ],
+        "details": "ION Network／PT Parsaoran Global Datatrans 的 ICS1 海底電纜採用 Ciena 6500 與 WaveLogic 6 Extreme 光傳輸技術。"
+      },
+      {
+        "id": "SUBSEA_customer_NEW_005",
+        "business_line": "SUBSEA",
+        "relationship": "customer",
+        "name": "ACE cable consortium",
+        "description": "2026-09-21選定Ciena 6500/WL6e升級非洲至歐洲海纜；買方為具名海纜聯盟而非匿名hyperscaler。",
+        "evidence_level": "official_named_selection",
+        "source_ids": [
+          "ACE"
+        ],
+        "details": "ACE 海底電纜聯盟選用 Ciena 6500 與 WaveLogic 6 Extreme，升級連接非洲與歐洲的海底光纖網路。"
+      },
+      {
+        "id": "SUBSEA_customer_NEW_006",
+        "business_line": "SUBSEA",
+        "relationship": "customer",
+        "name": "FLAG",
+        "description": "2026-09-21公告在ECHO跨太平洋專用光纖部署Waveserver/WL6e及RLS，屬具名海纜運營商。",
+        "evidence_level": "official_named_deployment",
+        "source_ids": [
+          "FLAG"
+        ],
+        "details": "FLAG 在 ECHO 跨太平洋海底光纖網路部署 Ciena Waveserver、WaveLogic 6 Extreme 與可重構光線路系統。"
+      },
+      {
+        "id": "PACKET6500_customer_NEW_007",
+        "business_line": "PACKET6500",
+        "relationship": "customer",
+        "name": "Vodafone Idea",
+        "description": "2026-03-31官方確認在6500平台採用WL6e現代化印度傳輸網路；1.6Tb/s測試不能等同所有路線量產。",
+        "evidence_level": "official_named_network_upgrade",
+        "source_ids": [
+          "VODAFONE"
+        ],
+        "details": "Vodafone Idea 採用 Ciena 6500 與 WaveLogic 6 Extreme 升級印度光傳輸骨幹網路。"
+      },
+      {
+        "id": "SUBSEA_customer_NEW_008",
+        "business_line": "SUBSEA",
+        "relationship": "customer",
+        "name": "Matrix Networks / NAP Info",
+        "description": "2026-05-19官方確認Matrix Cable System巴淡至雅加達路段商用啟用Ciena WL6e GeoMesh Extreme、每波長1Tb/s；雙營運商具名。",
+        "evidence_level": "official_commercial_activation",
+        "source_ids": [
+          "MATRIX"
+        ],
+        "details": "Matrix Networks／NAP Info 在印尼 Matrix Cable System 採用 Ciena WaveLogic 6 Extreme 與 GeoMesh Extreme，提供高速海底光纖連接。"
+      },
+      {
+        "id": "METRO_customer_NEW_009",
+        "business_line": "METRO",
+        "relationship": "customer",
+        "name": "Constl / Space World Group",
+        "description": "2026-09-29印度現役長途網路與Ciena完成1.6Tb/s傳輸測試；屬具名網路合作，非此速率商用部署證明。",
+        "evidence_level": "official_live_network_trial",
+        "source_ids": [
+          "CONSTL"
+        ],
+        "details": "Constl 與 Ciena 在印度長途光纖網路完成 1.6Tb/s 高速光傳輸測試，驗證 WaveLogic 6 Extreme 技術。"
+      },
+      {
+        "id": "QUANTUM_partner_NEW_010",
+        "business_line": "QUANTUM",
+        "relationship": "partner",
+        "name": "Quantum Corridor",
+        "description": "2026-08-04於Quantum Corridor商用網路與Ciena、Toshiba完成1.6Tb/s量子安全加密測試；僅確認試驗合作。",
+        "evidence_level": "official_joint_trial",
+        "source_ids": [
+          "QUANTUM_CORRIDOR"
+        ],
+        "details": "Quantum Corridor 與 Ciena、Toshiba 在商用光纖網路共同完成 1.6Tb/s 量子安全加密傳輸測試。"
+      },
+      {
+        "id": "QUANTUM_partner_NEW_011",
+        "business_line": "QUANTUM",
+        "relationship": "partner",
+        "name": "Toshiba",
+        "description": "2026-08-04與Ciena及Quantum Corridor共同完成PQC/QKD光網加密試驗；不是Ciena已確認供應商或採購客戶。",
+        "evidence_level": "official_joint_trial",
+        "source_ids": [
+          "TOSHIBA"
+        ],
+        "details": "Toshiba 與 Ciena、Quantum Corridor 合作測試量子安全光網路加密技術，結合高速相干光傳輸與安全通訊。"
+      },
+      {
+        "id": "SUPPLY_supplier_NEW_012",
+        "business_line": "SUPPLY",
+        "relationship": "supplier",
+        "name": "Fabrinet",
+        "description": "Fabrinet執行長2026年技術峰會明確具名Ciena為既有客戶，支持外包製造關係；不得將Fabrinet所有產品線出貨歸於Ciena。",
+        "evidence_level": "supplier_executive_named_customer",
+        "source_ids": [
+          "FABRINET_CEO"
+        ],
+        "details": "Fabrinet 為 Ciena 提供光通訊相關產品的委外製造服務，Fabrinet 管理層曾公開將 Ciena 列為既有客戶。"
+      },
+      {
+        "id": "METRO_customer_NEW_013",
+        "business_line": "METRO",
+        "relationship": "customer",
+        "name": "Colt Technology Services",
+        "description": "Colt官方合作頁確認使用Ciena擴充400G網路容量；歷史具名商業部署，不表示2026新增訂單。",
+        "evidence_level": "counterparty_official_network_use",
+        "source_ids": [
+          "COLT"
+        ],
+        "details": "Colt Technology Services 採用 Ciena 光網路設備擴充 400G 傳輸容量，升級企業與電信網路連接服務。"
+      },
+      {
+        "id": "SUBSEA_customer_NEW_014",
+        "business_line": "SUBSEA",
+        "relationship": "customer",
+        "name": "Angola Cables",
+        "description": "2026-09-29官方客戶案例列為以Ciena技術提升MONET/SACS海纜容量；需區分規劃及實際部署進度。",
+        "evidence_level": "official_customer_reference",
+        "source_ids": [
+          "ANGOLA"
+        ],
+        "details": "Angola Cables 運用 Ciena 光傳輸技術擴充 MONET 與 SACS 海底電纜網路容量。"
+      },
+      {
+        "id": "HYPERSCALER_customer_NEW_015",
+        "business_line": "HYPERSCALER",
+        "relationship": "customer",
+        "name": "CtrlS Datacenters",
+        "description": "2026-09-28 Ciena官方客戶案例記錄CtrlS採用光網路技術支持hyperscaler的受管光纖網路；CtrlS為具名採用方，hyperscaler下游客戶未具名。",
+        "evidence_level": "official_customer_reference",
+        "source_ids": [
+          "CTRLS"
+        ],
+        "details": "CtrlS Datacenters 採用 Ciena 光網路技術建置受管光纖網路，支援大型雲端資料中心之間的高速連接。"
+      },
+      {
+        "id": "HYPERSCALER_customer_NEW_016",
+        "business_line": "HYPERSCALER",
+        "relationship": "customer",
+        "name": "Amazon",
+        "description": "Ciena官方公司事實表將Amazon列為公開樣本客戶；未證實其對應SEC Cloud Provider A或B，亦不歸屬特定2026Q3營收。",
+        "evidence_level": "official_named_historical_customer",
+        "source_ids": [
+          "CIENA_CUSTOMER_FACTSHEET"
+        ],
+        "details": "Amazon 是 Ciena 公開列示的客戶，雙方具有光網路及連接技術相關的商業供應關係。"
+      },
+      {
+        "id": "HYPERSCALER_customer_NEW_017",
+        "business_line": "HYPERSCALER",
+        "relationship": "customer",
+        "name": "Google",
+        "description": "Ciena官方公司事實表將Google列為公開樣本客戶；不可將其直接對應SEC匿名集中客戶。",
+        "evidence_level": "official_named_historical_customer",
+        "source_ids": [
+          "CIENA_CUSTOMER_FACTSHEET"
+        ],
+        "details": "Google 是 Ciena 公開列示的客戶，雙方具有光網路及連接技術相關的商業供應關係。"
+      },
+      {
+        "id": "HYPERSCALER_customer_NEW_018",
+        "business_line": "HYPERSCALER",
+        "relationship": "customer",
+        "name": "Microsoft",
+        "description": "Ciena官方公司事實表將Microsoft列為公開樣本客戶；不代表2026年最新訂單具名。",
+        "evidence_level": "official_named_historical_customer",
+        "source_ids": [
+          "CIENA_CUSTOMER_FACTSHEET"
+        ],
+        "details": "Microsoft 是 Ciena 公開列示的客戶，雙方具有光網路及連接技術相關的商業供應關係。"
+      },
+      {
+        "id": "HYPERSCALER_customer_NEW_019",
+        "business_line": "HYPERSCALER",
+        "relationship": "customer",
+        "name": "Meta",
+        "description": "Ciena官方公司事實表將Meta列為公開樣本客戶；不指認Cloud Provider A/B。",
+        "evidence_level": "official_named_historical_customer",
+        "source_ids": [
+          "CIENA_CUSTOMER_FACTSHEET"
+        ],
+        "details": "Meta 是 Ciena 公開列示的客戶，雙方具有光網路及連接技術相關的商業供應關係。"
+      },
+      {
+        "id": "HYPERSCALER_customer_NEW_020",
+        "business_line": "HYPERSCALER",
+        "relationship": "customer",
+        "name": "Apple",
+        "description": "Ciena官方公司事實表將Apple列為公開樣本客戶；未揭露2026年個別採購金額。",
+        "evidence_level": "official_named_historical_customer",
+        "source_ids": [
+          "CIENA_CUSTOMER_FACTSHEET"
+        ],
+        "details": "Apple 是 Ciena 公開列示的客戶，雙方具有網路連接技術相關的商業往來。"
+      }
+    ],
+    "research": {
+      "baseline_commit": "7429c8bef9e36202330e79ae41e3b7933244c45e",
+      "baseline_company": "BHE",
+      "original_git_blob_sha": "32c3750945bc7822f56015e3a52afdca59ee376e",
+      "as_of": "2026-11-05",
+      "latest_reported_quarter": "FY2026 Q3 ended 2026-08-01",
+      "quarter_2026_q3": {
+        "revenue_usd_millions_approx": 1671,
+        "revenue_yoy_pct": 37,
+        "gaap_gross_margin_pct": 45.4,
+        "adjusted_gross_margin_pct": 46.4,
+        "gaap_operating_margin_pct": 18.0,
+        "adjusted_operating_margin_pct": 22.5,
+        "cloud_provider_revenue_pct": 53,
+        "cloud_provider_revenue_yoy_pct": 82,
+        "source_ids": [
+          "SEC_Q3_RESULTS",
+          "SEC_Q3_PRESENTATION"
+        ]
+      },
+      "fy2026_q4_guidance": {
+        "revenue_usd_millions_midpoint": 1750,
+        "plus_minus_usd_millions": 50,
+        "source_ids": [
+          "SEC_Q3_RESULTS"
+        ]
+      },
+      "fy2026_guidance": {
+        "revenue_usd_millions_midpoint": 6420,
+        "plus_minus_usd_millions": 50,
+        "source_ids": [
+          "SEC_Q3_RESULTS"
+        ]
+      },
+      "q3_10q_concentration": {
+        "cloud_provider_A_revenue_usd_millions": 476.57,
+        "cloud_provider_B_revenue_usd_millions": 219.644,
+        "note": "兩者SEC匿名；不得對應Amazon/Google/Microsoft/Meta/Apple",
+        "source_ids": [
+          "SEC_2026_Q3_10Q"
+        ]
+      },
+      "purchase_order_commitments_as_of_2026_08_01_usd_billion": 3.3,
+      "backlog_comment": "2026Q3法說稱進入FY2027時可能超過100億美元；為法說前瞻估計，不等於已實現收入",
+      "nubis_acquisition": {
+        "closed_on": "2025-10-07",
+        "consideration_usd_millions_approx": 270.5,
+        "status": "completed_acquisition_not_partner",
+        "source_ids": [
+          "NUBIS_SEC"
+        ]
+      },
+      "named_customer_policy": "官方具名樣本客戶及歷史關係均註明時效；未把匿名2026營收指派給具名公司",
+      "supplier_integrity": "Fabrinet由其CEO直接具名Ciena為客戶；未將台灣光模組/PCB概念股冒充直接供應商",
+      "research_limitations": "未達100份獨立文件的實質查閱；部分舊版節點僅沿用先前研究，交付不宣稱PASS"
+    },
+    "five_gate_audit": {
+      "gate_1_hot_topics_reverse_check": {
+        "status": "reviewed",
+        "findings": [
+          "2026Q3雲端營收53%、同比82%",
+          "2026Q3 WaveLogic6 Nano 800ZR出貨翻倍",
+          "2026-10-13 Space Norway正式合約",
+          "2026-09 ACE、FLAG、Telstra、Spark等具名部署或測試"
+        ]
+      },
+      "gate_2_investor_ten_questions": {
+        "status": "reviewed",
+        "findings": [
+          "Q3營收37%增長",
+          "GAAP毛利率45.4%、調整後46.4%",
+          "雲端收入53%",
+          "SEC兩大雲端客戶仍匿名",
+          "WL6e/WL6n與RLS增長",
+          "外包製造Fabrinet直接具名",
+          "採購承諾33億美元",
+          "backlog高企與供應瓶頸",
+          "Nubis已完成收購",
+          "試驗、訂單、部署及收入分開"
+        ]
+      },
+      "gate_3_technology_product_completeness": {
+        "status": "reviewed",
+        "findings": [
+          "WL6e",
+          "WL6n",
+          "6500",
+          "Waveserver",
+          "RLS",
+          "Hyper-Rail",
+          "WaveRouter",
+          "Navigator",
+          "Blue Planet",
+          "Nubis CPO/NPO",
+          "量子安全光傳輸"
+        ]
+      },
+      "gate_4_falsification_competition": {
+        "status": "reviewed",
+        "findings": [
+          "不把匿名Cloud A/B等同具名雲端樣本客戶",
+          "不把1.6Tb/s測試視為全網量產",
+          "不把Nubis列外部供應商",
+          "Fabrinet CEO具名供應鏈但不推論採購額",
+          "不把台灣概念股寫成已證實直接供應"
+        ]
+      },
+      "gate_5_missing_topic_audit": {
+        "status": "incomplete",
+        "open_issues": [
+          "尚未完成100篇獨立來源查閱",
+          "具名台灣直接供應商仍缺可驗證交易證據",
+          "部分歷史客戶無2026年採購金額",
+          "需逐一復核舊版11個節點的原始URL"
+        ]
+      },
+      "reflection_rounds": [
+        {
+          "round": 1,
+          "focus": "財務時間與口徑",
+          "correction": "以SEC 2026Q3取代舊版僅摘要，區分GAAP/調整後及財測。"
+        },
+        {
+          "round": 2,
+          "focus": "客戶具名與交易階段",
+          "correction": "增補Space Norway等具名合約、部署；將Telstra/Constl標為測試。"
+        },
+        {
+          "round": 3,
+          "focus": "供應鏈反向查證",
+          "correction": "Fabrinet CEO具名Ciena；不將無交易證據的台廠升格supplier。"
+        },
+        {
+          "round": 4,
+          "focus": "重大缺漏",
+          "correction": "Nubis收購已於2025-10-07完成；保留未查滿100篇的未達標狀態。"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "id": "SEC_10K",
+        "url": "https://www.sec.gov/Archives/edgar/data/936395/000162828025056698/cien-20251101.htm"
+      },
+      {
+        "id": "SEC_Q3_EXHIBIT",
+        "url": "https://www.sec.gov/Archives/edgar/data/936395/000162828026060245/ex9922026q3earningsprese.htm"
+      },
+      {
+        "id": "IR_Q3",
+        "url": "https://investor.ciena.com/news/news-details/2026/Ciena-Reports-Fiscal-Third-Quarter-2026-Financial-Results/default.aspx"
+      },
+      {
+        "id": "LUMEN_OPTICAL",
+        "url": "https://www.ciena.com/about/newsroom/press-releases/lumen-selects-ciena-optical-tech-to-support-ai-workloads"
+      },
+      {
+        "id": "LUMEN_AI",
+        "url": "https://investor.ciena.com/news/news-details/2026/Lumen-Boosts-AI-Network-Transformation-with-Blue-Planets-AI-Studio-and-Agents-02-19-2026/default.aspx"
+      },
+      {
+        "id": "VERIZON_TRIAL",
+        "url": "https://www.ciena.com/about/newsroom/press-releases/verizon-advances-its-fiber-network-for-ai-workloads"
+      },
+      {
+        "id": "VERIZON_SUPPLIER",
+        "url": "https://www.ciena.com/insights/articles/2022/verizon-honors-ciena-with-supplier-environmental-excellence-award"
+      },
+      {
+        "id": "AIRTEL",
+        "url": "https://www.ciena.com/bharti"
+      },
+      {
+        "id": "VODAFONE_IDEA",
+        "url": "https://www.ciena.com/about/newsroom/press-releases"
+      },
+      {
+        "id": "ATT",
+        "url": "https://www.ciena.com/about/newsroom/press-releases/ciena-expands-edge-and-5g-capabilities-with-acquisition-of-vyatta-routing-and-switching-technology-from-att.html"
+      },
+      {
+        "id": "IRIS",
+        "url": "https://www.ciena.com/solutions/network-transformation-services"
+      },
+      {
+        "id": "FY2026_Q3_10Q",
+        "url": "https://www.publicnow.com/view/F61010F6DBAE093F37FF1C51533325B5B45AFC15"
+      },
+      {
+        "id": "SEC_2026_Q3_10Q",
+        "url": "https://www.sec.gov/Archives/edgar/data/936395/000162828026060361/cien-20260801.htm",
+        "type": "SEC"
+      },
+      {
+        "id": "SEC_2025_10K",
+        "url": "https://www.sec.gov/Archives/edgar/data/936395/000162828025056698/cien-20251101.htm",
+        "type": "SEC"
+      },
+      {
+        "id": "SEC_Q3_PRESENTATION",
+        "url": "https://www.sec.gov/Archives/edgar/data/936395/000162828026060245/ex9922026q3earningsprese.htm",
+        "type": "SEC"
+      },
+      {
+        "id": "SEC_Q3_RESULTS",
+        "url": "https://www.sec.gov/Archives/edgar/data/936395/000162828026060245/ex9912026q3earningspressre.htm",
+        "type": "SEC"
+      },
+      {
+        "id": "Q3_CALL",
+        "url": "https://stockanalysis.com/stocks/cien/transcripts/685744-q3-2026/",
+        "type": "transcript"
+      },
+      {
+        "id": "CIENA_CUSTOMER_FACTSHEET",
+        "url": "https://ir.ciena.com/static-files/558c6e43-54c6-4335-9dd9-923ea6c3def8",
+        "type": "counterparty_or_company_official"
+      },
+      {
+        "id": "FABRINET_CEO",
+        "url": "https://stockanalysis.com/stocks/fn/transcripts/731742-rosenblatt-s-6th-annual-technology-summit-the-age-of-ai-part-ii/",
+        "type": "supplier_executive"
+      },
+      {
+        "id": "NUBIS_SEC",
+        "url": "https://www.sec.gov/Archives/edgar/data/936395/000162828025056698/cien-20251101.htm",
+        "type": "SEC"
+      },
+      {
+        "id": "SPACE_NORWAY",
+        "url": "https://www.ciena.com/about/newsroom/press-releases/space-norway-selects-ciena-to-upgrade-its-legacy-svalbard-system-and-power-new-arctic-way-subsea-cable",
+        "type": "counterparty_or_company_official"
+      },
+      {
+        "id": "SPARK_NZ",
+        "url": "https://www.ciena.com/about/newsroom/press-releases/spark-taps-ciena-to-scale-data-centre-connectivity-across-auckland",
+        "type": "counterparty_or_company_official"
+      },
+      {
+        "id": "TELSTRA",
+        "url": "https://www.ciena.com/about/newsroom/press-releases/telstra-and-ciena-achieve-record-1.6-tbs-transmission-over-1%2C100km",
+        "type": "counterparty_or_company_official"
+      },
+      {
+        "id": "ION",
+        "url": "https://www.ciena.com/about/newsroom/press-releases/ion-network-leverages-cienas-wavelogic-6-extreme-to-deliver-high-bandwidth-services-on-ion-cable-system-1",
+        "type": "counterparty_or_company_official"
+      },
+      {
+        "id": "ACE",
+        "url": "https://www.ciena.com/about/newsroom/press-releases/ace-strengthens-connectivity-between-africa-and-europe-with-cienas-wavelogic-6-extreme",
+        "type": "counterparty_or_company_official"
+      },
+      {
+        "id": "FLAG",
+        "url": "https://www.ciena.com/about/newsroom/press-releases/flag-to-deliver-400gbe-and-800gbe-services-via-echo-cable-powered-by-ciena",
+        "type": "counterparty_or_company_official"
+      },
+      {
+        "id": "VODAFONE",
+        "url": "https://www.ciena.com/about/newsroom/press-releases/vodafone-idea-deploys-cienas-wavelogic-6-extreme-to-deliver-high-capacity-connectivity",
+        "type": "counterparty_or_company_official"
+      },
+      {
+        "id": "MATRIX",
+        "url": "https://www.ciena.com/about/newsroom/press-releases/matrix-nap-info-boosts-terabit-era-submarine-connectivity-with-ciena-wavelogic-6-extreme-on-the-batamjakarta-corridor",
+        "type": "counterparty_or_company_official"
+      },
+      {
+        "id": "CONSTL",
+        "url": "https://www.ciena.com/about/newsroom/press-releases/constl-and-ciena-achieve-yet-another-milestone-with-1.6-tbps-transmission-on-live-production-network-using-wavelogic-6-extreme",
+        "type": "counterparty_or_company_official"
+      },
+      {
+        "id": "QUANTUM_CORRIDOR",
+        "url": "https://www.ciena.com/about/newsroom/press-releases/quantum-corridor-ciena-and-toshiba-complete-worlds-first-1.6-tbs-quantum-safe-optical-encryption-milestone-on-live-commercial-network",
+        "type": "counterparty_or_company_official"
+      },
+      {
+        "id": "TOSHIBA",
+        "url": "https://www.ciena.com/about/newsroom/press-releases/quantum-corridor-ciena-and-toshiba-complete-worlds-first-1.6-tbs-quantum-safe-optical-encryption-milestone-on-live-commercial-network",
+        "type": "counterparty_or_company_official"
+      },
+      {
+        "id": "COLT",
+        "url": "https://www.colt.net/about/partners/ciena",
+        "type": "counterparty_or_company_official"
+      },
+      {
+        "id": "ANGOLA",
+        "url": "https://www.ciena.com/about/customer-success",
+        "type": "counterparty_or_company_official"
+      },
+      {
+        "id": "CTRLS",
+        "url": "https://www.ciena.com/about/customer-success",
+        "type": "counterparty_or_company_official"
+      }
+    ]
   }
 }

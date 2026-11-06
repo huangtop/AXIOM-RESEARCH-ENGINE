@@ -187,5 +187,443 @@
       "3D 元件結構"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "as_of": "2026-11-06",
+    "company": "Nova Ltd.",
+    "symbol": "NVMI",
+    "locale": "zh-TW",
+    "business_lines": [
+      {
+        "id": "先進邏輯／晶圓代工",
+        "name": "先進邏輯／晶圓代工"
+      },
+      {
+        "id": "記憶體量測",
+        "name": "記憶體量測"
+      },
+      {
+        "id": "先進封裝",
+        "name": "先進封裝"
+      },
+      {
+        "id": "光學尺寸量測",
+        "name": "光學尺寸量測"
+      },
+      {
+        "id": "製程控制",
+        "name": "製程控制"
+      },
+      {
+        "id": "整合式量測",
+        "name": "整合式量測"
+      },
+      {
+        "id": "半導體測試量測",
+        "name": "半導體測試量測"
+      },
+      {
+        "id": "晶圓測試",
+        "name": "晶圓測試"
+      },
+      {
+        "id": "先進封裝測試",
+        "name": "先進封裝測試"
+      },
+      {
+        "id": "先進製程",
+        "name": "先進製程"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "nvmi-001",
+        "business_line": "先進邏輯／晶圓代工",
+        "relationship": "customer",
+        "name": "TSMC（台積電）",
+        "description": "Nova 官方招聘台積電專屬業務經理，負責台積電客戶關係、產品服務及銷售配額；屬已公開具名商業客戶帳戶，但不據此推定特定設備型號與營收。",
+        "evidence_level": "A",
+        "source_ids": [
+          "S06"
+        ],
+        "details": "Nova 官方招聘台積電專屬業務經理，負責台積電客戶關係、產品服務及銷售配額；屬已公開具名商業客戶帳戶，但不據此推定特定設備型號與營收。",
+        "confidence": "medium"
+      },
+      {
+        "id": "nvmi-002",
+        "business_line": "先進邏輯／記憶體",
+        "relationship": "customer",
+        "name": "Samsung Electronics（三星電子）",
+        "description": "Nova 官方招募三星客戶業務經理，處理三星銷售帳戶與客戶相關商務活動；確認具名客戶帳戶，未公開特定採購機台與金額。",
+        "evidence_level": "A",
+        "source_ids": [
+          "S07"
+        ],
+        "details": "Nova 官方招募三星客戶業務經理，處理三星銷售帳戶與客戶相關商務活動；確認具名客戶帳戶，未公開特定採購機台與金額。",
+        "confidence": "medium"
+      },
+      {
+        "id": "nvmi-003",
+        "business_line": "先進封裝",
+        "relationship": "customer",
+        "name": "未具名全球晶圓代工客戶（WMC）",
+        "description": "2026年7月 Nova WMC 平台獲全球領先晶圓代工客戶選為多層先進封裝量測標準機台（tool of record），屬已公布設計勝出；客戶名稱未揭露。",
+        "evidence_level": "A",
+        "source_ids": [
+          "S04"
+        ],
+        "details": "2026年7月 Nova WMC 平台獲全球領先晶圓代工客戶選為多層先進封裝量測標準機台（tool of record），屬已公布設計勝出；客戶名稱未揭露。",
+        "confidence": "high"
+      },
+      {
+        "id": "nvmi-004",
+        "business_line": "記憶體量測",
+        "relationship": "customer",
+        "name": "未具名記憶體製造商（Metrion）",
+        "description": "Nova Metrion 已獲記憶體大廠採購並導入先進 DRAM 製造，官方確認採購但未公布客戶公司名稱。",
+        "evidence_level": "A",
+        "source_ids": [
+          "S05"
+        ],
+        "details": "Nova Metrion 已獲記憶體大廠採購並導入先進 DRAM 製造，官方確認採購但未公布客戶公司名稱。",
+        "confidence": "high"
+      },
+      {
+        "id": "nvmi-005",
+        "business_line": "先進邏輯／晶圓代工",
+        "relationship": "customer",
+        "name": "未具名邏輯製造商（Metrion）",
+        "description": "Nova Metrion 已獲先進邏輯製造商採購導入 GAA 製程材料量測，官方確認採購但未公布客戶名稱。",
+        "evidence_level": "A",
+        "source_ids": [
+          "S05"
+        ],
+        "details": "Nova Metrion 已獲先進邏輯製造商採購導入 GAA 製程材料量測，官方確認採購但未公布客戶名稱。",
+        "confidence": "high"
+      },
+      {
+        "id": "nvmi-006",
+        "business_line": "光學尺寸量測",
+        "relationship": "competitor",
+        "name": "Onto Innovation",
+        "description": "Nova 2025 年 20-F 具名競爭者：在半導體光學尺寸、薄膜及製程控制量測設備直接競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "S01"
+        ],
+        "details": "Nova 2025 年 20-F 具名競爭者：在半導體光學尺寸、薄膜及製程控制量測設備直接競爭。",
+        "confidence": "high"
+      },
+      {
+        "id": "nvmi-007",
+        "business_line": "製程控制",
+        "relationship": "competitor",
+        "name": "KLA",
+        "description": "Nova 2025 年 20-F 具名競爭者：在半導體製程控制、量測及良率管理系統直接競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "S01"
+        ],
+        "details": "Nova 2025 年 20-F 具名競爭者：在半導體製程控制、量測及良率管理系統直接競爭。",
+        "confidence": "high"
+      },
+      {
+        "id": "nvmi-008",
+        "business_line": "整合式量測",
+        "relationship": "competitor",
+        "name": "ASML",
+        "description": "Nova 2025 年 20-F 具名競爭者：以製程設備內建感測及整合量測能力構成相鄰競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "S01"
+        ],
+        "details": "Nova 2025 年 20-F 具名競爭者：以製程設備內建感測及整合量測能力構成相鄰競爭。",
+        "confidence": "high"
+      },
+      {
+        "id": "nvmi-009",
+        "business_line": "整合式量測",
+        "relationship": "competitor",
+        "name": "Lam Research",
+        "description": "Nova 2025 年 20-F 具名競爭者：以蝕刻與薄膜製程設備的內建感測與量測技術構成相鄰競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "S01"
+        ],
+        "details": "Nova 2025 年 20-F 具名競爭者：以蝕刻與薄膜製程設備的內建感測與量測技術構成相鄰競爭。",
+        "confidence": "high"
+      },
+      {
+        "id": "nvmi-010",
+        "business_line": "整合式量測",
+        "relationship": "competitor",
+        "name": "Applied Materials",
+        "description": "Nova 2025 年 20-F 具名競爭者：以製程設備內建感測及量測技術構成相鄰競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "S01"
+        ],
+        "details": "Nova 2025 年 20-F 具名競爭者：以製程設備內建感測及量測技術構成相鄰競爭。",
+        "confidence": "high"
+      },
+      {
+        "id": "nvmi-011",
+        "business_line": "先進封裝",
+        "relationship": "competitor",
+        "name": "Merck",
+        "description": "Nova 2025 年 20-F 具名競爭者：在特殊材料與晶圓級封裝量測相關市場競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "S01"
+        ],
+        "details": "Nova 2025 年 20-F 具名競爭者：在特殊材料與晶圓級封裝量測相關市場競爭。",
+        "confidence": "high"
+      },
+      {
+        "id": "nvmi-012",
+        "business_line": "先進封裝",
+        "relationship": "competitor",
+        "name": "Camtek",
+        "description": "Nova 2025 年 20-F 具名競爭者：在先進封裝與晶圓級封裝檢測量測市場競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "S01"
+        ],
+        "details": "Nova 2025 年 20-F 具名競爭者：在先進封裝與晶圓級封裝檢測量測市場競爭。",
+        "confidence": "high"
+      },
+      {
+        "id": "nvmi-013",
+        "business_line": "半導體測試量測",
+        "relationship": "beneficiary",
+        "name": "致茂",
+        "description": "半導體與電子測試設備業者；AI及先進製程資本支出增加可能帶動相關測試投資，非 Nova 供應商",
+        "evidence_level": "B",
+        "source_ids": [
+          "S02",
+          "S12"
+        ],
+        "details": "半導體與電子測試設備業者；AI及先進製程資本支出增加可能帶動相關測試投資，非 Nova 供應商",
+        "confidence": "thematic",
+        "ticker": "2360"
+      },
+      {
+        "id": "nvmi-014",
+        "business_line": "晶圓測試",
+        "relationship": "beneficiary",
+        "name": "旺矽",
+        "description": "探針卡與半導體測試設備業者；先進邏輯與 HBM 測試複雜度提高可能受惠，非 Nova 供應商",
+        "evidence_level": "B",
+        "source_ids": [
+          "S02",
+          "S12"
+        ],
+        "details": "探針卡與半導體測試設備業者；先進邏輯與 HBM 測試複雜度提高可能受惠，非 Nova 供應商",
+        "confidence": "thematic",
+        "ticker": "6223"
+      },
+      {
+        "id": "nvmi-015",
+        "business_line": "先進封裝測試",
+        "relationship": "beneficiary",
+        "name": "穎崴",
+        "description": "半導體測試介面廠；AI 晶片先進封裝與測試複雜度增加可能受惠，非 Nova 供應商",
+        "evidence_level": "B",
+        "source_ids": [
+          "S02",
+          "S12"
+        ],
+        "details": "半導體測試介面廠；AI 晶片先進封裝與測試複雜度增加可能受惠，非 Nova 供應商",
+        "confidence": "thematic",
+        "ticker": "6515"
+      },
+      {
+        "id": "nvmi-016",
+        "business_line": "先進製程",
+        "relationship": "beneficiary",
+        "name": "家登",
+        "description": "先進微影載具業者；晶圓廠擴產及製程複雜度增加具同向需求驅動，非 Nova 供應商",
+        "evidence_level": "B",
+        "source_ids": [
+          "S02",
+          "S12"
+        ],
+        "details": "先進微影載具業者；晶圓廠擴產及製程複雜度增加具同向需求驅動，非 Nova 供應商",
+        "confidence": "thematic",
+        "ticker": "3680"
+      }
+    ],
+    "corporate_events": [
+      {
+        "date": "2025-01-30",
+        "type": "acquisition_closed",
+        "company": "Sentronics Metrology GmbH",
+        "details": "Nova 完成收購 Sentronics，擴張晶圓級封裝與後段量測產品；屬歷史已完成併購，非2026年新交易。",
+        "source_ids": [
+          "S01",
+          "S10"
+        ]
+      },
+      {
+        "date": "2026-07-02",
+        "type": "design_win",
+        "company": "未具名全球晶圓代工客戶",
+        "details": "Nova WMC 獲選為先進封裝多層量測標準機台，屬已公布新設計勝出。",
+        "source_ids": [
+          "S04"
+        ]
+      },
+      {
+        "date": "2026-11-05",
+        "type": "earnings",
+        "company": "Nova Ltd.",
+        "details": "第三季營收2.878億美元，季增13%、年增28%；先進封裝與記憶體產品創紀錄。",
+        "source_ids": [
+          "S02",
+          "S11"
+        ]
+      }
+    ],
+    "research": {
+      "source_count": 12,
+      "sources_reviewed": 12,
+      "latest_filing": "2025 20-F; 2026-11-05 6-K",
+      "latest_earnings": "2026-11-05 Q3 2026",
+      "news_window": "2026-08-06 to 2026-11-06",
+      "reflection_rounds": [
+        {
+          "round": 1,
+          "finding": "外國發行人採20-F與6-K，不能將未找到10-Q誤判為缺漏。"
+        },
+        {
+          "round": 2,
+          "finding": "20-F 具名7家競爭者，其中3家為設備內建量測相鄰競爭。"
+        },
+        {
+          "round": 3,
+          "finding": "台積電與三星具官方業務帳戶證據，但無產品型號，明確降置信度。"
+        },
+        {
+          "round": 4,
+          "finding": "WMC與Metrion已獲採用但客戶未具名，保留匿名節點而不猜測。"
+        },
+        {
+          "round": 5,
+          "finding": "2025 Sentronics 收購已完成，2026近期未查得可靠新重大併購或失單公告。"
+        },
+        {
+          "round": 6,
+          "finding": "台灣受惠股與直接供應商分開，沒有公開直接供貨證據就不列供應商。"
+        }
+      ],
+      "limitations": [
+        "未取得最新2026Q3完整法說逐字稿",
+        "未達100份獨立來源",
+        "未查證台灣受惠股與Nova直接供貨",
+        "具名台積電及三星以官方銷售帳戶證據列入，非已確認具體訂單"
+      ]
+    },
+    "five_gate_audit": {
+      "original_11_fields": "CHECKED_AGAINST_GITHUB_FIELD_HASHES_PENDING",
+      "node_details": "PASS",
+      "source_linkage": "PASS",
+      "taiwan_supplier_direction": "PASS",
+      "research_depth": "PARTIAL",
+      "overall": "PARTIAL_NOT_100_SOURCE_PASS"
+    },
+    "sources": [
+      {
+        "id": "S01",
+        "tier": "A",
+        "date": "2026-02-17",
+        "title": "Nova 2025 Form 20-F",
+        "url": "https://www.sec.gov/Archives/edgar/data/1109345/000117891326000504/zk2634307.htm"
+      },
+      {
+        "id": "S02",
+        "tier": "A",
+        "date": "2026-11-05",
+        "title": "Nova Q3 2026 earnings",
+        "url": "https://www.novami.com/investors/press-releases/nova-reports-record-third-quarter-2026-financial-results/"
+      },
+      {
+        "id": "S03",
+        "tier": "A",
+        "date": "2026-08-06",
+        "title": "Nova Q2 2026 earnings",
+        "url": "https://www.novami.com/investors/press-releases/nova-reports-record-second-quarter-2026-financial-results/"
+      },
+      {
+        "id": "S04",
+        "tier": "A",
+        "date": "2026-07-02",
+        "title": "Nova WMC tool-of-record foundry design win",
+        "url": "https://www.novami.com/investors/press-releases/nova-wmc-expanding-adoption-across-the-most-advanced-packaging-processes/"
+      },
+      {
+        "id": "S05",
+        "tier": "A",
+        "date": "2026-01-29",
+        "title": "Nova Metrion memory and logic customer adoption",
+        "url": "https://www.novami.com/investors/press-releases/nova-announces-adoption-of-metrion-by-two-leading-global-manufacturers/"
+      },
+      {
+        "id": "S06",
+        "tier": "A",
+        "date": "2026-11-06",
+        "title": "Nova TSMC account sales job listing",
+        "url": "https://www.novami.com/comeetitem/89651-2/"
+      },
+      {
+        "id": "S07",
+        "tier": "A",
+        "date": "2026-11-06",
+        "title": "Nova Samsung account sales job listing",
+        "url": "https://www.novami.com/department_filter/sales/"
+      },
+      {
+        "id": "S08",
+        "tier": "A",
+        "date": "2026-11-06",
+        "title": "Nova official product portfolio",
+        "url": "https://www.novami.com/"
+      },
+      {
+        "id": "S09",
+        "tier": "A",
+        "date": "2026-11-06",
+        "title": "Nova official investor relations",
+        "url": "https://www.novami.com/investors/lobby/"
+      },
+      {
+        "id": "S10",
+        "tier": "A",
+        "date": "2025-01-30",
+        "title": "Sentronics acquisition completion disclosed in 20-F",
+        "url": "https://www.sec.gov/Archives/edgar/data/1109345/000117891326000504/zk2634307.htm"
+      },
+      {
+        "id": "S11",
+        "tier": "A",
+        "date": "2026-11-05",
+        "title": "Nova 6-K Q3 filing",
+        "url": "https://www.stocktitan.net/sec-filings/NVMI/6-k-nova-ltd-current-report-foreign-issuer-d1fa37e1dc26.html"
+      },
+      {
+        "id": "S12",
+        "tier": "A",
+        "date": "2026-02-17",
+        "title": "Nova 2025 20-F accessible PDF",
+        "url": "https://www.novami.com/wp-content/uploads/2026/02/nova-2025-form-20-f-accessible.pdf"
+      }
+    ]
   }
 }

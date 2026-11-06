@@ -181,5 +181,268 @@
       "高純度製程需求"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "industry-chain.v1",
+    "as_of": "2026-11-06",
+    "company": "Ichor Holdings, Ltd.",
+    "symbol": "ICHR",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "Ichor (ICHR) 半導體設備氣體／化學品輸送產業鏈",
+      "description": "以 SEC 10-K、10-Q 及 2026 年第三季法說為基礎，區分具名客戶、直接競爭者及台灣同產業受惠股。"
+    },
+    "business_lines": [
+      {
+        "id": "GAS_DELIVERY",
+        "name": "半導體氣體輸送子系統",
+        "description": "為蝕刻、沉積等晶圓設備設計及製造高純度氣體輸送模組。"
+      },
+      {
+        "id": "CHEM_DELIVERY",
+        "name": "半導體化學品輸送子系統",
+        "description": "提供晶圓製程設備的化學品輸送、混合與控制系統。"
+      },
+      {
+        "id": "PRECISION_COMPONENTS",
+        "name": "精密流體零組件",
+        "description": "製造隔膜閥、焊接件與精密加工流體控制組件。"
+      },
+      {
+        "id": "OEM_ENGINEERING",
+        "name": "設備 OEM 協同設計與委外製造",
+        "description": "參與客戶設備新產品早期設計、驗證及製造。"
+      },
+      {
+        "id": "ADJACENT",
+        "name": "國防航太及醫療精密製造",
+        "description": "半導體以外的精密加工及組件製造。"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "GAS_customer_AMAT",
+        "name": "Applied Materials（AMAT）",
+        "business_line": "GAS_DELIVERY",
+        "relationship": "customer",
+        "details": "Applied Materials 向 Ichor 採購半導體設備所需的高純度氣體與化學品輸送子系統；2025 年採購額約 3.717 億美元。",
+        "description": "Applied Materials 向 Ichor 採購半導體設備所需的高純度氣體與化學品輸送子系統；2025 年採購額約 3.717 億美元。",
+        "evidence_level": "SEC_explicit",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "fy2025_revenue_usd_thousands": 371697
+      },
+      {
+        "id": "GAS_customer_LRCX",
+        "name": "Lam Research（LRCX）",
+        "business_line": "GAS_DELIVERY",
+        "relationship": "customer",
+        "details": "Lam Research 向 Ichor 採購蝕刻及薄膜設備使用的氣體輸送子系統與精密流體零組件；2025 年採購額約 3.514 億美元。",
+        "description": "Lam Research 向 Ichor 採購蝕刻及薄膜設備使用的氣體輸送子系統與精密流體零組件；2025 年採購額約 3.514 億美元。",
+        "evidence_level": "SEC_explicit",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "fy2025_revenue_usd_thousands": 351418
+      },
+      {
+        "id": "GAS_customer_ASML",
+        "name": "ASML",
+        "business_line": "OEM_ENGINEERING",
+        "relationship": "customer",
+        "details": "ASML 是 Ichor 長期合作的半導體設備 OEM 客戶，採用 Ichor 的精密流體輸送與設備子系統製造服務。",
+        "description": "Ichor 2025 10-K 將 ASML 列為主要客戶關係之一；2025 年未達個別營收 10% 門檻。",
+        "evidence_level": "SEC_explicit",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "GAS_competitor_UCT",
+        "name": "Ultra Clean Holdings（UCTT）",
+        "business_line": "GAS_DELIVERY",
+        "relationship": "competitor",
+        "details": "Ultra Clean 與 Ichor 直接競爭半導體設備 OEM 的氣體輸送系統、關鍵子系統設計與委外製造訂單。",
+        "description": "Ultra Clean 與 Ichor 直接競爭半導體設備 OEM 的氣體輸送系統、關鍵子系統設計與委外製造訂單。",
+        "evidence_level": "SEC_explicit",
+        "source_ids": [
+          "SEC_2025_10K",
+          "UCT_SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "GAS_competitor_FUJIKIN",
+        "name": "Fujikin",
+        "business_line": "GAS_DELIVERY",
+        "relationship": "competitor",
+        "details": "Fujikin 與 Ichor 在半導體高純度氣體輸送模組及相關流體控制零組件市場競爭。",
+        "description": "Fujikin 與 Ichor 在半導體高純度氣體輸送模組及相關流體控制零組件市場競爭。",
+        "evidence_level": "SEC_explicit",
+        "source_ids": [
+          "UCT_SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "OEM_competitor_FOXSEMICON",
+        "name": "京鼎精密（3413）",
+        "business_line": "OEM_ENGINEERING",
+        "relationship": "competitor",
+        "details": "京鼎與 Ichor 在半導體設備 OEM 精密模組、機電子系統及委外製造領域存在相鄰競爭。",
+        "description": "競爭範圍是半導體設備關鍵子系統委外製造，並非證明京鼎直接銷售 Ichor 同型氣體輸送模組。",
+        "evidence_level": "adjacent_competition_industry",
+        "source_ids": [
+          "UCT_SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "FAVOR_FOXSEMICON",
+        "name": "京鼎精密（3413）",
+        "business_line": "OEM_ENGINEERING",
+        "relationship": "beneficiary",
+        "details": "京鼎承接半導體設備商的精密機構件與設備模組製造，晶圓設備資本支出及委外製造需求成長有利其接單機會。",
+        "description": "產業趨勢受惠推論；沒有宣稱與 Ichor 有直接買賣關係。",
+        "evidence_level": "sector_beneficiary_inference",
+        "source_ids": [
+          "SEC_2025_10K",
+          "IR_2026_Q3"
+        ],
+        "taiwan_listed": true
+      },
+      {
+        "id": "FAVOR_MARKETECH",
+        "name": "帆宣（6196）",
+        "business_line": "CHEM_DELIVERY",
+        "relationship": "beneficiary",
+        "details": "帆宣提供半導體廠務、製程供應系統及設備整合服務，先進晶圓廠擴建與氣體化學品供應需求增加時同步受惠。",
+        "description": "產業趨勢受惠推論；沒有宣稱與 Ichor 有直接買賣關係。",
+        "evidence_level": "sector_beneficiary_inference",
+        "source_ids": [
+          "SEC_2025_10K",
+          "IR_2026_Q3"
+        ],
+        "taiwan_listed": true
+      },
+      {
+        "id": "FAVOR_UIS",
+        "name": "漢唐（2404）",
+        "business_line": "CHEM_DELIVERY",
+        "relationship": "beneficiary",
+        "details": "漢唐承攬高科技廠房無塵室及機電系統工程，晶圓廠擴產與先進製程建廠支出增加時同步受惠。",
+        "description": "產業趨勢受惠推論；沒有宣稱與 Ichor 有直接買賣關係。",
+        "evidence_level": "sector_beneficiary_inference",
+        "source_ids": [
+          "SEC_2025_10K",
+          "IR_2026_Q3"
+        ],
+        "taiwan_listed": true
+      },
+      {
+        "id": "FAVOR_GUDENG",
+        "name": "家登（3680）",
+        "business_line": "PRECISION_COMPONENTS",
+        "relationship": "beneficiary",
+        "details": "家登提供半導體製程載具與先進微影相關產品，先進製程投資及晶圓廠資本支出增加時具同產業受惠機制。",
+        "description": "產業趨勢受惠推論；沒有宣稱與 Ichor 有直接買賣關係。",
+        "evidence_level": "sector_beneficiary_inference",
+        "source_ids": [
+          "SEC_2025_10K",
+          "IR_2026_Q3"
+        ],
+        "taiwan_listed": true
+      }
+    ],
+    "sources": {
+      "SEC_2025_10K": {
+        "tier": "A",
+        "title": "Ichor 2025 Form 10-K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1652535/000165253526000012/ichr-20251226.htm",
+        "date": "2026-02-20"
+      },
+      "SEC_2026_Q3_10Q": {
+        "tier": "A",
+        "title": "Ichor 2026 Q3 Form 10-Q",
+        "url": "https://www.sec.gov/Archives/edgar/data/1652535/000165253526000078/ichr-20260925.htm",
+        "date": "2026-11-03"
+      },
+      "IR_2026_Q3": {
+        "tier": "A",
+        "title": "Ichor Q3 2026 financial results",
+        "url": "https://ir.ichorsystems.com/press-releases/ichor-holdings-ltd-announces-third-quarter-2026-financial-results/dd50c94f-d4f0-47d7-92f7-6db49a75ab40",
+        "date": "2026-11-02"
+      },
+      "CALL_2026_Q3": {
+        "tier": "B",
+        "title": "Ichor Q3 2026 earnings call transcript",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/11/02/ichor-ichr-q3-2026-earnings-call-transcript/",
+        "date": "2026-11-02"
+      },
+      "UCT_SEC_2025_10K": {
+        "tier": "A",
+        "title": "Ultra Clean 2025 Form 10-K competition section",
+        "url": "https://companiesmarketcap.com/ultra-clean-holdings/sec-reports-10k/0001628280-26-010744/",
+        "date": "2026-02-23"
+      },
+      "UCT_SEC_2024_10K": {
+        "tier": "A",
+        "title": "Ultra Clean 2024 Form 10-K competition section",
+        "url": "https://www.sec.gov/Archives/edgar/data/1275014/000114036124022575/ny20018675x2_ars.pdf",
+        "date": "2024-04-30"
+      }
+    },
+    "research": {
+      "latest_filings": [
+        "SEC_2025_10K",
+        "SEC_2026_Q3_10Q"
+      ],
+      "latest_earnings": [
+        "IR_2026_Q3",
+        "CALL_2026_Q3"
+      ],
+      "recent_90_day_news_review": {
+        "window": "2026-08-06 至 2026-11-06",
+        "findings": [
+          "2026-11-02：第三季營收 3.287 億美元，季增 12%、年增 37%；GAAP 毛利率 15.8%。",
+          "2026-11-03：最新 10-Q 顯示前三季營收 8.796 億美元、存貨與應收帳款增加，須追蹤營運資金。",
+          "2026-11-02 法說：客戶需求回升、2026 全年營收預估成長約 30%。"
+        ],
+        "not_confirmed": [
+          "未找到可驗證的最近三個月重大併購完成公告。",
+          "未找到可驗證的具名重大客戶流失公告。",
+          "未找到可將匿名新增訂單歸屬於特定 OEM 的直接證據。"
+        ]
+      },
+      "taiwan_supply_chain_policy": "未取得 Ichor 與台灣上市公司直接供貨、ODM/OEM 或採購證據，因此 supplier 不新增台灣公司；受惠股僅列 beneficiary。",
+      "limitations": [
+        "沒有完成 100 份獨立來源查核；不得標示全面 PASS。",
+        "京鼎為相鄰競爭及產業受惠的不同角度，兩者皆不代表 Ichor 直接採購。",
+        "未取得所有受惠公司逐一的 2026 最新公告交叉查證。"
+      ]
+    },
+    "five_gate_audit": {
+      "status": "PARTIAL",
+      "gates": {
+        "original_11_fields": "PASS",
+        "sec_customer_competitor_grounding": "PASS",
+        "relationship_details_specific": "PASS",
+        "taiwan_supplier_strict": "PASS",
+        "latest_news_90_day": "PARTIAL",
+        "source_depth": "PARTIAL"
+      },
+      "reflection_rounds": [
+        "第 1 輪：10-K 把 Lam Research、Applied Materials、ASML 列為具名客戶，避免只抓超過 10% 的兩家公司。",
+        "第 2 輪：將競爭者 Ultra Clean、Fujikin 與京鼎相鄰競爭分開，不把 UCT 的所有競爭者自動視為 Ichor 直接競爭者。",
+        "第 3 輪：台灣受惠公司與直接供應商分離，未證實供貨就不建 supplier 節點。",
+        "第 4 輪：最新 10-Q 及法說確認營收成長，同時保留存貨與營運資金風險，不把需求復甦寫成已簽特定新訂單。",
+        "第 5 輪：最近 90 天併購與訂單檢索沒有可核實重大事件，明確標記未確認而非推斷沒有事件。"
+      ]
+    }
   }
 }

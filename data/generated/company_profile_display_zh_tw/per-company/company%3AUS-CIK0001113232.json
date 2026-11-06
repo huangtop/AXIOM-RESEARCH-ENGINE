@@ -511,5 +511,368 @@
       "雲端運算"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "as_of": "2026-11-06",
+    "company": "Axcelis Technologies, Inc.",
+    "symbol": "ACLS",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "ACLS Axcelis 離子佈植產業鏈、競爭者與 Veeco 合併進度",
+      "description": "SEC 10-K、2026 Q3 10-Q、官方 IR 交叉核對；區分直接供應鏈與台灣受惠股。"
+    },
+    "business_lines": [
+      {
+        "name": "離子佈植系統",
+        "details": "用於晶圓製造的離子佈植設備，面向記憶體、功率半導體及成熟製程。",
+        "source_ids": [
+          "SEC_10K",
+          "IR_PROFILE"
+        ]
+      },
+      {
+        "name": "售後服務與零組件",
+        "details": "CS&I 包括零件、升級、維護及服務；2026 Q3 再創季度紀錄。",
+        "source_ids": [
+          "IR_Q3"
+        ]
+      }
+    ],
+    "relationship_categories": [
+      {
+        "id": "customer",
+        "label": "客戶"
+      },
+      {
+        "id": "partner",
+        "label": "合作"
+      },
+      {
+        "id": "supplier",
+        "label": "直接供應商"
+      },
+      {
+        "id": "competitor",
+        "label": "競爭者"
+      },
+      {
+        "id": "beneficiary",
+        "label": "台灣產業受惠股"
+      },
+      {
+        "id": "acquisition_target",
+        "label": "待完成併購標的"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "acquisition_target:VECO",
+        "name": "Veeco Instruments",
+        "symbol": "VECO",
+        "category": "acquisition_target",
+        "country": null,
+        "details": "2025-09-30 簽署全股票合併協議；每股 VECO 換 0.3575 股 ACLS；2026-11-02 宣布交割預期延至 2027 Q1 末，仍待中國 SAMR 及美國 HSR 重新申報。未交割，不能算已收購。",
+        "source_ids": [
+          "SEC_MERGER",
+          "SEC_VECO",
+          "IR_MERGER"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "competitor:AMAT",
+        "name": "Applied Materials",
+        "symbol": "AMAT",
+        "category": "competitor",
+        "country": null,
+        "details": "主要全產品線離子佈植競爭者；與 Axcelis 均提供完整佈植產品組合。",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "competitor:Sumitomo Heavy Industries Ion Technology",
+        "name": "Sumitomo Heavy Industries Ion Technology",
+        "symbol": null,
+        "category": "competitor",
+        "country": null,
+        "details": "日本離子佈植設備競爭者。",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "competitor:Nissin Ion Equipment",
+        "name": "Nissin Ion Equipment",
+        "symbol": null,
+        "category": "competitor",
+        "country": null,
+        "details": "日本離子佈植設備競爭者。",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "competitor:Advanced Ion Beam Technology",
+        "name": "Advanced Ion Beam Technology",
+        "symbol": null,
+        "category": "competitor",
+        "country": "Taiwan",
+        "details": "台灣離子佈植設備競爭者；不可誤列 ACLS 台灣供應商。",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "competitor:Kingstone Semiconductor",
+        "name": "Kingstone Semiconductor",
+        "symbol": null,
+        "category": "competitor",
+        "country": null,
+        "details": "中國離子佈植設備競爭者。",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "competitor:CETC Electronics Equipment Group",
+        "name": "CETC Electronics Equipment Group",
+        "symbol": null,
+        "category": "competitor",
+        "country": null,
+        "details": "中國半導體設備競爭者。",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "beneficiary:2404",
+        "name": "漢唐",
+        "symbol": "2404",
+        "category": "beneficiary",
+        "country": "Taiwan",
+        "details": "半導體廠務工程；晶圓廠擴產可能帶動工程需求，未證實向 ACLS 供貨。",
+        "source_ids": [
+          "SEC_10K",
+          "IR_Q3"
+        ],
+        "confidence": "sector_exposure_only"
+      },
+      {
+        "id": "beneficiary:6196",
+        "name": "帆宣",
+        "symbol": "6196",
+        "category": "beneficiary",
+        "country": "Taiwan",
+        "details": "半導體設備整合及廠務服務；受晶圓廠資本支出循環影響，非已證實 ACLS 供應商。",
+        "source_ids": [
+          "SEC_10K",
+          "IR_Q3"
+        ],
+        "confidence": "sector_exposure_only"
+      },
+      {
+        "id": "beneficiary:3680",
+        "name": "家登",
+        "symbol": "3680",
+        "category": "beneficiary",
+        "country": "Taiwan",
+        "details": "半導體製程載具與先進製程擴產連動，未證實直接交易。",
+        "source_ids": [
+          "SEC_10K",
+          "IR_Q3"
+        ],
+        "confidence": "sector_exposure_only"
+      },
+      {
+        "id": "beneficiary:3583",
+        "name": "辛耘",
+        "symbol": "3583",
+        "category": "beneficiary",
+        "country": "Taiwan",
+        "details": "半導體製程設備及再生晶圓業務，與設備投資循環相關，未證實直接交易。",
+        "source_ids": [
+          "SEC_10K",
+          "IR_Q3"
+        ],
+        "confidence": "sector_exposure_only"
+      },
+      {
+        "id": "beneficiary:6640",
+        "name": "均華",
+        "symbol": "6640",
+        "category": "beneficiary",
+        "country": "Taiwan",
+        "details": "先進封裝設備相關，與半導體資本支出同向但並非離子佈植直接供應。",
+        "source_ids": [
+          "SEC_10K",
+          "IR_Q3"
+        ],
+        "confidence": "sector_exposure_only"
+      }
+    ],
+    "corporate_events": [
+      {
+        "date": "2026-11-02",
+        "type": "merger_timing_update",
+        "counterparty": "Veeco Instruments",
+        "status": "signed_not_closed",
+        "details": "預計 2027 Q1 末完成，待 SAMR 核准與 HSR 重新申報；每股 VECO 換 0.3575 ACLS 股。",
+        "source_ids": [
+          "SEC_MERGER",
+          "SEC_VECO"
+        ]
+      },
+      {
+        "date": "2026-11-05",
+        "type": "earnings_and_bookings",
+        "status": "reported",
+        "details": "2026 Q3 營收 2.378 億美元；管理層指出 bookings 明顯增加、CS&I 創季度新高；Q4 指引約 2.75 億美元。未公布具名新客戶，故不建立具名訂單節點。",
+        "source_ids": [
+          "IR_Q3",
+          "SEC_Q3"
+        ]
+      },
+      {
+        "date": "2026-09-08",
+        "type": "capacity_expansion",
+        "status": "announced",
+        "details": "宣布在韓國平澤興建新製造廠；2026-10-20 宣布啟動施工。",
+        "source_ids": [
+          "IR_NEWS"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "SEC_10K",
+        "tier": "A",
+        "title": "Axcelis FY2025 10-K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1113232/000110465926020461/acls-20251231x10k.htm",
+        "date": "2026-02-26"
+      },
+      {
+        "id": "SEC_Q3",
+        "tier": "A",
+        "title": "Axcelis 2026 Q3 10-Q",
+        "url": "https://investor.axcelis.com/static-files/1b42e99a-c471-4a46-9954-a3fb64223ca8",
+        "date": "2026-11-05"
+      },
+      {
+        "id": "IR_Q3",
+        "tier": "A",
+        "title": "Axcelis Q3 2026 results",
+        "url": "https://investor.axcelis.com/news-releases/news-release-details/axcelis-announces-financial-results-third-quarter-2026",
+        "date": "2026-11-05"
+      },
+      {
+        "id": "SEC_MERGER",
+        "tier": "A",
+        "title": "Axcelis 8-K merger timing",
+        "url": "https://www.sec.gov/Archives/edgar/data/1113232/000110465926120943/tm2628711d1_8k.htm",
+        "date": "2026-11-02"
+      },
+      {
+        "id": "SEC_VECO",
+        "tier": "A",
+        "title": "Veeco 8-K merger timing",
+        "url": "https://www.sec.gov/Archives/edgar/data/103145/000110465926120936/tm2628709d1_8k.htm",
+        "date": "2026-11-02"
+      },
+      {
+        "id": "IR_NEWS",
+        "tier": "A",
+        "title": "Axcelis official news archive",
+        "url": "https://investor.axcelis.com/news-releases",
+        "date": "2026-11-06"
+      },
+      {
+        "id": "IR_PROFILE",
+        "tier": "A",
+        "title": "Axcelis investor relations company profile",
+        "url": "https://investor.axcelis.com/investor-relations/",
+        "date": null
+      },
+      {
+        "id": "IR_MERGER",
+        "tier": "A",
+        "title": "Axcelis Veeco transaction details",
+        "url": "https://www.axcelisveeco.com/",
+        "date": null
+      },
+      {
+        "id": "SEC_Q2",
+        "tier": "A",
+        "title": "Axcelis Q2 2026 10-Q",
+        "url": "https://www.sec.gov/Archives/edgar/data/1113232/000110465926091999/acls-20260630x10q.htm",
+        "date": "2026-08-06"
+      },
+      {
+        "id": "B_MLEX",
+        "tier": "B",
+        "title": "MLex merger regulatory update",
+        "url": "https://www.mlex.com/mlex/dealrisk/articles/2545053/axcelis-veeco-to-refile-antitrust-paperwork-expect-deal-to-close-in-q1-2027",
+        "date": "2026-11-02"
+      }
+    ],
+    "research": {
+      "start": "SEC FY2025 10-K",
+      "latest_filing": "2026 Q3 10-Q",
+      "latest_earnings": "2026-11-05 Q3 release",
+      "news_window": "2026-08-06 to 2026-11-06",
+      "unverified": [
+        "尚無經 A 級文件證明的具名採購客戶，故不以晶圓廠名單推定交易。",
+        "未確認台灣上市公司直接供貨 ACLS；供應商節點保持空白。",
+        "未取得完整最新法說逐字稿。",
+        "未逐一完成 Bloomberg/The Information/Nikkei 與台灣媒體的交叉核對。"
+      ]
+    },
+    "five_gate_audit": {
+      "status": "PARTIAL",
+      "original_11_fields": "pending_merge_with_github_source",
+      "source_coverage": "partial",
+      "direct_supplier_evidence": "no named Taiwanese supplier proven",
+      "customer_evidence": "no named customer added without transaction evidence",
+      "merger_frontend_visibility": "VECO added as acquisition_target node; frontend must support category"
+    },
+    "reflections": [
+      {
+        "round": 1,
+        "topic": "SEC 基線",
+        "finding": "10-K 明列六個離子佈植競爭者，僅採具名名單。"
+      },
+      {
+        "round": 2,
+        "topic": "客戶門檻",
+        "finding": "前十大客戶集中度不代表已公開名稱；不自行猜測 TSMC/Samsung/SK hynix。"
+      },
+      {
+        "round": 3,
+        "topic": "併購時態",
+        "finding": "VECO 仍未交割，並因 SAMR/HSR 延期；獨立建併購節點。"
+      },
+      {
+        "round": 4,
+        "topic": "台灣供應鏈",
+        "finding": "台灣 Advanced Ion Beam Technology 為競爭者；台灣受惠股不等於直接供應商。"
+      },
+      {
+        "round": 5,
+        "topic": "近期訂單",
+        "finding": "Q3 bookings 上升但無具名新增訂單公告，不建假客戶。"
+      },
+      {
+        "round": 6,
+        "topic": "前端相容",
+        "finding": "acquisition_target 是第六類，若前端只顯示五類需另更新 UI。"
+      }
+    ]
   }
 }

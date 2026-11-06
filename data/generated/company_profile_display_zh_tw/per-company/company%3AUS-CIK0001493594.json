@@ -136,5 +136,480 @@
     "ai_exposure": null,
     "demand_drivers": [],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "as_of": "2026-11-06",
+    "company": "MACOM Technology Solutions Holdings, Inc.",
+    "symbol": "MTSI",
+    "locale": "zh-TW",
+    "business_lines": [
+      {
+        "id": "optical",
+        "name": "AI 資料中心光通訊／3.2T／NPO／InP"
+      },
+      {
+        "id": "rf",
+        "name": "射頻／微波／毫米波與國防"
+      },
+      {
+        "id": "wireline",
+        "name": "高速有線互連／電信基礎設施"
+      }
+    ],
+    "relationship_categories": [
+      {
+        "id": "customer",
+        "label": "客戶"
+      },
+      {
+        "id": "partner",
+        "label": "合作"
+      },
+      {
+        "id": "supplier",
+        "label": "供應商"
+      },
+      {
+        "id": "competitor",
+        "label": "競爭"
+      },
+      {
+        "id": "beneficiary",
+        "label": "產業受惠"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "mtsi-001",
+        "business_line": "optical",
+        "relationship": "supplier",
+        "name": "IQE plc",
+        "description": "IQE 依多年期長期供應協議向 MACOM 提供多種化合物半導體磊晶服務；MACOM 於 2026 年 5 月完成 3,000 萬英鎊股權及 1,500 萬英鎊可轉債投資。",
+        "details": "IQE 依多年期長期供應協議向 MACOM 提供多種化合物半導體磊晶服務；MACOM 於 2026 年 5 月完成 3,000 萬英鎊股權及 1,500 萬英鎊可轉債投資。",
+        "source_ids": [
+          "s03",
+          "s04",
+          "s05",
+          "s09"
+        ],
+        "evidence_level": "A",
+        "country": "GB",
+        "direct_supply_chain": true
+      },
+      {
+        "id": "mtsi-002",
+        "business_line": "optical",
+        "relationship": "competitor",
+        "name": "Analog Devices (ADI)",
+        "description": "ADI 在高效能類比、射頻與混合訊號半導體市場和 MACOM 競爭。",
+        "details": "ADI 在高效能類比、射頻與混合訊號半導體市場和 MACOM 競爭。",
+        "source_ids": [
+          "s01",
+          "s11"
+        ],
+        "evidence_level": "A"
+      },
+      {
+        "id": "mtsi-003",
+        "business_line": "optical",
+        "relationship": "competitor",
+        "name": "Broadcom (AVGO)",
+        "description": "Broadcom 在資料中心高速互連及光電元件領域與 MACOM 競爭。",
+        "details": "Broadcom 在資料中心高速互連及光電元件領域與 MACOM 競爭。",
+        "source_ids": [
+          "s01",
+          "s11"
+        ],
+        "evidence_level": "A"
+      },
+      {
+        "id": "mtsi-004",
+        "business_line": "optical",
+        "relationship": "competitor",
+        "name": "Credo Technology (CRDO)",
+        "description": "Credo 在高速 SerDes、AEC 與資料中心連接晶片領域和 MACOM 競爭。",
+        "details": "Credo 在高速 SerDes、AEC 與資料中心連接晶片領域和 MACOM 競爭。",
+        "source_ids": [
+          "s01",
+          "s11"
+        ],
+        "evidence_level": "A"
+      },
+      {
+        "id": "mtsi-005",
+        "business_line": "optical",
+        "relationship": "competitor",
+        "name": "Marvell Technology (MRVL)",
+        "description": "Marvell 在光通訊高速晶片與資料中心互連市場和 MACOM 競爭。",
+        "details": "Marvell 在光通訊高速晶片與資料中心互連市場和 MACOM 競爭。",
+        "source_ids": [
+          "s01",
+          "s11"
+        ],
+        "evidence_level": "A"
+      },
+      {
+        "id": "mtsi-006",
+        "business_line": "optical",
+        "relationship": "competitor",
+        "name": "MaxLinear (MXL)",
+        "description": "MaxLinear 在高速有線連接、類比與射頻晶片市場和 MACOM 競爭。",
+        "details": "MaxLinear 在高速有線連接、類比與射頻晶片市場和 MACOM 競爭。",
+        "source_ids": [
+          "s01",
+          "s11"
+        ],
+        "evidence_level": "A"
+      },
+      {
+        "id": "mtsi-007",
+        "business_line": "optical",
+        "relationship": "competitor",
+        "name": "Microchip Technology (MCHP)",
+        "description": "Microchip 在類比與混合訊號產品及部分射頻領域與 MACOM 競爭。",
+        "details": "Microchip 在類比與混合訊號產品及部分射頻領域與 MACOM 競爭。",
+        "source_ids": [
+          "s01",
+          "s11"
+        ],
+        "evidence_level": "A"
+      },
+      {
+        "id": "mtsi-008",
+        "business_line": "rf",
+        "relationship": "competitor",
+        "name": "NXP Semiconductors (NXPI)",
+        "description": "NXP 在射頻功率與通訊半導體市場與 MACOM 競爭。",
+        "details": "NXP 在射頻功率與通訊半導體市場與 MACOM 競爭。",
+        "source_ids": [
+          "s01",
+          "s11"
+        ],
+        "evidence_level": "A"
+      },
+      {
+        "id": "mtsi-009",
+        "business_line": "rf",
+        "relationship": "competitor",
+        "name": "Qorvo (QRVO)",
+        "description": "Qorvo 在 GaN 射頻功率與國防通訊市場與 MACOM 競爭。",
+        "details": "Qorvo 在 GaN 射頻功率與國防通訊市場與 MACOM 競爭。",
+        "source_ids": [
+          "s01",
+          "s11"
+        ],
+        "evidence_level": "A"
+      },
+      {
+        "id": "mtsi-010",
+        "business_line": "optical",
+        "relationship": "competitor",
+        "name": "Semtech (SMTC)",
+        "description": "Semtech 在高速光互連類比前端及資料中心連接市場與 MACOM 競爭。",
+        "details": "Semtech 在高速光互連類比前端及資料中心連接市場與 MACOM 競爭。",
+        "source_ids": [
+          "s01",
+          "s11"
+        ],
+        "evidence_level": "A"
+      },
+      {
+        "id": "mtsi-011",
+        "business_line": "rf",
+        "relationship": "competitor",
+        "name": "Skyworks Solutions (SWKS)",
+        "description": "Skyworks 在射頻與類比半導體產品市場與 MACOM 競爭。",
+        "details": "Skyworks 在射頻與類比半導體產品市場與 MACOM 競爭。",
+        "source_ids": [
+          "s01",
+          "s11"
+        ],
+        "evidence_level": "A"
+      },
+      {
+        "id": "mtsi-012",
+        "business_line": "optical",
+        "relationship": "competitor",
+        "name": "Sumitomo Electric Device Innovations",
+        "description": "Sumitomo Electric Device Innovations 在化合物半導體及光電／射頻元件市場與 MACOM 競爭。",
+        "details": "Sumitomo Electric Device Innovations 在化合物半導體及光電／射頻元件市場與 MACOM 競爭。",
+        "source_ids": [
+          "s01",
+          "s11"
+        ],
+        "evidence_level": "A"
+      },
+      {
+        "id": "mtsi-013",
+        "business_line": "optical",
+        "relationship": "beneficiary",
+        "name": "聯亞光電",
+        "description": "聯亞提供 InP 磊晶及光通訊相關材料，AI 高速光模組擴張可能同步推升需求；無 MACOM 直接供貨證據。",
+        "details": "聯亞提供 InP 磊晶及光通訊相關材料，AI 高速光模組擴張可能同步推升需求；無 MACOM 直接供貨證據。",
+        "source_ids": [
+          "s06",
+          "s07",
+          "s08"
+        ],
+        "evidence_level": "INDUSTRY_INFERENCE",
+        "country": "TW",
+        "ticker": "3081",
+        "direct_supply_chain": false
+      },
+      {
+        "id": "mtsi-014",
+        "business_line": "optical",
+        "relationship": "beneficiary",
+        "name": "上詮光纖通信",
+        "description": "上詮布局高速光纖連接與 CPO 相關產品，與 MACOM 3.2T／NPO 光互連同受 AI 資料中心投資驅動；未證實直接供貨。",
+        "details": "上詮布局高速光纖連接與 CPO 相關產品，與 MACOM 3.2T／NPO 光互連同受 AI 資料中心投資驅動；未證實直接供貨。",
+        "source_ids": [
+          "s06",
+          "s07",
+          "s08"
+        ],
+        "evidence_level": "INDUSTRY_INFERENCE",
+        "country": "TW",
+        "ticker": "3363",
+        "direct_supply_chain": false
+      },
+      {
+        "id": "mtsi-015",
+        "business_line": "optical",
+        "relationship": "beneficiary",
+        "name": "華星光通",
+        "description": "華星光布局高速光通訊收發模組與光元件，同屬 AI 網路頻寬升級受惠族群；未證實直接供貨。",
+        "details": "華星光布局高速光通訊收發模組與光元件，同屬 AI 網路頻寬升級受惠族群；未證實直接供貨。",
+        "source_ids": [
+          "s06",
+          "s07",
+          "s08"
+        ],
+        "evidence_level": "INDUSTRY_INFERENCE",
+        "country": "TW",
+        "ticker": "4979",
+        "direct_supply_chain": false
+      },
+      {
+        "id": "mtsi-016",
+        "business_line": "optical",
+        "relationship": "beneficiary",
+        "name": "波若威科技",
+        "description": "波若威光纖被動元件與光通訊互連需求受 AI 資料中心頻寬升級帶動；未證實直接供貨。",
+        "details": "波若威光纖被動元件與光通訊互連需求受 AI 資料中心頻寬升級帶動；未證實直接供貨。",
+        "source_ids": [
+          "s06",
+          "s07",
+          "s08"
+        ],
+        "evidence_level": "INDUSTRY_INFERENCE",
+        "country": "TW",
+        "ticker": "3163",
+        "direct_supply_chain": false
+      },
+      {
+        "id": "mtsi-017",
+        "business_line": "optical",
+        "relationship": "beneficiary",
+        "name": "光聖科技",
+        "description": "光聖高速光通訊與連接元件產品受 AI 光網路建置帶動；未證實為 MACOM 供應商。",
+        "details": "光聖高速光通訊與連接元件產品受 AI 光網路建置帶動；未證實為 MACOM 供應商。",
+        "source_ids": [
+          "s06",
+          "s07",
+          "s08"
+        ],
+        "evidence_level": "INDUSTRY_INFERENCE",
+        "country": "TW",
+        "ticker": "6442",
+        "direct_supply_chain": false
+      },
+      {
+        "id": "mtsi-018",
+        "business_line": "optical",
+        "relationship": "beneficiary",
+        "name": "全新光電",
+        "description": "全新具化合物半導體磊晶業務，與 MACOM 所處的 InP／GaAs 光電與射頻需求同循環；未證實直接供貨。",
+        "details": "全新具化合物半導體磊晶業務，與 MACOM 所處的 InP／GaAs 光電與射頻需求同循環；未證實直接供貨。",
+        "source_ids": [
+          "s06",
+          "s07",
+          "s08"
+        ],
+        "evidence_level": "INDUSTRY_INFERENCE",
+        "country": "TW",
+        "ticker": "2455",
+        "direct_supply_chain": false
+      }
+    ],
+    "corporate_events": [
+      {
+        "id": "mtsi-event-iqe",
+        "date": "2026-05-28",
+        "type": "strategic_investment_and_long_term_supply",
+        "counterparty": "IQE plc",
+        "status": "completed",
+        "details": "MACOM 完成對 IQE 約 4,500 萬英鎊股權及可轉債投資，並簽署多年期磊晶供應協議；IQE 同時以供應商節點呈現。",
+        "source_ids": [
+          "s03",
+          "s04",
+          "s05"
+        ]
+      },
+      {
+        "id": "mtsi-event-3p2t",
+        "date": "2026-09-17",
+        "type": "product_launch",
+        "status": "announced",
+        "details": "推出面向 AI 光互連的 3.2T 前端晶片組，結合 448Gbps/lane 驅動器、TIA 與光偵測器。",
+        "source_ids": [
+          "s07"
+        ]
+      }
+    ],
+    "research": {
+      "as_of": "2026-11-06",
+      "recent_news_window": "2026-08-06 至 2026-11-06",
+      "financial_update": "2026-11-05 FY2026 Q4 revenue USD 424.8m (+62.7% YoY), FY2026 revenue USD 1,327.6m (+37.3% YoY). FY2026 10-K not yet verified filed; use FY2025 10-K plus FY2026 Q3 10-Q and FY2026 Q4 earnings release.",
+      "news_checks": {
+        "acquisition": "本輪未確認近三個月有重大企業收購完成；2026-05-28 IQE 投資已完成但不是收購 IQE。",
+        "major_orders": "2026-11-05 法說談及客戶專案與高速光通訊需求，未核實具名新客戶之訂單，不虛構。",
+        "lost_orders": "未取得可確認特定具名客戶流失訂單的官方披露。",
+        "products": "2026-09-17 推出 3.2T 光通訊晶片組；ECOC 展示 1.6T AEC、NPO 等。"
+      },
+      "reflection_rounds": [
+        {
+          "round": 1,
+          "focus": "SEC 客戶證據",
+          "finding": "2025 10-K 描述客戶集中與採購單模式，但本輪未驗證具名採購客戶，因此不建無根據客戶節點。"
+        },
+        {
+          "round": 2,
+          "focus": "供應方向",
+          "finding": "IQE 官方確認為 MACOM 磊晶供應商；MACOM 是 IQE 的客戶，方向不可顛倒。"
+        },
+        {
+          "round": 3,
+          "focus": "投資與交易區分",
+          "finding": "IQE 4,500 萬英鎊投資於 5 月完成，不等於買下 IQE；供應節點與企業事件各自可見。"
+        },
+        {
+          "round": 4,
+          "focus": "台灣直接供應商門檻",
+          "finding": "MACOM 新竹自有組裝測試設施不等於台灣上市公司為其供應商，未核實者不建台灣 supplier。"
+        },
+        {
+          "round": 5,
+          "focus": "最新新聞與訂單",
+          "finding": "Q4 營收大增及 3.2T 新產品均不能推定 Google、NVIDIA 等具名客戶已採購。"
+        },
+        {
+          "round": 6,
+          "focus": "前端可見性",
+          "finding": "IQE 同時在 supplier nodes 與 corporate_events，避免重大供應與投資事件只留在不可見事件表。"
+        }
+      ],
+      "coverage_limitations": [
+        "未達 100 份獨立來源查核。",
+        "台灣受惠股為技術／景氣連動推論，尚未逐家取得直接供應或交易證據。",
+        "2026 財年 10-K 截至本輪未確認已提交，故採 2025 10-K 與最新 2026 Q3 10-Q、Q4 公告。",
+        "最新法說採第三方逐字稿參照，尚未完整逐句核對官方錄音。"
+      ]
+    },
+    "five_gate_audit": {
+      "original_11_fields": "PASS_GITHUB_11_OF_11_HASH_MATCH",
+      "node_details": "PASS",
+      "source_ids": "PASS",
+      "relationship_direction": "PASS",
+      "100_source_depth": "PARTIAL",
+      "overall": "PARTIAL"
+    },
+    "sources": [
+      {
+        "id": "s01",
+        "tier": "A",
+        "title": "SEC FY2025 Form 10-K",
+        "date": "2025-11-14",
+        "url": "https://www.sec.gov/Archives/edgar/data/1493594/000149359425000054/mtsi-20251003.htm"
+      },
+      {
+        "id": "s02",
+        "tier": "A",
+        "title": "MACOM FY2026 Q4 and full-year earnings",
+        "date": "2026-11-05",
+        "url": "https://ir.macom.com/news-releases/news-release-details/macom-reports-fiscal-fourth-quarter-and-fiscal-year-2026"
+      },
+      {
+        "id": "s03",
+        "tier": "A",
+        "title": "MACOM FY2026 Q3 Form 10-Q",
+        "date": "2026-08-06",
+        "url": "https://ir.macom.com/static-files/78582187-3497-43eb-adad-0d1db19e7689"
+      },
+      {
+        "id": "s04",
+        "tier": "A",
+        "title": "MACOM and IQE long-term epitaxial supply agreements",
+        "date": "2026-04-27",
+        "url": "https://www.macom.com/updates/news/2026/macom-to-enter-into-agreements-to-further-strengthen-supply-chai"
+      },
+      {
+        "id": "s05",
+        "tier": "A",
+        "title": "IQE strategic investment and supply confirmation",
+        "date": "2026-04-27",
+        "url": "https://www.lse.co.uk/rns/iqe-plc-conclusion-of-strategic-review-65aut1u0fvcvjej.html"
+      },
+      {
+        "id": "s06",
+        "tier": "A",
+        "title": "MACOM ECOC 2026 product demonstrations",
+        "date": "2026-09-15",
+        "url": "https://ir.macom.com/news-releases/news-release-details/macom-demonstrates-technologies-enabling-future-high-speed"
+      },
+      {
+        "id": "s07",
+        "tier": "A",
+        "title": "MACOM 3.2T chipset launch",
+        "date": "2026-09-17",
+        "url": "https://edit.macom.com/sites/macom/home/updates/news/2026/macom-introduces-3-2t-chipset-solution-for-high-speed-optical-co.html"
+      },
+      {
+        "id": "s08",
+        "tier": "B",
+        "title": "MACOM Q4 FY2026 earnings call transcript",
+        "date": "2026-11-05",
+        "url": "https://stockanalysis.com/stocks/mtsi/transcripts/717293-q4-2026/"
+      },
+      {
+        "id": "s09",
+        "tier": "A",
+        "title": "IQE official 2025 annual results and MACOM supply",
+        "date": "2026-06-01",
+        "url": "https://www.iqep.com/media/press-releases/2026/full-year-2025-results/"
+      },
+      {
+        "id": "s10",
+        "tier": "A",
+        "title": "TSMC 2025 annual report",
+        "date": "2026-04-01",
+        "url": "https://investor.tsmc.com/static/annualReports/2025/english/index.html"
+      },
+      {
+        "id": "s11",
+        "tier": "B",
+        "title": "MACOM 2025 annual report competition and manufacturing",
+        "date": "2025-11-14",
+        "url": "https://companiesmarketcap.com/macom/sec-reports-10k/0001493594-25-000054/"
+      },
+      {
+        "id": "s12",
+        "tier": "A",
+        "title": "MACOM official FY2026 Q4 product and business outlook",
+        "date": "2026-11-05",
+        "url": "https://www.macom.com/updates/news/2026/macom-reports-fiscal-fourth-quarter-and-fiscal-year-2026-financi"
+      }
+    ]
   }
 }

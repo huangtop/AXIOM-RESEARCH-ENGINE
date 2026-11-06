@@ -181,5 +181,303 @@
       "AI 晶片需求"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.v1",
+    "as_of": "2026-11-06",
+    "company": "Photronics, Inc.",
+    "symbol": "PLAB",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "Photronics（PLAB）產業鏈：光罩、競爭者、DNP合資及台灣受惠股",
+      "description": "以 SEC 10-K/10-Q 為基礎，區分直接供應鏈與台灣產業受惠股。"
+    },
+    "business_lines": [
+      {
+        "id": "IC_HIGH",
+        "name": "先進IC光罩",
+        "description": "28nm以下及更先進IC光罩、OPC與先進微影"
+      },
+      {
+        "id": "IC_MAIN",
+        "name": "成熟製程IC光罩",
+        "description": "28nm以上成熟節點晶圓製造光罩"
+      },
+      {
+        "id": "FPD_HIGH",
+        "name": "高階顯示器光罩",
+        "description": "AMOLED、LTPS及高世代顯示器光罩"
+      },
+      {
+        "id": "FPD_MAIN",
+        "name": "主流顯示器光罩",
+        "description": "傳統LCD及顯示器光罩"
+      },
+      {
+        "id": "PDMCX",
+        "name": "中國廈門合資光罩製造",
+        "description": "與DNP合資經營廈門半導體光罩製造"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "IC_MAIN_competitor_001",
+        "business_line": "IC_MAIN",
+        "relationship": "competitor",
+        "name": "Compugraphics International",
+        "details": "在商用半導體光罩製造市場與 Photronics 競爭。",
+        "description": "在商用半導體光罩製造市場與 Photronics 競爭。",
+        "evidence_level": "SEC_named_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "IC_HIGH_competitor_002",
+        "business_line": "IC_HIGH",
+        "relationship": "competitor",
+        "name": "Dai Nippon Printing（DNP）",
+        "details": "在台灣及中國以外的半導體光罩市場與 Photronics 競爭；雙方另於中國廈門合資。",
+        "description": "在台灣及中國以外的半導體光罩市場與 Photronics 競爭；雙方另於中國廈門合資。",
+        "evidence_level": "SEC_named_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "IC_HIGH_competitor_003",
+        "business_line": "IC_HIGH",
+        "relationship": "competitor",
+        "name": "HOYA",
+        "details": "在先進半導體光罩及光罩材料相關市場與 Photronics 競爭。",
+        "description": "在先進半導體光罩及光罩材料相關市場與 Photronics 競爭。",
+        "evidence_level": "SEC_named_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "FPD_HIGH_competitor_004",
+        "business_line": "FPD_HIGH",
+        "relationship": "competitor",
+        "name": "LG Innotek",
+        "details": "在顯示器與精密光罩市場與 Photronics 競爭。",
+        "description": "在顯示器與精密光罩市場與 Photronics 競爭。",
+        "evidence_level": "SEC_named_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "IC_MAIN_competitor_005",
+        "business_line": "IC_MAIN",
+        "relationship": "competitor",
+        "name": "Shenzhen Newway Photomask",
+        "details": "在中國半導體與顯示器光罩製造市場與 Photronics 競爭。",
+        "description": "在中國半導體與顯示器光罩製造市場與 Photronics 競爭。",
+        "evidence_level": "SEC_named_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "FPD_MAIN_competitor_006",
+        "business_line": "FPD_MAIN",
+        "relationship": "competitor",
+        "name": "Shenzhen Qingyi Photomask",
+        "details": "在中國顯示器與半導體光罩市場與 Photronics 競爭。",
+        "description": "在中國顯示器與半導體光罩市場與 Photronics 競爭。",
+        "evidence_level": "SEC_named_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "FPD_HIGH_competitor_007",
+        "business_line": "FPD_HIGH",
+        "relationship": "competitor",
+        "name": "SK-Electronics",
+        "details": "在高階顯示器光罩市場與 Photronics 競爭。",
+        "description": "在高階顯示器光罩市場與 Photronics 競爭。",
+        "evidence_level": "SEC_named_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "IC_MAIN_competitor_008",
+        "business_line": "IC_MAIN",
+        "relationship": "competitor",
+        "name": "台灣光罩（2338）",
+        "details": "台灣光罩與 Photronics 均供應半導體製造所需的光罩，在台灣商用光罩市場直接競爭。",
+        "description": "台灣光罩與 Photronics 均供應半導體製造所需的光罩，在台灣商用光罩市場直接競爭。",
+        "evidence_level": "SEC_named_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "IC_HIGH_competitor_009",
+        "business_line": "IC_HIGH",
+        "relationship": "competitor",
+        "name": "Tekscend Photomask",
+        "details": "在半導體及先進光罩製造市場與 Photronics 競爭。",
+        "description": "在半導體及先進光罩製造市場與 Photronics 競爭。",
+        "evidence_level": "SEC_named_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ]
+      },
+      {
+        "id": "PDMCX_partner_010",
+        "business_line": "PDMCX",
+        "relationship": "partner",
+        "name": "Dai Nippon Printing（DNP）",
+        "details": "DNP 持有 Photronics 廈門 PDMCX 光罩合資事業 49.99% 股權，雙方共同投資並製造半導體光罩。",
+        "description": "DNP 持有 Photronics 廈門 PDMCX 光罩合資事業 49.99% 股權，雙方共同投資並製造半導體光罩。",
+        "evidence_level": "SEC_explicit_joint_venture",
+        "source_ids": [
+          "SEC_2025_10K",
+          "SEC_2026_Q3"
+        ]
+      },
+      {
+        "id": "IC_HIGH_beneficiary_011",
+        "business_line": "IC_HIGH",
+        "relationship": "beneficiary",
+        "name": "台灣光罩（2338）",
+        "details": "AI 晶片與先進製程的光罩層數及製作複雜度增加，台灣光罩作為同業有機會受惠於半導體光罩需求與技術升級。",
+        "description": "AI 晶片與先進製程的光罩層數及製作複雜度增加，台灣光罩作為同業有機會受惠於半導體光罩需求與技術升級。",
+        "evidence_level": "industry_cycle_inference",
+        "source_ids": [
+          "SEC_2026_Q3",
+          "IR_2026_Q3"
+        ]
+      },
+      {
+        "id": "IC_HIGH_beneficiary_012",
+        "business_line": "IC_HIGH",
+        "relationship": "beneficiary",
+        "name": "家登精密（3680）",
+        "details": "先進製程與EUV微影投資增加，帶動光罩載具及相關潔淨傳送需求；家登與 Photronics 同受半導體先進微影資本支出循環影響。",
+        "description": "先進製程與EUV微影投資增加，帶動光罩載具及相關潔淨傳送需求；家登與 Photronics 同受半導體先進微影資本支出循環影響。",
+        "evidence_level": "adjacent_industry_inference",
+        "source_ids": [
+          "SEC_2026_Q3"
+        ]
+      }
+    ],
+    "research": {
+      "overview": "Photronics 為商用半導體IC與顯示器FPD光罩製造商。2026財年第三季營收2.160億美元；IC營收1.547億美元，FPD營收0.614億美元。",
+      "customer_disclosure": "2025 10-K揭露636名客戶；最大三客戶以匿名A/B/C呈現，分別占16%、13%、8%。本版未將匿名客戶擅自指派給任何具名企業。",
+      "taiwan_supply_chain": "未取得足以證明具名台灣上市公司直接向 Photronics 供貨的官方證據，因此 supplier 不列台廠。台灣光罩是10-K直接具名競爭者，家登僅屬先進微影需求受惠推論。",
+      "latest_earnings": "2026-08-26公布FY2026 Q3營收216.0百萬美元；高階IC光罩占IC營收44%，先進光罩投資延續。",
+      "reflection_rounds": [
+        {
+          "round": 1,
+          "focus": "客戶真實性",
+          "finding": "匿名客戶收入比例無法推定具名身分，排除無法驗證的TSMC/Intel等客戶推測。"
+        },
+        {
+          "round": 2,
+          "focus": "供應鏈方向",
+          "finding": "DNP是合資夥伴兼區域競爭者，不因持股誤標供應商；台灣光罩為競爭者。"
+        },
+        {
+          "round": 3,
+          "focus": "台灣受惠股",
+          "finding": "產業受惠不代表採購，將台灣光罩及家登受惠機制獨立放beneficiary。"
+        },
+        {
+          "round": 4,
+          "focus": "資料新鮮度",
+          "finding": "使用FY2026 Q3 10-Q與財報更新研究，不覆寫原始11欄。"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "id": "SEC_2025_10K",
+        "tier": "A",
+        "title": "Photronics FY2025 Form 10-K",
+        "url": "https://www.sec.gov/Archives/edgar/data/810136/000114036125045801/ef20057458_10k.htm",
+        "date": "2025-12-17"
+      },
+      {
+        "id": "IR_2025_10K",
+        "tier": "A",
+        "title": "Photronics FY2025 Form 10-K IR PDF",
+        "url": "https://photronicsinc.gcs-web.com/static-files/b127250e-6ccb-4a87-98ec-29e618e78b20",
+        "date": "2025-12-17"
+      },
+      {
+        "id": "SEC_2026_Q3",
+        "tier": "A",
+        "title": "Photronics FY2026 Q3 Form 10-Q",
+        "url": "https://edgar-mirror.sec-api.io/810136/000114036126036138/plab-20260802.htm",
+        "date": "2026-09-10"
+      },
+      {
+        "id": "IR_2026_Q3",
+        "tier": "A",
+        "title": "Photronics Q3 FY2026 earnings release",
+        "url": "https://www.sec.gov/Archives/edgar/data/810136/000081013626000006/plabQ32026EarningsEx99-1PR.htm",
+        "date": "2026-08-26"
+      },
+      {
+        "id": "IR_2026_Q3_PRESENTATION",
+        "tier": "A",
+        "title": "Photronics Q3 FY2026 investor presentation",
+        "url": "https://www.sec.gov/Archives/edgar/data/810136/000081013626000006/plab8-K_3q-earn-exhibit99-2.pdf",
+        "date": "2026-08-26"
+      },
+      {
+        "id": "SEC_2026_Q2",
+        "tier": "A",
+        "title": "Photronics FY2026 Q2 Form 10-Q",
+        "url": "https://photronicsinc.gcs-web.com/static-files/e10c0371-67a1-4459-bb95-0a5db6c36db6",
+        "date": "2026-06-11"
+      },
+      {
+        "id": "SEC_2024_10K",
+        "tier": "A",
+        "title": "Photronics FY2024 Form 10-K",
+        "url": "https://photronicsinc.gcs-web.com/financial-information/annual-reports",
+        "date": "2024-12-19"
+      }
+    ],
+    "five_gate_audit": {
+      "status": "PARTIAL",
+      "gates": [
+        {
+          "name": "SEC及IR基礎",
+          "status": "PASS"
+        },
+        {
+          "name": "具名客戶關係",
+          "status": "PASS_NO_UNVERIFIED_NAMES"
+        },
+        {
+          "name": "台灣直接供應鏈",
+          "status": "PASS_NO_UNVERIFIED_SUPPLIERS"
+        },
+        {
+          "name": "details可讀性及來源",
+          "status": "PASS"
+        },
+        {
+          "name": "100份獨立來源深度審計",
+          "status": "NOT_COMPLETED"
+        }
+      ],
+      "limitations": "尚未核實100份獨立來源；受惠股為產業機制推論，不代表直接交易。"
+    }
   }
 }

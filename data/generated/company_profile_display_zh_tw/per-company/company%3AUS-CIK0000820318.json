@@ -369,5 +369,544 @@
       "先進材料需求"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "as_of": "2026-11-06",
+    "company": "Coherent Corp.",
+    "symbol": "COHR",
+    "locale": "zh-TW",
+    "business_lines": [
+      {
+        "id": "ai_optics",
+        "name": "AI 資料中心高速光通訊與 CPO/NPO",
+        "products": [
+          "PhotonLink",
+          "800G/1.6T 光模組",
+          "InP EML/CW 雷射",
+          "OCS"
+        ]
+      },
+      {
+        "id": "telecom",
+        "name": "電信、DCI 與光網路",
+        "products": [
+          "ZR/ZR+",
+          "POLS",
+          "光放大器",
+          "ROADM"
+        ]
+      },
+      {
+        "id": "industrial",
+        "name": "工業雷射與光學材料",
+        "products": [
+          "工業雷射",
+          "光學材料",
+          "光學元件"
+        ]
+      },
+      {
+        "id": "sic",
+        "name": "碳化矽與先進散熱材料",
+        "products": [
+          "300mm 高導熱 SiC 基板"
+        ]
+      }
+    ],
+    "relationship_categories": [
+      {
+        "id": "customer",
+        "label": "客戶"
+      },
+      {
+        "id": "partner",
+        "label": "合作"
+      },
+      {
+        "id": "supplier",
+        "label": "供應商"
+      },
+      {
+        "id": "competitor",
+        "label": "競爭"
+      },
+      {
+        "id": "beneficiary",
+        "label": "產業受惠"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "customer-01",
+        "business_line": "ai_optics",
+        "relationship": "customer",
+        "name": "NVIDIA",
+        "description": "多年期採購承諾與產能使用權",
+        "details": "NVIDIA 與 Coherent 簽訂非排他多年期光學技術及供應協議，包含數十億美元先進雷射與光網路產品採購承諾及未來產能使用權；另有 20 億美元股權投資。",
+        "evidence_level": "A",
+        "source_ids": [
+          "S01",
+          "S03",
+          "S17"
+        ],
+        "symbol": "NVDA"
+      },
+      {
+        "id": "customer-02",
+        "business_line": "ai_optics",
+        "relationship": "customer",
+        "name": "未具名大型 AI 客戶（PhotonLink LTA）",
+        "description": "2026 年 11 月新簽五年期約 200 億美元長約",
+        "details": "Coherent 2026 年 11 月法說揭露新簽約的 PhotonLink 五年期長約，總收入價值約 200 億美元，預計 2028 年初起逐步貢獻營收；公司未公布客戶名稱。",
+        "evidence_level": "A+B",
+        "source_ids": [
+          "S05",
+          "S06"
+        ]
+      },
+      {
+        "id": "partner-04",
+        "business_line": "ai_optics",
+        "relationship": "partner",
+        "name": "CUbIQ Technologies",
+        "description": "QKD 與光收發模組整合 PoC",
+        "details": "CUbIQ 與 Coherent 於 ECOC 2026 聯合展示量子金鑰分配與 200G FR4 光學設備整合的概念驗證；此處是聯合技術展示，不推定量產採購。",
+        "evidence_level": "B",
+        "source_ids": [
+          "S15"
+        ]
+      },
+      {
+        "id": "competitor-05",
+        "business_line": "ai_optics",
+        "relationship": "competitor",
+        "name": "Lumentum",
+        "description": "在 InP 雷射、EML、光收發器及 CPO 光學元件與 Coherent 競爭；兩者均向 AI 資料中心光連接市場供貨。",
+        "details": "在 InP 雷射、EML、光收發器及 CPO 光學元件與 Coherent 競爭；兩者均向 AI 資料中心光連接市場供貨。",
+        "evidence_level": "B",
+        "source_ids": [
+          "S10",
+          "S11"
+        ],
+        "symbol": "LITE"
+      },
+      {
+        "id": "competitor-06",
+        "business_line": "ai_optics",
+        "relationship": "competitor",
+        "name": "InnoLight（中際旭創）",
+        "description": "以 800G/1.6T 高速光收發模組與 Coherent 的資料中心光模組業務競爭。",
+        "details": "以 800G/1.6T 高速光收發模組與 Coherent 的資料中心光模組業務競爭。",
+        "evidence_level": "B",
+        "source_ids": [
+          "S10",
+          "S11"
+        ]
+      },
+      {
+        "id": "competitor-07",
+        "business_line": "ai_optics",
+        "relationship": "competitor",
+        "name": "Eoptolink（新易盛）",
+        "description": "以高速光收發模組與 Coherent 的 800G/1.6T 資料中心產品競爭。",
+        "details": "以高速光收發模組與 Coherent 的 800G/1.6T 資料中心產品競爭。",
+        "evidence_level": "B",
+        "source_ids": [
+          "S10",
+          "S11"
+        ]
+      },
+      {
+        "id": "competitor-08",
+        "business_line": "ai_optics",
+        "relationship": "competitor",
+        "name": "Applied Optoelectronics",
+        "description": "AOI 的 SEC 年報把 Coherent 列為光網路競爭者；雙方在資料中心高速光收發器市場競爭。",
+        "details": "AOI 的 SEC 年報把 Coherent 列為光網路競爭者；雙方在資料中心高速光收發器市場競爭。",
+        "evidence_level": "B",
+        "source_ids": [
+          "S09"
+        ],
+        "symbol": "AAOI"
+      },
+      {
+        "id": "competitor-09",
+        "business_line": "telecom",
+        "relationship": "competitor",
+        "name": "Accelink（光迅科技）",
+        "description": "在光通訊元件及光模組、電信光傳輸市場與 Coherent 部分產品重疊。",
+        "details": "在光通訊元件及光模組、電信光傳輸市場與 Coherent 部分產品重疊。",
+        "evidence_level": "B",
+        "source_ids": [
+          "S11"
+        ]
+      },
+      {
+        "id": "competitor-10",
+        "business_line": "telecom",
+        "relationship": "competitor",
+        "name": "Corning",
+        "description": "在光纖、光學連接及資料中心光學基礎設施部分產品市場競爭；並非所有產品線皆重疊。",
+        "details": "在光纖、光學連接及資料中心光學基礎設施部分產品市場競爭；並非所有產品線皆重疊。",
+        "evidence_level": "B",
+        "source_ids": [
+          "S11"
+        ],
+        "symbol": "GLW"
+      },
+      {
+        "id": "competitor-11",
+        "business_line": "industrial",
+        "relationship": "competitor",
+        "name": "IPG Photonics",
+        "description": "在高功率工業雷射及材料加工光源市場與 Coherent 的工業雷射產品競爭。",
+        "details": "在高功率工業雷射及材料加工光源市場與 Coherent 的工業雷射產品競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "S01"
+        ],
+        "symbol": "IPGP"
+      },
+      {
+        "id": "competitor-12",
+        "business_line": "industrial",
+        "relationship": "competitor",
+        "name": "Hamamatsu Photonics",
+        "description": "在光偵測、光電元件及特定光子產品市場與 Coherent 部分業務競爭。",
+        "details": "在光偵測、光電元件及特定光子產品市場與 Coherent 部分業務競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "S01"
+        ]
+      },
+      {
+        "id": "beneficiary-13",
+        "business_line": "ai_optics",
+        "relationship": "beneficiary",
+        "name": "聯亞",
+        "description": "台灣 InP 磊晶與高速光電材料廠，受惠 AI 光互連對 EML/CW 雷射上游磊晶需求增加；未查得其直接供貨 Coherent 的公開證據",
+        "details": "台灣 InP 磊晶與高速光電材料廠，受惠 AI 光互連對 EML/CW 雷射上游磊晶需求增加；未查得其直接供貨 Coherent 的公開證據。",
+        "evidence_level": "B+C",
+        "source_ids": [
+          "S11",
+          "S14"
+        ],
+        "symbol": "3081"
+      },
+      {
+        "id": "beneficiary-14",
+        "business_line": "ai_optics",
+        "relationship": "beneficiary",
+        "name": "上詮",
+        "description": "主攻 FAU 光纖陣列及 CPO 光耦合，2026 年開始交付高階 FAU；受惠 CPO/NPO 產業擴張，非已證實的 Coherent 供",
+        "details": "主攻 FAU 光纖陣列及 CPO 光耦合，2026 年開始交付高階 FAU；受惠 CPO/NPO 產業擴張，非已證實的 Coherent 供應商。",
+        "evidence_level": "B+C",
+        "source_ids": [
+          "S12",
+          "S14"
+        ],
+        "symbol": "3363"
+      },
+      {
+        "id": "beneficiary-15",
+        "business_line": "ai_optics",
+        "relationship": "beneficiary",
+        "name": "波若威",
+        "description": "布局 MPO、光纖跳線、Shuffle Box 與 CPO 光連接，受惠 AI 叢集光纖密度提升；未證實與 Coherent 直接供貨。",
+        "details": "布局 MPO、光纖跳線、Shuffle Box 與 CPO 光連接，受惠 AI 叢集光纖密度提升；未證實與 Coherent 直接供貨。",
+        "evidence_level": "B+C",
+        "source_ids": [
+          "S13",
+          "S14"
+        ],
+        "symbol": "3163"
+      },
+      {
+        "id": "beneficiary-16",
+        "business_line": "ai_optics",
+        "relationship": "beneficiary",
+        "name": "光聖",
+        "description": "高速光通訊連接與模組產品受惠 800G/1.6T 資料中心升級；本節點為產業景氣連動而非 Coherent 直接交易。",
+        "details": "高速光通訊連接與模組產品受惠 800G/1.6T 資料中心升級；本節點為產業景氣連動而非 Coherent 直接交易。",
+        "evidence_level": "B+C",
+        "source_ids": [
+          "S11",
+          "S14"
+        ],
+        "symbol": "6442"
+      },
+      {
+        "id": "beneficiary-17",
+        "business_line": "ai_optics",
+        "relationship": "beneficiary",
+        "name": "華星光",
+        "description": "高速光收發模組與光電元件受惠 800G/1.6T 世代升級；與 Coherent 可能存在同業競爭，不代表直接供貨。",
+        "details": "高速光收發模組與光電元件受惠 800G/1.6T 世代升級；與 Coherent 可能存在同業競爭，不代表直接供貨。",
+        "evidence_level": "B+C",
+        "source_ids": [
+          "S11",
+          "S14"
+        ],
+        "symbol": "4979"
+      },
+      {
+        "id": "beneficiary-18",
+        "business_line": "ai_optics",
+        "relationship": "beneficiary",
+        "name": "訊芯-KY",
+        "description": "布局 CPO 光引擎封裝及測試，受惠光電異質整合需求；未證實承接 Coherent 訂單。",
+        "details": "布局 CPO 光引擎封裝及測試，受惠光電異質整合需求；未證實承接 Coherent 訂單。",
+        "evidence_level": "B+C",
+        "source_ids": [
+          "S11",
+          "S14"
+        ],
+        "symbol": "6451"
+      }
+    ],
+    "corporate_events": [
+      {
+        "date": "2026-11-04",
+        "type": "long_term_supply_agreement",
+        "status": "signed",
+        "title": "未具名 AI 客戶 PhotonLink 五年期約 200 億美元 LTA",
+        "details": "法說揭露新簽長約，2028 年初開始貢獻；與既有 NVIDIA LTA 為不同合約，未具名客戶不得猜測身分。",
+        "source_ids": [
+          "S05",
+          "S06"
+        ]
+      },
+      {
+        "date": "2026-09-21",
+        "type": "product_launch",
+        "status": "launched",
+        "title": "PhotonLink 整合式光學平台上市",
+        "details": "支援 CPO、NPO、晶片間光互連；不可把平台發布等同所有客戶量產。",
+        "source_ids": [
+          "S04"
+        ]
+      },
+      {
+        "date": "2026-08-17",
+        "type": "customer_sampling",
+        "status": "sampling",
+        "title": "300mm 高導熱 SiC 基板送樣",
+        "details": "送樣至未具名 AI 半導體合作對象，尚非可證實的量產大單。",
+        "source_ids": [
+          "S08"
+        ]
+      },
+      {
+        "date": "2026-03-02",
+        "type": "supply_and_equity",
+        "status": "signed_and_invested",
+        "title": "NVIDIA 多年期採購協議與 20 億美元投資",
+        "details": "數十億美元採購承諾是客戶關係，20 億美元私募股權投資則屬資本交易，兩者不可混為一談。",
+        "source_ids": [
+          "S03",
+          "S17"
+        ]
+      },
+      {
+        "date": "2026-11-04",
+        "type": "earnings",
+        "status": "reported",
+        "title": "FY2027 Q1 營收 23.70 億美元",
+        "details": "較去年同期成長 50%，資料中心與通訊成長為主要驅動；沒有由此推定具名客戶訂單金額。",
+        "source_ids": [
+          "S02",
+          "S06"
+        ]
+      }
+    ],
+    "research": {
+      "source_count": 18,
+      "research_period": "2026-08-06 to 2026-11-06, with historical SEC and contract baselines",
+      "reflection_rounds": [
+        {
+          "round": 1,
+          "focus": "SEC 基線",
+          "finding": "2026 10-K 客戶集中度 20%/12% 不公開名稱，禁止將比例直接指派 NVIDIA。"
+        },
+        {
+          "round": 2,
+          "focus": "10-Q 與新法說",
+          "finding": "2026-11-04 法說新揭露 200 億美元五年 LTA，客戶匿名，獨立於 NVIDIA 既有長約。"
+        },
+        {
+          "round": 3,
+          "focus": "客戶／合作分流",
+          "finding": "NVIDIA 有明確採購承諾列 customer；CUbIQ 僅 PoC 列 partner。"
+        },
+        {
+          "round": 4,
+          "focus": "台灣直接供應鏈",
+          "finding": "未查得可核對的具名台灣公司向 Coherent 直接供貨之 A 級公開證據；直接供應商維持零。"
+        },
+        {
+          "round": 5,
+          "focus": "台灣受惠與競爭",
+          "finding": "聯亞、上詮、波若威等按技術連動列 beneficiary，未冒稱 Coherent supplier。"
+        },
+        {
+          "round": 6,
+          "focus": "近期事件與前端可見性",
+          "finding": "200 億美元 LTA 同時建立匿名客戶節點與 corporate_events，避免僅放事件造成前端不可見。"
+        },
+        {
+          "round": 7,
+          "focus": "時間與數字",
+          "finding": "區分 2026 年 9 月季已實現營收與 2028 年起的 LTA 預期營收；送樣不等於量產訂單。"
+        },
+        {
+          "round": 8,
+          "focus": "客戶定義再次檢查",
+          "finding": "單純 CPO/NPO 客戶接洽或設計討論未達採購、design win 或 LTA 門檻，移除匿名接洽客戶節點；僅保留 NVIDIA 與匿名已簽約客戶。"
+        }
+      ],
+      "limitations": [
+        "未完成 100 份獨立來源逐項驗證",
+        "未公開的兩大客戶身份及新 200 億美元 LTA 客戶身份均不可推測",
+        "台灣供應商證據不足，故沒有新增台灣直接供應商",
+        "部分競爭者是按產品市場重疊，非 SEC 10-K 逐一具名"
+      ]
+    },
+    "five_gate_audit": {
+      "original_11_fields": "PASS_MATCHED_GITHUB_FIELD_HASHES",
+      "node_details": "PASS",
+      "source_references": "PASS",
+      "relationship_classification": "PARTIAL",
+      "research_completeness": "PARTIAL",
+      "overall": "PARTIAL_NOT_100_SOURCE_PASS"
+    },
+    "sources": [
+      {
+        "id": "S01",
+        "tier": "A",
+        "title": "Coherent FY2026 10-K",
+        "date": "2026-08-14",
+        "url": "https://ir.coherent.com/node/18116/ixbrl-viewer"
+      },
+      {
+        "id": "S02",
+        "tier": "A",
+        "title": "Coherent FY2027 Q1 10-Q",
+        "date": "2026-11-04",
+        "url": "https://ir.coherent.com/node/18426/ixbrl-viewer"
+      },
+      {
+        "id": "S03",
+        "tier": "A",
+        "title": "NVIDIA 與 Coherent 多年期採購協議",
+        "date": "2026-03-02",
+        "url": "https://nvidianews.nvidia.com/news/nvidia-and-coherent-announce-strategic-partnership-to-develop-optics-technology-to-scale-next-generation-data-center-architecture"
+      },
+      {
+        "id": "S04",
+        "tier": "A",
+        "title": "Coherent PhotonLink 官方產品新聞稿",
+        "date": "2026-09-21",
+        "url": "https://www.coherent.com/news/press-releases/launches-photonlink-integrated-optics-platform-ai-infrastructure"
+      },
+      {
+        "id": "S05",
+        "tier": "B",
+        "title": "Coherent FY2027 Q1 法說逐字稿",
+        "date": "2026-11-04",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/11/05/coherent-cohr-q1-2027-earnings-call-transcript/"
+      },
+      {
+        "id": "S06",
+        "tier": "A",
+        "title": "Coherent FY2027 Q1 投資人簡報",
+        "date": "2026-11-04",
+        "url": "https://ir.coherent.com/static-files/4c75f2dd-b6ef-4abb-9cf1-df95638a9058"
+      },
+      {
+        "id": "S07",
+        "tier": "A",
+        "title": "Coherent FY2026 Q4 財報",
+        "date": "2026-08-12",
+        "url": "https://ir.coherent.com/news-releases/news-release-details/coherent-corp-reports-fourth-quarter-and-full-year-fiscal-2026"
+      },
+      {
+        "id": "S08",
+        "tier": "A",
+        "title": "Coherent 300mm SiC 客戶送樣公告",
+        "date": "2026-08-17",
+        "url": "https://ir.coherent.com/news-events/corporate-releases"
+      },
+      {
+        "id": "S09",
+        "tier": "B",
+        "title": "Applied Optoelectronics 2025 10-K 競爭者揭露",
+        "date": "2026-03-01",
+        "url": "https://appliedoptoelectronics.gcs-web.com/static-files/f6fbe97f-65ef-4f4d-a343-b08a3b54524a"
+      },
+      {
+        "id": "S10",
+        "tier": "B",
+        "title": "光通訊產業競爭格局研究",
+        "date": "2026-06-12",
+        "url": "https://www.cmbi.com.hk/upload/202606/20260612171821.pdf"
+      },
+      {
+        "id": "S11",
+        "tier": "B",
+        "title": "台灣光通訊產業分析",
+        "date": "2026-08-14",
+        "url": "https://www.pgia.com.tw/research_news02_tw.jsp?docclasscode=U0006&documentcode=19ffe21d976IVsG"
+      },
+      {
+        "id": "S12",
+        "tier": "C",
+        "title": "上詮 FAU 量產進度",
+        "date": "2026-09-07",
+        "url": "https://ieknet.iek.org.tw/ieknews/news_open.aspx?nsl_id=a8dbd731a8c5475da4081c0bc8964ecb"
+      },
+      {
+        "id": "S13",
+        "tier": "C",
+        "title": "波若威 CPO 產品進展",
+        "date": "2026-10-29",
+        "url": "https://prod-blog.fugle.tw/post/browave-analysis"
+      },
+      {
+        "id": "S14",
+        "tier": "B",
+        "title": "台灣 CPO 產業鏈與受惠分類",
+        "date": "2026-10-01",
+        "url": "https://www.sinotrade.com.tw/richclub/industry/CPO%E5%92%8CNPO%E6%98%AF%E4%BB%80%E9%BA%BC-NVIDIA%E5%85%89%E9%80%9A%E8%A8%8A%E9%99%8D%E8%A6%8F%E5%82%B3%E8%A8%80%E6%8B%86%E8%A7%A3-%E8%81%AF%E4%BA%9E-%E5%85%89%E8%81%96-%E8%A8%8A%E8%8A%AF-KY%E8%AA%B0%E6%89%8D%E6%98%AF%E7%9C%9F%E6%AD%A3%E5%8F%97%E6%83%A0%E8%80%85--%E7%94%A2%E6%A5%AD%E7%86%B1%E8%A9%B1-6a8e5975f0b79c0ba41b55e9?strProd=0055&strWeb=0060"
+      },
+      {
+        "id": "S15",
+        "tier": "B",
+        "title": "CUbIQ 與 Coherent QKD 技術展示",
+        "date": "2026-09-21",
+        "url": "https://www.globenewswire.com/news-release/2026/09/21/3365160/0/en/cubiq-technologies-and-coherent-corp-demonstrate-scalable-physical-layer-security-for-ai-infrastructure.html"
+      },
+      {
+        "id": "S16",
+        "tier": "A",
+        "title": "Coherent 10-K SEC 原文",
+        "date": "2026-08-14",
+        "url": "https://www.sec.gov/Archives/edgar/data/820318/000082031826000020/iivi-20260630.htm"
+      },
+      {
+        "id": "S17",
+        "tier": "A",
+        "title": "Coherent 8-K NVIDIA 股權投資",
+        "date": "2026-03-02",
+        "url": "https://www.sec.gov/Archives/edgar/data/820318/000119312526084366/d42735d8k.htm"
+      },
+      {
+        "id": "S18",
+        "tier": "A",
+        "title": "Coherent PhotonLink 官方近期公告列表",
+        "date": "2026-10-22",
+        "url": "https://ir.coherent.com/news-events/corporate-releases"
+      }
+    ]
   }
 }

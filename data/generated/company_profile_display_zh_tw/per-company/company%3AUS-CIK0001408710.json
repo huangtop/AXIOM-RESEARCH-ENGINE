@@ -127,5 +127,534 @@
     "ai_exposure": null,
     "demand_drivers": [],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "as_of": "2026-11-06",
+    "company": "Fabrinet",
+    "symbol": "FN",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "Fabrinet (FN) 產業鏈｜客戶、競爭者與台灣光通訊受惠股",
+      "description": "依據 Fabrinet 2026 10-K、10-Q、法說及台灣光通訊產業資料整理。"
+    },
+    "business_lines": [
+      {
+        "id": "DATACENTER_TRANSCEIVER",
+        "name": "資料中心高速光收發模組與光引擎委外製造",
+        "description": "AI資料中心高速互連、hyperscaler直接採購與merchant transceiver量產",
+        "source_ids": [
+          "SEC_2026_10K",
+          "CALL_2026_Q1"
+        ]
+      },
+      {
+        "id": "DCI_COHERENT",
+        "name": "資料中心互連與相干光通訊",
+        "description": "長距離相干光模組、光網路元件與子系統製造",
+        "source_ids": [
+          "SEC_2026_10K",
+          "CALL_2026_Q1"
+        ]
+      },
+      {
+        "id": "TELECOM_OPTICS",
+        "name": "電信光通訊與網路設備",
+        "description": "電信光模組、光網路組件及系統代工",
+        "source_ids": [
+          "SEC_2026_10K",
+          "CALL_2026_Q1"
+        ]
+      },
+      {
+        "id": "OPTICAL_CIRCUIT_SWITCH",
+        "name": "光路交換器與多軌系統",
+        "description": "OCS、多軌光學系統量產能力建置",
+        "source_ids": [
+          "SEC_2026_10K",
+          "CALL_2026_Q1"
+        ]
+      },
+      {
+        "id": "CPO_NPO",
+        "name": "共封裝與近封裝光學",
+        "description": "CPO／NPO 光學封裝技術及客戶導入",
+        "source_ids": [
+          "SEC_2026_10K",
+          "CALL_2026_Q1"
+        ]
+      },
+      {
+        "id": "INDUSTRIAL_LASER",
+        "name": "工業雷射與精密光學",
+        "description": "工業雷射、客製化玻璃光學與精密製造",
+        "source_ids": [
+          "SEC_2026_10K",
+          "CALL_2026_Q1"
+        ]
+      },
+      {
+        "id": "AUTOMOTIVE_INDUSTRIAL",
+        "name": "汽車、工業與感測器",
+        "description": "精密機電、感測與電子組裝",
+        "source_ids": [
+          "SEC_2026_10K",
+          "CALL_2026_Q1"
+        ]
+      },
+      {
+        "id": "HPC_ELECTRONICS",
+        "name": "高效能運算電子製造",
+        "description": "高效能運算相關電子與機電組件製造",
+        "source_ids": [
+          "SEC_2026_10K",
+          "CALL_2026_Q1"
+        ]
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "TELECOM_OPTICS_customer_001",
+        "name": "Cisco Systems（CSCO）",
+        "business_line": "TELECOM_OPTICS",
+        "relationship": "customer",
+        "details": "Cisco 是 Fabrinet 光通訊及網路相關產品製造服務客戶，2026 財年貢獻 19.9% 營收。",
+        "description": "Cisco 是 Fabrinet 光通訊及網路相關產品製造服務客戶，2026 財年貢獻 19.9% 營收。",
+        "evidence_level": "SEC_explicit",
+        "source_ids": [
+          "SEC_2026_10K"
+        ],
+        "fy2026_revenue_share_pct": 19.9
+      },
+      {
+        "id": "DATACENTER_TRANSCEIVER_customer_002",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "DATACENTER_TRANSCEIVER",
+        "relationship": "customer",
+        "details": "NVIDIA 是 Fabrinet 光通訊與高效能運算相關製造服務客戶，2026 財年貢獻 16.3% 營收。",
+        "description": "NVIDIA 是 Fabrinet 光通訊與高效能運算相關製造服務客戶，2026 財年貢獻 16.3% 營收。",
+        "evidence_level": "SEC_explicit",
+        "source_ids": [
+          "SEC_2026_10K"
+        ],
+        "fy2026_revenue_share_pct": 16.3
+      },
+      {
+        "id": "TELECOM_OPTICS_customer_003",
+        "name": "Nokia（NOK）",
+        "business_line": "TELECOM_OPTICS",
+        "relationship": "customer",
+        "details": "Nokia 是 Fabrinet 電信與光網路製造服務客戶，2026 財年貢獻 10.7% 營收。",
+        "description": "Nokia 是 Fabrinet 電信與光網路製造服務客戶，2026 財年貢獻 10.7% 營收。",
+        "evidence_level": "SEC_explicit",
+        "source_ids": [
+          "SEC_2026_10K"
+        ],
+        "fy2026_revenue_share_pct": 10.7
+      },
+      {
+        "id": "DATACENTER_TRANSCEIVER_customer_004",
+        "name": "Amazon（AMZN）",
+        "business_line": "DATACENTER_TRANSCEIVER",
+        "relationship": "customer",
+        "details": "Amazon 是 Fabrinet 資料中心相關製造服務客戶，2026 財年貢獻 10.5% 營收。",
+        "description": "Amazon 是 Fabrinet 資料中心相關製造服務客戶，2026 財年貢獻 10.5% 營收。",
+        "evidence_level": "SEC_explicit",
+        "source_ids": [
+          "SEC_2026_10K"
+        ],
+        "fy2026_revenue_share_pct": 10.5
+      },
+      {
+        "id": "DCI_COHERENT_customer_005",
+        "name": "Lumentum（LITE）",
+        "business_line": "DCI_COHERENT",
+        "relationship": "customer",
+        "details": "Lumentum 曾向 Fabrinet 採購光通訊相關委外製造服務，2023 財年貢獻 15.4% 營收。",
+        "description": "Lumentum 曾向 Fabrinet 採購光通訊相關委外製造服務，2023 財年貢獻 15.4% 營收。",
+        "evidence_level": "SEC_explicit",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "historical_customer": true
+      },
+      {
+        "id": "TELECOM_OPTICS_customer_006",
+        "name": "Infinera（已併入 Nokia）",
+        "business_line": "TELECOM_OPTICS",
+        "relationship": "customer",
+        "details": "Infinera 曾向 Fabrinet 採購光通訊製造服務，2023 財年貢獻 12.4% 營收，後續併入 Nokia。",
+        "description": "Infinera 曾向 Fabrinet 採購光通訊製造服務，2023 財年貢獻 12.4% 營收，後續併入 Nokia。",
+        "evidence_level": "SEC_explicit",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "historical_customer": true
+      },
+      {
+        "id": "OPTICAL_CIRCUIT_SWITCH_competitor_007",
+        "name": "Benchmark Electronics（BHE）",
+        "business_line": "OPTICAL_CIRCUIT_SWITCH",
+        "relationship": "competitor",
+        "details": "在高複雜度光電製造、精密電子組裝及委外製造服務市場與 Fabrinet 競爭。",
+        "description": "在高複雜度光電製造、精密電子組裝及委外製造服務市場與 Fabrinet 競爭。",
+        "evidence_level": "SEC_explicit",
+        "source_ids": [
+          "SEC_2026_10K"
+        ]
+      },
+      {
+        "id": "DATACENTER_TRANSCEIVER_competitor_008",
+        "name": "Celestica（CLS）",
+        "business_line": "DATACENTER_TRANSCEIVER",
+        "relationship": "competitor",
+        "details": "在資料中心光電系統與高階電子產品委外設計製造市場與 Fabrinet 競爭。",
+        "description": "在資料中心光電系統與高階電子產品委外設計製造市場與 Fabrinet 競爭。",
+        "evidence_level": "SEC_explicit",
+        "source_ids": [
+          "SEC_2026_10K"
+        ]
+      },
+      {
+        "id": "DATACENTER_TRANSCEIVER_competitor_009",
+        "name": "InnoLight（中際旭創）",
+        "business_line": "DATACENTER_TRANSCEIVER",
+        "relationship": "competitor",
+        "details": "在資料中心高速光模組與光收發產品製造市場與 Fabrinet 競爭。",
+        "description": "在資料中心高速光模組與光收發產品製造市場與 Fabrinet 競爭。",
+        "evidence_level": "SEC_explicit",
+        "source_ids": [
+          "SEC_2026_10K"
+        ]
+      },
+      {
+        "id": "TELECOM_OPTICS_competitor_010",
+        "name": "Jabil（JBL）",
+        "business_line": "TELECOM_OPTICS",
+        "relationship": "competitor",
+        "details": "在光通訊電子設備、精密組裝及委外製造服務市場與 Fabrinet 競爭。",
+        "description": "在光通訊電子設備、精密組裝及委外製造服務市場與 Fabrinet 競爭。",
+        "evidence_level": "SEC_explicit",
+        "source_ids": [
+          "SEC_2026_10K"
+        ]
+      },
+      {
+        "id": "TELECOM_OPTICS_competitor_011",
+        "name": "Sanmina（SANM）",
+        "business_line": "TELECOM_OPTICS",
+        "relationship": "competitor",
+        "details": "在光通訊設備、光電模組與高複雜度電子製造市場與 Fabrinet 競爭。",
+        "description": "在光通訊設備、光電模組與高複雜度電子製造市場與 Fabrinet 競爭。",
+        "evidence_level": "SEC_explicit",
+        "source_ids": [
+          "SEC_2026_10K"
+        ]
+      },
+      {
+        "id": "INDUSTRIAL_LASER_competitor_012",
+        "name": "Venture Corporation",
+        "business_line": "INDUSTRIAL_LASER",
+        "relationship": "competitor",
+        "details": "在高精密工業與光電電子產品委外製造市場與 Fabrinet 競爭。",
+        "description": "在高精密工業與光電電子產品委外製造市場與 Fabrinet 競爭。",
+        "evidence_level": "SEC_explicit",
+        "source_ids": [
+          "SEC_2026_10K"
+        ]
+      },
+      {
+        "id": "DATACENTER_TRANSCEIVER_competitor_013",
+        "name": "Eoptolink（新易盛）",
+        "business_line": "DATACENTER_TRANSCEIVER",
+        "relationship": "competitor",
+        "details": "在資料中心高速光收發模組及光通訊製造市場與 Fabrinet 競爭。",
+        "description": "在資料中心高速光收發模組及光通訊製造市場與 Fabrinet 競爭。",
+        "evidence_level": "SEC_explicit",
+        "source_ids": [
+          "SEC_2026_10K"
+        ]
+      },
+      {
+        "id": "INDUSTRIAL_LASER_competitor_014",
+        "name": "CASTECH（福晶科技）",
+        "business_line": "INDUSTRIAL_LASER",
+        "relationship": "competitor",
+        "details": "在客製化光學元件、光學晶體及精密光學製造領域與 Fabrinet 競爭。",
+        "description": "在客製化光學元件、光學晶體及精密光學製造領域與 Fabrinet 競爭。",
+        "evidence_level": "SEC_explicit",
+        "source_ids": [
+          "SEC_2026_10K"
+        ]
+      },
+      {
+        "id": "INDUSTRIAL_LASER_competitor_015",
+        "name": "Excelitas Technologies",
+        "business_line": "INDUSTRIAL_LASER",
+        "relationship": "competitor",
+        "details": "在客製化光學、精密玻璃及光電元件製造領域與 Fabrinet 競爭。",
+        "description": "在客製化光學、精密玻璃及光電元件製造領域與 Fabrinet 競爭。",
+        "evidence_level": "SEC_explicit",
+        "source_ids": [
+          "SEC_2026_10K"
+        ]
+      },
+      {
+        "id": "INDUSTRIAL_LASER_competitor_016",
+        "name": "Photop Technologies（Coherent 旗下）",
+        "business_line": "INDUSTRIAL_LASER",
+        "relationship": "competitor",
+        "details": "在精密光學元件與客製化玻璃光學製造市場與 Fabrinet 競爭。",
+        "description": "在精密光學元件與客製化玻璃光學製造市場與 Fabrinet 競爭。",
+        "evidence_level": "SEC_explicit",
+        "source_ids": [
+          "SEC_2026_10K"
+        ]
+      },
+      {
+        "id": "DATACENTER_TRANSCEIVER_beneficiary_017",
+        "name": "聯亞光電（3081）",
+        "business_line": "DATACENTER_TRANSCEIVER",
+        "relationship": "beneficiary",
+        "details": "聯亞布局磷化銦雷射與光通訊磊晶材料，可隨 AI 資料中心高速光模組與光源需求擴張而受惠。",
+        "description": "聯亞布局磷化銦雷射與光通訊磊晶材料，可隨 AI 資料中心高速光模組與光源需求擴張而受惠。",
+        "evidence_level": "industry_benefit_inference",
+        "source_ids": [
+          "TAIWAN_OPTICS",
+          "TAIWAN_OPTICS_CHAIN"
+        ],
+        "taiwan_listed": true,
+        "direct_supplier_to_FN": false
+      },
+      {
+        "id": "CPO_NPO_beneficiary_018",
+        "name": "上詮（3363）",
+        "business_line": "CPO_NPO",
+        "relationship": "beneficiary",
+        "details": "上詮布局光纖陣列與 CPO 光學耦合元件，可隨共封裝光學導入及高速互連需求成長而受惠。",
+        "description": "上詮布局光纖陣列與 CPO 光學耦合元件，可隨共封裝光學導入及高速互連需求成長而受惠。",
+        "evidence_level": "industry_benefit_inference",
+        "source_ids": [
+          "TAIWAN_OPTICS",
+          "TAIWAN_OPTICS_CHAIN"
+        ],
+        "taiwan_listed": true,
+        "direct_supplier_to_FN": false
+      },
+      {
+        "id": "DATACENTER_TRANSCEIVER_beneficiary_019",
+        "name": "華星光（4979）",
+        "business_line": "DATACENTER_TRANSCEIVER",
+        "relationship": "beneficiary",
+        "details": "華星光經營高速光收發模組與光通訊元件，可隨 800G／1.6T 光模組升級與 AI 資料中心擴建受惠。",
+        "description": "華星光經營高速光收發模組與光通訊元件，可隨 800G／1.6T 光模組升級與 AI 資料中心擴建受惠。",
+        "evidence_level": "industry_benefit_inference",
+        "source_ids": [
+          "TAIWAN_OPTICS",
+          "TAIWAN_OPTICS_CHAIN"
+        ],
+        "taiwan_listed": true,
+        "direct_supplier_to_FN": false
+      },
+      {
+        "id": "CPO_NPO_beneficiary_020",
+        "name": "波若威（3163）",
+        "business_line": "CPO_NPO",
+        "relationship": "beneficiary",
+        "details": "波若威經營光纖被動元件與連接解決方案，可隨高速光網路與 CPO 光纖連接需求成長而受惠。",
+        "description": "波若威經營光纖被動元件與連接解決方案，可隨高速光網路與 CPO 光纖連接需求成長而受惠。",
+        "evidence_level": "industry_benefit_inference",
+        "source_ids": [
+          "TAIWAN_OPTICS",
+          "TAIWAN_OPTICS_CHAIN"
+        ],
+        "taiwan_listed": true,
+        "direct_supplier_to_FN": false
+      },
+      {
+        "id": "CPO_NPO_beneficiary_021",
+        "name": "光聖（6442）",
+        "business_line": "CPO_NPO",
+        "relationship": "beneficiary",
+        "details": "光聖布局光通訊被動元件與光纖連接產品，可隨 AI 資料中心光連接密度提高而受惠。",
+        "description": "光聖布局光通訊被動元件與光纖連接產品，可隨 AI 資料中心光連接密度提高而受惠。",
+        "evidence_level": "industry_benefit_inference",
+        "source_ids": [
+          "TAIWAN_OPTICS",
+          "TAIWAN_OPTICS_CHAIN"
+        ],
+        "taiwan_listed": true,
+        "direct_supplier_to_FN": false
+      },
+      {
+        "id": "DATACENTER_TRANSCEIVER_beneficiary_022",
+        "name": "全新光電（2455）",
+        "business_line": "DATACENTER_TRANSCEIVER",
+        "relationship": "beneficiary",
+        "details": "全新光電具三五族化合物半導體磊晶技術，可受惠高速光通訊雷射材料需求擴大。",
+        "description": "全新光電具三五族化合物半導體磊晶技術，可受惠高速光通訊雷射材料需求擴大。",
+        "evidence_level": "industry_benefit_inference",
+        "source_ids": [
+          "TAIWAN_OPTICS",
+          "TAIWAN_OPTICS_CHAIN"
+        ],
+        "taiwan_listed": true,
+        "direct_supplier_to_FN": false
+      }
+    ],
+    "sources": [
+      {
+        "id": "SEC_2026_10K",
+        "grade": "A",
+        "date": "2026-08-18",
+        "title": "Fabrinet FY2026 Form 10-K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1408710/000140871026000028/fn-20260626.htm"
+      },
+      {
+        "id": "SEC_2026_10Q",
+        "grade": "A",
+        "date": "2026-11-03",
+        "title": "Fabrinet FY2027 Q1 Form 10-Q",
+        "url": "https://www.sec.gov/Archives/edgar/data/1408710/000140871026000041/fn-20260925.htm"
+      },
+      {
+        "id": "IR_2026_Q1",
+        "grade": "A",
+        "date": "2026-11-02",
+        "title": "Fabrinet FY2027 Q1 earnings release",
+        "url": "https://investor.fabrinet.com/news-releases/news-release-details/fabrinet-announces-first-quarter-fiscal-year-2027-financial"
+      },
+      {
+        "id": "CALL_2026_Q1",
+        "grade": "B",
+        "date": "2026-11-02",
+        "title": "Fabrinet FY2027 Q1 earnings call transcript",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/11/02/fabrinet-fn-q1-2027-earnings-call-transcript/"
+      },
+      {
+        "id": "SEC_2025_10K",
+        "grade": "A",
+        "date": "2025-08-19",
+        "title": "Fabrinet FY2025 Form 10-K",
+        "url": "https://investor.fabrinet.com/static-files/9a916b94-df74-471d-971e-a5ac4b02107c"
+      },
+      {
+        "id": "IR_OVERVIEW",
+        "grade": "A",
+        "date": null,
+        "title": "Fabrinet investor relations overview",
+        "url": "https://investor.fabrinet.com/investor-relations"
+      },
+      {
+        "id": "TAIWAN_OPTICS",
+        "grade": "B",
+        "date": "2026-08-11",
+        "title": "Taiwan optical communications supply chain sectors",
+        "url": "https://www.skis.com.tw/skis/Report/education/KNW20260811.html"
+      },
+      {
+        "id": "TAIWAN_OPTICS_CHAIN",
+        "grade": "C",
+        "date": null,
+        "title": "Taiwan optical transceiver and CPO industry classification",
+        "url": "https://guliu.tw/themes/optical-transceiver/chain"
+      }
+    ],
+    "research": {
+      "scope": "Fabrinet 2026 年 10-K、最新 10-Q、2026-11-02 法說與官方財報、台灣光通訊受惠股",
+      "latest_filing": "FY2027 Q1 10-Q，季度截止 2026-09-25",
+      "latest_earnings": {
+        "period": "FY2027 Q1",
+        "revenue_usd_m": 1474.459,
+        "revenue_yoy_pct": 51,
+        "datacenter_revenue_usd_m": 777,
+        "datacenter_yoy_pct": 78,
+        "next_quarter_guidance_usd_m": [
+          1600,
+          1650
+        ]
+      },
+      "customer_concentration": {
+        "fiscal_year": 2026,
+        "Cisco_pct": 19.9,
+        "NVIDIA_pct": 16.3,
+        "Nokia_pct": 10.7,
+        "Amazon_pct": 10.5
+      },
+      "technology": "高速光收發模組、DCI、光路交換器、NPO/CPO；法說預期 NPO/CPO 於 FY2027 後段開始貢獻",
+      "taiwan_supply_chain": "未取得符合公開具名直接供貨門檻之台灣公司證據；supplier 節點維持空缺。",
+      "unverified_relationships": [
+        "未把台灣光通訊受惠股推定為 Fabrinet 供應商",
+        "未把 Amazon 或 NVIDIA 直接對應特定光模組 SKU",
+        "未將匿名 CPO 客戶推定為具名客戶"
+      ],
+      "source_ids": [
+        "SEC_2026_10K",
+        "SEC_2026_10Q",
+        "IR_2026_Q1",
+        "CALL_2026_Q1",
+        "SEC_2025_10K",
+        "TAIWAN_OPTICS"
+      ]
+    },
+    "five_gate_audit": {
+      "overall": "PARTIAL",
+      "gates": [
+        {
+          "gate": "original_11_fields",
+          "status": "PASS",
+          "note": "以原始欄位值與固定校驗雜湊對照"
+        },
+        {
+          "gate": "customer_and_competitor_evidence",
+          "status": "PASS",
+          "note": "具名客戶及競爭者均有 SEC 10-K 支持"
+        },
+        {
+          "gate": "taiwan_direct_supply_chain",
+          "status": "PASS",
+          "note": "沒有具名供貨證據不列直接供應商；受惠者單獨分類"
+        },
+        {
+          "gate": "details_specificity",
+          "status": "PASS",
+          "note": "每個節點 details 直接描述交易、競爭市場或受惠機制"
+        },
+        {
+          "gate": "deep_source_coverage",
+          "status": "PARTIAL",
+          "note": "未完成 100 個獨立來源及全面反向查證，不聲稱最終研究通過"
+        }
+      ],
+      "reflections": [
+        {
+          "round": 1,
+          "finding": "最新 2026 10-K 與舊 2025 10-K 客戶集中度不同",
+          "action": "以 2026 年度百分比為準，舊客戶另標歷史客戶"
+        },
+        {
+          "round": 2,
+          "finding": "競爭者分為光學製造服務及客製化光學兩個市場",
+          "action": "逐節點寫明競爭領域，避免籠統競爭"
+        },
+        {
+          "round": 3,
+          "finding": "台灣光通訊受惠股不等於 Fabrinet 直接供應商",
+          "action": "全部列 beneficiary，不列 supplier"
+        },
+        {
+          "round": 4,
+          "finding": "法說談 NPO/CPO 與光路交換器，未公開專案客戶",
+          "action": "納入業務線研究但不虛構具名客戶"
+        }
+      ]
+    }
   }
 }

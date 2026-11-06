@@ -202,5 +202,591 @@
       "製造外包"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-05",
+    "company": "Celestica Inc.",
+    "symbol": "CLS",
+    "locale": "zh-TW",
+    "business_lines": [
+      {
+        "id": "CCS_NETWORKING",
+        "name": "CCS網路設備／交換器",
+        "description": "商用網通交換器、AI fabric、OEM/ODM"
+      },
+      {
+        "id": "CCS_COMPUTE_STORAGE",
+        "name": "CCS運算與儲存",
+        "description": "伺服器、儲存及雲端基礎設施製造"
+      },
+      {
+        "id": "HPS_SWITCHING",
+        "name": "HPS硬體平台交換器",
+        "description": "開放式網路交換器與硬體設計"
+      },
+      {
+        "id": "AI_SCALEUP_DS6010",
+        "name": "DS6010 AI Scale-up",
+        "description": "AMD Helios架構、Broadcom Tomahawk 6 ASIC"
+      },
+      {
+        "id": "CPO_DS6005",
+        "name": "DS6005共封裝光學",
+        "description": "102.4Tbps CPO、液冷及1.6TbE"
+      },
+      {
+        "id": "ATS_SEMICAP",
+        "name": "ATS半導體資本設備",
+        "description": "半導體設備製造及精密機構件"
+      },
+      {
+        "id": "ATS_AEROSPACE_DEFENSE",
+        "name": "ATS航太國防",
+        "description": "高可靠性電子製造"
+      },
+      {
+        "id": "ATS_INDUSTRIAL",
+        "name": "ATS工業",
+        "description": "工業設備電子製造"
+      },
+      {
+        "id": "ATS_HEALTHTECH",
+        "name": "ATS健康科技",
+        "description": "醫療健康設備電子製造"
+      },
+      {
+        "id": "EMS_GLOBAL",
+        "name": "全球EMS與供應鏈",
+        "description": "電子製造、測試、供應鏈"
+      },
+      {
+        "id": "DESIGN_ENGINEERING",
+        "name": "設計與工程",
+        "description": "系統設計、原型與量產導入"
+      },
+      {
+        "id": "RACK_INTEGRATION",
+        "name": "機櫃與系統整合",
+        "description": "資料中心平台整合"
+      },
+      {
+        "id": "NETWORK_OPTICS",
+        "name": "高速光網路",
+        "description": "交換器光學互連"
+      },
+      {
+        "id": "AI_INFRASTRUCTURE",
+        "name": "AI基礎設施",
+        "description": "資料中心AI投資與需求"
+      },
+      {
+        "id": "MANUFACTURING_CAPACITY",
+        "name": "全球產能與營運資本",
+        "description": "產能擴張、存貨、資本支出"
+      },
+      {
+        "id": "PLATFORM_PARTNERS",
+        "name": "晶片與平台生態",
+        "description": "晶片供應與技術合作"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "CCS_COMPUTE_STORAGE_customer_001",
+        "business_line": "CCS_COMPUTE_STORAGE",
+        "relationship": "customer",
+        "name": "Amazon Fulfillment Services, Inc.",
+        "description": "2025年10-K於對應CCS或ATS部門直接具名的客戶；未揭露該客戶的個別營收、具體產品採購額或2026年單季出貨，不得與匿名大客戶營收比例配對。",
+        "evidence_level": "SEC_explicit_named_customer",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "details": "Celestica 2025 年報將 Amazon Fulfillment Services 列為 CCS（連接與雲端解決方案）客戶；雙方屬雲端與企業基礎設施相關的設計、製造及供應鏈服務客戶關係。公開文件未具名其採購機種。"
+      },
+      {
+        "id": "CCS_COMPUTE_STORAGE_customer_002",
+        "business_line": "CCS_COMPUTE_STORAGE",
+        "relationship": "customer",
+        "name": "Meta Platforms, Inc.",
+        "description": "2025年10-K於對應CCS或ATS部門直接具名的客戶；未揭露該客戶的個別營收、具體產品採購額或2026年單季出貨，不得與匿名大客戶營收比例配對。",
+        "evidence_level": "SEC_explicit_named_customer",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "details": "Meta 是 Celestica 2025 年報直接具名的 CCS 客戶；CLS 的 CCS 涵蓋雲端資料中心硬體、網路與運算基礎設施的設計製造服務。Meta 個別委託產品或 GPU 伺服器機型未獲公開確認。"
+      },
+      {
+        "id": "CCS_COMPUTE_STORAGE_customer_003",
+        "business_line": "CCS_COMPUTE_STORAGE",
+        "relationship": "customer",
+        "name": "Google Inc.",
+        "description": "2025年10-K於對應CCS或ATS部門直接具名的客戶；未揭露該客戶的個別營收、具體產品採購額或2026年單季出貨，不得與匿名大客戶營收比例配對。",
+        "evidence_level": "SEC_explicit_named_customer",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "details": "Google 是 Celestica 2025 年報直接具名的 CCS 客戶；CLS 透過 CCS 服務大型雲端業者的資料中心及網路硬體供應鏈。沒有公開證據可將特定 TPU、交換器機型或營收比例直接歸屬 Google。"
+      },
+      {
+        "id": "CCS_NETWORKING_customer_004",
+        "business_line": "CCS_NETWORKING",
+        "relationship": "customer",
+        "name": "Ciena Corporation",
+        "description": "2025年10-K於對應CCS或ATS部門直接具名的客戶；未揭露該客戶的個別營收、具體產品採購額或2026年單季出貨，不得與匿名大客戶營收比例配對。",
+        "evidence_level": "SEC_explicit_named_customer",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "details": "Ciena 為光通訊與網路設備業者，也是 Celestica 2025 年報具名 CCS 客戶；雙方的已確認關係是 CCS 通訊／網路設備相關設計製造服務，未公開逐項委製型號。"
+      },
+      {
+        "id": "CCS_COMPUTE_STORAGE_customer_005",
+        "business_line": "CCS_COMPUTE_STORAGE",
+        "relationship": "customer",
+        "name": "Dell Technologies",
+        "description": "2025年10-K於對應CCS或ATS部門直接具名的客戶；未揭露該客戶的個別營收、具體產品採購額或2026年單季出貨，不得與匿名大客戶營收比例配對。",
+        "evidence_level": "SEC_explicit_named_customer",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "details": "Dell Technologies 是 Celestica 2025 年報具名 CCS 客戶；CLS 向其提供 CCS 範疇的電子產品設計、製造及供應鏈服務。公開年報未指明 Dell 向 CLS 採購哪款伺服器或交換器。"
+      },
+      {
+        "id": "CCS_COMPUTE_STORAGE_customer_006",
+        "business_line": "CCS_COMPUTE_STORAGE",
+        "relationship": "customer",
+        "name": "Hewlett Packard Enterprise",
+        "description": "2025年10-K於對應CCS或ATS部門直接具名的客戶；未揭露該客戶的個別營收、具體產品採購額或2026年單季出貨，不得與匿名大客戶營收比例配對。",
+        "evidence_level": "SEC_explicit_named_customer",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "details": "HPE 是 Celestica 2025 年報具名 CCS 客戶；CLS 與 HPE 的確認關係是企業及雲端基礎設施相關的 CCS 設計製造服務，未有公開資料確認特定 HPE 系統由 CLS 生產。"
+      },
+      {
+        "id": "CCS_COMPUTE_STORAGE_customer_007",
+        "business_line": "CCS_COMPUTE_STORAGE",
+        "relationship": "customer",
+        "name": "IBM Corporation",
+        "description": "2025年10-K於對應CCS或ATS部門直接具名的客戶；未揭露該客戶的個別營收、具體產品採購額或2026年單季出貨，不得與匿名大客戶營收比例配對。",
+        "evidence_level": "SEC_explicit_named_customer",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "details": "IBM 是 Celestica 2025 年報具名 CCS 客戶；CLS 以 CCS 部門承接企業及雲端硬體相關設計製造／供應鏈業務，具體 IBM 產品或採購金額未公開。"
+      },
+      {
+        "id": "ATS_SEMICAP_customer_008",
+        "business_line": "ATS_SEMICAP",
+        "relationship": "customer",
+        "name": "Applied Materials, Inc.",
+        "description": "2025年10-K於對應CCS或ATS部門直接具名的客戶；未揭露該客戶的個別營收、具體產品採購額或2026年單季出貨，不得與匿名大客戶營收比例配對。",
+        "evidence_level": "SEC_explicit_named_customer",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "details": "Applied Materials 是 Celestica 2025 年報具名 ATS 客戶；Celestica ATS 承接半導體資本設備等高複雜度工業產品的電子製造、組裝及供應鏈服務，雙方關係屬半導體設備供應鏈的 EMS 委外製造。"
+      },
+      {
+        "id": "ATS_SEMICAP_customer_009",
+        "business_line": "ATS_SEMICAP",
+        "relationship": "customer",
+        "name": "Lam Research",
+        "description": "2025年10-K於對應CCS或ATS部門直接具名的客戶；未揭露該客戶的個別營收、具體產品採購額或2026年單季出貨，不得與匿名大客戶營收比例配對。",
+        "evidence_level": "SEC_explicit_named_customer",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "details": "Lam Research 是 Celestica 2025 年報具名 ATS 客戶；CLS ATS 為半導體設備產業提供複雜機電系統與電子製造服務，屬晶圓製造設備供應鏈的委外製造關係。"
+      },
+      {
+        "id": "ATS_AEROSPACE_DEFENSE_customer_010",
+        "business_line": "ATS_AEROSPACE_DEFENSE",
+        "relationship": "customer",
+        "name": "Honeywell Inc.",
+        "description": "2025年10-K於對應CCS或ATS部門直接具名的客戶；未揭露該客戶的個別營收、具體產品採購額或2026年單季出貨，不得與匿名大客戶營收比例配對。",
+        "evidence_level": "SEC_explicit_named_customer",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "details": "Honeywell 是 Celestica 2025 年報具名 ATS 客戶；CLS ATS 涵蓋航太、國防及工業等高可靠度電子製造服務，兩家公司存在 ATS 客戶關係，具體 Honeywell 委製產品未公開。"
+      },
+      {
+        "id": "EMS_GLOBAL_competitor_011",
+        "business_line": "EMS_GLOBAL",
+        "relationship": "competitor",
+        "name": "Benchmark Electronics, Inc.",
+        "description": "Celestica 2025年10-K Competition段落直接具名的EMS競爭者；市場競爭不代表任何供貨或採購關係。",
+        "evidence_level": "SEC_explicit_named_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "details": "Benchmark 與 Celestica 同屬全球電子製造服務（EMS）業者，競爭高複雜度電子組裝、測試、供應鏈管理及 OEM 委外製造專案；Celestica 2025 年 10-K 直接列名 Benchmark 為 EMS 競爭對手。"
+      },
+      {
+        "id": "EMS_GLOBAL_competitor_012",
+        "business_line": "EMS_GLOBAL",
+        "relationship": "competitor",
+        "name": "Flex Ltd.",
+        "description": "Celestica 2025年10-K Competition段落直接具名的EMS競爭者；市場競爭不代表任何供貨或採購關係。",
+        "evidence_level": "SEC_explicit_named_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "details": "Flex 與 Celestica 在全球 EMS 製造、供應鏈管理、產品導入與系統整合標案直接競爭；Celestica 2025 年 10-K 將 Flex 列為 EMS 同業競爭者。"
+      },
+      {
+        "id": "EMS_GLOBAL_competitor_013",
+        "business_line": "EMS_GLOBAL",
+        "relationship": "competitor",
+        "name": "Hon Hai Precision Industry Co., Ltd.（鴻海）",
+        "description": "Celestica 2025年10-K Competition段落直接具名的EMS競爭者；市場競爭不代表任何供貨或採購關係。",
+        "evidence_level": "SEC_explicit_named_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "details": "鴻海（Foxconn）與 Celestica 競逐大型 OEM／雲端客戶的電子製造、系統整合及供應鏈專案；Celestica 2025 年 10-K 明確列鴻海為 EMS 競爭對手。"
+      },
+      {
+        "id": "EMS_GLOBAL_competitor_014",
+        "business_line": "EMS_GLOBAL",
+        "relationship": "competitor",
+        "name": "Jabil Inc.",
+        "description": "Celestica 2025年10-K Competition段落直接具名的EMS競爭者；市場競爭不代表任何供貨或採購關係。",
+        "evidence_level": "SEC_explicit_named_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "details": "Jabil 與 Celestica 在電子製造服務、工程導入、全球量產與高複雜度產品供應鏈管理上爭取相同類型客戶及委外專案；Celestica 10-K 直接列其為 EMS 競爭者。"
+      },
+      {
+        "id": "EMS_GLOBAL_competitor_015",
+        "business_line": "EMS_GLOBAL",
+        "relationship": "competitor",
+        "name": "Plexus Corp.",
+        "description": "Celestica 2025年10-K Competition段落直接具名的EMS競爭者；市場競爭不代表任何供貨或採購關係。",
+        "evidence_level": "SEC_explicit_named_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "details": "Plexus 與 Celestica 在高複雜度、受嚴格品質要求的電子產品設計導入、製造與供應鏈服務上競爭；Celestica 2025 年 10-K 將其列為 EMS 競爭對手。"
+      },
+      {
+        "id": "EMS_GLOBAL_competitor_016",
+        "business_line": "EMS_GLOBAL",
+        "relationship": "competitor",
+        "name": "Sanmina Corporation",
+        "description": "Celestica 2025年10-K Competition段落直接具名的EMS競爭者；市場競爭不代表任何供貨或採購關係。",
+        "evidence_level": "SEC_explicit_named_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "details": "Sanmina 與 Celestica 同為全球 EMS 業者，競逐電子系統製造、測試、組裝及供應鏈服務訂單；Celestica 2025 年 10-K 明確將 Sanmina 列為競爭者。"
+      },
+      {
+        "id": "CCS_COMPUTE_STORAGE_competitor_017",
+        "business_line": "CCS_COMPUTE_STORAGE",
+        "relationship": "competitor",
+        "name": "Quanta Computer Inc.（廣達）",
+        "description": "Celestica 2025年10-K Competition段落直接具名的ODM競爭者；市場競爭不代表任何供貨或採購關係。",
+        "evidence_level": "SEC_explicit_named_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "details": "廣達是 Celestica 2025 年 10-K 明列的 ODM 競爭對手；雙方競逐雲端資料中心、伺服器及客製化運算硬體的設計與製造委託，重疊於 CLS CCS 的雲端基礎設施業務。"
+      },
+      {
+        "id": "CCS_COMPUTE_STORAGE_competitor_018",
+        "business_line": "CCS_COMPUTE_STORAGE",
+        "relationship": "competitor",
+        "name": "Wiwynn Corporation（緯穎）",
+        "description": "Celestica 2025年10-K Competition段落直接具名的ODM競爭者；市場競爭不代表任何供貨或採購關係。",
+        "evidence_level": "SEC_explicit_named_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "details": "緯穎是 Celestica 2025 年 10-K 具名 ODM 競爭對手；雙方在大型雲端服務商的資料中心運算系統、伺服器平台設計與製造委外市場競爭。"
+      },
+      {
+        "id": "CCS_NETWORKING_competitor_019",
+        "business_line": "CCS_NETWORKING",
+        "relationship": "competitor",
+        "name": "Accton Technology Corp.（智邦）",
+        "description": "Celestica 2025年10-K Competition段落直接具名的ODM競爭者；市場競爭不代表任何供貨或採購關係。",
+        "evidence_level": "SEC_explicit_named_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "details": "智邦是 Celestica 2025 年 10-K 明列 ODM 競爭對手；兩家公司在資料中心白牌／客製化網路交換器與網路硬體設計製造市場重疊，對應 CLS 的 HPS 交換器業務。"
+      },
+      {
+        "id": "HPS_SWITCHING_competitor_020",
+        "business_line": "HPS_SWITCHING",
+        "relationship": "competitor",
+        "name": "Arista Networks, Inc.",
+        "description": "Celestica 2025年10-K Competition段落直接具名的交換器OEM競爭者；市場競爭不代表任何供貨或採購關係。",
+        "evidence_level": "SEC_explicit_named_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "details": "Arista 與 Celestica 在資料中心交換器採購決策中形成 OEM 成品與 ODM 客製化方案的替代競爭：客戶可選 Arista 品牌交換器，或採 Celestica HPS 白牌／客製化交換器；CLS 10-K 明列 Arista。"
+      },
+      {
+        "id": "HPS_SWITCHING_competitor_021",
+        "business_line": "HPS_SWITCHING",
+        "relationship": "competitor",
+        "name": "Cisco Systems, Inc.",
+        "description": "Celestica 2025年10-K Competition段落直接具名的交換器OEM競爭者；市場競爭不代表任何供貨或採購關係。",
+        "evidence_level": "SEC_explicit_named_competitor",
+        "source_ids": [
+          "SEC_2025_10K"
+        ],
+        "details": "Cisco 與 Celestica 在資料中心網路交換器市場形成品牌 OEM 與 ODM 客製化硬體的競爭；大型客戶在 Cisco 成套交換器與 Celestica HPS 自訂交換器方案間比較成本、軟體、維運及客製化能力。"
+      },
+      {
+        "id": "AI_SCALEUP_DS6010_supplier_022",
+        "business_line": "AI_SCALEUP_DS6010",
+        "relationship": "supplier",
+        "name": "Broadcom Inc.",
+        "description": "Celestica官方DS6010產品敘述明確使用兩顆Broadcom Tomahawk 6交換器ASIC；DS6005使用Broadcom Tomahawk 6 Davisson晶片。屬具名產品關鍵半導體技術供應，但未披露直接採購合約、金額或交付數量。",
+        "evidence_level": "official_explicit_component_design_in",
+        "source_ids": [
+          "HELIOS",
+          "DS6005",
+          "PARTNERS"
+        ],
+        "details": "Celestica DS6010 是 AMD Helios AI 機櫃專用的 204.8 Tbps scale-up 交換器，官方規格明載內建兩顆 Broadcom Tomahawk 6 交換器 ASIC；Broadcom 因此是這款 CLS 產品已具名的核心晶片供應來源。"
+      },
+      {
+        "id": "AI_SCALEUP_DS6010_partner_023",
+        "business_line": "AI_SCALEUP_DS6010",
+        "relationship": "partner",
+        "name": "Advanced Micro Devices, Inc.（AMD）",
+        "description": "官方共同開發AMD Helios機櫃級方案；非已確認AMD為Celestica直接客戶或供應商。",
+        "evidence_level": "company_official_named_technology_partner",
+        "source_ids": [
+          "HELIOS",
+          "PARTNERS"
+        ],
+        "details": "2026 年 3 月 Celestica 與 AMD 正式宣布共同推動 Helios 機櫃級 AI 平台：Celestica 負責研發、設計及製造 scale-up 網路交換器，連接下一代 AMD Instinct MI450 系列 GPU；其 DS6010 已針對 Helios 架構設計及驗證。"
+      },
+      {
+        "id": "PLATFORM_PARTNERS_partner_024",
+        "business_line": "PLATFORM_PARTNERS",
+        "relationship": "partner",
+        "name": "Broadcom Inc.",
+        "description": "雙方官方具名合作，DS6010/DS6005採用Broadcom ASIC；不等同已披露採購金額。",
+        "evidence_level": "company_official_named_technology_partner",
+        "source_ids": [
+          "DS6005",
+          "PARTNERS"
+        ],
+        "details": "Celestica 將 Broadcom Tomahawk 6 交換晶片整合至 DS6010 Helios scale-up 交換器；雙方在高速資料中心網路硬體上形成晶片平台與交換器系統設計整合關係，並非已公開的共同營收分潤合約。"
+      },
+      {
+        "id": "PLATFORM_PARTNERS_partner_025",
+        "business_line": "PLATFORM_PARTNERS",
+        "relationship": "partner",
+        "name": "Intel Corporation",
+        "description": "Celestica官方列為開放式網路及儲存平台技術合作夥伴；未揭露直接採購金額。",
+        "evidence_level": "company_official_named_technology_partner",
+        "source_ids": [
+          "PARTNERS"
+        ],
+        "details": "Intel 與 Celestica 存在資料中心運算／網路技術生態系合作關係；本版未取得足以指認特定 Intel 晶片導入 CLS 量產機型的直接公告，因此不將其寫成已證實的指定零件供應訂單。"
+      },
+      {
+        "id": "CPO_DS6005_beneficiary_026",
+        "business_line": "CPO_DS6005",
+        "relationship": "beneficiary",
+        "name": "Broadcom Inc.",
+        "description": "DS6005與DS6010明確採用Broadcom交換器ASIC，Celestica產品需求成長可帶動相關晶片需求；未披露供貨數量或金額。",
+        "evidence_level": "documented_ecosystem_exposure_not_confirmed_incremental_revenue",
+        "source_ids": [
+          "DS6005",
+          "HELIOS"
+        ],
+        "details": "Celestica DS6010 每台採用兩顆 Broadcom Tomahawk 6 ASIC；若 Helios 交換器部署增加，將提高對該交換晶片平台的潛在需求。這是產品用料所支持的受惠機制，並非 Broadcom 已揭露的 CLS 訂單金額。"
+      },
+      {
+        "id": "AI_SCALEUP_DS6010_beneficiary_027",
+        "business_line": "AI_SCALEUP_DS6010",
+        "relationship": "beneficiary",
+        "name": "Advanced Micro Devices, Inc.（AMD）",
+        "description": "AMD Helios與Celestica DS6010共同設計整合，屬雙方AI平台生態系潛在受惠，不等於已認列共同專案營收。",
+        "evidence_level": "documented_ecosystem_exposure_not_confirmed_incremental_revenue",
+        "source_ids": [
+          "HELIOS"
+        ],
+        "details": "Celestica 為 AMD Helios 機櫃 AI 架構研製 scale-up 交換器，支援 Instinct MI450 GPU 高速互連；CLS 交換器供應能力可協助 Helios 平台整機部署，間接支持 AMD GPU 生態系擴張。"
+      },
+      {
+        "id": "PLATFORM_PARTNERS_beneficiary_028",
+        "business_line": "PLATFORM_PARTNERS",
+        "relationship": "beneficiary",
+        "name": "Intel Corporation",
+        "description": "Celestica官方開放式網路與儲存合作生態參與者；僅有合作證據，不可推定特定訂單。",
+        "evidence_level": "documented_ecosystem_exposure_not_confirmed_incremental_revenue",
+        "source_ids": [
+          "PARTNERS"
+        ],
+        "details": "Intel 與 Celestica 同處資料中心運算及網路硬體生態系，但目前缺乏可證實 Intel 因特定 CLS 產品而取得增量採購的直接資料；僅可視為潛在技術生態系受惠，不應視為已確認訂單。"
+      }
+    ],
+    "research": {
+      "latest_financials": {
+        "quarter": "2026 Q3",
+        "period_end": "2026-09-30",
+        "reported_on": "2026-10-26",
+        "currency": "USD",
+        "revenue_billion": 5.83,
+        "revenue_yoy_pct": 83,
+        "gaap_operating_margin_pct": 7.9,
+        "non_gaap_adjusted_operating_margin_pct": 8.5,
+        "2026_revenue_outlook_billion": 21.0,
+        "2027_revenue_outlook_billion": 40.0,
+        "outlook_not_actual": true,
+        "source_ids": [
+          "SEC_2026_Q3",
+          "IR_2026_Q3"
+        ]
+      },
+      "customer_concentration": {
+        "fy2025_top10_revenue_share_pct": 79,
+        "fy2025_top3_unnamed_pct": [
+          32,
+          14,
+          12
+        ],
+        "q3_2026_top10_revenue_share_pct": 85,
+        "q3_2026_top3_unnamed_pct": [
+          35,
+          17,
+          14
+        ],
+        "important": "SEC未把匿名營收占比對應至任何具名企業，禁止自行配對。",
+        "source_ids": [
+          "SEC_2025_10K",
+          "SEC_2026_Q3"
+        ]
+      },
+      "commercialization": {
+        "DS6010": "2026-07官方技術合作及產品架構，不代表全部量產出貨",
+        "DS6005": "2026-10-12官方推出CPO系統，不代表已認列銷售營收"
+      },
+      "taiwan_supply_chain": {
+        "confirmed_competitors": [
+          "鴻海",
+          "廣達",
+          "緯穎",
+          "智邦"
+        ],
+        "confirmed_direct_taiwan_suppliers": [],
+        "caveat": "台灣企業在此有SEC具名競爭關係；未找到可確認直接供應CLS的公開證據，禁止轉寫為supplier。"
+      },
+      "source_audit": {
+        "unique_documents_opened_or_reviewed_in_this_revision": 6,
+        "target_100_documents_met": false,
+        "note": "未完成100份獨立文件實質閱讀，不能標記PASS。"
+      },
+      "reflection_rounds": [
+        {
+          "round": 1,
+          "issue": "原稿競爭者為零",
+          "correction": "依2025年10-K Competition段落補齊11家具名競爭者。"
+        },
+        {
+          "round": 2,
+          "issue": "原稿供應商為零",
+          "correction": "按DS6010/DS6005官方產品採用證據納入Broadcom，明確註記無採購額。"
+        },
+        {
+          "round": 3,
+          "issue": "產業受惠與直接交易混淆",
+          "correction": "僅列具名官方合作生態，與已確認營收分開。"
+        }
+      ],
+      "details_revision_note": "2026-11-05：全部節點 details 改寫為可讀的具體商業關係；保留 description 作原始審計備註。僅具名客戶未擅自指派採購機種、營收比例；推論性受惠明確註記。",
+      "details_verified_source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1030894/000103089426000011/cls-20251231.htm",
+        "https://corporate.celestica.com/news-releases/news-release-details/celestica-and-amd-announce-collaboration-advance-next-era-ai",
+        "https://cls.celestica.com/hardware-platforms/ds6010/"
+      ]
+    },
+    "five_gate_audit": {
+      "gate_1_recent_events": {
+        "status": "partial",
+        "notes": "涵蓋2026 Q3與10月DS6005，但未完成近90天全量反向搜尋。"
+      },
+      "gate_2_investor_questions": {
+        "status": "partial",
+        "notes": "已涵蓋成長、集中度、AI交換器與營收展望，未完成十大問題。"
+      },
+      "gate_3_product_completeness": {
+        "status": "partial",
+        "notes": "涵蓋CCS/ATS與DS6010/DS6005，仍需全產品組合核對。"
+      },
+      "gate_4_counterevidence": {
+        "status": "partial",
+        "notes": "區分具名客戶與匿名營收、供應商與合作夥伴。"
+      },
+      "gate_5_missingness": {
+        "status": "fail",
+        "notes": "100篇來源及交易對手反向查核未完成，不得作為BHE基準PASS。"
+      },
+      "overall": "FAIL"
+    },
+    "sources": [
+      {
+        "id": "SEC_2025_10K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1030894/000103089426000011/cls-20251231.htm",
+        "type": "SEC_10K",
+        "date": "2026-02-27",
+        "description": "2025年報具名客戶、競爭者、客戶集中度、業務風險"
+      },
+      {
+        "id": "SEC_2026_Q3",
+        "url": "https://www.sec.gov/Archives/edgar/data/1030894/000103089426000050/cls-20260930.htm",
+        "type": "SEC_10Q",
+        "date": "2026-10-26",
+        "description": "2026第三季財報與管理層討論、客戶集中度"
+      },
+      {
+        "id": "IR_2026_Q3",
+        "url": "https://celestica.gcs-web.com/news-releases/news-release-details/celestica-announces-third-quarter-2026-financial-results-and",
+        "type": "company_IR",
+        "date": "2026-10-26",
+        "description": "2026第三季財報與2027展望"
+      },
+      {
+        "id": "PARTNERS",
+        "url": "https://www.celestica.com/our-expertise/celestica-technology-partners",
+        "type": "company_official",
+        "date": null,
+        "description": "官方AMD、Broadcom、Intel技術合作夥伴名單"
+      },
+      {
+        "id": "HELIOS",
+        "url": "https://www.celestica.com/blog/article/accelerating-the-next-era-of-ai-celestica-and-amd-collaborate-on-the-amd-helios-rackscale-solution",
+        "type": "company_official",
+        "date": "2026-07-23",
+        "description": "AMD Helios、DS6010與Broadcom Tomahawk 6雙ASIC技術"
+      },
+      {
+        "id": "DS6005",
+        "url": "https://corporate.celestica.com/news-releases/news-release-details/celestica-introduces-ds6005-data-center-switch-co-packaged",
+        "type": "company_IR",
+        "date": "2026-10-12",
+        "description": "DS6005 CPO及Broadcom Tomahawk 6 Davisson晶片、雙方引言"
+      }
+    ]
   }
 }

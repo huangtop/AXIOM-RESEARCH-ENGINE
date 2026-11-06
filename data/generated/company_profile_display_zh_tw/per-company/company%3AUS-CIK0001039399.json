@@ -193,5 +193,676 @@
       "量子研究"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "as_of": "2026-11-06",
+    "company": "FormFactor, Inc.",
+    "symbol": "FORM",
+    "locale": "zh-TW",
+    "business_lines": [
+      {
+        "id": "probe",
+        "name": "先進探針卡／HBM／邏輯晶片晶圓測試"
+      },
+      {
+        "id": "systems",
+        "name": "探針台／光子與低溫量測系統"
+      },
+      {
+        "id": "thermal",
+        "name": "熱測試與溫控子系統"
+      }
+    ],
+    "relationship_categories": [
+      {
+        "id": "customer",
+        "label": "客戶"
+      },
+      {
+        "id": "partner",
+        "label": "合作"
+      },
+      {
+        "id": "supplier",
+        "label": "供應商"
+      },
+      {
+        "id": "competitor",
+        "label": "競爭"
+      },
+      {
+        "id": "beneficiary",
+        "label": "產業受惠"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "form-001",
+        "business_line": "probe",
+        "relationship": "customer",
+        "name": "SK hynix",
+        "description": "SK hynix 採購 FormFactor 晶圓探針測試產品；2026 年第三季占公司營收 20.7%，2025 全年占 22.9%。",
+        "details": "SK hynix 採購 FormFactor 晶圓探針測試產品；2026 年第三季占公司營收 20.7%，2025 全年占 22.9%。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s03",
+          "s10"
+        ]
+      },
+      {
+        "id": "form-002",
+        "business_line": "probe",
+        "relationship": "customer",
+        "name": "Taiwan Semiconductor Manufacturing Company (TSMC)",
+        "description": "台積電是 FormFactor 具名晶圓測試客戶；2026 年第三季占營收 12.8%，第二季占 11.0%。台積電是客戶，不是 FormFactor 供應商。",
+        "details": "台積電是 FormFactor 具名晶圓測試客戶；2026 年第三季占營收 12.8%，第二季占 11.0%。台積電是客戶，不是 FormFactor 供應商。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s03",
+          "s09"
+        ],
+        "country": "TW",
+        "ticker": "2330"
+      },
+      {
+        "id": "form-003",
+        "business_line": "probe",
+        "relationship": "customer",
+        "name": "NVIDIA",
+        "description": "NVIDIA 為 FormFactor 具名晶片測試客戶，2026 年第一季營收占比 10.2%；第三季低於 10% 揭露門檻，不能推論已流失訂單。",
+        "details": "NVIDIA 為 FormFactor 具名晶片測試客戶，2026 年第一季營收占比 10.2%；第三季低於 10% 揭露門檻，不能推論已流失訂單。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s03"
+        ]
+      },
+      {
+        "id": "form-004",
+        "business_line": "probe",
+        "relationship": "customer",
+        "name": "Intel",
+        "description": "Intel 曾是 FormFactor 大客戶，2024 年占全年營收 14.6%，2025 年占比低於 10%；2026 年季度資料仍列示為具名客戶。",
+        "details": "Intel 曾是 FormFactor 大客戶，2024 年占全年營收 14.6%，2025 年占比低於 10%；2026 年季度資料仍列示為具名客戶。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s10",
+          "s03"
+        ]
+      },
+      {
+        "id": "form-005",
+        "business_line": "probe",
+        "relationship": "customer",
+        "name": "Samsung Electronics",
+        "description": "FormFactor 2026 年補充財務資訊將 Samsung Electronics 列在具名客戶表，所列季度均未達 10% 營收門檻。",
+        "details": "FormFactor 2026 年補充財務資訊將 Samsung Electronics 列在具名客戶表，所列季度均未達 10% 營收門檻。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s03"
+        ]
+      },
+      {
+        "id": "form-006",
+        "business_line": "probe",
+        "relationship": "supplier",
+        "name": "雍智科技 Keystone Microtech (6683)",
+        "description": "台灣 Keystone Microtech 依 2026 年 7 月正式協議為指定 FormFactor 探針卡產品提供設計、組裝、測試、維修與配銷服務，屬直接製造／服務供應鏈。",
+        "details": "台灣 Keystone Microtech 依 2026 年 7 月正式協議為指定 FormFactor 探針卡產品提供設計、組裝、測試、維修與配銷服務，屬直接製造／服務供應鏈。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s07",
+          "s08",
+          "s15"
+        ],
+        "country": "TW",
+        "ticker": "6683",
+        "direct_supply_chain": true
+      },
+      {
+        "id": "form-007",
+        "business_line": "probe",
+        "relationship": "supplier",
+        "name": "FICT Limited",
+        "description": "FormFactor 的關係企業 FICT 供應存貨與製造相關項目；2026 年第三季 10-Q 明列為關係企業及供應商，2026 年前九個月向 FICT 採購存貨 1,230 萬美元。",
+        "details": "FormFactor 的關係企業 FICT 供應存貨與製造相關項目；2026 年第三季 10-Q 明列為關係企業及供應商，2026 年前九個月向 FICT 採購存貨 1,230 萬美元。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s02",
+          "s09"
+        ]
+      },
+      {
+        "id": "form-008",
+        "business_line": "probe",
+        "relationship": "partner",
+        "name": "Teradyne",
+        "description": "FormFactor 與 Teradyne 於 2026 年 10 月簽署聯合開發協議，整合探針、介面與自動測試平台；Teradyne 另承諾投資 3 億美元取得少數股權，尚待交割。",
+        "details": "FormFactor 與 Teradyne 於 2026 年 10 月簽署聯合開發協議，整合探針、介面與自動測試平台；Teradyne 另承諾投資 3 億美元取得少數股權，尚待交割。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s05",
+          "s06"
+        ]
+      },
+      {
+        "id": "form-009",
+        "business_line": "probe",
+        "relationship": "competitor",
+        "name": "Japan Electronic Materials",
+        "description": "日本 JEM 在先進晶圓探針卡與 MEMS 探針市場與 FormFactor 競爭。",
+        "details": "日本 JEM 在先進晶圓探針卡與 MEMS 探針市場與 FormFactor 競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "form-010",
+        "business_line": "probe",
+        "relationship": "competitor",
+        "name": "Korea Instrument",
+        "description": "韓國 Korea Instrument 在晶圓探針卡市場與 FormFactor 競爭。",
+        "details": "韓國 Korea Instrument 在晶圓探針卡市場與 FormFactor 競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "form-011",
+        "business_line": "probe",
+        "relationship": "competitor",
+        "name": "Micronics Japan",
+        "description": "Micronics Japan 在先進晶圓探針卡、MEMS 接觸技術與 FormFactor 競爭。",
+        "details": "Micronics Japan 在先進晶圓探針卡、MEMS 接觸技術與 FormFactor 競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "form-012",
+        "business_line": "probe",
+        "relationship": "competitor",
+        "name": "MPI Corporation",
+        "description": "MPI 在探針卡、分析探針及探針台等多條產品線與 FormFactor 競爭。",
+        "details": "MPI 在探針卡、分析探針及探針台等多條產品線與 FormFactor 競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "form-013",
+        "business_line": "probe",
+        "relationship": "competitor",
+        "name": "STAr Technologies",
+        "description": "STAr Technologies 在探針卡及探針台市場與 FormFactor 競爭。",
+        "details": "STAr Technologies 在探針卡及探針台市場與 FormFactor 競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "form-014",
+        "business_line": "probe",
+        "relationship": "competitor",
+        "name": "Max One",
+        "description": "Max One 是 FormFactor 2025 年 10-K 具名探針卡競爭廠商。",
+        "details": "Max One 是 FormFactor 2025 年 10-K 具名探針卡競爭廠商。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "form-015",
+        "business_line": "probe",
+        "relationship": "competitor",
+        "name": "Technoprobe",
+        "description": "義大利 Technoprobe 以先進 MEMS 探針卡與 FormFactor 競爭。",
+        "details": "義大利 Technoprobe 以先進 MEMS 探針卡與 FormFactor 競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "form-016",
+        "business_line": "probe",
+        "relationship": "competitor",
+        "name": "TSE",
+        "description": "韓國 TSE 是 FormFactor 具名探針卡競爭廠商。",
+        "details": "韓國 TSE 是 FormFactor 具名探針卡競爭廠商。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "form-017",
+        "business_line": "probe",
+        "relationship": "competitor",
+        "name": "GGB Industries",
+        "description": "GGB Industries 在分析探針與高頻接觸量測市場與 FormFactor 競爭。",
+        "details": "GGB Industries 在分析探針與高頻接觸量測市場與 FormFactor 競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "form-018",
+        "business_line": "systems",
+        "relationship": "competitor",
+        "name": "Semishare",
+        "description": "深圳 Semishare 在半導體探針台與量測系統市場與 FormFactor 競爭。",
+        "details": "深圳 Semishare 在半導體探針台與量測系統市場與 FormFactor 競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "form-019",
+        "business_line": "systems",
+        "relationship": "competitor",
+        "name": "Tokyo Electron",
+        "description": "東京威力科創在部分半導體探針台設備市場與 FormFactor 競爭。",
+        "details": "東京威力科創在部分半導體探針台設備市場與 FormFactor 競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "form-020",
+        "business_line": "systems",
+        "relationship": "competitor",
+        "name": "Wentworth Laboratories",
+        "description": "Wentworth Laboratories 在工程及晶圓探針台市場與 FormFactor 競爭。",
+        "details": "Wentworth Laboratories 在工程及晶圓探針台市場與 FormFactor 競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "form-021",
+        "business_line": "thermal",
+        "relationship": "competitor",
+        "name": "AEM Singapore",
+        "description": "AEM Singapore 在熱測試子系統與 FormFactor 競爭。",
+        "details": "AEM Singapore 在熱測試子系統與 FormFactor 競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "form-022",
+        "business_line": "thermal",
+        "relationship": "competitor",
+        "name": "ERS Electronic",
+        "description": "德國 ERS Electronic 在熱測試及溫控子系統與 FormFactor 競爭。",
+        "details": "德國 ERS Electronic 在熱測試及溫控子系統與 FormFactor 競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "form-023",
+        "business_line": "thermal",
+        "relationship": "competitor",
+        "name": "Temptronic",
+        "description": "Temptronic 在熱測試與溫控子系統市場與 FormFactor 競爭。",
+        "details": "Temptronic 在熱測試與溫控子系統市場與 FormFactor 競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "form-024",
+        "business_line": "systems",
+        "relationship": "competitor",
+        "name": "Bluefors",
+        "description": "芬蘭 Bluefors 在量子運算低溫系統與 FormFactor 競爭。",
+        "details": "芬蘭 Bluefors 在量子運算低溫系統與 FormFactor 競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "form-025",
+        "business_line": "systems",
+        "relationship": "competitor",
+        "name": "Lake Shore Cryotronics",
+        "description": "Lake Shore Cryotronics 在低溫探針及量測系統市場與 FormFactor 競爭。",
+        "details": "Lake Shore Cryotronics 在低溫探針及量測系統市場與 FormFactor 競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "form-026",
+        "business_line": "systems",
+        "relationship": "competitor",
+        "name": "Maybell Quantum",
+        "description": "Maybell Quantum 在量子運算低溫設備市場與 FormFactor 競爭。",
+        "details": "Maybell Quantum 在量子運算低溫設備市場與 FormFactor 競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "form-027",
+        "business_line": "systems",
+        "relationship": "competitor",
+        "name": "Montana Instruments",
+        "description": "Montana Instruments 在低溫探針與量測系統市場與 FormFactor 競爭。",
+        "details": "Montana Instruments 在低溫探針與量測系統市場與 FormFactor 競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "form-028",
+        "business_line": "systems",
+        "relationship": "competitor",
+        "name": "Quantum Design",
+        "description": "Quantum Design 在低溫量測系統市場與 FormFactor 競爭。",
+        "details": "Quantum Design 在低溫量測系統市場與 FormFactor 競爭。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s01"
+        ]
+      },
+      {
+        "id": "form-029",
+        "business_line": "probe",
+        "relationship": "beneficiary",
+        "name": "旺矽 MPI（6223）",
+        "description": "台灣探針卡及探針台廠商，受惠先進封裝、HPC 與高頻晶圓測試投資；同時也是 FormFactor 競爭者。",
+        "details": "台灣探針卡及探針台廠商，受惠先進封裝、HPC 與高頻晶圓測試投資；同時也是 FormFactor 競爭者。",
+        "evidence_level": "B_INDUSTRY_INFERENCE",
+        "source_ids": [
+          "s01",
+          "s04"
+        ],
+        "country": "TW",
+        "ticker": "6223",
+        "direct_supply_chain": false
+      },
+      {
+        "id": "form-030",
+        "business_line": "probe",
+        "relationship": "beneficiary",
+        "name": "精測 Chunghwa Precision Test Tech（6510）",
+        "description": "台灣半導體測試介面廠，先進製程與 AI 晶片測試複雜度提升時可能受惠；未據此認定為 FormFactor 供應商。",
+        "details": "台灣半導體測試介面廠，先進製程與 AI 晶片測試複雜度提升時可能受惠；未據此認定為 FormFactor 供應商。",
+        "evidence_level": "B_INDUSTRY_INFERENCE",
+        "source_ids": [
+          "s01",
+          "s04"
+        ],
+        "country": "TW",
+        "ticker": "6510",
+        "direct_supply_chain": false
+      },
+      {
+        "id": "form-031",
+        "business_line": "probe",
+        "relationship": "beneficiary",
+        "name": "穎崴 WinWay Technology（6515）",
+        "description": "台灣半導體測試座及介面廠，受惠高階運算與先進封裝測試需求；屬產業受惠而非直接供應關係。",
+        "details": "台灣半導體測試座及介面廠，受惠高階運算與先進封裝測試需求；屬產業受惠而非直接供應關係。",
+        "evidence_level": "B_INDUSTRY_INFERENCE",
+        "source_ids": [
+          "s01",
+          "s04"
+        ],
+        "country": "TW",
+        "ticker": "6515",
+        "direct_supply_chain": false
+      },
+      {
+        "id": "form-032",
+        "business_line": "probe",
+        "relationship": "competitor",
+        "name": "WinWay Technology（穎崴）",
+        "description": "FormFactor 2024 年 10-K 曾具名穎崴為探針卡市場競爭者；2025 年新版名單未再逐一列出，不代表競爭關係已消失。",
+        "details": "FormFactor 2024 年 10-K 曾具名穎崴為探針卡市場競爭者；2025 年新版名單未再逐一列出，不代表競爭關係已消失。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s14"
+        ],
+        "country": "TW",
+        "ticker": "6515"
+      },
+      {
+        "id": "form-033",
+        "business_line": "probe",
+        "relationship": "competitor",
+        "name": "Chungwa Precision Technology（中華精測）",
+        "description": "FormFactor 2024 年 10-K 曾具名 Chungwa Precision Technology 為探針卡市場競爭者；保留歷史證據標示。",
+        "details": "FormFactor 2024 年 10-K 曾具名 Chungwa Precision Technology 為探針卡市場競爭者；保留歷史證據標示。",
+        "evidence_level": "A",
+        "source_ids": [
+          "s14"
+        ],
+        "country": "TW",
+        "ticker": "6510"
+      }
+    ],
+    "corporate_events": [
+      {
+        "id": "form-event-teradyne",
+        "date": "2026-10-12",
+        "type": "strategic_investment_and_collaboration",
+        "counterparty": "Teradyne",
+        "status": "signed_pending_close",
+        "details": "Teradyne 同意以約 3 億美元認購 FormFactor 2,234,887 股新股，預計 2026 年第四季交割；同時簽署聯合開發協議，並非收購 FormFactor。",
+        "source_ids": [
+          "s05",
+          "s06",
+          "s02"
+        ]
+      },
+      {
+        "id": "form-event-texas",
+        "date": "2026-10-22",
+        "type": "capacity_expansion",
+        "status": "announced",
+        "details": "FormFactor 啟用德州 Farmers Branch 新製造設施，擴充先進探針卡產能及營運彈性。",
+        "source_ids": [
+          "s11"
+        ]
+      },
+      {
+        "id": "form-event-keystone",
+        "date": "2026-07-28",
+        "type": "taiwan_supply_chain_expansion",
+        "counterparty": "Keystone Microtech",
+        "status": "announced",
+        "details": "FormFactor 擴大台灣 Keystone Microtech 探針卡設計、組裝、測試、維修與配銷能力。",
+        "source_ids": [
+          "s07",
+          "s08"
+        ]
+      }
+    ],
+    "research": {
+      "as_of": "2026-11-06",
+      "financial_update": "2026 Q3 revenue USD 280.547m, +38.4% YoY; FormFactor FY2026 Q3 10-Q filed 2026-11-03.",
+      "recent_news_window": "2026-08-06 至 2026-11-06",
+      "recent_news_check": {
+        "acquisition": "未在已核對來源發現 FormFactor 完成重大併購；Teradyne 事件是少數股權投資，尚待交割。",
+        "major_new_orders": "未找到可公開量化、可指認單一客戶的新增大單公告；營收成長不能直接推定具名訂單。",
+        "lost_orders": "NVIDIA 在 Q1 2026 達 10.2% 而 Q3 低於 10% 門檻，不足以認定失去訂單。",
+        "capacity": "2026-10-22 Farmers Branch 製造據點擴產。",
+        "partnership": "2026-10-12 Teradyne 合作與 2026-07-28 Keystone 台灣製造服務擴大。"
+      },
+      "reflection_rounds": [
+        {
+          "round": 1,
+          "focus": "SEC 基線",
+          "finding": "以 2025 10-K 具名競爭者和 2026 Q3 10-Q 具名客戶為基礎，排除無來源猜測。"
+        },
+        {
+          "round": 2,
+          "focus": "最新財報核對",
+          "finding": "SK hynix Q3 20.7%、TSMC Q3 12.8%；NVIDIA Q1 10.2%，未將占比下降推論為流失。"
+        },
+        {
+          "round": 3,
+          "focus": "台灣直接供應鏈",
+          "finding": "Keystone 有正式組裝測試服務協議；TSMC 是客戶，不能誤分類供應商。"
+        },
+        {
+          "round": 4,
+          "focus": "重大企業事件",
+          "finding": "Teradyne 3 億美元為待交割股權投資，非已完成併購；事件同時建為可見合作節點。"
+        },
+        {
+          "round": 5,
+          "focus": "競爭者與受惠股",
+          "finding": "將 SEC 具名競爭者與台灣產業受惠推論分開，不宣稱受惠股直接供貨。"
+        },
+        {
+          "round": 6,
+          "focus": "前端可見性",
+          "finding": "Teradyne 和 Keystone 都在 nodes 中，避免僅藏在 corporate_events 而無法在五類關係圖看到。"
+        }
+      ],
+      "coverage_limitations": [
+        "未完成 100 份獨立來源查核。",
+        "未取得並逐句核對最新法說完整逐字稿。",
+        "部分台灣受惠股為同產業推論，非直接供應商；已在 details 明示。",
+        "競爭者清單取自 SEC，個別公司當期競爭程度未逐一另證。"
+      ]
+    },
+    "five_gate_audit": {
+      "original_11_fields": "PASS_LOCAL_RECONSTRUCTION_PENDING_GITHUB_HASH_MATCH",
+      "node_details": "PASS",
+      "source_ids": "PASS",
+      "relationship_direction": "PASS",
+      "100_source_depth": "PARTIAL",
+      "overall": "PARTIAL"
+    },
+    "sources": [
+      {
+        "id": "s01",
+        "tier": "A",
+        "title": "SEC FY2025 10-K",
+        "date": "2026-02-20",
+        "url": "https://www.sec.gov/Archives/edgar/data/1039399/000103939926000009/form-20251227.htm"
+      },
+      {
+        "id": "s02",
+        "tier": "A",
+        "title": "SEC FY2026 Q3 10-Q",
+        "date": "2026-11-03",
+        "url": "https://investors.formfactor.com/static-files/0cc59ee3-f38b-4ac9-a12f-5e04552c84aa"
+      },
+      {
+        "id": "s03",
+        "tier": "A",
+        "title": "FY2026 Q3 supplemental financial information",
+        "date": "2026-10-28",
+        "url": "https://investors.formfactor.com/static-files/4c4528d9-8514-46c4-8e10-957ba0c8a176"
+      },
+      {
+        "id": "s04",
+        "tier": "A",
+        "title": "FY2026 Q3 earnings press release",
+        "date": "2026-10-28",
+        "url": "https://www.sec.gov/Archives/edgar/data/1039399/000103939926000040/ex9901-earningsreleasexq326.htm"
+      },
+      {
+        "id": "s05",
+        "tier": "A",
+        "title": "Teradyne and FormFactor strategic collaboration",
+        "date": "2026-10-12",
+        "url": "https://formfactorinc.gcs-web.com/news-releases/news-release-details/formfactor-and-teradyne-announce-strategic-collaboration"
+      },
+      {
+        "id": "s06",
+        "tier": "A",
+        "title": "Teradyne 2026 Q3 10-Q subsequent events",
+        "date": "2026-10-30",
+        "url": "https://investors.teradyne.com/sec-filings/all-sec-filings/content/0001193125-26-441091/ter-20260927.htm"
+      },
+      {
+        "id": "s07",
+        "tier": "A",
+        "title": "Keystone Microtech and FormFactor strategic partnership",
+        "date": "2026-07-28",
+        "url": "https://www.formfactor.com/press-release/formfactor-and-keystone-microtech-announce-strategic-partnership-supporting-next-generation-semiconductor-technologies/"
+      },
+      {
+        "id": "s08",
+        "tier": "A",
+        "title": "Keystone partnership official technical blog",
+        "date": "2026-08-07",
+        "url": "https://www.formfactor.com/blog/2026/formfactor-and-keystone-microtech-expand-strategic-partnership/"
+      },
+      {
+        "id": "s09",
+        "tier": "A",
+        "title": "FormFactor Q3 FY2026 10-Q XBRL",
+        "date": "2026-11-03",
+        "url": "https://investors.formfactor.com/node/20856/xbrl-viewer"
+      },
+      {
+        "id": "s10",
+        "tier": "A",
+        "title": "FormFactor FY2025 10-K PDF",
+        "date": "2026-02-20",
+        "url": "https://www.sec.gov/Archives/edgar/data/1039399/000103939926000017/a10k2025-q425.pdf"
+      },
+      {
+        "id": "s11",
+        "tier": "A",
+        "title": "FormFactor official press release index",
+        "date": "2026-11-06",
+        "url": "https://investors.formfactor.com/press-releases"
+      },
+      {
+        "id": "s12",
+        "tier": "A",
+        "title": "FormFactor official products and company profile",
+        "date": "2026-11-06",
+        "url": "https://www.formfactor.com/company/about-us/"
+      },
+      {
+        "id": "s13",
+        "tier": "A",
+        "title": "FormFactor 2026 Q2 earnings release",
+        "date": "2026-07-29",
+        "url": "https://www.sec.gov/Archives/edgar/data/1039399/000103939926000030/ex9901-earningsreleasexq226.htm"
+      },
+      {
+        "id": "s14",
+        "tier": "B",
+        "title": "FormFactor prior FY2024 10-K competitor list",
+        "date": "2025-02-21",
+        "url": "https://fintel.io/doc/sec-formfactor-inc-1039399-10k-2025-february-21-20140-5305"
+      },
+      {
+        "id": "s15",
+        "tier": "A",
+        "title": "Taiwan Ministry of Economic Affairs Keystone legal registration",
+        "date": "2026-11-06",
+        "url": "https://findbiz.nat.gov.tw/fts/company/28398895?fhl=en"
+      }
+    ]
   }
 }
