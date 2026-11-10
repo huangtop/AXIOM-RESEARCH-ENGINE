@@ -3,29 +3,52 @@
   "company_id": "company:US-CIK0000751978",
   "ticker": "VICR",
   "comparison": {
-    "previous_date": "2026-10-26",
-    "current_date": "2026-11-02"
+    "previous_date": "2026-11-02",
+    "current_date": "2026-11-09"
   },
   "coverage": "top_holdings_only",
   "events": [
     {
-      "canonical_event_id": "etf-change:12cc7f37d87f8d9ef3ac556a",
+      "canonical_event_id": "etf-change:8f10cf5bed8b6e575a554c8d",
       "source_event_id": null,
       "etf_id": "US-GRNJ",
       "etf_ticker": "GRNJ",
       "holding_symbol": "VICR",
       "security_id": "security:NASDAQ-VICR",
       "company_id": "company:US-CIK0000751978",
-      "change_type": "ENTERED_TOP_HOLDINGS",
-      "previous_weight": null,
-      "current_weight": 0.0227798,
-      "delta_weight": 0.0227798,
+      "change_type": "EXITED_TOP_HOLDINGS",
+      "previous_weight": 0.0227798,
+      "current_weight": null,
+      "delta_weight": -0.0227798,
       "previous_shares": null,
       "current_shares": null,
       "delta_shares": null,
       "shares_status": "not_provided_by_source",
-      "previous_observed_at": "2026-10-26",
-      "current_observed_at": "2026-11-02",
+      "previous_observed_at": "2026-11-02",
+      "current_observed_at": "2026-11-09",
+      "material": true,
+      "coverage": "top_holdings_only",
+      "official_membership_change": false,
+      "source": "ETF-ENGINE-V2 daily snapshot diff"
+    },
+    {
+      "canonical_event_id": "etf-change:b8c1ef4b9207083e83a8d635",
+      "source_event_id": null,
+      "etf_id": "US-HUMM",
+      "etf_ticker": "HUMM",
+      "holding_symbol": "VICR",
+      "security_id": "security:NASDAQ-VICR",
+      "company_id": "company:US-CIK0000751978",
+      "change_type": "WEIGHT_DECREASED",
+      "previous_weight": 0.0781522,
+      "current_weight": 0.0541172,
+      "delta_weight": -0.024035000000000008,
+      "previous_shares": null,
+      "current_shares": null,
+      "delta_shares": null,
+      "shares_status": "not_provided_by_source",
+      "previous_observed_at": "2026-11-02",
+      "current_observed_at": "2026-11-09",
       "material": true,
       "coverage": "top_holdings_only",
       "official_membership_change": false,
@@ -36,12 +59,12 @@
     {
       "etf_id": "US-GRNJ",
       "etf_ticker": "GRNJ",
-      "previous": null,
-      "current": {
+      "previous": {
         "holding_symbol": "VICR",
         "weight": 0.0227798,
         "shares": null
       },
+      "current": null,
       "observation_status": "observed"
     },
     {
@@ -54,7 +77,7 @@
       },
       "current": {
         "holding_symbol": "VICR",
-        "weight": 0.0781522,
+        "weight": 0.0541172,
         "shares": null
       },
       "observation_status": "observed"

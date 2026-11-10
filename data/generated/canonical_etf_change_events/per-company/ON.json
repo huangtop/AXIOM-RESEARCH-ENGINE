@@ -3,11 +3,58 @@
   "company_id": "company:US-CIK0001097864",
   "ticker": "ON",
   "comparison": {
-    "previous_date": "2026-10-26",
-    "current_date": "2026-11-02"
+    "previous_date": "2026-11-02",
+    "current_date": "2026-11-09"
   },
   "coverage": "top_holdings_only",
-  "events": [],
+  "events": [
+    {
+      "canonical_event_id": "etf-change:0eca6c8793049c8325b2c18d",
+      "source_event_id": null,
+      "etf_id": "US-HUMM",
+      "etf_ticker": "HUMM",
+      "holding_symbol": "ON",
+      "security_id": "security:NASDAQ-ON",
+      "company_id": "company:US-CIK0001097864",
+      "change_type": "WEIGHT_DECREASED",
+      "previous_weight": 0.0583059,
+      "current_weight": 0.0546351,
+      "delta_weight": -0.003670800000000002,
+      "previous_shares": null,
+      "current_shares": null,
+      "delta_shares": null,
+      "shares_status": "not_provided_by_source",
+      "previous_observed_at": "2026-11-02",
+      "current_observed_at": "2026-11-09",
+      "material": true,
+      "coverage": "top_holdings_only",
+      "official_membership_change": false,
+      "source": "ETF-ENGINE-V2 daily snapshot diff"
+    },
+    {
+      "canonical_event_id": "etf-change:ccd0a445fde65e084112a47b",
+      "source_event_id": null,
+      "etf_id": "US-XSD",
+      "etf_ticker": "XSD",
+      "holding_symbol": "ON",
+      "security_id": "security:NASDAQ-ON",
+      "company_id": "company:US-CIK0001097864",
+      "change_type": "ENTERED_TOP_HOLDINGS",
+      "previous_weight": null,
+      "current_weight": 0.0280045,
+      "delta_weight": 0.0280045,
+      "previous_shares": null,
+      "current_shares": null,
+      "delta_shares": null,
+      "shares_status": "not_provided_by_source",
+      "previous_observed_at": "2026-11-02",
+      "current_observed_at": "2026-11-09",
+      "material": true,
+      "coverage": "top_holdings_only",
+      "official_membership_change": false,
+      "source": "ETF-ENGINE-V2 daily snapshot diff"
+    }
+  ],
   "fund_observations": [
     {
       "etf_id": "US-HUMM",
@@ -19,7 +66,18 @@
       },
       "current": {
         "holding_symbol": "ON",
-        "weight": 0.0583059,
+        "weight": 0.0546351,
+        "shares": null
+      },
+      "observation_status": "observed"
+    },
+    {
+      "etf_id": "US-XSD",
+      "etf_ticker": "XSD",
+      "previous": null,
+      "current": {
+        "holding_symbol": "ON",
+        "weight": 0.0280045,
         "shares": null
       },
       "observation_status": "observed"

@@ -3,29 +3,52 @@
   "company_id": "company:US-CIK0001408710",
   "ticker": "FN",
   "comparison": {
-    "previous_date": "2026-10-26",
-    "current_date": "2026-11-02"
+    "previous_date": "2026-11-02",
+    "current_date": "2026-11-09"
   },
   "coverage": "top_holdings_only",
   "events": [
     {
-      "canonical_event_id": "etf-change:64427218d9cebe5a483227cc",
+      "canonical_event_id": "etf-change:0fbced4c5d8d9c7ef87336a1",
       "source_event_id": null,
       "etf_id": "US-FOTO",
       "etf_ticker": "FOTO",
       "holding_symbol": "FN",
       "security_id": "security:NYSE-FN",
       "company_id": "company:US-CIK0001408710",
-      "change_type": "ENTERED_TOP_HOLDINGS",
-      "previous_weight": null,
-      "current_weight": 0.0764319,
-      "delta_weight": 0.0764319,
+      "change_type": "WEIGHT_DECREASED",
+      "previous_weight": 0.0764319,
+      "current_weight": 0.0654734,
+      "delta_weight": -0.010958499999999996,
       "previous_shares": null,
       "current_shares": null,
       "delta_shares": null,
       "shares_status": "not_provided_by_source",
-      "previous_observed_at": "2026-10-26",
-      "current_observed_at": "2026-11-02",
+      "previous_observed_at": "2026-11-02",
+      "current_observed_at": "2026-11-09",
+      "material": true,
+      "coverage": "top_holdings_only",
+      "official_membership_change": false,
+      "source": "ETF-ENGINE-V2 daily snapshot diff"
+    },
+    {
+      "canonical_event_id": "etf-change:89b970d0422d3651928d61b8",
+      "source_event_id": null,
+      "etf_id": "US-LYTE",
+      "etf_ticker": "LYTE",
+      "holding_symbol": "FN",
+      "security_id": "security:NYSE-FN",
+      "company_id": "company:US-CIK0001408710",
+      "change_type": "ENTERED_TOP_HOLDINGS",
+      "previous_weight": null,
+      "current_weight": 0.0497881,
+      "delta_weight": 0.0497881,
+      "previous_shares": null,
+      "current_shares": null,
+      "delta_shares": null,
+      "shares_status": "not_provided_by_source",
+      "previous_observed_at": "2026-11-02",
+      "current_observed_at": "2026-11-09",
       "material": true,
       "coverage": "top_holdings_only",
       "official_membership_change": false,
@@ -36,10 +59,25 @@
     {
       "etf_id": "US-FOTO",
       "etf_ticker": "FOTO",
+      "previous": {
+        "holding_symbol": "FN",
+        "weight": 0.0764319,
+        "shares": null
+      },
+      "current": {
+        "holding_symbol": "FN",
+        "weight": 0.0654734,
+        "shares": null
+      },
+      "observation_status": "observed"
+    },
+    {
+      "etf_id": "US-LYTE",
+      "etf_ticker": "LYTE",
       "previous": null,
       "current": {
         "holding_symbol": "FN",
-        "weight": 0.0764319,
+        "weight": 0.0497881,
         "shares": null
       },
       "observation_status": "observed"

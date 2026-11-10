@@ -3,29 +3,52 @@
   "company_id": "company:US-CIK0001758009",
   "ticker": "QUBT",
   "comparison": {
-    "previous_date": "2026-10-26",
-    "current_date": "2026-11-02"
+    "previous_date": "2026-11-02",
+    "current_date": "2026-11-09"
   },
   "coverage": "top_holdings_only",
   "events": [
     {
-      "canonical_event_id": "etf-change:c9819315707f291da967023f",
+      "canonical_event_id": "etf-change:0fdcafa152d76ba1c15cba94",
       "source_event_id": null,
       "etf_id": "US-CQTM",
       "etf_ticker": "CQTM",
       "holding_symbol": "QUBT",
       "security_id": "security:NASDAQ-QUBT",
       "company_id": "company:US-CIK0001758009",
-      "change_type": "ENTERED_TOP_HOLDINGS",
-      "previous_weight": null,
-      "current_weight": 0.0451006,
-      "delta_weight": 0.0451006,
+      "change_type": "EXITED_TOP_HOLDINGS",
+      "previous_weight": 0.0451006,
+      "current_weight": null,
+      "delta_weight": -0.0451006,
       "previous_shares": null,
       "current_shares": null,
       "delta_shares": null,
       "shares_status": "not_provided_by_source",
-      "previous_observed_at": "2026-10-26",
-      "current_observed_at": "2026-11-02",
+      "previous_observed_at": "2026-11-02",
+      "current_observed_at": "2026-11-09",
+      "material": true,
+      "coverage": "top_holdings_only",
+      "official_membership_change": false,
+      "source": "ETF-ENGINE-V2 daily snapshot diff"
+    },
+    {
+      "canonical_event_id": "etf-change:1e8a11d7a2c306fd0e9656c5",
+      "source_event_id": null,
+      "etf_id": "US-QTUP",
+      "etf_ticker": "QTUP",
+      "holding_symbol": "QUBT",
+      "security_id": "security:NASDAQ-QUBT",
+      "company_id": "company:US-CIK0001758009",
+      "change_type": "ENTERED_TOP_HOLDINGS",
+      "previous_weight": null,
+      "current_weight": 0.0503452,
+      "delta_weight": 0.0503452,
+      "previous_shares": null,
+      "current_shares": null,
+      "delta_shares": null,
+      "shares_status": "not_provided_by_source",
+      "previous_observed_at": "2026-11-02",
+      "current_observed_at": "2026-11-09",
       "material": true,
       "coverage": "top_holdings_only",
       "official_membership_change": false,
@@ -36,10 +59,21 @@
     {
       "etf_id": "US-CQTM",
       "etf_ticker": "CQTM",
+      "previous": {
+        "holding_symbol": "QUBT",
+        "weight": 0.0451006,
+        "shares": null
+      },
+      "current": null,
+      "observation_status": "observed"
+    },
+    {
+      "etf_id": "US-QTUP",
+      "etf_ticker": "QTUP",
       "previous": null,
       "current": {
         "holding_symbol": "QUBT",
-        "weight": 0.0451006,
+        "weight": 0.0503452,
         "shares": null
       },
       "observation_status": "observed"
