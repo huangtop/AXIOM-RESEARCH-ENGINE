@@ -205,5 +205,265 @@
       "資料中心連接"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.v1",
+    "as_of": "2026-11-10",
+    "company": "GlobalFoundries Inc.",
+    "symbol": "GFS",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "GlobalFoundries GFS 產業鏈｜RF-SOI、22FDX、SiGe、矽光子與先進封裝",
+      "description": "GFS 產業鏈涵蓋 RF-SOI、FD-SOI、SiGe、矽光子、GaN 及矽中介層，整理具名晶圓代工客戶、合作夥伴、設備材料供應商、競爭者及台灣受惠股。"
+    },
+    "business_lines": [
+      {
+        "id": "RF_SOI",
+        "name": "RF-SOI 5G／Wi-Fi 射頻晶片"
+      },
+      {
+        "id": "FDX",
+        "name": "22FDX／FD-SOI 低功耗車用與邊緣 AI"
+      },
+      {
+        "id": "SIGE",
+        "name": "SiGe 高速光通訊與資料中心"
+      },
+      {
+        "id": "SIPHO",
+        "name": "矽光子與光學引擎"
+      },
+      {
+        "id": "AUTO",
+        "name": "車用與工業特殊製程"
+      },
+      {
+        "id": "POWER",
+        "name": "GaN／BCD 電源管理製程"
+      },
+      {
+        "id": "PACKAGING",
+        "name": "矽中介層與先進封裝"
+      },
+      {
+        "id": "CMOS",
+        "name": "特殊 CMOS 與嵌入式記憶體"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "RF_SOI_customer_001",
+        "business_line": "RF_SOI",
+        "relationship": "customer",
+        "name": "Qualcomm（QCOM）",
+        "details": "射頻及通訊晶片晶圓代工客戶。",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1709048/000170904826000022/gfs-20251231.htm"
+      },
+      {
+        "id": "RF_SOI_customer_002",
+        "business_line": "RF_SOI",
+        "relationship": "customer",
+        "name": "Qorvo（QRVO）",
+        "details": "射頻前端晶片晶圓代工客戶。",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1709048/000170904826000022/gfs-20251231.htm"
+      },
+      {
+        "id": "RF_SOI_customer_003",
+        "business_line": "RF_SOI",
+        "relationship": "customer",
+        "name": "Skyworks Solutions（SWKS）",
+        "details": "手機射頻前端晶片晶圓代工客戶。",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1709048/000170904826000022/gfs-20251231.htm"
+      },
+      {
+        "id": "RF_SOI_customer_004",
+        "business_line": "RF_SOI",
+        "relationship": "customer",
+        "name": "Samsung Electronics",
+        "details": "射頻與特殊製程晶圓代工客戶。",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1709048/000170904826000022/gfs-20251231.htm"
+      },
+      {
+        "id": "RF_SOI_customer_005",
+        "business_line": "RF_SOI",
+        "relationship": "customer",
+        "name": "MediaTek 聯發科（2454）",
+        "details": "通訊晶片晶圓代工客戶。",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1709048/000170904826000022/gfs-20251231.htm"
+      },
+      {
+        "id": "AUTO_customer_001",
+        "business_line": "AUTO",
+        "relationship": "customer",
+        "name": "NXP Semiconductors（NXPI）",
+        "details": "車用及工業半導體製程晶圓代工客戶。",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1709048/000170904826000022/gfs-20251231.htm"
+      },
+      {
+        "id": "AUTO_customer_002",
+        "business_line": "AUTO",
+        "relationship": "customer",
+        "name": "Infineon Technologies",
+        "details": "車用及功率相關特殊製程晶圓代工客戶。",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1709048/000170904826000022/gfs-20251231.htm"
+      },
+      {
+        "id": "CMOS_customer_001",
+        "business_line": "CMOS",
+        "relationship": "customer",
+        "name": "AMD（AMD）",
+        "details": "特殊製程晶圓代工客戶。",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1709048/000170904826000022/gfs-20251231.htm"
+      },
+      {
+        "id": "CMOS_customer_002",
+        "business_line": "CMOS",
+        "relationship": "customer",
+        "name": "Cirrus Logic（CRUS）",
+        "details": "混合訊號與音訊晶片晶圓代工客戶。",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1709048/000170904826000022/gfs-20251231.htm"
+      },
+      {
+        "id": "CMOS_customer_003",
+        "business_line": "CMOS",
+        "relationship": "customer",
+        "name": "Sony Semiconductor Manufacturing",
+        "details": "影像感測相關晶片晶圓代工客戶。",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1709048/000170904826000022/gfs-20251231.htm"
+      },
+      {
+        "id": "FDX_customer_001",
+        "business_line": "FDX",
+        "relationship": "customer",
+        "name": "indie Semiconductor（INDI）",
+        "details": "22FDX 平台製造 77／120 GHz 車用雷達 SoC。",
+        "source_url": "https://gf.com/news-and-events/news/indie-semiconductor-and-globalfoundries-announce-strategic-collaboration-to-accelerate-automotive-radar-adoption/"
+      },
+      {
+        "id": "SIGE_customer_001",
+        "business_line": "SIGE",
+        "relationship": "customer",
+        "name": "Marvell Technology（MRVL）",
+        "details": "擴大 SiGe 製造合作，支援光收發器、NPO 與 CPO。",
+        "source_url": "https://gf.gcs-web.com/news-releases/news-release-details/globalfoundries-reports-third-quarter-2026-financial-results"
+      },
+      {
+        "id": "POWER_customer_001",
+        "business_line": "POWER",
+        "relationship": "customer",
+        "name": "Monolithic Power Systems（MPWR）",
+        "details": "新加坡 300mm 廠製造高效能電源管理晶片，預計 2027 年初量產。",
+        "source_url": "https://gf.gcs-web.com/news-releases/news-release-details/globalfoundries-reports-third-quarter-2026-financial-results"
+      },
+      {
+        "id": "PACKAGING_customer_001",
+        "business_line": "PACKAGING",
+        "relationship": "customer",
+        "name": "台積電（2330）",
+        "details": "依多年製造協議在美國供應 CoWoS 先進封裝所需矽中介層。",
+        "source_url": "https://gf.com/news-and-events/news/globalfoundries-reaches-agreement-to-establish-us-based-supply-of-silicon-interposers-for-advanced-ai-packaging/"
+      },
+      {
+        "id": "FDX_partner_001",
+        "business_line": "FDX",
+        "relationship": "partner",
+        "name": "RAAAM Memory Technologies",
+        "details": "共同開發 FDX 平台 GCRAM 嵌入式記憶體技術。",
+        "source_url": "https://gf.com/news-and-events/news/gf-and-raaam-memory-technologies-announce-the-joint-development-of-next-generation-gcram-technology-and-test-chip-on-fdx-platform/"
+      },
+      {
+        "id": "POWER_partner_001",
+        "business_line": "POWER",
+        "relationship": "partner",
+        "name": "台積電（2330）",
+        "details": "授權 650V 與 80V GaN 製程技術，拓展美國電源半導體製造。",
+        "source_url": "https://gf.com/news-and-events/news/globalfoundries-licenses-gan-technology-from-tsmc-to-accelerate-u-s-manufactured-power-portfolio-for-datacenter-industrial-and-automotive-custo/"
+      },
+      {
+        "id": "SIPHO_partner_001",
+        "business_line": "SIPHO",
+        "relationship": "partner",
+        "name": "SMART Photonics",
+        "details": "合作整合矽光子與磷化銦光子晶片代工平台。",
+        "source_url": "https://gf.com/news-and-events/"
+      },
+      {
+        "id": "FDX_partner_002",
+        "business_line": "FDX",
+        "relationship": "partner",
+        "name": "Synopsys（SNPS）",
+        "details": "EDA 與處理器 IP 生態合作，推進特殊製程設計平台。"
+      },
+      {
+        "id": "CMOS_supplier_001",
+        "business_line": "CMOS",
+        "relationship": "supplier",
+        "name": "Soitec",
+        "details": "SOI 晶圓材料供應商，支援 FD-SOI 與 RF-SOI 製程。"
+      },
+      {
+        "id": "CMOS_supplier_002",
+        "business_line": "CMOS",
+        "relationship": "supplier",
+        "name": "ASML（ASML）",
+        "details": "半導體曝光設備供應商。"
+      },
+      {
+        "id": "CMOS_supplier_003",
+        "business_line": "CMOS",
+        "relationship": "supplier",
+        "name": "Applied Materials（AMAT）",
+        "details": "半導體沉積與製程設備供應商。"
+      },
+      {
+        "id": "CMOS_competitor_001",
+        "business_line": "CMOS",
+        "relationship": "competitor",
+        "name": "台積電（2330）",
+        "details": "晶圓代工及特殊製程市場競爭；同時在 GaN 與矽中介層領域合作。"
+      },
+      {
+        "id": "CMOS_competitor_002",
+        "business_line": "CMOS",
+        "relationship": "competitor",
+        "name": "聯電（2303）",
+        "details": "成熟與特殊製程晶圓代工市場競爭。"
+      },
+      {
+        "id": "CMOS_competitor_003",
+        "business_line": "CMOS",
+        "relationship": "competitor",
+        "name": "華虹半導體（1347.HK）",
+        "details": "特色製程與成熟節點晶圓代工市場競爭。"
+      },
+      {
+        "id": "CMOS_beneficiary_001",
+        "business_line": "CMOS",
+        "relationship": "beneficiary",
+        "name": "日月光投控（3711）",
+        "details": "全球特殊製程與車用晶片出貨成長帶動封裝測試需求。"
+      },
+      {
+        "id": "RF_SOI_beneficiary_001",
+        "business_line": "RF_SOI",
+        "relationship": "beneficiary",
+        "name": "穩懋（3105）",
+        "details": "射頻通訊與高頻半導體產業需求成長的台灣代表。"
+      },
+      {
+        "id": "AUTO_beneficiary_001",
+        "business_line": "AUTO",
+        "relationship": "beneficiary",
+        "name": "京元電子（2449）",
+        "details": "車用與特殊製程晶片測試需求成長的產業代表。"
+      }
+    ]
   }
 }

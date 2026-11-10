@@ -199,5 +199,332 @@
       "資料中心擴建"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-10",
+    "company": "Rambus Inc.",
+    "symbol": "RMBS",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "RMBS Rambus 產業鏈｜DDR5 RCD、HBM IP、PCIe 與 AI 記憶體",
+      "description": "Rambus 產業鏈涵蓋 DDR5 RCD、MRCD、MDB、PMIC、AI PC CKD、HBM／GDDR、PCIe／CXL 與安全 IP，區分具名晶片客戶、專利授權客戶、競爭者及台灣受惠股。"
+    },
+    "business_lines": [
+      {
+        "id": "DDR5_RCD",
+        "name": "DDR5 RCD／MRCD 時脈驅動"
+      },
+      {
+        "id": "DDR5_BUFFER",
+        "name": "DDR5 MDB 資料緩衝"
+      },
+      {
+        "id": "DDR5_PMIC",
+        "name": "DDR5 PMIC／SPD Hub／溫度感測"
+      },
+      {
+        "id": "CLIENT",
+        "name": "AI PC DDR5 CKD 與 LPDDR5"
+      },
+      {
+        "id": "HBM_IP",
+        "name": "HBM／GDDR 記憶體控制器 IP"
+      },
+      {
+        "id": "PCIE_IP",
+        "name": "PCIe／CXL 高速介面 IP"
+      },
+      {
+        "id": "SECURITY_IP",
+        "name": "硬體信任根與安全 IP"
+      },
+      {
+        "id": "PATENT",
+        "name": "記憶體與高速介面專利授權"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "DDR5_RCD_customer_001",
+        "name": "Micron Technology（MU）",
+        "business_line": "DDR5_RCD",
+        "relationship": "customer",
+        "details": "2025 年 10-K 明列的記憶體介面晶片客戶，產品整合於伺服器記憶體模組。"
+      },
+      {
+        "id": "DDR5_RCD_customer_002",
+        "name": "Samsung Electronics",
+        "business_line": "DDR5_RCD",
+        "relationship": "customer",
+        "details": "2025 年 10-K 明列的記憶體介面晶片客戶，產品整合於伺服器記憶體模組。"
+      },
+      {
+        "id": "DDR5_RCD_customer_003",
+        "name": "SK hynix",
+        "business_line": "DDR5_RCD",
+        "relationship": "customer",
+        "details": "2025 年 10-K 明列的記憶體介面晶片客戶，產品整合於伺服器記憶體模組。"
+      },
+      {
+        "id": "PATENT_customer_001",
+        "name": "AMD（AMD）",
+        "business_line": "PATENT",
+        "relationship": "customer",
+        "details": "2025 年 10-K 列名的 Rambus 專利授權客戶；不等同 DDR5 介面晶片採購。"
+      },
+      {
+        "id": "PATENT_customer_002",
+        "name": "Amlogic 晶晨股份",
+        "business_line": "PATENT",
+        "relationship": "customer",
+        "details": "2025 年 10-K 列名的 Rambus 專利授權客戶；不等同 DDR5 介面晶片採購。"
+      },
+      {
+        "id": "PATENT_customer_003",
+        "name": "Broadcom（AVGO）",
+        "business_line": "PATENT",
+        "relationship": "customer",
+        "details": "2025 年 10-K 列名的 Rambus 專利授權客戶；不等同 DDR5 介面晶片採購。"
+      },
+      {
+        "id": "PATENT_customer_004",
+        "name": "CXMT 長鑫存儲",
+        "business_line": "PATENT",
+        "relationship": "customer",
+        "details": "2025 年 10-K 列名的 Rambus 專利授權客戶；不等同 DDR5 介面晶片採購。"
+      },
+      {
+        "id": "PATENT_customer_005",
+        "name": "IBM（IBM）",
+        "business_line": "PATENT",
+        "relationship": "customer",
+        "details": "2025 年 10-K 列名的 Rambus 專利授權客戶；不等同 DDR5 介面晶片採購。"
+      },
+      {
+        "id": "PATENT_customer_006",
+        "name": "Infineon Technologies",
+        "business_line": "PATENT",
+        "relationship": "customer",
+        "details": "2025 年 10-K 列名的 Rambus 專利授權客戶；不等同 DDR5 介面晶片採購。"
+      },
+      {
+        "id": "PATENT_customer_007",
+        "name": "Kioxia 鎧俠",
+        "business_line": "PATENT",
+        "relationship": "customer",
+        "details": "2025 年 10-K 列名的 Rambus 專利授權客戶；不等同 DDR5 介面晶片採購。"
+      },
+      {
+        "id": "PATENT_customer_008",
+        "name": "Marvell Technology（MRVL）",
+        "business_line": "PATENT",
+        "relationship": "customer",
+        "details": "2025 年 10-K 列名的 Rambus 專利授權客戶；不等同 DDR5 介面晶片採購。"
+      },
+      {
+        "id": "PATENT_customer_009",
+        "name": "MediaTek 聯發科（2454）",
+        "business_line": "PATENT",
+        "relationship": "customer",
+        "details": "2025 年 10-K 列名的 Rambus 專利授權客戶；不等同 DDR5 介面晶片採購。"
+      },
+      {
+        "id": "PATENT_customer_010",
+        "name": "Micron Technology（MU）",
+        "business_line": "PATENT",
+        "relationship": "customer",
+        "details": "2025 年 10-K 列名的 Rambus 專利授權客戶；不等同 DDR5 介面晶片採購。"
+      },
+      {
+        "id": "PATENT_customer_011",
+        "name": "Nanya 南亞科（2408）",
+        "business_line": "PATENT",
+        "relationship": "customer",
+        "details": "2025 年 10-K 列名的 Rambus 專利授權客戶；不等同 DDR5 介面晶片採購。"
+      },
+      {
+        "id": "PATENT_customer_012",
+        "name": "Nuvoton 新唐（4919）",
+        "business_line": "PATENT",
+        "relationship": "customer",
+        "details": "2025 年 10-K 列名的 Rambus 專利授權客戶；不等同 DDR5 介面晶片採購。"
+      },
+      {
+        "id": "PATENT_customer_013",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "PATENT",
+        "relationship": "customer",
+        "details": "2025 年 10-K 列名的 Rambus 專利授權客戶；不等同 DDR5 介面晶片採購。"
+      },
+      {
+        "id": "PATENT_customer_014",
+        "name": "Phison 群聯（8299）",
+        "business_line": "PATENT",
+        "relationship": "customer",
+        "details": "2025 年 10-K 列名的 Rambus 專利授權客戶；不等同 DDR5 介面晶片採購。"
+      },
+      {
+        "id": "PATENT_customer_015",
+        "name": "Qualcomm（QCOM）",
+        "business_line": "PATENT",
+        "relationship": "customer",
+        "details": "2025 年 10-K 列名的 Rambus 專利授權客戶；不等同 DDR5 介面晶片採購。"
+      },
+      {
+        "id": "PATENT_customer_016",
+        "name": "Samsung Electronics",
+        "business_line": "PATENT",
+        "relationship": "customer",
+        "details": "2025 年 10-K 列名的 Rambus 專利授權客戶；不等同 DDR5 介面晶片採購。"
+      },
+      {
+        "id": "PATENT_customer_017",
+        "name": "Silicon Motion 慧榮（SIMO）",
+        "business_line": "PATENT",
+        "relationship": "customer",
+        "details": "2025 年 10-K 列名的 Rambus 專利授權客戶；不等同 DDR5 介面晶片採購。"
+      },
+      {
+        "id": "PATENT_customer_018",
+        "name": "SK hynix",
+        "business_line": "PATENT",
+        "relationship": "customer",
+        "details": "2025 年 10-K 列名的 Rambus 專利授權客戶；不等同 DDR5 介面晶片採購。"
+      },
+      {
+        "id": "PATENT_customer_019",
+        "name": "Socionext",
+        "business_line": "PATENT",
+        "relationship": "customer",
+        "details": "2025 年 10-K 列名的 Rambus 專利授權客戶；不等同 DDR5 介面晶片採購。"
+      },
+      {
+        "id": "PATENT_customer_020",
+        "name": "STMicroelectronics（STM）",
+        "business_line": "PATENT",
+        "relationship": "customer",
+        "details": "2025 年 10-K 列名的 Rambus 專利授權客戶；不等同 DDR5 介面晶片採購。"
+      },
+      {
+        "id": "PATENT_customer_021",
+        "name": "Toshiba 東芝",
+        "business_line": "PATENT",
+        "relationship": "customer",
+        "details": "2025 年 10-K 列名的 Rambus 專利授權客戶；不等同 DDR5 介面晶片採購。"
+      },
+      {
+        "id": "PATENT_customer_022",
+        "name": "Western Digital（WDC）",
+        "business_line": "PATENT",
+        "relationship": "customer",
+        "details": "2025 年 10-K 列名的 Rambus 專利授權客戶；不等同 DDR5 介面晶片採購。"
+      },
+      {
+        "id": "PATENT_customer_023",
+        "name": "Winbond 華邦電（2344）",
+        "business_line": "PATENT",
+        "relationship": "customer",
+        "details": "2025 年 10-K 列名的 Rambus 專利授權客戶；不等同 DDR5 介面晶片採購。"
+      },
+      {
+        "id": "DDR5_RCD_partner_001",
+        "name": "Micron Technology（MU）",
+        "business_line": "DDR5_RCD",
+        "relationship": "partner",
+        "details": "Micron 官方將 Rambus 列為 DDR5 記憶體晶片組及邏輯合作夥伴。"
+      },
+      {
+        "id": "DDR5_RCD_competitor_001",
+        "name": "Montage Technology 瀾起科技",
+        "business_line": "DDR5_RCD",
+        "relationship": "competitor",
+        "details": "DDR5 RCD、MRCD 與伺服器記憶體介面晶片市場競爭。"
+      },
+      {
+        "id": "DDR5_RCD_competitor_002",
+        "name": "Renesas Electronics",
+        "business_line": "DDR5_RCD",
+        "relationship": "competitor",
+        "details": "DDR5 RCD 與伺服器時脈驅動晶片市場競爭。"
+      },
+      {
+        "id": "DDR5_PMIC_competitor_001",
+        "name": "Monolithic Power Systems（MPWR）",
+        "business_line": "DDR5_PMIC",
+        "relationship": "competitor",
+        "details": "伺服器記憶體電源管理晶片市場競爭。"
+      },
+      {
+        "id": "DDR5_PMIC_competitor_002",
+        "name": "Texas Instruments（TXN）",
+        "business_line": "DDR5_PMIC",
+        "relationship": "competitor",
+        "details": "電源管理 IC 市場競爭。"
+      },
+      {
+        "id": "HBM_IP_competitor_001",
+        "name": "Synopsys（SNPS）",
+        "business_line": "HBM_IP",
+        "relationship": "competitor",
+        "details": "高速介面及記憶體控制器 IP 市場競爭。"
+      },
+      {
+        "id": "PCIE_IP_competitor_001",
+        "name": "Cadence Design Systems（CDNS）",
+        "business_line": "PCIE_IP",
+        "relationship": "competitor",
+        "details": "PCIe、CXL 與高速介面 IP 市場競爭。"
+      },
+      {
+        "id": "DDR5_RCD_beneficiary_001",
+        "name": "南亞科（2408）",
+        "business_line": "DDR5_RCD",
+        "relationship": "beneficiary",
+        "details": "DDR5 DRAM 升級與伺服器記憶體需求成長的台灣產業代表；另為 Rambus 專利被授權人。"
+      },
+      {
+        "id": "DDR5_RCD_beneficiary_002",
+        "name": "威剛科技（3260）",
+        "business_line": "DDR5_RCD",
+        "relationship": "beneficiary",
+        "details": "DDR5 記憶體模組及 AI 伺服器記憶體需求成長的台灣產業代表。"
+      },
+      {
+        "id": "DDR5_RCD_beneficiary_003",
+        "name": "十銓科技（4967）",
+        "business_line": "DDR5_RCD",
+        "relationship": "beneficiary",
+        "details": "DDR5 模組需求成長的台灣產業代表。"
+      },
+      {
+        "id": "DDR5_RCD_beneficiary_004",
+        "name": "宜鼎國際（5289）",
+        "business_line": "DDR5_RCD",
+        "relationship": "beneficiary",
+        "details": "工業及伺服器記憶體模組需求成長的台灣產業代表。"
+      },
+      {
+        "id": "HBM_IP_beneficiary_001",
+        "name": "創意電子（3443）",
+        "business_line": "HBM_IP",
+        "relationship": "beneficiary",
+        "details": "HBM 控制器與先進 ASIC 設計需求成長的台灣產業代表。"
+      },
+      {
+        "id": "HBM_IP_beneficiary_002",
+        "name": "世芯-KY（3661）",
+        "business_line": "HBM_IP",
+        "relationship": "beneficiary",
+        "details": "AI ASIC 與 HBM 介面整合需求成長的台灣產業代表。"
+      }
+    ]
   }
 }

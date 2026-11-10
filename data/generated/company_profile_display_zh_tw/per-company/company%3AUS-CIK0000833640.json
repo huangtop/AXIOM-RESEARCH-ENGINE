@@ -1,320 +1,588 @@
 {
   "schema_version": "axiom-company-profile-display.zh-tw.v2.4",
-  "generation_mode": "manual_evidence_locked_zh_tw",
+  "generation_mode": "research_rebuild_evidence_graded_zh_tw",
   "company_id": "company:US-CIK0000833640",
   "symbol": "POWI",
   "canonical_schema_version": "axiom-company-profile.v2.3",
   "display": {
-    "as_of": "2026-10-01",
+    "as_of": "2026-11-10",
     "company_summary": {
-      "one_line_business": "Power Integrations 設計高壓電源轉換半導體與閘極驅動器，產品用於消費電源、家電、工業、再生能源、汽車與高功率應用，重點在提升能源效率與縮小電源體積。"
+      "one_line_business": "Power Integrations 開發高壓電源轉換 IC、PowiGaN 功率技術、閘極驅動器與馬達驅動解決方案，應用於消費、工業、電動車與 AI 資料中心供電。"
     },
     "markets": [
-      "AC-DC 電源",
-      "工業電源",
-      "家電",
-      "再生能源",
-      "汽車與高功率電源"
+      "工業",
+      "消費電子與家電",
+      "通訊與電腦",
+      "AI 資料中心",
+      "汽車與電動化"
     ],
     "product_stack": [
-      "InnoSwitch",
-      "LinkSwitch",
-      "Hiper families",
-      "SCALE gate drivers",
-      "PowiGaN products"
+      "InnoSwitch / TOPSwitch / LinkSwitch 離線電源",
+      "PowiGaN 高壓 GaN",
+      "InnoMux-2",
+      "SCALE 閘極驅動",
+      "BridgeSwitch 馬達驅動"
     ],
     "market_products": {},
     "core_technologies": [
-      "高壓電源 IC",
-      "GaN",
-      "IGBT/SiC gate drivers",
-      "隔離與回授整合"
+      "高壓電源轉換",
+      "高壓 GaN",
+      "高效率功率轉換與隔離控制",
+      "閘極驅動",
+      "低待機功耗"
     ],
     "manufacturing": {
-      "model": [],
-      "locations": [],
-      "critical_assets": []
+      "model": [
+        "Fabless / 委外晶圓製造與封測"
+      ],
+      "locations": [
+        "日本、德國、美國晶圓代工；中國、馬來西亞、泰國、菲律賓委外封測"
+      ],
+      "critical_assets": [
+        "專有高壓製程及設計 IP"
+      ]
     },
     "customer_types": [
-      "電源供應器廠",
-      "消費電子 OEM",
-      "家電廠",
-      "工業與能源設備商"
+      "OEM",
+      "商用電源供應器製造商",
+      "全球經銷商"
     ],
     "ai_exposure": {
-      "type": "manual_evidence_review",
-      "summary": "AI 資料中心不是其最核心市場，但高效率電源轉換、GaN 與高功率 gate driver 技術可受益於整體電力電子效率升級。"
+      "type": "official_technical_collaboration",
+      "summary": "800VDC AI 資料中心電源架構、1700V 輔助電源及固態斷路器技術合作。"
     },
     "competitive_advantages": [
-      "高度整合的高壓電源 IC",
-      "節能法規與效率 know-how",
-      "GaN 與高功率驅動技術"
+      "專有高壓 IC 製程與整合技術",
+      "1250V/1700V GaN 產品與高壓路線圖"
     ],
     "demand_drivers": [
-      "能源效率法規",
-      "GaN 滲透",
-      "工業與再生能源投資",
-      "高效率電源需求"
+      "工業復甦",
+      "高效率電源規範",
+      "800VDC 資料中心",
+      "車輛電動化"
     ],
-    "strategy_changes": [],
+    "strategy_changes": [
+      "2026 年 2200V GaN 技術展示",
+      "與 Ideal Power 開發 800VDC 固態斷路器"
+    ],
     "financial_snapshot": {
-      "fiscal_year": null,
-      "revenue": null,
+      "fiscal_year": 2025,
+      "revenue_usd_millions": 443.504,
+      "revenue": 443504000,
       "gross_margin": null,
       "net_loss": null,
       "revenue_mix": {},
-      "customer_concentration": {}
+      "customer_concentration": {
+        "Avnet_2025_revenue_pct": 32,
+        "Salcomp_2025_revenue_pct": 11
+      }
     }
   },
   "value_provenance": {
-    "company_summary.one_line_business": {
-      "value": "Power Integrations 設計高壓電源轉換半導體與閘極驅動器，產品用於消費電源、家電、工業、再生能源、汽車與高功率應用，重點在提升能源效率與縮小電源體積。",
-      "evidence": {
-        "business_evidence_id": "manual-evidence:POWI:annual-report",
-        "form": "10-K",
-        "accession_number": "0000833640-26-000037",
-        "filing_date": "2026-02-06",
-        "section_type": "item_1_business_or_equivalent",
-        "document_url": "https://www.sec.gov/Archives/edgar/data/833640/000083364026000037/powi-20251231x10k.htm",
-        "text_sha256": null,
-        "review_mode": "manual_evidence_locked_zh_tw",
-        "note": "人工 evidence-locked 公司解析；無可靠確認的 accession/hash 不臆造。"
-      }
-    },
-    "markets": {
-      "value": [
-        "AC-DC 電源",
-        "工業電源",
-        "家電",
-        "再生能源",
-        "汽車與高功率電源"
-      ],
-      "evidence": {
-        "business_evidence_id": "manual-evidence:POWI:annual-report",
-        "form": "10-K",
-        "accession_number": "0000833640-26-000037",
-        "filing_date": "2026-02-06",
-        "section_type": "item_1_business_or_equivalent",
-        "document_url": "https://www.sec.gov/Archives/edgar/data/833640/000083364026000037/powi-20251231x10k.htm",
-        "text_sha256": null,
-        "review_mode": "manual_evidence_locked_zh_tw",
-        "note": "人工 evidence-locked 公司解析；無可靠確認的 accession/hash 不臆造。"
-      }
-    },
-    "product_stack": {
-      "value": [
-        "InnoSwitch",
-        "LinkSwitch",
-        "Hiper families",
-        "SCALE gate drivers",
-        "PowiGaN products"
-      ],
-      "evidence": {
-        "business_evidence_id": "manual-evidence:POWI:annual-report",
-        "form": "10-K",
-        "accession_number": "0000833640-26-000037",
-        "filing_date": "2026-02-06",
-        "section_type": "item_1_business_or_equivalent",
-        "document_url": "https://www.sec.gov/Archives/edgar/data/833640/000083364026000037/powi-20251231x10k.htm",
-        "text_sha256": null,
-        "review_mode": "manual_evidence_locked_zh_tw",
-        "note": "人工 evidence-locked 公司解析；無可靠確認的 accession/hash 不臆造。"
-      }
-    },
-    "core_technologies": {
-      "value": [
-        "高壓電源 IC",
-        "GaN",
-        "IGBT/SiC gate drivers",
-        "隔離與回授整合"
-      ],
-      "evidence": {
-        "business_evidence_id": "manual-evidence:POWI:annual-report",
-        "form": "10-K",
-        "accession_number": "0000833640-26-000037",
-        "filing_date": "2026-02-06",
-        "section_type": "item_1_business_or_equivalent",
-        "document_url": "https://www.sec.gov/Archives/edgar/data/833640/000083364026000037/powi-20251231x10k.htm",
-        "text_sha256": null,
-        "review_mode": "manual_evidence_locked_zh_tw",
-        "note": "人工 evidence-locked 公司解析；無可靠確認的 accession/hash 不臆造。"
-      }
-    },
-    "customer_types": {
-      "value": [
-        "電源供應器廠",
-        "消費電子 OEM",
-        "家電廠",
-        "工業與能源設備商"
-      ],
-      "evidence": {
-        "business_evidence_id": "manual-evidence:POWI:annual-report",
-        "form": "10-K",
-        "accession_number": "0000833640-26-000037",
-        "filing_date": "2026-02-06",
-        "section_type": "item_1_business_or_equivalent",
-        "document_url": "https://www.sec.gov/Archives/edgar/data/833640/000083364026000037/powi-20251231x10k.htm",
-        "text_sha256": null,
-        "review_mode": "manual_evidence_locked_zh_tw",
-        "note": "人工 evidence-locked 公司解析；無可靠確認的 accession/hash 不臆造。"
-      }
-    },
-    "ai_exposure": {
-      "value": {
-        "type": "manual_evidence_review",
-        "summary": "AI 資料中心不是其最核心市場，但高效率電源轉換、GaN 與高功率 gate driver 技術可受益於整體電力電子效率升級。"
-      },
-      "evidence": {
-        "business_evidence_id": "manual-evidence:POWI:annual-report",
-        "form": "10-K",
-        "accession_number": "0000833640-26-000037",
-        "filing_date": "2026-02-06",
-        "section_type": "item_1_business_or_equivalent",
-        "document_url": "https://www.sec.gov/Archives/edgar/data/833640/000083364026000037/powi-20251231x10k.htm",
-        "text_sha256": null,
-        "review_mode": "manual_evidence_locked_zh_tw",
-        "note": "人工 evidence-locked 公司解析；無可靠確認的 accession/hash 不臆造。"
-      }
-    },
-    "competitive_advantages": {
-      "value": [
-        "高度整合的高壓電源 IC",
-        "節能法規與效率 know-how",
-        "GaN 與高功率驅動技術"
-      ],
-      "evidence": {
-        "business_evidence_id": "manual-evidence:POWI:annual-report",
-        "form": "10-K",
-        "accession_number": "0000833640-26-000037",
-        "filing_date": "2026-02-06",
-        "section_type": "item_1_business_or_equivalent",
-        "document_url": "https://www.sec.gov/Archives/edgar/data/833640/000083364026000037/powi-20251231x10k.htm",
-        "text_sha256": null,
-        "review_mode": "manual_evidence_locked_zh_tw",
-        "note": "人工 evidence-locked 公司解析；無可靠確認的 accession/hash 不臆造。"
-      }
-    },
-    "demand_drivers": {
-      "value": [
-        "能源效率法規",
-        "GaN 滲透",
-        "工業與再生能源投資",
-        "高效率電源需求"
-      ],
-      "evidence": {
-        "business_evidence_id": "manual-evidence:POWI:annual-report",
-        "form": "10-K",
-        "accession_number": "0000833640-26-000037",
-        "filing_date": "2026-02-06",
-        "section_type": "item_1_business_or_equivalent",
-        "document_url": "https://www.sec.gov/Archives/edgar/data/833640/000083364026000037/powi-20251231x10k.htm",
-        "text_sha256": null,
-        "review_mode": "manual_evidence_locked_zh_tw",
-        "note": "人工 evidence-locked 公司解析；無可靠確認的 accession/hash 不臆造。"
-      }
-    }
+    "status": "reconstructed_from_public_primary_sources_not_original_translation",
+    "source_ids": [
+      "SEC25",
+      "Q326",
+      "NVIDIA800",
+      "IDEAL",
+      "GAN2200",
+      "KYBER",
+      "TW_DIST"
+    ]
   },
   "evidence": [
     {
-      "business_evidence_id": "manual-evidence:POWI:annual-report",
+      "business_evidence_id": "POWI_SEC_FY2025_10K",
       "form": "10-K",
-      "accession_number": "0000833640-26-000037",
-      "filing_date": "2026-02-06",
-      "section_type": "item_1_business_or_equivalent",
-      "document_url": "https://www.sec.gov/Archives/edgar/data/833640/000083364026000037/powi-20251231x10k.htm",
-      "text_sha256": null,
-      "review_mode": "manual_evidence_locked_zh_tw",
-      "note": "人工 evidence-locked 公司解析；無可靠確認的 accession/hash 不臆造。"
+      "document_url": "https://www.sec.gov/Archives/edgar/data/833640/000083364026000037/powi-20251231x10k.htm"
     }
   ],
-  "translation_engine": {
-    "provider": "manual",
-    "model": "GPT-5.6 Sol",
-    "mode": "human_reviewed_company_profile_translation",
-    "result_source": "MANUAL_LOCKED",
-    "validation": "manual_review_and_read_back",
-    "canonical_handoff": "read_back_verified"
-  },
-  "translation_source": {
-    "company_summary": "Power Integrations 設計高壓電源轉換半導體與閘極驅動器，產品用於消費電源、家電、工業、再生能源、汽車與高功率應用，重點在提升能源效率與縮小電源體積。",
-    "product_stack": [
-      "InnoSwitch",
-      "LinkSwitch",
-      "Hiper families",
-      "SCALE gate drivers",
-      "PowiGaN products"
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-10",
+    "company": "Power Integrations, Inc.",
+    "symbol": "POWI",
+    "locale": "zh-TW",
+    "business_lines": [
+      {
+        "id": "offline",
+        "name": "離線式 AC/DC 電源、快充、家電與待機節能",
+        "downstream_customer_types": [
+          {
+            "type": "充電器、家電、消費電子、智慧電表及電源供應器製造商",
+            "evidence_level": "customer_type",
+            "source_ids": [
+              "SEC25"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "high_power",
+        "name": "工業高功率、SCALE 閘極驅動與能源轉換",
+        "downstream_customer_types": [
+          {
+            "type": "工業變頻器、再生能源、UPS、牽引及高壓設備製造商",
+            "evidence_level": "customer_type",
+            "source_ids": [
+              "SEC25"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ai_800v",
+        "name": "AI 資料中心 800VDC、PowiGaN 與輔助電源",
+        "downstream_customer_types": [
+          {
+            "type": "資料中心電源設備、機架配電、固態保護設備及系統整合商",
+            "evidence_level": "customer_type",
+            "source_ids": [
+              "SEC25"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "motor",
+        "name": "BridgeSwitch 馬達驅動與高效率家電",
+        "downstream_customer_types": [
+          {
+            "type": "家電馬達、風扇、空調與工業馬達控制設備製造商",
+            "evidence_level": "customer_type",
+            "source_ids": [
+              "SEC25"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "automotive",
+        "name": "車用高壓電源、電動車及功率控制",
+        "downstream_customer_types": [
+          {
+            "type": "電動車電源、車載充電、輔助供電及車用功率系統製造商",
+            "evidence_level": "customer_type",
+            "source_ids": [
+              "SEC25"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "supply_chain",
+        "name": "晶圓代工、封測及全球授權通路",
+        "downstream_customer_types": [
+          {
+            "type": "晶圓供應、封裝測試與電子零組件通路",
+            "evidence_level": "customer_type",
+            "source_ids": [
+              "SEC25"
+            ]
+          }
+        ]
+      }
     ],
-    "market_products": {},
-    "markets": [
-      "AC-DC 電源",
-      "工業電源",
-      "家電",
-      "再生能源",
-      "汽車與高功率電源"
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
     ],
-    "customer_types": [
-      "電源供應器廠",
-      "消費電子 OEM",
-      "家電廠",
-      "工業與能源設備商"
+    "nodes": [
+      {
+        "id": "supply_chain_customer_001",
+        "name": "Avnet",
+        "business_line": "supply_chain",
+        "relationship": "customer",
+        "details": "2025 年占 POWI 總營收約 32%，為授權經銷與通路客戶。",
+        "source_ids": [
+          "SEC25",
+          "TW_DIST"
+        ],
+        "evidence_level": "sec_disclosed_customer",
+        "commercialization": "revenue_recognized",
+        "ticker": "AVT"
+      },
+      {
+        "id": "offline_customer_002",
+        "name": "Salcomp Group",
+        "business_line": "offline",
+        "relationship": "customer",
+        "details": "2025 年占 POWI 總營收約 11%，為公司年報揭露的主要客戶。",
+        "source_ids": [
+          "SEC25"
+        ],
+        "evidence_level": "sec_disclosed_customer",
+        "commercialization": "revenue_recognized",
+        "qualification": "業務線歸屬為研究性歸類，非 10-K 按產品披露"
+      },
+      {
+        "id": "supply_chain_customer_003",
+        "name": "Honestar Technologies",
+        "business_line": "supply_chain",
+        "relationship": "customer",
+        "details": "2024 年占 POWI 總營收約 11%；2025 年營收占比低於 10%。",
+        "source_ids": [
+          "SEC25"
+        ],
+        "evidence_level": "sec_disclosed_historical_customer",
+        "commercialization": "historical_revenue"
+      },
+      {
+        "id": "supply_chain_supplier_004",
+        "name": "Lapis Semiconductor（ROHM 集團）",
+        "business_line": "supply_chain",
+        "relationship": "supplier",
+        "details": "2025 年 10-K 具名晶圓代工廠，合約至 2028 年 12 月。",
+        "source_ids": [
+          "SEC25"
+        ],
+        "evidence_level": "sec_verified_direct_supplier",
+        "commercialization": "contracted_supply"
+      },
+      {
+        "id": "supply_chain_supplier_005",
+        "name": "Seiko Epson",
+        "business_line": "supply_chain",
+        "relationship": "supplier",
+        "details": "2025 年 10-K 具名晶圓代工廠，合約至 2035 年 12 月。",
+        "source_ids": [
+          "SEC25"
+        ],
+        "evidence_level": "sec_verified_direct_supplier",
+        "commercialization": "contracted_supply"
+      },
+      {
+        "id": "supply_chain_supplier_006",
+        "name": "X-FAB Semiconductor Foundries",
+        "business_line": "supply_chain",
+        "relationship": "supplier",
+        "details": "2025 年 10-K 具名晶圓代工廠，合約至 2028 年 12 月。",
+        "source_ids": [
+          "SEC25"
+        ],
+        "evidence_level": "sec_verified_direct_supplier",
+        "commercialization": "contracted_supply"
+      },
+      {
+        "id": "supply_chain_partner_007",
+        "name": "Asian Information Technology Group",
+        "business_line": "supply_chain",
+        "relationship": "partner",
+        "details": "POWI 官方台灣經銷商，負責產品銷售與通路服務。",
+        "source_ids": [
+          "TW_DIST"
+        ],
+        "evidence_level": "official_distributor_listing",
+        "commercialization": "listed_distributor"
+      },
+      {
+        "id": "supply_chain_partner_008",
+        "name": "WFE Technology Corp.",
+        "business_line": "supply_chain",
+        "relationship": "partner",
+        "details": "POWI 官方台灣經銷商，提供產品分銷服務。",
+        "source_ids": [
+          "TW_DIST"
+        ],
+        "evidence_level": "official_distributor_listing",
+        "commercialization": "listed_distributor"
+      },
+      {
+        "id": "supply_chain_partner_009",
+        "name": "Mouser Electronics",
+        "business_line": "supply_chain",
+        "relationship": "partner",
+        "details": "POWI 官方台灣經銷商清單列名，屬零組件分銷通路。",
+        "source_ids": [
+          "TW_DIST"
+        ],
+        "evidence_level": "official_distributor_listing",
+        "commercialization": "listed_distributor"
+      },
+      {
+        "id": "ai_800v_partner_010",
+        "name": "NVIDIA",
+        "business_line": "ai_800v",
+        "relationship": "partner",
+        "details": "雙方合作推進 800VDC 兆瓦級 AI 機架電源架構，涉及 NVIDIA Kyber 參考設計。",
+        "source_ids": [
+          "NVIDIA800",
+          "KYBER"
+        ],
+        "evidence_level": "official_technical_collaboration",
+        "commercialization": "architecture_and_reference_design",
+        "ticker": "NVDA"
+      },
+      {
+        "id": "ai_800v_partner_011",
+        "name": "Ideal Power",
+        "business_line": "ai_800v",
+        "relationship": "partner",
+        "details": "2026 年 10 月宣布合作，以 POWI 1700V InnoMux-2 與 Ideal Power B-TRAN 技術開發 800VDC 固態斷路器。",
+        "source_ids": [
+          "IDEAL"
+        ],
+        "evidence_level": "official_named_collaboration",
+        "commercialization": "development",
+        "ticker": "IPWR"
+      },
+      {
+        "id": "offline_competitor_012",
+        "name": "STMicroelectronics",
+        "business_line": "offline",
+        "relationship": "competitor",
+        "details": "2025 年 10-K 列名的高壓電源 IC、PWM 控制及離線電源產品競爭者。",
+        "source_ids": [
+          "SEC25"
+        ],
+        "evidence_level": "sec_named_competitor",
+        "ticker": "STM"
+      },
+      {
+        "id": "offline_competitor_013",
+        "name": "Infineon Technologies",
+        "business_line": "offline",
+        "relationship": "competitor",
+        "details": "2025 年 10-K 列名的高壓電源 IC、PWM 控制及離線電源產品競爭者。",
+        "source_ids": [
+          "SEC25"
+        ],
+        "evidence_level": "sec_named_competitor",
+        "ticker": "IFX.DE"
+      },
+      {
+        "id": "offline_competitor_014",
+        "name": "Sanken Electric",
+        "business_line": "offline",
+        "relationship": "competitor",
+        "details": "2025 年 10-K 列名的高壓電源 IC、PWM 控制及離線電源產品競爭者。",
+        "source_ids": [
+          "SEC25"
+        ],
+        "evidence_level": "sec_named_competitor"
+      },
+      {
+        "id": "offline_competitor_015",
+        "name": "Texas Instruments",
+        "business_line": "offline",
+        "relationship": "competitor",
+        "details": "2025 年 10-K 列名的高壓電源 IC、PWM 控制及離線電源產品競爭者。",
+        "source_ids": [
+          "SEC25"
+        ],
+        "evidence_level": "sec_named_competitor",
+        "ticker": "TXN"
+      },
+      {
+        "id": "offline_competitor_016",
+        "name": "NXP Semiconductors",
+        "business_line": "offline",
+        "relationship": "competitor",
+        "details": "2025 年 10-K 列名的高壓電源 IC、PWM 控制及離線電源產品競爭者。",
+        "source_ids": [
+          "SEC25"
+        ],
+        "evidence_level": "sec_named_competitor",
+        "ticker": "NXPI"
+      },
+      {
+        "id": "offline_competitor_017",
+        "name": "Renesas Electronics",
+        "business_line": "offline",
+        "relationship": "competitor",
+        "details": "2025 年 10-K 列名的高壓電源 IC、PWM 控制及離線電源產品競爭者。",
+        "source_ids": [
+          "SEC25"
+        ],
+        "evidence_level": "sec_named_competitor",
+        "ticker": "6723.T"
+      },
+      {
+        "id": "ai_800v_competitor_018",
+        "name": "Navitas Semiconductor",
+        "business_line": "ai_800v",
+        "relationship": "competitor",
+        "details": "2025 年 10-K 列名的高壓 GaN 產品市場競爭者。",
+        "source_ids": [
+          "SEC25"
+        ],
+        "evidence_level": "sec_named_competitor",
+        "ticker": "NVTS"
+      },
+      {
+        "id": "ai_800v_competitor_019",
+        "name": "Infineon Technologies",
+        "business_line": "ai_800v",
+        "relationship": "competitor",
+        "details": "2025 年 10-K 列名的高壓 GaN 產品市場競爭者。",
+        "source_ids": [
+          "SEC25"
+        ],
+        "evidence_level": "sec_named_competitor",
+        "ticker": "IFX.DE"
+      },
+      {
+        "id": "ai_800v_competitor_020",
+        "name": "InnoScience",
+        "business_line": "ai_800v",
+        "relationship": "competitor",
+        "details": "2025 年 10-K 列名的高壓 GaN 產品市場競爭者。",
+        "source_ids": [
+          "SEC25"
+        ],
+        "evidence_level": "sec_named_competitor"
+      },
+      {
+        "id": "high_power_competitor_021",
+        "name": "Mitsubishi Electric",
+        "business_line": "high_power",
+        "relationship": "competitor",
+        "details": "2025 年 10-K 列名的閘極驅動器市場競爭者。",
+        "source_ids": [
+          "SEC25"
+        ],
+        "evidence_level": "sec_named_competitor",
+        "ticker": "6503.T"
+      },
+      {
+        "id": "high_power_competitor_022",
+        "name": "Fuji Electric",
+        "business_line": "high_power",
+        "relationship": "competitor",
+        "details": "2025 年 10-K 列名的閘極驅動器市場競爭者。",
+        "source_ids": [
+          "SEC25"
+        ],
+        "evidence_level": "sec_named_competitor",
+        "ticker": "6504.T"
+      },
+      {
+        "id": "high_power_competitor_023",
+        "name": "Infineon Technologies",
+        "business_line": "high_power",
+        "relationship": "competitor",
+        "details": "2025 年 10-K 列名的閘極驅動器市場競爭者。",
+        "source_ids": [
+          "SEC25"
+        ],
+        "evidence_level": "sec_named_competitor",
+        "ticker": "IFX.DE"
+      },
+      {
+        "id": "motor_competitor_024",
+        "name": "onsemi",
+        "business_line": "motor",
+        "relationship": "competitor",
+        "details": "2025 10-K 指名馬達驅動器與功率模組競爭者。",
+        "source_ids": [
+          "SEC25"
+        ],
+        "evidence_level": "sec_named_competitor",
+        "ticker": "ON"
+      },
+      {
+        "id": "motor_competitor_025",
+        "name": "STMicroelectronics",
+        "business_line": "motor",
+        "relationship": "competitor",
+        "details": "2025 10-K 指名馬達驅動器與功率模組競爭者。",
+        "source_ids": [
+          "SEC25"
+        ],
+        "evidence_level": "sec_named_competitor",
+        "ticker": "STM"
+      }
     ],
-    "core_technologies": [
-      "高壓電源 IC",
-      "GaN",
-      "IGBT/SiC gate drivers",
-      "隔離與回授整合"
-    ],
-    "ai_exposure": {
-      "type": "manual_evidence_review",
-      "summary": "AI 資料中心不是其最核心市場，但高效率電源轉換、GaN 與高功率 gate driver 技術可受益於整體電力電子效率升級。"
+    "financial_snapshot": {
+      "fy2025_revenue_usd_millions": 443.504,
+      "fy2025_distributor_revenue_pct": 69,
+      "fy2025_top_10_customer_revenue_pct": 81,
+      "fy2026_q3_revenue_usd_millions": 125.476,
+      "fy2026_q3_yoy_revenue_growth_pct_approx": 6,
+      "fy2026_q3_gaap_gross_margin_pct": 55.6,
+      "fy2026_q3_gaap_net_income_usd_millions": 18.3,
+      "fy2026_q4_revenue_guidance_usd_millions": [
+        118,
+        126
+      ],
+      "source_ids": [
+        "SEC25",
+        "Q326"
+      ]
     },
-    "demand_drivers": [
-      "能源效率法規",
-      "GaN 滲透",
-      "工業與再生能源投資",
-      "高效率電源需求"
+    "recent_events": [
+      {
+        "date": "2026-11-04",
+        "title": "2026 Q3 財報：營收 1.25476 億美元，年增約 6%",
+        "status": "reported",
+        "source_ids": [
+          "Q326"
+        ]
+      },
+      {
+        "date": "2026-10-12",
+        "title": "與 Ideal Power 合作開發 800VDC 固態斷路器",
+        "status": "development_collaboration",
+        "source_ids": [
+          "IDEAL"
+        ]
+      },
+      {
+        "date": "2026-08-05",
+        "title": "展示 2200V PowiGaN 技術",
+        "status": "technology_demonstration_not_mass_production",
+        "source_ids": [
+          "GAN2200"
+        ]
+      },
+      {
+        "date": "2026-05-31",
+        "title": "展示 NVIDIA Kyber 800VDC 輔助電源參考設計",
+        "status": "reference_design_not_confirmed_customer_order",
+        "source_ids": [
+          "KYBER"
+        ]
+      }
     ],
-    "strategy_changes": []
-  },
-  "translation_zh_tw": {
-    "company_summary": "Power Integrations 設計高壓電源轉換半導體與閘極驅動器，產品用於消費電源、家電、工業、再生能源、汽車與高功率應用，重點在提升能源效率與縮小電源體積。",
-    "product_stack": [
-      "InnoSwitch",
-      "LinkSwitch",
-      "Hiper families",
-      "SCALE gate drivers",
-      "PowiGaN products"
-    ],
-    "market_products": {},
-    "markets": [
-      "AC-DC 電源",
-      "工業電源",
-      "家電",
-      "再生能源",
-      "汽車與高功率電源"
-    ],
-    "customer_types": [
-      "電源供應器廠",
-      "消費電子 OEM",
-      "家電廠",
-      "工業與能源設備商"
-    ],
-    "core_technologies": [
-      "高壓電源 IC",
-      "GaN",
-      "IGBT/SiC gate drivers",
-      "隔離與回授整合"
-    ],
-    "ai_exposure": {
-      "type": "manual_evidence_review",
-      "summary": "AI 資料中心不是其最核心市場，但高效率電源轉換、GaN 與高功率 gate driver 技術可受益於整體電力電子效率升級。"
-    },
-    "demand_drivers": [
-      "能源效率法規",
-      "GaN 滲透",
-      "工業與再生能源投資",
-      "高效率電源需求"
-    ],
-    "strategy_changes": []
+    "sources": [
+      {
+        "id": "SEC25",
+        "title": "SEC FY2025 10-K",
+        "url": "https://www.sec.gov/Archives/edgar/data/833640/000083364026000037/powi-20251231x10k.htm"
+      },
+      {
+        "id": "Q326",
+        "title": "2026 Q3 official results",
+        "url": "https://investors.power.com/news/news-details/2026/Power-Integrations-Reports-Third-Quarter-Financial-Results/default.aspx"
+      },
+      {
+        "id": "NVIDIA800",
+        "title": "2025 800V NVIDIA collaboration",
+        "url": "https://www.businesswire.com/news/home/20251013503136/en/Power-Integrations-Details-1250-V-and-1700-V-PowiGaN-Technology-for-Next-Generation-800-VDC-AI-Data-Centers"
+      },
+      {
+        "id": "IDEAL",
+        "title": "2026 Ideal Power collaboration",
+        "url": "https://www.businesswire.com/news/home/20261012559063/en/Power-Integrations-and-Ideal-Power-Collaborate-on-Efficient-Always-On-Solid-State-Circuit-Breakers-for-800-VDC-AI-Data-Centers"
+      },
+      {
+        "id": "GAN2200",
+        "title": "2026 2200V GaN demonstration",
+        "url": "https://www.businesswire.com/news/home/20260805220943/en/Power-Integrations-Demonstrates-Worlds-First-2200-V-GaN-Technology-for-Next-Era-High-Voltage-Power-Systems"
+      },
+      {
+        "id": "KYBER",
+        "title": "2026 NVIDIA Kyber auxiliary reference design",
+        "url": "https://www.businesswire.com/news/home/20260531367698/en/Power-Integrations-Unveils-Space-Saving-Ultra-Slim-Auxiliary-PSU-Reference-Designs-for-NVIDIA-Kyber-800-VDC-AI-Data-Center"
+      },
+      {
+        "id": "TW_DIST",
+        "title": "Official Taiwan distributor list",
+        "url": "https://www.power.com/company/sales/distributors/taiwan"
+      }
+    ]
   }
 }

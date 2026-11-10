@@ -199,5 +199,194 @@
       "車內感測"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.v1",
+    "as_of": "2026-11-10",
+    "company": "indie Semiconductor, Inc.",
+    "symbol": "INDI",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "INDI indie Semiconductor 產業鏈｜車用雷達、視覺、車內監測與光子",
+      "description": "indie Semiconductor 產業鏈涵蓋雷達 SoC、iND880、GW5、emotion3D、LiDAR 光子與車用控制晶片，區分具名客戶、合作夥伴、供應商、競爭者與台灣產業受惠股。"
+    },
+    "business_lines": [
+      {
+        "id": "RADAR",
+        "name": "77／120 GHz 車用雷達 SoC"
+      },
+      {
+        "id": "VISION",
+        "name": "iND880／GW5 電腦視覺處理器"
+      },
+      {
+        "id": "CABIN",
+        "name": "emotion3D 車內駕駛與乘員監測"
+      },
+      {
+        "id": "LIDAR",
+        "name": "LiDAR 光子元件與雷射"
+      },
+      {
+        "id": "CONNECT",
+        "name": "車載連接與介面晶片"
+      },
+      {
+        "id": "POWER",
+        "name": "車用混合訊號、電源與控制"
+      },
+      {
+        "id": "SOFTWARE",
+        "name": "感知演算法與嵌入式軟體"
+      },
+      {
+        "id": "INDUSTRIAL",
+        "name": "工業感測與機器人延伸應用"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "VISION_customer_001",
+        "business_line": "VISION",
+        "relationship": "customer",
+        "name": "Valeo",
+        "details": "選用 iND880 視覺處理器，開發北美車廠的車內監測專案。",
+        "source_url": "https://www.marketbeat.com/earnings/reports/2025-5-12-indie-semiconductor-inc-stock/"
+      },
+      {
+        "id": "VISION_customer_002",
+        "business_line": "VISION",
+        "relationship": "customer",
+        "name": "BYD 比亞迪",
+        "details": "GW5 視覺處理器取得車內監測設計案。",
+        "source_url": "https://www.marketbeat.com/earnings/reports/2025-5-12-indie-semiconductor-inc-stock/"
+      },
+      {
+        "id": "VISION_customer_003",
+        "business_line": "VISION",
+        "relationship": "customer",
+        "name": "Mercedes-Benz China",
+        "details": "透過 YFTech 的電子後視鏡方案採用 indie 視覺處理器。",
+        "source_url": "https://www.marketbeat.com/earnings/reports/2025-5-12-indie-semiconductor-inc-stock/"
+      },
+      {
+        "id": "CABIN_customer_001",
+        "business_line": "CABIN",
+        "relationship": "customer",
+        "name": "Toyota 豐田汽車",
+        "details": "透過 Bosch 車內監測專案導入 indie 感知技術。",
+        "source_url": "https://www.marketbeat.com/earnings/reports/2025-5-12-indie-semiconductor-inc-stock/"
+      },
+      {
+        "id": "CABIN_customer_002",
+        "business_line": "CABIN",
+        "relationship": "customer",
+        "name": "Mahindra & Mahindra",
+        "details": "旗下 BE 6 與 XEV 9e 電動 SUV 採用 emotion3D CABIN EYE 監測軟體。",
+        "source_url": "https://www.stockwatch.com/News/Item/U-b20260204235524-U%21INDI-20260204/U/INDI"
+      },
+      {
+        "id": "CABIN_partner_001",
+        "business_line": "CABIN",
+        "relationship": "partner",
+        "name": "Bosch 博世",
+        "details": "合作開發及部署車內駕駛與乘員監測方案。",
+        "source_url": "https://www.marketbeat.com/earnings/reports/2025-5-12-indie-semiconductor-inc-stock/"
+      },
+      {
+        "id": "VISION_partner_001",
+        "business_line": "VISION",
+        "relationship": "partner",
+        "name": "YFTech",
+        "details": "共同推進中國車廠電子後視鏡視覺處理器專案。",
+        "source_url": "https://www.marketbeat.com/earnings/reports/2025-5-12-indie-semiconductor-inc-stock/"
+      },
+      {
+        "id": "RADAR_supplier_001",
+        "business_line": "RADAR",
+        "relationship": "supplier",
+        "name": "GlobalFoundries（GFS）",
+        "details": "採用 22FDX 製程製造 77／120 GHz 雷達 SoC。",
+        "source_url": "https://investors.indie.inc/news/news-details/2025/indie-Semiconductor-and-GlobalFoundries-Announce-Strategic-Collaboration-to-Accelerate-Automotive-Radar-Adoption/default.aspx"
+      },
+      {
+        "id": "RADAR_partner_001",
+        "business_line": "RADAR",
+        "relationship": "partner",
+        "name": "GlobalFoundries（GFS）",
+        "details": "共同開發高整合度低功耗雷達 SoC。",
+        "source_url": "https://gf.com/news-and-events/news/indie-semiconductor-and-globalfoundries-announce-strategic-collaboration-to-accelerate-automotive-radar-adoption/"
+      },
+      {
+        "id": "RADAR_competitor_001",
+        "business_line": "RADAR",
+        "relationship": "competitor",
+        "name": "NXP Semiconductors（NXPI）",
+        "details": "車用雷達收發器與處理器市場競爭。"
+      },
+      {
+        "id": "RADAR_competitor_002",
+        "business_line": "RADAR",
+        "relationship": "competitor",
+        "name": "Infineon Technologies",
+        "details": "車用雷達感測與射頻半導體市場競爭。"
+      },
+      {
+        "id": "VISION_competitor_001",
+        "business_line": "VISION",
+        "relationship": "competitor",
+        "name": "Mobileye（MBLY）",
+        "details": "車用視覺處理與 ADAS 晶片市場競爭。"
+      },
+      {
+        "id": "VISION_competitor_002",
+        "business_line": "VISION",
+        "relationship": "competitor",
+        "name": "Ambarella（AMBA）",
+        "details": "車用視覺 AI SoC 與影像處理市場競爭。"
+      },
+      {
+        "id": "POWER_competitor_001",
+        "business_line": "POWER",
+        "relationship": "competitor",
+        "name": "onsemi（ON）",
+        "details": "車用類比、電源及感測半導體市場競爭。"
+      },
+      {
+        "id": "RADAR_beneficiary_001",
+        "business_line": "RADAR",
+        "relationship": "beneficiary",
+        "name": "台積電（2330）",
+        "details": "車用雷達與感測晶片需求成長的台灣晶圓代工產業代表。"
+      },
+      {
+        "id": "VISION_beneficiary_001",
+        "business_line": "VISION",
+        "relationship": "beneficiary",
+        "name": "日月光投控（3711）",
+        "details": "車用視覺處理器封裝測試需求成長的產業代表。"
+      },
+      {
+        "id": "VISION_beneficiary_002",
+        "business_line": "VISION",
+        "relationship": "beneficiary",
+        "name": "京元電子（2449）",
+        "details": "車用運算晶片測試需求成長的產業代表。"
+      },
+      {
+        "id": "CABIN_beneficiary_001",
+        "business_line": "CABIN",
+        "relationship": "beneficiary",
+        "name": "致茂（2360）",
+        "details": "車用感測與電子模組測試設備需求成長的產業代表。"
+      }
+    ]
   }
 }

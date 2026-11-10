@@ -205,5 +205,234 @@
       "汽車電子"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-10",
+    "company": "SiTime Corporation",
+    "symbol": "SITM",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "SITM SiTime 產業鏈｜MEMS 振盪器、AI 資料中心時序與晶圓代工",
+      "description": "SiTime 產業鏈涵蓋 MEMS 振盪器、Elite Super-TCXO、時脈產生器、網路同步與 Titan 諧振器，整理 Apple 終端客戶、經銷通路、晶圓及封測供應商、競爭者與台灣受惠股。"
+    },
+    "business_lines": [
+      {
+        "id": "MEMS_OSC",
+        "name": "MEMS 可程式化振盪器"
+      },
+      {
+        "id": "TCXO",
+        "name": "溫補晶振與 Elite Super-TCXO"
+      },
+      {
+        "id": "CLOCK",
+        "name": "時脈產生器與抖動衰減器"
+      },
+      {
+        "id": "SYNC",
+        "name": "網路同步器與 TimeFabric"
+      },
+      {
+        "id": "RESONATOR",
+        "name": "Titan MEMS 諧振器"
+      },
+      {
+        "id": "DATACENTER",
+        "name": "AI 資料中心精密時序"
+      },
+      {
+        "id": "AUTOMOTIVE",
+        "name": "車用與工業高可靠時序"
+      },
+      {
+        "id": "AEROSPACE",
+        "name": "航太國防精密時序"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "MEMS_OSC_customer_001",
+        "name": "Apple（AAPL）",
+        "business_line": "MEMS_OSC",
+        "relationship": "customer",
+        "details": "2025 年最大具名終端客戶，估計貢獻約 17% 營收；透過經銷商導入精密時序元件。"
+      },
+      {
+        "id": "MEMS_OSC_partner_001",
+        "name": "Arrow Electronics（ARW）",
+        "business_line": "MEMS_OSC",
+        "relationship": "partner",
+        "details": "2025 年經銷客戶，貢獻約 26% 營收。"
+      },
+      {
+        "id": "MEMS_OSC_partner_002",
+        "name": "Pernas Electronics",
+        "business_line": "MEMS_OSC",
+        "relationship": "partner",
+        "details": "2025 年經銷客戶，貢獻約 25% 營收；部分產品最終進入 Apple 裝置。"
+      },
+      {
+        "id": "MEMS_OSC_partner_003",
+        "name": "Quantek Technology Corporation",
+        "business_line": "MEMS_OSC",
+        "relationship": "partner",
+        "details": "2024 年經銷客戶，營收占比約 13%；部分產品最終進入 Apple 裝置。"
+      },
+      {
+        "id": "MEMS_OSC_partner_004",
+        "name": "Sabre Technologies Pte. Ltd.",
+        "business_line": "MEMS_OSC",
+        "relationship": "partner",
+        "details": "2023 年經銷客戶，營收占比約 10%。"
+      },
+      {
+        "id": "MEMS_OSC_supplier_001",
+        "name": "Robert Bosch LLC",
+        "business_line": "MEMS_OSC",
+        "relationship": "supplier",
+        "details": "德國 MEMS 晶圓主要製造供應商，並有晶圓供應協議。"
+      },
+      {
+        "id": "CLOCK_supplier_001",
+        "name": "台積電（2330）",
+        "business_line": "CLOCK",
+        "relationship": "supplier",
+        "details": "台灣主要晶圓代工供應商，製造類比混合訊號時序 IC。"
+      },
+      {
+        "id": "CLOCK_supplier_002",
+        "name": "聯電（2303）",
+        "business_line": "CLOCK",
+        "relationship": "supplier",
+        "details": "台灣主要晶圓代工供應商，製造時序 IC。"
+      },
+      {
+        "id": "MEMS_OSC_supplier_002",
+        "name": "Teledyne Digital Imaging",
+        "business_line": "MEMS_OSC",
+        "relationship": "supplier",
+        "details": "加拿大主要 MEMS 與類比混合訊號晶圓供應商。"
+      },
+      {
+        "id": "MEMS_OSC_supplier_003",
+        "name": "日月光（ASE）",
+        "business_line": "MEMS_OSC",
+        "relationship": "supplier",
+        "details": "封裝、組裝與測試委外供應商。"
+      },
+      {
+        "id": "MEMS_OSC_supplier_004",
+        "name": "Carsem",
+        "business_line": "MEMS_OSC",
+        "relationship": "supplier",
+        "details": "封裝與測試委外供應商。"
+      },
+      {
+        "id": "MEMS_OSC_supplier_005",
+        "name": "UTAC",
+        "business_line": "MEMS_OSC",
+        "relationship": "supplier",
+        "details": "封裝、測試與陶瓷封裝供應商。"
+      },
+      {
+        "id": "RESONATOR_supplier_001",
+        "name": "Daishinku 大真空",
+        "business_line": "RESONATOR",
+        "relationship": "supplier",
+        "details": "部分陶瓷封裝委外供應商；同時在時序元件市場競爭。"
+      },
+      {
+        "id": "MEMS_OSC_supplier_006",
+        "name": "Hana Semiconductor",
+        "business_line": "MEMS_OSC",
+        "relationship": "supplier",
+        "details": "部分陶瓷封裝供應商。"
+      },
+      {
+        "id": "MEMS_OSC_supplier_007",
+        "name": "STATS ChipPAC",
+        "business_line": "MEMS_OSC",
+        "relationship": "supplier",
+        "details": "封裝與測試委外供應商。"
+      },
+      {
+        "id": "MEMS_OSC_competitor_001",
+        "name": "TXC 晶技（3042）",
+        "business_line": "MEMS_OSC",
+        "relationship": "competitor",
+        "details": "石英晶體與振盪器市場競爭。"
+      },
+      {
+        "id": "MEMS_OSC_competitor_002",
+        "name": "Microchip Technology（MCHP）",
+        "business_line": "MEMS_OSC",
+        "relationship": "competitor",
+        "details": "振盪器、時脈及同步 IC 市場競爭。"
+      },
+      {
+        "id": "CLOCK_competitor_001",
+        "name": "Renesas Electronics",
+        "business_line": "CLOCK",
+        "relationship": "competitor",
+        "details": "時脈與時序半導體市場競爭。"
+      },
+      {
+        "id": "MEMS_OSC_competitor_003",
+        "name": "Murata Manufacturing",
+        "business_line": "MEMS_OSC",
+        "relationship": "competitor",
+        "details": "精密時序與共振元件市場競爭。"
+      },
+      {
+        "id": "MEMS_OSC_competitor_004",
+        "name": "Nihon Dempa Kogyo（NDK）",
+        "business_line": "MEMS_OSC",
+        "relationship": "competitor",
+        "details": "石英晶體與精密振盪器市場競爭。"
+      },
+      {
+        "id": "MEMS_OSC_competitor_005",
+        "name": "Rakon",
+        "business_line": "MEMS_OSC",
+        "relationship": "competitor",
+        "details": "高精度振盪器與時序元件市場競爭。"
+      },
+      {
+        "id": "CLOCK_beneficiary_001",
+        "name": "台積電（2330）",
+        "business_line": "CLOCK",
+        "relationship": "beneficiary",
+        "details": "精密時序晶片需求成長帶動其晶圓代工業務。"
+      },
+      {
+        "id": "CLOCK_beneficiary_002",
+        "name": "聯電（2303）",
+        "business_line": "CLOCK",
+        "relationship": "beneficiary",
+        "details": "成熟與特殊製程時序晶片需求的直接供應鏈受惠者。"
+      },
+      {
+        "id": "MEMS_OSC_beneficiary_001",
+        "name": "日月光投控（3711）",
+        "business_line": "MEMS_OSC",
+        "relationship": "beneficiary",
+        "details": "MEMS 與時序晶片封裝測試需求的直接供應鏈受惠者。"
+      },
+      {
+        "id": "DATACENTER_beneficiary_001",
+        "name": "晶技（3042）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器與網通設備精密時序需求的台灣同業代表。"
+      }
+    ]
   }
 }

@@ -181,5 +181,464 @@
       "企業 IT 現代化"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-10",
+    "company": "Arrow Electronics, Inc.",
+    "symbol": "ARW",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "ARW Arrow Electronics 產業鏈｜電子元件經銷、AI 資料中心、雲端與台灣受惠股",
+      "description": "Arrow 2026 Q3 營收創高，拆解 Global Components、Global ECS、客戶、上游元件原廠、競爭者及台灣受惠股。"
+    },
+    "business_lines": [
+      {
+        "id": "COMPONENTS",
+        "name": "Global Components：半導體、被動元件、連接器與機電元件"
+      },
+      {
+        "id": "DESIGN",
+        "name": "工程設計、元件選型、參考設計與產品生命週期"
+      },
+      {
+        "id": "SUPPLY_CHAIN",
+        "name": "元件採購、庫存、物流與供應鏈服務"
+      },
+      {
+        "id": "DATACENTER",
+        "name": "資料中心、AI 運算、儲存與混合式基礎設施"
+      },
+      {
+        "id": "CLOUD",
+        "name": "企業雲端、訂閱與雲端管理"
+      },
+      {
+        "id": "SECURITY",
+        "name": "網路安全、資料保護與資安軟體"
+      },
+      {
+        "id": "SOFTWARE",
+        "name": "企業軟體、分析與基礎設施軟體"
+      },
+      {
+        "id": "OEM",
+        "name": "OEM／EMS 與工業、汽車、航太、醫療終端"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "OEM_customer_001",
+        "name": "OEM 製造商",
+        "business_line": "OEM",
+        "relationship": "customer",
+        "details": "電子產品設計及製造業者採購 Arrow 經銷的元件與工程服務。",
+        "source_ids": [
+          "SEC_10K",
+          "CALL_Q3"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "OEM_customer_002",
+        "name": "EMS 電子製造服務商",
+        "business_line": "OEM",
+        "relationship": "customer",
+        "details": "委託製造廠採購半導體、連接器、被動與機電元件。",
+        "source_ids": [
+          "SEC_10K",
+          "CALL_Q3"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "OEM_customer_003",
+        "name": "工業設備製造商",
+        "business_line": "OEM",
+        "relationship": "customer",
+        "details": "工業自動化與控制設備採購元件及供應鏈服務。",
+        "source_ids": [
+          "SEC_10K",
+          "CALL_Q3"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "OEM_customer_004",
+        "name": "汽車與運輸設備製造商",
+        "business_line": "OEM",
+        "relationship": "customer",
+        "details": "車用與運輸電子採購元件、設計支援及物流服務。",
+        "source_ids": [
+          "SEC_10K",
+          "CALL_Q3"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "OEM_customer_005",
+        "name": "航太國防設備製造商",
+        "business_line": "OEM",
+        "relationship": "customer",
+        "details": "航太與國防電子終端採購元件。",
+        "source_ids": [
+          "SEC_10K",
+          "CALL_Q3"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "OEM_customer_006",
+        "name": "醫療設備製造商",
+        "business_line": "OEM",
+        "relationship": "customer",
+        "details": "醫療電子設備終端採購元件。",
+        "source_ids": [
+          "SEC_10K",
+          "CALL_Q3"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "DATACENTER_customer_007",
+        "name": "企業加值經銷商（VAR）",
+        "business_line": "DATACENTER",
+        "relationship": "customer",
+        "details": "透過 Arrow ECS 採購企業運算、資安及雲端產品與服務。",
+        "source_ids": [
+          "SEC_10K",
+          "IR_Q3"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "DATACENTER_customer_008",
+        "name": "託管服務供應商（MSP）",
+        "business_line": "DATACENTER",
+        "relationship": "customer",
+        "details": "透過 Arrow ECS 採購軟硬體、訂閱及雲端管理產品。",
+        "source_ids": [
+          "SEC_10K",
+          "IR_Q3"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "DATACENTER_customer_009",
+        "name": "企業 IT 解決方案整合商",
+        "business_line": "DATACENTER",
+        "relationship": "customer",
+        "details": "透過 ECS 通路採購資料中心、雲端、網路安全與儲存方案。",
+        "source_ids": [
+          "SEC_10K",
+          "IR_Q3"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "COMPONENTS_supplier_010",
+        "name": "半導體原廠",
+        "business_line": "COMPONENTS",
+        "relationship": "supplier",
+        "details": "Arrow 全球元件經銷業務之上游授權製造商類別。",
+        "source_ids": [
+          "SEC_10K",
+          "CALL_Q3"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "COMPONENTS_supplier_011",
+        "name": "被動元件原廠",
+        "business_line": "COMPONENTS",
+        "relationship": "supplier",
+        "details": "Arrow IP&E 產品組合之上游元件製造商類別。",
+        "source_ids": [
+          "SEC_10K",
+          "CALL_Q3"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "COMPONENTS_supplier_012",
+        "name": "連接器與機電原廠",
+        "business_line": "COMPONENTS",
+        "relationship": "supplier",
+        "details": "Arrow IP&E 產品組合之上游製造商類別。",
+        "source_ids": [
+          "SEC_10K",
+          "CALL_Q3"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "DATACENTER_supplier_013",
+        "name": "企業基礎設施軟硬體原廠",
+        "business_line": "DATACENTER",
+        "relationship": "supplier",
+        "details": "ECS 以原廠授權通路分銷企業運算及資料中心產品。",
+        "source_ids": [
+          "SEC_10K",
+          "IR_Q3"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "DATACENTER_supplier_014",
+        "name": "雲端與資安軟體原廠",
+        "business_line": "DATACENTER",
+        "relationship": "supplier",
+        "details": "ECS 分銷企業雲端、資安及訂閱解決方案。",
+        "source_ids": [
+          "SEC_10K",
+          "IR_Q3"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "DESIGN_partner_015",
+        "name": "電子工程設計生態",
+        "business_line": "DESIGN",
+        "relationship": "partner",
+        "details": "Arrow 提供設計導入、工程技術與生命週期支援；屬服務能力而非特定單一公司供貨。",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "DESIGN_partner_016",
+        "name": "企業 IT 通路生態",
+        "business_line": "DESIGN",
+        "relationship": "partner",
+        "details": "Arrow ECS 結合原廠與下游 VAR、MSP 的銷售支援及雲端服務。",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "COMPONENTS_competitor_017",
+        "name": "Avnet（AVT）",
+        "business_line": "COMPONENTS",
+        "relationship": "competitor",
+        "details": "全球電子元件或企業 IT 通路同業；依所屬產品線形成市場競爭。",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "DATACENTER_competitor_018",
+        "name": "WESCO International（WCC）",
+        "business_line": "DATACENTER",
+        "relationship": "competitor",
+        "details": "全球電子元件或企業 IT 通路同業；依所屬產品線形成市場競爭。",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "DATACENTER_competitor_019",
+        "name": "TD SYNNEX（SNX）",
+        "business_line": "DATACENTER",
+        "relationship": "competitor",
+        "details": "全球電子元件或企業 IT 通路同業；依所屬產品線形成市場競爭。",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "DATACENTER_competitor_020",
+        "name": "Ingram Micro（INGM）",
+        "business_line": "DATACENTER",
+        "relationship": "competitor",
+        "details": "全球電子元件或企業 IT 通路同業；依所屬產品線形成市場競爭。",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "DATACENTER_beneficiary_021",
+        "name": "台積電（2330）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "半導體供應鏈景氣與高階晶片需求增加時的代表性台灣晶圓代工公司。",
+        "source_ids": [
+          "IR_Q3",
+          "CALL_Q3"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "id": "DATACENTER_beneficiary_022",
+        "name": "聯電（2303）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "成熟製程與工業、消費、車用晶片需求回升相關。",
+        "source_ids": [
+          "IR_Q3",
+          "CALL_Q3"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "id": "DATACENTER_beneficiary_023",
+        "name": "日月光投控（3711）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "封測產業受惠晶片出貨及高階封裝需求增加。",
+        "source_ids": [
+          "IR_Q3",
+          "CALL_Q3"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "id": "DATACENTER_beneficiary_024",
+        "name": "台達電（2308）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "AI 資料中心電源與基礎設施投資受惠。",
+        "source_ids": [
+          "IR_Q3",
+          "CALL_Q3"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "id": "DATACENTER_beneficiary_025",
+        "name": "廣達（2382）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器與資料中心設備資本支出受惠。",
+        "source_ids": [
+          "IR_Q3",
+          "CALL_Q3"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "id": "DATACENTER_beneficiary_026",
+        "name": "緯創（3231）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "伺服器及電子製造服務需求循環受惠。",
+        "source_ids": [
+          "IR_Q3",
+          "CALL_Q3"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "id": "DATACENTER_beneficiary_027",
+        "name": "智邦（2345）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "資料中心高速網路與交換器需求受惠。",
+        "source_ids": [
+          "IR_Q3",
+          "CALL_Q3"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "id": "DATACENTER_beneficiary_028",
+        "name": "貿聯-KY（3665）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "高階互連及資料中心線纜需求受惠。",
+        "source_ids": [
+          "IR_Q3",
+          "CALL_Q3"
+        ],
+        "confidence": "medium"
+      }
+    ],
+    "research": {
+      "latest_sec_10k": "2026-02-11 FY2025 Form 10-K",
+      "latest_sec_10q": "2026-11-05 FY2026 Q3 Form 10-Q",
+      "earnings_call": "2026-11-05 FY2026 Q3 Earnings Call",
+      "financial_snapshot_q3_2026_usd_millions": {
+        "revenue": 10718,
+        "global_components": 7943,
+        "global_ecs": 2775,
+        "diluted_eps_usd": 6.17
+      },
+      "major_events": [
+        {
+          "date": "2026-11-05",
+          "event": "Q3 營收 107.18 億美元、年增 39%；元件經銷年增 43%、ECS 年增 29%。",
+          "source_ids": [
+            "SEC_Q3_10Q",
+            "IR_Q3"
+          ]
+        },
+        {
+          "date": "2026-11-05",
+          "event": "法說指出 book-to-bill 高於 1、積壓訂單延伸至 2027 年中，記憶體等供給受限類別價格上升。",
+          "source_ids": [
+            "CALL_Q3"
+          ]
+        },
+        {
+          "date": "2026-11-05",
+          "event": "ECS 終止一項表現不佳的多年期合約並重整另一項與同一夥伴的合約；10-Q 披露後續約 4,120 萬美元終止費用。",
+          "source_ids": [
+            "CALL_Q3",
+            "SEC_Q3_10Q"
+          ]
+        }
+      ],
+      "classification_notes": "供應商為原廠供貨給 Arrow；下游 OEM、EMS、VAR、MSP 為客戶。未取得直接供貨證據的台灣公司只放 beneficiary。匿名客戶類型與上游原廠類型採類別節點，不假設特定具名交易。"
+    },
+    "sources": [
+      {
+        "id": "SEC_10K",
+        "grade": "A",
+        "date": "2026-02-11",
+        "url": "https://www.sec.gov/Archives/edgar/data/7536/000110465926012765/arw-20251231x10k.htm"
+      },
+      {
+        "id": "SEC_Q3_10Q",
+        "grade": "A",
+        "date": "2026-11-05",
+        "url": "https://www.sec.gov/Archives/edgar/data/7536/000110465926123063/arw-20261003x10q.htm"
+      },
+      {
+        "id": "IR_Q3",
+        "grade": "A",
+        "date": "2026-11-05",
+        "url": "https://news.arrow.com/news-releases/news-details/2026/Arrow-Electronics-Reports-Record-Quarterly-Revenue-and-EPS/default.aspx"
+      },
+      {
+        "id": "CALL_Q3",
+        "grade": "B",
+        "date": "2026-11-05",
+        "url": "https://stockanalysis.com/stocks/arw/transcripts/726737-q3-2026/"
+      },
+      {
+        "id": "IR_EVENTS",
+        "grade": "A",
+        "date": "2026-11-05",
+        "url": "https://investor.arrow.com/investors/default.aspx"
+      },
+      {
+        "id": "IR_CALL",
+        "grade": "A",
+        "date": "2026-10-22",
+        "url": "https://news.arrow.com/news-releases/news-details/2026/Arrow-Electronics-to-Host-Third-Quarter-2026-Earnings-Conference-Call/default.aspx"
+      }
+    ]
   }
 }

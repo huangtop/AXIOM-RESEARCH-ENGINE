@@ -340,5 +340,635 @@
       "邊緣運算"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-10",
+    "company": "Microchip Technology Incorporated",
+    "symbol": "MCHP",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "MCHP Microchip 深度產業鏈｜MCU、PolarFire、HPSC、SiC、PCIe、SuperFlash",
+      "description": "Microchip 12 大業務線產業鏈：PIC／AVR、SAM、dsPIC、PolarFire、PIC64-HPSC、mSiC、時序、車用乙太網路、Switchtec、硬體安全、maXTouch、SST SuperFlash。依官方年報與公告區分客戶、合作、供應、競爭及台灣受惠關係。"
+    },
+    "business_lines": [
+      {
+        "id": "MCU_8",
+        "name": "PIC／AVR 8-bit MCU 與低功耗控制"
+      },
+      {
+        "id": "MCU_32",
+        "name": "PIC32／SAM 32-bit MCU、MPU 與邊緣 AI"
+      },
+      {
+        "id": "DSP",
+        "name": "dsPIC33 馬達控制與數位電源"
+      },
+      {
+        "id": "FPGA",
+        "name": "PolarFire／RT PolarFire FPGA 與 RISC-V SoC"
+      },
+      {
+        "id": "SPACE",
+        "name": "PIC64-HPSC 航太運算與抗輻射元件"
+      },
+      {
+        "id": "POWER",
+        "name": "類比、電源管理、SiC／GaN"
+      },
+      {
+        "id": "TIMING",
+        "name": "精密時序、PTP／SyncE 與網路同步"
+      },
+      {
+        "id": "ETH",
+        "name": "車用乙太網路、ASA-ML 與工業 TSN"
+      },
+      {
+        "id": "DATACENTER",
+        "name": "Switchtec PCIe／CXL 與資料中心儲存"
+      },
+      {
+        "id": "SECURITY",
+        "name": "硬體信任根、TrustFLEX 與安全認證"
+      },
+      {
+        "id": "TOUCH",
+        "name": "maXTouch 人機介面與車載顯示"
+      },
+      {
+        "id": "SUPERFLASH",
+        "name": "SST SuperFlash 嵌入式快閃 IP 授權"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "SPACE_customer_001",
+        "name": "NASA（美國太空總署）",
+        "business_line": "SPACE",
+        "relationship": "customer",
+        "details": "NASA HPSC 太空高效能運算計畫由 Microchip 承接處理器研發；屬政府研發合約與技術交付，不等同量產晶片採購。"
+      },
+      {
+        "id": "FPGA_customer_001",
+        "name": "Lonestar Data Holdings",
+        "business_line": "FPGA",
+        "relationship": "customer",
+        "details": "月球資料中心相關任務採用 PolarFire SoC FPGA 技術，屬公開揭露的產品導入案例。"
+      },
+      {
+        "id": "DATACENTER_partner_001",
+        "name": "NVIDIA DGX Spark 生態系",
+        "business_line": "DATACENTER",
+        "relationship": "partner",
+        "details": "Microchip MEC1723 嵌入式控制器提供 NVIDIA DGX Spark 客製韌體支援；屬平台整合案例，非已披露的採購金額。"
+      },
+      {
+        "id": "MCU_8_partner_001",
+        "name": "Arrow Electronics（ARW）",
+        "business_line": "MCU_8",
+        "relationship": "partner",
+        "details": "最大經銷商；2026 財年占 Microchip 總營收 12%，屬有年報量化的經銷通路。"
+      },
+      {
+        "id": "MCU_8_partner_002",
+        "name": "Avnet（AVT）",
+        "business_line": "MCU_8",
+        "relationship": "partner",
+        "details": "全球授權經銷商，供應 MCU、類比、FPGA 及開發工具。"
+      },
+      {
+        "id": "MCU_8_partner_003",
+        "name": "DigiKey",
+        "business_line": "MCU_8",
+        "relationship": "partner",
+        "details": "授權經銷 Microchip 嵌入式與半導體產品。"
+      },
+      {
+        "id": "MCU_8_partner_004",
+        "name": "Mouser Electronics",
+        "business_line": "MCU_8",
+        "relationship": "partner",
+        "details": "授權經銷 Microchip MCU、電源、連接及設計工具。"
+      },
+      {
+        "id": "MCU_8_partner_005",
+        "name": "Future Electronics",
+        "business_line": "MCU_8",
+        "relationship": "partner",
+        "details": "電子零件通路夥伴，提供 Microchip 元件及設計支援。"
+      },
+      {
+        "id": "MCU_32_partner_001",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "MCU_32",
+        "relationship": "partner",
+        "details": "Microchip 2024 年公布 PolarFire FPGA 搭配 NVIDIA Holoscan 推進即時邊緣 AI。"
+      },
+      {
+        "id": "DSP_partner_001",
+        "name": "台達電（2308）",
+        "business_line": "DSP",
+        "relationship": "partner",
+        "details": "2025 年雙方公布 SiC 功率管理合作，結合 Microchip mSiC 與台達節能電源設計。"
+      },
+      {
+        "id": "FPGA_partner_001",
+        "name": "Beckhoff Automation",
+        "business_line": "FPGA",
+        "relationship": "partner",
+        "details": "2026 年 EtherCAT IP 支援 PolarFire FPGA／SoC，擴大工業即時網路設計生態。"
+      },
+      {
+        "id": "FPGA_partner_002",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "FPGA",
+        "relationship": "partner",
+        "details": "Microchip 宣布透過 NVIDIA Holoscan 強化 PolarFire FPGA 即時邊緣 AI 應用。"
+      },
+      {
+        "id": "FPGA_partner_003",
+        "name": "Axiom Space",
+        "business_line": "FPGA",
+        "relationship": "partner",
+        "details": "太空資料中心架構與 PIC64-HPSC、PolarFire SoC 技術合作／整合。"
+      },
+      {
+        "id": "SPACE_partner_001",
+        "name": "Axiom Space",
+        "business_line": "SPACE",
+        "relationship": "partner",
+        "details": "太空運算架構合作，評估 PIC64-HPSC 與 PolarFire SoC 的航太運算應用。"
+      },
+      {
+        "id": "POWER_partner_001",
+        "name": "Delta Electronics 台達電（2308）",
+        "business_line": "POWER",
+        "relationship": "partner",
+        "details": "2025 年簽訂 SiC 功率管理合作協議，開發高效率電源方案。"
+      },
+      {
+        "id": "POWER_partner_002",
+        "name": "Navitas Semiconductor（NVTS）",
+        "business_line": "POWER",
+        "relationship": "partner",
+        "details": "2026 年共同推動資料中心 800V 電力架構，Microchip 產品涵蓋控制及高壓電源。"
+      },
+      {
+        "id": "TIMING_partner_001",
+        "name": "Acacia（Cisco 旗下）",
+        "business_line": "TIMING",
+        "relationship": "partner",
+        "details": "2024 年公布合作優化太位元級資料中心互連，結合高速網路與精密時序／介面。"
+      },
+      {
+        "id": "ETH_partner_001",
+        "name": "Hyundai Motor Group",
+        "business_line": "ETH",
+        "relationship": "partner",
+        "details": "2026 年公布合作探索車內 10BASE-T1S 單對乙太網路，屬技術評估而非已確認量產採購。"
+      },
+      {
+        "id": "ETH_partner_002",
+        "name": "Marelli",
+        "business_line": "ETH",
+        "relationship": "partner",
+        "details": "2026 年公布軟體定義車輛開放標準顯示連接合作。"
+      },
+      {
+        "id": "ETH_partner_003",
+        "name": "Elektrobit",
+        "business_line": "ETH",
+        "relationship": "partner",
+        "details": "2026 年合作預整合 AUTOSAR 軟體與 Microchip 車用硬體。"
+      },
+      {
+        "id": "ETH_partner_004",
+        "name": "AVIVA Links",
+        "business_line": "ETH",
+        "relationship": "partner",
+        "details": "2025 年 ASA-ML 車載高速連接互通性測試合作。"
+      },
+      {
+        "id": "ETH_partner_005",
+        "name": "Sunny Smartlead",
+        "business_line": "ETH",
+        "relationship": "partner",
+        "details": "2026 年 ASA-ML 車載攝影機連接生態合作。"
+      },
+      {
+        "id": "ETH_partner_006",
+        "name": "Nippon Chemi-Con 日本貴彌功",
+        "business_line": "ETH",
+        "relationship": "partner",
+        "details": "2025 年合作建立日本車用 ASA-ML 攝影機生態系。"
+      },
+      {
+        "id": "DATACENTER_partner_002",
+        "name": "Micron Technology（MU）",
+        "business_line": "DATACENTER",
+        "relationship": "partner",
+        "details": "2026 年共同展示 Switchtec PCIe Gen 6 switch 搭配 Micron 9650 NVMe SSD 的 AI 儲存架構。"
+      },
+      {
+        "id": "DATACENTER_partner_003",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "DATACENTER",
+        "relationship": "partner",
+        "details": "MEC1723 控制器為 DGX Spark 提供專用韌體整合；不推定所有 NVIDIA 伺服器採用。"
+      },
+      {
+        "id": "SECURITY_partner_001",
+        "name": "Kudelski IoT",
+        "business_line": "SECURITY",
+        "relationship": "partner",
+        "details": "ECC608 TrustMANAGER 與 keySTREAM 裝置身分及金鑰管理整合。"
+      },
+      {
+        "id": "SECURITY_partner_002",
+        "name": "UL Solutions",
+        "business_line": "SECURITY",
+        "relationship": "partner",
+        "details": "Microchip 車用網路安全 ISO/SAE 21434 等認證評估合作機構；非產品採購客戶。"
+      },
+      {
+        "id": "SUPERFLASH_partner_001",
+        "name": "United Microelectronics Corporation 聯電（2303）",
+        "business_line": "SUPERFLASH",
+        "relationship": "partner",
+        "details": "2026 年 SST 與聯電完成 28HPC+ SuperFlash Gen 4 車規 Grade 1 製程平台驗證。"
+      },
+      {
+        "id": "SUPERFLASH_partner_002",
+        "name": "GlobalFoundries（GFS）",
+        "business_line": "SUPERFLASH",
+        "relationship": "partner",
+        "details": "SST SuperFlash ESF3 已於 GlobalFoundries 28SLPe 平台量產，屬技術授權與製程合作。"
+      },
+      {
+        "id": "SUPERFLASH_partner_003",
+        "name": "AnalogAI",
+        "business_line": "SUPERFLASH",
+        "relationship": "partner",
+        "details": "2026 年宣布選用 SST memBrain SAGE IP 開發邊緣 AI 處理器。"
+      },
+      {
+        "id": "SUPERFLASH_partner_004",
+        "name": "Mythic",
+        "business_line": "SUPERFLASH",
+        "relationship": "partner",
+        "details": "2026 年宣布選用 SST memBrain 技術，應用於下一代低功耗 AI 加速處理器。"
+      },
+      {
+        "id": "SUPERFLASH_partner_005",
+        "name": "Deca Technologies",
+        "business_line": "SUPERFLASH",
+        "relationship": "partner",
+        "details": "2025 年合作非揮發記憶體 chiplet 整合方案。"
+      },
+      {
+        "id": "MCU_32_supplier_001",
+        "name": "TSMC 台積電（2330）",
+        "business_line": "MCU_32",
+        "relationship": "supplier",
+        "details": "2024 年擴大晶圓代工合作，透過日本 JASM 提供特殊 40nm 製程產能。"
+      },
+      {
+        "id": "SUPERFLASH_supplier_001",
+        "name": "United Microelectronics 聯電（2303）",
+        "business_line": "SUPERFLASH",
+        "relationship": "supplier",
+        "details": "28HPC+ 製程導入 SST SuperFlash Gen 4 車規嵌入式快閃技術；為製程平台夥伴。"
+      },
+      {
+        "id": "SUPERFLASH_supplier_002",
+        "name": "GlobalFoundries（GFS）",
+        "business_line": "SUPERFLASH",
+        "relationship": "supplier",
+        "details": "28SLPe 製程導入 SST SuperFlash ESF3；此處是技術平台與晶圓代工生態關係。"
+      },
+      {
+        "id": "MCU_32_supplier_002",
+        "name": "JASM Japan Advanced Semiconductor Manufacturing",
+        "business_line": "MCU_32",
+        "relationship": "supplier",
+        "details": "台積電控股日本熊本晶圓廠，提供 Microchip 專用 40nm 製程路徑。"
+      },
+      {
+        "id": "MCU_8_competitor_001",
+        "name": "STMicroelectronics（STM）",
+        "business_line": "MCU_8",
+        "relationship": "competitor",
+        "details": "STM8、STM32 與低功耗 MCU 產品線競爭。"
+      },
+      {
+        "id": "MCU_8_competitor_002",
+        "name": "NXP Semiconductors（NXPI）",
+        "business_line": "MCU_8",
+        "relationship": "competitor",
+        "details": "車用與工業 MCU、嵌入式控制競爭。"
+      },
+      {
+        "id": "MCU_8_competitor_003",
+        "name": "Renesas Electronics",
+        "business_line": "MCU_8",
+        "relationship": "competitor",
+        "details": "RL78、RA、RX MCU 與工業車用控制競爭。"
+      },
+      {
+        "id": "MCU_8_competitor_004",
+        "name": "Texas Instruments（TXN）",
+        "business_line": "MCU_8",
+        "relationship": "competitor",
+        "details": "MSP430、MSPM0 等低功耗 MCU 競爭。"
+      },
+      {
+        "id": "MCU_8_competitor_005",
+        "name": "Infineon Technologies",
+        "business_line": "MCU_8",
+        "relationship": "competitor",
+        "details": "PSoC、AURIX 等 MCU 與安全控制競爭。"
+      },
+      {
+        "id": "MCU_32_competitor_001",
+        "name": "STMicroelectronics（STM）",
+        "business_line": "MCU_32",
+        "relationship": "competitor",
+        "details": "STM32 MCU 與 STM32MP MPU 嵌入式平台競爭。"
+      },
+      {
+        "id": "MCU_32_competitor_002",
+        "name": "NXP Semiconductors（NXPI）",
+        "business_line": "MCU_32",
+        "relationship": "competitor",
+        "details": "i.MX RT／i.MX 系列與 MCU、MPU 應用競爭。"
+      },
+      {
+        "id": "MCU_32_competitor_003",
+        "name": "Renesas Electronics",
+        "business_line": "MCU_32",
+        "relationship": "competitor",
+        "details": "RA／RZ MCU、MPU 與工業邊緣運算競爭。"
+      },
+      {
+        "id": "DSP_competitor_001",
+        "name": "Texas Instruments（TXN）",
+        "business_line": "DSP",
+        "relationship": "competitor",
+        "details": "C2000 數位電源與馬達控制 DSP／MCU 競爭。"
+      },
+      {
+        "id": "DSP_competitor_002",
+        "name": "Infineon Technologies",
+        "business_line": "DSP",
+        "relationship": "competitor",
+        "details": "XMC、PSoC 與功率控制晶片競爭。"
+      },
+      {
+        "id": "FPGA_competitor_001",
+        "name": "AMD Xilinx（AMD）",
+        "business_line": "FPGA",
+        "relationship": "competitor",
+        "details": "Artix／Zynq／Versal FPGA 與可程式化 SoC 競爭。"
+      },
+      {
+        "id": "FPGA_competitor_002",
+        "name": "Altera（Intel FPGA）",
+        "business_line": "FPGA",
+        "relationship": "competitor",
+        "details": "Cyclone／Agilex FPGA 與 SoC FPGA 競爭。"
+      },
+      {
+        "id": "FPGA_competitor_003",
+        "name": "Lattice Semiconductor（LSCC）",
+        "business_line": "FPGA",
+        "relationship": "competitor",
+        "details": "低功耗 FPGA、邊緣視覺與工業控制競爭。"
+      },
+      {
+        "id": "SPACE_competitor_001",
+        "name": "BAE Systems",
+        "business_line": "SPACE",
+        "relationship": "competitor",
+        "details": "航太級抗輻射處理器與太空運算方案競爭。"
+      },
+      {
+        "id": "SPACE_competitor_002",
+        "name": "Teledyne e2v",
+        "business_line": "SPACE",
+        "relationship": "competitor",
+        "details": "航太抗輻射微處理器與高可靠元件競爭。"
+      },
+      {
+        "id": "POWER_competitor_001",
+        "name": "Texas Instruments（TXN）",
+        "business_line": "POWER",
+        "relationship": "competitor",
+        "details": "電源管理、類比與隔離驅動 IC 競爭。"
+      },
+      {
+        "id": "POWER_competitor_002",
+        "name": "onsemi（ON）",
+        "business_line": "POWER",
+        "relationship": "competitor",
+        "details": "SiC 功率元件及車用電源半導體競爭。"
+      },
+      {
+        "id": "POWER_competitor_003",
+        "name": "Infineon Technologies",
+        "business_line": "POWER",
+        "relationship": "competitor",
+        "details": "CoolSiC、功率模組與驅動器競爭。"
+      },
+      {
+        "id": "POWER_competitor_004",
+        "name": "Wolfspeed（WOLF）",
+        "business_line": "POWER",
+        "relationship": "competitor",
+        "details": "SiC 功率半導體與模組市場競爭。"
+      },
+      {
+        "id": "TIMING_competitor_001",
+        "name": "SiTime（SITM）",
+        "business_line": "TIMING",
+        "relationship": "competitor",
+        "details": "精密振盪器與時序元件競爭。"
+      },
+      {
+        "id": "TIMING_competitor_002",
+        "name": "Renesas Electronics",
+        "business_line": "TIMING",
+        "relationship": "competitor",
+        "details": "時脈產生器、同步與資料中心時序 IC 競爭。"
+      },
+      {
+        "id": "TIMING_competitor_003",
+        "name": "Texas Instruments（TXN）",
+        "business_line": "TIMING",
+        "relationship": "competitor",
+        "details": "時脈同步與精密時序 IC 競爭。"
+      },
+      {
+        "id": "ETH_competitor_001",
+        "name": "NXP Semiconductors（NXPI）",
+        "business_line": "ETH",
+        "relationship": "competitor",
+        "details": "車載乙太網路 PHY、交換器與網關競爭。"
+      },
+      {
+        "id": "ETH_competitor_002",
+        "name": "Marvell Technology（MRVL）",
+        "business_line": "ETH",
+        "relationship": "competitor",
+        "details": "乙太網路 PHY、交換器與高速連接競爭。"
+      },
+      {
+        "id": "ETH_competitor_003",
+        "name": "Broadcom（AVGO）",
+        "business_line": "ETH",
+        "relationship": "competitor",
+        "details": "乙太網路交換器、PHY 與網路介面競爭。"
+      },
+      {
+        "id": "ETH_competitor_004",
+        "name": "Realtek 瑞昱（2379）",
+        "business_line": "ETH",
+        "relationship": "competitor",
+        "details": "車用及工業乙太網路 PHY 與交換器競爭。"
+      },
+      {
+        "id": "DATACENTER_competitor_001",
+        "name": "Broadcom（AVGO）",
+        "business_line": "DATACENTER",
+        "relationship": "competitor",
+        "details": "PCIe switch、retimer 與資料中心互連競爭。"
+      },
+      {
+        "id": "DATACENTER_competitor_002",
+        "name": "Astera Labs（ALAB）",
+        "business_line": "DATACENTER",
+        "relationship": "competitor",
+        "details": "PCIe／CXL retimer 與資料中心連接競爭。"
+      },
+      {
+        "id": "DATACENTER_competitor_003",
+        "name": "Marvell Technology（MRVL）",
+        "business_line": "DATACENTER",
+        "relationship": "competitor",
+        "details": "儲存控制器與高速資料中心互連競爭。"
+      },
+      {
+        "id": "SECURITY_competitor_001",
+        "name": "NXP Semiconductors（NXPI）",
+        "business_line": "SECURITY",
+        "relationship": "competitor",
+        "details": "安全元件、硬體身分認證與信任根晶片競爭。"
+      },
+      {
+        "id": "SECURITY_competitor_002",
+        "name": "Infineon Technologies",
+        "business_line": "SECURITY",
+        "relationship": "competitor",
+        "details": "OPTIGA／TPM 安全晶片競爭。"
+      },
+      {
+        "id": "SECURITY_competitor_003",
+        "name": "STMicroelectronics（STM）",
+        "business_line": "SECURITY",
+        "relationship": "competitor",
+        "details": "STSAFE 安全元件與認證 IC 競爭。"
+      },
+      {
+        "id": "TOUCH_competitor_001",
+        "name": "Synaptics（SYNA）",
+        "business_line": "TOUCH",
+        "relationship": "competitor",
+        "details": "觸控控制器與車載人機介面競爭。"
+      },
+      {
+        "id": "TOUCH_competitor_002",
+        "name": "Goodix 匯頂科技",
+        "business_line": "TOUCH",
+        "relationship": "competitor",
+        "details": "觸控感測與顯示控制 IC 競爭。"
+      },
+      {
+        "id": "SUPERFLASH_competitor_001",
+        "name": "eMemory 力旺（3529）",
+        "business_line": "SUPERFLASH",
+        "relationship": "competitor",
+        "details": "嵌入式 NVM IP 授權市場競爭。"
+      },
+      {
+        "id": "SUPERFLASH_competitor_002",
+        "name": "Synopsys（SNPS）",
+        "business_line": "SUPERFLASH",
+        "relationship": "competitor",
+        "details": "嵌入式記憶體 IP 與設計授權生態競爭。"
+      },
+      {
+        "id": "MCU_32_beneficiary_001",
+        "name": "台積電（2330）",
+        "business_line": "MCU_32",
+        "relationship": "beneficiary",
+        "details": "已公布 JASM 40nm 代工合作，屬具名製造供應鏈受惠關係。"
+      },
+      {
+        "id": "SUPERFLASH_beneficiary_001",
+        "name": "聯電（2303）",
+        "business_line": "SUPERFLASH",
+        "relationship": "beneficiary",
+        "details": "與 SST 合作車規 28nm SuperFlash 製程，屬具名技術平台受惠關係。"
+      },
+      {
+        "id": "POWER_beneficiary_001",
+        "name": "台達電（2308）",
+        "business_line": "POWER",
+        "relationship": "beneficiary",
+        "details": "已公布 SiC 功率管理合作，屬直接技術合作關係。"
+      },
+      {
+        "id": "ETH_beneficiary_001",
+        "name": "瑞昱（2379）",
+        "business_line": "ETH",
+        "relationship": "beneficiary",
+        "details": "車用乙太網路市場需求成長的台灣同業，非已確認 Microchip 客戶。"
+      },
+      {
+        "id": "FPGA_beneficiary_001",
+        "name": "晶心科（6533）",
+        "business_line": "FPGA",
+        "relationship": "beneficiary",
+        "details": "RISC-V FPGA／SoC 生態擴大有利相關 IP 市場；未確認直接授權交易。"
+      },
+      {
+        "id": "SUPERFLASH_beneficiary_002",
+        "name": "力旺（3529）",
+        "business_line": "SUPERFLASH",
+        "relationship": "beneficiary",
+        "details": "嵌入式 NVM IP 需求成長的台灣競爭同業，非 Microchip 供應商。"
+      },
+      {
+        "id": "DATACENTER_beneficiary_001",
+        "name": "祥碩（5269）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "PCIe／高速傳輸需求成長的台灣同業，非已確認 Microchip 客戶。"
+      },
+      {
+        "id": "TIMING_beneficiary_001",
+        "name": "晶技（3042）",
+        "business_line": "TIMING",
+        "relationship": "beneficiary",
+        "details": "精密時序需求成長的台灣同業，非 Microchip 直接供應商。"
+      }
+    ]
   }
 }

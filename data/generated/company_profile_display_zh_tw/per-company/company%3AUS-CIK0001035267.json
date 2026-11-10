@@ -190,5 +190,161 @@
       "醫院生產力"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.v1",
+    "as_of": "2026-11-10",
+    "company": "Intuitive Surgical, Inc.",
+    "symbol": "ISRG",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "ISRG Intuitive Surgical 產業鏈｜da Vinci 5、Ion、手術耗材與醫療機器人",
+      "description": "Intuitive Surgical 產業鏈涵蓋 da Vinci 5、Xi、SP、Ion 支氣管鏡、器械耗材、影像、數位服務與通路，區分合作夥伴、競爭者及台灣產業受惠股。"
+    },
+    "business_lines": [
+      {
+        "id": "DV5",
+        "name": "da Vinci 5 多孔手術機器人"
+      },
+      {
+        "id": "DV_XI",
+        "name": "da Vinci Xi／X 手術平台"
+      },
+      {
+        "id": "DV_SP",
+        "name": "da Vinci SP 單孔手術"
+      },
+      {
+        "id": "ION",
+      "name": "Ion 機器人輔助支氣管鏡"
+      },
+      {
+        "id": "INSTRUMENTS",
+        "name": "EndoWrist、SureForm 器械與耗材"
+      },
+      {
+        "id": "IMAGING",
+        "name": "Firefly 3D 視覺與影像"
+      },
+      {
+        "id": "DIGITAL",
+        "name": "My Intuitive 數位服務與訓練"
+      },
+      {
+        "id": "SERVICE",
+        "name": "設備維護、升級與國際通路"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "SERVICE_partner_001",
+        "business_line": "SERVICE",
+        "relationship": "partner",
+        "name": "ab medica",
+        "details": "原義大利 da Vinci 與 Ion 經銷業務，2026 年已由 Intuitive 收購整合。",
+        "source_url": "https://www.intuitive.com/en-gb/about-us/newsroom/intuitive-announces-the-expansion-of-direct-operations-in-europe"
+      },
+      {
+        "id": "SERVICE_partner_002",
+        "business_line": "SERVICE",
+        "relationship": "partner",
+        "name": "Abex",
+        "details": "原西班牙及葡萄牙相關經銷業務，2026 年併入 Intuitive 歐洲直營體系。",
+        "source_url": "https://www.intuitive.com/en-gb/about-us/newsroom/intuitive-announces-the-expansion-of-direct-operations-in-europe"
+      },
+      {
+        "id": "SERVICE_partner_003",
+        "business_line": "SERVICE",
+        "relationship": "partner",
+        "name": "Excelencia Robótica",
+        "details": "原南歐經銷業務，2026 年由 Intuitive 收購整合。",
+        "source_url": "https://www.intuitive.com/en-gb/about-us/newsroom/intuitive-announces-the-expansion-of-direct-operations-in-europe"
+      },
+      {
+        "id": "DIGITAL_partner_001",
+        "business_line": "DIGITAL",
+        "relationship": "partner",
+        "name": "Royal College of Surgeons of England",
+        "details": "合作推動機器人手術訓練及外科教育。",
+        "source_url": "https://www.intuitive.com/en-gb/about-us/newsroom"
+      },
+      {
+        "id": "DV5_competitor_001",
+        "business_line": "DV5",
+        "relationship": "competitor",
+        "name": "Medtronic（MDT）",
+        "details": "Hugo 機器人輔助手術系統與 da Vinci 競爭。"
+      },
+      {
+        "id": "DV5_competitor_002",
+        "business_line": "DV5",
+        "relationship": "competitor",
+        "name": "Johnson & Johnson（JNJ）",
+        "details": "Ottava 手術機器人研發平台的潛在競爭者。"
+      },
+      {
+        "id": "DV5_competitor_003",
+        "business_line": "DV5",
+        "relationship": "competitor",
+        "name": "CMR Surgical",
+        "details": "Versius 手術機器人平台競爭。"
+      },
+      {
+        "id": "DV5_competitor_004",
+        "business_line": "DV5",
+        "relationship": "competitor",
+        "name": "Stryker（SYK）",
+        "details": "Mako 骨科機器人手術系統屬不同專科的手術機器人競爭領域。"
+      },
+      {
+        "id": "ION_competitor_001",
+        "business_line": "ION",
+        "relationship": "competitor",
+        "name": "Johnson & Johnson（JNJ）",
+        "details": "MONARCH 機器人輔助支氣管鏡平台競爭。"
+      },
+      {
+        "id": "DV5_beneficiary_001",
+        "business_line": "DV5",
+        "relationship": "beneficiary",
+        "name": "台達電（2308）",
+        "details": "醫療機器人與精密自動化設備電源、運動控制需求的台灣產業代表。"
+      },
+      {
+        "id": "DV5_beneficiary_002",
+        "business_line": "DV5",
+        "relationship": "beneficiary",
+        "name": "上銀（2049）",
+        "details": "精密傳動及機器人運動控制零組件需求的台灣產業代表。"
+      },
+      {
+        "id": "DV5_beneficiary_003",
+        "business_line": "DV5",
+        "relationship": "beneficiary",
+        "name": "亞德客-KY（1590）",
+        "details": "自動化設備精密氣動元件需求的台灣產業代表。"
+      },
+      {
+        "id": "IMAGING_beneficiary_001",
+        "business_line": "IMAGING",
+        "relationship": "beneficiary",
+        "name": "大立光（3008）",
+        "details": "高階光學鏡頭及精密影像模組需求的台灣產業代表。"
+      },
+      {
+        "id": "INSTRUMENTS_beneficiary_001",
+        "business_line": "INSTRUMENTS",
+        "relationship": "beneficiary",
+        "name": "精華（1565）",
+        "details": "精密醫療器材加工產業需求的台灣代表。"
+      }
+    ]
   }
 }

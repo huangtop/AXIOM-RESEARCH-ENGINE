@@ -181,5 +181,426 @@
       "航電複雜度"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "company": "ATRO",
+    "as_of": "2026-11-07",
+    "status": "PARTIAL",
+    "classification_rules": {
+      "customer": "採購、設計導入、供應合約或官方具名客戶",
+      "partner": "非買賣技術合作",
+      "taiwan_direct_supplier": "具名向 Astronics 直接供應產品或服務",
+      "taiwan_beneficiary": "同產業景氣及航太資本支出受惠"
+    },
+    "nodes": [
+      {
+        "id": "boeing",
+        "name": "Boeing",
+        "detail": "2025 年營收占比 10.4%；2026 年取得 737 MAX 油箱檢修蓋供應案。",
+        "source_ids": [
+          "sec10k",
+          "boeing"
+        ],
+        "ticker": "BA",
+        "relationship": "customer"
+      },
+      {
+        "id": "usarmy",
+        "name": "U.S. Army",
+        "detail": "2026-05-27 下達 TS-4549/T 無線電測試設備 4,470 萬美元量產訂單。",
+        "source_ids": [
+          "army"
+        ],
+        "relationship": "customer"
+      },
+      {
+        "id": "airbus",
+        "name": "Airbus",
+        "detail": "Astronics 官方列為全球客戶。",
+        "source_ids": [
+          "clients"
+        ],
+        "relationship": "customer"
+      },
+      {
+        "id": "americanairlines",
+        "name": "American Airlines",
+        "detail": "Astronics 官方列為全球客戶。",
+        "source_ids": [
+          "clients"
+        ],
+        "relationship": "customer"
+      },
+      {
+        "id": "delta",
+        "name": "Delta Air Lines",
+        "detail": "Astronics 官方列為全球客戶。",
+        "source_ids": [
+          "clients"
+        ],
+        "relationship": "customer"
+      },
+      {
+        "id": "united",
+        "name": "United Airlines",
+        "detail": "Astronics 官方列為全球客戶。",
+        "source_ids": [
+          "clients"
+        ],
+        "relationship": "customer"
+      },
+      {
+        "id": "collins",
+        "name": "Collins Aerospace",
+        "detail": "Astronics 官方列為全球客戶。",
+        "source_ids": [
+          "clients"
+        ],
+        "relationship": "customer"
+      },
+      {
+        "id": "embraer",
+        "name": "Embraer",
+        "detail": "Astronics 官方列為全球客戶。",
+        "source_ids": [
+          "clients"
+        ],
+        "relationship": "customer"
+      },
+      {
+        "id": "gulfstream",
+        "name": "Gulfstream",
+        "detail": "Astronics 官方列為全球客戶。",
+        "source_ids": [
+          "clients"
+        ],
+        "relationship": "customer"
+      },
+      {
+        "id": "lockheed",
+        "name": "Lockheed Martin",
+        "detail": "Astronics 官方列為全球客戶。",
+        "source_ids": [
+          "clients"
+        ],
+        "relationship": "customer"
+      },
+      {
+        "id": "l3harris",
+        "name": "L3Harris",
+        "detail": "Astronics 官方列為全球客戶。",
+        "source_ids": [
+          "clients"
+        ],
+        "relationship": "customer"
+      },
+      {
+        "id": "safran",
+        "name": "Safran",
+        "detail": "Astronics 官方列為全球客戶。",
+        "source_ids": [
+          "clients"
+        ],
+        "relationship": "customer"
+      },
+      {
+        "id": "raytheon",
+        "name": "Raytheon Technologies",
+        "detail": "Astronics 官方列為全球客戶。",
+        "source_ids": [
+          "clients"
+        ],
+        "relationship": "customer"
+      },
+      {
+        "id": "bell",
+        "name": "Bell Helicopter",
+        "detail": "Astronics 官方列為全球客戶。",
+        "source_ids": [
+          "clients"
+        ],
+        "relationship": "customer"
+      },
+      {
+        "id": "panasonic",
+        "name": "Panasonic Avionics",
+        "detail": "Astronics 官方列為全球客戶。",
+        "source_ids": [
+          "clients"
+        ],
+        "relationship": "customer"
+      },
+      {
+        "id": "aida",
+        "name": "漢翔航空工業",
+        "detail": "航太機體結構、零組件及發動機維修；全球民航增產循環。",
+        "source_ids": [
+          "twindustry"
+        ],
+        "ticker": "2634.TW",
+        "relationship_detail": "taiwan_beneficiary",
+        "relationship": "beneficiary"
+      },
+      {
+        "id": "asi",
+        "name": "亞航",
+        "detail": "航空器維修及航太服務；航空機隊維修需求。",
+        "source_ids": [
+          "twindustry"
+        ],
+        "ticker": "2630.TW",
+        "relationship_detail": "taiwan_beneficiary",
+        "relationship": "beneficiary"
+      },
+      {
+        "id": "fgt",
+        "name": "晟田",
+        "detail": "精密航太機械加工與零組件；航太供應鏈景氣。",
+        "source_ids": [
+          "twindustry"
+        ],
+        "ticker": "4541.TW",
+        "relationship_detail": "taiwan_beneficiary",
+        "relationship": "beneficiary"
+      },
+      {
+        "id": "boltun",
+        "name": "豐達科",
+        "detail": "航太扣件與精密零組件；航太產能擴張。",
+        "source_ids": [
+          "twindustry"
+        ],
+        "ticker": "3004.TW",
+        "relationship_detail": "taiwan_beneficiary",
+        "relationship": "beneficiary"
+      },
+      {
+        "id": "jpp",
+        "name": "駐龍",
+        "detail": "航空結構件與精密加工；商用航空器生產。",
+        "source_ids": [
+          "twindustry"
+        ],
+        "ticker": "4572.TW",
+        "relationship_detail": "taiwan_beneficiary",
+        "relationship": "beneficiary"
+      },
+      {
+        "id": "ht",
+        "name": "寶一",
+        "detail": "航太發動機零組件；民航引擎維修與製造需求。",
+        "source_ids": [
+          "twindustry"
+        ],
+        "ticker": "8222.TW",
+        "relationship_detail": "taiwan_beneficiary",
+        "relationship": "beneficiary"
+      }
+    ],
+    "taiwan_direct_supplier": [],
+    "recent_events": [
+      {
+        "date": "2026-08-11",
+        "event": "第二季營收 2.60 億美元、年增 27%；新訂單 3.062 億美元；在手訂單 7.806 億美元。",
+        "source_ids": [
+          "q2ir"
+        ]
+      },
+      {
+        "date": "2026-08-11",
+        "event": "第二季財報確認美國陸軍 TS-4549/T 4,470 萬美元量產訂單，測試系統部門訂單 6,310 萬美元。",
+        "source_ids": [
+          "q2ir",
+          "army"
+        ]
+      },
+      {
+        "date": "2026-08-31",
+        "event": "宣布參加 Jefferies Industrials Conference。",
+        "source_ids": [
+          "press"
+        ]
+      },
+      {
+        "date": "2026-10-28",
+        "event": "宣布第三季財報電話會議將於 11 月 10 日舉行。",
+        "source_ids": [
+          "ir"
+        ]
+      },
+      {
+        "date": "2026-03-12",
+        "event": "取得 Boeing 737 MAX 油箱檢修蓋供應案。",
+        "source_ids": [
+          "boeing"
+        ]
+      },
+      {
+        "date": "2025-10-13",
+        "event": "收購 Bühler Motor Aviation，擴充客機座椅運動控制業務。",
+        "source_ids": [
+          "q2ir"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "sec10k",
+        "grade": "A",
+        "date": "2026-02-26",
+        "title": "Astronics 2025 10-K",
+        "url": "https://investors.astronics.com/sec-filings/all-sec-filings/content/0000008063-26-000021/atro-20251231.htm"
+      },
+      {
+        "id": "sec10q",
+        "grade": "A",
+        "date": "2026-08-11",
+        "title": "Astronics 2026 Q2 10-Q",
+        "url": "https://investors.astronics.com/sec-filings/all-sec-filings/xbrl_doc_only/4432"
+      },
+      {
+        "id": "q2ir",
+        "grade": "A",
+        "date": "2026-08-11",
+        "title": "Astronics Q2 2026 Earnings Release",
+        "url": "https://investors.astronics.com/sec-filings/all-sec-filings/content/0000008063-26-000037/ex99120260704-pr.htm"
+      },
+      {
+        "id": "clients",
+        "grade": "A",
+        "date": null,
+        "title": "Astronics official global customers",
+        "url": "https://www.astronics.com/about/corporate-overview"
+      },
+      {
+        "id": "boeing",
+        "grade": "A",
+        "date": "2026-03-12",
+        "title": "Boeing 737 MAX fuel tank access doors",
+        "url": "https://investors.astronics.com/news-events/press-releases/detail/452/astronics-selected-to-supply-fuel-tank-access-doors-for"
+      },
+      {
+        "id": "army",
+        "grade": "A",
+        "date": "2026-05-27",
+        "title": "US Army TS-4549/T production order",
+        "url": "https://investors.astronics.com/news-events/press-releases/detail/457/astronics-corporation-receives-production-order-for"
+      },
+      {
+        "id": "ir",
+        "grade": "A",
+        "date": "2026-10-28",
+        "title": "Astronics IR latest earnings calendar",
+        "url": "https://investors.astronics.com/news-events"
+      },
+      {
+        "id": "press",
+        "grade": "A",
+        "date": null,
+        "title": "Astronics official press releases",
+        "url": "https://investors.astronics.com/news-events/press-releases"
+      },
+      {
+        "id": "twindustry",
+        "grade": "C",
+        "date": null,
+        "title": "Taiwan aerospace association company directory",
+        "url": "https://www.taia.org.tw/en/member.asp"
+      },
+      {
+        "id": "moneydj",
+        "grade": "C",
+        "date": null,
+        "title": "MoneyDJ Astronics overview",
+        "url": "https://www.moneydj.com/KMDJ/wiki/wikiviewer.aspx?keyid=012272d8-d1c8-4d33-a367-fc1cc4533226"
+      }
+    ],
+    "reflections": [
+      {
+        "round": 1,
+        "topic": "01 SEC 10-K",
+        "finding": "確認兩大業務：航太產品、測試系統。"
+      },
+      {
+        "round": 2,
+        "topic": "02 SEC 客戶集中度",
+        "finding": "Boeing 2025 年占營收 10.4%。"
+      },
+      {
+        "round": 3,
+        "topic": "03 SEC 10-Q",
+        "finding": "Boeing 2026 第二季占營收 12.0%。"
+      },
+      {
+        "round": 4,
+        "topic": "04 IR 財報",
+        "finding": "第二季營收 2.60 億美元。"
+      },
+      {
+        "round": 5,
+        "topic": "05 IR 訂單",
+        "finding": "第二季接單 3.062 億美元。"
+      },
+      {
+        "round": 6,
+        "topic": "06 IR 在手訂單",
+        "finding": "第二季末 backlog 7.806 億美元。"
+      },
+      {
+        "round": 7,
+        "topic": "07 Boeing Design Win",
+        "finding": "737 MAX 油箱檢修蓋供應案列為客戶。"
+      },
+      {
+        "round": 8,
+        "topic": "08 美國陸軍訂單",
+        "finding": "TS-4549/T 量產訂單 4,470 萬美元。"
+      },
+      {
+        "round": 9,
+        "topic": "09 全球客戶名錄",
+        "finding": "按官方全球客戶頁建立具名客戶節點。"
+      },
+      {
+        "round": 10,
+        "topic": "10 台灣直接供應",
+        "finding": "台灣直接供應商欄維持空陣列。"
+      },
+      {
+        "round": 11,
+        "topic": "11 台灣受惠股",
+        "finding": "以台灣航太製造、精密加工、維修同產業企業建立受惠名單。"
+      },
+      {
+        "round": 12,
+        "topic": "12 收購事件",
+        "finding": "2025 年 Bühler Motor Aviation 收購列歷史事件。"
+      },
+      {
+        "round": 13,
+        "topic": "13 2026 年 8–11 月新聞",
+        "finding": "納入 8 月財報、8 月產業會議、10 月財報公告。"
+      },
+      {
+        "round": 14,
+        "topic": "14 最新財報時間",
+        "finding": "IR 排定 2026-11-10 公布第三季財報。"
+      },
+      {
+        "round": 15,
+        "topic": "15 證據分級",
+        "finding": "SEC 與官方公告為 A 級；台灣產業名錄為 C 級。"
+      },
+      {
+        "round": 16,
+        "topic": "16 節點關係",
+        "finding": "客戶以採購、官方客戶名錄及供應案建立。"
+      },
+      {
+        "round": 17,
+        "topic": "17 欄位完整性",
+        "finding": "原始 11 欄保留，industry_chain 為第 12 欄。"
+      }
+    ]
   }
 }

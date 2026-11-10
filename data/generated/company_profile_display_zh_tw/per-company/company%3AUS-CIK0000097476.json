@@ -199,5 +199,458 @@
       "嵌入式智慧"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "as_of": "2026-11-10",
+    "company": "Texas Instruments Incorporated",
+    "symbol": "TXN",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "TXN 德州儀器產業鏈｜類比晶片、嵌入式處理與 300mm 製造",
+      "description": "解析 TI 類比、電源管理、車用與工業晶片、內製晶圓及封測、經銷通路與台灣間接受惠股。",
+      "keywords": [
+        "TXN",
+        "Texas Instruments",
+        "德州儀器",
+        "類比 IC",
+        "電源管理",
+        "300mm 晶圓",
+        "產業鏈"
+      ]
+    },
+    "business_lines": [
+      {
+        "id": "ANALOG",
+        "name": "類比與訊號鏈晶片"
+      },
+      {
+        "id": "POWER",
+        "name": "電源管理與電源轉換"
+      },
+      {
+        "id": "EMBEDDED",
+        "name": "嵌入式處理器與 MCU"
+      },
+      {
+        "id": "AUTO",
+        "name": "車用類比與嵌入式晶片"
+      },
+      {
+        "id": "INDUSTRIAL",
+        "name": "工業自動化與能源"
+      },
+      {
+        "id": "DATACENTER",
+        "name": "資料中心電源與訊號"
+      },
+      {
+        "id": "MANUFACTURING",
+        "name": "300mm 自有晶圓製造及封測"
+      },
+      {
+        "id": "CHANNEL",
+        "name": "半導體經銷通路"
+      }
+    ],
+    "relationship_categories": [
+      {
+        "id": "supplier",
+        "name": "供應商"
+      },
+      {
+        "id": "customer",
+        "name": "客戶"
+      },
+      {
+        "id": "partner",
+        "name": "合作夥伴／通路"
+      },
+      {
+        "id": "competitor",
+        "name": "競爭者"
+      },
+      {
+        "id": "beneficiary",
+        "name": "間接受惠"
+      },
+      {
+        "id": "internal_operation",
+        "name": "自有營運設施"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "CHANNEL_partner_001",
+        "name": "Arrow Electronics（ARW）",
+        "business_line": "CHANNEL",
+        "relationship": "partner",
+        "details": "TI 半導體授權經銷通路；實際授權狀態以 TI 官方通路頁為準",
+        "evidence_level": "channel_context",
+        "source": "TI authorized distributors"
+      },
+      {
+        "id": "CHANNEL_partner_002",
+        "name": "Avnet（AVT）",
+        "business_line": "CHANNEL",
+        "relationship": "partner",
+        "details": "全球電子元件經銷通路；個別產品線及地區以官方名單為準",
+        "evidence_level": "channel_context",
+        "source": "TI authorized distributors"
+      },
+      {
+        "id": "CHANNEL_partner_003",
+        "name": "DigiKey",
+        "business_line": "CHANNEL",
+        "relationship": "partner",
+        "details": "TI 元件零售及小批量電子零件通路",
+        "evidence_level": "channel_context",
+        "source": "TI authorized distributors"
+      },
+      {
+        "id": "CHANNEL_partner_004",
+        "name": "Mouser Electronics",
+        "business_line": "CHANNEL",
+        "relationship": "partner",
+        "details": "TI 元件分銷及設計導入通路",
+        "evidence_level": "channel_context",
+        "source": "TI authorized distributors"
+      },
+      {
+        "id": "ANALOG_competitor_001",
+        "name": "Analog Devices（ADI）",
+        "business_line": "ANALOG",
+        "relationship": "competitor",
+        "details": "類比與訊號鏈 IC 主要競爭者",
+        "evidence_level": "industry_context",
+        "source": "2025 10-K"
+      },
+      {
+        "id": "ANALOG_competitor_002",
+        "name": "onsemi（ON）",
+        "business_line": "ANALOG",
+        "relationship": "competitor",
+        "details": "類比與感測半導體部分競爭",
+        "evidence_level": "industry_context",
+        "source": "2025 10-K"
+      },
+      {
+        "id": "POWER_competitor_001",
+        "name": "Monolithic Power Systems（MPWR）",
+        "business_line": "POWER",
+        "relationship": "competitor",
+        "details": "電源管理晶片競爭者",
+        "evidence_level": "industry_context",
+        "source": "2025 10-K"
+      },
+      {
+        "id": "POWER_competitor_002",
+        "name": "Infineon Technologies",
+        "business_line": "POWER",
+        "relationship": "competitor",
+        "details": "功率及電源管理產品競爭者",
+        "evidence_level": "industry_context",
+        "source": "2025 10-K"
+      },
+      {
+        "id": "EMBEDDED_competitor_001",
+        "name": "Microchip Technology（MCHP）",
+        "business_line": "EMBEDDED",
+        "relationship": "competitor",
+        "details": "MCU 與嵌入式控制競爭者",
+        "evidence_level": "industry_context",
+        "source": "2025 10-K"
+      },
+      {
+        "id": "EMBEDDED_competitor_002",
+        "name": "NXP Semiconductors（NXPI）",
+        "business_line": "EMBEDDED",
+        "relationship": "competitor",
+        "details": "嵌入式處理及車用 MCU 競爭者",
+        "evidence_level": "industry_context",
+        "source": "2025 10-K"
+      },
+      {
+        "id": "AUTO_competitor_001",
+        "name": "STMicroelectronics（STM）",
+        "business_line": "AUTO",
+        "relationship": "competitor",
+        "details": "車用 MCU 與類比半導體競爭者",
+        "evidence_level": "industry_context",
+        "source": "2025 10-K"
+      },
+      {
+        "id": "INDUSTRIAL_competitor_001",
+        "name": "Renesas Electronics",
+        "business_line": "INDUSTRIAL",
+        "relationship": "competitor",
+        "details": "工控 MCU 及類比晶片競爭者",
+        "evidence_level": "industry_context",
+        "source": "2025 10-K"
+      },
+      {
+        "id": "MANUFACTURING_internal_operation_001",
+        "name": "TI Sherman SM1（美國德州）",
+        "business_line": "MANUFACTURING",
+        "relationship": "internal_operation",
+        "details": "TI 自有 300mm 晶圓廠，2025 年 12 月開始生產",
+        "evidence_level": "company_disclosed",
+        "source": "2025 10-K / TI manufacturing news"
+      },
+      {
+        "id": "MANUFACTURING_internal_operation_002",
+        "name": "TI Lehi（美國猶他州）",
+        "business_line": "MANUFACTURING",
+        "relationship": "internal_operation",
+        "details": "TI 自有 300mm 晶圓製造基地",
+        "evidence_level": "company_disclosed",
+        "source": "2025 10-K / TI manufacturing news"
+      },
+      {
+        "id": "MANUFACTURING_internal_operation_003",
+        "name": "TI Richardson（美國德州）",
+        "business_line": "MANUFACTURING",
+        "relationship": "internal_operation",
+        "details": "TI 自有 300mm 晶圓製造基地",
+        "evidence_level": "company_disclosed",
+        "source": "2025 10-K / TI manufacturing news"
+      },
+      {
+        "id": "MANUFACTURING_internal_operation_004",
+        "name": "TI Melaka TIEM2（馬來西亞）",
+        "business_line": "MANUFACTURING",
+        "relationship": "internal_operation",
+        "details": "TI 自有封裝與測試廠，2025 年啟用",
+        "evidence_level": "company_disclosed",
+        "source": "2025 10-K / TI manufacturing news"
+      },
+      {
+        "id": "MANUFACTURING_internal_operation_005",
+        "name": "TI 台灣營運據點",
+        "business_line": "MANUFACTURING",
+        "relationship": "internal_operation",
+        "details": "2025 10-K 列有台灣設施，不等同台灣代工供應商",
+        "evidence_level": "company_disclosed",
+        "source": "2025 10-K / TI manufacturing news"
+      },
+      {
+        "id": "MANUFACTURING_beneficiary_001",
+        "name": "日月光投控（3711）",
+        "business_line": "MANUFACTURING",
+        "relationship": "beneficiary",
+        "details": "封測產業需求潛在受惠，但 TI 擴大自有封測比重可能限制外包機會；未確認直接供應",
+        "evidence_level": "indirect_not_confirmed",
+        "source": "industry exposure inference"
+      },
+      {
+        "id": "MANUFACTURING_beneficiary_002",
+        "name": "京元電子（2449）",
+        "business_line": "MANUFACTURING",
+        "relationship": "beneficiary",
+        "details": "半導體測試產業景氣間接受惠；未確認 TI 直接訂單",
+        "evidence_level": "indirect_not_confirmed",
+        "source": "industry exposure inference"
+      },
+      {
+        "id": "MANUFACTURING_beneficiary_003",
+        "name": "家登（3680）",
+        "business_line": "MANUFACTURING",
+        "relationship": "beneficiary",
+        "details": "晶圓製造相關材料與載具產業間接受惠；非 TI 直接供應證據",
+        "evidence_level": "indirect_not_confirmed",
+        "source": "industry exposure inference"
+      },
+      {
+        "id": "MANUFACTURING_beneficiary_004",
+        "name": "中砂（1560）",
+        "business_line": "MANUFACTURING",
+        "relationship": "beneficiary",
+        "details": "半導體晶圓研磨及耗材產業間接受惠；未確認 TI 直接供應",
+        "evidence_level": "indirect_not_confirmed",
+        "source": "industry exposure inference"
+      },
+      {
+        "id": "AUTO_beneficiary_001",
+        "name": "致茂（2360）",
+        "business_line": "AUTO",
+        "relationship": "beneficiary",
+        "details": "車用電子測試與電力電子產業間接受惠；未確認 TI 直接採購",
+        "evidence_level": "indirect_not_confirmed",
+        "source": "industry exposure inference"
+      },
+      {
+        "id": "CHANNEL_beneficiary_001",
+        "name": "大聯大（3702）",
+        "business_line": "CHANNEL",
+        "relationship": "beneficiary",
+        "details": "亞洲電子元件分銷景氣受惠；未確認 TI 授權或直接交易",
+        "evidence_level": "indirect_not_confirmed",
+        "source": "industry exposure inference"
+      },
+      {
+        "id": "CHANNEL_beneficiary_002",
+        "name": "文曄（3036）",
+        "business_line": "CHANNEL",
+        "relationship": "beneficiary",
+        "details": "半導體經銷需求受惠；未確認 TI 直接授權關係",
+        "evidence_level": "indirect_not_confirmed",
+        "source": "industry exposure inference"
+      },
+      {
+        "id": "DATACENTER_beneficiary_001",
+        "name": "光寶科（2301）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "資料中心電源設備需求相關，未確認與 TI 的直接採購關係",
+        "evidence_level": "indirect_not_confirmed",
+        "source": "industry exposure inference"
+      },
+      {
+        "id": "INDUSTRIAL_customer_verified_001",
+        "name": "Emerson（EMR）",
+        "business_line": "INDUSTRIAL",
+        "relationship": "customer",
+        "details": "TI 官方客戶案例：Rosemount 雷達液位變送器採用 TI mmWave 雷達感測器。",
+        "evidence_level": "official_named_case_or_announcement",
+        "source_url": "https://www.ti.com/about-ti/behind-chip/customer-stories/emerson.html"
+      },
+      {
+        "id": "INDUSTRIAL_customer_verified_002",
+        "name": "Apptronik",
+        "business_line": "INDUSTRIAL",
+        "relationship": "customer",
+        "details": "TI 官方客戶案例：Apollo 人形機器人採用 TI 馬達控制 MCU、閘極驅動器與類比元件。",
+        "evidence_level": "official_named_case_or_announcement",
+        "source_url": "https://www.ti.com/about-ti/behind-chip/customer-stories/apptronik.html"
+      },
+      {
+        "id": "AUTO_customer_verified_003",
+        "name": "Panasonic Automotive Systems",
+        "business_line": "AUTO",
+        "relationship": "customer",
+        "details": "TI 官方客戶案例：48V 車用音響方案採用 TI GaN 整合降壓轉換器及音訊放大技術。",
+        "evidence_level": "official_named_case_or_announcement",
+        "source_url": "https://www.ti.com.cn/en-us/about-ti/behind-chip/customer-stories/panasonic-automotive-systems"
+      },
+      {
+        "id": "ANALOG_customer_verified_004",
+        "name": "HP Inc.（HPQ）",
+        "business_line": "ANALOG",
+        "relationship": "customer",
+        "details": "TI 官方客戶案例：EliteBook X G2i/G2a 與 OmniBook Ultra 採用 TI TAS2783 智慧音訊放大器。",
+        "evidence_level": "official_named_case_or_announcement",
+        "source_url": "https://edgeworker.ti.com/en-us/about-ti/behind-chip/customer-stories/hp"
+      },
+      {
+        "id": "DATACENTER_customer_verified_005",
+        "name": "台達電子（2308）",
+        "business_line": "DATACENTER",
+        "relationship": "customer",
+        "details": "台達電伺服器電源供應器採用 TI GaN 技術。",
+        "evidence_level": "official_named_case_or_announcement",
+        "source_url": "https://www.ti.com/en-us/about-ti/behind-chip/customer-stories/delta-electronics"
+      },
+      {
+        "id": "DATACENTER_partner_verified_006",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "DATACENTER",
+        "relationship": "partner",
+        "details": "TI 與 NVIDIA 合作開發 800V DC AI 資料中心供電架構。",
+        "evidence_level": "official_named_case_or_announcement",
+        "source_url": "https://www.ti.com/en-us/about-ti/newsroom/news-releases/2026/2026-03-16-ti-unveils-complete-800-vdc-power-architecture-for-future-generation-ai-data-centers-with-nvidia"
+      },
+      {
+        "id": "DATACENTER_partner_verified_007",
+        "name": "Schneider Electric",
+        "business_line": "DATACENTER",
+        "relationship": "partner",
+        "details": "TI 2026-11-03 官方公告：合作推進 AI 資料中心電源管理及高功率密度設計。",
+        "evidence_level": "official_named_case_or_announcement",
+        "source_url": "https://www.ti.com/about-ti/newsroom/news-releases/2026/2026-11-03-ti-celebrates-70-years-of-innovation-in-europe-alongside-leading-customers-to-engineer-next-generation-systems.html"
+      },
+      {
+        "id": "INDUSTRIAL_partner_verified_008",
+        "name": "ABB Robotics",
+        "business_line": "INDUSTRIAL",
+        "relationship": "partner",
+        "details": "TI 2026-11-03 官方公告列為合作企業，推進機器人與自動化技術。",
+        "evidence_level": "official_named_case_or_announcement",
+        "source_url": "https://www.ti.com/about-ti/newsroom/news-releases/2026/2026-11-03-ti-celebrates-70-years-of-innovation-in-europe-alongside-leading-customers-to-engineer-next-generation-systems.html"
+      }
+    ],
+    "recent_developments": [
+      {
+        "date": "2026-10-21",
+        "title": "2026 Q3 營收 60.55 億美元，年增 28%",
+        "details": "類比業務 49.11 億美元、嵌入式處理 8.58 億美元；工業、汽車與資料中心需求增長",
+        "source_url": "https://www.ti.com/en-us/about-ti/newsroom/news-releases/2026/2026-10-21-ti-reports-third-quarter-2026-financial-results-and-shareholder-returns"
+      },
+      {
+        "date": "2025-12-17",
+        "title": "Sherman SM1 300mm 晶圓廠開始生產",
+        "source_url": "https://www.ti.com/en-us/about-ti/newsroom/news-releases/2025/texas-instruments-begins-production-at-its-newest-300mm-semiconductor-manufacturing-facility-in-sherman-texas"
+      },
+      {
+        "date": "2025-11-06",
+        "title": "馬來西亞 Melaka TIEM2 封測廠啟用",
+        "source_url": "https://www.ti.com/en-us/about-ti/newsroom/news-releases/2025/texas-instruments-opens-its-second-assembly-and-test-factory-in-melaka-malaysia"
+      },
+      {
+        "date": "2026-11-03",
+        "title": "TI 公布與 ABB Robotics、Schneider Electric 等歐洲企業合作",
+        "source_url": "https://www.ti.com/about-ti/newsroom/news-releases/2026/2026-11-03-ti-celebrates-70-years-of-innovation-in-europe-alongside-leading-customers-to-engineer-next-generation-systems.html"
+      }
+    ],
+    "sources": [
+      {
+        "title": "SEC 2025 Form 10-K",
+        "url": "https://www.sec.gov/Archives/edgar/data/97476/000009747626000059/txn-20251231.htm"
+      },
+      {
+        "title": "TI 2026 Q3 Earnings",
+        "url": "https://investor.ti.com/node/38631"
+      },
+      {
+        "title": "TI Sherman SM1",
+        "url": "https://www.ti.com/en-us/about-ti/newsroom/news-releases/2025/texas-instruments-begins-production-at-its-newest-300mm-semiconductor-manufacturing-facility-in-sherman-texas"
+      },
+      {
+        "title": "TI Melaka TIEM2",
+        "url": "https://www.ti.com/en-us/about-ti/newsroom/news-releases/2025/texas-instruments-opens-its-second-assembly-and-test-factory-in-melaka-malaysia"
+      },
+      {
+        "title": "Emerson（EMR） 官方關係佐證",
+        "url": "https://www.ti.com/about-ti/behind-chip/customer-stories/emerson.html"
+      },
+      {
+        "title": "Apptronik 官方關係佐證",
+        "url": "https://www.ti.com/about-ti/behind-chip/customer-stories/apptronik.html"
+      },
+      {
+        "title": "Panasonic Automotive Systems 官方關係佐證",
+        "url": "https://www.ti.com.cn/en-us/about-ti/behind-chip/customer-stories/panasonic-automotive-systems"
+      },
+      {
+        "title": "HP Inc.（HPQ） 官方關係佐證",
+        "url": "https://edgeworker.ti.com/en-us/about-ti/behind-chip/customer-stories/hp"
+      },
+      {
+        "title": "台達電子（2308） 官方關係佐證",
+        "url": "https://www.ti.com/en-us/about-ti/behind-chip/customer-stories/delta-electronics"
+      },
+      {
+        "title": "NVIDIA（NVDA） 官方關係佐證",
+        "url": "https://www.ti.com/en-us/about-ti/newsroom/news-releases/2026/2026-03-16-ti-unveils-complete-800-vdc-power-architecture-for-future-generation-ai-data-centers-with-nvidia"
+      },
+      {
+        "title": "Schneider Electric 官方關係佐證",
+        "url": "https://www.ti.com/about-ti/newsroom/news-releases/2026/2026-11-03-ti-celebrates-70-years-of-innovation-in-europe-alongside-leading-customers-to-engineer-next-generation-systems.html"
+      },
+      {
+        "title": "ABB Robotics 官方關係佐證",
+        "url": "https://www.ti.com/about-ti/newsroom/news-releases/2026/2026-11-03-ti-celebrates-70-years-of-innovation-in-europe-alongside-leading-customers-to-engineer-next-generation-systems.html"
+      }
+    ],
+    "methodology_note": "customer 僅列 TI 官方具名產品採用／客戶案例；partner 為官方合作或通路，不等同直接採購。產業類別只屬 business_lines，不建立虛構客戶節點。競爭者與台灣 beneficiary 不代表 TI 直接交易。"
   }
 }

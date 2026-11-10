@@ -362,5 +362,206 @@
       "頻寬成長"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "as_of": "2026-11-10",
+    "company": "Lam Research Corporation",
+    "symbol": "LRCX",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "Lam Research（LRCX）產業鏈｜蝕刻、沉積、HBM、3D NAND 與先進封裝",
+      "description": "Lam Research 科林研發產業鏈，涵蓋晶圓蝕刻、沉積、DRAM、3D NAND、先進封裝、具名晶圓廠客戶及台灣受惠股。"
+    },
+    "business_lines": [
+      {
+        "id": "ETCH",
+        "name": "Akara／Kiyo／Syndion 電漿蝕刻設備"
+      },
+      {
+        "id": "NAND",
+        "name": "3D NAND 高深寬比蝕刻與沉積"
+      },
+      {
+        "id": "DRAM",
+        "name": "DRAM／HBM 記憶體製程設備"
+      },
+      {
+        "id": "DEPOSITION",
+        "name": "Striker／VECTOR／ALTUS 薄膜沉積"
+      },
+      {
+        "id": "CLEAN",
+        "name": "晶圓清洗與表面處理"
+      },
+      {
+        "id": "PACKAGING",
+        "name": "先進封裝／TSV／電鍍與 3D 整合"
+      },
+      {
+        "id": "PATTERN",
+        "name": "Aether 乾式光阻與先進圖案化"
+      },
+      {
+        "id": "SERVICE",
+        "name": "CSBG 客戶支援、備品與設備升級"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "NAND_customer_001",
+        "name": "Samsung Electronics（三星電子）",
+        "business_line": "NAND",
+        "relationship": "customer",
+        "details": "Lam 2026 年報列示主要客戶；記憶體晶圓製造設備"
+      },
+      {
+        "id": "NAND_customer_002",
+        "name": "SK hynix（SK 海力士）",
+        "business_line": "NAND",
+        "relationship": "customer",
+        "details": "Lam 2026 年報列示主要客戶；3D NAND 與 DRAM 設備需求"
+      },
+      {
+        "id": "DRAM_customer_001",
+        "name": "Micron Technology（MU）",
+        "business_line": "DRAM",
+        "relationship": "customer",
+        "details": "Lam 2026 年報列示主要客戶；DRAM 與 NAND 製程設備"
+      },
+      {
+        "id": "ETCH_customer_001",
+        "name": "台積電（2330）",
+        "business_line": "ETCH",
+        "relationship": "customer",
+        "details": "Lam 2026 年報列示主要客戶；先進邏輯與晶圓代工製程設備"
+      },
+      {
+        "id": "PACKAGING_partner_001",
+        "name": "imec",
+        "business_line": "PACKAGING",
+        "relationship": "partner",
+        "details": "共同研發 3D 整合、先進封裝與高深寬比製程"
+      },
+      {
+        "id": "PATTERN_partner_001",
+        "name": "imec",
+        "business_line": "PATTERN",
+        "relationship": "partner",
+        "details": "共同研究 Aether 乾式光阻與 high-NA EUV 圖案化"
+      },
+      {
+        "id": "DRAM_partner_001",
+        "name": "Resonac",
+        "business_line": "DRAM",
+        "relationship": "partner",
+        "details": "Lam 官方 DRAM 技術頁列為策略研發合作夥伴"
+      },
+      {
+        "id": "DRAM_partner_002",
+        "name": "國立陽明交通大學",
+        "business_line": "DRAM",
+        "relationship": "partner",
+        "details": "Lam 官方 DRAM 技術頁列為研究合作機構"
+      },
+      {
+        "id": "ETCH_competitor_001",
+        "name": "Applied Materials（AMAT）",
+        "business_line": "ETCH",
+        "relationship": "competitor",
+        "details": "晶圓蝕刻及薄膜製程設備競爭"
+      },
+      {
+        "id": "ETCH_competitor_002",
+        "name": "Tokyo Electron（8035.T）",
+        "business_line": "ETCH",
+        "relationship": "competitor",
+        "details": "蝕刻、清洗及沉積設備競爭"
+      },
+      {
+        "id": "DEPOSITION_competitor_001",
+        "name": "ASM International（ASM.AS）",
+        "business_line": "DEPOSITION",
+        "relationship": "competitor",
+        "details": "ALD 薄膜沉積設備競爭"
+      },
+      {
+        "id": "CLEAN_competitor_001",
+        "name": "SCREEN Holdings（7735.T）",
+        "business_line": "CLEAN",
+        "relationship": "competitor",
+        "details": "晶圓清洗設備競爭"
+      },
+      {
+        "id": "PATTERN_competitor_001",
+        "name": "ASML（ASML）",
+        "business_line": "PATTERN",
+        "relationship": "competitor",
+        "details": "微影設備生態中的相鄰技術廠商，非乾式光阻直接同類競爭"
+      },
+      {
+        "id": "ETCH_beneficiary_001",
+        "name": "台積電（2330）",
+        "business_line": "ETCH",
+        "relationship": "beneficiary",
+        "details": "先進製程擴產推動蝕刻設備採購；亦為 Lam 具名主要客戶"
+      },
+      {
+        "id": "DRAM_beneficiary_001",
+        "name": "南亞科（2408）",
+        "business_line": "DRAM",
+        "relationship": "beneficiary",
+        "details": "DRAM 資本支出與先進記憶體製程升級受惠"
+      },
+      {
+        "id": "PACKAGING_beneficiary_001",
+        "name": "日月光投控（3711）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "先進封裝及 3D 整合製程需求受惠"
+      },
+      {
+        "id": "PACKAGING_beneficiary_002",
+        "name": "京元電子（2449）",
+        "business_line": "PACKAGING",
+        "relationship": "beneficiary",
+        "details": "高階晶片封裝後測試需求受惠"
+      },
+      {
+        "id": "SERVICE_beneficiary_001",
+        "name": "帆宣（6196）",
+        "business_line": "SERVICE",
+        "relationship": "beneficiary",
+        "details": "台灣半導體廠務與設備工程擴產需求受惠"
+      },
+      {
+        "id": "SERVICE_beneficiary_002",
+        "name": "漢唐（2404）",
+        "business_line": "SERVICE",
+        "relationship": "beneficiary",
+        "details": "台灣晶圓廠建廠及無塵室工程需求受惠"
+      },
+      {
+        "id": "SERVICE_beneficiary_003",
+        "name": "亞翔（6139）",
+        "business_line": "SERVICE",
+        "relationship": "beneficiary",
+        "details": "半導體廠務機電工程需求受惠"
+      },
+      {
+        "id": "ETCH_beneficiary_002",
+        "name": "家登（3680）",
+        "business_line": "ETCH",
+        "relationship": "beneficiary",
+        "details": "先進製程晶圓與光罩載具需求受惠"
+      }
+    ]
   }
 }

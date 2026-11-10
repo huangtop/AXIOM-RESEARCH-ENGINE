@@ -201,459 +201,628 @@
     "strategy_changes": []
   },
   "industry_chain": {
-    "as_of": "2026-11-06",
+    "as_of": "2026-11-10",
     "company": "Skyworks Solutions, Inc.",
     "symbol": "SWKS",
     "research_status": "PARTIAL",
+    "business_lines": [
+      {
+        "id": "mobile_rf",
+        "name": "行動裝置射頻前端與濾波",
+        "description": "智慧手機與無線裝置 RF 前端、放大器、濾波器及射頻整合技術"
+      },
+      {
+        "id": "diversified_connectivity",
+        "name": "多元市場：寬頻、網通、車用、工業及類比",
+        "description": "連網、寬頻、基礎設施、車用、工業、國防及類比／混合訊號方案；若公司未揭露個別料號，不推斷對應產品"
+      },
+      {
+        "id": "datacenter_timing",
+        "name": "AI 資料中心與高速網路時脈",
+        "description": "資料中心時脈、高速網路交換與互連相關方案，匿名客戶維持匿名"
+      }
+    ],
     "classification_policy": {
-      "customer": "具名 SEC 客戶、採購、設計導入或已出貨；未具名客戶維持匿名",
+      "customer": "SEC 具名客戶或有證據的匿名群體；不推測個別料號與訂單",
       "partner": "僅非買賣之實質合作",
-      "supplier": "須直接公開供貨證據，未證實不得列入",
-      "beneficiary": "同產業／同技術／需求循環，不暗示直接供應"
+      "supplier": "須具名直接供貨證據；未經證實不列入",
+      "beneficiary": "同產業／同技術／需求循環，非直接供應鏈證明"
     },
     "nodes": [
       {
         "id": "swks-01",
         "name": "Apple",
-        "relation": "customer",
-        "details": "2025 10-K 明確揭露 Apple 經由多個經銷商及代工廠採購 Skyworks 射頻產品，對年度營收占比逾 10%；2026 年第三季外部報導約占營收 57%，且部分 iPhone 射頻插槽轉為雙來源。屬已證實客戶，同時存在內容份額流失風險。",
+        "relationship": "customer",
+        "business_line": "mobile_rf",
+        "details": "2025 年 SEC 10-K 確認 Apple 為重要客戶，經多家經銷商與代工廠採購 Skyworks 射頻產品；年度營收集中度超過 10%。外部資料指出部分 RF 插槽改為雙來源，不等於完全失去客戶。",
         "source_ids": [
           "s01",
           "s07"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "evidence_level": "high",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-02",
         "name": "Amazon",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 Amazon；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "diversified_connectivity",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 Amazon。該揭露不等於已公開個別晶片料號、現行訂單金額或具體供貨量。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-03",
         "name": "Arcadyan（智易）",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 Arcadyan（智易）；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "diversified_connectivity",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 Arcadyan（智易）。該揭露不等於已公開個別晶片料號、現行訂單金額或具體供貨量。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-04",
         "name": "Arris",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 Arris；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "diversified_connectivity",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 Arris。該揭露不等於已公開個別晶片料號、現行訂單金額或具體供貨量。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-05",
         "name": "Bose",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 Bose；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "diversified_connectivity",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 Bose。該揭露不等於已公開個別晶片料號、現行訂單金額或具體供貨量。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-06",
         "name": "Ciena",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 Ciena；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "diversified_connectivity",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 Ciena。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-07",
         "name": "Cisco",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 Cisco；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "diversified_connectivity",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 Cisco。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-08",
         "name": "Ericsson",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 Ericsson；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "diversified_connectivity",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 Ericsson。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-09",
         "name": "Fibocom",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 Fibocom；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "diversified_connectivity",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 Fibocom。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-10",
         "name": "Garmin",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 Garmin；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "diversified_connectivity",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 Garmin。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-11",
         "name": "Google",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 Google；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "diversified_connectivity",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 Google。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-12",
         "name": "Honeywell",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 Honeywell；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "diversified_connectivity",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 Honeywell。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-13",
         "name": "Lenovo",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 Lenovo；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "diversified_connectivity",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 Lenovo。該揭露不等於已公開個別晶片料號、現行訂單金額或具體供貨量。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-14",
         "name": "LG Electronics",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 LG Electronics；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "diversified_connectivity",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 LG Electronics。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-15",
         "name": "Microsoft",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 Microsoft；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "diversified_connectivity",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 Microsoft。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-16",
         "name": "Motorola",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 Motorola；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "diversified_connectivity",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 Motorola。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-17",
         "name": "NETGEAR",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 NETGEAR；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "diversified_connectivity",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 NETGEAR。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-18",
         "name": "Nokia",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 Nokia；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "diversified_connectivity",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 Nokia。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-19",
         "name": "Northrop Grumman",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 Northrop Grumman；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "diversified_connectivity",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 Northrop Grumman。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-20",
         "name": "OPPO",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 OPPO；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "mobile_rf",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 OPPO。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-21",
         "name": "Samsung",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 Samsung；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "mobile_rf",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 Samsung。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-22",
         "name": "Sonos",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 Sonos；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "diversified_connectivity",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 Sonos。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-23",
         "name": "Sony",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 Sony；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "diversified_connectivity",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 Sony。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-24",
         "name": "Tesla",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 Tesla；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "diversified_connectivity",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 Tesla。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-25",
         "name": "TP-Link",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 TP-Link；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "diversified_connectivity",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 TP-Link。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-26",
         "name": "VIVO",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 VIVO；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "mobile_rf",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 VIVO。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-27",
         "name": "Xiaomi",
-        "relation": "customer",
-        "details": "Skyworks 2025 年 SEC 10-K「Our key customers include」明確列名 Xiaomi；代表其射頻、連接或類比產品客戶關係。申報未逐一公開交易金額、產品料號或目前設計案，勿推定具體 2026 訂單量。",
+        "relationship": "customer",
+        "business_line": "mobile_rf",
+        "details": "2025 年 Skyworks SEC 10-K 具名客戶清單包括 Xiaomi。",
         "source_ids": [
           "s01"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "evidence_level": "medium",
+        "commercialization": "reported_relationship",
+        "ticker": ""
       },
       {
         "id": "swks-28",
         "name": "未具名 AI 超大規模雲端客戶",
-        "relation": "customer",
-        "details": "2026-11-03 官方財報揭露開始向領先 AI hyperscalers 的 rack-scale 系統出貨高性能時脈元件，並於 1.6T 網路交換與資料中心互連取得 timing design wins。因未具名，僅建立匿名客戶群節點，禁止推斷特定企業。",
+        "relationship": "customer",
+        "business_line": "datacenter_timing",
+        "details": "Skyworks 2026-11-03 官方業績報告提到向領先 AI 超大規模雲端業者的 rack-scale 系統出貨高性能時脈元件，並在高速交換及資料中心互連獲得設計導入；客戶未具名。",
         "source_ids": [
           "s04",
           "s05"
         ],
-        "confidence": "high"
-      },
-      {
-        "id": "swks-29",
-        "name": "Qorvo",
-        "relation": "acquired_company",
-        "details": "2026-10-05 正式完成合併，Qorvo 不再是獨立外部競爭者；每股 Qorvo 換得 32.50 美元現金及 0.960 股 Skyworks；原 Skyworks 股東約占合併公司 63%。併入 RF GaN、低壓電源及有線寬頻技術。",
-        "source_ids": [
-          "s02",
-          "s03",
-          "s08"
-        ],
-        "confidence": "high"
+        "confidence": "high",
+        "evidence_level": "high",
+        "commercialization": "reported_shipments_or_design_wins",
+        "ticker": ""
       },
       {
         "id": "swks-30",
         "name": "Broadcom",
-        "relation": "competitor",
-        "details": "2025 Skyworks 10-K 具名競爭者 Broadcom，在 RF 前端、濾波、類比、連接或電源管理等產品存在競爭交集。Qorvo 已於 2026-10-05 合併，故自外部競爭者名單移除。",
+        "relationship": "competitor",
+        "business_line": "mobile_rf",
+        "details": "Skyworks 2025 年 SEC 10-K 具名競爭者 Broadcom。競爭領域包括射頻前端、濾波、類比及連接等業務交集；不代表所有產品均直接競爭。Qorvo 已於 2026-10-05 完成合併。",
         "source_ids": [
           "s01",
           "s02"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "evidence_level": "high",
+        "commercialization": "competitive_overlap",
+        "ticker": ""
       },
       {
         "id": "swks-31",
         "name": "Analog Devices",
-        "relation": "competitor",
-        "details": "2025 Skyworks 10-K 具名競爭者 Analog Devices，在 RF 前端、濾波、類比、連接或電源管理等產品存在競爭交集。Qorvo 已於 2026-10-05 合併，故自外部競爭者名單移除。",
+        "relationship": "competitor",
+        "business_line": "diversified_connectivity",
+        "details": "Skyworks 2025 年 SEC 10-K 具名競爭者 Analog Devices。競爭領域包括射頻前端、濾波、類比及連接等業務交集；不代表所有產品均直接競爭。Qorvo 已於 2026-10-05 完成合併。",
         "source_ids": [
           "s01",
           "s02"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "evidence_level": "high",
+        "commercialization": "competitive_overlap",
+        "ticker": ""
       },
       {
         "id": "swks-32",
         "name": "Cirrus Logic",
-        "relation": "competitor",
-        "details": "2025 Skyworks 10-K 具名競爭者 Cirrus Logic，在 RF 前端、濾波、類比、連接或電源管理等產品存在競爭交集。Qorvo 已於 2026-10-05 合併，故自外部競爭者名單移除。",
+        "relationship": "competitor",
+        "business_line": "diversified_connectivity",
+        "details": "Skyworks 2025 年 SEC 10-K 具名競爭者 Cirrus Logic。競爭領域包括射頻前端、濾波、類比及連接等業務交集；不代表所有產品均直接競爭。Qorvo 已於 2026-10-05 完成合併。",
         "source_ids": [
           "s01",
           "s02"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "evidence_level": "high",
+        "commercialization": "competitive_overlap",
+        "ticker": ""
       },
       {
         "id": "swks-33",
         "name": "Murata Manufacturing",
-        "relation": "competitor",
-        "details": "2025 Skyworks 10-K 具名競爭者 Murata Manufacturing，在 RF 前端、濾波、類比、連接或電源管理等產品存在競爭交集。Qorvo 已於 2026-10-05 合併，故自外部競爭者名單移除。",
+        "relationship": "competitor",
+        "business_line": "mobile_rf",
+        "details": "Skyworks 2025 年 SEC 10-K 具名競爭者 Murata Manufacturing。競爭領域包括射頻前端、濾波、類比及連接等業務交集；不代表所有產品均直接競爭。Qorvo 已於 2026-10-05 完成合併。",
         "source_ids": [
           "s01",
           "s02"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "evidence_level": "high",
+        "commercialization": "competitive_overlap",
+        "ticker": ""
       },
       {
         "id": "swks-34",
         "name": "NXP Semiconductors",
-        "relation": "competitor",
-        "details": "2025 Skyworks 10-K 具名競爭者 NXP Semiconductors，在 RF 前端、濾波、類比、連接或電源管理等產品存在競爭交集。Qorvo 已於 2026-10-05 合併，故自外部競爭者名單移除。",
+        "relationship": "competitor",
+        "business_line": "diversified_connectivity",
+        "details": "Skyworks 2025 年 SEC 10-K 具名競爭者 NXP Semiconductors。競爭領域包括射頻前端、濾波、類比及連接等業務交集；不代表所有產品均直接競爭。Qorvo 已於 2026-10-05 完成合併。",
         "source_ids": [
           "s01",
           "s02"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "evidence_level": "high",
+        "commercialization": "competitive_overlap",
+        "ticker": ""
       },
       {
         "id": "swks-35",
         "name": "Qualcomm",
-        "relation": "competitor",
-        "details": "2025 Skyworks 10-K 具名競爭者 Qualcomm，在 RF 前端、濾波、類比、連接或電源管理等產品存在競爭交集。Qorvo 已於 2026-10-05 合併，故自外部競爭者名單移除。",
+        "relationship": "competitor",
+        "business_line": "mobile_rf",
+        "details": "Skyworks 2025 年 SEC 10-K 具名競爭者 Qualcomm。競爭領域包括射頻前端、濾波、類比及連接等業務交集；不代表所有產品均直接競爭。Qorvo 已於 2026-10-05 完成合併。",
         "source_ids": [
           "s01",
           "s02"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "evidence_level": "high",
+        "commercialization": "competitive_overlap",
+        "ticker": ""
       },
       {
         "id": "swks-36",
         "name": "Texas Instruments",
-        "relation": "competitor",
-        "details": "2025 Skyworks 10-K 具名競爭者 Texas Instruments，在 RF 前端、濾波、類比、連接或電源管理等產品存在競爭交集。Qorvo 已於 2026-10-05 合併，故自外部競爭者名單移除。",
+        "relationship": "competitor",
+        "business_line": "diversified_connectivity",
+        "details": "Skyworks 2025 年 SEC 10-K 具名競爭者 Texas Instruments。競爭領域包括射頻前端、濾波、類比及連接等業務交集；不代表所有產品均直接競爭。Qorvo 已於 2026-10-05 完成合併。",
         "source_ids": [
           "s01",
           "s02"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "evidence_level": "high",
+        "commercialization": "competitive_overlap",
+        "ticker": ""
       },
       {
         "id": "swks-37",
         "name": "穩懋",
-        "relation": "beneficiary",
-        "details": "台灣上市公司 3105；GaAs 射頻晶圓代工與 PA 製程同屬 RF 化合物半導體需求鏈。僅屬同產業、同技術或資本支出受惠觀察，不代表直接供貨 Skyworks，未取得直接交易佐證。",
+        "ticker": "3105",
+        "relationship": "beneficiary",
+        "business_line": "mobile_rf",
+        "details": "台灣上市公司 3105，核心技術為GaAs 射頻晶圓代工與功率放大器製程，與無線、射頻或高頻通訊需求循環相關。",
         "source_ids": [
           "s01",
           "s04"
         ],
         "confidence": "low",
-        "ticker": "3105"
+        "evidence_level": "low",
+        "beneficiary_priority": "industry_only",
+        "commercialization": "industry_exposure_only"
       },
       {
         "id": "swks-38",
         "name": "宏捷科",
-        "relation": "beneficiary",
-        "details": "台灣上市公司 8086；GaAs 功率放大器與射頻前端晶圓代工，受手機 RF 複雜度與通訊需求循環影響。僅屬同產業、同技術或資本支出受惠觀察，不代表直接供貨 Skyworks，未取得直接交易佐證。",
+        "ticker": "8086",
+        "relationship": "beneficiary",
+        "business_line": "mobile_rf",
+        "details": "台灣上市公司 8086，核心技術為GaAs 功率放大器及射頻前端晶圓代工，與無線、射頻或高頻通訊需求循環相關。",
         "source_ids": [
           "s01",
           "s04"
         ],
         "confidence": "low",
-        "ticker": "8086"
+        "evidence_level": "low",
+        "beneficiary_priority": "industry_only",
+        "commercialization": "industry_exposure_only"
       },
       {
         "id": "swks-39",
         "name": "全新",
-        "relation": "beneficiary",
-        "details": "台灣上市公司 2455；III-V 族化合物半導體磊晶，與 RF PA 上游技術及需求相關。僅屬同產業、同技術或資本支出受惠觀察，不代表直接供貨 Skyworks，未取得直接交易佐證。",
+        "ticker": "2455",
+        "relationship": "beneficiary",
+        "business_line": "mobile_rf",
+        "details": "台灣上市公司 2455，核心技術為III-V 族化合物半導體磊晶，與無線、射頻或高頻通訊需求循環相關。",
         "source_ids": [
           "s01",
           "s04"
         ],
         "confidence": "low",
-        "ticker": "2455"
+        "evidence_level": "low",
+        "beneficiary_priority": "industry_only",
+        "commercialization": "industry_exposure_only"
       },
       {
         "id": "swks-40",
         "name": "立積",
-        "relation": "beneficiary",
-        "details": "台灣上市公司 4968；Wi-Fi 射頻前端 IC，受無線連接升級同產業需求驅動。僅屬同產業、同技術或資本支出受惠觀察，不代表直接供貨 Skyworks，未取得直接交易佐證。",
+        "ticker": "4968",
+        "relationship": "beneficiary",
+        "business_line": "mobile_rf",
+        "details": "台灣上市公司 4968，核心技術為Wi-Fi 射頻前端 IC，與無線、射頻或高頻通訊需求循環相關。",
         "source_ids": [
           "s01",
           "s04"
         ],
         "confidence": "low",
-        "ticker": "4968"
+        "evidence_level": "low",
+        "beneficiary_priority": "industry_only",
+        "commercialization": "industry_exposure_only"
       },
       {
         "id": "swks-41",
         "name": "璟德",
-        "relation": "beneficiary",
-        "details": "台灣上市公司 3152；射頻 LTCC 元件及高頻通訊模組，與 RF 前端應用需求重疊。僅屬同產業、同技術或資本支出受惠觀察，不代表直接供貨 Skyworks，未取得直接交易佐證。",
+        "ticker": "3152",
+        "relationship": "beneficiary",
+        "business_line": "mobile_rf",
+        "details": "台灣上市公司 3152，核心技術為射頻 LTCC 元件及高頻通訊模組，與無線、射頻或高頻通訊需求循環相關。",
         "source_ids": [
           "s01",
           "s04"
         ],
         "confidence": "low",
-        "ticker": "3152"
+        "evidence_level": "low",
+        "beneficiary_priority": "industry_only",
+        "commercialization": "industry_exposure_only"
       },
       {
         "id": "swks-42",
         "name": "昇達科",
-        "relation": "beneficiary",
-        "details": "台灣上市公司 3491；高頻微波通訊零組件，受基礎設施與高頻網路投資景氣影響。僅屬同產業、同技術或資本支出受惠觀察，不代表直接供貨 Skyworks，未取得直接交易佐證。",
+        "ticker": "3491",
+        "relationship": "beneficiary",
+        "business_line": "diversified_connectivity",
+        "details": "台灣上市公司 3491，核心技術為高頻微波通訊零組件，與無線、射頻或高頻通訊需求循環相關。",
         "source_ids": [
           "s01",
           "s04"
         ],
         "confidence": "low",
-        "ticker": "3491"
+        "evidence_level": "low",
+        "beneficiary_priority": "industry_only",
+        "commercialization": "industry_exposure_only"
       }
     ],
     "sources": [
@@ -681,7 +850,7 @@
       {
         "id": "s04",
         "grade": "A",
-        "title": "Skyworks 2026 Q4 FY2026 earnings release",
+        "title": "Skyworks 2026 Q4 earnings release",
         "date": "2026-11-03",
         "url": "https://investors.skyworksinc.com/news-releases/news-release-details/skyworks-begins-new-chapter-following-qorvo-combination-reports"
       },
@@ -693,39 +862,11 @@
         "url": "https://www.sec.gov/Archives/edgar/data/4127/000000412726000052/q426earningsreleaseformex9.htm"
       },
       {
-        "id": "s06",
-        "grade": "A",
-        "title": "Skyworks official 2026 press releases",
-        "date": "2026-11-06",
-        "url": "https://investors.skyworksinc.com/press-releases"
-      },
-      {
         "id": "s07",
         "grade": "B",
         "title": "Semiconductor Today FY2026 Q3 mobile and Apple share",
         "date": "2026-08-06",
         "url": "https://www.semiconductor-today.com/news_items/2026/aug/skyworks-060826.shtml"
-      },
-      {
-        "id": "s08",
-        "grade": "A",
-        "title": "Qorvo official closing announcement",
-        "date": "2026-10-05",
-        "url": "https://www.qorvo.com/about/news-events/news-releases/2026/skyworks-completes-combination-with-qorvo"
-      },
-      {
-        "id": "s09",
-        "grade": "A",
-        "title": "Skyworks 2025 annual report IR PDF",
-        "date": "2025-11-07",
-        "url": "https://investors.skyworksinc.com/static-files/58b91ff0-62ab-46df-9f2b-576b02f06914"
-      },
-      {
-        "id": "s10",
-        "grade": "B",
-        "title": "Skyworks Q4 FY2026 full earnings call transcript",
-        "date": "2026-11-04",
-        "url": "https://www.fool.com/earnings/call-transcripts/2026/11/04/skyworks-swks-q4-2026-earnings-call-transcript/"
       }
     ],
     "corporate_events": [
@@ -733,102 +874,35 @@
         "date": "2026-10-05",
         "type": "completed_merger",
         "name": "Qorvo",
-        "details": "合併已完成；不可再將 Qorvo 當作獨立競爭者。",
+        "details": "Skyworks 於 2026-10-05 完成與 Qorvo 的合併。Qorvo 不再是獨立外部競爭者；此為併購事件而非供應、客戶或合作關係。",
         "source_ids": [
           "s02",
-          "s03",
-          "s08"
-        ]
-      },
-      {
-        "date": "2026-11-03",
-        "type": "earnings",
-        "name": "FY2026 Q4",
-        "details": "Skyworks 獨立營收 10.46 億美元、全年 39.6 億美元；合併後財測須與獨立營收區分。",
-        "source_ids": [
-          "s04",
-          "s05"
-        ]
-      },
-      {
-        "date": "2026-11-03",
-        "type": "design_win_and_shipments",
-        "name": "AI data-center timing",
-        "details": "1.6T 網路及資料中心互連時脈 design wins、rack-scale 高性能時脈產品開始出貨；客戶未具名。",
-        "source_ids": [
-          "s04"
-        ]
-      },
-      {
-        "date": "2026-08-06",
-        "type": "customer_share_loss",
-        "name": "Apple RF socket dual-source",
-        "details": "外部產業報導 Apple 射頻內容份額部分流失；不能解讀為完全失去 Apple 客戶。",
-        "source_ids": [
-          "s07"
-        ]
-      },
-      {
-        "date": "2026-11-03",
-        "type": "earnings_call_supply_constraint",
-        "name": "AI data-center demand",
-        "details": "法說表示 data center timing/power 成長約 90% YoY，部分多元市場需求超過供給；此為產業景氣及產能瓶頸，不構成台灣特定供應商直接交易證據。",
-        "source_ids": [
-          "s10"
+          "s03"
         ]
       }
     ],
-    "reflection_audit": [
+    "non_map_relationships": [
       {
-        "round": 1,
-        "topic": "SEC 基線",
-        "finding": "2025 10-K 具名客戶與競爭者優先於產業猜測；Apple 有明確收入集中度。"
-      },
-      {
-        "round": 2,
-        "topic": "近期併購",
-        "finding": "2026-10-05 Qorvo 已交割；從 competitor 改為 acquired_company。"
-      },
-      {
-        "round": 3,
-        "topic": "近期業績",
-        "finding": "2026-11-03 Q4 獨立營收與合併後前瞻指引不得混用。"
-      },
-      {
-        "round": 4,
-        "topic": "訂單與設計案",
-        "finding": "AI 資料中心時脈 design win／出貨屬客戶證據，但匿名不臆造名稱。"
-      },
-      {
-        "round": 5,
-        "topic": "客戶流失",
-        "finding": "Apple 部分 RF 份額被雙來源取代，並非全部失去客戶。"
-      },
-      {
-        "round": 6,
-        "topic": "台灣直接供應",
-        "finding": "未查得台灣上市公司對 Skyworks 直接供貨之充分證據，supplier=0。"
-      },
-      {
-        "round": 7,
-        "topic": "台灣受惠股",
-        "finding": "六家台灣公司只按同產業／技術循環列 beneficiary，不標供應商。"
-      },
-      {
-        "round": 8,
-        "topic": "來源與限制",
-        "finding": "SEC/IR 優先；尚未逐一查證全部具名客戶當前訂單及所有付費媒體，因此 PARTIAL。"
-      },
-      {
-        "round": 9,
-        "topic": "法說逐字稿二次檢查",
-        "finding": "管理層揭露資料中心時脈／電源營收年增約 90%、供給受限，且未承諾最大客戶會因 Qorvo 合併而改變分配流程；不新增無證據具名 AI 客戶。"
+        "id": "swks-29",
+        "name": "Qorvo",
+        "relation": "acquired_company",
+        "details": "Skyworks 於 2026-10-05 完成與 Qorvo 的合併。Qorvo 不再是獨立外部競爭者。",
+        "source_ids": [
+          "s02",
+          "s03"
+        ],
+        "confidence": "high"
       }
+    ],
+    "migration_notes": [
+      "根據 GitHub company_profile_display_zh_tw 的 SWKS 42 節點整理成 V2.1 五類關係欄位，已保留原研究類型與引用來源方向。",
+      "42 個原節點中 Qorvo 為併購事件，移出五區塊地圖；因此 41 個可渲染節點，41/41。",
+      "SWKS 原始 GitHub 檔尚包含公司解析等其他欄位；若要覆蓋原公司檔，需以此 industry_chain 合併回原完整檔，不應以本精簡交付檔覆蓋公司解析檔。"
     ],
     "research_limitations": [
-      "部分客戶源於 2025 10-K，未逐一核實 2026 年個別訂單仍持續",
-      "台灣受惠股為技術相關性判斷，未驗證與 Skyworks 直接交易",
-      "最新完整 FY2026 10-K 尚未核實，2026-11-03 8-K 業績優先於過時年度數據"
+      "具名客戶名單主要來自 2025 年 10-K，未證實各公司 2026 年當下仍有個別訂單。",
+      "台灣受惠公司為產業相關性，未取得直接供貨 Skyworks 的證據。",
+      "並未添加沒有直接證據的具名供應商或策略合作夥伴。"
     ]
   }
 }

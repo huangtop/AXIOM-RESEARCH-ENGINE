@@ -199,5 +199,206 @@
       "車用運算需求"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.v1",
+    "as_of": "2026-11-10",
+    "company": "Mobileye Global Inc.",
+    "symbol": "MBLY",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "Mobileye MBLY 產業鏈｜EyeQ、SuperVision、ADAS 與 Robotaxi",
+      "description": "Mobileye 產業鏈涵蓋 EyeQ、SuperVision、Cloud-Enhanced ADAS、Mobileye Drive 與 REM，整理具名客戶、合作夥伴、競爭者與台灣受惠股。"
+    },
+    "business_lines": [
+      {
+        "id": "EYEQ",
+        "name": "EyeQ 車用 SoC 與基礎 ADAS"
+      },
+      {
+        "id": "SURROUND",
+        "name": "Surround ADAS 與 Cloud-Enhanced ADAS"
+      },
+      {
+        "id": "SUPERVISION",
+        "name": "SuperVision 高階輔助駕駛"
+      },
+      {
+        "id": "CHAUFFEUR",
+        "name": "Chauffeur L3/L4 自動駕駛"
+      },
+      {
+        "id": "DRIVE",
+        "name": "Mobileye Drive Robotaxi 與自動接駁"
+      },
+      {
+        "id": "REM",
+        "name": "REM 高精地圖與道路資料"
+      },
+      {
+        "id": "RSS",
+        "name": "RSS 安全駕駛模型"
+      },
+      {
+        "id": "ROBOTICS",
+        "name": "Mentee Robotics 具身 AI"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "SURROUND_customer_001",
+        "name": "Stellantis（STLA）",
+        "business_line": "SURROUND",
+        "relationship": "customer",
+        "details": "2027 年起於部分美國車型導入 Cloud-Enhanced ADAS，計畫擴展至歐洲平台。"
+      },
+      {
+        "id": "SUPERVISION_customer_001",
+        "name": "Geely 極氪（ZEEKR）",
+        "business_line": "SUPERVISION",
+        "relationship": "customer",
+        "details": "極氪車型採用 Mobileye SuperVision 高階輔助駕駛系統。"
+      },
+      {
+        "id": "SUPERVISION_customer_002",
+        "name": "Polestar 極星（PSNY）",
+        "business_line": "SUPERVISION",
+        "relationship": "customer",
+        "details": "Polestar 4 車型搭載 Mobileye SuperVision 輔助駕駛方案。"
+      },
+      {
+        "id": "SUPERVISION_customer_003",
+        "name": "Porsche 保時捷",
+        "business_line": "SUPERVISION",
+        "relationship": "customer",
+        "details": "Porsche 選用 Mobileye SuperVision 技術開發高階駕駛輔助功能。"
+      },
+      {
+        "id": "DRIVE_customer_001",
+        "name": "Volkswagen Commercial Vehicles",
+        "business_line": "DRIVE",
+        "relationship": "customer",
+        "details": "ID. Buzz AD 自動駕駛車輛整合 Mobileye Drive 技術。"
+      },
+      {
+        "id": "DRIVE_customer_002",
+        "name": "HOLON",
+        "business_line": "DRIVE",
+        "relationship": "customer",
+        "details": "HOLON Urban 自動接駁車搭載 Mobileye Drive 自動駕駛系統。"
+      },
+      {
+        "id": "DRIVE_customer_003",
+        "name": "Deutsche Bahn 德國鐵路",
+        "business_line": "DRIVE",
+        "relationship": "customer",
+        "details": "選用搭載 Mobileye Drive 的 HOLON Urban 自動接駁車部署德國公共交通路線。"
+      },
+      {
+        "id": "DRIVE_partner_001",
+        "name": "MOIA",
+        "business_line": "DRIVE",
+        "relationship": "partner",
+        "details": "合作部署自動駕駛移動服務及 ID. Buzz AD 車隊。"
+      },
+      {
+        "id": "DRIVE_partner_002",
+        "name": "Beep",
+        "business_line": "DRIVE",
+        "relationship": "partner",
+        "details": "自動接駁與 Autonomous Mobility Networks 部署合作；Mobileye 參與其 B 輪投資。"
+      },
+      {
+        "id": "DRIVE_partner_003",
+        "name": "Uber（UBER）",
+        "business_line": "DRIVE",
+        "relationship": "partner",
+        "details": "共同推動搭載 Mobileye Drive 的自動駕駛移動服務生態。"
+      },
+      {
+        "id": "EYEQ_partner_001",
+        "name": "Intel（INTC）",
+        "business_line": "EYEQ",
+        "relationship": "partner",
+        "details": "Mobileye 的主要股東及歷史技術生態關係。"
+      },
+      {
+        "id": "ROBOTICS_partner_001",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "ROBOTICS",
+        "relationship": "partner",
+        "details": "MenteeBot 使用 NVIDIA Isaac 模擬與 AI 運算平台開發具身智慧。"
+      },
+      {
+        "id": "EYEQ_competitor_001",
+        "name": "Qualcomm（QCOM）",
+        "business_line": "EYEQ",
+        "relationship": "competitor",
+        "details": "Snapdragon Ride 車用 ADAS 與運算平台競爭。"
+      },
+      {
+        "id": "EYEQ_competitor_002",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "EYEQ",
+        "relationship": "competitor",
+        "details": "DRIVE 車用自動駕駛運算平台競爭。"
+      },
+      {
+        "id": "SUPERVISION_competitor_001",
+        "name": "Tesla（TSLA）",
+        "business_line": "SUPERVISION",
+        "relationship": "competitor",
+        "details": "FSD 高階駕駛輔助功能競爭。"
+      },
+      {
+        "id": "DRIVE_competitor_001",
+        "name": "Waymo",
+        "business_line": "DRIVE",
+        "relationship": "competitor",
+        "details": "Robotaxi 自動駕駛系統與商業化部署競爭。"
+      },
+      {
+        "id": "EYEQ_beneficiary_001",
+        "name": "台積電（2330）",
+        "business_line": "EYEQ",
+        "relationship": "beneficiary",
+        "details": "先進車用運算晶片晶圓代工產業需求受惠。"
+      },
+      {
+        "id": "EYEQ_beneficiary_002",
+        "name": "日月光投控（3711）",
+        "business_line": "EYEQ",
+        "relationship": "beneficiary",
+        "details": "車用運算晶片封裝與測試產業需求受惠。"
+      },
+      {
+        "id": "EYEQ_beneficiary_003",
+        "name": "京元電子（2449）",
+        "business_line": "EYEQ",
+        "relationship": "beneficiary",
+        "details": "車用 SoC 與高階運算晶片測試需求受惠。"
+      },
+      {
+        "id": "DRIVE_beneficiary_001",
+        "name": "鴻海（2317）",
+        "business_line": "DRIVE",
+        "relationship": "beneficiary",
+        "details": "自動駕駛電動車與車用電子製造產業需求受惠。"
+      },
+      {
+        "id": "SURROUND_beneficiary_001",
+        "name": "聯發科（2454）",
+        "business_line": "SURROUND",
+        "relationship": "beneficiary",
+        "details": "智慧座艙與車用運算市場擴大所帶動的產業需求。"
+      }
+    ]
   }
 }

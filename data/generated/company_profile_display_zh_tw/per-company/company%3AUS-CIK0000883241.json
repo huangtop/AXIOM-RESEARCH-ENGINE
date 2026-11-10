@@ -193,5 +193,450 @@
       "矽含量成長"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-10",
+    "company": "Synopsys, Inc.",
+    "symbol": "SNPS",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "SNPS 新思科技產業鏈｜EDA、Ansys、AI 晶片、IP 與台灣受惠股",
+      "description": "Synopsys 2026 年產業鏈：Amazon 多年期 IP 長約、OpenAI GPT-Synopsys、台積電 A14／CoWoS、AI EDA、多物理場模擬。"
+    },
+    "business_lines": [
+      {
+        "id": "EDA",
+        "name": "數位／類比 EDA、Fusion Compiler、PrimeTime、VCS、Verdi"
+      },
+      {
+        "id": "AI_EDA",
+        "name": "Synopsys.ai、Autopilot、GPT-Synopsys 自主代理設計"
+      },
+      {
+        "id": "SILICON_IP",
+        "name": "DesignWare 介面 IP、HBM4、PCIe 7、UCIe、SerDes、Foundation IP"
+      },
+      {
+        "id": "AOIP",
+        "name": "應用最佳化 IP、ASIC、AI 專用晶片與授權加權利金"
+      },
+      {
+        "id": "3DIC",
+        "name": "3DIC Compiler、CoWoS、EMIB、封裝／晶粒協同設計"
+      },
+      {
+        "id": "HAV",
+        "name": "ZeBu 硬體模擬、HAPS 原型驗證"
+      },
+      {
+        "id": "ANSYS",
+        "name": "Ansys 模擬分析、RedHawk-SC、流體、熱與多物理場"
+      },
+      {
+        "id": "CLOUD",
+        "name": "EDA 雲端運算與工程模擬"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "AOIP_customer_001",
+        "name": "Amazon / AWS",
+        "business_line": "AOIP",
+        "relationship": "customer",
+        "details": "2026/9/30 簽訂超過十億美元、跨多年客製化 IP 許可與權利金合約。",
+        "source_ids": [
+          "IR_AWS",
+          "REUTERS_AWS"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "EDA_customer_002",
+        "name": "AMD",
+        "business_line": "EDA",
+        "relationship": "customer",
+        "details": "AMD MI455X 採用 Synopsys 3DIC Compiler 及多晶粒設計流程。",
+        "source_ids": [
+          "IR_AMD"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "HAV_customer_003",
+        "name": "Arm",
+        "business_line": "HAV",
+        "relationship": "customer",
+        "details": "Arm AGI CPU 開發導入 Synopsys EDA、介面 IP 與硬體輔助驗證。",
+        "source_ids": [
+          "IR_ARM"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "EDA_customer_004",
+        "name": "Astera Labs",
+        "business_line": "EDA",
+        "relationship": "customer",
+        "details": "Astera Labs 使用 Synopsys PrimeSim 執行 AI 互連 IC 模擬。",
+        "source_ids": [
+          "IR_ALAB"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "AI_EDA_customer_005",
+        "name": "OpenAI",
+        "business_line": "AI_EDA",
+        "relationship": "customer",
+        "details": "多年期協議涉及 OpenAI 使用／授權 Synopsys EDA 工具。",
+        "source_ids": [
+          "IR_OPENAI"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "AI_EDA_partner_006",
+        "name": "OpenAI",
+        "business_line": "AI_EDA",
+        "relationship": "partner",
+        "details": "共同研發 GPT-Synopsys、聯合上市及收益分潤。",
+        "source_ids": [
+          "IR_OPENAI"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "EDA_partner_007",
+        "name": "台積電 TSMC（2330）",
+        "business_line": "EDA",
+        "relationship": "partner",
+        "details": "A14 EDA 認證、CoWoS／3DFabric、AI 輔助設計流程協同開發。",
+        "source_ids": [
+          "IR_TSMC",
+          "TSMC_OIP"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "3DIC_partner_008",
+        "name": "Intel Foundry",
+        "business_line": "3DIC",
+        "relationship": "partner",
+        "details": "合作 Intel 14A、EMIB 相關設計與先進封裝認證流程。",
+        "source_ids": [
+          "IR_INTEL"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "AI_EDA_partner_009",
+        "name": "NVIDIA",
+        "business_line": "AI_EDA",
+        "relationship": "partner",
+        "details": "AI 工程軟體、數位分身與加速運算策略合作。",
+        "source_ids": [
+          "IR_NVDA"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "AI_EDA_partner_010",
+        "name": "Microsoft",
+        "business_line": "AI_EDA",
+        "relationship": "partner",
+        "details": "共同開發 Microsoft Discovery 自主 EDA 工作流程。",
+        "source_ids": [
+          "IR_MICROSOFT"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "CLOUD_partner_011",
+        "name": "Amazon AWS",
+        "business_line": "CLOUD",
+        "relationship": "partner",
+        "details": "針對 Trainium、Graviton 最佳化工程軟體及雲端設計工作流程。",
+        "source_ids": [
+          "IR_AWS"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "EDA_partner_012",
+        "name": "Samsung Foundry",
+        "business_line": "EDA",
+        "relationship": "partner",
+        "details": "EDA 與先進製程設計技術合作。",
+        "source_ids": [
+          "SAMSUNG"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "SILICON_IP_competitor_013",
+        "name": "Cadence Design Systems（CDNS）",
+        "business_line": "SILICON_IP",
+        "relationship": "competitor",
+        "details": "EDA、矽智財與硬體驗證領域的主要競爭者。",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "EDA_competitor_014",
+        "name": "Siemens EDA",
+        "business_line": "EDA",
+        "relationship": "competitor",
+        "details": "Calibre 物理驗證及 EDA 工具同業。",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "ANSYS_competitor_015",
+        "name": "Dassault Systèmes",
+        "business_line": "ANSYS",
+        "relationship": "competitor",
+        "details": "工程模擬與 CAE 市場競爭者。",
+        "source_ids": [
+          "SEC_10K"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "SILICON_IP_competitor_016",
+        "name": "Arm Holdings（ARM）",
+        "business_line": "SILICON_IP",
+        "relationship": "competitor",
+        "details": "部分 IP 授權領域競爭，同時具設計工具採用關係。",
+        "source_ids": [
+          "SEC_10K",
+          "IR_ARM"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "3DIC_beneficiary_017",
+        "name": "台積電（2330）",
+        "business_line": "3DIC",
+        "relationship": "beneficiary",
+        "details": "先進製程、CoWoS 與多晶粒設計需求同步成長。",
+        "source_ids": [
+          "IR_TSMC"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "3DIC_beneficiary_018",
+        "name": "日月光投控（3711）",
+        "business_line": "3DIC",
+        "relationship": "beneficiary",
+        "details": "2.5D／3D 封裝與高階晶片設計驗證同屬先進封裝需求循環。",
+        "source_ids": [
+          "IR_TSMC"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "AOIP_beneficiary_019",
+        "name": "世芯-KY（3661）",
+        "business_line": "AOIP",
+        "relationship": "beneficiary",
+        "details": "AI／HPC ASIC 設計服務與高階 EDA、IP 投資景氣相關。",
+        "source_ids": [
+          "IR_STRATEGY"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "AOIP_beneficiary_020",
+        "name": "創意（3443）",
+        "business_line": "AOIP",
+        "relationship": "beneficiary",
+        "details": "ASIC 設計與先進製程、IP 整合需求同步。",
+        "source_ids": [
+          "IR_STRATEGY"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "AOIP_beneficiary_021",
+        "name": "智原（3035）",
+        "business_line": "AOIP",
+        "relationship": "beneficiary",
+        "details": "ASIC 與 IP 授權需求受客製化晶片投資帶動。",
+        "source_ids": [
+          "IR_STRATEGY"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "SILICON_IP_beneficiary_022",
+        "name": "力旺（3529）",
+        "business_line": "SILICON_IP",
+        "relationship": "beneficiary",
+        "details": "矽智財授權與半導體設計活動擴張共同受惠。",
+        "source_ids": [
+          "IR_STRATEGY"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "EDA_beneficiary_023",
+        "name": "晶心科（6533）",
+        "business_line": "EDA",
+        "relationship": "beneficiary",
+        "details": "RISC-V 核心 IP 同受客製化晶片設計需求影響。",
+        "source_ids": [
+          "IR_STRATEGY"
+        ],
+        "confidence": "high"
+      }
+    ],
+    "research": {
+      "latest_sec_10k": "2025-12-22 FY2025 10-K",
+      "latest_sec_10q": "2026-08-26 FY2026 Q3 10-Q",
+      "earnings_call": "2026-08-26 FY2026 Q3 results；2026-09-30 Investor Day",
+      "major_events": [
+        {
+          "date": "2026-09-30",
+          "event": "Amazon 超過 10 億美元多年期 IP 許可協議",
+          "source_ids": [
+            "IR_AWS",
+            "REUTERS_AWS"
+          ]
+        },
+        {
+          "date": "2026-09-30",
+          "event": "OpenAI 與 Synopsys 公布 GPT-Synopsys 合作",
+          "source_ids": [
+            "IR_OPENAI"
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "event": "台積電 A14、CoWoS、AI EDA 合作",
+          "source_ids": [
+            "IR_TSMC"
+          ]
+        },
+        {
+          "date": "2026-08-26",
+          "event": "FY2026 Q3 營收 24.768 億美元",
+          "source_ids": [
+            "IR_Q3"
+          ]
+        }
+      ],
+      "taiwan_supplier_policy": "只收錄有直接採購、供貨或材料／設備供應文件的台灣 supplier；本版未列直接台灣 supplier。"
+    },
+    "sources": [
+      {
+        "id": "SEC_10K",
+        "grade": "A",
+        "date": "2025-12-22",
+        "url": "https://www.sec.gov/Archives/edgar/data/883241/000088324125000028/snps-20251031.htm"
+      },
+      {
+        "id": "SEC_10Q",
+        "grade": "A",
+        "date": "2026-08-26",
+        "url": "https://www.sec.gov/Archives/edgar/data/883241/000088324126000025/snps-20260731.htm"
+      },
+      {
+        "id": "IR_Q3",
+        "grade": "A",
+        "date": "2026-08-26",
+        "url": "https://news.synopsys.com/2026-08-26-Synopsys-Posts-Financial-Results-for-Third-Quarter-Fiscal-Year-2026"
+      },
+      {
+        "id": "IR_AWS",
+        "grade": "A",
+        "date": "2026-09-30",
+        "url": "https://news.synopsys.com/2026-09-30-Synopsys-and-Amazon-Announce-Strategic%2C-Multi-year-IP-Agreement-for-Custom-Silicon-Collaboration-Also-Extends-to-Cloud-and-AI-Powered-Engineering"
+      },
+      {
+        "id": "IR_OPENAI",
+        "grade": "A",
+        "date": "2026-09-30",
+        "url": "https://news.synopsys.com/2026-09-30-OpenAI-and-Synopsys-Announce-GPT-Synopsys-Frontier-Intelligence-to-Revolutionize-Chip-Design"
+      },
+      {
+        "id": "IR_TSMC",
+        "grade": "A",
+        "date": "2026-09-23",
+        "url": "https://news.synopsys.com/2026-09-23-Synopsys-and-TSMC-Partner-to-Accelerate-AI-Systems-Innovation-with-Agentic-AI-and-Advanced-Design"
+      },
+      {
+        "id": "TSMC_OIP",
+        "grade": "A",
+        "date": "2026-09-23",
+        "url": "https://www.cld.tsmc.com/english/dedicatedFoundry/oip/eda_alliance"
+      },
+      {
+        "id": "IR_AMD",
+        "grade": "A",
+        "date": "2026-07-23",
+        "url": "https://news.synopsys.com/2026-07-23-Synopsys-Enables-AMD-Instinct-TM-MI455X-GPU-Design-with-Comprehensive-Multi-Die-Solution"
+      },
+      {
+        "id": "IR_ARM",
+        "grade": "A",
+        "date": "2026-03-24",
+        "url": "https://news.synopsys.com/2026-03-24-Synopsys-Supports-New-Arm-AGI-CPU-with-Full-Stack-Design-Solutions"
+      },
+      {
+        "id": "IR_NVDA",
+        "grade": "A",
+        "date": "2025-12-01",
+        "url": "https://nvidianews.nvidia.com/news/nvidia-and-synopsys-announce-strategic-partnership-to-revolutionize-engineering-and-design"
+      },
+      {
+        "id": "IR_INTEL",
+        "grade": "A",
+        "date": "2026-07-27",
+        "url": "https://news.synopsys.com/2026-07-27-Synopsys-and-Intel-Foundry-Fast-Track-Customer-Readiness-from-Silicon-to-Systems-on-Intel-14A"
+      },
+      {
+        "id": "IR_STRATEGY",
+        "grade": "A",
+        "date": "2026-09-30",
+        "url": "https://investor.synopsys.com/news/news-details/2026/Synopsys-Details-Growth-Strategy-and-Long-term-Financial-Model-at-2026-Investor-Day/"
+      },
+      {
+        "id": "IR_MICROSOFT",
+        "grade": "A",
+        "date": "2026-07-27",
+        "url": "https://news.synopsys.com/2026-07-27-Synopsys-Advances-Agentic-AI-Chip-Design-with-AMD-and-Microsoft"
+      },
+      {
+        "id": "IR_ALAB",
+        "grade": "A",
+        "date": "2026-03-16",
+        "url": "https://news.synopsys.com/2026-03-16-Synopsys-Showcases-NVIDIA-Partnership-Impact-and-Ecosystem-Innovation-at-GTC-2026"
+      },
+      {
+        "id": "REUTERS_AWS",
+        "grade": "B",
+        "date": "2026-09-30",
+        "url": "https://www.reuters.com/business/retail-consumer/synopsys-amazon-web-services-sign-chip-design-licensing-deal-worth-more-than-1-2026-09-30/"
+      },
+      {
+        "id": "SAMSUNG",
+        "grade": "A",
+        "date": "2026-11-10",
+        "url": "https://www.synopsys.com/partners/samsung.html"
+      }
+    ]
   }
 }

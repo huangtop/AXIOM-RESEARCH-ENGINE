@@ -205,5 +205,171 @@
       "聯網裝置"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "as_of": "2026-11-10",
+    "company": "STMicroelectronics N.V.",
+    "symbol": "STM",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "STM 意法半導體產業鏈｜具名客戶、合作夥伴與台灣受惠股",
+      "description": "涵蓋 AWS 資料中心、車用半導體、STM32、SiC、MEMS 與邊緣 AI。"
+    },
+    "business_lines": [
+      {
+        "id": "AWS_CLOUD",
+        "name": "AWS 雲端與 AI 資料中心"
+      },
+      {
+        "id": "AUTO",
+        "name": "車用半導體"
+      },
+      {
+        "id": "INDUSTRIAL",
+        "name": "工業與能源"
+      },
+      {
+        "id": "MEMS",
+        "name": "MEMS 與光學感測"
+      },
+      {
+        "id": "POWER",
+        "name": "SiC 與功率離散元件"
+      },
+      {
+        "id": "EDGE_AI",
+        "name": "邊緣 AI 與嵌入式"
+      },
+      {
+        "id": "RF_OPTICAL",
+        "name": "RF 與光通訊"
+      },
+      {
+        "id": "MANUFACTURING",
+        "name": "晶圓製造與封測"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "AWS_CLOUD_customer_001",
+        "name": "Amazon Web Services（AWS）",
+        "business_line": "AWS_CLOUD",
+        "relationship": "customer",
+        "details": "多年期商業協議，供應高速連接、混合訊號、MCU 與電源晶片。"
+      },
+      {
+        "id": "EDGE_AI_partner_002",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "EDGE_AI",
+        "relationship": "partner",
+        "details": "ST 感測器、MCU、馬達控制整合 NVIDIA Isaac Sim 與 Holoscan 機器人生態。"
+      },
+      {
+        "id": "EDGE_AI_partner_003",
+        "name": "新加坡國立大學（NUS）",
+        "business_line": "EDGE_AI",
+        "relationship": "partner",
+        "details": "共同成立 ST-NUS HELIX Corporate Lab，研發低功耗邊緣 AI。"
+      },
+      {
+        "id": "POWER_partner_004",
+        "name": "Sanan Optoelectronics（三安光電）",
+        "business_line": "POWER",
+        "relationship": "partner",
+        "details": "重慶 Sanan ST 合資企業生產 200mm SiC 元件。"
+      },
+      {
+        "id": "AUTO_competitor_005",
+        "name": "Infineon Technologies",
+        "business_line": "AUTO",
+        "relationship": "competitor",
+        "details": "車用 MCU、SiC 功率半導體與車用類比產品競爭。"
+      },
+      {
+        "id": "AUTO_competitor_006",
+        "name": "NXP Semiconductors",
+        "business_line": "AUTO",
+        "relationship": "competitor",
+        "details": "車用 MCU、雷達與車用處理器競爭。"
+      },
+      {
+        "id": "INDUSTRIAL_competitor_007",
+        "name": "Texas Instruments（TXN）",
+        "business_line": "INDUSTRIAL",
+        "relationship": "competitor",
+        "details": "工業類比、嵌入式控制與電源管理競爭。"
+      },
+      {
+        "id": "EDGE_AI_competitor_008",
+        "name": "Microchip Technology（MCHP）",
+        "business_line": "EDGE_AI",
+        "relationship": "competitor",
+        "details": "工業 MCU 與嵌入式控制競爭。"
+      },
+      {
+        "id": "MEMS_competitor_009",
+        "name": "Bosch Sensortec",
+        "business_line": "MEMS",
+        "relationship": "competitor",
+        "details": "MEMS 慣性感測器競爭。"
+      },
+      {
+        "id": "POWER_competitor_010",
+        "name": "onsemi（ON）",
+        "business_line": "POWER",
+        "relationship": "competitor",
+        "details": "SiC 功率元件與車用功率半導體競爭。"
+      },
+      {
+        "id": "POWER_beneficiary_011",
+        "name": "漢磊（3707）",
+        "business_line": "POWER",
+        "relationship": "beneficiary",
+        "details": "SiC 功率半導體市場擴張帶動相關製程需求。"
+      },
+      {
+        "id": "POWER_beneficiary_012",
+        "name": "嘉晶（3016）",
+        "business_line": "POWER",
+        "relationship": "beneficiary",
+        "details": "SiC 與特殊晶圓材料產業需求受惠。"
+      },
+      {
+        "id": "MANUFACTURING_beneficiary_013",
+        "name": "環球晶（6488）",
+        "business_line": "MANUFACTURING",
+        "relationship": "beneficiary",
+        "details": "功率半導體與先進晶圓製造擴產推升晶圓材料需求。"
+      },
+      {
+        "id": "MANUFACTURING_beneficiary_014",
+        "name": "日月光投控（3711）",
+        "business_line": "MANUFACTURING",
+        "relationship": "beneficiary",
+        "details": "半導體封裝與測試產業需求受惠。"
+      },
+      {
+        "id": "INDUSTRIAL_beneficiary_015",
+        "name": "台達電（2308）",
+        "business_line": "INDUSTRIAL",
+        "relationship": "beneficiary",
+        "details": "工業電源、能源效率與電力電子產業需求受惠。"
+      },
+      {
+        "id": "EDGE_AI_beneficiary_016",
+        "name": "研華（2395）",
+        "business_line": "EDGE_AI",
+        "relationship": "beneficiary",
+        "details": "邊緣 AI 與工業運算平台需求受惠。"
+      }
+    ]
   }
 }

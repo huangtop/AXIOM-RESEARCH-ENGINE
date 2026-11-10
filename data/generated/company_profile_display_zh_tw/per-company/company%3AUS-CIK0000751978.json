@@ -205,5 +205,681 @@
       "高效率電力轉換"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-10",
+    "company": "Vicor Corporation",
+    "symbol": "VICR",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "VICR Vicor 深度產業鏈｜AI GPU 垂直供電、48V、BCM、VTM、航太及車用電源",
+      "description": "Vicor 產業鏈涵蓋 AI 加速器 VPD 垂直供電、48V 資料中心、BCM／NBM、PRM／VTM、AC-DC、磚型電源、800V 車用、航太軍規與專利授權；區分官方具名採用案例、經銷通路、競爭者及台灣產業受惠關係。"
+    },
+    "business_lines": [
+      {
+        "id": "AI_VPD",
+        "name": "AI 加速器垂直供電 VPD／VTM"
+      },
+      {
+        "id": "AI_48V",
+        "name": "AI 伺服器 48V 分散式供電"
+      },
+      {
+        "id": "DC_BUS",
+        "name": "BCM／NBM 高密度母線轉換"
+      },
+      {
+        "id": "REGULATION",
+        "name": "PRM／DCM 穩壓與隔離"
+      },
+      {
+        "id": "AC_FRONT",
+        "name": "AC-DC 前端／PFC／整流"
+      },
+      {
+        "id": "BRICK",
+        "name": "傳統磚型 DC-DC 與配置電源"
+      },
+      {
+        "id": "AUTOMOTIVE",
+        "name": "800V／48V 車用電源轉換"
+      },
+      {
+        "id": "ROBOTICS",
+        "name": "機器人與工業自動化電源"
+      },
+      {
+        "id": "AEROSPACE",
+        "name": "航太衛星與太空 AI 電源"
+      },
+      {
+        "id": "DEFENSE",
+        "name": "軍規 VPX／VITA／SOSA 電源"
+      },
+      {
+        "id": "TELECOM",
+        "name": "電信、網路與遠距供電"
+      },
+      {
+        "id": "CUSTOM",
+        "name": "客製化電源與日本 VJCL"
+      },
+      {
+        "id": "IP_LICENSE",
+        "name": "VPD／NBM 電源專利授權"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "AEROSPACE_customer_001",
+        "name": "Spacechips",
+        "business_line": "AEROSPACE",
+        "relationship": "customer",
+        "details": "Vicor 官方具名應用案例：AI1 太空 AI 轉發器採用 Vicor BCM、PRM、VTM 分比式供電，支援低壓大電流處理器。"
+      },
+      {
+        "id": "AUTOMOTIVE_customer_001",
+        "name": "INFAC",
+        "business_line": "AUTOMOTIVE",
+        "relationship": "customer",
+        "details": "Vicor 官方具名應用案例：電動車電池組整合 Vicor DC-DC 模組，藉 48V 電力分配減少線束與冷卻空間。"
+      },
+      {
+        "id": "AUTOMOTIVE_customer_002",
+        "name": "Betterfrost",
+        "business_line": "AUTOMOTIVE",
+        "relationship": "customer",
+        "details": "Vicor 官方具名應用案例：48V 脈衝電力除霜方案採用 Vicor 模組，降低車窗除霜能耗與時間。"
+      },
+      {
+        "id": "AUTOMOTIVE_customer_003",
+        "name": "Hongfa 宏發",
+        "business_line": "AUTOMOTIVE",
+        "relationship": "customer",
+        "details": "Vicor 官方具名應用案例：與 Vicor 設計 48V 主動懸吊高功率密度供電方案。"
+      },
+      {
+        "id": "AEROSPACE_customer_002",
+        "name": "Microgate",
+        "business_line": "AEROSPACE",
+        "relationship": "customer",
+        "details": "Vicor 官方具名應用案例：大型望遠鏡控制系統採用高密度電源模組，滿足精密光學設備散熱及空間限制。"
+      },
+      {
+        "id": "DEFENSE_customer_001",
+        "name": "Saab UK",
+        "business_line": "DEFENSE",
+        "relationship": "customer",
+        "details": "Vicor 官方具名應用案例：全電動工作級水下機器人 eWROV 使用 Vicor 高密度電源模組。"
+      },
+      {
+        "id": "ROBOTICS_customer_001",
+        "name": "Knightscope",
+        "business_line": "ROBOTICS",
+        "relationship": "customer",
+        "details": "Vicor 官方具名應用案例：自主安防巡邏機器人應用 Vicor 電源技術支援機載運算與機電負載。"
+      },
+      {
+        "id": "AEROSPACE_customer_003",
+        "name": "Ampaire",
+        "business_line": "AEROSPACE",
+        "relationship": "customer",
+        "details": "Vicor 官方具名應用案例：混合動力航空系統採用 Vicor 模組化供電方案。"
+      },
+      {
+        "id": "ROBOTICS_customer_002",
+        "name": "VideoRay",
+        "business_line": "ROBOTICS",
+        "relationship": "customer",
+        "details": "Vicor 官方具名應用案例：水下遙控機器人 ROV 採用 Vicor 模組化電源以支援任務負載。"
+      },
+      {
+        "id": "AUTOMOTIVE_customer_004",
+        "name": "Lightning Motorcycles",
+        "business_line": "AUTOMOTIVE",
+        "relationship": "customer",
+        "details": "Vicor 官方具名應用案例：高性能電動摩托車案例採用 Vicor 高密度電力轉換方案。"
+      },
+      {
+        "id": "TELECOM_customer_001",
+        "name": "Fukaden",
+        "business_line": "TELECOM",
+        "relationship": "customer",
+        "details": "Vicor 官方具名應用案例：系留無人機移動基地台採用 Vicor 高功率密度模組供電。"
+      },
+      {
+        "id": "TELECOM_customer_002",
+        "name": "Dragonfly Picture",
+        "business_line": "TELECOM",
+        "relationship": "customer",
+        "details": "Vicor 官方具名應用案例：系留無人直升機通訊監視系統採用 Vicor 電力轉換方案。"
+      },
+      {
+        "id": "ROBOTICS_customer_003",
+        "name": "WiBotic",
+        "business_line": "ROBOTICS",
+        "relationship": "customer",
+        "details": "Vicor 官方具名應用案例：機器人無線充電系統採用 Vicor 模組化電源。"
+      },
+      {
+        "id": "TELECOM_customer_003",
+        "name": "Phasor",
+        "business_line": "TELECOM",
+        "relationship": "customer",
+        "details": "Vicor 官方具名應用案例：衛星寬頻天線系統採用 Vicor 低壓大電流供電方案。"
+      },
+      {
+        "id": "ROBOTICS_customer_004",
+        "name": "HIRO",
+        "business_line": "ROBOTICS",
+        "relationship": "customer",
+        "details": "Vicor 官方具名應用案例：邊緣運算系統採用緊湊高功率密度電源方案。"
+      },
+      {
+        "id": "REGULATION_customer_001",
+        "name": "ReVolt",
+        "business_line": "REGULATION",
+        "relationship": "customer",
+        "details": "Vicor 官方具名應用案例：影視片場清潔能源系統採用 Vicor 48V 高密度模組。"
+      },
+      {
+        "id": "REGULATION_customer_002",
+        "name": "C-Power",
+        "business_line": "REGULATION",
+        "relationship": "customer",
+        "details": "Vicor 官方具名應用案例：海洋波浪能發電與海上通訊設備採用 Vicor 模組化電源方案。"
+      },
+      {
+        "id": "AEROSPACE_customer_004",
+        "name": "Doosan Mobility Innovation",
+        "business_line": "AEROSPACE",
+        "relationship": "customer",
+        "details": "Vicor 官方具名應用案例：氫燃料電池無人機案例採用 Vicor 電源模組。"
+      },
+      {
+        "id": "AUTOMOTIVE_customer_005",
+        "name": "Delta Motorsport",
+        "business_line": "AUTOMOTIVE",
+        "relationship": "customer",
+        "details": "Vicor 官方具名應用案例：混合動力賽車電池與電源管理系統採用 Vicor 48V 模組方案。"
+      },
+      {
+        "id": "ROBOTICS_customer_005",
+        "name": "CCell",
+        "business_line": "ROBOTICS",
+        "relationship": "customer",
+        "details": "Vicor 官方具名應用案例：珊瑚礁修復電化學設備採用 Vicor 精密電力轉換技術。"
+      },
+      {
+        "id": "BRICK_partner_001",
+        "name": "Arrow Electronics（ARW）",
+        "business_line": "BRICK",
+        "relationship": "partner",
+        "details": "2025 年 10-K 列名全球四大授權庫存經銷商之一，供應標準 Brick 與 Advanced 模組。"
+      },
+      {
+        "id": "BRICK_partner_002",
+        "name": "DigiKey",
+        "business_line": "BRICK",
+        "relationship": "partner",
+        "details": "2025 年 10-K 列名全球授權庫存經銷商，提供 Vicor 標準電源模組。"
+      },
+      {
+        "id": "BRICK_partner_003",
+        "name": "Avnet（AVT）",
+        "business_line": "BRICK",
+        "relationship": "partner",
+        "details": "2025 年 10-K 列名全球授權庫存經銷商，支援 OEM 工程採購。"
+      },
+      {
+        "id": "BRICK_partner_004",
+        "name": "Mouser Electronics",
+        "business_line": "BRICK",
+        "relationship": "partner",
+        "details": "2025 年 10-K 列名全球授權庫存經銷商，提供 Vicor 標準產品。"
+      },
+      {
+        "id": "AEROSPACE_partner_001",
+        "name": "Spacechips",
+        "business_line": "AEROSPACE",
+        "relationship": "partner",
+        "details": "與 Vicor 共同設計 AI1 太空 AI 轉發器供電網路；此節點表達技術合作，另有實際採用案例。"
+      },
+      {
+        "id": "AUTOMOTIVE_partner_001",
+        "name": "Hongfa 宏發",
+        "business_line": "AUTOMOTIVE",
+        "relationship": "partner",
+        "details": "合作開發 48V 主動懸吊供電方案，目標縮小模組體積與重量。"
+      },
+      {
+        "id": "AUTOMOTIVE_partner_002",
+        "name": "Betterfrost",
+        "business_line": "AUTOMOTIVE",
+        "relationship": "partner",
+        "details": "共同展示 48V 脈衝除霜電源網路，提升電動車能源使用效率。"
+      },
+      {
+        "id": "CUSTOM_partner_001",
+        "name": "Vicor Japan Co., Ltd.（VJCL）",
+        "business_line": "CUSTOM",
+        "relationship": "partner",
+        "details": "日本子公司負責當地客製化電源設計、銷售與服務；屬集團內部業務。"
+      },
+      {
+        "id": "CUSTOM_partner_002",
+        "name": "Vicor Custom Power",
+        "business_line": "CUSTOM",
+        "relationship": "partner",
+        "details": "集團客製化電源系統子公司，提供標準品以外的整合電源設計。"
+      },
+      {
+        "id": "IP_LICENSE_partner_001",
+        "name": "2026 年匿名 VPD 授權 OEM",
+        "business_line": "IP_LICENSE",
+        "relationship": "partner",
+        "details": "2026 年公開揭露的 AI OEM 非專屬 VPD 專利授權；對方未具名，不能推定為 NVIDIA 或其他特定企業。"
+      },
+      {
+        "id": "IP_LICENSE_partner_002",
+        "name": "2026 年匿名 VPD 第二來源製造體系",
+        "business_line": "IP_LICENSE",
+        "relationship": "partner",
+        "details": "公司表示研究建立高電流密度第二代 VPD 模組替代來源；尚未公布具名製造商。"
+      },
+      {
+        "id": "AI_VPD_competitor_001",
+        "name": "Monolithic Power Systems（MPWR）",
+        "business_line": "AI_VPD",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：GPU／AI 加速器多相供電與電源模組方案競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "AI_VPD_competitor_002",
+        "name": "Infineon Technologies",
+        "business_line": "AI_VPD",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：AI 伺服器功率級與高電流 VRM 方案競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "AI_VPD_competitor_003",
+        "name": "Renesas Electronics",
+        "business_line": "AI_VPD",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：資料中心電源管理與數位多相控制方案競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "AI_VPD_competitor_004",
+        "name": "Texas Instruments（TXN）",
+        "business_line": "AI_VPD",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：高電流電源轉換及負載點穩壓 IC 市場競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "AI_48V_competitor_001",
+        "name": "Delta Electronics 台達電（2308）",
+        "business_line": "AI_48V",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：48V 資料中心電源與高功率密度供電系統市場重疊。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "AI_48V_competitor_002",
+        "name": "Lite-On 光寶科（2301）",
+        "business_line": "AI_48V",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：AI 伺服器電源與高效率電力架構市場重疊。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "AI_48V_competitor_003",
+        "name": "Flex Power Modules",
+        "business_line": "AI_48V",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：資料中心 48V DC-DC 與數位電源模組競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "AI_48V_competitor_004",
+        "name": "Advanced Energy Industries（AEIS）",
+        "business_line": "AI_48V",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：資料中心及半導體設備高效率電源系統競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "DC_BUS_competitor_001",
+        "name": "Bel Fuse（BELFA／BELFB）",
+        "business_line": "DC_BUS",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：高功率密度 DC-DC 與板級電源模組競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "DC_BUS_competitor_002",
+        "name": "Murata Power Solutions",
+        "business_line": "DC_BUS",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：隔離式 DC-DC 與中間匯流排電源模組競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "DC_BUS_competitor_003",
+        "name": "SynQor",
+        "business_line": "DC_BUS",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：高可靠度高密度 DC-DC 轉換器市場競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "REGULATION_competitor_001",
+        "name": "TDK-Lambda",
+        "business_line": "REGULATION",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：工業與高可靠度 DC-DC 電源模組市場競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "REGULATION_competitor_002",
+        "name": "RECOM Power",
+        "business_line": "REGULATION",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：模組化 DC-DC、隔離轉換及工業電源市場競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "REGULATION_competitor_003",
+        "name": "Traco Power",
+        "business_line": "REGULATION",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：工業 DC-DC 電源轉換模組市場競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "AC_FRONT_competitor_001",
+        "name": "Delta Electronics 台達電（2308）",
+        "business_line": "AC_FRONT",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：AC-DC、PFC 與高效率整流電源市場競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "AC_FRONT_competitor_002",
+        "name": "Advanced Energy Industries（AEIS）",
+        "business_line": "AC_FRONT",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：工業與資料中心 AC-DC 前端電源競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "AC_FRONT_competitor_003",
+        "name": "XP Power",
+        "business_line": "AC_FRONT",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：工業與高可靠度 AC-DC 電源系統市場競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "BRICK_competitor_001",
+        "name": "Bel Power Solutions",
+        "business_line": "BRICK",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：傳統磚型 DC-DC 轉換器及電源模組競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "BRICK_competitor_002",
+        "name": "TDK-Lambda",
+        "business_line": "BRICK",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：磚型 DC-DC 與配置式工業電源競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "BRICK_competitor_003",
+        "name": "Cincon Electronics",
+        "business_line": "BRICK",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：高可靠度 DC-DC 磚型模組競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "BRICK_competitor_004",
+        "name": "COSEL",
+        "business_line": "BRICK",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：工業電源與模組化轉換器競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "AUTOMOTIVE_competitor_001",
+        "name": "BorgWarner",
+        "business_line": "AUTOMOTIVE",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：電動車高壓 DC-DC 轉換器與車用電源市場重疊。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "AUTOMOTIVE_competitor_002",
+        "name": "Valeo",
+        "business_line": "AUTOMOTIVE",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：車用高壓低壓電力轉換與電氣化系統市場重疊。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "AUTOMOTIVE_competitor_003",
+        "name": "Delta Electronics 台達電（2308）",
+        "business_line": "AUTOMOTIVE",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：車載 DC-DC、48V 與電動車電源架構市場重疊。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "ROBOTICS_competitor_001",
+        "name": "Mean Well 明緯",
+        "business_line": "ROBOTICS",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：工業自動化與機器人電源系統競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "ROBOTICS_competitor_002",
+        "name": "TDK-Lambda",
+        "business_line": "ROBOTICS",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：機器人與精密工業設備電源模組競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "AEROSPACE_competitor_001",
+        "name": "VPT",
+        "business_line": "AEROSPACE",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：航太與衛星用高可靠度 DC-DC 轉換器市場競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "AEROSPACE_competitor_002",
+        "name": "Crane Aerospace & Electronics",
+        "business_line": "AEROSPACE",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：航太國防高可靠度電源轉換模組競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "DEFENSE_competitor_001",
+        "name": "SynQor",
+        "business_line": "DEFENSE",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：軍規 VPX、VITA 與高可靠度電源模組競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "DEFENSE_competitor_002",
+        "name": "Milpower Source",
+        "business_line": "DEFENSE",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：軍規與航太 VPX 電源供應器市場競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "TELECOM_competitor_001",
+        "name": "Murata Power Solutions",
+        "business_line": "TELECOM",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：電信 48V 電源與隔離式 DC-DC 轉換器競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "TELECOM_competitor_002",
+        "name": "Flex Power Modules",
+        "business_line": "TELECOM",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：網路設備與 48V 電力模組競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "CUSTOM_competitor_001",
+        "name": "Advanced Energy Industries（AEIS）",
+        "business_line": "CUSTOM",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：客製化高性能電源整合方案競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "CUSTOM_competitor_002",
+        "name": "XP Power",
+        "business_line": "CUSTOM",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：醫療、工業及高可靠度客製電源系統競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "IP_LICENSE_competitor_001",
+        "name": "Monolithic Power Systems（MPWR）",
+        "business_line": "IP_LICENSE",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：高密度電源架構與模組技術存在產品及專利布局競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "IP_LICENSE_competitor_002",
+        "name": "Infineon Technologies",
+        "business_line": "IP_LICENSE",
+        "relationship": "competitor",
+        "details": "產品市場重疊分析：高功率密度轉換架構與封裝技術競爭。不代表已證實個別客戶轉單。"
+      },
+      {
+        "id": "AI_48V_beneficiary_001",
+        "name": "台達電（2308）",
+        "business_line": "AI_48V",
+        "relationship": "beneficiary",
+        "details": "AI 資料中心 48V 與高效率電源升級的台灣同業受惠代表；同時存在產品競爭。"
+      },
+      {
+        "id": "AI_48V_beneficiary_002",
+        "name": "光寶科（2301）",
+        "business_line": "AI_48V",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器高瓦數 PSU、48V 電力架構的台灣同業受惠代表。"
+      },
+      {
+        "id": "AI_48V_beneficiary_003",
+        "name": "群電（6412）",
+        "business_line": "AI_48V",
+        "relationship": "beneficiary",
+        "details": "伺服器與高效率電源轉換需求的台灣產業關聯代表，非已確認 Vicor 供應商。"
+      },
+      {
+        "id": "AI_VPD_beneficiary_001",
+        "name": "致茂（2360）",
+        "business_line": "AI_VPD",
+        "relationship": "beneficiary",
+        "details": "AI 高電流電源模組與功率電子測試設備需求的台灣產業關聯代表。"
+      },
+      {
+        "id": "AI_VPD_beneficiary_002",
+        "name": "貿聯-KY（3665）",
+        "business_line": "AI_VPD",
+        "relationship": "beneficiary",
+        "details": "高電流資料中心電源線纜與互連需求的台灣產業關聯代表。"
+      },
+      {
+        "id": "AI_VPD_beneficiary_003",
+        "name": "台達電（2308）",
+        "business_line": "AI_VPD",
+        "relationship": "beneficiary",
+        "details": "GPU 高功率密度供電架構擴張的台灣競合廠商。"
+      },
+      {
+        "id": "DC_BUS_beneficiary_001",
+        "name": "光寶科（2301）",
+        "business_line": "DC_BUS",
+        "relationship": "beneficiary",
+        "details": "高效率 DC-DC 模組與電源管理需求的台灣同業受惠代表。"
+      },
+      {
+        "id": "REGULATION_beneficiary_001",
+        "name": "台達電（2308）",
+        "business_line": "REGULATION",
+        "relationship": "beneficiary",
+        "details": "工業與資料中心 DC-DC 穩壓及模組化供電需求的台灣同業。"
+      },
+      {
+        "id": "AC_FRONT_beneficiary_001",
+        "name": "康舒（6282）",
+        "business_line": "AC_FRONT",
+        "relationship": "beneficiary",
+        "details": "AC-DC、PFC 與高效率電源轉換需求的台灣同業代表。"
+      },
+      {
+        "id": "BRICK_beneficiary_001",
+        "name": "明緯企業",
+        "business_line": "BRICK",
+        "relationship": "beneficiary",
+        "details": "工業磚型與配置式電源市場的台灣同業代表。"
+      },
+      {
+        "id": "AUTOMOTIVE_beneficiary_001",
+        "name": "台達電（2308）",
+        "business_line": "AUTOMOTIVE",
+        "relationship": "beneficiary",
+        "details": "車用 800V／48V DC-DC 及電動車電力電子需求的台灣同業。"
+      },
+      {
+        "id": "AUTOMOTIVE_beneficiary_002",
+        "name": "朋程（8255）",
+        "business_line": "AUTOMOTIVE",
+        "relationship": "beneficiary",
+        "details": "車用電力電子、整流與高壓電氣化需求的台灣產業代表。"
+      },
+      {
+        "id": "ROBOTICS_beneficiary_001",
+        "name": "上銀科技（2049）",
+        "business_line": "ROBOTICS",
+        "relationship": "beneficiary",
+        "details": "工業機器人與自動化投資擴張的台灣產業關聯代表，非 Vicor 直接供應商。"
+      },
+      {
+        "id": "AEROSPACE_beneficiary_001",
+        "name": "昇達科（3491）",
+        "business_line": "AEROSPACE",
+        "relationship": "beneficiary",
+        "details": "衛星與航太通訊設備成長的台灣產業關聯代表。"
+      },
+      {
+        "id": "DEFENSE_beneficiary_001",
+        "name": "全訊科技（5222）",
+        "business_line": "DEFENSE",
+        "relationship": "beneficiary",
+        "details": "國防雷達與高可靠度電子設備需求的台灣產業關聯代表。"
+      },
+      {
+        "id": "TELECOM_beneficiary_001",
+        "name": "智邦科技（2345）",
+        "business_line": "TELECOM",
+        "relationship": "beneficiary",
+        "details": "高階交換器與資料中心網路設備電源密度升級的台灣產業關聯代表。"
+      },
+      {
+        "id": "TELECOM_beneficiary_002",
+        "name": "啟碁科技（6285）",
+        "business_line": "TELECOM",
+        "relationship": "beneficiary",
+        "details": "通訊設備高效率電源與網路升級的台灣產業關聯代表。"
+      },
+      {
+        "id": "CUSTOM_beneficiary_001",
+        "name": "康舒（6282）",
+        "business_line": "CUSTOM",
+        "relationship": "beneficiary",
+        "details": "工業與客製化電源系統需求的台灣同業受惠代表。"
+      },
+      {
+        "id": "IP_LICENSE_beneficiary_001",
+        "name": "台達電（2308）",
+        "business_line": "IP_LICENSE",
+        "relationship": "beneficiary",
+        "details": "高密度電源架構專利授權與設計自由度議題可能影響台灣電源業；未確認直接授權。"
+      }
+    ]
   }
 }

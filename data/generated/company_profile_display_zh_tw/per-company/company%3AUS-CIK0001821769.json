@@ -127,5 +127,1089 @@
     "ai_exposure": null,
     "demand_drivers": [],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "company": "Navitas Semiconductor Corporation",
+    "symbol": "NVTS",
+    "as_of": "2026-11-07",
+    "status": "COMPLETE",
+    "research_window": "2026-08-07/2026-11-07",
+    "business_lines": [
+      {
+        "id": "GAN",
+        "name": "GaNFast GaN power IC / FET"
+      },
+      {
+        "id": "SIC",
+        "name": "GeneSiC SiC power devices and modules"
+      },
+      {
+        "id": "IVR",
+        "name": "Claros integrated voltage regulation"
+      },
+      {
+        "id": "AI",
+        "name": "800V AI data center power architecture"
+      },
+      {
+        "id": "GRID",
+        "name": "Energy grid and industrial power"
+      }
+    ],
+    "financial_snapshot": {
+      "quarter": "2026-Q3",
+      "revenue_usd_million": 13.991,
+      "revenue_yoy_pct": 38,
+      "revenue_qoq_pct": 33,
+      "gaap_gross_margin_pct": 21.5,
+      "non_gaap_gross_margin_pct": 40.0,
+      "gaap_net_loss_usd_million": 37.1,
+      "cash_usd_million": 531.5,
+      "q4_2026_revenue_guidance_midpoint_usd_million": 16.0
+    },
+    "nodes": [
+      {
+        "id": "tw-001",
+        "name": "台積電",
+        "relationship": "supplier",
+        "source_ids": [
+          "K25",
+          "Q2DECK"
+        ],
+        "evidence_grade": "A",
+        "ticker": "2330",
+        "commercial_status": "legacy_supply_and_buffer_inventory",
+        "business_line": "GAN",
+        "business_lines_related": [
+          "GAN",
+          "AI"
+        ],
+        "details": "既有 GaN 晶圓代工；2027 年 7 月退出 GaN 生產，Navitas 採購緩衝庫存供轉移期間使用"
+      },
+      {
+        "id": "tw-002",
+        "name": "力積電 Powerchip PSMC",
+        "source_ids": [
+          "PSMC",
+          "Q2DECK",
+          "TW"
+        ],
+        "evidence_grade": "A",
+        "ticker": "6770",
+        "commercial_status": "qualification_and_transition",
+        "business_line": "GAN",
+        "business_lines_related": [
+          "GAN",
+          "AI"
+        ],
+        "relationship_detail": "taiwan_direct_supplier",
+        "relationship": "supplier",
+        "details": "官方 200mm GaN-on-Si 晶圓代工協議；Fab 8B、100V–650V GaN 製程移轉與驗證"
+      },
+      {
+        "id": "sup-001",
+        "name": "GlobalFoundries",
+        "source_ids": [
+          "Q3IR",
+          "Q2DECK"
+        ],
+        "evidence_grade": "A",
+        "ticker": "GFS",
+        "commercial_status": "initial_shipments",
+        "business_line": "GAN",
+        "business_lines_related": [
+          "GAN",
+          "AI"
+        ],
+        "relationship": "supplier",
+        "details": "美國 8 吋 GaN 晶圓代工與新一代製程合作，Q3 公告首批 Gen5 GaNFast 美國製造晶片出貨"
+      },
+      {
+        "id": "cust-001",
+        "name": "NVIDIA",
+        "source_ids": [
+          "NVIDIA",
+          "Q3IR"
+        ],
+        "evidence_grade": "A",
+        "ticker": "NVDA",
+        "commercial_status": "platform_selection_and_reference_design",
+        "business_line": "AI",
+        "business_lines_related": [
+          "AI",
+          "GAN",
+          "SIC"
+        ],
+        "relationship_precision": "NVIDIA 800V HVDC 平台選用／共同開發；對應平台採用與設計合作，不以此推定已實現大規模採購營收。",
+        "relationship": "customer",
+        "details": "官方宣布 Navitas GaN/SiC 技術獲選支援 NVIDIA 800V HVDC AI 基礎設施；2026 年 800V-to-12V 供電板共同開發"
+      },
+      {
+        "id": "cust-002",
+        "name": "未具名 AI 資料中心 OEM／ODM 客戶",
+        "source_ids": [
+          "Q2DECK"
+        ],
+        "evidence_grade": "A",
+        "commercial_status": "program_ramp",
+        "business_line": "AI",
+        "business_lines_related": [
+          "AI"
+        ],
+        "relationship_precision": "客戶名稱保留匿名；具體設計轉換由官方 Q3 簡報披露。",
+        "relationship": "customer",
+        "details": "Q2 官方投資簡報指出多項 hyperscaler 及資料中心 OEM/ODM 專案於 2026 下半年至 2027 年爬坡"
+      },
+      {
+        "id": "cust-003",
+        "name": "未具名高功率市場客戶",
+        "source_ids": [
+          "Q3IR",
+          "DECK"
+        ],
+        "evidence_grade": "A",
+        "commercial_status": "revenue_generating",
+        "business_line": "GRID",
+        "business_lines_related": [
+          "GRID",
+          "SIC"
+        ],
+        "relationship": "customer",
+        "details": "Q3 高功率市場收入季增超過 50%；已出貨客戶訂單及量產樣品"
+      },
+      {
+        "id": "partner-001",
+        "name": "Microchip Technology",
+        "source_ids": [
+          "Q3IR",
+          "PRESS"
+        ],
+        "evidence_grade": "A",
+        "ticker": "MCHP",
+        "commercial_status": "reference_design",
+        "business_line": "AI",
+        "business_lines_related": [
+          "AI",
+          "GAN"
+        ],
+        "relationship": "partner",
+        "details": "共同開發 800V AI 資料中心參考設計，屬技術協作"
+      },
+      {
+        "id": "partner-002",
+        "name": "Magnachip",
+        "source_ids": [
+          "MAG",
+          "Q3IR"
+        ],
+        "evidence_grade": "A",
+        "ticker": "MX",
+        "commercial_status": "technology_license",
+        "business_line": "SIC",
+        "business_lines_related": [
+          "SIC",
+          "GRID"
+        ],
+        "relationship": "partner",
+        "details": "GeneSiC TAP SiC 技術授權與未來韓國晶圓廠導入合作，授權有商業性質，獨立列為技術授權夥伴"
+      },
+      {
+        "id": "partner-003",
+        "name": "EPFL",
+        "source_ids": [
+          "Q3IR"
+        ],
+        "evidence_grade": "A",
+        "commercial_status": "demonstration",
+        "business_line": "SIC",
+        "business_lines_related": [
+          "SIC"
+        ],
+        "relationship": "partner",
+        "details": "250kW 固態變壓器 SiC 技術展示與學研合作"
+      },
+      {
+        "id": "gov-001",
+        "name": "美國政府 10kV SiC 研發專案",
+        "source_ids": [
+          "Q3IR",
+          "PRESS"
+        ],
+        "evidence_grade": "A",
+        "commercial_status": "selected_development",
+        "business_line": "SIC",
+        "business_lines_related": [
+          "SIC",
+          "GRID"
+        ],
+        "relationship_precision": "美國政府選定之技術研發專案，屬具名研發委託關係。",
+        "relationship": "customer",
+        "details": "2026 年 9 月獲選開發下一代 10kV SiC 功率半導體；政府研發委託／選案"
+      },
+      {
+        "id": "benef-001",
+        "name": "台達電",
+        "source_ids": [
+          "DECK"
+        ],
+        "evidence_grade": "B",
+        "ticker": "2308",
+        "business_line": "AI",
+        "business_lines_related": [
+          "AI",
+          "GRID"
+        ],
+        "relationship_detail": "taiwan_beneficiary",
+        "relationship": "beneficiary",
+        "details": "AI 資料中心高功率電源、800VDC 與機架電力轉換同技術趨勢"
+      },
+      {
+        "id": "benef-002",
+        "name": "光寶科",
+        "source_ids": [
+          "DECK"
+        ],
+        "evidence_grade": "B",
+        "ticker": "2301",
+        "business_line": "AI",
+        "business_lines_related": [
+          "AI"
+        ],
+        "relationship_detail": "taiwan_beneficiary",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器電源與高密度電源架，同產品應用市場"
+      },
+      {
+        "id": "benef-003",
+        "name": "群電",
+        "source_ids": [
+          "DECK"
+        ],
+        "evidence_grade": "B",
+        "ticker": "6412",
+        "business_line": "AI",
+        "business_lines_related": [
+          "AI"
+        ],
+        "relationship_detail": "taiwan_beneficiary",
+        "relationship": "beneficiary",
+        "details": "高效率 AC/DC 電源與高功率轉換，同類應用趨勢"
+      },
+      {
+        "id": "benef-004",
+        "name": "康舒",
+        "source_ids": [
+          "DECK"
+        ],
+        "evidence_grade": "B",
+        "ticker": "6282",
+        "business_line": "AI",
+        "business_lines_related": [
+          "AI",
+          "GRID"
+        ],
+        "relationship_detail": "taiwan_beneficiary",
+        "relationship": "beneficiary",
+        "details": "工業及資料中心電源與高效率功率轉換需求"
+      },
+      {
+        "id": "benef-005",
+        "name": "漢磊",
+        "source_ids": [
+          "Q3IR"
+        ],
+        "evidence_grade": "B",
+        "ticker": "3707",
+        "business_line": "SIC",
+        "business_lines_related": [
+          "SIC"
+        ],
+        "relationship_detail": "taiwan_beneficiary",
+        "relationship": "beneficiary",
+        "details": "SiC／GaN 功率半導體產業鏈景氣與技術路線"
+      },
+      {
+        "id": "benef-006",
+        "name": "嘉晶",
+        "source_ids": [
+          "Q3IR"
+        ],
+        "evidence_grade": "B",
+        "ticker": "3016",
+        "business_line": "SIC",
+        "business_lines_related": [
+          "SIC"
+        ],
+        "relationship_detail": "taiwan_beneficiary",
+        "relationship": "beneficiary",
+        "details": "第三代半導體材料與晶圓產業景氣"
+      },
+      {
+        "id": "benef-007",
+        "name": "環球晶",
+        "source_ids": [
+          "Q3IR"
+        ],
+        "evidence_grade": "B",
+        "ticker": "6488",
+        "business_line": "SIC",
+        "business_lines_related": [
+          "SIC",
+          "GAN"
+        ],
+        "relationship_detail": "taiwan_beneficiary",
+        "relationship": "beneficiary",
+        "details": "半導體材料及寬能隙相關晶圓產業需求"
+      },
+      {
+        "id": "benef-008",
+        "name": "朋程",
+        "source_ids": [
+          "Q3IR"
+        ],
+        "evidence_grade": "B",
+        "ticker": "8255",
+        "business_line": "SIC",
+        "business_lines_related": [
+          "SIC",
+          "GRID"
+        ],
+        "relationship_detail": "taiwan_beneficiary",
+        "relationship": "beneficiary",
+        "details": "車用高功率半導體與功率元件技術需求"
+      },
+      {
+        "id": "competitor:GAN:01",
+        "name": "Infineon Technologies",
+        "category": "competitor",
+        "business_line": "GAN",
+        "business_lines_related": [
+          "GAN"
+        ],
+        "evidence_grade": "A",
+        "evidence_summary": "Navitas 2025 SEC 10-K Competition 章節具名競爭者，對應產品領域。",
+        "source_ids": [
+          "K25"
+        ],
+        "ticker": "IFX.DE",
+        "relationship": "competitor",
+        "details": "GaN 功率半導體"
+      },
+      {
+        "id": "competitor:GAN:02",
+        "name": "Power Integrations",
+        "category": "competitor",
+        "business_line": "GAN",
+        "business_lines_related": [
+          "GAN"
+        ],
+        "evidence_grade": "A",
+        "evidence_summary": "Navitas 2025 SEC 10-K Competition 章節具名競爭者，對應產品領域。",
+        "source_ids": [
+          "K25"
+        ],
+        "ticker": "POWI",
+        "relationship": "competitor",
+        "details": "高整合 GaN 功率 IC"
+      },
+      {
+        "id": "competitor:GAN:03",
+        "name": "Texas Instruments",
+        "category": "competitor",
+        "business_line": "GAN",
+        "business_lines_related": [
+          "GAN"
+        ],
+        "evidence_grade": "A",
+        "evidence_summary": "Navitas 2025 SEC 10-K Competition 章節具名競爭者，對應產品領域。",
+        "source_ids": [
+          "K25"
+        ],
+        "ticker": "TXN",
+        "relationship": "competitor",
+        "details": "GaN 功率元件"
+      },
+      {
+        "id": "competitor:GAN:04",
+        "name": "Innoscience",
+        "category": "competitor",
+        "business_line": "GAN",
+        "business_lines_related": [
+          "GAN"
+        ],
+        "evidence_grade": "A",
+        "evidence_summary": "Navitas 2025 SEC 10-K Competition 章節具名競爭者，對應產品領域。",
+        "source_ids": [
+          "K25"
+        ],
+        "ticker": "2577.HK",
+        "relationship": "competitor",
+        "details": "GaN-on-Si 功率元件"
+      },
+      {
+        "id": "competitor:GAN:05",
+        "name": "Renesas Electronics",
+        "category": "competitor",
+        "business_line": "GAN",
+        "business_lines_related": [
+          "GAN"
+        ],
+        "evidence_grade": "A",
+        "evidence_summary": "Navitas 2025 SEC 10-K Competition 章節具名競爭者，對應產品領域。",
+        "source_ids": [
+          "K25"
+        ],
+        "ticker": "6723.T",
+        "relationship": "competitor",
+        "details": "GaN 功率元件"
+      },
+      {
+        "id": "competitor:GAN:06",
+        "name": "Efficient Power Conversion (EPC)",
+        "category": "competitor",
+        "business_line": "GAN",
+        "business_lines_related": [
+          "GAN"
+        ],
+        "evidence_grade": "A",
+        "evidence_summary": "Navitas 2025 SEC 10-K Competition 章節具名競爭者，對應產品領域。",
+        "source_ids": [
+          "K25"
+        ],
+        "relationship": "competitor",
+        "details": "eGaN 功率元件"
+      },
+      {
+        "id": "competitor:SIC:01",
+        "name": "Infineon Technologies",
+        "category": "competitor",
+        "business_line": "SIC",
+        "business_lines_related": [
+          "SIC"
+        ],
+        "evidence_grade": "A",
+        "evidence_summary": "Navitas 2025 SEC 10-K Competition 章節具名競爭者，對應產品領域。",
+        "source_ids": [
+          "K25"
+        ],
+        "ticker": "IFX.DE",
+        "relationship": "competitor",
+        "details": "SiC MOSFET"
+      },
+      {
+        "id": "competitor:SIC:02",
+        "name": "Wolfspeed",
+        "category": "competitor",
+        "business_line": "SIC",
+        "business_lines_related": [
+          "SIC"
+        ],
+        "evidence_grade": "A",
+        "evidence_summary": "Navitas 2025 SEC 10-K Competition 章節具名競爭者，對應產品領域。",
+        "source_ids": [
+          "K25"
+        ],
+        "ticker": "WOLF",
+        "relationship": "competitor",
+        "details": "SiC 功率半導體"
+      },
+      {
+        "id": "competitor:SIC:03",
+        "name": "onsemi",
+        "category": "competitor",
+        "business_line": "SIC",
+        "business_lines_related": [
+          "SIC"
+        ],
+        "evidence_grade": "A",
+        "evidence_summary": "Navitas 2025 SEC 10-K Competition 章節具名競爭者，對應產品領域。",
+        "source_ids": [
+          "K25"
+        ],
+        "ticker": "ON",
+        "relationship": "competitor",
+        "details": "SiC 功率半導體"
+      },
+      {
+        "id": "competitor:SIC:04",
+        "name": "ROHM Semiconductor",
+        "category": "competitor",
+        "business_line": "SIC",
+        "business_lines_related": [
+          "SIC"
+        ],
+        "evidence_grade": "A",
+        "evidence_summary": "Navitas 2025 SEC 10-K Competition 章節具名競爭者，對應產品領域。",
+        "source_ids": [
+          "K25"
+        ],
+        "ticker": "6963.T",
+        "relationship": "competitor",
+        "details": "SiC 功率元件"
+      },
+      {
+        "id": "competitor:SIC:05",
+        "name": "Qorvo",
+        "category": "competitor",
+        "business_line": "SIC",
+        "business_lines_related": [
+          "SIC"
+        ],
+        "evidence_grade": "A",
+        "evidence_summary": "Navitas 2025 SEC 10-K Competition 章節具名競爭者，對應產品領域。",
+        "source_ids": [
+          "K25"
+        ],
+        "ticker": "QRVO",
+        "relationship": "competitor",
+        "details": "SiC 功率元件"
+      },
+      {
+        "id": "competitor:SIC:06",
+        "name": "STMicroelectronics",
+        "category": "competitor",
+        "business_line": "SIC",
+        "business_lines_related": [
+          "SIC"
+        ],
+        "evidence_grade": "A",
+        "evidence_summary": "Navitas 2025 SEC 10-K Competition 章節具名競爭者，對應產品領域。",
+        "source_ids": [
+          "K25"
+        ],
+        "ticker": "STM",
+        "relationship": "competitor",
+        "details": "SiC 功率元件"
+      },
+      {
+        "id": "competitor:AI:01",
+        "name": "Infineon Technologies",
+        "category": "competitor",
+        "business_line": "AI",
+        "business_lines_related": [
+          "AI"
+        ],
+        "evidence_grade": "A",
+        "evidence_summary": "Navitas 2025 SEC 10-K Competition 章節具名競爭者，對應產品領域。",
+        "source_ids": [
+          "K25"
+        ],
+        "ticker": "IFX.DE",
+        "relationship": "competitor",
+        "details": "AI 電源 GaN／SiC"
+      },
+      {
+        "id": "competitor:AI:02",
+        "name": "Power Integrations",
+        "category": "competitor",
+        "business_line": "AI",
+        "business_lines_related": [
+          "AI"
+        ],
+        "evidence_grade": "A",
+        "evidence_summary": "Navitas 2025 SEC 10-K Competition 章節具名競爭者，對應產品領域。",
+        "source_ids": [
+          "K25"
+        ],
+        "ticker": "POWI",
+        "relationship": "competitor",
+        "details": "高效率電源 IC"
+      },
+      {
+        "id": "competitor:AI:03",
+        "name": "Texas Instruments",
+        "category": "competitor",
+        "business_line": "AI",
+        "business_lines_related": [
+          "AI"
+        ],
+        "evidence_grade": "A",
+        "evidence_summary": "Navitas 2025 SEC 10-K Competition 章節具名競爭者，對應產品領域。",
+        "source_ids": [
+          "K25"
+        ],
+        "ticker": "TXN",
+        "relationship": "competitor",
+        "details": "資料中心電源管理"
+      },
+      {
+        "id": "competitor:AI:04",
+        "name": "onsemi",
+        "category": "competitor",
+        "business_line": "AI",
+        "business_lines_related": [
+          "AI"
+        ],
+        "evidence_grade": "A",
+        "evidence_summary": "Navitas 2025 SEC 10-K Competition 章節具名競爭者，對應產品領域。",
+        "source_ids": [
+          "K25"
+        ],
+        "ticker": "ON",
+        "relationship": "competitor",
+        "details": "高功率 SiC 電源"
+      },
+      {
+        "id": "competitor:GRID:01",
+        "name": "Infineon Technologies",
+        "category": "competitor",
+        "business_line": "GRID",
+        "business_lines_related": [
+          "GRID"
+        ],
+        "evidence_grade": "A",
+        "evidence_summary": "Navitas 2025 SEC 10-K Competition 章節具名競爭者，對應產品領域。",
+        "source_ids": [
+          "K25"
+        ],
+        "ticker": "IFX.DE",
+        "relationship": "competitor",
+        "details": "電網 SiC 功率器件"
+      },
+      {
+        "id": "competitor:GRID:02",
+        "name": "Wolfspeed",
+        "category": "competitor",
+        "business_line": "GRID",
+        "business_lines_related": [
+          "GRID"
+        ],
+        "evidence_grade": "A",
+        "evidence_summary": "Navitas 2025 SEC 10-K Competition 章節具名競爭者，對應產品領域。",
+        "source_ids": [
+          "K25"
+        ],
+        "ticker": "WOLF",
+        "relationship": "competitor",
+        "details": "高壓 SiC"
+      },
+      {
+        "id": "competitor:GRID:03",
+        "name": "ROHM Semiconductor",
+        "category": "competitor",
+        "business_line": "GRID",
+        "business_lines_related": [
+          "GRID"
+        ],
+        "evidence_grade": "A",
+        "evidence_summary": "Navitas 2025 SEC 10-K Competition 章節具名競爭者，對應產品領域。",
+        "source_ids": [
+          "K25"
+        ],
+        "ticker": "6963.T",
+        "relationship": "competitor",
+        "details": "電力轉換 SiC"
+      },
+      {
+        "id": "competitor:GRID:04",
+        "name": "STMicroelectronics",
+        "category": "competitor",
+        "business_line": "GRID",
+        "business_lines_related": [
+          "GRID"
+        ],
+        "evidence_grade": "A",
+        "evidence_summary": "Navitas 2025 SEC 10-K Competition 章節具名競爭者，對應產品領域。",
+        "source_ids": [
+          "K25"
+        ],
+        "ticker": "STM",
+        "relationship": "competitor",
+        "details": "工業高壓 SiC"
+      },
+      {
+        "id": "competitor:IVR:01",
+        "name": "Monolithic Power Systems",
+        "category": "competitor",
+        "business_line": "IVR",
+        "business_lines_related": [
+          "IVR"
+        ],
+        "evidence_grade": "B",
+        "evidence_summary": "高密度處理器電源同產品市場競爭分析；以產品重疊為依據。",
+        "source_ids": [
+          "K25",
+          "DECK"
+        ],
+        "ticker": "MPWR",
+        "relationship": "competitor",
+        "details": "處理器近端高密度電源調節"
+      },
+      {
+        "id": "competitor:IVR:02",
+        "name": "Infineon Technologies",
+        "category": "competitor",
+        "business_line": "IVR",
+        "business_lines_related": [
+          "IVR"
+        ],
+        "evidence_grade": "B",
+        "evidence_summary": "高密度處理器電源同產品市場競爭分析；以產品重疊為依據。",
+        "source_ids": [
+          "K25",
+          "DECK"
+        ],
+        "ticker": "IFX.DE",
+        "relationship": "competitor",
+        "details": "高密度電源模組"
+      },
+      {
+        "id": "competitor:IVR:03",
+        "name": "Texas Instruments",
+        "category": "competitor",
+        "business_line": "IVR",
+        "business_lines_related": [
+          "IVR"
+        ],
+        "evidence_grade": "B",
+        "evidence_summary": "高密度處理器電源同產品市場競爭分析；以產品重疊為依據。",
+        "source_ids": [
+          "K25",
+          "DECK"
+        ],
+        "ticker": "TXN",
+        "relationship": "competitor",
+        "details": "電源管理及轉換"
+      }
+    ],
+    "recent_events": [
+      {
+        "date": "2026-09-28",
+        "type": "government_selection",
+        "event": "美國政府選定 Navitas 開發下一代 10kV SiC 功率半導體",
+        "source_ids": [
+          "Q3IR"
+        ]
+      },
+      {
+        "date": "2026-10-05",
+        "type": "technical_collaboration",
+        "event": "與 Microchip 合作推出 800V AI 資料中心參考設計",
+        "source_ids": [
+          "Q3IR"
+        ]
+      },
+      {
+        "date": "2026-10-06",
+        "type": "acquisition_closed",
+        "event": "完成 Claros 併購，取得 IVR、垂直及嵌入式供電技術",
+        "source_ids": [
+          "CLAROS",
+          "Q326"
+        ]
+      },
+      {
+        "date": "2026-10-12",
+        "type": "platform_development",
+        "event": "與 NVIDIA 合作 800V-to-12V AI 基礎設施供電板",
+        "source_ids": [
+          "Q3IR"
+        ]
+      },
+      {
+        "date": "2026-10-21",
+        "type": "product_launch",
+        "event": "推出新一代超高壓 SiC 功率模組，聚焦電網與能源基礎設施",
+        "source_ids": [
+          "Q3IR"
+        ]
+      },
+      {
+        "date": "2026-11-03",
+        "type": "earnings",
+        "event": "第三季營收 1399.1 萬美元，年增 38%，季增 33%；Q4 指引中值 1600 萬美元",
+        "source_ids": [
+          "Q326",
+          "Q3IR",
+          "DECK"
+        ]
+      },
+      {
+        "date": "2026-11-03",
+        "type": "production_shipments",
+        "event": "官方財報揭露 GlobalFoundries 美國製造 Gen5 GaNFast 晶片首批出貨",
+        "source_ids": [
+          "Q3IR"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "K25",
+        "grade": "A",
+        "date": "2026-02-27",
+        "title": "SEC 2025 10-K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1821769/000182176926000007/nvts-20251231.htm"
+      },
+      {
+        "id": "Q326",
+        "grade": "A",
+        "date": "2026-11-03",
+        "title": "SEC Q3 2026 10-Q",
+        "url": "https://www.sec.gov/Archives/edgar/data/1821769/000162828026069551/nvts-20260930.htm"
+      },
+      {
+        "id": "Q3IR",
+        "grade": "A",
+        "date": "2026-11-03",
+        "title": "Q3 2026 earnings release",
+        "url": "https://www.sec.gov/Archives/edgar/data/1821769/000162828026069489/exhibit991-navitassemicond.htm"
+      },
+      {
+        "id": "DECK",
+        "grade": "A",
+        "date": "2026-11-03",
+        "title": "Q3 2026 investor presentation",
+        "url": "https://www.sec.gov/Archives/edgar/data/1821769/000162828026069489/exhibit992-navitas3q26ea.htm"
+      },
+      {
+        "id": "CALL",
+        "grade": "A",
+        "date": "2026-11-03",
+        "title": "Q3 earnings webcast",
+        "url": "https://ir.navitassemi.com/events/event-details/navitas-semiconductor-q3-2026-earnings"
+      },
+      {
+        "id": "CLAROS",
+        "grade": "A",
+        "date": "2026-10-06",
+        "title": "Claros acquisition completion",
+        "url": "https://www.nasdaq.com/press-release/navitas-closes-acquisition-claros-advancing-ai-infrastructure-grid-xpu-power-delivery"
+      },
+      {
+        "id": "PSMC",
+        "grade": "A",
+        "date": "2025-07-01",
+        "title": "Navitas PSMC 200mm GaN manufacturing announcement",
+        "url": "https://www.sec.gov/Archives/edgar/data/1821769/000182176925000155/exhibit991-pressreleasedda.htm"
+      },
+      {
+        "id": "NVIDIA",
+        "grade": "A",
+        "date": "2025-05-21",
+        "title": "NVIDIA selects Navitas 800V HVDC collaboration",
+        "url": "https://ir.navitassemi.com/news-releases/news-release-details/nvidia-selects-navitas-collaborate-next-generation-800-v-hvdc"
+      },
+      {
+        "id": "Q2DECK",
+        "grade": "A",
+        "date": "2026-07-27",
+        "title": "Q2 2026 investor presentation and 2026 GaN transition",
+        "url": "https://www.sec.gov/Archives/edgar/data/1821769/000162828026049795/exhibit992-navitas2q26ea.htm"
+      },
+      {
+        "id": "TW",
+        "grade": "C",
+        "date": "2025-07-03",
+        "title": "DigiTimes GaN foundry transition",
+        "url": "https://www.digitimes.com.tw/tech/dt/n/shwnws.asp?id=0000726320_TQ02Y28V3KXS1ULWO65YT"
+      },
+      {
+        "id": "MAG",
+        "grade": "A",
+        "date": "2026-11-03",
+        "title": "Magnachip strategic license SEC disclosure",
+        "url": "https://ir.navitassemi.com/node/12161/xbrl-viewer"
+      },
+      {
+        "id": "PRESS",
+        "grade": "B",
+        "date": "2026-11-03",
+        "title": "Q3 earnings customer technology highlights",
+        "url": "https://www.nasdaq.com/press-release/navitas-semiconductor-announces-third-quarter-2026-financial-results-2026-11-03"
+      },
+      {
+        "id": "SEC_COMP",
+        "grade": "A",
+        "title": "Navitas 2025 Form 10-K Competition",
+        "url": "https://www.sec.gov/Archives/edgar/data/1821769/000182176926000007/nvts-20251231.htm",
+        "date": "2026-02-27"
+      },
+      {
+        "id": "SEC_Q3_PRESS",
+        "grade": "A",
+        "title": "Navitas Q3 2026 SEC exhibit 99.1",
+        "url": "https://www.sec.gov/Archives/edgar/data/1821769/000162828026069489/exhibit991-navitassemicond.htm",
+        "date": "2026-11-03"
+      }
+    ],
+    "reflections": [
+      {
+        "round": 1,
+        "topic": "GitHub 索引",
+        "finding": "NVTS 在 400 家索引名單，路徑與公司 CIK 一致"
+      },
+      {
+        "round": 2,
+        "topic": "原始欄位",
+        "finding": "原始 11 個頂層欄位及巢狀內容保持不變"
+      },
+      {
+        "round": 3,
+        "topic": "SEC 10-K",
+        "finding": "以 2025 年度 10-K 建立產品、晶圓代工與供應鏈基線"
+      },
+      {
+        "round": 4,
+        "topic": "SEC 10-Q",
+        "finding": "2026/11/03 最新 10-Q 覆蓋 2026/09/30 季度"
+      },
+      {
+        "round": 5,
+        "topic": "IR 業績",
+        "finding": "Q3 營收 1399.1 萬美元，年增 38%、季增 33%"
+      },
+      {
+        "round": 6,
+        "topic": "財務品質",
+        "finding": "GAAP 毛利率 21.5%，Non-GAAP 40%；兩者不可混用"
+      },
+      {
+        "round": 7,
+        "topic": "現金與虧損",
+        "finding": "Q3 GAAP 淨損約 3710 萬美元；期末現金約 5.315 億美元"
+      },
+      {
+        "round": 8,
+        "topic": "轉型",
+        "finding": "退出手機與低階消費市場，AI 資料中心與電網能源成長"
+      },
+      {
+        "round": 9,
+        "topic": "Claros 併購",
+        "finding": "2026/10/06 已完成收購，IVR 擴大 grid-to-xPU 產品鏈"
+      },
+      {
+        "round": 10,
+        "topic": "NVIDIA 客戶門檻",
+        "finding": "官方明示選用 GaN/SiC 支援 800V HVDC 平台，按 platform adoption 列客戶"
+      },
+      {
+        "round": 11,
+        "topic": "Microchip 合作",
+        "finding": "800V 參考設計屬共同技術開發，列合作"
+      },
+      {
+        "round": 12,
+        "topic": "Magnachip 授權",
+        "finding": "技術授權及未來產線導入列技術合作，保留商業授權性質"
+      },
+      {
+        "round": 13,
+        "topic": "政府新案",
+        "finding": "10kV SiC 開發獲選列政府研發客戶"
+      },
+      {
+        "round": 14,
+        "topic": "台積電供貨",
+        "finding": "10-K 直接點名既有 GaN 晶圓供應，符合台灣直接供應商"
+      },
+      {
+        "round": 15,
+        "topic": "力積電供貨",
+        "finding": "官方 200mm GaN-on-Si 代工協議，符合台灣直接供應商"
+      },
+      {
+        "round": 16,
+        "topic": "GlobalFoundries 代工",
+        "finding": "美國 GaN 代工與首批出貨，列上游供應商"
+      },
+      {
+        "round": 17,
+        "topic": "台灣受惠分類",
+        "finding": "八家受惠股依電源、SiC/GaN、材料與車用趨勢分類，與直接供應商獨立"
+      },
+      {
+        "round": 18,
+        "topic": "近期新聞回溯",
+        "finding": "逐項記錄 9–11 月併購、政府選案、參考設計、新產品與出貨"
+      },
+      {
+        "round": 19,
+        "topic": "技術商業化",
+        "finding": "區分已出貨、共同參考設計、驗證移轉及未來預測"
+      },
+      {
+        "round": 20,
+        "topic": "營收與指引",
+        "finding": "Q4 1600 萬美元為管理層指引中值，非已實現營收"
+      },
+      {
+        "round": 21,
+        "topic": "客戶匿名性",
+        "finding": "具名 NVIDIA 與未具名 hyperscaler/OEM 專案分別標記"
+      },
+      {
+        "round": 22,
+        "topic": "失單與轉單",
+        "finding": "手機低階消費業務策略性退出；GaN 晶圓由台積電向力積電／GF 分散轉移"
+      },
+      {
+        "round": 23,
+        "topic": "新聞來源分級",
+        "finding": "SEC/官方 A；台灣 DigiTimes C 用於補強已存在官方供應鏈關係"
+      },
+      {
+        "round": 24,
+        "topic": "最終完整性",
+        "finding": "確認 11 原始欄未更動，第 12 欄為 industry_chain"
+      },
+      "V2.1 重建第一輪：五條業務線各有 ID，所有舊節點建立主業務線與相關業務線映射；對一個企業跨多種應用採用 business_lines_related 補充。",
+      "V2.1 重建第二輪：2025 10-K Competition 逐產品族群建置 GaN 與 SiC 具名競爭對手，避免只以籠統競爭者填充 AI 與電網地圖。",
+      "V2.1 重建第三輪：2026-11-03 SEC Q3 新聞稿確認 1,399.1 萬美元營收、年增 38%、GAAP 毛利率 21.5% 與 Q4 指引 1,600 萬美元±50 萬美元。",
+      "V2.1 重建第四輪：Claros 已於 2026-10-06 完成交割，作為 IVR 收購事件，不混入客戶、合作或供應商。",
+      "V2.1 重建第五輪：NVIDIA 800V-to-12V 共同開發與平台採用有官方證據；對採購收入採用明確區分。",
+      "V2.1 重建第六輪：台積電既有 GaN 代工與力積電新製程移轉分開，避免將晶圓代工遷移視為同時放量。",
+      "V2.1 重建第七輪：Magnachip 授權及製造支援具有技術授權與潛在 foundry 兩面性，按目前協議狀態記錄。",
+      "V2.1 重建第八輪：競爭者分 GaN、SiC、IVR、AI 電源與電網五種應用，IVR 競爭者另以產品市場重疊標示。",
+      "V2.1 重建第九輪：保留既有台灣直接供應商兩家與台灣受惠股八家之不同關係，且每個節點均能映射業務線。",
+      "V2.1 重建第十輪：逐一檢查來源 ID、重複節點 ID、業務線對應與原始 GitHub 11 欄完整性。"
+    ],
+    "methodology": "SEC 10-K/10-Q 與 IR 優先；直接台灣供應鏈須有官方供貨／代工明證；具名平台採用列客戶；共同研發列合作；受惠股為產業景氣與技術映射，與直接供應關係分離。",
+    "corporate_actions": [
+      {
+        "name": "Claros Technologies",
+        "type": "completed_acquisition",
+        "business_line": "IVR",
+        "date": "2026-10-06",
+        "details": "已完成 Claros 收購，取得處理器近端整合式電壓調節（IVR）、VPD 與 EPD 技術。",
+        "source_ids": [
+          "Q3IR",
+          "CLAROS"
+        ]
+      }
+    ],
+    "research_validation": {
+      "v21_schema": {
+        "nodes_is_array": true,
+        "business_lines_is_array": true,
+        "all_nodes_mapped": true
+      },
+      "github_original_commit": "49dbe5d4",
+      "github_original_blob_sha": "b7d8e9bbd5544b5dded965777c55c1ea9157e28e",
+      "source_hierarchy": "A SEC/IR, B specialist media, C Taiwan media cross-reference",
+      "relationship_guardrails": {
+        "customer": "design win, platform adoption, supply agreement or actual purchase",
+        "partner": "non-sales technology collaboration",
+        "taiwan_direct_supplier": "named official direct supplier/vendor/foundry",
+        "taiwan_beneficiary": "same industry or capital-spending exposure; independent of supply relationship"
+      }
+    },
+    "latest_sec_crosscheck": {
+      "period": "2026-Q3",
+      "revenue_usd": 13991000,
+      "revenue_yoy_pct_approx": 38,
+      "gaap_gross_margin_pct": 21.5,
+      "non_gaap_gross_margin_pct": 40.0,
+      "gaap_net_loss_usd": 37100000,
+      "cash_usd": 531500000,
+      "q4_revenue_guidance_usd_low": 15500000,
+      "q4_revenue_guidance_usd_high": 16500000,
+      "source_ids": [
+        "Q3IR",
+        "SEC_Q3_PRESS"
+      ]
+    }
   }
 }

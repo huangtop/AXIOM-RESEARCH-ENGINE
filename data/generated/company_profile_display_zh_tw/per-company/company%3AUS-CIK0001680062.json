@@ -181,5 +181,494 @@
       "製程良率提升"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-07",
+    "company": "ACM Research, Inc.",
+    "symbol": "ACMR",
+    "locale": "zh-TW",
+    "business_lines": [
+      {
+        "id": "CLEAN",
+        "name": "單晶圓清洗、SAPS、TEBO、Tahoe、SPM"
+      },
+      {
+        "id": "ECP",
+        "name": "前段及先進封裝電化學電鍍"
+      },
+      {
+        "id": "PANEL",
+        "name": "面板級封裝水平電鍍"
+      },
+      {
+        "id": "FURNACE",
+        "name": "爐管與熱製程"
+      },
+      {
+        "id": "PECVD",
+        "name": "PECVD 薄膜沉積"
+      },
+      {
+        "id": "TRACK",
+        "name": "光阻塗佈顯影"
+      },
+      {
+        "id": "GLOBAL",
+        "name": "全球銷售與製造"
+      },
+      {
+        "id": "SUPPLY",
+        "name": "半導體設備供應鏈"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "CUSTOMER_001",
+        "relationship": "customer",
+        "name": "中國大陸晶圓製造客戶群",
+        "business_line": "CLEAN",
+        "details": "2026 Q3 設備銷售及新產品訂單主要需求來源；上海子公司 9 月在手訂單約 25 億美元。",
+        "source_ids": [
+          "CALL",
+          "BACKLOG"
+        ],
+        "identity": "aggregate"
+      },
+      {
+        "id": "CUSTOMER_002",
+        "relationship": "customer",
+        "name": "亞洲面板級先進封裝客戶",
+        "business_line": "PANEL",
+        "details": "2026 年 10 月收到首台 310 × 310 mm Ultra ECP ap-p 量產設備。",
+        "source_ids": [
+          "IR_Q3"
+        ],
+        "identity": "anonymous"
+      },
+      {
+        "id": "CUSTOMER_003",
+        "relationship": "customer",
+        "name": "面板級水平電鍍量產與評估客戶",
+        "business_line": "PANEL",
+        "details": "2026 年 8 月取得首筆量產訂單與客戶評估訂單。",
+        "source_ids": [
+          "IR_NEWS"
+        ],
+        "identity": "anonymous"
+      },
+      {
+        "id": "CUSTOMER_004",
+        "relationship": "customer",
+        "name": "新加坡晶圓代工客戶",
+        "business_line": "CLEAN",
+        "details": "2026 年 2 月交付多台單晶圓清洗系統。",
+        "source_ids": [
+          "IR_NEWS"
+        ],
+        "identity": "anonymous"
+      },
+      {
+        "id": "CUSTOMER_005",
+        "relationship": "customer",
+        "name": "國際先進封裝客戶群",
+        "business_line": "ECP",
+        "details": "2026 年 2 月取得多筆先進封裝設備訂單。",
+        "source_ids": [
+          "IR_NEWS"
+        ],
+        "identity": "aggregate"
+      },
+      {
+        "id": "CUSTOMER_006",
+        "relationship": "customer",
+        "name": "中國大陸面板級封裝客戶",
+        "business_line": "PANEL",
+        "details": "先前交付 515 × 510 mm 水平電鍍設備。",
+        "source_ids": [
+          "CALL"
+        ],
+        "identity": "anonymous"
+      },
+      {
+        "id": "CUSTOMER_007",
+        "relationship": "customer",
+        "name": "海外晶圓廠客戶群",
+        "business_line": "GLOBAL",
+        "details": "管理層預期 2026 年底在中國大陸以外約五國、十家客戶安裝超過 20 台設備。",
+        "source_ids": [
+          "CALL"
+        ],
+        "identity": "aggregate",
+        "commercialization": "management_outlook"
+      },
+      {
+        "id": "COMPETITOR_008",
+        "relationship": "competitor",
+        "name": "Applied Materials",
+        "business_line": "PECVD",
+        "details": "半導體沉積與製程設備市場競爭。",
+        "source_ids": [
+          "K25"
+        ]
+      },
+      {
+        "id": "COMPETITOR_009",
+        "relationship": "competitor",
+        "name": "Lam Research",
+        "business_line": "CLEAN",
+        "details": "晶圓清洗與濕製程設備競爭。",
+        "source_ids": [
+          "K25"
+        ]
+      },
+      {
+        "id": "COMPETITOR_010",
+        "relationship": "competitor",
+        "name": "Tokyo Electron",
+        "business_line": "TRACK",
+        "details": "清洗、塗佈顯影及熱製程設備競爭。",
+        "source_ids": [
+          "K25"
+        ]
+      },
+      {
+        "id": "COMPETITOR_011",
+        "relationship": "competitor",
+        "name": "SCREEN Holdings",
+        "business_line": "CLEAN",
+        "details": "單晶圓與批次清洗設備競爭。",
+        "source_ids": [
+          "K25"
+        ]
+      },
+      {
+        "id": "COMPETITOR_012",
+        "relationship": "competitor",
+        "name": "Kokusai Electric",
+        "business_line": "FURNACE",
+        "details": "爐管及熱製程設備競爭。",
+        "source_ids": [
+          "K25"
+        ]
+      },
+      {
+        "id": "BENEFICIARY_013",
+        "relationship": "beneficiary",
+        "name": "弘塑（3131）",
+        "business_line": "SUPPLY",
+        "details": "先進封裝濕製程設備與晶圓級封裝資本支出循環。",
+        "source_ids": [
+          "IR_Q3",
+          "K25"
+        ],
+        "market": "TW"
+      },
+      {
+        "id": "BENEFICIARY_014",
+        "relationship": "beneficiary",
+        "name": "辛耘（3583）",
+        "business_line": "SUPPLY",
+        "details": "半導體濕製程、再生晶圓與先進封裝設備需求。",
+        "source_ids": [
+          "IR_Q3",
+          "K25"
+        ],
+        "market": "TW"
+      },
+      {
+        "id": "BENEFICIARY_015",
+        "relationship": "beneficiary",
+        "name": "均豪（5443）",
+        "business_line": "SUPPLY",
+        "details": "面板與先進封裝自動化設備需求。",
+        "source_ids": [
+          "IR_Q3",
+          "K25"
+        ],
+        "market": "TW"
+      },
+      {
+        "id": "BENEFICIARY_016",
+        "relationship": "beneficiary",
+        "name": "萬潤（6187）",
+        "business_line": "SUPPLY",
+        "details": "先進封裝設備及晶圓級封裝資本支出。",
+        "source_ids": [
+          "IR_Q3",
+          "K25"
+        ],
+        "market": "TW"
+      },
+      {
+        "id": "BENEFICIARY_017",
+        "relationship": "beneficiary",
+        "name": "志聖（2467）",
+        "business_line": "SUPPLY",
+        "details": "半導體熱製程與先進封裝設備需求。",
+        "source_ids": [
+          "IR_Q3",
+          "K25"
+        ],
+        "market": "TW"
+      },
+      {
+        "id": "BENEFICIARY_018",
+        "relationship": "beneficiary",
+        "name": "帆宣（6196）",
+        "business_line": "SUPPLY",
+        "details": "晶圓廠設備整合、廠務工程及資本支出循環。",
+        "source_ids": [
+          "IR_Q3",
+          "K25"
+        ],
+        "market": "TW"
+      },
+      {
+        "id": "BENEFICIARY_019",
+        "relationship": "beneficiary",
+        "name": "家登（3680）",
+        "business_line": "SUPPLY",
+        "details": "先進晶圓製造與載具需求。",
+        "source_ids": [
+          "IR_Q3",
+          "K25"
+        ],
+        "market": "TW"
+      },
+      {
+        "id": "BENEFICIARY_020",
+        "relationship": "beneficiary",
+        "name": "漢唐（2404）",
+        "business_line": "SUPPLY",
+        "details": "晶圓廠建廠與無塵室工程資本支出。",
+        "source_ids": [
+          "IR_Q3",
+          "K25"
+        ],
+        "market": "TW"
+      }
+    ],
+    "sources": [
+      {
+        "id": "K25",
+        "grade": "A",
+        "title": "SEC 2025 10-K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1680062/000162828026013231/acmr-20251231.htm"
+      },
+      {
+        "id": "Q326",
+        "grade": "A",
+        "title": "2026 Q3 10-Q",
+        "url": "https://acmresearch.gcs-web.com/sec-filings/sec-filing/10-q/0001628280-26-071670"
+      },
+      {
+        "id": "IR_Q3",
+        "grade": "A",
+        "title": "2026-11-05 Q3 earnings",
+        "url": "https://ir.acmr.com/news-releases/news-release-details/acm-research-reports-third-quarter-2026-results"
+      },
+      {
+        "id": "IR_NEWS",
+        "grade": "A",
+        "title": "Company press release archive",
+        "url": "https://ir.acmr.com/news-events/press-releases"
+      },
+      {
+        "id": "CALL",
+        "grade": "A",
+        "title": "2026-11-05 earnings call transcript",
+        "url": "https://stockanalysis.com/stocks/acmr/transcripts/727721-q3-2026/"
+      },
+      {
+        "id": "BACKLOG",
+        "grade": "A",
+        "title": "SEC 2026-09-30 8-K backlog",
+        "url": "https://www.sec.gov/Archives/edgar/data/1680062/000162828026063896/acmr-20260930.htm"
+      },
+      {
+        "id": "Q3_SEC",
+        "grade": "A",
+        "title": "SEC Q3 earnings exhibit",
+        "url": "https://www.sec.gov/Archives/edgar/data/1680062/000162828026070600/acmr-q32026xearningsreleas.htm"
+      },
+      {
+        "id": "CALL_MF",
+        "grade": "B",
+        "title": "Motley Fool Q3 transcript",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/11/05/acm-research-acmr-q3-2026-earnings-call-transcript/"
+      }
+    ],
+    "recent_events": [
+      {
+        "date": "2026-08-07",
+        "event": "Ultra ECP ap-p 首筆量產訂單及評估訂單",
+        "source_ids": [
+          "IR_NEWS"
+        ]
+      },
+      {
+        "date": "2026-08-07",
+        "event": "Ultra C Tahoe 擴展為濕製程平台",
+        "source_ids": [
+          "IR_NEWS"
+        ]
+      },
+      {
+        "date": "2026-09-30",
+        "event": "上海子公司公布 25 億美元在手訂單，年增約 88%",
+        "source_ids": [
+          "BACKLOG",
+          "CALL"
+        ]
+      },
+      {
+        "date": "2026-10-21",
+        "event": "Hot SPM 硫酸回收系統發布",
+        "source_ids": [
+          "IR_NEWS"
+        ]
+      },
+      {
+        "date": "2026-10-28",
+        "event": "310 × 310 mm 面板級量產電鍍設備首次出貨",
+        "source_ids": [
+          "IR_NEWS",
+          "IR_Q3"
+        ]
+      },
+      {
+        "date": "2026-11-05",
+        "event": "第三季營收 3.677 億美元，年增 36.6%；全年指引上修至 12.4–12.8 億美元",
+        "source_ids": [
+          "IR_Q3"
+        ]
+      },
+      {
+        "date": "2026-11-06",
+        "event": "第三季 10-Q 申報",
+        "source_ids": [
+          "Q326"
+        ]
+      }
+    ],
+    "financials": {
+      "period": "2026-Q3",
+      "revenue_usd_million": 367.687,
+      "revenue_yoy_pct": 36.6,
+      "gross_margin_gaap_pct": 41.5,
+      "shipments_usd_million": 343.5,
+      "backlog_usd_billion": 2.5,
+      "backlog_yoy_pct": 88,
+      "orders_ytd_growth_pct": 147,
+      "fy2026_guidance_usd_billion": [
+        1.24,
+        1.28
+      ],
+      "source_ids": [
+        "IR_Q3",
+        "CALL",
+        "BACKLOG"
+      ]
+    },
+    "reflections": [
+      {
+        "round": 1,
+        "focus": "SEC 10-K",
+        "finding": "核對清洗、ECP、爐管、PECVD 與 Track 業務及供應鏈模式。"
+      },
+      {
+        "round": 2,
+        "focus": "SEC 最新 10-Q",
+        "finding": "確認 2026-11-06 第三季申報及季度財務報表。"
+      },
+      {
+        "round": 3,
+        "focus": "官方第三季業績",
+        "finding": "營收 3.677 億美元、GAAP 毛利率 41.5%。"
+      },
+      {
+        "round": 4,
+        "focus": "法說逐項比對",
+        "finding": "出貨 3.435 億美元、全年營收指引上調。"
+      },
+      {
+        "round": 5,
+        "focus": "訂單資料",
+        "finding": "上海子公司 25 億美元在手訂單，年增 88%；年初至今接單增 147%。"
+      },
+      {
+        "round": 6,
+        "focus": "面板級新訂單",
+        "finding": "8 月首筆量產及評估訂單，10 月首台 310 × 310 mm 量產設備出貨。"
+      },
+      {
+        "round": 7,
+        "focus": "產品組合",
+        "finding": "Hot SPM 硫酸回收、Ultra C Tahoe、ECP、PECVD、爐管及 Track。"
+      },
+      {
+        "round": 8,
+        "focus": "客戶核對",
+        "finding": "客戶以公告可證明的區域、產品與採購狀態分類。"
+      },
+      {
+        "round": 9,
+        "focus": "海外布局",
+        "finding": "新加坡客戶設備交付及美國奧勒岡技術服務能力擴張。"
+      },
+      {
+        "round": 10,
+        "focus": "直接台灣供應商",
+        "finding": "採用官方具名直接採購標準；本輪台灣直接供應商節點數為零。"
+      },
+      {
+        "round": 11,
+        "focus": "台灣受惠股",
+        "finding": "選取濕製程、先進封裝、廠務與自動化同產業公司。"
+      },
+      {
+        "round": 12,
+        "focus": "競爭對照",
+        "finding": "依清洗、爐管、沉積及塗佈顯影技術類別區分競爭者。"
+      },
+      {
+        "round": 13,
+        "focus": "併購與重大事件",
+        "finding": "本期最重要的新增商業事件為面板級量產訂單與出貨、在手訂單增長。"
+      },
+      {
+        "round": 14,
+        "focus": "財報數字交叉",
+        "finding": "SEC 財報、官方 IR、法說逐字稿三方核對主要數字。"
+      },
+      {
+        "round": 15,
+        "focus": "商業化階段",
+        "finding": "訂單、評估、出貨、營收與管理層預期分別記錄。"
+      },
+      {
+        "round": 16,
+        "focus": "供應鏈方向",
+        "finding": "ACMR 為設備製造商；晶圓廠採購 ACMR 設備屬客戶。"
+      },
+      {
+        "round": 17,
+        "focus": "證據引用",
+        "finding": "逐節點保留 source_ids 並連接到來源 URL。"
+      },
+      {
+        "round": 18,
+        "focus": "原始資料完整性",
+        "finding": "原始 11 欄保留為首 11 欄，industry_chain 為第 12 欄。"
+      }
+    ]
   }
 }
