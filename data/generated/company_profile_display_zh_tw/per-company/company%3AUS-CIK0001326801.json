@@ -230,5 +230,976 @@
       "智慧穿戴裝置採用"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-11",
+    "company": "Meta Platforms, Inc.",
+    "symbol": "META",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "META Meta 深度產業鏈｜AI GPU、MTIA ASIC、資料中心、核能、廣告與智慧眼鏡",
+      "description": "Meta 產業鏈涵蓋 Facebook／Instagram 廣告、Meta AI／Muse、NVIDIA 與 AMD AI GPU、Broadcom MTIA ASIC、Arm CPU、CoreWeave 算力、Corning 光纖、Blue Owl Hyperion、核能電力與 EssilorLuxottica 智慧眼鏡，區分已證實供應合作與台灣產業推論。"
+    },
+    "business_lines": [
+      {
+        "id": "ADS",
+        "name": "Facebook／Instagram AI 廣告與推薦"
+      },
+      {
+        "id": "REELS",
+        "name": "Reels／Threads 社群內容分發"
+      },
+      {
+        "id": "MESSAGING",
+        "name": "WhatsApp／Messenger 商務通訊"
+      },
+      {
+        "id": "LLM",
+        "name": "Meta AI／Llama／Muse 模型"
+      },
+      {
+        "id": "GPU",
+        "name": "AI GPU／CPU 算力採購"
+      },
+      {
+        "id": "MTIA",
+        "name": "MTIA 自研 AI ASIC／Arm CPU"
+      },
+      {
+        "id": "NETWORK",
+        "name": "AI 網路、光纖及 OCP"
+      },
+      {
+        "id": "DATACENTER",
+        "name": "Hyperion／Prometheus 資料中心"
+      },
+      {
+        "id": "ENERGY",
+        "name": "核能、再生能源與電網"
+      },
+      {
+        "id": "GLASSES",
+        "name": "Ray-Ban／Oakley／Meta AI 智慧眼鏡"
+      },
+      {
+        "id": "XR",
+        "name": "Quest／Horizon XR 生態系"
+      },
+      {
+        "id": "DEV",
+        "name": "Llama 開發者與 AI 軟體生態"
+      },
+      {
+        "id": "COMMERCE",
+        "name": "Instagram／Facebook 商務與創作者"
+      },
+      {
+        "id": "PRIVACY",
+        "name": "資安、內容審核與隱私 AI"
+      },
+      {
+        "id": "TAIWAN",
+        "name": "台灣 AI 硬體產業映射"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "ADS_partner_001",
+        "name": "Publicis Groupe",
+        "business_line": "ADS",
+        "relationship": "partner",
+        "details": "全球廣告代理集團；其客戶使用 Meta 廣告生態系進行品牌與成效行銷，屬廣告通路生態而非披露之直接營收占比。 依據：https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+      },
+      {
+        "id": "ADS_partner_002",
+        "name": "WPP",
+        "business_line": "ADS",
+        "relationship": "partner",
+        "details": "全球廣告代理與媒體採購集團，服務品牌於 Facebook／Instagram 廣告市場投放；具體 Meta 採購額未披露。 依據：https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+      },
+      {
+        "id": "ADS_partner_003",
+        "name": "Omnicom Group",
+        "business_line": "ADS",
+        "relationship": "partner",
+        "details": "品牌代理商可透過 Meta 廣告平台進行數位投放；屬廣告生態參與者而非確認之獨家客戶。 依據：https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+      },
+      {
+        "id": "ADS_partner_004",
+        "name": "Dentsu 電通集團",
+        "business_line": "ADS",
+        "relationship": "partner",
+        "details": "為廣告主提供 Meta 平台行銷服務的廣告代理生態，未推定特定合約金額。 依據：https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+      },
+      {
+        "id": "MESSAGING_partner_001",
+        "name": "Salesforce",
+        "business_line": "MESSAGING",
+        "relationship": "partner",
+        "details": "企業 CRM 與 WhatsApp Business 整合生態，支援企業對話及客服場景；非等同 Meta 直接大客戶。 依據：https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+      },
+      {
+        "id": "MESSAGING_partner_002",
+        "name": "Twilio",
+        "business_line": "MESSAGING",
+        "relationship": "partner",
+        "details": "WhatsApp Business Platform 通訊 API 生態服務商；企業透過 API 整合訊息服務。 依據：https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+      },
+      {
+        "id": "MESSAGING_partner_003",
+        "name": "Infobip",
+        "business_line": "MESSAGING",
+        "relationship": "partner",
+        "details": "WhatsApp Business Solution Provider 生態系，支援品牌企業訊息與客服。 依據：https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+      },
+      {
+        "id": "MESSAGING_partner_004",
+        "name": "Sinch",
+        "business_line": "MESSAGING",
+        "relationship": "partner",
+        "details": "WhatsApp 商務通訊服務提供商，串接企業訊息流程。 依據：https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+      },
+      {
+        "id": "LLM_partner_001",
+        "name": "Microsoft",
+        "business_line": "LLM",
+        "relationship": "partner",
+        "details": "Llama 模型在 Azure AI 模型平台提供企業開發部署途徑，為模型分發／平台生態關係。 依據：https://about.fb.com/news/2026/06/what-is-compute-power-meta-ai-infrastructure/amp/"
+      },
+      {
+        "id": "LLM_partner_002",
+        "name": "Amazon Web Services",
+        "business_line": "LLM",
+        "relationship": "partner",
+        "details": "Llama 模型可在 AWS 模型服務生態部署；並與 Meta 在算力晶片採購領域存在合作。 依據：https://about.fb.com/news/2026/06/what-is-compute-power-meta-ai-infrastructure/amp/"
+      },
+      {
+        "id": "LLM_partner_003",
+        "name": "Hugging Face",
+        "business_line": "LLM",
+        "relationship": "partner",
+        "details": "Llama 開放權重模型及社群工具重要分發生態，促進微調與應用開發。 依據：https://about.fb.com/news/2026/06/what-is-compute-power-meta-ai-infrastructure/amp/"
+      },
+      {
+        "id": "GPU_partner_001",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "GPU",
+        "relationship": "partner",
+        "details": "2026 年多年合作涵蓋 Blackwell／Rubin GPU、Grace CPU、Spectrum-X 網路；Meta 已部署 NVIDIA 平台。 依據：https://about.fb.com/news/2026/02/meta-nvidia-announce-long-term-infrastructure-partnership/"
+      },
+      {
+        "id": "GPU_partner_002",
+        "name": "AMD（AMD）",
+        "business_line": "GPU",
+        "relationship": "partner",
+        "details": "2026 年 2 月宣布最高 6GW Instinct GPU 多年協議；2026 年 10 月更新 Helios 機架系統已安裝測試，與 EPYC、Pensando 共同協作。 依據：https://ir.amd.com/news-events/press-releases/detail/1302/amd-and-meta-advance-strategic-partnership-to-power-metas-superintelligence-infrastructure"
+      },
+      {
+        "id": "GPU_partner_003",
+        "name": "CoreWeave（CRWV）",
+        "business_line": "GPU",
+        "relationship": "partner",
+        "details": "2026 年 4 月宣布約 210 億美元、至 2032 年的 AI 雲端算力協議，為 Meta 提供推論容量；此為 Meta 採購雲端服務。 依據：https://www.coreweave.com/news/coreweave-and-meta-announce-21-billion-expanded-ai-infrastructure-agreement"
+      },
+      {
+        "id": "MTIA_partner_001",
+        "name": "Broadcom（AVGO）",
+        "business_line": "MTIA",
+        "relationship": "partner",
+        "details": "2026 年擴大共同設計多代 MTIA XPU，涵蓋晶片設計、先進封裝與網路，首階段部署規模逾 1GW。 依據：https://about.fb.com/news/2026/04/meta-partners-with-broadcom-to-co-develop-custom-ai-silicon/"
+      },
+      {
+        "id": "MTIA_partner_002",
+        "name": "Arm Holdings（ARM）",
+        "business_line": "MTIA",
+        "relationship": "partner",
+        "details": "2026 年 3 月共同開發 Arm AGI CPU，Meta 為首要合作設計者，針對 AI 資料中心運算密度優化。 依據：https://about.fb.com/news/2026/03/meta-partners-with-arm-to-develop-new-class-of-data-center-silicon/"
+      },
+      {
+        "id": "NETWORK_partner_001",
+        "name": "Corning（GLW）",
+        "business_line": "NETWORK",
+        "relationship": "partner",
+        "details": "2026 年 1 月公告最高 60 億美元多年光纖供應協議，支援 Meta 美國資料中心光連接。 依據：https://about.fb.com/news/2026/01/meta-6-billion-agreement-corning-support-us-manufacturing/"
+      },
+      {
+        "id": "NETWORK_partner_002",
+        "name": "NVIDIA Spectrum-X",
+        "business_line": "NETWORK",
+        "relationship": "partner",
+        "details": "NVIDIA 乙太網路方案導入 Meta AI 基礎設施；屬具名網路技術採用。 依據：https://about.fb.com/news/2026/02/meta-nvidia-announce-long-term-infrastructure-partnership/"
+      },
+      {
+        "id": "DATACENTER_partner_001",
+        "name": "Blue Owl Capital（OWL）",
+        "business_line": "DATACENTER",
+        "relationship": "partner",
+        "details": "2025 年 10 月 Meta 與 Blue Owl 基金合資 Hyperion 園區，Blue Owl 持有 80%、Meta 20%，屬專案融資與持有關係。 依據：https://about.fb.com/news/2025/10/meta-blue-owl-capital-develop-hyperion-data-center/"
+      },
+      {
+        "id": "DATACENTER_partner_002",
+        "name": "Entergy Louisiana",
+        "business_line": "DATACENTER",
+        "relationship": "partner",
+        "details": "Meta Richland Parish／Hyperion 園區的電力與基礎設施協議；官方 2026 年公告提及天然氣機組、儲能與核能增容。 依據：https://about.fb.com/news/2026/07/teachers-local-businesses-win-as-meta-expands-louisiana-data-center/"
+      },
+      {
+        "id": "ENERGY_partner_001",
+        "name": "Vistra（VST）",
+        "business_line": "ENERGY",
+        "relationship": "partner",
+        "details": "Meta 簽署 20 年核能採購協議，支持 Ohio 的 Perry、Davis-Besse 及 Pennsylvania 的 Beaver Valley 擴容。 依據：https://about.fb.com/news/2026/01/meta-nuclear-energy-projects-power-american-ai-leadership/"
+      },
+      {
+        "id": "ENERGY_partner_002",
+        "name": "Constellation Energy（CEG）",
+        "business_line": "ENERGY",
+        "relationship": "partner",
+        "details": "Meta 2025 年已簽核能合作協議，支持 Illinois Clinton 核電廠營運延長。 依據：https://about.fb.com/news/2026/01/meta-nuclear-energy-projects-power-american-ai-leadership/"
+      },
+      {
+        "id": "ENERGY_partner_003",
+        "name": "Oklo（OKLO）",
+        "business_line": "ENERGY",
+        "relationship": "partner",
+        "details": "Meta 支持 Ohio Pike County 新核能項目，目標最多 1.2GW；屬開發與採購合作，非已投入營運供電。 依據：https://about.fb.com/news/2026/01/meta-nuclear-energy-projects-power-american-ai-leadership/"
+      },
+      {
+        "id": "ENERGY_partner_004",
+        "name": "TerraPower",
+        "business_line": "ENERGY",
+        "relationship": "partner",
+        "details": "Meta 支持 Natrium 先進核能技術與未來容量選擇權，預計 2030 年代交付，尚非現有供電。 依據：https://about.fb.com/news/2026/01/meta-nuclear-energy-projects-power-american-ai-leadership/"
+      },
+      {
+        "id": "GLASSES_partner_001",
+        "name": "EssilorLuxottica",
+        "business_line": "GLASSES",
+        "relationship": "partner",
+        "details": "Ray-Ban／Oakley／Meta Glasses 眼鏡合作夥伴，涵蓋設計、品牌、鏡框與通路。 依據：https://about.fb.com/news/2026/06/meta-essilorluxottica-partner-launch-meta-glasses/"
+      },
+      {
+        "id": "GLASSES_partner_002",
+        "name": "Ray-Ban",
+        "business_line": "GLASSES",
+        "relationship": "partner",
+        "details": "EssilorLuxottica 旗下眼鏡品牌，與 Meta 合作推出 AI 眼鏡；品牌非獨立硬體供應商。 依據：https://about.fb.com/news/2026/06/meta-essilorluxottica-partner-launch-meta-glasses/"
+      },
+      {
+        "id": "GLASSES_partner_003",
+        "name": "Oakley",
+        "business_line": "GLASSES",
+        "relationship": "partner",
+        "details": "EssilorLuxottica 旗下運動眼鏡品牌，Meta 合作 AI 眼鏡產品線。 依據：https://about.fb.com/news/2026/06/meta-essilorluxottica-partner-launch-meta-glasses/"
+      },
+      {
+        "id": "GLASSES_partner_004",
+        "name": "Best Buy（BBY）",
+        "business_line": "GLASSES",
+        "relationship": "partner",
+        "details": "Meta Glasses 公告列示的零售通路，屬銷售通路而非 Meta 直接客戶。 依據：https://about.fb.com/news/2026/06/meta-essilorluxottica-partner-launch-meta-glasses/"
+      },
+      {
+        "id": "GLASSES_partner_005",
+        "name": "LensCrafters",
+        "business_line": "GLASSES",
+        "relationship": "partner",
+        "details": "Meta Glasses 官方公告列示的零售通路，屬 EssilorLuxottica 眼鏡通路。 依據：https://about.fb.com/news/2026/06/meta-essilorluxottica-partner-launch-meta-glasses/"
+      },
+      {
+        "id": "XR_partner_001",
+        "name": "Qualcomm（QCOM）",
+        "business_line": "XR",
+        "relationship": "partner",
+        "details": "Snapdragon XR 平台為 Quest XR 裝置的重要晶片技術生態；個別機型 BOM 需另行查核。 依據：https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+      },
+      {
+        "id": "DEV_partner_001",
+        "name": "Open Compute Project（OCP）",
+        "business_line": "DEV",
+        "relationship": "partner",
+        "details": "Meta 為 OCP 開放硬體倡議核心推動者，2026 年 Arm AGI CPU 板卡及機架設計計畫公開。 依據：https://about.fb.com/news/2026/03/meta-partners-with-arm-to-develop-new-class-of-data-center-silicon/"
+      },
+      {
+        "id": "PRIVACY_partner_001",
+        "name": "NVIDIA Confidential Computing",
+        "business_line": "PRIVACY",
+        "relationship": "partner",
+        "details": "2026 年 NVIDIA／Meta 公告將機密運算技術用於 WhatsApp AI 隱私處理。 依據：https://about.fb.com/news/2026/02/meta-nvidia-announce-long-term-infrastructure-partnership/"
+      },
+      {
+        "id": "GPU_supplier_001",
+        "name": "NVIDIA GPU／Grace CPU",
+        "business_line": "GPU",
+        "relationship": "supplier",
+        "details": "NVIDIA 官方確認 Meta 將部署 Blackwell、Rubin GPU 及 Grace CPU，屬具名 AI 晶片供應商。 依據：https://about.fb.com/news/2026/02/meta-nvidia-announce-long-term-infrastructure-partnership/"
+      },
+      {
+        "id": "GPU_supplier_002",
+        "name": "AMD Instinct／EPYC",
+        "business_line": "GPU",
+        "relationship": "supplier",
+        "details": "Meta 已部署 AMD EPYC 與 Instinct，並簽最高 6GW 新一代 GPU 協議；未把全部規劃容量當作已出貨。 依據：https://www.amd.com/zh-tw/newsroom/press-releases/2026-2-24-amd-and-meta-announce-expanded-strategic-partnersh.html"
+      },
+      {
+        "id": "GPU_supplier_003",
+        "name": "CoreWeave AI 雲端容量",
+        "business_line": "GPU",
+        "relationship": "supplier",
+        "details": "Meta 向 CoreWeave 購買多年 AI 算力容量，屬外部雲端服務供應商而非 GPU 製造商。 依據：https://www.coreweave.com/news/coreweave-and-meta-announce-21-billion-expanded-ai-infrastructure-agreement"
+      },
+      {
+        "id": "MTIA_supplier_001",
+        "name": "Broadcom XPU 技術",
+        "business_line": "MTIA",
+        "relationship": "supplier",
+        "details": "Broadcom 為 MTIA 多代 ASIC 共同開發方，協助晶片設計、封裝及網路技術。 依據：https://about.fb.com/news/2026/04/meta-partners-with-broadcom-to-co-develop-custom-ai-silicon/"
+      },
+      {
+        "id": "MTIA_supplier_002",
+        "name": "Arm AGI CPU",
+        "business_line": "MTIA",
+        "relationship": "supplier",
+        "details": "Meta 與 Arm 共同開發 AI 資料中心 CPU，Meta 為首要合作方；不代表晶片已全面部署。 依據：https://about.fb.com/news/2026/03/meta-partners-with-arm-to-develop-new-class-of-data-center-silicon/"
+      },
+      {
+        "id": "NETWORK_supplier_001",
+        "name": "Corning 光纖",
+        "business_line": "NETWORK",
+        "relationship": "supplier",
+        "details": "具名長約光纖供應商，最高 60 億美元多年協議。 依據：https://about.fb.com/news/2026/01/meta-6-billion-agreement-corning-support-us-manufacturing/"
+      },
+      {
+        "id": "NETWORK_supplier_002",
+        "name": "NVIDIA Spectrum-X",
+        "business_line": "NETWORK",
+        "relationship": "supplier",
+        "details": "Meta 宣布採用 Spectrum-X 乙太網路方案，與 OCP 網路系統整合。 依據：https://about.fb.com/news/2026/02/meta-nvidia-announce-long-term-infrastructure-partnership/"
+      },
+      {
+        "id": "ENERGY_supplier_001",
+        "name": "Vistra 核能",
+        "business_line": "ENERGY",
+        "relationship": "supplier",
+        "details": "20 年核電採購及增容協議，支援 Meta 區域電力需求。 依據：https://about.fb.com/news/2026/01/meta-nuclear-energy-projects-power-american-ai-leadership/"
+      },
+      {
+        "id": "ENERGY_supplier_002",
+        "name": "Constellation 核能",
+        "business_line": "ENERGY",
+        "relationship": "supplier",
+        "details": "既有核電合作協議支持 Clinton 電廠，屬能源採購而非資料中心機房供應商。 依據：https://about.fb.com/news/2026/01/meta-nuclear-energy-projects-power-american-ai-leadership/"
+      },
+      {
+        "id": "DATACENTER_supplier_001",
+        "name": "CoreWeave 資料中心算力",
+        "business_line": "DATACENTER",
+        "relationship": "supplier",
+        "details": "Meta 外包採購 AI 雲端容量，與自建 Hyperion 設施不同。 依據：https://www.coreweave.com/news/coreweave-and-meta-announce-21-billion-expanded-ai-infrastructure-agreement"
+      },
+      {
+        "id": "GLASSES_supplier_001",
+        "name": "EssilorLuxottica 眼鏡供應鏈",
+        "business_line": "GLASSES",
+        "relationship": "supplier",
+        "details": "Meta 智慧眼鏡合作製造及品牌夥伴；官方證實共同產品與上市。 依據：https://about.fb.com/news/2026/06/meta-essilorluxottica-partner-launch-meta-glasses/"
+      },
+      {
+        "id": "XR_supplier_001",
+        "name": "Qualcomm Snapdragon XR",
+        "business_line": "XR",
+        "relationship": "supplier",
+        "details": "Quest 裝置使用 Qualcomm Snapdragon XR 系列處理器；未延伸宣稱所有世代相同。 依據：https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+      },
+      {
+        "id": "ADS_competitor_001",
+        "name": "Alphabet／Google Ads",
+        "business_line": "ADS",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：搜尋、YouTube 與展示廣告競爭；Meta 強項為社群推薦及成效投放。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "ADS_competitor_002",
+        "name": "Amazon Ads",
+        "business_line": "ADS",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：零售媒體與成效廣告預算競爭，尤其轉換型廣告。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "ADS_competitor_003",
+        "name": "TikTok／ByteDance",
+        "business_line": "ADS",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：短影音注意力及廣告預算競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "ADS_competitor_004",
+        "name": "Snap（SNAP）",
+        "business_line": "ADS",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：社群影音、AR 濾鏡與年輕用戶廣告市場競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "ADS_competitor_005",
+        "name": "Pinterest（PINS）",
+        "business_line": "ADS",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：視覺發現、購物廣告及品牌預算競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "REELS_competitor_001",
+        "name": "TikTok／ByteDance",
+        "business_line": "REELS",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：短影音推薦與創作者流量直接競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "REELS_competitor_002",
+        "name": "YouTube Shorts（GOOGL）",
+        "business_line": "REELS",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：短影音內容、推薦演算法與廣告變現競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "REELS_competitor_003",
+        "name": "Snapchat（SNAP）",
+        "business_line": "REELS",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：社交分享與年輕用戶使用時間競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "REELS_competitor_004",
+        "name": "X（前 Twitter）",
+        "business_line": "REELS",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：Threads 與 X 公開文字社群使用情境競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "REELS_competitor_005",
+        "name": "Reddit（RDDT）",
+        "business_line": "REELS",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：主題討論、社群參與及廣告預算競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "MESSAGING_competitor_001",
+        "name": "Apple iMessage",
+        "business_line": "MESSAGING",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：個人通訊與生態系黏著度競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "MESSAGING_competitor_002",
+        "name": "Telegram",
+        "business_line": "MESSAGING",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：跨平台訊息與社群頻道競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "MESSAGING_competitor_003",
+        "name": "Signal",
+        "business_line": "MESSAGING",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：端對端加密與隱私通訊市場競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "MESSAGING_competitor_004",
+        "name": "WeChat／騰訊",
+        "business_line": "MESSAGING",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：社交通訊與商業服務生態競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "LLM_competitor_001",
+        "name": "OpenAI",
+        "business_line": "LLM",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：通用 AI 助理、前沿模型與開發者生態競爭；不將既有資訊中的『合作』等同目前獨家關係。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "LLM_competitor_002",
+        "name": "Anthropic",
+        "business_line": "LLM",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：Claude 模型、AI 助理與企業模型生態競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "LLM_competitor_003",
+        "name": "Google DeepMind（GOOGL）",
+        "business_line": "LLM",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：Gemini 模型、助理與多模態研究競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "LLM_competitor_004",
+        "name": "xAI",
+        "business_line": "LLM",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：Grok 模型與消費者 AI 助理競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "LLM_competitor_005",
+        "name": "DeepSeek",
+        "business_line": "LLM",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：開放權重模型與推論成本競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "GPU_competitor_001",
+        "name": "Alphabet TPU",
+        "business_line": "GPU",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：Google 自研 AI 加速器與大型訓練基礎設施效率比較，屬同業自研替代路線。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "GPU_competitor_002",
+        "name": "AWS Trainium",
+        "business_line": "GPU",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：AWS 自研加速器與大規模 AI 訓練成本架構競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "MTIA_competitor_001",
+        "name": "Google TPU",
+        "business_line": "MTIA",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：自研 ASIC 架構與資料中心 AI 推論效率競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "MTIA_competitor_002",
+        "name": "AWS Trainium／Inferentia",
+        "business_line": "MTIA",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：雲端自研 AI 加速器與工作負載最佳化架構競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "MTIA_competitor_003",
+        "name": "Microsoft Maia",
+        "business_line": "MTIA",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：超大型科技公司自研 AI 加速器與成本控制架構競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "NETWORK_competitor_001",
+        "name": "Arista Networks（ANET）",
+        "business_line": "NETWORK",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：AI 乙太網路交換器市場及資料中心網路技術競爭；不代表 Meta 不採購其產品。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "NETWORK_competitor_002",
+        "name": "Cisco Systems（CSCO）",
+        "business_line": "NETWORK",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：資料中心網路平台與交換器生態競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "DATACENTER_competitor_001",
+        "name": "Microsoft Azure",
+        "business_line": "DATACENTER",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：AI 資料中心投資、模型訓練算力與基礎設施取得競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "DATACENTER_competitor_002",
+        "name": "Alphabet Google Cloud",
+        "business_line": "DATACENTER",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：超大型 AI 訓練叢集與雲端算力資源競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "DATACENTER_competitor_003",
+        "name": "Amazon AWS",
+        "business_line": "DATACENTER",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：資料中心建置、AI 供應鏈與電力取得競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "GLASSES_competitor_001",
+        "name": "Apple（AAPL）",
+        "business_line": "GLASSES",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：空間運算與穿戴式裝置生態競爭，產品定位不同。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "GLASSES_competitor_002",
+        "name": "Google Android XR",
+        "business_line": "GLASSES",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：智慧眼鏡作業系統與 AI 互動入口競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "GLASSES_competitor_003",
+        "name": "Snap Spectacles",
+        "business_line": "GLASSES",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：AR 智慧眼鏡與開發者生態競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "GLASSES_competitor_004",
+        "name": "XREAL",
+        "business_line": "GLASSES",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：消費者 AR 眼鏡與近眼顯示產品競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "XR_competitor_001",
+        "name": "Sony PlayStation VR",
+        "business_line": "XR",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：VR 遊戲及沉浸式內容生態競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "XR_competitor_002",
+        "name": "Apple Vision Pro",
+        "business_line": "XR",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：高階空間運算硬體與開發者生態競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "XR_competitor_003",
+        "name": "Pico／ByteDance",
+        "business_line": "XR",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：VR 頭戴裝置與遊戲內容競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "XR_competitor_004",
+        "name": "HTC VIVE（2498）",
+        "business_line": "XR",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：企業及消費級 XR 裝置市場競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "DEV_competitor_001",
+        "name": "OpenAI API",
+        "business_line": "DEV",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：第三方開發者模型 API 與工具生態競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "DEV_competitor_002",
+        "name": "Google Gemini API",
+        "business_line": "DEV",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：企業與開發者 AI 模型服務競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "DEV_competitor_003",
+        "name": "Mistral AI",
+        "business_line": "DEV",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：開放權重與商業模型授權生態競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "COMMERCE_competitor_001",
+        "name": "Amazon Marketplace",
+        "business_line": "COMMERCE",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：商品發現、社群導購與零售廣告預算競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "COMMERCE_competitor_002",
+        "name": "Shopify（SHOP）",
+        "business_line": "COMMERCE",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：商家電商營運及轉換型行銷工具存在競合。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "COMMERCE_competitor_003",
+        "name": "TikTok Shop",
+        "business_line": "COMMERCE",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：社群短影音與直播電商導購競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "PRIVACY_competitor_001",
+        "name": "Google Privacy Sandbox",
+        "business_line": "PRIVACY",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：數位廣告隱私、資料處理與測量技術路線競爭。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "PRIVACY_competitor_002",
+        "name": "Apple App Tracking Transparency",
+        "business_line": "PRIVACY",
+        "relationship": "competitor",
+        "details": "同類市場或技術路線競爭：跨 App 追蹤限制對 Meta 廣告歸因造成結構性影響，屬平台競合。 未據此推論特定客戶流失。"
+      },
+      {
+        "id": "GPU_beneficiary_001",
+        "name": "台積電（2330／TSM）",
+        "business_line": "GPU",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：Meta GPU、CPU 與 MTIA 生態系依賴先進晶圓製造；台積電是晶片製造產業受惠者，但此節點不主張 Meta 與台積電直接採購合約。"
+      },
+      {
+        "id": "GPU_beneficiary_002",
+        "name": "緯穎（6669）",
+        "business_line": "GPU",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：大型 AI 伺服器與機架設計製造的台灣產業受惠代表；未據此確認 Meta 指定訂單。"
+      },
+      {
+        "id": "GPU_beneficiary_003",
+        "name": "廣達（2382）",
+        "business_line": "GPU",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：AI 伺服器、GPU 機架整合需求成長的台灣 ODM 受惠代表；未確認專屬 Meta 訂單。"
+      },
+      {
+        "id": "GPU_beneficiary_004",
+        "name": "緯創（3231）",
+        "business_line": "GPU",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：AI 伺服器與 GPU 系統製造需求的台灣產業受惠代表，非已確認 Meta 直接供應商。"
+      },
+      {
+        "id": "GPU_beneficiary_005",
+        "name": "鴻海（2317）",
+        "business_line": "GPU",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：AI 機櫃與伺服器系統製造供應鏈受惠代表，未確認 Meta 特定合約。"
+      },
+      {
+        "id": "MTIA_beneficiary_001",
+        "name": "世芯-KY（3661）",
+        "business_line": "MTIA",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：自研 AI ASIC 熱潮下的台灣設計服務受惠代表；非 Meta MTIA 已確認設計供應商。"
+      },
+      {
+        "id": "MTIA_beneficiary_002",
+        "name": "創意電子（3443）",
+        "business_line": "MTIA",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：先進製程 ASIC 設計服務與封裝需求受惠代表；不推定直接參與 MTIA。"
+      },
+      {
+        "id": "MTIA_beneficiary_003",
+        "name": "智原（3035）",
+        "business_line": "MTIA",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：ASIC 設計服務與矽智財產業鏈受惠代表；不主張具名 Meta 訂單。"
+      },
+      {
+        "id": "MTIA_beneficiary_004",
+        "name": "日月光投控（3711）",
+        "business_line": "MTIA",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：先進封裝及測試需求擴張的產業受惠者；未確認 Meta MTIA 特定封裝承包。"
+      },
+      {
+        "id": "MTIA_beneficiary_005",
+        "name": "欣興（3037）",
+        "business_line": "MTIA",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：AI 加速器 ABF 載板及高階封裝基板需求受惠代表；未確認 MTIA 專案。"
+      },
+      {
+        "id": "NETWORK_beneficiary_001",
+        "name": "智邦科技（2345）",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：AI 資料中心高階交換器與開放網路設備需求的台灣受惠代表；不將市場關聯等同 Meta 採購。"
+      },
+      {
+        "id": "NETWORK_beneficiary_002",
+        "name": "啟碁（6285）",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：網通設備及無線連接升級的台灣產業關聯代表，非已證實 Meta 網路供應商。"
+      },
+      {
+        "id": "NETWORK_beneficiary_003",
+        "name": "聯鈞（3450）",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：光通訊模組與資料中心光連接需求受惠代表；不推定 Meta 直接採購。"
+      },
+      {
+        "id": "NETWORK_beneficiary_004",
+        "name": "光聖（6442）",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：資料中心高速光互連與光纖連接器需求受惠代表；未確認 Meta 訂單。"
+      },
+      {
+        "id": "NETWORK_beneficiary_005",
+        "name": "上詮（3363）",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：光纖被動元件及高密度光連接需求受惠代表；非已確認 Meta 直接供應商。"
+      },
+      {
+        "id": "NETWORK_beneficiary_006",
+        "name": "波若威（3163）",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：高速光通訊被動元件及資料中心光纖需求受惠代表。"
+      },
+      {
+        "id": "DATACENTER_beneficiary_001",
+        "name": "台達電（2308）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：大型 AI 資料中心高效率供電與散熱產業受惠代表；非已核實 Meta 特定合約。"
+      },
+      {
+        "id": "DATACENTER_beneficiary_002",
+        "name": "光寶科（2301）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：高瓦數 AI 伺服器電源供應器產業受惠代表，非已確認 Meta 直接供應商。"
+      },
+      {
+        "id": "DATACENTER_beneficiary_003",
+        "name": "奇鋐（3017）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：高功率 AI 機櫃散熱與液冷零組件需求受惠代表；未確認 Meta 專案。"
+      },
+      {
+        "id": "DATACENTER_beneficiary_004",
+        "name": "雙鴻（3324）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：高密度 AI 伺服器液冷、熱管理需求受惠代表；未確認 Meta 訂單。"
+      },
+      {
+        "id": "DATACENTER_beneficiary_005",
+        "name": "勤誠（8210）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：AI 伺服器機殼及資料中心硬體擴建需求受惠代表。"
+      },
+      {
+        "id": "ENERGY_beneficiary_001",
+        "name": "中興電（1513）",
+        "business_line": "ENERGY",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：大型資料中心與電網擴容所需變電、配電設備的台灣同業產業映射；非 Meta 供應商。"
+      },
+      {
+        "id": "ENERGY_beneficiary_002",
+        "name": "華城（1519）",
+        "business_line": "ENERGY",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：高壓變壓器與電力基礎設施擴張的台灣產業受惠代表。"
+      },
+      {
+        "id": "GLASSES_beneficiary_001",
+        "name": "大立光（3008）",
+        "business_line": "GLASSES",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：AI 眼鏡微型攝影鏡頭及光學需求的台灣產業受惠代表；未確認 Meta 直接採購。"
+      },
+      {
+        "id": "GLASSES_beneficiary_002",
+        "name": "玉晶光（3406）",
+        "business_line": "GLASSES",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：智慧眼鏡與微型光學模組產業受惠代表；不主張具名 Meta 供貨。"
+      },
+      {
+        "id": "GLASSES_beneficiary_003",
+        "name": "佳凌（4976）",
+        "business_line": "GLASSES",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：智慧穿戴光學鏡片與成像元件需求受惠代表；未確認 Meta 合約。"
+      },
+      {
+        "id": "GLASSES_beneficiary_004",
+        "name": "瑞昱（2379）",
+        "business_line": "GLASSES",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：穿戴式連接、音訊與低功耗運算產業受惠代表；非 Meta 眼鏡已確認供應商。"
+      },
+      {
+        "id": "XR_beneficiary_001",
+        "name": "宏達電（2498）",
+        "business_line": "XR",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：VR／XR 產業成長的台灣競合代表；與 Meta Quest 競爭而非直接受惠於 Meta 銷售。"
+      },
+      {
+        "id": "DEV_beneficiary_001",
+        "name": "聯發科（2454）",
+        "business_line": "DEV",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：邊緣 AI SoC 與智慧裝置推論需求受惠代表；不推定為 Meta 晶片直接供應商。"
+      },
+      {
+        "id": "TAIWAN_beneficiary_001",
+        "name": "南亞科（2408）",
+        "business_line": "TAIWAN",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：AI 資料中心 DRAM 需求成長的台灣記憶體產業映射，非已確認 Meta 記憶體供應商。"
+      },
+      {
+        "id": "TAIWAN_beneficiary_002",
+        "name": "華邦電（2344）",
+        "business_line": "TAIWAN",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：AI 伺服器週邊記憶體及嵌入式儲存需求產業映射，非 Meta 直接採購證據。"
+      },
+      {
+        "id": "TAIWAN_beneficiary_003",
+        "name": "群聯（8299）",
+        "business_line": "TAIWAN",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠（非已確認供應關係）：AI 資料中心儲存控制器與企業 SSD 生態受惠代表；未確認 Meta 直接訂單。"
+      },
+      {
+        "id": "ADS_customer_001",
+        "name": "全球品牌廣告主",
+        "business_line": "ADS",
+        "relationship": "customer",
+        "details": "客群層級（未具名，避免虛構大客戶）：Meta 年報確認 Family of Apps 主要營收來自廣告主購買 Facebook、Instagram、Messenger、Threads、WhatsApp 廣告版位；未揭露完整具名客戶名單。 依據：https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+      },
+      {
+        "id": "ADS_customer_002",
+        "name": "中小企業廣告主",
+        "business_line": "ADS",
+        "relationship": "customer",
+        "details": "客群層級（未具名，避免虛構大客戶）：Meta 官方年報所述核心廣告購買客群，使用自助廣告平台投放；不將匿名群體冒充具名企業。 依據：https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+      },
+      {
+        "id": "MESSAGING_customer_001",
+        "name": "WhatsApp Business 企業商家",
+        "business_line": "MESSAGING",
+        "relationship": "customer",
+        "details": "客群層級（未具名，避免虛構大客戶）：企業使用 WhatsApp 商務訊息與 API 進行客服、行銷及交易溝通，屬客戶類型而非具名客戶。 依據：https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+      },
+      {
+        "id": "COMMERCE_customer_001",
+        "name": "Instagram Shops 商家",
+        "business_line": "COMMERCE",
+        "relationship": "customer",
+        "details": "客群層級（未具名，避免虛構大客戶）：社群商家利用 Instagram／Facebook 商務工具接觸消費者；商家個別名稱及交易額未揭露。 依據：https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+      },
+      {
+        "id": "XR_customer_001",
+        "name": "Meta Quest 消費者",
+        "business_line": "XR",
+        "relationship": "customer",
+        "details": "客群層級（未具名，避免虛構大客戶）：購買 Quest 裝置與內容的終端消費者；年報以 Reality Labs 分部報告而非具名客戶。 依據：https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+      },
+      {
+        "id": "DEV_customer_001",
+        "name": "Llama 模型開發者",
+        "business_line": "DEV",
+        "relationship": "customer",
+        "details": "客群層級（未具名，避免虛構大客戶）：開放權重模型使用者及企業開發者生態；不等同全部為付費客戶。 依據：https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+      }
+    ]
   }
 }

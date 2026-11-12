@@ -224,5 +224,1043 @@
       "醫療資訊現代化"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-11",
+    "company": "Oracle Corporation",
+    "symbol": "ORCL",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "ORCL Oracle 甲骨文 AI 產業鏈｜OCI、OpenAI Stargate、GPU、資料庫、Fusion、NetSuite",
+      "description": "Oracle 深度產業鏈研究：OpenAI Stargate、NVIDIA Vera Rubin、AMD EPYC、Google TPU、Cerebras、SambaNova、Oracle AI Database@AWS／Azure／Google Cloud、Fusion Agent、NetSuite、Oracle Health、Snowflake 與台灣 AI 伺服器供應鏈映射；區分已部署與規劃合作。"
+    },
+    "business_lines": [
+      {
+        "id": "OCI_AI",
+        "name": "OCI AI 超級叢集／GPU 雲端"
+      },
+      {
+        "id": "STARGATE",
+        "name": "OpenAI Stargate AI 資料中心"
+      },
+      {
+        "id": "ACCELERATOR",
+        "name": "GPU／TPU／推論加速器"
+      },
+      {
+        "id": "CPU_NETWORK",
+        "name": "CPU、DPU 與 Acceleron 網路"
+      },
+      {
+        "id": "DC_POWER",
+        "name": "資料中心電力、冷卻與建設"
+      },
+      {
+        "id": "DATABASE",
+        "name": "Oracle AI Database／Exadata"
+      },
+      {
+        "id": "MULTICLOUD",
+        "name": "Database@AWS／Azure／Google Cloud"
+      },
+      {
+        "id": "FUSION",
+        "name": "Fusion ERP／HCM／SCM／CX"
+      },
+      {
+        "id": "NETSUITE",
+        "name": "NetSuite 中小企業雲端 ERP"
+      },
+      {
+        "id": "HEALTH",
+        "name": "Oracle Health／Cerner 醫療資訊"
+      },
+      {
+        "id": "GENAI",
+        "name": "OCI Generative AI／模型與 Agent"
+      },
+      {
+        "id": "DATA",
+        "name": "MySQL HeatWave／Lakehouse／Snowflake"
+      },
+      {
+        "id": "JAVA",
+        "name": "Java／開發者／中介軟體"
+      },
+      {
+        "id": "HARDWARE",
+        "name": "Exadata／硬體／維護服務"
+      },
+      {
+        "id": "CHANNEL",
+        "name": "SI 顧問／雲端通路"
+      },
+      {
+        "id": "TAIWAN",
+        "name": "台灣 AI 伺服器及基礎設施映射"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "OCI_AI_customer_001",
+        "name": "OpenAI",
+        "business_line": "OCI_AI",
+        "relationship": "customer",
+        "details": "Oracle 與 OpenAI 2025 年宣布追加 4.5GW Stargate AI 資料中心容量；2026 年深化企業 AI 合作，容量屬規劃與建置，非全部已交付。 來源：https://openai.com/index/stargate-advances-with-partnership-with-oracle/"
+      },
+      {
+        "id": "MULTICLOUD_customer_001",
+        "name": "CJ Olive Young",
+        "business_line": "MULTICLOUD",
+        "relationship": "customer",
+        "details": "韓國美妝零售商採用 Oracle AI Database@AWS 遷移核心工作負載，Oracle 官方具名案例。 來源：https://www.oracle.com/news/announcement/oracle-and-aws-deepen-strategic-collaboration-as-enterprise-adoption-of-oracle-ai-database-at-aws-accelerates-2026-08-13/"
+      },
+      {
+        "id": "MULTICLOUD_customer_002",
+        "name": "Kobalt Music Group",
+        "business_line": "MULTICLOUD",
+        "relationship": "customer",
+        "details": "採用 Oracle AI Database@AWS 以支援音樂版稅資料庫及 AWS 應用整合。 來源：https://www.oracle.com/news/announcement/oracle-and-aws-deepen-strategic-collaboration-as-enterprise-adoption-of-oracle-ai-database-at-aws-accelerates-2026-08-13/"
+      },
+      {
+        "id": "MULTICLOUD_customer_003",
+        "name": "Barcelona Metropolitan Transport Authority",
+        "business_line": "MULTICLOUD",
+        "relationship": "customer",
+        "details": "巴塞隆納大都會交通機構採用 Oracle AI Database@AWS 執行重要資料庫。 來源：https://www.oracle.com/news/announcement/oracle-and-aws-deepen-strategic-collaboration-as-enterprise-adoption-of-oracle-ai-database-at-aws-accelerates-2026-08-13/"
+      },
+      {
+        "id": "MULTICLOUD_customer_004",
+        "name": "Worldline",
+        "business_line": "MULTICLOUD",
+        "relationship": "customer",
+        "details": "支付業者採用 Oracle Exadata Database Service on Google Cloud；遷移約 200 個微服務及 100TB 報表資料庫。 來源：https://www.oracle.com/customers/worldline/"
+      },
+      {
+        "id": "MULTICLOUD_customer_005",
+        "name": "SEFE",
+        "business_line": "MULTICLOUD",
+        "relationship": "customer",
+        "details": "歐洲能源集團採用 Oracle Database@Azure，遷移 39 座資料庫、支援 13 個關鍵應用；報告效能提升。 來源：https://www.oracle.com/customers/sefe/"
+      },
+      {
+        "id": "MULTICLOUD_customer_006",
+        "name": "Liberty Energy",
+        "business_line": "MULTICLOUD",
+        "relationship": "customer",
+        "details": "能源服務公司採用 OCI 整合財務、人力與營運資料，Peloton 提供系統整合支援。 來源：https://blogs.oracle.com/database/accelerate-oracle-database-multicloud-migrations-with-system-integration-partners"
+      },
+      {
+        "id": "OCI_AI_customer_002",
+        "name": "CERN openlab",
+        "business_line": "OCI_AI",
+        "relationship": "customer",
+        "details": "Oracle 客戶案例列示 CERN openlab 使用 OCI 進行 AI 模型訓練研究。 來源：https://www.oracle.com/customers/"
+      },
+      {
+        "id": "OCI_AI_customer_003",
+        "name": "Deciphex",
+        "business_line": "OCI_AI",
+        "relationship": "customer",
+        "details": "醫療病理 AI 公司使用 Oracle AI Infrastructure 加速病理 AI 模型訓練。 來源：https://www.oracle.com/customers/"
+      },
+      {
+        "id": "OCI_AI_customer_004",
+        "name": "John Snow Labs",
+        "business_line": "OCI_AI",
+        "relationship": "customer",
+        "details": "醫療 AI 公司使用 Oracle AI Infrastructure 支援個人化醫療工作負載。 來源：https://www.oracle.com/customers/"
+      },
+      {
+        "id": "OCI_AI_customer_005",
+        "name": "MetaVoice",
+        "business_line": "OCI_AI",
+        "relationship": "customer",
+        "details": "語音 AI 公司採用 Oracle AI 基礎設施支援電話客服語音模型。 來源：https://www.oracle.com/customers/"
+      },
+      {
+        "id": "OCI_AI_customer_006",
+        "name": "GoTo",
+        "business_line": "OCI_AI",
+        "relationship": "customer",
+        "details": "遠端協作科技公司使用 OCI 雲端服務，為 Oracle 官方案例。 來源：https://www.oracle.com/customers/"
+      },
+      {
+        "id": "STARGATE_partner_001",
+        "name": "OpenAI",
+        "business_line": "STARGATE",
+        "relationship": "partner",
+        "details": "Stargate 合作開發 AI 訓練／推論資料中心，追加 4.5GW 規劃容量；OpenAI 同時是算力採購方。 來源：https://openai.com/index/stargate-advances-with-partnership-with-oracle/"
+      },
+      {
+        "id": "STARGATE_partner_002",
+        "name": "SoftBank",
+        "business_line": "STARGATE",
+        "relationship": "partner",
+        "details": "Stargate 基礎設施計畫的另一重要投資／開發合作方；不等同每座 Oracle 園區皆由 SoftBank 承包。 來源：https://openai.com/index/stargate-advances-with-partnership-with-oracle/"
+      },
+      {
+        "id": "STARGATE_partner_003",
+        "name": "Crusoe Energy Systems",
+        "business_line": "STARGATE",
+        "relationship": "partner",
+        "details": "Abilene Stargate 園區的資料中心開發及營運生態合作方；具體建設階段與權利關係應按園區區分。 來源：https://www.oracle.com/data-centers/abilene/"
+      },
+      {
+        "id": "ACCELERATOR_partner_001",
+        "name": "NVIDIA",
+        "business_line": "ACCELERATOR",
+        "relationship": "partner",
+        "details": "2026 年擴大 Vera Rubin NVL72 與 Vera CPU 在 OCI 部署，公告規劃多 GW 擴展；採購與平台合作並存。 來源：https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Oracle-Expand-NVIDIA-Vera-Rubin-to-Multi-Gigawatt-Scale-and-Bring-NVIDIA-Vera-CPU-to-Oracle-Cloud-Infrastructure/default.aspx"
+      },
+      {
+        "id": "ACCELERATOR_partner_002",
+        "name": "Google Cloud／TPU",
+        "business_line": "ACCELERATOR",
+        "relationship": "partner",
+        "details": "2026 年宣布 OCI 將於 2027 年提供 Google TPU，並分多年擴大規模；目前屬已公告未全面商轉的計畫。 來源：https://www.oracle.com/news/announcement/ai-world-oracle-brings-google-tpus-to-oracle-cloud-infrastructure-2026-10-27/"
+      },
+      {
+        "id": "ACCELERATOR_partner_003",
+        "name": "AMD",
+        "business_line": "ACCELERATOR",
+        "relationship": "partner",
+        "details": "OCI 持續採用 AMD EPYC，計畫 E7 實例使用第六代 EPYC；AMD Pensando DPU 支援 Acceleron。 來源：https://www.oracle.com/news/announcement/blog/ai-world-building-the-next-decade-of-oracle-cloud-infrastructure-2026-10-27/"
+      },
+      {
+        "id": "ACCELERATOR_partner_004",
+        "name": "Cerebras Systems",
+        "business_line": "ACCELERATOR",
+        "relationship": "partner",
+        "details": "2026 年 Oracle 宣布規劃 2027 年提供 Cerebras 晶圓級推論加速器，尚非已全面上線。 來源：https://www.oracle.com/news/announcement/blog/ai-world-building-the-next-decade-of-oracle-cloud-infrastructure-2026-10-27/"
+      },
+      {
+        "id": "ACCELERATOR_partner_005",
+        "name": "SambaNova Systems",
+        "business_line": "ACCELERATOR",
+        "relationship": "partner",
+        "details": "2026 年宣布計畫導入 SambaNova SN50 推論系統，屬未來算力選項。 來源：https://www.oracle.com/news/announcement/blog/ai-world-building-the-next-decade-of-oracle-cloud-infrastructure-2026-10-27/"
+      },
+      {
+        "id": "ACCELERATOR_partner_006",
+        "name": "Positron",
+        "business_line": "ACCELERATOR",
+        "relationship": "partner",
+        "details": "Oracle 官方提及已部署 Positron 推論平台，屬多架構推論生態。 來源：https://www.oracle.com/news/announcement/blog/ai-world-building-the-next-decade-of-oracle-cloud-infrastructure-2026-10-27/"
+      },
+      {
+        "id": "CPU_NETWORK_partner_001",
+        "name": "Intel",
+        "business_line": "CPU_NETWORK",
+        "relationship": "partner",
+        "details": "Oracle 2026 年宣布多年合作規劃 Diamond Rapids 處理器的 OCI X14 實例。 來源：https://www.oracle.com/news/announcement/blog/ai-world-building-the-next-decade-of-oracle-cloud-infrastructure-2026-10-27/"
+      },
+      {
+        "id": "CPU_NETWORK_partner_002",
+        "name": "AMD Pensando",
+        "business_line": "CPU_NETWORK",
+        "relationship": "partner",
+        "details": "Oracle Acceleron 網卡生態使用 AMD Pensando DPU，支援 AMD-powered OCI 實例。 來源：https://www.oracle.com/news/announcement/blog/ai-world-building-the-next-decade-of-oracle-cloud-infrastructure-2026-10-27/"
+      },
+      {
+        "id": "CPU_NETWORK_partner_003",
+        "name": "NVIDIA Vera CPU",
+        "business_line": "CPU_NETWORK",
+        "relationship": "partner",
+        "details": "NVIDIA 與 Oracle 2026 年公告將 Vera CPU 導入 OCI。 來源：https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Oracle-Expand-NVIDIA-Vera-Rubin-to-Multi-Gigawatt-Scale-and-Bring-NVIDIA-Vera-CPU-to-Oracle-Cloud-Infrastructure/default.aspx"
+      },
+      {
+        "id": "GENAI_partner_001",
+        "name": "OpenAI",
+        "business_line": "GENAI",
+        "relationship": "partner",
+        "details": "2026 年共同推出 ChatGPT、Codex 與 Oracle 企業應用及資料整合；另有 OpenAI Jalapeño 推論加速器部署規劃。 來源：https://www.oracle.com/tw/news/announcement/ai-world-oracle-reinvents-enterprise-computing-for-the-ai-era-with-openai-2026-10-27/"
+      },
+      {
+        "id": "GENAI_partner_002",
+        "name": "Google Gemini",
+        "business_line": "GENAI",
+        "relationship": "partner",
+        "details": "2026 年宣布將 Gemini 模型導入 Fusion AI Agent Studio 與 NetSuite AI 應用；屬模型授權／整合合作。 來源：https://www.oracle.com/news/announcement/oracle-to-make-gemini-models-available-2026-07-30/"
+      },
+      {
+        "id": "GENAI_partner_003",
+        "name": "Cohere",
+        "business_line": "GENAI",
+        "relationship": "partner",
+        "details": "OCI Generative AI 提供 Cohere Command 與 Embed 系列模型，屬模型平台合作。 來源：https://docs.oracle.com/en-us/iaas/releasenotes/services/generative-ai/"
+      },
+      {
+        "id": "GENAI_partner_004",
+        "name": "xAI",
+        "business_line": "GENAI",
+        "relationship": "partner",
+        "details": "OCI Generative AI 2026 年上架 Grok 4.6，屬模型平台分發關係。 來源：https://docs.oracle.com/en-us/iaas/releasenotes/services/generative-ai/"
+      },
+      {
+        "id": "GENAI_partner_005",
+        "name": "Quantinuum",
+        "business_line": "GENAI",
+        "relationship": "partner",
+        "details": "Oracle 宣布 Quantum AI Compute beta 及 Quantinuum Helios 量子運算合作。 來源：https://www.oracle.com/news/announcement/blog/ai-world-building-the-next-decade-of-oracle-cloud-infrastructure-2026-10-27/"
+      },
+      {
+        "id": "MULTICLOUD_partner_001",
+        "name": "Amazon Web Services（AWS）",
+        "business_line": "MULTICLOUD",
+        "relationship": "partner",
+        "details": "Oracle AI Database@AWS 2026 年已在 22 個 AWS 區域提供服務；雙方擴大長期策略合作。 來源：https://www.oracle.com/news/announcement/oracle-and-aws-deepen-strategic-collaboration-as-enterprise-adoption-of-oracle-ai-database-at-aws-accelerates-2026-08-13/"
+      },
+      {
+        "id": "MULTICLOUD_partner_002",
+        "name": "Microsoft Azure",
+        "business_line": "MULTICLOUD",
+        "relationship": "partner",
+        "details": "Oracle AI Database@Azure 多區域部署，Exadata 與 Azure 應用整合；雙方同時在雲端市場競爭。 來源：https://www.oracle.com/tw/news/announcement/ocw24-oracle-expands-multicloud-capabilities-with-aws-google-cloud-and-microsoft-azure-2024-09-11/"
+      },
+      {
+        "id": "MULTICLOUD_partner_003",
+        "name": "Google Cloud",
+        "business_line": "MULTICLOUD",
+        "relationship": "partner",
+        "details": "Oracle AI Database@Google Cloud 與 Gemini Enterprise 資料代理整合；多雲合作及 TPU 合作並存。 來源：https://www.oracle.com/tw/news/announcement/ocw24-oracle-expands-multicloud-capabilities-with-aws-google-cloud-and-microsoft-azure-2024-09-11/"
+      },
+      {
+        "id": "MULTICLOUD_partner_004",
+        "name": "Accenture",
+        "business_line": "MULTICLOUD",
+        "relationship": "partner",
+        "details": "SEFE Oracle Database@Azure 遷移計畫的 OCI 系統整合合作方。 來源：https://www.oracle.com/customers/sefe/"
+      },
+      {
+        "id": "MULTICLOUD_partner_005",
+        "name": "Avanade",
+        "business_line": "MULTICLOUD",
+        "relationship": "partner",
+        "details": "SEFE Azure 與 Oracle Database 遷移支援夥伴，Accenture 旗下公司。 來源：https://www.oracle.com/customers/sefe/"
+      },
+      {
+        "id": "MULTICLOUD_partner_006",
+        "name": "Version 1",
+        "business_line": "MULTICLOUD",
+        "relationship": "partner",
+        "details": "協助 Kobalt Music 遷移 Oracle AI Database@AWS，為 Oracle 官方案例所述 SI。 來源：https://blogs.oracle.com/database/accelerate-oracle-database-multicloud-migrations-with-system-integration-partners"
+      },
+      {
+        "id": "MULTICLOUD_partner_007",
+        "name": "Devoteam",
+        "business_line": "MULTICLOUD",
+        "relationship": "partner",
+        "details": "協助 Worldline Oracle Database@Google Cloud 架構與遷移工程。 來源：https://www.oracle.com/customers/worldline/"
+      },
+      {
+        "id": "MULTICLOUD_partner_008",
+        "name": "Deloitte",
+        "business_line": "MULTICLOUD",
+        "relationship": "partner",
+        "details": "Oracle／AWS 聯合資料庫遷移與企業 AI 系統整合生態夥伴。 來源：https://www.oracle.com/news/announcement/oracle-and-aws-deepen-strategic-collaboration-as-enterprise-adoption-of-oracle-ai-database-at-aws-accelerates-2026-08-13/"
+      },
+      {
+        "id": "MULTICLOUD_partner_009",
+        "name": "Peloton Consulting Group",
+        "business_line": "MULTICLOUD",
+        "relationship": "partner",
+        "details": "Liberty Energy 透過 Peloton 整合 OCI 財務、人力與營運資料。 來源：https://blogs.oracle.com/database/accelerate-oracle-database-multicloud-migrations-with-system-integration-partners"
+      },
+      {
+        "id": "DATA_partner_001",
+        "name": "Snowflake（SNOW）",
+        "business_line": "DATA",
+        "relationship": "partner",
+        "details": "2026 年宣布 Snowflake AI Data Cloud 將成為 OCI 原生第一方服務，統一計費；屬公告中的合作。 來源：https://www.oracle.com/news/announcement/ai-world-oracle-expands-native-ai-and-data-services-on-oci-with-snowflake-2026-10-27/"
+      },
+      {
+        "id": "DATA_partner_002",
+        "name": "NetApp（NTAP）",
+        "business_line": "DATA",
+        "relationship": "partner",
+        "details": "Oracle 宣布規劃 OCI NetApp Storage Service，以原生受管 ONTAP 服務支援企業儲存。 來源：https://www.oracle.com/news/announcement/blog/ai-world-building-the-next-decade-of-oracle-cloud-infrastructure-2026-10-27/"
+      },
+      {
+        "id": "DATA_partner_003",
+        "name": "Apache Iceberg 生態",
+        "business_line": "DATA",
+        "relationship": "partner",
+        "details": "Oracle Autonomous AI Lakehouse 擴大對 Iceberg 開放表格格式支援；這是開放標準生態，非具名商業合約。 來源：https://www.oracle.com/tw/news/announcement/ai-world-oracle-advances-autonomous-ai-lakehouse-with-business-semantic-layer-and-expanded-support-for-iceberg-data-2026-10-26/"
+      },
+      {
+        "id": "FUSION_partner_001",
+        "name": "OpenAI Codex",
+        "business_line": "FUSION",
+        "relationship": "partner",
+        "details": "Oracle 2026 年公告 App Composer 與 Codex 整合企業應用開發工作流程。 來源：https://www.oracle.com/tw/news/announcement/ai-world-oracle-reinvents-enterprise-computing-for-the-ai-era-with-openai-2026-10-27/"
+      },
+      {
+        "id": "FUSION_partner_002",
+        "name": "Google Gemini",
+        "business_line": "FUSION",
+        "relationship": "partner",
+        "details": "Oracle 2026 年宣布 Gemini 模型將整合 Fusion／NetSuite Agentic 應用。 來源：https://www.oracle.com/news/announcement/oracle-to-make-gemini-models-available-2026-07-30/"
+      },
+      {
+        "id": "JAVA_partner_001",
+        "name": "OpenJDK 社群",
+        "business_line": "JAVA",
+        "relationship": "partner",
+        "details": "Oracle 主導 Java 技術及 OpenJDK 開放原始碼生態，並提供商業支援；不是單一供應商。 來源：https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm"
+      },
+      {
+        "id": "CHANNEL_partner_001",
+        "name": "Oracle PartnerNetwork",
+        "business_line": "CHANNEL",
+        "relationship": "partner",
+        "details": "Oracle 官方全球合作夥伴銷售、部署與維護體系，包含 SI、ISV 與雲端服務夥伴。 來源：https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm"
+      },
+      {
+        "id": "ACCELERATOR_supplier_001",
+        "name": "NVIDIA GPU／Vera Rubin",
+        "business_line": "ACCELERATOR",
+        "relationship": "supplier",
+        "details": "OCI 多代 GPU／系統供應與部署，2026 年公告 Rubin NVL72 及 Vera CPU 已可用，後續多 GW 規劃另計。 來源：https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Oracle-Expand-NVIDIA-Vera-Rubin-to-Multi-Gigawatt-Scale-and-Bring-NVIDIA-Vera-CPU-to-Oracle-Cloud-Infrastructure/default.aspx"
+      },
+      {
+        "id": "ACCELERATOR_supplier_002",
+        "name": "AMD EPYC CPU",
+        "business_line": "ACCELERATOR",
+        "relationship": "supplier",
+        "details": "OCI E7 規劃搭載第六代 EPYC；為具名處理器供應合作。 來源：https://www.oracle.com/news/announcement/blog/ai-world-building-the-next-decade-of-oracle-cloud-infrastructure-2026-10-27/"
+      },
+      {
+        "id": "ACCELERATOR_supplier_003",
+        "name": "Google TPU",
+        "business_line": "ACCELERATOR",
+        "relationship": "supplier",
+        "details": "OCI 2027 年計畫導入 Google TPU；尚未列為 2026 年已交付硬體。 來源：https://www.oracle.com/news/announcement/ai-world-oracle-brings-google-tpus-to-oracle-cloud-infrastructure-2026-10-27/"
+      },
+      {
+        "id": "ACCELERATOR_supplier_004",
+        "name": "Cerebras Wafer-Scale",
+        "business_line": "ACCELERATOR",
+        "relationship": "supplier",
+        "details": "Oracle 規劃 2027 年導入 Cerebras 推論硬體，未宣稱目前已有大規模出貨。 來源：https://www.oracle.com/news/announcement/blog/ai-world-building-the-next-decade-of-oracle-cloud-infrastructure-2026-10-27/"
+      },
+      {
+        "id": "ACCELERATOR_supplier_005",
+        "name": "SambaNova SN50",
+        "business_line": "ACCELERATOR",
+        "relationship": "supplier",
+        "details": "Oracle 已公告 SN50 推論系統導入計畫；交付時點與規模未公開。 來源：https://www.oracle.com/news/announcement/blog/ai-world-building-the-next-decade-of-oracle-cloud-infrastructure-2026-10-27/"
+      },
+      {
+        "id": "ACCELERATOR_supplier_006",
+        "name": "Positron 推論系統",
+        "business_line": "ACCELERATOR",
+        "relationship": "supplier",
+        "details": "Oracle 官方表示已有 Positron 推論部署；具名供應平台。 來源：https://www.oracle.com/news/announcement/blog/ai-world-building-the-next-decade-of-oracle-cloud-infrastructure-2026-10-27/"
+      },
+      {
+        "id": "CPU_NETWORK_supplier_001",
+        "name": "Intel Diamond Rapids",
+        "business_line": "CPU_NETWORK",
+        "relationship": "supplier",
+        "details": "OCI X14 計畫採用 Intel 下一代伺服器 CPU，為規劃供應鏈。 來源：https://www.oracle.com/news/announcement/blog/ai-world-building-the-next-decade-of-oracle-cloud-infrastructure-2026-10-27/"
+      },
+      {
+        "id": "CPU_NETWORK_supplier_002",
+        "name": "AMD Pensando DPU",
+        "business_line": "CPU_NETWORK",
+        "relationship": "supplier",
+        "details": "Acceleron 網卡／DPU 整合技術提供者。 來源：https://www.oracle.com/news/announcement/blog/ai-world-building-the-next-decade-of-oracle-cloud-infrastructure-2026-10-27/"
+      },
+      {
+        "id": "CPU_NETWORK_supplier_003",
+        "name": "NVIDIA Vera CPU",
+        "business_line": "CPU_NETWORK",
+        "relationship": "supplier",
+        "details": "OCI 提供 NVIDIA Vera CPU，為新一代 AI 資料中心運算選項。 來源：https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Oracle-Expand-NVIDIA-Vera-Rubin-to-Multi-Gigawatt-Scale-and-Bring-NVIDIA-Vera-CPU-to-Oracle-Cloud-Infrastructure/default.aspx"
+      },
+      {
+        "id": "DATA_supplier_001",
+        "name": "NetApp ONTAP",
+        "business_line": "DATA",
+        "relationship": "supplier",
+        "details": "OCI NetApp Storage Service 規劃導入原生受管 ONTAP，屬軟硬體儲存技術合作。 來源：https://www.oracle.com/news/announcement/blog/ai-world-building-the-next-decade-of-oracle-cloud-infrastructure-2026-10-27/"
+      },
+      {
+        "id": "GENAI_supplier_001",
+        "name": "OpenAI 模型與 Jalapeño",
+        "business_line": "GENAI",
+        "relationship": "supplier",
+        "details": "Oracle 2026 年公告 ChatGPT、Codex 整合及 OpenAI Jalapeño 推論加速器規劃；分清已推出服務與未來部署。 來源：https://www.oracle.com/tw/news/announcement/ai-world-oracle-reinvents-enterprise-computing-for-the-ai-era-with-openai-2026-10-27/"
+      },
+      {
+        "id": "GENAI_supplier_002",
+        "name": "Google Gemini 模型",
+        "business_line": "GENAI",
+        "relationship": "supplier",
+        "details": "Oracle Fusion／NetSuite AI 模型合作；模型由 Google 提供，Oracle 整合企業應用。 來源：https://www.oracle.com/news/announcement/oracle-to-make-gemini-models-available-2026-07-30/"
+      },
+      {
+        "id": "GENAI_supplier_003",
+        "name": "Cohere Command 模型",
+        "business_line": "GENAI",
+        "relationship": "supplier",
+        "details": "OCI Generative AI 供應 Cohere Command 系列模型，屬具名模型技術提供者。 來源：https://docs.oracle.com/en-us/iaas/releasenotes/services/generative-ai/"
+      },
+      {
+        "id": "GENAI_supplier_004",
+        "name": "xAI Grok 模型",
+        "business_line": "GENAI",
+        "relationship": "supplier",
+        "details": "OCI Generative AI 上架 Grok 4.6，屬模型供應生態。 來源：https://docs.oracle.com/en-us/iaas/releasenotes/services/generative-ai/"
+      },
+      {
+        "id": "DATA_supplier_002",
+        "name": "Snowflake AI Data Cloud",
+        "business_line": "DATA",
+        "relationship": "supplier",
+        "details": "Oracle 宣布 OCI 第一方原生 Snowflake 服務，計畫提供資料分析與 AI 平台。 來源：https://www.oracle.com/news/announcement/ai-world-oracle-expands-native-ai-and-data-services-on-oci-with-snowflake-2026-10-27/"
+      },
+      {
+        "id": "OCI_AI_competitor_001",
+        "name": "Microsoft Azure",
+        "business_line": "OCI_AI",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：雲端基礎設施、AI GPU 叢集及企業服務直接競爭。"
+      },
+      {
+        "id": "OCI_AI_competitor_002",
+        "name": "Amazon AWS",
+        "business_line": "OCI_AI",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：全球公有雲、AI 訓練推論及企業遷移競爭。"
+      },
+      {
+        "id": "OCI_AI_competitor_003",
+        "name": "Google Cloud",
+        "business_line": "OCI_AI",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：AI 訓練、TPU、雲端資料服務競爭，另在資料庫多雲與 TPU 合作。"
+      },
+      {
+        "id": "OCI_AI_competitor_004",
+        "name": "CoreWeave（CRWV）",
+        "business_line": "OCI_AI",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：專用 GPU 雲端與大型模型訓練／推論容量競爭。"
+      },
+      {
+        "id": "OCI_AI_competitor_005",
+        "name": "Nebius（NBIS）",
+        "business_line": "OCI_AI",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：GPU 雲端與 AI 基礎設施市場競爭。"
+      },
+      {
+        "id": "STARGATE_competitor_001",
+        "name": "Microsoft Azure",
+        "business_line": "STARGATE",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：爭取大型模型業者長期算力與資料中心合約競爭。"
+      },
+      {
+        "id": "STARGATE_competitor_002",
+        "name": "CoreWeave（CRWV）",
+        "business_line": "STARGATE",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：OpenAI 亦與 CoreWeave 合作取得 AI 算力，屬同一買方多供應商競爭。"
+      },
+      {
+        "id": "STARGATE_competitor_003",
+        "name": "Google Cloud",
+        "business_line": "STARGATE",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：AI 基礎設施容量與供電土地資源競爭。"
+      },
+      {
+        "id": "ACCELERATOR_competitor_001",
+        "name": "AWS Trainium",
+        "business_line": "ACCELERATOR",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：AWS 自研 AI 加速器雲端供應與 OCI 多架構算力競爭。"
+      },
+      {
+        "id": "ACCELERATOR_competitor_002",
+        "name": "Google Cloud TPU",
+        "business_line": "ACCELERATOR",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：Google 自有雲 TPU 與 OCI TPU 平台在客戶選擇上競合。"
+      },
+      {
+        "id": "CPU_NETWORK_competitor_001",
+        "name": "AWS Nitro／EFA",
+        "business_line": "CPU_NETWORK",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：AWS 雲端網路虛擬化及 AI 叢集互連方案競爭。"
+      },
+      {
+        "id": "CPU_NETWORK_competitor_002",
+        "name": "Azure Accelerated Networking",
+        "business_line": "CPU_NETWORK",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：Microsoft 高效能雲端網路方案競爭。"
+      },
+      {
+        "id": "DATABASE_competitor_001",
+        "name": "Microsoft SQL Server",
+        "business_line": "DATABASE",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：企業關聯式資料庫、授權及遷移競爭。 來源：https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm"
+      },
+      {
+        "id": "DATABASE_competitor_002",
+        "name": "IBM Db2",
+        "business_line": "DATABASE",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：大型企業核心交易資料庫競爭。 來源：https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm"
+      },
+      {
+        "id": "DATABASE_competitor_003",
+        "name": "PostgreSQL 生態",
+        "business_line": "DATABASE",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：開放原始碼關聯式資料庫替代路線。 來源：https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm"
+      },
+      {
+        "id": "DATABASE_competitor_004",
+        "name": "MongoDB（MDB）",
+        "business_line": "DATABASE",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：文件資料庫與應用開發資料層競爭。 來源：https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm"
+      },
+      {
+        "id": "DATABASE_competitor_005",
+        "name": "Snowflake（SNOW）",
+        "business_line": "DATABASE",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：企業分析與資料平台部分重疊；另有 OCI 原生合作。 來源：https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm"
+      },
+      {
+        "id": "DATABASE_competitor_006",
+        "name": "Databricks",
+        "business_line": "DATABASE",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：Lakehouse、分析與 AI 資料平台競爭。 來源：https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm"
+      },
+      {
+        "id": "MULTICLOUD_competitor_001",
+        "name": "Microsoft Azure SQL",
+        "business_line": "MULTICLOUD",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：Azure 原生資料庫與 Oracle Database@Azure 競爭。"
+      },
+      {
+        "id": "MULTICLOUD_competitor_002",
+        "name": "Amazon Aurora／RDS",
+        "business_line": "MULTICLOUD",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：AWS 原生受管資料庫與 Oracle Database@AWS 競爭。"
+      },
+      {
+        "id": "MULTICLOUD_competitor_003",
+        "name": "Google AlloyDB／Cloud SQL",
+        "business_line": "MULTICLOUD",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：Google Cloud 原生資料庫與 Oracle Database@Google Cloud 競爭。"
+      },
+      {
+        "id": "FUSION_competitor_001",
+        "name": "SAP（SAP）",
+        "business_line": "FUSION",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：ERP、供應鏈及企業管理應用競爭。 來源：https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm"
+      },
+      {
+        "id": "FUSION_competitor_002",
+        "name": "Workday（WDAY）",
+        "business_line": "FUSION",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：HCM、財務管理 SaaS 競爭。 來源：https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm"
+      },
+      {
+        "id": "FUSION_competitor_003",
+        "name": "Microsoft Dynamics 365",
+        "business_line": "FUSION",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：ERP／CRM／企業 AI Agent 應用競爭。 來源：https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm"
+      },
+      {
+        "id": "FUSION_competitor_004",
+        "name": "Salesforce（CRM）",
+        "business_line": "FUSION",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：客戶體驗與 CRM 平台競爭。 來源：https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm"
+      },
+      {
+        "id": "FUSION_competitor_005",
+        "name": "ServiceNow（NOW）",
+        "business_line": "FUSION",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：企業流程、Agentic AI 工作流程部分競爭。 來源：https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm"
+      },
+      {
+        "id": "NETSUITE_competitor_001",
+        "name": "SAP Business One／ByDesign",
+        "business_line": "NETSUITE",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：中小企業 ERP 市場競爭。"
+      },
+      {
+        "id": "NETSUITE_competitor_002",
+        "name": "Microsoft Dynamics 365 Business Central",
+        "business_line": "NETSUITE",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：中型企業雲端 ERP 競爭。"
+      },
+      {
+        "id": "NETSUITE_competitor_003",
+        "name": "Sage Group",
+        "business_line": "NETSUITE",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：會計、財務及中小企業管理軟體競爭。"
+      },
+      {
+        "id": "NETSUITE_competitor_004",
+        "name": "Odoo",
+        "business_line": "NETSUITE",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：模組化 ERP 與中小企業開源生態競爭。"
+      },
+      {
+        "id": "HEALTH_competitor_001",
+        "name": "Epic Systems",
+        "business_line": "HEALTH",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：醫療電子病歷與醫院資訊系統直接競爭。 來源：https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm"
+      },
+      {
+        "id": "HEALTH_competitor_002",
+        "name": "athenahealth",
+        "business_line": "HEALTH",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：醫療機構 EHR 與營運管理軟體競爭。 來源：https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm"
+      },
+      {
+        "id": "HEALTH_competitor_003",
+        "name": "InterSystems",
+        "business_line": "HEALTH",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：醫療資訊交換、資料平台及醫院系統競爭。 來源：https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm"
+      },
+      {
+        "id": "HEALTH_competitor_004",
+        "name": "Altera Digital Health",
+        "business_line": "HEALTH",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：醫療資訊系統市場競爭；Oracle 10-K 列示 Allscripts 系統競品。 來源：https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm"
+      },
+      {
+        "id": "GENAI_competitor_001",
+        "name": "Microsoft Copilot Studio",
+        "business_line": "GENAI",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：企業 AI Agent 建置與工作流程競爭。"
+      },
+      {
+        "id": "GENAI_competitor_002",
+        "name": "Amazon Bedrock",
+        "business_line": "GENAI",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：企業多模型生成式 AI 平台競爭。"
+      },
+      {
+        "id": "GENAI_competitor_003",
+        "name": "Google Vertex AI",
+        "business_line": "GENAI",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：企業 AI 模型託管與開發平台競爭。"
+      },
+      {
+        "id": "GENAI_competitor_004",
+        "name": "Databricks Mosaic AI",
+        "business_line": "GENAI",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：企業模型服務及 AI 資料平台競爭。"
+      },
+      {
+        "id": "DATA_competitor_001",
+        "name": "Snowflake（SNOW）",
+        "business_line": "DATA",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：資料倉儲與 AI 資料平台競爭，2026 年又宣布 OCI 原生合作。"
+      },
+      {
+        "id": "DATA_competitor_002",
+        "name": "Databricks",
+        "business_line": "DATA",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：資料湖倉與機器學習平台競爭。"
+      },
+      {
+        "id": "DATA_competitor_003",
+        "name": "Microsoft Fabric",
+        "business_line": "DATA",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：企業分析與資料整合平台競爭。"
+      },
+      {
+        "id": "DATA_competitor_004",
+        "name": "Amazon Redshift",
+        "business_line": "DATA",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：雲端分析資料倉儲競爭。"
+      },
+      {
+        "id": "JAVA_competitor_001",
+        "name": "Microsoft .NET",
+        "business_line": "JAVA",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：企業應用程式開發平台與 Java 生態競爭。"
+      },
+      {
+        "id": "JAVA_competitor_002",
+        "name": "Red Hat OpenShift",
+        "business_line": "JAVA",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：企業應用執行平台與 Java 中介軟體競爭。"
+      },
+      {
+        "id": "HARDWARE_competitor_001",
+        "name": "IBM Power Systems",
+        "business_line": "HARDWARE",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：企業伺服器及關鍵任務基礎設施競爭。 來源：https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm"
+      },
+      {
+        "id": "HARDWARE_competitor_002",
+        "name": "Hewlett Packard Enterprise（HPE）",
+        "business_line": "HARDWARE",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：企業伺服器、儲存與混合雲競爭。 來源：https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm"
+      },
+      {
+        "id": "HARDWARE_competitor_003",
+        "name": "Dell Technologies（DELL）",
+        "business_line": "HARDWARE",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：企業伺服器、儲存與整合系統競爭。 來源：https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm"
+      },
+      {
+        "id": "CHANNEL_competitor_001",
+        "name": "Accenture Cloud Services",
+        "business_line": "CHANNEL",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：大型企業雲端遷移及諮詢服務市場競爭，亦可能為 Oracle SI 合作方。"
+      },
+      {
+        "id": "CHANNEL_competitor_002",
+        "name": "IBM Consulting",
+        "business_line": "CHANNEL",
+        "relationship": "competitor",
+        "details": "產品／市場競爭（非宣稱取代特定客戶）：企業應用現代化、資料庫遷移及諮詢服務競爭。"
+      },
+      {
+        "id": "ACCELERATOR_beneficiary_001",
+        "name": "台積電（TSM／2330）",
+        "business_line": "ACCELERATOR",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：NVIDIA、AMD、Google TPU 等 AI 加速器的先進晶圓製造產業鏈受惠；不主張 Oracle 直接向台積電採購晶圓。"
+      },
+      {
+        "id": "ACCELERATOR_beneficiary_002",
+        "name": "日月光投控（3711）",
+        "business_line": "ACCELERATOR",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：AI 加速器先進封裝及測試需求擴大之台灣產業映射；未確認 Oracle 特定封裝訂單。"
+      },
+      {
+        "id": "ACCELERATOR_beneficiary_003",
+        "name": "欣興（3037）",
+        "business_line": "ACCELERATOR",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：高階 AI 加速器封裝載板需求受惠方向，非已確認 Oracle 直接供應商。"
+      },
+      {
+        "id": "ACCELERATOR_beneficiary_004",
+        "name": "景碩（3189）",
+        "business_line": "ACCELERATOR",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：AI 伺服器晶片 ABF 載板需求受惠方向，非 Oracle 直接採購證據。"
+      },
+      {
+        "id": "OCI_AI_beneficiary_001",
+        "name": "緯穎（6669）",
+        "business_line": "OCI_AI",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：AI 雲端機架、伺服器 ODM 產業受惠代表；未確認 Oracle 專屬訂單。"
+      },
+      {
+        "id": "OCI_AI_beneficiary_002",
+        "name": "廣達（2382）",
+        "business_line": "OCI_AI",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：大型 AI GPU 伺服器與整機系統製造產業映射，非 Oracle 直接客戶／供應商關係。"
+      },
+      {
+        "id": "OCI_AI_beneficiary_003",
+        "name": "緯創（3231）",
+        "business_line": "OCI_AI",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：AI 伺服器整合與 ODM 產業受惠代表，未推定 Oracle 特定採購。"
+      },
+      {
+        "id": "OCI_AI_beneficiary_004",
+        "name": "鴻海（2317）",
+        "business_line": "OCI_AI",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：AI 機架、伺服器整機及資料中心系統製造需求受惠代表，非已確認 Oracle 訂單。"
+      },
+      {
+        "id": "CPU_NETWORK_beneficiary_001",
+        "name": "智邦（2345）",
+        "business_line": "CPU_NETWORK",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：AI 乙太網路交換器與高速網路設備產業映射，未確認 Oracle Acceleron 直接供應。"
+      },
+      {
+        "id": "CPU_NETWORK_beneficiary_002",
+        "name": "啟碁（6285）",
+        "business_line": "CPU_NETWORK",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：雲端網通與高速連接設備需求受惠代表，非具名 Oracle 合作夥伴。"
+      },
+      {
+        "id": "CPU_NETWORK_beneficiary_003",
+        "name": "光聖（6442）",
+        "business_line": "CPU_NETWORK",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：資料中心高速光連接與光纖被動元件需求受惠方向，非 Oracle 直接採購證據。"
+      },
+      {
+        "id": "CPU_NETWORK_beneficiary_004",
+        "name": "上詮（3363）",
+        "business_line": "CPU_NETWORK",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：AI 資料中心光纖連接器及被動光學零組件需求受惠方向。"
+      },
+      {
+        "id": "CPU_NETWORK_beneficiary_005",
+        "name": "聯鈞（3450）",
+        "business_line": "CPU_NETWORK",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：光通訊元件與模組需求受惠代表，未確認 Oracle 訂單。"
+      },
+      {
+        "id": "DC_POWER_beneficiary_001",
+        "name": "台達電（2308）",
+        "business_line": "DC_POWER",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：AI 資料中心高效率電源、UPS 與液冷散熱市場受惠代表；不推定 Oracle 直接採購。"
+      },
+      {
+        "id": "DC_POWER_beneficiary_002",
+        "name": "光寶科（2301）",
+        "business_line": "DC_POWER",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：AI 伺服器電源與高瓦數電源供應器市場受惠方向，未確認 Oracle 專案。"
+      },
+      {
+        "id": "DC_POWER_beneficiary_003",
+        "name": "奇鋐（3017）",
+        "business_line": "DC_POWER",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：高功率 AI 機櫃液冷、熱管理需求受惠代表，非已確認 Oracle 直接供應商。"
+      },
+      {
+        "id": "DC_POWER_beneficiary_004",
+        "name": "雙鴻（3324）",
+        "business_line": "DC_POWER",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：液冷散熱與熱交換零組件需求受惠代表，未確認 Oracle 訂單。"
+      },
+      {
+        "id": "DC_POWER_beneficiary_005",
+        "name": "中興電（1513）",
+        "business_line": "DC_POWER",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：大型資料中心配電與變電設備需求產業映射，非已確認 Oracle 專案承包。"
+      },
+      {
+        "id": "DC_POWER_beneficiary_006",
+        "name": "華城（1519）",
+        "business_line": "DC_POWER",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：變壓器與電網擴建需求受惠代表，非 Oracle 直接供應商。"
+      },
+      {
+        "id": "HARDWARE_beneficiary_001",
+        "name": "神達（3706）",
+        "business_line": "HARDWARE",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：企業伺服器與儲存系統製造產業受惠代表，非已確認 Oracle Exadata 供應商。"
+      },
+      {
+        "id": "HARDWARE_beneficiary_002",
+        "name": "勤誠（8210）",
+        "business_line": "HARDWARE",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：伺服器機殼與 AI 機架零件需求受惠代表，未確認 Oracle 採購。"
+      },
+      {
+        "id": "DATA_beneficiary_001",
+        "name": "群聯（8299）",
+        "business_line": "DATA",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：企業 SSD 控制器與資料中心儲存需求受惠方向，非 Oracle Exadata 直接供應證據。"
+      },
+      {
+        "id": "DATA_beneficiary_002",
+        "name": "威剛（3260）",
+        "business_line": "DATA",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：企業記憶體與儲存需求的台灣產業映射，非 Oracle 直接供應商。"
+      },
+      {
+        "id": "TAIWAN_beneficiary_001",
+        "name": "致茂（2360）",
+        "business_line": "TAIWAN",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：AI 伺服器電源、測試設備與高功率驗證需求受惠代表；不推定 Oracle 訂單。"
+      },
+      {
+        "id": "TAIWAN_beneficiary_002",
+        "name": "貿聯-KY（3665）",
+        "business_line": "TAIWAN",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：高功率資料中心電力連接與高速線纜需求受惠方向，非 Oracle 具名供應商。"
+      },
+      {
+        "id": "TAIWAN_beneficiary_003",
+        "name": "康舒（6282）",
+        "business_line": "TAIWAN",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實直接供應關係：伺服器與資料中心電源供應器需求受惠方向，非 Oracle 直接採購證據。"
+      },
+      {
+        "id": "CHANNEL_partner_002",
+        "name": "Deloitte",
+        "business_line": "CHANNEL",
+        "relationship": "partner",
+        "details": "Oracle 與 AWS 多雲資料庫導入生態夥伴，負責企業遷移與諮詢，並非 GPU 硬體供應商。 來源：https://www.oracle.com/news/announcement/oracle-and-aws-deepen-strategic-collaboration-as-enterprise-adoption-of-oracle-ai-database-at-aws-accelerates-2026-08-13/"
+      }
+    ]
   }
 }

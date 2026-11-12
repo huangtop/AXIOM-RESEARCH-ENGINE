@@ -69,7 +69,7 @@
   },
   "value_provenance": {
     "company_summary.one_line_business": {
-      "value": "Sandisk develops, manufactures, and supplies NAND-flash-based data-storage devices and solutions for data centers, client devices, mobile, automotive, industrial, and consumer applications.",
+      "value": "Sandisk designs, manufactures and supplies NAND flash-based storage devices and solutions.",
       "evidence": null
     },
     "markets": [],
@@ -85,7 +85,7 @@
     "ai_exposure": {
       "value": {
         "type": "direct_company_disclosure",
-        "summary": "Growth in AI workloads increases demand for higher-capacity and higher-performance flash storage in data centers and edge devices."
+        "summary": "AI workloads increase demand for higher-capacity and higher-performance flash storage in datacenters and edge devices."
       },
       "evidence": null
     },
@@ -121,48 +121,48 @@
     "canonical_handoff": "read_back_verified"
   },
   "translation_source": {
-    "company_summary": "Sandisk develops, manufactures, and supplies NAND-flash-based data-storage devices and solutions for data centers, client devices, mobile, automotive, industrial, and consumer applications.",
+    "company_summary": "Sandisk designs, manufactures and supplies NAND flash-based storage devices and solutions.",
     "product_stack": [
-      "enterprise and data-center solid-state drives",
-      "client solid-state drives",
-      "embedded flash storage products",
-      "removable memory cards",
+      "Enterprise and datacenter SSDs",
+      "Client SSDs",
+      "Embedded flash products",
+      "Memory cards",
       "USB flash drives",
       "NAND wafers and components"
     ],
     "market_products": {},
     "markets": [
-      "Data-Center Storage",
-      "Client Storage",
-      "Mobile and Embedded Storage",
-      "Automotive Storage",
-      "Removable and Consumer Storage"
+      "Datacenter storage",
+      "Client storage",
+      "Mobile and embedded storage",
+      "Automotive storage",
+      "Portable and consumer storage"
     ],
     "customer_types": [
-      "original equipment manufacturers",
-      "cloud and data-center customers",
-      "channel partners",
-      "consumer electronics manufacturers",
-      "automotive manufacturers",
-      "retail consumers"
+      "OEMs",
+      "Cloud and datacenter customers",
+      "Channel partners",
+      "Consumer electronics makers",
+      "Automotive manufacturers",
+      "Retail consumers"
     ],
     "core_technologies": [
-      "NAND flash technology",
-      "solid-state storage architecture",
-      "flash controllers and firmware",
-      "non-volatile data storage"
+      "NAND flash memory",
+      "Solid-state storage architecture",
+      "Flash controllers and firmware",
+      "Nonvolatile storage"
     ],
     "ai_exposure": {
       "type": "direct_company_disclosure",
-      "summary": "Growth in AI workloads increases demand for higher-capacity and higher-performance flash storage in data centers and edge devices."
+      "summary": "AI workloads increase demand for higher-capacity and higher-performance flash storage in datacenters and edge devices."
     },
     "demand_drivers": [
       "AI data growth",
-      "cloud storage",
-      "edge computing",
-      "mobile storage",
-      "solid-state-drive adoption",
-      "digital content growth"
+      "Cloud storage",
+      "Edge computing",
+      "Mobile storage",
+      "SSD adoption",
+      "Digital content growth"
     ],
     "strategy_changes": []
   },
@@ -214,26 +214,26 @@
   },
   "industry_chain": {
     "schema_version": "axiom-industry-chain.zh-tw.v1",
-    "as_of": "2026-10-30",
+    "as_of": "2026-11-11",
     "company": "Sandisk Corporation",
     "symbol": "SNDK",
     "locale": "zh-TW",
     "seo": {
-      "title": "SNDK Sandisk 產業鏈戰略地圖｜BiCS NAND、資料中心 SSD、HBF、台灣受惠股",
-      "description": "Sandisk SNDK 產業鏈解析：Kioxia 合資晶圓、企業 SSD、HBF、消費儲存、控制器與台灣 NAND 相關供應鏈。"
+      "title": "Sandisk（SNDK）產業鏈：NAND、企業 SSD、HBF、授權分銷及供應鏈",
+      "description": "以官方資料重建 Sandisk 具名銷售通路、晶圓供應、合資製造與競爭格局，排除未證實的台灣供應鏈。"
     },
     "business_lines": [
       {
         "id": "NAND",
-        "name": "BiCS NAND、Kioxia 合資晶圓與先進製程"
+        "name": "BiCS 3D NAND、Flash Ventures 晶圓製造"
       },
       {
         "id": "DATACENTER",
-        "name": "資料中心 SSD、雲端與 AI 儲存"
+        "name": "資料中心企業 SSD 與雲端儲存"
       },
       {
         "id": "HBF",
-        "name": "HBF 高頻寬快閃與 AI 推論"
+        "name": "HBF 高頻寬快閃與 AI 推論標準"
       },
       {
         "id": "CLIENT",
@@ -241,617 +241,826 @@
       },
       {
         "id": "EMBEDDED",
-        "name": "行動、嵌入式、汽車與工業"
+        "name": "嵌入式 eMMC、UFS、汽車與工業"
       },
       {
         "id": "CONSUMER",
-        "name": "記憶卡、USB 與消費品牌"
+        "name": "消費記憶卡、USB 與外接儲存"
       },
       {
         "id": "CONTROLLER",
-        "name": "SSD 控制器、韌體與封裝測試"
+        "name": "控制器、韌體與封裝測試"
       },
       {
         "id": "CHANNEL",
-        "name": "全球通路、零售與 OEM 生態"
+        "name": "全球授權分銷、經銷與零售"
       }
     ],
     "relationship_categories": [
       "customer",
       "partner",
-      "competitor",
       "supplier",
+      "competitor",
       "beneficiary"
     ],
     "nodes": [
       {
+        "id": "CHANNEL_customer_001",
+        "name": "Avnet（安富利）",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。",
+        "evidence_grade": "A",
+        "evidence_url": "https://www.sandisk.com/company/distributors",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "official_named"
+      },
+      {
+        "id": "CHANNEL_customer_002",
+        "name": "DigiKey（得捷電子）",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing"
+      },
+      {
+        "id": "CHANNEL_customer_003",
+        "name": "Mouser Electronics（貿澤電子）",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing"
+      },
+      {
+        "id": "CHANNEL_customer_004",
+        "name": "Ingram Micro（英邁）",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing"
+      },
+      {
+        "id": "CHANNEL_customer_005",
+        "name": "TD SYNNEX",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing",
+        "ticker": "SNX"
+      },
+      {
+        "id": "CHANNEL_customer_006",
+        "name": "Synnex Technology International（聯強國際）",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing",
+        "ticker": "2347.TW"
+      },
+      {
+        "id": "CHANNEL_customer_007",
+        "name": "WPI／大聯大控股",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。",
+        "evidence_grade": "A",
+        "evidence_url": "https://www.sandisk.com/company/distributors",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "official_named",
+        "ticker": "3702.TW"
+      },
+      {
+        "id": "CHANNEL_customer_008",
+        "name": "Zenitron（增你強）",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。",
+        "evidence_grade": "A",
+        "evidence_url": "https://www.sandisk.com/company/distributors",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "official_named",
+        "ticker": "3028.TW"
+      },
+      {
+        "id": "CHANNEL_customer_009",
+        "name": "Weikeng International（威健實業）",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。",
+        "evidence_grade": "A",
+        "evidence_url": "https://www.sandisk.com/company/distributors",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "official_named",
+        "ticker": "3033.TW"
+      },
+      {
+        "id": "CHANNEL_customer_010",
+        "name": "EDOM Technology（益登科技）",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。",
+        "evidence_grade": "A",
+        "evidence_url": "https://www.sandisk.com/company/distributors",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "official_named",
+        "ticker": "3048.TW"
+      },
+      {
+        "id": "CHANNEL_customer_011",
+        "name": "Marubun（丸文）",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing",
+        "ticker": "7537.T"
+      },
+      {
+        "id": "CHANNEL_customer_012",
+        "name": "CFD Sales（CFD 販售）",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing"
+      },
+      {
+        "id": "CHANNEL_customer_013",
+        "name": "Rashi Peripherals（RP Tech）",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing"
+      },
+      {
+        "id": "CHANNEL_customer_014",
+        "name": "ASBIS Enterprises",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing"
+      },
+      {
+        "id": "CHANNEL_customer_015",
+        "name": "ALSO Holding",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing"
+      },
+      {
+        "id": "CHANNEL_customer_016",
+        "name": "Esprinet",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing"
+      },
+      {
+        "id": "CHANNEL_customer_017",
+        "name": "Redington",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing"
+      },
+      {
+        "id": "CHANNEL_customer_018",
+        "name": "Intcomex",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing"
+      },
+      {
+        "id": "CHANNEL_customer_019",
+        "name": "D&H Distributing Canada",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing"
+      },
+      {
+        "id": "CHANNEL_customer_020",
+        "name": "PB Tech",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing"
+      },
+      {
+        "id": "CHANNEL_customer_021",
+        "name": "Mwave",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing"
+      },
+      {
+        "id": "CHANNEL_customer_022",
+        "name": "Wortmann AG",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing"
+      },
+      {
+        "id": "CHANNEL_customer_023",
+        "name": "Conrad Electronic",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing"
+      },
+      {
+        "id": "CHANNEL_customer_024",
+        "name": "Littlebit Technology",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing"
+      },
+      {
+        "id": "CHANNEL_customer_025",
+        "name": "Thomas-Krenn.AG",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing"
+      },
+      {
+        "id": "CHANNEL_customer_026",
+        "name": "Synnex Australia",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing"
+      },
+      {
+        "id": "CHANNEL_customer_027",
+        "name": "Synnex FPT",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing"
+      },
+      {
+        "id": "CHANNEL_customer_028",
+        "name": "MCR",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing"
+      },
+      {
+        "id": "CHANNEL_customer_029",
+        "name": "Action S.A.",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing"
+      },
+      {
+        "id": "CHANNEL_customer_030",
+        "name": "ELKO Group",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "Sandisk 官方授權經銷商／分銷商名錄列示之具名銷售通路。僅能證明獲授權販售 Sandisk 產品；不得視為資料中心終端採購或 2026 長約客戶。 此筆經第三方彙整的原廠授權名錄索引核對，尚待逐項核對原廠頁面之地區篩選。",
+        "evidence_grade": "B",
+        "evidence_url": "https://distymap.com/zh/manufacturers/sandisk",
+        "relationship_basis": "authorized_distribution_channel",
+        "verification_status": "secondary_index_of_manufacturer_listing"
+      },
+      {
+        "id": "CLIENT_customer_001",
+        "name": "Dell Technologies",
+        "business_line": "CLIENT",
+        "relationship": "customer",
+        "details": "Sandisk 官方 OEM 保固說明將此公司列為 OEM 產品售予設備廠的例子。屬歷史／說明性例證，未確認 2026 年直接採購額或特定新合約。",
+        "evidence_grade": "A",
+        "evidence_url": "https://support-eu.sandisk.com/app/answers/detailweb/a_id/7820/~/difference-between-original-equipment-manufacturer-%28oem%29-and-consumer-retail",
+        "relationship_basis": "historical_oem_example",
+        "verification_status": "official_named"
+      },
+      {
+        "id": "CLIENT_customer_002",
+        "name": "Apple",
+        "business_line": "CLIENT",
+        "relationship": "customer",
+        "details": "Sandisk 官方 OEM 保固說明將此公司列為 OEM 產品售予設備廠的例子。屬歷史／說明性例證，未確認 2026 年直接採購額或特定新合約。",
+        "evidence_grade": "A",
+        "evidence_url": "https://support-eu.sandisk.com/app/answers/detailweb/a_id/7820/~/difference-between-original-equipment-manufacturer-%28oem%29-and-consumer-retail",
+        "relationship_basis": "historical_oem_example",
+        "verification_status": "official_named"
+      },
+      {
+        "id": "CLIENT_customer_003",
+        "name": "Amazon",
+        "business_line": "CLIENT",
+        "relationship": "customer",
+        "details": "Sandisk 官方 OEM 保固說明將此公司列為 OEM 產品售予設備廠的例子。屬歷史／說明性例證，未確認 2026 年直接採購額或特定新合約。",
+        "evidence_grade": "A",
+        "evidence_url": "https://support-eu.sandisk.com/app/answers/detailweb/a_id/7820/~/difference-between-original-equipment-manufacturer-%28oem%29-and-consumer-retail",
+        "relationship_basis": "historical_oem_example",
+        "verification_status": "official_named"
+      },
+      {
+        "id": "CONSUMER_partner_001",
+        "name": "Nintendo（任天堂）",
+        "business_line": "CONSUMER",
+        "relationship": "partner",
+        "details": "Sandisk 推出 Nintendo Switch 2 官方授權 microSD Express 卡；屬品牌授權及相容性認證，不代表任天堂向 Sandisk 採購。",
+        "evidence_grade": "A",
+        "evidence_url": "https://www.sandisk.com/zh-tw/products/memory-cards/microsd-cards/sandisk-microsd-express-card-for-nintendo-switch-2",
+        "relationship_basis": "brand_license",
+        "verification_status": "official_named"
+      },
+      {
         "id": "NAND_supplier_001",
+        "name": "Flash Ventures（Flash Partners／Alliance／Forward）",
+        "business_line": "NAND",
+        "relationship": "supplier",
+        "details": "2026 10-K：所有快閃晶圓均由 Flash Ventures 提供；合資體系向鎧俠取得晶圓再轉售 Sandisk。",
+        "evidence_grade": "A",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "direct_wafer_procurement",
+        "verification_status": "official_named"
+      },
+      {
+        "id": "NAND_supplier_002",
         "name": "Kioxia Corporation（鎧俠）",
         "business_line": "NAND",
         "relationship": "supplier",
-        "details": "透過 Flash Ventures 合資體系提供 NAND 晶圓製造服務；雙方共同研發 BiCS 3D NAND 與 CBA 製程"
+        "details": "合資晶圓製造體系的實際晶圓生產與製造服務供應方；2026 年官方續約至 2034 年。",
+        "evidence_grade": "A",
+        "evidence_url": "https://investor.sandisk.com/news-releases/news-release-details/kioxia-and-sandisk-extend-yokkaichi-joint-venture-agreement",
+        "relationship_basis": "wafer_manufacturing_service",
+        "verification_status": "official_named"
+      },
+      {
+        "id": "CONTROLLER_supplier_001",
+        "name": "JCET Group／SDSS（長電科技）",
+        "business_line": "CONTROLLER",
+        "relationship": "supplier",
+        "details": "Sandisk SEC 文件確認 SDSS 80% 股權售予 JCET，合資公司提供半導體封裝與測試服務，客戶包括 Sandisk；不能等同所有封測均由 JCET 執行。",
+        "evidence_grade": "A",
+        "evidence_url": "https://investor.sandisk.com/static-files/f47a3cf4-871a-43ef-8559-4ce27eb96b3d",
+        "relationship_basis": "assembly_test_services",
+        "verification_status": "official_named"
       },
       {
         "id": "NAND_partner_001",
         "name": "Kioxia Corporation（鎧俠）",
         "business_line": "NAND",
         "relationship": "partner",
-        "details": "Flash Partners、Flash Alliance、Flash Forward 三家合資企業共同開發及製造 NAND；四日市與北上工廠合作延長至 2034 年"
+        "details": "共同開發 BiCS 3D NAND 並共同投資 Flash Ventures；雙方研發與資本合作，與晶圓供應關係分別記錄。",
+        "evidence_grade": "A",
+        "evidence_url": "https://investor.sandisk.com/news-releases/news-release-details/kioxia-and-sandisk-extend-yokkaichi-joint-venture-agreement",
+        "relationship_basis": "joint_development",
+        "verification_status": "official_named"
       },
       {
         "id": "NAND_partner_002",
         "name": "Flash Partners Ltd.",
         "business_line": "NAND",
         "relationship": "partner",
-        "details": "與鎧俠共同持有之 NAND 晶圓製造合資企業，屬內部製造合作體系"
+        "details": "Sandisk 與鎧俠共同持有的 Flash Ventures 法人，屬合資研發／製造組織，非獨立外部客戶。",
+        "evidence_grade": "A",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828025044483/sndk014126-arsa.pdf",
+        "relationship_basis": "joint_venture",
+        "verification_status": "official_named"
       },
       {
         "id": "NAND_partner_003",
         "name": "Flash Alliance Ltd.",
         "business_line": "NAND",
         "relationship": "partner",
-        "details": "與鎧俠共同持有之 NAND 晶圓製造合資企業，屬內部製造合作體系"
+        "details": "Sandisk 與鎧俠共同持有的 Flash Ventures 法人，屬合資研發／製造組織，非獨立外部客戶。",
+        "evidence_grade": "A",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828025044483/sndk014126-arsa.pdf",
+        "relationship_basis": "joint_venture",
+        "verification_status": "official_named"
       },
       {
         "id": "NAND_partner_004",
         "name": "Flash Forward Ltd.",
         "business_line": "NAND",
         "relationship": "partner",
-        "details": "與鎧俠共同持有之 NAND 晶圓製造合資企業，屬內部製造合作體系"
+        "details": "Sandisk 與鎧俠共同持有的 Flash Ventures 法人，屬合資研發／製造組織，非獨立外部客戶。",
+        "evidence_grade": "A",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828025044483/sndk014126-arsa.pdf",
+        "relationship_basis": "joint_venture",
+        "verification_status": "official_named"
       },
       {
-        "id": "CONTROLLER_supplier_001",
-        "name": "JCET Group（長電科技）",
-        "business_line": "CONTROLLER",
-        "relationship": "supplier",
-        "details": "與 Sandisk 共同持有 SDSS 封裝測試合資企業；JCET 管理公司持股 80%，Sandisk 持股 20%"
-      },
-      {
-        "id": "CONTROLLER_partner_001",
-        "name": "SDSS 封裝測試合資企業",
-        "business_line": "CONTROLLER",
+        "id": "HBF_partner_001",
+        "name": "SK hynix（SK 海力士）",
+        "business_line": "HBF",
         "relationship": "partner",
-        "details": "Sandisk 與 JCET 集團之封裝測試合作體系，為 NAND 產品後段製造提供產能"
+        "details": "雙方官方宣布透過 Open Compute Project 推動 HBF 高頻寬快閃規格標準化，未據此推論互相供貨。",
+        "evidence_grade": "A",
+        "evidence_url": "https://www.sandisk.com/company/newsroom/press-releases/2026/2026-02-25-sandisk-and-sk-hynix-begin-global-standardization-of-next-generation-memory-solution-high-bandwidth-flash-hbf",
+        "relationship_basis": "standards_collaboration",
+        "verification_status": "official_named"
+      },
+      {
+        "id": "HBF_partner_002",
+        "name": "Open Compute Project（OCP）",
+        "business_line": "HBF",
+        "relationship": "partner",
+        "details": "HBF 標準化工作小組所屬開放標準組織；非採購客戶。",
+        "evidence_grade": "A",
+        "evidence_url": "https://www.sandisk.com/company/newsroom/press-releases/2026/2026-02-25-sandisk-and-sk-hynix-begin-global-standardization-of-next-generation-memory-solution-high-bandwidth-flash-hbf",
+        "relationship_basis": "standards_ecosystem",
+        "verification_status": "official_named"
       },
       {
         "id": "NAND_competitor_001",
         "name": "Samsung Electronics（三星電子）",
         "business_line": "NAND",
         "relationship": "competitor",
-        "details": "全球 NAND 製造與 3D V-NAND 技術競爭者"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
         "id": "NAND_competitor_002",
         "name": "SK hynix（SK 海力士）",
         "business_line": "NAND",
         "relationship": "competitor",
-        "details": "全球 NAND 與高密度儲存技術競爭者"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
         "id": "NAND_competitor_003",
         "name": "Micron Technology（美光）",
         "business_line": "NAND",
         "relationship": "competitor",
-        "details": "全球 3D NAND 晶圓、QLC 與資料中心儲存競爭者"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
         "id": "NAND_competitor_004",
         "name": "YMTC（長江存儲）",
         "business_line": "NAND",
         "relationship": "competitor",
-        "details": "以 Xtacking 3D NAND 技術競爭快閃記憶體市場"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
         "id": "NAND_competitor_005",
-        "name": "Kioxia Holdings（鎧俠控股）",
+        "name": "Kioxia（鎧俠）",
         "business_line": "NAND",
         "relationship": "competitor",
-        "details": "雖為核心合資製造夥伴，亦在對外 NAND 與 SSD 產品市場存在競爭"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
         "id": "DATACENTER_competitor_001",
         "name": "Samsung Electronics（三星電子）",
         "business_line": "DATACENTER",
         "relationship": "competitor",
-        "details": "以 PM 系列企業級 SSD 與高容量 QLC SSD 競爭"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
         "id": "DATACENTER_competitor_002",
         "name": "Micron Technology（美光）",
         "business_line": "DATACENTER",
         "relationship": "competitor",
-        "details": "以資料中心 NVMe SSD、QLC SSD 與企業儲存解決方案競爭"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
         "id": "DATACENTER_competitor_003",
-        "name": "SK hynix / Solidigm",
+        "name": "Solidigm（SK hynix）",
         "business_line": "DATACENTER",
         "relationship": "competitor",
-        "details": "以 D5、D7 等企業 SSD 與高容量 QLC 平台競爭"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
         "id": "DATACENTER_competitor_004",
         "name": "Kioxia（鎧俠）",
         "business_line": "DATACENTER",
         "relationship": "competitor",
-        "details": "以 CM、CD 等企業級 SSD 競爭雲端與伺服器儲存採購"
-      },
-      {
-        "id": "DATACENTER_competitor_005",
-        "name": "Pure Storage（Pure Storage）",
-        "business_line": "DATACENTER",
-        "relationship": "competitor",
-        "details": "以全快閃儲存系統與大型企業儲存架構競爭部分儲存支出"
-      },
-      {
-        "id": "DATACENTER_competitor_006",
-        "name": "Seagate Technology（希捷）",
-        "business_line": "DATACENTER",
-        "relationship": "competitor",
-        "details": "以近線 HDD 與資料中心高容量儲存方案競爭部分容量型儲存預算"
-      },
-      {
-        "id": "DATACENTER_competitor_007",
-        "name": "Western Digital（威騰）",
-        "business_line": "DATACENTER",
-        "relationship": "competitor",
-        "details": "以資料中心 HDD 競爭大規模容量型儲存支出；2025 年後與 Sandisk 為獨立上市公司"
-      },
-      {
-        "id": "HBF_competitor_001",
-        "name": "SK hynix（SK 海力士）",
-        "business_line": "HBF",
-        "relationship": "competitor",
-        "details": "以 HBM 與記憶體階層解決方案競爭 AI 系統的高頻寬資料存取預算；產品技術定位不同"
-      },
-      {
-        "id": "HBF_competitor_002",
-        "name": "Samsung Electronics（三星電子）",
-        "business_line": "HBF",
-        "relationship": "competitor",
-        "details": "以 HBM、企業 SSD 與 AI 記憶體階層技術競爭"
-      },
-      {
-        "id": "HBF_competitor_003",
-        "name": "Micron Technology（美光）",
-        "business_line": "HBF",
-        "relationship": "competitor",
-        "details": "以 HBM、資料中心 SSD 與記憶體架構產品競爭 AI 儲存需求"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
         "id": "CLIENT_competitor_001",
         "name": "Samsung Electronics（三星電子）",
         "business_line": "CLIENT",
         "relationship": "competitor",
-        "details": "990／9100 等消費與高效能 NVMe SSD 系列"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
         "id": "CLIENT_competitor_002",
-        "name": "Crucial（美光）",
+        "name": "Micron／Crucial（美光）",
         "business_line": "CLIENT",
         "relationship": "competitor",
-        "details": "以 Crucial 品牌消費級 NVMe SSD 競爭零售及升級市場"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
         "id": "CLIENT_competitor_003",
         "name": "Kingston Technology（金士頓）",
         "business_line": "CLIENT",
         "relationship": "competitor",
-        "details": "以 KC、FURY 與 NV 系列 SSD 競爭 PC 與遊戲儲存市場"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
         "id": "CLIENT_competitor_004",
-        "name": "ADATA Technology（威剛，3260）",
+        "name": "ADATA（威剛）",
         "business_line": "CLIENT",
         "relationship": "competitor",
-        "details": "以 XPG 與 ADATA 品牌 SSD 競爭 PC 升級與遊戲市場"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
         "id": "CLIENT_competitor_005",
-        "name": "TeamGroup（十銓，4967）",
+        "name": "TeamGroup（十銓）",
         "business_line": "CLIENT",
         "relationship": "competitor",
-        "details": "以 T-FORCE 與 T-CREATE SSD 競爭遊戲與創作者市場"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
         "id": "CLIENT_competitor_006",
         "name": "Corsair（海盜船）",
         "business_line": "CLIENT",
         "relationship": "competitor",
-        "details": "以 MP 系列 NVMe SSD 競爭高階 PC 儲存"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
         "id": "CLIENT_competitor_007",
-        "name": "Seagate Technology（希捷）",
-        "business_line": "CLIENT",
-        "relationship": "competitor",
-        "details": "以 FireCuda SSD 競爭高階遊戲與消費儲存"
-      },
-      {
-        "id": "CLIENT_competitor_008",
         "name": "Lexar（雷克沙）",
         "business_line": "CLIENT",
         "relationship": "competitor",
-        "details": "以 NM 與 Professional 系列 SSD 競爭消費儲存"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
         "id": "EMBEDDED_competitor_001",
         "name": "Samsung Electronics（三星電子）",
         "business_line": "EMBEDDED",
         "relationship": "competitor",
-        "details": "以 eUFS、車規 NAND 與嵌入式快閃競爭"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
         "id": "EMBEDDED_competitor_002",
-        "name": "Micron Technology（美光）",
-        "business_line": "EMBEDDED",
-        "relationship": "competitor",
-        "details": "以車用、工業用與行動裝置 NAND／UFS 競爭"
-      },
-      {
-        "id": "EMBEDDED_competitor_003",
         "name": "Kioxia（鎧俠）",
         "business_line": "EMBEDDED",
         "relationship": "competitor",
-        "details": "以 UFS、e-MMC 與車用嵌入式 NAND 競爭"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
-        "id": "EMBEDDED_competitor_004",
-        "name": "SK hynix（SK 海力士）",
+        "id": "EMBEDDED_competitor_003",
+        "name": "Micron Technology（美光）",
         "business_line": "EMBEDDED",
         "relationship": "competitor",
-        "details": "以行動 UFS、嵌入式 NAND 產品競爭"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
         "id": "CONSUMER_competitor_001",
         "name": "Kingston Technology（金士頓）",
         "business_line": "CONSUMER",
         "relationship": "competitor",
-        "details": "以 Canvas 記憶卡與 DataTraveler 隨身碟競爭"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
         "id": "CONSUMER_competitor_002",
-        "name": "Samsung Electronics（三星電子）",
+        "name": "Transcend（創見）",
         "business_line": "CONSUMER",
         "relationship": "competitor",
-        "details": "以 EVO、PRO 記憶卡與 USB 隨身碟競爭"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
         "id": "CONSUMER_competitor_003",
-        "name": "Lexar（雷克沙）",
+        "name": "ADATA（威剛）",
         "business_line": "CONSUMER",
         "relationship": "competitor",
-        "details": "以 Professional 記憶卡、USB 與外接儲存競爭"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
         "id": "CONSUMER_competitor_004",
-        "name": "Transcend（創見，2451）",
-        "business_line": "CONSUMER",
-        "relationship": "competitor",
-        "details": "以記憶卡、USB 與外接 SSD 競爭消費儲存"
-      },
-      {
-        "id": "CONSUMER_competitor_005",
-        "name": "ADATA（威剛，3260）",
-        "business_line": "CONSUMER",
-        "relationship": "competitor",
-        "details": "以記憶卡、USB 與外接 SSD 競爭"
-      },
-      {
-        "id": "CONSUMER_competitor_006",
         "name": "PNY Technologies",
         "business_line": "CONSUMER",
         "relationship": "competitor",
-        "details": "以記憶卡、USB 隨身碟與外接 SSD 競爭"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
-        "id": "CONSUMER_competitor_007",
-        "name": "TeamGroup（十銓，4967）",
+        "id": "CONSUMER_competitor_005",
+        "name": "Lexar（雷克沙）",
         "business_line": "CONSUMER",
         "relationship": "competitor",
-        "details": "以記憶卡、隨身碟與消費型 SSD 競爭"
-      },
-      {
-        "id": "CHANNEL_competitor_001",
-        "name": "Kingston Technology（金士頓）",
-        "business_line": "CHANNEL",
-        "relationship": "competitor",
-        "details": "以全球經銷與零售通路競爭記憶體產品貨架及企業採購"
-      },
-      {
-        "id": "CHANNEL_competitor_002",
-        "name": "Samsung Electronics（三星電子）",
-        "business_line": "CHANNEL",
-        "relationship": "competitor",
-        "details": "以全球 OEM、電商與零售渠道競爭儲存產品"
-      },
-      {
-        "id": "CHANNEL_competitor_003",
-        "name": "Lexar（雷克沙）",
-        "business_line": "CHANNEL",
-        "relationship": "competitor",
-        "details": "以全球專業攝影與消費通路競爭"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
         "id": "CONTROLLER_competitor_001",
-        "name": "Phison Electronics（群聯，8299）",
+        "name": "Phison Electronics（群聯）",
         "business_line": "CONTROLLER",
         "relationship": "competitor",
-        "details": "以 SSD 控制器、韌體及整合儲存解決方案競爭部分技術平台"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       },
       {
         "id": "CONTROLLER_competitor_002",
-        "name": "Silicon Motion（慧榮科技，SIMO）",
+        "name": "Silicon Motion（慧榮）",
         "business_line": "CONTROLLER",
         "relationship": "competitor",
-        "details": "以 SSD、eMMC 與 UFS 控制器技術競爭相關儲存控制器市場"
-      },
-      {
-        "id": "CHANNEL_partner_001",
-        "name": "Amazon",
-        "business_line": "CHANNEL",
-        "relationship": "partner",
-        "details": "Sandisk 品牌記憶卡、SSD 與 USB 產品的重要線上零售通路"
-      },
-      {
-        "id": "CHANNEL_partner_002",
-        "name": "Best Buy",
-        "business_line": "CHANNEL",
-        "relationship": "partner",
-        "details": "Sandisk 消費儲存產品在北美的零售通路"
-      },
-      {
-        "id": "CHANNEL_partner_003",
-        "name": "B&H Photo Video",
-        "business_line": "CHANNEL",
-        "relationship": "partner",
-        "details": "Sandisk 專業攝影記憶卡與外接儲存產品零售通路"
-      },
-      {
-        "id": "CHANNEL_partner_004",
-        "name": "Newegg",
-        "business_line": "CHANNEL",
-        "relationship": "partner",
-        "details": "Sandisk PC SSD、記憶卡與 USB 產品電商銷售通路"
-      },
-      {
-        "id": "CHANNEL_partner_005",
-        "name": "Walmart",
-        "business_line": "CHANNEL",
-        "relationship": "partner",
-        "details": "Sandisk 消費儲存產品零售通路"
-      },
-      {
-        "id": "NAND_beneficiary_001",
-        "name": "台積電（2330）",
-        "business_line": "NAND",
-        "relationship": "beneficiary",
-        "details": "NAND 控制器與儲存運算晶片之晶圓代工產業受惠股"
-      },
-      {
-        "id": "NAND_beneficiary_002",
-        "name": "聯電（2303）",
-        "business_line": "NAND",
-        "relationship": "beneficiary",
-        "details": "成熟製程與特殊製程半導體代工受惠於記憶體周邊晶片需求"
-      },
-      {
-        "id": "NAND_beneficiary_003",
-        "name": "旺宏（2337）",
-        "business_line": "NAND",
-        "relationship": "beneficiary",
-        "details": "非揮發性記憶體廠，受惠記憶體產業景氣與價格循環；產品以 NOR 為主"
-      },
-      {
-        "id": "NAND_beneficiary_004",
-        "name": "華邦電（2344）",
-        "business_line": "NAND",
-        "relationship": "beneficiary",
-        "details": "利基型記憶體廠，受惠記憶體供需改善；DRAM／NOR 業務與 Sandisk NAND 不同"
-      },
-      {
-        "id": "NAND_beneficiary_005",
-        "name": "南亞科（2408）",
-        "business_line": "NAND",
-        "relationship": "beneficiary",
-        "details": "DRAM 廠，屬記憶體景氣與資金輪動受惠標的"
-      },
-      {
-        "id": "NAND_beneficiary_006",
-        "name": "力積電（6770）",
-        "business_line": "NAND",
-        "relationship": "beneficiary",
-        "details": "記憶體相關製造與晶圓代工題材受惠"
-      },
-      {
-        "id": "DATACENTER_beneficiary_001",
-        "name": "群聯（8299）",
-        "business_line": "DATACENTER",
-        "relationship": "beneficiary",
-        "details": "企業 SSD 控制器、韌體與 NAND 儲存平台受惠 AI 資料中心高容量快閃需求；同時在部分控制器市場競爭"
-      },
-      {
-        "id": "DATACENTER_beneficiary_002",
-        "name": "慧榮科技（SIMO）",
-        "business_line": "DATACENTER",
-        "relationship": "beneficiary",
-        "details": "SSD 控制器設計受惠企業及用戶端 NAND 出貨成長"
-      },
-      {
-        "id": "DATACENTER_beneficiary_003",
-        "name": "宜鼎（5289）",
-        "business_line": "DATACENTER",
-        "relationship": "beneficiary",
-        "details": "工業級 SSD 與邊緣 AI 儲存受惠 NAND 容量、可靠度需求提升"
-      },
-      {
-        "id": "DATACENTER_beneficiary_004",
-        "name": "宇瞻（8271）",
-        "business_line": "DATACENTER",
-        "relationship": "beneficiary",
-        "details": "工業 SSD 與企業儲存模組受惠 NAND 需求與產品升級"
-      },
-      {
-        "id": "DATACENTER_beneficiary_005",
-        "name": "創見（2451）",
-        "business_line": "DATACENTER",
-        "relationship": "beneficiary",
-        "details": "工業 SSD、企業級儲存模組受惠資料中心與工控快閃需求"
-      },
-      {
-        "id": "HBF_beneficiary_001",
-        "name": "群聯（8299）",
-        "business_line": "HBF",
-        "relationship": "beneficiary",
-        "details": "以 AI 儲存與控制器架構參與 GPU／NAND 儲存階層擴張趨勢"
-      },
-      {
-        "id": "HBF_beneficiary_002",
-        "name": "宜鼎（5289）",
-        "business_line": "HBF",
-        "relationship": "beneficiary",
-        "details": "工業與 AI 邊緣儲存產品受惠記憶體階層與推論資料快取需求"
-      },
-      {
-        "id": "CLIENT_beneficiary_001",
-        "name": "威剛（3260）",
-        "business_line": "CLIENT",
-        "relationship": "beneficiary",
-        "details": "消費級 SSD、DRAM 模組與 NAND 價格循環受惠，亦為 Sandisk 競爭品牌"
-      },
-      {
-        "id": "CLIENT_beneficiary_002",
-        "name": "十銓（4967）",
-        "business_line": "CLIENT",
-        "relationship": "beneficiary",
-        "details": "遊戲與創作者 SSD 品牌受惠 PC 儲存升級，亦為 Sandisk 競爭品牌"
-      },
-      {
-        "id": "CLIENT_beneficiary_003",
-        "name": "廣穎（4973）",
-        "business_line": "CLIENT",
-        "relationship": "beneficiary",
-        "details": "消費與商用 SSD、記憶卡產品受惠 NAND 儲存需求"
-      },
-      {
-        "id": "CLIENT_beneficiary_004",
-        "name": "宇瞻（8271）",
-        "business_line": "CLIENT",
-        "relationship": "beneficiary",
-        "details": "工業及消費 SSD 受惠 SSD 滲透率與儲存升級"
-      },
-      {
-        "id": "CLIENT_beneficiary_005",
-        "name": "創見（2451）",
-        "business_line": "CLIENT",
-        "relationship": "beneficiary",
-        "details": "SSD 與記憶卡受惠 NAND 價格及容量升級，亦在消費產品競爭"
-      },
-      {
-        "id": "EMBEDDED_beneficiary_001",
-        "name": "宜鼎（5289）",
-        "business_line": "EMBEDDED",
-        "relationship": "beneficiary",
-        "details": "車載、工控、邊緣 AI 嵌入式儲存受惠長生命週期與高可靠度需求"
-      },
-      {
-        "id": "EMBEDDED_beneficiary_002",
-        "name": "宇瞻（8271）",
-        "business_line": "EMBEDDED",
-        "relationship": "beneficiary",
-        "details": "工業級 eMMC、SSD 與儲存模組受惠車用／工控儲存需求"
-      },
-      {
-        "id": "EMBEDDED_beneficiary_003",
-        "name": "創見（2451）",
-        "business_line": "EMBEDDED",
-        "relationship": "beneficiary",
-        "details": "工業儲存及嵌入式快閃產品受惠工控與邊緣裝置需求"
-      },
-      {
-        "id": "CONSUMER_beneficiary_001",
-        "name": "威剛（3260）",
-        "business_line": "CONSUMER",
-        "relationship": "beneficiary",
-        "details": "記憶卡、USB 與外接 SSD 品牌受惠 NAND 需求及價格變化；亦為競爭者"
-      },
-      {
-        "id": "CONSUMER_beneficiary_002",
-        "name": "十銓（4967）",
-        "business_line": "CONSUMER",
-        "relationship": "beneficiary",
-        "details": "記憶卡、USB 與 SSD 品牌受惠消費儲存需求；亦為競爭者"
-      },
-      {
-        "id": "CONSUMER_beneficiary_003",
-        "name": "創見（2451）",
-        "business_line": "CONSUMER",
-        "relationship": "beneficiary",
-        "details": "記憶卡、USB 與外接儲存受惠攝影與消費儲存需求；亦為競爭者"
-      },
-      {
-        "id": "CONSUMER_beneficiary_004",
-        "name": "廣穎（4973）",
-        "business_line": "CONSUMER",
-        "relationship": "beneficiary",
-        "details": "記憶卡、USB 與外接 SSD 受惠消費儲存升級"
-      },
-      {
-        "id": "CONTROLLER_beneficiary_001",
-        "name": "群聯（8299）",
-        "business_line": "CONTROLLER",
-        "relationship": "beneficiary",
-        "details": "NAND 控制器與 SSD 韌體平台受惠 NAND 容量、通道數與效能提升"
-      },
-      {
-        "id": "CONTROLLER_beneficiary_002",
-        "name": "慧榮科技（SIMO）",
-        "business_line": "CONTROLLER",
-        "relationship": "beneficiary",
-        "details": "SSD、eMMC 與 UFS 控制器受惠 NAND 產業出貨及產品升級"
-      },
-      {
-        "id": "CONTROLLER_beneficiary_003",
-        "name": "點序（6485）",
-        "business_line": "CONTROLLER",
-        "relationship": "beneficiary",
-        "details": "快閃記憶體控制晶片受惠儲存介面與控制器需求"
-      },
-      {
-        "id": "CONTROLLER_beneficiary_004",
-        "name": "安國（8054）",
-        "business_line": "CONTROLLER",
-        "relationship": "beneficiary",
-        "details": "快閃記憶體控制器及相關 IC 受惠消費儲存應用"
-      },
-      {
-        "id": "CONTROLLER_beneficiary_005",
-        "name": "智微（4925）",
-        "business_line": "CONTROLLER",
-        "relationship": "beneficiary",
-        "details": "儲存介面與控制器相關晶片受惠 SSD／USB 高速傳輸升級"
-      },
-      {
-        "id": "CHANNEL_beneficiary_001",
-        "name": "威剛（3260）",
-        "business_line": "CHANNEL",
-        "relationship": "beneficiary",
-        "details": "全球儲存品牌及通路商，受惠 NAND 儲存產品市場擴張"
-      },
-      {
-        "id": "CHANNEL_beneficiary_002",
-        "name": "創見（2451）",
-        "business_line": "CHANNEL",
-        "relationship": "beneficiary",
-        "details": "全球記憶卡、SSD 通路及工業儲存品牌，受惠市場滲透"
-      },
-      {
-        "id": "CHANNEL_beneficiary_003",
-        "name": "十銓（4967）",
-        "business_line": "CHANNEL",
-        "relationship": "beneficiary",
-        "details": "國際消費與電競儲存通路品牌，受惠 NAND 產品需求"
+        "details": "同產品領域競爭或替代供應商；屬產品市場重疊分類，不代表 Sandisk 官方逐一列名之競爭對手。",
+        "evidence_grade": "B",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "relationship_basis": "market_product_overlap",
+        "verification_status": "cross_checked"
       }
-    ]
+    ],
+    "research_notes": {
+      "as_of": "2026-11-11",
+      "research_policy": "台灣供應鏈只接受公開證明直接向 Sandisk 供應材料、設備、零件或服務的公司。授權經銷商是下游通路 customer，不是上游 supplier；同業競爭不屬 beneficiary。",
+      "customer_disclosure": "Sandisk 2026 年投資人日稱已與 8 家客戶簽訂 NBM 多年採購承諾，但未公開姓名。不可將授權經銷商等同這 8 家長約客戶。",
+      "named_customer_scope": "此版具名 customer 主要是官方授權通路，另有歷史 OEM 例證；不聲稱具名 hyperscaler 採購。",
+      "financial_fy2026_usd_millions": {
+        "revenue": 20248,
+        "datacenter": 5153,
+        "edge": 12160,
+        "consumer": 2935,
+        "top_10_customers_share_pct": 44
+      },
+      "financial_sources": [
+        "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+        "https://www.sandisk.com/company/newsroom/press-releases/2026/2026-08-13-sandisk-investor-day-2026"
+      ],
+      "original_errors_corrected": [
+        "刪除原有 33 個缺乏直接供應證據的 beneficiary／台灣受惠映射",
+        "Amazon、Best Buy 等零售商不得僅因銷售 Sandisk 產品被列為技術 partner",
+        "Kioxia 合資研發與晶圓供貨分別記錄",
+        "加入官方具名授權通路，並註明不等於終端 OEM 採購",
+        "Nintendo 官方授權屬品牌授權，不得當作任天堂採購",
+        "保留原公司中文解析，最新財務另置 research_notes"
+      ],
+      "validation_limitations": [
+        "具名授權通路是可核實的渠道關係，不保證每一家在 2026 年實際有採購額",
+        "同業競爭者只做市場產品重疊標記，不是逐家公司直接競爭聲明",
+        "本地格式驗證完成；未執行 GitHub 專案正式驗證器",
+        "部分通路名單取自第三方索引的原廠授權名錄整理，已降為 B 級，不宣稱逐筆完成官方 A 級核對。"
+      ]
+    }
   }
 }

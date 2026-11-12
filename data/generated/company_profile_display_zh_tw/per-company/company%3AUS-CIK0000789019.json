@@ -233,5 +233,1025 @@
       "資料中心投資"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-11",
+    "company": "Microsoft Corporation",
+    "symbol": "MSFT",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "MSFT 微軟深度產業鏈｜Azure、AI 算力、Maia、Copilot、資安、資料中心與台灣受惠股",
+      "description": "完整梳理微軟 Azure、OpenAI／Anthropic 模型、NVIDIA／AMD GPU、台積電 Maia 3nm、Copilot、GitHub、企業軟體、資安、資料中心能源及台灣 AI 供應鏈，區分官方確認交易與產業推論。"
+    },
+    "business_lines": [
+      {
+        "id": "AZURE",
+        "name": "Azure 公有雲與企業運算"
+      },
+      {
+        "id": "AI_COMPUTE",
+        "name": "AI GPU 叢集與算力租用"
+      },
+      {
+        "id": "MAIA",
+        "name": "Maia／Cobalt 自研晶片與伺服器"
+      },
+      {
+        "id": "AI_MODELS",
+        "name": "Foundry／OpenAI／多模型服務"
+      },
+      {
+        "id": "M365",
+        "name": "Microsoft 365／Copilot 生產力"
+      },
+      {
+        "id": "DYNAMICS",
+        "name": "Dynamics 365／Power Platform 商業 AI"
+      },
+      {
+        "id": "DATA",
+        "name": "Fabric／Databricks／資料平台"
+      },
+      {
+        "id": "SECURITY",
+        "name": "Entra／Defender／Sentinel 資安"
+      },
+      {
+        "id": "GITHUB",
+        "name": "GitHub／開發者與 AI 程式助手"
+      },
+      {
+        "id": "WINDOWS",
+        "name": "Windows／Surface／企業終端"
+      },
+      {
+        "id": "GAMING",
+        "name": "Xbox／Game Pass／雲端遊戲"
+      },
+      {
+        "id": "ADS",
+        "name": "Bing／LinkedIn／數位廣告"
+      },
+      {
+        "id": "DATACENTER",
+        "name": "資料中心建設／能源／冷卻"
+      },
+      {
+        "id": "NETWORK",
+        "name": "Azure 網路／光通訊／互連"
+      },
+      {
+        "id": "INDUSTRY",
+        "name": "產業雲／顧問／全球通路"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "AI_COMPUTE_customer_001",
+        "name": "Anthropic",
+        "business_line": "AI_COMPUTE",
+        "relationship": "customer",
+        "details": "2025 年宣布承諾採購 Azure 算力 300 億美元，並規劃額外最高 1GW 算力容量；屬具名大型算力客戶。 來源：https://blogs.microsoft.com/blog/2025/11/18/microsoft-nvidia-and-anthropic-announce-strategic-partnerships/"
+      },
+      {
+        "id": "AI_MODELS_customer_001",
+        "name": "OpenAI",
+        "business_line": "AI_MODELS",
+        "relationship": "customer",
+        "details": "微軟 2026 年 10-K 揭露與 OpenAI 商業安排相關營收及應收款；同時是模型合作夥伴、被投資公司與 Azure 客戶。 來源：https://www.microsoft.com/investor/reports/ar26/"
+      },
+      {
+        "id": "DATA_customer_001",
+        "name": "Databricks",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "2026 年擴大使用 Azure Databricks 及 Azure Cobalt 支援自身營運與分析。 來源：https://news.microsoft.com/source/2026/07/23/databricks-and-microsoft-expand-partnership-to-help-enterprises-bring-business-context-to-enterprise-ai/"
+      },
+      {
+        "id": "DATA_customer_002",
+        "name": "Banco Bradesco",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "微軟 2026 年 Databricks 聯合公告列為 Azure Databricks 使用企業之一。 來源：https://news.microsoft.com/source/2026/07/23/databricks-and-microsoft-expand-partnership-to-help-enterprises-bring-business-context-to-enterprise-ai/"
+      },
+      {
+        "id": "DATA_customer_003",
+        "name": "Electrolux",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "微軟 2026 年 Databricks 聯合公告列為 Azure Databricks 使用企業之一。 來源：https://news.microsoft.com/source/2026/07/23/databricks-and-microsoft-expand-partnership-to-help-enterprises-bring-business-context-to-enterprise-ai/"
+      },
+      {
+        "id": "DATA_customer_004",
+        "name": "Unilever",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "微軟 2026 年 Databricks 聯合公告列為 Azure Databricks 使用企業之一。 來源：https://news.microsoft.com/source/2026/07/23/databricks-and-microsoft-expand-partnership-to-help-enterprises-bring-business-context-to-enterprise-ai/"
+      },
+      {
+        "id": "DATA_customer_005",
+        "name": "Cincinnati Reds",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "微軟 2026 年 Databricks 聯合公告列為 Azure Databricks 使用組織之一。 來源：https://news.microsoft.com/source/2026/07/23/databricks-and-microsoft-expand-partnership-to-help-enterprises-bring-business-context-to-enterprise-ai/"
+      },
+      {
+        "id": "DATA_customer_006",
+        "name": "SMBC",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "微軟 2026 年 Databricks 聯合公告列為 Azure Databricks 使用機構之一。 來源：https://news.microsoft.com/source/2026/07/23/databricks-and-microsoft-expand-partnership-to-help-enterprises-bring-business-context-to-enterprise-ai/"
+      },
+      {
+        "id": "M365_customer_001",
+        "name": "Accenture（ACN）",
+        "business_line": "M365",
+        "relationship": "customer",
+        "details": "2026 年微軟報導指出 Accenture 將 Microsoft 365 Copilot 擴展至約 74.3 萬名員工。 來源：https://news.microsoft.com/source/features/digital-transformation/accenture-is-rolling-out-copilot-to-a-workforce-the-size-of-denver"
+      },
+      {
+        "id": "M365_customer_002",
+        "name": "EY（安永）",
+        "business_line": "M365",
+        "relationship": "customer",
+        "details": "2026 年聯合公告稱 EY 擴大 Copilot 導入逾 40 萬員工，並採用 Microsoft 365 E7。 來源：https://news.microsoft.com/source/2026/05/21/ey-and-microsoft-announce-global-initiative-to-help-clients-scale-ai-enterprisewide-value-creation-and-move-beyond-experimentation"
+      },
+      {
+        "id": "M365_customer_003",
+        "name": "Manulife（MFC）",
+        "business_line": "M365",
+        "relationship": "customer",
+        "details": "2026 年宣布將 Microsoft 365 Copilot 擴展至逾 3 萬名員工。"
+      },
+      {
+        "id": "AZURE_customer_001",
+        "name": "3M（MMM）",
+        "business_line": "AZURE",
+        "relationship": "customer",
+        "details": "2026 年宣布使用 Microsoft AI 與數位平台推進企業轉型，同時向 Azure 提供光學技術。 來源：https://news.microsoft.com/source/2026/07/15/3m-and-microsoft-announce-strategic-partnership-to-advance-ai-data-center-infrastructure-and-enterprise-transformation/"
+      },
+      {
+        "id": "INDUSTRY_customer_001",
+        "name": "Publicis Groupe",
+        "business_line": "INDUSTRY",
+        "relationship": "customer",
+        "details": "2026 年共同開發代理式行銷與 Azure 雲端現代化方案，兼具使用者與合作夥伴角色。 來源：https://news.microsoft.com/source/2026/04/08/microsoft-and-publicis-groupe-expand-their-strategic-partnership-to-power-the-future-of-agentic-marketing-for-businesses-worldwide/"
+      },
+      {
+        "id": "INDUSTRY_customer_002",
+        "name": "EY（安永）",
+        "business_line": "INDUSTRY",
+        "relationship": "customer",
+        "details": "EY 是 Microsoft 365 E7 與 Copilot 企業使用者，亦是全球 AI 導入服務聯盟成員。 來源：https://news.microsoft.com/source/2026/05/21/ey-and-microsoft-announce-global-initiative-to-help-clients-scale-ai-enterprisewide-value-creation-and-move-beyond-experimentation"
+      },
+      {
+        "id": "AI_MODELS_partner_001",
+        "name": "OpenAI",
+        "business_line": "AI_MODELS",
+        "relationship": "partner",
+        "details": "2026 年修訂合作協議；微軟為主要雲端夥伴、保留非獨家模型 IP 授權至 2032 年；並非唯一雲端供應商。 來源：https://blogs.microsoft.com/blog/2026/04/27/the-next-phase-of-the-microsoft-openai-partnership/"
+      },
+      {
+        "id": "AI_MODELS_partner_002",
+        "name": "Anthropic",
+        "business_line": "AI_MODELS",
+        "relationship": "partner",
+        "details": "Claude 模型於 Microsoft Foundry 提供，且 Anthropic 使用 Azure 算力；兼具合作夥伴與客戶身分。 來源：https://blogs.microsoft.com/blog/2025/11/18/microsoft-nvidia-and-anthropic-announce-strategic-partnerships/"
+      },
+      {
+        "id": "AI_MODELS_partner_003",
+        "name": "Mistral AI",
+        "business_line": "AI_MODELS",
+        "relationship": "partner",
+        "details": "2026 年擴大模型與歐洲 GPU 基礎設施合作，Mistral 模型整合 Foundry／Copilot Studio。 來源：https://news.microsoft.com/source/2026/07/21/microsoft-and-mistral-expand-strategic-partnership-to-give-enterprises-and-regulated-industries-frontier-ai-they-can-control"
+      },
+      {
+        "id": "AI_MODELS_partner_004",
+        "name": "Meta（META）",
+        "business_line": "AI_MODELS",
+        "relationship": "partner",
+        "details": "Llama 開源模型可於 Azure AI 生態系部署；此為模型平台合作，非排他交易。"
+      },
+      {
+        "id": "AI_MODELS_partner_005",
+        "name": "Hugging Face",
+        "business_line": "AI_MODELS",
+        "relationship": "partner",
+        "details": "Azure AI 模型與開源模型部署生態系合作；不等同獨家模型供應。"
+      },
+      {
+        "id": "AI_COMPUTE_partner_001",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "AI_COMPUTE",
+        "relationship": "partner",
+        "details": "2025–2026 年持續共同部署 Azure NVIDIA GPU 系統及企業 AI 軟體堆疊。 來源：https://blogs.nvidia.com/blog/microsoft-build-windows-local-cloud-devices/"
+      },
+      {
+        "id": "AI_COMPUTE_partner_002",
+        "name": "AMD（AMD）",
+        "business_line": "AI_COMPUTE",
+        "relationship": "partner",
+        "details": "2026 年公布 Helios、MI455X、EPYC Venice、Pensando DPU 於 Azure 擴大部署。 來源：https://newsroom.amd.com/news/microsoft-azure-ai-infrastructure/"
+      },
+      {
+        "id": "MAIA_partner_001",
+        "name": "TSMC 台積電（TSM）",
+        "business_line": "MAIA",
+        "relationship": "partner",
+        "details": "微軟 Maia 200 官方公告確認使用台積電 3 奈米製程製造。 來源：https://blogs.microsoft.com/blog/2026/01/26/maia-200-the-ai-accelerator-built-for-inference/"
+      },
+      {
+        "id": "MAIA_partner_002",
+        "name": "Arm（ARM）",
+        "business_line": "MAIA",
+        "relationship": "partner",
+        "details": "Azure Cobalt 系列為 Arm 架構自研 CPU；屬處理器指令集與生態系合作。 來源：https://news.microsoft.com/source/2026/07/23/databricks-and-microsoft-expand-partnership-to-help-enterprises-bring-business-context-to-enterprise-ai/"
+      },
+      {
+        "id": "DATA_partner_001",
+        "name": "Databricks",
+        "business_line": "DATA",
+        "relationship": "partner",
+        "details": "2026 年延長合作至 2030 年代，整合 Genie、Azure Cobalt、Fabric 與 Microsoft 365。 來源：https://news.microsoft.com/source/2026/07/23/databricks-and-microsoft-expand-partnership-to-help-enterprises-bring-business-context-to-enterprise-ai/"
+      },
+      {
+        "id": "DATA_partner_002",
+        "name": "SAP（SAP）",
+        "business_line": "DATA",
+        "relationship": "partner",
+        "details": "SAP Business Data Cloud 在 Azure 上提供服務，2026 年擴大歐洲資料主權選項。 來源：https://news.microsoft.com/source/emea/2026/03/sap-business-data-cloud-goes-live-on-azure-in-switzerland/"
+      },
+      {
+        "id": "DATA_partner_003",
+        "name": "Oracle（ORCL）",
+        "business_line": "DATA",
+        "relationship": "partner",
+        "details": "Oracle Database@Azure 多雲資料庫合作；同時在公有雲市場競爭。"
+      },
+      {
+        "id": "DATA_partner_004",
+        "name": "Snowflake（SNOW）",
+        "business_line": "DATA",
+        "relationship": "partner",
+        "details": "Snowflake 可在 Azure 部署，屬多雲資料平台合作及市場競合。"
+      },
+      {
+        "id": "M365_partner_001",
+        "name": "EY（安永）",
+        "business_line": "M365",
+        "relationship": "partner",
+        "details": "2026 年雙方投入超過 10 億美元的企業 AI 導入合作計畫。 來源：https://news.microsoft.com/source/2026/05/21/ey-and-microsoft-announce-global-initiative-to-help-clients-scale-ai-enterprisewide-value-creation-and-move-beyond-experimentation"
+      },
+      {
+        "id": "M365_partner_002",
+        "name": "Accenture（ACN）",
+        "business_line": "M365",
+        "relationship": "partner",
+        "details": "全球系統整合與 Copilot 導入服務生態系夥伴，亦為大型企業使用者。 來源：https://news.microsoft.com/source/features/digital-transformation/accenture-is-rolling-out-copilot-to-a-workforce-the-size-of-denver"
+      },
+      {
+        "id": "DYNAMICS_partner_001",
+        "name": "Publicis Groupe",
+        "business_line": "DYNAMICS",
+        "relationship": "partner",
+        "details": "2026 年共同開發代理式行銷與客戶轉型方案。 來源：https://news.microsoft.com/source/2026/04/08/microsoft-and-publicis-groupe-expand-their-strategic-partnership-to-power-the-future-of-agentic-marketing-for-businesses-worldwide/"
+      },
+      {
+        "id": "DYNAMICS_partner_002",
+        "name": "SAP（SAP）",
+        "business_line": "DYNAMICS",
+        "relationship": "partner",
+        "details": "Microsoft 365 與 SAP 商業資料及流程整合生態系合作。 來源：https://news.microsoft.com/source/emea/2026/03/sap-business-data-cloud-goes-live-on-azure-in-switzerland/"
+      },
+      {
+        "id": "GITHUB_partner_001",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "GITHUB",
+        "relationship": "partner",
+        "details": "2026 年合作把安全執行環境及本地／雲端 AI 開發能力整合 GitHub Copilot。 來源：https://blogs.nvidia.com/blog/microsoft-build-windows-local-cloud-devices/"
+      },
+      {
+        "id": "NETWORK_partner_001",
+        "name": "Lumen Technologies（LUMN）",
+        "business_line": "NETWORK",
+        "relationship": "partner",
+        "details": "2026-11-02 公告共同銷售企業 AI 網路與 Azure 現代化解決方案。 來源：https://news.microsoft.com/source/2026/11/02/lumen-and-microsoft-expand-collaboration-to-co-sell-enterprise-ai-ready-networks"
+      },
+      {
+        "id": "NETWORK_partner_002",
+        "name": "3M（MMM）",
+        "business_line": "NETWORK",
+        "relationship": "partner",
+        "details": "微軟為首家宣布部署 3M Expanded Beam Optical 光纖互連技術的超大規模雲端業者。 來源：https://news.microsoft.com/source/2026/07/15/3m-and-microsoft-announce-strategic-partnership-to-advance-ai-data-center-infrastructure-and-enterprise-transformation/"
+      },
+      {
+        "id": "INDUSTRY_partner_001",
+        "name": "Publicis Sapient",
+        "business_line": "INDUSTRY",
+        "relationship": "partner",
+        "details": "與微軟合作使用 Azure 推動企業現代化及代理式行銷。 來源：https://news.microsoft.com/source/2026/04/08/microsoft-and-publicis-groupe-expand-their-strategic-partnership-to-power-the-future-of-agentic-marketing-for-businesses-worldwide/"
+      },
+      {
+        "id": "INDUSTRY_partner_002",
+        "name": "EY（安永）",
+        "business_line": "INDUSTRY",
+        "relationship": "partner",
+        "details": "全球企業 AI 導入服務與技術共同投資夥伴。 來源：https://news.microsoft.com/source/2026/05/21/ey-and-microsoft-announce-global-initiative-to-help-clients-scale-ai-enterprisewide-value-creation-and-move-beyond-experimentation"
+      },
+      {
+        "id": "INDUSTRY_partner_003",
+        "name": "Accenture（ACN）",
+        "business_line": "INDUSTRY",
+        "relationship": "partner",
+        "details": "全球 Azure、Copilot 與企業 AI 系統整合合作夥伴。 來源：https://news.microsoft.com/source/features/digital-transformation/accenture-is-rolling-out-copilot-to-a-workforce-the-size-of-denver"
+      },
+      {
+        "id": "INDUSTRY_partner_004",
+        "name": "KPMG",
+        "business_line": "INDUSTRY",
+        "relationship": "partner",
+        "details": "Microsoft 全球商業應用、資安及雲端導入合作生態系成員。"
+      },
+      {
+        "id": "INDUSTRY_partner_005",
+        "name": "PwC",
+        "business_line": "INDUSTRY",
+        "relationship": "partner",
+        "details": "Microsoft Azure、Copilot 與企業轉型服務生態系夥伴。"
+      },
+      {
+        "id": "INDUSTRY_partner_006",
+        "name": "Avanade",
+        "business_line": "INDUSTRY",
+        "relationship": "partner",
+        "details": "Accenture 與 Microsoft 合資成立的數位轉型服務公司。"
+      },
+      {
+        "id": "INDUSTRY_partner_007",
+        "name": "Dell Technologies（DELL）",
+        "business_line": "INDUSTRY",
+        "relationship": "partner",
+        "details": "Azure Stack HCI／Azure Local 與混合雲硬體合作生態系。"
+      },
+      {
+        "id": "INDUSTRY_partner_008",
+        "name": "Hewlett Packard Enterprise（HPE）",
+        "business_line": "INDUSTRY",
+        "relationship": "partner",
+        "details": "Azure Local／混合雲與企業基礎設施合作生態系。"
+      },
+      {
+        "id": "INDUSTRY_partner_009",
+        "name": "Lenovo（0992.HK）",
+        "business_line": "INDUSTRY",
+        "relationship": "partner",
+        "details": "Windows OEM PC、Copilot+ PC 與企業終端生態系合作。"
+      },
+      {
+        "id": "INDUSTRY_partner_010",
+        "name": "HP Inc.（HPQ）",
+        "business_line": "INDUSTRY",
+        "relationship": "partner",
+        "details": "Windows OEM PC 與 Copilot+ PC 合作生態系。"
+      },
+      {
+        "id": "INDUSTRY_partner_011",
+        "name": "ASUS 華碩（2357）",
+        "business_line": "INDUSTRY",
+        "relationship": "partner",
+        "details": "Windows OEM、Copilot+ PC 與企業終端合作生態系。"
+      },
+      {
+        "id": "INDUSTRY_partner_012",
+        "name": "Acer 宏碁（2353）",
+        "business_line": "INDUSTRY",
+        "relationship": "partner",
+        "details": "Windows OEM、Copilot+ PC 與商用電腦合作生態系。"
+      },
+      {
+        "id": "GAMING_partner_001",
+        "name": "Electronic Arts（EA）",
+        "business_line": "GAMING",
+        "relationship": "partner",
+        "details": "Xbox 主機、PC 及 Game Pass 相關遊戲發行生態系合作；不表示旗下所有作品均訂閱上架。"
+      },
+      {
+        "id": "GAMING_partner_002",
+        "name": "Ubisoft",
+        "business_line": "GAMING",
+        "relationship": "partner",
+        "details": "Xbox 與 PC 遊戲發行及雲端遊戲授權合作生態系。"
+      },
+      {
+        "id": "ADS_partner_001",
+        "name": "OpenAI",
+        "business_line": "ADS",
+        "relationship": "partner",
+        "details": "Bing、Copilot 與 OpenAI 模型商業合作涉及搜尋及生成式 AI 服務。 來源：https://blogs.microsoft.com/blog/2026/04/27/the-next-phase-of-the-microsoft-openai-partnership/"
+      },
+      {
+        "id": "AI_COMPUTE_supplier_001",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "AI_COMPUTE",
+        "relationship": "supplier",
+        "details": "Azure 採用 NVIDIA GPU 加速系統，屬已公開確認的 AI 算力硬體供應關係。 來源：https://blogs.nvidia.com/blog/microsoft-build-windows-local-cloud-devices/"
+      },
+      {
+        "id": "AI_COMPUTE_supplier_002",
+        "name": "AMD（AMD）",
+        "business_line": "AI_COMPUTE",
+        "relationship": "supplier",
+        "details": "Azure 採用 AMD Instinct GPU、EPYC CPU 及 Pensando DPU；2026 年宣布 Helios 擴大部署。 來源：https://newsroom.amd.com/news/microsoft-azure-ai-infrastructure/"
+      },
+      {
+        "id": "MAIA_supplier_001",
+        "name": "TSMC 台積電（TSM）",
+        "business_line": "MAIA",
+        "relationship": "supplier",
+        "details": "Maia 200 採用台積電 3nm 製造，為具名晶圓代工供應商。 來源：https://blogs.microsoft.com/blog/2026/01/26/maia-200-the-ai-accelerator-built-for-inference/"
+      },
+      {
+        "id": "NETWORK_supplier_001",
+        "name": "3M（MMM）",
+        "business_line": "NETWORK",
+        "relationship": "supplier",
+        "details": "2026 年宣布向微軟 AI 資料中心部署 Expanded Beam Optical 光學連接技術。 來源：https://news.microsoft.com/source/2026/07/15/3m-and-microsoft-announce-strategic-partnership-to-advance-ai-data-center-infrastructure-and-enterprise-transformation/"
+      },
+      {
+        "id": "AI_MODELS_supplier_001",
+        "name": "Mistral AI",
+        "business_line": "AI_MODELS",
+        "relationship": "supplier",
+        "details": "2026 年微軟承諾使用 Mistral 擴增的歐洲 GPU 算力，屬微軟向對方採購算力安排。 來源：https://news.microsoft.com/source/2026/07/21/microsoft-and-mistral-expand-strategic-partnership-to-give-enterprises-and-regulated-industries-frontier-ai-they-can-control"
+      },
+      {
+        "id": "AI_MODELS_supplier_002",
+        "name": "OpenAI",
+        "business_line": "AI_MODELS",
+        "relationship": "supplier",
+        "details": "微軟產品使用 OpenAI 模型與 IP；此為模型技術供應及策略合作，非單向硬體供應。 來源：https://blogs.microsoft.com/blog/2026/04/27/the-next-phase-of-the-microsoft-openai-partnership/"
+      },
+      {
+        "id": "AI_MODELS_supplier_003",
+        "name": "Anthropic",
+        "business_line": "AI_MODELS",
+        "relationship": "supplier",
+        "details": "Microsoft Foundry 與 Copilot 提供 Claude 模型，屬具名模型技術供應合作。 來源：https://blogs.microsoft.com/blog/2025/11/18/microsoft-nvidia-and-anthropic-announce-strategic-partnerships/"
+      },
+      {
+        "id": "AZURE_competitor_001",
+        "name": "Amazon Web Services（AMZN）",
+        "business_line": "AZURE",
+        "relationship": "competitor",
+        "details": "市場重疊分析：全球公有雲 IaaS／PaaS 直接競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "AZURE_competitor_002",
+        "name": "Google Cloud（GOOGL）",
+        "business_line": "AZURE",
+        "relationship": "competitor",
+        "details": "市場重疊分析：企業雲端、AI 基礎設施及資料平台競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "AZURE_competitor_003",
+        "name": "Oracle Cloud Infrastructure（ORCL）",
+        "business_line": "AZURE",
+        "relationship": "competitor",
+        "details": "市場重疊分析：雲端資料庫、GPU 算力與企業雲市場競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "AZURE_competitor_004",
+        "name": "Alibaba Cloud（BABA）",
+        "business_line": "AZURE",
+        "relationship": "competitor",
+        "details": "市場重疊分析：亞太公有雲與 AI 服務市場競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "AI_COMPUTE_competitor_001",
+        "name": "CoreWeave（CRWV）",
+        "business_line": "AI_COMPUTE",
+        "relationship": "competitor",
+        "details": "市場重疊分析：GPU 專用雲與 AI 算力租用競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "AI_COMPUTE_competitor_002",
+        "name": "Nebius（NBIS）",
+        "business_line": "AI_COMPUTE",
+        "relationship": "competitor",
+        "details": "市場重疊分析：AI GPU 雲端服務市場競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "AI_COMPUTE_competitor_003",
+        "name": "Google Cloud（GOOGL）",
+        "business_line": "AI_COMPUTE",
+        "relationship": "competitor",
+        "details": "市場重疊分析：GPU／TPU 訓練與推論服務競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "MAIA_competitor_001",
+        "name": "Amazon AWS Trainium",
+        "business_line": "MAIA",
+        "relationship": "competitor",
+        "details": "市場重疊分析：雲端業者自研 AI 推論／訓練晶片架構競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "MAIA_competitor_002",
+        "name": "Google TPU",
+        "business_line": "MAIA",
+        "relationship": "competitor",
+        "details": "市場重疊分析：超大規模雲端自研 AI ASIC 架構競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "MAIA_competitor_003",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "MAIA",
+        "relationship": "competitor",
+        "details": "市場重疊分析：AI 加速器平台技術競合，NVIDIA 同時是微軟重要供應商。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "AI_MODELS_competitor_001",
+        "name": "Google Gemini（GOOGL）",
+        "business_line": "AI_MODELS",
+        "relationship": "competitor",
+        "details": "市場重疊分析：企業基礎模型與 AI 開發平台競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "AI_MODELS_competitor_002",
+        "name": "Amazon Bedrock（AMZN）",
+        "business_line": "AI_MODELS",
+        "relationship": "competitor",
+        "details": "市場重疊分析：多模型 API／企業模型服務競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "AI_MODELS_competitor_003",
+        "name": "OpenAI",
+        "business_line": "AI_MODELS",
+        "relationship": "competitor",
+        "details": "市場重疊分析：部分終端 AI 產品與 API 可能競合，惟雙方仍為重大合作夥伴。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "M365_competitor_001",
+        "name": "Google Workspace（GOOGL）",
+        "business_line": "M365",
+        "relationship": "competitor",
+        "details": "市場重疊分析：企業協作、生產力套件及 AI 助手競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "M365_competitor_002",
+        "name": "Salesforce Slack（CRM）",
+        "business_line": "M365",
+        "relationship": "competitor",
+        "details": "市場重疊分析：企業協作與代理式工作流程競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "M365_competitor_003",
+        "name": "Zoom（ZM）",
+        "business_line": "M365",
+        "relationship": "competitor",
+        "details": "市場重疊分析：會議、協作與 AI 會議助手競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "DYNAMICS_competitor_001",
+        "name": "Salesforce（CRM）",
+        "business_line": "DYNAMICS",
+        "relationship": "competitor",
+        "details": "市場重疊分析：CRM、企業 AI Agent 與客戶服務競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "DYNAMICS_competitor_002",
+        "name": "SAP（SAP）",
+        "business_line": "DYNAMICS",
+        "relationship": "competitor",
+        "details": "市場重疊分析：ERP 與企業商業應用市場競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "DYNAMICS_competitor_003",
+        "name": "Oracle（ORCL）",
+        "business_line": "DYNAMICS",
+        "relationship": "competitor",
+        "details": "市場重疊分析：ERP／CRM／企業資料平台競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "DYNAMICS_competitor_004",
+        "name": "ServiceNow（NOW）",
+        "business_line": "DYNAMICS",
+        "relationship": "competitor",
+        "details": "市場重疊分析：企業工作流程、低程式碼與 AI Agent 競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "DATA_competitor_001",
+        "name": "Snowflake（SNOW）",
+        "business_line": "DATA",
+        "relationship": "competitor",
+        "details": "市場重疊分析：雲端資料平台與 AI 分析市場競爭；亦可在 Azure 部署。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "DATA_competitor_002",
+        "name": "Databricks",
+        "business_line": "DATA",
+        "relationship": "competitor",
+        "details": "市場重疊分析：資料湖倉、分析及 AI 平台部分競爭，雙方亦有深度合作。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "DATA_competitor_003",
+        "name": "Google BigQuery（GOOGL）",
+        "business_line": "DATA",
+        "relationship": "competitor",
+        "details": "市場重疊分析：雲端資料倉儲與分析競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "SECURITY_competitor_001",
+        "name": "CrowdStrike（CRWD）",
+        "business_line": "SECURITY",
+        "relationship": "competitor",
+        "details": "市場重疊分析：端點安全與 XDR 市場競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "SECURITY_competitor_002",
+        "name": "Palo Alto Networks（PANW）",
+        "business_line": "SECURITY",
+        "relationship": "competitor",
+        "details": "市場重疊分析：雲端資安、SOC 與 XDR 市場競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "SECURITY_competitor_003",
+        "name": "Zscaler（ZS）",
+        "business_line": "SECURITY",
+        "relationship": "competitor",
+        "details": "市場重疊分析：零信任與安全存取服務競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "SECURITY_competitor_004",
+        "name": "Okta（OKTA）",
+        "business_line": "SECURITY",
+        "relationship": "competitor",
+        "details": "市場重疊分析：身分識別與存取管理競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "SECURITY_competitor_005",
+        "name": "SentinelOne（S）",
+        "business_line": "SECURITY",
+        "relationship": "competitor",
+        "details": "市場重疊分析：端點保護及 AI SOC 市場競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "GITHUB_competitor_001",
+        "name": "GitLab（GTLB）",
+        "business_line": "GITHUB",
+        "relationship": "competitor",
+        "details": "市場重疊分析：程式碼代管、DevSecOps 及 AI 開發助手競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "GITHUB_competitor_002",
+        "name": "JetBrains",
+        "business_line": "GITHUB",
+        "relationship": "competitor",
+        "details": "市場重疊分析：開發 IDE 與 AI 程式助手競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "GITHUB_competitor_003",
+        "name": "Amazon Q Developer（AMZN）",
+        "business_line": "GITHUB",
+        "relationship": "competitor",
+        "details": "市場重疊分析：AI 程式碼生成與開發者助手競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "GITHUB_competitor_004",
+        "name": "Google Gemini Code Assist（GOOGL）",
+        "business_line": "GITHUB",
+        "relationship": "competitor",
+        "details": "市場重疊分析：企業 AI 開發者助手競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "WINDOWS_competitor_001",
+        "name": "Apple（AAPL）",
+        "business_line": "WINDOWS",
+        "relationship": "competitor",
+        "details": "市場重疊分析：PC 作業系統、筆電及端側 AI 裝置競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "WINDOWS_competitor_002",
+        "name": "Google ChromeOS（GOOGL）",
+        "business_line": "WINDOWS",
+        "relationship": "competitor",
+        "details": "市場重疊分析：教育及輕量 PC 作業系統競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "WINDOWS_competitor_003",
+        "name": "Lenovo（0992.HK）",
+        "business_line": "WINDOWS",
+        "relationship": "competitor",
+        "details": "市場重疊分析：Surface 品牌 PC 與 OEM PC 產品存在市場競合。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "GAMING_competitor_001",
+        "name": "Sony Interactive Entertainment（SONY）",
+        "business_line": "GAMING",
+        "relationship": "competitor",
+        "details": "市場重疊分析：遊戲主機、訂閱與第一方遊戲競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "GAMING_competitor_002",
+        "name": "Nintendo（7974.T）",
+        "business_line": "GAMING",
+        "relationship": "competitor",
+        "details": "市場重疊分析：遊戲主機與遊戲內容市場競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "GAMING_competitor_003",
+        "name": "Valve Steam",
+        "business_line": "GAMING",
+        "relationship": "competitor",
+        "details": "市場重疊分析：PC 遊戲平台與數位遊戲通路競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "ADS_competitor_001",
+        "name": "Google Search（GOOGL）",
+        "business_line": "ADS",
+        "relationship": "competitor",
+        "details": "市場重疊分析：搜尋廣告與 AI 搜尋競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "ADS_competitor_002",
+        "name": "Meta Platforms（META）",
+        "business_line": "ADS",
+        "relationship": "competitor",
+        "details": "市場重疊分析：數位廣告預算競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "ADS_competitor_003",
+        "name": "Indeed（Recruit Holdings）",
+        "business_line": "ADS",
+        "relationship": "competitor",
+        "details": "市場重疊分析：LinkedIn 人才招募與職缺廣告競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "DATACENTER_competitor_001",
+        "name": "Amazon AWS（AMZN）",
+        "business_line": "DATACENTER",
+        "relationship": "competitor",
+        "details": "市場重疊分析：全球資料中心建置及 AI 基礎設施擴張競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "DATACENTER_competitor_002",
+        "name": "Google（GOOGL）",
+        "business_line": "DATACENTER",
+        "relationship": "competitor",
+        "details": "市場重疊分析：超大規模資料中心及電力採購競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "NETWORK_competitor_001",
+        "name": "Amazon AWS（AMZN）",
+        "business_line": "NETWORK",
+        "relationship": "competitor",
+        "details": "市場重疊分析：雲端專網、網路傳輸及互連服務競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "NETWORK_competitor_002",
+        "name": "Google Cloud（GOOGL）",
+        "business_line": "NETWORK",
+        "relationship": "competitor",
+        "details": "市場重疊分析：雲端網路、跨區互連與企業網路服務競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "INDUSTRY_competitor_001",
+        "name": "Amazon AWS（AMZN）",
+        "business_line": "INDUSTRY",
+        "relationship": "competitor",
+        "details": "市場重疊分析：全球雲端合作夥伴與產業解決方案生態系競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "INDUSTRY_competitor_002",
+        "name": "Google Cloud（GOOGL）",
+        "business_line": "INDUSTRY",
+        "relationship": "competitor",
+        "details": "市場重疊分析：產業雲與系統整合夥伴生態系競爭。；不表示已證實個別客戶轉單。"
+      },
+      {
+        "id": "AI_COMPUTE_beneficiary_001",
+        "name": "緯穎（6669）",
+        "business_line": "AI_COMPUTE",
+        "relationship": "beneficiary",
+        "details": "AI 雲端伺服器與機櫃系統需求受惠方向；未將其直接認定為微軟具名供應商。"
+      },
+      {
+        "id": "AI_COMPUTE_beneficiary_002",
+        "name": "廣達（2382）",
+        "business_line": "AI_COMPUTE",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器及 GPU 系統組裝需求受惠方向；具體微軟採購關係未在本節點確認。"
+      },
+      {
+        "id": "AI_COMPUTE_beneficiary_003",
+        "name": "鴻海（2317）",
+        "business_line": "AI_COMPUTE",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器與高階運算製造產業需求受惠方向；非本研究已證實直接採購。"
+      },
+      {
+        "id": "AI_COMPUTE_beneficiary_004",
+        "name": "英業達（2356）",
+        "business_line": "AI_COMPUTE",
+        "relationship": "beneficiary",
+        "details": "雲端伺服器 ODM 需求受惠方向；未推定直接供貨。"
+      },
+      {
+        "id": "MAIA_beneficiary_001",
+        "name": "台積電（2330／TSM）",
+        "business_line": "MAIA",
+        "relationship": "beneficiary",
+        "details": "Maia 200 官方確認使用台積電 3nm 製程，為有直接證據的製造受惠關係。"
+      },
+      {
+        "id": "MAIA_beneficiary_002",
+        "name": "世芯-KY（3661）",
+        "business_line": "MAIA",
+        "relationship": "beneficiary",
+        "details": "雲端自研 ASIC 需求的台灣產業受惠觀察標的，未確認承接 Maia 專案。"
+      },
+      {
+        "id": "MAIA_beneficiary_003",
+        "name": "創意電子（3443）",
+        "business_line": "MAIA",
+        "relationship": "beneficiary",
+        "details": "雲端自研 ASIC 設計服務需求的台灣產業受惠觀察標的，未確認承接 Maia 專案。"
+      },
+      {
+        "id": "MAIA_beneficiary_004",
+        "name": "智原（3035）",
+        "business_line": "MAIA",
+        "relationship": "beneficiary",
+        "details": "ASIC 設計服務產業鏈受惠方向，未確認承接微軟專案。"
+      },
+      {
+        "id": "DATACENTER_beneficiary_001",
+        "name": "台達電（2308）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "AI 資料中心電源、散熱及液冷需求的台灣產業受惠方向。"
+      },
+      {
+        "id": "DATACENTER_beneficiary_002",
+        "name": "光寶科（2301）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器電源系統與資料中心基礎設施需求受惠方向。"
+      },
+      {
+        "id": "DATACENTER_beneficiary_003",
+        "name": "奇鋐（3017）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "AI 機櫃散熱、液冷與熱管理需求受惠方向。"
+      },
+      {
+        "id": "DATACENTER_beneficiary_004",
+        "name": "雙鴻（3324）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "高密度 GPU 機櫃散熱與液冷需求受惠方向。"
+      },
+      {
+        "id": "DATACENTER_beneficiary_005",
+        "name": "勤誠（8210）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器機殼與機櫃擴建需求受惠方向。"
+      },
+      {
+        "id": "DATACENTER_beneficiary_006",
+        "name": "晟銘電（3013）",
+        "business_line": "DATACENTER",
+        "relationship": "beneficiary",
+        "details": "伺服器機殼與資料中心設備需求受惠方向。"
+      },
+      {
+        "id": "NETWORK_beneficiary_001",
+        "name": "智邦（2345）",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "AI 叢集高速乙太網路交換器需求受惠方向，未確認特定微軟訂單。"
+      },
+      {
+        "id": "NETWORK_beneficiary_002",
+        "name": "啟碁（6285）",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "企業網路及雲端通訊設備需求受惠方向，未確認特定微軟訂單。"
+      },
+      {
+        "id": "NETWORK_beneficiary_003",
+        "name": "貿聯-KY（3665）",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器高電流線纜與高速互連需求受惠方向。"
+      },
+      {
+        "id": "NETWORK_beneficiary_004",
+        "name": "光聖（6442）",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "資料中心光纖互連與光通訊需求受惠方向。"
+      },
+      {
+        "id": "NETWORK_beneficiary_005",
+        "name": "聯鈞（3450）",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "光通訊元件及資料中心互連需求受惠方向。"
+      },
+      {
+        "id": "NETWORK_beneficiary_006",
+        "name": "上詮（3363）",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "高密度光纖連接與 CPO 技術需求受惠方向。"
+      },
+      {
+        "id": "WINDOWS_beneficiary_001",
+        "name": "華碩（2357）",
+        "business_line": "WINDOWS",
+        "relationship": "beneficiary",
+        "details": "Windows OEM 與 Copilot+ PC 生態系產品受惠，並與 Surface 競合。"
+      },
+      {
+        "id": "WINDOWS_beneficiary_002",
+        "name": "宏碁（2353）",
+        "business_line": "WINDOWS",
+        "relationship": "beneficiary",
+        "details": "Windows OEM 與 Copilot+ PC 生態系產品受惠，並與 Surface 競合。"
+      },
+      {
+        "id": "WINDOWS_beneficiary_003",
+        "name": "仁寶（2324）",
+        "business_line": "WINDOWS",
+        "relationship": "beneficiary",
+        "details": "Windows 筆電與 AI PC ODM 製造需求受惠方向。"
+      },
+      {
+        "id": "WINDOWS_beneficiary_004",
+        "name": "和碩（4938）",
+        "business_line": "WINDOWS",
+        "relationship": "beneficiary",
+        "details": "Windows PC 與企業終端 ODM 製造需求受惠方向。"
+      },
+      {
+        "id": "AZURE_beneficiary_001",
+        "name": "中華電信（2412）",
+        "business_line": "AZURE",
+        "relationship": "beneficiary",
+        "details": "企業雲端導入與混合雲服務需求受惠方向；未推定為 Azure 獨家通路。"
+      },
+      {
+        "id": "SECURITY_beneficiary_001",
+        "name": "零壹（3029）",
+        "business_line": "SECURITY",
+        "relationship": "beneficiary",
+        "details": "台灣企業雲端資安、軟體代理與導入服務需求受惠方向。"
+      },
+      {
+        "id": "GITHUB_beneficiary_001",
+        "name": "精誠資訊（6214）",
+        "business_line": "GITHUB",
+        "relationship": "beneficiary",
+        "details": "企業軟體、開發者工具及 AI 導入需求受惠方向。"
+      },
+      {
+        "id": "DYNAMICS_beneficiary_001",
+        "name": "叡揚資訊（6752）",
+        "business_line": "DYNAMICS",
+        "relationship": "beneficiary",
+        "details": "企業工作流程與商業應用數位轉型需求受惠方向。"
+      },
+      {
+        "id": "ADS_beneficiary_001",
+        "name": "Appier（4180）",
+        "business_line": "ADS",
+        "relationship": "beneficiary",
+        "details": "企業 AI 行銷與數位廣告技術需求受惠方向，並非已確認微軟交易對象。"
+      },
+      {
+        "id": "GAMING_beneficiary_001",
+        "name": "鈊象（3293）",
+        "business_line": "GAMING",
+        "relationship": "beneficiary",
+        "details": "數位遊戲內容與線上遊戲市場擴張的台灣產業觀察標的，未確認 Xbox 商業關係。"
+      },
+      {
+        "id": "INDUSTRY_beneficiary_001",
+        "name": "宏碁資訊（6811）",
+        "business_line": "INDUSTRY",
+        "relationship": "beneficiary",
+        "details": "微軟雲端與企業數位轉型服務生態系需求受惠方向。"
+      }
+    ]
   }
 }

@@ -193,5 +193,695 @@
       "基礎設施投資"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "locale": "zh-TW",
+    "symbol": "HUBB",
+    "company": "Hubbell Incorporated",
+    "as_of": "2026-11-12",
+    "original_commit": "da93c81d",
+    "original_blob_sha": "f505c5d2411e502f210911bbdc5e850c0e8d9dc8",
+    "business_lines": [
+      {
+        "id": "TND",
+        "name": "輸電、變電站及高壓電網元件",
+        "segment": "Utility Solutions",
+        "scope": "避雷器、絕緣子、套管、輸電接頭、開關與變電站硬體"
+      },
+      {
+        "id": "DISTRIBUTION",
+        "name": "配電線路、接地及電網防護",
+        "segment": "Utility Solutions",
+        "scope": "配電連接器、熔斷器、架空與地下配電、線路保護"
+      },
+      {
+        "id": "GRID_AUTO",
+        "name": "電網保護、繼電器與配電自動化",
+        "segment": "Utility Solutions",
+        "scope": "Beckwith Electric、Aclara 配電控制、電壓調整及故障隔離"
+      },
+      {
+        "id": "AMI_ELEC",
+        "name": "智慧電表、電力 AMI 與通訊網路",
+        "segment": "Utility Solutions",
+        "scope": "Aclara 電表、TWACS、RF、AMI 與計量資料"
+      },
+      {
+        "id": "AMI_WATER",
+        "name": "水務／燃氣 AMI、漏水偵測與計量",
+        "segment": "Utility Solutions",
+        "scope": "Aclara RF、ZoneScan、Armorcast 表箱及資料服務"
+      },
+      {
+        "id": "GRID_SW",
+        "name": "電網邊緣分析與 AclaraONE／Aclara360 軟體",
+        "segment": "Utility Solutions",
+        "scope": "智慧電網數據管理、遠端診斷、電網拓樸及營運分析"
+      },
+      {
+        "id": "DC_POWER",
+        "name": "AI 資料中心模組化電力與配電設備",
+        "segment": "Electrical Solutions",
+        "scope": "PCX 預製電力模組、配電盤、機櫃供電與電力品質"
+      },
+      {
+        "id": "DC_CONNECT",
+        "name": "資料中心配線、接地與高速布線基礎設施",
+        "segment": "Electrical Solutions",
+        "scope": "高電流接頭、結構化布線、電源連接與接地"
+      },
+      {
+        "id": "WIRE",
+        "name": "商用建築配線、電氣盒及連接器",
+        "segment": "Electrical Solutions",
+        "scope": "Hubbell Wiring Device、RACO、BURNDY、NSI"
+      },
+      {
+        "id": "INDUSTRIAL",
+        "name": "工業控制、防爆與惡劣環境電氣",
+        "segment": "Electrical Solutions",
+        "scope": "Killark、Hawke、GAI-Tronics 工業與高風險場所電氣"
+      },
+      {
+        "id": "RENEW",
+        "name": "再生能源與分散式電力連接",
+        "segment": "Cross-segment",
+        "scope": "太陽能、風電及分散式能源電網接入設備"
+      },
+      {
+        "id": "CHANNEL",
+        "name": "電氣經銷、安裝及售後工程服務",
+        "segment": "Cross-segment",
+        "scope": "批發經銷、工程承包商及 AMI 安裝服務"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "HUBB-001",
+        "business_line": "AMI_ELEC",
+        "relationship": "customer",
+        "name": "Manila Electric Company（MERALCO）",
+        "details": "2026 年 Aclara Meters Philippines 兩年合約，第一階段約 72,000 具智慧電表。",
+        "evidence_url": "https://www.hubbell.com/aclara/en/news/hubbell-partners-with-meralco-on-smart-meter-supply-contract",
+        "evidence_grade": "A",
+        "evidence_date": "2026-02-19"
+      },
+      {
+        "id": "HUBB-002",
+        "business_line": "AMI_WATER",
+        "relationship": "customer",
+        "name": "City of Santa Barbara",
+        "details": "市政府採用 Aclara RF AMI 與 Armorcast 特製水表箱蓋。",
+        "evidence_url": "https://www.hubbell.com/hubbellpowersystems/en/news/case-study-city-of-santa-barbara-improves-efficiency-and-accelerates-customer-empowerment-with-a-comprehensive-ami-water-solution",
+        "evidence_grade": "A",
+        "evidence_date": "2025-05-20"
+      },
+      {
+        "id": "HUBB-003",
+        "business_line": "AMI_WATER",
+        "relationship": "customer",
+        "name": "City of Sugar Land",
+        "details": "市政府選用 Aclara 水務 AMI 與 AclaraONE。",
+        "evidence_url": "https://www.hubbell.com/aclara/en/news/the-city-of-sugar-land-texas-builds-a-smarter-water-future-with-aclara-am",
+        "evidence_grade": "A",
+        "evidence_date": "2026-06-18"
+      },
+      {
+        "id": "HUBB-004",
+        "business_line": "GRID_SW",
+        "relationship": "customer",
+        "name": "Wiregrass Electric Cooperative",
+        "details": "Hubbell 公告具名 Aclara360 電網連接精準度與可靠度案例。",
+        "evidence_url": "https://www.hubbell.com/aclara/en/news/hubbell-launches-modular-scalable-software-that-transforms-utility",
+        "evidence_grade": "A",
+        "evidence_date": "2026-01-27"
+      },
+      {
+        "id": "HUBB-005",
+        "business_line": "AMI_ELEC",
+        "relationship": "customer",
+        "name": "City of Dothan / Dothan Utilities",
+        "details": "採用 Aclara 電水雙能源 AMI，覆蓋約 31,000 電表與 35,000 水表。",
+        "evidence_url": "https://www.prnewswire.com/news-releases/water-and-electric-combination-utility-in-the-city-of-dothan-alabama-selects-aclaras-advanced-metering-infrastructure-solution-301072669.html",
+        "evidence_grade": "A",
+        "evidence_date": "2020-06-09",
+        "status_note": "歷史部署案例；不宣稱仍有新訂單"
+      },
+      {
+        "id": "HUBB-006",
+        "business_line": "AMI_WATER",
+        "relationship": "customer",
+        "name": "City of Dothan / Dothan Utilities",
+        "details": "同一雙能源 AMI 合約之水務部署；同一客戶在兩條不同產品主線。",
+        "evidence_url": "https://www.prnewswire.com/news-releases/water-and-electric-combination-utility-in-the-city-of-dothan-alabama-selects-aclaras-advanced-metering-infrastructure-solution-301072669.html",
+        "evidence_grade": "A",
+        "evidence_date": "2020-06-09",
+        "status_note": "歷史部署案例；不宣稱仍有新訂單"
+      },
+      {
+        "id": "HUBB-007",
+        "business_line": "AMI_WATER",
+        "relationship": "customer",
+        "name": "Austin Water",
+        "details": "官方公告選用 Aclara 整合 AMI 及部署服務。",
+        "evidence_url": "https://www.prnewswire.com/news-releases/austin-water-selects-aclara-to-supply-fully-integrated-advanced-metering-infrastructure-program-for-landmark-water-project-301081910.html",
+        "evidence_grade": "A",
+        "evidence_date": "2020-06-23",
+        "status_note": "歷史部署案例；不宣稱仍有新訂單"
+      },
+      {
+        "id": "HUBB-008",
+        "business_line": "AMI_WATER",
+        "relationship": "customer",
+        "name": "City of Elmhurst",
+        "details": "市政府採用 Aclara RF AMI 與 ZoneScan 聲學漏水偵測。",
+        "evidence_url": "https://blog.hubbell.com/en/aclara/preventing-non-revenue-water-loss-how-ami-and-leak-detection-can-help",
+        "evidence_grade": "A",
+        "evidence_date": "2024-03-22",
+        "status_note": "歷史部署案例；不宣稱仍有新訂單"
+      },
+      {
+        "id": "HUBB-009",
+        "business_line": "AMI_WATER",
+        "relationship": "partner",
+        "name": "Concord Utility Services",
+        "details": "Santa Barbara AMI 專案之安裝執行夥伴，並非終端採購客戶。",
+        "evidence_url": "https://hubbellcdn.com/CaseStudies/ACL-ACL-WP-EN-02316.pdf",
+        "evidence_grade": "C",
+        "status_note": "待核對原始合約／個別專案文件；僅作研究線索，不視為已驗證合作"
+      },
+      {
+        "id": "HUBB-010",
+        "business_line": "AMI_ELEC",
+        "relationship": "partner",
+        "name": "Itron",
+        "details": "Hubbell 官方披露約 2,000 萬具 Aclara 電表部署於 Itron 通訊網路，屬技術互通／生態系關係，非已證實直接採購。",
+        "evidence_url": "https://www.hubbell.com/aclara/en/news/hubbell-partners-with-meralco-on-smart-meter-supply-contract",
+        "evidence_grade": "A"
+      },
+      {
+        "id": "HUBB-011",
+        "business_line": "AMI_WATER",
+        "relationship": "partner",
+        "name": "Valor Water Analytics",
+        "details": "AclaraONE 水務分析解決方案與 Valor 合作，屬軟體分析合作。",
+        "evidence_url": "https://www.hubbell.com/aclara/en/solutions/software-utility",
+        "evidence_grade": "C",
+        "status_note": "待核對原始合約／個別專案文件；僅作研究線索，不視為已驗證合作"
+      },
+      {
+        "id": "HUBB-012",
+        "business_line": "TND",
+        "relationship": "competitor",
+        "name": "Eaton",
+        "details": "輸配電、變電站電氣設備產品重疊；依公開產品組合建立競爭映射，Hubbell 10-K 未逐名列示。",
+        "evidence_url": "https://hubbell.gcs-web.com/static-files/f0f4d726-ec23-4538-b4cb-1548afc205a7",
+        "evidence_grade": "B",
+        "status_note": "市場重疊，不代表已確認個別競標"
+      },
+      {
+        "id": "HUBB-013",
+        "business_line": "TND",
+        "relationship": "competitor",
+        "name": "Siemens Energy",
+        "details": "高壓電網與變電站設備產品重疊；依公開產品組合建立競爭映射，Hubbell 10-K 未逐名列示。",
+        "evidence_url": "https://hubbell.gcs-web.com/static-files/f0f4d726-ec23-4538-b4cb-1548afc205a7",
+        "evidence_grade": "B",
+        "status_note": "市場重疊，不代表已確認個別競標"
+      },
+      {
+        "id": "HUBB-014",
+        "business_line": "TND",
+        "relationship": "competitor",
+        "name": "Hitachi Energy",
+        "details": "高壓電網與變電站電氣產品重疊；依公開產品組合建立競爭映射，Hubbell 10-K 未逐名列示。",
+        "evidence_url": "https://hubbell.gcs-web.com/static-files/f0f4d726-ec23-4538-b4cb-1548afc205a7",
+        "evidence_grade": "B",
+        "status_note": "市場重疊，不代表已確認個別競標"
+      },
+      {
+        "id": "HUBB-015",
+        "business_line": "DISTRIBUTION",
+        "relationship": "competitor",
+        "name": "TE Connectivity",
+        "details": "電網連接器、接地及電力連接產品重疊；依公開產品組合建立競爭映射，Hubbell 10-K 未逐名列示。",
+        "evidence_url": "https://hubbell.gcs-web.com/static-files/f0f4d726-ec23-4538-b4cb-1548afc205a7",
+        "evidence_grade": "B",
+        "status_note": "市場重疊，不代表已確認個別競標"
+      },
+      {
+        "id": "HUBB-016",
+        "business_line": "DISTRIBUTION",
+        "relationship": "competitor",
+        "name": "nVent",
+        "details": "電氣接地、保護與連接產品重疊；依公開產品組合建立競爭映射，Hubbell 10-K 未逐名列示。",
+        "evidence_url": "https://hubbell.gcs-web.com/static-files/f0f4d726-ec23-4538-b4cb-1548afc205a7",
+        "evidence_grade": "B",
+        "status_note": "市場重疊，不代表已確認個別競標"
+      },
+      {
+        "id": "HUBB-017",
+        "business_line": "GRID_AUTO",
+        "relationship": "competitor",
+        "name": "Schneider Electric",
+        "details": "配電自動化、電網管理與保護控制產品重疊；依公開產品組合建立競爭映射，Hubbell 10-K 未逐名列示。",
+        "evidence_url": "https://hubbell.gcs-web.com/static-files/f0f4d726-ec23-4538-b4cb-1548afc205a7",
+        "evidence_grade": "B",
+        "status_note": "市場重疊，不代表已確認個別競標"
+      },
+      {
+        "id": "HUBB-018",
+        "business_line": "GRID_AUTO",
+        "relationship": "competitor",
+        "name": "GE Vernova",
+        "details": "電網保護、控制與變電站設備產品重疊；依公開產品組合建立競爭映射，Hubbell 10-K 未逐名列示。",
+        "evidence_url": "https://hubbell.gcs-web.com/static-files/f0f4d726-ec23-4538-b4cb-1548afc205a7",
+        "evidence_grade": "B",
+        "status_note": "市場重疊，不代表已確認個別競標"
+      },
+      {
+        "id": "HUBB-019",
+        "business_line": "AMI_ELEC",
+        "relationship": "competitor",
+        "name": "Itron",
+        "details": "智慧電表與 AMI 產品重疊；另存在通訊網路互通合作；依公開產品組合建立競爭映射，Hubbell 10-K 未逐名列示。",
+        "evidence_url": "https://hubbell.gcs-web.com/static-files/f0f4d726-ec23-4538-b4cb-1548afc205a7",
+        "evidence_grade": "B",
+        "status_note": "市場重疊，不代表已確認個別競標"
+      },
+      {
+        "id": "HUBB-020",
+        "business_line": "AMI_ELEC",
+        "relationship": "competitor",
+        "name": "Landis+Gyr",
+        "details": "智慧電表、AMI 與公用事業軟體產品重疊；依公開產品組合建立競爭映射，Hubbell 10-K 未逐名列示。",
+        "evidence_url": "https://hubbell.gcs-web.com/static-files/f0f4d726-ec23-4538-b4cb-1548afc205a7",
+        "evidence_grade": "B",
+        "status_note": "市場重疊，不代表已確認個別競標"
+      },
+      {
+        "id": "HUBB-021",
+        "business_line": "AMI_WATER",
+        "relationship": "competitor",
+        "name": "Xylem（Sensus）",
+        "details": "水務 AMI、計量與感測產品重疊；依公開產品組合建立競爭映射，Hubbell 10-K 未逐名列示。",
+        "evidence_url": "https://hubbell.gcs-web.com/static-files/f0f4d726-ec23-4538-b4cb-1548afc205a7",
+        "evidence_grade": "B",
+        "status_note": "市場重疊，不代表已確認個別競標"
+      },
+      {
+        "id": "HUBB-022",
+        "business_line": "AMI_WATER",
+        "relationship": "competitor",
+        "name": "Badger Meter",
+        "details": "水務計量、AMI 與漏水偵測產品重疊；依公開產品組合建立競爭映射，Hubbell 10-K 未逐名列示。",
+        "evidence_url": "https://hubbell.gcs-web.com/static-files/f0f4d726-ec23-4538-b4cb-1548afc205a7",
+        "evidence_grade": "B",
+        "status_note": "市場重疊，不代表已確認個別競標"
+      },
+      {
+        "id": "HUBB-023",
+        "business_line": "DC_POWER",
+        "relationship": "competitor",
+        "name": "Eaton",
+        "details": "資料中心電力管理及配電系統產品重疊；依公開產品組合建立競爭映射，Hubbell 10-K 未逐名列示。",
+        "evidence_url": "https://hubbell.gcs-web.com/static-files/f0f4d726-ec23-4538-b4cb-1548afc205a7",
+        "evidence_grade": "B",
+        "status_note": "市場重疊，不代表已確認個別競標"
+      },
+      {
+        "id": "HUBB-024",
+        "business_line": "DC_POWER",
+        "relationship": "competitor",
+        "name": "Vertiv",
+        "details": "資料中心模組化電力及基礎設施產品重疊；依公開產品組合建立競爭映射，Hubbell 10-K 未逐名列示。",
+        "evidence_url": "https://hubbell.gcs-web.com/static-files/f0f4d726-ec23-4538-b4cb-1548afc205a7",
+        "evidence_grade": "B",
+        "status_note": "市場重疊，不代表已確認個別競標"
+      },
+      {
+        "id": "HUBB-025",
+        "business_line": "DC_CONNECT",
+        "relationship": "competitor",
+        "name": "Legrand",
+        "details": "資料中心配電、連接及布線產品重疊；依公開產品組合建立競爭映射，Hubbell 10-K 未逐名列示。",
+        "evidence_url": "https://hubbell.gcs-web.com/static-files/f0f4d726-ec23-4538-b4cb-1548afc205a7",
+        "evidence_grade": "B",
+        "status_note": "市場重疊，不代表已確認個別競標"
+      },
+      {
+        "id": "HUBB-026",
+        "business_line": "WIRE",
+        "relationship": "competitor",
+        "name": "Legrand",
+        "details": "建築配線、電氣連接器及裝置產品重疊；依公開產品組合建立競爭映射，Hubbell 10-K 未逐名列示。",
+        "evidence_url": "https://hubbell.gcs-web.com/static-files/f0f4d726-ec23-4538-b4cb-1548afc205a7",
+        "evidence_grade": "B",
+        "status_note": "市場重疊，不代表已確認個別競標"
+      },
+      {
+        "id": "HUBB-027",
+        "business_line": "WIRE",
+        "relationship": "competitor",
+        "name": "ABB",
+        "details": "建築電氣與配電元件產品重疊；依公開產品組合建立競爭映射，Hubbell 10-K 未逐名列示。",
+        "evidence_url": "https://hubbell.gcs-web.com/static-files/f0f4d726-ec23-4538-b4cb-1548afc205a7",
+        "evidence_grade": "B",
+        "status_note": "市場重疊，不代表已確認個別競標"
+      },
+      {
+        "id": "HUBB-028",
+        "business_line": "INDUSTRIAL",
+        "relationship": "competitor",
+        "name": "Emerson",
+        "details": "工業防爆、惡劣環境電氣產品重疊；依公開產品組合建立競爭映射，Hubbell 10-K 未逐名列示。",
+        "evidence_url": "https://hubbell.gcs-web.com/static-files/f0f4d726-ec23-4538-b4cb-1548afc205a7",
+        "evidence_grade": "B",
+        "status_note": "市場重疊，不代表已確認個別競標"
+      },
+      {
+        "id": "HUBB-029",
+        "business_line": "RENEW",
+        "relationship": "competitor",
+        "name": "ABB",
+        "details": "再生能源電網接入與電力連接設備產品重疊；依公開產品組合建立競爭映射，Hubbell 10-K 未逐名列示。",
+        "evidence_url": "https://hubbell.gcs-web.com/static-files/f0f4d726-ec23-4538-b4cb-1548afc205a7",
+        "evidence_grade": "B",
+        "status_note": "市場重疊，不代表已確認個別競標"
+      },
+      {
+        "id": "HUBB-030",
+        "business_line": "AMI_ELEC",
+        "relationship": "customer",
+        "name": "Austin Utilities（Minnesota）",
+        "details": "Austin Utilities（明尼蘇達州）選用 Aclara RF 網路支援約 12,000 電表。",
+        "evidence_url": "https://www.nasdaq.com/press-release/austin-utilities-to-implement-a-single-advanced-metering-infrastructure-network-to",
+        "evidence_grade": "A",
+        "evidence_date": "2021-04-20",
+        "status_note": "歷史採用案例；非 2026 新訂單"
+      },
+      {
+        "id": "HUBB-031",
+        "business_line": "AMI_WATER",
+        "relationship": "customer",
+        "name": "Austin Utilities（Minnesota）",
+        "details": "同一 Austin Utilities 多能源 AMI 專案包含約 9,500 水表。",
+        "evidence_url": "https://www.nasdaq.com/press-release/austin-utilities-to-implement-a-single-advanced-metering-infrastructure-network-to",
+        "evidence_grade": "A",
+        "evidence_date": "2021-04-20",
+        "status_note": "歷史採用案例；非 2026 新訂單"
+      },
+      {
+        "id": "HUBB-032",
+        "business_line": "GRID_SW",
+        "relationship": "customer",
+        "name": "Austin Utilities（Minnesota）",
+        "details": "Austin Utilities 選用 Aclara RF 多能源通訊網路，同時管理電、水、燃氣；屬已確認 AMI 客戶。",
+        "evidence_url": "https://www.nasdaq.com/press-release/austin-utilities-to-implement-a-single-advanced-metering-infrastructure-network-to",
+        "evidence_grade": "A",
+        "evidence_date": "2021-04-20",
+        "status_note": "歷史採用案例；非 2026 新訂單"
+      },
+      {
+        "id": "HUBB-033",
+        "business_line": "TND",
+        "relationship": "customer",
+        "name": "Chugach Electric Association",
+        "details": "Hubbell 官方 Quartz Creek 輸電線案例：Chugach 採購 112 套 TowerPak 輸電線硬體套件；透過當地經銷商履約。",
+        "evidence_url": "https://blog.hubbell.com/en/hubbellpowersystems/transmission-kitting-keeps-project-on-track",
+        "evidence_grade": "A",
+        "evidence_date": "2018-08-09",
+        "status_note": "歷史官方案例；未證實 2026 年仍持續採購"
+      },
+      {
+        "id": "HUBB-034",
+        "business_line": "TND",
+        "relationship": "partner",
+        "name": "Alcan Electric and Engineering",
+        "details": "Quartz Creek 線路工程施工商；Hubbell TowerPak 案例之工程參與方，非直接採購客戶。",
+        "evidence_url": "https://blog.hubbell.com/en/hubbellpowersystems/transmission-kitting-keeps-project-on-track",
+        "evidence_grade": "A",
+        "evidence_date": "2018-08-09",
+        "status_note": "歷史官方案例；未證實 2026 年仍持續採購"
+      },
+      {
+        "id": "HUBB-035",
+        "business_line": "TND",
+        "relationship": "partner",
+        "name": "Dryden & LaRue",
+        "details": "Quartz Creek 線路工程設計公司；專案生態系合作，非已確認直接採購。",
+        "evidence_url": "https://blog.hubbell.com/en/hubbellpowersystems/transmission-kitting-keeps-project-on-track",
+        "evidence_grade": "A",
+        "evidence_date": "2018-08-09",
+        "status_note": "歷史官方案例；未證實 2026 年仍持續採購"
+      },
+      {
+        "id": "HUBB-036",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "name": "WESCO / Wesco International",
+        "details": "Hubbell 官方 Chugach 案例指明 WESCO 為 TowerPak 在阿拉斯加的當地供應／經銷商；屬下游通路。",
+        "evidence_url": "https://blog.hubbell.com/en/hubbellpowersystems/transmission-kitting-keeps-project-on-track",
+        "evidence_grade": "A",
+        "evidence_date": "2018-08-09",
+        "status_note": "歷史官方案例；未證實 2026 年仍持續採購"
+      },
+      {
+        "id": "HUBB-037",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "name": "Potelcom",
+        "details": "Hubbell 官方 Chugach 案例指明 Potelcom 為 TowerPak 在阿拉斯加的當地供應／經銷商；屬下游通路。",
+        "evidence_url": "https://blog.hubbell.com/en/hubbellpowersystems/transmission-kitting-keeps-project-on-track",
+        "evidence_grade": "A",
+        "evidence_date": "2018-08-09",
+        "status_note": "歷史官方案例；未證實 2026 年仍持續採購"
+      },
+      {
+        "id": "HUBB-038",
+        "business_line": "DISTRIBUTION",
+        "relationship": "customer",
+        "name": "Alliant Energy",
+        "details": "Hubbell 為 Alliant 客製中性線絕緣子吊架並量產，官方案例指明數千次安裝。",
+        "evidence_url": "https://blog.hubbell.com/en/hubbellpowersystems/a-redesigned-neutral-clevis",
+        "evidence_grade": "A",
+        "evidence_date": "2019-01-03",
+        "status_note": "歷史官方案例；未證實 2026 年仍持續採購"
+      },
+      {
+        "id": "HUBB-039",
+        "business_line": "DISTRIBUTION",
+        "relationship": "customer",
+        "name": "Oncor Electric Delivery",
+        "details": "Hubbell 官方風災應變案例證實向 Oncor 供應輸配電搶修物料並接獲風災訂單。",
+        "evidence_url": "https://blog.hubbell.com/en/hubbellpowersystems/hps-assists-oncor-in-restoring-power-to-more-than-340000-customers",
+        "evidence_grade": "A",
+        "evidence_date": "2019-07-18",
+        "status_note": "歷史官方案例；未證實 2026 年仍持續採購"
+      },
+      {
+        "id": "HUBB-040",
+        "business_line": "DISTRIBUTION",
+        "relationship": "customer",
+        "name": "Owen Electric Cooperative",
+        "details": "官方案例確認 Owen Electric 使用 Hubbell Versa-Tech 重合器；2011 年單一饋線安裝 21 台。",
+        "evidence_url": "https://blog.hubbell.com/en/hubbellpowersystems/how-to-solve-mystery-blink-problems",
+        "evidence_grade": "A",
+        "evidence_date": "2017-11-29",
+        "status_note": "歷史官方案例；未證實 2026 年仍持續採購"
+      },
+      {
+        "id": "HUBB-041",
+        "business_line": "GRID_AUTO",
+        "relationship": "customer",
+        "name": "DORELCO（Don Orestes Romualdez Electric Cooperative）",
+        "details": "菲律賓電力合作社於 2016 年導入 Hubbell Versa-Tech II 單相重合器。",
+        "evidence_url": "https://blog.hubbell.com/en/hubbellpowersystems/reliability-main-electrical-feeders",
+        "evidence_grade": "A",
+        "evidence_date": "2018-02-06",
+        "status_note": "歷史官方案例；未證實 2026 年仍持續採購"
+      },
+      {
+        "id": "HUBB-042",
+        "business_line": "GRID_AUTO",
+        "relationship": "customer",
+        "name": "NV Energy",
+        "details": "Hubbell Aclara 官方案例確認採用中壓線路感測器與 Predictive Grid 分析平台。",
+        "evidence_url": "https://blog.hubbell.com/en/aclara/can-smart-grid-sensors-solve-todays-distribution-grid-monitoring-challenges-2",
+        "evidence_grade": "A",
+        "evidence_date": "2022-11-03",
+        "status_note": "歷史官方案例；未證實 2026 年仍持續採購"
+      },
+      {
+        "id": "HUBB-043",
+        "business_line": "GRID_AUTO",
+        "relationship": "customer",
+        "name": "UK Power Networks",
+        "details": "Hubbell Aclara 官方案例確認導入線路感測器與故障定位分析平台。",
+        "evidence_url": "https://blog.hubbell.com/en/aclara/why-transient-faults-matter-and-how-to-minimize-them",
+        "evidence_grade": "A",
+        "evidence_date": "2018-10-01",
+        "status_note": "歷史官方案例；未證實 2026 年仍持續採購"
+      },
+      {
+        "id": "HUBB-044",
+        "business_line": "GRID_SW",
+        "relationship": "customer",
+        "name": "Platte-Clay Electric Cooperative",
+        "details": "Aclara 官方說明使用其電表數據與專利申請中故障定位演算法。",
+        "evidence_url": "https://blog.hubbell.com/en/aclara/how-utilities-can-leverage-data-analytics-in-a-pandemic-world",
+        "evidence_grade": "A",
+        "evidence_date": "2020-07-01",
+        "status_note": "歷史官方案例；未證實 2026 年仍持續採購"
+      },
+      {
+        "id": "HUBB-045",
+        "business_line": "AMI_ELEC",
+        "relationship": "customer",
+        "name": "Runestone Electric Association",
+        "details": "2018 年官方案例確認採購 Aclara TWACS PLC AMI，涵蓋約 18,000 電表。",
+        "evidence_url": "https://blog.hubbell.com/en/aclara/select-the-right-adanced-metering-infrastructure-technology",
+        "evidence_grade": "A",
+        "evidence_date": "2018-10-11",
+        "status_note": "歷史官方案例；未證實 2026 年仍持續採購"
+      },
+      {
+        "id": "HUBB-046",
+        "business_line": "TND",
+        "relationship": "customer",
+        "name": "Westar Energy（現 Evergy 集團）",
+        "details": "Greenjacket 變電站野生動物防護產品於 Westar 變電站部署；屬歷史直接採用。",
+        "evidence_url": "https://blog.hubbell.com/en/template/greenjacket-drastically-cuts-customer-outage-minutes",
+        "evidence_grade": "A",
+        "evidence_date": "2019-05-23",
+        "status_note": "歷史官方案例；未證實 2026 年仍持續採購"
+      },
+      {
+        "id": "HUBB-047",
+        "business_line": "TND",
+        "relationship": "customer",
+        "name": "Alaska Electric Light & Power（AEL&P）",
+        "details": "Hubbell Greenjacket 於 Lemon Creek 變電站野生動物防護專案提供客製方案。",
+        "evidence_url": "https://blog.hubbell.com/en/hubbellpowersystems/protecting-americas-birds-with-greenjacket",
+        "evidence_grade": "A",
+        "evidence_date": "2020-08-25",
+        "status_note": "歷史官方案例；未證實 2026 年仍持續採購"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "supplier",
+      "partner",
+      "competitor",
+      "beneficiary"
+    ],
+    "research_notes": {
+      "source_policy": "A=官方年報、官方具名客戶／合作案例；B=同業產品重疊、非公司官方逐名競爭確認。",
+      "supply_chain_policy": "上游原料確認包含銅、鋼、鋁、塑料及電子元件，但缺乏具名直接供應商公開證據，因此不填推測供應商。",
+      "taiwan_supply_chain": "無具名台灣直接上游供應商可由現有官方證據確認。",
+      "important_updates": [
+        "2026-06-09 完成收購 NSI Industries；為集團內部資產，不列外部 partner／supplier。",
+        "2025-10-01 完成收購 DMC Power；為集團內部資產，不列外部 partner／supplier。",
+        "2026 年第三季資料中心銷售強勁，但沒有公開具名超大規模雲端客戶；不推定微軟、亞馬遜或 Google 已採購。"
+      ],
+      "evidence_sources": [
+        {
+          "label": "10k",
+          "url": "https://www.sec.gov/Archives/edgar/data/48898/000162828026007500/hubb-20251231.htm"
+        },
+        {
+          "label": "q3",
+          "url": "https://www.sec.gov/Archives/edgar/data/48898/000162828026067729/hubb-20260930.htm"
+        },
+        {
+          "label": "meralco",
+          "url": "https://www.hubbell.com/aclara/en/news/hubbell-partners-with-meralco-on-smart-meter-supply-contract"
+        },
+        {
+          "label": "santa",
+          "url": "https://www.hubbell.com/hubbellpowersystems/en/news/case-study-city-of-santa-barbara-improves-efficiency-and-accelerates-customer-empowerment-with-a-comprehensive-ami-water-solution"
+        },
+        {
+          "label": "sugar",
+          "url": "https://www.hubbell.com/aclara/en/news/the-city-of-sugar-land-texas-builds-a-smarter-water-future-with-aclara-am"
+        },
+        {
+          "label": "wire",
+          "url": "https://www.hubbell.com/aclara/en/news/hubbell-launches-modular-scalable-software-that-transforms-utility"
+        },
+        {
+          "label": "dothan",
+          "url": "https://www.prnewswire.com/news-releases/water-and-electric-combination-utility-in-the-city-of-dothan-alabama-selects-aclaras-advanced-metering-infrastructure-solution-301072669.html"
+        },
+        {
+          "label": "austin",
+          "url": "https://www.prnewswire.com/news-releases/austin-water-selects-aclara-to-supply-fully-integrated-advanced-metering-infrastructure-program-for-landmark-water-project-301081910.html"
+        },
+        {
+          "label": "elm",
+          "url": "https://blog.hubbell.com/en/aclara/preventing-non-revenue-water-loss-how-ami-and-leak-detection-can-help"
+        },
+        {
+          "label": "aclara",
+          "url": "https://www.hubbell.com/aclara/en/solutions/software-utility"
+        },
+        {
+          "label": "concord",
+          "url": "https://hubbellcdn.com/CaseStudies/ACL-ACL-WP-EN-02316.pdf"
+        },
+        {
+          "label": "nsi",
+          "url": "https://www.sec.gov/Archives/edgar/data/48898/000162828026067729/hubb-20260930.htm"
+        },
+        {
+          "label": "data",
+          "url": "https://www.hubbell.com/hubbell/en/markets/data-center"
+        },
+        {
+          "label": "pcx",
+          "url": "https://www.pcxcorp.com/about-us/hubbell"
+        },
+        {
+          "label": "competitor",
+          "url": "https://hubbell.gcs-web.com/static-files/f0f4d726-ec23-4538-b4cb-1548afc205a7"
+        },
+        {
+          "label": "twacs",
+          "url": "https://www.hubbell.com/aclara/en/products/twacs-plc/p/12662475"
+        },
+        {
+          "label": "austin_utilities_mn",
+          "url": "https://www.nasdaq.com/press-release/austin-utilities-to-implement-a-single-advanced-metering-infrastructure-network-to"
+        }
+      ],
+      "known_limits": [
+        "資料中心已有 PCX hyperscaler 客戶之公司級證據，但未公開客戶名稱，故不填 Microsoft、AWS、Google、Meta 等猜測。",
+        "台灣具名直接供應商仍未找到可驗證的公開採購證據。",
+        "18 個競爭者是 B 級市場重疊映射，並非個別競標或交易證據。",
+        "歷史部署案例與現行合約分別標記；不得將 2011–2022 年案例寫成 2026 新訂單。"
+      ],
+      "coverage_expansion_2026_11_12": {
+        "evidence_logic": "只以 Hubbell 官方具名採購、採用或實際部署案例新增 customer；工程參與方為 partner；經銷商為下游客戶／通路。",
+        "transmission_and_distribution_confirmed": "Chugach、Alliant、Oncor、Owen Electric、DORELCO、Westar、AEL&P 具名實際採用；資料中心大型客戶名稱未公開。",
+        "data_center_verified_anonymous": {
+          "relationship": "customer_anonymous_disclosed",
+          "business_line": "DC_POWER",
+          "description": "Hubbell 2024 Investor Day 指 PCX 有大型 hyperscale 客戶之模組化電力系統 RFQ，且 2025 管理層提及具體 hyperscale 客戶產品重新設計與訂單；未揭露公司名稱，不列入具名 customer 節點。",
+          "evidence_url": "https://hubbell.gcs-web.com/static-files/6c9fb452-07f6-4405-8bf9-fd956d9dc270"
+        },
+        "competitor_quality": "18 個競爭者節點為 B 級市場重疊，不應視為 A 級官方具名交易。",
+        "upstream_supply": "2026 年 10 月媒體報導 Hubbell 某代工廠因零組件供應短缺導致智慧電表供貨延遲，但未具名代工廠／供應商；不得填入虛構名稱。",
+        "historical_disclaimer": "舊案例不推論仍有現行訂單。"
+      },
+      "quality_control": {
+        "original_fields_preserved": true,
+        "source_commit": "da93c81d",
+        "source_blob_sha": "f505c5d2411e502f210911bbdc5e850c0e8d9dc8",
+        "duplicate_id_count": 0,
+        "all_nodes_have_source": true,
+        "validated_by": "local_json_parser"
+      }
+    }
   }
 }

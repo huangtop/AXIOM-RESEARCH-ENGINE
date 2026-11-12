@@ -1,43 +1,92 @@
 {
   "schema_version": "axiom-company-profile-display.zh-tw.v2.4",
-  "generation_mode": "reuse_existing_display_names_zh_tw",
+  "generation_mode": "manual_evidence_locked_zh_tw",
   "company_id": "company:US-CIK0001280452",
   "symbol": "MPWR",
   "canonical_schema_version": "axiom-company-profile.v2.3",
   "display": {
-    "locale": "zh-TW",
-    "symbol": "MPWR",
     "as_of": "2026-02-27",
     "company_summary": {
-      "one_line_business": "Business General Monolithic Power Systems, Inc. is a fabless global company that provides high-performance, semiconductor-based power electronics solutions."
+      "one_line_business": "Monolithic Power Systems（MPS）是全球無晶圓廠電源管理半導體公司，設計高整合度、高效率的類比及混合訊號電源 IC、功率級與電源模組，應用於 AI 資料中心、伺服器、通訊、汽車、工業及消費性電子。"
     },
-    "markets": [],
+    "markets": [
+      "AI 資料中心與企業資料基礎設施",
+      "儲存與運算（伺服器、PC、工作站）",
+      "通訊設備、網路交換器與光模組",
+      "汽車電子與 48V 電力架構",
+      "工業自動化與機器人",
+      "消費性電子與家電"
+    ],
     "product_stack": [
-      "Corporate Controller",
-      "basic building blocks of electronic systems",
-      "Direct Current (“DC”) to DC",
-      "Alternating Current (“AC”) to DC",
-      "driver metal-oxide-semiconductor field-effect transistor",
-      "current limit switch"
+      "多相數位電源控制器與電壓調節模組（VRM）",
+      "DrMOS／智慧功率級（Smart Power Stage）",
+      "高密度整合式 DC/DC 電源模組",
+      "48V 資料中心電源轉換模組",
+      "降壓／升壓／升降壓 DC/DC 轉換器",
+      "AC/DC 電源控制器與離線轉換解決方案",
+      "電源管理 IC（PMIC）、負載開關與電子保險絲",
+      "MOSFET 閘極驅動器與馬達驅動 IC",
+      "電流／磁性位置感測器",
+      "車規電源管理、ADAS 與區域控制供電解決方案",
+      "LED 驅動與電池充電管理產品"
     ],
     "market_products": {},
-    "core_technologies": [],
+    "core_technologies": [
+      "高整合度類比與混合訊號 IC 設計",
+      "數位多相控制與高瞬態負載響應",
+      "高效率功率轉換與高功率密度封裝",
+      "48V 至低壓大電流電源架構",
+      "PMBus／I²C 電源遙測與管理",
+      "專有半導體製程與封裝設計",
+      "車規電源保護、馬達控制與電流感測"
+    ],
     "manufacturing": {
-      "model": [],
-      "locations": [
-        "insufficient inventory levels"
+      "model": [
+        "無晶圓廠（fabless）：自主研發設計，委託第三方晶圓代工及封裝測試",
+        "以專有製程技術與代工廠合作，透過外包製造與經銷商通路交付產品"
       ],
-      "critical_assets": []
+      "locations": [
+        "晶圓代工：台灣、中國、南韓及新加坡（2025 年 10-K 揭露的所在地；多數合作廠未具名）",
+        "封裝與測試：台灣、中國、南韓、馬來西亞及新加坡（依工序及據點而異）",
+        "GlobalFoundries 新加坡 300mm 晶圓廠：2026 年公告導入專有製程，預計 2027 年開始量產"
+      ],
+      "critical_assets": [
+        "自主類比／混合訊號電源管理 IC 設計及專有製程技術",
+        "多相控制器、智慧功率級與高密度整合模組產品組合",
+        "晶圓代工、封裝測試與產品可靠度驗證供應網路"
+      ]
     },
     "customer_types": [
-      "distributors"
+      "第三方半導體經銷商及加值代理商",
+      "AI 伺服器、GPU／ASIC 加速器與雲端資料中心設備設計商",
+      "伺服器、PC、儲存系統及顯示卡製造商",
+      "通訊設備、資料中心交換器及光模組製造商",
+      "汽車電子 OEM／Tier 1 系統供應商",
+      "工業自動化、馬達控制與電源設備製造商",
+      "消費性電子及家電設備製造商"
     ],
-    "ai_exposure": null,
-    "competitive_advantages": [],
+    "ai_exposure": {
+      "type": "manual_evidence_review",
+      "summary": "MPS 直接供應 AI 加速器、GPU／ASIC、伺服器及高速網通設備所需的高電流、高功率密度電源管理晶片與模組；AI 算力建置提高多相供電、48V 電源架構及電源遙測需求。這是硬體電源供應鏈的直接曝險，不代表 MPS 提供 AI 模型或雲端運算服務。"
+    },
+    "competitive_advantages": [
+      "高整合度與高功率密度，可縮小電源設計尺寸並降低能耗",
+      "多相數位控制器、智慧功率級與電源模組的完整產品組合",
+      "專有製程、封裝及應用工程能力，支援高效能電源設計",
+      "AI 伺服器、通訊、汽車及工業市場的多元終端應用"
+    ],
     "demand_drivers": [
-      "人工智慧（AI）"
+      "AI 加速器及資料中心算力擴張",
+      "GPU／ASIC 功耗與電流密度提升",
+      "48V 與高壓直流資料中心電源架構演進",
+      "800G／1.6T 光模組及高速交換器需求",
+      "汽車 48V、ADAS 與區域控制架構滲透",
+      "工業自動化、機器人與高效率電源需求"
     ],
-    "strategy_changes": [],
+    "strategy_changes": [
+      "2026 年 9 月與 GlobalFoundries 公告新加坡 300mm 晶圓製造合作，預計 2027 年開始量產",
+      "持續擴充 AI 資料中心高功率密度電源模組及 48V 解決方案"
+    ],
     "financial_snapshot": {
       "fiscal_year": 2025,
       "revenue": null,
@@ -49,134 +98,227 @@
   },
   "value_provenance": {
     "company_summary.one_line_business": {
-      "value": "Business General Monolithic Power Systems, Inc. is a fabless global company that provides high-performance, semiconductor-based power electronics solutions.",
+      "value": "Monolithic Power Systems, Inc. is a fabless semiconductor company designing highly integrated, energy-efficient analog and mixed-signal power-management ICs, power stages and modules for AI data centers, computing, communications, automotive, industrial and consumer electronics.",
       "evidence": null
     },
-    "markets": [],
-    "product_stack": [
+    "markets": [
       {
-        "value": "solutions are typically smaller in size",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001437749-26-006113",
-          "form": "10-K",
-          "accession_number": "0001437749-26-006113",
-          "filing_date": "2026-02-27",
-          "section_type": "item_1_business",
-          "quote": "We believe that we are competitive in the markets in which we sell because our ICs and solutions are typically smaller in size, are highly integrated with lower energy consumption, and achieve higher performance specifications than most of our competitors.",
-          "evidence_start_character": 19473,
-          "evidence_end_character": 19729,
-          "document_start_character": 63761,
-          "document_end_character": 64017,
-          "matched_start_character": 19560,
-          "matched_end_character": 19599,
-          "text_sha256": "008067e89a76a397dd23a55e47fff6b841f682660afae02d257baf394d4d899e"
-        }
+        "value": "AI data centers and enterprise data infrastructure",
+        "evidence": null
       },
       {
-        "value": "unconscious bias training to promote an environment of inclusivity",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001437749-26-006113",
-          "form": "10-K",
-          "accession_number": "0001437749-26-006113",
-          "filing_date": "2026-02-27",
-          "section_type": "item_1_business",
-          "quote": "We provide unconscious bias training to promote an environment of inclusivity.",
-          "evidence_start_character": 23641,
-          "evidence_end_character": 23719,
-          "document_start_character": 67929,
-          "document_end_character": 68007,
-          "matched_start_character": 23652,
-          "matched_end_character": 23718,
-          "text_sha256": "008067e89a76a397dd23a55e47fff6b841f682660afae02d257baf394d4d899e"
-        }
+        "value": "Storage and computing (servers, PCs, workstations)",
+        "evidence": null
+      },
+      {
+        "value": "Communications, network switches and optical modules",
+        "evidence": null
+      },
+      {
+        "value": "Automotive electronics and 48V power architectures",
+        "evidence": null
+      },
+      {
+        "value": "Industrial automation and robotics",
+        "evidence": null
+      },
+      {
+        "value": "Consumer electronics and appliances",
+        "evidence": null
+      }
+    ],
+    "product_stack": [
+      {
+        "value": "Multiphase digital power controllers and voltage regulator modules",
+        "evidence": null
+      },
+      {
+        "value": "DrMOS and smart power stages",
+        "evidence": null
+      },
+      {
+        "value": "High-density integrated DC/DC power modules",
+        "evidence": null
+      },
+      {
+        "value": "48V data-center power conversion modules",
+        "evidence": null
+      },
+      {
+        "value": "Buck, boost and buck-boost DC/DC converters",
+        "evidence": null
+      },
+      {
+        "value": "AC/DC power controllers and offline power conversion",
+        "evidence": null
+      },
+      {
+        "value": "Power-management ICs, load switches and e-fuses",
+        "evidence": null
+      },
+      {
+        "value": "MOSFET gate drivers and motor-driver ICs",
+        "evidence": null
+      },
+      {
+        "value": "Current and magnetic position sensors",
+        "evidence": null
+      },
+      {
+        "value": "Automotive power management, ADAS and zonal power solutions",
+        "evidence": null
+      },
+      {
+        "value": "LED drivers and battery charging management",
+        "evidence": null
       }
     ],
     "market_products": {},
-    "core_technologies": [],
+    "core_technologies": [
+      {
+        "value": "Highly integrated analog and mixed-signal IC design",
+        "evidence": null
+      },
+      {
+        "value": "Digital multiphase control and fast transient response",
+        "evidence": null
+      },
+      {
+        "value": "High-efficiency conversion and power-dense packaging",
+        "evidence": null
+      },
+      {
+        "value": "48V-to-low-voltage high-current power architectures",
+        "evidence": null
+      },
+      {
+        "value": "PMBus/I2C power telemetry and management",
+        "evidence": null
+      },
+      {
+        "value": "Proprietary semiconductor processes and packaging",
+        "evidence": null
+      },
+      {
+        "value": "Automotive power protection, motor control and current sensing",
+        "evidence": null
+      }
+    ],
     "manufacturing": {
-      "model": [],
-      "locations": [
+      "model": [
         {
-          "value": "insufficient inventory levels",
-          "evidence": {
-            "business_evidence_id": "business-evidence:SEC-0001437749-26-006113",
-            "form": "10-K",
-            "accession_number": "0001437749-26-006113",
-            "filing_date": "2026-02-27",
-            "section_type": "item_1_business",
-            "quote": "In addition, in response to market conditions, we may slow the rate of manufacturing our products, which could result in insufficient inventory levels and reduced sales if we underestimate the demand for our products.",
-            "evidence_start_character": 9991,
-            "evidence_end_character": 10208,
-            "document_start_character": 54279,
-            "document_end_character": 54496,
-            "matched_start_character": 10112,
-            "matched_end_character": 10141,
-            "text_sha256": "008067e89a76a397dd23a55e47fff6b841f682660afae02d257baf394d4d899e"
-          }
+          "value": "fabless; third-party wafer foundries and assembly/test",
+          "evidence": null
         }
       ],
-      "critical_assets": []
+      "locations": [
+        {
+          "value": "Taiwan, China, South Korea, Singapore, Malaysia; specific manufacturing stages vary",
+          "evidence": null
+        }
+      ],
+      "critical_assets": [
+        {
+          "value": "proprietary analog and mixed-signal power-management IC designs and manufacturing processes",
+          "evidence": null
+        }
+      ]
     },
     "customer_types": [
       {
-        "value": "distributors",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001437749-26-006113",
-          "form": "10-K",
-          "accession_number": "0001437749-26-006113",
-          "filing_date": "2026-02-27",
-          "section_type": "item_1_business",
-          "quote": "Once we secure our product positioning through our technical sales and applications engineering efforts, we then sell our products to end customers primarily through third-party distributors and value-added resellers.",
-          "evidence_start_character": 7275,
-          "evidence_end_character": 7492,
-          "document_start_character": 51563,
-          "document_end_character": 51780,
-          "matched_start_character": 7453,
-          "matched_end_character": 7465,
-          "text_sha256": "008067e89a76a397dd23a55e47fff6b841f682660afae02d257baf394d4d899e"
-        }
+        "value": "Third-party distributors and value-added resellers",
+        "evidence": null
+      },
+      {
+        "value": "AI server, GPU/ASIC accelerator and cloud data-center equipment designers",
+        "evidence": null
+      },
+      {
+        "value": "Server, PC, storage and graphics-card manufacturers",
+        "evidence": null
+      },
+      {
+        "value": "Communications equipment, switch and optical-module manufacturers",
+        "evidence": null
+      },
+      {
+        "value": "Automotive OEMs and Tier-1 electronics suppliers",
+        "evidence": null
+      },
+      {
+        "value": "Industrial automation, motor-control and power-equipment manufacturers",
+        "evidence": null
+      },
+      {
+        "value": "Consumer-electronics and appliance manufacturers",
+        "evidence": null
       }
     ],
-    "competitive_advantages": [],
+    "ai_exposure": {
+      "value": {
+        "type": "manual_evidence_review",
+        "summary": "MPS directly supplies power-management ICs and modules for AI accelerators, GPU/ASIC servers and high-speed networking equipment. AI infrastructure growth increases demand for high-current multiphase regulation, 48V architectures and power telemetry; MPS is a hardware power-supply-chain participant, not an AI model or cloud-compute provider."
+      },
+      "evidence": null
+    },
+    "competitive_advantages": [
+      {
+        "value": "High integration and power density, reducing solution footprint and power loss",
+        "evidence": null
+      },
+      {
+        "value": "Broad portfolio of multiphase controllers, smart power stages and power modules",
+        "evidence": null
+      },
+      {
+        "value": "Proprietary process, packaging and applications engineering",
+        "evidence": null
+      },
+      {
+        "value": "Diversified end markets spanning AI, communications, automotive and industrial",
+        "evidence": null
+      }
+    ],
     "demand_drivers": [
       {
-        "value": "AI",
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001437749-26-006113",
-          "form": "10-K",
-          "accession_number": "0001437749-26-006113",
-          "filing_date": "2026-02-27",
-          "section_type": "item_1_business",
-          "quote": "Cloud-based and on-premises CPU servers and workstations, and artificial intelligence (“AI”) systems",
-          "evidence_start_character": 3860,
-          "evidence_end_character": 3960,
-          "document_start_character": 48148,
-          "document_end_character": 48248,
-          "matched_start_character": 3948,
-          "matched_end_character": 3950,
-          "text_sha256": "008067e89a76a397dd23a55e47fff6b841f682660afae02d257baf394d4d899e"
-        }
+        "value": "AI accelerator and data-center infrastructure growth",
+        "evidence": null
+      },
+      {
+        "value": "Increasing GPU/ASIC power density",
+        "evidence": null
+      },
+      {
+        "value": "48V and high-voltage DC data-center power architectures",
+        "evidence": null
+      },
+      {
+        "value": "800G/1.6T optical modules and high-speed switching",
+        "evidence": null
+      },
+      {
+        "value": "Automotive 48V, ADAS and zonal architectures",
+        "evidence": null
+      },
+      {
+        "value": "Industrial automation, robotics and energy efficiency",
+        "evidence": null
       }
     ],
-    "strategy_changes": [],
+    "strategy_changes": [
+      {
+        "value": "September 2026 GlobalFoundries Singapore 300mm manufacturing agreement, with production expected in 2027",
+        "evidence": null
+      },
+      {
+        "value": "Expansion of AI data-center high-density modules and 48V solutions",
+        "evidence": null
+      }
+    ],
     "financial_snapshot": {
       "fiscal_year": {
         "value": 2025,
-        "evidence": {
-          "business_evidence_id": "business-evidence:SEC-0001437749-26-006113",
-          "form": "10-K",
-          "accession_number": "0001437749-26-006113",
-          "filing_date": "2026-02-27",
-          "section_type": "item_1_business",
-          "quote": "Storage and computing was our largest end market in 2025, closely followed by enterprise data.",
-          "evidence_start_character": 3391,
-          "evidence_end_character": 3485,
-          "document_start_character": 47679,
-          "document_end_character": 47773,
-          "matched_start_character": 3443,
-          "matched_end_character": 3447,
-          "text_sha256": "008067e89a76a397dd23a55e47fff6b841f682660afae02d257baf394d4d899e"
-        }
+        "evidence": null
       },
       "revenue_mix": {},
       "customer_concentration": {}
@@ -194,55 +336,1661 @@
     }
   ],
   "translation_engine": {
-    "provider": "openai",
-    "model": "gpt-4.1-mini",
-    "mode": "company_profile_translation_only",
-    "result_source": "API_LOCKED",
-    "validation": "exact_json_shape_and_array_cardinality",
+    "provider": "manual",
+    "model": null,
+    "mode": "human_reviewed_company_profile_translation",
+    "result_source": "MANUAL_LOCKED",
+    "validation": "manual_review_and_read_back",
     "canonical_handoff": "read_back_verified"
   },
   "translation_source": {
-    "company_summary": "Business General Monolithic Power Systems, Inc. is a fabless global company that provides high-performance, semiconductor-based power electronics solutions.",
+    "company_summary": "Monolithic Power Systems, Inc. is a fabless semiconductor company designing highly integrated, energy-efficient analog and mixed-signal power-management ICs, power stages and modules for AI data centers, computing, communications, automotive, industrial and consumer electronics.",
     "product_stack": [
-      "Corporate Controller",
-      "basic building blocks of electronic systems",
-      "Direct Current (“DC”) to DC",
-      "Alternating Current (“AC”) to DC",
-      "driver metal-oxide-semiconductor field-effect transistor",
-      "current limit switch"
+      "Multiphase digital power controllers and voltage regulator modules",
+      "DrMOS and smart power stages",
+      "High-density integrated DC/DC power modules",
+      "48V data-center power conversion modules",
+      "Buck, boost and buck-boost DC/DC converters",
+      "AC/DC power controllers and offline power conversion",
+      "Power-management ICs, load switches and e-fuses",
+      "MOSFET gate drivers and motor-driver ICs",
+      "Current and magnetic position sensors",
+      "Automotive power management, ADAS and zonal power solutions",
+      "LED drivers and battery charging management"
     ],
     "market_products": {},
-    "markets": [],
+    "markets": [
+      "AI data centers and enterprise data infrastructure",
+      "Storage and computing (servers, PCs, workstations)",
+      "Communications, network switches and optical modules",
+      "Automotive electronics and 48V power architectures",
+      "Industrial automation and robotics",
+      "Consumer electronics and appliances"
+    ],
     "customer_types": [
-      "distributors"
+      "Third-party distributors and value-added resellers",
+      "AI server, GPU/ASIC accelerator and cloud data-center equipment designers",
+      "Server, PC, storage and graphics-card manufacturers",
+      "Communications equipment, switch and optical-module manufacturers",
+      "Automotive OEMs and Tier-1 electronics suppliers",
+      "Industrial automation, motor-control and power-equipment manufacturers",
+      "Consumer-electronics and appliance manufacturers"
     ],
-    "core_technologies": [],
-    "ai_exposure": null,
+    "core_technologies": [
+      "Highly integrated analog and mixed-signal IC design",
+      "Digital multiphase control and fast transient response",
+      "High-efficiency conversion and power-dense packaging",
+      "48V-to-low-voltage high-current power architectures",
+      "PMBus/I2C power telemetry and management",
+      "Proprietary semiconductor processes and packaging",
+      "Automotive power protection, motor control and current sensing"
+    ],
+    "ai_exposure": {
+      "type": "manual_evidence_review",
+      "summary": "MPS directly supplies power-management ICs and modules for AI accelerators, GPU/ASIC servers and high-speed networking equipment. AI infrastructure growth increases demand for high-current multiphase regulation, 48V architectures and power telemetry; MPS is a hardware power-supply-chain participant, not an AI model or cloud-compute provider."
+    },
     "demand_drivers": [
-      "AI"
+      "AI accelerator and data-center infrastructure growth",
+      "Increasing GPU/ASIC power density",
+      "48V and high-voltage DC data-center power architectures",
+      "800G/1.6T optical modules and high-speed switching",
+      "Automotive 48V, ADAS and zonal architectures",
+      "Industrial automation, robotics and energy efficiency"
     ],
-    "strategy_changes": []
+    "strategy_changes": [
+      "September 2026 GlobalFoundries Singapore 300mm manufacturing agreement, with production expected in 2027",
+      "Expansion of AI data-center high-density modules and 48V solutions"
+    ]
   },
   "translation_zh_tw": {
-    "company_summary": "Monolithic Power Systems, Inc. 是一家無晶圓廠全球公司，提供高效能、半導體為基礎的電源電子解決方案。",
+    "company_summary": "Monolithic Power Systems（MPS）是全球無晶圓廠電源管理半導體公司，設計高整合度、高效率的類比及混合訊號電源 IC、功率級與電源模組，應用於 AI 資料中心、伺服器、通訊、汽車、工業及消費性電子。",
     "product_stack": [
-      "企業控制器",
-      "電子系統的基本元件",
-      "直流（“DC”）到直流",
-      "交流（“AC”）到直流",
-      "驅動金屬氧化物半導體場效應電晶體",
-      "電流限制開關"
+      "多相數位電源控制器與電壓調節模組（VRM）",
+      "DrMOS／智慧功率級（Smart Power Stage）",
+      "高密度整合式 DC/DC 電源模組",
+      "48V 資料中心電源轉換模組",
+      "降壓／升壓／升降壓 DC/DC 轉換器",
+      "AC/DC 電源控制器與離線轉換解決方案",
+      "電源管理 IC（PMIC）、負載開關與電子保險絲",
+      "MOSFET 閘極驅動器與馬達驅動 IC",
+      "電流／磁性位置感測器",
+      "車規電源管理、ADAS 與區域控制供電解決方案",
+      "LED 驅動與電池充電管理產品"
     ],
     "market_products": {},
-    "markets": [],
+    "markets": [
+      "AI 資料中心與企業資料基礎設施",
+      "儲存與運算（伺服器、PC、工作站）",
+      "通訊設備、網路交換器與光模組",
+      "汽車電子與 48V 電力架構",
+      "工業自動化與機器人",
+      "消費性電子與家電"
+    ],
     "customer_types": [
-      "經銷商"
+      "第三方半導體經銷商及加值代理商",
+      "AI 伺服器、GPU／ASIC 加速器與雲端資料中心設備設計商",
+      "伺服器、PC、儲存系統及顯示卡製造商",
+      "通訊設備、資料中心交換器及光模組製造商",
+      "汽車電子 OEM／Tier 1 系統供應商",
+      "工業自動化、馬達控制與電源設備製造商",
+      "消費性電子及家電設備製造商"
     ],
-    "core_technologies": [],
-    "ai_exposure": null,
+    "core_technologies": [
+      "高整合度類比與混合訊號 IC 設計",
+      "數位多相控制與高瞬態負載響應",
+      "高效率功率轉換與高功率密度封裝",
+      "48V 至低壓大電流電源架構",
+      "PMBus／I²C 電源遙測與管理",
+      "專有半導體製程與封裝設計",
+      "車規電源保護、馬達控制與電流感測"
+    ],
+    "ai_exposure": {
+      "type": "manual_evidence_review",
+      "summary": "MPS 直接供應 AI 加速器、GPU／ASIC、伺服器及高速網通設備所需的高電流、高功率密度電源管理晶片與模組；AI 算力建置提高多相供電、48V 電源架構及電源遙測需求。這是硬體電源供應鏈的直接曝險，不代表 MPS 提供 AI 模型或雲端運算服務。"
+    },
     "demand_drivers": [
-      "AI"
+      "AI 加速器及資料中心算力擴張",
+      "GPU／ASIC 功耗與電流密度提升",
+      "48V 與高壓直流資料中心電源架構演進",
+      "800G／1.6T 光模組及高速交換器需求",
+      "汽車 48V、ADAS 與區域控制架構滲透",
+      "工業自動化、機器人與高效率電源需求"
     ],
-    "strategy_changes": []
+    "strategy_changes": [
+      "2026 年 9 月與 GlobalFoundries 公告新加坡 300mm 晶圓製造合作，預計 2027 年開始量產",
+      "持續擴充 AI 資料中心高功率密度電源模組及 48V 解決方案"
+    ]
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-11",
+    "company": "Monolithic Power Systems, Inc.",
+    "symbol": "MPWR",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "MPWR／MPS：AI伺服器、48V與800V電源、功率半導體、汽車電子及台灣供應鏈深度研究",
+      "description": "以2025年10-K、2026年第三季公告、GlobalFoundries製造合作與官方產品資料，拆解MPS多相供電、資料中心、光通訊、汽車48V、工業與無晶圓廠供應鏈，區分已確認合作、產品適配及推估受惠。"
+    },
+    "business_lines": [
+      {
+        "id": "AI_ACCEL",
+        "name": "AI GPU／ASIC／OAM 加速器核心供電"
+      },
+      {
+        "id": "AI_VRM",
+        "name": "多相數位控制器／DrMOS／智慧功率級"
+      },
+      {
+        "id": "AI_MODULE",
+        "name": "高密度整合電源模組／垂直供電"
+      },
+      {
+        "id": "DC_48V",
+        "name": "48V 資料中心板級電源"
+      },
+      {
+        "id": "DC_800V",
+        "name": "800V 直流機櫃電力架構"
+      },
+      {
+        "id": "SERVER",
+        "name": "CPU 伺服器／工作站電源"
+      },
+      {
+        "id": "MEMORY",
+        "name": "HBM／DDR／記憶體與儲存供電"
+      },
+      {
+        "id": "GPU_CARD",
+        "name": "顯示卡／PC／筆電電源"
+      },
+      {
+        "id": "OPTICAL",
+        "name": "高速光模組／交換器／網通電源"
+      },
+      {
+        "id": "TELECOM",
+        "name": "5G／衛星通訊／PoE"
+      },
+      {
+        "id": "AUTO_48V",
+        "name": "汽車 48V／區域控制架構"
+      },
+      {
+        "id": "AUTO_ADAS",
+        "name": "ADAS／座艙／車身電源"
+      },
+      {
+        "id": "AUTO_MOTOR",
+        "name": "汽車馬達驅動／感測"
+      },
+      {
+        "id": "IND_ROBOT",
+        "name": "工業機器人／自動化／馬達控制"
+      },
+      {
+        "id": "IND_POWER",
+        "name": "工業電源／儀表／安防"
+      },
+      {
+        "id": "CONSUMER",
+        "name": "家電／電視／遊戲／顯示器"
+      },
+      {
+        "id": "ACDC",
+        "name": "AC/DC／電池充電／LED"
+      },
+      {
+        "id": "FOUNDRY",
+        "name": "晶圓代工／專有製程導入"
+      },
+      {
+        "id": "OSAT",
+        "name": "封裝測試／功率模組材料"
+      },
+      {
+        "id": "DISTRIBUTION",
+        "name": "代理通路／區域營收"
+      },
+      {
+        "id": "ECOSYSTEM",
+        "name": "FPGA／SoC 參考設計生態系"
+      },
+      {
+        "id": "TAIWAN",
+        "name": "台灣產業鏈情境映射"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "FOUNDRY_supplier_001",
+        "name": "GlobalFoundries／格羅方德",
+        "business_line": "FOUNDRY",
+        "relationship": "supplier",
+        "details": "【正式製造協議】2026年9月公告，MPS專有製程將導入GF新加坡300mm廠，預期2027年初開始量產；為明確具名的晶圓製造合作。 來源：https://gf.gcs-web.com/news-releases/news-release-details/globalfoundries-and-monolithic-power-systems-form-manufacturing",
+        "evidence_level": "官方揭露"
+      },
+      {
+        "id": "FOUNDRY_supplier_002",
+        "name": "中國晶圓代工合作廠（未具名）",
+        "business_line": "FOUNDRY",
+        "relationship": "supplier",
+        "details": "【公司揭露、未具名】2025年10-K揭露中國晶圓代工產能；無法據此指認中芯國際等單一公司。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方揭露"
+      },
+      {
+        "id": "FOUNDRY_supplier_003",
+        "name": "台灣晶圓代工合作廠（未具名）",
+        "business_line": "FOUNDRY",
+        "relationship": "supplier",
+        "details": "【公司揭露、未具名】10-K確認台灣有晶圓代工合作據點，未披露台積電／聯電等個別廠商。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方揭露"
+      },
+      {
+        "id": "FOUNDRY_supplier_004",
+        "name": "南韓晶圓代工合作廠（未具名）",
+        "business_line": "FOUNDRY",
+        "relationship": "supplier",
+        "details": "【公司揭露、未具名】10-K確認南韓晶圓代工來源，無法判定特定供應商。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方揭露"
+      },
+      {
+        "id": "FOUNDRY_supplier_005",
+        "name": "新加坡既有晶圓代工合作廠（未具名）",
+        "business_line": "FOUNDRY",
+        "relationship": "supplier",
+        "details": "【公司揭露、未具名】10-K確認新加坡產能；GF新增合作屬2027量產計畫，不應混同既有來源。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方揭露"
+      },
+      {
+        "id": "OSAT_supplier_001",
+        "name": "台灣封裝測試合作廠（未具名）",
+        "business_line": "OSAT",
+        "relationship": "supplier",
+        "details": "【10-K具名國家、未具名公司】MPS在台灣進行晶圓測試、封裝及最終測試，供應商名稱與金額未公開。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方揭露"
+      },
+      {
+        "id": "OSAT_supplier_002",
+        "name": "中國封裝測試合作廠（未具名）",
+        "business_line": "OSAT",
+        "relationship": "supplier",
+        "details": "【10-K具名國家、未具名公司】中國為晶圓測試、封裝與最終測試所在地之一。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方揭露"
+      },
+      {
+        "id": "OSAT_supplier_003",
+        "name": "馬來西亞封裝測試合作廠（未具名）",
+        "business_line": "OSAT",
+        "relationship": "supplier",
+        "details": "【10-K具名國家、未具名公司】馬來西亞有封裝與測試作業。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方揭露"
+      },
+      {
+        "id": "OSAT_supplier_004",
+        "name": "南韓封裝測試合作廠（未具名）",
+        "business_line": "OSAT",
+        "relationship": "supplier",
+        "details": "【10-K具名國家、未具名公司】南韓有晶圓測試、封裝與最終測試作業。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方揭露"
+      },
+      {
+        "id": "OSAT_supplier_005",
+        "name": "新加坡測試合作廠（未具名）",
+        "business_line": "OSAT",
+        "relationship": "supplier",
+        "details": "【10-K具名國家、未具名公司】新加坡有晶圓測試與最終測試作業。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方揭露"
+      },
+      {
+        "id": "DISTRIBUTION_customer_001",
+        "name": "Distributor A（未具名）",
+        "business_line": "DISTRIBUTION",
+        "relationship": "customer",
+        "details": "【10-K直接客戶】2025年占MPS營收26%；原始申報僅以A匿名，不能自行對應特定代理商。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "直接客戶／匿名"
+      },
+      {
+        "id": "DISTRIBUTION_customer_002",
+        "name": "Distributor B（未具名）",
+        "business_line": "DISTRIBUTION",
+        "relationship": "customer",
+        "details": "【10-K直接客戶】2025年占MPS營收18%；無公開名稱。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "直接客戶／匿名"
+      },
+      {
+        "id": "DISTRIBUTION_customer_003",
+        "name": "Distributor C（未具名）",
+        "business_line": "DISTRIBUTION",
+        "relationship": "customer",
+        "details": "【10-K直接客戶】2025年占MPS營收10%；無公開名稱。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "直接客戶／匿名"
+      },
+      {
+        "id": "ECOSYSTEM_partner_001",
+        "name": "AMD／Xilinx",
+        "business_line": "ECOSYSTEM",
+        "relationship": "partner",
+        "details": "【官方參考設計】MPS公布Zynq、Versal、Virtex、Kintex、Artix、Spartan等FPGA／SoC電源參考設計；不代表AMD直接採購額。 來源：https://www.monolithicpower.com/en/design-tools/reference-design-partners/amd-xilinx-reference-design.html",
+        "evidence_level": "參考設計"
+      },
+      {
+        "id": "ECOSYSTEM_partner_002",
+        "name": "Qualcomm／高通",
+        "business_line": "ECOSYSTEM",
+        "relationship": "partner",
+        "details": "【官方參考設計】MPS提供Qualcomm平台Wi-Fi與IoT電源參考設計；不代表特定終端OEM訂單。 來源：https://www.monolithicpower.com/en/design-tools/reference-design-partners/qualcomm-reference-designs.html",
+        "evidence_level": "參考設計"
+      },
+      {
+        "id": "ECOSYSTEM_partner_003",
+        "name": "Intel／Altera FPGA 生態系",
+        "business_line": "ECOSYSTEM",
+        "relationship": "partner",
+        "details": "【官網列示參考設計】MPS首頁列Altera為參考設計夥伴，屬平台相容性與方案推廣，非採購量證明。 來源：https://www.monolithicpower.com/",
+        "evidence_level": "參考設計"
+      },
+      {
+        "id": "AI_ACCEL_customer_001",
+        "name": "AI加速器及GPU系統製造商（未具名）",
+        "business_line": "AI_ACCEL",
+        "relationship": "customer",
+        "details": "【終端市場客群、未具名】MPS官方稱供應AI訓練／推論GPU、ASIC、OAM與PCIe加速卡的電源設計；不得直接推定NVIDIA為已證實買方。 來源：https://www.monolithicpower.com/en/powering-ai-hardware",
+        "evidence_level": "客群未具名"
+      },
+      {
+        "id": "AI_ACCEL_customer_002",
+        "name": "雲端AI伺服器整合商（未具名）",
+        "business_line": "AI_ACCEL",
+        "relationship": "customer",
+        "details": "【終端市場客群、未具名】Enterprise Data 2026Q3營收5.067億美元，AI與伺服器電源為增長來源，但客戶名單未公開。 來源：https://www.monolithicpower.com/en/powering-ai-hardware",
+        "evidence_level": "客群未具名"
+      },
+      {
+        "id": "OPTICAL_customer_001",
+        "name": "光模組製造商（未具名）",
+        "business_line": "OPTICAL",
+        "relationship": "customer",
+        "details": "【終端市場客群、未具名】2026Q3公司確認光模組電源需求推升Communications營收，未披露客戶。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "客群未具名"
+      },
+      {
+        "id": "OPTICAL_customer_002",
+        "name": "資料中心交換器OEM（未具名）",
+        "business_line": "OPTICAL",
+        "relationship": "customer",
+        "details": "【終端市場客群、未具名】2026Q3公司確認交換器電源銷售增長，未披露直接買方。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "客群未具名"
+      },
+      {
+        "id": "AUTO_48V_customer_001",
+        "name": "48V／區域控制汽車平台客戶（未具名）",
+        "business_line": "AUTO_48V",
+        "relationship": "customer",
+        "details": "【訂單已發生、客戶未具名】2026Q3公告已收到48V解決方案首批訂單；未揭露車廠或Tier 1名稱。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "客群未具名"
+      },
+      {
+        "id": "AI_ACCEL_partner_001",
+        "name": "Open Compute Project（OCP）開放加速器規格生態系",
+        "business_line": "AI_ACCEL",
+        "relationship": "partner",
+        "details": "【標準相容／應用定位】MPS供電方案覆蓋OAM、UBB等開放加速器型態；不表示OCP對MPS採購。 來源：https://www.monolithicpower.com/en/powering-ai-hardware",
+        "evidence_level": "應用生態／非交易"
+      },
+      {
+        "id": "AI_ACCEL_partner_002",
+        "name": "NVIDIA GPU架構生態系",
+        "business_line": "AI_ACCEL",
+        "relationship": "partner",
+        "details": "【產業需求連動，非具名供貨】高功率GPU推升核心電壓與瞬態負載設計需求；官方未披露對NVIDIA的直接銷售。 來源：https://www.monolithicpower.com/en/powering-ai-hardware",
+        "evidence_level": "應用生態／非交易"
+      },
+      {
+        "id": "AI_ACCEL_partner_003",
+        "name": "AMD Instinct／EPYC生態系",
+        "business_line": "AI_ACCEL",
+        "relationship": "partner",
+        "details": "【技術適配推論】AMD運算平台可構成多相電源需求池；已公開的是AMD FPGA參考設計，非所有Instinct平台採用證明。 來源：https://www.monolithicpower.com/en/powering-ai-hardware",
+        "evidence_level": "應用生態／非交易"
+      },
+      {
+        "id": "AI_VRM_partner_001",
+        "name": "PMBus標準生態系",
+        "business_line": "AI_VRM",
+        "relationship": "partner",
+        "details": "【技術介面】數位多相控制器及智慧功率級以PMBus／I²C管理與監測電壓電流，利於伺服器遙測。 來源：https://www.monolithicpower.com/en/catalog/category/view/s/48v-modules/id/985/",
+        "evidence_level": "技術介面"
+      },
+      {
+        "id": "AI_VRM_partner_002",
+        "name": "伺服器主板VRM設計團隊",
+        "business_line": "AI_VRM",
+        "relationship": "partner",
+        "details": "【系統整合環節】多相控制器與DrMOS／功率級協同設計，對應GPU與CPU高瞬態負載；OEM未具名。 來源：https://www.monolithicpower.com/en/catalog/category/view/s/48v-modules/id/985/",
+        "evidence_level": "技術介面"
+      },
+      {
+        "id": "AI_MODULE_partner_001",
+        "name": "AI加速卡ODM／系統設計團隊",
+        "business_line": "AI_MODULE",
+        "relationship": "partner",
+        "details": "【設計導入環節】整合電感與功率級的模組可縮小面積、改善高電流路徑；未揭露特定ODM採購。 來源：https://www.monolithicpower.com/en/powering-ai-hardware",
+        "evidence_level": "技術適配"
+      },
+      {
+        "id": "AI_MODULE_partner_002",
+        "name": "GPU／ASIC封裝附近供電設計生態系",
+        "business_line": "AI_MODULE",
+        "relationship": "partner",
+        "details": "【架構情境】高功率密度模組可支援板上近負載供電；不可推定MPS已取得特定垂直供電設計案。 來源：https://www.monolithicpower.com/en/powering-ai-hardware",
+        "evidence_level": "技術適配"
+      },
+      {
+        "id": "DC_48V_partner_001",
+        "name": "48V資料中心配電架構",
+        "business_line": "DC_48V",
+        "relationship": "partner",
+        "details": "【官方產品規格】MPS提供48V轉處理器電源模組，部分模組具PMBus／I²C與並聯能力。 來源：https://www.monolithicpower.com/en/catalog/category/view/s/48v-modules/id/985/",
+        "evidence_level": "官方產品／需求"
+      },
+      {
+        "id": "DC_48V_partner_002",
+        "name": "高密度伺服器機櫃設計商（未具名）",
+        "business_line": "DC_48V",
+        "relationship": "partner",
+        "details": "【需求池】48V母線可減少低壓大電流傳輸損耗；MPS方案需經OEM設計認證。 來源：https://www.monolithicpower.com/en/catalog/category/view/s/48v-modules/id/985/",
+        "evidence_level": "官方產品／需求"
+      },
+      {
+        "id": "DC_800V_partner_001",
+        "name": "800V DC資料中心配電生態系",
+        "business_line": "DC_800V",
+        "relationship": "partner",
+        "details": "【技術研發】MPS於2025年代理聲明提及800V電源方案送樣；尚不等同大規模量產訂單。 來源：https://www.publicnow.com/view/5F0E29444B5397BF6BD5765F9C091CB382D638FE",
+        "evidence_level": "研發／需求"
+      },
+      {
+        "id": "DC_800V_partner_002",
+        "name": "OCP機櫃電源標準生態系",
+        "business_line": "DC_800V",
+        "relationship": "partner",
+        "details": "【標準需求連動】800V DC架構提高高壓轉換與保護需求；MPS具相關產品開發方向，尚無特定客戶驗證。 來源：https://www.publicnow.com/view/5F0E29444B5397BF6BD5765F9C091CB382D638FE",
+        "evidence_level": "研發／需求"
+      },
+      {
+        "id": "SERVER_partner_001",
+        "name": "x86伺服器主板生態系",
+        "business_line": "SERVER",
+        "relationship": "partner",
+        "details": "【應用定位】CPU核心、DDR、管理控制器及板級電源需要多路降壓，MPS供應PMIC及功率模組。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "應用推論"
+      },
+      {
+        "id": "SERVER_partner_002",
+        "name": "Arm伺服器SoC生態系",
+        "business_line": "SERVER",
+        "relationship": "partner",
+        "details": "【應用定位】Arm資料中心CPU平台亦需高效率VRM；未揭露特定CPU廠商採購。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "應用推論"
+      },
+      {
+        "id": "MEMORY_partner_001",
+        "name": "HBM／DDR記憶體供電生態系",
+        "business_line": "MEMORY",
+        "relationship": "partner",
+        "details": "【應用定位】HBM與DDR電源軌需求來自AI伺服器與儲存；未揭露SK hynix／Samsung／Micron為MPS直接客戶。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "應用推論"
+      },
+      {
+        "id": "MEMORY_partner_002",
+        "name": "SSD／儲存控制器供電生態系",
+        "business_line": "MEMORY",
+        "relationship": "partner",
+        "details": "【應用定位】儲存與運算為2025年營收最大終端市場，占26.3%。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "應用推論"
+      },
+      {
+        "id": "GPU_CARD_partner_001",
+        "name": "桌上型顯示卡板卡生態系",
+        "business_line": "GPU_CARD",
+        "relationship": "partner",
+        "details": "【應用定位】GPU顯示卡多相供電及高電流DrMOS為MPS核心應用；不推定個別AIB品牌。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "應用／需求"
+      },
+      {
+        "id": "GPU_CARD_partner_002",
+        "name": "AI PC／筆電OEM設計生態系",
+        "business_line": "GPU_CARD",
+        "relationship": "partner",
+        "details": "【需求連動】2026Q3公告AI桌面設計擴展客戶基礎，仍未揭露品牌與訂單金額。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "應用／需求"
+      },
+      {
+        "id": "OPTICAL_partner_001",
+        "name": "800G／1.6T光收發模組電源生態系",
+        "business_line": "OPTICAL",
+        "relationship": "partner",
+        "details": "【需求映射】高速光模組的電源噪聲、熱管理與密度要求提高，MPS 2026Q3稱光模組電源銷售增長。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "應用／需求"
+      },
+      {
+        "id": "OPTICAL_partner_002",
+        "name": "資料中心乙太網交換器電源生態系",
+        "business_line": "OPTICAL",
+        "relationship": "partner",
+        "details": "【需求映射】高階交換ASIC周邊多路PMIC、PoL轉換器需求擴大；客戶未具名。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "應用／需求"
+      },
+      {
+        "id": "TELECOM_partner_001",
+        "name": "5G基站射頻與網通設備生態系",
+        "business_line": "TELECOM",
+        "relationship": "partner",
+        "details": "【應用定位】MPS通訊終端涵蓋網路基礎設施與無線解決方案。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "應用"
+      },
+      {
+        "id": "TELECOM_partner_002",
+        "name": "衛星通訊設備生態系",
+        "business_line": "TELECOM",
+        "relationship": "partner",
+        "details": "【應用定位】2025年10-K將衛星通訊列為Communications應用，未揭露衛星營運商。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "應用"
+      },
+      {
+        "id": "AUTO_48V_partner_001",
+        "name": "48V e-fuse／區域控制器生態系",
+        "business_line": "AUTO_48V",
+        "relationship": "partner",
+        "details": "【官方產品進展】2025年公司提及首款整合48V電子保險絲與kW級區域控制器。 來源：https://www.publicnow.com/view/5F0E29444B5397BF6BD5765F9C091CB382D638FE",
+        "evidence_level": "官方產品／推論"
+      },
+      {
+        "id": "AUTO_48V_partner_002",
+        "name": "車用Tier 1架構整合商（未具名）",
+        "business_line": "AUTO_48V",
+        "relationship": "partner",
+        "details": "【應用推論】48V車用電源從集中式向區域控制移轉，需保護、轉換與診斷；不得指定Bosch或Denso為客戶。 來源：https://www.publicnow.com/view/5F0E29444B5397BF6BD5765F9C091CB382D638FE",
+        "evidence_level": "官方產品／推論"
+      },
+      {
+        "id": "AUTO_ADAS_partner_001",
+        "name": "ADAS與車載資訊娛樂系統生態系",
+        "business_line": "AUTO_ADAS",
+        "relationship": "partner",
+        "details": "【應用定位】2025年10-K明列ADAS、資訊娛樂、車身電子、USB與照明。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "應用"
+      },
+      {
+        "id": "AUTO_ADAS_partner_002",
+        "name": "車載攝影機／雷達／感測器供電生態系",
+        "business_line": "AUTO_ADAS",
+        "relationship": "partner",
+        "details": "【應用推論】多路電源、低雜訊及車規可靠度為關鍵，未揭露特定車廠。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "應用"
+      },
+      {
+        "id": "AUTO_MOTOR_partner_001",
+        "name": "車用馬達控制與位置感測生態系",
+        "business_line": "AUTO_MOTOR",
+        "relationship": "partner",
+        "details": "【產品／應用】MPS涵蓋馬達驅動及磁性位置／電流感測，對應車身致動器。 來源：https://www.monolithicpower.com/",
+        "evidence_level": "產品／推論"
+      },
+      {
+        "id": "AUTO_MOTOR_partner_002",
+        "name": "電動車輔助負載與熱管理系統",
+        "business_line": "AUTO_MOTOR",
+        "relationship": "partner",
+        "details": "【應用推論】水泵、風扇及電動致動器的電源控制需求可對應MPS產品線。 來源：https://www.monolithicpower.com/",
+        "evidence_level": "產品／推論"
+      },
+      {
+        "id": "IND_ROBOT_partner_001",
+        "name": "工業機器人與自動化設備OEM（未具名）",
+        "business_line": "IND_ROBOT",
+        "relationship": "partner",
+        "details": "【供應規劃】GF 2026年協議明示2027年擬量產產品將支援工業機器人與自動化。 來源：https://gf.gcs-web.com/news-releases/news-release-details/globalfoundries-and-monolithic-power-systems-form-manufacturing",
+        "evidence_level": "規劃／應用"
+      },
+      {
+        "id": "IND_ROBOT_partner_002",
+        "name": "伺服驅動與精密馬達控制生態系",
+        "business_line": "IND_ROBOT",
+        "relationship": "partner",
+        "details": "【產品適配】MPS馬達驅動及電流感測適合工控，未揭露個別機器人客戶。 來源：https://gf.gcs-web.com/news-releases/news-release-details/globalfoundries-and-monolithic-power-systems-form-manufacturing",
+        "evidence_level": "規劃／應用"
+      },
+      {
+        "id": "IND_POWER_partner_001",
+        "name": "工業電源供應器OEM（未具名）",
+        "business_line": "IND_POWER",
+        "relationship": "partner",
+        "details": "【終端應用】2026Q3 Industrial成長由電源解決方案驅動；客戶未揭露。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "應用"
+      },
+      {
+        "id": "IND_POWER_partner_002",
+        "name": "智慧電表／安防設備生態系",
+        "business_line": "IND_POWER",
+        "relationship": "partner",
+        "details": "【終端應用】10-K列示工業儀表、安防與工業設備供電。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "應用"
+      },
+      {
+        "id": "CONSUMER_partner_001",
+        "name": "智慧電視／顯示器OEM生態系",
+        "business_line": "CONSUMER",
+        "relationship": "partner",
+        "details": "【應用定位】2025年10-K列智慧電視、顯示器、音響等消費產品。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "應用"
+      },
+      {
+        "id": "CONSUMER_partner_002",
+        "name": "遊戲主機與家電OEM生態系",
+        "business_line": "CONSUMER",
+        "relationship": "partner",
+        "details": "【應用定位】家電與遊戲設備為消費終端應用；未揭露品牌。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "應用"
+      },
+      {
+        "id": "ACDC_partner_001",
+        "name": "AC/DC電源與LED驅動設計商",
+        "business_line": "ACDC",
+        "relationship": "partner",
+        "details": "【產品適配】MPS涵蓋AC/DC、LED、整流與轉換控制；未揭露個別OEM。 來源：https://www.monolithicpower.com/",
+        "evidence_level": "產品適配"
+      },
+      {
+        "id": "ACDC_partner_002",
+        "name": "充電器與電池管理設備生態系",
+        "business_line": "ACDC",
+        "relationship": "partner",
+        "details": "【產品適配】電源轉換及保護晶片可用於充電與電池供電設計；需依料號驗證。 來源：https://www.monolithicpower.com/",
+        "evidence_level": "產品適配"
+      },
+      {
+        "id": "AI_ACCEL_competitor_001",
+        "name": "Infineon Technologies",
+        "business_line": "AI_ACCEL",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】高電流AI GPU電源與功率級競爭；2025年10-K列主要競爭者。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "AI_ACCEL_competitor_002",
+        "name": "Texas Instruments",
+        "business_line": "AI_ACCEL",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】AI加速器PoL及多相電源控制競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "AI_ACCEL_competitor_003",
+        "name": "Renesas Electronics",
+        "business_line": "AI_ACCEL",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】AI伺服器數位多相控制器與智慧功率級競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "AI_ACCEL_competitor_004",
+        "name": "Analog Devices／ADI",
+        "business_line": "AI_ACCEL",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】高效能類比電源、監測及伺服器供電競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "AI_VRM_competitor_001",
+        "name": "Renesas Electronics",
+        "business_line": "AI_VRM",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】數位多相控制器、DrMOS／Smart Power Stage直接競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "AI_VRM_competitor_002",
+        "name": "Infineon Technologies",
+        "business_line": "AI_VRM",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】多相控制器與功率級競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "AI_VRM_competitor_003",
+        "name": "Texas Instruments",
+        "business_line": "AI_VRM",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】數位控制器與整合電源級競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "AI_VRM_competitor_004",
+        "name": "onsemi",
+        "business_line": "AI_VRM",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】功率MOSFET與整合功率級替代方案。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "AI_MODULE_competitor_001",
+        "name": "Vicor／VICR",
+        "business_line": "AI_MODULE",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】高密度模組與近負載供電架構競爭；不是10-K列名主要競爭者，屬產品重疊推論。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "AI_MODULE_competitor_002",
+        "name": "Infineon Technologies",
+        "business_line": "AI_MODULE",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】高密度電源模組與功率級競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "AI_MODULE_competitor_003",
+        "name": "Renesas Electronics",
+        "business_line": "AI_MODULE",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】整合式電源模組及伺服器電源競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "AI_MODULE_competitor_004",
+        "name": "Texas Instruments",
+        "business_line": "AI_MODULE",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】整合電感電源模組競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "DC_48V_competitor_001",
+        "name": "Vicor／VICR",
+        "business_line": "DC_48V",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】48V高功率密度模組、電壓轉換與板級配電競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "DC_48V_competitor_002",
+        "name": "Infineon Technologies",
+        "business_line": "DC_48V",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】48V電源模組與功率半導體競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "DC_48V_competitor_003",
+        "name": "Flex Power Modules",
+        "business_line": "DC_48V",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】資料中心48V DC/DC模組競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "DC_800V_competitor_001",
+        "name": "Vicor／VICR",
+        "business_line": "DC_800V",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】高壓直流分配與高密度轉換架構潛在競爭；具體產品規格需逐案比對。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "DC_800V_competitor_002",
+        "name": "Navitas Semiconductor",
+        "business_line": "DC_800V",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】GaN高壓電力轉換與800V資料中心參考設計競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.microchip.com/en-us/about/news-releases/products/the-data-center-is-moving-to-800v-microchip-and-navitas-are-enabling-transition",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "DC_800V_competitor_003",
+        "name": "Infineon Technologies",
+        "business_line": "DC_800V",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】SiC／GaN／高壓電源解決方案競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "DC_800V_competitor_004",
+        "name": "Power Integrations",
+        "business_line": "DC_800V",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】高壓轉換及隔離控制技術競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "SERVER_competitor_001",
+        "name": "Renesas Electronics",
+        "business_line": "SERVER",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】CPU伺服器多相VRM競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "SERVER_competitor_002",
+        "name": "Texas Instruments",
+        "business_line": "SERVER",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】伺服器板級PMIC與控制器競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "SERVER_competitor_003",
+        "name": "Analog Devices／ADI",
+        "business_line": "SERVER",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】高效能電源管理與監測競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "MEMORY_competitor_001",
+        "name": "Texas Instruments",
+        "business_line": "MEMORY",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】DDR／SSD電源管理競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "MEMORY_competitor_002",
+        "name": "Renesas Electronics",
+        "business_line": "MEMORY",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】記憶體電源及電源時序競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "MEMORY_competitor_003",
+        "name": "Richtek／立錡",
+        "business_line": "MEMORY",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】DDR／儲存PMIC及DC/DC替代競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "GPU_CARD_competitor_001",
+        "name": "uPI Semiconductor／力智",
+        "business_line": "GPU_CARD",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】GPU板卡多相PWM控制器與功率級競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "GPU_CARD_competitor_002",
+        "name": "Richtek／立錡",
+        "business_line": "GPU_CARD",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】PC／GPU板級PMIC競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "GPU_CARD_competitor_003",
+        "name": "Renesas Electronics",
+        "business_line": "GPU_CARD",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】顯示卡多相供電競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "GPU_CARD_competitor_004",
+        "name": "Texas Instruments",
+        "business_line": "GPU_CARD",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】筆電／PC降壓控制器競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "OPTICAL_competitor_001",
+        "name": "Texas Instruments",
+        "business_line": "OPTICAL",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】光模組與交換器電源管理競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "OPTICAL_competitor_002",
+        "name": "Analog Devices／ADI",
+        "business_line": "OPTICAL",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】低雜訊高速通訊供電競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "OPTICAL_competitor_003",
+        "name": "Infineon Technologies",
+        "business_line": "OPTICAL",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】網通交換器功率級競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "TELECOM_competitor_001",
+        "name": "NXP Semiconductors",
+        "business_line": "TELECOM",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】通訊基礎設施電源及混合訊號競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "TELECOM_competitor_002",
+        "name": "STMicroelectronics",
+        "business_line": "TELECOM",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】通訊設備PMIC競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "TELECOM_competitor_003",
+        "name": "Semtech",
+        "business_line": "TELECOM",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】部分通訊／電源及介面市場競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "AUTO_48V_competitor_001",
+        "name": "Infineon Technologies",
+        "business_line": "AUTO_48V",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】車規48V、e-fuse及區域電源競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "AUTO_48V_competitor_002",
+        "name": "NXP Semiconductors",
+        "business_line": "AUTO_48V",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】汽車區域控制與電源管理競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "AUTO_48V_competitor_003",
+        "name": "STMicroelectronics",
+        "business_line": "AUTO_48V",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】車用48V及智慧保護競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "AUTO_48V_competitor_004",
+        "name": "Texas Instruments",
+        "business_line": "AUTO_48V",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】車用48V降壓與保護競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "AUTO_ADAS_competitor_001",
+        "name": "onsemi",
+        "business_line": "AUTO_ADAS",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】ADAS車用功率與混合訊號競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "AUTO_ADAS_competitor_002",
+        "name": "Renesas Electronics",
+        "business_line": "AUTO_ADAS",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】車用PMIC與ADAS供電競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "AUTO_ADAS_competitor_003",
+        "name": "ROHM Semiconductor",
+        "business_line": "AUTO_ADAS",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】車規PMIC與LED驅動競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "AUTO_MOTOR_competitor_001",
+        "name": "Infineon Technologies",
+        "business_line": "AUTO_MOTOR",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】車用馬達驅動與電流感測競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "AUTO_MOTOR_competitor_002",
+        "name": "NXP Semiconductors",
+        "business_line": "AUTO_MOTOR",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】車用馬達控制與車身電子競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "AUTO_MOTOR_competitor_003",
+        "name": "STMicroelectronics",
+        "business_line": "AUTO_MOTOR",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】馬達驅動與車規電源競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "IND_ROBOT_competitor_001",
+        "name": "STMicroelectronics",
+        "business_line": "IND_ROBOT",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】工業馬達驅動與電源控制競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "IND_ROBOT_competitor_002",
+        "name": "Infineon Technologies",
+        "business_line": "IND_ROBOT",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】工控電力半導體與驅動競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "IND_ROBOT_competitor_003",
+        "name": "Texas Instruments",
+        "business_line": "IND_ROBOT",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】工業馬達控制、感測與DC/DC競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "IND_POWER_competitor_001",
+        "name": "Analog Devices／ADI",
+        "business_line": "IND_POWER",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】工業精密電源與感測競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "IND_POWER_competitor_002",
+        "name": "Texas Instruments",
+        "business_line": "IND_POWER",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】工業電源與電源監控競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "IND_POWER_competitor_003",
+        "name": "Power Integrations",
+        "business_line": "IND_POWER",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】工業AC/DC電源控制競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "CONSUMER_competitor_001",
+        "name": "Richtek／立錡",
+        "business_line": "CONSUMER",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】消費性DC/DC與PMIC競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "CONSUMER_competitor_002",
+        "name": "Silergy／矽力杰",
+        "business_line": "CONSUMER",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】消費與工業電源管理競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "CONSUMER_competitor_003",
+        "name": "Texas Instruments",
+        "business_line": "CONSUMER",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】家電、顯示器PMIC競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "ACDC_competitor_001",
+        "name": "Power Integrations",
+        "business_line": "ACDC",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】離線AC/DC與高壓轉換競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "ACDC_competitor_002",
+        "name": "onsemi",
+        "business_line": "ACDC",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】電源控制與功率元件競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "ACDC_competitor_003",
+        "name": "STMicroelectronics",
+        "business_line": "ACDC",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】AC/DC、LED驅動與整流競爭。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "FOUNDRY_competitor_001",
+        "name": "台灣／亞洲其他類比功率晶片設計公司",
+        "business_line": "FOUNDRY",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】晶圓代工產能競逐者而非MPS產品直接競爭者；此節點僅表產能供需。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "DISTRIBUTION_competitor_001",
+        "name": "其他全球類比電源品牌",
+        "business_line": "DISTRIBUTION",
+        "relationship": "competitor",
+        "details": "【同業／產品重疊】代理通路貨架、設計導入與交期競爭，非具名單一公司。 注意同業競爭不等於彼此有供應關係。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "官方10-K列名／產品市場推論"
+      },
+      {
+        "id": "AI_ACCEL_beneficiary_001",
+        "name": "廣達 2382",
+        "business_line": "AI_ACCEL",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】AI伺服器系統組裝與供電設計受AI加速器功耗上升影響；非MPS直接客戶確認。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "AI_ACCEL_beneficiary_002",
+        "name": "緯創 3231",
+        "business_line": "AI_ACCEL",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】AI伺服器ODM與高電流電源設計受惠於算力建置；非MPS訂單證明。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "AI_ACCEL_beneficiary_003",
+        "name": "緯穎 6669",
+        "business_line": "AI_ACCEL",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】大型雲端伺服器整機與機櫃設計需求增長，屬產業受惠映射。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "AI_ACCEL_beneficiary_004",
+        "name": "鴻海 2317",
+        "business_line": "AI_ACCEL",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】AI伺服器整合及機櫃系統可能受益；無MPS交易證據。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "AI_VRM_beneficiary_001",
+        "name": "力智 6719",
+        "business_line": "AI_VRM",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】GPU／CPU多相控制器與DrMOS同業，屬競爭及產業需求觀察，不應稱MPS供應商。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "AI_VRM_beneficiary_002",
+        "name": "立錡科技／聯發科集團",
+        "business_line": "AI_VRM",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】電源管理IC與多相供電同業，為市場比較對象而非已確認MPS供應鏈。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "AI_VRM_beneficiary_003",
+        "name": "致新 8081",
+        "business_line": "AI_VRM",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】PC／伺服器電源管理產品可能受高電流需求影響，屬競爭映射。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "AI_MODULE_beneficiary_001",
+        "name": "台達電 2308",
+        "business_line": "AI_MODULE",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】資料中心電源轉換、機櫃電源及電力系統受AI功率密度趨勢帶動，非MPS直接供應商。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "AI_MODULE_beneficiary_002",
+        "name": "光寶科 2301",
+        "business_line": "AI_MODULE",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】伺服器電源供應器與電力轉換系統受惠於資料中心建置，非MPS交易證據。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "AI_MODULE_beneficiary_003",
+        "name": "群電 6412",
+        "business_line": "AI_MODULE",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】高功率電源供應器需求池，與MPS模組上下游可能重疊但未證實採購。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "DC_48V_beneficiary_001",
+        "name": "台達電 2308",
+        "business_line": "DC_48V",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】48V伺服器供電及機櫃電力整合需求擴大；並非已確認MPS買賣關係。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "DC_48V_beneficiary_002",
+        "name": "光寶科 2301",
+        "business_line": "DC_48V",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】資料中心48V電源供應器及整機電源設計受益於架構升級。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "DC_48V_beneficiary_003",
+        "name": "康舒 6282",
+        "business_line": "DC_48V",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】伺服器與工業電源供應器受電力轉換需求提升影響，屬情境受惠。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "DC_800V_beneficiary_001",
+        "name": "台達電 2308",
+        "business_line": "DC_800V",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】800V DC機櫃及高功率電力基礎設施趨勢受惠候選；未確認與MPS800V方案合作。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "DC_800V_beneficiary_002",
+        "name": "光寶科 2301",
+        "business_line": "DC_800V",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】高壓直流資料中心電源設計受惠候選；非MPS具名夥伴。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "DC_800V_beneficiary_003",
+        "name": "中興電 1513",
+        "business_line": "DC_800V",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】資料中心配電與高壓電力設備需求可能擴大；屬間接受惠。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "DC_800V_beneficiary_004",
+        "name": "華城 1519",
+        "business_line": "DC_800V",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】變壓器與資料中心電網擴建需求連動，非MPS直接供應鏈。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "SERVER_beneficiary_001",
+        "name": "英業達 2356",
+        "business_line": "SERVER",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】伺服器ODM設計與板級電源需求映射，未揭露MPS採購。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "SERVER_beneficiary_002",
+        "name": "神達 3706",
+        "business_line": "SERVER",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】伺服器系統與供電設計需求映射，未確認MPS交易。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "SERVER_beneficiary_003",
+        "name": "技嘉 2376",
+        "business_line": "SERVER",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】伺服器與主板VRM需求映射，未確認MPS交易。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "MEMORY_beneficiary_001",
+        "name": "群聯 8299",
+        "business_line": "MEMORY",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】SSD控制器與儲存平台的電源設計需求受惠，非MPS直接關係。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "MEMORY_beneficiary_002",
+        "name": "慧榮  SIMO",
+        "business_line": "MEMORY",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】SSD控制器與儲存系統電源軌需求映射，非MPS直接關係。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "MEMORY_beneficiary_003",
+        "name": "南亞科 2408",
+        "business_line": "MEMORY",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】DRAM需求擴大帶動記憶體供電規格提升，屬間接映射。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "GPU_CARD_beneficiary_001",
+        "name": "華碩 2357",
+        "business_line": "GPU_CARD",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】GPU顯示卡與PC主板多相電源需求映射，未確認MPS供貨。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "GPU_CARD_beneficiary_002",
+        "name": "微星 2377",
+        "business_line": "GPU_CARD",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】顯示卡VRM與高電流供電需求映射，未確認MPS供貨。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "GPU_CARD_beneficiary_003",
+        "name": "技嘉 2376",
+        "business_line": "GPU_CARD",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】GPU板卡電源設計需求映射，未確認MPS供貨。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "OPTICAL_beneficiary_001",
+        "name": "聯亞 3081",
+        "business_line": "OPTICAL",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】高速光通訊元件需求上升可能帶動電源管理設計，屬產業間接受惠。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "OPTICAL_beneficiary_002",
+        "name": "華星光 4979",
+        "business_line": "OPTICAL",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】光收發模組／光通訊需求映射，非MPS直接客戶證明。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "OPTICAL_beneficiary_003",
+        "name": "光聖 6442",
+        "business_line": "OPTICAL",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】資料中心光通訊及連接需求映射，未確認MPS交易。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "OPTICAL_beneficiary_004",
+        "name": "智邦 2345",
+        "business_line": "OPTICAL",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】交換器系統與高速網通電源設計需求映射，非MPS直接客戶確認。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "OPTICAL_beneficiary_005",
+        "name": "啟碁 6285",
+        "business_line": "OPTICAL",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】網通設備電源與通訊終端需求映射，非MPS交易證據。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "TELECOM_beneficiary_001",
+        "name": "中磊 5388",
+        "business_line": "TELECOM",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】網通設備電源管理與PoE需求映射。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "TELECOM_beneficiary_002",
+        "name": "明泰 3380",
+        "business_line": "TELECOM",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】交換器與通訊設備電源需求映射。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "AUTO_48V_beneficiary_001",
+        "name": "台達電 2308",
+        "business_line": "AUTO_48V",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】車用電源轉換及48V系統受益於架構升級，未確認MPS供應關係。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "AUTO_48V_beneficiary_002",
+        "name": "朋程 8255",
+        "business_line": "AUTO_48V",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】車用功率元件與電力系統受48V滲透率提升影響，屬間接受惠。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "AUTO_48V_beneficiary_003",
+        "name": "致茂 2360",
+        "business_line": "AUTO_48V",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】車用48V及功率電子測試需求映射，非MPS供應商確認。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "AUTO_ADAS_beneficiary_001",
+        "name": "同致 3552",
+        "business_line": "AUTO_ADAS",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】車用感測與ADAS電子系統供電需求映射。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "AUTO_ADAS_beneficiary_002",
+        "name": "胡連 6279",
+        "business_line": "AUTO_ADAS",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】車用連接器與區域電力架構變革需求映射。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "AUTO_MOTOR_beneficiary_001",
+        "name": "貿聯-KY 3665",
+        "business_line": "AUTO_MOTOR",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】車用電力連接與線束受電動化趨勢影響，非MPS直接關係。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "AUTO_MOTOR_beneficiary_002",
+        "name": "東元 1504",
+        "business_line": "AUTO_MOTOR",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】馬達與工業電控需求映射，非MPS直接關係。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "IND_ROBOT_beneficiary_001",
+        "name": "上銀 2049",
+        "business_line": "IND_ROBOT",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】工業機器人及精密運動控制需求映射，非MPS直接供應鏈。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "IND_ROBOT_beneficiary_002",
+        "name": "台達電 2308",
+        "business_line": "IND_ROBOT",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】工業自動化及馬達驅動市場需求映射，非MPS直接合作。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "IND_ROBOT_beneficiary_003",
+        "name": "研華 2395",
+        "business_line": "IND_ROBOT",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】工業電腦與邊緣運算電源管理需求映射，非MPS客戶確認。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "IND_POWER_beneficiary_001",
+        "name": "台達電 2308",
+        "business_line": "IND_POWER",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】工業電源與能源管理需求映射。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "IND_POWER_beneficiary_002",
+        "name": "康舒 6282",
+        "business_line": "IND_POWER",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】工業電源供應器需求映射。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "CONSUMER_beneficiary_001",
+        "name": "群光 2385",
+        "business_line": "CONSUMER",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】消費性電子與PC周邊供電需求映射，非MPS訂單證明。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "CONSUMER_beneficiary_002",
+        "name": "瑞昱 2379",
+        "business_line": "CONSUMER",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】消費電子SoC周邊電源需求映射，非MPS直接關係。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "ACDC_beneficiary_001",
+        "name": "台達電 2308",
+        "business_line": "ACDC",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】AC/DC與高效率電源轉換市場需求映射，非MPS供應鏈證明。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "ACDC_beneficiary_002",
+        "name": "光寶科 2301",
+        "business_line": "ACDC",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】電源轉換與LED應用需求映射，非MPS交易證據。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "FOUNDRY_beneficiary_001",
+        "name": "世界先進 5347",
+        "business_line": "FOUNDRY",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】類比／電源管理晶片晶圓代工產業候選；10-K僅揭露台灣代工廠，未具名世界先進。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "FOUNDRY_beneficiary_002",
+        "name": "聯電 2303",
+        "business_line": "FOUNDRY",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】成熟製程與特殊製程代工候選；不得據此認定為MPS晶圓供應商。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "FOUNDRY_beneficiary_003",
+        "name": "台積電 2330",
+        "business_line": "FOUNDRY",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】特殊製程及電源相關晶片代工潛在候選；未有MPS直接合作證據。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "OSAT_beneficiary_001",
+        "name": "日月光投控 3711",
+        "business_line": "OSAT",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】封裝測試產業受惠候選；MPS揭露台灣OSAT所在地但未揭露日月光為供應商。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "OSAT_beneficiary_002",
+        "name": "京元電子 2449",
+        "business_line": "OSAT",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】半導體測試產業受惠候選，未確認MPS直接委外。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "OSAT_beneficiary_003",
+        "name": "力成 6239",
+        "business_line": "OSAT",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】封測產能需求受惠候選，未確認MPS直接委外。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "OSAT_beneficiary_004",
+        "name": "矽格 6257",
+        "business_line": "OSAT",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】IC測試產業受惠候選，未確認MPS直接委外。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "OSAT_beneficiary_005",
+        "name": "頎邦 6147",
+        "business_line": "OSAT",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】類比及驅動IC封測產業候選，未確認MPS直接委外。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "DISTRIBUTION_beneficiary_001",
+        "name": "文曄 3036",
+        "business_line": "DISTRIBUTION",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】半導體通路產業受惠候選；MPS前三大經銷商匿名，不能對號入座。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "DISTRIBUTION_beneficiary_002",
+        "name": "大聯大 3702",
+        "business_line": "DISTRIBUTION",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】電子元件代理通路候選；未確認為MPS Distributor A／B／C。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "推論／非直接交易"
+      },
+      {
+        "id": "DISTRIBUTION_beneficiary_003",
+        "name": "益登 3048",
+        "business_line": "DISTRIBUTION",
+        "relationship": "beneficiary",
+        "details": "【台灣產業情境映射／未證實直接關係】電子元件通路候選；無MPS經銷交易證據。 投資觀察應以個別公司法說與訂單揭露核實。 來源：https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "evidence_level": "推論／非直接交易"
+      }
+    ],
+    "research_notes": {
+      "source_commit": "da93c81d",
+      "source_path": "data/generated/company_profile_display_zh_tw/per-company/company%3AUS-CIK0001280452.json",
+      "source_blob_sha": "61de24518ad33e7aabde2cc285589f2c344e6bd7",
+      "evidence_policy": "已確認交易／合作與參考設計／同業競爭／台灣情境受惠分開；未揭露終端客戶及晶圓代工廠不得推定直接供應。",
+      "key_facts": [
+        "2026Q3營收12.024億美元、年增63.1%；Enterprise Data營收5.067億美元、占42.1%、年增164.6%；Communications年增134.7%。",
+        "2025年經銷通路占營收85%；前三大經銷商占26%、18%、10%，原始10-K未揭露其名稱。",
+        "2026-09-09 GlobalFoundries宣布新加坡300mm廠導入MPS專有製程，預計2027年開始量產。",
+        "2025年10-K重編歷史財務資訊；應以重編後報表為準。"
+      ],
+      "primary_sources": [
+        "https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+        "https://www.sec.gov/Archives/edgar/data/1280452/000162828026068202/mpwr-20260930xexx991.htm",
+        "https://gf.gcs-web.com/news-releases/news-release-details/globalfoundries-and-monolithic-power-systems-form-manufacturing",
+        "https://www.monolithicpower.com/en/design-tools/reference-design-partners/amd-xilinx-reference-design.html",
+        "https://www.monolithicpower.com/en/design-tools/reference-design-partners/qualcomm-reference-designs.html",
+        "https://www.monolithicpower.com/en/powering-ai-hardware",
+        "https://www.monolithicpower.com/en/catalog/category/view/s/48v-modules/id/985/",
+        "https://www.monolithicpower.com/"
+      ]
+    }
   }
 }

@@ -211,5 +211,1286 @@
       "企業數位轉型"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-11",
+    "company": "Palantir Technologies Inc.",
+    "symbol": "PLTR",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "PLTR Palantir 深度產業鏈｜Gotham、Foundry、AIP、TITAN、主權 AI 與 Warp Speed",
+      "description": "Palantir 產業鏈涵蓋美國陸軍 TITAN、Gotham、Maven、Foundry／Ontology、AIP、Apollo、NVIDIA Nemotron、Nebius 主權 AI、Azure／AWS／Google Cloud、Warp Speed 製造、醫療、金融、顧問通路及台灣產業映射；區分客戶、合作、供應、競爭及間接受惠。"
+    },
+    "business_lines": [
+      {
+        "id": "GOTHAM",
+        "name": "Gotham 國防情報資料融合"
+      },
+      {
+        "id": "TITAN",
+        "name": "美國陸軍 TITAN 地面站"
+      },
+      {
+        "id": "MAVEN",
+        "name": "Maven／軍事 AI 決策"
+      },
+      {
+        "id": "FEDERAL",
+        "name": "美國聯邦政府與公共服務"
+      },
+      {
+        "id": "HEALTH",
+        "name": "醫療、公共衛生與醫院"
+      },
+      {
+        "id": "FOUNDRY",
+        "name": "Foundry 資料整合與 Ontology"
+      },
+      {
+        "id": "AIP",
+        "name": "AIP 企業生成式 AI 與 Agent"
+      },
+      {
+        "id": "APOLLO",
+        "name": "Apollo 軟體部署／邊緣"
+      },
+      {
+        "id": "SOVEREIGN",
+        "name": "主權 AI／機密環境"
+      },
+      {
+        "id": "CLOUD",
+        "name": "Azure／AWS／Google Cloud 通路"
+      },
+      {
+        "id": "NVIDIA",
+        "name": "NVIDIA Nemotron／供應鏈 AI"
+      },
+      {
+        "id": "MANUFACTURING",
+        "name": "Warp Speed 工業製造"
+      },
+      {
+        "id": "AUTO",
+        "name": "汽車、航空與船舶"
+      },
+      {
+        "id": "ENERGY",
+        "name": "能源／核能／電網"
+      },
+      {
+        "id": "FINANCE",
+        "name": "銀行、保險與資產管理"
+      },
+      {
+        "id": "RETAIL",
+        "name": "零售、行銷、媒體"
+      },
+      {
+        "id": "PARTNERS",
+        "name": "顧問／FDE／系統整合商"
+      },
+      {
+        "id": "CYBER",
+        "name": "資安、權限與治理"
+      },
+      {
+        "id": "TAIWAN",
+        "name": "台灣企業 AI 產業映射"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "TITAN_customer_001",
+        "name": "美國陸軍 Army Contracting Command",
+        "business_line": "TITAN",
+        "relationship": "customer",
+        "details": "2026 年公告 TITAN 八套地面站生產交付主約，四套 Advanced、四套 Basic；Palantir 為主承包商。 來源：https://investors.palantir.com/news-details/2026/Palantir-to-Deliver-Eight-TITAN-Systems-to-the-U-S--Army"
+      },
+      {
+        "id": "GOTHAM_customer_001",
+        "name": "美國國防部（DoD）",
+        "business_line": "GOTHAM",
+        "relationship": "customer",
+        "details": "Palantir 10-K 揭露政府及國防業務，軍事情報分析與任務軟體屬核心用途；不將全部部門視為單一契約。 來源：https://www.sec.gov/Archives/edgar/data/1321655/000132165526000011/pltr-20251231.htm"
+      },
+      {
+        "id": "MAVEN_customer_001",
+        "name": "美國國防部軍事 AI 單位",
+        "business_line": "MAVEN",
+        "relationship": "customer",
+        "details": "Palantir 軍事 AI 工作流程支援資料融合、目標辨識與任務決策；不同專案的契約金額須分開。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "FEDERAL_customer_001",
+        "name": "美國農業部（USDA）",
+        "business_line": "FEDERAL",
+        "relationship": "customer",
+        "details": "2026 年 4 月官方公告合作，運用資料整合改善農民服務與流程效率。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "FEDERAL_customer_002",
+        "name": "美國食品藥物管理局（FDA）",
+        "business_line": "FEDERAL",
+        "relationship": "customer",
+        "details": "Palantir 聯邦醫療官網列示合作機關，涉及資料整合及公共衛生研究；不宣稱所有 FDA 工作負載使用 AIP。 來源：https://www.palantir.com/offerings/federal-health"
+      },
+      {
+        "id": "FEDERAL_customer_003",
+        "name": "美國疾病管制與預防中心（CDC）",
+        "business_line": "FEDERAL",
+        "relationship": "customer",
+        "details": "Palantir 官網列示公共衛生資料合作，與 HHS Protect 等計畫有關。 來源：https://www.palantir.com/offerings/federal-health"
+      },
+      {
+        "id": "FEDERAL_customer_004",
+        "name": "美國國家衛生研究院（NIH）",
+        "business_line": "FEDERAL",
+        "relationship": "customer",
+        "details": "N3C 資料平台支援 NIH 研究協作，為官方具名政府應用。 來源：https://www.palantir.com/offerings/federal-health"
+      },
+      {
+        "id": "FEDERAL_customer_005",
+        "name": "美國退伍軍人事務部（VA）",
+        "business_line": "FEDERAL",
+        "relationship": "customer",
+        "details": "Palantir 聯邦醫療官網列為合作機關；不延伸推定未披露契約。 來源：https://www.palantir.com/offerings/federal-health"
+      },
+      {
+        "id": "HEALTH_customer_001",
+        "name": "Tampa General Hospital",
+        "business_line": "HEALTH",
+        "relationship": "customer",
+        "details": "自 2021 年為 Palantir 客戶，Foundry／AIP 用於病患流程、護理排班、敗血症風險與主權 AI。 來源：https://investors.palantir.com/news-details/2026/Palantir-Accelerates-Delivery-of-Sovereign-AI-to-New-Wave-of-Customers"
+      },
+      {
+        "id": "HEALTH_customer_002",
+        "name": "英國 NHS 聯邦資料平台",
+        "business_line": "HEALTH",
+        "relationship": "customer",
+        "details": "Palantir 支援 NHS Federated Data Platform 醫療資料互通與營運流程；應區分 NHS 體系內各機構。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "FOUNDRY_customer_001",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "FOUNDRY",
+        "relationship": "customer",
+        "details": "2026 年以 Foundry、Ontology、AIP 優化 NVIDIA 供應鏈，屬明確具名商業使用者兼合作夥伴。 來源：https://nvidianews.nvidia.com/news/nvidia-and-palantir-bring-sovereign-intelligence-to-critical-supply-chains"
+      },
+      {
+        "id": "FOUNDRY_customer_002",
+        "name": "L3Harris（LHX）",
+        "business_line": "FOUNDRY",
+        "relationship": "customer",
+        "details": "2026 年公告已整合逾 30 個 ERP 系統及數百應用，作為國防製造與資料治理客戶。 來源：https://investors.palantir.com/news-details/2026/Palantir-Accelerates-Delivery-of-Sovereign-AI-to-New-Wave-of-Customers"
+      },
+      {
+        "id": "FOUNDRY_customer_003",
+        "name": "McCarthy Building Companies",
+        "business_line": "FOUNDRY",
+        "relationship": "customer",
+        "details": "建築公司以 Foundry／AIP／Ontology 管理設計至工地流程，並微調 Nemotron 模型。 來源：https://investors.palantir.com/news-details/2026/Palantir-Accelerates-Delivery-of-Sovereign-AI-to-New-Wave-of-Customers"
+      },
+      {
+        "id": "AIP_customer_001",
+        "name": "Cisco Systems（CSCO）",
+        "business_line": "AIP",
+        "relationship": "customer",
+        "details": "AIPCon 11 官方公告列示其為展示部署成果的客戶；不推定全部 Cisco 業務已導入。 來源：https://investors.palantir.com/news-details/2026/Palantir-Customers-Set-New-Standard-for-AI-at-AIPCon-11v2/"
+      },
+      {
+        "id": "AIP_customer_002",
+        "name": "Eaton（ETN）",
+        "business_line": "AIP",
+        "relationship": "customer",
+        "details": "AIPCon 11 官方公告列示其為企業 AI 部署展示客戶。 來源：https://investors.palantir.com/news-details/2026/Palantir-Customers-Set-New-Standard-for-AI-at-AIPCon-11v2/"
+      },
+      {
+        "id": "AIP_customer_003",
+        "name": "Acrisure",
+        "business_line": "AIP",
+        "relationship": "customer",
+        "details": "AIPCon 11 具名保險客戶，展示企業 AI 使用情境。 來源：https://investors.palantir.com/news-details/2026/Palantir-Customers-Set-New-Standard-for-AI-at-AIPCon-11v2/"
+      },
+      {
+        "id": "AIP_customer_004",
+        "name": "Zeta Global（ZETA）",
+        "business_line": "AIP",
+        "relationship": "customer",
+        "details": "2026 年宣布聯合打造 Athena 行銷資料與 AI 基礎設施，兼具客戶與技術合作。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "AIP_customer_005",
+        "name": "USA TODAY",
+        "business_line": "AIP",
+        "relationship": "customer",
+        "details": "AIPCon 11 官方公告列為媒體業 AI 應用展示客戶。 來源：https://investors.palantir.com/news-details/2026/Palantir-Customers-Set-New-Standard-for-AI-at-AIPCon-11v2/"
+      },
+      {
+        "id": "AIP_customer_006",
+        "name": "Hexion",
+        "business_line": "AIP",
+        "relationship": "customer",
+        "details": "AIPCon 11 官方公告列為企業 AI 應用展示客戶。 來源：https://investors.palantir.com/news-details/2026/Palantir-Customers-Set-New-Standard-for-AI-at-AIPCon-11v2/"
+      },
+      {
+        "id": "SOVEREIGN_customer_001",
+        "name": "Ondas（ONDS）／Regna AI",
+        "business_line": "SOVEREIGN",
+        "relationship": "customer",
+        "details": "以 Palantir AIP、NVIDIA Nemotron 建構任務關鍵主權 AI，涉及無人系統與邊緣情報。 來源：https://investors.palantir.com/news-details/2026/Palantir-Accelerates-Delivery-of-Sovereign-AI-to-New-Wave-of-Customers"
+      },
+      {
+        "id": "MANUFACTURING_customer_001",
+        "name": "Boeing（BA）",
+        "business_line": "MANUFACTURING",
+        "relationship": "customer",
+        "details": "2025 年公告在國防與航太工廠採用 Warp Speed／AI 資料整合，屬具名製造合作。 來源：https://www.palantir.com/warpspeed/"
+      },
+      {
+        "id": "MANUFACTURING_customer_002",
+        "name": "Anduril Industries",
+        "business_line": "MANUFACTURING",
+        "relationship": "customer",
+        "details": "Palantir Warp Speed 官網列為製造合作夥伴，支援軍工製造資料流與交付。 來源：https://www.palantir.com/warpspeed/"
+      },
+      {
+        "id": "MANUFACTURING_customer_003",
+        "name": "Panasonic Energy",
+        "business_line": "MANUFACTURING",
+        "relationship": "customer",
+        "details": "Palantir Warp Speed 官方列示合作夥伴，涉及電池製造與生產系統。 來源：https://www.palantir.com/warpspeed/"
+      },
+      {
+        "id": "MANUFACTURING_customer_004",
+        "name": "Lear（LEA）",
+        "business_line": "MANUFACTURING",
+        "relationship": "customer",
+        "details": "2025 年擴大五年合作，在全球汽車零件製造使用 Foundry、Warp Speed 與 AIP。 來源：https://www.palantir.com/warpspeed/"
+      },
+      {
+        "id": "MANUFACTURING_customer_005",
+        "name": "Changshin",
+        "business_line": "MANUFACTURING",
+        "relationship": "customer",
+        "details": "2026 年 11 月公布合作，使用 Foundry／AIP 連接鞋類研發與工廠生產流程。 來源：https://www.changshininc.com/en/pr/news/changshin-partners-with-palantir-sets-out-to-innovate-footwear-manufacturing-with-ai/"
+      },
+      {
+        "id": "AUTO_customer_001",
+        "name": "Stellantis（STLA）",
+        "business_line": "AUTO",
+        "relationship": "customer",
+        "details": "2026 年 3 月延長並擴大五年合作，涵蓋汽車集團營運資料與決策。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "AUTO_customer_002",
+        "name": "Airbus（AIR）",
+        "business_line": "AUTO",
+        "relationship": "customer",
+        "details": "2026 年 2 月宣布延長策略合作，航空製造與營運資料平台。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "AUTO_customer_003",
+        "name": "HD Hyundai",
+        "business_line": "AUTO",
+        "relationship": "customer",
+        "details": "2026 年 1 月宣布擴大集團合作，支援造船、工業及集團 AI 轉型。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "AUTO_customer_004",
+        "name": "GE Aerospace（GE）",
+        "business_line": "AUTO",
+        "relationship": "customer",
+        "details": "2026 年 3 月擴大合作，利用 AI 改善軍機妥善率及維修流程。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "ENERGY_customer_001",
+        "name": "Centrus Energy（LEU）",
+        "business_line": "ENERGY",
+        "relationship": "customer",
+        "details": "2026 年 3 月公告合作，支援美國鈾濃縮產能擴張的營運效率與成本控制。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "FINANCE_customer_001",
+        "name": "GNP Seguros",
+        "business_line": "FINANCE",
+        "relationship": "customer",
+        "details": "2026 年 7 月擴大企業合約，使用 Foundry／AIP 做理賠詐欺偵測與核保。 來源：https://investors.palantir.com/news-details/2026/Palantir-Expands-Its-Presence-in-Mexico-and-Strengthens-Its-AI-Offering-in-the-Insurance-Sector-with-GNP-Seguros"
+      },
+      {
+        "id": "FINANCE_customer_002",
+        "name": "AmeriLife",
+        "business_line": "FINANCE",
+        "relationship": "customer",
+        "details": "2026 年 11 月公告企業合作，Foundry／AIP 導入保險與退休商品通路，Crump 已有正式上線流程。 來源：https://amerilife.com/newsroom/technology/amerilife-and-palantir-announce-enterprise-partnership-to-bring-ai-driven-transformation-to-insurance-and-retirement-distribution"
+      },
+      {
+        "id": "FINANCE_customer_003",
+        "name": "Customers Bank（CUBI）",
+        "business_line": "FINANCE",
+        "relationship": "customer",
+        "details": "2026 年 10 月公告 AI 原生銀行合作，推動資料與流程轉型。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "FINANCE_customer_004",
+        "name": "Kirkland & Ellis",
+        "business_line": "FINANCE",
+        "relationship": "customer",
+        "details": "2026 年 6 月宣布私募股權募資 AI 平台合作，為法律與金融服務場景。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "RETAIL_customer_001",
+        "name": "Stagwell（STGW）",
+        "business_line": "RETAIL",
+        "relationship": "customer",
+        "details": "2026 年 10 月擴大企業行銷 AI 合作。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "RETAIL_customer_002",
+        "name": "Zeta Global（ZETA）",
+        "business_line": "RETAIL",
+        "relationship": "customer",
+        "details": "2026 年公告行銷資料／AI 整合合作，Zeta Athena 為應用場景。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "RETAIL_customer_003",
+        "name": "Surf Air Mobility（SRFM）",
+        "business_line": "RETAIL",
+        "relationship": "customer",
+        "details": "2026 年擴大 OperatorOS、OwnerOS 及企業應用商業化合作。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "TITAN_partner_001",
+        "name": "Anduril Industries",
+        "business_line": "TITAN",
+        "relationship": "partner",
+        "details": "美國陸軍 TITAN 八套地面站計畫官方列為子系統合作夥伴；非 Palantir 所有軍事專案供應商。 來源：https://investors.palantir.com/news-details/2026/Palantir-to-Deliver-Eight-TITAN-Systems-to-the-U-S--Army"
+      },
+      {
+        "id": "TITAN_partner_002",
+        "name": "L3Harris Technologies",
+        "business_line": "TITAN",
+        "relationship": "partner",
+        "details": "TITAN 地面站官方具名技術與系統合作夥伴。 來源：https://investors.palantir.com/news-details/2026/Palantir-to-Deliver-Eight-TITAN-Systems-to-the-U-S--Army"
+      },
+      {
+        "id": "TITAN_partner_003",
+        "name": "Sierra Nevada Corporation（SNC）",
+        "business_line": "TITAN",
+        "relationship": "partner",
+        "details": "TITAN 官方列示子系統整合與技術合作方。 來源：https://investors.palantir.com/news-details/2026/Palantir-to-Deliver-Eight-TITAN-Systems-to-the-U-S--Army"
+      },
+      {
+        "id": "TITAN_partner_004",
+        "name": "Strategic Technology Consulting",
+        "business_line": "TITAN",
+        "relationship": "partner",
+        "details": "TITAN 官方列示團隊成員，參與地面站系統交付。 來源：https://investors.palantir.com/news-details/2026/Palantir-to-Deliver-Eight-TITAN-Systems-to-the-U-S--Army"
+      },
+      {
+        "id": "TITAN_partner_005",
+        "name": "World Wide Technology",
+        "business_line": "TITAN",
+        "relationship": "partner",
+        "details": "TITAN 官方列示團隊成員，支援系統整合交付。 來源：https://investors.palantir.com/news-details/2026/Palantir-to-Deliver-Eight-TITAN-Systems-to-the-U-S--Army"
+      },
+      {
+        "id": "SOVEREIGN_partner_001",
+        "name": "Nebius Group（NBIS）",
+        "business_line": "SOVEREIGN",
+        "relationship": "partner",
+        "details": "2026 年 9 月公告主權 AI 策略合作，Nebius 為優先主權算力供應夥伴，推論端點整合仍須依實際部署階段區分。 來源：https://investors.palantir.com/news-details/2026/Palantir-and-Nebius-Partner-to-Deliver-a-Complete-Sovereign-AI-Stack-to-Palantir-Customers/"
+      },
+      {
+        "id": "SOVEREIGN_partner_002",
+        "name": "NVIDIA（NVDA）",
+        "business_line": "SOVEREIGN",
+        "relationship": "partner",
+        "details": "共同發表主權 AI 作業系統參考架構，整合 Nemotron 開放模型、Palantir Ontology 與 AIP。 來源：https://nvidianews.nvidia.com/news/nvidia-and-palantir-bring-sovereign-intelligence-to-critical-supply-chains"
+      },
+      {
+        "id": "SOVEREIGN_partner_003",
+        "name": "Armada",
+        "business_line": "SOVEREIGN",
+        "relationship": "partner",
+        "details": "2026 年 10 月公告合作，推動邊緣主權 AI 基礎設施。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "SOVEREIGN_partner_004",
+        "name": "Knox",
+        "business_line": "SOVEREIGN",
+        "relationship": "partner",
+        "details": "2026 年 10 月公告合作，支援聯邦雲端及安全軟體交付。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "NVIDIA_partner_001",
+        "name": "NVIDIA Nemotron",
+        "business_line": "NVIDIA",
+        "relationship": "partner",
+        "details": "2026 年 9 月合作將 Nemotron 開放模型整合 Foundry／AIP，並在 NVIDIA 自有供應鏈率先使用。 來源：https://nvidianews.nvidia.com/news/nvidia-and-palantir-bring-sovereign-intelligence-to-critical-supply-chains"
+      },
+      {
+        "id": "NVIDIA_partner_002",
+        "name": "NVIDIA Agent Knowledge Foundation",
+        "business_line": "NVIDIA",
+        "relationship": "partner",
+        "details": "2026 年 10 月公告使用 NVIDIA Agent Knowledge Foundation 與 Nemotron，形成供應鏈 AI 決策系統。 來源：https://investors.palantir.com/news-details/2026/Palantir-Accelerates-Delivery-of-Sovereign-AI-to-New-Wave-of-Customers"
+      },
+      {
+        "id": "NVIDIA_partner_003",
+        "name": "NVIDIA AI Compute",
+        "business_line": "NVIDIA",
+        "relationship": "partner",
+        "details": "主權 AI 參考架構可在 NVIDIA 算力平台部署；不等同 Palantir 直接採購 GPU 的量化合約。 來源：https://nvidianews.nvidia.com/news/nvidia-and-palantir-bring-sovereign-intelligence-to-critical-supply-chains"
+      },
+      {
+        "id": "CLOUD_partner_001",
+        "name": "Microsoft Azure",
+        "business_line": "CLOUD",
+        "relationship": "partner",
+        "details": "Foundry 可透過 Azure Marketplace 採購，整合 Azure AI 與資料服務，企業可使用 MACC 額度。 來源：https://www.palantir.com/partnerships/microsoft/"
+      },
+      {
+        "id": "CLOUD_partner_002",
+        "name": "Amazon Web Services（AWS）",
+        "business_line": "CLOUD",
+        "relationship": "partner",
+        "details": "Palantir 平台在 AWS 雲端環境部署及銷售，為雲端通路與基礎設施生態。 來源：https://www.sec.gov/Archives/edgar/data/1321655/000132165526000011/pltr-20251231.htm"
+      },
+      {
+        "id": "CLOUD_partner_003",
+        "name": "Google Cloud",
+        "business_line": "CLOUD",
+        "relationship": "partner",
+        "details": "2026 年 6 月公告 Google Cloud Marketplace 上架，BigQuery／Foundry 雙向整合與 Gemini／AIP 連接。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "CLOUD_partner_004",
+        "name": "Microsoft Azure Government",
+        "business_line": "CLOUD",
+        "relationship": "partner",
+        "details": "Palantir 與微軟合作服務受管制政府與國防部署，需按安全認證與服務版本區分。 來源：https://www.palantir.com/partnerships/microsoft/"
+      },
+      {
+        "id": "MANUFACTURING_partner_001",
+        "name": "BlueForge Alliance",
+        "business_line": "MANUFACTURING",
+        "relationship": "partner",
+        "details": "Warp Speed for Warships 共同計畫，推動美國造船產業供應鏈數位化。 來源：https://www.palantir.com/warpspeed/"
+      },
+      {
+        "id": "MANUFACTURING_partner_002",
+        "name": "The Nuclear Company",
+        "business_line": "MANUFACTURING",
+        "relationship": "partner",
+        "details": "2025 年共同開發核能工程 NOS 軟體，支援核電廠建設進度及成本管理。 來源：https://www.palantir.com/warpspeed/"
+      },
+      {
+        "id": "MANUFACTURING_partner_003",
+        "name": "Saronic",
+        "business_line": "MANUFACTURING",
+        "relationship": "partner",
+        "details": "自主海事裝置與造船製造 AI 合作夥伴。 來源：https://www.palantir.com/warpspeed/"
+      },
+      {
+        "id": "MANUFACTURING_partner_004",
+        "name": "Ursa Major",
+        "business_line": "MANUFACTURING",
+        "relationship": "partner",
+        "details": "高超音速推進製造 MES／生產可視化合作夥伴。 來源：https://www.palantir.com/warpspeed/"
+      },
+      {
+        "id": "MANUFACTURING_partner_005",
+        "name": "Epirus",
+        "business_line": "MANUFACTURING",
+        "relationship": "partner",
+        "details": "軍工電子與反無人機系統製造 Warp Speed 合作夥伴。 來源：https://www.palantir.com/warpspeed/"
+      },
+      {
+        "id": "MANUFACTURING_partner_006",
+        "name": "Shield AI",
+        "business_line": "MANUFACTURING",
+        "relationship": "partner",
+        "details": "Warp Speed 官網列示合作夥伴，支援國防製造與供應鏈資料流程。 來源：https://www.palantir.com/warpspeed/"
+      },
+      {
+        "id": "MANUFACTURING_partner_007",
+        "name": "Red Cat Holdings（RCAT）",
+        "business_line": "MANUFACTURING",
+        "relationship": "partner",
+        "details": "Warp Speed 官方列示無人機製造合作夥伴。 來源：https://www.palantir.com/warpspeed/"
+      },
+      {
+        "id": "MANUFACTURING_partner_008",
+        "name": "Saildrone",
+        "business_line": "MANUFACTURING",
+        "relationship": "partner",
+        "details": "Warp Speed 官網列示自主海事系統製造合作夥伴。 來源：https://www.palantir.com/warpspeed/"
+      },
+      {
+        "id": "AUTO_partner_001",
+        "name": "HD Hyundai",
+        "business_line": "AUTO",
+        "relationship": "partner",
+        "details": "2026 年擴大集團 AI 策略合作，結合造船及工業現場數據。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "AUTO_partner_002",
+        "name": "SNP Group",
+        "business_line": "AUTO",
+        "relationship": "partner",
+        "details": "2026 年公告 SAP 資料遷移與安全企業轉型合作。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "ENERGY_partner_001",
+        "name": "CenterPoint Energy（CNP）",
+        "business_line": "ENERGY",
+        "relationship": "partner",
+        "details": "2025 年 Chain Reaction 美國 AI 基礎設施計畫創始合作夥伴，聚焦電網與能源供應鏈。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "ENERGY_partner_002",
+        "name": "The Nuclear Company",
+        "business_line": "ENERGY",
+        "relationship": "partner",
+        "details": "共同開發核能施工營運軟體 NOS；合作方非 Palantir 核電燃料供應商。 來源：https://www.palantir.com/warpspeed/"
+      },
+      {
+        "id": "FINANCE_partner_001",
+        "name": "TWG AI",
+        "business_line": "FINANCE",
+        "relationship": "partner",
+        "details": "與 Palantir 共同開發運動市場誠信分析，為應用技術合作而非金融交易所。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "FINANCE_partner_002",
+        "name": "Polymarket",
+        "business_line": "FINANCE",
+        "relationship": "partner",
+        "details": "2026 年 3 月與 Palantir、TWG AI 合作運動市場誠信平台；不是博彩服務採購推薦。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "PARTNERS_partner_001",
+        "name": "Accenture（ACN）",
+        "business_line": "PARTNERS",
+        "relationship": "partner",
+        "details": "2025／2026 年擴大全球策略合作，提供企業 AI 導入與轉型顧問服務。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "PARTNERS_partner_002",
+        "name": "PwC",
+        "business_line": "PARTNERS",
+        "relationship": "partner",
+        "details": "2026 年 9 月擴大企業 AI 策略聯盟，支援組織規模化導入。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "PARTNERS_partner_003",
+        "name": "Bain & Company",
+        "business_line": "PARTNERS",
+        "relationship": "partner",
+        "details": "2026 年 3 月擴大管理顧問合作，推動產業 AI 轉型。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "PARTNERS_partner_004",
+        "name": "Fujitsu（6702 JP）",
+        "business_line": "PARTNERS",
+        "relationship": "partner",
+        "details": "2026 年 9 月續約，成為全球 FDE 合作夥伴；Fujitsu 自身簽署 AIP／Foundry 採購協議。 來源：https://investors.palantir.com/news-details/2026/Palantir-and-Fujitsu-Deepen-Partnership-to-Advance-Enterprise-AI-Transformation-with-Fujitsu-Strengthening-as-a-Global-FDE-Partner/"
+      },
+      {
+        "id": "PARTNERS_partner_005",
+        "name": "LG CNS",
+        "business_line": "PARTNERS",
+        "relationship": "partner",
+        "details": "2026 年 3 月公告策略合作，推動韓國及全球企業 AI 轉型。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "PARTNERS_partner_006",
+        "name": "Rackspace Technology（RXT）",
+        "business_line": "PARTNERS",
+        "relationship": "partner",
+        "details": "2026 年 2 月合作提供 Foundry／AIP 受管營運及正式環境支援。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "PARTNERS_partner_007",
+        "name": "SNP Group",
+        "business_line": "PARTNERS",
+        "relationship": "partner",
+        "details": "SAP 遷移工具及企業 ERP 現代化合作夥伴。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "PARTNERS_partner_008",
+        "name": "SAP（SAP）",
+        "business_line": "PARTNERS",
+        "relationship": "partner",
+        "details": "2026 年 5 月擴大 SAP 轉型合作，協助企業安全資料遷移及 ERP AI 工作流程。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "CYBER_partner_001",
+        "name": "Method Security",
+        "business_line": "CYBER",
+        "relationship": "partner",
+        "details": "2026 年 9 月推出 Cardinal Program，將自主資安系統接入 Palantir Ontology。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "CYBER_partner_002",
+        "name": "DISA",
+        "business_line": "CYBER",
+        "relationship": "partner",
+        "details": "2026 年 PFCS Forward 獲 IL5／IL6 部署授權，屬政府安全認證機關而非商業技術供應商。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "SOVEREIGN_supplier_001",
+        "name": "Nebius GPU 雲端／推論端點",
+        "business_line": "SOVEREIGN",
+        "relationship": "supplier",
+        "details": "2026 年指定為優先主權 AI 基礎設施夥伴，整合後提供受控算力；不宣稱所有 Palantir 客戶都採用。 來源：https://investors.palantir.com/news-details/2026/Palantir-and-Nebius-Partner-to-Deliver-a-Complete-Sovereign-AI-Stack-to-Palantir-Customers/"
+      },
+      {
+        "id": "NVIDIA_supplier_001",
+        "name": "NVIDIA Nemotron 開放模型",
+        "business_line": "NVIDIA",
+        "relationship": "supplier",
+        "details": "Palantir 主權 AI 方案明確整合 Nemotron；模型權重與軟體為技術供應，不等於採購 GPU 數量。 來源：https://nvidianews.nvidia.com/news/nvidia-and-palantir-bring-sovereign-intelligence-to-critical-supply-chains"
+      },
+      {
+        "id": "CLOUD_supplier_001",
+        "name": "Microsoft Azure 雲端",
+        "business_line": "CLOUD",
+        "relationship": "supplier",
+        "details": "Foundry 透過 Azure Marketplace 銷售並使用 Azure 雲端分析服務，屬雲端基礎設施及通路。 來源：https://www.palantir.com/partnerships/microsoft/"
+      },
+      {
+        "id": "CLOUD_supplier_002",
+        "name": "Google Cloud BigQuery／Gemini",
+        "business_line": "CLOUD",
+        "relationship": "supplier",
+        "details": "2026 年雙向 BigQuery／Foundry 資料整合與 Gemini／AIP 模型連接，屬技術供應與合作。 來源：https://investors.palantir.com/news/"
+      },
+      {
+        "id": "CLOUD_supplier_003",
+        "name": "AWS 雲端基礎設施",
+        "business_line": "CLOUD",
+        "relationship": "supplier",
+        "details": "Palantir 可在 AWS 部署，為雲端運算服務供應鏈之一；不推定獨家依賴。 來源：https://www.sec.gov/Archives/edgar/data/1321655/000132165526000011/pltr-20251231.htm"
+      },
+      {
+        "id": "TITAN_supplier_001",
+        "name": "Anduril 子系統技術",
+        "business_line": "TITAN",
+        "relationship": "supplier",
+        "details": "TITAN 主承包商 Palantir 公告列示的系統團隊供應合作，並非全部裝備由 Anduril 製造。 來源：https://investors.palantir.com/news-details/2026/Palantir-to-Deliver-Eight-TITAN-Systems-to-the-U-S--Army"
+      },
+      {
+        "id": "TITAN_supplier_002",
+        "name": "L3Harris 子系統技術",
+        "business_line": "TITAN",
+        "relationship": "supplier",
+        "details": "TITAN 官方列示的技術與整合供應合作方。 來源：https://investors.palantir.com/news-details/2026/Palantir-to-Deliver-Eight-TITAN-Systems-to-the-U-S--Army"
+      },
+      {
+        "id": "TITAN_supplier_003",
+        "name": "Sierra Nevada Corporation 子系統",
+        "business_line": "TITAN",
+        "relationship": "supplier",
+        "details": "TITAN 官方列示的系統整合技術合作方。 來源：https://investors.palantir.com/news-details/2026/Palantir-to-Deliver-Eight-TITAN-Systems-to-the-U-S--Army"
+      },
+      {
+        "id": "APOLLO_supplier_001",
+        "name": "受管雲端／本地部署環境",
+        "business_line": "APOLLO",
+        "relationship": "supplier",
+        "details": "Apollo 支援跨公有雲、私有雲及邊緣環境持續交付；供應商隨客戶環境而異，非單一具名硬體供應。 來源：https://www.sec.gov/Archives/edgar/data/1321655/000132165526000011/pltr-20251231.htm"
+      },
+      {
+        "id": "GOTHAM_competitor_001",
+        "name": "Anduril Lattice",
+        "business_line": "GOTHAM",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：國防任務軟體與多源感測器融合部分競爭，亦可為 TITAN 合作方。 不推定特定客戶流失。"
+      },
+      {
+        "id": "GOTHAM_competitor_002",
+        "name": "BAE Systems",
+        "business_line": "GOTHAM",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：國防情報資料融合與指揮系統競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "GOTHAM_competitor_003",
+        "name": "Leidos（LDOS）",
+        "business_line": "GOTHAM",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：聯邦情報系統整合、資料分析與任務軟體競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "TITAN_competitor_001",
+        "name": "RTX／Raytheon",
+        "business_line": "TITAN",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：軍事感測器與地面任務系統市場競爭；不主張 RTX 參與 TITAN 得標案。 不推定特定客戶流失。"
+      },
+      {
+        "id": "TITAN_competitor_002",
+        "name": "Northrop Grumman（NOC）",
+        "business_line": "TITAN",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：軍事感測融合、地面站與指揮控制系統競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "MAVEN_competitor_001",
+        "name": "Scale AI",
+        "business_line": "MAVEN",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：軍事 AI 資料標註、模型部署與分析流程部分競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "MAVEN_competitor_002",
+        "name": "Anduril",
+        "business_line": "MAVEN",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：國防自主系統與 AI 任務軟體競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "FEDERAL_competitor_001",
+        "name": "Booz Allen Hamilton（BAH）",
+        "business_line": "FEDERAL",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：美國聯邦資料與 AI 系統整合競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "FEDERAL_competitor_002",
+        "name": "SAIC",
+        "business_line": "FEDERAL",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：聯邦政府資訊系統、國防資料平台競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "FEDERAL_competitor_003",
+        "name": "Leidos（LDOS）",
+        "business_line": "FEDERAL",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：政府數據平台及分析服務競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "HEALTH_competitor_001",
+        "name": "Epic Systems",
+        "business_line": "HEALTH",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：醫療數據平台與營運分析部分競爭，核心 EHR 功能定位不同。 不推定特定客戶流失。"
+      },
+      {
+        "id": "HEALTH_competitor_002",
+        "name": "Oracle Health（ORCL）",
+        "business_line": "HEALTH",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：醫療資料平台與醫院 AI 工作流程部分重疊。 不推定特定客戶流失。"
+      },
+      {
+        "id": "HEALTH_competitor_003",
+        "name": "Microsoft Cloud for Healthcare",
+        "business_line": "HEALTH",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：醫療資料整合與 AI 工作流程競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "FOUNDRY_competitor_001",
+        "name": "Databricks",
+        "business_line": "FOUNDRY",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：資料湖倉、AI 資料平台與企業治理競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "FOUNDRY_competitor_002",
+        "name": "Snowflake（SNOW）",
+        "business_line": "FOUNDRY",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：資料平台、AI Agent 與治理工作流程競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "FOUNDRY_competitor_003",
+        "name": "Microsoft Fabric",
+        "business_line": "FOUNDRY",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：企業資料整合、分析與治理競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "FOUNDRY_competitor_004",
+        "name": "IBM watsonx.data",
+        "business_line": "FOUNDRY",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：企業資料平台與 AI 治理競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "AIP_competitor_001",
+        "name": "Microsoft Copilot Studio",
+        "business_line": "AIP",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：企業 AI Agent 與自動化工作流程競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "AIP_competitor_002",
+        "name": "ServiceNow（NOW）",
+        "business_line": "AIP",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：企業 AI 工作流程與 Agent 平台競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "AIP_competitor_003",
+        "name": "Salesforce Agentforce（CRM）",
+        "business_line": "AIP",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：企業 CRM／AI Agent 應用競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "AIP_competitor_004",
+        "name": "C3.ai（AI）",
+        "business_line": "AIP",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：企業 AI 應用及產業模型競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "AIP_competitor_005",
+        "name": "Dataiku",
+        "business_line": "AIP",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：企業 AI 應用、資料科學與治理競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "APOLLO_competitor_001",
+        "name": "Red Hat OpenShift",
+        "business_line": "APOLLO",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：企業應用跨雲部署與營運管理競爭，技術定位不同。 不推定特定客戶流失。"
+      },
+      {
+        "id": "APOLLO_competitor_002",
+        "name": "HashiCorp Terraform／Nomad",
+        "business_line": "APOLLO",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：多雲基礎設施部署與編排技術競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "APOLLO_competitor_003",
+        "name": "GitLab DevSecOps",
+        "business_line": "APOLLO",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：安全軟體交付及 CI/CD 流程部分競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "SOVEREIGN_competitor_001",
+        "name": "Microsoft Azure Government",
+        "business_line": "SOVEREIGN",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：政府受管制 AI 雲端部署競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "SOVEREIGN_competitor_002",
+        "name": "AWS GovCloud",
+        "business_line": "SOVEREIGN",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：政府安全雲端與主權資料處理競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "SOVEREIGN_competitor_003",
+        "name": "Oracle Government Cloud",
+        "business_line": "SOVEREIGN",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：政府 AI 雲端與高安全部署競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "CLOUD_competitor_001",
+        "name": "AWS AI／Bedrock",
+        "business_line": "CLOUD",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：雲端 AI Agent 平台與 Palantir AIP 在客戶預算上競爭，亦是基礎設施合作方。 不推定特定客戶流失。"
+      },
+      {
+        "id": "CLOUD_competitor_002",
+        "name": "Google Vertex AI",
+        "business_line": "CLOUD",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：企業 AI 模型平台與 Palantir AIP 競爭，亦有 Gemini 整合。 不推定特定客戶流失。"
+      },
+      {
+        "id": "NVIDIA_competitor_001",
+        "name": "Databricks Lakehouse AI",
+        "business_line": "NVIDIA",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：企業供應鏈 AI 與資料治理解決方案競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "NVIDIA_competitor_002",
+        "name": "SAP Business AI",
+        "business_line": "NVIDIA",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：企業供應鏈流程 AI 應用競爭，亦有 ERP 轉型合作。 不推定特定客戶流失。"
+      },
+      {
+        "id": "MANUFACTURING_competitor_001",
+        "name": "Siemens Xcelerator",
+        "business_line": "MANUFACTURING",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：工業數位分身、MES 與製造 AI 工作流程競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "MANUFACTURING_competitor_002",
+        "name": "Rockwell Automation",
+        "business_line": "MANUFACTURING",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：工廠 MES、工業分析及自動化軟體競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "MANUFACTURING_competitor_003",
+        "name": "Dassault Systèmes",
+        "business_line": "MANUFACTURING",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：製造 PLM 與數位分身資料流程競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "MANUFACTURING_competitor_004",
+        "name": "SAP Digital Manufacturing",
+        "business_line": "MANUFACTURING",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：製造 ERP／MES 整合與 AI 決策競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "AUTO_competitor_001",
+        "name": "Siemens Teamcenter",
+        "business_line": "AUTO",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：航太、汽車 PLM 與工業資料平台競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "AUTO_competitor_002",
+        "name": "PTC Windchill",
+        "business_line": "AUTO",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：工業產品生命週期管理與數據流程競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "ENERGY_competitor_001",
+        "name": "Schneider Electric EcoStruxure",
+        "business_line": "ENERGY",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：能源設備營運資料平台與數位化工作流程競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "ENERGY_competitor_002",
+        "name": "GE Vernova Digital",
+        "business_line": "ENERGY",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：電網與發電資產營運軟體競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "FINANCE_competitor_001",
+        "name": "FICO",
+        "business_line": "FINANCE",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：銀行與保險風險分析及詐欺偵測部分競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "FINANCE_competitor_002",
+        "name": "SAS Institute",
+        "business_line": "FINANCE",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：金融風控、模型治理與資料分析競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "FINANCE_competitor_003",
+        "name": "Temenos",
+        "business_line": "FINANCE",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：銀行核心系統與 AI 應用部分競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "RETAIL_competitor_001",
+        "name": "Adobe Experience Platform",
+        "business_line": "RETAIL",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：行銷資料與 AI 工作流程競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "RETAIL_competitor_002",
+        "name": "Salesforce Data Cloud",
+        "business_line": "RETAIL",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：客戶資料平台與行銷 AI Agent 競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "PARTNERS_competitor_001",
+        "name": "Accenture 自有 AI 平台",
+        "business_line": "PARTNERS",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：顧問公司自有 AI 工具可能競爭，但亦是 Palantir 部署合作方。 不推定特定客戶流失。"
+      },
+      {
+        "id": "CYBER_competitor_001",
+        "name": "CrowdStrike Falcon",
+        "business_line": "CYBER",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：企業資安 AI 工作流程與資料治理部分重疊。 不推定特定客戶流失。"
+      },
+      {
+        "id": "CYBER_competitor_002",
+        "name": "Microsoft Purview",
+        "business_line": "CYBER",
+        "relationship": "competitor",
+        "details": "競爭／替代技術路線：資料治理、合規與 AI 權限控制競爭。 不推定特定客戶流失。"
+      },
+      {
+        "id": "TITAN_beneficiary_001",
+        "name": "漢翔（2634）",
+        "business_line": "TITAN",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：國防航太系統整合與軍工供應鏈產業映射，非已確認 TITAN 合約供應商。"
+      },
+      {
+        "id": "TITAN_beneficiary_002",
+        "name": "中光電（5371）",
+        "business_line": "TITAN",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：無人機／光電感測及軍用電子產業映射，非 Palantir TITAN 已確認供應商。"
+      },
+      {
+        "id": "GOTHAM_beneficiary_001",
+        "name": "全訊（5222）",
+        "business_line": "GOTHAM",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：國防射頻元件與軍用電子需求映射，非已確認 Palantir 訂單。"
+      },
+      {
+        "id": "GOTHAM_beneficiary_002",
+        "name": "雷虎（8033）",
+        "business_line": "GOTHAM",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：國防無人系統與自主任務軟體產業映射，非已確認 Palantir 供應商。"
+      },
+      {
+        "id": "MAVEN_beneficiary_001",
+        "name": "凌群（2453）",
+        "business_line": "MAVEN",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：政府資訊整合及 AI 專案服務的台灣同業產業映射，非 Palantir 直接受惠訂單。"
+      },
+      {
+        "id": "MAVEN_beneficiary_002",
+        "name": "資通（2471）",
+        "business_line": "MAVEN",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：企業資料整合與國防資訊系統需求產業映射，非具名 Palantir 合作方。"
+      },
+      {
+        "id": "FOUNDRY_beneficiary_001",
+        "name": "精誠（6214）",
+        "business_line": "FOUNDRY",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：企業資料治理、系統整合與 AI 平台導入的台灣產業受惠代表；非已確認 Palantir SI。"
+      },
+      {
+        "id": "FOUNDRY_beneficiary_002",
+        "name": "零壹（3029）",
+        "business_line": "FOUNDRY",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：企業資料平台與 AI 軟體通路需求受惠映射，非 Palantir 具名合作夥伴。"
+      },
+      {
+        "id": "FOUNDRY_beneficiary_003",
+        "name": "敦陽科（2480）",
+        "business_line": "FOUNDRY",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：企業雲端資料平台與 IT 服務需求映射，非已確認 Palantir 訂單。"
+      },
+      {
+        "id": "AIP_beneficiary_001",
+        "name": "緯軟（4953）",
+        "business_line": "AIP",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：企業 AI 軟體開發與系統整合需求映射，非已確認 Palantir 合作。"
+      },
+      {
+        "id": "AIP_beneficiary_002",
+        "name": "叡揚（6752）",
+        "business_line": "AIP",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：企業 AI 工作流程與知識管理市場映射，與 Palantir 競合而非已確認受惠。"
+      },
+      {
+        "id": "AIP_beneficiary_003",
+        "name": "大塚資訊（3570）",
+        "business_line": "AIP",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：製造業數位化及 AI 軟體整合需求映射，非 Palantir 直接採購。"
+      },
+      {
+        "id": "SOVEREIGN_beneficiary_001",
+        "name": "台積電（2330／TSM）",
+        "business_line": "SOVEREIGN",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：主權 AI 資料中心使用 GPU 與 AI 晶片，先進晶圓代工為間接供應鏈；不主張 Palantir 直接向台積電採購。"
+      },
+      {
+        "id": "SOVEREIGN_beneficiary_002",
+        "name": "廣達（2382）",
+        "business_line": "SOVEREIGN",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：GPU 伺服器與 AI 機架 ODM 需求映射，Palantir 是軟體平台商，未確認直接訂單。"
+      },
+      {
+        "id": "SOVEREIGN_beneficiary_003",
+        "name": "緯穎（6669）",
+        "business_line": "SOVEREIGN",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：主權 AI／GPU 雲端機架需求映射，未確認 Nebius 或 Palantir 指定訂單。"
+      },
+      {
+        "id": "SOVEREIGN_beneficiary_004",
+        "name": "緯創（3231）",
+        "business_line": "SOVEREIGN",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：AI 伺服器整合需求產業映射，非 Palantir 直接硬體供應。"
+      },
+      {
+        "id": "SOVEREIGN_beneficiary_005",
+        "name": "鴻海（2317）",
+        "business_line": "SOVEREIGN",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：AI 伺服器機架與高密度資料中心製造需求映射，未確認 Palantir 採購。"
+      },
+      {
+        "id": "NVIDIA_beneficiary_001",
+        "name": "日月光投控（3711）",
+        "business_line": "NVIDIA",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：NVIDIA GPU 先進封裝與測試需求映射，屬模型算力基礎設施的間接產業關聯。"
+      },
+      {
+        "id": "NVIDIA_beneficiary_002",
+        "name": "欣興（3037）",
+        "business_line": "NVIDIA",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：AI 加速器 ABF 載板需求映射，非 Palantir 直接供應商。"
+      },
+      {
+        "id": "NVIDIA_beneficiary_003",
+        "name": "智邦（2345）",
+        "business_line": "NVIDIA",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：主權 AI 資料中心高階交換器需求映射，非 Palantir 直接供應商。"
+      },
+      {
+        "id": "NVIDIA_beneficiary_004",
+        "name": "光聖（6442）",
+        "business_line": "NVIDIA",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：AI 資料中心高速光連接需求映射，非 Palantir 直接採購。"
+      },
+      {
+        "id": "APOLLO_beneficiary_001",
+        "name": "研華（2395）",
+        "business_line": "APOLLO",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：工業邊緣運算與安全軟體部署需求映射，未確認 Palantir Apollo 整合。"
+      },
+      {
+        "id": "APOLLO_beneficiary_002",
+        "name": "凌華（6166）",
+        "business_line": "APOLLO",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：工業電腦與邊緣 AI 系統需求映射，非已確認 Palantir 直接合作。"
+      },
+      {
+        "id": "APOLLO_beneficiary_003",
+        "name": "樺漢（6414）",
+        "business_line": "APOLLO",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：工業電腦、邊緣運算與現場數據治理需求映射，非已確認 Palantir 訂單。"
+      },
+      {
+        "id": "MANUFACTURING_beneficiary_001",
+        "name": "台達電（2308）",
+        "business_line": "MANUFACTURING",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：工業自動化、製造 AI 與能源管理市場需求映射，非 Palantir Warp Speed 已確認客戶。"
+      },
+      {
+        "id": "MANUFACTURING_beneficiary_002",
+        "name": "上銀（2049）",
+        "business_line": "MANUFACTURING",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：工廠自動化及設備數據化產業映射，非 Palantir 直接供應商。"
+      },
+      {
+        "id": "MANUFACTURING_beneficiary_003",
+        "name": "東台（4526）",
+        "business_line": "MANUFACTURING",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：工具機數位化與工廠生產決策 AI 需求映射，非已確認 Palantir 採購。"
+      },
+      {
+        "id": "ENERGY_beneficiary_001",
+        "name": "華城（1519）",
+        "business_line": "ENERGY",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：電網升級與變壓器設備產業映射，非 Palantir Chain Reaction 具名供應商。"
+      },
+      {
+        "id": "ENERGY_beneficiary_002",
+        "name": "中興電（1513）",
+        "business_line": "ENERGY",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：配電設備與智慧電網數位化需求映射，非 Palantir 直接訂單。"
+      },
+      {
+        "id": "CYBER_beneficiary_001",
+        "name": "安碁資訊（6690）",
+        "business_line": "CYBER",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：政府與企業資安治理需求映射，非 Palantir 具名合作方。"
+      },
+      {
+        "id": "CYBER_beneficiary_002",
+        "name": "精誠資訊（6214）",
+        "business_line": "CYBER",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：企業資安與數據治理需求映射；與其 Foundry 產業映射重疊但屬不同業務線。"
+      },
+      {
+        "id": "TAIWAN_beneficiary_001",
+        "name": "奇鋐（3017）",
+        "business_line": "TAIWAN",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：主權 AI 資料中心 GPU 機櫃散熱需求間接受惠，非 Palantir 軟體授權供應商。"
+      },
+      {
+        "id": "TAIWAN_beneficiary_002",
+        "name": "雙鴻（3324）",
+        "business_line": "TAIWAN",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：高密度 GPU 伺服器液冷需求間接受惠，非 Palantir 直接供應商。"
+      },
+      {
+        "id": "TAIWAN_beneficiary_003",
+        "name": "台達電（2308）",
+        "business_line": "TAIWAN",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：AI 資料中心電源與液冷設備需求映射，非 Palantir 直接採購。"
+      },
+      {
+        "id": "TAIWAN_beneficiary_004",
+        "name": "聯發科（2454）",
+        "business_line": "TAIWAN",
+        "relationship": "beneficiary",
+        "details": "產業映射／潛在受惠，非已證實 Palantir 直接供應關係：邊緣 AI SoC 及 AI Agent 裝置生態映射，未確認 Palantir 直接晶片合作。"
+      }
+    ]
   }
 }
