@@ -128,7 +128,6 @@ CONTRACTS: tuple[ContractDefinition, ...] = (
         canonical_owner=ContractOwner.PRODUCTION_RESEARCH_CARD,
         status=ContractStatus.ACTIVE,
         canonical_paths=_t(("data/production/research_cards", "data/generated/production_research_cards")),
-        accepted_inputs=_t(("data/public",)),
         downstream_consumers=_t(("frontend", "Render preview")),
     ),
     ContractDefinition(

@@ -5,10 +5,7 @@ import typer
 from .coverage_audit import build_coverage_audit, validate_coverage_audit
 from .valuation_card import build_valuation_cards, validate_valuation_cards
 from axiom_engine.market_data import import_market_data
-from .config import GENERATED_DIR
-from .io import read_json, write_json
 from .repository import load_bundle
-from .services.public_builder import build_public
 from .services.validator import validate_bundle
 from .services.research import research_summary
 from .services.industry import industry_summary, find_paths
@@ -416,20 +413,9 @@ def validate_research_command(
     if not report["valid"]:
         raise typer.Exit(code=2)
 
-
-@app.command("build-public")
-def build_public_command() -> None:
-    bundle = load_bundle()
-    validate_bundle(bundle)
-    typer.echo(f"Built public JSON: {build_public(bundle)}")
-
-
 @app.command()
 def run() -> None:
     validate()
-    value()
-    build_public_command()
-
 
 @app.command("build-valuation-cards")
 def build_valuation_cards_command(

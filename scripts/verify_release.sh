@@ -10,5 +10,4 @@ axiom value >/dev/null
 axiom etf --etf-id etf:AXSM >/dev/null
 axiom impact --shock-id shock:CLOUD-AI-CAPEX-DOWN-15 >/dev/null
 axiom impact --shock-id shock:HBM4-SUPPLY-DOWN-20 >/dev/null
-axiom build-public >/dev/null
 echo "AXIOM v0.7.0 release verification: PASS"
