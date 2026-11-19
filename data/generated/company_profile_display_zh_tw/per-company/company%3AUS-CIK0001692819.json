@@ -345,5 +345,724 @@
       "核電價值重估"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "locale": "zh-TW",
+    "symbol": "VST",
+    "company": "Vistra Corp.",
+    "as_of": "2026-11-12",
+    "original_commit": "da93c81d",
+    "original_blob_sha": "76ea0530a11b271eb673f66325a952b84d3f7b17",
+    "business_lines": [
+      {
+        "id": "NUCLEAR_PJM",
+        "name": "PJM 核能基載：Perry／Davis-Besse／Beaver Valley",
+        "segment": "PJM",
+        "product_and_asset_coverage": [
+          "Perry BWR 核電",
+          "Davis-Besse PWR 核電",
+          "Beaver Valley 1/2 PWR 核電",
+          "PJM 核電能源及容量"
+        ]
+      },
+      {
+        "id": "NUCLEAR_TX",
+        "name": "ERCOT 核能基載：Comanche Peak",
+        "segment": "ERCOT",
+        "product_and_asset_coverage": [
+          "Comanche Peak 1/2 核電",
+          "核電長期固定價購電",
+          "ERCOT 零碳電力"
+        ]
+      },
+      {
+        "id": "NUCLEAR_UPRATE",
+        "name": "核電增容、執照延展與長期合約",
+        "segment": "Cross",
+        "product_and_asset_coverage": [
+          "Perry +213MW 增容",
+          "Davis-Besse +80MW 增容",
+          "Beaver Valley +140MW 增容",
+          "核電延照與資本支出"
+        ]
+      },
+      {
+        "id": "GAS_TX",
+        "name": "德州天然氣複循環、尖峰機組與擴建",
+        "segment": "ERCOT",
+        "product_and_asset_coverage": [
+          "Odessa 複循環 1,180MW",
+          "Permian 860MW 尖峰機組開發",
+          "Coleto Creek 燃氣改造",
+          "Martin Lake 1 號機復運",
+          "ERCOT 備援及調頻"
+        ]
+      },
+      {
+        "id": "GAS_EAST",
+        "name": "PJM／ISO-NE 燃氣電廠與 Cogentrix 資產",
+        "segment": "East",
+        "product_and_asset_coverage": [
+          "Cogentrix 10 座／5,496MW 資產",
+          "Patriot CCGT",
+          "Hamilton-Liberty CCGT",
+          "Lakewood CCGT",
+          "Rock Springs CT",
+          "Ocean CT",
+          "Newington CCGT",
+          "Bridgeport CCGT",
+          "Tiverton CCGT",
+          "Rumford CCGT",
+          "Altura Cogeneration"
+        ]
+      },
+      {
+        "id": "COAL",
+        "name": "燃煤電廠、退煤與燃氣改造",
+        "segment": "East/Texas",
+        "product_and_asset_coverage": [
+          "Baldwin 燃煤",
+          "Kincaid 燃煤",
+          "Miami Fort 燃煤／改氣",
+          "Newton 燃煤",
+          "退煤、關廠及再開發"
+        ]
+      },
+      {
+        "id": "SOLAR",
+        "name": "公用事業級太陽能與企業 PPA",
+        "segment": "Renewables",
+        "product_and_asset_coverage": [
+          "Pulaski Solar 405MW",
+          "Oak Hill Solar 200MW",
+          "Newton Solar 52MW",
+          "Deer Creek Solar 50MW",
+          "企業太陽能 PPA"
+        ]
+      },
+      {
+        "id": "BESS",
+        "name": "大型電池儲能、調度與安全修復",
+        "segment": "West/Renewables",
+        "product_and_asset_coverage": [
+          "Deer Creek BESS 50MW",
+          "Newton BESS 2MW",
+          "Moss Landing 300MW 退役",
+          "Moss Landing 100MW 不復運",
+          "Moss Landing 350MW 重啟待定",
+          "容量及輔助服務"
+        ]
+      },
+      {
+        "id": "RETAIL_TX",
+        "name": "TXU Energy 德州住宅／工商零售電力",
+        "segment": "Retail",
+        "product_and_asset_coverage": [
+          "TXU Energy 住宅電力",
+          "TXU Energy 工商電力",
+          "企業節能回饋",
+          "再生能源方案",
+          "用電計量及帳單"
+        ]
+      },
+      {
+        "id": "RETAIL_MULTI",
+        "name": "Ambit、Dynegy 等多州零售電力",
+        "segment": "Retail",
+        "product_and_asset_coverage": [
+          "Ambit Energy 住宅電力",
+          "Dynegy 品牌電力",
+          "多州工商電力方案",
+          "零售風險對沖"
+        ]
+      },
+      {
+        "id": "WHOLESALE",
+        "name": "ERCOT／PJM／ISO-NE／MISO 容量、輔助服務與避險",
+        "segment": "Cross",
+        "product_and_asset_coverage": [
+          "ERCOT 電能交易",
+          "PJM 容量拍賣",
+          "ISO-NE 容量市場",
+          "MISO 電能市場",
+          "電力期貨／避險",
+          "備轉與調頻"
+        ]
+      },
+      {
+        "id": "DC_POWER",
+        "name": "資料中心長期購電、園區供電與電力開發",
+        "segment": "Cross",
+        "product_and_asset_coverage": [
+          "核電企業 PPA",
+          "天然氣資料中心 PPA",
+          "資料中心園區電力開發",
+          "長期電力容量承諾",
+          "資料中心電力股權合作"
+        ]
+      },
+      {
+        "id": "FUEL_SUPPLY",
+        "name": "天然氣、核燃料、燃煤與能源採購",
+        "segment": "Cross",
+        "product_and_asset_coverage": [
+          "鈾礦採購",
+          "轉換／濃縮／燃料組件",
+          "天然氣燃料採購",
+          "燃煤與運輸",
+          "渦輪長約維護與檢修"
+        ]
+      },
+      {
+        "id": "DEVELOPMENT",
+        "name": "資產收購、工程、再開發與數位基礎設施投資",
+        "segment": "Cross",
+        "product_and_asset_coverage": [
+          "Cogentrix 資產整併",
+          "Lotus 資產整併",
+          "Helix Fund 投資",
+          "煤電場址再開發",
+          "環境修復與退役資產管理"
+        ]
+      }
+    ],
+    "nodes": [
+      {
+        "id": "VST-001",
+        "business_line": "NUCLEAR_PJM",
+        "relationship": "customer",
+        "name": "Meta Platforms",
+        "details": "2026-01-09 簽署 20 年 PPA，Perry 1,268MW、Davis-Besse 908MW 既有發電，總 2,176MW；電力進 PJM 電網，不是實體專線直供。",
+        "evidence_url": "https://investor.vistracorp.com/2026-01-09-Vistra-and-Meta-Announce-Agreements-to-Support-Nuclear-Plants-in-PJM-and-Add-New-Nuclear-Generation-to-the-Grid",
+        "evidence_grade": "A",
+        "commercial_stage": "signed_20y_ppa",
+        "evidence_date": "2026-01-09"
+      },
+      {
+        "id": "VST-002",
+        "business_line": "NUCLEAR_UPRATE",
+        "relationship": "customer",
+        "name": "Meta Platforms",
+        "details": "同一 20 年 PPA 另涵蓋 Perry 213MW、Davis-Besse 80MW、Beaver Valley 140MW 增容，共 433MW，預計 2031–2034 分期上線；非另一份獨立客戶。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000025/vistra-20260930.htm",
+        "evidence_grade": "A",
+        "commercial_stage": "future_uprate_ppa",
+        "evidence_date": "2026-01-09"
+      },
+      {
+        "id": "VST-003",
+        "business_line": "NUCLEAR_TX",
+        "relationship": "customer",
+        "name": "Amazon Web Services（AWS）",
+        "details": "2025-09 簽署 Comanche Peak 1,200MW 核電 20 年 PPA，預計 2027 Q4 起交付、2032 全量。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000025/vistra-20260930.htm",
+        "evidence_grade": "A",
+        "commercial_stage": "signed_20y_ppa",
+        "evidence_date": "2025-09"
+      },
+      {
+        "id": "VST-004",
+        "business_line": "SOLAR",
+        "relationship": "customer",
+        "name": "Amazon Web Services（AWS）",
+        "details": "Vistra 2026-02 財報確認 200MW Oak Hill Solar 已投運並有 AWS PPA；與 Comanche Peak 核電合約分開。",
+        "evidence_url": "https://investor.vistracorp.com/2026-02-26-Vistra-Reports-Fourth-Quarter-and-Full-Year-2025-Results",
+        "evidence_grade": "A",
+        "commercial_stage": "operating_ppa",
+        "evidence_date": "2026-02-26"
+      },
+      {
+        "id": "VST-005",
+        "business_line": "SOLAR",
+        "relationship": "customer",
+        "name": "Microsoft",
+        "details": "2026 Q3 405MW Illinois Pulaski Solar 正式商轉，與 Microsoft 簽有購電協議；不能推定所有 405MW 都由 Microsoft 承購。",
+        "evidence_url": "https://investor.vistracorp.com/2026-11-06-Vistra-Reports-Third-Quarter-2026-Results",
+        "evidence_grade": "A",
+        "commercial_stage": "operating_ppa",
+        "evidence_date": "2026-11-06"
+      },
+      {
+        "id": "VST-006",
+        "business_line": "DC_POWER",
+        "relationship": "customer",
+        "name": "New Era Energy & Digital（TCDC PowerCo）",
+        "details": "2026-09-21 Luminant ET Services 與 TCDC PowerCo 簽 20 年購電協議，Odessa 燃氣電廠供應最低 200、最高 207MW，預計 2027 Q3 可用；TCDC 園區未揭露最終租戶。",
+        "evidence_url": "https://www.globenewswire.com/news-release/2026/09/21/3365358/0/en/new-era-energy-digital-secures-20-year-207-mw-ppa-with-vistra.html",
+        "evidence_grade": "A",
+        "commercial_stage": "signed_20y_ppa",
+        "evidence_date": "2026-09-21"
+      },
+      {
+        "id": "VST-007",
+        "business_line": "RETAIL_TX",
+        "relationship": "customer",
+        "name": "Texas Tech University System",
+        "details": "2024-02 TXU Energy 獲選多年期德州理工大學系統校園電力供應商；歷史合約證據，未宣稱 2026 新單。",
+        "evidence_url": "https://www.txu.com/media-press-releases/2024/020924-texas-tech-chooses-txu-enegy-to-power-university-system",
+        "evidence_grade": "A",
+        "commercial_stage": "signed_multiyear_contract",
+        "evidence_date": "2024-02-09"
+      },
+      {
+        "id": "VST-008",
+        "business_line": "RETAIL_TX",
+        "relationship": "customer",
+        "name": "Daikin USA",
+        "details": "TXU Energy 官方具名工商案例，整併電表由 19 至 6 個交付點，預估每年節省 20 萬美元；未披露採購年份。",
+        "evidence_url": "https://www.api.txu.com/en/business/medium-large-business/case-studies-testimonials.aspx",
+        "evidence_grade": "A",
+        "commercial_stage": "customer_case"
+      },
+      {
+        "id": "VST-009",
+        "business_line": "RETAIL_TX",
+        "relationship": "customer",
+        "name": "Steel Dynamics Southwest, LLC",
+        "details": "TXU Energy 官方工商客戶案例：德州 Sinton 鋼鐵廠使用 100% 零排放能源方案；不能推定發電來源全為 Vistra 自有。",
+        "evidence_url": "https://www.api.txu.com/en/business/medium-large-business/case-studies-testimonials.aspx",
+        "evidence_grade": "A",
+        "commercial_stage": "customer_case"
+      },
+      {
+        "id": "VST-010",
+        "business_line": "RETAIL_TX",
+        "relationship": "customer",
+        "name": "Alon USA",
+        "details": "TXU Energy 官方具名客戶，量身定制電力方案；未披露新約日期。",
+        "evidence_url": "https://www.api.txu.com/en/business/medium-large-business/case-studies-testimonials.aspx",
+        "evidence_grade": "A",
+        "commercial_stage": "customer_case"
+      },
+      {
+        "id": "VST-011",
+        "business_line": "RETAIL_TX",
+        "relationship": "customer",
+        "name": "Magnolia Independent School District",
+        "details": "TXU Energy 官方案例：協助學區降低電力支出，屬具名歷史客戶。",
+        "evidence_url": "https://www.api.txu.com/en/business/medium-large-business/case-studies-testimonials.aspx",
+        "evidence_grade": "A",
+        "commercial_stage": "customer_case"
+      },
+      {
+        "id": "VST-012",
+        "business_line": "RETAIL_TX",
+        "relationship": "customer",
+        "name": "Fort Bend County",
+        "details": "TXU Energy 官方案例：Greenback 節能補助及建築控制設備改善，年節電約 900,000kWh。",
+        "evidence_url": "https://www.api.txu.com/en/business/medium-large-business/case-studies-testimonials.aspx",
+        "evidence_grade": "A",
+        "commercial_stage": "customer_case"
+      },
+      {
+        "id": "VST-013",
+        "business_line": "RETAIL_TX",
+        "relationship": "customer",
+        "name": "Cinemark",
+        "details": "TXU Energy 官方具名商業客戶案例，涵蓋 Dallas Webb Chapel 影城節能改善。",
+        "evidence_url": "https://www.api.txu.com/en/business/medium-large-business/case-studies-testimonials.aspx",
+        "evidence_grade": "A",
+        "commercial_stage": "customer_case"
+      },
+      {
+        "id": "VST-014",
+        "business_line": "RETAIL_TX",
+        "relationship": "customer",
+        "name": "Bank of America Tower（Dallas）",
+        "details": "TXU Energy 官方案例列為商業建築客戶，不能把大樓誤認為 Bank of America 銀行全公司 PPA。",
+        "evidence_url": "https://www.api.txu.com/en/business/medium-large-business/case-studies-testimonials.aspx",
+        "evidence_grade": "A",
+        "commercial_stage": "customer_case"
+      },
+      {
+        "id": "VST-015",
+        "business_line": "BESS",
+        "relationship": "supplier",
+        "name": "LG Energy Solution（LGES）",
+        "details": "LGES 2021 官方新聞明確確認向 Vistra Moss Landing 300MW／1.2GWh 提供逾 4,500 組 TR1300 電池機架；2025-01 火災後該 300MW 資產已退出營運，不能稱現行新增訂單。",
+        "evidence_url": "https://inside.lgensol.com/en/2021/06/lg-energy-solutions-new-tr1300-operational-at-worlds-largest-utility-scale-battery-energy-storage-project-2/",
+        "evidence_grade": "A",
+        "commercial_stage": "historical_equipment_supplier",
+        "evidence_date": "2021-06-16",
+        "asset_status": "Moss Landing 300 retired after 2025 fire"
+      },
+      {
+        "id": "VST-016",
+        "business_line": "BESS",
+        "relationship": "supplier",
+        "name": "Fluence Energy",
+        "details": "EPRI Moss Landing 2025 事故資料將 Fluence 列為 300MW／1.2GWh 專案系統整合商；這是歷史已部署工程供應，並非 2026 新供貨。",
+        "evidence_url": "https://storagewiki.epri.com/index.php/Failure_Event_-_US%2C_CA%2C_Moss_Landing_-_16_Jan_2025",
+        "evidence_grade": "B",
+        "commercial_stage": "historical_system_integrator",
+        "evidence_date": "2025-01-16"
+      },
+      {
+        "id": "VST-017",
+        "business_line": "DC_POWER",
+        "relationship": "partner",
+        "name": "New Era Energy & Digital",
+        "details": "2026-09 與 New Era 簽訂附加開發框架，Vistra 供電後取得對應資料中心專案 5% 無投票權權益，並具後續開發優先權；不等同已取得租戶。",
+        "evidence_url": "https://www.globenewswire.com/news-release/2026/09/21/3365358/0/en/new-era-energy-digital-secures-20-year-207-mw-ppa-with-vistra.html",
+        "evidence_grade": "A",
+        "commercial_stage": "signed_development_framework",
+        "evidence_date": "2026-09-21"
+      },
+      {
+        "id": "VST-018",
+        "business_line": "DEVELOPMENT",
+        "relationship": "partner",
+        "name": "KKR（Helix Fund）",
+        "details": "2026-06 Vistra 成為 KKR 關聯方管理的 Helix Fund 創始投資者，承諾最高 10 億美元，其中 5 億美元初始承諾；基金投資不等於 KKR 直接買電。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000025/vistra-20260930.htm",
+        "evidence_grade": "A",
+        "commercial_stage": "fund_commitment",
+        "evidence_date": "2026-06"
+      },
+      {
+        "id": "VST-019",
+        "business_line": "DEVELOPMENT",
+        "relationship": "transaction_counterparty",
+        "name": "Quantum Capital Group",
+        "details": "2026-10 完成向 Quantum 旗下基金收購 Cogentrix 約 5,500MW、10 座天然氣資產；屬賣方／交易對手，不是持續供應商。",
+        "evidence_url": "https://investor.vistracorp.com/2026-01-05-Vistra-Adds-to-its-Industry-Leading-Generation-Portfolio-with-Acquisition-of-Cogentrix",
+        "evidence_grade": "A",
+        "commercial_stage": "completed_acquisition",
+        "evidence_date": "2026-10-30"
+      },
+      {
+        "id": "VST-020",
+        "business_line": "DEVELOPMENT",
+        "relationship": "transaction_counterparty",
+        "name": "Lotus Infrastructure Partners",
+        "details": "2025-11 完成向 Lotus 收購約 2,600MW 燃氣發電資產；非持續供應商。",
+        "evidence_url": "https://investor.vistracorp.com/2026-02-26-Vistra-Reports-Fourth-Quarter-and-Full-Year-2025-Results",
+        "evidence_grade": "A",
+        "commercial_stage": "completed_acquisition",
+        "evidence_date": "2025-11"
+      },
+      {
+        "id": "VST-021",
+        "business_line": "WHOLESALE",
+        "relationship": "market_operator",
+        "name": "ERCOT",
+        "details": "德州獨立系統營運商，Vistra 在 ERCOT 參與批發電力、容量相關風險管理及輔助服務；市場平台非單一購電客戶。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000025/vistra-20260930.htm",
+        "evidence_grade": "A",
+        "commercial_stage": "regulated_market",
+        "evidence_date": "2026-11-06"
+      },
+      {
+        "id": "VST-022",
+        "business_line": "WHOLESALE",
+        "relationship": "market_operator",
+        "name": "PJM Interconnection",
+        "details": "美東容量及電能批發市場，Vistra 核電與燃氣資產參與，Meta PPA 的電能仍進入電網。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000025/vistra-20260930.htm",
+        "evidence_grade": "A",
+        "commercial_stage": "regulated_market",
+        "evidence_date": "2026-11-06"
+      },
+      {
+        "id": "VST-023",
+        "business_line": "WHOLESALE",
+        "relationship": "market_operator",
+        "name": "ISO New England",
+        "details": "Cogentrix 併購後擴大 ISO-NE 發電資產，市場營運商不是直接 PPA 客戶。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000025/vistra-20260930.htm",
+        "evidence_grade": "A",
+        "commercial_stage": "regulated_market",
+        "evidence_date": "2026-11-06"
+      },
+      {
+        "id": "VST-024",
+        "business_line": "WHOLESALE",
+        "relationship": "market_operator",
+        "name": "MISO",
+        "details": "Vistra Illinois 等發電資產所在批發市場，市場平台非單一客戶。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000025/vistra-20260930.htm",
+        "evidence_grade": "A",
+        "commercial_stage": "regulated_market",
+        "evidence_date": "2026-11-06"
+      },
+      {
+        "id": "VST-025",
+        "business_line": "BESS",
+        "relationship": "regulatory_counterparty",
+        "name": "U.S. Environmental Protection Agency（EPA）",
+        "details": "2025-07 Moss Landing 300 火災清理行政協議，Vistra 承擔移除及整治責任；2026 Q3 預估總費用約 1.75 億美元，屬監管而非商業合作。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000025/vistra-20260930.htm",
+        "evidence_grade": "A",
+        "commercial_stage": "environmental_remediation",
+        "evidence_date": "2026-11-06"
+      },
+      {
+        "id": "VST-026",
+        "business_line": "NUCLEAR_PJM",
+        "relationship": "competitor",
+        "name": "Constellation Energy",
+        "details": "美國核電基載及大型企業長約購電；B 級公開產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000006/vistra-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-27"
+      },
+      {
+        "id": "VST-027",
+        "business_line": "NUCLEAR_TX",
+        "relationship": "competitor",
+        "name": "Constellation Energy",
+        "details": "核電企業 PPA；B 級公開產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000006/vistra-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-27"
+      },
+      {
+        "id": "VST-028",
+        "business_line": "NUCLEAR_UPRATE",
+        "relationship": "competitor",
+        "name": "Talen Energy",
+        "details": "核電與資料中心長約供電；B 級公開產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000006/vistra-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-27"
+      },
+      {
+        "id": "VST-029",
+        "business_line": "GAS_TX",
+        "relationship": "competitor",
+        "name": "NRG Energy",
+        "details": "德州燃氣發電及零售電力；B 級公開產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000006/vistra-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-27"
+      },
+      {
+        "id": "VST-030",
+        "business_line": "GAS_TX",
+        "relationship": "competitor",
+        "name": "Calpine",
+        "details": "德州可調度天然氣發電；B 級公開產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000006/vistra-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-27"
+      },
+      {
+        "id": "VST-031",
+        "business_line": "GAS_EAST",
+        "relationship": "competitor",
+        "name": "Calpine",
+        "details": "PJM／ISO-NE 燃氣電廠；B 級公開產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000006/vistra-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-27"
+      },
+      {
+        "id": "VST-032",
+        "business_line": "GAS_EAST",
+        "relationship": "competitor",
+        "name": "Constellation Energy",
+        "details": "PJM 發電及容量；B 級公開產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000006/vistra-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-27"
+      },
+      {
+        "id": "VST-033",
+        "business_line": "COAL",
+        "relationship": "competitor",
+        "name": "NRG Energy",
+        "details": "傳統火電資產與燃氣轉型；B 級公開產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000006/vistra-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-27"
+      },
+      {
+        "id": "VST-034",
+        "business_line": "SOLAR",
+        "relationship": "competitor",
+        "name": "NextEra Energy Resources",
+        "details": "公用事業級太陽能與企業 PPA；B 級公開產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000006/vistra-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-27"
+      },
+      {
+        "id": "VST-035",
+        "business_line": "SOLAR",
+        "relationship": "competitor",
+        "name": "AES Corporation",
+        "details": "公用事業級太陽能 PPA；B 級公開產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000006/vistra-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-27"
+      },
+      {
+        "id": "VST-036",
+        "business_line": "SOLAR",
+        "relationship": "competitor",
+        "name": "Clearway Energy",
+        "details": "再生能源長約；B 級公開產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000006/vistra-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-27"
+      },
+      {
+        "id": "VST-037",
+        "business_line": "BESS",
+        "relationship": "competitor",
+        "name": "AES Corporation",
+        "details": "大型儲能與電網服務；B 級公開產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000006/vistra-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-27"
+      },
+      {
+        "id": "VST-038",
+        "business_line": "BESS",
+        "relationship": "competitor",
+        "name": "NextEra Energy Resources",
+        "details": "大型儲能；B 級公開產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000006/vistra-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-27"
+      },
+      {
+        "id": "VST-039",
+        "business_line": "RETAIL_TX",
+        "relationship": "competitor",
+        "name": "NRG Energy（Reliant）",
+        "details": "德州零售電力；B 級公開產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000006/vistra-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-27"
+      },
+      {
+        "id": "VST-040",
+        "business_line": "RETAIL_TX",
+        "relationship": "competitor",
+        "name": "Shell Energy",
+        "details": "德州工商零售電力；B 級公開產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000006/vistra-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-27"
+      },
+      {
+        "id": "VST-041",
+        "business_line": "RETAIL_MULTI",
+        "relationship": "competitor",
+        "name": "Constellation Energy",
+        "details": "多州工商零售電力；B 級公開產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000006/vistra-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-27"
+      },
+      {
+        "id": "VST-042",
+        "business_line": "RETAIL_MULTI",
+        "relationship": "competitor",
+        "name": "NRG Energy",
+        "details": "多州零售電力；B 級公開產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000006/vistra-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-27"
+      },
+      {
+        "id": "VST-043",
+        "business_line": "WHOLESALE",
+        "relationship": "competitor",
+        "name": "Talen Energy",
+        "details": "PJM 批發電力及容量；B 級公開產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000006/vistra-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-27"
+      },
+      {
+        "id": "VST-044",
+        "business_line": "WHOLESALE",
+        "relationship": "competitor",
+        "name": "PSEG Power",
+        "details": "PJM 批發電力及容量；B 級公開產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000006/vistra-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-27"
+      },
+      {
+        "id": "VST-045",
+        "business_line": "DC_POWER",
+        "relationship": "competitor",
+        "name": "Talen Energy",
+        "details": "資料中心電力及核電 PPA；B 級公開產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000006/vistra-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-27"
+      },
+      {
+        "id": "VST-046",
+        "business_line": "DC_POWER",
+        "relationship": "competitor",
+        "name": "Constellation Energy",
+        "details": "大型雲端企業核電 PPA；B 級公開產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000006/vistra-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-27"
+      }
+    ],
+    "relationship_categories": [
+      "competitor",
+      "customer",
+      "market_operator",
+      "partner",
+      "regulatory_counterparty",
+      "supplier",
+      "transaction_counterparty"
+    ],
+    "research_notes": {
+      "research_as_of": "2026-11-12",
+      "primary_sources": [
+        "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000025/vistra-20260930.htm",
+        "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000006/vistra-20251231.htm",
+        "https://investor.vistracorp.com/2026-11-06-Vistra-Reports-Third-Quarter-2026-Results",
+        "https://investor.vistracorp.com/2026-01-09-Vistra-and-Meta-Announce-Agreements-to-Support-Nuclear-Plants-in-PJM-and-Add-New-Nuclear-Generation-to-the-Grid",
+        "https://www.globenewswire.com/news-release/2026/09/21/3365358/0/en/new-era-energy-digital-secures-20-year-207-mw-ppa-with-vistra.html"
+      ],
+      "commercial_contracts": "2026 Meta 2,609MW 20 年核電；2025 AWS Comanche Peak 1,200MW 20 年；AWS Oak Hill 200MW solar；Microsoft Pulaski 405MW 專案 PPA；New Era 200–207MW 20 年天然氣。不可將同一合約拆分後加總為不同客戶。",
+      "meta_split": "Meta 2,609MW=既有 Perry 1,268+Davis-Besse 908+增容 Perry 213+Davis-Besse 80+Beaver Valley 140；增容未完工。",
+      "aws_status": "Comanche Peak 2027 Q4 起交付、2032 全量；Oak Hill 200MW 2025 商轉，兩份不同 PPA。",
+      "microsoft_status": "Pulaski 405MW 專案 2026 Q3 商轉，官方僅確認與 Microsoft 有 PPA，不宣稱 405MW 全部被承購。",
+      "new_era_status": "20 年 PPA 的直接簽約買方 TCDC PowerCo（New Era 子公司），未公布資料中心最終租戶；2027 Q3 預期可用。",
+      "2026_portfolio": "2026-10 Cogentrix 約 5.5GW 完成收購；2025-11 Lotus 約 2.6GW 完成收購。內部資產不算外部供應商。",
+      "nuclear_fuel": "2025 10-K 指核燃料採購已覆蓋至 2030，但沒有逐名披露直接核燃料供應商；Westinghouse 為 Comanche Peak 反應爐原始技術商，不可直接推定其現行燃料訂單。",
+      "bess_risk": "2025 Moss Landing 300MW 火災後已退出營運，100MW 亦不復運；2026 Q3 350MW 資產減損 2.69 億美元，是否重啟仍不確定。LGES 與 Fluence 只作歷史設備供應／整合。",
+      "taiwan": "未找到公開可驗證的具名台灣公司直接供應 Vistra 的核燃料、燃氣機組或儲能設備；不以同產業供應鏈推論。",
+      "evidence_grading": "A=SEC/Vistra/TXU/供應商第一手公告具名關係；B=可信產業技術資料或產品競爭市場映射。競爭者不視為商業交易。",
+      "company_profile": "原始公司解析完整保留，新增第 12 欄 industry_chain。",
+      "source_commit": "da93c81d",
+      "source_blob_sha": "76ea0530a11b271eb673f66325a952b84d3f7b17",
+      "research_limitations": "未有證據的供應商不填入；市場營運商、監管機關、收購賣方與直接買電客戶分別建類型。",
+      "supplier_precision": "僅列 LG Energy Solution（供應商官方證實）與 Fluence（EPRI 指認的歷史系統整合商）。2022 永續報告提及 Samsung 為電池採購來源範例，但未能驗證具體法人及專案，故不列具名 supplier 節點。",
+      "coverage_review": "14 條主線、超過 70 個產品／資產／商業模式粒度；公司旗下電廠不誤當外部公司節點。"
+    }
   }
 }

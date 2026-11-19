@@ -5,96 +5,422 @@
   "symbol": "COHU",
   "canonical_schema_version": "axiom-company-profile.v2.3",
   "display": {
-    "as_of": "2026-02-17",
+    "locale": "zh-TW",
+    "symbol": "COHU",
+    "as_of": "2026-11-11",
     "company_summary": {
-      "one_line_business": "Cohu 提供半導體測試、檢測、搬運、介面與資料分析設備及服務。"
+      "one_line_business": "Cohu 是全球半導體後段測試與良率設備供應商，提供測試處理機、主動熱控、自動測試設備、測試接觸器與探針介面、光學及紅外檢測量測、AI 製程分析軟體，以及耗材與維護服務。"
     },
     "markets": [
-      "半導體測試設備",
-      "半導體檢測",
-      "車用半導體",
-      "功率半導體"
+      "AI／HPC 處理器量產測試",
+      "半導體測試自動化與處理機",
+      "HBM／先進封裝檢測量測",
+      "車用 ADAS／MCU／感測器",
+      "SiC／GaN 功率半導體",
+      "射頻與混合訊號 ATE",
+      "晶圓級與封裝後測試介面",
+      "半導體智慧製造與資料分析",
+      "工業、行動及消費性半導體"
     ],
     "product_stack": [
-      "半導體測試處理機",
-      "自動測試設備",
-      "測試接觸器與探針介面",
-      "檢測與量測系統",
-      "DI-Core 分析軟體",
-      "熱控制系統"
+      "Eclipse／EclipseX 高功率 Pick-and-Place 測試處理機",
+      "MATRiX 三溫高並行測試處理機",
+      "MT9510／MT9928／Rasco SO 系列處理機",
+      "Jaguar Strip Handler 與 MCT FH-1200／SH-5300",
+      "Sense+ MEMS 感測器測試平台",
+      "T-Core 主動熱控與高功率散熱測試模組",
+      "Diamondx 與其他射頻／混合訊號／功率半導體 ATE",
+      "測試接觸器、測試座、彈簧探針與功率探針卡",
+      "Neon HBM／WLCSP 檢測與量測",
+      "Krypton、NV-Core、Aquilae 紅外及 3D Flex 檢測",
+      "PAICe Prescriptive／PAICe Inspection／PAICe Monitor／DI-Core 資料分析",
+      "維修、備品、設備升級、工具與耗材"
     ],
-    "market_products": {},
+    "market_products": {
+      "AI_HPC": [
+        "Eclipse／EclipseX",
+        "T-Core ATC",
+        "PAICe Prescriptive"
+      ],
+      "HBM_先進封裝": [
+        "Neon",
+        "NV-Core",
+        "Aquilae Infrared",
+        "3D Flex"
+      ],
+      "車用與功率": [
+        "MATRiX",
+        "Jaguar",
+        "Diamondx",
+        "功率測試接觸器"
+      ],
+      "智慧製造": [
+        "PAICe Monitor",
+        "PAICe Inspection",
+        "DI-Core"
+      ]
+    },
     "core_technologies": [
-      "半導體自動化測試",
-      "主動熱控制",
-      "機器視覺與量測",
-      "測試介面工程",
-      "製造資料分析"
+      "高功率高接觸力測試處理",
+      "T-Core 主動式熱控制（ATC）",
+      "多工位與三溫測試",
+      "精密測試接觸與高頻訊號完整性",
+      "晶圓級／封裝級功率及混合訊號測試",
+      "六面可見光／紅外檢測",
+      "3D bump／微柱量測與微裂縫辨識",
+      "深度學習視覺辨識與數位分身製程控制",
+      "SECS/GEM 工廠自動化整合"
     ],
     "manufacturing": {
-      "model": [],
-      "locations": [],
-      "critical_assets": []
+      "model": [
+        "自有廠房製造測試處理機、檢測設備與接觸器",
+        "Jabil 馬來西亞檳城廠策略代工大部分半導體 ATE 系統"
+      ],
+      "locations": [
+        "馬來西亞麻六甲：測試自動化與檢測設備主要量產基地",
+        "馬來西亞檳城：Jabil ATE 委外製造基地",
+        "菲律賓：測試介面與接觸器製造",
+        "新加坡：測試介面與接觸器製造",
+        "日本：測試介面與接觸器製造",
+        "美國及德國：研發、工程與部分營運"
+      ],
+      "critical_assets": [
+        "全球逾 25,000 台有效設備裝機",
+        "31 國、108 家客戶、逾 280 座量產工廠",
+        "測試接觸器與探針等持續更換耗材製造能力"
+      ]
     },
     "customer_types": [
-      "整合元件製造商",
-      "半導體晶圓代工廠",
-      "封裝測試服務商",
-      "半導體設計公司"
+      "整合元件製造商（IDM）",
+      "委外封裝測試廠（OSAT）",
+      "無晶圓廠半導體設計公司",
+      "功率半導體與 HBM 製造商"
     ],
     "ai_exposure": {
       "type": "direct_company_disclosure",
-      "summary": "Cohu 的測試與分析系統支援 AI 基礎設施所需高效能及功率半導體的生產。"
+      "summary": "2026 年 HPC 測試處理機 Eclipse 取得多名客戶訂單；Neon 對應 HBM3E／HBM4／HBM4E 檢測；2026 年第三季 AI 驅動運算商機管線約 10 億美元，屬商機管線而非已確認營收。"
     },
-    "competitive_advantages": [],
-    "demand_drivers": [
-      "半導體複雜度",
-      "AI 基礎設施",
-      "汽車電子",
-      "功率半導體成長"
+    "competitive_advantages": [
+      "測試處理機、ATE、介面、檢測及分析軟體整合產品組合",
+      "T-Core 主動熱控支援高功耗處理器量產測試",
+      "接觸器、探針、服務及軟體帶來經常性營收",
+      "Neon 高吞吐六面及紅外檢測適用 HBM 微柱與先進封裝",
+      "全球維修服務與廣泛裝機基礎"
     ],
-    "strategy_changes": [],
+    "demand_drivers": [
+      "AI GPU／CPU／ASIC 與高功耗 HPC 測試",
+      "HBM3E／HBM4／HBM4E 檢測與先進封裝",
+      "SiC／GaN 功率器件與 AI 資料中心電源",
+      "ADAS、汽車 MCU 與感測器",
+      "封測廠資本支出及產線稼動率",
+      "耗材汰換、設備維修及 AI 製程分析"
+    ],
+    "strategy_changes": [
+      "2024 年收購 Tignis，擴充 AI 製程控制及 PAICe 軟體",
+      "2025 年 Neon 切入 HBM 檢測並獲追加訂單",
+      "2026 年 Eclipse AI／HPC 客戶持續擴張，11 月公告第 4 家完成 HPC 平台認證的客戶"
+    ],
     "financial_snapshot": {
       "fiscal_year": 2025,
-      "revenue": null,
-      "gross_margin": null,
-      "net_loss": null,
-      "revenue_mix": {},
-      "customer_concentration": {}
+      "revenue": 452956000,
+      "gross_margin": 0.427,
+      "net_loss": -74300000,
+      "revenue_mix": {
+        "systems_including_kits_pct": 0.4,
+        "recurring_pct": 0.6
+      },
+      "customer_concentration": {
+        "top_10_customers_2025_pct": 0.6,
+        "STMicroelectronics_2023_pct": 0.12,
+        "STMicroelectronics_2025_pct": null
+      },
+      "currency": "USD",
+      "period": "FY2025",
+      "latest_quarter": {
+        "period": "2026Q3",
+        "revenue": 173000000,
+        "gross_margin": 0.455,
+        "net_income": 12100000
+      },
+      "latest_nine_months": {
+        "period": "2026M9",
+        "revenue": 447100000,
+        "gross_margin": 0.457
+      }
     }
   },
   "value_provenance": {
     "company_summary.one_line_business": {
-      "value": "Cohu provides semiconductor test, inspection, handling, interface and data-analytics equipment and services.",
-      "evidence": null
+      "value": "Cohu 是全球半導體後段測試與良率設備供應商，提供測試處理機、主動熱控、自動測試設備、測試接觸器與探針介面、光學及紅外檢測量測、AI 製程分析軟體，以及耗材與維護服務。",
+      "document_urls": [
+        "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm",
+        "https://www.cohu.com/test-handlers"
+      ],
+      "quote": null,
+      "character_offsets": null,
+      "sha256": null
     },
-    "markets": [],
-    "product_stack": [],
-    "market_products": {},
-    "core_technologies": [],
+    "markets": {
+      "value": [
+        "AI／HPC 處理器量產測試",
+        "半導體測試自動化與處理機",
+        "HBM／先進封裝檢測量測",
+        "車用 ADAS／MCU／感測器",
+        "SiC／GaN 功率半導體",
+        "射頻與混合訊號 ATE",
+        "晶圓級與封裝後測試介面",
+        "半導體智慧製造與資料分析",
+        "工業、行動及消費性半導體"
+      ],
+      "document_urls": [
+        "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm",
+        "https://ir.cohu.com/news-releases/news-release-details/cohu-reports-third-quarter-2026-results",
+        "https://www.cohu.com/test-handlers",
+        "https://www.cohu.com/neon"
+      ],
+      "quote": null,
+      "character_offsets": null,
+      "sha256": null,
+      "review": "manual_synthesis_no_fabricated_offsets"
+    },
+    "product_stack": {
+      "value": [
+        "Eclipse／EclipseX 高功率 Pick-and-Place 測試處理機",
+        "MATRiX 三溫高並行測試處理機",
+        "MT9510／MT9928／Rasco SO 系列處理機",
+        "Jaguar Strip Handler 與 MCT FH-1200／SH-5300",
+        "Sense+ MEMS 感測器測試平台",
+        "T-Core 主動熱控與高功率散熱測試模組",
+        "Diamondx 與其他射頻／混合訊號／功率半導體 ATE",
+        "測試接觸器、測試座、彈簧探針與功率探針卡",
+        "Neon HBM／WLCSP 檢測與量測",
+        "Krypton、NV-Core、Aquilae 紅外及 3D Flex 檢測",
+        "PAICe Prescriptive／PAICe Inspection／PAICe Monitor／DI-Core 資料分析",
+        "維修、備品、設備升級、工具與耗材"
+      ],
+      "document_urls": [
+        "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm",
+        "https://ir.cohu.com/news-releases/news-release-details/cohu-reports-third-quarter-2026-results",
+        "https://www.cohu.com/test-handlers",
+        "https://www.cohu.com/neon"
+      ],
+      "quote": null,
+      "character_offsets": null,
+      "sha256": null,
+      "review": "manual_synthesis_no_fabricated_offsets"
+    },
+    "market_products": {
+      "value": {
+        "AI_HPC": [
+          "Eclipse／EclipseX",
+          "T-Core ATC",
+          "PAICe Prescriptive"
+        ],
+        "HBM_先進封裝": [
+          "Neon",
+          "NV-Core",
+          "Aquilae Infrared",
+          "3D Flex"
+        ],
+        "車用與功率": [
+          "MATRiX",
+          "Jaguar",
+          "Diamondx",
+          "功率測試接觸器"
+        ],
+        "智慧製造": [
+          "PAICe Monitor",
+          "PAICe Inspection",
+          "DI-Core"
+        ]
+      },
+      "document_urls": [
+        "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm",
+        "https://ir.cohu.com/news-releases/news-release-details/cohu-reports-third-quarter-2026-results",
+        "https://www.cohu.com/test-handlers",
+        "https://www.cohu.com/neon"
+      ],
+      "quote": null,
+      "character_offsets": null,
+      "sha256": null,
+      "review": "manual_synthesis_no_fabricated_offsets"
+    },
+    "core_technologies": {
+      "value": [
+        "高功率高接觸力測試處理",
+        "T-Core 主動式熱控制（ATC）",
+        "多工位與三溫測試",
+        "精密測試接觸與高頻訊號完整性",
+        "晶圓級／封裝級功率及混合訊號測試",
+        "六面可見光／紅外檢測",
+        "3D bump／微柱量測與微裂縫辨識",
+        "深度學習視覺辨識與數位分身製程控制",
+        "SECS/GEM 工廠自動化整合"
+      ],
+      "document_urls": [
+        "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm",
+        "https://ir.cohu.com/news-releases/news-release-details/cohu-reports-third-quarter-2026-results",
+        "https://www.cohu.com/test-handlers",
+        "https://www.cohu.com/neon"
+      ],
+      "quote": null,
+      "character_offsets": null,
+      "sha256": null,
+      "review": "manual_synthesis_no_fabricated_offsets"
+    },
     "manufacturing": {
-      "model": [],
-      "locations": [],
-      "critical_assets": []
+      "value": {
+        "model": [
+          "自有廠房製造測試處理機、檢測設備與接觸器",
+          "Jabil 馬來西亞檳城廠策略代工大部分半導體 ATE 系統"
+        ],
+        "locations": [
+          "馬來西亞麻六甲：測試自動化與檢測設備主要量產基地",
+          "馬來西亞檳城：Jabil ATE 委外製造基地",
+          "菲律賓：測試介面與接觸器製造",
+          "新加坡：測試介面與接觸器製造",
+          "日本：測試介面與接觸器製造",
+          "美國及德國：研發、工程與部分營運"
+        ],
+        "critical_assets": [
+          "全球逾 25,000 台有效設備裝機",
+          "31 國、108 家客戶、逾 280 座量產工廠",
+          "測試接觸器與探針等持續更換耗材製造能力"
+        ]
+      },
+      "source": "2025 Form 10-K Item 1",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm",
+      "quote": null,
+      "character_offsets": null,
+      "sha256": null
     },
-    "customer_types": [],
+    "customer_types": {
+      "value": [
+        "整合元件製造商（IDM）",
+        "委外封裝測試廠（OSAT）",
+        "無晶圓廠半導體設計公司",
+        "功率半導體與 HBM 製造商"
+      ],
+      "document_urls": [
+        "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm",
+        "https://ir.cohu.com/news-releases/news-release-details/cohu-reports-third-quarter-2026-results",
+        "https://www.cohu.com/test-handlers",
+        "https://www.cohu.com/neon"
+      ],
+      "quote": null,
+      "character_offsets": null,
+      "sha256": null,
+      "review": "manual_synthesis_no_fabricated_offsets"
+    },
     "ai_exposure": {
       "value": {
         "type": "direct_company_disclosure",
-        "summary": "Cohu test and analytics systems support production of high-performance and power semiconductors used in AI infrastructure."
+        "summary": "2026 年 HPC 測試處理機 Eclipse 取得多名客戶訂單；Neon 對應 HBM3E／HBM4／HBM4E 檢測；2026 年第三季 AI 驅動運算商機管線約 10 億美元，屬商機管線而非已確認營收。"
       },
-      "evidence": null
+      "document_urls": [
+        "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm",
+        "https://ir.cohu.com/news-releases/news-release-details/cohu-reports-third-quarter-2026-results",
+        "https://www.cohu.com/test-handlers",
+        "https://www.cohu.com/neon"
+      ],
+      "quote": null,
+      "character_offsets": null,
+      "sha256": null,
+      "review": "manual_synthesis_no_fabricated_offsets"
     },
-    "competitive_advantages": [],
-    "demand_drivers": [],
-    "strategy_changes": [],
+    "competitive_advantages": {
+      "value": [
+        "測試處理機、ATE、介面、檢測及分析軟體整合產品組合",
+        "T-Core 主動熱控支援高功耗處理器量產測試",
+        "接觸器、探針、服務及軟體帶來經常性營收",
+        "Neon 高吞吐六面及紅外檢測適用 HBM 微柱與先進封裝",
+        "全球維修服務與廣泛裝機基礎"
+      ],
+      "document_urls": [
+        "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm",
+        "https://ir.cohu.com/news-releases/news-release-details/cohu-reports-third-quarter-2026-results",
+        "https://www.cohu.com/test-handlers",
+        "https://www.cohu.com/neon"
+      ],
+      "quote": null,
+      "character_offsets": null,
+      "sha256": null,
+      "review": "manual_synthesis_no_fabricated_offsets"
+    },
+    "demand_drivers": {
+      "value": [
+        "AI GPU／CPU／ASIC 與高功耗 HPC 測試",
+        "HBM3E／HBM4／HBM4E 檢測與先進封裝",
+        "SiC／GaN 功率器件與 AI 資料中心電源",
+        "ADAS、汽車 MCU 與感測器",
+        "封測廠資本支出及產線稼動率",
+        "耗材汰換、設備維修及 AI 製程分析"
+      ],
+      "document_urls": [
+        "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm",
+        "https://ir.cohu.com/news-releases/news-release-details/cohu-reports-third-quarter-2026-results",
+        "https://www.cohu.com/test-handlers",
+        "https://www.cohu.com/neon"
+      ],
+      "quote": null,
+      "character_offsets": null,
+      "sha256": null,
+      "review": "manual_synthesis_no_fabricated_offsets"
+    },
+    "strategy_changes": {
+      "value": [
+        "2024 年收購 Tignis，擴充 AI 製程控制及 PAICe 軟體",
+        "2025 年 Neon 切入 HBM 檢測並獲追加訂單",
+        "2026 年 Eclipse AI／HPC 客戶持續擴張，11 月公告第 4 家完成 HPC 平台認證的客戶"
+      ],
+      "document_urls": [
+        "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm",
+        "https://ir.cohu.com/news-releases/news-release-details/cohu-reports-third-quarter-2026-results",
+        "https://www.cohu.com/test-handlers",
+        "https://www.cohu.com/neon"
+      ],
+      "quote": null,
+      "character_offsets": null,
+      "sha256": null,
+      "review": "manual_synthesis_no_fabricated_offsets"
+    },
     "financial_snapshot": {
-      "fiscal_year": {
-        "value": 2025,
-        "evidence": null
+      "value": {
+        "fiscal_year": 2025,
+        "revenue": 452956000,
+        "gross_margin": 0.427,
+        "net_loss": -74300000,
+        "revenue_mix": {
+          "systems_including_kits_pct": 0.4,
+          "recurring_pct": 0.6
+        },
+        "customer_concentration": {
+          "top_10_customers_2025_pct": 0.6,
+          "STMicroelectronics_2023_pct": 0.12,
+          "STMicroelectronics_2025_pct": null
+        },
+        "currency": "USD",
+        "period": "FY2025",
+        "latest_quarter": {
+          "period": "2026Q3",
+          "revenue": 173000000,
+          "gross_margin": 0.455,
+          "net_income": 12100000
+        },
+        "latest_nine_months": {
+          "period": "2026M9",
+          "revenue": 447100000,
+          "gross_margin": 0.457
+        }
       },
-      "revenue_mix": {},
-      "customer_concentration": {}
+      "source": "2025 Form 10-K and 2026 Q3 earnings release",
+      "document_urls": [
+        "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm",
+        "https://ir.cohu.com/news-releases/news-release-details/cohu-reports-third-quarter-2026-results"
+      ],
+      "quote": null,
+      "character_offsets": null,
+      "sha256": null
     }
   },
   "evidence": [
@@ -106,98 +432,1188 @@
       "section_type": "item_1_business",
       "document_url": "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm",
       "text_sha256": "5185d81f423a39ff96de98fe5ed9d6bdafc696edec4ce34281f09bd743da6faf"
+    },
+    {
+      "form": "10-Q",
+      "filing_date": "2026-10-28",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/21535/000143774926033843/cohu20260926_10q.htm",
+      "accession_number": "0001437749-26-033843",
+      "section_type": "financial_statements_and_mda",
+      "text_sha256": null
+    },
+    {
+      "form": "10-Q",
+      "filing_date": "2026-10-29",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/21535/000143774926033843/cohu20260926_10q.htm",
+      "accession_number": "0001437749-26-033843",
+      "section_type": "financial_statements_and_mda",
+      "text_sha256": null
+    },
+    {
+      "form": "10-Q",
+      "filing_date": "2026-10-29",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/21535/000143774926033843/cohu20260926_10q.htm",
+      "accession_number": "0001437749-26-033843",
+      "section_type": "financial_statements_and_mda",
+      "text_sha256": null
+    },
+    {
+      "form": "10-Q",
+      "filing_date": "2026-10-29",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/21535/000143774926033843/cohu20260926_10q.htm",
+      "accession_number": "0001437749-26-033843",
+      "section_type": "financial_statements_and_mda",
+      "text_sha256": null
+    },
+    {
+      "form": "10-Q",
+      "filing_date": "2026-10-29",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/21535/000143774926033843/cohu20260926_10q.htm",
+      "accession_number": "0001437749-26-033843",
+      "section_type": "financial_statements_and_mda",
+      "text_sha256": null
+    },
+    {
+      "form": "10-Q",
+      "filing_date": "2026-10-29",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/21535/000143774926033843/cohu20260926_10q.htm",
+      "accession_number": "0001437749-26-033843",
+      "section_type": "financial_statements_and_mda",
+      "text_sha256": null
     }
   ],
   "translation_engine": {
     "provider": "manual",
     "model": null,
-    "mode": "human_reviewed_company_profile_translation",
-    "result_source": "MANUAL_LOCKED",
-    "validation": "manual_review_and_read_back",
-    "canonical_handoff": "read_back_verified"
+    "mode": "manual_evidence_locked_zh_tw",
+    "result_source": "RESEARCH_REVISED_20261111",
+    "validation": "programmatic_structural_and_source_review",
+    "canonical_handoff": "not_submitted_to_github"
   },
   "translation_source": {
-    "company_summary": "Cohu provides semiconductor test, inspection, handling, interface and data-analytics equipment and services.",
-    "product_stack": [
-      "semiconductor test handlers",
-      "automated test equipment",
-      "test contactors and probe interfaces",
-      "inspection and metrology systems",
-      "DI-Core analytics software",
-      "thermal-control systems"
-    ],
-    "market_products": {},
+    "company_summary": "Cohu supplies semiconductor test handlers, ATE, contactors, probes, inspection and metrology, and AI analytics.",
     "markets": [
-      "Semiconductor test equipment",
-      "Semiconductor inspection",
-      "Automotive semiconductors",
-      "Power semiconductors"
+      "AI／HPC 處理器量產測試",
+      "半導體測試自動化與處理機",
+      "HBM／先進封裝檢測量測",
+      "車用 ADAS／MCU／感測器",
+      "SiC／GaN 功率半導體",
+      "射頻與混合訊號 ATE",
+      "晶圓級與封裝後測試介面",
+      "半導體智慧製造與資料分析",
+      "工業、行動及消費性半導體"
     ],
-    "customer_types": [
-      "integrated device manufacturers",
-      "semiconductor foundries",
-      "outsourced assembly and test providers",
-      "semiconductor design companies"
+    "product_stack": [
+      "Eclipse／EclipseX 高功率 Pick-and-Place 測試處理機",
+      "MATRiX 三溫高並行測試處理機",
+      "MT9510／MT9928／Rasco SO 系列處理機",
+      "Jaguar Strip Handler 與 MCT FH-1200／SH-5300",
+      "Sense+ MEMS 感測器測試平台",
+      "T-Core 主動熱控與高功率散熱測試模組",
+      "Diamondx 與其他射頻／混合訊號／功率半導體 ATE",
+      "測試接觸器、測試座、彈簧探針與功率探針卡",
+      "Neon HBM／WLCSP 檢測與量測",
+      "Krypton、NV-Core、Aquilae 紅外及 3D Flex 檢測",
+      "PAICe Prescriptive／PAICe Inspection／PAICe Monitor／DI-Core 資料分析",
+      "維修、備品、設備升級、工具與耗材"
     ],
+    "market_products": {
+      "AI_HPC": [
+        "Eclipse／EclipseX",
+        "T-Core ATC",
+        "PAICe Prescriptive"
+      ],
+      "HBM_先進封裝": [
+        "Neon",
+        "NV-Core",
+        "Aquilae Infrared",
+        "3D Flex"
+      ],
+      "車用與功率": [
+        "MATRiX",
+        "Jaguar",
+        "Diamondx",
+        "功率測試接觸器"
+      ],
+      "智慧製造": [
+        "PAICe Monitor",
+        "PAICe Inspection",
+        "DI-Core"
+      ]
+    },
     "core_technologies": [
-      "semiconductor automated testing",
-      "active thermal control",
-      "machine vision and metrology",
-      "test-interface engineering",
-      "manufacturing data analytics"
+      "高功率高接觸力測試處理",
+      "T-Core 主動式熱控制（ATC）",
+      "多工位與三溫測試",
+      "精密測試接觸與高頻訊號完整性",
+      "晶圓級／封裝級功率及混合訊號測試",
+      "六面可見光／紅外檢測",
+      "3D bump／微柱量測與微裂縫辨識",
+      "深度學習視覺辨識與數位分身製程控制",
+      "SECS/GEM 工廠自動化整合"
+    ],
+    "manufacturing": {
+      "model": [
+        "自有廠房製造測試處理機、檢測設備與接觸器",
+        "Jabil 馬來西亞檳城廠策略代工大部分半導體 ATE 系統"
+      ],
+      "locations": [
+        "馬來西亞麻六甲：測試自動化與檢測設備主要量產基地",
+        "馬來西亞檳城：Jabil ATE 委外製造基地",
+        "菲律賓：測試介面與接觸器製造",
+        "新加坡：測試介面與接觸器製造",
+        "日本：測試介面與接觸器製造",
+        "美國及德國：研發、工程與部分營運"
+      ],
+      "critical_assets": [
+        "全球逾 25,000 台有效設備裝機",
+        "31 國、108 家客戶、逾 280 座量產工廠",
+        "測試接觸器與探針等持續更換耗材製造能力"
+      ]
+    },
+    "customer_types": [
+      "整合元件製造商（IDM）",
+      "委外封裝測試廠（OSAT）",
+      "無晶圓廠半導體設計公司",
+      "功率半導體與 HBM 製造商"
     ],
     "ai_exposure": {
       "type": "direct_company_disclosure",
-      "summary": "Cohu test and analytics systems support production of high-performance and power semiconductors used in AI infrastructure."
+      "summary": "2026 年 HPC 測試處理機 Eclipse 取得多名客戶訂單；Neon 對應 HBM3E／HBM4／HBM4E 檢測；2026 年第三季 AI 驅動運算商機管線約 10 億美元，屬商機管線而非已確認營收。"
     },
-    "demand_drivers": [
-      "semiconductor complexity",
-      "AI infrastructure",
-      "automotive electronics",
-      "power semiconductor growth"
+    "competitive_advantages": [
+      "測試處理機、ATE、介面、檢測及分析軟體整合產品組合",
+      "T-Core 主動熱控支援高功耗處理器量產測試",
+      "接觸器、探針、服務及軟體帶來經常性營收",
+      "Neon 高吞吐六面及紅外檢測適用 HBM 微柱與先進封裝",
+      "全球維修服務與廣泛裝機基礎"
     ],
-    "strategy_changes": []
+    "demand_drivers": [
+      "AI GPU／CPU／ASIC 與高功耗 HPC 測試",
+      "HBM3E／HBM4／HBM4E 檢測與先進封裝",
+      "SiC／GaN 功率器件與 AI 資料中心電源",
+      "ADAS、汽車 MCU 與感測器",
+      "封測廠資本支出及產線稼動率",
+      "耗材汰換、設備維修及 AI 製程分析"
+    ],
+    "strategy_changes": [
+      "2024 年收購 Tignis，擴充 AI 製程控制及 PAICe 軟體",
+      "2025 年 Neon 切入 HBM 檢測並獲追加訂單",
+      "2026 年 Eclipse AI／HPC 客戶持續擴張，11 月公告第 4 家完成 HPC 平台認證的客戶"
+    ],
+    "financial_snapshot": {
+      "fiscal_year": 2025,
+      "revenue": 452956000,
+      "gross_margin": 0.427,
+      "net_loss": -74300000,
+      "revenue_mix": {
+        "systems_including_kits_pct": 0.4,
+        "recurring_pct": 0.6
+      },
+      "customer_concentration": {
+        "top_10_customers_2025_pct": 0.6,
+        "STMicroelectronics_2023_pct": 0.12,
+        "STMicroelectronics_2025_pct": null
+      },
+      "currency": "USD",
+      "period": "FY2025",
+      "latest_quarter": {
+        "period": "2026Q3",
+        "revenue": 173000000,
+        "gross_margin": 0.455,
+        "net_income": 12100000
+      },
+      "latest_nine_months": {
+        "period": "2026M9",
+        "revenue": 447100000,
+        "gross_margin": 0.457
+      }
+    }
   },
   "translation_zh_tw": {
-    "company_summary": "Cohu 提供半導體測試、檢測、搬運、介面與資料分析設備及服務。",
-    "product_stack": [
-      "半導體測試處理機",
-      "自動測試設備",
-      "測試接觸器與探針介面",
-      "檢測與量測系統",
-      "DI-Core 分析軟體",
-      "熱控制系統"
-    ],
-    "market_products": {},
+    "company_summary": {
+      "one_line_business": "Cohu 是全球半導體後段測試與良率設備供應商，提供測試處理機、主動熱控、自動測試設備、測試接觸器與探針介面、光學及紅外檢測量測、AI 製程分析軟體，以及耗材與維護服務。"
+    },
     "markets": [
-      "半導體測試設備",
-      "半導體檢測",
-      "車用半導體",
-      "功率半導體"
+      "AI／HPC 處理器量產測試",
+      "半導體測試自動化與處理機",
+      "HBM／先進封裝檢測量測",
+      "車用 ADAS／MCU／感測器",
+      "SiC／GaN 功率半導體",
+      "射頻與混合訊號 ATE",
+      "晶圓級與封裝後測試介面",
+      "半導體智慧製造與資料分析",
+      "工業、行動及消費性半導體"
     ],
-    "customer_types": [
-      "整合元件製造商",
-      "半導體晶圓代工廠",
-      "封裝測試服務商",
-      "半導體設計公司"
+    "product_stack": [
+      "Eclipse／EclipseX 高功率 Pick-and-Place 測試處理機",
+      "MATRiX 三溫高並行測試處理機",
+      "MT9510／MT9928／Rasco SO 系列處理機",
+      "Jaguar Strip Handler 與 MCT FH-1200／SH-5300",
+      "Sense+ MEMS 感測器測試平台",
+      "T-Core 主動熱控與高功率散熱測試模組",
+      "Diamondx 與其他射頻／混合訊號／功率半導體 ATE",
+      "測試接觸器、測試座、彈簧探針與功率探針卡",
+      "Neon HBM／WLCSP 檢測與量測",
+      "Krypton、NV-Core、Aquilae 紅外及 3D Flex 檢測",
+      "PAICe Prescriptive／PAICe Inspection／PAICe Monitor／DI-Core 資料分析",
+      "維修、備品、設備升級、工具與耗材"
     ],
+    "market_products": {
+      "AI_HPC": [
+        "Eclipse／EclipseX",
+        "T-Core ATC",
+        "PAICe Prescriptive"
+      ],
+      "HBM_先進封裝": [
+        "Neon",
+        "NV-Core",
+        "Aquilae Infrared",
+        "3D Flex"
+      ],
+      "車用與功率": [
+        "MATRiX",
+        "Jaguar",
+        "Diamondx",
+        "功率測試接觸器"
+      ],
+      "智慧製造": [
+        "PAICe Monitor",
+        "PAICe Inspection",
+        "DI-Core"
+      ]
+    },
     "core_technologies": [
-      "半導體自動化測試",
-      "主動熱控制",
-      "機器視覺與量測",
-      "測試介面工程",
-      "製造資料分析"
+      "高功率高接觸力測試處理",
+      "T-Core 主動式熱控制（ATC）",
+      "多工位與三溫測試",
+      "精密測試接觸與高頻訊號完整性",
+      "晶圓級／封裝級功率及混合訊號測試",
+      "六面可見光／紅外檢測",
+      "3D bump／微柱量測與微裂縫辨識",
+      "深度學習視覺辨識與數位分身製程控制",
+      "SECS/GEM 工廠自動化整合"
+    ],
+    "manufacturing": {
+      "model": [
+        "自有廠房製造測試處理機、檢測設備與接觸器",
+        "Jabil 馬來西亞檳城廠策略代工大部分半導體 ATE 系統"
+      ],
+      "locations": [
+        "馬來西亞麻六甲：測試自動化與檢測設備主要量產基地",
+        "馬來西亞檳城：Jabil ATE 委外製造基地",
+        "菲律賓：測試介面與接觸器製造",
+        "新加坡：測試介面與接觸器製造",
+        "日本：測試介面與接觸器製造",
+        "美國及德國：研發、工程與部分營運"
+      ],
+      "critical_assets": [
+        "全球逾 25,000 台有效設備裝機",
+        "31 國、108 家客戶、逾 280 座量產工廠",
+        "測試接觸器與探針等持續更換耗材製造能力"
+      ]
+    },
+    "customer_types": [
+      "整合元件製造商（IDM）",
+      "委外封裝測試廠（OSAT）",
+      "無晶圓廠半導體設計公司",
+      "功率半導體與 HBM 製造商"
     ],
     "ai_exposure": {
       "type": "direct_company_disclosure",
-      "summary": "Cohu 的測試與分析系統支援 AI 基礎設施所需高效能及功率半導體的生產。"
+      "summary": "2026 年 HPC 測試處理機 Eclipse 取得多名客戶訂單；Neon 對應 HBM3E／HBM4／HBM4E 檢測；2026 年第三季 AI 驅動運算商機管線約 10 億美元，屬商機管線而非已確認營收。"
     },
-    "demand_drivers": [
-      "半導體複雜度",
-      "AI 基礎設施",
-      "汽車電子",
-      "功率半導體成長"
+    "competitive_advantages": [
+      "測試處理機、ATE、介面、檢測及分析軟體整合產品組合",
+      "T-Core 主動熱控支援高功耗處理器量產測試",
+      "接觸器、探針、服務及軟體帶來經常性營收",
+      "Neon 高吞吐六面及紅外檢測適用 HBM 微柱與先進封裝",
+      "全球維修服務與廣泛裝機基礎"
     ],
-    "strategy_changes": []
+    "demand_drivers": [
+      "AI GPU／CPU／ASIC 與高功耗 HPC 測試",
+      "HBM3E／HBM4／HBM4E 檢測與先進封裝",
+      "SiC／GaN 功率器件與 AI 資料中心電源",
+      "ADAS、汽車 MCU 與感測器",
+      "封測廠資本支出及產線稼動率",
+      "耗材汰換、設備維修及 AI 製程分析"
+    ],
+    "strategy_changes": [
+      "2024 年收購 Tignis，擴充 AI 製程控制及 PAICe 軟體",
+      "2025 年 Neon 切入 HBM 檢測並獲追加訂單",
+      "2026 年 Eclipse AI／HPC 客戶持續擴張，11 月公告第 4 家完成 HPC 平台認證的客戶"
+    ],
+    "financial_snapshot": {
+      "fiscal_year": 2025,
+      "revenue": 452956000,
+      "gross_margin": 0.427,
+      "net_loss": -74300000,
+      "revenue_mix": {
+        "systems_including_kits_pct": 0.4,
+        "recurring_pct": 0.6
+      },
+      "customer_concentration": {
+        "top_10_customers_2025_pct": 0.6,
+        "STMicroelectronics_2023_pct": 0.12,
+        "STMicroelectronics_2025_pct": null
+      },
+      "currency": "USD",
+      "period": "FY2025",
+      "latest_quarter": {
+        "period": "2026Q3",
+        "revenue": 173000000,
+        "gross_margin": 0.455,
+        "net_income": 12100000
+      },
+      "latest_nine_months": {
+        "period": "2026M9",
+        "revenue": 447100000,
+        "gross_margin": 0.457
+      }
+    }
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-11",
+    "company": "Cohu, Inc.",
+    "symbol": "COHU",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "COHU 半導體測試設備、HBM 檢測與 AI HPC 產業鏈研究",
+      "description": "Cohu Eclipse 高功率測試處理機、Neon HBM 檢測、Diamondx ATE、T-Core 熱控、PAICe 分析與台灣封測產業鏈之已確認及推論關係。"
+    },
+    "business_lines": [
+      {
+        "id": "HPC_HANDLER",
+        "name": "AI／HPC Eclipse 高功率測試處理機"
+      },
+      {
+        "id": "THERMAL",
+        "name": "主動熱控制與高低溫測試"
+      },
+      {
+        "id": "AUTO_HANDLER",
+        "name": "車用／工業 Pick-and-Place 測試處理機"
+      },
+      {
+        "id": "STRIP_MEMS",
+        "name": "Strip／MEMS 與感測器測試"
+      },
+      {
+        "id": "RF_ATE",
+        "name": "射頻及混合訊號自動測試設備"
+      },
+      {
+        "id": "POWER_ATE",
+        "name": "SiC／GaN／電源管理晶片測試"
+      },
+      {
+        "id": "CONTACTOR",
+        "name": "測試接觸器、測試座及耗材"
+      },
+      {
+        "id": "PROBE",
+        "name": "晶圓探針與功率測試介面"
+      },
+      {
+        "id": "HBM_INSPECT",
+        "name": "HBM／WLCSP 檢測量測"
+      },
+      {
+        "id": "VISION",
+        "name": "光學／紅外／3D 量測"
+      },
+      {
+        "id": "ANALYTICS",
+        "name": "PAICe／DI-Core 製程資料分析"
+      },
+      {
+        "id": "AUTOMATION",
+        "name": "封測產線自動化整合"
+      },
+      {
+        "id": "AFTERMARKET",
+        "name": "備件、維修、升級及服務"
+      },
+      {
+        "id": "MFG_SUPPLY",
+        "name": "設備製造與零組件供應"
+      },
+      {
+        "id": "OSAT_ECOSYSTEM",
+        "name": "封裝測試與台灣受惠映射"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "AUTO_HANDLER_customer_001",
+        "name": "STMicroelectronics",
+        "business_line": "AUTO_HANDLER",
+        "relationship": "customer",
+        "details": "10-K 具名歷史客戶，2023 年占營收 12%，2024、2025 年均低於 10%；未揭露其採購的個別機型。",
+        "evidence_grade": "A-公司公告或SEC",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "STM"
+      },
+      {
+        "id": "HPC_HANDLER_customer_001",
+        "name": "未具名美國半導體製造暨晶圓代工業者",
+        "business_line": "HPC_HANDLER",
+        "relationship": "customer",
+        "details": "2026-03-17 公告訂購多台 Eclipse，測試 AI 資料中心 HPC 處理器；未公開客戶名稱，不推定為 Intel。",
+        "evidence_grade": "A-公司公告或SEC",
+        "source_urls": [
+          "https://ir.cohu.com/news-releases/news-release-details/cohu-receives-second-multi-unit-order-testing-next-generation-ai"
+        ]
+      },
+      {
+        "id": "HPC_HANDLER_customer_002",
+        "name": "未具名 HPC 客戶群（2026-04 追加訂單）",
+        "business_line": "HPC_HANDLER",
+        "relationship": "customer",
+        "details": "2026-04-02 公告兩家既有客戶合計追加 3,000 萬美元 Eclipse 訂單；無法判斷與其他未具名訂單重疊情形。",
+        "evidence_grade": "A-公司公告或SEC",
+        "source_urls": [
+          "https://ir.cohu.com/news-releases/news-release-details/cohu-announces-30-million-follow-orders-high-performance"
+        ]
+      },
+      {
+        "id": "HPC_HANDLER_customer_003",
+        "name": "未具名 HPC 無晶圓廠晶片設計公司",
+        "business_line": "HPC_HANDLER",
+        "relationship": "customer",
+        "details": "2026-11-10 宣布新客戶選用 Eclipse 量產測試，為第 4 家完成 HPC 平台認證客戶；客戶未具名。",
+        "evidence_grade": "A-公司公告或SEC",
+        "source_urls": [
+          "https://ir.cohu.com/news-releases/news-release-details/cohu-eclipsetm-handler-selected-production-test-next-generation"
+        ]
+      },
+      {
+        "id": "OSAT_ECOSYSTEM_customer_001",
+        "name": "未具名亞洲全球性 OSAT",
+        "business_line": "OSAT_ECOSYSTEM",
+        "relationship": "customer",
+        "details": "2026-11-10 Eclipse 終端測試在其亞洲量產廠部署；為確認的製造使用場景，不等同確認該 OSAT 為採購人。",
+        "evidence_grade": "A-公司公告或SEC",
+        "source_urls": [
+          "https://ir.cohu.com/news-releases/news-release-details/cohu-eclipsetm-handler-selected-production-test-next-generation"
+        ]
+      },
+      {
+        "id": "HBM_INSPECT_customer_001",
+        "name": "未具名美國記憶體及資料儲存製造商",
+        "business_line": "HBM_INSPECT",
+        "relationship": "customer",
+        "details": "2025-09-16 公告追加 Neon 訂單，用於 HBM 裝置檢測與微柱量測；未公開名稱，不可直接指認 Micron。",
+        "evidence_grade": "A-公司公告或SEC",
+        "source_urls": [
+          "https://ir.cohu.com/news-releases/news-release-details/cohu-secures-additional-neon-orders-raises-2025-forecasted-hbm"
+        ]
+      },
+      {
+        "id": "POWER_ATE_customer_001",
+        "name": "未具名 GaN 功率半導體製造商",
+        "business_line": "POWER_ATE",
+        "relationship": "customer",
+        "details": "2026-05-12 公司公告未具名半導體製造商約 500 萬美元 Diamondx GaN 功率器件測試設備訂單。",
+        "evidence_grade": "A-公司公告或SEC",
+        "source_urls": [
+          "https://cohu.gcs-web.com/news-releases/news-release-details/cohu-receives-multiple-orders-testing-next-generation-gan-power"
+        ]
+      },
+      {
+        "id": "ANALYTICS_customer_001",
+        "name": "未具名 PAICe 訂閱客戶",
+        "business_line": "ANALYTICS",
+        "relationship": "customer",
+        "details": "2026-04-02 Eclipse 追加訂單中一家客戶採 PAICe Prescriptive 訂閱，潛在年費約 33 萬美元；不得與其他未具名客戶重複計數。",
+        "evidence_grade": "A-公司公告或SEC",
+        "source_urls": [
+          "https://ir.cohu.com/news-releases/news-release-details/cohu-announces-30-million-follow-orders-high-performance"
+        ]
+      },
+      {
+        "id": "MFG_SUPPLY_supplier_001",
+        "name": "Jabil",
+        "business_line": "MFG_SUPPLY",
+        "relationship": "supplier",
+        "details": "Cohu 2025 年 10-K 明載 Jabil 馬來西亞檳城廠製造其大部分半導體 ATE 系統；屬確認委外製造供應商。",
+        "evidence_grade": "A-SEC直接揭露",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "JBL"
+      },
+      {
+        "id": "MFG_SUPPLY_partner_001",
+        "name": "Jabil",
+        "business_line": "MFG_SUPPLY",
+        "relationship": "partner",
+        "details": "長期策略製造合作，專用 ATE 製造產線採智慧工廠與精實製造；同一實體另列供應商是不同關係，不代表兩家 Jabil。",
+        "evidence_grade": "A-SEC直接揭露",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "JBL"
+      },
+      {
+        "id": "RF_ATE_competitor_001",
+        "name": "Advantest",
+        "business_line": "RF_ATE",
+        "relationship": "competitor",
+        "details": "V93000 等 SoC／RF／AI 測試平台直接競爭，亦有測試處理機與介面產品。 不代表確認採購或合作。",
+        "evidence_grade": "B-產品市場比較",
+        "source_urls": [
+          "https://www.advantest.com/en/products/semiconductor-test-system/soc/v93000/"
+        ],
+        "ticker": "6857.T"
+      },
+      {
+        "id": "RF_ATE_competitor_002",
+        "name": "Teradyne",
+        "business_line": "RF_ATE",
+        "relationship": "competitor",
+        "details": "UltraFLEXplus 等 SoC ATE 與 Cohu ATE 重疊；Cohu 處理機與 Teradyne ATE 並非同一產品。 不代表確認採購或合作。",
+        "evidence_grade": "B-產品市場比較",
+        "source_urls": [
+          "https://www.teradyne.com/products/ultraflexplus/"
+        ],
+        "ticker": "TER"
+      },
+      {
+        "id": "HPC_HANDLER_competitor_001",
+        "name": "Hon Precision",
+        "business_line": "HPC_HANDLER",
+        "relationship": "competitor",
+        "details": "Cohu 10-K 明列之半導體測試／自動化競爭者，重疊測試處理設備。 不代表確認採購或合作。",
+        "evidence_grade": "A-SEC具名競爭者",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ]
+      },
+      {
+        "id": "VISION_competitor_001",
+        "name": "KLA",
+        "business_line": "VISION",
+        "relationship": "competitor",
+        "details": "Cohu 10-K 明列競爭者；半導體檢測與量測局部重疊，但 KLA 主要重心偏前段製程。 不代表確認採購或合作。",
+        "evidence_grade": "A-SEC具名競爭者",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "KLAC"
+      },
+      {
+        "id": "AUTO_HANDLER_competitor_001",
+        "name": "AEM Holdings",
+        "business_line": "AUTO_HANDLER",
+        "relationship": "competitor",
+        "details": "後段測試處理與整合測試設備競爭；未確認與 Cohu 有商業交易。 不代表確認採購或合作。",
+        "evidence_grade": "C-待逐公司產品頁交叉確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "AWX.SI"
+      },
+      {
+        "id": "AUTO_HANDLER_competitor_002",
+        "name": "ASMPT",
+        "business_line": "AUTO_HANDLER",
+        "relationship": "competitor",
+        "details": "封裝及後段自動化設備相鄰市場；不等於所有產品直接競爭。 不代表確認採購或合作。",
+        "evidence_grade": "C-待逐公司產品頁交叉確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "0522.HK"
+      },
+      {
+        "id": "POWER_ATE_competitor_001",
+        "name": "Chroma ATE",
+        "business_line": "POWER_ATE",
+        "relationship": "competitor",
+        "details": "功率、電源與半導體測試設備相鄰競爭。 不代表確認採購或合作。",
+        "evidence_grade": "B-產品市場比較",
+        "source_urls": [
+          "https://wwwc.twse.com.tw/TIB/zh/report-detail.html?id=8a8216d69e5d05dc019e5dd521b00010"
+        ],
+        "ticker": "2360.TW"
+      },
+      {
+        "id": "HBM_INSPECT_competitor_001",
+        "name": "Onto Innovation",
+        "business_line": "HBM_INSPECT",
+        "relationship": "competitor",
+        "details": "先進封裝檢測／量測產品市場與 Neon 相關應用重疊。 不代表確認採購或合作。",
+        "evidence_grade": "B-產品市場比較",
+        "source_urls": [
+          "https://www.cohu.com/inspection"
+        ],
+        "ticker": "ONTO"
+      },
+      {
+        "id": "HBM_INSPECT_competitor_002",
+        "name": "Camtek",
+        "business_line": "HBM_INSPECT",
+        "relationship": "competitor",
+        "details": "先進封裝與 HBM 檢測市場與 Neon 部分重疊。 不代表確認採購或合作。",
+        "evidence_grade": "B-產品市場比較",
+        "source_urls": [
+          "https://www.cohu.com/inspection"
+        ],
+        "ticker": "CAMT"
+      },
+      {
+        "id": "VISION_competitor_002",
+        "name": "Tokyo Seimitsu",
+        "business_line": "VISION",
+        "relationship": "competitor",
+        "details": "半導體量測與晶圓測試相關市場局部重疊。 不代表確認採購或合作。",
+        "evidence_grade": "B-產品市場比較",
+        "source_urls": [
+          "https://www.cohu.com/inspection"
+        ],
+        "ticker": "7729.T"
+      },
+      {
+        "id": "PROBE_competitor_001",
+        "name": "FormFactor",
+        "business_line": "PROBE",
+        "relationship": "competitor",
+        "details": "晶圓探針卡與測試介面領域競爭；不等於測試處理機。 不代表確認採購或合作。",
+        "evidence_grade": "C-待逐公司產品頁交叉確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "FORM"
+      },
+      {
+        "id": "PROBE_competitor_002",
+        "name": "Technoprobe",
+        "business_line": "PROBE",
+        "relationship": "competitor",
+        "details": "晶圓探針卡與測試介面相鄰市場。 不代表確認採購或合作。",
+        "evidence_grade": "C-待逐公司產品頁交叉確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "TPRO.MI"
+      },
+      {
+        "id": "CONTACTOR_competitor_001",
+        "name": "WinWay Technology",
+        "business_line": "CONTACTOR",
+        "relationship": "competitor",
+        "details": "高階晶片測試座與介面，與 Cohu 接觸器產品競爭。 不代表確認採購或合作。",
+        "evidence_grade": "B-產品市場比較",
+        "source_urls": [
+          "https://wwwc.twse.com.tw/TIB/zh/report-detail.html?id=8a8216d69e5d05dc019e5dd521b00010"
+        ],
+        "ticker": "6515.TW"
+      },
+      {
+        "id": "CONTACTOR_competitor_002",
+        "name": "Jentech Precision",
+        "business_line": "CONTACTOR",
+        "relationship": "competitor",
+        "details": "測試介面、測試座與精密接觸產品競爭。 不代表確認採購或合作。",
+        "evidence_grade": "B-產品市場比較",
+        "source_urls": [
+          "https://wwwc.twse.com.tw/TIB/zh/report-detail.html?id=8a8216d69e5d05dc019e5dd521b00010"
+        ],
+        "ticker": "3653.TW"
+      },
+      {
+        "id": "CONTACTOR_competitor_003",
+        "name": "Yokowo",
+        "business_line": "CONTACTOR",
+        "relationship": "competitor",
+        "details": "半導體測試接觸器與高頻接觸元件市場重疊。 不代表確認採購或合作。",
+        "evidence_grade": "C-待逐公司產品頁交叉確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "6800.T"
+      },
+      {
+        "id": "CONTACTOR_competitor_004",
+        "name": "Smiths Interconnect",
+        "business_line": "CONTACTOR",
+        "relationship": "competitor",
+        "details": "半導體測試座、連接器與接觸介面相鄰競爭。 不代表確認採購或合作。",
+        "evidence_grade": "C-待逐公司產品頁交叉確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ]
+      },
+      {
+        "id": "PROBE_competitor_003",
+        "name": "INGUN",
+        "business_line": "PROBE",
+        "relationship": "competitor",
+        "details": "彈簧探針與半導體測試接觸介面市場重疊。 不代表確認採購或合作。",
+        "evidence_grade": "C-待逐公司產品頁交叉確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ]
+      },
+      {
+        "id": "AUTO_HANDLER_competitor_003",
+        "name": "TESEC",
+        "business_line": "AUTO_HANDLER",
+        "relationship": "competitor",
+        "details": "測試處理機及後段半導體測試設備競爭。 不代表確認採購或合作。",
+        "evidence_grade": "C-待逐公司產品頁交叉確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "6337.T"
+      },
+      {
+        "id": "POWER_ATE_competitor_002",
+        "name": "SPEA",
+        "business_line": "POWER_ATE",
+        "relationship": "competitor",
+        "details": "功率及混合訊號半導體測試設備競爭。 不代表確認採購或合作。",
+        "evidence_grade": "C-待逐公司產品頁交叉確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ]
+      },
+      {
+        "id": "RF_ATE_competitor_003",
+        "name": "Microtest",
+        "business_line": "RF_ATE",
+        "relationship": "competitor",
+        "details": "半導體 ATE 與測試服務局部競爭。 不代表確認採購或合作。",
+        "evidence_grade": "C-待逐公司產品頁交叉確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ]
+      },
+      {
+        "id": "OSAT_ECOSYSTEM_beneficiary_001",
+        "name": "日月光投控",
+        "business_line": "OSAT_ECOSYSTEM",
+        "relationship": "beneficiary",
+        "details": "全球封測產能與 AI 高階測試需求連動；未確認採購 Cohu Eclipse 或 Neon。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "ASX"
+      },
+      {
+        "id": "HPC_HANDLER_beneficiary_001",
+        "name": "京元電子",
+        "business_line": "HPC_HANDLER",
+        "relationship": "beneficiary",
+        "details": "京元電子官網確認提供 AI GPU／ASIC／CPU 最終測試及 SLT，可能增加高功率測試處理機需求；未確認採購 Cohu。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://www.kyec.com.tw/zh-tw/About/%E5%85%AC%E5%8F%B8%E7%B0%A1%E4%BB%8B"
+        ],
+        "ticker": "2449.TW"
+      },
+      {
+        "id": "HBM_INSPECT_beneficiary_001",
+        "name": "力成科技",
+        "business_line": "HBM_INSPECT",
+        "relationship": "beneficiary",
+        "details": "記憶體封測及高階測試設備需求連動；未確認採購 Cohu Neon。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://www.pti.com.tw/zh/service/service/final-test"
+        ],
+        "ticker": "6239.TW"
+      },
+      {
+        "id": "RF_ATE_beneficiary_001",
+        "name": "矽格",
+        "business_line": "RF_ATE",
+        "relationship": "beneficiary",
+        "details": "射頻、車用與通訊晶片測試產能擴張可能提高 ATE 需求；未確認採購。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://wwwc.twse.com.tw/TIB/zh/report-detail.html?id=8a8216d69e5d05dc019e5dd521b00010"
+        ],
+        "ticker": "6257.TW"
+      },
+      {
+        "id": "AUTO_HANDLER_beneficiary_001",
+        "name": "欣銓科技",
+        "business_line": "AUTO_HANDLER",
+        "relationship": "beneficiary",
+        "details": "車用及工業晶片測試服務需求連動；未確認採購 Cohu。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://wwwc.twse.com.tw/TIB/zh/report-detail.html?id=8a8216d69e5d05dc019e5dd521b00010"
+        ],
+        "ticker": "3264.TW"
+      },
+      {
+        "id": "OSAT_ECOSYSTEM_beneficiary_002",
+        "name": "頎邦科技",
+        "business_line": "OSAT_ECOSYSTEM",
+        "relationship": "beneficiary",
+        "details": "驅動 IC 封測與晶圓級測試產能變動可能影響測試介面需求；未確認採購。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://wwwc.twse.com.tw/TIB/zh/report-detail.html?id=8a8216d69e5d05dc019e5dd521b00010"
+        ],
+        "ticker": "6147.TW"
+      },
+      {
+        "id": "OSAT_ECOSYSTEM_beneficiary_003",
+        "name": "南茂科技",
+        "business_line": "OSAT_ECOSYSTEM",
+        "relationship": "beneficiary",
+        "details": "記憶體及顯示驅動晶片封測設備需求連動；未確認採購。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://wwwc.twse.com.tw/TIB/zh/report-detail.html?id=8a8216d69e5d05dc019e5dd521b00010"
+        ],
+        "ticker": "8150.TW"
+      },
+      {
+        "id": "PROBE_beneficiary_001",
+        "name": "精測",
+        "business_line": "PROBE",
+        "relationship": "beneficiary",
+        "details": "高階測試介面及探針卡市場需求連動，同時存在產品競爭；未確認直接供應 Cohu。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://wwwc.twse.com.tw/TIB/zh/report-detail.html?id=8a8216d69e5d05dc019e5dd521b00010"
+        ],
+        "ticker": "6510.TW"
+      },
+      {
+        "id": "PROBE_beneficiary_002",
+        "name": "旺矽",
+        "business_line": "PROBE",
+        "relationship": "beneficiary",
+        "details": "探針卡與高階晶片測試需求連動；可能與 Cohu 部分介面產品競爭，非確認供應商。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://wwwc.twse.com.tw/TIB/zh/report-detail.html?id=8a8216d69e5d05dc019e5dd521b00010"
+        ],
+        "ticker": "6223.TW"
+      },
+      {
+        "id": "CONTACTOR_beneficiary_001",
+        "name": "穎崴",
+        "business_line": "CONTACTOR",
+        "relationship": "beneficiary",
+        "details": "高功耗 AI 晶片測試座需求提升的產業受惠推論；亦是競爭者，非 Cohu 供應商。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://www.winwayglobal.com/zh-TW/news-detail/w1i15W0qjqCHkJCW"
+        ],
+        "ticker": "6515.TW"
+      },
+      {
+        "id": "HBM_INSPECT_beneficiary_002",
+        "name": "精材科技",
+        "business_line": "HBM_INSPECT",
+        "relationship": "beneficiary",
+        "details": "先進封裝與晶圓級封裝檢測需求成長的間接受惠情境；未確認 Cohu 設備採購。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://wwwc.twse.com.tw/TIB/zh/report-detail.html?id=8a8216d69e5d05dc019e5dd521b00010"
+        ],
+        "ticker": "3374.TW"
+      },
+      {
+        "id": "AUTOMATION_beneficiary_001",
+        "name": "志聖工業",
+        "business_line": "AUTOMATION",
+        "relationship": "beneficiary",
+        "details": "半導體先進封裝產線設備投資連動，與 Cohu 無確認交易。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://wwwc.twse.com.tw/TIB/zh/report-detail.html?id=8a8216d69e5d05dc019e5dd521b00010"
+        ],
+        "ticker": "2467.TW"
+      },
+      {
+        "id": "AUTOMATION_beneficiary_002",
+        "name": "均華精密",
+        "business_line": "AUTOMATION",
+        "relationship": "beneficiary",
+        "details": "先進封裝與高精度自動化需求連動，非 Cohu 確認供應商。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://wwwc.twse.com.tw/TIB/zh/report-detail.html?id=8a8216d69e5d05dc019e5dd521b00010"
+        ],
+        "ticker": "6640.TW"
+      },
+      {
+        "id": "AUTOMATION_beneficiary_003",
+        "name": "萬潤科技",
+        "business_line": "AUTOMATION",
+        "relationship": "beneficiary",
+        "details": "封裝自動化與精密設備需求連動，非確認 Cohu 供應商。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://wwwc.twse.com.tw/TIB/zh/report-detail.html?id=8a8216d69e5d05dc019e5dd521b00010"
+        ],
+        "ticker": "6187.TW"
+      },
+      {
+        "id": "OSAT_ECOSYSTEM_beneficiary_004",
+        "name": "弘塑科技",
+        "business_line": "OSAT_ECOSYSTEM",
+        "relationship": "beneficiary",
+        "details": "先進封裝設備資本支出連動，非 Cohu 直接供應鏈證據。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://wwwc.twse.com.tw/TIB/zh/report-detail.html?id=8a8216d69e5d05dc019e5dd521b00010"
+        ],
+        "ticker": "3131.TW"
+      },
+      {
+        "id": "AUTOMATION_beneficiary_004",
+        "name": "家登精密",
+        "business_line": "AUTOMATION",
+        "relationship": "beneficiary",
+        "details": "晶圓與封裝載具自動化需求連動，未確認與 Cohu 有採購關係。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://wwwc.twse.com.tw/TIB/zh/report-detail.html?id=8a8216d69e5d05dc019e5dd521b00010"
+        ],
+        "ticker": "3680.TW"
+      },
+      {
+        "id": "POWER_ATE_beneficiary_001",
+        "name": "致茂電子",
+        "business_line": "POWER_ATE",
+        "relationship": "beneficiary",
+        "details": "SiC/GaN 功率測試需求擴張可能受惠；同時有測試設備競爭，非 Cohu 供應商。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://wwwc.twse.com.tw/TIB/zh/report-detail.html?id=8a8216d69e5d05dc019e5dd521b00010"
+        ],
+        "ticker": "2360.TW"
+      },
+      {
+        "id": "VISION_beneficiary_001",
+        "name": "閎康科技",
+        "business_line": "VISION",
+        "relationship": "beneficiary",
+        "details": "半導體檢測及可靠度分析需求連動；其分析服務不同於 Cohu 機台產品。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://wwwc.twse.com.tw/TIB/zh/report-detail.html?id=8a8216d69e5d05dc019e5dd521b00010"
+        ],
+        "ticker": "3587.TW"
+      },
+      {
+        "id": "VISION_beneficiary_002",
+        "name": "宜特科技",
+        "business_line": "VISION",
+        "relationship": "beneficiary",
+        "details": "可靠度與失效分析需求連動；不等於 Cohu 供應商。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://wwwc.twse.com.tw/TIB/zh/report-detail.html?id=8a8216d69e5d05dc019e5dd521b00010"
+        ],
+        "ticker": "3289.TW"
+      },
+      {
+        "id": "POWER_ATE_beneficiary_002",
+        "name": "微矽電子",
+        "business_line": "POWER_ATE",
+        "relationship": "beneficiary",
+        "details": "功率半導體及 GaN／SiC 測試需求連動；未確認採購 Cohu。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://investor.msec.com.tw/Company_CompanyBasicInformation_tc.html"
+        ],
+        "ticker": "8162.TW"
+      },
+      {
+        "id": "OSAT_ECOSYSTEM_beneficiary_005",
+        "name": "Amkor Technology",
+        "business_line": "OSAT_ECOSYSTEM",
+        "relationship": "beneficiary",
+        "details": "封測擴產可能增加測試設備需求；未確認採購。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "AMKR"
+      },
+      {
+        "id": "HBM_INSPECT_beneficiary_003",
+        "name": "Micron Technology",
+        "business_line": "HBM_INSPECT",
+        "relationship": "beneficiary",
+        "details": "HBM 擴產可能增加檢測需求；2025 Neon 未具名美國客戶不得直接推定為 Micron。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "MU"
+      },
+      {
+        "id": "HBM_INSPECT_beneficiary_004",
+        "name": "SK hynix",
+        "business_line": "HBM_INSPECT",
+        "relationship": "beneficiary",
+        "details": "HBM 量產與檢測需求連動；未確認直接採購。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "000660.KS"
+      },
+      {
+        "id": "HBM_INSPECT_beneficiary_005",
+        "name": "Samsung Electronics",
+        "business_line": "HBM_INSPECT",
+        "relationship": "beneficiary",
+        "details": "HBM 與高階封裝測試需求連動；未確認直接採購。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "005930.KS"
+      },
+      {
+        "id": "HPC_HANDLER_beneficiary_002",
+        "name": "NVIDIA",
+        "business_line": "HPC_HANDLER",
+        "relationship": "beneficiary",
+        "details": "GPU／AI 加速器測試複雜度可能間接帶動 Cohu 設備需求；不是已確認直接客戶。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "NVDA"
+      },
+      {
+        "id": "HPC_HANDLER_beneficiary_003",
+        "name": "AMD",
+        "business_line": "HPC_HANDLER",
+        "relationship": "beneficiary",
+        "details": "CPU／GPU／AI 加速器高功耗測試需求連動；不是已確認直接客戶。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "AMD"
+      },
+      {
+        "id": "HPC_HANDLER_beneficiary_004",
+        "name": "Broadcom",
+        "business_line": "HPC_HANDLER",
+        "relationship": "beneficiary",
+        "details": "AI ASIC／網通晶片測試需求連動；未確認直接客戶。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "AVGO"
+      },
+      {
+        "id": "HPC_HANDLER_beneficiary_005",
+        "name": "Marvell Technology",
+        "business_line": "HPC_HANDLER",
+        "relationship": "beneficiary",
+        "details": "資料中心網通 ASIC 測試需求連動；未確認直接客戶。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "MRVL"
+      },
+      {
+        "id": "POWER_ATE_beneficiary_003",
+        "name": "Infineon Technologies",
+        "business_line": "POWER_ATE",
+        "relationship": "beneficiary",
+        "details": "SiC/GaN 功率器件測試設備需求連動；未確認直接客戶。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "IFX.DE"
+      },
+      {
+        "id": "POWER_ATE_beneficiary_004",
+        "name": "onsemi",
+        "business_line": "POWER_ATE",
+        "relationship": "beneficiary",
+        "details": "SiC 與車用功率半導體測試需求連動；未確認直接客戶。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "ON"
+      },
+      {
+        "id": "AUTO_HANDLER_beneficiary_002",
+        "name": "Renesas Electronics",
+        "business_line": "AUTO_HANDLER",
+        "relationship": "beneficiary",
+        "details": "車用 MCU／感測器測試需求連動；未確認直接客戶。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "6723.T"
+      },
+      {
+        "id": "AUTO_HANDLER_beneficiary_003",
+        "name": "NXP Semiconductors",
+        "business_line": "AUTO_HANDLER",
+        "relationship": "beneficiary",
+        "details": "ADAS／車用 MCU／RF 晶片測試需求連動；未確認直接客戶。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "NXPI"
+      },
+      {
+        "id": "RF_ATE_beneficiary_002",
+        "name": "Texas Instruments",
+        "business_line": "RF_ATE",
+        "relationship": "beneficiary",
+        "details": "類比與電源管理 IC 測試需求連動；未確認直接客戶。",
+        "evidence_grade": "C-產業需求推論",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/21535/000143774926004339/cohu20251227_10k.htm"
+        ],
+        "ticker": "TXN"
+      }
+    ],
+    "research_notes": {
+      "classification": "customer、supplier、partner 以 SEC 或官方公告為準；competitor 為產品重疊；beneficiary 為需求推論，並非已確認交易。",
+      "duplicate_policy": "同一公司可因 supplier 與 partner 不同法律／商業角色重複出現，否則避免重複具名。",
+      "source_cutoff": "2026-11-11",
+      "source_scope": [
+        "2025 10-K",
+        "2026 Q3 10-Q",
+        "2026 Q3 earnings",
+        "2026-11-10 Eclipse 公告",
+        "Cohu 產品頁",
+        "Advantest／Teradyne 產品頁",
+        "台灣證交所產業鏈說明"
+      ],
+      "original_git_blob_sha": "323fe93c6cc2a410aeb3257c65125ad21b80488b",
+      "original_commit": "da93c81d",
+      "original_fields_modified": true,
+      "manual_research_revision": true
+    }
   }
 }

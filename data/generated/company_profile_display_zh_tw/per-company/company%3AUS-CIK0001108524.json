@@ -84,7 +84,7 @@
     "ai_exposure": {
       "value": {
         "type": "direct_company_disclosure",
-        "summary": "Salesforce provides Einstein and Agentforce AI capabilities across its customer platform."
+        "summary": "Salesforce 透過 Einstein 與 Agentforce，在客戶平台中提供 AI 能力。"
       },
       "evidence": null
     },
@@ -134,33 +134,33 @@
     ],
     "market_products": {},
     "markets": [
-      "Customer relationship management",
-      "Enterprise cloud software",
-      "Data analytics",
-      "AI software"
+      "客戶關係管理",
+      "企業雲端軟體",
+      "資料分析",
+      "AI 軟體"
     ],
     "customer_types": [
-      "businesses",
-      "government organizations",
-      "nonprofits",
-      "developers"
+      "企業",
+      "政府組織",
+      "非營利組織",
+      "開發者"
     ],
     "core_technologies": [
-      "multi-tenant cloud architecture",
-      "customer data platforms",
-      "workflow automation",
-      "enterprise analytics",
-      "generative and agentic AI"
+      "多租戶雲端架構",
+      "客戶資料平台",
+      "工作流程自動化",
+      "企業分析",
+      "生成式與代理式 AI"
     ],
     "ai_exposure": {
       "type": "direct_company_disclosure",
-      "summary": "Salesforce provides Einstein and Agentforce AI capabilities across its customer platform."
+      "summary": "Salesforce 透過 Einstein 與 Agentforce，在客戶平台中提供 AI 能力。"
     },
     "demand_drivers": [
-      "enterprise digitization",
-      "AI adoption",
-      "customer-data integration",
-      "cloud migration"
+      "企業數位化",
+      "AI 普及",
+      "客戶資料整合",
+      "雲端遷移"
     ],
     "strategy_changes": []
   },
@@ -208,5 +208,763 @@
       "雲端遷移"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "symbol": "CRM",
+    "company": "Salesforce, Inc.",
+    "locale": "zh-TW",
+    "research_as_of": "2026-11-19",
+    "business_lines": [
+      {
+        "id": "SALES",
+        "name": "銷售 CRM 與產業雲",
+        "products": "Sales Cloud、Consumer Goods Cloud、Financial Services Cloud"
+      },
+      {
+        "id": "SERVICE",
+        "name": "客服與現場服務",
+        "products": "Service Cloud、Field Service、Agentforce Service"
+      },
+      {
+        "id": "COMMERCE",
+        "name": "行銷、商務與會員經營",
+        "products": "Marketing Cloud、Commerce Cloud、Order Management"
+      },
+      {
+        "id": "DATA",
+        "name": "資料平台、分析與整合",
+        "products": "Data 360、Tableau、MuleSoft"
+      },
+      {
+        "id": "AI",
+        "name": "Agentforce 與企業 AI",
+        "products": "Agentforce、Einstein、AI 模型"
+      },
+      {
+        "id": "SLACK",
+        "name": "Slack 協作與工作流程",
+        "products": "Slack、AI 協作與代理整合"
+      },
+      {
+        "id": "INFRA",
+        "name": "雲端基礎設施與通路",
+        "products": "Hyperforce、雲端託管、系統整合與生態"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "CRM_001",
+        "name": "PepsiCo",
+        "relationship": "customer",
+        "business_line": "SALES",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/customer-stories/pepsico/"
+        ],
+        "commercial_status": "已部署；AI 分階段導入",
+        "details": "使用 Consumer Goods Cloud、Service Cloud、Marketing Cloud、Field Service、MuleSoft 與 Data 360 管理全球零售通路及配送；Agentforce 逐步導入客服。",
+        "named_counterparty": true,
+        "ticker": "PEP"
+      },
+      {
+        "id": "CRM_002",
+        "name": "FedEx",
+        "relationship": "customer",
+        "business_line": "DATA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/customer-stories/fedex"
+        ],
+        "commercial_status": "已部署",
+        "details": "透過 Data 360 整合 Sales Cloud、Marketing Cloud、Service Cloud 與物流資料；官方案例揭露客戶啟用率提升 13%。",
+        "named_counterparty": true,
+        "ticker": "FDX"
+      },
+      {
+        "id": "CRM_003",
+        "name": "Formula 1",
+        "relationship": "customer",
+        "business_line": "SERVICE",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/customer-stories/formula-one/"
+        ],
+        "commercial_status": "已部署",
+        "details": "導入 Agentforce、Data 360、Service Cloud 與 Marketing Cloud，整合球迷資料及賽事客服；案例披露回應時間改善。",
+        "named_counterparty": true
+      },
+      {
+        "id": "CRM_004",
+        "name": "Crocs",
+        "relationship": "customer",
+        "business_line": "COMMERCE",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/customer-stories/crocs/"
+        ],
+        "commercial_status": "已部署",
+        "details": "使用 Commerce Cloud、Marketing Cloud、Service Cloud 與 Data 360；與 Rosetree Solutions 建立 Agentforce 購物客服代理 Rivet。",
+        "named_counterparty": true,
+        "ticker": "CROX"
+      },
+      {
+        "id": "CRM_005",
+        "name": "OpenTable",
+        "relationship": "customer",
+        "business_line": "AI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/customer-stories/opentable-agentforce-implementation/"
+        ],
+        "commercial_status": "已部署",
+        "details": "使用 Agentforce 先部署餐廳端客服代理，再擴展食客端；官方案例記錄相較舊機器人解決率改善 40%。",
+        "named_counterparty": true,
+        "ticker": "BKNG"
+      },
+      {
+        "id": "CRM_006",
+        "name": "Wiley",
+        "relationship": "customer",
+        "business_line": "SERVICE",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/customer-stories/wiley/"
+        ],
+        "commercial_status": "已部署",
+        "details": "使用 Service Cloud、Einstein for Service 與 Agentforce 提升出版教育服務自助處理能力；案例揭露 213% ROI。",
+        "named_counterparty": true,
+        "ticker": "WLY"
+      },
+      {
+        "id": "CRM_007",
+        "name": "Takeda Pharmaceutical",
+        "relationship": "customer",
+        "business_line": "AI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/customer-stories/takeda/"
+        ],
+        "commercial_status": "已部署",
+        "details": "以 Agentforce 與 MuleSoft 處理醫療資訊查詢；官方案例揭露超過 3,100 份受監管文件及 25,000 件醫療人員請求。",
+        "named_counterparty": true,
+        "ticker": "TAK"
+      },
+      {
+        "id": "CRM_008",
+        "name": "L'Oréal",
+        "relationship": "customer",
+        "business_line": "SERVICE",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/customer-stories/loreal/agentic-service-advisor-assistance/"
+        ],
+        "commercial_status": "已部署",
+        "details": "以 Service Cloud、Data 360、Agentforce 協助客服草擬回覆、判斷意圖及促銷碼產生；案例揭露特定流程處理時間縮短。",
+        "named_counterparty": true,
+        "ticker": "OR.PA"
+      },
+      {
+        "id": "CRM_009",
+        "name": "SaaStr",
+        "relationship": "customer",
+        "business_line": "SALES",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/customer-stories/saastr-ai/agentic-outreach/"
+        ],
+        "commercial_status": "已部署",
+        "details": "以 Sales Cloud、Agentforce 處理未跟進銷售線索，官方案例記錄額外成交 270 萬美元。",
+        "named_counterparty": true
+      },
+      {
+        "id": "CRM_010",
+        "name": "Fisher & Paykel Appliances",
+        "relationship": "customer",
+        "business_line": "SERVICE",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.salesforce.com/agentforce/customer-stories/"
+        ],
+        "commercial_status": "已部署",
+        "details": "使用 Agentforce 協助家電現場維修技師取得維修指引，並支援客服人員查詢產品知識。",
+        "named_counterparty": true
+      },
+      {
+        "id": "CRM_011",
+        "name": "FIFA",
+        "relationship": "customer",
+        "business_line": "AI",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.salesforce.com/agentforce/customer-stories/"
+        ],
+        "commercial_status": "已部署",
+        "details": "使用 Agentforce、Slack、Data 360 支援 2026 世界盃媒體認證、賽事協作與球迷服務。",
+        "named_counterparty": true
+      },
+      {
+        "id": "CRM_012",
+        "name": "AT&T",
+        "relationship": "customer",
+        "business_line": "SALES",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.salesforce.com/customer-stories/?bc=OTH&filters=27c12145-271a-4de6-b6d3-2b6b08e78860&page=1"
+        ],
+        "commercial_status": "已導入／擴展",
+        "details": "在零售門市升級服務採用 Agentforce、Data 360 與 MuleSoft，為門市人員提供即時客戶背景及建議。",
+        "named_counterparty": true,
+        "ticker": "T"
+      },
+      {
+        "id": "CRM_013",
+        "name": "Engie",
+        "relationship": "customer",
+        "business_line": "SERVICE",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/news/stories/agentforce-customer-success-stories/"
+        ],
+        "commercial_status": "已部署",
+        "details": "以 Agentforce 處理能源客戶帳單及潔淨能源常見問題；Salesforce 公開案例列出自助客服應用。",
+        "named_counterparty": true,
+        "ticker": "ENGI.PA"
+      },
+      {
+        "id": "CRM_014",
+        "name": "AAA Washington",
+        "relationship": "customer",
+        "business_line": "SERVICE",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/news/stories/agentforce-customer-success-stories/"
+        ],
+        "commercial_status": "已公告採用",
+        "details": "採用 Agentforce 支援會員服務人員，提升會員服務及個人化互動。",
+        "named_counterparty": true
+      },
+      {
+        "id": "CRM_015",
+        "name": "Siemens",
+        "relationship": "customer",
+        "business_line": "SALES",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.salesforce.com/uk/news/topics/salesforce-partners/"
+        ],
+        "commercial_status": "已公告擴大合作",
+        "details": "2026 年擴大 Agentforce 合作，用於工業銷售線索處理及銷售服務流程。",
+        "named_counterparty": true,
+        "ticker": "SIE.DE"
+      },
+      {
+        "id": "CRM_016",
+        "name": "Tottenham Hotspur",
+        "relationship": "customer",
+        "business_line": "AI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/services/customer-success-awards/"
+        ],
+        "commercial_status": "已部署",
+        "details": "以 Salesforce 統一球迷資料並部署 Ask Spurs 代理，官方案例揭露超過 3.8 萬次互動。",
+        "named_counterparty": true
+      },
+      {
+        "id": "CRM_017",
+        "name": "The Grout Guy",
+        "relationship": "customer",
+        "business_line": "AI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/services/customer-success-awards/"
+        ],
+        "commercial_status": "已部署",
+        "details": "與 Servly 合作導入 Agentforce，支援排程、報價、線索與技師準備。",
+        "named_counterparty": true
+      },
+      {
+        "id": "CRM_018",
+        "name": "Rocket Pro",
+        "relationship": "customer",
+        "business_line": "DATA",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.salesforce.com/agentforce/customer-stories/"
+        ],
+        "commercial_status": "已部署",
+        "details": "以 Data 360 整合經紀人資料，再用 Agentforce 支援業務優先順序與個人化外聯。",
+        "named_counterparty": true
+      },
+      {
+        "id": "CRM_019",
+        "name": "Amazon Web Services",
+        "relationship": "supplier",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/news/stories/aws-salesforce-enterprise-ai-expansion/",
+          "https://help.salesforce.com/s/articleView?id=001040171&language=en_US&type=1"
+        ],
+        "commercial_status": "已正式運行",
+        "details": "Hyperforce 公有雲基礎設施供應商；Salesforce 官方說明 Hyperforce 已運行於 AWS，並共同整合 Amazon Connect 與 Agentforce。",
+        "named_counterparty": true,
+        "ticker": "AMZN"
+      },
+      {
+        "id": "CRM_020",
+        "name": "Google Cloud",
+        "relationship": "supplier",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/news/stories/salesforce-google-cloud-unify-infrastructure-and-agents/"
+        ],
+        "commercial_status": "已運行／擴展中",
+        "details": "Hyperforce 在 Google Cloud 已承載正式客戶流量；雙方於 2026 年擴大雲端託管及 Gemini Enterprise 代理互通。",
+        "named_counterparty": true,
+        "ticker": "GOOGL"
+      },
+      {
+        "id": "CRM_021",
+        "name": "Anthropic",
+        "relationship": "supplier",
+        "business_line": "AI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://investor.salesforce.com/news/news-details/2026/Salesforce-and-Anthropic-Announce-Claudeforce-The-1-AI-Meets-the-1-AI-CRM/"
+        ],
+        "commercial_status": "已整合／正式採用",
+        "details": "Claude 是 Agentforce 的推理模型之一，並為 Slackbot 等產品的預設模型；2026 年 Claudeforce 公告確認雙方互為技術與企業客戶。",
+        "named_counterparty": true
+      },
+      {
+        "id": "CRM_022",
+        "name": "NVIDIA",
+        "relationship": "supplier",
+        "business_line": "AI",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.salesforce.com/news/dreamforce-26-media-resources/"
+        ],
+        "commercial_status": "已公告技術整合",
+        "details": "Salesforce 2026 年公布基於 NVIDIA Nemotron 的 Koa CRM 推理模型，NVIDIA 提供模型技術基礎。",
+        "named_counterparty": true,
+        "ticker": "NVDA"
+      },
+      {
+        "id": "CRM_023",
+        "name": "Accenture",
+        "relationship": "partner",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/news/stories/salesforce-launches-forward-deployed-engineer-partner-network-announcement/"
+        ],
+        "commercial_status": "正式導入夥伴",
+        "details": "Salesforce Agentforce 前線工程夥伴網路首批夥伴，提供企業 AI 代理導入與顧問服務。",
+        "named_counterparty": true,
+        "ticker": "ACN"
+      },
+      {
+        "id": "CRM_024",
+        "name": "Deloitte",
+        "relationship": "partner",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/news/stories/salesforce-launches-forward-deployed-engineer-partner-network-announcement/"
+        ],
+        "commercial_status": "正式導入夥伴",
+        "details": "Agentforce Forward Deployed Engineering 首批合作夥伴，提供企業工作流程及 AI 代理部署服務。",
+        "named_counterparty": true
+      },
+      {
+        "id": "CRM_025",
+        "name": "PwC",
+        "relationship": "partner",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/news/stories/salesforce-launches-forward-deployed-engineer-partner-network-announcement/",
+          "https://www.salesforce.com/customer-stories/pepsico/"
+        ],
+        "commercial_status": "正式導入夥伴",
+        "details": "為 Salesforce Agentforce FDE 網路成員；亦與 PepsiCo 設計 Salesforce 五年導入路線圖。",
+        "named_counterparty": true
+      },
+      {
+        "id": "CRM_026",
+        "name": "IBM Consulting",
+        "relationship": "partner",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/news/stories/salesforce-launches-forward-deployed-engineer-partner-network-announcement/"
+        ],
+        "commercial_status": "正式導入夥伴",
+        "details": "Agentforce FDE 網路合作夥伴，為企業提供 AI 代理系統整合與顧問服務。",
+        "named_counterparty": true,
+        "ticker": "IBM"
+      },
+      {
+        "id": "CRM_027",
+        "name": "Slalom",
+        "relationship": "partner",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/news/stories/salesforce-launches-forward-deployed-engineer-partner-network-announcement/"
+        ],
+        "commercial_status": "正式導入夥伴",
+        "details": "Agentforce FDE 網路合作夥伴，提供企業代理式 AI 實施與顧問服務。",
+        "named_counterparty": true
+      },
+      {
+        "id": "CRM_028",
+        "name": "Capgemini",
+        "relationship": "partner",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/news/press-releases/2024/09/17/agentforce-partner-network-announcement/"
+        ],
+        "commercial_status": "正式導入夥伴",
+        "details": "Salesforce Agentforce Partner Network 所列全球系統整合商，協助企業部署 Agentforce。",
+        "named_counterparty": true,
+        "ticker": "CAP.PA"
+      },
+      {
+        "id": "CRM_029",
+        "name": "Ogilvy",
+        "relationship": "partner",
+        "business_line": "COMMERCE",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/customer-stories/formula-one"
+        ],
+        "commercial_status": "已交付專案",
+        "details": "參與 Formula 1 的 Salesforce 顧問與資料平台實施，協助球迷個人化與 Data 360 上線。",
+        "named_counterparty": true
+      },
+      {
+        "id": "CRM_030",
+        "name": "Rosetree Solutions",
+        "relationship": "partner",
+        "business_line": "COMMERCE",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/customer-stories/crocs/building-ai-agents/"
+        ],
+        "commercial_status": "已交付專案",
+        "details": "與 Salesforce FDE 工程師共同為 Crocs 開發 Agentforce 零售代理 Rivet，支援購物、客服與語音。",
+        "named_counterparty": true
+      },
+      {
+        "id": "CRM_031",
+        "name": "Servly",
+        "relationship": "partner",
+        "business_line": "AI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/services/customer-success-awards/"
+        ],
+        "commercial_status": "已交付專案",
+        "details": "協助 The Grout Guy 導入 Agentforce 排程、報價與業務線索流程。",
+        "named_counterparty": true
+      },
+      {
+        "id": "CRM_032",
+        "name": "OpenAI",
+        "relationship": "partner",
+        "business_line": "AI",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.salesforce.com/news/content-types/press-releases-product/"
+        ],
+        "commercial_status": "已公告策略合作",
+        "details": "Salesforce 2025 年公告擴大企業工作與商務整合合作，將 OpenAI 技術與 Salesforce 平台連結。",
+        "named_counterparty": true
+      },
+      {
+        "id": "CRM_033",
+        "name": "Stripe",
+        "relationship": "partner",
+        "business_line": "COMMERCE",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.salesforce.com/news/content-types/press-releases-product/"
+        ],
+        "commercial_status": "已公告技術合作",
+        "details": "2025 年 Salesforce 宣布與 Stripe 合作支援 Agentic Commerce Protocol，整合代理商務支付流程。",
+        "named_counterparty": true
+      },
+      {
+        "id": "CRM_034",
+        "name": "Databricks",
+        "relationship": "partner",
+        "business_line": "DATA",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.salesforce.com/uk/news/topics/salesforce-partners/"
+        ],
+        "commercial_status": "已公告擴大合作",
+        "details": "2026 年宣布擴大合作，連接 Databricks 資料與 Salesforce 代理工作流程以支援企業資料行動。",
+        "named_counterparty": true
+      },
+      {
+        "id": "CRM_035",
+        "name": "Workday",
+        "relationship": "partner",
+        "business_line": "AI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.salesforce.com/news/press-releases/2024/09/17/agentforce-partner-network-announcement/"
+        ],
+        "commercial_status": "已公告生態合作",
+        "details": "Agentforce Partner Network 具名合作夥伴，整合 Workday 系統與 Salesforce 代理動作。",
+        "named_counterparty": true,
+        "ticker": "WDAY"
+      },
+      {
+        "id": "CRM_036",
+        "name": "ASGN",
+        "relationship": "partner",
+        "business_line": "INFRA",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.salesforce.com/news/content-types/press-releases-product/"
+        ],
+        "commercial_status": "已公告策略合作",
+        "details": "2025 年雙方宣布 360 度企業 AI 解決方案合作，涵蓋 Salesforce 導入與企業平台服務。",
+        "named_counterparty": true,
+        "ticker": "ASGN"
+      },
+      {
+        "id": "CRM_037",
+        "name": "Perficient",
+        "relationship": "partner",
+        "business_line": "INFRA",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.salesforce.com/news/content-types/press-releases-product/"
+        ],
+        "commercial_status": "已公告策略合作",
+        "details": "2025 年宣布與 Salesforce 建立 360 度合作，支援企業 Agentforce 導入與顧問服務。",
+        "named_counterparty": true
+      },
+      {
+        "id": "CRM_038",
+        "name": "Microsoft",
+        "relationship": "competitor",
+        "business_line": "SALES",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000060/crm-20260131.htm"
+        ],
+        "commercial_status": "產品市場競爭",
+        "details": "Dynamics 365 CRM、Power Platform、Copilot 與 Salesforce CRM、Agentforce 競爭。",
+        "named_counterparty": true,
+        "ticker": "MSFT"
+      },
+      {
+        "id": "CRM_039",
+        "name": "Oracle",
+        "relationship": "competitor",
+        "business_line": "SALES",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000060/crm-20260131.htm"
+        ],
+        "commercial_status": "產品市場競爭",
+        "details": "Oracle CX 與 Fusion Cloud 應用在 CRM、客服及企業資料整合與 Salesforce 競爭。",
+        "named_counterparty": true,
+        "ticker": "ORCL"
+      },
+      {
+        "id": "CRM_040",
+        "name": "SAP",
+        "relationship": "competitor",
+        "business_line": "SALES",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000060/crm-20260131.htm"
+        ],
+        "commercial_status": "產品市場競爭",
+        "details": "SAP Customer Experience 與 Sales Cloud、Commerce Cloud 等企業 CRM 業務競爭。",
+        "named_counterparty": true,
+        "ticker": "SAP"
+      },
+      {
+        "id": "CRM_041",
+        "name": "ServiceNow",
+        "relationship": "competitor",
+        "business_line": "SERVICE",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000060/crm-20260131.htm"
+        ],
+        "commercial_status": "產品市場競爭",
+        "details": "Now Platform、CRM 客服工作流程與 Agentforce 企業代理應用存在重疊競爭。",
+        "named_counterparty": true,
+        "ticker": "NOW"
+      },
+      {
+        "id": "CRM_042",
+        "name": "HubSpot",
+        "relationship": "competitor",
+        "business_line": "SALES",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000060/crm-20260131.htm"
+        ],
+        "commercial_status": "產品市場競爭",
+        "details": "HubSpot Smart CRM、Sales Hub、Service Hub 在中型企業 CRM 與 Salesforce 競爭。",
+        "named_counterparty": true,
+        "ticker": "HUBS"
+      },
+      {
+        "id": "CRM_043",
+        "name": "Adobe",
+        "relationship": "competitor",
+        "business_line": "COMMERCE",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000060/crm-20260131.htm"
+        ],
+        "commercial_status": "產品市場競爭",
+        "details": "Adobe Experience Cloud 與 Salesforce Marketing Cloud、Commerce Cloud 競爭。",
+        "named_counterparty": true,
+        "ticker": "ADBE"
+      },
+      {
+        "id": "CRM_044",
+        "name": "Zendesk",
+        "relationship": "competitor",
+        "business_line": "SERVICE",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000060/crm-20260131.htm"
+        ],
+        "commercial_status": "產品市場競爭",
+        "details": "Zendesk 客服平台與 Salesforce Service Cloud 在客服工單及 AI 客服市場競爭。",
+        "named_counterparty": true
+      },
+      {
+        "id": "CRM_045",
+        "name": "Freshworks",
+        "relationship": "competitor",
+        "business_line": "SERVICE",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000060/crm-20260131.htm"
+        ],
+        "commercial_status": "產品市場競爭",
+        "details": "Freshsales、Freshdesk 與 Salesforce Sales Cloud、Service Cloud 競爭。",
+        "named_counterparty": true,
+        "ticker": "FRSH"
+      }
+    ],
+    "research_metadata": {
+      "source_profile_commit": "da93c81d",
+      "source_profile_sha": "22dff4dba7c56f5c3183d7550973405f8915a577",
+      "beneficiary_relationships": [
+        {
+          "node_id": "CRM_019",
+          "name": "Amazon Web Services",
+          "details": "Hyperforce 正式承載 Salesforce 工作負載，雲端運算需求直接對應 AWS 服務。",
+          "source_urls": [
+            "https://www.salesforce.com/news/stories/aws-salesforce-enterprise-ai-expansion/",
+            "https://help.salesforce.com/s/articleView?id=001040171&language=en_US&type=1"
+          ]
+        },
+        {
+          "node_id": "CRM_020",
+          "name": "Google Cloud",
+          "details": "Hyperforce 已承載正式客戶流量，新增託管需求直接對應 Google Cloud。",
+          "source_urls": [
+            "https://www.salesforce.com/news/stories/salesforce-google-cloud-unify-infrastructure-and-agents/"
+          ]
+        },
+        {
+          "node_id": "CRM_021",
+          "name": "Anthropic",
+          "details": "Claude 成為 Salesforce 多項產品模型供應來源，模型推理用量與採用直接相關。",
+          "source_urls": [
+            "https://investor.salesforce.com/news/news-details/2026/Salesforce-and-Anthropic-Announce-Claudeforce-The-1-AI-Meets-the-1-AI-CRM/"
+          ]
+        },
+        {
+          "node_id": "CRM_023",
+          "name": "Accenture",
+          "details": "為正式 Agentforce 導入夥伴，承接顧問與代理部署服務機會。",
+          "source_urls": [
+            "https://www.salesforce.com/news/stories/salesforce-launches-forward-deployed-engineer-partner-network-announcement/"
+          ]
+        },
+        {
+          "node_id": "CRM_024",
+          "name": "Deloitte",
+          "details": "為正式 Agentforce 導入夥伴，提供顧問與代理部署服務。",
+          "source_urls": [
+            "https://www.salesforce.com/news/stories/salesforce-launches-forward-deployed-engineer-partner-network-announcement/"
+          ]
+        },
+        {
+          "node_id": "CRM_025",
+          "name": "PwC",
+          "details": "具名 PepsiCo 導入案例及正式 FDE 網路身分。",
+          "source_urls": [
+            "https://www.salesforce.com/news/stories/salesforce-launches-forward-deployed-engineer-partner-network-announcement/",
+            "https://www.salesforce.com/customer-stories/pepsico/"
+          ]
+        },
+        {
+          "node_id": "CRM_026",
+          "name": "IBM Consulting",
+          "details": "正式 FDE 網路成員，提供企業 Agentforce 整合服務。",
+          "source_urls": [
+            "https://www.salesforce.com/news/stories/salesforce-launches-forward-deployed-engineer-partner-network-announcement/"
+          ]
+        },
+        {
+          "node_id": "CRM_029",
+          "name": "Ogilvy",
+          "details": "Formula 1 專案有具名資料平台導入服務。",
+          "source_urls": [
+            "https://www.salesforce.com/customer-stories/formula-one"
+          ]
+        },
+        {
+          "node_id": "CRM_030",
+          "name": "Rosetree Solutions",
+          "details": "Crocs Rivet 代理專案具名實施商。",
+          "source_urls": [
+            "https://www.salesforce.com/customer-stories/crocs/building-ai-agents/"
+          ]
+        },
+        {
+          "node_id": "CRM_031",
+          "name": "Servly",
+          "details": "The Grout Guy Agentforce 專案具名實施商。",
+          "source_urls": [
+            "https://www.salesforce.com/services/customer-success-awards/"
+          ]
+        }
+      ],
+      "evidence_grades": {
+        "A": "具名公司官方客戶案例或正式合作公告",
+        "B": "公司官方彙總頁或 SEC 市場競爭披露，非逐筆合約證據"
+      },
+      "count_by_relationship": {
+        "customer": 18,
+        "supplier": 4,
+        "partner": 15,
+        "competitor": 8
+      },
+      "business_line_count": 7,
+      "node_count": 45
+    }
   }
 }

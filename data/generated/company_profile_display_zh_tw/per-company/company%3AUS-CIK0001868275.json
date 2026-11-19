@@ -341,5 +341,906 @@
       "美國電力需求成長"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "locale": "zh-TW",
+    "symbol": "CEG",
+    "company": "Constellation Energy Corporation",
+    "as_of": "2026-11-12",
+    "original_commit": "da93c81d",
+    "original_blob_sha": "651c1ed25e404f76be9ad0f93a5e580f8d63702e",
+    "business_lines": [
+      {
+        "id": "NUCLEAR_PPA",
+        "name": "核電企業長期購電協議與全天候無碳電力",
+        "segment": "Generation"
+      },
+      {
+        "id": "NUCLEAR_UPRATE",
+        "name": "核電增容、汽輪機效率升級與設備改造",
+        "segment": "Generation"
+      },
+      {
+        "id": "NUCLEAR_RESTART",
+        "name": "Crane 核電重啟及核電延役",
+        "segment": "Generation"
+      },
+      {
+        "id": "NUCLEAR_FUEL",
+        "name": "核燃料採購、轉化、濃縮與燃料組件",
+        "segment": "Generation"
+      },
+      {
+        "id": "NUCLEAR_OPS",
+        "name": "既有核電機隊營運、換料及核安全",
+        "segment": "Generation"
+      },
+      {
+        "id": "GAS",
+        "name": "Calpine 天然氣聯合循環與調度型發電",
+        "segment": "Generation"
+      },
+      {
+        "id": "GEOTHERMAL",
+        "name": "Calpine 地熱發電與蒸汽資源",
+        "segment": "Generation"
+      },
+      {
+        "id": "HYDRO",
+        "name": "水力與抽水蓄能",
+        "segment": "Generation"
+      },
+      {
+        "id": "WIND_SOLAR",
+        "name": "風電、太陽能與企業綠電",
+        "segment": "Generation"
+      },
+      {
+        "id": "BESS",
+        "name": "電池儲能、電網調頻與容量",
+        "segment": "Generation"
+      },
+      {
+        "id": "DC_COLOC",
+        "name": "資料中心共址、供電與電網接入",
+        "segment": "Commercial"
+      },
+      {
+        "id": "RETAIL",
+        "name": "商業零售電力、天然氣與企業供應",
+        "segment": "Commercial"
+      },
+      {
+        "id": "PEAK",
+        "name": "Peak+ 容量、需求回應與客製化供電",
+        "segment": "Commercial"
+      },
+      {
+        "id": "TRADING",
+        "name": "PJM、ERCOT、CAISO 等批發電力與風險管理",
+        "segment": "Commercial"
+      },
+      {
+        "id": "ENERGY_SERVICE",
+        "name": "現場冷熱能源服務、能源效率與設備維運",
+        "segment": "Commercial"
+      },
+      {
+        "id": "TECH",
+        "name": "電力交易數位化、雲端 AI 與資產調度",
+        "segment": "Commercial"
+      },
+      {
+        "id": "MNA",
+        "name": "Calpine 整合、資產買賣及電廠組合調整",
+        "segment": "Cross-segment"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "CEG-001",
+        "business_line": "NUCLEAR_PPA",
+        "relationship": "customer",
+        "name": "Google",
+        "details": "2026-10 20 年 PPA 對應 11 台核機組增容 890MW，2028 起陸續投運；890MW 為新增容量。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/10/google-and-constellation-announce-landmark-agreement-to-bring-890-mw-of-new-nuclear-capacity-to-pjm-grid.html",
+        "evidence_grade": "890 MW 新增",
+        "commercial_stage": "contract",
+        "evidence_date": "2026-10-06"
+      },
+      {
+        "id": "CEG-002",
+        "business_line": "NUCLEAR_PPA",
+        "relationship": "customer",
+        "name": "Google",
+        "details": "2026-10 另簽 15 年 PJM 2,700MW 金融性 load-following 協議，並非新增 2,700MW 核電容量。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/10/google-and-constellation-announce-landmark-agreement-to-bring-890-mw-of-new-nuclear-capacity-to-pjm-grid.html",
+        "evidence_grade": "2,700 MW 金融性",
+        "commercial_stage": "financial_energy_contract",
+        "evidence_date": "2026-10-06"
+      },
+      {
+        "id": "CEG-003",
+        "business_line": "NUCLEAR_PPA",
+        "relationship": "customer",
+        "name": "Amazon",
+        "details": "2026-09 Calvert Cliffs 20 年 690MW PPA，其中 190MW 新增容量預計 2030–2032 投產。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/09/constellation-and-amazon-announce-20-year-power-purchase-agreement-at-calvert-cliffs.html",
+        "evidence_grade": "690 MW（190 MW 新增）",
+        "commercial_stage": "contract",
+        "evidence_date": "2026-09-30"
+      },
+      {
+        "id": "CEG-004",
+        "business_line": "RETAIL",
+        "relationship": "customer",
+        "name": "Amazon",
+        "details": "2026-09 PJM 13 州營運另有相關零售供電協議，與 Calvert Cliffs 690MW PPA 分開。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/09/constellation-and-amazon-announce-20-year-power-purchase-agreement-at-calvert-cliffs.html",
+        "evidence_grade": "A",
+        "commercial_stage": "contract",
+        "evidence_date": "2026-09-30"
+      },
+      {
+        "id": "CEG-005",
+        "business_line": "NUCLEAR_PPA",
+        "relationship": "customer",
+        "name": "Meta Platforms",
+        "details": "2025-06 Clinton 核電廠 20 年 1,121MW PPA，自 2027-06 起，含 30MW 增容。",
+        "evidence_url": "https://about.fb.com/news/2025/06/meta-constellation-partner-clean-energy-project/",
+        "evidence_grade": "1,121 MW（30 MW 新增）",
+        "commercial_stage": "contract",
+        "evidence_date": "2025-06-03"
+      },
+      {
+        "id": "CEG-006",
+        "business_line": "NUCLEAR_PPA",
+        "relationship": "customer",
+        "name": "Microsoft",
+        "details": "2024-09 Crane/Three Mile Island 1 號機重啟 20 年 PPA，約 835MW；2026 仍在監管及併網程序，不是現行供電。",
+        "evidence_url": "https://www.constellationenergy.com/newsroom/2024/Constellation-to-Launch-Crane-Clean-Energy-Center-Restoring-Jobs-and-Carbon-Free-Power-to-The-Grid.html",
+        "evidence_grade": "約 835 MW",
+        "commercial_stage": "contract_pending_restart",
+        "evidence_date": "2024-09-20"
+      },
+      {
+        "id": "CEG-007",
+        "business_line": "NUCLEAR_PPA",
+        "relationship": "customer",
+        "name": "Walmart",
+        "details": "2026-06 Dresden 核電 176MW PPA，含 30MW 增容，兩段 15 年自 2029／2030 開始。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/06/constellation-and-walmart-announce-long-term-agreement-to-support-reliable-emissions-free-nuclear-energy-in-illinois.html",
+        "evidence_grade": "176 MW（30 MW 新增）",
+        "commercial_stage": "contract",
+        "evidence_date": "2026-06-23"
+      },
+      {
+        "id": "CEG-008",
+        "business_line": "DC_COLOC",
+        "relationship": "customer",
+        "name": "CyrusOne",
+        "details": "2026-02 Freestone Energy Center 380MW 第一階段共址供電及併網合約。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/02/constellation-and-cyrusone-announce-agreement-to-support-new-data-center-facility-at-freestone-energy-center-in-texas.html",
+        "evidence_grade": "380 MW",
+        "commercial_stage": "contract",
+        "evidence_date": "2026-02-09"
+      },
+      {
+        "id": "CEG-009",
+        "business_line": "DC_COLOC",
+        "relationship": "customer",
+        "name": "CyrusOne",
+        "details": "Freestone 第二階段另有 380MW 排他安排，屬選擇／排他階段，不能當成已投運負載。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/02/constellation-and-cyrusone-announce-agreement-to-support-new-data-center-facility-at-freestone-energy-center-in-texas.html",
+        "evidence_grade": "380 MW 潛在",
+        "commercial_stage": "exclusive_future_phase",
+        "evidence_date": "2026-02-09"
+      },
+      {
+        "id": "CEG-010",
+        "business_line": "DC_COLOC",
+        "relationship": "customer",
+        "name": "CyrusOne",
+        "details": "2025 年 Calpine 已公布 Thad Hill Energy Center 約 400MW 資料中心協議，2026 由 Constellation 繼承。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/02/constellation-and-cyrusone-announce-agreement-to-support-new-data-center-facility-at-freestone-energy-center-in-texas.html",
+        "evidence_grade": "400 MW",
+        "commercial_stage": "inherited_contract",
+        "evidence_date": "2026-02-09"
+      },
+      {
+        "id": "CEG-011",
+        "business_line": "WIND_SOLAR",
+        "relationship": "customer",
+        "name": "California Department of Water Resources（加州水資源廳）",
+        "details": "2026-04 Pastoria 105MW 太陽能完工，Calpine 為該機構建置之大型再生能源採購專案；與原有客戶節點相同，這筆為官方新聞再驗證，非新增合約。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/04/the-california-state-water-project-moves-closer-to-carbon-neutrality-with-105-mw-pastoria-solar-project-coming-online.html",
+        "evidence_grade": "105 MW",
+        "commercial_stage": "verified_operating_project",
+        "evidence_date": "2026-04-16"
+      },
+      {
+        "id": "CEG-012",
+        "business_line": "BESS",
+        "relationship": "customer",
+        "name": "Pacific Gas and Electric Company（PG&E）",
+        "details": "2026-07 Pastoria Power Bank 80MW/320MWh 已投運，具 15 年 PPA。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/ffe5acb1-a976-4963-85f7-28551efd3929",
+        "evidence_grade": "80 MW／320 MWh",
+        "commercial_stage": "operating_contract",
+        "evidence_date": "2026-07"
+      },
+      {
+        "id": "CEG-013",
+        "business_line": "ENERGY_SERVICE",
+        "relationship": "customer",
+        "name": "Tennessee Titans",
+        "details": "2026-02 簽 20 年新 Nissan Stadium 現場供冷供熱能源服務合約，預計 2027 球場開幕時提供。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/02/constellation-selected-as-preferred-energy-source-of-new-nissan-stadium-and-the-tennessee-titans.html",
+        "evidence_grade": "A",
+        "commercial_stage": "contract_future_service",
+        "evidence_date": "2026-02-09"
+      },
+      {
+        "id": "CEG-014",
+        "business_line": "ENERGY_SERVICE",
+        "relationship": "end_user",
+        "name": "Nissan Stadium",
+        "details": "2026 20 年現場冷熱能源服務場域，為 Tennessee Titans 新主場；非另一個獨立法人客戶。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/02/constellation-selected-as-preferred-energy-source-of-new-nissan-stadium-and-the-tennessee-titans.html",
+        "evidence_grade": "A",
+        "commercial_stage": "project_site",
+        "evidence_date": "2026-02-09"
+      },
+      {
+        "id": "CEG-015",
+        "business_line": "PEAK",
+        "relationship": "customer_undisclosed",
+        "name": "未具名 Peak+ 大型企業客戶",
+        "details": "2026 Q3 公告 20 年、270MW unit-contingent 核能電力、容量與環境屬性合約，2028 起；官方未揭露公司名稱。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/11/constellation-reports-third-quarter-2026-results.html",
+        "evidence_grade": "270 MW",
+        "commercial_stage": "signed_anonymous",
+        "evidence_date": "2026-11-09"
+      },
+      {
+        "id": "CEG-016",
+        "business_line": "NUCLEAR_OPS",
+        "relationship": "regulated_counterparty",
+        "name": "New York State Public Service Commission（NYPSC）",
+        "details": "紐約 ZEC 制度延長支持 Ginna、Nine Mile Point 續運；屬監管及政策機制，非一般直接買方。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/06/constellation-seeks-license-renewals-for-two-new-york-units-through-2049.html",
+        "evidence_grade": "A",
+        "commercial_stage": "regulatory_support",
+        "evidence_date": "2026-06-26"
+      },
+      {
+        "id": "CEG-017",
+        "business_line": "NUCLEAR_OPS",
+        "relationship": "regulated_counterparty",
+        "name": "U.S. Nuclear Regulatory Commission（NRC）",
+        "details": "2026 Ginna、Nine Mile Point 1 申請延役至 2049；尚待 NRC 審核。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/06/constellation-seeks-license-renewals-for-two-new-york-units-through-2049.html",
+        "evidence_grade": "A",
+        "commercial_stage": "license_application",
+        "evidence_date": "2026-06-26"
+      },
+      {
+        "id": "CEG-018",
+        "business_line": "NUCLEAR_RESTART",
+        "relationship": "grid_operator",
+        "name": "PJM Interconnection",
+        "details": "Crane 重啟併網程序：2026 年曾出現 2031 年升級工程時程疑慮；公司仍力爭 2027 年。",
+        "evidence_url": "https://www.ans.org/news/2026-04-03/article-7905/constellation-seeks-ferc-help-with-crane-restart/",
+        "evidence_grade": "A",
+        "commercial_stage": "interconnection_pending",
+        "evidence_date": "2026-04-03"
+      },
+      {
+        "id": "CEG-019",
+        "business_line": "NUCLEAR_UPRATE",
+        "relationship": "financing_counterparty",
+        "name": "U.S. Department of Energy（DOE）",
+        "details": "2026-10 有條件貸款承諾最高 50 億美元支援核電增容，未完成最終融資文件。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/10/constellation-secures-conditional-doe-loan-commitment-of-up-to-5-billion-to-expand-nuclear-output.html",
+        "evidence_grade": "最高 US$5bn",
+        "commercial_stage": "conditional_financing",
+        "evidence_date": "2026-10-27"
+      },
+      {
+        "id": "CEG-020",
+        "business_line": "TECH",
+        "relationship": "supplier",
+        "name": "Google Cloud",
+        "details": "2026-10 Constellation 選定 Google Cloud 與 Gemini Enterprise，五年 AI for Energy 技術合作；Google 同時是電力買方，角色不同。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/10/google-and-constellation-announce-landmark-agreement-to-bring-890-mw-of-new-nuclear-capacity-to-pjm-grid.html",
+        "evidence_grade": "A",
+        "commercial_stage": "technology_selected",
+        "evidence_date": "2026-10-06"
+      },
+      {
+        "id": "CEG-021",
+        "business_line": "MNA",
+        "relationship": "seller",
+        "name": "Energy Capital Partners（ECP）",
+        "details": "2026-01 完成收購 Calpine；ECP 為交易出售方，不是電力客戶或日常設備供應商。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/01/constellation-completes-calpine-transaction-powering-americas-clean-energy-future.html",
+        "evidence_grade": "A",
+        "commercial_stage": "completed_acquisition",
+        "evidence_date": "2026-01-07"
+      },
+      {
+        "id": "CEG-022",
+        "business_line": "MNA",
+        "relationship": "seller",
+        "name": "Shell Energy North America",
+        "details": "2026-09 簽約以 7.15 億美元購買 RISEC 609MW 燃氣廠；截至 2026-11-09 仍待監管核准。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/09/constellation-to-acquire-rhode-island-state-energy-center-from-shell.html",
+        "evidence_grade": "609 MW",
+        "commercial_stage": "pending_acquisition",
+        "evidence_date": "2026-09-10"
+      },
+      {
+        "id": "CEG-023",
+        "business_line": "MNA",
+        "relationship": "buyer",
+        "name": "LS Power",
+        "details": "2026-10 完成出售 ERCOT Brazos Valley 606MW 燃氣廠；不再算作持有資產。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/10/constellation-completes-sale-of-brazos-valley-energy-center-to-ls-power.html",
+        "evidence_grade": "606 MW",
+        "commercial_stage": "completed_divestiture",
+        "evidence_date": "2026-10-14"
+      },
+      {
+        "id": "CEG-024",
+        "business_line": "MNA",
+        "relationship": "buyer",
+        "name": "LS Power",
+        "details": "另簽出售 Delaware、Pennsylvania 約 4.4GW 天然氣資產協議，官方未於 2026-10-14 稱已全部完成。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/10/constellation-completes-sale-of-brazos-valley-energy-center-to-ls-power.html",
+        "evidence_grade": "約 4.4 GW",
+        "commercial_stage": "pending_divestiture",
+        "evidence_date": "2026-10-14"
+      },
+      {
+        "id": "CEG-025",
+        "business_line": "NUCLEAR_FUEL",
+        "relationship": "supplier",
+        "name": "Framatome",
+        "details": "美國 DOE 2025-11 直接確認 Framatome PROtect ATF 核燃料組件已在 Constellation Calvert Cliffs 核電廠運行四年，屬具名實物供應／測試；非泛指市場供應商。",
+        "evidence_url": "https://www.energy.gov/ne/articles/framatome-advanced-fuel-assembly-completes-second-fuel-cycle",
+        "evidence_grade": "A",
+        "commercial_stage": "installed_fuel_assembly",
+        "evidence_date": "2025-11-12"
+      },
+      {
+        "id": "CEG-026",
+        "business_line": "NUCLEAR_OPS",
+        "relationship": "equipment_original_manufacturer",
+        "name": "Westinghouse Electric",
+        "details": "Constellation Ginna 2026 官網 fact sheet 明確列 PWR 原始反應爐製造商 Westinghouse；僅證明原始設備來源，不等於 2026 年新採購。",
+        "evidence_url": "https://www.constellationenergy.com/content/dam/constellationenergy/pdfs/fact-sheets/Ginna_Clean_Energy_Center_Fact_Sheet.pdf",
+        "evidence_grade": "A",
+        "commercial_stage": "legacy_OEM",
+        "evidence_date": "2026-02"
+      },
+      {
+        "id": "CEG-027",
+        "business_line": "NUCLEAR_UPRATE",
+        "relationship": "project_asset",
+        "name": "Calvert Cliffs Clean Energy Center",
+        "details": "Amazon 20 年 690MW PPA 支持 190MW 增容，預計 2030–2032；超過 30 億美元設備與基建投資。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/09/constellation-and-amazon-announce-20-year-power-purchase-agreement-at-calvert-cliffs.html",
+        "evidence_grade": "190 MW",
+        "commercial_stage": "planned_uprate",
+        "evidence_date": "2026-09-30"
+      },
+      {
+        "id": "CEG-028",
+        "business_line": "NUCLEAR_UPRATE",
+        "relationship": "project_asset",
+        "name": "Dresden Clean Energy Center",
+        "details": "Walmart 176MW PPA 支持約 30MW 核電增容，2029–2030 分段交付。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/06/constellation-and-walmart-announce-long-term-agreement-to-support-reliable-emissions-free-nuclear-energy-in-illinois.html",
+        "evidence_grade": "30 MW",
+        "commercial_stage": "planned_uprate",
+        "evidence_date": "2026-06-23"
+      },
+      {
+        "id": "CEG-029",
+        "business_line": "NUCLEAR_UPRATE",
+        "relationship": "project_asset",
+        "name": "Clinton Clean Energy Center",
+        "details": "Meta 1,121MW PPA 支持 30MW 增容與延役，預計 2027-06 起。",
+        "evidence_url": "https://about.fb.com/news/2025/06/meta-constellation-partner-clean-energy-project/",
+        "evidence_grade": "30 MW",
+        "commercial_stage": "planned_uprate",
+        "evidence_date": "2025-06-03"
+      },
+      {
+        "id": "CEG-030",
+        "business_line": "NUCLEAR_UPRATE",
+        "relationship": "project_asset",
+        "name": "PJM 核電增容 11 台機組",
+        "details": "Google 20 年 PPA 對應 11 台機組合計新增 890MW，首批預計 2028 年；不能當作已上線。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/10/google-and-constellation-announce-landmark-agreement-to-bring-890-mw-of-new-nuclear-capacity-to-pjm-grid.html",
+        "evidence_grade": "890 MW",
+        "commercial_stage": "planned_uprate",
+        "evidence_date": "2026-10-06"
+      },
+      {
+        "id": "CEG-031",
+        "business_line": "NUCLEAR_RESTART",
+        "relationship": "project_asset",
+        "name": "Crane Clean Energy Center",
+        "details": "Three Mile Island Unit 1 擬重啟約 835MW，微軟 20 年 PPA；仍待核安、併網程序，未在 2026 年投運。",
+        "evidence_url": "https://www.constellationenergy.com/newsroom/2024/Constellation-to-Launch-Crane-Clean-Energy-Center-Restoring-Jobs-and-Carbon-Free-Power-to-The-Grid.html",
+        "evidence_grade": "約 835 MW",
+        "commercial_stage": "restart_pending",
+        "evidence_date": "2024-09-20"
+      },
+      {
+        "id": "CEG-032",
+        "business_line": "NUCLEAR_OPS",
+        "relationship": "project_asset",
+        "name": "Ginna Clean Energy Center",
+        "details": "2026-06 向 NRC 申請延役至 2049，現有 576MW 核電容量，核准未定。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/06/constellation-seeks-license-renewals-for-two-new-york-units-through-2049.html",
+        "evidence_grade": "576 MW",
+        "commercial_stage": "relicense_pending",
+        "evidence_date": "2026-06-26"
+      },
+      {
+        "id": "CEG-033",
+        "business_line": "NUCLEAR_OPS",
+        "relationship": "project_asset",
+        "name": "Nine Mile Point Unit 1",
+        "details": "2026-06 向 NRC 申請延役至 2049，未完成核准。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/06/constellation-seeks-license-renewals-for-two-new-york-units-through-2049.html",
+        "evidence_grade": "A",
+        "commercial_stage": "relicense_pending",
+        "evidence_date": "2026-06-26"
+      },
+      {
+        "id": "CEG-034",
+        "business_line": "GAS",
+        "relationship": "project_asset",
+        "name": "Freestone Energy Center",
+        "details": "Calpine 既有德州天然氣廠，CyrusOne 380MW 資料中心共址供電與電網接入。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/02/constellation-and-cyrusone-announce-agreement-to-support-new-data-center-facility-at-freestone-energy-center-in-texas.html",
+        "evidence_grade": "380 MW",
+        "commercial_stage": "operating_asset_contract",
+        "evidence_date": "2026-02-09"
+      },
+      {
+        "id": "CEG-035",
+        "business_line": "GAS",
+        "relationship": "project_asset",
+        "name": "Thad Hill Energy Center",
+        "details": "Calpine 德州天然氣電廠，2025 年已公布與 CyrusOne 400MW 資料中心協議。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/02/constellation-and-cyrusone-announce-agreement-to-support-new-data-center-facility-at-freestone-energy-center-in-texas.html",
+        "evidence_grade": "400 MW",
+        "commercial_stage": "inherited_operating_asset",
+        "evidence_date": "2026-02-09"
+      },
+      {
+        "id": "CEG-036",
+        "business_line": "GAS",
+        "relationship": "project_asset",
+        "name": "Rhode Island State Energy Center",
+        "details": "609MW 聯合循環天然氣電廠，2026-09 與 Shell 簽約收購但仍待交割，不計現有產能。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/09/constellation-to-acquire-rhode-island-state-energy-center-from-shell.html",
+        "evidence_grade": "609 MW",
+        "commercial_stage": "pending_acquisition",
+        "evidence_date": "2026-09-10"
+      },
+      {
+        "id": "CEG-037",
+        "business_line": "GAS",
+        "relationship": "project_asset",
+        "name": "Brazos Valley Energy Center",
+        "details": "606MW ERCOT 天然氣電廠，2026-10-14 已完成出售 LS Power；不計入現行持有資產。",
+        "evidence_url": "https://www.constellationenergy.com/news/2026/10/constellation-completes-sale-of-brazos-valley-energy-center-to-ls-power.html",
+        "evidence_grade": "606 MW",
+        "commercial_stage": "divested",
+        "evidence_date": "2026-10-14"
+      },
+      {
+        "id": "CEG-038",
+        "business_line": "WIND_SOLAR",
+        "relationship": "project_asset",
+        "name": "Pastoria Solar Project",
+        "details": "2026-04 Calpine 105MW 太陽能專案已併網，California Department of Water Resources 為具名合約對手。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/ffe5acb1-a976-4963-85f7-28551efd3929",
+        "evidence_grade": "105 MW",
+        "commercial_stage": "operating_asset",
+        "evidence_date": "2026-04"
+      },
+      {
+        "id": "CEG-039",
+        "business_line": "BESS",
+        "relationship": "project_asset",
+        "name": "Pastoria Power Bank",
+        "details": "2026-07 80MW/320MWh BESS 已投運，PG&E 15 年 PPA。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/ffe5acb1-a976-4963-85f7-28551efd3929",
+        "evidence_grade": "80 MW／320 MWh",
+        "commercial_stage": "operating_asset",
+        "evidence_date": "2026-07"
+      },
+      {
+        "id": "CEG-040",
+        "business_line": "TRADING",
+        "relationship": "market_operator",
+        "name": "PJM Interconnection",
+        "details": "美東容量市場及核電、燃氣資產電力調度與併網，為市場管理者而非採購企業。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/7f18203a-80d7-4d8f-9be2-a6174e92a513",
+        "evidence_grade": "A",
+        "commercial_stage": "market_infrastructure",
+        "evidence_date": "2026-11-09"
+      },
+      {
+        "id": "CEG-041",
+        "business_line": "TRADING",
+        "relationship": "market_operator",
+        "name": "ERCOT",
+        "details": "德州即時電力及輔助服務市場管理者，Calpine 資產及資料中心負載相關。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/7f18203a-80d7-4d8f-9be2-a6174e92a513",
+        "evidence_grade": "A",
+        "commercial_stage": "market_infrastructure",
+        "evidence_date": "2026-11-09"
+      },
+      {
+        "id": "CEG-042",
+        "business_line": "TRADING",
+        "relationship": "market_operator",
+        "name": "CAISO",
+        "details": "加州批發電力市場管理者，Pastoria Solar 與 Power Bank 相關。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/7f18203a-80d7-4d8f-9be2-a6174e92a513",
+        "evidence_grade": "A",
+        "commercial_stage": "market_infrastructure",
+        "evidence_date": "2026-11-09"
+      },
+      {
+        "id": "CEG-043",
+        "business_line": "TRADING",
+        "relationship": "market_operator",
+        "name": "ISO New England",
+        "details": "RISEC 擬收購資產所處市場；尚未完成收購。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/7f18203a-80d7-4d8f-9be2-a6174e92a513",
+        "evidence_grade": "A",
+        "commercial_stage": "market_infrastructure",
+        "evidence_date": "2026-11-09"
+      },
+      {
+        "id": "CEG-044",
+        "business_line": "NUCLEAR_PPA",
+        "relationship": "competitor",
+        "name": "Vistra",
+        "details": "核電企業長約及全天候電力競爭；B 級產品市場重疊，不代表具名競標或交易。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/7f18203a-80d7-4d8f-9be2-a6174e92a513",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-11-09"
+      },
+      {
+        "id": "CEG-045",
+        "business_line": "NUCLEAR_PPA",
+        "relationship": "competitor",
+        "name": "Talen Energy",
+        "details": "核電與資料中心供電合約競爭；B 級產品市場重疊，不代表具名競標或交易。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/7f18203a-80d7-4d8f-9be2-a6174e92a513",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-11-09"
+      },
+      {
+        "id": "CEG-046",
+        "business_line": "NUCLEAR_PPA",
+        "relationship": "competitor",
+        "name": "NextEra Energy",
+        "details": "無碳發電與企業電力採購競爭；B 級產品市場重疊，不代表具名競標或交易。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/7f18203a-80d7-4d8f-9be2-a6174e92a513",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-11-09"
+      },
+      {
+        "id": "CEG-047",
+        "business_line": "GAS",
+        "relationship": "competitor",
+        "name": "Vistra",
+        "details": "美國天然氣發電與批發電力競爭；B 級產品市場重疊，不代表具名競標或交易。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/7f18203a-80d7-4d8f-9be2-a6174e92a513",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-11-09"
+      },
+      {
+        "id": "CEG-048",
+        "business_line": "GAS",
+        "relationship": "competitor",
+        "name": "NRG Energy",
+        "details": "可調度燃氣發電與零售電力競爭；B 級產品市場重疊，不代表具名競標或交易。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/7f18203a-80d7-4d8f-9be2-a6174e92a513",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-11-09"
+      },
+      {
+        "id": "CEG-049",
+        "business_line": "GEOTHERMAL",
+        "relationship": "competitor",
+        "name": "Ormat Technologies",
+        "details": "地熱發電市場競爭；B 級產品市場重疊，不代表具名競標或交易。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/7f18203a-80d7-4d8f-9be2-a6174e92a513",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-11-09"
+      },
+      {
+        "id": "CEG-050",
+        "business_line": "WIND_SOLAR",
+        "relationship": "competitor",
+        "name": "NextEra Energy Resources",
+        "details": "企業再生能源購電競爭；B 級產品市場重疊，不代表具名競標或交易。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/7f18203a-80d7-4d8f-9be2-a6174e92a513",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-11-09"
+      },
+      {
+        "id": "CEG-051",
+        "business_line": "BESS",
+        "relationship": "competitor",
+        "name": "AES Corporation",
+        "details": "電池儲能與電網服務競爭；B 級產品市場重疊，不代表具名競標或交易。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/7f18203a-80d7-4d8f-9be2-a6174e92a513",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-11-09"
+      },
+      {
+        "id": "CEG-052",
+        "business_line": "RETAIL",
+        "relationship": "competitor",
+        "name": "NRG Energy",
+        "details": "美國競爭性零售電力競爭；B 級產品市場重疊，不代表具名競標或交易。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/7f18203a-80d7-4d8f-9be2-a6174e92a513",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-11-09"
+      },
+      {
+        "id": "CEG-053",
+        "business_line": "RETAIL",
+        "relationship": "competitor",
+        "name": "Vistra",
+        "details": "美國零售電力與能源服務競爭；B 級產品市場重疊，不代表具名競標或交易。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/7f18203a-80d7-4d8f-9be2-a6174e92a513",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-11-09"
+      },
+      {
+        "id": "CEG-054",
+        "business_line": "RETAIL",
+        "relationship": "competitor",
+        "name": "Shell Energy",
+        "details": "大型商業用戶電力與天然氣零售競爭；B 級產品市場重疊，不代表具名競標或交易。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/7f18203a-80d7-4d8f-9be2-a6174e92a513",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-11-09"
+      },
+      {
+        "id": "CEG-055",
+        "business_line": "ENERGY_SERVICE",
+        "relationship": "competitor",
+        "name": "ENGIE North America",
+        "details": "能源服務與現場冷熱系統競爭；B 級產品市場重疊，不代表具名競標或交易。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/7f18203a-80d7-4d8f-9be2-a6174e92a513",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-11-09"
+      },
+      {
+        "id": "CEG-056",
+        "business_line": "ENERGY_SERVICE",
+        "relationship": "competitor",
+        "name": "Ameresco",
+        "details": "能源效率與分散式能源服務競爭；B 級產品市場重疊，不代表具名競標或交易。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/7f18203a-80d7-4d8f-9be2-a6174e92a513",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-11-09"
+      },
+      {
+        "id": "CEG-057",
+        "business_line": "DC_COLOC",
+        "relationship": "competitor",
+        "name": "Talen Energy",
+        "details": "資料中心共址與大規模電力供應競爭；B 級產品市場重疊，不代表具名競標或交易。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/7f18203a-80d7-4d8f-9be2-a6174e92a513",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-11-09"
+      },
+      {
+        "id": "CEG-058",
+        "business_line": "DC_COLOC",
+        "relationship": "competitor",
+        "name": "Vistra",
+        "details": "資料中心電力長約競爭；B 級產品市場重疊，不代表具名競標或交易。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/7f18203a-80d7-4d8f-9be2-a6174e92a513",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-11-09"
+      },
+      {
+        "id": "CEG-059",
+        "business_line": "PEAK",
+        "relationship": "competitor",
+        "name": "AES Corporation",
+        "details": "企業容量、供電彈性與需求回應市場重疊；B 級產品市場重疊，不代表具名競標或交易。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/7f18203a-80d7-4d8f-9be2-a6174e92a513",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-11-09"
+      },
+      {
+        "id": "CEG-060",
+        "business_line": "TRADING",
+        "relationship": "competitor",
+        "name": "NRG Energy",
+        "details": "美國批發電力與能源交易市場競爭；B 級產品市場重疊，不代表具名競標或交易。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/7f18203a-80d7-4d8f-9be2-a6174e92a513",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-11-09"
+      },
+      {
+        "id": "CEG-061",
+        "business_line": "NUCLEAR_RESTART",
+        "relationship": "strategic_investment",
+        "name": "Blue Energy",
+        "details": "2026-07 Constellation Technology Ventures 對 Blue Energy 進行策略股權投資，推動船廠預製核電廠；不是 Constellation 已採購 SMR。",
+        "evidence_url": "https://www.blueenergy.co/news/blue-energy-receives-strategic-investment-from-constellation-to-accelerate-commercialization-of-novel-shipyard-manufacturing-and-project-financing-model-for-new-nuclear",
+        "evidence_date": "2026-07-16",
+        "evidence_grade": "A",
+        "commercial_stage": "completed_equity_investment"
+      },
+      {
+        "id": "CEG-062",
+        "business_line": "GAS",
+        "relationship": "project_asset",
+        "name": "Pin Oak Creek Energy Center",
+        "details": "2026-04 德州 ERCOT 460MW 天然氣尖峰電廠正式商轉，屬 Calpine 併入之資產。",
+        "evidence_url": "https://investors.constellationenergy.com/static-files/ffe5acb1-a976-4963-85f7-28551efd3929",
+        "evidence_date": "2026-04",
+        "evidence_grade": "A",
+        "commercial_stage": "operating_asset"
+      }
+    ],
+    "relationship_categories": [
+      "buyer",
+      "competitor",
+      "customer",
+      "customer_undisclosed",
+      "end_user",
+      "equipment_original_manufacturer",
+      "financing_counterparty",
+      "grid_operator",
+      "market_operator",
+      "project_asset",
+      "regulated_counterparty",
+      "seller",
+      "strategic_investment",
+      "supplier"
+    ],
+    "research_notes": {
+      "source_priority": "2026-11-09 第三季 SEC 10-Q、官方 Q3 新聞稿及個別 PPA 公告優先；2025–2026 直接具名交易與實物供應，其次歷史合約。",
+      "calpine": "2026-01-07 完成 Calpine 收購，合併天然氣、地熱、儲能與零售業務；不能沿用原始公司解析只看核電。",
+      "ppa_capacity": "Google 890MW 新增核電容量 + 2700MW 金融性負載追隨協議；Amazon 690MW PPA 其中 190MW 新增；Meta 1121MW 其中 30MW 新增；Walmart 176MW 其中 30MW 新增。合約容量與新增容量分別記錄，不相加。",
+      "crane": "Microsoft 約 835MW Crane PPA 屬未來重啟電力；2026 併網爭議尚未消除，不能視為已發電。",
+      "cyrusone": "Freestone 380MW 第一階段與第二階段排他 380MW 分開；Thad Hill 400MW 為先前 Calpine 協議。",
+      "mna": "RISEC 609MW 為 2026-09 擬收購、未完成；Brazos Valley 606MW 已於 2026-10 出售 LS Power。",
+      "nuclear_fuel": "Framatome Calvert Cliffs PROtect ATF 為 DOE 具名實物核燃料供應證據；Westinghouse 為 Ginna 原始反應爐製造商，不當成 2026 新單。EIA 的 Cameco、Orano、ConverDyn 等為美國核燃料市場參與者，但未證實直接供應 Constellation，故不列其供應商。",
+      "taiwan": "未取得可核實具名台灣公司直接供應 Constellation 的合約或設備紀錄，不把泛核電設備台廠推定為供應商。",
+      "2026_financial": "2026 Q3 GAAP EPS $5.19、調整 EPS $5.06；FY2026 調整 EPS 指引 $12.50–12.80。核電 Q3 容量因數（排除 Salem/STP）97.2%；整體約 55GW 裝置容量。",
+      "2026_capital": "DOE 有條件 50 億美元貸款承諾尚非正式放款；Peak+ 270MW 合約買方未具名，單列 anonymous 節點不假造客戶。",
+      "source_catalog": [
+        {
+          "key": "q3",
+          "url": "https://www.constellationenergy.com/news/2026/11/constellation-reports-third-quarter-2026-results.html"
+        },
+        {
+          "key": "10q",
+          "url": "https://investors.constellationenergy.com/static-files/7f18203a-80d7-4d8f-9be2-a6174e92a513"
+        },
+        {
+          "key": "q2",
+          "url": "https://investors.constellationenergy.com/static-files/ffe5acb1-a976-4963-85f7-28551efd3929"
+        },
+        {
+          "key": "calpine",
+          "url": "https://www.constellationenergy.com/news/2026/01/constellation-completes-calpine-transaction-powering-americas-clean-energy-future.html"
+        },
+        {
+          "key": "google",
+          "url": "https://www.constellationenergy.com/news/2026/10/google-and-constellation-announce-landmark-agreement-to-bring-890-mw-of-new-nuclear-capacity-to-pjm-grid.html"
+        },
+        {
+          "key": "amazon",
+          "url": "https://www.constellationenergy.com/news/2026/09/constellation-and-amazon-announce-20-year-power-purchase-agreement-at-calvert-cliffs.html"
+        },
+        {
+          "key": "meta",
+          "url": "https://about.fb.com/news/2025/06/meta-constellation-partner-clean-energy-project/"
+        },
+        {
+          "key": "microsoft",
+          "url": "https://www.constellationenergy.com/newsroom/2024/Constellation-to-Launch-Crane-Clean-Energy-Center-Restoring-Jobs-and-Carbon-Free-Power-to-The-Grid.html"
+        },
+        {
+          "key": "walmart",
+          "url": "https://www.constellationenergy.com/news/2026/06/constellation-and-walmart-announce-long-term-agreement-to-support-reliable-emissions-free-nuclear-energy-in-illinois.html"
+        },
+        {
+          "key": "cyrus",
+          "url": "https://www.constellationenergy.com/news/2026/02/constellation-and-cyrusone-announce-agreement-to-support-new-data-center-facility-at-freestone-energy-center-in-texas.html"
+        },
+        {
+          "key": "risec",
+          "url": "https://www.constellationenergy.com/news/2026/09/constellation-to-acquire-rhode-island-state-energy-center-from-shell.html"
+        },
+        {
+          "key": "ls",
+          "url": "https://www.constellationenergy.com/news/2026/10/constellation-completes-sale-of-brazos-valley-energy-center-to-ls-power.html"
+        },
+        {
+          "key": "doe",
+          "url": "https://www.constellationenergy.com/news/2026/10/constellation-secures-conditional-doe-loan-commitment-of-up-to-5-billion-to-expand-nuclear-output.html"
+        },
+        {
+          "key": "stadium",
+          "url": "https://www.constellationenergy.com/news/2026/02/constellation-selected-as-preferred-energy-source-of-new-nissan-stadium-and-the-tennessee-titans.html"
+        },
+        {
+          "key": "renew",
+          "url": "https://www.constellationenergy.com/news/2026/06/constellation-seeks-license-renewals-for-two-new-york-units-through-2049.html"
+        },
+        {
+          "key": "gen",
+          "url": "https://www.constellationenergy.com/work/generation.html"
+        },
+        {
+          "key": "west",
+          "url": "https://www.constellationenergy.com/content/dam/constellationenergy/pdfs/fact-sheets/Ginna_Clean_Energy_Center_Fact_Sheet.pdf"
+        },
+        {
+          "key": "framatome",
+          "url": "https://www.framatome.com/medias/nuclear-industry-breakthrough-contract-to-implement-high-enriched-fuel-assemblies-at-us-reactor/?lang=eng"
+        },
+        {
+          "key": "nrc",
+          "url": "https://www.ans.org/news/2026-04-03/article-7905/constellation-seeks-ferc-help-with-crane-restart/"
+        },
+        {
+          "key": "eia",
+          "url": "https://www.eia.gov/uranium/marketing/table24.php"
+        },
+        {
+          "key": "fuel",
+          "url": "https://www.energy.gov/ne/articles/framatome-advanced-fuel-assembly-completes-second-fuel-cycle"
+        },
+        {
+          "key": "market",
+          "url": "https://www.eia.gov/uranium/marketing/table24.php"
+        }
+      ],
+      "blue_energy": "2026-07 Constellation Technology Ventures 已投資 Blue Energy，屬具名股權投資，非直接核電設備採購。",
+      "pin_oak": "2026-04 Calpine Pin Oak Creek 460MW 天然氣尖峰電廠已商轉，為 2026 年營運容量新增。",
+      "original_profile_integrity": "原始 11 欄依 GitHub commit da93c81d 逐欄重建；尚未以 blob SHA 作位元組等值比對，不主張逐位元完全一致。"
+    }
   }
 }

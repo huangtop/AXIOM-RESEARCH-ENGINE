@@ -199,5 +199,596 @@
       "工業自動化"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-11",
+    "symbol": "MKSI",
+    "company": "MKS Inc.",
+    "business_lines": [
+      {
+        "id": "VAC",
+        "name": "真空壓力量測與控制"
+      },
+      {
+        "id": "GAS",
+        "name": "氣體輸送、質量流量與反應氣體"
+      },
+      {
+        "id": "RF",
+        "name": "射頻電源、電漿與匹配網路"
+      },
+      {
+        "id": "SUBSYS",
+        "name": "半導體設備子系統與製程控制"
+      },
+      {
+        "id": "OPTICS",
+        "name": "光學元件與精密光子"
+      },
+      {
+        "id": "LASER",
+        "name": "工業與超快雷射"
+      },
+      {
+        "id": "LITHO",
+        "name": "微影、檢測與量測光學"
+      },
+      {
+        "id": "PCB_LASER",
+        "name": "PCB與載板雷射鑽孔"
+      },
+      {
+        "id": "PLATING",
+        "name": "Atotech電鍍設備"
+      },
+      {
+        "id": "CHEM",
+        "name": "Atotech製程化學品"
+      },
+      {
+        "id": "ADVPKG",
+        "name": "先進封裝、ABF與TGV"
+      },
+      {
+        "id": "SEMICOND",
+        "name": "晶圓製造設備生態"
+      },
+      {
+        "id": "INDUSTRIAL",
+        "name": "特殊工業與生命科學"
+      },
+      {
+        "id": "SUPPLY",
+        "name": "全球製造、材料及外包"
+      },
+      {
+        "id": "TAIWAN",
+        "name": "台灣半導體與PCB產業映射"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "supplier",
+      "partner",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "MKSI_NAMED_001",
+        "name": "Lam Research",
+        "relationship": "customer",
+        "business_line": "RF",
+        "details": "2017年Lam Research供應商卓越獎：MKS為Lam提供半導體製程關鍵子系統，Lam主管確認MKS在產品交付及技術合作中的關鍵角色；2016年亦獲技術合作獎。",
+        "evidence_grade": "A｜Lam與MKS雙方公告",
+        "source_urls": [
+          "https://investor.mks.com/news-releases/news-release-details/mks-instruments-receives-lam-researchs-2017-supplier-excellence"
+        ],
+        "ticker": "LRCX",
+        "event_date": "2017-09-19"
+      },
+      {
+        "id": "MKSI_NAMED_002",
+        "name": "Applied Materials",
+        "relationship": "customer",
+        "business_line": "SUBSYS",
+        "details": "2022年Applied Materials授予MKS Optical Sensing Products（前Photon Control）最佳供應商獎；2005年MKS與Applied簽訂全球供應框架協議。",
+        "evidence_grade": "A｜Applied與MKS具名供應關係",
+        "source_urls": [
+          "https://investor.mks.com/news-releases/news-release-details/mks-optical-sensing-products-business-receives-applied-materials",
+          "https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-announces-2022-supplier-excellence-awards"
+        ],
+        "ticker": "AMAT",
+        "event_date": "2022-04-26"
+      },
+      {
+        "id": "MKSI_NAMED_003",
+        "name": "Taiwan Semiconductor Manufacturing Company（台積電）",
+        "relationship": "customer",
+        "business_line": "SEMICOND",
+        "details": "2023年台積電供應鏈管理論壇表揚MKS生產支援；MKS官方確認為台積電關鍵元件與子系統供應商，貢獻供應鏈穩定。",
+        "evidence_grade": "A｜客戶供應鏈表揚",
+        "source_urls": [
+          "https://investor.mks.com/news-releases/news-release-details/mks-instruments-recognized-tsmc-outstanding-production-support"
+        ],
+        "ticker": "2330.TW",
+        "event_date": "2024-01-30"
+      },
+      {
+        "id": "MKSI_NAMED_004",
+        "name": "Onto Innovation",
+        "relationship": "customer",
+        "business_line": "OPTICS",
+        "details": "2024年Onto Innovation供應商創新獎，MKS為Onto開發客製Newport精密運動平台，支援晶圓與封裝檢測量測。",
+        "evidence_grade": "A｜客戶具名採用與技術",
+        "source_urls": [
+          "https://investor.mks.com/news-releases/news-release-details/mks-instruments-receives-2024-supplier-excellence-award"
+        ],
+        "ticker": "ONTO",
+        "event_date": "2025-01-14"
+      },
+      {
+        "id": "MKSI_NAMED_005",
+        "name": "Samsung Electro-Mechanics（三星電機）",
+        "relationship": "customer",
+        "business_line": "PLATING",
+        "details": "2024年三星電機供應商卓越獎：MKS Atotech在韓國為三星電機提供電鍍化學品與設備製程開發、試產、量產優化及良率支援；雙方合作逾24年。 三星電機官網亦確認Atotech Korea在封裝基板電鍍製程材料品質管理方面獲表揚。",
+        "evidence_grade": "A｜客戶具名供應商獎",
+        "source_urls": [
+          "https://investor.mks.com/node/22506",
+          "https://www.samsungsem.com/cn/newsroom/news/view.do?id=7963"
+        ],
+        "ticker": "009150.KS",
+        "event_date": "2024-05-06"
+      },
+      {
+        "id": "MKSI_NAMED_006",
+        "name": "MFLEX（Multi-Fineline Electronix）",
+        "relationship": "customer",
+        "business_line": "PCB_LASER",
+        "details": "2024年MKS獲MFLEX 2023年度服務獎；其蘇州廠使用超過120套MKS ESI 5335及CapStone軟板雷射鑽孔系統。",
+        "evidence_grade": "A｜具名安裝數量與設備",
+        "source_urls": [
+          "https://investor.mks.com/node/22406/pdf"
+        ],
+        "event_date": "2024-02-28"
+      },
+      {
+        "id": "MKSI_NAMED_007",
+        "name": "Schweitzer Engineering Laboratories（SEL）",
+        "relationship": "customer",
+        "business_line": "PLATING",
+        "details": "2022年Atotech與SEL宣布SEL愛達荷PCB新廠採用Uniplate水平製程設備；2025年SEL工程師及Atotech主管公開說明Uniplate PLBCu6客製化與零液體排放合作。 2025年客戶訪談補充SEL實際使用Uniplate PLBCu6及技術培訓、製程改善。",
+        "evidence_grade": "A｜具名設備與客戶採用",
+        "source_urls": [
+          "https://www.atotech.com/atotech-and-schweitzer-engineering-laboratories-announce-business-partnership/",
+          "https://iconnect007.com/article/146668/partnerships-drive-innovation-for-a-brighter-manufacturing-future/146665/pcb"
+        ],
+        "event_date": "2022-05-04"
+      },
+      {
+        "id": "MKSI_NAMED_008",
+        "name": "Zhen Ding Technology Group（臻鼎科技）",
+        "relationship": "customer",
+        "business_line": "PCB_LASER",
+        "details": "2026年臻鼎授予MKS兩項傑出貢獻獎：Photonics Solutions設備服務卓越、Materials Solutions技術創新；直接確認MKS為臻鼎PCB與載板製造技術合作供應商。",
+        "evidence_grade": "A｜客戶具名供應商獎",
+        "source_urls": [
+          "https://www.globenewswire.com/de/news-release/2026/08/17/3346133/16396/en/mks-inc-earns-2026-zhen-ding-technology-group-distinguished-contribution-awards-for-service-excellence-and-technology-innovation.html"
+        ],
+        "ticker": "4958.TW",
+        "event_date": "2026-08-17"
+      },
+      {
+        "id": "MKSI_NAMED_009",
+        "name": "Advanced Energy Industries",
+        "relationship": "competitor",
+        "business_line": "RF",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：射頻電源、電漿與反應氣體。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ],
+        "ticker": "AEIS"
+      },
+      {
+        "id": "MKSI_NAMED_010",
+        "name": "INFICON",
+        "relationship": "competitor",
+        "business_line": "VAC",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：真空壓力與控制。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ],
+        "ticker": "IFCN.SW"
+      },
+      {
+        "id": "MKSI_NAMED_011",
+        "name": "Hitachi",
+        "relationship": "competitor",
+        "business_line": "GAS",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：材料輸送。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ],
+        "ticker": "6501.T"
+      },
+      {
+        "id": "MKSI_NAMED_012",
+        "name": "HORIBA",
+        "relationship": "competitor",
+        "business_line": "GAS",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：材料輸送與流量控制。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ],
+        "ticker": "6856.T"
+      },
+      {
+        "id": "MKSI_NAMED_013",
+        "name": "Brooks Instrument",
+        "relationship": "competitor",
+        "business_line": "GAS",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：材料輸送。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ]
+      },
+      {
+        "id": "MKSI_NAMED_014",
+        "name": "VAT Group",
+        "relationship": "competitor",
+        "business_line": "VAC",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：材料輸送與真空閥。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ],
+        "ticker": "VACN.SW"
+      },
+      {
+        "id": "MKSI_NAMED_015",
+        "name": "TRUMPF",
+        "relationship": "competitor",
+        "business_line": "LASER",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：雷射。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ]
+      },
+      {
+        "id": "MKSI_NAMED_016",
+        "name": "Lumentum",
+        "relationship": "competitor",
+        "business_line": "LASER",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：雷射。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ],
+        "ticker": "LITE"
+      },
+      {
+        "id": "MKSI_NAMED_017",
+        "name": "IPG Photonics",
+        "relationship": "competitor",
+        "business_line": "LASER",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：雷射。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ],
+        "ticker": "IPGP"
+      },
+      {
+        "id": "MKSI_NAMED_018",
+        "name": "EdgeWave",
+        "relationship": "competitor",
+        "business_line": "LASER",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：雷射。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ]
+      },
+      {
+        "id": "MKSI_NAMED_019",
+        "name": "Amplitude Laser",
+        "relationship": "competitor",
+        "business_line": "LASER",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：雷射。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ]
+      },
+      {
+        "id": "MKSI_NAMED_020",
+        "name": "Coherent",
+        "relationship": "competitor",
+        "business_line": "OPTICS",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：雷射及光子。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ],
+        "ticker": "COHR"
+      },
+      {
+        "id": "MKSI_NAMED_021",
+        "name": "Excelitas Technologies",
+        "relationship": "competitor",
+        "business_line": "OPTICS",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：雷射及光子。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ]
+      },
+      {
+        "id": "MKSI_NAMED_022",
+        "name": "Jenoptik",
+        "relationship": "competitor",
+        "business_line": "OPTICS",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：雷射及光子。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ],
+        "ticker": "JEN.DE"
+      },
+      {
+        "id": "MKSI_NAMED_023",
+        "name": "Thorlabs",
+        "relationship": "competitor",
+        "business_line": "OPTICS",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：雷射及光子。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ]
+      },
+      {
+        "id": "MKSI_NAMED_024",
+        "name": "Sigma Koki",
+        "relationship": "competitor",
+        "business_line": "OPTICS",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：光子。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ],
+        "ticker": "7713.T"
+      },
+      {
+        "id": "MKSI_NAMED_025",
+        "name": "PI miCos",
+        "relationship": "competitor",
+        "business_line": "OPTICS",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：光子。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ]
+      },
+      {
+        "id": "MKSI_NAMED_026",
+        "name": "Via Mechanics",
+        "relationship": "competitor",
+        "business_line": "PCB_LASER",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：PCB雷射鑽孔。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ],
+        "ticker": "6237.T"
+      },
+      {
+        "id": "MKSI_NAMED_027",
+        "name": "EO Technics",
+        "relationship": "competitor",
+        "business_line": "PCB_LASER",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：PCB雷射鑽孔。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ],
+        "ticker": "039030.KQ"
+      },
+      {
+        "id": "MKSI_NAMED_028",
+        "name": "Mitsubishi Electric",
+        "relationship": "competitor",
+        "business_line": "PCB_LASER",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：PCB雷射鑽孔。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ],
+        "ticker": "6503.T"
+      },
+      {
+        "id": "MKSI_NAMED_029",
+        "name": "Element Solutions",
+        "relationship": "competitor",
+        "business_line": "CHEM",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：電子化學品。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ],
+        "ticker": "ESI"
+      },
+      {
+        "id": "MKSI_NAMED_030",
+        "name": "Qnity Electronics",
+        "relationship": "competitor",
+        "business_line": "CHEM",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：電子化學品。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ]
+      },
+      {
+        "id": "MKSI_NAMED_031",
+        "name": "Uyemura",
+        "relationship": "competitor",
+        "business_line": "CHEM",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：電子化學品。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ],
+        "ticker": "4966.T"
+      },
+      {
+        "id": "MKSI_NAMED_032",
+        "name": "JCU International",
+        "relationship": "competitor",
+        "business_line": "CHEM",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：電子化學品。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ],
+        "ticker": "4975.T"
+      },
+      {
+        "id": "MKSI_NAMED_033",
+        "name": "Okuno Chemical",
+        "relationship": "competitor",
+        "business_line": "CHEM",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：電子化學品。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ]
+      },
+      {
+        "id": "MKSI_NAMED_034",
+        "name": "Schmid Group",
+        "relationship": "competitor",
+        "business_line": "PLATING",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：電鍍設備。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ],
+        "ticker": "SHMD"
+      },
+      {
+        "id": "MKSI_NAMED_035",
+        "name": "Process Automation International",
+        "relationship": "competitor",
+        "business_line": "PLATING",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：電鍍設備。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ]
+      },
+      {
+        "id": "MKSI_NAMED_036",
+        "name": "Top Creation Machines",
+        "relationship": "competitor",
+        "business_line": "PLATING",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：電鍍設備。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ]
+      },
+      {
+        "id": "MKSI_NAMED_037",
+        "name": "Universal Circuit Board Equipment",
+        "relationship": "competitor",
+        "business_line": "PLATING",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：電鍍設備。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ]
+      },
+      {
+        "id": "MKSI_NAMED_038",
+        "name": "Almex Technologies",
+        "relationship": "competitor",
+        "business_line": "PLATING",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：電鍍設備。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ]
+      },
+      {
+        "id": "MKSI_NAMED_039",
+        "name": "Manz Asia",
+        "relationship": "competitor",
+        "business_line": "PLATING",
+        "details": "MKS FY2025 10-K具名競爭對手，產品競爭領域：電鍍設備。",
+        "evidence_grade": "A｜2025 10-K直接具名競爭者",
+        "source_urls": [
+          "https://investor.mks.com/static-files/1733e9ef-bfc7-49db-ac8a-ba9032ce45f2"
+        ]
+      },
+      {
+        "id": "MKSI_NAMED_040",
+        "name": "Photonics Systems Group",
+        "relationship": "partner",
+        "business_line": "LASER",
+        "details": "2020年與MKS旗下ESI簽訂電路雷射微調產品線的獨家授權協議，授權對方維護既有產品客戶並開發市場。",
+        "evidence_grade": "A｜雙方具名授權公告",
+        "source_urls": [
+          "https://static.goexposoftware.com/ipc21/FORMfields/uploads/pressreleasescurprurlo1f021gn9els78tjben1lb41obj8.pdf"
+        ],
+        "event_date": "2020-02-03"
+      }
+    ],
+    "research_metadata": {
+      "method": "具名實體關係圖：公司名稱、產品、商業事件、時間、來源；同一公司只保留一個節點。",
+      "original_git_commit": "da93c81d",
+      "original_blob_sha": "670b6af830a573e06cccfd5667a193bd876dfd0a",
+      "evidence_cutoff": "2026-11-11",
+      "important_exclusions": [
+        "Atotech、ESI、Newport、Spectra-Physics、Ophir均屬MKS旗下品牌，不作外部企業節點。",
+        "2025年MKS簡報所列AMAT、ASML、KLA、Lam、TEL、台積電、三星等為市場代表性公司；簡報明言並非全是MKS客戶，因此僅將有其他直接證據者列入Customer。",
+        "2022年Atotech第1000台Uniplate出貨給台灣PCB/載板廠，公告未揭露公司名稱，保留為業務線情報，不生成客戶節點。",
+        "台灣載板及AI光通訊公司沒有具名MKS商業證據者不列受惠節點。"
+      ],
+      "business_intelligence": [
+        {
+          "business_line": "PLATING",
+          "event": "2022年Atotech第1000台水平銅電鍍設備售予台灣PCB／載板廠；公告未具名。",
+          "source_url": "https://www.atotech.com/atotech-sells-1000th-horizontal-electrolytic-copper-plater-to-the-market/"
+        },
+        {
+          "business_line": "PLATING",
+          "event": "2026年11月2日廣州Atotech廠擴建開工，投入2,500萬美元，預定2027Q3完成。",
+          "source_url": "https://investor.mks.com/news-releases/news-release-details/mks-commences-expansion-guangzhou-china-equipment-manufacturing"
+        },
+        {
+          "business_line": "ADVPKG",
+          "event": "2026年Atotech與ESI展示TGV、ABF、SAP/mSAP、AI PCB雷射鑽孔與電鍍化學品。",
+          "source_url": "https://www.atotech.com/mks-highlights-integrated-laser-and-chemistry-solutions-for-advanced-packaging-at-kpca-show-2026/"
+        },
+        {
+          "business_line": "SEMICOND",
+          "event": "2026Q3半導體市場營收6.38億美元，較前季成長15%。",
+          "source_url": "https://mksinstrumentsinc.gcs-web.com/static-files/4e703e02-2102-4eec-a273-754e36ff8406"
+        }
+      ],
+      "validation": "本地結構、原始欄位逐值比對、15主線、名稱去重、URL存在性格式檢查；未執行專案正式validator。",
+      "additional_verified_sources": [
+        "https://www.samsungsem.com/cn/newsroom/news/view.do?id=7963",
+        "https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-announces-2022-supplier-excellence-awards"
+      ]
+    }
   }
 }

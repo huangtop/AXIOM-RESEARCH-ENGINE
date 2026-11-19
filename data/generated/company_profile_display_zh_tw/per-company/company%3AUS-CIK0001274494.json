@@ -166,5 +166,518 @@
       "去碳化"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-11",
+    "symbol": "FSLR",
+    "company": "First Solar, Inc.",
+    "business_lines": [
+      {
+        "id": "MODULES",
+        "name": "CdTe薄膜模組與Series 6 Plus"
+      },
+      {
+        "id": "SERIES7",
+        "name": "Series 7美國製造模組"
+      },
+      {
+        "id": "UTILITY",
+        "name": "公用事業級模組採購與長約"
+      },
+      {
+        "id": "GLASS",
+        "name": "TCO鍍膜玻璃與基板"
+      },
+      {
+        "id": "CDTE",
+        "name": "CdTe／CdSe半導體材料"
+      },
+      {
+        "id": "STEEL",
+        "name": "鋼製背軌與循環鋼材"
+      },
+      {
+        "id": "RECYCLING",
+        "name": "模組回收與閉環材料"
+      },
+      {
+        "id": "CURE",
+        "name": "CuRe薄膜製程"
+      },
+      {
+        "id": "PEROVSKITE",
+        "name": "鈣鈦礦專利與研發"
+      },
+      {
+        "id": "TOPCON",
+        "name": "TOPCon專利授權與維權"
+      },
+      {
+        "id": "US_FABS",
+        "name": "美國製造廠擴張"
+      },
+      {
+        "id": "GLOBAL_FABS",
+        "name": "亞洲與印度製造"
+      },
+      {
+        "id": "RESEARCH",
+        "name": "關鍵材料研究與學研"
+      },
+      {
+        "id": "FINANCE",
+        "name": "45X稅收抵免變現"
+      },
+      {
+        "id": "COMPETITION",
+        "name": "全球光伏模組競爭"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "supplier",
+      "partner",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "FSLR_001",
+        "name": "Silicon Ranch",
+        "relationship": "customer",
+        "business_line": "UTILITY",
+        "details": "2025年10-K列為模組業務營收至少10%的客戶；2022年簽4GW、追加700MW，2023年再追加1.5GW，2026–27年交貨。",
+        "evidence_grade": "A｜第一方具名證據",
+        "source_urls": [
+          "https://www.siliconranch.com/stories/silicon-ranch-first-solar-expand-partnership-with-1-5gw/",
+          "https://www.sec.gov/Archives/edgar/data/1274494/000127449426000021/fslr-20251231.htm"
+        ],
+        "event_date": "2023-02-27",
+        "commercial_status": "已簽約；2025年具名重大客戶"
+      },
+      {
+        "id": "FSLR_002",
+        "name": "NextEra Energy",
+        "relationship": "customer",
+        "business_line": "UTILITY",
+        "details": "First Solar 2025年10-K直接具名：NextEra Energy占2025年模組業務淨銷售額至少10%。",
+        "evidence_grade": "A｜第一方具名證據",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1274494/000127449426000021/fslr-20251231.htm"
+        ],
+        "ticker": "NEE",
+        "event_date": "2026-02-24",
+        "commercial_status": "2025年已實現銷售"
+      },
+      {
+        "id": "FSLR_003",
+        "name": "Swift Current Energy",
+        "relationship": "customer",
+        "business_line": "UTILITY",
+        "details": "2022年10月簽署2GW模組供應合約，安排2025–26年交付；此前已有1.27GW訂單。",
+        "evidence_grade": "A｜第一方具名證據",
+        "source_urls": [
+          "https://www.globenewswire.com/news-release/2022/10/26/2541826/0/en/swift-current-energy-first-solar-in-agreement-for-2-gw-of-american-solar-modules.html"
+        ],
+        "event_date": "2022-10-26",
+        "commercial_status": "歷史合約；2025–26交付期"
+      },
+      {
+        "id": "FSLR_004",
+        "name": "National Grid Renewables",
+        "relationship": "customer",
+        "business_line": "UTILITY",
+        "details": "2022年6月簽2GW CdTe模組框架協議，預定2024–25年交付；公告具名Prairie Wolf、Noble專案。",
+        "evidence_grade": "A｜第一方具名證據",
+        "source_urls": [
+          "https://www.globenewswire.com/news-release/2022/06/23/2468004/0/en/National-Grid-Renewables-Orders-2-GW-of-Responsibly-Produced-First-Solar-Modules.html"
+        ],
+        "event_date": "2022-06-23",
+        "commercial_status": "歷史合約"
+      },
+      {
+        "id": "FSLR_005",
+        "name": "Intersect Power",
+        "relationship": "customer",
+        "business_line": "UTILITY",
+        "details": "2022年7月新增2.4GW薄膜模組供應協議，預定2024–26年交付；2019及2021年累計先前訂單4.1GW。",
+        "evidence_grade": "A｜第一方具名證據",
+        "source_urls": [
+          "https://www.globenewswire.com/news-release/2022/07/28/2487770/0/en/Intersect-Power-Orders-2-4-GW-of-First-Solar-s-High-Performance-Modules.html"
+        ],
+        "event_date": "2022-07-28",
+        "commercial_status": "歷史合約；2024–26交付期"
+      },
+      {
+        "id": "FSLR_006",
+        "name": "Matrix Renewables",
+        "relationship": "customer",
+        "business_line": "UTILITY",
+        "details": "2023年7月簽署約2.1GW薄膜模組採購框架協議，2024–27年供美國及西班牙專案。",
+        "evidence_grade": "A｜第一方具名證據",
+        "source_urls": [
+          "https://matrixrenewables.com/wp-content/uploads/2023/07/230727-PR-First-Solar-framework-agreement-vf.pdf"
+        ],
+        "event_date": "2023-07",
+        "commercial_status": "歷史合約；2024–27交付期"
+      },
+      {
+        "id": "FSLR_007",
+        "name": "Energix Renewable Energies",
+        "relationship": "customer",
+        "business_line": "UTILITY",
+        "details": "2023年7月簽5GW模組供應協議，交付期2026–30年；Energix 2023年財報記載採購規模約15億美元及調整權；並簽模組回收服務。",
+        "evidence_grade": "A｜第一方具名證據",
+        "source_urls": [
+          "https://energix-group.com/wp-content/uploads/2024/01/Energix-full-FS-30.09.2023-EN-V1_%D7%9E%D7%95%D7%A0%D7%92%D7%A9.pdf",
+          "https://pv-magazine-usa.com/2023/07/17/first-solar-inks-5-gw-supply-deal-with-energix/"
+        ],
+        "event_date": "2023-07",
+        "commercial_status": "歷史合約；2026–30交付期"
+      },
+      {
+        "id": "FSLR_008",
+        "name": "Leeward Renewable Energy",
+        "relationship": "customer",
+        "business_line": "UTILITY",
+        "details": "2023年4月追加2GW模組採購，預定2026–27年交付；2022年另有1GW採購。",
+        "evidence_grade": "A｜第一方具名證據",
+        "source_urls": [
+          "https://www.nasdaq.com/press-release/leeward-renewable-energy-announces-2-year-2-gw-first-solar-order-redoubling-its",
+          "https://www.lreus.com/leeward-renewable-energy-and-first-solar-announce-1gwmulti-year-solar-module-procurement-agreement/"
+        ],
+        "event_date": "2023-04-27",
+        "commercial_status": "歷史合約；2026–27交付期"
+      },
+      {
+        "id": "FSLR_009",
+        "name": "Longroad Energy",
+        "relationship": "customer",
+        "business_line": "UTILITY",
+        "details": "2023年追加2GW First Solar薄膜模組，預定2027–29年交付；先前3.7GW框架協議、2017年以來累計採購接近8GW。",
+        "evidence_grade": "A｜第一方具名證據",
+        "source_urls": [
+          "https://www.power-technology.com/news/first-solar-additional-2gw-contract-longroad-energy/"
+        ],
+        "event_date": "2023-09",
+        "commercial_status": "歷史合約；2027–29交付期"
+      },
+      {
+        "id": "FSLR_010",
+        "name": "EDP Renewables",
+        "relationship": "customer",
+        "business_line": "UTILITY",
+        "details": "First Solar 2023年度報告具名模組訂購者；2023年另簽1.8GW供應合約，預定2028年前交付。",
+        "evidence_grade": "A｜第一方具名證據",
+        "source_urls": [
+          "https://www.firstsolar.com/-/media/First-Solar/Sustainability-Documents/2024-CDP-Corporate-Questionnaire.ashx",
+          "https://www.industrialinfo.com/iirenergy/industry-news/article/first-solars-new-panel-manufacturing-facility-breaks-ground--323972"
+        ],
+        "ticker": "EDPR.LS",
+        "event_date": "2023",
+        "commercial_status": "歷史合約"
+      },
+      {
+        "id": "FSLR_011",
+        "name": "Capital Power",
+        "relationship": "customer",
+        "business_line": "UTILITY",
+        "details": "First Solar 2023年度報告具名模組訂購者；2023年另有1GW採購公告。",
+        "evidence_grade": "A｜第一方具名證據",
+        "source_urls": [
+          "https://www.firstsolar.com/-/media/First-Solar/Sustainability-Documents/2024-CDP-Corporate-Questionnaire.ashx",
+          "https://eepower.com/news/first-solar-lands-major-5-gw-procurement-deal/"
+        ],
+        "ticker": "CPX.TO",
+        "event_date": "2023",
+        "commercial_status": "歷史合約"
+      },
+      {
+        "id": "FSLR_012",
+        "name": "Tennessee Valley Authority",
+        "relationship": "customer",
+        "business_line": "UTILITY",
+        "details": "First Solar官方2023年度報告明確列為當年下單客戶；美國聯邦電力公用事業。",
+        "evidence_grade": "A｜第一方具名證據",
+        "source_urls": [
+          "https://www.firstsolar.com/-/media/First-Solar/Sustainability-Documents/2024-CDP-Corporate-Questionnaire.ashx"
+        ],
+        "event_date": "2023",
+        "commercial_status": "2023年具名採購"
+      },
+      {
+        "id": "FSLR_013",
+        "name": "BP Solar Holding / Lightsource bp",
+        "relationship": "customer",
+        "business_line": "UTILITY",
+        "details": "2025年10-K披露First Solar終止與BP Solar Holding及關聯公司Lightsource Renewable Energy Trading的多份供應合約，合計6.6GW／19億美元訂單自積壓訂單移除，確認6100萬美元終止相關收入。此節點為歷史客戶及合約終止事件。",
+        "evidence_grade": "A｜第一方具名證據",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1274494/000127449426000021/fslr-20251231.htm"
+        ],
+        "event_date": "2025",
+        "commercial_status": "合約已終止"
+      },
+      {
+        "id": "FSLR_014",
+        "name": "5N Plus",
+        "relationship": "supplier",
+        "business_line": "CDTE",
+        "details": "2025-08-05簽署擴大CdTe與CdSe供應協議；2025–26 CdTe交付量相對原合約增加33%，2027–28再增加25%；2026年開始供應CdSe。",
+        "evidence_grade": "A｜第一方具名證據",
+        "source_urls": [
+          "https://www.5nplus.com/en/news/5n-plus-inc-scales-up-and-expands-critical-materia/"
+        ],
+        "ticker": "VNP.TO",
+        "event_date": "2025-08-05",
+        "commercial_status": "2025–28材料供應合約"
+      },
+      {
+        "id": "FSLR_015",
+        "name": "NSG Group / Pilkington",
+        "relationship": "supplier",
+        "business_line": "GLASS",
+        "details": "NSG官方2023年公告五條專供First Solar的玻璃產線，包含美國俄亥俄、越南、馬來西亞；供應TCO透明導電鍍膜玻璃。",
+        "evidence_grade": "A｜第一方具名證據",
+        "source_urls": [
+          "https://www.nsg.com/-/media/nsgcom/downloads/en/2023/30nov2023newsolarglassproductionline_e01.pdf",
+          "https://www.nsg.com/-/media/nsg/site-content/ir/integrated-reports/integratedreport2026_e01.pdf"
+        ],
+        "ticker": "5202.T",
+        "event_date": "2023-11-30",
+        "commercial_status": "持續供應；CuRe玻璃共同開發"
+      },
+      {
+        "id": "FSLR_016",
+        "name": "Nucor",
+        "relationship": "supplier",
+        "business_line": "STEEL",
+        "details": "First Solar 2025企業責任報告具名：Nucor位於阿拉巴馬州Lawrence County的電弧爐廠將回收金屬製成鋼材，供Series 7背軌在地循環供應鏈。",
+        "evidence_grade": "A｜第一方具名證據",
+        "source_urls": [
+          "https://www.firstsolar.com/-/media/First-Solar/Sustainability-Documents/FirstSolar_Corporate-Responsibility-Report_2025.pdf?dl=1"
+        ],
+        "ticker": "NUE",
+        "event_date": "2025",
+        "commercial_status": "具名鋼材供應鏈"
+      },
+      {
+        "id": "FSLR_017",
+        "name": "OMCO Solar",
+        "relationship": "supplier",
+        "business_line": "STEEL",
+        "details": "First Solar 2025企業責任報告具名：OMCO Solar位於Huntsville的廠房將鋼材滾壓、沖壓及製造成Series 7模組背軌，交First Solar阿拉巴馬廠組裝。",
+        "evidence_grade": "A｜第一方具名證據",
+        "source_urls": [
+          "https://www.firstsolar.com/-/media/First-Solar/Sustainability-Documents/FirstSolar_Corporate-Responsibility-Report_2025.pdf?dl=1"
+        ],
+        "event_date": "2025",
+        "commercial_status": "具名背軌零組件供應"
+      },
+      {
+        "id": "FSLR_018",
+        "name": "Oxford PV",
+        "relationship": "partner",
+        "business_line": "PEROVSKITE",
+        "details": "2026-02-24雙方簽美國市場非獨家鈣鈦礦專利授權，First Solar取得已核發與申請中專利的使用權。",
+        "evidence_grade": "A｜第一方具名證據",
+        "source_urls": [
+          "https://www.oxfordpv.com/press-releases/first-solar-oxford-pv-enter-into-patent-licensing-agreement-for-us-markets"
+        ],
+        "event_date": "2026-02-24",
+        "commercial_status": "專利授權生效"
+      },
+      {
+        "id": "FSLR_019",
+        "name": "CubicPV",
+        "relationship": "partner",
+        "business_line": "PEROVSKITE",
+        "details": "2026-10-29 First Solar簽非獨家美國鈣鈦礦專利授權，取得CubicPV已核發及申請中美國專利權利。",
+        "evidence_grade": "A｜第一方具名證據",
+        "source_urls": [
+          "https://www.nasdaq.com/press-release/first-solar-cubicpv-enter-us-patent-licensing-agreement-2026-10-29"
+        ],
+        "event_date": "2026-10-29",
+        "commercial_status": "專利授權"
+      },
+      {
+        "id": "FSLR_020",
+        "name": "Talon PV",
+        "relationship": "partner",
+        "business_line": "TOPCON",
+        "details": "2025-02-25 Talon PV取得First Solar TOPCon晶矽太陽能電池製造專利授權；方向為First Solar向Talon授權。",
+        "evidence_grade": "A｜第一方具名證據",
+        "source_urls": [
+          "https://talonpv.com/talon-pv-enters-topcon-patent-licensing-agreement-with-first-solar/"
+        ],
+        "event_date": "2025-02-25",
+        "commercial_status": "專利授權"
+      },
+      {
+        "id": "FSLR_021",
+        "name": "Missouri University of Science and Technology",
+        "relationship": "partner",
+        "business_line": "RESEARCH",
+        "details": "2025-01-21 First Solar在Missouri S&T設立關鍵能源材料冠名教授席位，雙方已有約十年碲材料供應與回收研究合作。",
+        "evidence_grade": "A｜第一方具名證據",
+        "source_urls": [
+          "https://news-old.mst.edu/2025/01/first-solar-supports-missouri-st-efforts-to-secure-critical-materials-supply-chains/"
+        ],
+        "event_date": "2025-01-21",
+        "commercial_status": "學研合作"
+      },
+      {
+        "id": "FSLR_022",
+        "name": "Visa",
+        "relationship": "partner",
+        "business_line": "FINANCE",
+        "details": "First Solar 2024年報披露2024年12月向Visa出售8.572億美元Section 45X稅額抵免，現金對價8.186億美元；屬稅收抵免交易，不是模組客戶。",
+        "evidence_grade": "A｜第一方具名證據",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1274494/000127449425000010/fslr-20241231.htm"
+        ],
+        "ticker": "V",
+        "event_date": "2024-12",
+        "commercial_status": "歷史稅額抵免交易"
+      },
+      {
+        "id": "FSLR_023",
+        "name": "Fiserv",
+        "relationship": "partner",
+        "business_line": "FINANCE",
+        "details": "First Solar 2024Q1 SEC申報披露2023年12月與Fiserv簽約出售6.872億美元Section 45X稅額抵免，總現金對價6.597億美元。",
+        "evidence_grade": "A｜第一方具名證據",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1274494/000127449424000022/fslr-20240331.htm"
+        ],
+        "ticker": "FISV",
+        "event_date": "2023-12",
+        "commercial_status": "歷史稅額抵免交易"
+      },
+      {
+        "id": "FSLR_024",
+        "name": "JinkoSolar",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "晶矽TOPCon模組競爭；First Solar於2025年提出TOPCon專利侵權訴訟。",
+        "evidence_grade": "B｜同市場產品競爭；部分有專利訴訟佐證",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1274494/000127449426000021/fslr-20251231.htm"
+        ],
+        "ticker": "JKS"
+      },
+      {
+        "id": "FSLR_025",
+        "name": "JA Solar",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "晶矽模組競爭；First Solar 2026-10-01宣布TOPCon專利侵權訴訟。",
+        "evidence_grade": "B｜同市場產品競爭；部分有專利訴訟佐證",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1274494/000127449426000021/fslr-20251231.htm"
+        ],
+        "ticker": "002459.SZ"
+      },
+      {
+        "id": "FSLR_026",
+        "name": "Trina Solar",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "晶矽模組競爭；全球大型晶矽供應商。",
+        "evidence_grade": "B｜同市場產品競爭；部分有專利訴訟佐證",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1274494/000127449426000021/fslr-20251231.htm"
+        ],
+        "ticker": "688599.SS"
+      },
+      {
+        "id": "FSLR_027",
+        "name": "Canadian Solar",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "晶矽太陽能模組與美國公用事業級市場競爭。",
+        "evidence_grade": "B｜同市場產品競爭；部分有專利訴訟佐證",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1274494/000127449426000021/fslr-20251231.htm"
+        ],
+        "ticker": "CSIQ"
+      },
+      {
+        "id": "FSLR_028",
+        "name": "LONGi Green Energy",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "高效晶矽太陽能模組技術競爭。",
+        "evidence_grade": "B｜同市場產品競爭；部分有專利訴訟佐證",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1274494/000127449426000021/fslr-20251231.htm"
+        ],
+        "ticker": "601012.SS"
+      },
+      {
+        "id": "FSLR_029",
+        "name": "Hanwha Qcells",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "美國本土太陽能模組製造與公用事業級市場競爭。",
+        "evidence_grade": "B｜同市場產品競爭；部分有專利訴訟佐證",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1274494/000127449426000021/fslr-20251231.htm"
+        ],
+        "ticker": "009830.KS"
+      },
+      {
+        "id": "FSLR_030",
+        "name": "Maxeon Solar Technologies",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "高效率太陽能模組技術競爭；歷史市場比較。",
+        "evidence_grade": "B｜同市場產品競爭；部分有專利訴訟佐證",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1274494/000127449426000021/fslr-20251231.htm"
+        ],
+        "ticker": "MAXN"
+      }
+    ],
+    "research_metadata": {
+      "method": "VECO具名實體標準；每家公司只占一個關係節點；交易金額、日期、型號與狀態合併在描述。",
+      "quality_review": [
+        "只保留真實可識別公司或機構。",
+        "Customer須有具名採購、訂單或財報揭露。",
+        "Supplier須有供應商或First Solar第一方確認。",
+        "區分歷史合約、合約終止、專利授權及稅額抵免交易。",
+        "不將下游電力需求或台灣太陽能同業推定為受惠交易。"
+      ],
+      "source_date_cutoff": "2026-11-11",
+      "company_original": {
+        "repository": "huangtop/AXIOM-RESEARCH-ENGINE",
+        "commit": "da93c81d",
+        "blob_sha": "70b151fe5385206c676ff1781c32204a25b1ba28"
+      },
+      "non_graph_business_intelligence": [
+        {
+          "topic": "2026Q3 backlog",
+          "value": "44.0 GW，總交易價值135億美元",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/1274494/000127449426000212/fslr-20260930.htm"
+        },
+        {
+          "topic": "2025 BP/Lightsource終止",
+          "value": "終止6.6GW、19億美元合約；已在客戶歷史節點標示",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/1274494/000127449426000021/fslr-20251231.htm"
+        },
+        {
+          "topic": "2026Q3製造",
+          "value": "美國第五座工廠開始營運、南卡羅來納廠第一階段於2026年9月商轉",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/1274494/000127449426000212/fslr-20260930.htm"
+        },
+        {
+          "topic": "2025原始營收客戶",
+          "value": "Silicon Ranch與NextEra Energy各占2025年模組業務淨銷售額至少10%",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/1274494/000127449426000021/fslr-20251231.htm"
+        }
+      ],
+      "validation": "本地JSON解析、原始11頂層欄位逐值保留、15主線、節點唯一性、真實具名名稱、來源連結。"
+    }
   }
 }

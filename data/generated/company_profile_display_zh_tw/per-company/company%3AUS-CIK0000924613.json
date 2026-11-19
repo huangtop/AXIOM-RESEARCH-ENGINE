@@ -220,5 +220,1174 @@
       "網路自動化"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "research_as_of": "2026-11-11",
+    "company": "Nokia Corporation",
+    "symbol": "NOK",
+    "locale": "zh-TW",
+    "business_lines": [
+      {
+        "id": "IP",
+        "name": "IP 核心路由與資料中心交換器"
+      },
+      {
+        "id": "OPTICAL",
+        "name": "相干光傳輸與 DCI"
+      },
+      {
+        "id": "PLUG",
+        "name": "800G 光模組與光子元件"
+      },
+      {
+        "id": "FIBER",
+        "name": "FTTH／PON 固網接取"
+      },
+      {
+        "id": "SUBSEA",
+        "name": "海底光纜與長途傳輸"
+      },
+      {
+        "id": "RAN",
+        "name": "5G／5G-Advanced 無線接取"
+      },
+      {
+        "id": "AI_RAN",
+        "name": "NVIDIA AI-RAN 與 6G"
+      },
+      {
+        "id": "CORE",
+        "name": "5G 核心網路與雲原生軟體"
+      },
+      {
+        "id": "AUTOMATION",
+        "name": "網路自動化與代理式 AI"
+      },
+      {
+        "id": "PRIVATE",
+        "name": "工業私有無線與邊緣網路"
+      },
+      {
+        "id": "PATENTS",
+        "name": "行動標準專利與授權"
+      },
+      {
+        "id": "MANUFACTURING",
+        "name": "通訊設備製造、ODM 與 EMS"
+      },
+      {
+        "id": "CHIPS",
+        "name": "ASIC、光電與射頻半導體"
+      },
+      {
+        "id": "DATACENTER",
+        "name": "AI 資料中心互連"
+      },
+      {
+        "id": "CHANNEL",
+        "name": "系統整合、電信營運商及生態系"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "supplier",
+      "partner",
+      "competitor"
+    ],
+    "nodes": [
+      {
+        "id": "NOK-001",
+        "name": "CoreWeave",
+        "relationship": "customer",
+        "business_line": "DATACENTER",
+        "description_zh_tw": "2024-09-16｜採用Nokia FP5 7750 SR路由器、1830 PSI光傳輸及SROS，建立美歐AI資料中心骨幹與DCI。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-selected-by-coreweave-to-provide-networking-backbone-behind-hyperscale-ai-cloud/"
+        ],
+        "event_date": "2024-09-16",
+        "commercial_status": "正式選用與部署",
+        "ticker": "CRWV"
+      },
+      {
+        "id": "NOK-002",
+        "name": "Telefónica",
+        "relationship": "customer",
+        "business_line": "DATACENTER",
+        "description_zh_tw": "2026-02-26｜Nokia獨家承建西班牙17座邊緣資料中心網路，其中12座已部署；整合運算、儲存與外部網路連線。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-to-deploy-ai-ready-network-solutions-in-telefonicas-edge-data-centers-throughout-spain/"
+        ],
+        "event_date": "2026-02-26",
+        "commercial_status": "17座節點；12座已部署",
+        "ticker": "TEF"
+      },
+      {
+        "id": "NOK-003",
+        "name": "Hotwire Communications",
+        "relationship": "customer",
+        "business_line": "IP",
+        "description_zh_tw": "2026-11-04｜選用7750 Service Router打造北卡羅來納州AI-fabric-ready IP／光整合網路。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/hotwire-communications-selects-nokia-to-build-an-ai-fabric-ready-network-in-north-carolina/"
+        ],
+        "event_date": "2026-11-04",
+        "commercial_status": "選用／部署"
+      },
+      {
+        "id": "NOK-004",
+        "name": "KPN",
+        "relationship": "customer",
+        "business_line": "IP",
+        "description_zh_tw": "2025-12-03｜採用800G-ready IP與光傳輸系統升級荷蘭FabriQ全國核心骨幹。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-powers-dutch-digital-services-with-next-generation-800g-ready-kpn-core-and-transport-network/"
+        ],
+        "event_date": "2025-12-03",
+        "commercial_status": "已選用／部署",
+        "ticker": "KPN.AS"
+      },
+      {
+        "id": "NOK-005",
+        "name": "Orange Belgium",
+        "relationship": "customer",
+        "business_line": "OPTICAL",
+        "description_zh_tw": "2026-07-02｜Nokia成為光傳輸升級獨家供應商；1830 PSS建置比利時固定與行動融合光傳輸骨幹。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/orange-belgium-selects-nokia-for-optical-network-upgrade-to-future-proof-its-infrastructure-ensuring-leadership-in-5g-quantum-resilient-security-and-ai-scale-computing-demands/"
+        ],
+        "event_date": "2026-07-02",
+        "commercial_status": "獨家供應商"
+      },
+      {
+        "id": "NOK-006",
+        "name": "Telxius",
+        "relationship": "customer",
+        "business_line": "PLUG",
+        "description_zh_tw": "2026-09-15｜部署Nokia ICE-X 800G coherent pluggable optics於歐美及拉丁美洲地面骨幹；先於BRUSA海纜驗證。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/telxius-boosts-global-network-capacity-and-efficiency-with-nokia-800g-coherent-pluggable-deployment/"
+        ],
+        "event_date": "2026-09-15",
+        "commercial_status": "部署"
+      },
+      {
+        "id": "NOK-007",
+        "name": "Aureon",
+        "relationship": "customer",
+        "business_line": "OPTICAL",
+        "description_zh_tw": "2026-06-18｜採用Nokia光傳輸、由t3 Broadband整合，建置北達科他至芝加哥AI資料中心100Tb/s初期光纖連線，可擴至400Tb/s。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-t3-broadband-and-aureon-partner-to-deploy-hyperscale-class-ai-connectivity-with-ultra-high-capacity-optical-network/"
+        ],
+        "event_date": "2026-06-18",
+        "commercial_status": "部署"
+      },
+      {
+        "id": "NOK-008",
+        "name": "i4Networks",
+        "relationship": "customer",
+        "business_line": "OPTICAL",
+        "description_zh_tw": "2025-09-10｜採用Nokia 1830光傳輸平台，部署荷蘭100G/400G資料中心互連服務。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/i4networks-deploys-nokias-optical-solution-to-deliver-data-center-interconnection-services-across-the-netherlands/"
+        ],
+        "event_date": "2025-09-10",
+        "commercial_status": "已部署"
+      },
+      {
+        "id": "NOK-009",
+        "name": "Viettel",
+        "relationship": "customer",
+        "business_line": "OPTICAL",
+        "description_zh_tw": "2025｜部署PSE-6s相干光引擎及1.2Tb/s波長光傳輸，連接河內、胡志明市與峴港資料中心。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/customer-success/nokia-and-viettel-roll-out-high-capacity-optical-network-after-achieving-12tbs-optics-transmission-speed-record-in-vietnam/"
+        ],
+        "commercial_status": "已宣布部署"
+      },
+      {
+        "id": "NOK-010",
+        "name": "Vodafone Idea",
+        "relationship": "customer",
+        "business_line": "OPTICAL",
+        "description_zh_tw": "2025-03-31｜採用1830 PSS、CDC-F 2.0與PSE-Vs DWDM／OTN光傳輸升級印度4G/5G骨幹。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-modernizes-vodafone-ideas-optical-network-to-enhance-4g-services-and-support-5g-rollout/"
+        ],
+        "event_date": "2025-03-31",
+        "commercial_status": "設備部署",
+        "ticker": "IDEA.NS"
+      },
+      {
+        "id": "NOK-011",
+        "name": "altafiber",
+        "relationship": "customer",
+        "business_line": "FIBER",
+        "description_zh_tw": "2026-01-19｜採用25G PON、IP路由與光網路解決方案，擴張俄亥俄及Hawaiian Telcom夏威夷光纖寬頻。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-selected-by-altafiber-for-fiber-network-expansion-across-ohio-and-hawaii/"
+        ],
+        "event_date": "2026-01-19",
+        "commercial_status": "已選用"
+      },
+      {
+        "id": "NOK-012",
+        "name": "Planters Broadband Cooperative",
+        "relationship": "customer",
+        "business_line": "FIBER",
+        "description_zh_tw": "2026-09-10｜採用Lightspan MF-2、ONT、BABA合規PON光學元件、Altiplano與Corteca，建置美國喬治亞州光纖網。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-selected-by-planters-broadband-cooperative-to-build-ai-ready-fiber-network-for-underserved-communities-in-southeast-georgia/"
+        ],
+        "event_date": "2026-09-10",
+        "commercial_status": "已選用"
+      },
+      {
+        "id": "NOK-013",
+        "name": "SkyFiber",
+        "relationship": "customer",
+        "business_line": "FIBER",
+        "description_zh_tw": "2026-04-14｜選用Nokia建置內華達州偏遠社區光纖網路。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-selected-by-skyfiber-to-build-fiber-network-for-underserved-communities-in-northern-nevada/"
+        ],
+        "event_date": "2026-04-14",
+        "commercial_status": "已選用"
+      },
+      {
+        "id": "NOK-014",
+        "name": "Telin",
+        "relationship": "customer",
+        "business_line": "OPTICAL",
+        "description_zh_tw": "2025-09-25｜採用Nokia光傳輸方案互連新加坡資料中心。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/telin-selects-nokia-to-interconnect-data-centers-across-singapore/"
+        ],
+        "event_date": "2025-09-25",
+        "commercial_status": "已選用"
+      },
+      {
+        "id": "NOK-015",
+        "name": "RailTel Corporation of India",
+        "relationship": "customer",
+        "business_line": "OPTICAL",
+        "description_zh_tw": "2025-11-25｜與Nokia合作升級印度國家長途及都會光傳輸網路。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/railtel-collaborates-with-nokia-to-modernize-its-national-long-distance-and-metro-optical-transport-networks-across-india/"
+        ],
+        "event_date": "2025-11-25",
+        "commercial_status": "合作部署",
+        "ticker": "RAILTEL.NS"
+      },
+      {
+        "id": "NOK-016",
+        "name": "GBI (Gulf Bridge International)",
+        "relationship": "customer",
+        "business_line": "OPTICAL",
+        "description_zh_tw": "2025-10-22｜選用Nokia建立中東新型高容量光網路。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/gbi-selects-nokia-to-build-new-network-for-faster-more-resilient-connectivity-across-the-middle-east/"
+        ],
+        "event_date": "2025-10-22",
+        "commercial_status": "已選用"
+      },
+      {
+        "id": "NOK-017",
+        "name": "EXA Infrastructure",
+        "relationship": "customer",
+        "business_line": "OPTICAL",
+        "description_zh_tw": "2025-05-02｜選用Nokia擴大國際光纖互連網路容量。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/exa-infrastructure-selects-nokia-to-expand-international-connectivity-network-capabilities/"
+        ],
+        "event_date": "2025-05-02",
+        "commercial_status": "已選用"
+      },
+      {
+        "id": "NOK-018",
+        "name": "Symphony Communication",
+        "relationship": "customer",
+        "business_line": "OPTICAL",
+        "description_zh_tw": "2026-06-17｜Nokia升級泰國MCT海底光纜網路傳輸設備，提升東南亞跨境連線。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-upgrades-symphony-communications-mct-subsea-network-to-deliver-advanced-connectivity-across-southeast-asia/"
+        ],
+        "event_date": "2026-06-17",
+        "commercial_status": "設備升級"
+      },
+      {
+        "id": "NOK-019",
+        "name": "Virgin Media O2",
+        "relationship": "customer",
+        "business_line": "RAN",
+        "description_zh_tw": "2026-03-31｜多年期5G RAN合約，採用AirScale、Massive MIMO與新世代基頻系統，擴大英國行動網路覆蓋與容量。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-wins-new-5g-ran-deal-with-virgin-media-o2-to-accelerate-its-mobile-transformation-plan/"
+        ],
+        "event_date": "2026-03-31",
+        "commercial_status": "多年期供應合約"
+      },
+      {
+        "id": "NOK-020",
+        "name": "台灣大哥大",
+        "relationship": "customer",
+        "business_line": "RAN",
+        "description_zh_tw": "2026-07-14｜簽5G擴建協議，部署Nokia AirScale無線電、基頻與AI網路管理軟體。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-and-taiwan-mobile-extend-5g-partnership-to-advance-ai-powered-networks/"
+        ],
+        "event_date": "2026-07-14",
+        "commercial_status": "5G擴建協議",
+        "ticker": "3045.TW"
+      },
+      {
+        "id": "NOK-021",
+        "name": "TIM Brasil",
+        "relationship": "customer",
+        "business_line": "RAN",
+        "description_zh_tw": "2026-03-02｜擴大AI-ready 5G網路合作，導入Nokia新一代無線接取設備並與NVIDIA AI-RAN技術協作。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-expands-partnership-with-tim-brasil-to-deliver-next-generation-ai-ready-5g-network-with-nvidia/"
+        ],
+        "event_date": "2026-03-02",
+        "commercial_status": "5G網路擴建",
+        "ticker": "TIMS3.SA"
+      },
+      {
+        "id": "NOK-022",
+        "name": "Telefónica Deutschland",
+        "relationship": "customer",
+        "business_line": "RAN",
+        "description_zh_tw": "2025-11-26｜與Nokia簽訂五年RAN供應協議，擴大德國5G網路。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-and-telefonica-germany-agree-5-year-ran-deal-to-advance-5g-expansion/"
+        ],
+        "event_date": "2025-11-26",
+        "commercial_status": "五年供應協議",
+        "ticker": "O2D.DE"
+      },
+      {
+        "id": "NOK-023",
+        "name": "Telecom Italia",
+        "relationship": "customer",
+        "business_line": "RAN",
+        "description_zh_tw": "2025-11-17｜Nokia獲義大利5G RAN新合約。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-wins-landmark-5g-deal-with-telecom-italia/"
+        ],
+        "event_date": "2025-11-17",
+        "commercial_status": "新5G合約",
+        "ticker": "TIT.MI"
+      },
+      {
+        "id": "NOK-024",
+        "name": "VodafoneThree",
+        "relationship": "customer",
+        "business_line": "RAN",
+        "description_zh_tw": "2025-09-22｜Nokia獲英國VodafoneThree大型5G RAN設備合約。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-wins-significant-5g-deal-with-vodafonethree/"
+        ],
+        "event_date": "2025-09-22",
+        "commercial_status": "5G RAN合約"
+      },
+      {
+        "id": "NOK-025",
+        "name": "Bharti Airtel",
+        "relationship": "customer",
+        "business_line": "CORE",
+        "description_zh_tw": "2025-04-02｜部署Nokia Packet Core設備與固定無線接取解決方案；2025-12-04擴展Network as Code API合作。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/bharti-airtel-and-nokia-expand-core-network-collaboration-to-speed-up-new-5g-service-delivery/"
+        ],
+        "event_date": "2025-04-02",
+        "commercial_status": "核心網部署",
+        "ticker": "BHARTIARTL.NS"
+      },
+      {
+        "id": "NOK-026",
+        "name": "Citymesh",
+        "relationship": "customer",
+        "business_line": "CORE",
+        "description_zh_tw": "2026-02-19｜商轉Nokia與AWS提供的5G Core SaaS行動服務。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/citymesh-goes-live-with-worlds-first-commercial-mobile-service-on-5g-core-saas-powered-by-nokia-and-aws/"
+        ],
+        "event_date": "2026-02-19",
+        "commercial_status": "商轉"
+      },
+      {
+        "id": "NOK-027",
+        "name": "Proximus",
+        "relationship": "customer",
+        "business_line": "CORE",
+        "description_zh_tw": "2026-01-20｜選用Nokia升級計費系統與語音核心網路。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/proximus-selects-nokia-to-modernize-its-charging-system-and-voice-core/"
+        ],
+        "event_date": "2026-01-20",
+        "commercial_status": "已選用",
+        "ticker": "PROX.BR"
+      },
+      {
+        "id": "NOK-028",
+        "name": "Telia",
+        "relationship": "customer",
+        "business_line": "CORE",
+        "description_zh_tw": "2025-11-06｜採用Nokia雲原生5G SA核心網；2026年另展開AI-RAN應用合作。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/telia-to-enhance-networks-with-nokias-cloud-native-5g-standalone-core/"
+        ],
+        "event_date": "2025-11-06",
+        "commercial_status": "5G核心網部署",
+        "ticker": "TELIA.ST"
+      },
+      {
+        "id": "NOK-029",
+        "name": "O2 Czech Republic",
+        "relationship": "customer",
+        "business_line": "CORE",
+        "description_zh_tw": "2025-06-12｜部署Nokia 5G Standalone Core支援新型網路服務。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/o2-czech-republic-deploys-nokia-5g-standalone-core-to-deliver-advanced-network-services/"
+        ],
+        "event_date": "2025-06-12",
+        "commercial_status": "已部署"
+      },
+      {
+        "id": "NOK-030",
+        "name": "Com4",
+        "relationship": "customer",
+        "business_line": "CORE",
+        "description_zh_tw": "2025-05-14｜選用Nokia 5G SA Core支援全球物聯網服務。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/com4-selects-nokia-5g-standalone-core-to-power-global-iot-services/"
+        ],
+        "event_date": "2025-05-14",
+        "commercial_status": "已選用"
+      },
+      {
+        "id": "NOK-031",
+        "name": "One New Zealand",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "description_zh_tw": "2026-11-11｜選用Nokia Assurance Center及Autonomous Networks Data Suite，延續2025年Unified Inventory與Orchestration Center投資。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/one-new-zealand-expands-nokia-partnership-to-accelerate-its-autonomous-networks-transformation/"
+        ],
+        "event_date": "2026-11-11",
+        "commercial_status": "已選用"
+      },
+      {
+        "id": "NOK-032",
+        "name": "ESpanix",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "description_zh_tw": "2026-09-14｜部署Nokia Deepfield Defender，保護西班牙網際網路交換流量免受DDoS攻擊。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/espanix-deploys-nokia-deepfield-defender-to-protect-spains-internet-traffic-from-ddos-attacks/"
+        ],
+        "event_date": "2026-09-14",
+        "commercial_status": "已部署"
+      },
+      {
+        "id": "NOK-033",
+        "name": "Maher Terminals",
+        "relationship": "customer",
+        "business_line": "PRIVATE",
+        "description_zh_tw": "2025-09-09｜採用Nokia工業邊緣運算及私有無線網路改善美國貨櫃碼頭作業。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/maher-terminals-enhances-operations-with-nokia-edge-and-private-wireless/"
+        ],
+        "event_date": "2025-09-09",
+        "commercial_status": "已部署"
+      },
+      {
+        "id": "NOK-034",
+        "name": "Maersk",
+        "relationship": "customer",
+        "business_line": "PRIVATE",
+        "description_zh_tw": "2025-05-06｜Maersk與Nokia簽約，為450艘船部署Shikra小型基地台及MantaRay NM私有無線網路，支援貨櫃即時追蹤。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-supplies-private-wireless-to-maersks-fleet-for-real-time-cargo-tracking/"
+        ],
+        "event_date": "2025-05-06",
+        "commercial_status": "供應與部署",
+        "ticker": "MAERSK-B.CO"
+      },
+      {
+        "id": "NOK-035",
+        "name": "Memphis Light, Gas and Water",
+        "relationship": "customer",
+        "business_line": "PRIVATE",
+        "description_zh_tw": "2025-07-14｜採用Nokia私有5G網路推動電網現代化。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-to-deploy-private-5g-network-for-memphis-light-gas-and-waters-grid-modernization-initiative/"
+        ],
+        "event_date": "2025-07-14",
+        "commercial_status": "私有5G部署"
+      },
+      {
+        "id": "NOK-036",
+        "name": "Deutsche Bahn",
+        "relationship": "customer",
+        "business_line": "PRIVATE",
+        "description_zh_tw": "2025-09-15｜Nokia在德國鐵路測試軌道部署1900MHz 5G無線網路支援FRMCS。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-deploys-worlds-first-1900-mhz-5g-radio-network-on-deutsche-bahn-test-track-supporting-frmcs/"
+        ],
+        "event_date": "2025-09-15",
+        "commercial_status": "已部署測試軌道"
+      },
+      {
+        "id": "NOK-037",
+        "name": "Singapore Land Transport Authority",
+        "relationship": "customer",
+        "business_line": "IP",
+        "description_zh_tw": "2025-10-15｜採用Nokia Optical LAN與IP方案升級新加坡鐵路關鍵通訊。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/singapore-land-transport-authority-enhances-critical-railway-infrastructure-with-nokia-optical-lan-and-ip-solutions/"
+        ],
+        "event_date": "2025-10-15",
+        "commercial_status": "已選用"
+      },
+      {
+        "id": "NOK-038",
+        "name": "Taoyuan International Airport Corporation",
+        "relationship": "customer",
+        "business_line": "IP",
+        "description_zh_tw": "2025-11-24｜桃園國際機場選用Nokia強化機場網路韌性與智慧營運。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/taoyuan-international-airport-selects-nokia-for-resilient-safer-and-smarter-experience/"
+        ],
+        "event_date": "2025-11-24",
+        "commercial_status": "已選用"
+      },
+      {
+        "id": "NOK-039",
+        "name": "KDDI",
+        "relationship": "customer",
+        "business_line": "OPTICAL",
+        "description_zh_tw": "2026-02-23｜與Nokia展示量子安全光傳輸，支援AI與資料中心互連；屬具名網路技術測試。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-and-kddi-demonstrate-quantum-safe-optical-transport-for-secure-ai-and-data-center-infrastructure/"
+        ],
+        "event_date": "2026-02-23",
+        "commercial_status": "光傳輸技術驗證",
+        "ticker": "9433.T"
+      },
+      {
+        "id": "NOK-040",
+        "name": "SoftBank Corp.",
+        "relationship": "customer",
+        "business_line": "RAN",
+        "description_zh_tw": "2025-11-05｜與Nokia簽日本行動網路現代化協議；2026-10-20另展開商用流量AI-RAN現場試驗。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-extends-softbank-corp-partnership-with-network-modernization-deal-in-japan/"
+        ],
+        "event_date": "2025-11-05",
+        "commercial_status": "已簽現代化合約；AI-RAN試驗",
+        "ticker": "9434.T"
+      },
+      {
+        "id": "NOK-041",
+        "name": "NTT DOCOMO",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "description_zh_tw": "2025-11-25｜Nokia MantaRay SON導入NTT DOCOMO多供應商5G網路。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-introduces-mantaray-son-to-ntt-docomos-multi-vendor-5g-network/"
+        ],
+        "event_date": "2025-11-25",
+        "commercial_status": "部署",
+        "ticker": "9432.T"
+      },
+      {
+        "id": "NOK-042",
+        "name": "Elisa",
+        "relationship": "customer",
+        "business_line": "RAN",
+        "description_zh_tw": "2025-06-12｜Nokia與Elisa簽5G Advanced網路現代化合作；2026年AI-RAN試驗另行進行。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-and-elisa-modernize-network-for-advanced-5g-era/"
+        ],
+        "event_date": "2025-06-12",
+        "commercial_status": "網路升級",
+        "ticker": "ELISA.HE"
+      },
+      {
+        "id": "NOK-043",
+        "name": "Orange",
+        "relationship": "customer",
+        "business_line": "AI_RAN",
+        "description_zh_tw": "2026-04-15｜Orange、Nokia與NVIDIA展開AI-RAN創新合作；2026年亦有具名技術試驗。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-and-orange-advance-ai-ran-innovation-with-nvidia/"
+        ],
+        "event_date": "2026-04-15",
+        "commercial_status": "技術合作與驗證",
+        "ticker": "ORA.PA"
+      },
+      {
+        "id": "NOK-044",
+        "name": "中華電信",
+        "relationship": "partner",
+        "business_line": "AI_RAN",
+        "description_zh_tw": "2026-09-16｜Nokia官方具名列入NVIDIA AI-RAN PoC／技術驗證營運商。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-accelerates-ai-ran-adoption-as-global-operators-embrace-ai-native-network-evolution-on-nvidia-platforms/"
+        ],
+        "event_date": "2026-09-16",
+        "commercial_status": "PoC技術驗證",
+        "ticker": "2412.TW"
+      },
+      {
+        "id": "NOK-045",
+        "name": "T-Mobile US",
+        "relationship": "partner",
+        "business_line": "AI_RAN",
+        "description_zh_tw": "2026-10｜Nokia與NVIDIA在T-Mobile商用網完成AI-RAN通話驗證。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/blog/from-the-lab-to-the-live-network-nokia-t-mobile-and-nvidia-complete-worlds-first-ai-ran-call/"
+        ],
+        "commercial_status": "商用網試驗",
+        "ticker": "TMUS"
+      },
+      {
+        "id": "NOK-046",
+        "name": "A1 Group",
+        "relationship": "partner",
+        "business_line": "AI_RAN",
+        "description_zh_tw": "2026-09-16｜Nokia具名AI-RAN PoC技術驗證合作營運商。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-accelerates-ai-ran-adoption-as-global-operators-embrace-ai-native-network-evolution-on-nvidia-platforms/"
+        ],
+        "event_date": "2026-09-16",
+        "commercial_status": "PoC"
+      },
+      {
+        "id": "NOK-047",
+        "name": "du",
+        "relationship": "partner",
+        "business_line": "AI_RAN",
+        "description_zh_tw": "2026-09-16｜Nokia具名AI-RAN PoC技術驗證合作營運商。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-accelerates-ai-ran-adoption-as-global-operators-embrace-ai-native-network-evolution-on-nvidia-platforms/"
+        ],
+        "event_date": "2026-09-16",
+        "commercial_status": "PoC"
+      },
+      {
+        "id": "NOK-048",
+        "name": "Mobily",
+        "relationship": "partner",
+        "business_line": "AI_RAN",
+        "description_zh_tw": "2026-09-16｜Nokia具名AI-RAN PoC技術驗證合作營運商。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-accelerates-ai-ran-adoption-as-global-operators-embrace-ai-native-network-evolution-on-nvidia-platforms/"
+        ],
+        "event_date": "2026-09-16",
+        "commercial_status": "PoC",
+        "ticker": "7020.SR"
+      },
+      {
+        "id": "NOK-049",
+        "name": "stc Group",
+        "relationship": "partner",
+        "business_line": "AI_RAN",
+        "description_zh_tw": "2026-09-16｜Nokia具名AI-RAN PoC技術驗證合作營運商。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-accelerates-ai-ran-adoption-as-global-operators-embrace-ai-native-network-evolution-on-nvidia-platforms/"
+        ],
+        "event_date": "2026-09-16",
+        "commercial_status": "PoC",
+        "ticker": "7010.SR"
+      },
+      {
+        "id": "NOK-050",
+        "name": "TPG Telecom",
+        "relationship": "partner",
+        "business_line": "AI_RAN",
+        "description_zh_tw": "2026-09-16｜Nokia具名AI-RAN PoC技術驗證合作營運商。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-accelerates-ai-ran-adoption-as-global-operators-embrace-ai-native-network-evolution-on-nvidia-platforms/"
+        ],
+        "event_date": "2026-09-16",
+        "commercial_status": "PoC",
+        "ticker": "TPG.AX"
+      },
+      {
+        "id": "NOK-051",
+        "name": "Zain Saudi Arabia",
+        "relationship": "partner",
+        "business_line": "AI_RAN",
+        "description_zh_tw": "2026-09-16｜Nokia具名AI-RAN PoC合作營運商；2026-09-29另有Nokia網路效能提升專案。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-improves-network-performance-and-efficiency-for-zain-ksa-across-saudi-arabia/"
+        ],
+        "event_date": "2026-09-29",
+        "commercial_status": "網路升級與AI-RAN PoC",
+        "ticker": "7030.SR"
+      },
+      {
+        "id": "NOK-052",
+        "name": "NVIDIA",
+        "relationship": "partner",
+        "business_line": "AI_RAN",
+        "description_zh_tw": "2025-10-28｜NVIDIA投資Nokia 10億美元，雙方合作AI-RAN、NVIDIA Spectrum-X＋Nokia SR Linux資料中心交換架構，並探索將Nokia光網路技術整合至未來NVIDIA AI基礎設施；2026年擴展至電信代理式AI。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nvidia-and-nokia-to-pioneer-the-ai-platform-for-6g--powering-americas-return-to-telecommunications-leadership/"
+        ],
+        "event_date": "2025-10-28",
+        "commercial_status": "策略投資、AI-RAN、資料中心交換與光學技術合作",
+        "ticker": "NVDA"
+      },
+      {
+        "id": "NOK-053",
+        "name": "Supermicro",
+        "relationship": "partner",
+        "business_line": "DATACENTER",
+        "description_zh_tw": "2025-09-08｜Nokia網路作業系統及自動化搭配Supermicro交換器硬體推出AI資料中心整合方案；2026年支援AI-RAN伺服器配置。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-and-supermicro-partner-to-deliver-integrated-ai-optimized-data-center-networking-solutions/"
+        ],
+        "event_date": "2025-09-08",
+        "commercial_status": "共同產品整合",
+        "ticker": "SMCI"
+      },
+      {
+        "id": "NOK-054",
+        "name": "Dell Technologies",
+        "relationship": "partner",
+        "business_line": "AI_RAN",
+        "description_zh_tw": "2025-10｜Nokia與NVIDIA AI-RAN技術架構獲Dell PowerEdge伺服器支援。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nvidia-and-nokia-to-pioneer-the-ai-platform-for-6g--powering-americas-return-to-telecommunications-leadership/"
+        ],
+        "event_date": "2025-10-28",
+        "commercial_status": "伺服器整合合作",
+        "ticker": "DELL"
+      },
+      {
+        "id": "NOK-055",
+        "name": "Quanta Cloud Technology",
+        "relationship": "partner",
+        "business_line": "AI_RAN",
+        "description_zh_tw": "2026-10-21｜廣達QCT具名參與Nokia/NVIDIA AI-RAN伺服器整合。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-advances-ai-ran-toward-commercial-deployment-and-physical-ai-launches-sovereign-agentic-ai-platform-for-telco-autonomy-with-nvidia/"
+        ],
+        "event_date": "2026-10-21",
+        "commercial_status": "AI-RAN平台整合",
+        "ticker": "2382.TW"
+      },
+      {
+        "id": "NOK-056",
+        "name": "Red Hat",
+        "relationship": "partner",
+        "business_line": "AI_RAN",
+        "description_zh_tw": "2026-10-21｜Nokia AI-RAN架構採用Red Hat OpenShift雲原生平台整合。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-advances-ai-ran-toward-commercial-deployment-and-physical-ai-launches-sovereign-agentic-ai-platform-for-telco-autonomy-with-nvidia/"
+        ],
+        "event_date": "2026-10-21",
+        "commercial_status": "軟體平台整合",
+        "ticker": "IBM"
+      },
+      {
+        "id": "NOK-057",
+        "name": "Google Cloud",
+        "relationship": "partner",
+        "business_line": "AUTOMATION",
+        "description_zh_tw": "2026-06-22｜Nokia Assurance Center整合Google Gemini模型與Agent Development Kit，開發六類電信代理式AI。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-and-google-cloud-partner-to-embed-ai-agents-built-with-googles-gemini-models-into-nokias-autonomous-network-product-suite/"
+        ],
+        "event_date": "2026-06-22",
+        "commercial_status": "代理式AI技術整合",
+        "ticker": "GOOGL"
+      },
+      {
+        "id": "NOK-058",
+        "name": "Amazon Web Services",
+        "relationship": "partner",
+        "business_line": "AUTOMATION",
+        "description_zh_tw": "2026-06-24｜擴大Nokia自主網路與AWS雲端AI合作；另與Citymesh商用5G Core SaaS。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-amazon-web-services-expand-collaboration-to-deliver-autonomous-networks-built-for-the-ai-era/"
+        ],
+        "event_date": "2026-06-24",
+        "commercial_status": "雲端AI與核心網合作",
+        "ticker": "AMZN"
+      },
+      {
+        "id": "NOK-059",
+        "name": "Microsoft",
+        "relationship": "partner",
+        "business_line": "AUTOMATION",
+        "description_zh_tw": "2026-09-17｜Nokia與Microsoft共同開發自主網路代理式AI資料基礎。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-accelerates-network-automation-through-agentic-unified-data-foundation-with-microsoft/"
+        ],
+        "event_date": "2026-09-17",
+        "commercial_status": "資料平台合作",
+        "ticker": "MSFT"
+      },
+      {
+        "id": "NOK-060",
+        "name": "Databricks",
+        "relationship": "partner",
+        "business_line": "AUTOMATION",
+        "description_zh_tw": "2026-06-24｜Nokia與Databricks示範自主網路統一資料平台。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-databricks-demonstrate-unified-data-platform-for-autonomous-networks/"
+        ],
+        "event_date": "2026-06-24",
+        "commercial_status": "聯合技術示範"
+      },
+      {
+        "id": "NOK-061",
+        "name": "Nscale",
+        "relationship": "partner",
+        "business_line": "DATACENTER",
+        "description_zh_tw": "2025-09-25｜Nscale指定Nokia為全球AI資料中心網路優先合作夥伴；Nokia亦參與Nscale Series B融資。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-and-nscale-partner-to-accelerate-ai-infrastructure-build-out/"
+        ],
+        "event_date": "2025-09-25",
+        "commercial_status": "優先網路供應與股權投資"
+      },
+      {
+        "id": "NOK-062",
+        "name": "Kyndryl",
+        "relationship": "partner",
+        "business_line": "DATACENTER",
+        "description_zh_tw": "2025-09-08｜與Nokia合作協助iWay現代化與自動化資料中心。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/iway-taps-nokia-and-kyndryl-to-modernize-and-automate-data-center-infrastructure/"
+        ],
+        "event_date": "2025-09-08",
+        "commercial_status": "專案系統整合",
+        "ticker": "KD"
+      },
+      {
+        "id": "NOK-063",
+        "name": "t3 Broadband",
+        "relationship": "partner",
+        "business_line": "OPTICAL",
+        "description_zh_tw": "2026-06-18｜擔任Nokia光網路方案整合商，協助Aureon建置AI資料中心高速連線。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-t3-broadband-and-aureon-partner-to-deploy-hyperscale-class-ai-connectivity-with-ultra-high-capacity-optical-network/"
+        ],
+        "event_date": "2026-06-18",
+        "commercial_status": "專案整合商"
+      },
+      {
+        "id": "NOK-064",
+        "name": "Leonardo",
+        "relationship": "partner",
+        "business_line": "PRIVATE",
+        "description_zh_tw": "2025-06-10｜Nokia與Leonardo合作推廣公共安全及關鍵基礎設施私有無線網路。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-and-leonardo-partner-to-deliver-worldwide-mission-critical-private-wireless-networks-for-public-safety-and-critical-infrastructures/"
+        ],
+        "event_date": "2025-06-10",
+        "commercial_status": "技術合作",
+        "ticker": "LDO.MI"
+      },
+      {
+        "id": "NOK-065",
+        "name": "OneLayer",
+        "relationship": "partner",
+        "business_line": "PRIVATE",
+        "description_zh_tw": "2025-11-03｜合作加強公用事業私有5G/LTE安全部署。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-and-onelayer-partner-to-accelerate-secure-private-5g-lte-adoption-for-utilities/"
+        ],
+        "event_date": "2025-11-03",
+        "commercial_status": "私網安全整合"
+      },
+      {
+        "id": "NOK-066",
+        "name": "ICEYE",
+        "relationship": "partner",
+        "business_line": "CHANNEL",
+        "description_zh_tw": "2026-10-01｜Nokia與ICEYE合作推出政府及國防用主權衛星通訊方案。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/iceye-and-nokia-partner-to-launch-secure-and-sovereign-satellite-communications-for-governments-and-defense-customers/"
+        ],
+        "event_date": "2026-10-01",
+        "commercial_status": "國防衛星通訊合作"
+      },
+      {
+        "id": "NOK-067",
+        "name": "Lenovo",
+        "relationship": "partner",
+        "business_line": "PATENTS",
+        "description_zh_tw": "2026-06-18｜Nokia與Lenovo簽訂專利交互授權協議。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-and-lenovo-sign-patent-cross-license-agreement/"
+        ],
+        "event_date": "2026-06-18",
+        "commercial_status": "專利交互授權",
+        "ticker": "0992.HK"
+      },
+      {
+        "id": "NOK-068",
+        "name": "Hisense",
+        "relationship": "customer",
+        "business_line": "PATENTS",
+        "description_zh_tw": "2026-01-08｜海信與Nokia簽多年期影片與多媒體技術專利授權；海信電視使用Nokia相關專利並支付權利金，雙方結束專利訴訟。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-signs-license-agreement-with-hisense-ending-all-patent-related-litigation/"
+        ],
+        "event_date": "2026-01-08",
+        "commercial_status": "已簽多年期授權、支付權利金"
+      },
+      {
+        "id": "NOK-069",
+        "name": "Infinera",
+        "relationship": "partner",
+        "business_line": "OPTICAL",
+        "description_zh_tw": "2025-02-28｜Nokia完成收購Infinera，擴大相干光學、光子晶片與資料中心互連能力；此為已完成併購關係。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-completes-acquisition-of-infinera-to-create-innovation-powerhouse-in-optical-networks-with-the-scale-to-power-the-data-center-revolution/"
+        ],
+        "event_date": "2025-02-28",
+        "commercial_status": "已完成收購"
+      },
+      {
+        "id": "NOK-070",
+        "name": "Inseego",
+        "relationship": "partner",
+        "business_line": "FIBER",
+        "description_zh_tw": "2026-10-01｜Inseego完成收購Nokia固定無線接取業務；此為資產出售交易。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/inseego-completes-acquisition-of-nokias-fixed-wireless-access-business/"
+        ],
+        "event_date": "2026-10-01",
+        "commercial_status": "已完成業務出售",
+        "ticker": "INSG"
+      },
+      {
+        "id": "NOK-071",
+        "name": "AURELIUS",
+        "relationship": "partner",
+        "business_line": "PRIVATE",
+        "description_zh_tw": "2026-10-13｜Nokia公告將Enterprise Campus Edge業務出售給AURELIUS。",
+        "evidence_grade": "A｜Nokia或交易對手官方具名公告",
+        "source_urls": [
+          "https://www.nokia.com/newsroom/nokia-to-sell-enterprise-campus-edge-business-to-aurelius/"
+        ],
+        "event_date": "2026-10-13",
+        "commercial_status": "已簽最終協議；預計2027上半年完成"
+      },
+      {
+        "id": "NOK-072",
+        "name": "Ericsson",
+        "relationship": "competitor",
+        "business_line": "RAN",
+        "description_zh_tw": "行動無線接取網路、核心網與企業5G私網競爭",
+        "evidence_grade": "B｜直接同業產品競爭",
+        "source_urls": [
+          "https://www.nokia.com/system/files/2026-03/nokia-form-20-f-2025.pdf"
+        ],
+        "ticker": "ERIC"
+      },
+      {
+        "id": "NOK-073",
+        "name": "Huawei",
+        "relationship": "competitor",
+        "business_line": "OPTICAL",
+        "description_zh_tw": "IP路由、光傳輸、5G無線接取與FTTH設備競爭",
+        "evidence_grade": "B｜直接同業產品競爭",
+        "source_urls": [
+          "https://www.nokia.com/system/files/2026-03/nokia-form-20-f-2025.pdf"
+        ]
+      },
+      {
+        "id": "NOK-074",
+        "name": "ZTE",
+        "relationship": "competitor",
+        "business_line": "FIBER",
+        "description_zh_tw": "固網PON、5G RAN、光傳輸與IP網路設備競爭",
+        "evidence_grade": "B｜直接同業產品競爭",
+        "source_urls": [
+          "https://www.nokia.com/system/files/2026-03/nokia-form-20-f-2025.pdf"
+        ],
+        "ticker": "000063.SZ"
+      },
+      {
+        "id": "NOK-075",
+        "name": "Cisco Systems",
+        "relationship": "competitor",
+        "business_line": "IP",
+        "description_zh_tw": "服務商IP路由、資料中心交換與網路自動化競爭",
+        "evidence_grade": "B｜直接同業產品競爭",
+        "source_urls": [
+          "https://www.nokia.com/system/files/2026-03/nokia-form-20-f-2025.pdf"
+        ],
+        "ticker": "CSCO"
+      },
+      {
+        "id": "NOK-076",
+        "name": "Ciena",
+        "relationship": "competitor",
+        "business_line": "OPTICAL",
+        "description_zh_tw": "相干光傳輸、光網路與DCI設備競爭",
+        "evidence_grade": "B｜直接同業產品競爭",
+        "source_urls": [
+          "https://www.nokia.com/system/files/2026-03/nokia-form-20-f-2025.pdf"
+        ],
+        "ticker": "CIEN"
+      },
+      {
+        "id": "NOK-077",
+        "name": "Juniper Networks / HPE",
+        "relationship": "competitor",
+        "business_line": "IP",
+        "description_zh_tw": "服務商IP路由、交換與網路自動化競爭；Juniper於2025年由HPE收購",
+        "evidence_grade": "B｜直接同業產品競爭",
+        "source_urls": [
+          "https://www.nokia.com/system/files/2026-03/nokia-form-20-f-2025.pdf"
+        ],
+        "ticker": "HPE"
+      },
+      {
+        "id": "NOK-078",
+        "name": "Samsung Electronics",
+        "relationship": "competitor",
+        "business_line": "RAN",
+        "description_zh_tw": "5G RAN與Open RAN設備競爭",
+        "evidence_grade": "B｜直接同業產品競爭",
+        "source_urls": [
+          "https://www.nokia.com/system/files/2026-03/nokia-form-20-f-2025.pdf"
+        ],
+        "ticker": "005930.KS"
+      },
+      {
+        "id": "NOK-079",
+        "name": "Adtran",
+        "relationship": "competitor",
+        "business_line": "FIBER",
+        "description_zh_tw": "FTTH PON接取、光傳輸與服務商網路競爭",
+        "evidence_grade": "B｜直接同業產品競爭",
+        "source_urls": [
+          "https://www.nokia.com/system/files/2026-03/nokia-form-20-f-2025.pdf"
+        ],
+        "ticker": "ADTN"
+      }
+    ],
+    "research_notes": {
+      "methodology": "VECO標準：具名公司或機構單一節點；明確記錄產品、事件、日期、商業狀態與官方來源。已部署／已簽約客戶與PoC技術驗證分開分類。；專利權利金付費授權方歸類customer。",
+      "entity_graph_rules": [
+        "不以匿名客戶、Tier 1或泛稱產業創造公司節點",
+        "同一公司不同業務線合併成單一節點",
+        "僅保留有直接官方商業證據的客戶",
+        "試驗／PoC公司歸類合作夥伴",
+        "競爭者有產品重疊與年報佐證",
+        "NVIDIA光學合作為探索Nokia光技術導入AI基礎設施，不以其虛構光模組採購"
+      ],
+      "strategic_events": [
+        {
+          "date": "2025-02-28",
+          "event": "Nokia完成Infinera收購",
+          "source_url": "https://www.nokia.com/newsroom/nokia-completes-acquisition-of-infinera-to-create-innovation-powerhouse-in-optical-networks-with-the-scale-to-power-the-data-center-revolution/"
+        },
+        {
+          "date": "2025-01-03",
+          "event": "Nokia將ASN海底光纜系統業務出售予法國政府，現行海底光傳輸設備與海纜系統工程應分開",
+          "source_url": "https://www.nokia.com/newsroom/nokia-completes-its-sale-of-leading-submarine-networks-business-asn-alcatel-submarine-networks-to-the-french-state/"
+        },
+        {
+          "date": "2025-10-28",
+          "event": "NVIDIA 10億美元股權投資、AI-RAN與資料中心交換及光學技術合作",
+          "source_url": "https://www.nokia.com/newsroom/nvidia-and-nokia-to-pioneer-the-ai-platform-for-6g--powering-americas-return-to-telecommunications-leadership/"
+        },
+        {
+          "date": "2026-01-01",
+          "event": "Nokia重組為Network Infrastructure與Mobile Infrastructure兩主要業務部門",
+          "source_url": "https://www.nokia.com/newsroom/nokia-announces-new-strategy-evolution-of-its-operating-model-new-long-term-financial-target-strategic-kpis-and-changes-to-its-group-leadership-team/"
+        }
+      ],
+      "source_of_original_profile": {
+        "repository": "huangtop/AXIOM-RESEARCH-ENGINE",
+        "commit": "da93c81d",
+        "path": "data/generated/company_profile_display_zh_tw/per-company/company%3AUS-CIK0000924613.json",
+        "blob_sha": "8cc8ded9c468813fa9e639359a7ed7d4e3fecadf"
+      },
+      "research_as_of": "2026-11-11"
+    }
   }
 }

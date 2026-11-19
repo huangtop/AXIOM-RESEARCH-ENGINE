@@ -235,5 +235,1037 @@
       "去碳化"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "locale": "zh-TW",
+    "symbol": "NEE",
+    "company": "NextEra Energy, Inc.",
+    "as_of": "2026-11-12",
+    "original_commit": "da93c81d",
+    "original_blob_sha": "4fd8366c95ee89f88bb4375a707723b3c00e2515",
+    "business_lines": [
+      {
+        "id": "FPL_RETAIL",
+        "name": "Florida Power & Light 受監管住宅／工商零售供電",
+        "segment": "FPL"
+      },
+      {
+        "id": "FPL_GRID",
+        "name": "FPL 輸配電網、變電站與韌性工程",
+        "segment": "FPL"
+      },
+      {
+        "id": "FPL_SOLAR",
+        "name": "FPL 佛州公用事業級太陽能與 SolarTogether",
+        "segment": "FPL"
+      },
+      {
+        "id": "FPL_STORAGE",
+        "name": "FPL 電池儲能、容量與尖峰管理",
+        "segment": "FPL"
+      },
+      {
+        "id": "FPL_GAS",
+        "name": "FPL 天然氣聯合循環與燃氣機組更新",
+        "segment": "FPL"
+      },
+      {
+        "id": "FPL_NUCLEAR",
+        "name": "FPL Turkey Point、St. Lucie 核能發電",
+        "segment": "FPL"
+      },
+      {
+        "id": "NEER_WIND",
+        "name": "NextEra Energy Resources 陸上風電與汰舊換新",
+        "segment": "NEER"
+      },
+      {
+        "id": "NEER_SOLAR",
+        "name": "NEER 公用事業級太陽能與企業 PPA",
+        "segment": "NEER"
+      },
+      {
+        "id": "NEER_BESS",
+        "name": "NEER 電網級電池儲能與能源儲存協議",
+        "segment": "NEER"
+      },
+      {
+        "id": "NEER_NUCLEAR",
+        "name": "Point Beach、Seabrook 核電及長約",
+        "segment": "NEER"
+      },
+      {
+        "id": "DUANE_RESTART",
+        "name": "Duane Arnold 615MW 核電重啟與 Google PPA",
+        "segment": "NEER"
+      },
+      {
+        "id": "NEER_GAS",
+        "name": "NEER 天然氣電廠與大型資料中心燃氣專案",
+        "segment": "NEER"
+      },
+      {
+        "id": "DATA_CENTER",
+        "name": "資料中心園區、聯合開發與專用電力",
+        "segment": "NEER"
+      },
+      {
+        "id": "GAS_PIPE",
+        "name": "天然氣輸送與 Florida Energy Pathway",
+        "segment": "NEER"
+      },
+      {
+        "id": "TRANSMISSION",
+        "name": "獨立輸電資產與州際輸電投資",
+        "segment": "NEER"
+      },
+      {
+        "id": "RETAIL_B2B",
+        "name": "企業批發電力、零售能源與能源顧問",
+        "segment": "NEER"
+      },
+      {
+        "id": "ENERGY_AI",
+        "name": "Google Cloud、能源數位分身與 AI 電網最佳化",
+        "segment": "Corporate"
+      },
+      {
+        "id": "FINANCE",
+        "name": "DOE 融資、日本投資與稅收權益資本",
+        "segment": "Corporate"
+      },
+      {
+        "id": "MNA",
+        "name": "Dominion Energy 擬合併及企業資產整合",
+        "segment": "Corporate"
+      },
+      {
+        "id": "SUPPLY",
+        "name": "渦輪機、風機、光伏、儲能與 EPC 供應鏈",
+        "segment": "Cross-segment"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "NEE-001",
+        "business_line": "DUANE_RESTART",
+        "relationship": "customer",
+        "name": "Google（Alphabet）",
+        "details": "2025-10 Google 簽 25 年 Duane Arnold 核電 PPA；整廠 615MW，Google 購買部分電力，CIPCO 購買剩餘部分。2029 Q1 前目標重啟，非 2026 已交付。",
+        "evidence_url": "https://www.investor.nexteraenergy.com/news-and-events/news-releases/2025/10-27-2025-203948689",
+        "evidence_grade": "615 MW 整廠",
+        "commercial_stage": "signed_future_PPA",
+        "evidence_date": "2025-10-27"
+      },
+      {
+        "id": "NEE-002",
+        "business_line": "NEER_SOLAR",
+        "relationship": "customer",
+        "name": "Google（Alphabet）",
+        "details": "2025-12 公告兩項 Oklahoma 長期 PPA 合計 600MW 再生能源，支持 Google 雲端設施；與 Duane Arnold 分開。",
+        "evidence_url": "https://www.investor.nexteraenergy.com/news-and-events/news-releases/2025/12-08-2025-120206963",
+        "evidence_grade": "600 MW",
+        "commercial_stage": "signed_PPA",
+        "evidence_date": "2025-12-08"
+      },
+      {
+        "id": "NEE-003",
+        "business_line": "DATA_CENTER",
+        "relationship": "partner",
+        "name": "Google Cloud",
+        "details": "2025-12 聯合開發多個 GW 級資料中心園區；前三個園區規劃中，非已投運容量。",
+        "evidence_url": "https://www.investor.nexteraenergy.com/news-and-events/news-releases/2025/12-08-2025-120206963",
+        "evidence_grade": "A",
+        "commercial_stage": "joint_development",
+        "evidence_date": "2025-12-08"
+      },
+      {
+        "id": "NEE-004",
+        "business_line": "ENERGY_AI",
+        "relationship": "supplier",
+        "name": "Google Cloud",
+        "details": "2025-12 NextEra 選用 Google Cloud 推動企業級數位轉型、AI 場域運維與預測；Google 同時為下游 PPA 客戶。",
+        "evidence_url": "https://www.investor.nexteraenergy.com/news-and-events/news-releases/2025/12-08-2025-120206963",
+        "evidence_grade": "A",
+        "commercial_stage": "technology_selected",
+        "evidence_date": "2025-12-08"
+      },
+      {
+        "id": "NEE-005",
+        "business_line": "ENERGY_AI",
+        "relationship": "partner",
+        "name": "Google Cloud",
+        "details": "共同開發電力 AI 應用與商業化，含 TimesFM 2.5、WeatherNext 2、Gemini 等工具。",
+        "evidence_url": "https://www.investor.nexteraenergy.com/news-and-events/news-releases/2025/12-08-2025-120206963",
+        "evidence_grade": "A",
+        "commercial_stage": "technology_co_development",
+        "evidence_date": "2025-12-08"
+      },
+      {
+        "id": "NEE-006",
+        "business_line": "NEER_SOLAR",
+        "relationship": "customer",
+        "name": "Meta Platforms",
+        "details": "2025-12 公布 11 項 PPA 及兩項 ESA 約 2.5GW；其中九座太陽能約 2.1GW，覆蓋 ERCOT、SPP、MISO。",
+        "evidence_url": "https://newsroom.nexteraenergy.com/2025-12-08-NextEra-Energy-Resources-and-Meta-Strengthen-American-Energy-Leadership?l=12",
+        "evidence_grade": "約 2.1 GW 太陽能",
+        "commercial_stage": "signed_PPA_portfolio",
+        "evidence_date": "2025-12-08"
+      },
+      {
+        "id": "NEE-007",
+        "business_line": "NEER_BESS",
+        "relationship": "customer",
+        "name": "Meta Platforms",
+        "details": "2025-12 Meta 約 2.5GW 組合含 New Mexico 168MW 儲能 ESA；不可將 2.5GW 全算太陽能。",
+        "evidence_url": "https://newsroom.nexteraenergy.com/2025-12-08-NextEra-Energy-Resources-and-Meta-Strengthen-American-Energy-Leadership?l=12",
+        "evidence_grade": "168 MW 儲能",
+        "commercial_stage": "signed_ESA",
+        "evidence_date": "2025-12-08"
+      },
+      {
+        "id": "NEE-008",
+        "business_line": "NEER_SOLAR",
+        "relationship": "customer",
+        "name": "Meta Platforms",
+        "details": "2025-12 New Mexico 四案中兩份 PPA 對應 190MW 太陽能，經 PNM Rate 36B 支援 Meta 用電。",
+        "evidence_url": "https://newsroom.nexteraenergy.com/2025-12-08-NextEra-Energy-Resources-and-Meta-Strengthen-American-Energy-Leadership?l=12",
+        "evidence_grade": "190 MW",
+        "commercial_stage": "signed_PPA",
+        "evidence_date": "2025-12-08"
+      },
+      {
+        "id": "NEE-009",
+        "business_line": "NEER_NUCLEAR",
+        "relationship": "customer",
+        "name": "WPPI Energy",
+        "details": "2025-12 Point Beach 核電 168MW 續約延伸至 2050 年代；非 2026 新增核電容量。",
+        "evidence_url": "https://www.investor.nexteraenergy.com/news-and-events/news-releases/2025/12-08-2025-123038547",
+        "evidence_grade": "168 MW",
+        "commercial_stage": "renewal_signed",
+        "evidence_date": "2025-12-08"
+      },
+      {
+        "id": "NEE-010",
+        "business_line": "NEER_NUCLEAR",
+        "relationship": "customer",
+        "name": "Wisconsin Electric Power Company（WEPCO）",
+        "details": "2026-08-14 簽 Point Beach Unit 1、2 之 86% 容量、電力、輔助服務與環境屬性 20 年 PPA，2030/2033 起；待 Wisconsin PSC 核准。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/107815/000078332526000095/wec-20260814.htm",
+        "evidence_grade": "約 1 GW",
+        "commercial_stage": "signed_regulatory_pending",
+        "evidence_date": "2026-08-14"
+      },
+      {
+        "id": "NEE-011",
+        "business_line": "NEER_NUCLEAR",
+        "relationship": "customer",
+        "name": "Central Iowa Power Cooperative（CIPCO）",
+        "details": "Duane Arnold 核電重啟後剩餘部分電力 25 年購電；同時 CIPCO 出售持股給 NextEra，雙重角色。",
+        "evidence_url": "https://www.investor.nexteraenergy.com/news-and-events/news-releases/2025/10-27-2025-203948689",
+        "evidence_grade": "A",
+        "commercial_stage": "signed_future_PPA",
+        "evidence_date": "2025-10-27"
+      },
+      {
+        "id": "NEE-012",
+        "business_line": "DUANE_RESTART",
+        "relationship": "seller",
+        "name": "Central Iowa Power Cooperative（CIPCO）",
+        "details": "2025-10 簽署出售 Duane Arnold 部分股權予 NextEra；NextEra 目標持股升至 100%，待相關核准。",
+        "evidence_url": "https://www.investor.nexteraenergy.com/news-and-events/news-releases/2025/10-27-2025-203948689",
+        "evidence_grade": "A",
+        "commercial_stage": "equity_purchase_pending",
+        "evidence_date": "2025-10-27"
+      },
+      {
+        "id": "NEE-013",
+        "business_line": "DUANE_RESTART",
+        "relationship": "seller",
+        "name": "Corn Belt Power Cooperative",
+        "details": "2025-10 與 CIPCO 合計 30% Duane Arnold 持股出售協議；股權交割需核准。",
+        "evidence_url": "https://www.investor.nexteraenergy.com/news-and-events/news-releases/2025/10-27-2025-203948689",
+        "evidence_grade": "A",
+        "commercial_stage": "equity_purchase_pending",
+        "evidence_date": "2025-10-27"
+      },
+      {
+        "id": "NEE-014",
+        "business_line": "FINANCE",
+        "relationship": "financing_counterparty",
+        "name": "U.S. Department of Energy（DOE）",
+        "details": "2026-09 Duane Arnold 最高 19 億美元貸款完成有條件承諾與財務交割；資金支援重啟，不等於核安重啟已核准。",
+        "evidence_url": "https://www.investor.nexteraenergy.com/news-and-events/news-releases/2026/09-08-2026-123110497",
+        "evidence_grade": "最高 US$1.9bn",
+        "commercial_stage": "loan_closed",
+        "evidence_date": "2026-09-08"
+      },
+      {
+        "id": "NEE-015",
+        "business_line": "DATA_CENTER",
+        "relationship": "partner",
+        "name": "Brookfield",
+        "details": "2026-07 DOE Paducah Kentucky 資料中心園區由 Brookfield 開發營運，NextEra 負責專用發電與儲能；屬規劃與條款協商階段。",
+        "evidence_url": "https://newsroom.nexteraenergy.com/2026-07-29-DOE-Site-in-Western-Kentucky-Revitalized-with-Data-Center-Campus-and-Dedicated-Energy-Project%2C-Creating-Jobs-and-Protecting-Residents-and-Businesses-from-Costs",
+        "evidence_grade": "A",
+        "commercial_stage": "strategic_development",
+        "evidence_date": "2026-07-29"
+      },
+      {
+        "id": "NEE-016",
+        "business_line": "DATA_CENTER",
+        "relationship": "partner",
+        "name": "Big Rivers Electric Power Corporation",
+        "details": "Paducah 專案批發供電方，協議尚待 Kentucky PSC 核准；不是直接購買 NextEra 全部電力的既成合約。",
+        "evidence_url": "https://newsroom.nexteraenergy.com/2026-07-29-DOE-Site-in-Western-Kentucky-Revitalized-with-Data-Center-Campus-and-Dedicated-Energy-Project%2C-Creating-Jobs-and-Protecting-Residents-and-Businesses-from-Costs",
+        "evidence_grade": "A",
+        "commercial_stage": "planned_wholesale_service",
+        "evidence_date": "2026-07-29"
+      },
+      {
+        "id": "NEE-017",
+        "business_line": "DATA_CENTER",
+        "relationship": "partner",
+        "name": "Jackson Purchase Energy Cooperative",
+        "details": "Paducah 專案零售配電與用戶供電方，服務協議尚待核准。",
+        "evidence_url": "https://newsroom.nexteraenergy.com/2026-07-29-DOE-Site-in-Western-Kentucky-Revitalized-with-Data-Center-Campus-and-Dedicated-Energy-Project%2C-Creating-Jobs-and-Protecting-Residents-and-Businesses-from-Costs",
+        "evidence_grade": "A",
+        "commercial_stage": "planned_retail_service",
+        "evidence_date": "2026-07-29"
+      },
+      {
+        "id": "NEE-018",
+        "business_line": "DATA_CENTER",
+        "relationship": "partner",
+        "name": "Paducah Power System",
+        "details": "Paducah 資料中心及能源園區地方社區支持夥伴，非設備供應商。",
+        "evidence_url": "https://newsroom.nexteraenergy.com/2026-07-29-DOE-Site-in-Western-Kentucky-Revitalized-with-Data-Center-Campus-and-Dedicated-Energy-Project%2C-Creating-Jobs-and-Protecting-Residents-and-Businesses-from-Costs",
+        "evidence_grade": "A",
+        "commercial_stage": "coalition_partner",
+        "evidence_date": "2026-07-29"
+      },
+      {
+        "id": "NEE-019",
+        "business_line": "DATA_CENTER",
+        "relationship": "site_owner",
+        "name": "U.S. Department of Energy（DOE）",
+        "details": "Paducah 舊濃縮鈾基地土地與專案遴選機關；選定 NextEra 建置持有發電及儲能設施。",
+        "evidence_url": "https://www.energy.gov/articles/energy-department-announces-partnership-expand-reliable-affordable-energy-access-and-power",
+        "evidence_grade": "A",
+        "commercial_stage": "selected_developer_pending_docs",
+        "evidence_date": "2026-07-29"
+      },
+      {
+        "id": "NEE-020",
+        "business_line": "DATA_CENTER",
+        "relationship": "end_user",
+        "name": "Brookfield Paducah Data Center Campus",
+        "details": "預計 1.8GW 公用事業負載、1.2GW 以上運算能力；NextEra 規劃供應最高 2GW 天然氣與 2.6GW BESS，非現有已投運資產。",
+        "evidence_url": "https://newsroom.nexteraenergy.com/2026-07-29-DOE-Site-in-Western-Kentucky-Revitalized-with-Data-Center-Campus-and-Dedicated-Energy-Project%2C-Creating-Jobs-and-Protecting-Residents-and-Businesses-from-Costs",
+        "evidence_grade": "1.8 GW 負載",
+        "commercial_stage": "planned_campus",
+        "evidence_date": "2026-07-29"
+      },
+      {
+        "id": "NEE-021",
+        "business_line": "NEER_GAS",
+        "relationship": "partner",
+        "name": "U.S. Department of Commerce",
+        "details": "2026-08 與日本政府簽 Texas、Pennsylvania 最多 10GW 燃氣發電專案融資商業條款，已啟動初期資金；非已投運。",
+        "evidence_url": "https://newsroom.nexteraenergy.com/2026-08-12-NextEra-Energy%2C-U-S-Department-of-Commerce-and-Government-of-Japan-finalize-commercial-terms-reach-funding-milestone-for-up-to-10-GW-of-gas-powered-generation",
+        "evidence_grade": "最高 10 GW",
+        "commercial_stage": "definitive_development_funding",
+        "evidence_date": "2026-08-12"
+      },
+      {
+        "id": "NEE-022",
+        "business_line": "NEER_GAS",
+        "relationship": "partner",
+        "name": "Government of Japan（日本政府）",
+        "details": "2026-08 與美國商務部及 NextEra 簽最多 10GW 天然氣發電開發融資協議，涉及日本對美投資承諾。",
+        "evidence_url": "https://newsroom.nexteraenergy.com/2026-08-12-NextEra-Energy%2C-U-S-Department-of-Commerce-and-Government-of-Japan-finalize-commercial-terms-reach-funding-milestone-for-up-to-10-GW-of-gas-powered-generation",
+        "evidence_grade": "最高 10 GW",
+        "commercial_stage": "definitive_development_funding",
+        "evidence_date": "2026-08-12"
+      },
+      {
+        "id": "NEE-023",
+        "business_line": "GAS_PIPE",
+        "relationship": "joint_venture_partner",
+        "name": "Chesapeake Utilities Corporation",
+        "details": "2026-09 Florida Energy Pathway 97 英里、12 億美元天然氣管線合資，NEER 持股 49%、Chesapeake 保留 51%；預計 2030 投運。",
+        "evidence_url": "https://www.chpk.com/chesapeake-utilities-corporation-announces-sale-of-49-ownership-interest-in-florida-energy-pathway-project/",
+        "evidence_grade": "97 英里",
+        "commercial_stage": "joint_venture_49_percent",
+        "evidence_date": "2026-09-01"
+      },
+      {
+        "id": "NEE-024",
+        "business_line": "GAS_PIPE",
+        "relationship": "operator",
+        "name": "Peninsula Pipeline Company",
+        "details": "Florida Energy Pathway 24 吋管線之開發、建造與營運方，為 Chesapeake Utilities 子公司。",
+        "evidence_url": "https://www.chpk.com/chesapeake-utilities-corporation-announces-sale-of-49-ownership-interest-in-florida-energy-pathway-project/",
+        "evidence_grade": "A",
+        "commercial_stage": "contracted_operator",
+        "evidence_date": "2026-09-01"
+      },
+      {
+        "id": "NEE-025",
+        "business_line": "GAS_PIPE",
+        "relationship": "upstream_interconnector",
+        "name": "Florida Gas Transmission",
+        "details": "Florida Energy Pathway 上游供氣容量由 Florida Gas Transmission Phase IX 擴建支援；非 NextEra 直接設備供應商。",
+        "evidence_url": "https://www.chpk.com/chesapeake-utilities-corporation-announces-sale-of-49-ownership-interest-in-florida-energy-pathway-project/",
+        "evidence_grade": "A",
+        "commercial_stage": "upstream_pipeline",
+        "evidence_date": "2026-09-01"
+      },
+      {
+        "id": "NEE-026",
+        "business_line": "FPL_RETAIL",
+        "relationship": "regulator",
+        "name": "Florida Public Service Commission（FPSC）",
+        "details": "FPL 2026–2029 費率與大型資料中心負載保護條款監管機關；不是直接電力客戶。",
+        "evidence_url": "https://newsroom.fpl.com/FPL-rate-structure-protects-Florida-customers-from-data-center-costs",
+        "evidence_grade": "A",
+        "commercial_stage": "regulated_tariff",
+        "evidence_date": "2026-10-01"
+      },
+      {
+        "id": "NEE-027",
+        "business_line": "MNA",
+        "relationship": "acquisition_target",
+        "name": "Dominion Energy",
+        "details": "2026-05 宣布合併、2026-09 股東批准，2026-10 仍待州與聯邦監管核准；預計 2027 下半年完成，不可提前合併資產。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/753308/000075330826000077/neeq32026exhibit99.htm",
+        "evidence_grade": "A",
+        "commercial_stage": "merger_pending",
+        "evidence_date": "2026-10-21"
+      },
+      {
+        "id": "NEE-028",
+        "business_line": "FPL_GAS",
+        "relationship": "supplier",
+        "name": "GE Vernova",
+        "details": "GE 官方案例確認向 FPL Dania Beach Clean Energy Center 供應 2 台 7HA.03 燃氣渦輪機，屬已投運設備供應，非 2026 新單。",
+        "evidence_url": "https://www.gevernova.com/gas-power/resources/case-studies/first-7ha-florida-power-light",
+        "evidence_grade": "2 × 7HA.03",
+        "commercial_stage": "installed_equipment"
+      },
+      {
+        "id": "NEE-029",
+        "business_line": "NEER_WIND",
+        "relationship": "supplier",
+        "name": "GE Vernova（GE Wind）",
+        "details": "NextEra 官方 New Salem Wind 專案列出 New Salem I 最多 71 台、II 最多 65 台 GE 風機；已確認設備品牌，非 2026 新採購。",
+        "evidence_url": "https://www.nexteraenergyresources.com/new-salem-wind/project-overview.html",
+        "evidence_grade": "最多 136 台",
+        "commercial_stage": "installed_turbine_fleet"
+      },
+      {
+        "id": "NEE-030",
+        "business_line": "NEER_GAS",
+        "relationship": "strategic_partner",
+        "name": "GE Vernova",
+        "details": "2025 年雙方合作規劃 GW 級天然氣電廠，涉及共同開發；未將合作規劃當作已簽 2026 新渦輪訂單。",
+        "evidence_url": "https://www.utilitydive.com/news/nextera-ge-vernova-gas-earnings/738316/",
+        "evidence_grade": "待個案訂單確認",
+        "commercial_stage": "gas_generation_ecosystem",
+        "evidence_date": "2025-01-27"
+      },
+      {
+        "id": "NEE-031",
+        "business_line": "RETAIL_B2B",
+        "relationship": "customer",
+        "name": "Portland General Electric（PGE）",
+        "details": "NextEra 官方列 Wheatridge 350MW 風、光、儲混合設施為 PGE 提供電力解決方案；屬已建置專案。",
+        "evidence_url": "https://www.nexteraenergyresources.com/our-solutions.html",
+        "evidence_grade": "350 MW",
+        "commercial_stage": "operating_project"
+      },
+      {
+        "id": "NEE-032",
+        "business_line": "DUANE_RESTART",
+        "relationship": "project_asset",
+        "name": "Duane Arnold Energy Center",
+        "details": "Iowa 615MW 核電，2020 停機，預計最晚 2029 Q1 重啟；Google 25 年 PPA、DOE 最高 19 億美元貸款，仍待 NRC 許可。",
+        "evidence_url": "https://www.investor.nexteraenergy.com/news-and-events/news-releases/2026/09-08-2026-123110497",
+        "evidence_grade": "A",
+        "commercial_stage": "restart_pending",
+        "evidence_date": "2026-11-12",
+        "capacity": "615 MW"
+      },
+      {
+        "id": "NEE-033",
+        "business_line": "NEER_NUCLEAR",
+        "relationship": "project_asset",
+        "name": "Point Beach Unit 1",
+        "details": "Wisconsin 核電 595MW，2025 SEC 10-K 現有資產，2050 執照到期，2026 續約待監管核准。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm",
+        "evidence_grade": "A",
+        "commercial_stage": "operating",
+        "evidence_date": "2026-11-12",
+        "capacity": "595 MW"
+      },
+      {
+        "id": "NEE-034",
+        "business_line": "NEER_NUCLEAR",
+        "relationship": "project_asset",
+        "name": "Point Beach Unit 2",
+        "details": "Wisconsin 核電 595MW，2025 SEC 10-K 現有資產，2053 執照到期，2026 續約待監管核准。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm",
+        "evidence_grade": "A",
+        "commercial_stage": "operating",
+        "evidence_date": "2026-11-12",
+        "capacity": "595 MW"
+      },
+      {
+        "id": "NEE-035",
+        "business_line": "NEER_NUCLEAR",
+        "relationship": "project_asset",
+        "name": "Seabrook Nuclear Power Plant",
+        "details": "New Hampshire 1,102MW 核電總淨容量，NextEra 為主要共同持有人，部分商售、部分長約。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm",
+        "evidence_grade": "A",
+        "commercial_stage": "operating",
+        "evidence_date": "2026-11-12",
+        "capacity": "1,102 MW"
+      },
+      {
+        "id": "NEE-036",
+        "business_line": "FPL_GAS",
+        "relationship": "project_asset",
+        "name": "Dania Beach Clean Energy Center",
+        "details": "FPL 佛州 1,260MW 天然氣機組更新，GE Vernova 兩台 7HA.03 已投運；不是 2026 新單。",
+        "evidence_url": "https://www.gevernova.com/gas-power/resources/case-studies/first-7ha-florida-power-light",
+        "evidence_grade": "A",
+        "commercial_stage": "operating",
+        "evidence_date": "2026-11-12",
+        "capacity": "1,260 MW"
+      },
+      {
+        "id": "NEE-037",
+        "business_line": "NEER_WIND",
+        "relationship": "project_asset",
+        "name": "New Salem Wind I",
+        "details": "NextEra 官方具名專案最多 71 台 GE 風機、約 200MW；實際台數以建成狀態為準。",
+        "evidence_url": "https://www.nexteraenergyresources.com/new-salem-wind/project-overview.html",
+        "evidence_grade": "A",
+        "commercial_stage": "operating_or_project",
+        "evidence_date": "2026-11-12",
+        "capacity": "約 200 MW"
+      },
+      {
+        "id": "NEE-038",
+        "business_line": "NEER_WIND",
+        "relationship": "project_asset",
+        "name": "New Salem Wind II",
+        "details": "NextEra 官方具名專案最多 65 台 GE 風機、約 175MW。",
+        "evidence_url": "https://www.nexteraenergyresources.com/new-salem-wind/project-overview.html",
+        "evidence_grade": "A",
+        "commercial_stage": "operating_or_project",
+        "evidence_date": "2026-11-12",
+        "capacity": "約 175 MW"
+      },
+      {
+        "id": "NEE-039",
+        "business_line": "NEER_WIND",
+        "relationship": "project_asset",
+        "name": "Wheatridge Renewable Energy Facility",
+        "details": "NextEra 官方列為 PGE 服務的風、光、儲混合專案，合計 350MW。",
+        "evidence_url": "https://www.nexteraenergyresources.com/our-solutions.html",
+        "evidence_grade": "A",
+        "commercial_stage": "operating",
+        "evidence_date": "2026-11-12",
+        "capacity": "350 MW"
+      },
+      {
+        "id": "NEE-040",
+        "business_line": "DATA_CENTER",
+        "relationship": "project_asset",
+        "name": "Paducah American Energy Hub",
+        "details": "2026-07 公告 Kentucky DOE 基地專案，最高 2GW 天然氣、2.6GW BESS，規劃至 2032 年完整建成；尚待最終合約。",
+        "evidence_url": "https://newsroom.nexteraenergy.com/2026-07-29-DOE-Site-in-Western-Kentucky-Revitalized-with-Data-Center-Campus-and-Dedicated-Energy-Project%2C-Creating-Jobs-and-Protecting-Residents-and-Businesses-from-Costs",
+        "evidence_grade": "A",
+        "commercial_stage": "planned_pending_definitive_agreements",
+        "evidence_date": "2026-11-12",
+        "capacity": "2 GW 燃氣＋2.6 GW BESS"
+      },
+      {
+        "id": "NEE-041",
+        "business_line": "NEER_GAS",
+        "relationship": "project_asset",
+        "name": "Texas Federal Energy Hub",
+        "details": "2026-08 美日商業條款下 Texas 大型燃氣發電專案之一，總體兩州最高 10GW；個案最終容量不臆測。",
+        "evidence_url": "https://newsroom.nexteraenergy.com/2026-08-12-NextEra-Energy%2C-U-S-Department-of-Commerce-and-Government-of-Japan-finalize-commercial-terms-reach-funding-milestone-for-up-to-10-GW-of-gas-powered-generation",
+        "evidence_grade": "A",
+        "commercial_stage": "funded_development",
+        "evidence_date": "2026-11-12"
+      },
+      {
+        "id": "NEE-042",
+        "business_line": "NEER_GAS",
+        "relationship": "project_asset",
+        "name": "Pennsylvania Federal Energy Hub",
+        "details": "2026-08 美日商業條款下 Pennsylvania 燃氣發電專案之一，與 Texas 合計最高 10GW。",
+        "evidence_url": "https://newsroom.nexteraenergy.com/2026-08-12-NextEra-Energy%2C-U-S-Department-of-Commerce-and-Government-of-Japan-finalize-commercial-terms-reach-funding-milestone-for-up-to-10-GW-of-gas-powered-generation",
+        "evidence_grade": "A",
+        "commercial_stage": "funded_development",
+        "evidence_date": "2026-11-12"
+      },
+      {
+        "id": "NEE-043",
+        "business_line": "GAS_PIPE",
+        "relationship": "project_asset",
+        "name": "Florida Energy Pathway",
+        "details": "南佛州 97 英里、24 吋、約 12 億美元天然氣管線，NEER 持股 49%，目標 2030 商轉。",
+        "evidence_url": "https://www.chpk.com/chesapeake-utilities-corporation-announces-sale-of-49-ownership-interest-in-florida-energy-pathway-project/",
+        "evidence_grade": "A",
+        "commercial_stage": "planned_2030",
+        "evidence_date": "2026-11-12",
+        "capacity": "97 miles"
+      },
+      {
+        "id": "NEE-044",
+        "business_line": "FPL_RETAIL",
+        "relationship": "project_asset",
+        "name": "FPL Florida regulated customer base",
+        "details": "2025 10-K 受監管佛州電力用戶逾 600 萬帳戶，非單一具名法人；作客群節點不虛構客戶。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm",
+        "evidence_grade": "A",
+        "commercial_stage": "operating_regulated_utility",
+        "evidence_date": "2026-11-12"
+      },
+      {
+        "id": "NEE-045",
+        "business_line": "NEER_SOLAR",
+        "relationship": "project_asset",
+        "name": "Meta ERCOT/SPP/MISO Solar Portfolio",
+        "details": "2025-12 Meta 九座太陽能專案合計約 2.1GW，2026–2028 分期上線；未具名九座電廠，維持組合層級。",
+        "evidence_url": "https://newsroom.nexteraenergy.com/2025-12-08-NextEra-Energy-Resources-and-Meta-Strengthen-American-Energy-Leadership?l=12",
+        "evidence_grade": "A",
+        "commercial_stage": "contracted_development",
+        "evidence_date": "2026-11-12",
+        "capacity": "約 2.1 GW"
+      },
+      {
+        "id": "NEE-046",
+        "business_line": "NEER_BESS",
+        "relationship": "project_asset",
+        "name": "Meta New Mexico Storage Portfolio",
+        "details": "2025-12 Meta New Mexico 兩份 ESA 168MW 儲能，經 PNM Rate 36B 支援 Meta；不將 PNM 當 Meta 的另一個獨立終端客戶。",
+        "evidence_url": "https://newsroom.nexteraenergy.com/2025-12-08-NextEra-Energy-Resources-and-Meta-Strengthen-American-Energy-Leadership?l=12",
+        "evidence_grade": "A",
+        "commercial_stage": "contracted_development",
+        "evidence_date": "2026-11-12",
+        "capacity": "168 MW"
+      },
+      {
+        "id": "NEE-047",
+        "business_line": "NEER_SOLAR",
+        "relationship": "project_asset",
+        "name": "Google Oklahoma Solar Portfolio",
+        "details": "2025-12 兩項 Oklahoma PPA 合計 600MW，Google 另與 OG&E 有公用事業用電協議，需區分直接 PPA 與當地公用事業零售供電。",
+        "evidence_url": "https://www.investor.nexteraenergy.com/news-and-events/news-releases/2025/12-08-2025-120206963",
+        "evidence_grade": "A",
+        "commercial_stage": "contracted_development",
+        "evidence_date": "2026-11-12",
+        "capacity": "600 MW"
+      },
+      {
+        "id": "NEE-048",
+        "business_line": "FPL_GRID",
+        "relationship": "portfolio_or_pipeline",
+        "name": "FPL 2026–2029 Storm Resilience Grid Investment",
+        "details": "2026 Q3 FPL 資本支出約 24 億美元，強化配電韌性、輸配電與可靠度；屬公司投資計畫，未揭露單一承包商。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/753308/000075330826000077/neeq32026exhibit99.htm",
+        "evidence_grade": "A",
+        "commercial_stage": "ongoing_capex",
+        "evidence_date": "2026-11-12"
+      },
+      {
+        "id": "NEE-049",
+        "business_line": "NEER_BESS",
+        "relationship": "portfolio_or_pipeline",
+        "name": "NEER 2026 Q3 Battery Storage Backlog",
+        "details": "2026 Q3 新增約 2.4GW 儲能簽約儲備，與 36.7GW 再生能源＋儲能總 backlog 分開。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/753308/000075330826000077/neeq32026exhibit99.htm",
+        "evidence_grade": "A",
+        "commercial_stage": "contracted_backlog",
+        "evidence_date": "2026-11-12",
+        "capacity": "2.4 GW 新增"
+      },
+      {
+        "id": "NEE-050",
+        "business_line": "TRANSMISSION",
+        "relationship": "portfolio_or_pipeline",
+        "name": "NEER Transmission Regulated Portfolio",
+        "details": "2026 Q3 受監管輸電與天然氣輸送之投入及已確保資本支出合計約 127 億美元，較 2025-12 成長約 25%。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/753308/000075330826000077/neeq32026exhibit99.htm",
+        "evidence_grade": "A",
+        "commercial_stage": "secured_capex",
+        "evidence_date": "2026-11-12",
+        "capacity": "US$12.7bn"
+      },
+      {
+        "id": "NEE-051",
+        "business_line": "DATA_CENTER",
+        "relationship": "portfolio_or_pipeline",
+        "name": "NEER Three Federal Hubs",
+        "details": "2026 Q3 Texas 兩處、Pennsylvania 一處聯邦能源中心合計約 16.5GW，已簽 definitive agreements 並取得 57 億美元初始資金；此為整體 hub 規模，與 10GW 燃氣專案不宜直接相加。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/753308/000075330826000077/neeq32026exhibit99.htm",
+        "evidence_grade": "A",
+        "commercial_stage": "signed_development_agreements",
+        "evidence_date": "2026-11-12",
+        "capacity": "16.5 GW hubs"
+      },
+      {
+        "id": "NEE-052",
+        "business_line": "FPL_RETAIL",
+        "relationship": "competitor",
+        "name": "Duke Energy",
+        "details": "受監管公用事業；B 級市場重疊，非具名競標證據。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-13"
+      },
+      {
+        "id": "NEE-053",
+        "business_line": "FPL_RETAIL",
+        "relationship": "competitor",
+        "name": "Southern Company",
+        "details": "受監管電力公用事業；B 級市場重疊，非具名競標證據。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-13"
+      },
+      {
+        "id": "NEE-054",
+        "business_line": "FPL_GRID",
+        "relationship": "competitor",
+        "name": "American Electric Power",
+        "details": "輸配電資本支出；B 級市場重疊，非具名競標證據。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-13"
+      },
+      {
+        "id": "NEE-055",
+        "business_line": "FPL_GRID",
+        "relationship": "competitor",
+        "name": "Dominion Energy",
+        "details": "受監管電網；合併仍待核准；B 級市場重疊，非具名競標證據。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-13"
+      },
+      {
+        "id": "NEE-056",
+        "business_line": "NEER_WIND",
+        "relationship": "competitor",
+        "name": "RWE Clean Energy",
+        "details": "美國風電與企業 PPA；B 級市場重疊，非具名競標證據。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-13"
+      },
+      {
+        "id": "NEE-057",
+        "business_line": "NEER_WIND",
+        "relationship": "competitor",
+        "name": "Invenergy",
+        "details": "風電與混合能源；B 級市場重疊，非具名競標證據。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-13"
+      },
+      {
+        "id": "NEE-058",
+        "business_line": "NEER_SOLAR",
+        "relationship": "competitor",
+        "name": "AES Corporation",
+        "details": "太陽能與企業 PPA；B 級市場重疊，非具名競標證據。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-13"
+      },
+      {
+        "id": "NEE-059",
+        "business_line": "NEER_SOLAR",
+        "relationship": "competitor",
+        "name": "Enel Green Power",
+        "details": "再生能源開發；B 級市場重疊，非具名競標證據。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-13"
+      },
+      {
+        "id": "NEE-060",
+        "business_line": "NEER_BESS",
+        "relationship": "competitor",
+        "name": "AES Corporation",
+        "details": "電網級儲能；B 級市場重疊，非具名競標證據。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-13"
+      },
+      {
+        "id": "NEE-061",
+        "business_line": "NEER_BESS",
+        "relationship": "competitor",
+        "name": "Vistra",
+        "details": "電池儲能容量市場；B 級市場重疊，非具名競標證據。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-13"
+      },
+      {
+        "id": "NEE-062",
+        "business_line": "NEER_NUCLEAR",
+        "relationship": "competitor",
+        "name": "Constellation Energy",
+        "details": "核電長約與科技公司供電；B 級市場重疊，非具名競標證據。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-13"
+      },
+      {
+        "id": "NEE-063",
+        "business_line": "NEER_NUCLEAR",
+        "relationship": "competitor",
+        "name": "Vistra",
+        "details": "核電長約；B 級市場重疊，非具名競標證據。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-13"
+      },
+      {
+        "id": "NEE-064",
+        "business_line": "NEER_GAS",
+        "relationship": "competitor",
+        "name": "NRG Energy",
+        "details": "燃氣調度型發電；B 級市場重疊，非具名競標證據。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-13"
+      },
+      {
+        "id": "NEE-065",
+        "business_line": "DATA_CENTER",
+        "relationship": "competitor",
+        "name": "Talen Energy",
+        "details": "資料中心共址供電；B 級市場重疊，非具名競標證據。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-13"
+      },
+      {
+        "id": "NEE-066",
+        "business_line": "DATA_CENTER",
+        "relationship": "competitor",
+        "name": "Constellation Energy",
+        "details": "大型園區供電；B 級市場重疊，非具名競標證據。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-13"
+      },
+      {
+        "id": "NEE-067",
+        "business_line": "TRANSMISSION",
+        "relationship": "competitor",
+        "name": "American Electric Power",
+        "details": "受監管輸電投資；B 級市場重疊，非具名競標證據。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-13"
+      },
+      {
+        "id": "NEE-068",
+        "business_line": "GAS_PIPE",
+        "relationship": "competitor",
+        "name": "Williams Companies",
+        "details": "天然氣管線投資；B 級市場重疊，非具名競標證據。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-13"
+      },
+      {
+        "id": "NEE-069",
+        "business_line": "RETAIL_B2B",
+        "relationship": "competitor",
+        "name": "NRG Energy",
+        "details": "商業零售電力；B 級市場重疊，非具名競標證據。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-13"
+      },
+      {
+        "id": "NEE-070",
+        "business_line": "RETAIL_B2B",
+        "relationship": "competitor",
+        "name": "Constellation Energy",
+        "details": "企業零售能源；B 級市場重疊，非具名競標證據。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2026-02-13"
+      }
+    ],
+    "relationship_categories": [
+      "acquisition_target",
+      "competitor",
+      "customer",
+      "end_user",
+      "financing_counterparty",
+      "joint_venture_partner",
+      "operator",
+      "partner",
+      "portfolio_or_pipeline",
+      "project_asset",
+      "regulator",
+      "seller",
+      "site_owner",
+      "strategic_partner",
+      "supplier",
+      "upstream_interconnector"
+    ],
+    "research_notes": {
+      "method": "A 級以 NextEra/交易對手官方公告、SEC 申報、DOE 文件與 GE Vernova 官方具名設備案例為依據；B 級僅市場競爭重疊。未將一般產業鏈供應商推論為 NextEra 實際直接供應商。",
+      "FY2026_Q3": "2026-10-21：NEER 新增 3.7GW 再生能源與儲能合約，包含 2.4GW BESS，總 backlog 約 36.7GW；FPL Q3 淨利 16.2 億美元；Dominion 合併仍待核准。",
+      "data_center_customer": "Google 25 年 Duane Arnold PPA、2025-12 Oklahoma 600MW PPA；Meta 11 PPA＋2 ESA 約 2.5GW；Google Cloud 合作含多 GW 園區但尚非已投運負載。",
+      "duane_arnold": "615MW 是核電廠容量，不是 Google 單獨採購容量；CIPCO 另購剩餘電力，重啟目標 2029 Q1，2026-09 DOE 最高 19 億美元貸款已財務交割但核安監管仍待完成。",
+      "point_beach": "WPPI 168MW 續約至 2050 年代；WEPCO 2026-08 新簽兩機組 86% 的 20 年 PPA（約 1GW），2030/2033 開始，仍待 PSCW 核准。避免與 2025 既有合約重複當新增容量。",
+      "federal_hubs": "2026 Q3 三個聯邦 hub 合計 16.5GW、初始資金 57 億美元；2026-08 美日協議最多 10GW 天然氣，兩者涉及相互重疊的開發計畫，不可加總為 26.5GW 新電廠。",
+      "paducah": "DOE Kentucky Paducah：Brookfield 為資料中心開發營運方；NEER 擬建 2GW 燃氣與 2.6GW 儲能；Big Rivers 批發、Jackson Purchase 零售；待最終文件與監管核准。",
+      "pipeline": "2026-09 Florida Energy Pathway 97 英里、12 億美元；NEER 49%、Chesapeake 51%；2030 年目標商轉，非已投運。",
+      "dominion": "2026-05 公告擬合併，2026-09 股東同意，2026-10 仍待監管；不得把 Dominion 發電或用戶納入 NEE 現有產能。",
+      "verified_suppliers": "GE Vernova 已具名 FPL Dania Beach 2 台 7HA.03 燃氣渦輪與 NEER New Salem GE 風機；Google Cloud 為已宣布選用之企業 AI 技術供應商。這些均不是 2026 年新設備訂單。",
+      "taiwan": "未查得可核對的台灣公司對 NextEra/FPL/NEER 直接供應合約或設備原廠證明；不把台灣電力設備同業視為既成供應商。",
+      "original_profile": "GitHub commit da93c81d 原始 11 個頂層欄位逐欄保留；以 Git blob SHA-1 重新計算原始 11 欄、兩空格縮排及結尾換行，得到 4fd8366c95ee89f88bb4375a707723b3c00e2515，與 GitHub 原始 blob SHA 完全一致。只新增 industry_chain。",
+      "source_catalog": [
+        {
+          "key": "q3",
+          "url": "https://www.sec.gov/Archives/edgar/data/753308/000075330826000077/neeq32026exhibit99.htm"
+        },
+        {
+          "key": "10k",
+          "url": "https://www.sec.gov/Archives/edgar/data/37634/000075330826000015/nee-20251231.htm"
+        },
+        {
+          "key": "google_nuclear",
+          "url": "https://www.investor.nexteraenergy.com/news-and-events/news-releases/2025/10-27-2025-203948689"
+        },
+        {
+          "key": "google_cloud",
+          "url": "https://www.investor.nexteraenergy.com/news-and-events/news-releases/2025/12-08-2025-120206963"
+        },
+        {
+          "key": "meta",
+          "url": "https://newsroom.nexteraenergy.com/2025-12-08-NextEra-Energy-Resources-and-Meta-Strengthen-American-Energy-Leadership?l=12"
+        },
+        {
+          "key": "wppi",
+          "url": "https://www.investor.nexteraenergy.com/news-and-events/news-releases/2025/12-08-2025-123038547"
+        },
+        {
+          "key": "wec",
+          "url": "https://www.sec.gov/Archives/edgar/data/107815/000078332526000095/wec-20260814.htm"
+        },
+        {
+          "key": "doe_loan",
+          "url": "https://www.investor.nexteraenergy.com/news-and-events/news-releases/2026/09-08-2026-123110497"
+        },
+        {
+          "key": "japan",
+          "url": "https://newsroom.nexteraenergy.com/2026-08-12-NextEra-Energy%2C-U-S-Department-of-Commerce-and-Government-of-Japan-finalize-commercial-terms-reach-funding-milestone-for-up-to-10-GW-of-gas-powered-generation"
+        },
+        {
+          "key": "paducah",
+          "url": "https://newsroom.nexteraenergy.com/2026-07-29-DOE-Site-in-Western-Kentucky-Revitalized-with-Data-Center-Campus-and-Dedicated-Energy-Project%2C-Creating-Jobs-and-Protecting-Residents-and-Businesses-from-Costs"
+        },
+        {
+          "key": "paducah_doe",
+          "url": "https://www.energy.gov/articles/energy-department-announces-partnership-expand-reliable-affordable-energy-access-and-power"
+        },
+        {
+          "key": "fep",
+          "url": "https://www.chpk.com/chesapeake-utilities-corporation-announces-sale-of-49-ownership-interest-in-florida-energy-pathway-project/"
+        },
+        {
+          "key": "fepq3",
+          "url": "https://www.chpk.com/chesapeake-utilities-corporation-reports-third-quarter-2026-results/"
+        },
+        {
+          "key": "gev_gas",
+          "url": "https://www.gevernova.com/gas-power/resources/case-studies/first-7ha-florida-power-light"
+        },
+        {
+          "key": "gev_wind",
+          "url": "https://www.nexteraenergyresources.com/new-salem-wind/project-overview.html"
+        },
+        {
+          "key": "pge",
+          "url": "https://www.nexteraenergyresources.com/our-solutions.html"
+        },
+        {
+          "key": "rate",
+          "url": "https://newsroom.fpl.com/FPL-rate-structure-protects-Florida-customers-from-data-center-costs"
+        },
+        {
+          "key": "investor",
+          "url": "https://www.investor.nexteraenergy.com/~/media/Files/N/NEE-IR/news-and-events/events-and-presentations/2025/2025-12-08%20NextEra%20Energy%20Investor%20Conference%20vF.pdf?stream=top"
+        },
+        {
+          "key": "dominion",
+          "url": "https://www.investor.nexteraenergy.com/news-and-events/news-releases/2026"
+        },
+        {
+          "key": "japan_funding",
+          "url": "https://www.reuters.com/business/energy/ceraweek-nextera-secures-land-texas-giant-gas-plant-power-data-centers-ceo-says-2026-03-23/"
+        },
+        {
+          "key": "gev_partnership",
+          "url": "https://www.utilitydive.com/news/nextera-ge-vernova-gas-earnings/738316/"
+        }
+      ],
+      "integrity_verification": {
+        "method": "git_blob_sha1",
+        "original_sha": "4fd8366c95ee89f88bb4375a707723b3c00e2515",
+        "result": "exact_match",
+        "original_keys": [
+          "schema_version",
+          "generation_mode",
+          "company_id",
+          "symbol",
+          "canonical_schema_version",
+          "display",
+          "value_provenance",
+          "evidence",
+          "translation_engine",
+          "translation_source",
+          "translation_zh_tw"
+        ]
+      }
+    }
   }
 }

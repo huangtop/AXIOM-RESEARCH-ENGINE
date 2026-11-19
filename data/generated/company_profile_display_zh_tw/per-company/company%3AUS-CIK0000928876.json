@@ -631,5 +631,411 @@
       "AI"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-11",
+    "company": "Tower Semiconductor Ltd.",
+    "symbol": "TSEM",
+    "locale": "zh-TW",
+    "business_lines": [
+      {
+        "id": "SIPHO",
+        "name": "矽光子與 PIC 光晶粒"
+      },
+      {
+        "id": "COHERENT",
+        "name": "相干光通訊與 DCI"
+      },
+      {
+        "id": "OPTICAL",
+        "name": "光模組與 200G/400G/lane"
+      },
+      {
+        "id": "LASER",
+        "name": "InP 異質整合雷射"
+      },
+      {
+        "id": "SWITCH",
+        "name": "光路交換 OCS"
+      },
+      {
+        "id": "SIGE",
+        "name": "SiGe BiCMOS 與高速 EIC"
+      },
+      {
+        "id": "RFSOI",
+        "name": "RF-SOI 射頻前端"
+      },
+      {
+        "id": "RFCMOS",
+        "name": "RF CMOS 與無線通訊"
+      },
+      {
+        "id": "BCD",
+        "name": "BCD 電源管理與高壓"
+      },
+      {
+        "id": "CIS",
+        "name": "CMOS 影像感測器"
+      },
+      {
+        "id": "SENSORS",
+        "name": "MEMS 與非影像感測器"
+      },
+      {
+        "id": "ANALOG",
+        "name": "類比及混合訊號代工"
+      },
+      {
+        "id": "EDA",
+        "name": "EDA/IP 與設計導入"
+      },
+      {
+        "id": "WAFER",
+        "name": "晶圓材料及磊晶"
+      },
+      {
+        "id": "EQUIPMENT",
+        "name": "晶圓廠設備及製程材料"
+      },
+      {
+        "id": "CAPACITY",
+        "name": "全球晶圓廠產能與委外製造"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "supplier",
+      "partner",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "CAPACITY_customer_001",
+        "name": "Nuvoton Technology Corporation Japan (NTCJ)",
+        "business_line": "CAPACITY",
+        "relationship": "customer",
+        "details": "2025 年報揭露 NTCJ 貢獻 11% 營收；TPSCo 合資夥伴與產能合作方，屬具名客戶。"
+      },
+      {
+        "id": "COHERENT_customer_002",
+        "name": "Marvell Technology",
+        "business_line": "COHERENT",
+        "relationship": "customer",
+        "details": "2026 年雙方公告累計出貨超過 500 萬顆相干光子 IC；為 Tower 光子晶圓代工合作客戶。",
+        "ticker": "MRVL"
+      },
+      {
+        "id": "OPTICAL_customer_003",
+        "name": "Coherent Corp.",
+        "business_line": "OPTICAL",
+        "relationship": "customer",
+        "details": "2026 年與 Tower 合作展示 400Gbps/lane 矽光子調變器，涉及光收發器製造供應鏈。",
+        "ticker": "COHR"
+      },
+      {
+        "id": "OPTICAL_customer_004",
+        "name": "Lightwave Logic",
+        "business_line": "OPTICAL",
+        "relationship": "customer",
+        "details": "公開揭露 Tower 矽光子製程合作與聚合物調變器整合；特定量產訂單未公開。",
+        "ticker": "LWLG"
+      },
+      {
+        "id": "OPTICAL_customer_005",
+        "name": "InnoLight",
+        "business_line": "OPTICAL",
+        "relationship": "customer",
+        "details": "2026 年公司法說提及的矽光子相關客戶；不推定其所有光模組均使用 Tower 晶粒。"
+      },
+      {
+        "id": "SIPHO_customer_006",
+        "name": "未具名 2027 矽光子長約客戶群",
+        "business_line": "SIPHO",
+        "relationship": "customer",
+        "details": "2026 年 5 月公布 2027 年矽光子合約金額 13 億美元、收到 2.9 億美元產能預付款；未逐一揭露客戶名稱。"
+      },
+      {
+        "id": "WAFER_supplier_007",
+        "name": "IQE",
+        "business_line": "WAFER",
+        "relationship": "supplier",
+        "details": "2026 年簽訂多年期 InP 磊晶晶圓供應協議，支援 200G/lane、400G/lane 與光交換器平台。",
+        "ticker": "IQE.L"
+      },
+      {
+        "id": "CAPACITY_supplier_008",
+        "name": "Intel",
+        "business_line": "CAPACITY",
+        "relationship": "supplier",
+        "details": "Intel 新墨西哥 300mm 晶圓廠依 2023 年協議提供 Tower 客戶的代工產能走廊。",
+        "ticker": "INTC"
+      },
+      {
+        "id": "CAPACITY_supplier_009",
+        "name": "Nuvoton Technology Corporation Japan (NTCJ)",
+        "business_line": "CAPACITY",
+        "relationship": "supplier",
+        "details": "日本 TPSCo 合資與 200mm/300mm 產能安排；2026 年宣布 2027 年重組及相互供應協議。"
+      },
+      {
+        "id": "EDA_supplier_010",
+        "name": "Synopsys",
+        "business_line": "EDA",
+        "relationship": "supplier",
+        "details": "20-F 具名 EDA 設計工具及標準元件、I/O、記憶體 IP 授權來源。",
+        "ticker": "SNPS"
+      },
+      {
+        "id": "EDA_supplier_011",
+        "name": "Cadence Design Systems",
+        "business_line": "EDA",
+        "relationship": "supplier",
+        "details": "20-F 具名 EDA 設計流程合作供應商。",
+        "ticker": "CDNS"
+      },
+      {
+        "id": "EDA_supplier_012",
+        "name": "Siemens EDA",
+        "business_line": "EDA",
+        "relationship": "supplier",
+        "details": "20-F 具名 EDA 設計工具與設計流程合作供應商。",
+        "ticker": "SIE.DE"
+      },
+      {
+        "id": "EDA_supplier_013",
+        "name": "Keysight Technologies",
+        "business_line": "EDA",
+        "relationship": "supplier",
+        "details": "20-F 具名高頻設計及 EDA 工具合作供應商。",
+        "ticker": "KEYS"
+      },
+      {
+        "id": "EDA_supplier_014",
+        "name": "eMemory Technology",
+        "business_line": "EDA",
+        "relationship": "supplier",
+        "details": "20-F 具名記憶體矽智財授權供應商。",
+        "ticker": "3529.TW"
+      },
+      {
+        "id": "CAPACITY_supplier_015",
+        "name": "STMicroelectronics",
+        "business_line": "CAPACITY",
+        "relationship": "supplier",
+        "details": "義大利 Agrate 300mm 晶圓廠合作提供潔淨室與生產能力；屬產能合作非單純設備供應。",
+        "ticker": "STM"
+      },
+      {
+        "id": "COHERENT_partner_016",
+        "name": "Marvell Technology",
+        "business_line": "COHERENT",
+        "relationship": "partner",
+        "details": "共同推進相干矽光子 PIC、異質材料整合與 3D 光電封裝。",
+        "ticker": "MRVL"
+      },
+      {
+        "id": "OPTICAL_partner_017",
+        "name": "Coherent Corp.",
+        "business_line": "OPTICAL",
+        "relationship": "partner",
+        "details": "共同開發 400Gbps/lane 矽光子調變器及高速光通訊平台。",
+        "ticker": "COHR"
+      },
+      {
+        "id": "LASER_partner_018",
+        "name": "IQE",
+        "business_line": "LASER",
+        "relationship": "partner",
+        "details": "InP 磊晶晶圓供應及新一代 InP/SiPho 平台開發，並解決既有 IP 爭議。",
+        "ticker": "IQE.L"
+      },
+      {
+        "id": "CAPACITY_partner_019",
+        "name": "Nuvoton Technology Corporation",
+        "business_line": "CAPACITY",
+        "relationship": "partner",
+        "details": "TPSCo 51% Tower／49% NTCJ 合資與日本產能重組，交易仍待 2027 年完成。",
+        "ticker": "4919.TW"
+      },
+      {
+        "id": "CAPACITY_partner_020",
+        "name": "STMicroelectronics",
+        "business_line": "CAPACITY",
+        "relationship": "partner",
+        "details": "義大利 Agrate 300mm 產能共享、製程轉移及生產合作。",
+        "ticker": "STM"
+      },
+      {
+        "id": "CAPACITY_partner_021",
+        "name": "Intel",
+        "business_line": "CAPACITY",
+        "relationship": "partner",
+        "details": "新墨西哥 300mm 晶圓製造能力合作，Tower 提供製程及客戶需求。",
+        "ticker": "INTC"
+      },
+      {
+        "id": "SIPHO_partner_022",
+        "name": "NVIDIA",
+        "business_line": "SIPHO",
+        "relationship": "partner",
+        "details": "參與 AI 光互連與 1.6T 光通訊生態系協作；不等同證實 NVIDIA 直接向 Tower 下單。",
+        "ticker": "NVDA"
+      },
+      {
+        "id": "OPTICAL_partner_023",
+        "name": "Lightwave Logic",
+        "business_line": "OPTICAL",
+        "relationship": "partner",
+        "details": "聚合物電光材料與 Tower 矽光子製程整合合作；量產規模未確認。",
+        "ticker": "LWLG"
+      },
+      {
+        "id": "RFSOI_competitor_024",
+        "name": "GlobalFoundries",
+        "business_line": "RFSOI",
+        "relationship": "competitor",
+        "details": "RF-SOI、SiGe、類比特殊製程與矽光子晶圓代工市場競爭。",
+        "ticker": "GFS"
+      },
+      {
+        "id": "BCD_competitor_025",
+        "name": "United Microelectronics",
+        "business_line": "BCD",
+        "relationship": "competitor",
+        "details": "BCD、RF-SOI、矽光子與成熟特殊製程代工競爭。",
+        "ticker": "UMC"
+      },
+      {
+        "id": "SIPHO_competitor_026",
+        "name": "Taiwan Semiconductor Manufacturing",
+        "business_line": "SIPHO",
+        "relationship": "competitor",
+        "details": "矽光子與先進封裝光互連製程、成熟節點特殊製程競爭。",
+        "ticker": "TSM"
+      },
+      {
+        "id": "BCD_competitor_027",
+        "name": "X-FAB Silicon Foundries",
+        "business_line": "BCD",
+        "relationship": "competitor",
+        "details": "車用工業 BCD、混合訊號、MEMS 特殊製程代工競爭。",
+        "ticker": "XFAB.PA"
+      },
+      {
+        "id": "BCD_competitor_028",
+        "name": "Vanguard International Semiconductor",
+        "business_line": "BCD",
+        "relationship": "competitor",
+        "details": "8 吋高壓及電源管理特殊製程競爭。",
+        "ticker": "5347.TW"
+      },
+      {
+        "id": "BCD_competitor_029",
+        "name": "DB HiTek",
+        "business_line": "BCD",
+        "relationship": "competitor",
+        "details": "8 吋類比電源及 BCD 製程競爭。",
+        "ticker": "000990.KS"
+      },
+      {
+        "id": "BCD_competitor_030",
+        "name": "Hua Hong Semiconductor",
+        "business_line": "BCD",
+        "relationship": "competitor",
+        "details": "成熟與特殊製程代工競爭。",
+        "ticker": "1347.HK"
+      },
+      {
+        "id": "ANALOG_competitor_031",
+        "name": "SMIC",
+        "business_line": "ANALOG",
+        "relationship": "competitor",
+        "details": "成熟製程晶圓代工競爭。",
+        "ticker": "0981.HK"
+      },
+      {
+        "id": "SENSORS_competitor_032",
+        "name": "SkyWater Technology",
+        "business_line": "SENSORS",
+        "relationship": "competitor",
+        "details": "美國特殊製程、MEMS 與異質整合代工競爭。",
+        "ticker": "SKYT"
+      },
+      {
+        "id": "CIS_competitor_033",
+        "name": "PSMC",
+        "business_line": "CIS",
+        "relationship": "competitor",
+        "details": "成熟製程、影像感測與類比代工競爭。",
+        "ticker": "6770.TW"
+      },
+      {
+        "id": "RFSOI_competitor_034",
+        "name": "Samsung Foundry",
+        "business_line": "RFSOI",
+        "relationship": "competitor",
+        "details": "部分射頻與特殊製程晶圓代工市場競爭。",
+        "ticker": "005930.KS"
+      },
+      {
+        "id": "WAFER_beneficiary_035",
+        "name": "IQE",
+        "business_line": "WAFER",
+        "relationship": "beneficiary",
+        "details": "Tower InP 磊晶長約需求擴張的直接材料受惠方；採購量依合約而非推算。",
+        "ticker": "IQE.L"
+      },
+      {
+        "id": "OPTICAL_beneficiary_036",
+        "name": "Coherent Corp.",
+        "business_line": "OPTICAL",
+        "relationship": "beneficiary",
+        "details": "400G/lane 矽光子平台及光模組需求成長的潛在受惠方。",
+        "ticker": "COHR"
+      },
+      {
+        "id": "COHERENT_beneficiary_037",
+        "name": "Marvell Technology",
+        "business_line": "COHERENT",
+        "relationship": "beneficiary",
+        "details": "相干光通訊及 AI 資料中心 DCI 需求成長的下游受惠方。",
+        "ticker": "MRVL"
+      },
+      {
+        "id": "OPTICAL_beneficiary_038",
+        "name": "Lightwave Logic",
+        "business_line": "OPTICAL",
+        "relationship": "beneficiary",
+        "details": "聚合物調變器與矽光子整合商用化的潛在受惠方；非已確認收入。",
+        "ticker": "LWLG"
+      },
+      {
+        "id": "EDA_beneficiary_039",
+        "name": "Synopsys",
+        "business_line": "EDA",
+        "relationship": "beneficiary",
+        "details": "Tower 新製程 PDK、IP 與客戶設計導入活動可能推動工具需求。",
+        "ticker": "SNPS"
+      },
+      {
+        "id": "EDA_beneficiary_040",
+        "name": "Cadence Design Systems",
+        "business_line": "EDA",
+        "relationship": "beneficiary",
+        "details": "矽光子與高速類比設計導入活動可能帶動 EDA 工具需求。",
+        "ticker": "CDNS"
+      },
+      {
+        "id": "CAPACITY_beneficiary_041",
+        "name": "Nuvoton Technology",
+        "business_line": "CAPACITY",
+        "relationship": "beneficiary",
+        "details": "日本產能重組與長期供應安排可能影響 Nuvoton 產能配置；非保證獲利。",
+        "ticker": "4919.TW"
+      }
+    ]
   }
 }

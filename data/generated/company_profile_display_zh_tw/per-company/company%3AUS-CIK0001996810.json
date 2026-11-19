@@ -324,5 +324,981 @@
       "再生能源併網"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "locale": "zh-TW",
+    "symbol": "GEV",
+    "company": "GE Vernova Inc.",
+    "as_of": "2026-11-12",
+    "original_commit": "da93c81d",
+    "original_blob_sha": "309b6d8a9d455bcd0cf508b561a3ee40f58fd9f3",
+    "business_lines": [
+      {
+        "id": "GAS_HA",
+        "name": "大型 HA／H 級燃氣渦輪與聯合循環發電",
+        "segment": "Power"
+      },
+      {
+        "id": "GAS_AERO",
+        "name": "航改型燃氣渦輪與分散式／備援發電",
+        "segment": "Power"
+      },
+      {
+        "id": "GAS_SERV",
+        "name": "燃氣渦輪長約維護、零件與升級",
+        "segment": "Power"
+      },
+      {
+        "id": "STEAM",
+        "name": "蒸汽渦輪、發電機與熱電整合",
+        "segment": "Power"
+      },
+      {
+        "id": "NUCLEAR",
+        "name": "核能 BWRX-300 小型模組化反應爐及核電服務",
+        "segment": "Power"
+      },
+      {
+        "id": "HYDRO",
+        "name": "水力發電設備、抽蓄與改造",
+        "segment": "Power"
+      },
+      {
+        "id": "WIND_ON",
+        "name": "陸域風機、改造及長約服務",
+        "segment": "Wind"
+      },
+      {
+        "id": "WIND_OFF",
+        "name": "離岸風機、葉片與維護",
+        "segment": "Wind"
+      },
+      {
+        "id": "HVDC",
+        "name": "高壓直流輸電、換流站與系統整合",
+        "segment": "Electrification"
+      },
+      {
+        "id": "GRID_HW",
+        "name": "變壓器、開關設備與高壓電網硬體",
+        "segment": "Electrification"
+      },
+      {
+        "id": "GRID_SW",
+        "name": "GridOS、調度自動化與數位電網",
+        "segment": "Electrification"
+      },
+      {
+        "id": "POWER_CONV",
+        "name": "工業電力轉換、儲能及資料中心供電",
+        "segment": "Electrification"
+      },
+      {
+        "id": "SERVICE",
+        "name": "跨產品工程、專案交付與全球售後",
+        "segment": "Cross-segment"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "GEV-001",
+        "business_line": "GAS_HA",
+        "relationship": "customer",
+        "name": "Vietnam Electricity（EVN）",
+        "details": "2026-06 兩台 9HA.02 燃氣渦輪及兩台 H78 發電機；Quang Trach II LNG 1.6GW。",
+        "evidence_url": "https://www.gevernova.com/news/media-hub?business=Gas+Power",
+        "evidence_date": "2026-06-23",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "GEV-002",
+        "business_line": "GAS_HA",
+        "relationship": "customer",
+        "name": "B.Grimm Power",
+        "details": "2026-09 馬來西亞 Perlis 電廠燃氣渦輪及發電機供應合約。",
+        "evidence_url": "https://www.reuters.com/business/energy/us-based-ge-vernova-thailands-bgrimm-power-sign-deals-gas-turbine-supply-2026-09-15/",
+        "evidence_date": "2026-09-15",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "GEV-003",
+        "business_line": "GAS_SERV",
+        "relationship": "customer",
+        "name": "B.Grimm Power",
+        "details": "2026-09 泰國 Bangkadi 1/2 五台 LM6000 機組 14 年服務合約。",
+        "evidence_url": "https://www.reuters.com/business/energy/us-based-ge-vernova-thailands-bgrimm-power-sign-deals-gas-turbine-supply-2026-09-15/",
+        "evidence_date": "2026-09-15",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "GEV-004",
+        "business_line": "GAS_AERO",
+        "relationship": "customer",
+        "name": "Hawaiian Electric",
+        "details": "2026-07 Waiau 電廠六套 LM6000VELOX 航改燃氣渦輪機組。",
+        "evidence_url": "https://www.gevernova.com/news/taxonomy/term/9477",
+        "evidence_date": "2026-07-20",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "GEV-005",
+        "business_line": "GAS_HA",
+        "relationship": "customer",
+        "name": "Songon Energies",
+        "details": "2026-10 象牙海岸 Songon 372MW 聯合循環電廠 9E 渦輪與發電機。",
+        "evidence_url": "https://www.gevernova.com/news/press-releases/ge-vernova-secures-order-aimed-strengthen-regional-energy-capacity-cote-divoire",
+        "evidence_date": "2026-10-20",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "GEV-006",
+        "business_line": "GAS_HA",
+        "relationship": "customer",
+        "name": "Eneva",
+        "details": "2026-08 巴西 Azulão I 295MW 電廠正式營運，GE Vernova 參與機組供應與投運。",
+        "evidence_url": "https://www.gevernova.com/news/media-hub?business=Gas+Power",
+        "evidence_date": "2026-08-19",
+        "evidence_grade": "A",
+        "commercial_stage": "operational_project",
+        "qualification": "證實 2026 年共同投運，但公告未說明 2026 年新設備採購。"
+      },
+      {
+        "id": "GEV-007",
+        "business_line": "GAS_SERV",
+        "relationship": "customer",
+        "name": "Upper Egypt Electricity Production Company（UEEPC）",
+        "details": "2026-09 埃及 9F 渦輪轉子壽命延長合約參與電力公司。",
+        "evidence_url": "https://www.gevernova.com/news/media-hub?page=2",
+        "evidence_date": "2026-09-23",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "GEV-008",
+        "business_line": "GAS_SERV",
+        "relationship": "customer",
+        "name": "Middle Delta Electricity Production Company（MDEPC）",
+        "details": "2026-09 埃及 9F 渦輪轉子壽命延長合約參與電力公司。",
+        "evidence_url": "https://www.gevernova.com/news/media-hub?page=2",
+        "evidence_date": "2026-09-23",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "GEV-009",
+        "business_line": "GAS_SERV",
+        "relationship": "customer",
+        "name": "Cairo Electricity Production Company（CEPC）",
+        "details": "2026-09 埃及 9F 渦輪轉子壽命延長合約參與電力公司。",
+        "evidence_url": "https://www.gevernova.com/news/media-hub?page=2",
+        "evidence_date": "2026-09-23",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "GEV-010",
+        "business_line": "HYDRO",
+        "relationship": "customer",
+        "name": "SPIC Brasil",
+        "details": "2026-09 São Simão 水電廠第 3 台機組改造完成；六台機組改造計畫。",
+        "evidence_url": "https://www.gevernova.com/news/media-hub?page=2",
+        "evidence_date": "2026-09-14",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "GEV-011",
+        "business_line": "HVDC",
+        "relationship": "customer",
+        "name": "Power Grid Corporation of India（PGCIL）",
+        "details": "2026-11 6GW ±800kV Barmer II–South Kalamb HVDC，含換流站、主要設備、調試。",
+        "evidence_url": "https://www.gevernova.com/news/press-releases/ge-vernova-support-india-energy-transition-6-gw-hvdc-transmission-project",
+        "evidence_date": "2026-11-06",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "GEV-012",
+        "business_line": "WIND_ON",
+        "relationship": "customer",
+        "name": "Stadtwerke Heidenheim AG",
+        "details": "2026-11 德國 Schlotberg-Jüchsen 三台 5.5MW 風機及 20 年服務合約。",
+        "evidence_url": "https://www.gevernova.com/news/media-hub?business=Wind",
+        "evidence_date": "2026-11-09",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "GEV-013",
+        "business_line": "WIND_ON",
+        "relationship": "customer",
+        "name": "Eurus Energy",
+        "details": "2026-09 日本 Hiyamizutouge 七台 4.2MW 風機，29.4MW。",
+        "evidence_url": "https://www.gevernova.com/news/media-hub?business=Wind",
+        "evidence_date": "2026-09-15",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "GEV-014",
+        "business_line": "WIND_ON",
+        "relationship": "customer",
+        "name": "ESB（Electricity Supply Board）",
+        "details": "2026-09 蘇格蘭 Chleansaid 16 台 6.1MW 風機、96MW、20 年服務。",
+        "evidence_url": "https://www.gevernova.com/news/media-hub?business=Wind",
+        "evidence_date": "2026-09-03",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "GEV-015",
+        "business_line": "WIND_ON",
+        "relationship": "customer",
+        "name": "Enfinity Global",
+        "details": "2026-08 印度 Fatehgarh 43 台 3.8MW 風機、163.4MW。",
+        "evidence_url": "https://www.gevernova.com/news/press-releases/ge-vernova-expands-wind-footprint-india-1634-mw-order-enfinity-global-fatehgarh-wind-farm",
+        "evidence_date": "2026-08-04",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "GEV-016",
+        "business_line": "WIND_ON",
+        "relationship": "customer",
+        "name": "BBWind",
+        "details": "2026-04 公告德國陸域風機訂單，與 Greenvolt Power 合計 71.5MW。",
+        "evidence_url": "https://www.gevernova.com/news/press-releases/ge-vernova-announces-new-wind-turbine-orders-bbwind-greenvolt-power-germany",
+        "evidence_date": "2026-04-23",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "GEV-017",
+        "business_line": "WIND_ON",
+        "relationship": "customer",
+        "name": "Greenvolt Power",
+        "details": "2026-04 公告德國陸域風機訂單，與 BBWind 合計 71.5MW。",
+        "evidence_url": "https://www.gevernova.com/news/press-releases/ge-vernova-announces-new-wind-turbine-orders-bbwind-greenvolt-power-germany",
+        "evidence_date": "2026-04-23",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "GEV-018",
+        "business_line": "GRID_SW",
+        "relationship": "customer",
+        "name": "Alabama Power",
+        "details": "2026-02 GE Vernova GridOS for Distribution 官方具名採用公用事業。",
+        "evidence_url": "https://www.gevernova.com/news/press-releases/ge-vernova-launches-gridos-distribution-industrys",
+        "evidence_date": "2026-02-03",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "GEV-019",
+        "business_line": "POWER_CONV",
+        "relationship": "end_user",
+        "name": "Nippon Steel",
+        "details": "2026-09 Yawata 電弧爐專案由 Tenova 主包，GE Vernova Direct Feed 提供電力供應系統；為終端受益客戶，非已證實直接採購方。",
+        "evidence_url": "https://www.gevernova.com/news/media-hub?page=2",
+        "evidence_date": "2026-09-29",
+        "evidence_grade": "A",
+        "commercial_stage": "indirect_project"
+      },
+      {
+        "id": "GEV-020",
+        "business_line": "NUCLEAR",
+        "relationship": "partner",
+        "name": "Orlen Synthos Green Energy（OSGE）",
+        "details": "2026-02 波蘭 BWRX-300 參考設計開發付費合約。",
+        "evidence_url": "https://www.gevernova.com/news/press-releases/deployment-bwrx-300-small-modular-reactor-poland-major-step-forward-design-development",
+        "evidence_date": "2026-02-24",
+        "evidence_grade": "A",
+        "commercial_stage": "contract"
+      },
+      {
+        "id": "GEV-021",
+        "business_line": "NUCLEAR",
+        "relationship": "partner",
+        "name": "Blue Energy",
+        "details": "2026-08 德州 2.5GW 燃氣加核能專案工程、設計、許可合作；2027 FID 尚未完成。",
+        "evidence_url": "https://www.gevernova.com/news/press-releases/blue-energy-ge-vernova-hitachi-launch-next-phase-gas-plus-nuclear-project",
+        "evidence_date": "2026-08-13",
+        "evidence_grade": "A",
+        "commercial_stage": "engineering_agreement"
+      },
+      {
+        "id": "GEV-022",
+        "business_line": "NUCLEAR",
+        "relationship": "partner",
+        "name": "Tennessee Valley Authority（TVA）",
+        "details": "2026-09 Clinch River BWRX-300 獲美國 NRC 施工許可；未將監管許可誤認為新機組採購訂單。",
+        "evidence_url": "https://www.gevernova.com/news/media-hub?business=Nuclear+Power",
+        "evidence_date": "2026-09-29",
+        "evidence_grade": "A",
+        "commercial_stage": "development"
+      },
+      {
+        "id": "GEV-023",
+        "business_line": "NUCLEAR",
+        "relationship": "partner",
+        "name": "SGE（Synthos Green Energy）",
+        "details": "2026-09 與 GE Vernova、Hitachi、Samsung C&T 歐洲 BWRX-300 推廣 MoU。",
+        "evidence_url": "https://www.gevernova.com/news/press-releases/sge-ge-vernova-hitachi-samsung-ct-sign-mou-advance-bwrx-300-fleet-deployment-europe",
+        "evidence_date": "2026-09-22",
+        "evidence_grade": "A",
+        "commercial_stage": "mou"
+      },
+      {
+        "id": "GEV-024",
+        "business_line": "NUCLEAR",
+        "relationship": "partner",
+        "name": "Samsung C&T",
+        "details": "2026-09 BWRX-300 歐洲合作開發與工程交付 MoU。",
+        "evidence_url": "https://www.gevernova.com/news/press-releases/sge-ge-vernova-hitachi-samsung-ct-sign-mou-advance-bwrx-300-fleet-deployment-europe",
+        "evidence_date": "2026-09-22",
+        "evidence_grade": "A",
+        "commercial_stage": "mou"
+      },
+      {
+        "id": "GEV-025",
+        "business_line": "NUCLEAR",
+        "relationship": "partner",
+        "name": "Hitachi",
+        "details": "GE Vernova Hitachi Nuclear Energy 合資與 BWRX-300 技術合作，非獨立外部客戶。",
+        "evidence_url": "https://www.gevernova.com/news/press-releases/sge-ge-vernova-hitachi-samsung-ct-sign-mou-advance-bwrx-300-fleet-deployment-europe",
+        "evidence_date": "2026-09-22",
+        "evidence_grade": "A",
+        "commercial_stage": "joint_venture"
+      },
+      {
+        "id": "GEV-026",
+        "business_line": "NUCLEAR",
+        "relationship": "partner",
+        "name": "Studsvik",
+        "details": "2026-09 瑞典 ReFirm 核能專案，初期四台 BWRX-300、1.2GW 研發及開發合作。",
+        "evidence_url": "https://www.gevernova.com/news/media-hub?business=Nuclear+Power",
+        "evidence_date": "2026-09-03",
+        "evidence_grade": "A",
+        "commercial_stage": "development"
+      },
+      {
+        "id": "GEV-027",
+        "business_line": "HVDC",
+        "relationship": "partner",
+        "name": "LS Electric",
+        "details": "2026-08 韓式 VSC-HVDC 合資公司設立協議。",
+        "evidence_url": "https://www.gevernova.com/news/taxonomy/term/9481",
+        "evidence_date": "2026-08-26",
+        "evidence_grade": "A",
+        "commercial_stage": "joint_venture_agreement"
+      },
+      {
+        "id": "GEV-028",
+        "business_line": "HVDC",
+        "relationship": "partner",
+        "name": "TenneT TSO",
+        "details": "2024 德國多端點 HVDC 技術研發合約，並非 2026 設備採購。",
+        "evidence_url": "https://www.gevernova.com/news/press-releases/ge-vernova-enters-innovation-agreement-german-grid-transmission-operators-develop",
+        "evidence_date": "2024-07-18",
+        "evidence_grade": "A",
+        "commercial_stage": "rd_contract"
+      },
+      {
+        "id": "GEV-029",
+        "business_line": "HVDC",
+        "relationship": "partner",
+        "name": "50Hertz Transmission",
+        "details": "2024 德國多端點 HVDC 技術研發合約。",
+        "evidence_url": "https://www.gevernova.com/news/press-releases/ge-vernova-enters-innovation-agreement-german-grid-transmission-operators-develop",
+        "evidence_date": "2024-07-18",
+        "evidence_grade": "A",
+        "commercial_stage": "rd_contract"
+      },
+      {
+        "id": "GEV-030",
+        "business_line": "HVDC",
+        "relationship": "partner",
+        "name": "Amprion",
+        "details": "2024 德國多端點 HVDC 技術研發合約。",
+        "evidence_url": "https://www.gevernova.com/news/press-releases/ge-vernova-enters-innovation-agreement-german-grid-transmission-operators-develop",
+        "evidence_date": "2024-07-18",
+        "evidence_grade": "A",
+        "commercial_stage": "rd_contract"
+      },
+      {
+        "id": "GEV-031",
+        "business_line": "HVDC",
+        "relationship": "partner",
+        "name": "TransnetBW",
+        "details": "2024 德國多端點 HVDC 技術研發合約。",
+        "evidence_url": "https://www.gevernova.com/news/press-releases/ge-vernova-enters-innovation-agreement-german-grid-transmission-operators-develop",
+        "evidence_date": "2024-07-18",
+        "evidence_grade": "A",
+        "commercial_stage": "rd_contract"
+      },
+      {
+        "id": "GEV-032",
+        "business_line": "POWER_CONV",
+        "relationship": "partner",
+        "name": "Fortune Electric（華城電機）",
+        "details": "GE Vernova 官方中文新聞稿：簽署在台灣製造 BESS 解決方案 MoU；具名台灣製造合作方，非已完成採購。",
+        "evidence_url": "https://www.gevernova.com/news/press-releases/ge-vernova-bess-taiwan",
+        "evidence_grade": "A",
+        "commercial_stage": "mou",
+        "qualification": "官方頁面載明 7 月 6 日但未顯示年份；不臆測新聞年份。官方明確確認既有變壓器／開關設備供應關係及 BESS 製造 MoU，兩者不可混同。"
+      },
+      {
+        "id": "GEV-033",
+        "business_line": "POWER_CONV",
+        "relationship": "partner",
+        "name": "Tenova",
+        "details": "2026-09 日本製鐵 Yawata 大型電弧爐由 Tenova 供應，GE Vernova 提供 Direct Feed，屬工程協作。",
+        "evidence_url": "https://www.gevernova.com/news/media-hub?page=2",
+        "evidence_date": "2026-09-29",
+        "evidence_grade": "A",
+        "commercial_stage": "project_partner"
+      },
+      {
+        "id": "GEV-034",
+        "business_line": "NUCLEAR",
+        "relationship": "partner",
+        "name": "DS Investment Partners",
+        "details": "2026-09 瑞典 Studsvik 核能專案投資／開發合作方。",
+        "evidence_url": "https://www.gevernova.com/news/media-hub?business=Nuclear+Power",
+        "evidence_date": "2026-09-03",
+        "evidence_grade": "A",
+        "commercial_stage": "development"
+      },
+      {
+        "id": "GEV-035",
+        "business_line": "NUCLEAR",
+        "relationship": "supplier",
+        "name": "Velan",
+        "details": "2026-06 GE Vernova Hitachi 與 Velan 合作，評估供應 BWRX-300 歐洲專案 RIIV/CIV 核級閥門；Darlington 專案已有供應支援。",
+        "evidence_url": "https://www.gevernova.com/news/press-releases/ge-vernova-hitachi-velan-expand-collaboration-support",
+        "evidence_date": "2026-06-17",
+        "evidence_grade": "A",
+        "commercial_stage": "supplier_development",
+        "qualification": "2026-06 歐洲供應為合作探索；Darlington 已有專案支援，不能推定歐洲新出貨。"
+      },
+      {
+        "id": "GEV-036",
+        "business_line": "GRID_HW",
+        "relationship": "supplier",
+        "name": "Trench Group",
+        "details": "2026-10 GE Vernova 公告擬以 90 億美元收購現有高壓套管及儀用變壓器供應商 Trench；預計 2027 年末交割。2026 年仍為外部供應商。",
+        "evidence_url": "https://www.gevernova.com/news/taxonomy/term/9546",
+        "evidence_date": "2026-10-28",
+        "evidence_grade": "A",
+        "commercial_stage": "existing_supplier_pending_acquisition",
+        "qualification": "官方稱既有外部供應商；2026-10 收購僅簽約，預計 2027 年末交割。"
+      },
+      {
+        "id": "GEV-037",
+        "business_line": "GAS_HA",
+        "relationship": "competitor",
+        "name": "Siemens Energy",
+        "details": "大型燃氣渦輪與發電服務競爭；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-038",
+        "business_line": "GAS_HA",
+        "relationship": "competitor",
+        "name": "Mitsubishi Power",
+        "details": "JAC 大型燃氣渦輪競爭；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-039",
+        "business_line": "GAS_AERO",
+        "relationship": "competitor",
+        "name": "Rolls-Royce Power Systems",
+        "details": "分散式燃氣發電與備援市場重疊；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-040",
+        "business_line": "GAS_AERO",
+        "relationship": "competitor",
+        "name": "Solar Turbines（Caterpillar）",
+        "details": "工業燃氣渦輪及小型發電競爭；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-041",
+        "business_line": "GAS_SERV",
+        "relationship": "competitor",
+        "name": "Siemens Energy",
+        "details": "燃氣渦輪維護服務競爭；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-042",
+        "business_line": "STEAM",
+        "relationship": "competitor",
+        "name": "Siemens Energy",
+        "details": "蒸汽渦輪及發電機競爭；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-043",
+        "business_line": "NUCLEAR",
+        "relationship": "competitor",
+        "name": "Westinghouse Electric",
+        "details": "核電反應爐與 SMR 開發競爭；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-044",
+        "business_line": "NUCLEAR",
+        "relationship": "competitor",
+        "name": "NuScale Power",
+        "details": "SMR 技術與商業開發競爭；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-045",
+        "business_line": "HYDRO",
+        "relationship": "competitor",
+        "name": "ANDRITZ Hydro",
+        "details": "水力渦輪、抽蓄及改造競爭；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-046",
+        "business_line": "HYDRO",
+        "relationship": "competitor",
+        "name": "Voith Hydro",
+        "details": "水力發電設備競爭；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-047",
+        "business_line": "WIND_ON",
+        "relationship": "competitor",
+        "name": "Vestas",
+        "details": "陸域風機競爭；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-048",
+        "business_line": "WIND_ON",
+        "relationship": "competitor",
+        "name": "Nordex",
+        "details": "陸域風機競爭；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-049",
+        "business_line": "WIND_OFF",
+        "relationship": "competitor",
+        "name": "Siemens Gamesa",
+        "details": "離岸風機競爭；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-050",
+        "business_line": "WIND_OFF",
+        "relationship": "competitor",
+        "name": "Vestas",
+        "details": "離岸風機競爭；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-051",
+        "business_line": "HVDC",
+        "relationship": "competitor",
+        "name": "Hitachi Energy",
+        "details": "HVDC 系統整合與換流站競爭；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-052",
+        "business_line": "HVDC",
+        "relationship": "competitor",
+        "name": "Siemens Energy",
+        "details": "HVDC 系統整合競爭；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-053",
+        "business_line": "GRID_HW",
+        "relationship": "competitor",
+        "name": "Hitachi Energy",
+        "details": "電力變壓器及高壓開關設備競爭；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-054",
+        "business_line": "GRID_HW",
+        "relationship": "competitor",
+        "name": "Eaton",
+        "details": "電網配電與開關設備競爭；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-055",
+        "business_line": "GRID_HW",
+        "relationship": "competitor",
+        "name": "Hubbell",
+        "details": "輸配電元件競爭；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-056",
+        "business_line": "GRID_SW",
+        "relationship": "competitor",
+        "name": "Schneider Electric",
+        "details": "電網管理與配電軟體競爭；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-057",
+        "business_line": "GRID_SW",
+        "relationship": "competitor",
+        "name": "Siemens",
+        "details": "電網調度及配電自動化軟體競爭；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-058",
+        "business_line": "POWER_CONV",
+        "relationship": "competitor",
+        "name": "ABB",
+        "details": "工業電力電子與轉換競爭；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-059",
+        "business_line": "POWER_CONV",
+        "relationship": "competitor",
+        "name": "Eaton",
+        "details": "資料中心配電與電力品質競爭；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-060",
+        "business_line": "POWER_CONV",
+        "relationship": "competitor",
+        "name": "Fluence",
+        "details": "大型儲能系統競爭；產品市場重疊，不代表逐案競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm",
+        "evidence_date": "2026-09-30",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap"
+      },
+      {
+        "id": "GEV-061",
+        "business_line": "GRID_HW",
+        "relationship": "customer",
+        "name": "Stromnetz Berlin",
+        "details": "2026-07 兩份合約，設計交付 Wittenau、Neukölln 兩座 110kV 無 SF6 GIS 變電站。",
+        "evidence_url": "https://www.gevernova.com/news/press-releases/ge-vernova-deliver-sf6-free-grid-hubs-stromnetz-berlin",
+        "evidence_date": "2026-07-16",
+        "evidence_grade": "A",
+        "commercial_stage": "contract"
+      },
+      {
+        "id": "GEV-062",
+        "business_line": "GRID_HW",
+        "relationship": "customer",
+        "name": "Laing O’Rourke",
+        "details": "2026-08 由工程總包 Laing O’Rourke 選定交付英國 Chesterfield 400kV GIS 變電站，National Grid 為最終電網業主。",
+        "evidence_url": "https://www.gevernova.com/news/media-hub?page=1&region=Europe",
+        "evidence_date": "2026-08-27",
+        "evidence_grade": "A",
+        "commercial_stage": "contract"
+      },
+      {
+        "id": "GEV-063",
+        "business_line": "GRID_HW",
+        "relationship": "end_user",
+        "name": "National Grid（英國）",
+        "details": "Chesterfield 400kV GIS 變電站為 National Grid 電網工程；直接授標方為 Laing O’Rourke。",
+        "evidence_url": "https://www.gevernova.com/news/media-hub?page=1&region=Europe",
+        "evidence_date": "2026-08-27",
+        "evidence_grade": "A",
+        "commercial_stage": "indirect_end_user"
+      },
+      {
+        "id": "GEV-064",
+        "business_line": "GRID_HW",
+        "relationship": "customer",
+        "name": "TransnetBW",
+        "details": "2025-07 德國 Kühmoos 重要跨境變電站改造合約。",
+        "evidence_url": "https://www.gevernova.com/news/press-releases/ge-vernova-modernize-key-cross-border-grid-hub-transnetbw-germany",
+        "evidence_date": "2025-07-08",
+        "evidence_grade": "A",
+        "commercial_stage": "contract"
+      },
+      {
+        "id": "GEV-065",
+        "business_line": "GRID_HW",
+        "relationship": "customer",
+        "name": "Amprion",
+        "details": "2023-09 德國 12 台 400kV 電力變壓器合約，交期 2025–2027；屬既有合約，不宣稱 2026 新單。",
+        "evidence_url": "https://www.gevernova.com/news/print/pdf/node/143190",
+        "evidence_date": "2023-09-19",
+        "evidence_grade": "A",
+        "commercial_stage": "contract"
+      },
+      {
+        "id": "GEV-066",
+        "business_line": "POWER_CONV",
+        "relationship": "customer",
+        "name": "Quinbrook Infrastructure Partners",
+        "details": "2026-08 澳大利亞 Supernode BESS 第三期新約，GE Vernova 提供變流、控制及整合；三期總 780MW/3,075MWh。",
+        "evidence_url": "https://www.gevernova.com/news/press-releases/ge-vernova-supports-quinbrook-deliver-all-three-stages-one-australias-largest",
+        "evidence_date": "2026-08-21",
+        "evidence_grade": "A",
+        "commercial_stage": "contract"
+      },
+      {
+        "id": "GEV-067",
+        "business_line": "WIND_OFF",
+        "relationship": "customer",
+        "name": "Vineyard Wind",
+        "details": "2026-09 與 GE Vernova 和解商業訴訟，撤回終止通知，原離岸風機供應關係延續；不把和解寫成新訂單。",
+        "evidence_url": "https://www.gevernova.com/news/press-releases/vineyard-wind-ge-vernova-announce-resolution-commercial-litigation",
+        "evidence_date": "2026-09-16",
+        "evidence_grade": "A",
+        "commercial_stage": "contract"
+      },
+      {
+        "id": "GEV-068",
+        "business_line": "HVDC",
+        "relationship": "customer",
+        "name": "Power Grid Corporation of India（PGCIL）",
+        "details": "2025-12 Chandrapur 2×500MW 背靠背 HVDC 更新控制與閥組合約，與 2026 6GW 新案分開記錄。",
+        "evidence_url": "https://www.gevernova.com/news/press-releases/ge-vernova-modernize-key-high-voltage-power",
+        "evidence_date": "2025-12-23",
+        "evidence_grade": "A",
+        "commercial_stage": "contract"
+      },
+      {
+        "id": "GEV-069",
+        "business_line": "GRID_HW",
+        "relationship": "supplier",
+        "name": "Fortune Electric（華城電機，台灣）",
+        "details": "GE Vernova 官方繁中公告明確指出華城電機自 1997 年起為 GE 在台灣的變壓器與開關設備供應商，供應國內外重大機電統包工程；另簽 BESS 在台製造 MoU。此節點是已確認台灣直接供應關係，與尚未量產的 BESS MoU 分開。",
+        "evidence_url": "https://www.gevernova.com/news/press-releases/ge-vernova-bess-taiwan",
+        "evidence_grade": "A",
+        "commercial_stage": "existing_supplier",
+        "qualification": "官方頁面載明 7 月 6 日但未顯示年份；不臆測新聞年份。官方明確確認既有變壓器／開關設備供應關係及 BESS 製造 MoU，兩者不可混同。"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "end_user",
+      "partner",
+      "supplier",
+      "competitor"
+    ],
+    "research_notes": {
+      "method": "2026 年官方公告及 SEC 10-Q 為優先；明確區分已簽設備訂單、研發合約、MoU、專案終端用戶與競爭市場映射。",
+      "key_2026_updates": [
+        "2026-10-28 Q3 訂單 290 億美元、積壓 1,970 億美元；燃氣設備積壓及 SRA 合計 122GW。",
+        "2026-11-06 PGCIL 印度 6GW ±800kV HVDC 訂單。",
+        "2026-10-28 Trench Group 90 億美元收購已簽約，預計 2027 年末交割，2026 年仍為外部供應商。",
+        "2026 年資料中心電氣化訂單年初至今逾 60 億美元，但 hyperscaler 名稱未公開，不推定個別公司已採購。"
+      ],
+      "taiwan_verified": "華城電機 Fortune Electric：官方公告明確證實其為 GE 本地變壓器及開關設備供應商，並自 1997 年有合作關係；另有 BESS 在台製造 MoU。分別建 supplier 與 partner 節點，避免把 MoU 當作既成出貨。",
+      "supplier_verified": "Trench Group（2026 年外部供應商，擬於 2027 收購）、Velan（核級閥門合作及 Darlington 專案支援）、華城電機（GE 官方具名台灣變壓器／開關設備供應商）。",
+      "data_center": "大型資料中心訂單數額由公司揭露，但沒有具名超大規模雲端採購方。",
+      "source_catalog": [
+        {
+          "key": "10q",
+          "url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm"
+        },
+        {
+          "key": "q3",
+          "url": "https://www.gevernova.com/news/taxonomy/term/286"
+        },
+        {
+          "key": "pgcil",
+          "url": "https://www.gevernova.com/news/press-releases/ge-vernova-support-india-energy-transition-6-gw-hvdc-transmission-project"
+        },
+        {
+          "key": "wind",
+          "url": "https://www.gevernova.com/news/media-hub?business=Wind"
+        },
+        {
+          "key": "enfinity",
+          "url": "https://www.gevernova.com/news/press-releases/ge-vernova-expands-wind-footprint-india-1634-mw-order-enfinity-global-fatehgarh-wind-farm"
+        },
+        {
+          "key": "bbwind",
+          "url": "https://www.gevernova.com/news/press-releases/ge-vernova-announces-new-wind-turbine-orders-bbwind-greenvolt-power-germany"
+        },
+        {
+          "key": "heco",
+          "url": "https://www.gevernova.com/news/taxonomy/term/9477"
+        },
+        {
+          "key": "evn",
+          "url": "https://www.gevernova.com/news/media-hub?business=Gas+Power"
+        },
+        {
+          "key": "songon",
+          "url": "https://www.gevernova.com/news/press-releases/ge-vernova-secures-order-aimed-strengthen-regional-energy-capacity-cote-divoire"
+        },
+        {
+          "key": "egypt",
+          "url": "https://www.gevernova.com/news/media-hub?page=2"
+        },
+        {
+          "key": "hydro",
+          "url": "https://www.gevernova.com/news/media-hub?page=2"
+        },
+        {
+          "key": "nuclear",
+          "url": "https://www.gevernova.com/news/press-releases/deployment-bwrx-300-small-modular-reactor-poland-major-step-forward-design-development"
+        },
+        {
+          "key": "nuclear_sge",
+          "url": "https://www.gevernova.com/news/press-releases/sge-ge-vernova-hitachi-samsung-ct-sign-mou-advance-bwrx-300-fleet-deployment-europe"
+        },
+        {
+          "key": "blue",
+          "url": "https://www.gevernova.com/news/press-releases/blue-energy-ge-vernova-hitachi-launch-next-phase-gas-plus-nuclear-project"
+        },
+        {
+          "key": "velan",
+          "url": "https://www.gevernova.com/news/press-releases/ge-vernova-hitachi-velan-expand-collaboration-support"
+        },
+        {
+          "key": "tv",
+          "url": "https://www.gevernova.com/news/media-hub?business=Nuclear+Power"
+        },
+        {
+          "key": "software",
+          "url": "https://www.gevernova.com/news/press-releases/ge-vernova-launches-gridos-distribution-industrys"
+        },
+        {
+          "key": "trans",
+          "url": "https://www.gevernova.com/news/press-releases/ge-vernova-introduces-gridosr-transmission-new-ai"
+        },
+        {
+          "key": "trench",
+          "url": "https://www.gevernova.com/news/taxonomy/term/9546"
+        },
+        {
+          "key": "ls",
+          "url": "https://www.gevernova.com/news/taxonomy/term/9481"
+        },
+        {
+          "key": "fortune",
+          "url": "https://www.gevernova.com/news/press-releases/ge-vernova-bess-taiwan"
+        },
+        {
+          "key": "german",
+          "url": "https://www.gevernova.com/news/press-releases/ge-vernova-enters-innovation-agreement-german-grid-transmission-operators-develop"
+        },
+        {
+          "key": "bgrimm",
+          "url": "https://www.reuters.com/business/energy/us-based-ge-vernova-thailands-bgrimm-power-sign-deals-gas-turbine-supply-2026-09-15/"
+        },
+        {
+          "key": "tenova",
+          "url": "https://www.gevernova.com/news/media-hub?page=2"
+        },
+        {
+          "key": "siemens",
+          "url": "https://www.gevernova.com/investors/annual-report/ceo-letter"
+        },
+        {
+          "key": "spic",
+          "url": "https://www.gevernova.com/news/media-hub?page=2"
+        }
+      ],
+      "2026_11_quality_check": {
+        "source_commit": "da93c81d",
+        "original_sha": "309b6d8a9d455bcd0cf508b561a3ee40f58fd9f3",
+        "original_11_keys": "以 GitHub 原始文字逐欄重建且保留原始 evidence、value_provenance 與人工審查備註；JSON 語意層級一致",
+        "contract_classification": "將真正合約、既有部署、MoU、研發合約、間接終端業主分開；競爭者為 B 級產品重疊",
+        "2026_news": "納入 11 月 9 日德國風電新單、11 月 6 日印度 HVDC、10 月 28 日 Trench 擬收購與第三季數據",
+        "taiwan": "華城電機 GE Vernova 官方繁中 MoU 有證據，列合作而非已確認大量採購",
+        "original_profile_untouched": true,
+        "source_specificity": "優先使用 GE Vernova 官方個別專案新聞；部分官方 media-hub 索引頁載有完整具名事件摘要，原始網頁仍可沿 evidence_url 追溯。"
+      },
+      "source_date_quality": "華城官方頁面沒有可確認年份，該供應商與合作節點不標示推測年份。"
+    }
   }
 }

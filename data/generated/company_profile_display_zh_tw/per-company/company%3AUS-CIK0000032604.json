@@ -217,5 +217,498 @@
       "勞動力短缺"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "symbol": "EMR",
+    "as_of": "2026-11-11",
+    "business_lines": [
+      {
+        "id": "DELTAV",
+        "name": "DeltaV製程控制與安全系統"
+      },
+      {
+        "id": "OVATION",
+        "name": "Ovation電力與再生能源控制"
+      },
+      {
+        "id": "ASPEN_REFINING",
+        "name": "AspenTech煉油與化工最佳化"
+      },
+      {
+        "id": "ASPEN_ASSET",
+        "name": "AspenTech資產績效與工業AI"
+      },
+      {
+        "id": "ASPEN_GRID",
+        "name": "AspenTech電網軟體"
+      },
+      {
+        "id": "NI_AUTOMOTIVE",
+        "name": "NI汽車電子與HIL測試"
+      },
+      {
+        "id": "NI_INDUSTRIAL",
+        "name": "NI工業及航空測試"
+      },
+      {
+        "id": "ROSEMOUNT",
+        "name": "Rosemount壓力溫度流量及分析"
+      },
+      {
+        "id": "FISHER",
+        "name": "Fisher閥門與執行器"
+      },
+      {
+        "id": "AMS",
+        "name": "AMS設備管理及診斷"
+      },
+      {
+        "id": "LIFE_SCIENCES",
+        "name": "生命科學製造自動化"
+      },
+      {
+        "id": "MINING",
+        "name": "礦業與關鍵礦物"
+      },
+      {
+        "id": "SAF_HYDROGEN",
+        "name": "SAF氫能與電氣化"
+      },
+      {
+        "id": "DATACENTER",
+        "name": "AI資料中心電力與冷卻控制"
+      },
+      {
+        "id": "CORPORATE",
+        "name": "策略合作及競爭生態"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "supplier",
+      "partner",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "EMR_NAMED_001",
+        "name": "Equinor",
+        "relationship": "customer",
+        "business_line": "ROSEMOUNT",
+        "details": "2026-08-24簽訂最長13年量測儀器及服務框架協議，涵蓋海陸能源資產；歷史合作逾40年。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.com/en/corporate/news/2026/emerson-advanced-measurement-instrumentation-selected-by-equinor"
+        ],
+        "ticker": "EQNR"
+      },
+      {
+        "id": "EMR_NAMED_002",
+        "name": "Saudi Aramco",
+        "relationship": "customer",
+        "business_line": "ASPEN_REFINING",
+        "details": "2026-04-28公告已部署Aspen Hybrid Models於煉油廠規劃最佳化；官方公布產率及品質預測準確率最高98.5%。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.com/en/corporate/news/2026/emerson-aramco-deploy-ai-solution-higher-refinery-yield-volume"
+        ],
+        "ticker": "2222.SR"
+      },
+      {
+        "id": "EMR_NAMED_003",
+        "name": "South32",
+        "relationship": "customer",
+        "business_line": "MINING",
+        "details": "2025-11-17公告選用DeltaV及遠端營運中心整合自動化，支援美國Hermosa礦場。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.com/en/corporate/news/2025/emerson-selected-to-automate-south32s-hermosa-project"
+        ],
+        "ticker": "S32.AX"
+      },
+      {
+        "id": "EMR_NAMED_004",
+        "name": "Lithium Americas",
+        "relationship": "customer",
+        "business_line": "MINING",
+        "details": "2025-11-11公告Thacker Pass鋰礦採用Emerson自動化、儀表、控制閥及可靠度技術。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.com/en/corporate/news/2025/emerson-to-automate-lithium-americas-thacker-pass-project"
+        ],
+        "ticker": "LAC"
+      },
+      {
+        "id": "EMR_NAMED_005",
+        "name": "SkyNRG",
+        "relationship": "customer",
+        "business_line": "SAF_HYDROGEN",
+        "details": "2026-09-15公告荷蘭Delfzijl SAF廠採用DeltaV DCS及SIS；最終廠主，合約由Technip Energies授予Emerson。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.com/en/corporate/news/2026/emerson-selected-to-automate-europes-first-greenfield-facility"
+        ]
+      },
+      {
+        "id": "EMR_NAMED_006",
+        "name": "Technip Energies",
+        "relationship": "customer",
+        "business_line": "DELTAV",
+        "details": "2026-09-15公告作為EPC合約授予方，向Emerson授予SkyNRG SAF廠自動化合約。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.com/en/corporate/news/2026/emerson-selected-to-automate-europes-first-greenfield-facility"
+        ],
+        "ticker": "TE.PA"
+      },
+      {
+        "id": "EMR_NAMED_007",
+        "name": "LyondellBasell",
+        "relationship": "customer",
+        "business_line": "DELTAV",
+        "details": "2024-02-27選用DeltaV、DeltaV Live、AMS及MIMIC更新德國Wesseling乙烯裂解及丁二烯廠。 另有：AspenTech OPTIMIZE 2024具名案例：Houston煉油廠導入Aspen GDOT於中間餾分最佳化。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.com/en/corporate/news/2024/02-lyondellbasell-selects-emerson-to-modernize-automation-tech",
+          "https://www.optimize2024.com/page/3510171/posters"
+        ],
+        "ticker": "LYB"
+      },
+      {
+        "id": "EMR_NAMED_008",
+        "name": "Valeo",
+        "relationship": "customer",
+        "business_line": "NI_AUTOMOTIVE",
+        "details": "2026-07-14 NI具名案例：以NI PXI平台擴展ADAS HIL驗證及測試覆蓋率。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.ni.com/en/perspectives/how-valeo-scaled-adas-validation-ni-pxi-platform"
+        ],
+        "ticker": "FR.PA"
+      },
+      {
+        "id": "EMR_NAMED_009",
+        "name": "Infinitum",
+        "relationship": "customer",
+        "business_line": "NI_INDUSTRIAL",
+        "details": "2025-06-03 NI具名案例：CompactDAQ、LabVIEW、TestStand部署電動馬達測試，約90%自動驗證於NI測試台。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.ni.com/en/perspectives/motor-validation-test-automation-infinitum.html"
+        ]
+      },
+      {
+        "id": "EMR_NAMED_010",
+        "name": "Sub-Zero",
+        "relationship": "customer",
+        "business_line": "NI_INDUSTRIAL",
+        "details": "2025-08-12 NI具名案例：使用LabVIEW+、VeriStand、TestStand建立三套HIL家電測試系統。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.ni.com/en/perspectives/sub-zero-transforms-appliance-testing-labview-hil.html"
+        ]
+      },
+      {
+        "id": "EMR_NAMED_011",
+        "name": "Airbus",
+        "relationship": "customer",
+        "business_line": "NI_INDUSTRIAL",
+        "details": "NI具名案例：LabVIEW FPGA、NI SOM支援智慧航空製造工具及品質數據擷取。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.ni.com/en/solutions/aerospace-defense/case-studies/developing-smart-tools-for-the-airbus-factory-of-the-future.html"
+        ],
+        "ticker": "AIR.PA"
+      },
+      {
+        "id": "EMR_NAMED_012",
+        "name": "Intermountain Power Agency",
+        "relationship": "customer",
+        "business_line": "OVATION",
+        "details": "2023-02-14公告IPP Renewed發電廠採用Ovation電廠自動化、資安及模擬系統。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.com/en/corporate/news/2023/02-software-helps-intermountain-power-agency"
+        ]
+      },
+      {
+        "id": "EMR_NAMED_013",
+        "name": "Lodestone Energy",
+        "relationship": "customer",
+        "business_line": "OVATION",
+        "details": "2023-03-14選用Ovation監控紐西蘭Kaitaia及Edgecumbe大型太陽能案場；2024案例披露已投運。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.com/en/corporate/news/2023/03-emerson-to-automate-nz-first-large-scale-solar-pv-project"
+        ]
+      },
+      {
+        "id": "EMR_NAMED_014",
+        "name": "Salt River Project",
+        "relationship": "customer",
+        "business_line": "OVATION",
+        "details": "Emerson官方案例：四座水力發電壩採用Ovation勵磁與電廠控制，維護成本降低30%。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.com/en/automation-systems/distributed-control-systems-dcs/ovation-distributed-control-system/hydroelectric-power-plant-controls/salt-river-project-hydropower-modernization-case-study"
+        ]
+      },
+      {
+        "id": "EMR_NAMED_015",
+        "name": "Adani Green Energy",
+        "relationship": "customer",
+        "business_line": "OVATION",
+        "details": "Emerson官方案例：印度Khavda 3.55GWh BESS選用Ovation Automation Platform整合監控。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.com/en/automation-systems/distributed-control-systems-dcs/ovation-distributed-control-system/battery-energy-management-system/emerson-supports-indias-largest-bess-deployment"
+        ],
+        "ticker": "ADANIGREEN.NS"
+      },
+      {
+        "id": "EMR_NAMED_016",
+        "name": "We Energies",
+        "relationship": "customer",
+        "business_line": "OVATION",
+        "details": "Emerson官方案例：Valley Power Plant部署Ovation燃燒最佳化，NOx減量及鍋爐控制。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.com/is/content/emerson/en/corporate/shared-assets/documents/pws_003629-we-energies%E2%80%99-valley-power-plant-uses-ovation-combustion-optimizer-to-sustain-10-nox-reductions.pdf"
+        ]
+      },
+      {
+        "id": "EMR_NAMED_017",
+        "name": "Holy Cross Energy",
+        "relationship": "customer",
+        "business_line": "OVATION",
+        "details": "2026-06-03公開新聞：採用Ovation Green SCADA整合科羅拉多州四處再生能源案場。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.wnuxrwww.zrlsowww.cslb.pandct.com/news/emerson-helps-holy-cross-energy-unify-control-of-renewable-power-generation-assets-across-western-colorado"
+        ]
+      },
+      {
+        "id": "EMR_NAMED_018",
+        "name": "Rompetrol Rafinare",
+        "relationship": "customer",
+        "business_line": "DELTAV",
+        "details": "2026-07-14官方案例：Petromidia煉油廠採用DeltaV AgileOps，警報量降低逾95%。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.com/en/corporate/news/2026/emerson-helps-romanias-largest-refinery-rompetrol-rafinare"
+        ],
+        "ticker": "RRC.RO"
+      },
+      {
+        "id": "EMR_NAMED_019",
+        "name": "Chevron",
+        "relationship": "customer",
+        "business_line": "AMS",
+        "details": "Emerson官方案例：El Segundo煉油廠103個FIELDVUE控制閥使用AMS Device Manager ValveLink診斷。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.com/en/automation-systems/asset-performance-management/field-device-management/ams-device-manager-valvelink-chevron-case-study"
+        ],
+        "ticker": "CVX"
+      },
+      {
+        "id": "EMR_NAMED_020",
+        "name": "Preem",
+        "relationship": "customer",
+        "business_line": "ROSEMOUNT",
+        "details": "Emerson官方具名案例：Rosemount無線腐蝕侵蝕變送器結合AspenTech IP.21於煉油廠持續監測。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.co.jp/is/content/emerson/ja/measurement-instrumentation/marketing/products/corrosion-and-erosion-monitoring/documents/dl-emr-00807-0100-3636.pdf"
+        ]
+      },
+      {
+        "id": "EMR_NAMED_021",
+        "name": "MOL Group",
+        "relationship": "customer",
+        "business_line": "ASPEN_ASSET",
+        "details": "Emerson官方案例：MOL使用Aspen Mtell設備可靠度預測，推進數位化與工廠可用率目標。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.com/en/automation-systems/asset-performance-management"
+        ],
+        "ticker": "MOL.BD"
+      },
+      {
+        "id": "EMR_NAMED_022",
+        "name": "Shell",
+        "relationship": "customer",
+        "business_line": "AMS",
+        "details": "Emerson官方案例／客戶講座：Shell Scotford煉油廠採用無線振動監控支援設備可靠度。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.com/en/automation-systems/asset-performance-management"
+        ],
+        "ticker": "SHEL"
+      },
+      {
+        "id": "EMR_NAMED_023",
+        "name": "S&P Global",
+        "relationship": "customer",
+        "business_line": "ASPEN_REFINING",
+        "details": "AspenTech官方案例：S&P Global Commodity Insights與AspenTech共同開發以Aspen Unified PIMS為基礎的全球煉油情境模型。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://home.aspentech.com/-/media/aspentech/home/resources/case-study/pdfs/fy25/q2/spaspentechawscasestudynov2024.pdf"
+        ],
+        "ticker": "SPGI"
+      },
+      {
+        "id": "EMR_NAMED_024",
+        "name": "Allegheny Petroleum",
+        "relationship": "customer",
+        "business_line": "DELTAV",
+        "details": "Emerson DeltaV SaaS SCADA官方具名客戶故事：監控客戶場域潤滑油槽液位與服務作業。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.com/en/automation-systems/scada-systems/deltav-saas-scada"
+        ]
+      },
+      {
+        "id": "EMR_NAMED_025",
+        "name": "Syzygy Plasmonics",
+        "relationship": "customer",
+        "business_line": "SAF_HYDROGEN",
+        "details": "2023-05-15宣布選用DeltaV、Rosemount、Fisher及製程模擬技術，支援光催化化工反應器電氣化。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.com/en/corporate/news/2023/05-syzygy-selects-emerson-to-automate-electrification"
+        ]
+      },
+      {
+        "id": "EMR_NAMED_026",
+        "name": "Golden Triangle Polymers",
+        "relationship": "customer",
+        "business_line": "DELTAV",
+        "details": "2023-03-13官方公告：乙烷裂解及聚乙烯專案選用DeltaV、Rosemount、MIMIC及Aspen HYSYS。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.com/en/corporate/news/2023/03-emerson-to-automate-golden-triangle-polymers-facility"
+        ]
+      },
+      {
+        "id": "EMR_NAMED_027",
+        "name": "Genentech",
+        "relationship": "customer",
+        "business_line": "LIFE_SCIENCES",
+        "details": "2026-06-22 Emerson官方案例：模組化自動化平台縮短Genentech新廠部署時程60%。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.com/en/corporate/insights/industrial-automation-innovation-life-sciences"
+        ]
+      },
+      {
+        "id": "EMR_NAMED_028",
+        "name": "Colgate-Palmolive",
+        "relationship": "customer",
+        "business_line": "AMS",
+        "details": "2026-05-04 Emerson具名案例：智慧感測器用於壓縮空氣監測，官方報導節能15%。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.com/en/corporate/insights/colgate-palmolive-smart-sensor-compressed-air-monitoring"
+        ],
+        "ticker": "CL"
+      },
+      {
+        "id": "EMR_NAMED_029",
+        "name": "Logtek AS",
+        "relationship": "customer",
+        "business_line": "ASPEN_ASSET",
+        "details": "2026-10-06 Emerson公告：挪威地下資料公司選用Aspen Geolog加速上游地質工作流程。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.com/en/corporate/news/2026/emerson-selected-by-logtek-as-to-accelerate-upstream-exploration"
+        ]
+      },
+      {
+        "id": "EMR_NAMED_030",
+        "name": "BP",
+        "relationship": "customer",
+        "business_line": "DELTAV",
+        "details": "2026-08-13 Emerson公告：BP營運Shah Deniz壓縮專案採用Emerson自動化，改善天然氣回收。",
+        "evidence_grade": "A｜官方具名採用／合約",
+        "source_urls": [
+          "https://www.emerson.com/en/corporate/news/2026/emerson-to-automate-bp-operated-shah-deniz-compression-project"
+        ],
+        "ticker": "BP"
+      },
+      {
+        "id": "EMR_NAMED_031",
+        "name": "Caltrol",
+        "relationship": "partner",
+        "business_line": "MINING",
+        "details": "Emerson具名Impact Partner；支援South32 Hermosa及Lithium Americas Thacker Pass的在地維修與技術服務。",
+        "evidence_grade": "A｜官方具名合作／競爭",
+        "source_urls": [
+          "https://www.emerson.com/en/corporate/news/2025/emerson-selected-to-automate-south32s-hermosa-project"
+        ]
+      },
+      {
+        "id": "EMR_NAMED_032",
+        "name": "Rominserv",
+        "relationship": "partner",
+        "business_line": "DELTAV",
+        "details": "Rompetrol Rafinare工程維修服務商，與Emerson共同執行Petromidia DeltaV AgileOps警報管理專案。",
+        "evidence_grade": "A｜官方具名合作／競爭",
+        "source_urls": [
+          "https://www.emerson.com/en/corporate/news/2026/emerson-helps-romanias-largest-refinery-rompetrol-rafinare"
+        ]
+      },
+      {
+        "id": "EMR_NAMED_033",
+        "name": "Mitsubishi Power",
+        "relationship": "partner",
+        "business_line": "OVATION",
+        "details": "Intermountain IPP Renewed及Advanced Clean Energy Storage氫能與電力整合案，Emerson與Mitsubishi Power在模擬及控制技術合作。",
+        "evidence_grade": "A｜官方具名合作／競爭",
+        "source_urls": [
+          "https://www.emerson.com/en/corporate/news/2023/02-software-helps-intermountain-power-agency"
+        ]
+      },
+      {
+        "id": "EMR_NAMED_034",
+        "name": "Aspen Technology",
+        "relationship": "partner",
+        "business_line": "CORPORATE",
+        "details": "2025-03-12 Emerson完成收購AspenTech剩餘股權，現為100%持有的集團內部軟體事業。",
+        "evidence_grade": "A｜官方具名合作／競爭",
+        "source_urls": [
+          "https://ir.emerson.com/news-events/press-releases/detail/11/emerson-completes-acquisition-of-remaining-outstanding-shares-of-aspentech"
+        ]
+      },
+      {
+        "id": "EMR_NAMED_035",
+        "name": "National Instruments",
+        "relationship": "partner",
+        "business_line": "CORPORATE",
+        "details": "2023-10-11 Emerson完成收購NI；為集團內部Test & Measurement事業。",
+        "evidence_grade": "A｜官方具名合作／競爭",
+        "source_urls": [
+          "https://ir.emerson.com/sec-filings/all-sec-filings/content/0000032604-26-000054/emr-20260930.htm"
+        ]
+      }
+    ],
+    "research_metadata": {
+      "original_repository": "huangtop/AXIOM-RESEARCH-ENGINE",
+      "original_commit": "da93c81d",
+      "original_blob_sha": "600795118bd35995ae4ff00e392ea740be4584c2",
+      "visible_entity_policy": "僅顯示具名實體及可追溯的直接產品使用、專案合約或合作；不創造匿名企業節點。",
+      "review_passes": [
+        "具名實體檢查",
+        "產品及專案對應",
+        "合約角色與終端業主分辨",
+        "避免重複客戶公司主體",
+        "原始11欄位與JSON結構檢查"
+      ],
+      "notes": "具名關係採官方公告與客戶案例，含歷史部署。集團內AspenTech及NI標記為內部整合。供應商及受惠類別沒有足夠具名直接關係，本版不虛構節點。",
+      "official_validator": "not_run"
+    }
   }
 }

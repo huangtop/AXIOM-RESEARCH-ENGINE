@@ -235,5 +235,1585 @@
       "機器人"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "locale": "zh-TW",
+    "symbol": "TSLA",
+    "company": "Tesla, Inc.",
+    "as_of": "2026-11-12",
+    "original_commit": "da93c81d",
+    "original_blob_sha": "f17d6aa81ea00aa61564d435d26ceed855bc9c4f",
+    "business_lines": [
+      {
+        "id": "EV",
+        "name": "Model 3／Model Y 大量市場車款",
+        "segment": "乘用電動車"
+      },
+      {
+        "id": "EVS",
+        "name": "Model S／Model X",
+        "segment": "高階電動車"
+      },
+      {
+        "id": "CT",
+        "name": "Cybertruck",
+        "segment": "皮卡"
+      },
+      {
+        "id": "SEMI",
+        "name": "Tesla Semi",
+        "segment": "重型商用車"
+      },
+      {
+        "id": "CAB",
+        "name": "Cybercab／Robotaxi",
+        "segment": "無人駕駛車輛"
+      },
+      {
+        "id": "FSD",
+        "name": "FSD（Supervised）",
+        "segment": "車用軟體"
+      },
+      {
+        "id": "RIDE",
+        "name": "Robotaxi 車隊營運",
+        "segment": "移動服務"
+      },
+      {
+        "id": "OPT",
+        "name": "Optimus 人形機器人",
+        "segment": "機器人"
+      },
+      {
+        "id": "MP",
+        "name": "Megapack 2 XL／Megapack 3",
+        "segment": "電網級儲能"
+      },
+      {
+        "id": "MB",
+        "name": "Megablock",
+        "segment": "電網級儲能整合"
+      },
+      {
+        "id": "PW",
+        "name": "Powerwall／Powerwall 3P",
+        "segment": "住宅儲能"
+      },
+      {
+        "id": "SOL",
+        "name": "Solar Roof／太陽能板",
+        "segment": "太陽能"
+      },
+      {
+        "id": "AUT",
+        "name": "Autobidder／能源控制",
+        "segment": "能源軟體"
+      },
+      {
+        "id": "SC",
+        "name": "Supercharger／NACS",
+        "segment": "充電網路"
+      },
+      {
+        "id": "MC",
+        "name": "Megacharger",
+        "segment": "重卡充電"
+      },
+      {
+        "id": "CELL",
+        "name": "自製 4680 電芯",
+        "segment": "電池製造"
+      },
+      {
+        "id": "LFP",
+        "name": "內製 LFP 電芯",
+        "segment": "電池製造"
+      },
+      {
+        "id": "REF",
+        "name": "鋰精煉／正極材料",
+        "segment": "材料垂直整合"
+      },
+      {
+        "id": "AI",
+        "name": "AI5／AI6／車用推論晶片",
+        "segment": "AI 半導體"
+      },
+      {
+        "id": "CORTEX",
+        "name": "Cortex 1／Cortex 2",
+        "segment": "AI 訓練運算"
+      },
+      {
+        "id": "FAB",
+        "name": "Austin Fab／Terafab",
+        "segment": "晶圓廠計畫"
+      },
+      {
+        "id": "MFG",
+        "name": "Gigafactory 車輛製造",
+        "segment": "製造基地"
+      },
+      {
+        "id": "MEGA",
+        "name": "Megafactory 儲能製造",
+        "segment": "製造基地"
+      },
+      {
+        "id": "FLEET",
+        "name": "商用車隊服務與 OTA",
+        "segment": "服務"
+      },
+      {
+        "id": "INS",
+        "name": "保險／融資／租賃",
+        "segment": "汽車服務"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "end_user",
+      "partner",
+      "supplier",
+      "competitor"
+    ],
+    "nodes": [
+      {
+        "id": "TSLA-C01",
+        "business_line": "MP",
+        "relationship": "customer",
+        "name": "阿波羅電力（7911）",
+        "details": "直接客戶／台灣儲能系統整合商；2026 已簽採購契約；2026-10-08 與台灣特斯拉汽車有限公司簽訂 260 台 Megapack 2XL 採購契約，約 1GWh；2027 年底起分批交付、2028 年規劃營運。33 台終端客戶已簽與150台洽談為次級報導，不能推成260台全部已終端銷售。；阿波羅另與Tesla台灣、技嘉、群聯、士電公告AIDC策略聯盟，合作不等於後三者直接供貨。；其他相關業務線：MB；合約／容量：260台／約1GWh；地區：台灣；來源代碼：S33, S09",
+        "evidence_url": "https://goodinfo.tw/tw/StockAnnounceDetail.asp?CLAIM_TIME=2026%2F10%2F11+22%3A43%3A26&STOCK_ID=7911&SUBJECT=%E5%85%AC%E5%91%8A%E6%9C%AC%E5%85%AC%E5%8F%B8%E7%B0%BD%E8%A8%82Tesla%E5%A4%A7%E5%9E%8B%E5%84%B2%E8%83%BD%E8%A8%AD%E5%82%99%E6%8E%A1%E8%B3%BC%E5%A5%91%E7%B4%84",
+        "evidence_date": "2026-10-08",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "TSLA-C02",
+        "business_line": "MP",
+        "relationship": "customer",
+        "name": "Neoen",
+        "details": "直接客戶／專案業主；2026 新簽第二階段；Goyder Battery Stage 1 於2025-12向Tesla發開工通知；2026-07 Stage 2再簽Tesla及UGL合約，兩階段各227MW/907MWh，總454MW/1814MWh，預計2028營運。；其他相關業務線：MB；合約／容量：454MW／1,814MWh；地區：澳洲南澳；來源代碼：S06, S07, S08",
+        "evidence_url": "https://neoen.com/en/news/2026/neoen-doubles-size-of-goyder-battery-after-signing-two-15-year-capacity-contracts-in-south-australia/",
+        "evidence_date": "2026-07-29",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "TSLA-C03",
+        "business_line": "MP",
+        "relationship": "customer",
+        "name": "Eku Energy",
+        "details": "直接客戶／儲能專案開發營運商；2026 投運／歷史採購；Williamsdale Big Canberra Battery 2026-11-05 正式營運，250MW/500MWh，136台 Tesla Megapack；2026啟用非2026新簽約。；合約／容量：250MW／500MWh；136台；地區：澳洲首都領地；來源代碼：S10",
+        "evidence_url": "https://www.cmtedd.act.gov.au/open_government/inform/act_government_media_releases/barr/2026/powers-on-for-canberras-big-battery",
+        "evidence_date": "2026-11-05",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "TSLA-C04",
+        "business_line": "MP",
+        "relationship": "customer",
+        "name": "TagEnergy",
+        "details": "直接客戶／儲能開發商；2025 合約／2026 建設；Golden Plains 2025-11確認 Tesla供應168台Megapack 2XL，150MW/600MWh；2026-02動工，2026-10設備交付，預計2027投運。；合約／容量：150MW／600MWh；168台；地區：澳洲維多利亞；來源代碼：S11, S12",
+        "evidence_url": "https://tag-en.com/tagenergy-to-start-building-its-first-australian-battery-energy-storage-system-at-golden-plains-wind-farm/",
+        "evidence_date": "2025-11-21",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "TSLA-C05",
+        "business_line": "MP",
+        "relationship": "customer",
+        "name": "Intersect Power",
+        "details": "直接客戶／儲能開發商；2024 既有長約；2024-07簽15.3GWh Megapack供應合約，涵蓋至2030；屬多年期既有訂單，不是2026新增。；合約／容量：15.3GWh；地區：美國；來源代碼：S13",
+        "evidence_url": "https://www.intersect.com/news/tesla-provides-intersect-with-15-3-gwh-of-megapacks-for-solar-storage-projects",
+        "evidence_date": "2024-07-18",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-C06",
+        "business_line": "MP",
+        "relationship": "customer",
+        "name": "xAI／SpaceX 集團",
+        "details": "關係人客戶／Megapack；2026年4月已採購／SEC直接揭露；SpaceX於2026-06-03提交S-1/A，揭露旗下xAI於2026年1至4月向Tesla取得3.03億美元商品及服務，其中2026年4月Megapack採購2.69億美元；2026 Q1另有3,400萬美元Megapack採購。為關係人交易，金額是採購揭露，不等於新增外部第三方訂單。；合約／容量：$269m（2026年4月）；地區：美國；來源代碼：S41, S22",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/spaceexplorationtechnologib.htm",
+        "evidence_date": "2026-04",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "TSLA-C07",
+        "business_line": "SEMI",
+        "relationship": "customer",
+        "name": "PepsiCo",
+        "details": "商用車隊客戶；既有客戶／2026持續；2022起Tesla Semi早期交付與實際營運；2026新量產活動仍為具名客戶，不能把舊車重複計成新訂單。；其他相關業務線：MC, FLEET；地區：美國；來源代碼：S15, S24",
+        "evidence_url": "https://www.investing.com/news/stock-market-news/tesla-set-to-formally-roll-out-semi-electric-trucks-at-nevada-event-4916402",
+        "evidence_date": "2022–2026",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-C08",
+        "business_line": "SEMI",
+        "relationship": "customer",
+        "name": "DHL Supply Chain",
+        "details": "商用車隊客戶；2025 已交付／2026計畫；2025-12正式接收首輛Tesla Semi，經試營運後投入商業物流，2026計畫追加車輛但不推定確定台數。；其他相關業務線：FLEET；合約／容量：首輛交付；地區：美國；來源代碼：S14",
+        "evidence_url": "https://www.dhl.com/us-en/home/press/press-archive/2025/dhl-supply-chain-accelerates-sustainability-with-first-tesla-semi-delivery.html?trk=public_post_comment-text",
+        "evidence_date": "2025-12-04",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-C09",
+        "business_line": "SEMI",
+        "relationship": "customer",
+        "name": "US Foods",
+        "details": "商用車隊客戶；2026 客戶具名；2026-09 Semi 新量產交付活動具名展示客戶，未公布具體購車台數。；其他相關業務線：FLEET；地區：美國；來源代碼：S15, S24",
+        "evidence_url": "https://www.investing.com/news/stock-market-news/tesla-set-to-formally-roll-out-semi-electric-trucks-at-nevada-event-4916402",
+        "evidence_date": "2026-09-24",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-C10",
+        "business_line": "SEMI",
+        "relationship": "customer",
+        "name": "Einride",
+        "details": "商用車隊客戶；2026-08 Tesla具名500輛訂單／分批部署；Einride及Tesla於2026-08-18共同宣布500輛Tesla Semi訂單，計畫分批部署北美物流車隊；公告訂單不等於500輛已交付。Einride的Amazon等託運客戶是Einride下游客戶，不應當成Tesla直接購車方。；其他相關業務線：FLEET；合約／容量：500輛Tesla Semi訂單；地區：瑞典／美國；來源代碼：S27",
+        "evidence_url": "https://www.globenewswire.com/news-release/2026/08/18/3346668/0/en/einride-partners-with-tesla-for-the-world-s-largest-tesla-semi-deployment.html",
+        "evidence_date": "2026-08-18",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "TSLA-C11",
+        "business_line": "SEMI",
+        "relationship": "customer",
+        "name": "WattEV",
+        "details": "商用車隊客戶；2026 具名客戶；2026 Semi發表會具名物流／充電生態參與客戶，未核實獨立新訂單金額。；其他相關業務線：MC；地區：美國；來源代碼：S24",
+        "evidence_url": "https://www.investing.com/news/stock-market-news/tesla-set-to-formally-roll-out-semi-electric-trucks-at-nevada-event-4916402",
+        "evidence_date": "2026-09",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-C12",
+        "business_line": "SEMI",
+        "relationship": "customer",
+        "name": "ABF Freight",
+        "details": "商用車隊客戶；2026 具名客戶；2026 Semi發表會具名商用車隊客戶，未披露訂購台數。；其他相關業務線：FLEET；地區：美國；來源代碼：S24",
+        "evidence_url": "https://www.investing.com/news/stock-market-news/tesla-set-to-formally-roll-out-semi-electric-trucks-at-nevada-event-4916402",
+        "evidence_date": "2026-09",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-C13",
+        "business_line": "SEMI",
+        "relationship": "customer",
+        "name": "IMC Logistics",
+        "details": "商用車隊客戶；2026 具名客戶；2026 Semi發表會具名客戶，未披露訂購台數。；其他相關業務線：FLEET；地區：美國；來源代碼：S24",
+        "evidence_url": "https://www.investing.com/news/stock-market-news/tesla-set-to-formally-roll-out-semi-electric-trucks-at-nevada-event-4916402",
+        "evidence_date": "2026-09",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-C14",
+        "business_line": "SEMI",
+        "relationship": "customer",
+        "name": "OK Produce",
+        "details": "商用車隊客戶；2026 具名客戶；2026 Semi發表會具名客戶，未披露訂購台數。；其他相關業務線：FLEET；地區：美國；來源代碼：S24",
+        "evidence_url": "https://www.investing.com/news/stock-market-news/tesla-set-to-formally-roll-out-semi-electric-trucks-at-nevada-event-4916402",
+        "evidence_date": "2026-09",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-C15",
+        "business_line": "EV",
+        "relationship": "end_user",
+        "name": "個人車主／車隊訂閱戶（未具名）",
+        "details": "終端客戶類型；聚合統計；2026 Q3汽車交付486,532台、儲能部署13.7GWh；FSD付費訂閱者約170萬（法說），非可具名企業採購。；其他相關業務線：CT, FSD, RIDE, PW, SC；合約／容量：486,532台車／13.7GWh儲能；地區：全球；來源代碼：S04, S20",
+        "evidence_url": "https://ir.tesla.com/press-release/tesla-third-quarter-2026-production-deliveries-and-deployments",
+        "evidence_date": "2026-Q3",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-S01",
+        "business_line": "EV",
+        "relationship": "supplier",
+        "name": "Panasonic Energy／Panasonic",
+        "details": "直接電池芯供應商；SEC具名供應商；Tesla 2025 10-K具名電芯供應商；不推定其供應所有車款或全部Megapack。；其他相關業務線：CELL, CT；地區：日本／美國；來源代碼：S01, S18",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026-01-29",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-S02",
+        "business_line": "EV",
+        "relationship": "supplier",
+        "name": "寧德時代 CATL",
+        "details": "直接電池芯供應商；SEC具名供應商；Tesla 2025 10-K具名電芯供應商；產品別與2026新採購額未逐筆披露。；其他相關業務線：MP, LFP；地區：中國；來源代碼：S01, S18",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026-01-29",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-S03",
+        "business_line": "EV",
+        "relationship": "supplier",
+        "name": "LG Energy Solution",
+        "details": "電池芯供應商／市場報導；國際組織供應鏈確認／細分應用未證實；IEA列為Tesla電芯供應鏈重要供應商；特定Optimus電芯報導缺Tesla直接驗證，不升級為已確認Optimus訂單。；其他相關業務線：MP, OPT；地區：韓國／美國；來源代碼：S18",
+        "evidence_url": "https://www.iea.org/reports/global-ev-outlook-2026/electric-vehicle-batteries",
+        "evidence_date": "2026",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-S04",
+        "business_line": "AI",
+        "relationship": "supplier",
+        "name": "Samsung Electronics／Samsung Foundry",
+        "details": "AI晶片晶圓代工；具名多年期晶片合約；2025-07 Samsung與Tesla簽訂165億美元長約至2033年，Reuters稱AI6將由Samsung Taylor代工；2026-07韓聯社另報Samsung籌備AI5，尚不等於AI5量產。；其他相關業務線：CAB, OPT；合約／容量：$16.5bn／至2033；地區：韓國／美國；來源代碼：S38, S37",
+        "evidence_url": "https://www.reuters.com/business/musk-says-tesla-samsung-electronics-sign-165-billion-chip-supply-deal-2025-07-28/",
+        "evidence_date": "2025-07-28",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "TSLA-S05",
+        "business_line": "AI",
+        "relationship": "supplier",
+        "name": "台積電 TSMC",
+        "details": "AI晶片晶圓代工／台灣上游；具名代工供應鏈；2025年Reuters轉述Tesla AI5先由台積電在台灣、後轉美國亞利桑那代工；2026年韓聯社另報Samsung也籌備AI5。多來源對AI5分工有版本差異；Samsung 165億美元合約指向AI6，不能把AI5、AI6代工量產節點混為同一已完成事件。；其他相關業務線：CAB, OPT；地區：台灣／美國亞利桑那；來源代碼：S38, S37, S17",
+        "evidence_url": "https://www.reuters.com/business/musk-says-tesla-samsung-electronics-sign-165-billion-chip-supply-deal-2025-07-28/",
+        "evidence_date": "2025–2026",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-S06",
+        "business_line": "CELL",
+        "relationship": "partner",
+        "name": "Tesla 自製電芯團隊",
+        "details": "內部垂直整合；內部製造；2026 Q3自製4680德州量產與內華達LFP初期爬坡；第一批全自製LFP Megapack已出貨，非外部供應商。；其他相關業務線：LFP, MP, SEMI, CAB；合約／容量：德州4680 >40GWh安裝產能；內華達LFP 7GWh初期爬坡；地區：美國；來源代碼：S03, S02",
+        "evidence_url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
+        "evidence_date": "2026-Q3",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-S07",
+        "business_line": "REF",
+        "relationship": "partner",
+        "name": "Tesla Texas Lithium Refinery",
+        "details": "內部原料精煉；內部製造；Tesla 10-K稱2026年1月德州鋰精煉開始營運；30GWh標示為產能規劃而非2026實際產量。；其他相關業務線：CELL, LFP；地區：美國德州；來源代碼：S01, S03",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026-01",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-S08",
+        "business_line": "REF",
+        "relationship": "partner",
+        "name": "Tesla Texas Cathode Materials",
+        "details": "內部正極材料；內部製造；德州正極材料10GWh早期爬坡，與外購電池供應互補。；其他相關業務線：CELL, LFP；合約／容量：10GWh安裝產能／早期爬坡；地區：美國德州；來源代碼：S03",
+        "evidence_url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
+        "evidence_date": "2026-Q3",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-S09",
+        "business_line": "CORTEX",
+        "relationship": "supplier",
+        "name": "NVIDIA",
+        "details": "AI訓練生態／技術供應商；生態關聯／具體交易待核實；Tesla訓練算力涉及GPU基礎設施；本次已核對資料未確認2026具體GPU採購量與型號，不列確定採購合約。；其他相關業務線：AI；地區：美國；來源代碼：S03",
+        "evidence_url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
+        "evidence_date": "2026",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-P01",
+        "business_line": "MP",
+        "relationship": "partner",
+        "name": "UGL（CIMIC／HOCHTIEF）",
+        "details": "專案工程EPC／BOP；具名EPC；Neoen Goyder一、二期的土建、高壓及電氣BOP承包商；非Tesla電池芯供應商。；其他相關業務線：MB；合約／容量：Stage 2 227MW／907MWh；地區：澳洲；來源代碼：S06, S08",
+        "evidence_url": "https://neoen.com/en/news/2026/neoen-doubles-size-of-goyder-battery-after-signing-two-15-year-capacity-contracts-in-south-australia/",
+        "evidence_date": "2026-07-30",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-P02",
+        "business_line": "MP",
+        "relationship": "partner",
+        "name": "Consolidated Power Projects Australia（CPP）",
+        "details": "專案工程EPC／BOP；具名EPC；TagEnergy Golden Plains的BOP承包商；Tesla供應168台Megapack，雙方角色不同。；合約／容量：150MW／600MWh；地區：澳洲；來源代碼：S11",
+        "evidence_url": "https://tag-en.com/tagenergy-to-start-building-its-first-australian-battery-energy-storage-system-at-golden-plains-wind-farm/",
+        "evidence_date": "2025-11-21",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-P03",
+        "business_line": "MP",
+        "relationship": "end_user",
+        "name": "澳洲首都領地政府 ACT Government",
+        "details": "公共專案政策方／受益方；政府專案方；Williamsdale Big Canberra Battery官方啟用與政策方；採購／開發營運主體為Eku Energy，不應將ACT政府直接等同Tesla採購客戶。；合約／容量：250MW／500MWh；地區：澳洲；來源代碼：S10",
+        "evidence_url": "https://www.cmtedd.act.gov.au/open_government/inform/act_government_media_releases/barr/2026/powers-on-for-canberras-big-battery",
+        "evidence_date": "2026-11-05",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-P04",
+        "business_line": "MP",
+        "relationship": "partner",
+        "name": "AusEnergy Services Limited",
+        "details": "電力容量服務招標管理方；電力市場／招標方；Neoen Goyder取得15年容量服務合約的招標管理方；非Tesla直接設備客戶。；其他相關業務線：MB；合約／容量：2份75MW／8小時容量服務合約；地區：澳洲；來源代碼：S06",
+        "evidence_url": "https://neoen.com/en/news/2026/neoen-doubles-size-of-goyder-battery-after-signing-two-15-year-capacity-contracts-in-south-australia/",
+        "evidence_date": "2026-07-29",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-P05",
+        "business_line": "MP",
+        "relationship": "partner",
+        "name": "ElectraNet",
+        "details": "輸電網接入方；電網接入關係；Goyder接入Bundey變電站之輸電系統；不是Tesla設備採購方。；其他相關業務線：MB；地區：澳洲；來源代碼：S07",
+        "evidence_url": "https://goyderenergy.com.au/goyder-battery/",
+        "evidence_date": "2026",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-P06",
+        "business_line": "MP",
+        "relationship": "partner",
+        "name": "Tesla Motors Taiwan Limited 台灣特斯拉汽車有限公司",
+        "details": "Tesla在台簽約實體；內部銷售法人；與阿波羅電力簽訂260台Megapack 2XL採購合約；屬Tesla集團銷售實體，不是外部供應商。；合約／容量：260台／約1GWh；地區：台灣；來源代碼：S09",
+        "evidence_url": "https://m.moneydj.com/f1a.aspx?a=1df4f091-63cd-4d48-9c5e-b34bba06fd35&c=MB00",
+        "evidence_date": "2026-10-08",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-F01",
+        "business_line": "EV",
+        "relationship": "partner",
+        "name": "Fremont California",
+        "details": "自有製造／研發設施；內部資產；Model3/Y與Optimus初期量產；S/X線2026 Q2停用；其他相關業務線：EVS, OPT, MFG；合約／容量：Model3/Y >550,000台安裝年產能；地區：美國加州；來源代碼：S03, S02",
+        "evidence_url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
+        "evidence_date": "2026-Q3",
+        "evidence_grade": "A-",
+        "commercial_stage": "internal_facility"
+      },
+      {
+        "id": "TSLA-F02",
+        "business_line": "EV",
+        "relationship": "partner",
+        "name": "Gigafactory Shanghai",
+        "details": "自有製造／研發設施；內部資產；Model3/Y製造與出口；其他相關業務線：MFG；合約／容量：>950,000台安裝年產能；地區：中國上海；來源代碼：S03, S02",
+        "evidence_url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
+        "evidence_date": "2026-Q3",
+        "evidence_grade": "A-",
+        "commercial_stage": "internal_facility"
+      },
+      {
+        "id": "TSLA-F03",
+        "business_line": "EV",
+        "relationship": "partner",
+        "name": "Gigafactory Berlin",
+        "details": "自有製造／研發設施；內部資產；ModelY量產、4680規劃；其他相關業務線：MFG, CELL；合約／容量：ModelY >375,000台安裝年產能；地區：德國；來源代碼：S03, S02",
+        "evidence_url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
+        "evidence_date": "2026-Q3",
+        "evidence_grade": "A-",
+        "commercial_stage": "internal_facility"
+      },
+      {
+        "id": "TSLA-F04",
+        "business_line": "EV",
+        "relationship": "partner",
+        "name": "Gigafactory Texas",
+        "details": "自有製造／研發設施；內部資產；ModelY/Cybertruck/Cybercab、4680、Cortex與Optimus基地；其他相關業務線：CT, CAB, CELL, CORTEX, OPT, MFG；合約／容量：ModelY >375,000、Cybertruck >125,000、Cybercab >125,000台安裝年產能；地區：美國德州；來源代碼：S03, S02",
+        "evidence_url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
+        "evidence_date": "2026-Q3",
+        "evidence_grade": "A-",
+        "commercial_stage": "internal_facility"
+      },
+      {
+        "id": "TSLA-F05",
+        "business_line": "SEMI",
+        "relationship": "partner",
+        "name": "Gigafactory Nevada／Semi Factory",
+        "details": "自有製造／研發設施；內部資產；Semi、Powerwall及內製LFP電芯；其他相關業務線：LFP, PW, MC；合約／容量：Semi 25,000台；Powerwall >6GWh；LFP 7GWh初期爬坡；地區：美國內華達；來源代碼：S03, S02",
+        "evidence_url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
+        "evidence_date": "2026-Q3",
+        "evidence_grade": "A-",
+        "commercial_stage": "internal_facility"
+      },
+      {
+        "id": "TSLA-F06",
+        "business_line": "MP",
+        "relationship": "partner",
+        "name": "Megafactory Lathrop",
+        "details": "自有製造／研發設施；內部資產；Megapack量產；其他相關業務線：MEGA；合約／容量：40GWh安裝年產能；地區：美國加州；來源代碼：S03, S02",
+        "evidence_url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
+        "evidence_date": "2026-Q3",
+        "evidence_grade": "A-",
+        "commercial_stage": "internal_facility"
+      },
+      {
+        "id": "TSLA-F07",
+        "business_line": "MP",
+        "relationship": "partner",
+        "name": "Megafactory Shanghai",
+        "details": "自有製造／研發設施；內部資產；Megapack量產；其他相關業務線：MEGA；合約／容量：20GWh安裝年產能；地區：中國上海；來源代碼：S03, S02",
+        "evidence_url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
+        "evidence_date": "2026-Q3",
+        "evidence_grade": "A-",
+        "commercial_stage": "internal_facility"
+      },
+      {
+        "id": "TSLA-F08",
+        "business_line": "MP",
+        "relationship": "partner",
+        "name": "Megafactory Texas Houston",
+        "details": "自有製造／研發設施；內部資產；2026 Q3開始量產；其他相關業務線：MB, MEGA；合約／容量：50GWh規劃／安裝年產能；地區：美國德州；來源代碼：S03, S02",
+        "evidence_url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
+        "evidence_date": "2026-Q3",
+        "evidence_grade": "A-",
+        "commercial_stage": "internal_facility"
+      },
+      {
+        "id": "TSLA-F09",
+        "business_line": "FAB",
+        "relationship": "partner",
+        "name": "Austin Fab／Terafab",
+        "details": "自有製造／研發設施；內部資產；Tesla 2026 Q3股東簡報稱Austin Fab仍在施工，計畫2027年開始設備試運轉，非2026已營運的晶圓廠。；其他相關業務線：AI；合約／容量：尚未商業量產；地區：美國德州；來源代碼：S03, S02",
+        "evidence_url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
+        "evidence_date": "2026-Q3",
+        "evidence_grade": "A-",
+        "commercial_stage": "internal_facility"
+      },
+      {
+        "id": "TSLA-F10",
+        "business_line": "CORTEX",
+        "relationship": "partner",
+        "name": "Cortex 1／2",
+        "details": "自有製造／研發設施；內部資產；AI訓練基礎設施；其他相關業務線：AI, OPT, FSD；合約／容量：Cortex 1 >105MW；Cortex 2 >120MW安裝容量；地區：美國德州；來源代碼：S03, S02",
+        "evidence_url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
+        "evidence_date": "2026-Q3",
+        "evidence_grade": "A-",
+        "commercial_stage": "internal_facility"
+      },
+      {
+        "id": "TSLA-X01",
+        "business_line": "EV",
+        "relationship": "competitor",
+        "name": "BYD 比亞迪",
+        "details": "同業競爭者／市場比較；市場競爭非交易；電動車與電池垂直整合競爭者；其他相關業務線：CT, CELL；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-X02",
+        "business_line": "EV",
+        "relationship": "competitor",
+        "name": "Volkswagen Group 大眾汽車",
+        "details": "同業競爭者／市場比較；市場競爭非交易；全球純電動車競爭者；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-X03",
+        "business_line": "EV",
+        "relationship": "competitor",
+        "name": "Hyundai Motor Group 現代汽車集團",
+        "details": "同業競爭者／市場比較；市場競爭非交易；全球純電動車競爭者；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-X04",
+        "business_line": "EV",
+        "relationship": "competitor",
+        "name": "General Motors 通用汽車",
+        "details": "同業競爭者／市場比較；市場競爭非交易；北美電動車競爭者；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-X05",
+        "business_line": "EV",
+        "relationship": "competitor",
+        "name": "Ford Motor 福特",
+        "details": "同業競爭者／市場比較；市場競爭非交易；北美乘用與皮卡競爭者；其他相關業務線：CT；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-X06",
+        "business_line": "EV",
+        "relationship": "competitor",
+        "name": "Rivian",
+        "details": "同業競爭者／市場比較；市場競爭非交易；北美電動車與電動皮卡競爭者；其他相關業務線：CT；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-X07",
+        "business_line": "EV",
+        "relationship": "competitor",
+        "name": "Lucid Group",
+        "details": "同業競爭者／市場比較；市場競爭非交易；高階電動車競爭者；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-X08",
+        "business_line": "CAB",
+        "relationship": "competitor",
+        "name": "Waymo（Alphabet）",
+        "details": "同業競爭者／市場比較；市場競爭非交易；無人駕駛載客服務直接競爭者；其他相關業務線：RIDE；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-X09",
+        "business_line": "CAB",
+        "relationship": "competitor",
+        "name": "Baidu Apollo Go",
+        "details": "同業競爭者／市場比較；市場競爭非交易；無人駕駛載客服務競爭者；其他相關業務線：RIDE；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-X10",
+        "business_line": "FSD",
+        "relationship": "competitor",
+        "name": "Mobileye",
+        "details": "同業競爭者／市場比較；市場競爭非交易；ADAS／自動駕駛技術競爭者；其他相關業務線：AI；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-X11",
+        "business_line": "MP",
+        "relationship": "competitor",
+        "name": "CATL 寧德時代",
+        "details": "同業競爭者／市場比較；市場競爭非交易；儲能系統市場競爭者，亦為Tesla電芯供應商；雙重角色須分開；其他相關業務線：MB；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-X12",
+        "business_line": "MP",
+        "relationship": "competitor",
+        "name": "Fluence Energy",
+        "details": "同業競爭者／市場比較；市場競爭非交易；公用事業級BESS系統整合與能源軟體競爭者；其他相關業務線：MB, AUT；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-X13",
+        "business_line": "MP",
+        "relationship": "competitor",
+        "name": "Sungrow 陽光電源",
+        "details": "同業競爭者／市場比較；市場競爭非交易；BESS系統與PCS競爭者；其他相關業務線：MB；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-X14",
+        "business_line": "MP",
+        "relationship": "competitor",
+        "name": "BYD Energy Storage",
+        "details": "同業競爭者／市場比較；市場競爭非交易；大型儲能系統競爭者；其他相關業務線：MB；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-X15",
+        "business_line": "MP",
+        "relationship": "competitor",
+        "name": "Wärtsilä Energy",
+        "details": "同業競爭者／市場比較；市場競爭非交易；電網級儲能與調度競爭者；其他相關業務線：MB, AUT；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-X16",
+        "business_line": "PW",
+        "relationship": "competitor",
+        "name": "Enphase Energy",
+        "details": "同業競爭者／市場比較；市場競爭非交易；住宅儲能與太陽能逆變器競爭者；其他相關業務線：SOL；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-X17",
+        "business_line": "PW",
+        "relationship": "competitor",
+        "name": "SolarEdge Technologies",
+        "details": "同業競爭者／市場比較；市場競爭非交易；住宅太陽能與儲能競爭者；其他相關業務線：SOL；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-X18",
+        "business_line": "OPT",
+        "relationship": "competitor",
+        "name": "Boston Dynamics",
+        "details": "同業競爭者／市場比較；市場競爭非交易；人形機器人市場競爭者；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-X19",
+        "business_line": "OPT",
+        "relationship": "competitor",
+        "name": "Figure AI",
+        "details": "同業競爭者／市場比較；市場競爭非交易；人形機器人市場競爭者；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-X20",
+        "business_line": "OPT",
+        "relationship": "competitor",
+        "name": "Agility Robotics",
+        "details": "同業競爭者／市場比較；市場競爭非交易；物流人形機器人競爭者；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-X21",
+        "business_line": "SEMI",
+        "relationship": "competitor",
+        "name": "Daimler Truck",
+        "details": "同業競爭者／市場比較；市場競爭非交易；重型商用卡車競爭者；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-X22",
+        "business_line": "SEMI",
+        "relationship": "competitor",
+        "name": "Volvo Trucks",
+        "details": "同業競爭者／市場比較；市場競爭非交易；重型商用卡車競爭者；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-X23",
+        "business_line": "SC",
+        "relationship": "competitor",
+        "name": "ChargePoint",
+        "details": "同業競爭者／市場比較；市場競爭非交易；充電網路與設備競爭者；其他相關業務線：MC；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-X24",
+        "business_line": "SC",
+        "relationship": "competitor",
+        "name": "EVgo",
+        "details": "同業競爭者／市場比較；市場競爭非交易；公共快速充電網路競爭者；來源代碼：S01, S02",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+        "evidence_date": "2026",
+        "evidence_grade": "B",
+        "commercial_stage": "market_competitor"
+      },
+      {
+        "id": "TSLA-C16",
+        "business_line": "MP",
+        "relationship": "customer",
+        "name": "NatPower",
+        "details": "直接客戶／儲能開發及營運商；2026年6月已簽多年度供應與執行協議；2026-06-23 Tesla與NatPower簽署涵蓋義大利、英國逾25GWh BESS的多年度供應與執行協議；Tesla提供Megapack、EPC、Autobidder交易服務及長期收入保障。首期5個專案；逾100GWh為NatPower更長期規劃，非Tesla已簽100GWh訂單；40–50億美元為整體建設估值，非Tesla可認列營收。；其他相關業務線：MB, AUT；合約／容量：>25GWh多年度協議；首期5專案；地區：義大利／英國；來源代碼：S25",
+        "evidence_url": "https://natpower.com/2026/06/23/natpower-and-tesla-sign-a-strategic-agreement-for-more-than-25-gwh-of-battery-energy-storage-systems-in-europe-2/",
+        "evidence_date": "2026-06-23",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "TSLA-C17",
+        "business_line": "MP",
+        "relationship": "customer",
+        "name": "GIGA Storage",
+        "details": "儲能開發商／Tesla意向合作方；2026-06 LOI；2026-09已開工，最終採購條款不公開；Green Turtle比利時700MW／2,800MWh，2026-06 Tesla與GIGA Storage簽署排他談判意向書，非當時已簽最終供應合約；2026-09土建承包商明言受Tesla委託、採640台Megapack 3，顯示工程推進，但未獲得最終合約價格／條款。；其他相關業務線：MB；合約／容量：700MW／2,800MWh；640台Megapack 3；地區：比利時；來源代碼：S28, S29",
+        "evidence_url": "https://giga-storage.com/en/Giga-Storage-and-Tesla-join-forces-to-build-one-of-the-largest-battery-projects-in-Europe./",
+        "evidence_date": "2026-06-24",
+        "evidence_grade": "A-",
+        "commercial_stage": "non_binding_or_pending"
+      },
+      {
+        "id": "TSLA-C18",
+        "business_line": "SEMI",
+        "relationship": "customer",
+        "name": "ZET Financial／ZET SCALE",
+        "details": "Tesla Semi直接採購下單法人／集體採購機制；2026-09首批2,500輛採購訂單；Catalyst Mobility及Smart Freight Centre官方宣布Tesla為首批2,500輛Class 8電動卡車主要OEM；ZET Financial向Tesla發出採購單並以租賃提供車隊；聯盟10,000輛屬長期目標，不是已下單數。Microsoft／PepsiCo等為託運需求方，不等同各自直接買2,500輛。；其他相關業務線：MC, FLEET；合約／容量：首批2,500輛；10,000輛為聯盟目標；地區：美國；來源代碼：S26",
+        "evidence_url": "https://calstart.org/catalyst-mobility-and-smart-freight-centre-launch-zet-scale-program/",
+        "evidence_date": "2026-09-22",
+        "evidence_grade": "A",
+        "commercial_stage": "announced_order"
+      },
+      {
+        "id": "TSLA-P07",
+        "business_line": "SEMI",
+        "relationship": "partner",
+        "name": "Microsoft",
+        "details": "ZET SCALE貨主／需求聚合參與方；2026-09已公開參與聯盟；Microsoft為ZET SCALE創始貨主之一，提供電動貨運需求訊號；由ZET Financial下單，未披露Microsoft獨立直接向Tesla購買Semi台數。；其他相關業務線：FLEET；地區：美國；來源代碼：S26",
+        "evidence_url": "https://calstart.org/catalyst-mobility-and-smart-freight-centre-launch-zet-scale-program/",
+        "evidence_date": "2026-09-22",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-P08",
+        "business_line": "SEMI",
+        "relationship": "partner",
+        "name": "Catalyst Mobility／Smart Freight Centre",
+        "details": "聯盟主辦／電動重卡採購協調；2026-09主辦首批2,500輛；兩非營利組織主導ZET SCALE集中招標；Tesla為首批主要OEM，Kenworth、RIDE、Volvo為次要OEM候選；聯盟組織不等於採購下單法人。；其他相關業務線：FLEET；合約／容量：首批2,500輛；地區：美國；來源代碼：S26",
+        "evidence_url": "https://calstart.org/catalyst-mobility-and-smart-freight-centre-launch-zet-scale-program/",
+        "evidence_date": "2026-09-22",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-P09",
+        "business_line": "MP",
+        "relationship": "partner",
+        "name": "STADSBADER CONTRACTORS",
+        "details": "Tesla直接委託的比利時儲能土建承包商；2026-09已承攬土建；2026-09-18公司公告由Tesla委託Green Turtle土方與混凝土施工，該工程使用640台Megapack 3；屬Tesla下游工程採購，並非Tesla電池芯供應商。；其他相關業務線：MB；合約／容量：Green Turtle 700MW／2.8GWh；地區：比利時；來源代碼：S29",
+        "evidence_url": "https://www.stadsbader-contractors.be/en/news/stadsbader-contractors-builds-belgiums-largest-energy-storage-facility",
+        "evidence_date": "2026-09-18",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-P10",
+        "business_line": "MP",
+        "relationship": "partner",
+        "name": "技嘉科技（2376）",
+        "details": "台灣五方AIDC電力與算力策略聯盟成員；2026-10合作公告，非已證實Tesla供應商；阿波羅電力公開重大訊息具名技嘉與台灣Tesla、群聯、士林電機共同啟動AIDC與企業強韌電網合作；各方專案義務及金額須以個案合約為準。；其他相關業務線：AUT；地區：台灣；來源代碼：S30",
+        "evidence_url": "https://goodinfo.tw/tw/StockAnnounceDetail.asp?CLAIM_TIME=2026%2F10%2F11+22%3A43%3A50&STOCK_ID=7911&SUBJECT=%E5%85%AC%E5%91%8A%E6%9C%AC%E5%85%AC%E5%8F%B8%E8%88%87%E5%8F%B0%E7%81%A3%E7%89%B9%E6%96%AF%E6%8B%89%E6%B1%BD%E8%BB%8A%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E3%80%81%E6%8A%80%E5%98%89%E7%A7%91%E6%8A%80%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E3%80%81%E7%BE%A4%E8%81%AF%E9%9B%BB%E5%AD%90%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E5%8F%8A%E5%A3%AB%E6%9E%97%E9%9B%BB%E6%A9%9F%E5%BB%A0%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E7%B7%A0%E7%B5%90%E3%80%8CAIDC%E6%9A%A8%E4%BC%81%E6%A5%AD%E5%BC%B7%E9%9F%8C%E9%9B%BB%E7%B6%B2%E5%90%88%E4%BD%9C%E7%AD%96%E7%95%A5%E8%81%AF%E7%9B%9F%E3%80%8D",
+        "evidence_date": "2026-10-08",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-P11",
+        "business_line": "MP",
+        "relationship": "partner",
+        "name": "群聯電子（8299）",
+        "details": "台灣五方AIDC電力與算力策略聯盟成員；2026-10合作公告，非已證實Tesla供應商；阿波羅電力公開重大訊息具名群聯與台灣Tesla、技嘉、士電；合作方向為儲能、綠電、能源管理及電力資訊設備，未揭露Tesla向群聯採購零件。；其他相關業務線：AUT；地區：台灣；來源代碼：S30",
+        "evidence_url": "https://goodinfo.tw/tw/StockAnnounceDetail.asp?CLAIM_TIME=2026%2F10%2F11+22%3A43%3A50&STOCK_ID=7911&SUBJECT=%E5%85%AC%E5%91%8A%E6%9C%AC%E5%85%AC%E5%8F%B8%E8%88%87%E5%8F%B0%E7%81%A3%E7%89%B9%E6%96%AF%E6%8B%89%E6%B1%BD%E8%BB%8A%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E3%80%81%E6%8A%80%E5%98%89%E7%A7%91%E6%8A%80%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E3%80%81%E7%BE%A4%E8%81%AF%E9%9B%BB%E5%AD%90%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E5%8F%8A%E5%A3%AB%E6%9E%97%E9%9B%BB%E6%A9%9F%E5%BB%A0%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E7%B7%A0%E7%B5%90%E3%80%8CAIDC%E6%9A%A8%E4%BC%81%E6%A5%AD%E5%BC%B7%E9%9F%8C%E9%9B%BB%E7%B6%B2%E5%90%88%E4%BD%9C%E7%AD%96%E7%95%A5%E8%81%AF%E7%9B%9F%E3%80%8D",
+        "evidence_date": "2026-10-08",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-P12",
+        "business_line": "MP",
+        "relationship": "partner",
+        "name": "士林電機（1503）",
+        "details": "台灣五方AIDC電力與算力策略聯盟成員；2026-10合作公告，非已證實Tesla供應商；阿波羅電力公開重大訊息具名士電與台灣Tesla、技嘉、群聯；屬電網／電力設備協作方向，未揭露Tesla對士電直接採購金額。；其他相關業務線：AUT；地區：台灣；來源代碼：S30",
+        "evidence_url": "https://goodinfo.tw/tw/StockAnnounceDetail.asp?CLAIM_TIME=2026%2F10%2F11+22%3A43%3A50&STOCK_ID=7911&SUBJECT=%E5%85%AC%E5%91%8A%E6%9C%AC%E5%85%AC%E5%8F%B8%E8%88%87%E5%8F%B0%E7%81%A3%E7%89%B9%E6%96%AF%E6%8B%89%E6%B1%BD%E8%BB%8A%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E3%80%81%E6%8A%80%E5%98%89%E7%A7%91%E6%8A%80%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E3%80%81%E7%BE%A4%E8%81%AF%E9%9B%BB%E5%AD%90%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E5%8F%8A%E5%A3%AB%E6%9E%97%E9%9B%BB%E6%A9%9F%E5%BB%A0%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E7%B7%A0%E7%B5%90%E3%80%8CAIDC%E6%9A%A8%E4%BC%81%E6%A5%AD%E5%BC%B7%E9%9F%8C%E9%9B%BB%E7%B6%B2%E5%90%88%E4%BD%9C%E7%AD%96%E7%95%A5%E8%81%AF%E7%9B%9F%E3%80%8D",
+        "evidence_date": "2026-10-08",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-T01",
+        "business_line": "EV",
+        "relationship": "supplier",
+        "name": "同欣電（6271）",
+        "details": "台灣歷史Tesla供應鏈廠商／產品類別：影像感測器封裝；2020年政府歷史快照；2026持續供貨未核實；台灣經濟部2020年簡報將此廠商列為Tesla供應鏈投資案例，對應產品類別為「影像感測器封裝」。這只能證明歷史供應鏈身分；不能推定2026仍為直接供應商、已獲Optimus訂單、具體出貨金額或特定新車平台。；其他相關業務線：FSD；地區：台灣；來源代碼：S31",
+        "evidence_url": "https://www.ey.gov.tw/File/AD98278112D0CC17?A=C",
+        "evidence_date": "2020-10",
+        "evidence_grade": "B-歷史",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-T02",
+        "business_line": "EV",
+        "relationship": "supplier",
+        "name": "群創光電（3481）",
+        "details": "台灣歷史Tesla供應鏈廠商／產品類別：觸控面板；2020年政府歷史快照；2026持續供貨未核實；台灣經濟部2020年簡報將此廠商列為Tesla供應鏈投資案例，對應產品類別為「觸控面板」。這只能證明歷史供應鏈身分；不能推定2026仍為直接供應商、已獲Optimus訂單、具體出貨金額或特定新車平台。；其他相關業務線：FSD；地區：台灣；來源代碼：S31",
+        "evidence_url": "https://www.ey.gov.tw/File/AD98278112D0CC17?A=C",
+        "evidence_date": "2020-10",
+        "evidence_grade": "B-歷史",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-T03",
+        "business_line": "EV",
+        "relationship": "supplier",
+        "name": "致茂電子（2360）",
+        "details": "台灣歷史Tesla供應鏈廠商／產品類別：電控系統／測試；2020年政府歷史快照；2026持續供貨未核實；台灣經濟部2020年簡報將此廠商列為Tesla供應鏈投資案例，對應產品類別為「電控系統／測試」。這只能證明歷史供應鏈身分；不能推定2026仍為直接供應商、已獲Optimus訂單、具體出貨金額或特定新車平台。；其他相關業務線：CELL；地區：台灣；來源代碼：S31",
+        "evidence_url": "https://www.ey.gov.tw/File/AD98278112D0CC17?A=C",
+        "evidence_date": "2020-10",
+        "evidence_grade": "B-歷史",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-T04",
+        "business_line": "EV",
+        "relationship": "supplier",
+        "name": "和勤精機（1586）",
+        "details": "台灣歷史Tesla供應鏈廠商／產品類別：繼電器基座；2020年政府歷史快照；2026持續供貨未核實；台灣經濟部2020年簡報將此廠商列為Tesla供應鏈投資案例，對應產品類別為「繼電器基座」。這只能證明歷史供應鏈身分；不能推定2026仍為直接供應商、已獲Optimus訂單、具體出貨金額或特定新車平台。；其他相關業務線：SC；地區：台灣；來源代碼：S31",
+        "evidence_url": "https://www.ey.gov.tw/File/AD98278112D0CC17?A=C",
+        "evidence_date": "2020-10",
+        "evidence_grade": "B-歷史",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-T05",
+        "business_line": "SC",
+        "relationship": "supplier",
+        "name": "康舒科技（6282）",
+        "details": "台灣歷史Tesla供應鏈廠商／產品類別：充電樁；2020年政府歷史快照；2026持續供貨未核實；台灣經濟部2020年簡報將此廠商列為Tesla供應鏈投資案例，對應產品類別為「充電樁」。這只能證明歷史供應鏈身分；不能推定2026仍為直接供應商、已獲Optimus訂單、具體出貨金額或特定新車平台。；其他相關業務線：MC；地區：台灣；來源代碼：S31",
+        "evidence_url": "https://www.ey.gov.tw/File/AD98278112D0CC17?A=C",
+        "evidence_date": "2020-10",
+        "evidence_grade": "B-歷史",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-T06",
+        "business_line": "EV",
+        "relationship": "supplier",
+        "name": "和碩聯合科技（4938）",
+        "details": "台灣歷史Tesla供應鏈廠商／產品類別：主控電腦；2020年政府歷史快照；2026持續供貨未核實；台灣經濟部2020年簡報將此廠商列為Tesla供應鏈投資案例，對應產品類別為「主控電腦」。這只能證明歷史供應鏈身分；不能推定2026仍為直接供應商、已獲Optimus訂單、具體出貨金額或特定新車平台。；其他相關業務線：FSD；地區：台灣；來源代碼：S31",
+        "evidence_url": "https://www.ey.gov.tw/File/AD98278112D0CC17?A=C",
+        "evidence_date": "2020-10",
+        "evidence_grade": "B-歷史",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-T07",
+        "business_line": "SC",
+        "relationship": "supplier",
+        "name": "興勤電子（2428）",
+        "details": "台灣歷史Tesla供應鏈廠商／產品類別：充電樁傳感器；2020年政府歷史快照；2026持續供貨未核實；台灣經濟部2020年簡報將此廠商列為Tesla供應鏈投資案例，對應產品類別為「充電樁傳感器」。這只能證明歷史供應鏈身分；不能推定2026仍為直接供應商、已獲Optimus訂單、具體出貨金額或特定新車平台。；其他相關業務線：MC；地區：台灣；來源代碼：S31",
+        "evidence_url": "https://www.ey.gov.tw/File/AD98278112D0CC17?A=C",
+        "evidence_date": "2020-10",
+        "evidence_grade": "B-歷史",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-T08",
+        "business_line": "SC",
+        "relationship": "supplier",
+        "name": "維熹科技（3501）",
+        "details": "台灣歷史Tesla供應鏈廠商／產品類別：電源線；2020年政府歷史快照；2026持續供貨未核實；台灣經濟部2020年簡報將此廠商列為Tesla供應鏈投資案例，對應產品類別為「電源線」。這只能證明歷史供應鏈身分；不能推定2026仍為直接供應商、已獲Optimus訂單、具體出貨金額或特定新車平台。；其他相關業務線：EV；地區：台灣；來源代碼：S31",
+        "evidence_url": "https://www.ey.gov.tw/File/AD98278112D0CC17?A=C",
+        "evidence_date": "2020-10",
+        "evidence_grade": "B-歷史",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-T09",
+        "business_line": "EV",
+        "relationship": "supplier",
+        "name": "和大工業（1536）",
+        "details": "台灣歷史Tesla供應鏈廠商／產品類別：傳動齒輪；2020年政府歷史快照；2026持續供貨未核實；台灣經濟部2020年簡報將此廠商列為Tesla供應鏈投資案例，對應產品類別為「傳動齒輪」。這只能證明歷史供應鏈身分；不能推定2026仍為直接供應商、已獲Optimus訂單、具體出貨金額或特定新車平台。；其他相關業務線：CT；地區：台灣；來源代碼：S31",
+        "evidence_url": "https://www.ey.gov.tw/File/AD98278112D0CC17?A=C",
+        "evidence_date": "2020-10",
+        "evidence_grade": "B-歷史",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-T10",
+        "business_line": "EV",
+        "relationship": "supplier",
+        "name": "聯嘉光電（6288）",
+        "details": "台灣歷史Tesla供應鏈廠商／產品類別：LED車燈；2020年政府歷史快照；2026持續供貨未核實；台灣經濟部2020年簡報將此廠商列為Tesla供應鏈投資案例，對應產品類別為「LED車燈」。這只能證明歷史供應鏈身分；不能推定2026仍為直接供應商、已獲Optimus訂單、具體出貨金額或特定新車平台。；其他相關業務線：CT；地區：台灣；來源代碼：S31",
+        "evidence_url": "https://www.ey.gov.tw/File/AD98278112D0CC17?A=C",
+        "evidence_date": "2020-10",
+        "evidence_grade": "B-歷史",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-T11",
+        "business_line": "EV",
+        "relationship": "supplier",
+        "name": "富田電機",
+        "details": "台灣歷史Tesla供應鏈廠商／產品類別：馬達定子轉子；2020年政府歷史快照；2026持續供貨未核實；台灣經濟部2020年簡報將此廠商列為Tesla供應鏈投資案例，對應產品類別為「馬達定子轉子」。這只能證明歷史供應鏈身分；不能推定2026仍為直接供應商、已獲Optimus訂單、具體出貨金額或特定新車平台。；其他相關業務線：CT；地區：台灣；來源代碼：S31",
+        "evidence_url": "https://www.ey.gov.tw/File/AD98278112D0CC17?A=C",
+        "evidence_date": "2020-10",
+        "evidence_grade": "B-歷史",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-T12",
+        "business_line": "CELL",
+        "relationship": "supplier",
+        "name": "康普材料（4739）",
+        "details": "台灣歷史Tesla供應鏈廠商／產品類別：電池材料；2020年政府歷史快照；2026持續供貨未核實；台灣經濟部2020年簡報將此廠商列為Tesla供應鏈投資案例，對應產品類別為「電池材料」。這只能證明歷史供應鏈身分；不能推定2026仍為直接供應商、已獲Optimus訂單、具體出貨金額或特定新車平台。；其他相關業務線：LFP；地區：台灣；來源代碼：S31",
+        "evidence_url": "https://www.ey.gov.tw/File/AD98278112D0CC17?A=C",
+        "evidence_date": "2020-10",
+        "evidence_grade": "B-歷史",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-T13",
+        "business_line": "EV",
+        "relationship": "supplier",
+        "name": "順德工業（2351）",
+        "details": "台灣歷史Tesla供應鏈廠商／產品類別：導線架；2020年政府歷史快照；2026持續供貨未核實；台灣經濟部2020年簡報將此廠商列為Tesla供應鏈投資案例，對應產品類別為「導線架」。這只能證明歷史供應鏈身分；不能推定2026仍為直接供應商、已獲Optimus訂單、具體出貨金額或特定新車平台。；其他相關業務線：FSD；地區：台灣；來源代碼：S31",
+        "evidence_url": "https://www.ey.gov.tw/File/AD98278112D0CC17?A=C",
+        "evidence_date": "2020-10",
+        "evidence_grade": "B-歷史",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-T14",
+        "business_line": "EV",
+        "relationship": "supplier",
+        "name": "恒耀國際（8349）",
+        "details": "台灣歷史Tesla供應鏈廠商／產品類別：扣件；2020年政府歷史快照；2026持續供貨未核實；台灣經濟部2020年簡報將此廠商列為Tesla供應鏈投資案例，對應產品類別為「扣件」。這只能證明歷史供應鏈身分；不能推定2026仍為直接供應商、已獲Optimus訂單、具體出貨金額或特定新車平台。；其他相關業務線：CT；地區：台灣；來源代碼：S31",
+        "evidence_url": "https://www.ey.gov.tw/File/AD98278112D0CC17?A=C",
+        "evidence_date": "2020-10",
+        "evidence_grade": "B-歷史",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-T15",
+        "business_line": "EV",
+        "relationship": "supplier",
+        "name": "巧新科技（1563）",
+        "details": "台灣歷史Tesla供應鏈廠商／產品類別：鍛造鋁框；2020年政府歷史快照；2026持續供貨未核實；台灣經濟部2020年簡報將此廠商列為Tesla供應鏈投資案例，對應產品類別為「鍛造鋁框」。這只能證明歷史供應鏈身分；不能推定2026仍為直接供應商、已獲Optimus訂單、具體出貨金額或特定新車平台。；其他相關業務線：CT；地區：台灣；來源代碼：S31",
+        "evidence_url": "https://www.ey.gov.tw/File/AD98278112D0CC17?A=C",
+        "evidence_date": "2020-10",
+        "evidence_grade": "B-歷史",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-T16",
+        "business_line": "EV",
+        "relationship": "supplier",
+        "name": "台達電子（2308）",
+        "details": "歷史車用電源控制／電池管理供應鏈；2017年政府委託研究所載；2026持續供貨未核實；國發會2017委託研究指出台達電歷史供應Model S/X電源控制及電池管理系統；車款已於2026年中停產，不能視為現行S/X新訂單。；其他相關業務線：SC；地區：台灣；來源代碼：S32",
+        "evidence_url": "https://ws.ndc.gov.tw/001/administrator/10/relfile/6140/28389/04e55e45-4c4c-44fe-b31f-72815cc4bb52.pdf",
+        "evidence_date": "2017-11",
+        "evidence_grade": "B-歷史",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-T17",
+        "business_line": "EV",
+        "relationship": "supplier",
+        "name": "貿聯-KY（3665）",
+        "details": "車用線束／充電線材媒體報導供應商；2026券商二手資料，直接交易未核驗；台灣券商2026年10月整理貿聯為Tesla電源管理線束及充電線材供應商，未提供Tesla採購合約或料號；僅列報導級供應鏈關係，不推算營收占比。；其他相關業務線：SC；地區：台灣；來源代碼：S39",
+        "evidence_url": "https://www.sinotrade.com.tw/richclub/calendar/%E7%BE%8E%E8%82%A1%E6%B3%95%E8%AA%AA-TSLA-%E7%89%B9%E6%96%AF%E6%8B%89Q3%E7%8F%BE%E9%87%91%E6%B5%81%E8%BD%89%E6%AD%A3-%E8%B3%87%E6%9C%AC%E6%94%AF%E5%87%BA%E5%8D%BB%E4%B8%8B%E4%BF%AE%E8%87%B3200%E5%84%84-%E5%8F%B0%E7%A9%8D%E9%9B%BB-%E8%B2%BF%E8%81%AF-KY%E4%BE%9B%E6%87%89%E9%8F%88%E5%8F%97%E7%9F%9A%E7%9B%AE--TSLA-US--6a618453789e8ae576f07497",
+        "evidence_date": "2026-10",
+        "evidence_grade": "B-報導",
+        "commercial_stage": "confirmed_relationship"
+      },
+      {
+        "id": "TSLA-P13",
+        "business_line": "FAB",
+        "relationship": "partner",
+        "name": "SpaceX／Intel",
+        "details": "Terafab技術合作框架／非既定晶圓供應合約；2026年3月Tesla與SpaceX合作框架；4月Intel加入；SpaceX 2026-06 SEC S-1/A揭露2026年3月與Tesla宣布Terafab合作並建立未來開發框架；Intel於4月加入，預期貢獻高性能晶片設計、製造及封裝經驗。具體專案、投資、時程、里程碑仍須另行談判，不能把Intel視為已簽量產代工廠。；其他相關業務線：AI, CORTEX；地區：美國；來源代碼：S41",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/spaceexplorationtechnologib.htm",
+        "evidence_date": "2026-03／2026-04",
+        "evidence_grade": "A",
+        "commercial_stage": "confirmed_relationship"
+      }
+    ],
+    "research_notes": {
+      "research_standard": "AAON 深度研究：具名實體、交易角色、時間、規模、證據層級、舊案／新案、台灣鏈、未證實排除",
+      "research_scope": "電動車、Semi、Robotaxi、FSD、Optimus、Megapack、Powerwall、太陽能、電池材料、AI 晶片、充電及能源軟體",
+      "key_findings": [
+        {
+          "topic": "最新規模",
+          "finding": "2026 Q3交付486,532輛車、部署13.7GWh儲能；2026前三季儲能部署36.0GWh。",
+          "sources": [
+            "S02",
+            "S04"
+          ]
+        },
+        {
+          "topic": "新簽大型台灣訂單",
+          "finding": "阿波羅電力2026-10簽260台Megapack 2XL、約1GWh；交付與營運分別規劃2027年底及2028。",
+          "sources": [
+            "S09"
+          ]
+        },
+        {
+          "topic": "2026大型新訂單",
+          "finding": "Neoen Goyder Stage 2於2026-07簽Tesla與UGL，新增227MW/907MWh；Stage 1屬2025合約。",
+          "sources": [
+            "S06",
+            "S08"
+          ]
+        },
+        {
+          "topic": "既有長約不重算",
+          "finding": "Intersect 15.3GWh為2024合約；TagEnergy Golden Plains為2025合約；Eku Williamsdale是2026投運。",
+          "sources": [
+            "S10",
+            "S11",
+            "S13"
+          ]
+        },
+        {
+          "topic": "垂直整合",
+          "finding": "2026 Q3自製LFP電芯首次進入Megapack出貨；Megafactory Texas開始生產，Austin Fab尚未商業量產。",
+          "sources": [
+            "S02",
+            "S03"
+          ]
+        },
+        {
+          "topic": "台灣直接關聯",
+          "finding": "阿波羅電力為台灣具名Megapack直接採購方；台積電為AI晶片代工供應鏈，Terafab在台徵才不代表台灣供應商新合約。",
+          "sources": [
+            "S09",
+            "S16",
+            "S17",
+            "S21"
+          ]
+        },
+        {
+          "topic": "供應商辨識",
+          "finding": "SEC具名Panasonic與CATL電芯；Samsung與TSMC晶片代工；未有公開證據不得把Optimus網路傳聞供應商當成已簽直接供應商。",
+          "sources": [
+            "S01",
+            "S16",
+            "S17"
+          ]
+        },
+        {
+          "topic": "Semi新量產",
+          "finding": "2026 Q3 Semi量產與首批客戶交付；PepsiCo為舊客戶、DHL 2025已交車，不能重複計算為2026新增訂單。",
+          "sources": [
+            "S03",
+            "S14",
+            "S15"
+          ]
+        },
+        {
+          "topic": "2026歐洲最大新簽儲能協議",
+          "finding": "NatPower 2026-06與Tesla簽署逾25GWh多年度協議，含Megapack、EPC與Autobidder；首期5案。>100GWh為NatPower長期規劃、40–50億美元為總建設估值，不等於Tesla已認列收入。",
+          "sources": [
+            "S25"
+          ]
+        },
+        {
+          "topic": "2026新訂單Semi採購法人分層",
+          "finding": "ZET Financial於2026-09為ZET SCALE首批2,500輛Tesla Semi下採購單，Microsoft與PepsiCo為需求聚合貨主；Einride另有2026-08獨立500輛訂單。兩案不得與聯盟10,000輛願景混淆。",
+          "sources": [
+            "S26",
+            "S27"
+          ]
+        },
+        {
+          "topic": "2026比利時儲能意向書與工程進度",
+          "finding": "GIGA Storage Green Turtle 2.8GWh於2026-06先簽LOI；2026-09 STADSBADER公告受Tesla委託土建，640台Megapack 3。LOI時點不得直接寫成最終確定訂單。",
+          "sources": [
+            "S28",
+            "S29"
+          ]
+        },
+        {
+          "topic": "台灣五方策略聯盟",
+          "finding": "阿波羅電力重大訊息證實Tesla台灣、阿波羅、技嘉、群聯、士電2026-10合作AIDC電力與儲能；此為聯盟，不是Tesla向技嘉／群聯／士電的採購訂單。",
+          "sources": [
+            "S30"
+          ]
+        },
+        {
+          "topic": "台灣歷史供應鏈與當前訂單分離",
+          "finding": "經濟部2020年列出15家Tesla供應鏈投資廠商；本研究逐家具名保留為歷史關係，不推定2026仍供貨或Optimus正式訂單。",
+          "sources": [
+            "S31",
+            "S32"
+          ]
+        },
+        {
+          "topic": "AI5代工訊息存在時間與來源差異",
+          "finding": "2025年Reuters報導TSMC AI5、Samsung AI6分工；2026年韓聯社報導Samsung亦籌備AI5，故不得聲稱單一AI5晶圓代工安排已全面確定量產。",
+          "sources": [
+            "S37",
+            "S38"
+          ]
+        },
+        {
+          "topic": "SEC確認關係人採購及Terafab框架",
+          "finding": "SpaceX 2026-06 SEC S-1/A確認xAI於2026年4月採購Tesla Megapack 2.69億美元，Q1另3,400萬美元；Tesla與SpaceX於3月建立Terafab合作框架，Intel於4月加入但具體專案尚未確定。",
+          "sources": [
+            "S41"
+          ]
+        }
+      ],
+      "research_caveats": [
+        "原始11頂層欄位逐位元組以Git blob SHA驗證不變；僅新增industry_chain。",
+        "節點涵蓋直接交易、間接專案角色、自有資產、同業競爭者；relationship_status及role不可互換。",
+        "未披露之車用電池供應商份額、Optimus馬達／減速器供應商、Robotaxi具名乘客及AI GPU採購量均不虛構。",
+        "安裝年產能不等於實際產量；計畫產能、試產、商業量產、已交付及已營運嚴格分開。",
+        "供應商也可能是競爭者，例如CATL；同名實體不同role分開列示。",
+        "產業競爭者為產品市場比較，不構成Tesla與其有供應或採購合約。",
+        "部分產品頁為動態內容，容量以2026 Q3股東資料及SEC為優先。",
+        "台灣2020年經濟部歷史供應鏈名單不代表2026年仍有直接供貨；舊資料另附年度與低於現行訂單的證據等級。",
+        "NatPower 25GWh多年度協議、GIGA Storage LOI、ZET Financial已下單、Einride500輛訂單、Neoen Stage2新簽，法律階段分別標記。",
+        "Tesla 2026年Q3財報披露能源營收年減與Megapack平均售價下滑，不得以部署GWh增加直接推算收入或毛利同步增加。",
+        "Optimus供應商網傳名單不列為Tesla已確認直接供應商；台灣五方策略聯盟亦非零組件供貨證明。",
+        "同一批次Goyder Stage1及Stage2共454MW／1814MWh，2026新增僅Stage2的227MW／907MWh。",
+        "SpaceX SEC S-1/A對xAI與Tesla的關係人採購有原始揭露，已升級為A級；但Terafab與Intel僅合作框架，不是已完成晶圓廠或量產採購。"
+      ],
+      "sources": [
+        {
+          "source_id": "S01",
+          "title": "Tesla 2025 10-K",
+          "url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+          "date": "2026-01-29",
+          "source_grade": "第一手"
+        },
+        {
+          "source_id": "S02",
+          "title": "Tesla 2026 Q3 10-Q",
+          "url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026066775/tsla-20260930.htm",
+          "date": "2026-10",
+          "source_grade": "第一手"
+        },
+        {
+          "source_id": "S03",
+          "title": "Tesla 2026 Q3 Shareholder Update",
+          "url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
+          "date": "2026-10-21",
+          "source_grade": "第一手"
+        },
+        {
+          "source_id": "S04",
+          "title": "Tesla Q3 2026 production deliveries deployments",
+          "url": "https://ir.tesla.com/press-release/tesla-third-quarter-2026-production-deliveries-and-deployments",
+          "date": "2026-10-02",
+          "source_grade": "第一手"
+        },
+        {
+          "source_id": "S05",
+          "title": "Tesla Q2 2026 shareholder update",
+          "url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf",
+          "date": "2026-07",
+          "source_grade": "第一手"
+        },
+        {
+          "source_id": "S06",
+          "title": "Neoen Goyder stage 2 contracts",
+          "url": "https://neoen.com/en/news/2026/neoen-doubles-size-of-goyder-battery-after-signing-two-15-year-capacity-contracts-in-south-australia/",
+          "date": "2026-07-29",
+          "source_grade": "第一手"
+        },
+        {
+          "source_id": "S07",
+          "title": "Goyder Battery developer construction partners",
+          "url": "https://goyderenergy.com.au/goyder-battery/",
+          "date": "2026",
+          "source_grade": "第一手"
+        },
+        {
+          "source_id": "S08",
+          "title": "UGL Goyder Stage 2 contract",
+          "url": "https://www.hochtief.com/news-media/press-releases/press-release/cimics-ugl-to-deliver-stage-2-of-neoens-goyder-battery-with-tesla-in-south-australia",
+          "date": "2026-07-30",
+          "source_grade": "第一手"
+        },
+        {
+          "source_id": "S09",
+          "title": "台灣阿波羅電力重大訊息 Megapack 2XL 260台",
+          "url": "https://m.moneydj.com/f1a.aspx?a=1df4f091-63cd-4d48-9c5e-b34bba06fd35&c=MB00",
+          "date": "2026-10-12",
+          "source_grade": "公開資訊觀測站公告轉載"
+        },
+        {
+          "source_id": "S10",
+          "title": "ACT Government Eku Williamsdale official opening",
+          "url": "https://www.cmtedd.act.gov.au/open_government/inform/act_government_media_releases/barr/2026/powers-on-for-canberras-big-battery",
+          "date": "2026-11-05",
+          "source_grade": "第一手"
+        },
+        {
+          "source_id": "S11",
+          "title": "TagEnergy Golden Plains Tesla 168 Megapacks",
+          "url": "https://tag-en.com/tagenergy-to-start-building-its-first-australian-battery-energy-storage-system-at-golden-plains-wind-farm/",
+          "date": "2025-11-21",
+          "source_grade": "第一手"
+        },
+        {
+          "source_id": "S12",
+          "title": "Golden Plains project 2026 progress",
+          "url": "https://goldenplainswindfarm.com.au/golden-plains-energy-storage-system/",
+          "date": "2026",
+          "source_grade": "第一手"
+        },
+        {
+          "source_id": "S13",
+          "title": "Intersect 15.3GWh Megapack purchase",
+          "url": "https://www.intersect.com/news/tesla-provides-intersect-with-15-3-gwh-of-megapacks-for-solar-storage-projects",
+          "date": "2024-07-18",
+          "source_grade": "第一手"
+        },
+        {
+          "source_id": "S14",
+          "title": "DHL Tesla Semi delivery",
+          "url": "https://www.dhl.com/us-en/home/press/press-archive/2025/dhl-supply-chain-accelerates-sustainability-with-first-tesla-semi-delivery.html?trk=public_post_comment-text",
+          "date": "2025-12-04",
+          "source_grade": "第一手"
+        },
+        {
+          "source_id": "S15",
+          "title": "Reuters Tesla Semi first deliveries 2026",
+          "url": "https://www.investing.com/news/stock-market-news/tesla-set-to-formally-roll-out-semi-electric-trucks-at-nevada-event-4916402",
+          "date": "2026-09-24",
+          "source_grade": "通訊社報導"
+        },
+        {
+          "source_id": "S16",
+          "title": "Samsung Tesla 16.5bn chip deal Reuters",
+          "url": "https://www.reuters.com/business/musk-says-tesla-samsung-electronics-sign-165-billion-chip-supply-deal-2025-07-28/",
+          "date": "2025-07-28",
+          "source_grade": "通訊社報導"
+        },
+        {
+          "source_id": "S17",
+          "title": "Tesla Q2 2026 earnings call supply chain comments",
+          "url": "https://stockanalysis.com/stocks/tsla/transcripts/653184-q2-2026/",
+          "date": "2026-07",
+          "source_grade": "法說逐字稿轉載"
+        },
+        {
+          "source_id": "S18",
+          "title": "IEA Global EV Outlook 2026 battery suppliers",
+          "url": "https://www.iea.org/reports/global-ev-outlook-2026/electric-vehicle-batteries",
+          "date": "2026",
+          "source_grade": "國際組織"
+        },
+        {
+          "source_id": "S19",
+          "title": "Tesla Megapack official product page",
+          "url": "https://www.tesla.com/megapack",
+          "date": "2026",
+          "source_grade": "公司產品頁"
+        },
+        {
+          "source_id": "S20",
+          "title": "Tesla Q3 2026 earnings call",
+          "url": "https://stockanalysis.com/stocks/tsla/transcripts/712902-q3-2026/",
+          "date": "2026-10",
+          "source_grade": "法說逐字稿轉載"
+        },
+        {
+          "source_id": "S21",
+          "title": "Reuters Taiwan Terafab recruitment",
+          "url": "https://www.reuters.com/business/autos-transportation/tesla-seeks-taiwan-chip-engineers-terafab-project-2026-04-17/",
+          "date": "2026-04-17",
+          "source_grade": "通訊社報導"
+        },
+        {
+          "source_id": "S22",
+          "title": "xAI Megapack related party purchases",
+          "url": "https://electrek.co/2026/06/04/spacex-xai-269-million-tesla-megapack-purchase-s1-filing/",
+          "date": "2026-06-04",
+          "source_grade": "二手報導轉述申報"
+        },
+        {
+          "source_id": "S23",
+          "title": "Tesla Megapack tracker",
+          "url": "https://lorenz-g.github.io/tesla-megapack-tracker/",
+          "date": "2026-11",
+          "source_grade": "社群彙整、僅供線索"
+        },
+        {
+          "source_id": "S24",
+          "title": "2026 Q3 Semi customers Reuters",
+          "url": "https://www.investing.com/news/stock-market-news/tesla-set-to-formally-roll-out-semi-electric-trucks-at-nevada-event-4916402",
+          "date": "2026-09-24",
+          "source_grade": "通訊社報導"
+        },
+        {
+          "source_id": "S25",
+          "title": "NatPower與Tesla 2026年6月逾25GWh歐洲儲能供應與執行協議",
+          "url": "https://natpower.com/2026/06/23/natpower-and-tesla-sign-a-strategic-agreement-for-more-than-25-gwh-of-battery-energy-storage-systems-in-europe-2/",
+          "date": "2026-06-23",
+          "source_grade": "第一手"
+        },
+        {
+          "source_id": "S26",
+          "title": "ZET SCALE／Catalyst Mobility 2026年9月2500輛Tesla Semi採購訂單",
+          "url": "https://calstart.org/catalyst-mobility-and-smart-freight-centre-launch-zet-scale-program/",
+          "date": "2026-09-22",
+          "source_grade": "第一手"
+        },
+        {
+          "source_id": "S27",
+          "title": "Einride與Tesla 500輛Semi合作訂單原始新聞稿",
+          "url": "https://www.globenewswire.com/news-release/2026/08/18/3346668/0/en/einride-partners-with-tesla-for-the-world-s-largest-tesla-semi-deployment.html",
+          "date": "2026-08-18",
+          "source_grade": "第一手"
+        },
+        {
+          "source_id": "S28",
+          "title": "GIGA Storage與Tesla Green Turtle 2.8GWh意向書",
+          "url": "https://giga-storage.com/en/Giga-Storage-and-Tesla-join-forces-to-build-one-of-the-largest-battery-projects-in-Europe./",
+          "date": "2026-06-24",
+          "source_grade": "第一手"
+        },
+        {
+          "source_id": "S29",
+          "title": "STADSBADER 2026年9月承接Tesla Green Turtle土建工程",
+          "url": "https://www.stadsbader-contractors.be/en/news/stadsbader-contractors-builds-belgiums-largest-energy-storage-facility",
+          "date": "2026-09-18",
+          "source_grade": "第一手"
+        },
+        {
+          "source_id": "S30",
+          "title": "阿波羅電力2026年10月8日台灣Tesla、技嘉、群聯、士電五方AIDC策略聯盟重大訊息",
+          "url": "https://goodinfo.tw/tw/StockAnnounceDetail.asp?CLAIM_TIME=2026%2F10%2F11+22%3A43%3A50&STOCK_ID=7911&SUBJECT=%E5%85%AC%E5%91%8A%E6%9C%AC%E5%85%AC%E5%8F%B8%E8%88%87%E5%8F%B0%E7%81%A3%E7%89%B9%E6%96%AF%E6%8B%89%E6%B1%BD%E8%BB%8A%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E3%80%81%E6%8A%80%E5%98%89%E7%A7%91%E6%8A%80%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E3%80%81%E7%BE%A4%E8%81%AF%E9%9B%BB%E5%AD%90%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E5%8F%8A%E5%A3%AB%E6%9E%97%E9%9B%BB%E6%A9%9F%E5%BB%A0%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E7%B7%A0%E7%B5%90%E3%80%8CAIDC%E6%9A%A8%E4%BC%81%E6%A5%AD%E5%BC%B7%E9%9F%8C%E9%9B%BB%E7%B6%B2%E5%90%88%E4%BD%9C%E7%AD%96%E7%95%A5%E8%81%AF%E7%9B%9F%E3%80%8D",
+          "date": "2026-10-08",
+          "source_grade": "公開公司重大訊息轉載"
+        },
+        {
+          "source_id": "S31",
+          "title": "經濟部2020年特斯拉供應鏈在台投資廠商名單（歷史快照，非2026認證）",
+          "url": "https://www.ey.gov.tw/File/AD98278112D0CC17?A=C",
+          "date": "2020-10",
+          "source_grade": "政府歷史資料"
+        },
+        {
+          "source_id": "S32",
+          "title": "國發會2017年美國製造對台灣供應鏈研究：台灣Tesla供應鏈歷史案例",
+          "url": "https://ws.ndc.gov.tw/001/administrator/10/relfile/6140/28389/04e55e45-4c4c-44fe-b31f-72815cc4bb52.pdf",
+          "date": "2017-11",
+          "source_grade": "政府委託研究／歷史資料"
+        },
+        {
+          "source_id": "S33",
+          "title": "阿波羅電力2026年10月Megapack 260台重大訊息全文",
+          "url": "https://goodinfo.tw/tw/StockAnnounceDetail.asp?CLAIM_TIME=2026%2F10%2F11+22%3A43%3A26&STOCK_ID=7911&SUBJECT=%E5%85%AC%E5%91%8A%E6%9C%AC%E5%85%AC%E5%8F%B8%E7%B0%BD%E8%A8%82Tesla%E5%A4%A7%E5%9E%8B%E5%84%B2%E8%83%BD%E8%A8%AD%E5%82%99%E6%8E%A1%E8%B3%BC%E5%A5%91%E7%B4%84",
+          "date": "2026-10-08",
+          "source_grade": "公開公司重大訊息轉載"
+        },
+        {
+          "source_id": "S34",
+          "title": "Tesla 2026年Q3股東簡報原廠產能與業務里程碑",
+          "url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
+          "date": "2026-10-21",
+          "source_grade": "第一手"
+        },
+        {
+          "source_id": "S35",
+          "title": "Tesla 2026年Q3 SEC 10-Q（電池供應、產能、產品日程）",
+          "url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026066775/tsla-20260930.htm",
+          "date": "2026-10-21",
+          "source_grade": "第一手"
+        },
+        {
+          "source_id": "S36",
+          "title": "Tesla 2025 10-K SEC：Panasonic與CATL為具名電池芯供應商",
+          "url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+          "date": "2026-01-29",
+          "source_grade": "第一手"
+        },
+        {
+          "source_id": "S37",
+          "title": "韓聯社2026年7月Samsung AI5晶片代工籌備（與2025年AI5報導有版本差異）",
+          "url": "https://en.yna.co.kr/view/AEN20260713007100320",
+          "date": "2026-07-13",
+          "source_grade": "媒體報導"
+        },
+        {
+          "source_id": "S38",
+          "title": "Reuters 2025年Samsung 165億美元Tesla AI6晶片合約",
+          "url": "https://www.reuters.com/business/musk-says-tesla-samsung-electronics-sign-165-billion-chip-supply-deal-2025-07-28/",
+          "date": "2025-07-28",
+          "source_grade": "主流媒體"
+        },
+        {
+          "source_id": "S39",
+          "title": "台灣券商2026年10月台積電／貿聯／和大Tesla供應鏈分級報導",
+          "url": "https://www.sinotrade.com.tw/richclub/calendar/%E7%BE%8E%E8%82%A1%E6%B3%95%E8%AA%AA-TSLA-%E7%89%B9%E6%96%AF%E6%8B%89Q3%E7%8F%BE%E9%87%91%E6%B5%81%E8%BD%89%E6%AD%A3-%E8%B3%87%E6%9C%AC%E6%94%AF%E5%87%BA%E5%8D%BB%E4%B8%8B%E4%BF%AE%E8%87%B3200%E5%84%84-%E5%8F%B0%E7%A9%8D%E9%9B%BB-%E8%B2%BF%E8%81%AF-KY%E4%BE%9B%E6%87%89%E9%8F%88%E5%8F%97%E7%9F%9A%E7%9B%AE--TSLA-US--6a618453789e8ae576f07497",
+          "date": "2026-10",
+          "source_grade": "券商二手整理"
+        },
+        {
+          "source_id": "S40",
+          "title": "Tesla 2026年台北高低壓線束與同軸線供應鏈管理職缺（不揭露廠商）",
+          "url": "https://www.tesla.com/careers/search/job/supply-chain-manager-hv-lv-harness-coax-cable-287462",
+          "date": "2026-11",
+          "source_grade": "Tesla官網職缺"
+        },
+        {
+          "source_id": "S41",
+          "title": "SpaceX 2026-06-03 S-1/A SEC原始申報：xAI採購Tesla Megapack及Terafab合作",
+          "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/spaceexplorationtechnologib.htm",
+          "date": "2026-06-03",
+          "source_grade": "第一手SEC"
+        }
+      ],
+      "original_business_line_count": 25,
+      "original_node_count": 91,
+      "conversion_note": "為相容既有 GEV 前端 schema，將 TSLA 節點映射成 id/business_line/relationship/name/details/evidence_url 欄位；原始詳細資訊與來源清單保留。"
+    }
   }
 }

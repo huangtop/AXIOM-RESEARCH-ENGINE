@@ -187,5 +187,506 @@
       "工業數位化"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-11",
+    "company": "United Microelectronics Corporation",
+    "symbol": "UMC",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "聯華電子 UMC 晶圓代工產業鏈：22/28nm、矽光子、DTC 與上下游",
+      "description": "區分聯電具名晶圓代工客戶、官方合作方、晶圓材料與封測供應商、成熟製程競爭者及推論受惠者。"
+    },
+    "business_lines": [
+      {
+        "id": "LOGIC",
+        "name": "邏輯及混合訊號晶圓代工"
+      },
+      {
+        "id": "NODE22",
+        "name": "22/28 奈米製程"
+      },
+      {
+        "id": "NODE12",
+        "name": "12 奈米 FinFET 合作"
+      },
+      {
+        "id": "RF",
+        "name": "RF-SOI 與射頻製程"
+      },
+      {
+        "id": "BCD",
+        "name": "BCD 電源及高壓製程"
+      },
+      {
+        "id": "DISPLAY",
+        "name": "顯示驅動與嵌入式高壓"
+      },
+      {
+        "id": "ENVM",
+        "name": "嵌入式非揮發記憶體"
+      },
+      {
+        "id": "CIS",
+        "name": "影像感測器"
+      },
+      {
+        "id": "PHOTONICS",
+        "name": "矽光子及高速光互連"
+      },
+      {
+        "id": "TFLN",
+        "name": "薄膜鈮酸鋰光子晶粒"
+      },
+      {
+        "id": "DTC",
+        "name": "深溝槽電容與電源完整性"
+      },
+      {
+        "id": "EDA",
+        "name": "設計導入及 IP"
+      },
+      {
+        "id": "SILICON",
+        "name": "矽晶圓及材料"
+      },
+      {
+        "id": "FAB",
+        "name": "晶圓廠設備及廠務"
+      },
+      {
+        "id": "OSAT",
+        "name": "委外封裝測試"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "NODE22_customer_001",
+        "name": "MediaTek",
+        "business_line": "NODE22",
+        "relationship": "customer",
+        "details": "2025 年 Form 20-F 具名主要晶圓代工客戶；不推定具體製程節點或單一產品訂單。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ],
+        "ticker": "2454.TW"
+      },
+      {
+        "id": "RF_customer_002",
+        "name": "Realtek Semiconductor",
+        "business_line": "RF",
+        "relationship": "customer",
+        "details": "2025 年 Form 20-F 具名主要晶圓代工客戶；不推定具體製程節點或單一產品訂單。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ],
+        "ticker": "2379.TW"
+      },
+      {
+        "id": "DISPLAY_customer_003",
+        "name": "Novatek Microelectronics",
+        "business_line": "DISPLAY",
+        "relationship": "customer",
+        "details": "2025 年 Form 20-F 具名主要晶圓代工客戶；不推定具體製程節點或單一產品訂單。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ],
+        "ticker": "3034.TW"
+      },
+      {
+        "id": "BCD_customer_004",
+        "name": "Texas Instruments",
+        "business_line": "BCD",
+        "relationship": "customer",
+        "details": "2025 年 Form 20-F 具名主要晶圓代工客戶；不推定具體製程節點或單一產品訂單。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ],
+        "ticker": "TXN"
+      },
+      {
+        "id": "LOGIC_customer_005",
+        "name": "Intel",
+        "business_line": "LOGIC",
+        "relationship": "customer",
+        "details": "2025 年 Form 20-F 具名主要晶圓代工客戶；不推定具體製程節點或單一產品訂單。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ],
+        "ticker": "INTC"
+      },
+      {
+        "id": "EDA_customer_006",
+        "name": "Faraday Technology",
+        "business_line": "EDA",
+        "relationship": "customer",
+        "details": "年報揭露提供晶圓代工服務之關係企業，且有股權投資。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ]
+      },
+      {
+        "id": "LOGIC_customer_007",
+        "name": "Silicon Integrated Systems",
+        "business_line": "LOGIC",
+        "relationship": "customer",
+        "details": "年報揭露提供晶圓代工服務之關係企業，且有股權投資。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ]
+      },
+      {
+        "id": "PHOTONICS_customer_008",
+        "name": "SILITH Technology",
+        "business_line": "PHOTONICS",
+        "relationship": "customer",
+        "details": "2026 年聯電新加坡廠已交付矽光子量產晶圓。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名確認",
+        "source_urls": [
+          "https://www.umc.com/en/News/press_release/Content/technology_related/20260714"
+        ]
+      },
+      {
+        "id": "TFLN_customer_009",
+        "name": "HyperLight",
+        "business_line": "TFLN",
+        "relationship": "customer",
+        "details": "官方公告 TFLN Chiplet 由聯電與 Wavetek 提供量產晶圓製造。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名確認",
+        "source_urls": [
+          "https://www.umc.com/en/News/press_release/Content/corporate/20260312"
+        ]
+      },
+      {
+        "id": "NODE12_partner_010",
+        "name": "Intel",
+        "business_line": "NODE12",
+        "relationship": "partner",
+        "details": "12nm FinFET 製程合作開發；不將未來產能視為既成量產。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ]
+      },
+      {
+        "id": "TFLN_partner_011",
+        "name": "HyperLight",
+        "business_line": "TFLN",
+        "relationship": "partner",
+        "details": "6/8 吋 TFLN Chiplet 量產製造合作。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名確認",
+        "source_urls": [
+          "https://www.umc.com/en/News/press_release/Content/corporate/20260312"
+        ]
+      },
+      {
+        "id": "TFLN_partner_012",
+        "name": "Wavetek Microelectronics",
+        "business_line": "TFLN",
+        "relationship": "partner",
+        "details": "聯電全資子公司，參與 TFLN Chiplet 量產合作；屬集團內合作。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名確認",
+        "source_urls": [
+          "https://www.umc.com/en/News/press_release/Content/corporate/20260312"
+        ]
+      },
+      {
+        "id": "PHOTONICS_partner_013",
+        "name": "SILITH Technology",
+        "business_line": "PHOTONICS",
+        "relationship": "partner",
+        "details": "1.6T 矽光子量產與 400G/lane 平台共同開發。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名確認",
+        "source_urls": [
+          "https://www.umc.com/en/News/press_release/Content/technology_related/20260714"
+        ]
+      },
+      {
+        "id": "DTC_partner_014",
+        "name": "AP Memory",
+        "business_line": "DTC",
+        "relationship": "partner",
+        "details": "S-SiCap Gen2D 深溝槽電容已完成投片與初步功能驗證，尚非全面量產。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名確認",
+        "source_urls": [
+          "https://www.umc.com/en/News/press_release/Content/technology_related/20261022"
+        ]
+      },
+      {
+        "id": "SILICON_supplier_015",
+        "name": "Shin-Etsu Handotai",
+        "business_line": "SILICON",
+        "relationship": "supplier",
+        "details": "聯電年報揭露之矽晶圓供應來源；未推定採購金額或專案。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ],
+        "ticker": "4063.T"
+      },
+      {
+        "id": "SILICON_supplier_016",
+        "name": "GlobalWafers",
+        "business_line": "SILICON",
+        "relationship": "supplier",
+        "details": "聯電年報揭露之矽晶圓供應來源；未推定採購金額或專案。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ],
+        "ticker": "6488.TW"
+      },
+      {
+        "id": "SILICON_supplier_017",
+        "name": "SUMCO",
+        "business_line": "SILICON",
+        "relationship": "supplier",
+        "details": "聯電年報揭露之矽晶圓供應來源；未推定採購金額或專案。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ],
+        "ticker": "3436.T"
+      },
+      {
+        "id": "SILICON_supplier_018",
+        "name": "Soitec",
+        "business_line": "SILICON",
+        "relationship": "supplier",
+        "details": "聯電年報揭露之SOI 晶圓材料供應來源；未推定採購金額或專案。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ],
+        "ticker": "SOI.PA"
+      },
+      {
+        "id": "OSAT_supplier_019",
+        "name": "ASE Technology Holding",
+        "business_line": "OSAT",
+        "relationship": "supplier",
+        "details": "聯電年報揭露之委外封裝測試供應商；未推定採購金額或專案。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ],
+        "ticker": "ASX"
+      },
+      {
+        "id": "OSAT_supplier_020",
+        "name": "Siliconware Precision Industries",
+        "business_line": "OSAT",
+        "relationship": "supplier",
+        "details": "聯電年報揭露之委外封裝測試供應商；日月光集團成員；未推定採購金額或專案。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ]
+      },
+      {
+        "id": "NODE22_competitor_021",
+        "name": "TSMC",
+        "business_line": "NODE22",
+        "relationship": "competitor",
+        "details": "成熟節點與特殊製程市場之產品競爭比較；不代表雙方有採購或合作。",
+        "evidence_grade": "B",
+        "verification_status": "同業產品市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ],
+        "ticker": "TSM"
+      },
+      {
+        "id": "RF_competitor_022",
+        "name": "GlobalFoundries",
+        "business_line": "RF",
+        "relationship": "competitor",
+        "details": "RF-SOI 與特殊製程市場之產品競爭比較；不代表雙方有採購或合作。",
+        "evidence_grade": "B",
+        "verification_status": "同業產品市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ],
+        "ticker": "GFS"
+      },
+      {
+        "id": "BCD_competitor_023",
+        "name": "Tower Semiconductor",
+        "business_line": "BCD",
+        "relationship": "competitor",
+        "details": "BCD 與類比製程市場之產品競爭比較；不代表雙方有採購或合作。",
+        "evidence_grade": "B",
+        "verification_status": "同業產品市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ],
+        "ticker": "TSEM"
+      },
+      {
+        "id": "NODE22_competitor_024",
+        "name": "SMIC",
+        "business_line": "NODE22",
+        "relationship": "competitor",
+        "details": "成熟節點市場之產品競爭比較；不代表雙方有採購或合作。",
+        "evidence_grade": "B",
+        "verification_status": "同業產品市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ],
+        "ticker": "0981.HK"
+      },
+      {
+        "id": "ENVM_competitor_025",
+        "name": "Hua Hong Semiconductor",
+        "business_line": "ENVM",
+        "relationship": "competitor",
+        "details": "嵌入式記憶體與功率製程市場之產品競爭比較；不代表雙方有採購或合作。",
+        "evidence_grade": "B",
+        "verification_status": "同業產品市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ],
+        "ticker": "1347.HK"
+      },
+      {
+        "id": "BCD_competitor_026",
+        "name": "Vanguard International Semiconductor",
+        "business_line": "BCD",
+        "relationship": "competitor",
+        "details": "8 吋特殊製程市場之產品競爭比較；不代表雙方有採購或合作。",
+        "evidence_grade": "B",
+        "verification_status": "同業產品市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ],
+        "ticker": "5347.TW"
+      },
+      {
+        "id": "DISPLAY_competitor_027",
+        "name": "Powerchip Semiconductor Manufacturing",
+        "business_line": "DISPLAY",
+        "relationship": "competitor",
+        "details": "顯示驅動與成熟製程市場之產品競爭比較；不代表雙方有採購或合作。",
+        "evidence_grade": "B",
+        "verification_status": "同業產品市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ],
+        "ticker": "6770.TW"
+      },
+      {
+        "id": "NODE22_competitor_028",
+        "name": "Samsung Foundry",
+        "business_line": "NODE22",
+        "relationship": "competitor",
+        "details": "邏輯晶圓代工市場之產品競爭比較；不代表雙方有採購或合作。",
+        "evidence_grade": "B",
+        "verification_status": "同業產品市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ],
+        "ticker": "005930.KS"
+      },
+      {
+        "id": "BCD_competitor_029",
+        "name": "DB HiTek",
+        "business_line": "BCD",
+        "relationship": "competitor",
+        "details": "8 吋電源管理製程市場之產品競爭比較；不代表雙方有採購或合作。",
+        "evidence_grade": "B",
+        "verification_status": "同業產品市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ],
+        "ticker": "000990.KS"
+      },
+      {
+        "id": "BCD_competitor_030",
+        "name": "X-FAB",
+        "business_line": "BCD",
+        "relationship": "competitor",
+        "details": "車用與工業特殊製程市場之產品競爭比較；不代表雙方有採購或合作。",
+        "evidence_grade": "B",
+        "verification_status": "同業產品市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ],
+        "ticker": "XFAB.PA"
+      },
+      {
+        "id": "SILICON_beneficiary_031",
+        "name": "GlobalWafers",
+        "business_line": "SILICON",
+        "relationship": "beneficiary",
+        "details": "晶圓擴產可能增加矽晶圓採購；同時有已確認供應關係。",
+        "evidence_grade": "C",
+        "verification_status": "需求連動推論",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ],
+        "ticker": "6488.TW"
+      },
+      {
+        "id": "OSAT_beneficiary_032",
+        "name": "ASE Technology Holding",
+        "business_line": "OSAT",
+        "relationship": "beneficiary",
+        "details": "晶圓代工出貨帶動封測外包需求；另有已確認供應關係。",
+        "evidence_grade": "C",
+        "verification_status": "需求連動推論",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm"
+        ],
+        "ticker": "ASX"
+      },
+      {
+        "id": "DTC_beneficiary_033",
+        "name": "AP Memory",
+        "business_line": "DTC",
+        "relationship": "beneficiary",
+        "details": "DTC 電源方案商業化可能帶動設計需求；合作已確認，收入受惠尚待驗證。",
+        "evidence_grade": "C",
+        "verification_status": "需求連動推論",
+        "source_urls": [
+          "https://www.umc.com/en/News/press_release/Content/technology_related/20261022"
+        ],
+        "ticker": "6531.TW"
+      }
+    ]
   }
 }

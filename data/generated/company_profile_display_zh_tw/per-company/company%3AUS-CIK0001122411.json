@@ -5,103 +5,457 @@
   "symbol": "ASX",
   "canonical_schema_version": "axiom-company-profile.v2.3",
   "display": {
-    "as_of": "2026-04-01",
+    "locale": "zh-TW",
+    "symbol": "ASX",
+    "as_of": "2026-11-11",
     "company_summary": {
-      "one_line_business": "日月光投控提供半導體組裝、封裝、晶圓製程、測試、互連材料生產及電子製造外包服務。"
+      "one_line_business": "日月光投控為全球半導體封裝測試與電子製造服務供應商，旗下日月光半導體、矽品精密與環旭電子涵蓋先進封裝、測試、互連材料及系統組裝。",
+      "business_segments": [
+        "ATM 封裝：先進封裝、覆晶、晶圓凸塊、晶圓級及面板級封裝",
+        "ATM 測試：晶圓探針、最終測試、系統級測試",
+        "互連材料：IC 載板與封裝互連",
+        "EMS 環旭電子：電子模組、系統組裝、光互連相關製造"
+      ]
     },
     "markets": [
+      "先進封裝與異質整合",
+      "AI 加速器與高效能運算",
       "半導體封裝與測試",
-      "電子製造服務",
+      "智慧型手機與通訊",
       "汽車電子",
-      "通訊",
-      "運算與伺服器"
+      "消費電子",
+      "工業與物聯網",
+      "電子製造服務",
+      "面板級封裝 FOPLP",
+      "光電互連與光收發模組",
+      "AI 晶片電源模組"
     ],
     "product_stack": [
-      "半導體封裝服務",
+      "先進封裝與異質整合服務",
+      "覆晶封裝與晶圓凸塊",
+      "晶圓級封裝 WLP",
+      "系統級封裝 SiP",
+      "傳統打線封裝",
       "晶圓探針測試",
-      "前段工程測試",
-      "最終測試",
-      "覆晶球柵陣列封裝",
-      "覆晶晶片尺寸封裝",
-      "先進晶片尺寸封裝",
-      "四方扁平無引腳封裝",
-      "電子製造服務"
+      "最終測試與系統級測試",
+      "封裝基板及互連材料",
+      "環旭電子 EMS 與模組組裝",
+      "VIPack 異質整合平台",
+      "FOCoS-Bridge TSV 扇出橋接封裝",
+      "310×310 mm 面板級封裝",
+      "PowerSiP 垂直整合電壓調節模組",
+      "光收發模組及光互連 EMS"
     ],
-    "market_products": {},
+    "market_products": {
+      "advanced_packaging": [
+        "覆晶封裝",
+        "晶圓凸塊",
+        "晶圓級封裝",
+        "高密度異質整合"
+      ],
+      "semiconductor_testing": [
+        "晶圓探針",
+        "最終測試",
+        "系統級測試"
+      ],
+      "traditional_packaging": [
+        "打線封裝",
+        "導線架封裝"
+      ],
+      "interconnect_materials": [
+        "封裝基板",
+        "互連材料"
+      ],
+      "ems": [
+        "電子模組",
+        "系統組裝",
+        "AI 加速器卡"
+      ],
+      "panel_level_packaging": [
+        "310×310 mm 自動化面板封裝產線",
+        "FOCoS-Bridge"
+      ],
+      "power_delivery": [
+        "PowerSiP 3D SiP",
+        "垂直電壓調節模組"
+      ],
+      "optical_interconnect": [
+        "800G 光學引擎",
+        "1.6T 光收發模組",
+        "矽光子整合",
+        "NPO／CPO 光互連"
+      ]
+    },
     "core_technologies": [
-      "先進半導體封裝",
-      "晶圓級製程",
-      "覆晶互連",
-      "系統級封裝整合",
-      "半導體測試工程"
+      "先進封裝",
+      "異質整合",
+      "覆晶與微凸塊",
+      "晶圓級封裝",
+      "系統級封裝 SiP",
+      "高階晶片測試",
+      "封裝互連材料設計",
+      "電子製造 SMT",
+      "VIPack 高密度異質整合",
+      "FOCoS 與 FOCoS-Bridge TSV",
+      "面板級封裝製程",
+      "PowerSiP 垂直電力傳輸",
+      "光電互連封裝"
     ],
     "manufacturing": {
-      "model": [],
-      "locations": [],
-      "critical_assets": []
+      "model": [
+        "客戶委託晶圓由日月光封裝與測試",
+        "以外部基板、引線架、金屬線、模封膠與設備投入生產",
+        "自有互連材料業務供應部分基板需求",
+        "環旭電子執行 EMS 與系統組裝"
+      ],
+      "locations": [
+        "台灣高雄楠梓及其他封測廠區",
+        "台灣仁武新建測試園區",
+        "中國及東南亞封測與 EMS 據點",
+        "美國加州 ISE Labs 測試據點",
+        "馬來西亞檳城：2025 年宣布擬收購 ADI 設施，不能視為已完成"
+      ],
+      "critical_assets": [
+        "先進封裝產線",
+        "晶圓凸塊及覆晶產線",
+        "晶圓探針與最終測試機台",
+        "封裝基板與互連材料產線",
+        "環旭電子 EMS 生產網路"
+      ]
     },
     "customer_types": [
-      "整合元件製造商",
-      "無晶圓廠半導體公司",
-      "電子品牌商",
-      "汽車電子公司",
-      "伺服器與通訊設備製造商"
+      "無晶圓廠半導體設計公司",
+      "IDM 半導體製造商",
+      "AI 加速器與運算晶片公司",
+      "手機與通訊晶片公司",
+      "電子品牌與設備製造商",
+      "汽車及工業電子業者"
     ],
     "ai_exposure": {
       "type": "direct_company_disclosure",
-      "summary": "AI 與伺服器需求提高先進封裝、高密度整合、測試及電子製造服務需求。"
+      "summary": "AI/HPC 帶動 VIPack、FOCoS-Bridge、面板級封裝、測試及 PowerSiP 電源模組需求；2026 年 5 月公布 310×310 mm 面板級產線，10 月擴充 PowerSiP。"
     },
-    "competitive_advantages": [],
-    "demand_drivers": [
-      "AI 伺服器",
-      "先進封裝",
-      "半導體外包",
-      "汽車電子",
-      "通訊設備",
-      "微型化"
+    "competitive_advantages": [
+      "封裝、測試、互連材料與 EMS 一站式服務",
+      "全球製造布局與大規模測試機台基礎",
+      "先進封裝與系統級封裝整合能力",
+      "長期半導體客戶認證與供應鏈管理能力"
     ],
-    "strategy_changes": [],
+    "demand_drivers": [
+      "AI/HPC 晶片先進封裝需求",
+      "高密度異質整合",
+      "封裝測試外包滲透率",
+      "晶圓凸塊與覆晶技術升級",
+      "通訊與汽車電子需求",
+      "高階測試設備投資"
+    ],
+    "strategy_changes": [
+      "持續擴張先進封裝與測試產能",
+      "2026 年加大設備資本支出",
+      "推動供應商節能設備與供應鏈減碳合作",
+      "2026 年 5 月與 WUS 宣布高雄先進封裝廠策略合作，預定 2029 年完成",
+      "2026 年 5 月宣布 310×310 mm 自動化面板級封裝，目標 2027 上半年量產",
+      "2026 年 10 月擴充 PowerSiP 3D 電源模組",
+      "2025 年 10 月與 Analog Devices 簽署檳城廠合作意向備忘錄，交易條件仍待正式文件",
+      "2026 年 1 月環旭電子旗下環旭光電完成收購 EugenLight 控股權，擴大 800G／1.6T 光互連布局"
+    ],
     "financial_snapshot": {
       "fiscal_year": 2025,
-      "revenue": null,
-      "gross_margin": null,
+      "revenue": 645387710000,
+      "revenue_currency": "TWD",
+      "gross_margin": 0.177,
       "net_loss": null,
-      "revenue_mix": {},
-      "customer_concentration": {}
+      "revenue_mix": {
+        "packaging_TWD": 308342594000,
+        "testing_TWD": 71900228000,
+        "ems_TWD": 257192747000,
+        "others_TWD": 7952141000
+      },
+      "customer_concentration": {
+        "largest_customer_share_2025": 0.25,
+        "largest_customer_name": null,
+        "top_five_customer_share_2025": 0.465
+      },
+      "latest_quarter": {
+        "period": "2026-Q3",
+        "revenue": 244161000000,
+        "revenue_currency": "TWD",
+        "net_income_attributable_to_parent": 26996000000,
+        "packaging_revenue_TWD": 122173000000,
+        "testing_revenue_TWD": 26302000000,
+        "ems_revenue_TWD": 92997000000,
+        "other_revenue_TWD": 2689000000,
+        "gross_margin": 0.221
+      }
     }
   },
   "value_provenance": {
-    "company_summary.one_line_business": {
-      "value": "ASE Technology Holding provides outsourced semiconductor assembly, packaging, wafer processing, testing, interconnect-material production, and electronics manufacturing services.",
-      "evidence": null
+    "company_summary": {
+      "value": {
+        "one_line_business": "日月光投控為全球半導體封裝測試與電子製造服務供應商，旗下日月光半導體、矽品精密與環旭電子涵蓋先進封裝、測試、互連材料及系統組裝。",
+        "business_segments": [
+          "ATM 封裝：先進封裝、覆晶、晶圓凸塊、晶圓級及面板級封裝",
+          "ATM 測試：晶圓探針、最終測試、系統級測試",
+          "互連材料：IC 載板與封裝互連",
+          "EMS 環旭電子：電子模組、系統組裝、光互連相關製造"
+        ]
+      },
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm"
+      ],
+      "research_status": "2026-11-11 截止的公開資料人工修訂；非原始欄位逐值保留"
     },
-    "markets": [],
-    "product_stack": [],
-    "market_products": {},
-    "core_technologies": [],
+    "markets": {
+      "value": [
+        "先進封裝與異質整合",
+        "AI 加速器與高效能運算",
+        "半導體封裝與測試",
+        "智慧型手機與通訊",
+        "汽車電子",
+        "消費電子",
+        "工業與物聯網",
+        "電子製造服務",
+        "面板級封裝 FOPLP",
+        "光電互連與光收發模組",
+        "AI 晶片電源模組"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm"
+      ],
+      "research_status": "2026-11-11 截止的公開資料人工修訂；非原始欄位逐值保留"
+    },
+    "product_stack": {
+      "value": [
+        "先進封裝與異質整合服務",
+        "覆晶封裝與晶圓凸塊",
+        "晶圓級封裝 WLP",
+        "系統級封裝 SiP",
+        "傳統打線封裝",
+        "晶圓探針測試",
+        "最終測試與系統級測試",
+        "封裝基板及互連材料",
+        "環旭電子 EMS 與模組組裝",
+        "VIPack 異質整合平台",
+        "FOCoS-Bridge TSV 扇出橋接封裝",
+        "310×310 mm 面板級封裝",
+        "PowerSiP 垂直整合電壓調節模組",
+        "光收發模組及光互連 EMS"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm",
+        "https://www.aseglobal.com/press-room/supplier-day-2026",
+        "https://ase.aseglobal.com/press-room/310x310/",
+        "https://ase.aseglobal.com/press-room/ase-expands-powersip-platform-for-next-generation-ai-power-delivery/"
+      ],
+      "research_status": "2026-11-11 截止的公開資料人工修訂；非原始欄位逐值保留"
+    },
+    "market_products": {
+      "value": {
+        "advanced_packaging": [
+          "覆晶封裝",
+          "晶圓凸塊",
+          "晶圓級封裝",
+          "高密度異質整合"
+        ],
+        "semiconductor_testing": [
+          "晶圓探針",
+          "最終測試",
+          "系統級測試"
+        ],
+        "traditional_packaging": [
+          "打線封裝",
+          "導線架封裝"
+        ],
+        "interconnect_materials": [
+          "封裝基板",
+          "互連材料"
+        ],
+        "ems": [
+          "電子模組",
+          "系統組裝",
+          "AI 加速器卡"
+        ],
+        "panel_level_packaging": [
+          "310×310 mm 自動化面板封裝產線",
+          "FOCoS-Bridge"
+        ],
+        "power_delivery": [
+          "PowerSiP 3D SiP",
+          "垂直電壓調節模組"
+        ],
+        "optical_interconnect": [
+          "800G 光學引擎",
+          "1.6T 光收發模組",
+          "矽光子整合",
+          "NPO／CPO 光互連"
+        ]
+      },
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm",
+        "https://www.aseglobal.com/press-room/supplier-day-2026",
+        "https://ase.aseglobal.com/press-room/310x310/",
+        "https://ase.aseglobal.com/press-room/ase-expands-powersip-platform-for-next-generation-ai-power-delivery/",
+        "https://www.usiglobal.com/en/news/usi-eugenlight-showcase-optical-solutions-ofc-2026"
+      ],
+      "research_status": "2026-11-11 截止的公開資料人工修訂；非原始欄位逐值保留"
+    },
+    "core_technologies": {
+      "value": [
+        "先進封裝",
+        "異質整合",
+        "覆晶與微凸塊",
+        "晶圓級封裝",
+        "系統級封裝 SiP",
+        "高階晶片測試",
+        "封裝互連材料設計",
+        "電子製造 SMT",
+        "VIPack 高密度異質整合",
+        "FOCoS 與 FOCoS-Bridge TSV",
+        "面板級封裝製程",
+        "PowerSiP 垂直電力傳輸",
+        "光電互連封裝"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm"
+      ],
+      "research_status": "2026-11-11 截止的公開資料人工修訂；非原始欄位逐值保留"
+    },
     "manufacturing": {
-      "model": [],
-      "locations": [],
-      "critical_assets": []
+      "value": {
+        "model": [
+          "客戶委託晶圓由日月光封裝與測試",
+          "以外部基板、引線架、金屬線、模封膠與設備投入生產",
+          "自有互連材料業務供應部分基板需求",
+          "環旭電子執行 EMS 與系統組裝"
+        ],
+        "locations": [
+          "台灣高雄楠梓及其他封測廠區",
+          "台灣仁武新建測試園區",
+          "中國及東南亞封測與 EMS 據點",
+          "美國加州 ISE Labs 測試據點",
+          "馬來西亞檳城：2025 年宣布擬收購 ADI 設施，不能視為已完成"
+        ],
+        "critical_assets": [
+          "先進封裝產線",
+          "晶圓凸塊及覆晶產線",
+          "晶圓探針與最終測試機台",
+          "封裝基板與互連材料產線",
+          "環旭電子 EMS 生產網路"
+        ]
+      },
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm"
+      ],
+      "research_status": "2026-11-11 截止的公開資料人工修訂；非原始欄位逐值保留"
     },
-    "customer_types": [],
+    "customer_types": {
+      "value": [
+        "無晶圓廠半導體設計公司",
+        "IDM 半導體製造商",
+        "AI 加速器與運算晶片公司",
+        "手機與通訊晶片公司",
+        "電子品牌與設備製造商",
+        "汽車及工業電子業者"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm"
+      ],
+      "research_status": "2026-11-11 截止的公開資料人工修訂；非原始欄位逐值保留"
+    },
     "ai_exposure": {
       "value": {
         "type": "direct_company_disclosure",
-        "summary": "AI and server demand increases the need for advanced packaging, high-density integration, testing, and electronics manufacturing services."
+        "summary": "AI/HPC 帶動 VIPack、FOCoS-Bridge、面板級封裝、測試及 PowerSiP 電源模組需求；2026 年 5 月公布 310×310 mm 面板級產線，10 月擴充 PowerSiP。"
       },
-      "evidence": null
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm",
+        "https://www.aseglobal.com/press-room/supplier-day-2026",
+        "https://ase.aseglobal.com/press-room/310x310/",
+        "https://ase.aseglobal.com/press-room/ase-expands-powersip-platform-for-next-generation-ai-power-delivery/"
+      ],
+      "research_status": "2026-11-11 截止的公開資料人工修訂；非原始欄位逐值保留"
     },
-    "competitive_advantages": [],
-    "demand_drivers": [],
-    "strategy_changes": [],
+    "competitive_advantages": {
+      "value": [
+        "封裝、測試、互連材料與 EMS 一站式服務",
+        "全球製造布局與大規模測試機台基礎",
+        "先進封裝與系統級封裝整合能力",
+        "長期半導體客戶認證與供應鏈管理能力"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm"
+      ],
+      "research_status": "2026-11-11 截止的公開資料人工修訂；非原始欄位逐值保留"
+    },
+    "demand_drivers": {
+      "value": [
+        "AI/HPC 晶片先進封裝需求",
+        "高密度異質整合",
+        "封裝測試外包滲透率",
+        "晶圓凸塊與覆晶技術升級",
+        "通訊與汽車電子需求",
+        "高階測試設備投資"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm"
+      ],
+      "research_status": "2026-11-11 截止的公開資料人工修訂；非原始欄位逐值保留"
+    },
+    "strategy_changes": {
+      "value": [
+        "持續擴張先進封裝與測試產能",
+        "2026 年加大設備資本支出",
+        "推動供應商節能設備與供應鏈減碳合作",
+        "2026 年 5 月與 WUS 宣布高雄先進封裝廠策略合作，預定 2029 年完成",
+        "2026 年 5 月宣布 310×310 mm 自動化面板級封裝，目標 2027 上半年量產",
+        "2026 年 10 月擴充 PowerSiP 3D 電源模組",
+        "2025 年 10 月與 Analog Devices 簽署檳城廠合作意向備忘錄，交易條件仍待正式文件",
+        "2026 年 1 月環旭電子旗下環旭光電完成收購 EugenLight 控股權，擴大 800G／1.6T 光互連布局"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm",
+        "https://www.aseglobal.com/press-room/supplier-day-2026",
+        "https://ase.aseglobal.com/press-room/310x310/",
+        "https://ase.aseglobal.com/press-room/ase-expands-powersip-platform-for-next-generation-ai-power-delivery/",
+        "https://www.aseglobal.com/press-room/usi-subsidiary-acquires-eugenlight-technologies"
+      ],
+      "research_status": "2026-11-11 截止的公開資料人工修訂；非原始欄位逐值保留"
+    },
     "financial_snapshot": {
-      "fiscal_year": {
-        "value": 2025,
-        "evidence": null
+      "value": {
+        "fiscal_year": 2025,
+        "revenue": 645387710000,
+        "revenue_currency": "TWD",
+        "gross_margin": 0.177,
+        "net_loss": null,
+        "revenue_mix": {
+          "packaging_TWD": 308342594000,
+          "testing_TWD": 71900228000,
+          "ems_TWD": 257192747000,
+          "others_TWD": 7952141000
+        },
+        "customer_concentration": {
+          "largest_customer_share_2025": 0.25,
+          "largest_customer_name": null,
+          "top_five_customer_share_2025": 0.465
+        },
+        "latest_quarter": {
+          "period": "2026-Q3",
+          "revenue": 244161000000,
+          "revenue_currency": "TWD",
+          "net_income_attributable_to_parent": 26996000000,
+          "packaging_revenue_TWD": 122173000000,
+          "testing_revenue_TWD": 26302000000,
+          "ems_revenue_TWD": 92997000000,
+          "other_revenue_TWD": 2689000000,
+          "gross_margin": 0.221
+        }
       },
-      "revenue_mix": {},
-      "customer_concentration": {}
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm",
+        "https://www.sec.gov/Archives/edgar/data/1122411/000095010326016324/dp255760_6k.htm"
+      ],
+      "research_status": "2026-11-11 截止的公開資料人工修訂；非原始欄位逐值保留"
     }
   },
   "evidence": [
@@ -112,113 +466,1102 @@
       "filing_date": "2026-04-01",
       "section_type": "item_4_company_information",
       "document_url": "https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm",
-      "text_sha256": "29772f4eeedf0df456d70f2c7c8ace81eb6e4799a0299dc38ab60d45d43fe594"
+      "text_sha256": "29772f4eeedf0df456d70f2c7c8ace81eb6e4799a0299dc38ab60d45d43fe594",
+      "note": "原始指定 commit 既有證據 metadata；SHA 未重新計算。"
+    },
+    {
+      "form": "6-K",
+      "accession_number": "0000950103-26-016324",
+      "filing_date": "2026-10-29",
+      "section_type": "financial_results_2026_q3",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/1122411/000095010326016324/dp255760_6k.htm",
+      "note": "僅記錄實際查得的申報文件，未虛構 SHA 或文字偏移。"
     }
   ],
   "translation_engine": {
     "provider": "manual",
     "model": null,
-    "mode": "human_reviewed_company_profile_translation",
+    "mode": "human_research_rewrite",
     "result_source": "MANUAL_LOCKED",
-    "validation": "manual_review_and_read_back",
-    "canonical_handoff": "read_back_verified"
+    "validation": "programmatic_structural_validation",
+    "canonical_handoff": "reconstructed_from_commit_da93c81d_blob_e6ab9f8df9d4d15aa81761050aa76a285be38c2f; revised_fields_not_value_preserved"
   },
   "translation_source": {
-    "company_summary": "ASE Technology Holding provides outsourced semiconductor assembly, packaging, wafer processing, testing, interconnect-material production, and electronics manufacturing services.",
+    "company_summary": "ASE Technology Holding provides outsourced assembly and test, advanced heterogeneous packaging, interconnect materials and electronic manufacturing services.",
     "product_stack": [
-      "semiconductor packaging services",
-      "wafer probing",
-      "front-end engineering testing",
-      "final testing",
-      "flip-chip BGA",
-      "flip-chip CSP",
-      "advanced chip-scale packages",
-      "quad-flat no-lead packages",
-      "electronics manufacturing services"
+      "VIPack advanced packaging",
+      "FOCoS Bridge with TSV",
+      "310 mm panel-level packaging",
+      "PowerSiP",
+      "Semiconductor test",
+      "Electronics manufacturing services"
     ],
-    "market_products": {},
     "markets": [
-      "Semiconductor Packaging and Test",
-      "Electronics Manufacturing Services",
-      "Automotive Electronics",
-      "Communications",
-      "Computing and Servers"
+      "Advanced packaging",
+      "AI/HPC",
+      "Electronics manufacturing",
+      "Optical interconnect"
     ],
-    "customer_types": [
-      "integrated device manufacturers",
-      "fabless semiconductor companies",
-      "electronics brands",
-      "automotive electronics companies",
-      "server and communications equipment manufacturers"
-    ],
-    "core_technologies": [
-      "advanced semiconductor packaging",
-      "wafer-level processing",
-      "flip-chip interconnect",
-      "system-in-package integration",
-      "semiconductor test engineering"
-    ],
-    "ai_exposure": {
-      "type": "direct_company_disclosure",
-      "summary": "AI and server demand increases the need for advanced packaging, high-density integration, testing, and electronics manufacturing services."
-    },
-    "demand_drivers": [
-      "AI servers",
-      "advanced packaging",
-      "semiconductor outsourcing",
-      "automotive electronics",
-      "communications equipment",
-      "miniaturization"
-    ],
-    "strategy_changes": []
+    "note": "依 2025 年 20-F 及截至 2026-11-11 官方公告人工整理英文語義，非逐字 SEC 引文。"
   },
   "translation_zh_tw": {
-    "company_summary": "日月光投控提供半導體組裝、封裝、晶圓製程、測試、互連材料生產及電子製造外包服務。",
+    "company_summary": {
+      "one_line_business": "日月光投控為全球半導體封裝測試與電子製造服務供應商，旗下日月光半導體、矽品精密與環旭電子涵蓋先進封裝、測試、互連材料及系統組裝。",
+      "business_segments": [
+        "ATM 封裝：先進封裝、覆晶、晶圓凸塊、晶圓級及面板級封裝",
+        "ATM 測試：晶圓探針、最終測試、系統級測試",
+        "互連材料：IC 載板與封裝互連",
+        "EMS 環旭電子：電子模組、系統組裝、光互連相關製造"
+      ]
+    },
     "product_stack": [
-      "半導體封裝服務",
+      "先進封裝與異質整合服務",
+      "覆晶封裝與晶圓凸塊",
+      "晶圓級封裝 WLP",
+      "系統級封裝 SiP",
+      "傳統打線封裝",
       "晶圓探針測試",
-      "前段工程測試",
-      "最終測試",
-      "覆晶球柵陣列封裝",
-      "覆晶晶片尺寸封裝",
-      "先進晶片尺寸封裝",
-      "四方扁平無引腳封裝",
-      "電子製造服務"
+      "最終測試與系統級測試",
+      "封裝基板及互連材料",
+      "環旭電子 EMS 與模組組裝",
+      "VIPack 異質整合平台",
+      "FOCoS-Bridge TSV 扇出橋接封裝",
+      "310×310 mm 面板級封裝",
+      "PowerSiP 垂直整合電壓調節模組",
+      "光收發模組及光互連 EMS"
     ],
-    "market_products": {},
+    "market_products": {
+      "advanced_packaging": [
+        "覆晶封裝",
+        "晶圓凸塊",
+        "晶圓級封裝",
+        "高密度異質整合"
+      ],
+      "semiconductor_testing": [
+        "晶圓探針",
+        "最終測試",
+        "系統級測試"
+      ],
+      "traditional_packaging": [
+        "打線封裝",
+        "導線架封裝"
+      ],
+      "interconnect_materials": [
+        "封裝基板",
+        "互連材料"
+      ],
+      "ems": [
+        "電子模組",
+        "系統組裝",
+        "AI 加速器卡"
+      ],
+      "panel_level_packaging": [
+        "310×310 mm 自動化面板封裝產線",
+        "FOCoS-Bridge"
+      ],
+      "power_delivery": [
+        "PowerSiP 3D SiP",
+        "垂直電壓調節模組"
+      ],
+      "optical_interconnect": [
+        "800G 光學引擎",
+        "1.6T 光收發模組",
+        "矽光子整合",
+        "NPO／CPO 光互連"
+      ]
+    },
     "markets": [
+      "先進封裝與異質整合",
+      "AI 加速器與高效能運算",
       "半導體封裝與測試",
-      "電子製造服務",
+      "智慧型手機與通訊",
       "汽車電子",
-      "通訊",
-      "運算與伺服器"
+      "消費電子",
+      "工業與物聯網",
+      "電子製造服務",
+      "面板級封裝 FOPLP",
+      "光電互連與光收發模組",
+      "AI 晶片電源模組"
     ],
     "customer_types": [
-      "整合元件製造商",
-      "無晶圓廠半導體公司",
-      "電子品牌商",
-      "汽車電子公司",
-      "伺服器與通訊設備製造商"
+      "無晶圓廠半導體設計公司",
+      "IDM 半導體製造商",
+      "AI 加速器與運算晶片公司",
+      "手機與通訊晶片公司",
+      "電子品牌與設備製造商",
+      "汽車及工業電子業者"
     ],
     "core_technologies": [
-      "先進半導體封裝",
-      "晶圓級製程",
-      "覆晶互連",
-      "系統級封裝整合",
-      "半導體測試工程"
+      "先進封裝",
+      "異質整合",
+      "覆晶與微凸塊",
+      "晶圓級封裝",
+      "系統級封裝 SiP",
+      "高階晶片測試",
+      "封裝互連材料設計",
+      "電子製造 SMT",
+      "VIPack 高密度異質整合",
+      "FOCoS 與 FOCoS-Bridge TSV",
+      "面板級封裝製程",
+      "PowerSiP 垂直電力傳輸",
+      "光電互連封裝"
     ],
     "ai_exposure": {
       "type": "direct_company_disclosure",
-      "summary": "AI 與伺服器需求提高先進封裝、高密度整合、測試及電子製造服務需求。"
+      "summary": "AI/HPC 帶動 VIPack、FOCoS-Bridge、面板級封裝、測試及 PowerSiP 電源模組需求；2026 年 5 月公布 310×310 mm 面板級產線，10 月擴充 PowerSiP。"
     },
     "demand_drivers": [
-      "AI 伺服器",
-      "先進封裝",
-      "半導體外包",
-      "汽車電子",
-      "通訊設備",
-      "微型化"
+      "AI/HPC 晶片先進封裝需求",
+      "高密度異質整合",
+      "封裝測試外包滲透率",
+      "晶圓凸塊與覆晶技術升級",
+      "通訊與汽車電子需求",
+      "高階測試設備投資"
     ],
-    "strategy_changes": []
+    "strategy_changes": [
+      "持續擴張先進封裝與測試產能",
+      "2026 年加大設備資本支出",
+      "推動供應商節能設備與供應鏈減碳合作",
+      "2026 年 5 月與 WUS 宣布高雄先進封裝廠策略合作，預定 2029 年完成",
+      "2026 年 5 月宣布 310×310 mm 自動化面板級封裝，目標 2027 上半年量產",
+      "2026 年 10 月擴充 PowerSiP 3D 電源模組",
+      "2025 年 10 月與 Analog Devices 簽署檳城廠合作意向備忘錄，交易條件仍待正式文件",
+      "2026 年 1 月環旭電子旗下環旭光電完成收購 EugenLight 控股權，擴大 800G／1.6T 光互連布局"
+    ]
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-11",
+    "company": "ASE Technology Holding Co., Ltd.",
+    "symbol": "ASX",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "ASX 日月光投控產業鏈深度研究：VIPack、FOCoS、SiP、封測設備與具名供應商",
+      "description": "2025 年 20-F、2026 年 6-K、日月光 2024/2025 供應商表揚及官方策略合作交叉查證；嚴格區分客戶、供應商、合作夥伴、競爭者與受惠情境。"
+    },
+    "business_lines": [
+      {
+        "id": "VIPACK",
+        "name": "VIPack 異質整合"
+      },
+      {
+        "id": "FOCOS",
+        "name": "FOCoS 與橋接封裝"
+      },
+      {
+        "id": "FOPLP",
+        "name": "面板級封裝"
+      },
+      {
+        "id": "FC_BUMP",
+        "name": "覆晶與晶圓凸塊"
+      },
+      {
+        "id": "WLP",
+        "name": "晶圓級封裝"
+      },
+      {
+        "id": "SIP",
+        "name": "系統級封裝 SiP"
+      },
+      {
+        "id": "POWERSIP",
+        "name": "PowerSiP AI 電源模組"
+      },
+      {
+        "id": "TEST",
+        "name": "晶圓探針與最終測試"
+      },
+      {
+        "id": "SUBSTRATE",
+        "name": "封裝基板與互連材料"
+      },
+      {
+        "id": "CHEMICAL",
+        "name": "模封膠與化學材料"
+      },
+      {
+        "id": "WIRE",
+        "name": "鍵合金線與銅線"
+      },
+      {
+        "id": "EQUIPMENT",
+        "name": "封裝及測試設備"
+      },
+      {
+        "id": "EMS",
+        "name": "環旭電子 EMS"
+      },
+      {
+        "id": "OPTICAL",
+        "name": "光電互連模組"
+      },
+      {
+        "id": "SMART_FACTORY",
+        "name": "智慧製造與製程管理"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "VIPACK_customer_001",
+        "name": "NVIDIA",
+        "business_line": "VIPACK",
+        "relationship": "customer",
+        "details": "矽品承作 NVIDIA 晶片封裝；路透具名報導並提及 NVIDIA 邀請日月光評估美國製造布局。",
+        "evidence_grade": "B",
+        "verification_status": "路透具名報導",
+        "source_urls": [
+          "https://www.reuters.com/world/asia-pacific/taiwans-ase-evaluates-how-it-will-support-nvidias-500-bln-us-plan-2025-04-30/"
+        ],
+        "ticker": "NVDA"
+      },
+      {
+        "id": "EMS_customer_002",
+        "name": "未具名主要客戶（Company Q）",
+        "business_line": "EMS",
+        "relationship": "customer",
+        "details": "2025 年報揭露單一客戶及其委託代工相關收入合計占集團營收 25%；未公布真實名稱。",
+        "evidence_grade": "A",
+        "verification_status": "SEC 未具名客戶",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm"
+        ]
+      },
+      {
+        "id": "TEST_supplier_003",
+        "name": "Advantest Taiwan",
+        "business_line": "TEST",
+        "relationship": "supplier",
+        "details": "日月光 2025 年度具名獲獎供應商；業務領域為測試機台。",
+        "evidence_grade": "A",
+        "verification_status": "2025 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2026"
+        ],
+        "ticker": "6857.T"
+      },
+      {
+        "id": "EQUIPMENT_supplier_004",
+        "name": "AI MECHATEC",
+        "business_line": "EQUIPMENT",
+        "relationship": "supplier",
+        "details": "日月光 2025 年度具名獲獎供應商；業務領域為自動化製程設備。",
+        "evidence_grade": "A",
+        "verification_status": "2025 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2026"
+        ],
+        "ticker": "6227.T"
+      },
+      {
+        "id": "EQUIPMENT_supplier_005",
+        "name": "Allring Tech",
+        "business_line": "EQUIPMENT",
+        "relationship": "supplier",
+        "details": "日月光 2025 年度具名獲獎供應商；業務領域為自動化封裝設備。",
+        "evidence_grade": "A",
+        "verification_status": "2025 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2026"
+        ],
+        "ticker": "6187.TW"
+      },
+      {
+        "id": "CHEMICAL_supplier_006",
+        "name": "HD MicroSystems",
+        "business_line": "CHEMICAL",
+        "relationship": "supplier",
+        "details": "日月光 2025 年度具名獲獎供應商；業務領域為聚醯亞胺及微電子材料。",
+        "evidence_grade": "A",
+        "verification_status": "2025 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2026"
+        ]
+      },
+      {
+        "id": "EQUIPMENT_supplier_007",
+        "name": "HON. PRECISION",
+        "business_line": "EQUIPMENT",
+        "relationship": "supplier",
+        "details": "獲 2025 年最佳供應商獎；公告未揭露具體採購品項。",
+        "evidence_grade": "A",
+        "verification_status": "2025 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2026"
+        ]
+      },
+      {
+        "id": "EQUIPMENT_supplier_008",
+        "name": "Hwa Shu Enterprise",
+        "business_line": "EQUIPMENT",
+        "relationship": "supplier",
+        "details": "獲 2025 年最佳供應商獎；公告未揭露具體採購品項。",
+        "evidence_grade": "A",
+        "verification_status": "2025 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2026"
+        ]
+      },
+      {
+        "id": "TEST_supplier_009",
+        "name": "JENTECH Precision Industrial",
+        "business_line": "TEST",
+        "relationship": "supplier",
+        "details": "日月光 2025 年度具名獲獎供應商；業務領域為測試介面與精密零組件。",
+        "evidence_grade": "A",
+        "verification_status": "2025 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2026"
+        ],
+        "ticker": "3653.TW"
+      },
+      {
+        "id": "SUBSTRATE_supplier_010",
+        "name": "Kyocera Asia Pacific",
+        "business_line": "SUBSTRATE",
+        "relationship": "supplier",
+        "details": "日月光 2025 年度具名獲獎供應商；業務領域為陶瓷及封裝材料。",
+        "evidence_grade": "A",
+        "verification_status": "2025 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2026"
+        ],
+        "ticker": "6971.T"
+      },
+      {
+        "id": "EQUIPMENT_supplier_011",
+        "name": "Lam Research",
+        "business_line": "EQUIPMENT",
+        "relationship": "supplier",
+        "details": "日月光 2025 年度具名獲獎供應商；業務領域為半導體製程設備。",
+        "evidence_grade": "A",
+        "verification_status": "2025 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2026"
+        ],
+        "ticker": "LRCX"
+      },
+      {
+        "id": "EQUIPMENT_supplier_012",
+        "name": "Lintec Advanced Technologies",
+        "business_line": "EQUIPMENT",
+        "relationship": "supplier",
+        "details": "日月光 2025 年度具名獲獎供應商；業務領域為晶圓加工設備與材料。",
+        "evidence_grade": "A",
+        "verification_status": "2025 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2026"
+        ],
+        "ticker": "7966.T"
+      },
+      {
+        "id": "CHEMICAL_supplier_013",
+        "name": "3M Taiwan",
+        "business_line": "CHEMICAL",
+        "relationship": "supplier",
+        "details": "日月光 2025 年度具名獲獎供應商；業務領域為製程材料與膠帶。",
+        "evidence_grade": "A",
+        "verification_status": "2025 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2026"
+        ],
+        "ticker": "MMM"
+      },
+      {
+        "id": "CHEMICAL_supplier_014",
+        "name": "Mitsubishi Gas Chemical",
+        "business_line": "CHEMICAL",
+        "relationship": "supplier",
+        "details": "日月光 2025 年度具名獲獎供應商；業務領域為封裝用化學材料。",
+        "evidence_grade": "A",
+        "verification_status": "2025 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2026"
+        ],
+        "ticker": "4182.T"
+      },
+      {
+        "id": "CHEMICAL_supplier_015",
+        "name": "Mitsui Chemicals ICT Materia",
+        "business_line": "CHEMICAL",
+        "relationship": "supplier",
+        "details": "日月光 2025 年度具名獲獎供應商；業務領域為電子材料。",
+        "evidence_grade": "A",
+        "verification_status": "2025 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2026"
+        ],
+        "ticker": "4183.T"
+      },
+      {
+        "id": "WIRE_supplier_016",
+        "name": "MK Electron",
+        "business_line": "WIRE",
+        "relationship": "supplier",
+        "details": "日月光 2025 年度具名獲獎供應商；業務領域為鍵合金屬線。",
+        "evidence_grade": "A",
+        "verification_status": "2025 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2026"
+        ],
+        "ticker": "033160.KS"
+      },
+      {
+        "id": "EMS_supplier_017",
+        "name": "Murata Manufacturing",
+        "business_line": "EMS",
+        "relationship": "supplier",
+        "details": "日月光 2025 年度具名獲獎供應商；產品涵蓋電子元件及模組，公告未指明採購品項。",
+        "evidence_grade": "A",
+        "verification_status": "2025 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2026"
+        ],
+        "ticker": "6981.T"
+      },
+      {
+        "id": "CHEMICAL_supplier_018",
+        "name": "Namics",
+        "business_line": "CHEMICAL",
+        "relationship": "supplier",
+        "details": "日月光 2025 年度具名獲獎供應商；業務領域為半導體封裝樹脂材料。",
+        "evidence_grade": "A",
+        "verification_status": "2025 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2026"
+        ]
+      },
+      {
+        "id": "WIRE_supplier_019",
+        "name": "Nippon Micrometal",
+        "business_line": "WIRE",
+        "relationship": "supplier",
+        "details": "日月光 2025 年度具名獲獎供應商；業務領域為半導體鍵合線。",
+        "evidence_grade": "A",
+        "verification_status": "2025 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2026"
+        ]
+      },
+      {
+        "id": "CHEMICAL_supplier_020",
+        "name": "Qnity Electronics",
+        "business_line": "CHEMICAL",
+        "relationship": "supplier",
+        "details": "日月光 2025 年度具名獲獎供應商；業務領域為電子材料。",
+        "evidence_grade": "A",
+        "verification_status": "2025 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2026"
+        ],
+        "ticker": "Q"
+      },
+      {
+        "id": "EQUIPMENT_supplier_021",
+        "name": "W & D Technology",
+        "business_line": "EQUIPMENT",
+        "relationship": "supplier",
+        "details": "獲 2025 年最佳供應商獎；公告未揭露具體採購品項。",
+        "evidence_grade": "A",
+        "verification_status": "2025 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2026"
+        ]
+      },
+      {
+        "id": "EQUIPMENT_supplier_022",
+        "name": "Grand Process Technology",
+        "business_line": "EQUIPMENT",
+        "relationship": "supplier",
+        "details": "日月光 2025 年度具名獲獎供應商；業務領域為半導體濕製程設備。",
+        "evidence_grade": "A",
+        "verification_status": "2025 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2026"
+        ],
+        "ticker": "3131.TW"
+      },
+      {
+        "id": "CHEMICAL_supplier_023",
+        "name": "Indium Corporation",
+        "business_line": "CHEMICAL",
+        "relationship": "supplier",
+        "details": "日月光 2025 年度具名獲獎供應商；業務領域為焊料及金屬材料。",
+        "evidence_grade": "A",
+        "verification_status": "2025 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2026"
+        ]
+      },
+      {
+        "id": "EQUIPMENT_supplier_024",
+        "name": "Poseidon Global Industries",
+        "business_line": "EQUIPMENT",
+        "relationship": "supplier",
+        "details": "獲 2025 年供應商永續獎，確認為集團供應鏈合作對象；未公開具體採購品項。",
+        "evidence_grade": "A",
+        "verification_status": "2025 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2026"
+        ]
+      },
+      {
+        "id": "EQUIPMENT_supplier_025",
+        "name": "Canon Semiconductor Equipment Taiwan",
+        "business_line": "EQUIPMENT",
+        "relationship": "supplier",
+        "details": "日月光 2024 年度具名獲獎供應商；業務領域為半導體設備。",
+        "evidence_grade": "A",
+        "verification_status": "2024 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2025"
+        ]
+      },
+      {
+        "id": "CHEMICAL_supplier_026",
+        "name": "Henkel Taiwan",
+        "business_line": "CHEMICAL",
+        "relationship": "supplier",
+        "details": "日月光 2024 年度具名獲獎供應商；業務領域為封裝黏著及電子材料。",
+        "evidence_grade": "A",
+        "verification_status": "2024 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2025"
+        ],
+        "ticker": "HEN3.DE"
+      },
+      {
+        "id": "SUBSTRATE_supplier_027",
+        "name": "Leading Interconnect Semiconductor Technology",
+        "business_line": "SUBSTRATE",
+        "relationship": "supplier",
+        "details": "日月光 2024 年度具名獲獎供應商；業務領域為封裝互連。",
+        "evidence_grade": "A",
+        "verification_status": "2024 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2025"
+        ]
+      },
+      {
+        "id": "SUBSTRATE_supplier_028",
+        "name": "Nan Ya PCB",
+        "business_line": "SUBSTRATE",
+        "relationship": "supplier",
+        "details": "日月光 2024 年度具名獲獎供應商；業務領域為IC 載板。",
+        "evidence_grade": "A",
+        "verification_status": "2024 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2025"
+        ],
+        "ticker": "8046.TW"
+      },
+      {
+        "id": "CHEMICAL_supplier_029",
+        "name": "Profound Material Technology",
+        "business_line": "CHEMICAL",
+        "relationship": "supplier",
+        "details": "日月光 2024 年度具名獲獎供應商；業務領域為封裝材料。",
+        "evidence_grade": "A",
+        "verification_status": "2024 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2025"
+        ]
+      },
+      {
+        "id": "CHEMICAL_supplier_030",
+        "name": "Resonac",
+        "business_line": "CHEMICAL",
+        "relationship": "supplier",
+        "details": "日月光 2024 年度具名獲獎供應商；業務領域為半導體封裝材料。",
+        "evidence_grade": "A",
+        "verification_status": "2024 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2025"
+        ],
+        "ticker": "4004.T"
+      },
+      {
+        "id": "SUBSTRATE_supplier_031",
+        "name": "Shinko Electric Industries",
+        "business_line": "SUBSTRATE",
+        "relationship": "supplier",
+        "details": "日月光 2024 年度具名獲獎供應商；業務領域為半導體封裝載板。",
+        "evidence_grade": "A",
+        "verification_status": "2024 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2025"
+        ]
+      },
+      {
+        "id": "SUBSTRATE_supplier_032",
+        "name": "Tai Hong Circuit Industrial",
+        "business_line": "SUBSTRATE",
+        "relationship": "supplier",
+        "details": "日月光 2024 年度具名獲獎供應商；業務領域為電路及互連材料。",
+        "evidence_grade": "A",
+        "verification_status": "2024 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2025"
+        ]
+      },
+      {
+        "id": "TEST_supplier_033",
+        "name": "Teradyne",
+        "business_line": "TEST",
+        "relationship": "supplier",
+        "details": "日月光 2024 年度具名獲獎供應商；業務領域為半導體測試設備。",
+        "evidence_grade": "A",
+        "verification_status": "2024 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2025"
+        ],
+        "ticker": "TER"
+      },
+      {
+        "id": "TEST_supplier_034",
+        "name": "Test Research",
+        "business_line": "TEST",
+        "relationship": "supplier",
+        "details": "日月光 2024 年度具名獲獎供應商；業務領域為自動光學檢測及測試設備。",
+        "evidence_grade": "A",
+        "verification_status": "2024 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2025"
+        ],
+        "ticker": "3030.TW"
+      },
+      {
+        "id": "EQUIPMENT_supplier_035",
+        "name": "Tokyo Electron",
+        "business_line": "EQUIPMENT",
+        "relationship": "supplier",
+        "details": "日月光 2024 年度具名獲獎供應商；業務領域為半導體設備。",
+        "evidence_grade": "A",
+        "verification_status": "2024 年度官方具名獲獎供應商",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2025"
+        ],
+        "ticker": "8035.T"
+      },
+      {
+        "id": "SUBSTRATE_supplier_036",
+        "name": "Kinsus Interconnect Technology",
+        "business_line": "SUBSTRATE",
+        "relationship": "supplier",
+        "details": "2025 年 Form 20-F 具名 IC 載板供應商。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名證實",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm"
+        ],
+        "ticker": "3189.TW"
+      },
+      {
+        "id": "SUBSTRATE_supplier_037",
+        "name": "Unimicron Technology",
+        "business_line": "SUBSTRATE",
+        "relationship": "supplier",
+        "details": "2025 年 Form 20-F 具名 IC 載板供應商。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名證實",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm"
+        ],
+        "ticker": "3037.TW"
+      },
+      {
+        "id": "SIP_partner_038",
+        "name": "Analog Devices",
+        "business_line": "SIP",
+        "relationship": "partner",
+        "details": "2025 年簽署檳城廠策略合作 MOU，規劃股權收購及長期製造服務協議；公告時仍待正式文件。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名證實",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/ase-and-analog-devices-announce-strategic-collaboration"
+        ],
+        "ticker": "ADI"
+      },
+      {
+        "id": "FOCOS_partner_039",
+        "name": "WUS Printed Circuit",
+        "business_line": "FOCOS",
+        "relationship": "partner",
+        "details": "2026 年宣布合作興建高雄先進 AI 封裝製造基地。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名證實",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/ase-and-wus-announce-strategic-expansion"
+        ],
+        "ticker": "2316.TW"
+      },
+      {
+        "id": "SMART_FACTORY_partner_040",
+        "name": "Ainos",
+        "business_line": "SMART_FACTORY",
+        "relationship": "partner",
+        "details": "合作導入 AI Nose 揮發性化學物辨識，應用於智慧製造與環境監測。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名證實",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/ainos-and-ase-partner-to-power-ai-scent-digitization-in-semiconductor-manufacturing"
+        ],
+        "ticker": "AIMD"
+      },
+      {
+        "id": "TEST_partner_041",
+        "name": "WinWay Technology",
+        "business_line": "TEST",
+        "relationship": "partner",
+        "details": "2026 年仁武高階半導體測試聚落共同投資合作。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名證實",
+        "source_urls": [
+          "https://ase.aseglobal.com/press-room/ase-breaks-ground-on-new-renwu-plant-to-build-hi-tech-testing-cluster/"
+        ],
+        "ticker": "6515.TW"
+      },
+      {
+        "id": "TEST_partner_042",
+        "name": "HORNG TERNG AUTOMATION",
+        "business_line": "TEST",
+        "relationship": "partner",
+        "details": "2026 年仁武高階半導體測試聚落共同投資合作。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名證實",
+        "source_urls": [
+          "https://ase.aseglobal.com/press-room/ase-breaks-ground-on-new-renwu-plant-to-build-hi-tech-testing-cluster/"
+        ]
+      },
+      {
+        "id": "VIPACK_partner_043",
+        "name": "National Cheng Kung University",
+        "business_line": "VIPACK",
+        "relationship": "partner",
+        "details": "2024 年成立聯合研發中心，研究異質整合與矽光子。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名證實",
+        "source_urls": [
+          "https://ase.aseglobal.com/public/downloads/en/2024-asekh-csr-report-en.pdf"
+        ]
+      },
+      {
+        "id": "SMART_FACTORY_partner_044",
+        "name": "SEMI",
+        "business_line": "SMART_FACTORY",
+        "relationship": "partner",
+        "details": "供應鏈創新及永續技術產業合作。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名證實",
+        "source_urls": [
+          "https://www.aseglobal.com/press-room/supplier-day-2025"
+        ]
+      },
+      {
+        "id": "VIPACK_partner_045",
+        "name": "TSMC",
+        "business_line": "VIPACK",
+        "relationship": "partner",
+        "details": "2025 年 Form 20-F 記載自 1997 年起的封測策略聯盟，台積電指定日月光為非獨家優先封測服務商。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名證實",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm"
+        ],
+        "ticker": "TSM"
+      },
+      {
+        "id": "VIPACK_partner_046",
+        "name": "AMD",
+        "business_line": "VIPACK",
+        "relationship": "partner",
+        "details": "與日月光同為 UCIe 晶粒互連開放標準創始聯盟成員；此為標準合作，非客戶或採購關係。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名證實",
+        "source_urls": [
+          "https://ase.aseglobal.com/press-room/universal-chiplet-interconnect-express/"
+        ],
+        "ticker": "AMD"
+      },
+      {
+        "id": "VIPACK_partner_047",
+        "name": "Arm",
+        "business_line": "VIPACK",
+        "relationship": "partner",
+        "details": "與日月光同為 UCIe 晶粒互連開放標準創始聯盟成員；此為標準合作，非客戶或採購關係。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名證實",
+        "source_urls": [
+          "https://ase.aseglobal.com/press-room/universal-chiplet-interconnect-express/"
+        ],
+        "ticker": "ARM"
+      },
+      {
+        "id": "VIPACK_partner_048",
+        "name": "Google Cloud",
+        "business_line": "VIPACK",
+        "relationship": "partner",
+        "details": "與日月光同為 UCIe 晶粒互連開放標準創始聯盟成員；此為標準合作，非客戶或採購關係。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名證實",
+        "source_urls": [
+          "https://ase.aseglobal.com/press-room/universal-chiplet-interconnect-express/"
+        ],
+        "ticker": "GOOGL"
+      },
+      {
+        "id": "VIPACK_partner_049",
+        "name": "Intel",
+        "business_line": "VIPACK",
+        "relationship": "partner",
+        "details": "與日月光同為 UCIe 晶粒互連開放標準創始聯盟成員；此為標準合作，非客戶或採購關係。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名證實",
+        "source_urls": [
+          "https://ase.aseglobal.com/press-room/universal-chiplet-interconnect-express/"
+        ],
+        "ticker": "INTC"
+      },
+      {
+        "id": "VIPACK_partner_050",
+        "name": "Meta",
+        "business_line": "VIPACK",
+        "relationship": "partner",
+        "details": "與日月光同為 UCIe 晶粒互連開放標準創始聯盟成員；此為標準合作，非客戶或採購關係。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名證實",
+        "source_urls": [
+          "https://ase.aseglobal.com/press-room/universal-chiplet-interconnect-express/"
+        ],
+        "ticker": "META"
+      },
+      {
+        "id": "VIPACK_partner_051",
+        "name": "Microsoft",
+        "business_line": "VIPACK",
+        "relationship": "partner",
+        "details": "與日月光同為 UCIe 晶粒互連開放標準創始聯盟成員；此為標準合作，非客戶或採購關係。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名證實",
+        "source_urls": [
+          "https://ase.aseglobal.com/press-room/universal-chiplet-interconnect-express/"
+        ],
+        "ticker": "MSFT"
+      },
+      {
+        "id": "VIPACK_partner_052",
+        "name": "Qualcomm",
+        "business_line": "VIPACK",
+        "relationship": "partner",
+        "details": "與日月光同為 UCIe 晶粒互連開放標準創始聯盟成員；此為標準合作，非客戶或採購關係。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名證實",
+        "source_urls": [
+          "https://ase.aseglobal.com/press-room/universal-chiplet-interconnect-express/"
+        ],
+        "ticker": "QCOM"
+      },
+      {
+        "id": "VIPACK_partner_053",
+        "name": "Samsung Electronics",
+        "business_line": "VIPACK",
+        "relationship": "partner",
+        "details": "與日月光同為 UCIe 晶粒互連開放標準創始聯盟成員；此為標準合作，非客戶或採購關係。",
+        "evidence_grade": "A",
+        "verification_status": "官方具名證實",
+        "source_urls": [
+          "https://ase.aseglobal.com/press-room/universal-chiplet-interconnect-express/"
+        ],
+        "ticker": "005930.KS"
+      },
+      {
+        "id": "VIPACK_competitor_054",
+        "name": "Amkor Technology",
+        "business_line": "VIPACK",
+        "relationship": "competitor",
+        "details": "全球 OSAT 封裝測試競爭",
+        "evidence_grade": "B",
+        "verification_status": "同業產品及公開文件比較",
+        "source_urls": [
+          "https://semiconductorx.com/packaging-test-merchant-osat.php"
+        ],
+        "ticker": "AMKR"
+      },
+      {
+        "id": "VIPACK_competitor_055",
+        "name": "JCET Group",
+        "business_line": "VIPACK",
+        "relationship": "competitor",
+        "details": "高階封裝及 OSAT 競爭",
+        "evidence_grade": "B",
+        "verification_status": "同業產品及公開文件比較",
+        "source_urls": [
+          "https://semiconductorx.com/packaging-test-merchant-osat.php"
+        ],
+        "ticker": "600584.SS"
+      },
+      {
+        "id": "TEST_competitor_056",
+        "name": "Powertech Technology",
+        "business_line": "TEST",
+        "relationship": "competitor",
+        "details": "記憶體封裝與測試競爭",
+        "evidence_grade": "B",
+        "verification_status": "同業產品及公開文件比較",
+        "source_urls": [
+          "https://semiconductorx.com/packaging-test-merchant-osat.php"
+        ],
+        "ticker": "6239.TW"
+      },
+      {
+        "id": "VIPACK_competitor_057",
+        "name": "Tongfu Microelectronics",
+        "business_line": "VIPACK",
+        "relationship": "competitor",
+        "details": "封裝測試外包競爭",
+        "evidence_grade": "B",
+        "verification_status": "同業產品及公開文件比較",
+        "source_urls": [
+          "https://semiconductorx.com/packaging-test-merchant-osat.php"
+        ],
+        "ticker": "002156.SZ"
+      },
+      {
+        "id": "WLP_competitor_058",
+        "name": "Huatian Technology",
+        "business_line": "WLP",
+        "relationship": "competitor",
+        "details": "晶圓級封裝與傳統封裝競爭",
+        "evidence_grade": "B",
+        "verification_status": "同業產品及公開文件比較",
+        "source_urls": [
+          "https://semiconductorx.com/packaging-test-merchant-osat.php"
+        ],
+        "ticker": "002185.SZ"
+      },
+      {
+        "id": "TEST_competitor_059",
+        "name": "UTAC Holdings",
+        "business_line": "TEST",
+        "relationship": "competitor",
+        "details": "成熟製程封裝測試競爭",
+        "evidence_grade": "B",
+        "verification_status": "同業產品及公開文件比較",
+        "source_urls": [
+          "https://semiconductorx.com/packaging-test-merchant-osat.php"
+        ]
+      },
+      {
+        "id": "TEST_competitor_060",
+        "name": "Hana Micron",
+        "business_line": "TEST",
+        "relationship": "competitor",
+        "details": "半導體封裝與測試競爭",
+        "evidence_grade": "B",
+        "verification_status": "同業產品及公開文件比較",
+        "source_urls": [
+          "https://semiconductorx.com/packaging-test-merchant-osat.php"
+        ],
+        "ticker": "067310.KQ"
+      },
+      {
+        "id": "TEST_competitor_061",
+        "name": "King Yuan Electronics",
+        "business_line": "TEST",
+        "relationship": "competitor",
+        "details": "晶圓探針與後段測試競爭",
+        "evidence_grade": "B",
+        "verification_status": "同業產品及公開文件比較",
+        "source_urls": [
+          "https://semiconductorx.com/packaging-test-merchant-osat.php"
+        ],
+        "ticker": "2449.TW"
+      },
+      {
+        "id": "TEST_competitor_062",
+        "name": "ChipMOS Technologies",
+        "business_line": "TEST",
+        "relationship": "competitor",
+        "details": "記憶體與驅動 IC 封測競爭",
+        "evidence_grade": "B",
+        "verification_status": "同業產品及公開文件比較",
+        "source_urls": [
+          "https://semiconductorx.com/packaging-test-merchant-osat.php"
+        ],
+        "ticker": "8150.TW"
+      },
+      {
+        "id": "EQUIPMENT_beneficiary_064",
+        "name": "Camtek",
+        "business_line": "EQUIPMENT",
+        "relationship": "beneficiary",
+        "details": "先進封裝檢測設備需求與日月光資本支出同向；未確認直接採購",
+        "evidence_grade": "C",
+        "verification_status": "產業需求推論",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm"
+        ],
+        "ticker": "CAMT"
+      },
+      {
+        "id": "EQUIPMENT_beneficiary_065",
+        "name": "Onto Innovation",
+        "business_line": "EQUIPMENT",
+        "relationship": "beneficiary",
+        "details": "晶圓及封裝量測設備需求連動；未確認直接採購",
+        "evidence_grade": "C",
+        "verification_status": "產業需求推論",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm"
+        ],
+        "ticker": "ONTO"
+      },
+      {
+        "id": "EQUIPMENT_beneficiary_066",
+        "name": "KLA",
+        "business_line": "EQUIPMENT",
+        "relationship": "beneficiary",
+        "details": "製程控制設備市場受先進封裝投資影響；未確認直接採購",
+        "evidence_grade": "C",
+        "verification_status": "產業需求推論",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm"
+        ],
+        "ticker": "KLAC"
+      },
+      {
+        "id": "TEST_beneficiary_068",
+        "name": "Cohu",
+        "business_line": "TEST",
+        "relationship": "beneficiary",
+        "details": "測試設備與介面需求連動；未確認直接採購",
+        "evidence_grade": "C",
+        "verification_status": "產業需求推論",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm"
+        ],
+        "ticker": "COHU"
+      },
+      {
+        "id": "EQUIPMENT_supplier_068",
+        "name": "Marketech International",
+        "business_line": "EQUIPMENT",
+        "relationship": "supplier",
+        "details": "日月光 2025 年 20-F 具名封裝設備供應商。",
+        "evidence_grade": "A",
+        "verification_status": "SEC 具名設備採購",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm"
+        ],
+        "ticker": "6196.TW"
+      }
+    ]
   }
 }

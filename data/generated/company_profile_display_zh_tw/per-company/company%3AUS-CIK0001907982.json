@@ -339,5 +339,790 @@
       "混合量子運算成熟度"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "symbol": "QBTS",
+    "company": "D-Wave Quantum Inc.",
+    "as_of": "2026-11-18",
+    "business_lines": [
+      {
+        "id": "ANNEALING",
+        "name": "Advantage與Advantage2量子退火系統"
+      },
+      {
+        "id": "GATE",
+        "name": "Quantum Circuits雙軌超導閘模型"
+      },
+      {
+        "id": "FOUNDRY",
+        "name": "超導量子晶片晶圓代工"
+      },
+      {
+        "id": "CRYO",
+        "name": "低溫與超導製造技術"
+      },
+      {
+        "id": "LEAP",
+        "name": "Leap量子雲端與QCaaS"
+      },
+      {
+        "id": "OCEAN",
+        "name": "Ocean SDK與混合求解器"
+      },
+      {
+        "id": "TELECOM",
+        "name": "電信網路最佳化"
+      },
+      {
+        "id": "LOGISTICS",
+        "name": "物流、配送與庫存最佳化"
+      },
+      {
+        "id": "AUTO",
+        "name": "汽車製造排程"
+      },
+      {
+        "id": "INDUSTRIAL",
+        "name": "化工與工廠製造最佳化"
+      },
+      {
+        "id": "PHARMA",
+        "name": "製藥、AI與分子設計"
+      },
+      {
+        "id": "FINANCE",
+        "name": "金融風控與反洗錢"
+      },
+      {
+        "id": "DEFENSE",
+        "name": "國防與飛彈防禦"
+      },
+      {
+        "id": "GOV",
+        "name": "政府科研與補助"
+      },
+      {
+        "id": "HPC",
+        "name": "超算與科研系統銷售"
+      },
+      {
+        "id": "INTEGRATORS",
+        "name": "系統整合與通路合作"
+      },
+      {
+        "id": "QUANTUM_SIM",
+        "name": "量子模擬與閘模型測試"
+      },
+      {
+        "id": "SUPPLY_CHAIN",
+        "name": "實際具名上游受惠關係"
+      },
+      {
+        "id": "COMPETITION",
+        "name": "量子計算競爭者"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "QBTS_001",
+        "name": "SkyWater Technology",
+        "relationship": "supplier",
+        "business_line": "FOUNDRY",
+        "details": "2026-10-13多年期延長超導量子晶片製程及晶圓代工合約，SkyWater Minnesota晶圓廠製造Advantage2處理器；同時D-Wave為SkyWater晶圓廠進行設備維修排程最佳化，lot延誤最多減少30%。 SkyWater已於2026-07-31被IonQ收購，現為IonQ旗下代工子公司。",
+        "source_urls": [
+          "https://www.dwavequantum.com/company/newsroom/press-release/skywater-and-d-wave-extend-quantum-manufacturing-collaboration-through-multi-year-agreement/",
+          "https://ir.dwavequantum.com/news/news-details/2026/D-Wave-Reports-Third-Quarter-2026-Results/default.aspx"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2026-10-13",
+        "commercial_status": "多年製造合約",
+        "ticker": "IONQ",
+        "benefit_mechanism": "晶圓代工收入與超導量子製程研發；SkyWater於2026-07-31成為IonQ子公司"
+      },
+      {
+        "id": "QBTS_002",
+        "name": "Florida Atlantic University",
+        "relationship": "customer",
+        "business_line": "HPC",
+        "details": "2026-01-27簽署2,000萬美元Advantage2量子電腦購置及安裝協議，Boca Raton校園部署，並加入2026閘模型模擬器beta。",
+        "source_urls": [
+          "https://www.dwavequantum.com/company/newsroom/press-release/florida-atlantic-university-signs-20m-agreement-to-purchase-advantage2-quantum-computer",
+          "https://ir.dwavequantum.com/news/news-details/2026/D-Wave-Reports-Third-Quarter-2026-Results/default.aspx"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2026-01-27",
+        "commercial_status": "2,000萬美元系統採購"
+      },
+      {
+        "id": "QBTS_003",
+        "name": "Swiss Quantum Technology SA",
+        "relationship": "customer",
+        "business_line": "HPC",
+        "details": "2025-10簽1,000萬歐元義大利Advantage2部署協議；取得系統50%容量五年及整機購買選擇權；2026-10-15系統抵達Como。",
+        "source_urls": [
+          "https://www.dwavequantum.com/company/newsroom/press-release/d-wave-delivers-italy-s-first-annealing-quantum-computer/"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2026-10-15",
+        "commercial_status": "系統部署與容量購買"
+      },
+      {
+        "id": "QBTS_004",
+        "name": "Forschungszentrum Jülich / Jülich Supercomputing Centre",
+        "relationship": "customer",
+        "business_line": "HPC",
+        "details": "2025-02-13購買原租用D-Wave Advantage系統，計畫升級Advantage2並與JUPITER exascale超算整合；2026加入閘模型模擬器beta。",
+        "source_urls": [
+          "https://www.fz-juelich.de/en/news/archive/press-release/2025/forschungszentrum-julich-strengthens-quantum-research-with-purchase-of-d-wavetm",
+          "https://ir.dwavequantum.com/news/news-details/2026/D-Wave-Reports-Third-Quarter-2026-Results/default.aspx"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2025-02-13",
+        "commercial_status": "系統已購買"
+      },
+      {
+        "id": "QBTS_005",
+        "name": "NTT DOCOMO",
+        "relationship": "customer",
+        "business_line": "TELECOM",
+        "details": "2026-08-18第二套D-Wave量子混合最佳化應用正式生產部署；追蹤區清單優化使尖峰位置登記訊號下降65.3%，paging下降7%。",
+        "source_urls": [
+          "https://www.dwavequantum.com/company/newsroom/press-release/d-wave-technology-drives-ntt-docomo-s-second-production-quantum-application-in-network-operations/"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2026-08-18",
+        "commercial_status": "兩套生產應用",
+        "ticker": "9437.T"
+      },
+      {
+        "id": "QBTS_006",
+        "name": "AT&T",
+        "relationship": "customer",
+        "business_line": "TELECOM",
+        "details": "2026-07-27簽擴大使用D-Wave量子運算協議，網路最佳化處理時間由約1小時縮至15秒內，與Agentic AI整合。",
+        "source_urls": [
+          "https://www.dwavequantum.com/company/newsroom/press-release/at-t-signs-agreement-to-expand-use-of-d-wave-s-quantum-computing-technology/"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2026-07-27",
+        "commercial_status": "擴大商用協議",
+        "ticker": "T"
+      },
+      {
+        "id": "QBTS_007",
+        "name": "Pattison Food Group",
+        "relationship": "customer",
+        "business_line": "LOGISTICS",
+        "details": "Leap混合求解器已用於加拿大100多家門市的電商配送司機排班，週工時由80小時降至15小時；亦用於門市資源排程。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2025-12-31",
+        "commercial_status": "正式生產部署"
+      },
+      {
+        "id": "QBTS_008",
+        "name": "Ford Otosan",
+        "relationship": "customer",
+        "business_line": "AUTO",
+        "details": "D-Wave與Ford Otosan合作Ford Transit汽車產線排程，單次排1,000台車由30分鐘縮至5分鐘內。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2025-12-31",
+        "commercial_status": "已完成工業應用驗證",
+        "ticker": "FROTO.IS"
+      },
+      {
+        "id": "QBTS_009",
+        "name": "BASF",
+        "relationship": "customer",
+        "business_line": "INDUSTRIAL",
+        "details": "2025-11-05化工液體充填工廠混合量子PoC，排程10小時縮至5秒，延遲下降14%、換線時間下降9%。",
+        "source_urls": [
+          "https://ir.dwavequantum.com/news/news-details/2025/BASF-and-D-Wave-Announce-Completion-of-Proof-of-Concept-Project-Demonstrating-Benchmark-in-Manufacturing-Efficiency/default.aspx"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2025-11-05",
+        "commercial_status": "完成PoC",
+        "ticker": "BAS.DE"
+      },
+      {
+        "id": "QBTS_010",
+        "name": "Shionogi & Co.",
+        "relationship": "customer",
+        "business_line": "PHARMA",
+        "details": "2026-10-28 D-Wave具名客戶；與D-Wave共同研究量子退火輔助生成式AI分子設計，NEDO競賽QOL組第一名。",
+        "source_urls": [
+          "https://www.dwavequantum.com/company/newsroom/press-release/d-wave-customer-shionogi-wins-first-place-in-nedo-quantum-computing-challenge/"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2026-10-28",
+        "commercial_status": "持續科研合作",
+        "ticker": "4507.T"
+      },
+      {
+        "id": "QBTS_011",
+        "name": "Nasdaq Verafin",
+        "relationship": "customer",
+        "business_line": "FINANCE",
+        "details": "2026-08-03簽署量子混合機器學習金融犯罪偵測應用開發協議，初期PoC分析交易訊號、反洗錢及詐欺模式。",
+        "source_urls": [
+          "https://ir.dwavequantum.com/news/news-details/2026/D-Wave-and-Nasdaq-Verafin-Announce-Agreement-for-Quantum-Computing-Application-Development/default.aspx"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2026-08-03",
+        "commercial_status": "PoC開發協議",
+        "ticker": "NDAQ"
+      },
+      {
+        "id": "QBTS_012",
+        "name": "Oki Electric Industry",
+        "relationship": "customer",
+        "business_line": "INDUSTRIAL",
+        "details": "2026-08-06第二季公告列入具名新簽或續約客戶，涵蓋商業或研究量子應用。",
+        "source_urls": [
+          "https://ir.dwavequantum.com/news/news-details/2026/D-Wave-Reports-Second-Quarter-2026-Results/default.aspx"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2026-08-06",
+        "commercial_status": "具名客戶合作",
+        "ticker": "6703.T"
+      },
+      {
+        "id": "QBTS_013",
+        "name": "Unisys",
+        "relationship": "customer",
+        "business_line": "INTEGRATORS",
+        "details": "2026-08-06公告新簽或續約量子商業與研究合作，亦列2025年10-K既有客戶。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm",
+          "https://ir.dwavequantum.com/news/news-details/2026/D-Wave-Reports-Second-Quarter-2026-Results/default.aspx"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2026-08-06",
+        "commercial_status": "續約或新簽",
+        "ticker": "UIS"
+      },
+      {
+        "id": "QBTS_014",
+        "name": "BBVA",
+        "relationship": "customer",
+        "business_line": "QUANTUM_SIM",
+        "details": "2025年10-K具名客戶；2026年加入D-Wave閘模型模擬器beta，開發錯誤感知量子應用。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm",
+          "https://ir.dwavequantum.com/news/news-details/2026/D-Wave-Reports-Third-Quarter-2026-Results/default.aspx"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2026-11-10",
+        "commercial_status": "閘模型模擬器beta",
+        "ticker": "BBVA"
+      },
+      {
+        "id": "QBTS_015",
+        "name": "FirstQFM",
+        "relationship": "customer",
+        "business_line": "QUANTUM_SIM",
+        "details": "2026Q3公司公告閘模型模擬器beta早期參與者，使用雙軌超導架構的錯誤感知程式設計工具。",
+        "source_urls": [
+          "https://ir.dwavequantum.com/news/news-details/2026/D-Wave-Reports-Third-Quarter-2026-Results/default.aspx"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2026-11-10",
+        "commercial_status": "閘模型模擬器beta"
+      },
+      {
+        "id": "QBTS_016",
+        "name": "Davidson Technologies",
+        "relationship": "customer",
+        "business_line": "DEFENSE",
+        "details": "2026-01-27與Anduril及D-Wave合作美國防空與飛彈防禦最佳化PoC，使用Stride混合求解器，至少10倍求解速度。",
+        "source_urls": [
+          "https://www.dwavequantum.com/company/newsroom/press-release/anduril-davidson-and-d-wave-collaborate-to-develop-quantum-applications-for-us-air-and-missile-defense/"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2026-01-27",
+        "commercial_status": "國防PoC合作"
+      },
+      {
+        "id": "QBTS_017",
+        "name": "Mastercard",
+        "relationship": "customer",
+        "business_line": "LEAP",
+        "details": "D-Wave 2025年10-K明列Mastercard為歷史或既有企業客戶；產業領域為支付金融，具名客戶名單直接證據。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2025-12-31",
+        "commercial_status": "公司年報具名客戶",
+        "ticker": "MA"
+      },
+      {
+        "id": "QBTS_018",
+        "name": "Deloitte",
+        "relationship": "customer",
+        "business_line": "LEAP",
+        "details": "D-Wave 2025年10-K明列Deloitte為歷史或既有企業客戶；產業領域為企業顧問，具名客戶名單直接證據。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2025-12-31",
+        "commercial_status": "公司年報具名客戶"
+      },
+      {
+        "id": "QBTS_019",
+        "name": "Pfizer",
+        "relationship": "customer",
+        "business_line": "LEAP",
+        "details": "D-Wave 2025年10-K明列Pfizer為歷史或既有企業客戶；產業領域為藥物研發，具名客戶名單直接證據。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2025-12-31",
+        "commercial_status": "公司年報具名客戶",
+        "ticker": "PFE"
+      },
+      {
+        "id": "QBTS_020",
+        "name": "Siemens Healthineers",
+        "relationship": "customer",
+        "business_line": "LEAP",
+        "details": "D-Wave 2025年10-K明列Siemens Healthineers為歷史或既有企業客戶；產業領域為醫療設備，具名客戶名單直接證據。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2025-12-31",
+        "commercial_status": "公司年報具名客戶",
+        "ticker": "SHL.DE"
+      },
+      {
+        "id": "QBTS_021",
+        "name": "Interpublic Group",
+        "relationship": "customer",
+        "business_line": "LEAP",
+        "details": "D-Wave 2025年10-K明列Interpublic Group為歷史或既有企業客戶；產業領域為廣告媒體，具名客戶名單直接證據。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2025-12-31",
+        "commercial_status": "公司年報具名客戶",
+        "ticker": "IPG"
+      },
+      {
+        "id": "QBTS_022",
+        "name": "ArcelorMittal",
+        "relationship": "customer",
+        "business_line": "LEAP",
+        "details": "D-Wave 2025年10-K明列ArcelorMittal為歷史或既有企業客戶；產業領域為鋼鐵製造，具名客戶名單直接證據。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2025-12-31",
+        "commercial_status": "公司年報具名客戶",
+        "ticker": "MT"
+      },
+      {
+        "id": "QBTS_023",
+        "name": "DENSO",
+        "relationship": "customer",
+        "business_line": "LEAP",
+        "details": "D-Wave 2025年10-K明列DENSO為歷史或既有企業客戶；產業領域為汽車零組件，具名客戶名單直接證據。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2025-12-31",
+        "commercial_status": "公司年報具名客戶",
+        "ticker": "6902.T"
+      },
+      {
+        "id": "QBTS_024",
+        "name": "NEC Corporation",
+        "relationship": "customer",
+        "business_line": "LEAP",
+        "details": "D-Wave 2025年10-K明列NEC Corporation為歷史或既有企業客戶；產業領域為企業IT及通訊，具名客戶名單直接證據。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2025-12-31",
+        "commercial_status": "公司年報具名客戶",
+        "ticker": "6701.T"
+      },
+      {
+        "id": "QBTS_025",
+        "name": "Anduril Industries",
+        "relationship": "partner",
+        "business_line": "DEFENSE",
+        "details": "2026-01-27與D-Wave、Davidson共同研究飛彈防禦量子混合最佳化；Anduril提供防禦模擬資料與情境。",
+        "source_urls": [
+          "https://www.dwavequantum.com/company/newsroom/press-release/anduril-davidson-and-d-wave-collaborate-to-develop-quantum-applications-for-us-air-and-missile-defense/"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2026-01-27",
+        "commercial_status": "共同開發PoC"
+      },
+      {
+        "id": "QBTS_026",
+        "name": "CGI Inc.",
+        "relationship": "partner",
+        "business_line": "INTEGRATORS",
+        "details": "2026-09-23策略合作，CGI將D-Wave Advantage2與混合求解器整合至企業顧問與系統整合服務，聚焦物流、運輸、零售。",
+        "source_urls": [
+          "https://www.cgi.com/en/cgi-d-wave-quantum-partner-advance-quantum-adoption"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2026-09-23",
+        "commercial_status": "策略通路合作",
+        "ticker": "GIB"
+      },
+      {
+        "id": "QBTS_027",
+        "name": "LG CNS",
+        "relationship": "partner",
+        "business_line": "INTEGRATORS",
+        "details": "2026-10-28簽不具約束力MOU，共同推動韓國製造、電信、金融與零售業量子最佳化商業應用。",
+        "source_urls": [
+          "https://ir.dwavequantum.com/news/news-details/2026/LG-CNS-and-D-Wave-Announce-Strategic-Relationship-to-Advance-Quantum-Optimization-Adoption-in-South-Korea/default.aspx"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2026-10-28",
+        "commercial_status": "非約束性MOU",
+        "ticker": "064400.KS"
+      },
+      {
+        "id": "QBTS_028",
+        "name": "Quantum Circuits Inc.",
+        "relationship": "partner",
+        "business_line": "GATE",
+        "details": "2026年1月完成5.5億美元收購，取得dual-rail超導閘模型、硬體層錯誤偵測及New Haven研發團隊。",
+        "source_urls": [
+          "https://ir.dwavequantum.com/news/news-details/2026/D-Wave-Announces-Agreement-to-Acquire-Quantum-Circuits-Inc--Establishing-Worlds-Leading-Quantum-Computing-Company/default.aspx",
+          "https://ir.dwavequantum.com/news/news-details/2026/D-Wave-Reports-Third-Quarter-2026-Results/default.aspx",
+          "https://www.dwavequantum.com/company/newsroom/press-release/d-wave-completes-acquisition-of-quantum-circuits/"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2026-01-20",
+        "commercial_status": "已收購子公司"
+      },
+      {
+        "id": "QBTS_029",
+        "name": "University of Southern California",
+        "relationship": "partner",
+        "business_line": "HPC",
+        "details": "2024年續簽多年合作，USC Viterbi校區持續設置D-Wave Advantage量子電腦，供研究與企業存取。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2024-05",
+        "commercial_status": "多年設施合作"
+      },
+      {
+        "id": "QBTS_030",
+        "name": "Q-Alliance",
+        "relationship": "partner",
+        "business_line": "HPC",
+        "details": "2025年起與D-Wave及Swiss Quantum Technology共同建立義大利量子運算研發與產業應用平台，2026年Como安裝Advantage2。",
+        "source_urls": [
+          "https://www.dwavequantum.com/company/newsroom/press-release/d-wave-delivers-italy-s-first-annealing-quantum-computer/"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2026-10-15",
+        "commercial_status": "量子基礎設施聯盟"
+      },
+      {
+        "id": "QBTS_031",
+        "name": "U.S. Department of Commerce",
+        "relationship": "partner",
+        "business_line": "GOV",
+        "details": "2026Q3簽定CHIPS Act最高1億美元資助正式協議，按里程碑分批提供，支援100,000 qubit退火與10,000 qubit閘模型研發。",
+        "source_urls": [
+          "https://ir.dwavequantum.com/news/news-details/2026/D-Wave-Reports-Third-Quarter-2026-Results/default.aspx"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2026-11-10",
+        "commercial_status": "有條件政府資助"
+      },
+      {
+        "id": "QBTS_032",
+        "name": "National Science Foundation",
+        "relationship": "partner",
+        "business_line": "GOV",
+        "details": "2026年透過National Quantum Virtual Laboratory選定D-Wave參與ERASE計畫，補助1,566,240美元支援閘模型錯誤修正研究。",
+        "source_urls": [
+          "https://ir.dwavequantum.com/news/news-details/2026/D-Wave-Reports-Second-Quarter-2026-Results/default.aspx"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2026-06-30",
+        "commercial_status": "政府研發補助"
+      },
+      {
+        "id": "QBTS_033",
+        "name": "NORDTECH",
+        "relationship": "partner",
+        "business_line": "GOV",
+        "details": "2026年SQFab可擴充超導量子位元材料製造計畫獲第二年度資助，與NORDTECH國防技術計畫共同研發。",
+        "source_urls": [
+          "https://ir.dwavequantum.com/news/news-details/2026/D-Wave-Reports-Second-Quarter-2026-Results/default.aspx"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2026-08-06",
+        "commercial_status": "政府研發計畫"
+      },
+      {
+        "id": "QBTS_034",
+        "name": "Rigetti Computing",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "D-Wave 2025年10-K具名量子閘模型競爭者，技術路線：超導閘模型。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2025-12-31",
+        "commercial_status": "10-K具名競爭者",
+        "ticker": "RGTI"
+      },
+      {
+        "id": "QBTS_035",
+        "name": "IBM",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "D-Wave 2025年10-K具名量子閘模型競爭者，技術路線：超導閘模型。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2025-12-31",
+        "commercial_status": "10-K具名競爭者",
+        "ticker": "IBM"
+      },
+      {
+        "id": "QBTS_036",
+        "name": "Google / Alphabet",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "D-Wave 2025年10-K具名量子閘模型競爭者，技術路線：超導閘模型。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2025-12-31",
+        "commercial_status": "10-K具名競爭者",
+        "ticker": "GOOGL"
+      },
+      {
+        "id": "QBTS_037",
+        "name": "IonQ",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "D-Wave 2025年10-K具名量子閘模型競爭者，技術路線：離子阱閘模型。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2025-12-31",
+        "commercial_status": "10-K具名競爭者",
+        "ticker": "IONQ"
+      },
+      {
+        "id": "QBTS_038",
+        "name": "Quantinuum",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "D-Wave 2025年10-K具名量子閘模型競爭者，技術路線：離子阱閘模型。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2025-12-31",
+        "commercial_status": "10-K具名競爭者"
+      },
+      {
+        "id": "QBTS_039",
+        "name": "QuEra Computing",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "D-Wave 2025年10-K具名量子閘模型競爭者，技術路線：中性原子。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2025-12-31",
+        "commercial_status": "10-K具名競爭者"
+      },
+      {
+        "id": "QBTS_040",
+        "name": "Atom Computing",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "D-Wave 2025年10-K具名量子閘模型競爭者，技術路線：中性原子。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2025-12-31",
+        "commercial_status": "10-K具名競爭者"
+      },
+      {
+        "id": "QBTS_041",
+        "name": "Pasqal",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "D-Wave 2025年10-K具名量子閘模型競爭者，技術路線：中性原子。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2025-12-31",
+        "commercial_status": "10-K具名競爭者"
+      },
+      {
+        "id": "QBTS_042",
+        "name": "PsiQuantum",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "D-Wave 2025年10-K具名量子閘模型競爭者，技術路線：光子量子運算。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2025-12-31",
+        "commercial_status": "10-K具名競爭者"
+      },
+      {
+        "id": "QBTS_043",
+        "name": "Xanadu",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "D-Wave 2025年10-K具名量子閘模型競爭者，技術路線：光子量子運算。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm"
+        ],
+        "evidence_grade": "A｜D-Wave年報、公司公告或具名對方公告",
+        "event_date": "2025-12-31",
+        "commercial_status": "10-K具名競爭者"
+      }
+    ],
+    "research_metadata": {
+      "method": "VECO具名企業證據；不將產業推論受惠公司偽裝為D-Wave直接供應商；一企業一節點；2026年Q3與2025年10-K交叉比對。",
+      "original_source": {
+        "repository": "huangtop/AXIOM-RESEARCH-ENGINE",
+        "commit": "da93c81d",
+        "git_blob_sha": "9e401951affad465b89554378b41f7bb8b4868e6"
+      },
+      "supply_chain_layers": [
+        {
+          "layer": "上游超導晶圓代工",
+          "entities": [
+            "SkyWater Technology"
+          ]
+        },
+        {
+          "layer": "硬體系統購買與部署",
+          "entities": [
+            "Florida Atlantic University",
+            "Swiss Quantum Technology SA",
+            "Forschungszentrum Jülich / Jülich Supercomputing Centre"
+          ]
+        },
+        {
+          "layer": "量子雲端與生產應用",
+          "entities": [
+            "NTT DOCOMO",
+            "AT&T",
+            "Pattison Food Group",
+            "Ford Otosan",
+            "BASF",
+            "Shionogi & Co.",
+            "Nasdaq Verafin"
+          ]
+        },
+        {
+          "layer": "系統整合與國防",
+          "entities": [
+            "CGI Inc.",
+            "LG CNS",
+            "Davidson Technologies",
+            "Anduril Industries"
+          ]
+        },
+        {
+          "layer": "雙軌超導閘模型",
+          "entities": [
+            "Quantum Circuits Inc.",
+            "BBVA",
+            "FirstQFM"
+          ]
+        }
+      ],
+      "named_beneficiary_relationships": [
+        {
+          "entity": "SkyWater Technology",
+          "direction": "QBTS採購晶圓代工→SkyWater取得超導製造收入",
+          "benefit_mechanism": "2026-10多年期晶圓代工協議；SkyWater為IonQ子公司，形成跨量子運算競爭者的晶圓供應鏈",
+          "source_url": "https://www.dwavequantum.com/company/newsroom/press-release/skywater-and-d-wave-extend-quantum-manufacturing-collaboration-through-multi-year-agreement/"
+        },
+        {
+          "entity": "CGI Inc.",
+          "direction": "D-Wave量子運算平台→CGI企業系統整合服務",
+          "benefit_mechanism": "正式策略合作將Advantage2與混合求解器納入CGI客戶交付",
+          "source_url": "https://www.cgi.com/en/cgi-d-wave-quantum-partner-advance-quantum-adoption"
+        },
+        {
+          "entity": "LG CNS",
+          "direction": "D-Wave量子最佳化平台→LG CNS潛在商用系統整合",
+          "benefit_mechanism": "2026-10非約束性MOU，合作開發韓國企業最佳化專案",
+          "source_url": "https://ir.dwavequantum.com/news/news-details/2026/LG-CNS-and-D-Wave-Announce-Strategic-Relationship-to-Advance-Quantum-Optimization-Adoption-in-South-Korea/default.aspx"
+        }
+      ],
+      "non_graph_intelligence": [
+        {
+          "topic": "2026Q3財報",
+          "details": "營收450萬美元，前三季訂單3740萬美元，期末RPO 3830萬美元；2026前9月125家以上客戶。",
+          "source_url": "https://ir.dwavequantum.com/news/news-details/2026/D-Wave-Reports-Third-Quarter-2026-Results/default.aspx"
+        },
+        {
+          "topic": "量子退火路線圖",
+          "details": "Advantage3規劃2029年20,000 qubits、2031年100,000 qubits；非當期已出貨產品。",
+          "source_url": "https://ir.dwavequantum.com/news/news-details/2026/D-Wave-Reports-Second-Quarter-2026-Results/default.aspx"
+        },
+        {
+          "topic": "閘模型路線圖",
+          "details": "2026年17 physical qubits、2027年49、2028年181；屬未來產品規劃。",
+          "source_url": "https://ir.dwavequantum.com/news/news-details/2026/D-Wave-Reports-Third-Quarter-2026-Results/default.aspx"
+        },
+        {
+          "topic": "晶圓代工供應鏈",
+          "details": "SkyWater為目前具名直接晶圓製造商；2026年7月已被IonQ收購。",
+          "source_url": "https://investors.ionq.com/news/news-details/2026/IonQ-Completes-Acquisition-of-SkyWater-Technology/default.aspx"
+        }
+      ],
+      "validation_report": {
+        "named_nodes": 43,
+        "relationship_counts": {
+          "customer": 23,
+          "supplier": 1,
+          "partner": 9,
+          "competitor": 10
+        },
+        "named_beneficiary_links": 3,
+        "business_lines": 19,
+        "anonymous_nodes": 0,
+        "original_top_level_fields": 11,
+        "unique_entities": true
+      }
+    }
   }
 }

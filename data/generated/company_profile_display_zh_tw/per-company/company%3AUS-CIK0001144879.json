@@ -193,5 +193,1269 @@
       "加速運算"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-11",
+    "company": "Applied Digital Corporation",
+    "symbol": "APLD",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "Applied Digital（APLD）AI 資料中心、電力、液冷與台灣供應鏈深度研究",
+      "description": "研究 Applied Digital 1.41GW 長期租賃、CoreWeave、ABB／BASX／Caterpillar、ChronoScale 與台灣電力散熱及 AI 伺服器產業鏈；區分直接關係與情境推論。"
+    },
+    "business_lines": [
+      {
+        "id": "AI_LEASE",
+        "name": "AI 工廠長期租賃與高密度 IT 負載"
+      },
+      {
+        "id": "POLARIS_1",
+        "name": "Polaris Forge 1／CoreWeave 園區"
+      },
+      {
+        "id": "POLARIS_2",
+        "name": "Polaris Forge 2／超大規模租戶"
+      },
+      {
+        "id": "EXPANSION",
+        "name": "Polaris Forge 3 與 Delta Forge 園區"
+      },
+      {
+        "id": "GRID",
+        "name": "輸配電、電網接入與變電站"
+      },
+      {
+        "id": "UPS",
+        "name": "中壓 UPS、開關設備與備援供電"
+      },
+      {
+        "id": "COOLING",
+        "name": "液冷、冷卻設備與熱管理"
+      },
+      {
+        "id": "CONSTRUCTION",
+        "name": "模組化機房、工程與機電施工"
+      },
+      {
+        "id": "GENERATION",
+        "name": "柴油發電機與備援能源"
+      },
+      {
+        "id": "SERVER",
+        "name": "GPU、AI 伺服器及機櫃配套"
+      },
+      {
+        "id": "NETWORK",
+        "name": "高速交換、光通訊與佈線"
+      },
+      {
+        "id": "FINANCING",
+        "name": "資料中心專案融資與資本"
+      },
+      {
+        "id": "CHRONOSCALE",
+        "name": "ChronoScale GPU 雲端與 Microsoft"
+      },
+      {
+        "id": "BLOCKCHAIN",
+        "name": "傳統區塊鏈託管"
+      },
+      {
+        "id": "EUROPE",
+        "name": "芬蘭潛在園區與海外擴張"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "POLARIS_1_customer_001",
+        "name": "CoreWeave",
+        "business_line": "POLARIS_1",
+        "relationship": "customer",
+        "details": "已具名直接租戶；Polaris Forge 1 共約 400MW 長期租約，並非 APLD 向 CoreWeave 採購 GPU。",
+        "evidence_grade": "官方合約確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000048/apld-20260531.htm",
+          "https://ir.applieddigital.com/news-events/press-releases/detail/159/applied-digital-reports-fiscal-fourth-quarter-and-full-year"
+        ],
+        "ticker": "CRWV"
+      },
+      {
+        "id": "POLARIS_2_customer_002",
+        "name": "未具名美國投資等級超大規模業者",
+        "business_line": "POLARIS_2",
+        "relationship": "customer",
+        "details": "Polaris Forge 2 約 200MW 長約；官方未公開租戶名稱，不推定為 Microsoft、Google 或 Oracle。",
+        "evidence_grade": "官方未具名客群",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000057/apldq127earningsrelease.htm",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ]
+      },
+      {
+        "id": "EXPANSION_customer_003",
+        "name": "未具名第一級投資等級超大規模業者",
+        "business_line": "EXPANSION",
+        "relationship": "customer",
+        "details": "Delta Forge 1、Polaris Forge 3、Delta Forge 2 的同一名租戶；官方未公開身分。",
+        "evidence_grade": "官方未具名客群",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000057/apldq127earningsrelease.htm",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ]
+      },
+      {
+        "id": "BLOCKCHAIN_customer_004",
+        "name": "未具名 Jamestown 區塊鏈託管客戶群",
+        "business_line": "BLOCKCHAIN",
+        "relationship": "customer",
+        "details": "106MW Jamestown 區塊鏈託管設施客戶，未公開具名交易方。",
+        "evidence_grade": "官方未具名客群",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000057/apldq127earningsrelease.htm",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ]
+      },
+      {
+        "id": "BLOCKCHAIN_customer_005",
+        "name": "未具名 Ellendale 區塊鏈託管客戶群",
+        "business_line": "BLOCKCHAIN",
+        "relationship": "customer",
+        "details": "180MW Ellendale 區塊鏈託管設施客戶，未公開具名交易方。",
+        "evidence_grade": "官方未具名客群",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000057/apldq127earningsrelease.htm",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ]
+      },
+      {
+        "id": "CHRONOSCALE_customer_006",
+        "name": "Microsoft（ChronoScale 子公司層級）",
+        "business_line": "CHRONOSCALE",
+        "relationship": "customer",
+        "details": "ChronoScale 2026 年與 Microsoft 訂立約 50MW GPU 服務協議；是 APLD 持股子公司的合約，不可認定 Microsoft 直接租用 APLD AI Factory。",
+        "evidence_grade": "子公司合約確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1549084/000162828026065876/chrn-20260831.htm",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "MSFT"
+      },
+      {
+        "id": "UPS_supplier_007",
+        "name": "ABB",
+        "business_line": "UPS",
+        "relationship": "supplier",
+        "details": "Polaris Forge 1/2 中壓 HiPerGuard UPS、開關設備與配電架構；雙方官方公告具名供應與技術合作。",
+        "evidence_grade": "官方具名供應",
+        "source_urls": [
+          "https://www.abb.com/global/en/news/130940/abb-expands-power-technology-partnership-with-applied-digital-for-ai-ready-data-centers",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf"
+        ],
+        "ticker": "ABB"
+      },
+      {
+        "id": "COOLING_supplier_008",
+        "name": "BASX",
+        "business_line": "COOLING",
+        "relationship": "supplier",
+        "details": "Applied Digital 2026 年投資人簡報列為機械／高密度冷卻設備供應鏈夥伴。",
+        "evidence_grade": "官方具名供應",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf"
+        ]
+      },
+      {
+        "id": "GENERATION_supplier_009",
+        "name": "Caterpillar",
+        "business_line": "GENERATION",
+        "relationship": "supplier",
+        "details": "Applied Digital 2026 年投資人簡報列為備援發電系統供應鏈夥伴。",
+        "evidence_grade": "官方具名供應",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf"
+        ],
+        "ticker": "CAT"
+      },
+      {
+        "id": "GRID_partner_010",
+        "name": "ABB",
+        "business_line": "GRID",
+        "relationship": "partner",
+        "details": "共同設計高效率中壓供電架構；兼具供應商與技術夥伴角色。",
+        "evidence_grade": "官方確認／子公司關係",
+        "source_urls": [
+          "https://www.abb.com/global/en/news/130940/abb-expands-power-technology-partnership-with-applied-digital-for-ai-ready-data-centers"
+        ],
+        "ticker": "ABB"
+      },
+      {
+        "id": "FINANCING_partner_011",
+        "name": "Macquarie Asset Management",
+        "business_line": "FINANCING",
+        "relationship": "partner",
+        "details": "2026 年合作架構規劃向 HPC 園區投入優先股及股權資本；投資條款以實際完成文件為準。",
+        "evidence_grade": "官方確認／子公司關係",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf"
+        ]
+      },
+      {
+        "id": "CHRONOSCALE_partner_012",
+        "name": "ChronoScale Holdings",
+        "business_line": "CHRONOSCALE",
+        "relationship": "partner",
+        "details": "APLD 截至 2026-08-31 持有約 96%；為持股控制關係，非外部採購交易。",
+        "evidence_grade": "官方確認／子公司關係",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "CHRN"
+      },
+      {
+        "id": "CHRONOSCALE_partner_013",
+        "name": "Microsoft",
+        "business_line": "CHRONOSCALE",
+        "relationship": "partner",
+        "details": "與 APLD 子公司 ChronoScale 的 GPU 服務策略協議，約 50MW；非 APLD 直接資料中心租賃客戶。",
+        "evidence_grade": "官方確認／子公司關係",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1549084/000162828026065876/chrn-20260831.htm"
+        ],
+        "ticker": "MSFT"
+      },
+      {
+        "id": "AI_LEASE_competitor_014",
+        "name": "Core Scientific",
+        "business_line": "AI_LEASE",
+        "relationship": "competitor",
+        "details": "同類市場競爭：高密度 AI/HPC 資料中心與算力託管；不代表有供應或租賃交易。",
+        "evidence_grade": "同業產品／市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000048/apld-20260531.htm"
+        ],
+        "ticker": "CORZ"
+      },
+      {
+        "id": "AI_LEASE_competitor_015",
+        "name": "IREN",
+        "business_line": "AI_LEASE",
+        "relationship": "competitor",
+        "details": "同類市場競爭：AI 資料中心電力資產與 GPU 雲端託管；不代表有供應或租賃交易。",
+        "evidence_grade": "同業產品／市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000048/apld-20260531.htm"
+        ],
+        "ticker": "IREN"
+      },
+      {
+        "id": "AI_LEASE_competitor_016",
+        "name": "Cipher Mining",
+        "business_line": "AI_LEASE",
+        "relationship": "competitor",
+        "details": "同類市場競爭：電力密集型資料中心向 HPC 租賃轉型；不代表有供應或租賃交易。",
+        "evidence_grade": "同業產品／市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000048/apld-20260531.htm"
+        ],
+        "ticker": "CIFR"
+      },
+      {
+        "id": "AI_LEASE_competitor_017",
+        "name": "TeraWulf",
+        "business_line": "AI_LEASE",
+        "relationship": "competitor",
+        "details": "同類市場競爭：高功率資料中心及 HPC 租賃；不代表有供應或租賃交易。",
+        "evidence_grade": "同業產品／市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000048/apld-20260531.htm"
+        ],
+        "ticker": "WULF"
+      },
+      {
+        "id": "AI_LEASE_competitor_018",
+        "name": "Hut 8",
+        "business_line": "AI_LEASE",
+        "relationship": "competitor",
+        "details": "同類市場競爭：數位基礎設施及 AI/HPC 園區；不代表有供應或租賃交易。",
+        "evidence_grade": "同業產品／市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000048/apld-20260531.htm"
+        ],
+        "ticker": "HUT"
+      },
+      {
+        "id": "AI_LEASE_competitor_019",
+        "name": "Bitfarms",
+        "business_line": "AI_LEASE",
+        "relationship": "competitor",
+        "details": "同類市場競爭：大型電力與數據中心資產轉型；不代表有供應或租賃交易。",
+        "evidence_grade": "同業產品／市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000048/apld-20260531.htm"
+        ],
+        "ticker": "BITF"
+      },
+      {
+        "id": "AI_LEASE_competitor_020",
+        "name": "Riot Platforms",
+        "business_line": "AI_LEASE",
+        "relationship": "competitor",
+        "details": "同類市場競爭：資料中心電力資產及 HPC 選項；不代表有供應或租賃交易。",
+        "evidence_grade": "同業產品／市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000048/apld-20260531.htm"
+        ],
+        "ticker": "RIOT"
+      },
+      {
+        "id": "AI_LEASE_competitor_021",
+        "name": "Equinix",
+        "business_line": "AI_LEASE",
+        "relationship": "competitor",
+        "details": "同類市場競爭：大型共置資料中心及高密度服務；不代表有供應或租賃交易。",
+        "evidence_grade": "同業產品／市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000048/apld-20260531.htm"
+        ],
+        "ticker": "EQIX"
+      },
+      {
+        "id": "AI_LEASE_competitor_022",
+        "name": "Digital Realty",
+        "business_line": "AI_LEASE",
+        "relationship": "competitor",
+        "details": "同類市場競爭：大型資料中心租賃及建置；不代表有供應或租賃交易。",
+        "evidence_grade": "同業產品／市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000048/apld-20260531.htm"
+        ],
+        "ticker": "DLR"
+      },
+      {
+        "id": "AI_LEASE_competitor_023",
+        "name": "QTS Data Centers",
+        "business_line": "AI_LEASE",
+        "relationship": "competitor",
+        "details": "同類市場競爭：超大規模資料中心園區租賃；不代表有供應或租賃交易。",
+        "evidence_grade": "同業產品／市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000048/apld-20260531.htm"
+        ]
+      },
+      {
+        "id": "AI_LEASE_competitor_024",
+        "name": "Vantage Data Centers",
+        "business_line": "AI_LEASE",
+        "relationship": "competitor",
+        "details": "同類市場競爭：超大規模資料中心園區開發；不代表有供應或租賃交易。",
+        "evidence_grade": "同業產品／市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000048/apld-20260531.htm"
+        ]
+      },
+      {
+        "id": "AI_LEASE_competitor_025",
+        "name": "Aligned Data Centers",
+        "business_line": "AI_LEASE",
+        "relationship": "competitor",
+        "details": "同類市場競爭：高密度 AI 資料中心與冷卻設計；不代表有供應或租賃交易。",
+        "evidence_grade": "同業產品／市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000048/apld-20260531.htm"
+        ]
+      },
+      {
+        "id": "AI_LEASE_competitor_026",
+        "name": "STACK Infrastructure",
+        "business_line": "AI_LEASE",
+        "relationship": "competitor",
+        "details": "同類市場競爭：超大規模資料中心開發；不代表有供應或租賃交易。",
+        "evidence_grade": "同業產品／市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000048/apld-20260531.htm"
+        ]
+      },
+      {
+        "id": "CONSTRUCTION_competitor_027",
+        "name": "Compass Datacenters",
+        "business_line": "CONSTRUCTION",
+        "relationship": "competitor",
+        "details": "同類市場競爭：模組化超大規模資料中心開發；不代表有供應或租賃交易。",
+        "evidence_grade": "同業產品／市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000048/apld-20260531.htm"
+        ]
+      },
+      {
+        "id": "AI_LEASE_competitor_028",
+        "name": "Switch",
+        "business_line": "AI_LEASE",
+        "relationship": "competitor",
+        "details": "同類市場競爭：大型資料中心園區與託管；不代表有供應或租賃交易。",
+        "evidence_grade": "同業產品／市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000048/apld-20260531.htm"
+        ]
+      },
+      {
+        "id": "AI_LEASE_competitor_029",
+        "name": "Crusoe",
+        "business_line": "AI_LEASE",
+        "relationship": "competitor",
+        "details": "同類市場競爭：AI 專用資料中心及算力基礎設施；不代表有供應或租賃交易。",
+        "evidence_grade": "同業產品／市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000048/apld-20260531.htm"
+        ]
+      },
+      {
+        "id": "CHRONOSCALE_competitor_030",
+        "name": "Lambda",
+        "business_line": "CHRONOSCALE",
+        "relationship": "competitor",
+        "details": "同類市場競爭：GPU 雲端租賃與 AI 算力服務；不代表有供應或租賃交易。",
+        "evidence_grade": "同業產品／市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000048/apld-20260531.htm"
+        ]
+      },
+      {
+        "id": "CHRONOSCALE_competitor_031",
+        "name": "Nebius",
+        "business_line": "CHRONOSCALE",
+        "relationship": "competitor",
+        "details": "同類市場競爭：AI GPU 雲端基礎設施；不代表有供應或租賃交易。",
+        "evidence_grade": "同業產品／市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000048/apld-20260531.htm"
+        ],
+        "ticker": "NBIS"
+      },
+      {
+        "id": "CHRONOSCALE_competitor_032",
+        "name": "Nscale",
+        "business_line": "CHRONOSCALE",
+        "relationship": "competitor",
+        "details": "同類市場競爭：AI GPU 算力及資料中心；不代表有供應或租賃交易。",
+        "evidence_grade": "同業產品／市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000048/apld-20260531.htm"
+        ]
+      },
+      {
+        "id": "CHRONOSCALE_competitor_033",
+        "name": "Vultr",
+        "business_line": "CHRONOSCALE",
+        "relationship": "competitor",
+        "details": "同類市場競爭：GPU 雲端服務；不代表有供應或租賃交易。",
+        "evidence_grade": "同業產品／市場比較",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000048/apld-20260531.htm"
+        ]
+      },
+      {
+        "id": "UPS_beneficiary_034",
+        "name": "台達電",
+        "business_line": "UPS",
+        "relationship": "beneficiary",
+        "details": "資料中心 UPS、電力轉換與散熱；未確認直接供貨 APLD。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "2308.TW"
+      },
+      {
+        "id": "UPS_beneficiary_035",
+        "name": "光寶科技",
+        "business_line": "UPS",
+        "relationship": "beneficiary",
+        "details": "高功率伺服器電源及電源架構；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "2301.TW"
+      },
+      {
+        "id": "UPS_beneficiary_036",
+        "name": "群電",
+        "business_line": "UPS",
+        "relationship": "beneficiary",
+        "details": "高功率電源供應器，可能受 AI 資料中心電源需求帶動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "6412.TW"
+      },
+      {
+        "id": "UPS_beneficiary_037",
+        "name": "全漢",
+        "business_line": "UPS",
+        "relationship": "beneficiary",
+        "details": "工業及伺服器電源，屬間接需求情境；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "3015.TW"
+      },
+      {
+        "id": "UPS_beneficiary_038",
+        "name": "康舒",
+        "business_line": "UPS",
+        "relationship": "beneficiary",
+        "details": "電源供應與能源管理需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "6282.TW"
+      },
+      {
+        "id": "GRID_beneficiary_039",
+        "name": "中興電",
+        "business_line": "GRID",
+        "relationship": "beneficiary",
+        "details": "重電變電站與 GIS 設備受惠全球電網擴建情境；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "1513.TW"
+      },
+      {
+        "id": "GRID_beneficiary_040",
+        "name": "華城",
+        "business_line": "GRID",
+        "relationship": "beneficiary",
+        "details": "變壓器需求與 AI 資料中心電網擴張連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "1519.TW"
+      },
+      {
+        "id": "GRID_beneficiary_041",
+        "name": "士電",
+        "business_line": "GRID",
+        "relationship": "beneficiary",
+        "details": "變壓器、開關設備與配電；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "1503.TW"
+      },
+      {
+        "id": "GRID_beneficiary_042",
+        "name": "亞力",
+        "business_line": "GRID",
+        "relationship": "beneficiary",
+        "details": "中壓配電及重電工程需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "1514.TW"
+      },
+      {
+        "id": "GRID_beneficiary_043",
+        "name": "大同",
+        "business_line": "GRID",
+        "relationship": "beneficiary",
+        "details": "大型電力設備及變壓器市場需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "2371.TW"
+      },
+      {
+        "id": "GRID_beneficiary_044",
+        "name": "東元",
+        "business_line": "GRID",
+        "relationship": "beneficiary",
+        "details": "機電、馬達與資料中心電力系統；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "1504.TW"
+      },
+      {
+        "id": "GRID_beneficiary_045",
+        "name": "大亞",
+        "business_line": "GRID",
+        "relationship": "beneficiary",
+        "details": "電力電纜與配電建置需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "1609.TW"
+      },
+      {
+        "id": "GRID_beneficiary_046",
+        "name": "華新",
+        "business_line": "GRID",
+        "relationship": "beneficiary",
+        "details": "電線電纜與電力基礎設施需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "1605.TW"
+      },
+      {
+        "id": "GRID_beneficiary_047",
+        "name": "台灣銅箔",
+        "business_line": "GRID",
+        "relationship": "beneficiary",
+        "details": "電力材料上游間接受惠情境；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "6464.TW"
+      },
+      {
+        "id": "COOLING_beneficiary_048",
+        "name": "奇鋐",
+        "business_line": "COOLING",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器液冷冷板與散熱模組需求連動；未確認供應 APLD。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "3017.TW"
+      },
+      {
+        "id": "COOLING_beneficiary_049",
+        "name": "雙鴻",
+        "business_line": "COOLING",
+        "relationship": "beneficiary",
+        "details": "高熱通量冷板、液冷與散熱零件；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "3324.TW"
+      },
+      {
+        "id": "COOLING_beneficiary_050",
+        "name": "建準",
+        "business_line": "COOLING",
+        "relationship": "beneficiary",
+        "details": "資料中心高性能風扇及氣流管理；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "2421.TW"
+      },
+      {
+        "id": "COOLING_beneficiary_051",
+        "name": "高力",
+        "business_line": "COOLING",
+        "relationship": "beneficiary",
+        "details": "熱交換器與液冷零件需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "8996.TW"
+      },
+      {
+        "id": "COOLING_beneficiary_052",
+        "name": "富世達",
+        "business_line": "COOLING",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器機構及散熱相關零件；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "6805.TW"
+      },
+      {
+        "id": "COOLING_beneficiary_053",
+        "name": "健策",
+        "business_line": "COOLING",
+        "relationship": "beneficiary",
+        "details": "高階散熱與熱管理零件；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "3653.TW"
+      },
+      {
+        "id": "COOLING_beneficiary_054",
+        "name": "泰碩",
+        "business_line": "COOLING",
+        "relationship": "beneficiary",
+        "details": "散熱模組及伺服器熱管理；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "3338.TW"
+      },
+      {
+        "id": "COOLING_beneficiary_055",
+        "name": "晟銘電",
+        "business_line": "COOLING",
+        "relationship": "beneficiary",
+        "details": "伺服器機殼與液冷機構件；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "3013.TW"
+      },
+      {
+        "id": "SERVER_beneficiary_056",
+        "name": "勤誠",
+        "business_line": "SERVER",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器機殼與機櫃需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "8210.TW"
+      },
+      {
+        "id": "SERVER_beneficiary_057",
+        "name": "營邦",
+        "business_line": "SERVER",
+        "relationship": "beneficiary",
+        "details": "伺服器機殼與系統整合需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "3693.TW"
+      },
+      {
+        "id": "SERVER_beneficiary_058",
+        "name": "廣達",
+        "business_line": "SERVER",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器 ODM 與 GPU 機櫃需求連動；不等同 APLD 採購。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "2382.TW"
+      },
+      {
+        "id": "SERVER_beneficiary_059",
+        "name": "緯創",
+        "business_line": "SERVER",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器與系統組裝需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "3231.TW"
+      },
+      {
+        "id": "SERVER_beneficiary_060",
+        "name": "緯穎",
+        "business_line": "SERVER",
+        "relationship": "beneficiary",
+        "details": "雲端伺服器 ODM 與高密度機櫃需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "6669.TW"
+      },
+      {
+        "id": "SERVER_beneficiary_061",
+        "name": "鴻海",
+        "business_line": "SERVER",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器、GPU 機櫃與整機系統；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "2317.TW"
+      },
+      {
+        "id": "SERVER_beneficiary_062",
+        "name": "英業達",
+        "business_line": "SERVER",
+        "relationship": "beneficiary",
+        "details": "伺服器 ODM 與資料中心運算需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "2356.TW"
+      },
+      {
+        "id": "SERVER_beneficiary_063",
+        "name": "和碩",
+        "business_line": "SERVER",
+        "relationship": "beneficiary",
+        "details": "伺服器組裝及系統整合間接需求；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "4938.TW"
+      },
+      {
+        "id": "SERVER_beneficiary_064",
+        "name": "神達",
+        "business_line": "SERVER",
+        "relationship": "beneficiary",
+        "details": "資料中心伺服器與系統整合需求；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "3706.TW"
+      },
+      {
+        "id": "SERVER_beneficiary_065",
+        "name": "技嘉",
+        "business_line": "SERVER",
+        "relationship": "beneficiary",
+        "details": "GPU 伺服器平台需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "2376.TW"
+      },
+      {
+        "id": "SERVER_beneficiary_066",
+        "name": "華碩",
+        "business_line": "SERVER",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器產品需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "2357.TW"
+      },
+      {
+        "id": "SERVER_beneficiary_067",
+        "name": "華擎",
+        "business_line": "SERVER",
+        "relationship": "beneficiary",
+        "details": "伺服器平台與 GPU 運算需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "3515.TW"
+      },
+      {
+        "id": "NETWORK_beneficiary_068",
+        "name": "台光電",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "高速伺服器與交換器用低損耗材料；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "2383.TW"
+      },
+      {
+        "id": "NETWORK_beneficiary_069",
+        "name": "金像電",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器與高速網通 PCB 需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "2368.TW"
+      },
+      {
+        "id": "NETWORK_beneficiary_070",
+        "name": "欣興",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "高階載板與 PCB 需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "3037.TW"
+      },
+      {
+        "id": "NETWORK_beneficiary_071",
+        "name": "健鼎",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "伺服器 PCB 需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "3044.TW"
+      },
+      {
+        "id": "NETWORK_beneficiary_072",
+        "name": "智邦",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "資料中心高速乙太網路交換器需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "2345.TW"
+      },
+      {
+        "id": "NETWORK_beneficiary_073",
+        "name": "啟碁",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "資料中心網路設備需求間接連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "6285.TW"
+      },
+      {
+        "id": "NETWORK_beneficiary_074",
+        "name": "中磊",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "資料中心網通設備需求間接連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "5388.TW"
+      },
+      {
+        "id": "NETWORK_beneficiary_075",
+        "name": "光聖",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "光通訊連接及光纖元件需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "6442.TW"
+      },
+      {
+        "id": "NETWORK_beneficiary_076",
+        "name": "聯亞",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "高速光通訊磊晶元件需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "3081.TWO"
+      },
+      {
+        "id": "NETWORK_beneficiary_077",
+        "name": "華星光",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "800G／1.6T 光收發器相關元件需求；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "4979.TW"
+      },
+      {
+        "id": "NETWORK_beneficiary_078",
+        "name": "上詮",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "光纖連接及光通訊元件需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "3363.TWO"
+      },
+      {
+        "id": "NETWORK_beneficiary_079",
+        "name": "波若威",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "光通訊被動元件需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "3163.TW"
+      },
+      {
+        "id": "NETWORK_beneficiary_080",
+        "name": "眾達-KY",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "光通訊模組需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "4977.TW"
+      },
+      {
+        "id": "NETWORK_beneficiary_081",
+        "name": "聯鈞",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "光通訊元件及高速互連需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "3450.TW"
+      },
+      {
+        "id": "NETWORK_beneficiary_082",
+        "name": "貿聯-KY",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "資料中心高速線纜與電源互連需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "3665.TW"
+      },
+      {
+        "id": "NETWORK_beneficiary_083",
+        "name": "嘉澤",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "高階 CPU／GPU 伺服器連接器需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "3533.TW"
+      },
+      {
+        "id": "NETWORK_beneficiary_084",
+        "name": "信邦",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "電力線束及資料中心系統互連需求；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "3023.TW"
+      },
+      {
+        "id": "NETWORK_beneficiary_085",
+        "name": "佳必琪",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "高速傳輸線纜與連接器需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "6197.TW"
+      },
+      {
+        "id": "NETWORK_beneficiary_086",
+        "name": "宏致",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "高頻高速連接器需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "3605.TW"
+      },
+      {
+        "id": "GRID_beneficiary_087",
+        "name": "良維",
+        "business_line": "GRID",
+        "relationship": "beneficiary",
+        "details": "資料中心電源線材及配電線束需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "6290.TW"
+      },
+      {
+        "id": "COOLING_beneficiary_088",
+        "name": "台達電（液冷業務）",
+        "business_line": "COOLING",
+        "relationship": "beneficiary",
+        "details": "台達電液冷 CDU／熱管理業務可能受惠；同公司不同業務線映射，非第二家獨立供應商。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "2308.TW"
+      },
+      {
+        "id": "COOLING_beneficiary_089",
+        "name": "廣運",
+        "business_line": "COOLING",
+        "relationship": "beneficiary",
+        "details": "資料中心液冷系統與整合需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "6125.TW"
+      },
+      {
+        "id": "SERVER_beneficiary_090",
+        "name": "迎廣",
+        "business_line": "SERVER",
+        "relationship": "beneficiary",
+        "details": "伺服器機殼與機櫃需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "6117.TW"
+      },
+      {
+        "id": "SERVER_beneficiary_091",
+        "name": "仁寶",
+        "business_line": "SERVER",
+        "relationship": "beneficiary",
+        "details": "伺服器 ODM 與運算系統需求間接連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "2324.TW"
+      },
+      {
+        "id": "NETWORK_beneficiary_092",
+        "name": "華通",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "高速網通 PCB 需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "2313.TW"
+      },
+      {
+        "id": "NETWORK_beneficiary_093",
+        "name": "台燿",
+        "business_line": "NETWORK",
+        "relationship": "beneficiary",
+        "details": "高速低損耗銅箔基板需求連動；未確認直接供貨。",
+        "evidence_grade": "產業需求推論／未確認直接交易",
+        "source_urls": [
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001493152-26-027984/0001493152-26-027984.pdf",
+          "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000059/apld-20260831.htm"
+        ],
+        "ticker": "6274.TW"
+      }
+    ],
+    "research_notes": {
+      "confirmed_direct_relations": [
+        "CoreWeave：APLD 直接租賃客戶",
+        "ABB：供電設備供應及合作",
+        "BASX：冷卻系統供應夥伴",
+        "Caterpillar：備援發電設備供應夥伴",
+        "Macquarie：融資合作架構"
+      ],
+      "subsidiary_not_parent_customer": "Microsoft GPU 服務合約屬 ChronoScale，不是 APLD 母公司直接 AI Factory 租賃合約。",
+      "unidentified_hyperscalers": "Polaris Forge 2 與 Delta Forge 1/2、Polaris Forge 3 客戶未具名，禁止推定為 Oracle、Microsoft、Google、Amazon。",
+      "beneficiary_caveat": "台灣上市櫃企業映射是 AI 資料中心設備／材料需求推論，並非 Applied Digital 已確認採購名單。",
+      "company_profile_policy": "GitHub 原始公司解析未發現必須修改的分類錯誤，故 11 個頂層欄位保持不變；研究新資訊只進 industry_chain。",
+      "source_commit": "da93c81d",
+      "source_blob_sha": "3785e78513b1c69c3432284183dc666683c3b821"
+    }
   }
 }

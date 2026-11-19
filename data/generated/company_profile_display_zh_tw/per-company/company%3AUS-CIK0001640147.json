@@ -217,5 +217,1571 @@
       "資料治理"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-13",
+    "company": "Snowflake Inc.",
+    "symbol": "SNOW",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "Snowflake（SNOW）產業鏈深度研究：AI Data Cloud、Cortex、AWS 60 億美元承諾與具名客戶",
+      "description": "依 2026 財報、SEC、Snowflake／AWS／OpenAI／Anthropic／Oracle 官方公告，分辨實際客戶、雲端供應商、模型合作、併購、競爭者及台灣間接關係。"
+    },
+    "business_lines": [
+      {
+        "id": "DATA",
+        "name": "AI Data Cloud 企業資料平台"
+      },
+      {
+        "id": "WAREHOUSE",
+        "name": "彈性資料倉儲與 SQL 分析"
+      },
+      {
+        "id": "ENGINEER",
+        "name": "資料工程與 ELT 管線"
+      },
+      {
+        "id": "OPENFLOW",
+        "name": "Snowflake Openflow 資料擷取"
+      },
+      {
+        "id": "ICEBERG",
+        "name": "Apache Iceberg 與開放表格格式"
+      },
+      {
+        "id": "SHARE",
+        "name": "安全資料共享與跨雲複製"
+      },
+      {
+        "id": "MARKET",
+        "name": "Snowflake Marketplace 資料交易"
+      },
+      {
+        "id": "CLEAN",
+        "name": "Data Clean Rooms 隱私協作"
+      },
+      {
+        "id": "CORTEX",
+        "name": "Cortex AI 模型推論與 AI Functions"
+      },
+      {
+        "id": "AGENT",
+        "name": "Cortex Agents 企業代理"
+      },
+      {
+        "id": "COWORK",
+        "name": "Snowflake CoWork 企業知識代理"
+      },
+      {
+        "id": "COCO",
+        "name": "Snowflake CoCo AI 程式設計代理"
+      },
+      {
+        "id": "SNOWPARK",
+        "name": "Snowpark Python/Java/Scala"
+      },
+      {
+        "id": "CONTAINER",
+        "name": "Snowpark Container Services"
+      },
+      {
+        "id": "STREAMLIT",
+        "name": "Streamlit in Snowflake 應用"
+      },
+      {
+        "id": "NATIVE",
+        "name": "Native App Framework 應用市集"
+      },
+      {
+        "id": "HORIZON",
+        "name": "Horizon Catalog 資料治理"
+      },
+      {
+        "id": "SECURITY",
+        "name": "資料保護與合規"
+      },
+      {
+        "id": "AWS",
+        "name": "AWS 基礎設施與 Marketplace"
+      },
+      {
+        "id": "AZURE",
+        "name": "Microsoft Azure 基礎設施"
+      },
+      {
+        "id": "GCP",
+        "name": "Google Cloud 基礎設施"
+      },
+      {
+        "id": "OCI",
+        "name": "Oracle Cloud Infrastructure 擴展"
+      },
+      {
+        "id": "MODEL",
+        "name": "第三方基礎模型生態"
+      },
+      {
+        "id": "OBSERVE",
+        "name": "Observe 可觀測性併購"
+      },
+      {
+        "id": "TENSOR",
+        "name": "TensorStax 資料工程併購"
+      },
+      {
+        "id": "MCP",
+        "name": "Natoma MCP 代理連接技術"
+      },
+      {
+        "id": "FINANCE",
+        "name": "金融服務與市場資料"
+      },
+      {
+        "id": "LIFE",
+        "name": "醫療生技與藥物研發"
+      },
+      {
+        "id": "RETAIL",
+        "name": "零售媒體與消費者資料"
+      },
+      {
+        "id": "PUBLIC",
+        "name": "公共部門與運動組織"
+      },
+      {
+        "id": "TW",
+        "name": "台灣企業與雲端通路映射"
+      },
+      {
+        "id": "COMP",
+        "name": "資料平台與 AI 競爭版圖"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "LIFE_customer_001",
+        "name": "Sanofi 賽諾菲",
+        "business_line": "LIFE",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-06-02 官方宣布以 Snowflake Cortex AI 與 Elementum 開發 Concierge for Field，涵蓋藥物研發、採購與業務；未披露合約金額。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/sanofi-chooses-snowflake-to-accelerate-its-ai-powered-drug-development/"
+        ],
+        "ticker": "SNY"
+      },
+      {
+        "id": "FINANCE_customer_002",
+        "name": "Thomson Reuters 湯森路透",
+        "business_line": "FINANCE",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-06-02 揭露自 2021 年採用 Snowflake，37,500 多張受治理資料表、350 個來源、逾 1,500 名內部使用者；屬既有客戶擴用，不是 2026 新簽。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/thomson-reuters-powers-trusted-enterprise-ai-at-scale-on-snowflake/"
+        ],
+        "ticker": "TRI"
+      },
+      {
+        "id": "CLEAN_customer_003",
+        "name": "Unlimitail",
+        "business_line": "CLEAN",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-06-17 選用 Snowflake Data Clean Rooms 建立全球零售媒體資料樞紐，服務 2.5 億消費者網路；樞紐計畫後續推出，未披露合約金額。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/unlimitail-chooses-snowflake-to-power-privacy-preserving-retail-media-across-europe-and-latin-america/"
+        ]
+      },
+      {
+        "id": "PUBLIC_customer_004",
+        "name": "USA Cycling 美國自行車協會",
+        "business_line": "PUBLIC",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-11-03 選用 Snowflake 為官方 AI Data Cloud & Collaboration Partner，支援 LA28 選手資料、訓練與獎牌模型；屬新宣布合作。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/expedition-2026-usa-cycling-la28-games/"
+        ]
+      },
+      {
+        "id": "FINANCE_customer_005",
+        "name": "LSEG 倫敦證券交易所集團",
+        "business_line": "FINANCE",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-09-30 擴大五年企業合作，LSEG 加大 Snowflake 分析、Marketplace 與 AI 採用；Snowflake 另向 LSEG 採購 World-Check，雙向關係。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/lseg-snowflake-expand-collaboration/"
+        ],
+        "ticker": "LSEG"
+      },
+      {
+        "id": "DATA_customer_006",
+        "name": "Capital One 第一資本",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026 FY26 Q4 官方財報列為使用 Snowflake 推進資料分析的具名客戶，未披露新增訂單額。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-reports-financial-results-for-the-fourth-quarter-and-full-year-of-fiscal-2026/"
+        ],
+        "ticker": "COF"
+      },
+      {
+        "id": "CORTEX_customer_007",
+        "name": "Toyota Motor Europe 豐田歐洲",
+        "business_line": "CORTEX",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026 FY26 Q4 官方財報列為採用 Snowflake AI 功能的具名帳戶，不將歐洲子公司等同整個豐田集團採購。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-reports-financial-results-for-the-fourth-quarter-and-full-year-of-fiscal-2026/"
+        ],
+        "ticker": "TM"
+      },
+      {
+        "id": "CORTEX_customer_008",
+        "name": "United Rentals",
+        "business_line": "CORTEX",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026 FY26 Q4 官方財報列為 Snowflake AI 使用客戶；未披露採購金額。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-reports-financial-results-for-the-fourth-quarter-and-full-year-of-fiscal-2026/"
+        ],
+        "ticker": "URI"
+      },
+      {
+        "id": "CORTEX_customer_009",
+        "name": "Canva",
+        "business_line": "CORTEX",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-02 OpenAI 合作公告列為 Snowflake／OpenAI 聯合 AI 應用客戶，並證實 Canva 原已用 Snowflake 管理資料。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-and-openAI-forge-200-million-partnership-to-bring-enterprise-ready-ai-to-the-worlds-most-trusted-data-platform/"
+        ]
+      },
+      {
+        "id": "CORTEX_customer_010",
+        "name": "WHOOP",
+        "business_line": "CORTEX",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-02 OpenAI 合作公告列為使用 Snowflake 上 OpenAI 模型的聯合客戶；無合約額。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-and-openAI-forge-200-million-partnership-to-bring-enterprise-ready-ai-to-the-worlds-most-trusted-data-platform/"
+        ]
+      },
+      {
+        "id": "CORTEX_customer_011",
+        "name": "Intercom",
+        "business_line": "CORTEX",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2025-12 Anthropic 合作公告引述 Intercom 已在 Snowflake Cortex AI 使用 Claude 以優化 Fin AI Agent；不視為 2026 新客戶。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-and-anthropic-announce-200-million-partnership-to-bring-agentic-ai-to-global-enterprises/"
+        ]
+      },
+      {
+        "id": "CORTEX_customer_012",
+        "name": "Basis",
+        "business_line": "CORTEX",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-06 Anthropic 合作公告列為 Snowflake Cortex AI Claude 企業採用案例，未披露合約額。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-and-anthropic-accelerate-enterprise-ai-adoption-driven-by-rising-demand-for-governed-ai/"
+        ]
+      },
+      {
+        "id": "CORTEX_customer_013",
+        "name": "Block",
+        "business_line": "CORTEX",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-06 Anthropic 合作公告列為企業採用者，不將 Block 與 Square 兩個品牌重複計算。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-and-anthropic-accelerate-enterprise-ai-adoption-driven-by-rising-demand-for-governed-ai/"
+        ],
+        "ticker": "XYZ"
+      },
+      {
+        "id": "CORTEX_customer_014",
+        "name": "Carvana",
+        "business_line": "CORTEX",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-06 Anthropic 合作公告列為企業採用者，未披露合約額。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-and-anthropic-accelerate-enterprise-ai-adoption-driven-by-rising-demand-for-governed-ai/"
+        ],
+        "ticker": "CVNA"
+      },
+      {
+        "id": "CORTEX_customer_015",
+        "name": "eSentire",
+        "business_line": "CORTEX",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-06 Anthropic 合作公告列為 Snowflake Cortex AI Claude 採用者。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-and-anthropic-accelerate-enterprise-ai-adoption-driven-by-rising-demand-for-governed-ai/"
+        ]
+      },
+      {
+        "id": "CORTEX_customer_016",
+        "name": "Indeed",
+        "business_line": "CORTEX",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-06 Anthropic 合作公告列為採用者，未披露用量與合約額。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-and-anthropic-accelerate-enterprise-ai-adoption-driven-by-rising-demand-for-governed-ai/"
+        ]
+      },
+      {
+        "id": "CORTEX_customer_017",
+        "name": "Notion",
+        "business_line": "CORTEX",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-06 Anthropic 合作公告列為採用者，未披露用量與合約額。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-and-anthropic-accelerate-enterprise-ai-adoption-driven-by-rising-demand-for-governed-ai/"
+        ]
+      },
+      {
+        "id": "AWS_customer_018",
+        "name": "Fetch",
+        "business_line": "AWS",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-05 Snowflake/AWS 聯合公告列為在 AWS 上運行 Snowflake 治理 AI 應用的客戶。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-expands-aws-collaboration-with-6b-commitment-to-accelerate-enterprise-agentic-ai-adoption/"
+        ]
+      },
+      {
+        "id": "AWS_customer_019",
+        "name": "Hex",
+        "business_line": "AWS",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-05 Snowflake/AWS 聯合公告列為治理 AI 應用客戶；Hex 同時是應用合作生態成員。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-expands-aws-collaboration-with-6b-commitment-to-accelerate-enterprise-agentic-ai-adoption/"
+        ]
+      },
+      {
+        "id": "DATA_customer_020",
+        "name": "Mitsubishi Electric 三菱電機",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。Snowflake 官方客戶專區具名全球製造資料整合案例；未確認 2026 新簽。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/customers/"
+        ],
+        "ticker": "6503.T"
+      },
+      {
+        "id": "DATA_customer_021",
+        "name": "Novo Nordisk 諾和諾德",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。Snowflake 官方客戶專區揭露整合約 900 TB 資料供 40,000 名使用者自助分析；非新增合約公告。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/customers/"
+        ],
+        "ticker": "NVO"
+      },
+      {
+        "id": "SECURITY_customer_022",
+        "name": "General Dynamics Mission Systems",
+        "business_line": "SECURITY",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。官方客戶案例顯示使用 Snowflake AI 改善業務與節省成本；無公開新訂單金額。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/customers/"
+        ],
+        "ticker": "GD"
+      },
+      {
+        "id": "OPENFLOW_customer_023",
+        "name": "Mercury",
+        "business_line": "OPENFLOW",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。官方客戶案例顯示使用 Snowflake Openflow 加速資料與產品決策。 注意：此 Mercury 為金融科技公司，不是美股 MRCY（Mercury Systems）。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/customers/"
+        ]
+      },
+      {
+        "id": "COCO_customer_024",
+        "name": "Sophos",
+        "business_line": "COCO",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。官方客戶案例顯示使用 Snowflake CoCo 改善安全分析流程。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/customers/"
+        ]
+      },
+      {
+        "id": "COWORK_customer_025",
+        "name": "Under Armour 安德瑪",
+        "business_line": "COWORK",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。官方客戶專區具名 CoWork／CoCo 協作應用；未確認新合約金額。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/customers/"
+        ],
+        "ticker": "UAA"
+      },
+      {
+        "id": "AWS_supplier_026",
+        "name": "Amazon Web Services",
+        "business_line": "AWS",
+        "relationship": "supplier",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-05-27 Snowflake 承諾五年內在 AWS Graviton 與 AI 支出 60 億美元；是 Snowflake 對 AWS 的基礎設施採購承諾，不是 AWS 向 Snowflake 下 60 億美元訂單。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-expands-aws-collaboration-with-6b-commitment-to-accelerate-enterprise-agentic-ai-adoption/"
+        ],
+        "ticker": "AMZN"
+      },
+      {
+        "id": "AZURE_supplier_027",
+        "name": "Microsoft Azure",
+        "business_line": "AZURE",
+        "relationship": "supplier",
+        "details": "證據等級 A；公司／合作方官方具名確認。Snowflake 部署於 Azure；2025-02 擴大 Azure OpenAI 與 Microsoft 365 Copilot 整合，為雲端平台供應與合作。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-securely-integrates-microsoft-azure-openai-service-to-provide-access-to-the-latest-openai-models-with-expanded-microsoft-partnership/"
+        ],
+        "ticker": "MSFT"
+      },
+      {
+        "id": "GCP_supplier_028",
+        "name": "Google Cloud",
+        "business_line": "GCP",
+        "relationship": "supplier",
+        "details": "證據等級 A；公司／合作方官方具名確認。Snowflake 支援 Google Cloud 運算與儲存，並在 Cortex AI 提供 Gemini；官方列出七個 Google Cloud 區域。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/why-snowflake/partners/cloud-partners/google-cloud/"
+        ],
+        "ticker": "GOOGL"
+      },
+      {
+        "id": "MODEL_supplier_029",
+        "name": "Anthropic Claude",
+        "business_line": "MODEL",
+        "relationship": "supplier",
+        "details": "證據等級 A；公司／合作方官方具名確認。2025-12-03 雙方擴大 2 億美元多年策略合作；Claude 供應 Snowflake Cortex AI 與企業代理模型能力，非 Snowflake 2 億美元收入。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-and-anthropic-announce-200-million-partnership-to-bring-agentic-ai-to-global-enterprises/"
+        ]
+      },
+      {
+        "id": "MODEL_supplier_030",
+        "name": "OpenAI GPT",
+        "business_line": "MODEL",
+        "relationship": "supplier",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-02-02 簽訂 2 億美元多年策略合作與聯合 GTM，GPT 模型原生整合 Cortex AI；不可將合約總額當成 Snowflake 訂單收入。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-and-openAI-forge-200-million-partnership-to-bring-enterprise-ready-ai-to-the-worlds-most-trusted-data-platform/"
+        ]
+      },
+      {
+        "id": "MODEL_supplier_031",
+        "name": "Google Gemini",
+        "business_line": "MODEL",
+        "relationship": "supplier",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-01-06 公告 Gemini 3 Pro／2.5 Flash 在 Cortex AI 預覽，屬模型能力供應與共同市場推廣。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/blog/gemini-3-snowflake-cortex-ai/"
+        ],
+        "ticker": "GOOGL"
+      },
+      {
+        "id": "MODEL_supplier_032",
+        "name": "Meta Llama",
+        "business_line": "MODEL",
+        "relationship": "supplier",
+        "details": "證據等級 A；公司／合作方官方具名確認。Snowflake 官方模型合作夥伴頁面列出 Meta 模型生態；無公開 Snowflake 對 Meta 的採購金額。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/why-snowflake/partners/model-partners/"
+        ],
+        "ticker": "META"
+      },
+      {
+        "id": "MODEL_supplier_033",
+        "name": "Mistral AI",
+        "business_line": "MODEL",
+        "relationship": "supplier",
+        "details": "證據等級 A；公司／合作方官方具名確認。Snowflake 官方模型夥伴頁列為可用模型生態，未揭露個別交易條款。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/why-snowflake/partners/model-partners/"
+        ]
+      },
+      {
+        "id": "MODEL_supplier_034",
+        "name": "DeepSeek",
+        "business_line": "MODEL",
+        "relationship": "supplier",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-08 Cortex AI Gateway 宣布將新增 DeepSeek-V4-Flash 0731，屬規劃提供的模型，非已上線供貨證明。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-unlocks-better-ai-economics-dynamic-model-routing/"
+        ]
+      },
+      {
+        "id": "MODEL_supplier_035",
+        "name": "Zhipu GLM",
+        "business_line": "MODEL",
+        "relationship": "supplier",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-08 公告將新增 GLM-5.3，屬未來模型選項，非已完成採購。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-unlocks-better-ai-economics-dynamic-model-routing/"
+        ]
+      },
+      {
+        "id": "FINANCE_supplier_036",
+        "name": "LSEG World-Check",
+        "business_line": "FINANCE",
+        "relationship": "supplier",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-09-30 五年合作宣布 Snowflake 成為 LSEG Risk Intelligence World-Check 授權客戶，屬雙向資料服務供應。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/lseg-snowflake-expand-collaboration/"
+        ],
+        "ticker": "LSEG"
+      },
+      {
+        "id": "AWS_partner_037",
+        "name": "AWS Marketplace",
+        "business_line": "AWS",
+        "relationship": "partner",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-05 Snowflake 宣布 AWS Marketplace 累計銷售超過 70 億美元；這是歷史累計通路銷售，不是單年訂單或 AWS 自用採購。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-expands-aws-collaboration-with-6b-commitment-to-accelerate-enterprise-agentic-ai-adoption/"
+        ],
+        "ticker": "AMZN"
+      },
+      {
+        "id": "AZURE_partner_038",
+        "name": "Microsoft",
+        "business_line": "AZURE",
+        "relationship": "partner",
+        "details": "證據等級 A；公司／合作方官方具名確認。Snowflake Cortex Agents 與 Microsoft 365 Copilot 整合，並以 Azure OpenAI 供應模型；合作不等於 Microsoft 為 Snowflake 客戶。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-securely-integrates-microsoft-azure-openai-service-to-provide-access-to-the-latest-openai-models-with-expanded-microsoft-partnership/"
+        ],
+        "ticker": "MSFT"
+      },
+      {
+        "id": "OCI_partner_039",
+        "name": "Oracle",
+        "business_line": "OCI",
+        "relationship": "partner",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-10-27 宣布 Snowflake AI Data Cloud 將成為 OCI 原生第一方服務，由 Oracle 統一計價與帳單；屬未來可用服務，不宣稱已全面上線。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/oracle-expands-native-ai-and-data-services-on-oci-with-snowflake/"
+        ],
+        "ticker": "ORCL"
+      },
+      {
+        "id": "GCP_partner_040",
+        "name": "Google Cloud",
+        "business_line": "GCP",
+        "relationship": "partner",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-01 深化 Gemini 3、Cortex AI 與 GTM 合作，模型當時屬公開預覽。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/blog/gemini-3-snowflake-cortex-ai/"
+        ],
+        "ticker": "GOOGL"
+      },
+      {
+        "id": "MODEL_partner_041",
+        "name": "Anthropic",
+        "business_line": "MODEL",
+        "relationship": "partner",
+        "details": "證據等級 A；公司／合作方官方具名確認。2025-12 擴大 2 億美元多年策略合作，2026-06 宣布更多 Cortex AI 客戶案例。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-and-anthropic-announce-200-million-partnership-to-bring-agentic-ai-to-global-enterprises/"
+        ]
+      },
+      {
+        "id": "MODEL_partner_042",
+        "name": "OpenAI",
+        "business_line": "MODEL",
+        "relationship": "partner",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-02 2 億美元策略合作，2026-06 宣布 OpenAI 模型在 Cortex AI 正式可用；此處記錄合作而非單向供應訂單。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-and-openAI-forge-200-million-partnership-to-bring-enterprise-ready-ai-to-the-worlds-most-trusted-data-platform/"
+        ]
+      },
+      {
+        "id": "LIFE_partner_043",
+        "name": "Elementum",
+        "business_line": "LIFE",
+        "relationship": "partner",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-06 Sanofi 案例中 Elementum AI 工作流程運行於 Snowflake，屬共同客戶方案合作，未披露 Snowflake 與 Elementum 的直接採購合約。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/sanofi-chooses-snowflake-to-accelerate-its-ai-powered-drug-development/"
+        ]
+      },
+      {
+        "id": "FINANCE_partner_044",
+        "name": "LSEG",
+        "business_line": "FINANCE",
+        "relationship": "partner",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-09-30 五年合作，金融資料與 Snowflake Marketplace 聯合 GTM，LSEG 同時為客戶與 World-Check 供應商。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/lseg-snowflake-expand-collaboration/"
+        ],
+        "ticker": "LSEG"
+      },
+      {
+        "id": "OBSERVE_partner_045",
+        "name": "Observe",
+        "business_line": "OBSERVE",
+        "relationship": "partner",
+        "details": "證據等級 A；SEC 2026-09 10-Q 已確認完成。2026-02-02 收購 Observe，初步收購對價 5.958 億美元；2026 FY26 Q4 財報提及 Observe by Snowflake。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1640147/000164014726000037/snow-20260731.htm"
+        ]
+      },
+      {
+        "id": "TENSOR_partner_046",
+        "name": "TensorStax",
+        "business_line": "TENSOR",
+        "relationship": "partner",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026 FY26 Q4 官方財報確認收購，強化 Cortex Code 資料工程；不虛構併購價。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-reports-financial-results-for-the-fourth-quarter-and-full-year-of-fiscal-2026/"
+        ]
+      },
+      {
+        "id": "MCP_partner_047",
+        "name": "Natoma",
+        "business_line": "MCP",
+        "relationship": "partner",
+        "details": "證據等級 A；SEC 2026-09 10-Q 已確認完成。2026-06-03 Snowflake 完成收購 Natoma Labs，初步收購對價 1.283 億美元（股票約 1.105 億、現金約 1,770 萬美元）；與 2026-05 僅簽約狀態區分。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1640147/000164014726000037/snow-20260731.htm"
+        ]
+      },
+      {
+        "id": "PUBLIC_partner_048",
+        "name": "Team USA",
+        "business_line": "PUBLIC",
+        "relationship": "partner",
+        "details": "證據等級 A；公司／合作方官方具名確認。Snowflake 2026-11 USA Cycling 公告提及其為 Team USA 與 LA28 官方資料協作供應商；角色為運動資料合作，非奧運所有組織的通用採購。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/expedition-2026-usa-cycling-la28-games/"
+        ]
+      },
+      {
+        "id": "WAREHOUSE_competitor_049",
+        "name": "Databricks",
+        "business_line": "WAREHOUSE",
+        "relationship": "competitor",
+        "details": "證據等級 B；業務競爭映射，未確認特定訂單競標。Lakehouse、SQL 分析與 AI 資料平台市場重疊；屬產品競爭，不等於已證實逐案競標。",
+        "evidence_grade": "B",
+        "verification_status": "業務競爭映射，未確認特定訂單競標",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1640147/000164014726000008/snow-20260131.htm"
+        ]
+      },
+      {
+        "id": "WAREHOUSE_competitor_050",
+        "name": "Google BigQuery",
+        "business_line": "WAREHOUSE",
+        "relationship": "competitor",
+        "details": "證據等級 B；業務競爭映射，未確認特定訂單競標。雲端資料倉儲與分析競爭，Google Cloud 同時為 Snowflake 基礎設施與模型合作夥伴。",
+        "evidence_grade": "B",
+        "verification_status": "業務競爭映射，未確認特定訂單競標",
+        "source_urls": [
+          "https://www.snowflake.com/en/why-snowflake/partners/cloud-partners/google-cloud/"
+        ],
+        "ticker": "GOOGL"
+      },
+      {
+        "id": "WAREHOUSE_competitor_051",
+        "name": "Amazon Redshift",
+        "business_line": "WAREHOUSE",
+        "relationship": "competitor",
+        "details": "證據等級 B；業務競爭映射，未確認特定訂單競標。雲端數據倉儲競爭，AWS 同時為 Snowflake 主要雲端基礎設施供應商。",
+        "evidence_grade": "B",
+        "verification_status": "業務競爭映射，未確認特定訂單競標",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-expands-aws-collaboration-with-6b-commitment-to-accelerate-enterprise-agentic-ai-adoption/"
+        ],
+        "ticker": "AMZN"
+      },
+      {
+        "id": "WAREHOUSE_competitor_052",
+        "name": "Microsoft Fabric／Synapse",
+        "business_line": "WAREHOUSE",
+        "relationship": "competitor",
+        "details": "證據等級 B；業務競爭映射，未確認特定訂單競標。雲端資料平台競爭，Microsoft Azure 同時為合作與供應方。",
+        "evidence_grade": "B",
+        "verification_status": "業務競爭映射，未確認特定訂單競標",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-securely-integrates-microsoft-azure-openai-service-to-provide-access-to-the-latest-openai-models-with-expanded-microsoft-partnership/"
+        ],
+        "ticker": "MSFT"
+      },
+      {
+        "id": "WAREHOUSE_competitor_053",
+        "name": "Oracle Autonomous Database",
+        "business_line": "WAREHOUSE",
+        "relationship": "competitor",
+        "details": "證據等級 B；業務競爭映射，未確認特定訂單競標。資料庫分析競爭，Oracle 2026-10 同時宣布 OCI 第一方 Snowflake 合作。",
+        "evidence_grade": "B",
+        "verification_status": "業務競爭映射，未確認特定訂單競標",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/oracle-expands-native-ai-and-data-services-on-oci-with-snowflake/"
+        ],
+        "ticker": "ORCL"
+      },
+      {
+        "id": "DATA_competitor_054",
+        "name": "Teradata",
+        "business_line": "DATA",
+        "relationship": "competitor",
+        "details": "證據等級 B；業務競爭映射，未確認特定訂單競標。企業數據倉儲及資料分析競爭，未核實個別客戶轉單。",
+        "evidence_grade": "B",
+        "verification_status": "業務競爭映射，未確認特定訂單競標",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1640147/000164014726000008/snow-20260131.htm"
+        ],
+        "ticker": "TDC"
+      },
+      {
+        "id": "DATA_competitor_055",
+        "name": "Cloudera",
+        "business_line": "DATA",
+        "relationship": "competitor",
+        "details": "證據等級 B；業務競爭映射，未確認特定訂單競標。企業資料平台與混合雲分析市場競爭，非已確認直接競標。",
+        "evidence_grade": "B",
+        "verification_status": "業務競爭映射，未確認特定訂單競標",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1640147/000164014726000008/snow-20260131.htm"
+        ]
+      },
+      {
+        "id": "DATA_competitor_056",
+        "name": "Palantir Foundry",
+        "business_line": "DATA",
+        "relationship": "competitor",
+        "details": "證據等級 B；業務競爭映射，未確認特定訂單競標。資料整合與企業 AI 應用部分重疊；定位不同，不能將所有業務視為直接替代。",
+        "evidence_grade": "B",
+        "verification_status": "業務競爭映射，未確認特定訂單競標",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1640147/000164014726000008/snow-20260131.htm"
+        ],
+        "ticker": "PLTR"
+      },
+      {
+        "id": "CORTEX_competitor_057",
+        "name": "Databricks Mosaic AI",
+        "business_line": "CORTEX",
+        "relationship": "competitor",
+        "details": "證據等級 B；業務競爭映射，未確認特定訂單競標。企業資料上的模型推論、治理與代理工具競爭。",
+        "evidence_grade": "B",
+        "verification_status": "業務競爭映射，未確認特定訂單競標",
+        "source_urls": [
+          "https://www.snowflake.com/en/why-snowflake/partners/model-partners/"
+        ]
+      },
+      {
+        "id": "CORTEX_competitor_058",
+        "name": "Google Vertex AI",
+        "business_line": "CORTEX",
+        "relationship": "competitor",
+        "details": "證據等級 B；業務競爭映射，未確認特定訂單競標。模型託管與企業 AI 工作負載競爭；Gemini 同時為 Snowflake 模型供應來源。",
+        "evidence_grade": "B",
+        "verification_status": "業務競爭映射，未確認特定訂單競標",
+        "source_urls": [
+          "https://www.snowflake.com/en/blog/gemini-3-snowflake-cortex-ai/"
+        ],
+        "ticker": "GOOGL"
+      },
+      {
+        "id": "CORTEX_competitor_059",
+        "name": "Microsoft Azure AI Foundry",
+        "business_line": "CORTEX",
+        "relationship": "competitor",
+        "details": "證據等級 B；業務競爭映射，未確認特定訂單競標。模型託管、代理與企業 AI 服務競爭；Microsoft 同時是 Snowflake 合作方。",
+        "evidence_grade": "B",
+        "verification_status": "業務競爭映射，未確認特定訂單競標",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-securely-integrates-microsoft-azure-openai-service-to-provide-access-to-the-latest-openai-models-with-expanded-microsoft-partnership/"
+        ],
+        "ticker": "MSFT"
+      },
+      {
+        "id": "MARKET_competitor_060",
+        "name": "Databricks Marketplace",
+        "business_line": "MARKET",
+        "relationship": "competitor",
+        "details": "證據等級 B；業務競爭映射，未確認特定訂單競標。第三方資料與應用分享生態競爭。",
+        "evidence_grade": "B",
+        "verification_status": "業務競爭映射，未確認特定訂單競標",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1640147/000164014726000008/snow-20260131.htm"
+        ]
+      },
+      {
+        "id": "CLEAN_competitor_061",
+        "name": "LiveRamp",
+        "business_line": "CLEAN",
+        "relationship": "competitor",
+        "details": "證據等級 B；業務競爭映射，未確認特定訂單競標。隱私資料協作與資料潔淨室領域存在重疊，但並非所有服務直接可替代。",
+        "evidence_grade": "B",
+        "verification_status": "業務競爭映射，未確認特定訂單競標",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/unlimitail-chooses-snowflake-to-power-privacy-preserving-retail-media-across-europe-and-latin-america/"
+        ],
+        "ticker": "RAMP"
+      },
+      {
+        "id": "OBSERVE_competitor_062",
+        "name": "Datadog",
+        "business_line": "OBSERVE",
+        "relationship": "competitor",
+        "details": "證據等級 B；業務競爭映射，未確認特定訂單競標。IT 可觀測性市場競爭；Snowflake 已收購 Observe，但未證實逐案競標。",
+        "evidence_grade": "B",
+        "verification_status": "業務競爭映射，未確認特定訂單競標",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-reports-financial-results-for-the-fourth-quarter-and-full-year-of-fiscal-2026/"
+        ],
+        "ticker": "DDOG"
+      },
+      {
+        "id": "OBSERVE_competitor_063",
+        "name": "Dynatrace",
+        "business_line": "OBSERVE",
+        "relationship": "competitor",
+        "details": "證據等級 B；業務競爭映射，未確認特定訂單競標。可觀測性及 AIOps 市場競爭。",
+        "evidence_grade": "B",
+        "verification_status": "業務競爭映射，未確認特定訂單競標",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-reports-financial-results-for-the-fourth-quarter-and-full-year-of-fiscal-2026/"
+        ],
+        "ticker": "DT"
+      },
+      {
+        "id": "TW_beneficiary_064",
+        "name": "台灣企業雲端與資料治理需求",
+        "business_line": "TW",
+        "relationship": "beneficiary",
+        "details": "證據等級 C；區域需求映射；非具名交易。Snowflake 支援 AWS、Azure、Google Cloud，台灣企業可透過雲端部署及通路採用；目前未找到足夠第一手證據確認特定台灣上市公司為 Snowflake 直接供應商或大型客戶。",
+        "evidence_grade": "C",
+        "verification_status": "區域需求映射；非具名交易",
+        "source_urls": [
+          "https://www.snowflake.com/en/why-snowflake/partners/cloud-partners/google-cloud/"
+        ]
+      },
+      {
+        "id": "TW_beneficiary_065",
+        "name": "台灣 AI 資料中心與雲端通路生態",
+        "business_line": "TW",
+        "relationship": "beneficiary",
+        "details": "證據等級 C；間接需求鏈；無直接採購證據。Snowflake 主要採購公有雲運算與模型服務，與台灣伺服器／半導體供應鏈僅可能透過 AWS、Azure、GCP 間接受惠；不得將廣達、緯創、鴻海、台積電直接列為 Snowflake 供應商。",
+        "evidence_grade": "C",
+        "verification_status": "間接需求鏈；無直接採購證據",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-expands-aws-collaboration-with-6b-commitment-to-accelerate-enterprise-agentic-ai-adoption/"
+        ]
+      },
+      {
+        "id": "MODEL_supplier_066",
+        "name": "NVIDIA CUDA-X",
+        "business_line": "MODEL",
+        "relationship": "supplier",
+        "details": "證據等級 A；公司／合作方官方具名確認。2025-11 Snowflake ML 整合 NVIDIA cuDF／cuML GPU 加速函式庫；供應的是軟體與加速生態，不證實 Snowflake 直接採購 NVIDIA GPU。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-supercharges-machine-learning-for-enterprises-with-native-integration-of-nvidia-cuda-x-libraries/"
+        ],
+        "ticker": "NVDA"
+      },
+      {
+        "id": "CONTAINER_partner_067",
+        "name": "NVIDIA Blackwell on AWS",
+        "business_line": "CONTAINER",
+        "relationship": "partner",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-03 宣布在部分 AWS 區域計畫提供 EC2 G7e／NVIDIA RTX PRO 6000 Blackwell GPU；屬 AWS 雲端 GPU 服務整合，非 Snowflake 自建 GPU 伺服器採購。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/blog/unifying-enterprise-ai-lifecycle/"
+        ],
+        "ticker": "NVDA"
+      },
+      {
+        "id": "LIFE_partner_068",
+        "name": "NVIDIA BioNeMo",
+        "business_line": "LIFE",
+        "relationship": "partner",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-06-23 宣布 BioNeMo Agent Toolkit 與 Snowflake Cortex Agents 整合生命科學代理流程，屬技術合作而非藥廠直接採購。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/blog/snowflake-nvidia-bionemo-agentic-ai-life-sciences/"
+        ],
+        "ticker": "NVDA"
+      },
+      {
+        "id": "DATA_partner_069",
+        "name": "Crunchy Data Solutions",
+        "business_line": "DATA",
+        "relationship": "partner",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-09 SEC 10-Q 確認 Snowflake 已收購 Crunchy Data，擴充 PostgreSQL 技術；非 2026 新客戶訂單。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.listed.markets/filings/0001640147-26-000037"
+        ]
+      },
+      {
+        "id": "DATA_customer_070",
+        "name": "PepsiCo",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "證據等級 B；公司投資人簡報具名客戶；未核實當期採購金額。Snowflake 2026 FY26 Q4 投資人簡報客戶 Logo 頁具名列示；此為已公布採用／客戶品牌證據，非 2026 新簽訂單，未揭露單一公司收入或採購額。",
+        "evidence_grade": "B",
+        "verification_status": "公司投資人簡報具名客戶；未核實當期採購金額",
+        "source_urls": [
+          "https://s26.q4cdn.com/463892824/files/doc_financials/2026/q4/Q4-FY2026-Investor-Presentation_vF.pdf"
+        ],
+        "ticker": "PEP"
+      },
+      {
+        "id": "DATA_customer_071",
+        "name": "AstraZeneca",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "證據等級 B；公司投資人簡報具名客戶；未核實當期採購金額。Snowflake 2026 FY26 Q4 投資人簡報客戶 Logo 頁具名列示；此為已公布採用／客戶品牌證據，非 2026 新簽訂單，未揭露單一公司收入或採購額。",
+        "evidence_grade": "B",
+        "verification_status": "公司投資人簡報具名客戶；未核實當期採購金額",
+        "source_urls": [
+          "https://s26.q4cdn.com/463892824/files/doc_financials/2026/q4/Q4-FY2026-Investor-Presentation_vF.pdf"
+        ],
+        "ticker": "AZN"
+      },
+      {
+        "id": "DATA_customer_072",
+        "name": "Northern Trust",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "證據等級 B；公司投資人簡報具名客戶；未核實當期採購金額。Snowflake 2026 FY26 Q4 投資人簡報客戶 Logo 頁具名列示；此為已公布採用／客戶品牌證據，非 2026 新簽訂單，未揭露單一公司收入或採購額。",
+        "evidence_grade": "B",
+        "verification_status": "公司投資人簡報具名客戶；未核實當期採購金額",
+        "source_urls": [
+          "https://s26.q4cdn.com/463892824/files/doc_financials/2026/q4/Q4-FY2026-Investor-Presentation_vF.pdf"
+        ],
+        "ticker": "NTRS"
+      },
+      {
+        "id": "DATA_customer_073",
+        "name": "Snapchat",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "證據等級 B；公司投資人簡報具名客戶；未核實當期採購金額。Snowflake 2026 FY26 Q4 投資人簡報客戶 Logo 頁具名列示；此為已公布採用／客戶品牌證據，非 2026 新簽訂單，未揭露單一公司收入或採購額。",
+        "evidence_grade": "B",
+        "verification_status": "公司投資人簡報具名客戶；未核實當期採購金額",
+        "source_urls": [
+          "https://s26.q4cdn.com/463892824/files/doc_financials/2026/q4/Q4-FY2026-Investor-Presentation_vF.pdf"
+        ],
+        "ticker": "SNAP"
+      },
+      {
+        "id": "DATA_customer_074",
+        "name": "The Trade Desk",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "證據等級 B；公司投資人簡報具名客戶；未核實當期採購金額。Snowflake 2026 FY26 Q4 投資人簡報客戶 Logo 頁具名列示；此為已公布採用／客戶品牌證據，非 2026 新簽訂單，未揭露單一公司收入或採購額。",
+        "evidence_grade": "B",
+        "verification_status": "公司投資人簡報具名客戶；未核實當期採購金額",
+        "source_urls": [
+          "https://s26.q4cdn.com/463892824/files/doc_financials/2026/q4/Q4-FY2026-Investor-Presentation_vF.pdf"
+        ],
+        "ticker": "TTD"
+      },
+      {
+        "id": "DATA_customer_075",
+        "name": "Siemens",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "證據等級 B；公司投資人簡報具名客戶；未核實當期採購金額。Snowflake 2026 FY26 Q4 投資人簡報客戶 Logo 頁具名列示；此為已公布採用／客戶品牌證據，非 2026 新簽訂單，未揭露單一公司收入或採購額。",
+        "evidence_grade": "B",
+        "verification_status": "公司投資人簡報具名客戶；未核實當期採購金額",
+        "source_urls": [
+          "https://s26.q4cdn.com/463892824/files/doc_financials/2026/q4/Q4-FY2026-Investor-Presentation_vF.pdf"
+        ],
+        "ticker": "SIEGY"
+      },
+      {
+        "id": "DATA_customer_076",
+        "name": "Adobe",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "證據等級 B；公司投資人簡報具名客戶；未核實當期採購金額。Snowflake 2026 FY26 Q4 投資人簡報客戶 Logo 頁具名列示；此為已公布採用／客戶品牌證據，非 2026 新簽訂單，未揭露單一公司收入或採購額。",
+        "evidence_grade": "B",
+        "verification_status": "公司投資人簡報具名客戶；未核實當期採購金額",
+        "source_urls": [
+          "https://s26.q4cdn.com/463892824/files/doc_financials/2026/q4/Q4-FY2026-Investor-Presentation_vF.pdf"
+        ],
+        "ticker": "ADBE"
+      },
+      {
+        "id": "DATA_customer_077",
+        "name": "Cisco",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "證據等級 B；公司投資人簡報具名客戶；未核實當期採購金額。Snowflake 2026 FY26 Q4 投資人簡報客戶 Logo 頁具名列示；此為已公布採用／客戶品牌證據，非 2026 新簽訂單，未揭露單一公司收入或採購額。",
+        "evidence_grade": "B",
+        "verification_status": "公司投資人簡報具名客戶；未核實當期採購金額",
+        "source_urls": [
+          "https://s26.q4cdn.com/463892824/files/doc_financials/2026/q4/Q4-FY2026-Investor-Presentation_vF.pdf"
+        ],
+        "ticker": "CSCO"
+      },
+      {
+        "id": "DATA_customer_078",
+        "name": "Pfizer",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "證據等級 B；公司投資人簡報具名客戶；未核實當期採購金額。Snowflake 2026 FY26 Q4 投資人簡報客戶 Logo 頁具名列示；此為已公布採用／客戶品牌證據，非 2026 新簽訂單，未揭露單一公司收入或採購額。",
+        "evidence_grade": "B",
+        "verification_status": "公司投資人簡報具名客戶；未核實當期採購金額",
+        "source_urls": [
+          "https://s26.q4cdn.com/463892824/files/doc_financials/2026/q4/Q4-FY2026-Investor-Presentation_vF.pdf"
+        ],
+        "ticker": "PFE"
+      },
+      {
+        "id": "DATA_customer_079",
+        "name": "Coinbase",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "證據等級 B；公司投資人簡報具名客戶；未核實當期採購金額。Snowflake 2026 FY26 Q4 投資人簡報客戶 Logo 頁具名列示；此為已公布採用／客戶品牌證據，非 2026 新簽訂單，未揭露單一公司收入或採購額。",
+        "evidence_grade": "B",
+        "verification_status": "公司投資人簡報具名客戶；未核實當期採購金額",
+        "source_urls": [
+          "https://s26.q4cdn.com/463892824/files/doc_financials/2026/q4/Q4-FY2026-Investor-Presentation_vF.pdf"
+        ],
+        "ticker": "COIN"
+      },
+      {
+        "id": "DATA_customer_080",
+        "name": "Honeywell",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "證據等級 B；公司投資人簡報具名客戶；未核實當期採購金額。Snowflake 2026 FY26 Q4 投資人簡報客戶 Logo 頁具名列示；此為已公布採用／客戶品牌證據，非 2026 新簽訂單，未揭露單一公司收入或採購額。",
+        "evidence_grade": "B",
+        "verification_status": "公司投資人簡報具名客戶；未核實當期採購金額",
+        "source_urls": [
+          "https://s26.q4cdn.com/463892824/files/doc_financials/2026/q4/Q4-FY2026-Investor-Presentation_vF.pdf"
+        ],
+        "ticker": "HON"
+      },
+      {
+        "id": "DATA_customer_081",
+        "name": "ExxonMobil",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "證據等級 B；公司投資人簡報具名客戶；未核實當期採購金額。Snowflake 2026 FY26 Q4 投資人簡報客戶 Logo 頁具名列示；此為已公布採用／客戶品牌證據，非 2026 新簽訂單，未揭露單一公司收入或採購額。",
+        "evidence_grade": "B",
+        "verification_status": "公司投資人簡報具名客戶；未核實當期採購金額",
+        "source_urls": [
+          "https://s26.q4cdn.com/463892824/files/doc_financials/2026/q4/Q4-FY2026-Investor-Presentation_vF.pdf"
+        ],
+        "ticker": "XOM"
+      },
+      {
+        "id": "DATA_customer_082",
+        "name": "Emirates",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "證據等級 B；公司投資人簡報具名客戶；未核實當期採購金額。Snowflake 2026 FY26 Q4 投資人簡報客戶 Logo 頁具名列示；此為已公布採用／客戶品牌證據，非 2026 新簽訂單，未揭露單一公司收入或採購額。",
+        "evidence_grade": "B",
+        "verification_status": "公司投資人簡報具名客戶；未核實當期採購金額",
+        "source_urls": [
+          "https://s26.q4cdn.com/463892824/files/doc_financials/2026/q4/Q4-FY2026-Investor-Presentation_vF.pdf"
+        ]
+      },
+      {
+        "id": "DATA_customer_083",
+        "name": "Sainsbury’s",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "證據等級 B；公司投資人簡報具名客戶；未核實當期採購金額。Snowflake 2026 FY26 Q4 投資人簡報客戶 Logo 頁具名列示；此為已公布採用／客戶品牌證據，非 2026 新簽訂單，未揭露單一公司收入或採購額。",
+        "evidence_grade": "B",
+        "verification_status": "公司投資人簡報具名客戶；未核實當期採購金額",
+        "source_urls": [
+          "https://s26.q4cdn.com/463892824/files/doc_financials/2026/q4/Q4-FY2026-Investor-Presentation_vF.pdf"
+        ]
+      },
+      {
+        "id": "DATA_customer_084",
+        "name": "Rakuten",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "證據等級 B；公司投資人簡報具名客戶；未核實當期採購金額。Snowflake 2026 FY26 Q4 投資人簡報客戶 Logo 頁具名列示；此為已公布採用／客戶品牌證據，非 2026 新簽訂單，未揭露單一公司收入或採購額。",
+        "evidence_grade": "B",
+        "verification_status": "公司投資人簡報具名客戶；未核實當期採購金額",
+        "source_urls": [
+          "https://s26.q4cdn.com/463892824/files/doc_financials/2026/q4/Q4-FY2026-Investor-Presentation_vF.pdf"
+        ],
+        "ticker": "4755.T"
+      },
+      {
+        "id": "ICEBERG_partner_085",
+        "name": "Apache Software Foundation／Apache Polaris",
+        "business_line": "ICEBERG",
+        "relationship": "partner",
+        "details": "證據等級 A；官方開放標準專案；非商業採購。Snowflake 建立 Apache Polaris 並貢獻 Apache Software Foundation；2026-02 成為 ASF 頂級專案，2026-06 推進 Iceberg v3 與 Horizon Catalog 雙向存取。",
+        "evidence_grade": "A",
+        "verification_status": "官方開放標準專案；非商業採購",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-pioneers-new-open-framework-for-interoperable-enterprise-data-and-ai/"
+        ]
+      },
+      {
+        "id": "ICEBERG_beneficiary_086",
+        "name": "Apache Spark／Trino／Flink 生態",
+        "business_line": "ICEBERG",
+        "relationship": "beneficiary",
+        "details": "證據等級 B；開放標準互通，不是具名客戶。Snowflake 2026-06 公告透過 Iceberg REST Catalog 與外部引擎雙向讀寫，屬互通技術生態；不等於這些開源專案直接購買 Snowflake。",
+        "evidence_grade": "B",
+        "verification_status": "開放標準互通，不是具名客戶",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-pioneers-new-open-framework-for-interoperable-enterprise-data-and-ai/"
+        ]
+      },
+      {
+        "id": "HORIZON_beneficiary_087",
+        "name": "跨雲資料治理與開放資料湖企業",
+        "business_line": "HORIZON",
+        "relationship": "beneficiary",
+        "details": "證據等級 B；產品功能及需求映射。Horizon Catalog 可對 Snowflake 內外 Iceberg 資料提供治理及探索，為技術受益客群，非已確認採購法人。",
+        "evidence_grade": "B",
+        "verification_status": "產品功能及需求映射",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-pioneers-new-open-framework-for-interoperable-enterprise-data-and-ai/"
+        ]
+      },
+      {
+        "id": "SHARE_partner_088",
+        "name": "SAP",
+        "business_line": "SHARE",
+        "relationship": "partner",
+        "details": "證據等級 A；公司／合作方官方具名確認。2025-11 簽策略合作，2026-05 SAP Snowflake 與 SAP BDC Connect for Snowflake 正式可用，支援雙向零複製資料共享；不是僅規劃中的產品。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/blog/sap-snowflake-zero-copy-integration-enterprise-ai/"
+        ],
+        "ticker": "SAP"
+      },
+      {
+        "id": "COCO_customer_089",
+        "name": "Docusign",
+        "business_line": "COCO",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-11-03 官方宣布 Docusign 使用 Snowflake CoCo 與 CoWork 加速資料工程、對話式代理及業務團隊分析；未披露採購額。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/expedition-2026-coco-cowork/"
+        ],
+        "ticker": "DOCU"
+      },
+      {
+        "id": "COWORK_customer_090",
+        "name": "Pacific Life Insurance",
+        "business_line": "COWORK",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-11-03 官方列為使用 CoCo 與 CoWork 的企業之一，未披露合約金額。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/expedition-2026-coco-cowork/"
+        ]
+      },
+      {
+        "id": "COWORK_customer_091",
+        "name": "Shelter Mutual Insurance",
+        "business_line": "COWORK",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-11-03 官方列為使用 CoCo 與 CoWork 的企業之一，未披露合約金額。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/expedition-2026-coco-cowork/"
+        ]
+      },
+      {
+        "id": "COWORK_customer_092",
+        "name": "Klarent",
+        "business_line": "COWORK",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-11-03 官方列為 CoCo 與 CoWork 採用客戶，未披露合約金額。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/expedition-2026-coco-cowork/"
+        ]
+      },
+      {
+        "id": "ENGINEER_customer_093",
+        "name": "auxmoney",
+        "business_line": "ENGINEER",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-11-03 Snowflake 公告具名使用 Pipeline Builder 縮短管線部署時間；非已知大額新訂單。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/expedition-2026-autonomous-data-engineering/"
+        ]
+      },
+      {
+        "id": "ENGINEER_customer_094",
+        "name": "New American Funding",
+        "business_line": "ENGINEER",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-11-03 Snowflake 公告具名使用 Pipeline Builder 部署資料管線。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/expedition-2026-autonomous-data-engineering/"
+        ]
+      },
+      {
+        "id": "COCO_customer_095",
+        "name": "Fanatics",
+        "business_line": "COCO",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-06 Snowflake Summit 官方列為使用 CoCo 的客戶，並非 2026-11 新簽約。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-coco-redefines-enterprise-ai-development-as-the-coding-agent-built-for-faster-easier-and-more-powerful-innovation-anywhere/"
+        ]
+      },
+      {
+        "id": "DATA_customer_096",
+        "name": "Expand Energy",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026 Snowflake Energy Solutions 官方公告具名採用 Snowflake 的能源業客戶；未公開個別採購額。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-launches-energy-solutions-for-the-ai-data-cloud-to-accelerate-shift-to-a-lower-carbon-future/"
+        ],
+        "ticker": "EXE"
+      },
+      {
+        "id": "DATA_customer_097",
+        "name": "IGS Energy",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026 Snowflake Energy Solutions 官方公告具名採用 Snowflake 的能源業客戶；未公開個別採購額。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-launches-energy-solutions-for-the-ai-data-cloud-to-accelerate-shift-to-a-lower-carbon-future/"
+        ]
+      },
+      {
+        "id": "DATA_customer_098",
+        "name": "Powerex",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026 Snowflake Energy Solutions 官方公告具名採用 Snowflake 的能源業客戶；未公開個別採購額。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-launches-energy-solutions-for-the-ai-data-cloud-to-accelerate-shift-to-a-lower-carbon-future/"
+        ]
+      },
+      {
+        "id": "DATA_customer_099",
+        "name": "PG&E",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026 Snowflake Energy Solutions 官方公告具名採用 Snowflake 的能源業客戶；未公開個別採購額。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-launches-energy-solutions-for-the-ai-data-cloud-to-accelerate-shift-to-a-lower-carbon-future/"
+        ],
+        "ticker": "PCG"
+      },
+      {
+        "id": "DATA_customer_100",
+        "name": "Sunrun",
+        "business_line": "DATA",
+        "relationship": "customer",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026 Snowflake Energy Solutions 官方公告具名採用 Snowflake 的能源業客戶；未公開個別採購額。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/snowflake-launches-energy-solutions-for-the-ai-data-cloud-to-accelerate-shift-to-a-lower-carbon-future/"
+        ],
+        "ticker": "RUN"
+      },
+      {
+        "id": "COWORK_partner_101",
+        "name": "Slack",
+        "business_line": "COWORK",
+        "relationship": "partner",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-11 宣布 Snowflake for Slack 整合 CoCo／CoWork 代理工作流程；屬應用整合而非 Slack 向 Snowflake 下單。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/expedition-2026-coco-cowork/"
+        ]
+      },
+      {
+        "id": "COCO_partner_102",
+        "name": "GitHub",
+        "business_line": "COCO",
+        "relationship": "partner",
+        "details": "證據等級 A；公司／合作方官方具名確認。2026-11 公告 CoCo GitHub Integration 供代理程式變更走既有程式碼審查流程；技術整合非 GitHub 直接採購。",
+        "evidence_grade": "A",
+        "verification_status": "公司／合作方官方具名確認",
+        "source_urls": [
+          "https://www.snowflake.com/en/news/press-releases/expedition-2026-coco-cowork/"
+        ]
+      }
+    ],
+    "research_sources": [
+      {
+        "id": "SEC",
+        "url": "https://www.sec.gov/Archives/edgar/data/1640147/000164014726000008/snow-20260131.htm"
+      },
+      {
+        "id": "Q2",
+        "url": "https://investors.snowflake.com/financials/quarterly-results/default.aspx"
+      },
+      {
+        "id": "AWS",
+        "url": "https://www.snowflake.com/en/news/press-releases/snowflake-expands-aws-collaboration-with-6b-commitment-to-accelerate-enterprise-agentic-ai-adoption/"
+      },
+      {
+        "id": "OPENAI",
+        "url": "https://www.snowflake.com/en/news/press-releases/snowflake-and-openAI-forge-200-million-partnership-to-bring-enterprise-ready-ai-to-the-worlds-most-trusted-data-platform/"
+      },
+      {
+        "id": "ANTH",
+        "url": "https://www.snowflake.com/en/news/press-releases/snowflake-and-anthropic-announce-200-million-partnership-to-bring-agentic-ai-to-global-enterprises/"
+      },
+      {
+        "id": "ANTH2",
+        "url": "https://www.snowflake.com/en/news/press-releases/snowflake-and-anthropic-accelerate-enterprise-ai-adoption-driven-by-rising-demand-for-governed-ai/"
+      },
+      {
+        "id": "OCI",
+        "url": "https://www.snowflake.com/en/news/press-releases/oracle-expands-native-ai-and-data-services-on-oci-with-snowflake/"
+      },
+      {
+        "id": "GOOG",
+        "url": "https://www.snowflake.com/en/blog/gemini-3-snowflake-cortex-ai/"
+      },
+      {
+        "id": "MSFT",
+        "url": "https://www.snowflake.com/en/news/press-releases/snowflake-securely-integrates-microsoft-azure-openai-service-to-provide-access-to-the-latest-openai-models-with-expanded-microsoft-partnership/"
+      },
+      {
+        "id": "SANOFI",
+        "url": "https://www.snowflake.com/en/news/press-releases/sanofi-chooses-snowflake-to-accelerate-its-ai-powered-drug-development/"
+      },
+      {
+        "id": "TR",
+        "url": "https://www.snowflake.com/en/news/press-releases/thomson-reuters-powers-trusted-enterprise-ai-at-scale-on-snowflake/"
+      },
+      {
+        "id": "UNL",
+        "url": "https://www.snowflake.com/en/news/press-releases/unlimitail-chooses-snowflake-to-power-privacy-preserving-retail-media-across-europe-and-latin-america/"
+      },
+      {
+        "id": "LSEG",
+        "url": "https://www.snowflake.com/en/news/press-releases/lseg-snowflake-expand-collaboration/"
+      },
+      {
+        "id": "USA",
+        "url": "https://www.snowflake.com/en/news/press-releases/expedition-2026-usa-cycling-la28-games/"
+      },
+      {
+        "id": "CUSTOMER",
+        "url": "https://www.snowflake.com/en/customers/"
+      },
+      {
+        "id": "Q4",
+        "url": "https://www.snowflake.com/en/news/press-releases/snowflake-reports-financial-results-for-the-fourth-quarter-and-full-year-of-fiscal-2026/"
+      },
+      {
+        "id": "MODEL",
+        "url": "https://www.snowflake.com/en/why-snowflake/partners/model-partners/"
+      },
+      {
+        "id": "GCP",
+        "url": "https://www.snowflake.com/en/why-snowflake/partners/cloud-partners/google-cloud/"
+      },
+      {
+        "id": "ROUTE",
+        "url": "https://www.snowflake.com/en/news/press-releases/snowflake-unlocks-better-ai-economics-dynamic-model-routing/"
+      },
+      {
+        "id": "PRESS",
+        "url": "https://www.snowflake.com/en/news/press-releases/"
+      },
+      {
+        "id": "Q2SEC",
+        "url": "https://www.sec.gov/Archives/edgar/data/1640147/000164014726000037/snow-20260731.htm"
+      },
+      {
+        "id": "INVESTOR",
+        "url": "https://s26.q4cdn.com/463892824/files/doc_financials/2026/q4/Q4-FY2026-Investor-Presentation_vF.pdf"
+      },
+      {
+        "id": "NVIDIA",
+        "url": "https://www.snowflake.com/en/blog/unifying-enterprise-ai-lifecycle/"
+      },
+      {
+        "id": "NVIDIA2",
+        "url": "https://www.snowflake.com/en/news/press-releases/snowflake-supercharges-machine-learning-for-enterprises-with-native-integration-of-nvidia-cuda-x-libraries/"
+      },
+      {
+        "id": "NVIDIA3",
+        "url": "https://www.snowflake.com/en/blog/snowflake-nvidia-bionemo-agentic-ai-life-sciences/"
+      },
+      {
+        "id": "ICEBERG",
+        "url": "https://www.snowflake.com/en/news/press-releases/snowflake-pioneers-new-open-framework-for-interoperable-enterprise-data-and-ai/"
+      },
+      {
+        "id": "SAP",
+        "url": "https://www.snowflake.com/en/blog/sap-snowflake-zero-copy-integration-enterprise-ai/"
+      },
+      {
+        "id": "NOV3",
+        "url": "https://www.snowflake.com/en/news/press-releases/expedition-2026-coco-cowork/"
+      },
+      {
+        "id": "NOV3ENG",
+        "url": "https://www.snowflake.com/en/news/press-releases/expedition-2026-autonomous-data-engineering/"
+      },
+      {
+        "id": "ENERGY",
+        "url": "https://www.snowflake.com/en/news/press-releases/snowflake-launches-energy-solutions-for-the-ai-data-cloud-to-accelerate-shift-to-a-lower-carbon-future/"
+      },
+      {
+        "id": "COCO",
+        "url": "https://www.snowflake.com/en/news/press-releases/snowflake-coco-redefines-enterprise-ai-development-as-the-coding-agent-built-for-faster-easier-and-more-powerful-innovation-anywhere/"
+      }
+    ],
+    "research_notes": {
+      "original_git_blob_sha": "d627d8d8b1524ba45913238b564b812e75f050cb",
+      "source_commit": "da93c81d",
+      "data_cutoff": "2026-11-13",
+      "accounting_warning": "Snowflake FY2027 Q2 ended 2026-07-31; FY2027 Q3 results scheduled 2026-12-02, not yet released.",
+      "contract_warning": "AWS 60 億美元為 Snowflake 對 AWS 的五年支出承諾；OpenAI 與 Anthropic 各 2 億美元為合作協議，不能認列為 Snowflake 營收。",
+      "taiwan_warning": "未證實特定台灣上市公司與 Snowflake 直接交易，故不建立虛構供應商節點。",
+      "acquisition_correction": "2026-09 SEC 10-Q 已確認 Natoma 於 2026-06-03 完成收購，對價 1.283 億美元；Observe 於 2026-02-02 完成收購，對價 5.958 億美元。",
+      "financial_reference": "FY2027 Q2（截至 2026-07-31）總收入 15.5 億美元、產品收入 14.9 億美元、RPO 90 億美元；FY2027 Q3 尚未發布。",
+      "sec_10q": "https://www.sec.gov/Archives/edgar/data/1640147/000164014726000037/snow-20260731.htm"
+    }
   }
 }

@@ -320,54 +320,6 @@
       }
     ]
   },
-  "industry_chain": {
-    "role": "上游類比／混合訊號半導體設計商；磁性感測 IC 與電源 IC 供應商",
-    "upstream": {
-      "inputs": [
-        "矽晶圓",
-        "封裝基板與導線架",
-        "金線與銅線",
-        "模封材料",
-        "磁性材料（包括釤等稀土材料）"
-      ],
-      "production_partners": [
-        "第三方晶圓代工廠（未在此指定未證實名稱）",
-        "外部封裝測試（OSAT）合作夥伴"
-      ]
-    },
-    "midstream": {
-      "company": "Allegro MicroSystems",
-      "activities": [
-        "磁性感測 IC 設計",
-        "電源／馬達驅動 IC 設計",
-        "菲律賓 AMPI 封裝與測試",
-        "委外晶圓製造及部分後段製程"
-      ]
-    },
-    "downstream": {
-      "channels": [
-        "汽車 OEM 與 Tier 1",
-        "工業與機器人 OEM",
-        "資料中心供電／冷卻設備供應商",
-        "授權通路商"
-      ],
-      "applications": [
-        "電動車逆變器及電機控制",
-        "ADAS 與車身感測",
-        "AI 伺服器供電與散熱",
-        "人形機器人關節控制",
-        "工業電源轉換"
-      ]
-    },
-    "named_relationships": [
-      {
-        "name": "Sarcomere Dynamics",
-        "type": "2026-10-20 對外公告之機器人技術合作",
-        "source_url": "https://investors.allegromicro.com/news-releases/news-release-details/allegro-microsystems-unveils-48v-power-and-precision-sensing"
-      }
-    ],
-    "interpretation": "上下游屬供應鏈功能定位；除已明確揭露的合作外，不代表具名企業間已證實採購或供貨。"
-  },
   "latest_quarter": {
     "fiscal_year": 2027,
     "fiscal_quarter": 2,
@@ -391,5 +343,1106 @@
       "Original canonical extraction contains spurious products and markets; curated display deliberately excludes them.",
       "Value provenance is empty rather than fabricating original extractor character offsets."
     ]
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-11",
+    "company": "Allegro MicroSystems, Inc.",
+    "symbol": "ALGM",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "ALGM Allegro MicroSystems 磁性感測、車用電源、AI 資料中心與機器人產業鏈研究",
+      "description": "2026-11-11 截止之晶圓代工、封裝、Hall/GMR/TMR、車用與 AI 電源及 48V 機器人供應鏈，嚴格區分已確認交易及需求推論。"
+    },
+    "business_lines": [
+      {
+        "id": "HALL",
+        "name": "Hall-effect 車用磁性感測"
+      },
+      {
+        "id": "TMR",
+        "name": "XtremeSense TMR／GMR 精密感測"
+      },
+      {
+        "id": "CURRENT",
+        "name": "高頻寬電流感測與 GaN／SiC"
+      },
+      {
+        "id": "POSITION",
+        "name": "位置、角度及速度感測"
+      },
+      {
+        "id": "MOTOR",
+        "name": "BLDC 馬達驅動及控制"
+      },
+      {
+        "id": "POWER",
+        "name": "DC-DC、BCD 與 PMIC"
+      },
+      {
+        "id": "GATE",
+        "name": "隔離閘極驅動與電力轉換"
+      },
+      {
+        "id": "ADAS",
+        "name": "ADAS 安全與車身電子"
+      },
+      {
+        "id": "XEV",
+        "name": "電動車逆變器與電池管理"
+      },
+      {
+        "id": "AI_DC",
+        "name": "AI 資料中心供電及散熱"
+      },
+      {
+        "id": "ROBOT",
+        "name": "48V 人形機器人與關節控制"
+      },
+      {
+        "id": "INDUSTRIAL",
+        "name": "工業自動化及能源基建"
+      },
+      {
+        "id": "FOUNDRY",
+        "name": "晶圓代工與製程"
+      },
+      {
+        "id": "OSAT",
+        "name": "封裝測試與材料"
+      },
+      {
+        "id": "CHANNEL",
+        "name": "經銷通路及客戶生態"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "FOUNDRY_supplier_001",
+        "name": "United Microelectronics Corporation",
+        "business_line": "FOUNDRY",
+        "relationship": "supplier",
+        "details": "2026 年 10-K 直接具名主要晶圓代工夥伴；不推定個別產品的代工分配。",
+        "evidence_grade": "A｜SEC 10-K 具名",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "UMC"
+      },
+      {
+        "id": "FOUNDRY_supplier_002",
+        "name": "Taiwan Semiconductor Manufacturing Company",
+        "business_line": "FOUNDRY",
+        "relationship": "supplier",
+        "details": "2026 年 10-K 直接具名主要晶圓代工夥伴；不推定個別產品的代工分配。",
+        "evidence_grade": "A｜SEC 10-K 具名",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "TSM"
+      },
+      {
+        "id": "FOUNDRY_supplier_003",
+        "name": "Tower Semiconductor",
+        "business_line": "FOUNDRY",
+        "relationship": "supplier",
+        "details": "2026 年 10-K 直接具名主要晶圓代工夥伴；不推定個別產品的代工分配。",
+        "evidence_grade": "A｜SEC 10-K 具名",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "TSEM"
+      },
+      {
+        "id": "FOUNDRY_supplier_004",
+        "name": "Polar Semiconductor",
+        "business_line": "FOUNDRY",
+        "relationship": "supplier",
+        "details": "2026 年 10-K 直接具名主要晶圓代工夥伴；不推定個別產品的代工分配。",
+        "evidence_grade": "A｜SEC 10-K 具名",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ]
+      },
+      {
+        "id": "OSAT_supplier_005",
+        "name": "未具名外部 OSAT",
+        "business_line": "OSAT",
+        "relationship": "supplier",
+        "details": "10-K 確認外包封裝測試並於亞洲認證額外夥伴；無公開具名。",
+        "evidence_grade": "A｜SEC 確認類別；供應商未具名",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ]
+      },
+      {
+        "id": "OSAT_supplier_006",
+        "name": "未具名矽晶圓與積層基板供應商",
+        "business_line": "OSAT",
+        "relationship": "supplier",
+        "details": "10-K 明列材料類別；不能推定供應商。",
+        "evidence_grade": "A｜SEC 確認類別；供應商未具名",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ]
+      },
+      {
+        "id": "OSAT_supplier_007",
+        "name": "未具名導線架與封裝材料供應商",
+        "business_line": "OSAT",
+        "relationship": "supplier",
+        "details": "10-K 明列導線架、模封材料、金銅線；無具名廠商。",
+        "evidence_grade": "A｜SEC 確認類別；供應商未具名",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ]
+      },
+      {
+        "id": "TMR_supplier_008",
+        "name": "未具名稀土磁性材料供應商",
+        "business_line": "TMR",
+        "relationship": "supplier",
+        "details": "10-K 明列釤等稀土材料與出口限制風險；無具名廠商。",
+        "evidence_grade": "A｜SEC 確認類別；供應商未具名",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ]
+      },
+      {
+        "id": "ROBOT_partner_009",
+        "name": "Sarcomere Dynamics",
+        "business_line": "ROBOT",
+        "relationship": "partner",
+        "details": "2026-10-20 官方公告共同整合 Scorpion gripper 的馬達控制、感測及電源 IC；ARTUS Dex 24 自由度機器手屬後續規劃。",
+        "evidence_grade": "A｜官方共同合作",
+        "source_urls": [
+          "https://www.allegromicro.com/en/about-allegro/newsroom/press-releases/2026/power-and-precision-sensing-to-enhance-physical-ai"
+        ]
+      },
+      {
+        "id": "ROBOT_customer_010",
+        "name": "Sarcomere Dynamics",
+        "business_line": "ROBOT",
+        "relationship": "customer",
+        "details": "官方確認 Scorpion gripper 已整合 Allegro 晶片，屬公開採用案例；未披露採購金額。",
+        "evidence_grade": "A｜官方具名採用",
+        "source_urls": [
+          "https://www.allegromicro.com/en/about-allegro/newsroom/press-releases/2026/power-and-precision-sensing-to-enhance-physical-ai"
+        ]
+      },
+      {
+        "id": "FOUNDRY_partner_011",
+        "name": "Polar Semiconductor",
+        "business_line": "FOUNDRY",
+        "relationship": "partner",
+        "details": "晶圓製造合作及 Allegro 間接股權關係；不可將股權投資等同於獨家代工。",
+        "evidence_grade": "A｜SEC 具名",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ]
+      },
+      {
+        "id": "CHANNEL_partner_012",
+        "name": "Sanken Electric",
+        "business_line": "CHANNEL",
+        "relationship": "partner",
+        "details": "歷史關係人及日本銷售通路；過渡分銷關係應按合約期限解讀，不代表現行全球獨家經銷。",
+        "evidence_grade": "B｜SEC 歷史合作",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "6707.T"
+      },
+      {
+        "id": "XEV_customer_013",
+        "name": "未具名汽車 OEM 與 Tier 1",
+        "business_line": "XEV",
+        "relationship": "customer",
+        "details": "公司確認汽車 OEM／Tier 1 客群，但未公開逐一採購名單。",
+        "evidence_grade": "A｜SEC／公司確認客群但未具名",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ]
+      },
+      {
+        "id": "ADAS_customer_014",
+        "name": "未具名 ADAS 模組製造商",
+        "business_line": "ADAS",
+        "relationship": "customer",
+        "details": "車用磁性位置與速度感測下游客群；未揭露具名直接客戶。",
+        "evidence_grade": "A｜SEC／公司確認客群但未具名",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ]
+      },
+      {
+        "id": "AI_DC_customer_015",
+        "name": "未具名 AI 資料中心電源 OEM",
+        "business_line": "AI_DC",
+        "relationship": "customer",
+        "details": "高頻寬電流感測應用於電力轉換；未具名。",
+        "evidence_grade": "A｜SEC／公司確認客群但未具名",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ]
+      },
+      {
+        "id": "AI_DC_customer_016",
+        "name": "未具名 AI 資料中心散熱 OEM",
+        "business_line": "AI_DC",
+        "relationship": "customer",
+        "details": "風扇及液冷泵馬達驅動應用；未具名。",
+        "evidence_grade": "A｜SEC／公司確認客群但未具名",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ]
+      },
+      {
+        "id": "INDUSTRIAL_customer_017",
+        "name": "未具名工業設備 OEM",
+        "business_line": "INDUSTRIAL",
+        "relationship": "customer",
+        "details": "10-K 確認工業客群；未具名。",
+        "evidence_grade": "A｜SEC／公司確認客群但未具名",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ]
+      },
+      {
+        "id": "ROBOT_customer_018",
+        "name": "未具名機器人 OEM",
+        "business_line": "ROBOT",
+        "relationship": "customer",
+        "details": "48V PMIC 與位置感測市場客群；不以市場參與推定採購。",
+        "evidence_grade": "A｜SEC／公司確認客群但未具名",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ]
+      },
+      {
+        "id": "CHANNEL_customer_019",
+        "name": "未具名最大非關係人經銷商",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "FY2026 最大非關係人經銷商營收占比 9.4%，未揭露名稱。",
+        "evidence_grade": "A｜SEC／公司確認客群但未具名",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ]
+      },
+      {
+        "id": "CHANNEL_customer_020",
+        "name": "未具名其他經銷商",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "details": "FY2026 經銷通路營收占比約 55%，未揭露完整名單。",
+        "evidence_grade": "A｜SEC／公司確認客群但未具名",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ]
+      },
+      {
+        "id": "HALL_competitor_021",
+        "name": "Melexis",
+        "business_line": "HALL",
+        "relationship": "competitor",
+        "details": "產品競爭／部分相鄰市場：車用 Hall 磁性感測；不代表交易或市場份額可直接比較。",
+        "evidence_grade": "B｜產品市場對照；非交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "MELE.BR"
+      },
+      {
+        "id": "HALL_competitor_022",
+        "name": "TDK-Micronas",
+        "business_line": "HALL",
+        "relationship": "competitor",
+        "details": "產品競爭／部分相鄰市場：Hall 車用位置感測；不代表交易或市場份額可直接比較。",
+        "evidence_grade": "B｜產品市場對照；非交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ]
+      },
+      {
+        "id": "CURRENT_competitor_023",
+        "name": "Infineon Technologies",
+        "business_line": "CURRENT",
+        "relationship": "competitor",
+        "details": "產品競爭／部分相鄰市場：電流感測與車用電源；不代表交易或市場份額可直接比較。",
+        "evidence_grade": "B｜產品市場對照；非交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "IFX.DE"
+      },
+      {
+        "id": "CURRENT_competitor_024",
+        "name": "Texas Instruments",
+        "business_line": "CURRENT",
+        "relationship": "competitor",
+        "details": "產品競爭／部分相鄰市場：電流感測與類比電源；不代表交易或市場份額可直接比較。",
+        "evidence_grade": "B｜產品市場對照；非交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "TXN"
+      },
+      {
+        "id": "XEV_competitor_025",
+        "name": "onsemi",
+        "business_line": "XEV",
+        "relationship": "competitor",
+        "details": "產品競爭／部分相鄰市場：車用電源及電流感測；不代表交易或市場份額可直接比較。",
+        "evidence_grade": "B｜產品市場對照；非交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "ON"
+      },
+      {
+        "id": "ADAS_competitor_026",
+        "name": "NXP Semiconductors",
+        "business_line": "ADAS",
+        "relationship": "competitor",
+        "details": "產品競爭／部分相鄰市場：車用位置感測及 PMIC；不代表交易或市場份額可直接比較。",
+        "evidence_grade": "B｜產品市場對照；非交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "NXPI"
+      },
+      {
+        "id": "MOTOR_competitor_027",
+        "name": "STMicroelectronics",
+        "business_line": "MOTOR",
+        "relationship": "competitor",
+        "details": "產品競爭／部分相鄰市場：馬達驅動及車用感測；不代表交易或市場份額可直接比較。",
+        "evidence_grade": "B｜產品市場對照；非交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "STM"
+      },
+      {
+        "id": "CURRENT_competitor_028",
+        "name": "Analog Devices",
+        "business_line": "CURRENT",
+        "relationship": "competitor",
+        "details": "產品競爭／部分相鄰市場：精密電流感測及隔離；不代表交易或市場份額可直接比較。",
+        "evidence_grade": "B｜產品市場對照；非交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "ADI"
+      },
+      {
+        "id": "POWER_competitor_029",
+        "name": "Monolithic Power Systems",
+        "business_line": "POWER",
+        "relationship": "competitor",
+        "details": "產品競爭／部分相鄰市場：DC-DC 與高密度 PMIC；不代表交易或市場份額可直接比較。",
+        "evidence_grade": "B｜產品市場對照；非交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "MPWR"
+      },
+      {
+        "id": "POWER_competitor_030",
+        "name": "Renesas Electronics",
+        "business_line": "POWER",
+        "relationship": "competitor",
+        "details": "產品競爭／部分相鄰市場：車用 PMIC 與馬達控制；不代表交易或市場份額可直接比較。",
+        "evidence_grade": "B｜產品市場對照；非交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "6723.T"
+      },
+      {
+        "id": "GATE_competitor_031",
+        "name": "ROHM",
+        "business_line": "GATE",
+        "relationship": "competitor",
+        "details": "產品競爭／部分相鄰市場：隔離閘極驅動與車用電源；不代表交易或市場份額可直接比較。",
+        "evidence_grade": "B｜產品市場對照；非交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "6963.T"
+      },
+      {
+        "id": "MOTOR_competitor_032",
+        "name": "Diodes Incorporated",
+        "business_line": "MOTOR",
+        "relationship": "competitor",
+        "details": "產品競爭／部分相鄰市場：馬達驅動與電源管理；不代表交易或市場份額可直接比較。",
+        "evidence_grade": "B｜產品市場對照；非交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "DIOD"
+      },
+      {
+        "id": "POSITION_competitor_033",
+        "name": "Alps Alpine",
+        "business_line": "POSITION",
+        "relationship": "competitor",
+        "details": "產品競爭／部分相鄰市場：車用位置感測器；不代表交易或市場份額可直接比較。",
+        "evidence_grade": "B｜產品市場對照；非交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "6770.T"
+      },
+      {
+        "id": "CURRENT_competitor_034",
+        "name": "Sensata Technologies",
+        "business_line": "CURRENT",
+        "relationship": "competitor",
+        "details": "產品競爭／部分相鄰市場：車用電流感測系統與模組；層級不同；不代表交易或市場份額可直接比較。",
+        "evidence_grade": "B｜產品市場對照；非交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "ST"
+      },
+      {
+        "id": "CURRENT_competitor_035",
+        "name": "LEM Holding",
+        "business_line": "CURRENT",
+        "relationship": "competitor",
+        "details": "產品競爭／部分相鄰市場：工業電流感測模組；層級不同；不代表交易或市場份額可直接比較。",
+        "evidence_grade": "B｜產品市場對照；非交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "LEHN.SW"
+      },
+      {
+        "id": "TMR_competitor_036",
+        "name": "Asahi Kasei Microdevices",
+        "business_line": "TMR",
+        "relationship": "competitor",
+        "details": "產品競爭／部分相鄰市場：磁性感測及角度 IC；不代表交易或市場份額可直接比較。",
+        "evidence_grade": "B｜產品市場對照；非交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ]
+      },
+      {
+        "id": "TMR_competitor_037",
+        "name": "NVE Corporation",
+        "business_line": "TMR",
+        "relationship": "competitor",
+        "details": "產品競爭／部分相鄰市場：GMR／TMR 感測元件；不代表交易或市場份額可直接比較。",
+        "evidence_grade": "B｜產品市場對照；非交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "NVEC"
+      },
+      {
+        "id": "TMR_competitor_038",
+        "name": "MultiDimension Technology",
+        "business_line": "TMR",
+        "relationship": "competitor",
+        "details": "產品競爭／部分相鄰市場：TMR 磁性感測；不代表交易或市場份額可直接比較。",
+        "evidence_grade": "B｜產品市場對照；非交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ]
+      },
+      {
+        "id": "GATE_competitor_039",
+        "name": "Novosense Microelectronics",
+        "business_line": "GATE",
+        "relationship": "competitor",
+        "details": "產品競爭／部分相鄰市場：隔離驅動與電流感測；不代表交易或市場份額可直接比較。",
+        "evidence_grade": "B｜產品市場對照；非交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "688052.SS"
+      },
+      {
+        "id": "MOTOR_competitor_040",
+        "name": "Microchip Technology",
+        "business_line": "MOTOR",
+        "relationship": "competitor",
+        "details": "產品競爭／部分相鄰市場：馬達驅動與車用類比；不代表交易或市場份額可直接比較。",
+        "evidence_grade": "B｜產品市場對照；非交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "MCHP"
+      },
+      {
+        "id": "GATE_competitor_041",
+        "name": "Power Integrations",
+        "business_line": "GATE",
+        "relationship": "competitor",
+        "details": "產品競爭／部分相鄰市場：高壓電源轉換及驅動；不代表交易或市場份額可直接比較。",
+        "evidence_grade": "B｜產品市場對照；非交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "POWI"
+      },
+      {
+        "id": "CURRENT_competitor_042",
+        "name": "Vishay Intertechnology",
+        "business_line": "CURRENT",
+        "relationship": "competitor",
+        "details": "產品競爭／部分相鄰市場：電流量測元件與功率元件；相鄰市場；不代表交易或市場份額可直接比較。",
+        "evidence_grade": "B｜產品市場對照；非交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "VSH"
+      },
+      {
+        "id": "FOUNDRY_beneficiary_043",
+        "name": "台積電",
+        "business_line": "FOUNDRY",
+        "relationship": "beneficiary",
+        "details": "直接晶圓代工，訂單變動與供應需求連動",
+        "evidence_grade": "A｜已確認直接供應鏈",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "2330.TW"
+      },
+      {
+        "id": "FOUNDRY_beneficiary_044",
+        "name": "聯電",
+        "business_line": "FOUNDRY",
+        "relationship": "beneficiary",
+        "details": "直接晶圓代工，特殊製程需求連動",
+        "evidence_grade": "A｜已確認直接供應鏈",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "2303.TW"
+      },
+      {
+        "id": "FOUNDRY_beneficiary_045",
+        "name": "Tower Semiconductor",
+        "business_line": "FOUNDRY",
+        "relationship": "beneficiary",
+        "details": "直接晶圓代工，特殊類比製程需求連動",
+        "evidence_grade": "A｜已確認直接供應鏈",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "TSEM"
+      },
+      {
+        "id": "OSAT_beneficiary_046",
+        "name": "京元電子",
+        "business_line": "OSAT",
+        "relationship": "beneficiary",
+        "details": "IC 測試需求連動；未確認 Allegro 採購",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "2449.TW"
+      },
+      {
+        "id": "OSAT_beneficiary_047",
+        "name": "日月光投控",
+        "business_line": "OSAT",
+        "relationship": "beneficiary",
+        "details": "封測需求連動；未確認 Allegro 採購",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "3711.TW"
+      },
+      {
+        "id": "OSAT_beneficiary_048",
+        "name": "力成科技",
+        "business_line": "OSAT",
+        "relationship": "beneficiary",
+        "details": "IC 封測需求連動；未確認交易",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "6239.TW"
+      },
+      {
+        "id": "OSAT_beneficiary_049",
+        "name": "矽格",
+        "business_line": "OSAT",
+        "relationship": "beneficiary",
+        "details": "測試需求連動；未確認交易",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "6257.TW"
+      },
+      {
+        "id": "OSAT_beneficiary_050",
+        "name": "欣銓",
+        "business_line": "OSAT",
+        "relationship": "beneficiary",
+        "details": "車用 IC 測試需求連動；未確認交易",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "3264.TWO"
+      },
+      {
+        "id": "OSAT_beneficiary_051",
+        "name": "頎邦",
+        "business_line": "OSAT",
+        "relationship": "beneficiary",
+        "details": "封測需求連動；未確認交易",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "6147.TW"
+      },
+      {
+        "id": "OSAT_beneficiary_052",
+        "name": "南茂",
+        "business_line": "OSAT",
+        "relationship": "beneficiary",
+        "details": "封測需求連動；未確認交易",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "8150.TW"
+      },
+      {
+        "id": "FOUNDRY_beneficiary_053",
+        "name": "環球晶",
+        "business_line": "FOUNDRY",
+        "relationship": "beneficiary",
+        "details": "成熟特殊製程矽晶圓需求連動；未確認直接供應",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "6488.TWO"
+      },
+      {
+        "id": "FOUNDRY_beneficiary_054",
+        "name": "中美晶",
+        "business_line": "FOUNDRY",
+        "relationship": "beneficiary",
+        "details": "半導體材料上游需求連動；未確認直接供應",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "5483.TWO"
+      },
+      {
+        "id": "FOUNDRY_beneficiary_055",
+        "name": "台勝科",
+        "business_line": "FOUNDRY",
+        "relationship": "beneficiary",
+        "details": "矽晶圓需求連動；未確認直接供應",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "3532.TW"
+      },
+      {
+        "id": "FOUNDRY_beneficiary_056",
+        "name": "合晶",
+        "business_line": "FOUNDRY",
+        "relationship": "beneficiary",
+        "details": "特殊製程矽晶圓需求連動；未確認直接供應",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "6182.TWO"
+      },
+      {
+        "id": "OSAT_beneficiary_057",
+        "name": "長科*",
+        "business_line": "OSAT",
+        "relationship": "beneficiary",
+        "details": "導線架需求連動；未確認直接供應",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "6548.TW"
+      },
+      {
+        "id": "OSAT_beneficiary_058",
+        "name": "順德",
+        "business_line": "OSAT",
+        "relationship": "beneficiary",
+        "details": "功率半導體導線架需求連動；未確認交易",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "2351.TW"
+      },
+      {
+        "id": "OSAT_beneficiary_059",
+        "name": "界霖",
+        "business_line": "OSAT",
+        "relationship": "beneficiary",
+        "details": "導線架需求連動；未確認交易",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "5285.TW"
+      },
+      {
+        "id": "OSAT_beneficiary_060",
+        "name": "華立",
+        "business_line": "OSAT",
+        "relationship": "beneficiary",
+        "details": "半導體材料通路需求連動；未確認交易",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "3010.TW"
+      },
+      {
+        "id": "OSAT_beneficiary_061",
+        "name": "崇越",
+        "business_line": "OSAT",
+        "relationship": "beneficiary",
+        "details": "半導體製程材料需求連動；未確認交易",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "5434.TW"
+      },
+      {
+        "id": "CHANNEL_beneficiary_062",
+        "name": "大聯大",
+        "business_line": "CHANNEL",
+        "relationship": "beneficiary",
+        "details": "類比 IC 經銷市場需求連動；未確認 Allegro 授權",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "3702.TW"
+      },
+      {
+        "id": "CHANNEL_beneficiary_063",
+        "name": "文曄",
+        "business_line": "CHANNEL",
+        "relationship": "beneficiary",
+        "details": "電子零件通路需求連動；未確認 Allegro 授權",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "3036.TW"
+      },
+      {
+        "id": "CHANNEL_beneficiary_064",
+        "name": "至上",
+        "business_line": "CHANNEL",
+        "relationship": "beneficiary",
+        "details": "電子零件通路需求連動；未確認 Allegro 授權",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "8112.TW"
+      },
+      {
+        "id": "ROBOT_beneficiary_065",
+        "name": "貿聯-KY",
+        "business_line": "ROBOT",
+        "relationship": "beneficiary",
+        "details": "機器人 48V 線束與高電流連接需求連動；未確認交易",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "3665.TW"
+      },
+      {
+        "id": "ROBOT_beneficiary_066",
+        "name": "信邦",
+        "business_line": "ROBOT",
+        "relationship": "beneficiary",
+        "details": "機器人線束與工業連接需求連動；未確認交易",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "3023.TW"
+      },
+      {
+        "id": "AI_DC_beneficiary_067",
+        "name": "台達電",
+        "business_line": "AI_DC",
+        "relationship": "beneficiary",
+        "details": "AI 資料中心電源與散熱市場需求連動；未確認 Allegro 採用",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "2308.TW"
+      },
+      {
+        "id": "AI_DC_beneficiary_068",
+        "name": "光寶科",
+        "business_line": "AI_DC",
+        "relationship": "beneficiary",
+        "details": "伺服器電源需求連動；未確認 Allegro 採用",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "2301.TW"
+      },
+      {
+        "id": "AI_DC_beneficiary_069",
+        "name": "群電",
+        "business_line": "AI_DC",
+        "relationship": "beneficiary",
+        "details": "電源產品需求連動；未確認交易",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "6412.TW"
+      },
+      {
+        "id": "AI_DC_beneficiary_070",
+        "name": "康舒",
+        "business_line": "AI_DC",
+        "relationship": "beneficiary",
+        "details": "資料中心電源需求連動；未確認交易",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "6282.TW"
+      },
+      {
+        "id": "AI_DC_beneficiary_071",
+        "name": "奇鋐",
+        "business_line": "AI_DC",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器風扇與液冷需求連動；未確認 Allegro 採用",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "3017.TW"
+      },
+      {
+        "id": "AI_DC_beneficiary_072",
+        "name": "雙鴻",
+        "business_line": "AI_DC",
+        "relationship": "beneficiary",
+        "details": "液冷需求連動；未確認 Allegro 採用",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "3324.TW"
+      },
+      {
+        "id": "AI_DC_beneficiary_073",
+        "name": "建準",
+        "business_line": "AI_DC",
+        "relationship": "beneficiary",
+        "details": "風扇馬達驅動應用需求連動；未確認 Allegro 採用",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "2421.TW"
+      },
+      {
+        "id": "AI_DC_beneficiary_074",
+        "name": "健策",
+        "business_line": "AI_DC",
+        "relationship": "beneficiary",
+        "details": "AI 散熱機構件需求連動；非直接交易",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "3653.TW"
+      },
+      {
+        "id": "AI_DC_beneficiary_075",
+        "name": "廣達",
+        "business_line": "AI_DC",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器電力與散熱需求連動；非直接客戶確認",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "2382.TW"
+      },
+      {
+        "id": "AI_DC_beneficiary_076",
+        "name": "緯穎",
+        "business_line": "AI_DC",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器 ODM 電源／冷卻需求連動；非直接客戶確認",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "6669.TW"
+      },
+      {
+        "id": "AI_DC_beneficiary_077",
+        "name": "緯創",
+        "business_line": "AI_DC",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器 ODM 電源／冷卻需求連動；非直接客戶確認",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "3231.TW"
+      },
+      {
+        "id": "AI_DC_beneficiary_078",
+        "name": "英業達",
+        "business_line": "AI_DC",
+        "relationship": "beneficiary",
+        "details": "伺服器電源與風扇控制需求連動；非直接客戶確認",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "2356.TW"
+      },
+      {
+        "id": "ROBOT_beneficiary_079",
+        "name": "鴻海",
+        "business_line": "ROBOT",
+        "relationship": "beneficiary",
+        "details": "AI 伺服器與機器人需求連動；非直接客戶確認",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "2317.TW"
+      },
+      {
+        "id": "XEV_beneficiary_080",
+        "name": "和大",
+        "business_line": "XEV",
+        "relationship": "beneficiary",
+        "details": "車用電動傳動需求連動；未確認交易",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "1536.TW"
+      },
+      {
+        "id": "XEV_beneficiary_081",
+        "name": "朋程",
+        "business_line": "XEV",
+        "relationship": "beneficiary",
+        "details": "車用功率半導體需求連動；未確認交易",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "8255.TW"
+      },
+      {
+        "id": "XEV_beneficiary_082",
+        "name": "致茂",
+        "business_line": "XEV",
+        "relationship": "beneficiary",
+        "details": "車用功率測試設備需求連動；非直接交易",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "2360.TW"
+      },
+      {
+        "id": "INDUSTRIAL_beneficiary_083",
+        "name": "亞德客-KY",
+        "business_line": "INDUSTRIAL",
+        "relationship": "beneficiary",
+        "details": "工業自動化需求連動；非直接交易",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "1590.TW"
+      },
+      {
+        "id": "ROBOT_beneficiary_084",
+        "name": "上銀",
+        "business_line": "ROBOT",
+        "relationship": "beneficiary",
+        "details": "機器人傳動需求連動；非直接交易",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "2049.TW"
+      },
+      {
+        "id": "ROBOT_beneficiary_085",
+        "name": "全球傳動",
+        "business_line": "ROBOT",
+        "relationship": "beneficiary",
+        "details": "機器人線性傳動需求連動；非直接交易",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "4540.TW"
+      },
+      {
+        "id": "ROBOT_beneficiary_086",
+        "name": "直得",
+        "business_line": "ROBOT",
+        "relationship": "beneficiary",
+        "details": "精密傳動需求連動；非直接交易",
+        "evidence_grade": "C｜產業需求推論，非確認交易",
+        "source_urls": [
+          "https://investors.allegromicro.com/static-files/45b2cf96-8e90-4ff3-a7d8-1a33383d6e4d"
+        ],
+        "ticker": "1597.TW"
+      }
+    ],
+    "research_notes": {
+      "scope": "以 2026-11-11 為截止；SEC FY2026 10-K、2026 Q2 10-Q 與 2026-10-20 Allegro 官方公告；競爭者與台灣受惠映射為產品市場比較及需求推論，不能視為已確認交易。",
+      "original_policy": "原始 11 個標準欄位、latest_quarter、research_metadata 維持不變；替換原本不符合五類節點 schema 的 industry_chain 摘要。",
+      "source_quality": "直接供應商／合作關係由 SEC 或官方公告具名；競爭者及受惠者未逐一完成雙方官方交叉查證。",
+      "financial_note": "FY2026 財務數字沿用原始 display；2026-09-25 季度資訊保留原始 latest_quarter。"
+    }
   }
 }

@@ -316,5 +316,943 @@
       "電力市場波動"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "locale": "zh-TW",
+    "symbol": "FLNC",
+    "company": "Fluence Energy, Inc.",
+    "as_of": "2026-11-12",
+    "original_commit": "da93c81d",
+    "original_blob_sha": "eb727ca7d25f248a3a7097324203beaed103afc9",
+    "business_lines": [
+      {
+        "id": "GRIDSTACK",
+        "name": "Gridstack 與 Gridstack Pro 公用事業級儲能",
+        "segment": "Energy Storage"
+      },
+      {
+        "id": "SMARTSTACK",
+        "name": "Smartstack 7.5／10 MWh 模組化儲能",
+        "segment": "Energy Storage"
+      },
+      {
+        "id": "ULTRASTACK",
+        "name": "Ultrastack 超快速響應與電網支援",
+        "segment": "Energy Storage"
+      },
+      {
+        "id": "BESS_GRID",
+        "name": "電網側容量、調頻與調度型 BESS",
+        "segment": "Energy Storage"
+      },
+      {
+        "id": "BESS_SOLAR",
+        "name": "太陽能／風電配套儲能與混合電廠",
+        "segment": "Energy Storage"
+      },
+      {
+        "id": "BESS_GFM",
+        "name": "Grid-forming 逆變器、黑啟動與系統強度",
+        "segment": "Energy Storage"
+      },
+      {
+        "id": "DC_BTM",
+        "name": "資料中心表後儲能與 AI 負載平滑",
+        "segment": "Energy Storage"
+      },
+      {
+        "id": "DC_REFERENCE",
+        "name": "AI Factory 供電與控制參考架構",
+        "segment": "Energy Storage"
+      },
+      {
+        "id": "EPC",
+        "name": "EPC 工程、採購、施工、併網與調試",
+        "segment": "Services"
+      },
+      {
+        "id": "LTSA",
+        "name": "長期服務、維保、遠端監測",
+        "segment": "Services"
+      },
+      {
+        "id": "FLUENCE_OS",
+        "name": "Fluence OS 儲能能源管理與控制",
+        "segment": "Digital"
+      },
+      {
+        "id": "MOSAIC",
+        "name": "Mosaic AI 電力市場競標最佳化",
+        "segment": "Digital"
+      },
+      {
+        "id": "NISPERA",
+        "name": "Nispera 再生能源與儲能資產績效",
+        "segment": "Digital"
+      },
+      {
+        "id": "BMS",
+        "name": "BMS、電池模組與安全管理",
+        "segment": "Supply Chain"
+      },
+      {
+        "id": "CELLS",
+        "name": "LFP 電芯、國際供應與美國國產化",
+        "segment": "Supply Chain"
+      },
+      {
+        "id": "PCS",
+        "name": "PCS 逆變器、變壓器與電力電子",
+        "segment": "Supply Chain"
+      },
+      {
+        "id": "THERMAL",
+        "name": "液冷、熱管理與安全消防",
+        "segment": "Supply Chain"
+      },
+      {
+        "id": "MANUF_US",
+        "name": "美國 Utah、Tennessee、South Carolina、Texas 製造",
+        "segment": "Supply Chain"
+      },
+      {
+        "id": "MANUF_INT",
+        "name": "國際委外製造、模組與箱體",
+        "segment": "Supply Chain"
+      },
+      {
+        "id": "CHANNEL_TW",
+        "name": "台灣儲能市場、富安能源與工業微電網",
+        "segment": "Geography"
+      },
+      {
+        "id": "CHANNEL_AU",
+        "name": "澳洲 NEM 大型儲能與軟體",
+        "segment": "Geography"
+      },
+      {
+        "id": "CHANNEL_EU",
+        "name": "德國與歐洲儲能市場",
+        "segment": "Geography"
+      },
+      {
+        "id": "CORPORATE",
+        "name": "AES／Siemens 股東關係與執行風險",
+        "segment": "Corporate"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "FLNC-001",
+        "business_line": "CHANNEL_EU",
+        "relationship": "customer",
+        "name": "Vattenfall",
+        "details": "2026-10-14 簽 Brunsbüttel 254MW／逾1GWh Gridstack Pro 5000 統包 EPC 及長期服務；2027 動工，2028 年底預計併網。",
+        "evidence_url": "https://ir.fluenceenergy.com/news-releases/news-release-details/vattenfall-awards-1-gwh-brunsbuttel-battery-storage-project",
+        "evidence_grade": "254 MW／>1,000 MWh",
+        "commercial_stage": "signed_future_delivery",
+        "evidence_date": "2026-10-14"
+      },
+      {
+        "id": "FLNC-002",
+        "business_line": "CHANNEL_EU",
+        "relationship": "customer",
+        "name": "LEAG Clean Power GmbH",
+        "details": "2026-08 Heinersbrück GridBattery 400MWh 開工，採 Smartstack；與 LEAG 第二個專案，預計 2027 完工。",
+        "evidence_url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-and-leag-clean-power-start-construction-their-second",
+        "evidence_grade": "400 MWh",
+        "commercial_stage": "under_construction",
+        "evidence_date": "2026-08-13"
+      },
+      {
+        "id": "FLNC-003",
+        "business_line": "BESS_SOLAR",
+        "relationship": "customer",
+        "name": "Avantus",
+        "details": "2026-07-13 Rexford 2 200MW／800MWh Smartstack 美國國產化儲能＋統包 EPC，2027 預計開工、2028 年底商轉。",
+        "evidence_url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-provide-us-domestic-content-smartstack-system-avantus",
+        "evidence_grade": "200 MW／800 MWh",
+        "commercial_stage": "signed_future_delivery",
+        "evidence_date": "2026-07-13"
+      },
+      {
+        "id": "FLNC-004",
+        "business_line": "CHANNEL_AU",
+        "relationship": "customer",
+        "name": "AGL Energy",
+        "details": "2025-07 Tomago 500MW／2,000MWh Gridstack 專案已簽約，2026 仍在開發／建置期，非 2026 新訂單。",
+        "evidence_url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-and-agl-sign-deal-deliver-500-mw-2000-mwh-tomago-battery",
+        "evidence_grade": "500 MW／2,000 MWh",
+        "commercial_stage": "signed_2025_project",
+        "evidence_date": "2025-07-30"
+      },
+      {
+        "id": "FLNC-005",
+        "business_line": "CHANNEL_AU",
+        "relationship": "customer",
+        "name": "AGL Energy",
+        "details": "2023-12 Liddell 500MW／1,000MWh 儲能 EPC＋5 年服務，2026 ARENA 連網文件確認 Fluence 為 EPC 承包商。",
+        "evidence_url": "https://ir.fluenceenergy.com/news-releases/news-release-details/agl-selects-fluence-deliver-500-mw-liddell-battery-project/",
+        "evidence_grade": "500 MW／1,000 MWh",
+        "commercial_stage": "historical_contract_2026_execution",
+        "evidence_date": "2023-12-20"
+      },
+      {
+        "id": "FLNC-006",
+        "business_line": "CHANNEL_AU",
+        "relationship": "customer",
+        "name": "AGL Energy",
+        "details": "Broken Hill 50MWh 為 AGL 已完成歷史案，官方 Tomago 公告確認；不列 2026 新訂單。",
+        "evidence_url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-and-agl-sign-deal-deliver-500-mw-2000-mwh-tomago-battery",
+        "evidence_grade": "50 MWh",
+        "commercial_stage": "historical_operating",
+        "evidence_date": "2025-07-30"
+      },
+      {
+        "id": "FLNC-007",
+        "business_line": "CHANNEL_AU",
+        "relationship": "customer",
+        "name": "Origin Energy",
+        "details": "Mortlake 300MW／650MWh，2024 簽約含15年服務與 Nispera，2026-08 已商轉。",
+        "evidence_url": "https://www.ess-news.com/2026/08/19/origin-begins-commercial-operations-at-650-mwh-mortlake-grid-forming-bess/",
+        "evidence_grade": "300 MW／650 MWh",
+        "commercial_stage": "operating_2026",
+        "evidence_date": "2026-08-19"
+      },
+      {
+        "id": "FLNC-008",
+        "business_line": "MOSAIC",
+        "relationship": "customer",
+        "name": "AMPYR Australia",
+        "details": "Wellington Stage 1 300MW／600MWh，官方宣布採 Gridstack、Mosaic 競標與 Nispera；2026 預計送電。",
+        "evidence_url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-chosen-300-mw-600-mwh-wellington-battery-energy-storage",
+        "evidence_grade": "300 MW／600 MWh",
+        "commercial_stage": "signed_2025_project",
+        "evidence_date": "2025-08"
+      },
+      {
+        "id": "FLNC-009",
+        "business_line": "CHANNEL_TW",
+        "relationship": "customer",
+        "name": "Aerospace Industrial Development Corporation（漢翔航空工業，台灣）",
+        "details": "2025-12 宣布台中廠 9MW／54MWh Gridstack Pro 5000 表後工業微電網，具 grid-forming 與黑啟動；2026-07 原定運轉，實際投運待核。",
+        "evidence_url": "https://www.energy-omni.com/en/news/article/7A8zm27XW0jQfpjb",
+        "evidence_grade": "9 MW／54 MWh",
+        "commercial_stage": "construction_announced_operation_unverified",
+        "evidence_date": "2025-12-16"
+      },
+      {
+        "id": "FLNC-010",
+        "business_line": "CHANNEL_TW",
+        "relationship": "local_subsidiary",
+        "name": "台灣富安能源（Fluence Taiwan）",
+        "details": "2025-03 台灣富安能源於台灣發表 Smartstack，屬 Fluence 台灣營運子公司／本地市場平台，非獨立外部客戶。",
+        "evidence_url": "https://www.eettaiwan.com/20250305nt21-fluence-smartstack-energy-storage-platform-enhances-taiwans-energy-security-and-grid-resilience/",
+        "evidence_grade": "A",
+        "commercial_stage": "local_operating_entity",
+        "evidence_date": "2025-03-05"
+      },
+      {
+        "id": "FLNC-011",
+        "business_line": "CELLS",
+        "relationship": "supplier",
+        "name": "EVE Power Co., Ltd.（億緯動力）",
+        "details": "2026-09-24 簽多年主供貨協議，EVE Power 向 Fluence 儲能系統提供電池；為直接具名電芯／電池供應證據，全球供應策略。",
+        "evidence_url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-secures-long-term-battery-supply-through-multiyear",
+        "evidence_grade": "A",
+        "commercial_stage": "signed_multiyear_supply",
+        "evidence_date": "2026-09-24"
+      },
+      {
+        "id": "FLNC-012",
+        "business_line": "CELLS",
+        "relationship": "supplier",
+        "name": "Fixx Energy（前 AESC Smyrna 廠）",
+        "details": "2026-03-31 AESC Tennessee Smyrna 廠多數股權售予 Fixx Energy，廠仍供應 Fluence 美國國產 LFP 電芯；Fluence 表示已與新廠主重簽供應協議。",
+        "evidence_url": "https://www.solarpowerworldonline.com/2026/05/aesc-sells-tennessee-lithium-battery-cell-manufacturing-plant-to-fixx-energy/",
+        "evidence_grade": "A",
+        "commercial_stage": "current_cell_supply",
+        "evidence_date": "2026-05-05"
+      },
+      {
+        "id": "FLNC-013",
+        "business_line": "CELLS",
+        "relationship": "former_supplier",
+        "name": "AESC（Automotive Energy Supply Corporation）",
+        "details": "AESC 原 Tennessee Smyrna 電芯廠曾供應 Fluence；2026-03-31 多數股權轉 Fixx Energy，不能與 Fixx 當兩家獨立現有工廠重複計算。",
+        "evidence_url": "https://www.solarpowerworldonline.com/2026/05/aesc-sells-tennessee-lithium-battery-cell-manufacturing-plant-to-fixx-energy/",
+        "evidence_grade": "A",
+        "commercial_stage": "historical_pre_transfer",
+        "evidence_date": "2026-05-05"
+      },
+      {
+        "id": "FLNC-014",
+        "business_line": "PCS",
+        "relationship": "supplier",
+        "name": "Power Electronics S.L.",
+        "details": "2026-01 ARENA Liddell BESS 併網報告直接確認其為逆變器 OEM、持有 VISMA 韌體 IP；屬 Liddell 具名 PCS 供應，不推論全公司所有專案。",
+        "evidence_url": "https://arena.gov.au/assets/2026/01/AGL-Liddell-BESS-Battery_Development-and-Grid-Connection-Report.pdf",
+        "evidence_grade": "A",
+        "commercial_stage": "project_specific_inverter_OEM",
+        "evidence_date": "2026-01"
+      },
+      {
+        "id": "FLNC-015",
+        "business_line": "PCS",
+        "relationship": "supplier",
+        "name": "SMA Solar Technology AG",
+        "details": "2026-08 Mortlake 已商轉專案具名 116 台 SMA grid-forming 逆變器，為專案特定供應證據。",
+        "evidence_url": "https://www.ess-news.com/2026/08/19/origin-begins-commercial-operations-at-650-mwh-mortlake-grid-forming-bess/",
+        "evidence_grade": "116 台",
+        "commercial_stage": "project_specific_inverter_OEM",
+        "evidence_date": "2026-08-19"
+      },
+      {
+        "id": "FLNC-016",
+        "business_line": "CORPORATE",
+        "relationship": "founding_shareholder",
+        "name": "AES Corporation",
+        "details": "Fluence 由 AES 與 Siemens 合資成立，AES 為大股東及關係企業客戶；不把股權直接等同 2026 設備新訂單。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894125000081/flnc-20250930.htm",
+        "evidence_grade": "A",
+        "commercial_stage": "strategic_shareholder",
+        "evidence_date": "2025-11-25"
+      },
+      {
+        "id": "FLNC-017",
+        "business_line": "CORPORATE",
+        "relationship": "founding_shareholder",
+        "name": "Siemens AG",
+        "details": "Fluence 由 Siemens 與 AES 創立，Siemens 為大股東並參與 2026 AI 資料中心參考設計。",
+        "evidence_url": "https://investors.nvent.com/press-releases/press-release-details/2026/Siemens-and-partners-develop-reference--architecture-purpose-built-for-NVIDIA-AI-data-centers-/default.aspx",
+        "evidence_grade": "A",
+        "commercial_stage": "strategic_shareholder",
+        "evidence_date": "2026-06-01"
+      },
+      {
+        "id": "FLNC-018",
+        "business_line": "DC_REFERENCE",
+        "relationship": "partner",
+        "name": "Siemens Smart Infrastructure",
+        "details": "2026-06-01 與 Fluence、NVIDIA 共同發表 Vera Rubin DSX 100MW IT／136MW 設施電力控制參考架構；設計合作非已取得 136MW 客戶訂單。",
+        "evidence_url": "https://investors.nvent.com/press-releases/press-release-details/2026/Siemens-and-partners-develop-reference--architecture-purpose-built-for-NVIDIA-AI-data-centers-/default.aspx",
+        "evidence_grade": "136 MW 設計",
+        "commercial_stage": "reference_design_collaboration",
+        "evidence_date": "2026-06-01"
+      },
+      {
+        "id": "FLNC-019",
+        "business_line": "DC_REFERENCE",
+        "relationship": "partner",
+        "name": "NVIDIA",
+        "details": "2026-06 NVIDIA Vera Rubin DSX AI factory 參考架構，Fluence Smartstack 提供黑啟動、負載平滑與電網響應設計；非 NVIDIA 直接採購證據。",
+        "evidence_url": "https://investors.nvent.com/press-releases/press-release-details/2026/Siemens-and-partners-develop-reference--architecture-purpose-built-for-NVIDIA-AI-data-centers-/default.aspx",
+        "evidence_grade": "A",
+        "commercial_stage": "reference_design_collaboration",
+        "evidence_date": "2026-06-01"
+      },
+      {
+        "id": "FLNC-020",
+        "business_line": "DC_REFERENCE",
+        "relationship": "partner",
+        "name": "nVent",
+        "details": "2026-06 Siemens／NVIDIA 參考架構納入 nVent 電氣與散熱設計條件，Fluence 為 BESS 架構夥伴；非 nVent 直接設備採購。",
+        "evidence_url": "https://investors.nvent.com/press-releases/press-release-details/2026/Siemens-and-partners-develop-reference--architecture-purpose-built-for-NVIDIA-AI-data-centers-/default.aspx",
+        "evidence_grade": "A",
+        "commercial_stage": "reference_design_ecosystem",
+        "evidence_date": "2026-06-01"
+      },
+      {
+        "id": "FLNC-021",
+        "business_line": "LTSA",
+        "relationship": "independent_assurance",
+        "name": "DNV",
+        "details": "2026-06 DNV 獨立查核大型 BESS 50MW 以上案場的運行資料，確認審閱機隊可用率 99.3%；非儲能採購客戶。",
+        "evidence_url": "https://ir.fluenceenergy.com/news-releases/news-release-details/dnv-validates-fluence-99-fleet-performance-availability-large",
+        "evidence_grade": "A",
+        "commercial_stage": "independent_validation",
+        "evidence_date": "2026-06-09"
+      },
+      {
+        "id": "FLNC-022",
+        "business_line": "DC_BTM",
+        "relationship": "customer_undisclosed",
+        "name": "未具名資料中心開發商（表後）",
+        "details": "2026 Q3 公司揭露首筆大型表後儲能訂單，約 3 億美元；未公開公司名，不推定 Google、Meta、Microsoft。",
+        "evidence_url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-energy-inc-reports-third-fiscal-quarter-2026-results",
+        "evidence_grade": "約 US$300m",
+        "commercial_stage": "signed_anonymous_order",
+        "evidence_date": "2026-08-05"
+      },
+      {
+        "id": "FLNC-023",
+        "business_line": "DC_BTM",
+        "relationship": "awarded_not_ordered",
+        "name": "未具名 Hyperscaler（2026-07）",
+        "details": "2026-07 獲大型雲端業者約 5.5 億美元 awards，與表後約 3 億美元訂單合計約 8.5 億美元資料中心商機；award 不等於正式採購單。",
+        "evidence_url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-energy-inc-reports-third-fiscal-quarter-2026-results",
+        "evidence_grade": "約 US$550m",
+        "commercial_stage": "awarded_not_purchase_order",
+        "evidence_date": "2026-08-05"
+      },
+      {
+        "id": "FLNC-024",
+        "business_line": "DC_BTM",
+        "relationship": "qualified_supplier",
+        "name": "兩家未具名 Hyperscalers",
+        "details": "2026 公司揭露兩家大型雲端商 MSA，代表供應商資格／主協議；不得冒稱已取得每一家實際專案採購單。",
+        "evidence_url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-energy-inc-reports-third-fiscal-quarter-2026-results",
+        "evidence_grade": "A",
+        "commercial_stage": "master_supply_agreement_no_named_buyer",
+        "evidence_date": "2026-08-05"
+      },
+      {
+        "id": "FLNC-025",
+        "business_line": "MANUF_US",
+        "relationship": "manufacturing_site",
+        "name": "Smyrna, Tennessee 電芯廠",
+        "details": "2026 現有美國電芯供應基地，原 AESC 多數股權轉 Fixx Energy；須區分電芯工廠與 Fluence 自有工廠。",
+        "evidence_url": "https://www.solarpowerworldonline.com/2026/05/aesc-sells-tennessee-lithium-battery-cell-manufacturing-plant-to-fixx-energy/",
+        "evidence_grade": "A",
+        "commercial_stage": "contract_supply_facility",
+        "evidence_date": "2026-05-05"
+      },
+      {
+        "id": "FLNC-026",
+        "business_line": "MANUF_US",
+        "relationship": "manufacturing_site",
+        "name": "Utah 電池模組委外製造",
+        "details": "Fluence 2024-09 公告 Utah 電池模組國產化量產，採 Tennessee 電芯；屬歷史啟動、2026 持續供應鏈。",
+        "evidence_url": "https://fluenceenergy.com/domestic-content/",
+        "evidence_grade": "A",
+        "commercial_stage": "contract_manufacturing",
+        "evidence_date": "2024-09-10"
+      },
+      {
+        "id": "FLNC-027",
+        "business_line": "MANUF_US",
+        "relationship": "manufacturing_site",
+        "name": "Houston, Texas 新委外製造設施",
+        "details": "2026 Q3 10-Q 披露 Houston 新廠量產爬坡延遲，造成 2026 交付推遲；未公開承包商名，不虛構。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894126000029/flnc-20260630.htm",
+        "evidence_grade": "A",
+        "commercial_stage": "ramp_up_delayed",
+        "evidence_date": "2026-08-05"
+      },
+      {
+        "id": "FLNC-028",
+        "business_line": "MANUF_US",
+        "relationship": "manufacturing_site",
+        "name": "South Carolina 逆變器國產供應鏈",
+        "details": "2025 10-K 與 2026 10-Q 確認 South Carolina 有美國逆變器供應商，未具名；不得以產地推測企業名稱。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894125000081/flnc-20250930.htm",
+        "evidence_grade": "A",
+        "commercial_stage": "unnamed_supplier_location",
+        "evidence_date": "2025-11-25"
+      },
+      {
+        "id": "FLNC-029",
+        "business_line": "MANUF_INT",
+        "relationship": "manufacturing_site",
+        "name": "國際委外儲能箱體製造",
+        "details": "2026 Q3 因國際委外廠生產延遲與 Houston 開工問題，約 4 億美元專案交付遞延 FY2027；廠商未具名。",
+        "evidence_url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-energy-inc-reports-third-fiscal-quarter-2026-results",
+        "evidence_grade": "A",
+        "commercial_stage": "production_delay",
+        "evidence_date": "2026-08-05"
+      },
+      {
+        "id": "FLNC-030",
+        "business_line": "SMARTSTACK",
+        "relationship": "product_release",
+        "name": "Smartstack 10 MWh",
+        "details": "2026-06-23 推出單模組 10MWh 平台、核心站點密度約 680MWh/acre，宣稱已完成大型火災測試；產品發布不是新客戶訂單。",
+        "evidence_url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-advances-smartstack-energy-storage-platform-high-density",
+        "evidence_grade": "10 MWh",
+        "commercial_stage": "commercial_product_release",
+        "evidence_date": "2026-06-23"
+      },
+      {
+        "id": "FLNC-031",
+        "business_line": "LTSA",
+        "relationship": "portfolio_metric",
+        "name": "2026 Q3 服務管理容量",
+        "details": "截至 2026-06-30 Fluence 服務資產管理 6.3GW、已簽服務 backlog 7.9GW；非已實現營收。",
+        "evidence_url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-energy-inc-reports-third-fiscal-quarter-2026-results",
+        "evidence_grade": "6.3 GW AUM",
+        "commercial_stage": "disclosed_operating_metric",
+        "evidence_date": "2026-08-05"
+      },
+      {
+        "id": "FLNC-032",
+        "business_line": "MOSAIC",
+        "relationship": "portfolio_metric",
+        "name": "2026 Q3 數位軟體管理容量",
+        "details": "截至 2026-06-30 數位 AUM 22.8GW、已簽 backlog 13.9GW，軟體與儲能設備裝機不得相加。",
+        "evidence_url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-energy-inc-reports-third-fiscal-quarter-2026-results",
+        "evidence_grade": "22.8 GW AUM",
+        "commercial_stage": "disclosed_operating_metric",
+        "evidence_date": "2026-08-05"
+      },
+      {
+        "id": "FLNC-033",
+        "business_line": "GRIDSTACK",
+        "relationship": "portfolio_metric",
+        "name": "2026 Q3 儲能已部署／已簽儲備",
+        "details": "截至 2026-06-30 已部署 7.4GW／19.3GWh；已簽儲能 backlog 12.6GW；pipeline 45.6GW 不等於合約。",
+        "evidence_url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-energy-inc-reports-third-fiscal-quarter-2026-results",
+        "evidence_grade": "7.4 GW 已部署",
+        "commercial_stage": "disclosed_operating_metric",
+        "evidence_date": "2026-08-05"
+      },
+      {
+        "id": "FLNC-034",
+        "business_line": "CHANNEL_TW",
+        "relationship": "customer",
+        "name": "HEXA Renewables（和暄綠能）",
+        "details": "2026-08 中央社具名彰化 48MW 光儲案場業主／開發方，採 Fluence 儲能系統；2027 Q1 併網、Q2 商轉為目標。",
+        "evidence_url": "https://www.cna.com.tw/news/afe/202608100283.aspx",
+        "evidence_grade": "48 MW 光儲",
+        "commercial_stage": "confirmed_project_under_construction",
+        "evidence_date": "2026-08-10"
+      },
+      {
+        "id": "FLNC-035",
+        "business_line": "CHANNEL_TW",
+        "relationship": "epc_partner",
+        "name": "台普威能源（雲豹能源子公司）",
+        "details": "2026-08 台普威承攬和暄綠能彰化 48MW 光儲 EPC，公開確認導入 Fluence 儲能；為台灣直接具名工程合作方，非電芯供應商。",
+        "evidence_url": "https://www.cna.com.tw/news/afe/202608100283.aspx",
+        "evidence_grade": "48 MW",
+        "commercial_stage": "confirmed_local_EPC",
+        "evidence_date": "2026-08-10"
+      },
+      {
+        "id": "FLNC-036",
+        "business_line": "CHANNEL_TW",
+        "relationship": "project_asset",
+        "name": "台灣 Smartstack 50MW／200MWh 未具名案",
+        "details": "Fluence 2026 APAC 官方簡報列 50MW／200MWh 台灣 Smartstack 案，未揭露業主；不推定與 HEXA 48MW 為同案。",
+        "evidence_url": "https://solar-media.s3.amazonaws.com/assets/ESSAsia25/Presentations/Fluence.pdf",
+        "evidence_grade": "50 MW／200 MWh",
+        "commercial_stage": "official_project_snapshot_unnamed",
+        "evidence_date": "2026-05"
+      },
+      {
+        "id": "FLNC-037",
+        "business_line": "CHANNEL_EU",
+        "relationship": "customer",
+        "name": "DRI（DTEK Group）",
+        "details": "2025-09 波蘭 Trzebinia 133MW Smartstack 專案，2027 容量市場開始；與 DTEK 烏克蘭 200MW 專案分開。",
+        "evidence_url": "https://ir.fluenceenergy.com/news-releases/news-release-details/dtek-subsidiary-dri-picks-fluence-deliver-trzebinia-battery",
+        "evidence_grade": "133 MW",
+        "commercial_stage": "signed_2025_future_delivery",
+        "evidence_date": "2025-09-22"
+      },
+      {
+        "id": "FLNC-038",
+        "business_line": "CHANNEL_EU",
+        "relationship": "customer",
+        "name": "DTEK Group",
+        "details": "2025-09 公告烏克蘭 200MW 儲能系統已送電，與波蘭 DRI 子公司專案不同；非 2026 新訂單。",
+        "evidence_url": "https://ir.fluenceenergy.com/news-releases/news-release-details/dtek-subsidiary-dri-picks-fluence-deliver-trzebinia-battery",
+        "evidence_grade": "200 MW",
+        "commercial_stage": "operating_historical",
+        "evidence_date": "2025-09-22"
+      },
+      {
+        "id": "FLNC-039",
+        "business_line": "CHANNEL_EU",
+        "relationship": "customer",
+        "name": "VERBUND",
+        "details": "2025-07 德國兩項專案 50MW／100MWh 與 42.9MW／86.5MWh，合計約 92.9MW／186.5MWh；2026 非新訂單。",
+        "evidence_url": "https://ir.fluenceenergy.com/news-releases/news-release-details/verbund-and-fluence-launch-large-scale-battery-storage-projects",
+        "evidence_grade": "92.9 MW／186.5 MWh",
+        "commercial_stage": "signed_2025_projects",
+        "evidence_date": "2025-07-15"
+      },
+      {
+        "id": "FLNC-040",
+        "business_line": "CHANNEL_EU",
+        "relationship": "customer",
+        "name": "ENGIE",
+        "details": "2024-04 荷蘭 Maxima 35MW／100MWh 供貨與軟體、服務，並承接既有澳洲 Hazelwood 150MW／150MWh；歷史案例。",
+        "evidence_url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-and-engies-latest-storage-project-will-expand-critical",
+        "evidence_grade": "35 MW／100 MWh",
+        "commercial_stage": "historical_contract",
+        "evidence_date": "2024-04-11"
+      },
+      {
+        "id": "FLNC-041",
+        "business_line": "CORPORATE",
+        "relationship": "financial_risk",
+        "name": "FY2026 九月二度下修財測",
+        "details": "2026-09-16 公司再將 FY2026 營收指引降至約 24 億美元、調整 EBITDA 虧損約 2 億美元；主因 Houston 代工量產爬坡。",
+        "evidence_url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-energy-announces-revised-guidance-fiscal-year-2026",
+        "evidence_grade": "A",
+        "commercial_stage": "official_guidance_revision",
+        "evidence_date": "2026-09-16"
+      },
+      {
+        "id": "FLNC-042",
+        "business_line": "GRIDSTACK",
+        "relationship": "competitor",
+        "name": "Tesla Energy",
+        "details": "Megapack 公用事業級儲能；B 級產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894125000081/flnc-20250930.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2025-11-25"
+      },
+      {
+        "id": "FLNC-043",
+        "business_line": "GRIDSTACK",
+        "relationship": "competitor",
+        "name": "Wärtsilä Energy Storage",
+        "details": "GridSolv 儲能整合；B 級產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894125000081/flnc-20250930.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2025-11-25"
+      },
+      {
+        "id": "FLNC-044",
+        "business_line": "GRIDSTACK",
+        "relationship": "competitor",
+        "name": "Sungrow Power Supply",
+        "details": "PowerTitan 儲能系統；B 級產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894125000081/flnc-20250930.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2025-11-25"
+      },
+      {
+        "id": "FLNC-045",
+        "business_line": "GRIDSTACK",
+        "relationship": "competitor",
+        "name": "BYD Energy Storage",
+        "details": "電池儲能系統；B 級產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894125000081/flnc-20250930.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2025-11-25"
+      },
+      {
+        "id": "FLNC-046",
+        "business_line": "SMARTSTACK",
+        "relationship": "competitor",
+        "name": "CATL",
+        "details": "TENER 儲能系統；B 級產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894125000081/flnc-20250930.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2025-11-25"
+      },
+      {
+        "id": "FLNC-047",
+        "business_line": "SMARTSTACK",
+        "relationship": "competitor",
+        "name": "Trina Storage",
+        "details": "Elementa 儲能系統；B 級產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894125000081/flnc-20250930.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2025-11-25"
+      },
+      {
+        "id": "FLNC-048",
+        "business_line": "BESS_GRID",
+        "relationship": "competitor",
+        "name": "Powin",
+        "details": "公用事業級 BESS 整合（財務及營運狀態需另核）；B 級產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894125000081/flnc-20250930.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2025-11-25"
+      },
+      {
+        "id": "FLNC-049",
+        "business_line": "BESS_GRID",
+        "relationship": "competitor",
+        "name": "Canadian Solar e-STORAGE",
+        "details": "SolBank 儲能整合；B 級產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894125000081/flnc-20250930.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2025-11-25"
+      },
+      {
+        "id": "FLNC-050",
+        "business_line": "BESS_GFM",
+        "relationship": "competitor",
+        "name": "Hitachi Energy",
+        "details": "電網形成型電力電子與控制；B 級產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894125000081/flnc-20250930.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2025-11-25"
+      },
+      {
+        "id": "FLNC-051",
+        "business_line": "DC_BTM",
+        "relationship": "competitor",
+        "name": "Tesla Energy",
+        "details": "資料中心與表後儲能；B 級產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894125000081/flnc-20250930.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2025-11-25"
+      },
+      {
+        "id": "FLNC-052",
+        "business_line": "DC_BTM",
+        "relationship": "competitor",
+        "name": "Schneider Electric",
+        "details": "資料中心電力及儲能；B 級產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894125000081/flnc-20250930.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2025-11-25"
+      },
+      {
+        "id": "FLNC-053",
+        "business_line": "MOSAIC",
+        "relationship": "competitor",
+        "name": "Habitat Energy",
+        "details": "電力市場自動競標；B 級產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894125000081/flnc-20250930.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2025-11-25"
+      },
+      {
+        "id": "FLNC-054",
+        "business_line": "MOSAIC",
+        "relationship": "competitor",
+        "name": "Autobidder（Tesla）",
+        "details": "電力市場競標軟體；B 級產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894125000081/flnc-20250930.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2025-11-25"
+      },
+      {
+        "id": "FLNC-055",
+        "business_line": "MOSAIC",
+        "relationship": "competitor",
+        "name": "GridBeyond",
+        "details": "電力市場最佳化；B 級產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894125000081/flnc-20250930.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2025-11-25"
+      },
+      {
+        "id": "FLNC-056",
+        "business_line": "NISPERA",
+        "relationship": "competitor",
+        "name": "Power Factors",
+        "details": "再生能源資產管理軟體；B 級產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894125000081/flnc-20250930.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2025-11-25"
+      },
+      {
+        "id": "FLNC-057",
+        "business_line": "NISPERA",
+        "relationship": "competitor",
+        "name": "AlsoEnergy（Stem）",
+        "details": "再生能源監測與分析；B 級產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894125000081/flnc-20250930.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2025-11-25"
+      },
+      {
+        "id": "FLNC-058",
+        "business_line": "LTSA",
+        "relationship": "competitor",
+        "name": "Wärtsilä",
+        "details": "儲能生命週期服務；B 級產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894125000081/flnc-20250930.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2025-11-25"
+      },
+      {
+        "id": "FLNC-059",
+        "business_line": "EPC",
+        "relationship": "competitor",
+        "name": "Tesla Energy",
+        "details": "統包儲能系統；B 級產品／市場重疊，不代表具名競標或雙方交易。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894125000081/flnc-20250930.htm",
+        "evidence_grade": "B",
+        "commercial_stage": "market_overlap",
+        "evidence_date": "2025-11-25"
+      },
+      {
+        "id": "FLNC-060",
+        "business_line": "CORPORATE",
+        "relationship": "related_party_customer",
+        "name": "AES Corporation",
+        "details": "2026 10-Q 揭露 Fluence 對 AES 關係企業銷售儲能產品、服務及顧問服務，AES 同時為股東；不可只歸為股東。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894126000029/flnc-20260630.htm",
+        "evidence_grade": "A",
+        "commercial_stage": "disclosed_related_party_revenue",
+        "evidence_date": "2026-08-05"
+      }
+    ],
+    "relationship_categories": [
+      "awarded_not_ordered",
+      "competitor",
+      "customer",
+      "customer_undisclosed",
+      "epc_partner",
+      "financial_risk",
+      "former_supplier",
+      "founding_shareholder",
+      "independent_assurance",
+      "local_subsidiary",
+      "manufacturing_site",
+      "partner",
+      "portfolio_metric",
+      "product_release",
+      "project_asset",
+      "qualified_supplier",
+      "related_party_customer",
+      "supplier"
+    ],
+    "research_notes": {
+      "methodology": "2026 官方合約、交易對手公告、SEC 10-Q/10-K、澳洲 ARENA 併網報告、台灣中央社與設備商公告多來源交叉。A 直接具名合約、專案、股東及供應；B 競品市場重疊。每節點明確區分簽約、開工、投運、資格認證、歷史案例。",
+      "original_integrity": "GitHub commit da93c81d 原始 11 頂層欄位以 Git blob SHA-1 完整比對，與原始 eb727ca7d25f248a3a7097324203beaed103afc9 一致；只新增 industry_chain。",
+      "2026_latest_financial": "2026-08 Q3：單季營收 6.498 億美元、GAAP 毛利率 5.1%、淨虧損 4,430 萬美元、接單逾 14.4 億美元、backlog 64 億美元。2026-09 因 Houston 生產延遲再次下修 FY2026 營收指引至約 24 億美元、調整 EBITDA 虧損約 2 億美元。FY2026 正式全年財報預定 2026-11-23 發布，截至本報告日尚未公布，不應引用未發布實績。",
+      "2026_orders": "2026-10 Vattenfall 德國 Brunsbüttel 254MW／逾 1GWh；2026-07 Avantus Rexford 2 200MW／800MWh；2026-08 LEAG Heinersbrück 400MWh 動工。與 2025 AGL Tomago、2024 Origin Mortlake 舊單分別標示。",
+      "hyperscaler": "2026 Q3 已取得表後資料中心約 3 億美元正式訂單及 2026-07 約 5.5 億美元 hyperscaler awards，合計 8.5 億美元商機；award 不等於採購單。兩家 hyperscaler MSA 均未具名。Siemens／NVIDIA／nVent 參考設計是技術合作，不是 NVIDIA 採購 Smartstack。",
+      "taiwan": "2026-08 中央社確認台普威為和暄綠能彰化 48MW 光儲 EPC，採 Fluence 儲能；2025-12 漢翔航空 9MW／54MWh 表後工業微電網採 Gridstack Pro；另 Fluence APAC 2026 簡報列台灣 50MW／200MWh Smartstack 未具名案。三者不可臆測為同一專案。",
+      "supplier": "2026-09 EVE Power 多年電池供貨協議為直接具名上游。Tennessee Smyrna 供應廠 2026-03 從 AESC 多數股權轉至 Fixx Energy，不應算成兩個獨立現有電芯來源。ARENA 確認 Power Electronics 為 Liddell 逆變器 OEM；Mortlake 具名 SMA 逆變器。沒有證據的台灣電芯、PCS、液冷廠不列直接供應商。",
+      "manufacturing": "2026-09 Houston 新委外廠量產延遲及 BOP 變壓器／逆變器供應瓶頸，導致 FY2026 大幅下修；具體未具名委外廠商不能杜撰。",
+      "capacity_math": "GW 為功率、GWh/MWh 為能量，區分已部署、已簽 backlog、未簽 pipeline、服務 AUM、數位 AUM；不可加總為相同概念。",
+      "quality_limit": "台灣直接電芯／PCS／液冷供應商未取得具名交易證據；大型雲端 MSA 買方未具名，保留匿名節點，未虛構。",
+      "source_catalog": [
+        {
+          "key": "q3",
+          "url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-energy-inc-reports-third-fiscal-quarter-2026-results"
+        },
+        {
+          "key": "10q",
+          "url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894126000029/flnc-20260630.htm"
+        },
+        {
+          "key": "10k",
+          "url": "https://www.sec.gov/Archives/edgar/data/1868941/000186894125000081/flnc-20250930.htm"
+        },
+        {
+          "key": "eve",
+          "url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-secures-long-term-battery-supply-through-multiyear"
+        },
+        {
+          "key": "vattenfall",
+          "url": "https://ir.fluenceenergy.com/news-releases/news-release-details/vattenfall-awards-1-gwh-brunsbuttel-battery-storage-project"
+        },
+        {
+          "key": "leag",
+          "url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-and-leag-clean-power-start-construction-their-second"
+        },
+        {
+          "key": "avantus",
+          "url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-provide-us-domestic-content-smartstack-system-avantus"
+        },
+        {
+          "key": "smart10",
+          "url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-advances-smartstack-energy-storage-platform-high-density"
+        },
+        {
+          "key": "agl",
+          "url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-and-agl-sign-deal-deliver-500-mw-2000-mwh-tomago-battery"
+        },
+        {
+          "key": "agl_liddell",
+          "url": "https://ir.fluenceenergy.com/news-releases/news-release-details/agl-selects-fluence-deliver-500-mw-liddell-battery-project/"
+        },
+        {
+          "key": "origin",
+          "url": "https://ir.fluenceenergy.com/news-releases/news-release-details/origin-selects-fluence-deliver-300-mw-650-mwh-mortlake-power"
+        },
+        {
+          "key": "origin_2026",
+          "url": "https://www.ess-news.com/2026/08/19/origin-begins-commercial-operations-at-650-mwh-mortlake-grid-forming-bess/"
+        },
+        {
+          "key": "ampyr",
+          "url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-chosen-300-mw-600-mwh-wellington-battery-energy-storage"
+        },
+        {
+          "key": "arena",
+          "url": "https://arena.gov.au/assets/2026/01/AGL-Liddell-BESS-Battery_Development-and-Grid-Connection-Report.pdf"
+        },
+        {
+          "key": "dnv",
+          "url": "https://ir.fluenceenergy.com/news-releases/news-release-details/dnv-validates-fluence-99-fleet-performance-availability-large"
+        },
+        {
+          "key": "tw_aidc",
+          "url": "https://www.energy-omni.com/en/news/article/7A8zm27XW0jQfpjb"
+        },
+        {
+          "key": "tw",
+          "url": "https://www.eettaiwan.com/20250305nt21-fluence-smartstack-energy-storage-platform-enhances-taiwans-energy-security-and-grid-resilience/"
+        },
+        {
+          "key": "nvidia",
+          "url": "https://investors.nvent.com/press-releases/press-release-details/2026/Siemens-and-partners-develop-reference--architecture-purpose-built-for-NVIDIA-AI-data-centers-/default.aspx"
+        },
+        {
+          "key": "fixx",
+          "url": "https://www.solarpowerworldonline.com/2026/05/aesc-sells-tennessee-lithium-battery-cell-manufacturing-plant-to-fixx-energy/"
+        },
+        {
+          "key": "leadership",
+          "url": "https://ir.fluenceenergy.com/news-events"
+        },
+        {
+          "key": "manufacturing",
+          "url": "https://fluenceenergy.com/domestic-content/"
+        },
+        {
+          "key": "software",
+          "url": "https://fluenceenergy.com/energy-storage-technology/"
+        },
+        {
+          "key": "sept",
+          "url": "https://www.energy-storage.news/fluence-cuts-2026-revenue-ebitda-guidance-as-us-production-delays-bite/"
+        },
+        {
+          "key": "tw_hex",
+          "url": "https://www.cna.com.tw/news/afe/202608100283.aspx"
+        },
+        {
+          "key": "dri",
+          "url": "https://ir.fluenceenergy.com/news-releases/news-release-details/dtek-subsidiary-dri-picks-fluence-deliver-trzebinia-battery"
+        },
+        {
+          "key": "verbund",
+          "url": "https://ir.fluenceenergy.com/news-releases/news-release-details/verbund-and-fluence-launch-large-scale-battery-storage-projects"
+        },
+        {
+          "key": "engie",
+          "url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-and-engies-latest-storage-project-will-expand-critical"
+        },
+        {
+          "key": "presentation",
+          "url": "https://solar-media.s3.amazonaws.com/assets/ESSAsia25/Presentations/Fluence.pdf"
+        },
+        {
+          "key": "sept_official",
+          "url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-energy-announces-revised-guidance-fiscal-year-2026"
+        }
+      ]
+    }
   }
 }

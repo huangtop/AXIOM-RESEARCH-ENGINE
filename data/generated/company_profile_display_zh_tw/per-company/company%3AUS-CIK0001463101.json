@@ -196,5 +196,956 @@
       "能源自主"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "symbol": "ENPH",
+    "company": "Enphase Energy, Inc.",
+    "as_of": "2026-11-18",
+    "business_lines": [
+      {
+        "id": "MICRO_IQ8",
+        "name": "IQ8住宅微型逆變器"
+      },
+      {
+        "id": "MICRO_IQ9",
+        "name": "IQ9N GaN住宅及三相商用微型逆變器"
+      },
+      {
+        "id": "ASIC",
+        "name": "Kestrel ASIC與電力轉換晶片"
+      },
+      {
+        "id": "BATTERY_5P",
+        "name": "IQ Battery 5P"
+      },
+      {
+        "id": "BATTERY_10C",
+        "name": "IQ Battery 10C及G4能源系統"
+      },
+      {
+        "id": "BATTERY_G5",
+        "name": "IQ Battery G5第五代儲能"
+      },
+      {
+        "id": "COMMERCIAL",
+        "name": "IQ9商用太陽能及C80商用電池"
+      },
+      {
+        "id": "EV",
+        "name": "IQ EV Charger 2與雙向充電"
+      },
+      {
+        "id": "METER",
+        "name": "IQ Meter Collar與System Controller"
+      },
+      {
+        "id": "SOFTWARE",
+        "name": "Enphase App與Solargraf"
+      },
+      {
+        "id": "VPP",
+        "name": "VPP虛擬電廠與電網服務"
+      },
+      {
+        "id": "TPO",
+        "name": "第三方持有TPO及Safe Harbor融資"
+      },
+      {
+        "id": "DISTRIBUTION",
+        "name": "全球太陽能經銷通路"
+      },
+      {
+        "id": "INSTALLERS",
+        "name": "安裝商與終端專案"
+      },
+      {
+        "id": "OEM_AC",
+        "name": "AC Module OEM整合"
+      },
+      {
+        "id": "MFG_US",
+        "name": "美國製造與45X稅額抵免"
+      },
+      {
+        "id": "MFG_ASIA",
+        "name": "印度及亞洲委外製造"
+      },
+      {
+        "id": "LOGISTICS",
+        "name": "倉儲與物流"
+      },
+      {
+        "id": "SST_AI",
+        "name": "IQ固態變壓器與AI資料中心800VDC"
+      },
+      {
+        "id": "COMPETITION",
+        "name": "微型逆變器、儲能與EV競爭"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "ENPH_001",
+        "name": "Flex Ltd.",
+        "relationship": "supplier",
+        "business_line": "MFG_US",
+        "details": "2025年10-K直接具名的EMS組裝與測試夥伴，涵蓋IQ微型逆變器、電池、EV充電器與IQ Gateway；美國South Carolina製造。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1463101/000146310126000013/enph-20251231.htm"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-12-31",
+        "commercial_status": "現行EMS供應",
+        "ticker": "FLEX",
+        "supply_chain_role": "電子製造服務",
+        "benefit_mechanism": "Enphase美國微型逆變器與電池量產帶動EMS組裝及測試訂單"
+      },
+      {
+        "id": "ENPH_002",
+        "name": "Salcomp Manufacturing India Pvt. Ltd.",
+        "relationship": "supplier",
+        "business_line": "MFG_ASIA",
+        "details": "2025年10-K具名印度委外組裝與測試供應商，涵蓋IQ逆變器、電池、充電器及Gateway；原美國Salcomp Arlington廠於2025年11月轉為Enphase自有製造。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1463101/000146310126000013/enph-20251231.htm"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-12-31",
+        "commercial_status": "印度委外製造",
+        "supply_chain_role": "電子製造服務",
+        "benefit_mechanism": "Enphase印度產品製造委外需求"
+      },
+      {
+        "id": "ENPH_003",
+        "name": "Sunwoda Electric Co., Ltd.",
+        "relationship": "supplier",
+        "business_line": "MFG_ASIA",
+        "details": "2025年10-K具名產品組裝與測試供應商，為Enphase IQ逆變器、電池、EV充電器及Gateway製造鏈一環。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1463101/000146310126000013/enph-20251231.htm"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-12-31",
+        "commercial_status": "委外製造",
+        "ticker": "300207.SZ",
+        "supply_chain_role": "電子製造服務",
+        "benefit_mechanism": "Enphase委外電子組裝與測試需求"
+      },
+      {
+        "id": "ENPH_004",
+        "name": "DHL Group",
+        "relationship": "supplier",
+        "business_line": "LOGISTICS",
+        "details": "2025年10-K具名提供收貨、套料、倉儲、運輸及庫存可視化物流服務。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1463101/000146310126000013/enph-20251231.htm"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-12-31",
+        "commercial_status": "物流服務",
+        "ticker": "DHL.DE",
+        "supply_chain_role": "第三方物流",
+        "benefit_mechanism": "Enphase跨境與本土配送需求"
+      },
+      {
+        "id": "ENPH_005",
+        "name": "BayWa r.e.",
+        "relationship": "customer",
+        "business_line": "DISTRIBUTION",
+        "details": "2022-09-06擴大德國及比荷盧IQ7微型逆變器、IQ Batteries經銷協議，承接歐洲安裝商渠道。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-and-baywa-re-expand-distribution-partnership"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2022-09-06",
+        "commercial_status": "歷史具名經銷協議",
+        "supply_chain_role": "歐洲經銷商"
+      },
+      {
+        "id": "ENPH_006",
+        "name": "CED Greentech",
+        "relationship": "customer",
+        "business_line": "DISTRIBUTION",
+        "details": "Enphase具名美國批發經銷夥伴，向Revolve Solar供應Enphase微型逆變器系統。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/revolve-solar-selects-enphase-energy-preferred-inverter-supplier"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "commercial_status": "具名歷史經銷",
+        "supply_chain_role": "美國電氣通路"
+      },
+      {
+        "id": "ENPH_007",
+        "name": "Gexpro",
+        "relationship": "customer",
+        "business_line": "DISTRIBUTION",
+        "details": "Enphase具名電氣批發經銷商，向Vision Solar供應Enphase MLPE微型逆變器，並參與產品發展回饋。",
+        "source_urls": [
+          "https://investor.enphase.com/news-releases/news-release-details/enphase-energy-selected-vision-solar-preferred-inverter-supplier"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "commercial_status": "具名歷史經銷",
+        "supply_chain_role": "電氣通路"
+      },
+      {
+        "id": "ENPH_008",
+        "name": "Soligent",
+        "relationship": "customer",
+        "business_line": "DISTRIBUTION",
+        "details": "2018年Enphase與Solaria合作PowerXT-AC，Soligent負責美國通路銷售該款整合IQ7+的AC Module。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-and-solaria-corporation-announce-high-0/"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2018-04-23",
+        "commercial_status": "歷史AC模組通路",
+        "supply_chain_role": "美國太陽能經銷"
+      },
+      {
+        "id": "ENPH_009",
+        "name": "Sunrun",
+        "relationship": "customer",
+        "business_line": "INSTALLERS",
+        "details": "2015年簽訂Enphase微型逆變器策略供應協議；2019-11-18再次公告供應第七代IQ微型逆變器供Sunrun住宅安裝業務。",
+        "source_urls": [
+          "https://investor.enphase.com/news-releases/news-release-details/sunrun-and-enphase-energy-sign-strategic-supply-agreement",
+          "https://investor.enphase.com/node/16746/pdf"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "commercial_status": "具名供應合約",
+        "ticker": "RUN",
+        "supply_chain_role": "住宅太陽能安裝／TPO",
+        "event_date": "2019-11-18"
+      },
+      {
+        "id": "ENPH_010",
+        "name": "SunPower",
+        "relationship": "customer",
+        "business_line": "OEM_AC",
+        "details": "2018年SunPower與Enphase宣布5年AC Module微型逆變器採購及微型逆變器業務資產交易；2026年新SunPower與Enphase參與IQ Battery 10C及Palmetto LightReach住宅電池推廣。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-acquire-sunpowers-microinverter-business-0/",
+          "https://investors.sunpower.com/news-releases/news-release-details/sunpower-national-battery-storage-initiative"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2026-01-29",
+        "commercial_status": "歷史OEM供應＋2026儲能推廣",
+        "ticker": "SPWR",
+        "supply_chain_role": "住宅太陽能安裝／儲能渠道"
+      },
+      {
+        "id": "ENPH_011",
+        "name": "ADT Solar",
+        "relationship": "customer",
+        "business_line": "INSTALLERS",
+        "details": "2022年宣布獨家採用Enphase IQ8微型逆變器並擴大IQ Battery方案，適用當時22州住宅業務。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-expands-agreement-adt-solartm/"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2022-04-19",
+        "commercial_status": "歷史合作；業務後續退出",
+        "ticker": "ADT",
+        "supply_chain_role": "住宅安裝商"
+      },
+      {
+        "id": "ENPH_012",
+        "name": "Sunnova Energy",
+        "relationship": "customer",
+        "business_line": "INSTALLERS",
+        "details": "2017年選定Enphase為優先逆變器供應商；2021年擴大至Encharge LFP電池，為歷史住宅安裝與TPO客戶。 2025-06-08 Sunnova申請Chapter 11，Enphase公告持續為既有安裝設備提供保固及售後服務。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/sunnova-selects-enphase-energy-inc-preferred-inverter-supplier/",
+          "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-and-sunnova-expand-partnership-include-battery",
+          "https://enphase.com/download/sunnova-installers"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2021-01-06",
+        "commercial_status": "歷史供應；2025破產後不視為現行營收",
+        "supply_chain_role": "歷史TPO客戶"
+      },
+      {
+        "id": "ENPH_013",
+        "name": "Vision Solar",
+        "relationship": "customer",
+        "business_line": "INSTALLERS",
+        "details": "Enphase宣布Vision Solar選為優先逆變器與MLPE供應商，經Gexpro配送。",
+        "source_urls": [
+          "https://investor.enphase.com/news-releases/news-release-details/enphase-energy-selected-vision-solar-preferred-inverter-supplier"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "commercial_status": "歷史採用",
+        "supply_chain_role": "安裝商"
+      },
+      {
+        "id": "ENPH_014",
+        "name": "Revolve Solar",
+        "relationship": "customer",
+        "business_line": "INSTALLERS",
+        "details": "選用Enphase為優先逆變器供應商，CED Greentech提供配送。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/revolve-solar-selects-enphase-energy-preferred-inverter-supplier"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "commercial_status": "歷史採用",
+        "supply_chain_role": "安裝商"
+      },
+      {
+        "id": "ENPH_015",
+        "name": "Solaria Corporation",
+        "relationship": "customer",
+        "business_line": "OEM_AC",
+        "details": "2018年共同推出PowerXT-AC，Solaria在Fremont工廠將Enphase IQ7+微型逆變器整合至PowerXT 355W太陽能模組。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-and-solaria-corporation-announce-high-0/"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2018-04-23",
+        "commercial_status": "歷史OEM整合",
+        "supply_chain_role": "AC模組製造"
+      },
+      {
+        "id": "ENPH_016",
+        "name": "Maxeon Solar Technologies",
+        "relationship": "customer",
+        "business_line": "OEM_AC",
+        "details": "2020年宣布Maxeon AC Module工廠整合Enphase第七代IQ微型逆變器，面向國際住宅市場。",
+        "source_urls": [
+          "https://sunpowercorp.mediaroom.com/2020-07-15-SunPowers-Planned-Spin-Off-Maxeon-Solar-Technologies-and-Enphase-Energy-Announce-High-Efficiency-AC-Module-Partnership-for-International-Solar-Customers"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2020-07-15",
+        "commercial_status": "歷史OEM整合",
+        "ticker": "MAXN",
+        "supply_chain_role": "AC模組製造"
+      },
+      {
+        "id": "ENPH_017",
+        "name": "Tampa Bay Solar",
+        "relationship": "customer",
+        "business_line": "COMMERCIAL",
+        "details": "2025年Manatee School for the Arts 2MW屋頂專案選用3,200顆美國製IQ8P-3P商用微型逆變器，Tampa Bay Solar為具名安裝商。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-iq8-commercial-microinverters-made-domestic"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-06-04",
+        "commercial_status": "具名工程採用",
+        "supply_chain_role": "商用系統整合"
+      },
+      {
+        "id": "ENPH_018",
+        "name": "Commercial Solar Guy",
+        "relationship": "customer",
+        "business_line": "COMMERCIAL",
+        "details": "2025年Rhode Island Rock Ridge Homes 666kW、14棟樓安裝1,282顆IQ8P-3P微型逆變器，具名安裝商。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-iq8-commercial-microinverters-made-domestic"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-06-04",
+        "commercial_status": "具名工程採用",
+        "supply_chain_role": "商用系統整合"
+      },
+      {
+        "id": "ENPH_019",
+        "name": "Mid-State Solar",
+        "relationship": "customer",
+        "business_line": "COMMERCIAL",
+        "details": "2025年完成Modesto Gospel Mission 150kW專案，採用美國製IQ8P-3P微型逆變器。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-iq8-commercial-microinverters-made-domestic"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-06-04",
+        "commercial_status": "具名工程採用",
+        "supply_chain_role": "商用系統整合"
+      },
+      {
+        "id": "ENPH_020",
+        "name": "Lighthouse Solar",
+        "relationship": "customer",
+        "business_line": "METER",
+        "details": "2025-11-17 Enphase IQ Meter Collar公告具名安裝商，實際使用Meter Collar縮短備援系統安裝流程。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-expands-iq-meter-collar-approvals-united-states"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-11-17",
+        "commercial_status": "具名安裝採用",
+        "supply_chain_role": "安裝商"
+      },
+      {
+        "id": "ENPH_021",
+        "name": "NewLeaf Solar",
+        "relationship": "customer",
+        "business_line": "METER",
+        "details": "2025-11-17 IQ Meter Collar公告具名安裝商，採用Meter Collar減少重新配電盤配線及工時。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-expands-iq-meter-collar-approvals-united-states"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-11-17",
+        "commercial_status": "具名安裝採用",
+        "supply_chain_role": "安裝商"
+      },
+      {
+        "id": "ENPH_022",
+        "name": "San Diego County Solar",
+        "relationship": "customer",
+        "business_line": "METER",
+        "details": "2025-11-17 IQ Meter Collar公告具名安裝商，使用全屋備援計量連接設備。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-expands-iq-meter-collar-approvals-united-states"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-11-17",
+        "commercial_status": "具名安裝採用",
+        "supply_chain_role": "安裝商"
+      },
+      {
+        "id": "ENPH_023",
+        "name": "SunCommon",
+        "relationship": "customer",
+        "business_line": "VPP",
+        "details": "2022年Vermont Green Mountain Power家用儲能計畫具名本地安裝商，銷售Enphase Energy System。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-selected-green-mountain-power-home-battery-grid/"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2022-03-28",
+        "commercial_status": "歷史安裝商採用",
+        "supply_chain_role": "安裝商"
+      },
+      {
+        "id": "ENPH_024",
+        "name": "Southern Vermont Solar",
+        "relationship": "customer",
+        "business_line": "VPP",
+        "details": "2022年Green Mountain Power家用電池計畫具名安裝商，住宅屋頂案主要使用Enphase IQ微型逆變器。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-selected-green-mountain-power-home-battery-grid/"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2022-03-28",
+        "commercial_status": "歷史安裝商採用",
+        "supply_chain_role": "安裝商"
+      },
+      {
+        "id": "ENPH_025",
+        "name": "HB Energy Solutions",
+        "relationship": "customer",
+        "business_line": "VPP",
+        "details": "2022年Green Mountain Power家用電池計畫具名安裝商，提供IQ8與IQ Battery。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-selected-green-mountain-power-home-battery-grid/"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2022-03-28",
+        "commercial_status": "歷史安裝商採用",
+        "supply_chain_role": "安裝商"
+      },
+      {
+        "id": "ENPH_026",
+        "name": "Power Guru",
+        "relationship": "customer",
+        "business_line": "VPP",
+        "details": "2022年Green Mountain Power家用電池計畫具名安裝商，部署IQ微型逆變器及IQ Batteries。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-selected-green-mountain-power-home-battery-grid/"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2022-03-28",
+        "commercial_status": "歷史安裝商採用",
+        "supply_chain_role": "安裝商"
+      },
+      {
+        "id": "ENPH_027",
+        "name": "Green Mountain Power",
+        "relationship": "partner",
+        "business_line": "VPP",
+        "details": "2025-11-12 Vermont電力公司選定Enphase加入家用電池租賃計畫；使用兩套IQ Battery 10C、IQ Meter Collar及IQ Combiner 6C。",
+        "source_urls": [
+          "https://enphaseenergy.gcs-web.com/news-releases/news-release-details/enphase-energy-announces-partnership-green-mountain-power-launch"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-11-12",
+        "commercial_status": "電網服務／儲能計畫",
+        "supply_chain_role": "公用事業"
+      },
+      {
+        "id": "ENPH_028",
+        "name": "Octopus Energy",
+        "relationship": "partner",
+        "business_line": "VPP",
+        "details": "2025-01-27 Enphase IQ8及IQ Battery 5P接入Octopus Intelligent Octopus Flux智慧電價與Kraken分散式能源管理，並參與Texas GridBoost。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-announces-technology-integration-octopus-energy/"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-01-27",
+        "commercial_status": "智慧電價技術整合",
+        "supply_chain_role": "能源零售與VPP"
+      },
+      {
+        "id": "ENPH_029",
+        "name": "Pacific Gas and Electric",
+        "relationship": "partner",
+        "business_line": "METER",
+        "details": "2025-11-17 PG&E批准IQ Meter Collar在其加州服務區域的電表後安裝；屬設備核准關係。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-expands-iq-meter-collar-approvals-united-states"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-11-17",
+        "commercial_status": "電網接入設備核准",
+        "ticker": "PCG",
+        "supply_chain_role": "公用事業核准"
+      },
+      {
+        "id": "ENPH_030",
+        "name": "San Diego Gas & Electric",
+        "relationship": "partner",
+        "business_line": "METER",
+        "details": "2025-11-17 SDG&E批准IQ Meter Collar在其加州服務區域的電表後安裝。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-expands-iq-meter-collar-approvals-united-states"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-11-17",
+        "commercial_status": "電網接入設備核准",
+        "supply_chain_role": "公用事業核准"
+      },
+      {
+        "id": "ENPH_031",
+        "name": "Sacramento Municipal Utility District",
+        "relationship": "partner",
+        "business_line": "METER",
+        "details": "2026-09-21 Enphase確認SMUD已批准IQ Meter Collar於其服務區域電表後安裝。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-announces-iq-meter-collar-approval-80-utilities"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2026-09-21",
+        "commercial_status": "電網接入設備核准",
+        "supply_chain_role": "公用事業核准"
+      },
+      {
+        "id": "ENPH_032",
+        "name": "Hawaiian Electric",
+        "relationship": "partner",
+        "business_line": "METER",
+        "details": "2026-09-21 Enphase確認Hawaiian Electric批准IQ Meter Collar初步試點安裝。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-announces-iq-meter-collar-approval-80-utilities"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2026-09-21",
+        "commercial_status": "試點安裝核准",
+        "supply_chain_role": "公用事業核准"
+      },
+      {
+        "id": "ENPH_033",
+        "name": "OpenSolar",
+        "relationship": "partner",
+        "business_line": "SOFTWARE",
+        "details": "2020年Enphase與OpenSolar共同整合太陽能設計與提案工具，提供安裝商Enphase產品配置與3D模擬。",
+        "source_urls": [
+          "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-and-opensolar-enable-installers-create-effective/"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2020-01-14",
+        "commercial_status": "歷史軟體整合",
+        "supply_chain_role": "安裝商軟體"
+      },
+      {
+        "id": "ENPH_034",
+        "name": "GRID Alternatives",
+        "relationship": "partner",
+        "business_line": "INSTALLERS",
+        "details": "Enphase自2012年起為GRID Alternatives主要全國設備夥伴，2026年再續合作提供低收入住宅太陽能設備與支援。",
+        "source_urls": [
+          "https://newsroom.enphase.com/node/19456/pdf"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2026",
+        "commercial_status": "設備捐贈及公益安裝合作",
+        "supply_chain_role": "公益安裝組織"
+      },
+      {
+        "id": "ENPH_035",
+        "name": "Palmetto",
+        "relationship": "partner",
+        "business_line": "TPO",
+        "details": "2026-01-29 SunPower宣布與Palmetto LightReach、Enphase IQ Battery 10C合作推廣住宅電池與第三方持有融資方案。",
+        "source_urls": [
+          "https://investors.sunpower.com/news-releases/news-release-details/sunpower-national-battery-storage-initiative"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2026-01-29",
+        "commercial_status": "具名TPO推廣合作",
+        "supply_chain_role": "TPO金融渠道"
+      },
+      {
+        "id": "ENPH_036",
+        "name": "The Cool Down",
+        "relationship": "partner",
+        "business_line": "TPO",
+        "details": "2026-01-29與SunPower、Palmetto、Enphase共同推廣IQ Battery 10C家用儲能，提供住宅消費者教育與導流。",
+        "source_urls": [
+          "https://investors.sunpower.com/news-releases/news-release-details/sunpower-national-battery-storage-initiative"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2026-01-29",
+        "commercial_status": "具名行銷合作",
+        "supply_chain_role": "客戶導流"
+      },
+      {
+        "id": "ENPH_037",
+        "name": "SolarEdge Technologies",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "2025年Enphase 10-K直接列為競爭對手；產品市場：逆變器、DC優化器及家用儲能。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1463101/000146310126000013/enph-20251231.htm"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-12-31",
+        "commercial_status": "公司10-K具名競爭者",
+        "ticker": "SEDG"
+      },
+      {
+        "id": "ENPH_038",
+        "name": "Huawei Technologies",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "2025年Enphase 10-K直接列為競爭對手；產品市場：組串逆變器及住宅儲能。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1463101/000146310126000013/enph-20251231.htm"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-12-31",
+        "commercial_status": "公司10-K具名競爭者"
+      },
+      {
+        "id": "ENPH_039",
+        "name": "Tesla",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "2025年Enphase 10-K直接列為競爭對手；產品市場：Powerwall儲能、Solar Inverter及EV充電。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1463101/000146310126000013/enph-20251231.htm"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-12-31",
+        "commercial_status": "公司10-K具名競爭者",
+        "ticker": "TSLA"
+      },
+      {
+        "id": "ENPH_040",
+        "name": "Sungrow Power Supply",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "2025年Enphase 10-K直接列為競爭對手；產品市場：逆變器及儲能。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1463101/000146310126000013/enph-20251231.htm"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-12-31",
+        "commercial_status": "公司10-K具名競爭者",
+        "ticker": "300274.SZ"
+      },
+      {
+        "id": "ENPH_041",
+        "name": "Growatt New Energy",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "2025年Enphase 10-K直接列為競爭對手；產品市場：組串逆變器及儲能。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1463101/000146310126000013/enph-20251231.htm"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-12-31",
+        "commercial_status": "公司10-K具名競爭者"
+      },
+      {
+        "id": "ENPH_042",
+        "name": "BYD",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "2025年Enphase 10-K直接列為競爭對手；產品市場：家用電池儲能。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1463101/000146310126000013/enph-20251231.htm"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-12-31",
+        "commercial_status": "公司10-K具名競爭者",
+        "ticker": "1211.HK"
+      },
+      {
+        "id": "ENPH_043",
+        "name": "FranklinWH",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "2025年Enphase 10-K直接列為競爭對手；產品市場：家用電池儲能。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1463101/000146310126000013/enph-20251231.htm"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-12-31",
+        "commercial_status": "公司10-K具名競爭者"
+      },
+      {
+        "id": "ENPH_044",
+        "name": "Wallbox",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "2025年Enphase 10-K直接列為競爭對手；產品市場：EV充電設備。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1463101/000146310126000013/enph-20251231.htm"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-12-31",
+        "commercial_status": "公司10-K具名競爭者",
+        "ticker": "WBX"
+      },
+      {
+        "id": "ENPH_045",
+        "name": "ChargePoint",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "2025年Enphase 10-K直接列為競爭對手；產品市場：EV充電設備。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1463101/000146310126000013/enph-20251231.htm"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-12-31",
+        "commercial_status": "公司10-K具名競爭者",
+        "ticker": "CHPT"
+      },
+      {
+        "id": "ENPH_046",
+        "name": "EVBox Group",
+        "relationship": "competitor",
+        "business_line": "COMPETITION",
+        "details": "2025年Enphase 10-K直接列為競爭對手；產品市場：EV充電設備。",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1463101/000146310126000013/enph-20251231.htm"
+        ],
+        "evidence_grade": "A｜公司公告／SEC具名",
+        "entity_type": "company",
+        "event_date": "2025-12-31",
+        "commercial_status": "公司10-K具名競爭者"
+      }
+    ],
+    "research_metadata": {
+      "method": "VECO具名企業標準；同一企業一個節點，產品型號、商業事件、關係狀態與來源合併。",
+      "original_source": {
+        "repository": "huangtop/AXIOM-RESEARCH-ENGINE",
+        "commit": "da93c81d",
+        "git_blob_sha": "4136143e118ef02d29951b1650dc3860b6a632f4"
+      },
+      "source_cutoff": "2026-11-18",
+      "supply_chain_layers": [
+        {
+          "layer": "上游製造與物流",
+          "entities": [
+            "Flex Ltd.",
+            "Salcomp Manufacturing India Pvt. Ltd.",
+            "Sunwoda Electric Co., Ltd.",
+            "DHL Group"
+          ]
+        },
+        {
+          "layer": "中游OEM與經銷",
+          "entities": [
+            "BayWa r.e.",
+            "CED Greentech",
+            "Gexpro",
+            "Soligent",
+            "Solaria Corporation",
+            "Maxeon Solar Technologies"
+          ]
+        },
+        {
+          "layer": "下游安裝與TPO",
+          "entities": [
+            "Sunrun",
+            "SunPower",
+            "ADT Solar",
+            "Sunnova Energy",
+            "Vision Solar",
+            "Revolve Solar",
+            "Tampa Bay Solar",
+            "Commercial Solar Guy",
+            "Mid-State Solar",
+            "Lighthouse Solar",
+            "NewLeaf Solar",
+            "San Diego County Solar",
+            "SunCommon",
+            "Southern Vermont Solar",
+            "HB Energy Solutions",
+            "Power Guru"
+          ]
+        },
+        {
+          "layer": "電網、VPP及軟體",
+          "entities": [
+            "Green Mountain Power",
+            "Octopus Energy",
+            "Pacific Gas and Electric",
+            "San Diego Gas & Electric",
+            "Sacramento Municipal Utility District",
+            "Hawaiian Electric",
+            "OpenSolar"
+          ]
+        },
+        {
+          "layer": "融資及推廣",
+          "entities": [
+            "Palmetto",
+            "The Cool Down"
+          ]
+        }
+      ],
+      "named_beneficiary_relationships": [
+        {
+          "entity": "Flex Ltd.",
+          "relationship": "supplier",
+          "benefit_mechanism": "Enphase美國逆變器與電池製造外包需求，帶動Flex EMS產線及測試服務。",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/1463101/000146310126000013/enph-20251231.htm"
+        },
+        {
+          "entity": "Sunwoda Electric Co., Ltd.",
+          "relationship": "supplier",
+          "benefit_mechanism": "Enphase微型逆變器、儲能與充電設備委外組裝訂單。",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/1463101/000146310126000013/enph-20251231.htm"
+        },
+        {
+          "entity": "Salcomp Manufacturing India Pvt. Ltd.",
+          "relationship": "supplier",
+          "benefit_mechanism": "Enphase印度委外製造及測試需求。",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/1463101/000146310126000013/enph-20251231.htm"
+        },
+        {
+          "entity": "DHL Group",
+          "relationship": "supplier",
+          "benefit_mechanism": "Enphase跨境倉儲、運輸與物流管理服務。",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/1463101/000146310126000013/enph-20251231.htm"
+        },
+        {
+          "entity": "BayWa r.e.",
+          "relationship": "customer",
+          "benefit_mechanism": "IQ微型逆變器與IQ Battery歐洲經銷、安裝商通路。",
+          "source_url": "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-and-baywa-re-expand-distribution-partnership"
+        }
+      ],
+      "non_graph_business_intelligence": [
+        {
+          "topic": "2025客戶集中度",
+          "value": "2025最大單一客戶占39%營收；2024為48%、2023為40%，10-K未直接具名。",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/1463101/000146310126000013/enph-20251231.htm"
+        },
+        {
+          "topic": "2026 Safe Harbor",
+          "value": "2026上半年與TPO客戶簽約約10.811億美元，分為5% Safe Harbor約2.024億美元及Physical Work Test約8.786億美元。",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/1463101/000146310126000081/enph-20260630.htm"
+        },
+        {
+          "topic": "2026Q3財務",
+          "value": "營收2.933億美元；出貨142萬顆微型逆變器與129.9MWh IQ Batteries。",
+          "source_url": "https://enphaseenergy.gcs-web.com/news-releases/news-release-details/enphase-energy-reports-financial-results-third-quarter-2026"
+        },
+        {
+          "topic": "2026 IQ SST",
+          "value": "13.8kV AC轉800V DC實驗展示；2027客戶試點、2028初始商用出貨；兩家全球技術領導企業參與技術需求，未具名。",
+          "source_url": "https://enphaseenergy.gcs-web.com/news-releases/news-release-details/enphase-energy-reports-financial-results-third-quarter-2026"
+        },
+        {
+          "topic": "2026-11產品路線圖",
+          "value": "IQ Battery G5、雙向EV充電預計2027Q1量產出貨；C80商用電池預計2027Q2；SST 2028初始出貨。",
+          "source_url": "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-showcase-product-innovations-re-2026"
+        },
+        {
+          "topic": "2026-09電表核准",
+          "value": "IQ Meter Collar獲美加80家公用事業核准，覆蓋逾3,800萬用戶。",
+          "source_url": "https://newsroom.enphase.com/news-releases/news-release-details/enphase-energy-announces-iq-meter-collar-approval-80-utilities"
+        },
+        {
+          "topic": "LFP電芯供應",
+          "value": "2025 10-K：兩家中國供應商供應LFP電芯；供應商未公開名稱，資訊僅留研究紀錄。",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/1463101/000146310126000013/enph-20251231.htm"
+        }
+      ],
+      "quality_checks": [
+        "客戶、經銷、安裝商、合作、供應商與競爭者分開標記",
+        "歷史客戶保留原始公告日期及關係狀態",
+        "電力公司核准與實際採購區分",
+        "SST開發與未來出貨時程寫入研究備註，不建立假客戶",
+        "上游供應商受惠關係以實際EMS及物流訂單為依據"
+      ],
+      "validation_report": {
+        "total_nodes": 46,
+        "counts_by_relation": {
+          "supplier": 4,
+          "customer": 22,
+          "partner": 10,
+          "competitor": 10
+        },
+        "named_beneficiary_relationship_count": 5,
+        "unique_names": true,
+        "anonymous_graph_nodes": 0,
+        "source_urls_all_nodes": true,
+        "original_profile_fields": 11,
+        "business_lines": 20,
+        "graph_rule": "只以具名真實企業為圖節點；同一企業不因跨產品與受惠關係重複生成節點。"
+      }
+    }
   }
 }

@@ -133,5 +133,776 @@
     "ai_exposure": null,
     "demand_drivers": [],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "locale": "zh-TW",
+    "symbol": "NVT",
+    "company": "nVent Electric plc",
+    "as_of": "2026-11-12",
+    "original_commit": "da93c81d",
+    "original_blob_sha": "be82b0e7986b82278ce86e792970fe67025e2f2a",
+    "business_lines": [
+      {
+        "id": "COOL",
+        "name": "AI 伺服器液冷與 CDU／歧管",
+        "segment": "Systems Protection",
+        "scope": "液對液／液對氣 CDU、TCS 歧管、機櫃液冷整合"
+      },
+      {
+        "id": "RACK",
+        "name": "資料中心機櫃、後門熱交換與機櫃供電",
+        "segment": "Systems Protection",
+        "scope": "SCHROFF 機櫃、RDHx、智慧 PDU 與機櫃電力"
+      },
+      {
+        "id": "DC_POWER",
+        "name": "資料中心與電網母線槽、開關設備",
+        "segment": "Systems Protection",
+        "scope": "2025 Avail EPG 與 2026 Maverick Power 併入之中低壓開關設備、母線系統、配電盤及資料中心模組化電力平台"
+      },
+      {
+        "id": "ENCLOSURE",
+        "name": "工業電控箱、配電外殼與盤體自動化",
+        "segment": "Systems Protection",
+        "scope": "HOFFMAN 防護箱體、機櫃改裝與配線自動化"
+      },
+      {
+        "id": "EHOUSE",
+        "name": "公用事業預製控制屋與模組化 E-house",
+        "segment": "Systems Protection",
+        "scope": "TRACHTE、預製電控屋、PDC、電網與資料中心控制設施"
+      },
+      {
+        "id": "EMBEDDED",
+        "name": "電子儀器、通訊、量子與航太機箱",
+        "segment": "Systems Protection",
+        "scope": "SCHROFF Interscale、Varistar、PXI/PXIe、VPX 機箱"
+      },
+      {
+        "id": "GROUND",
+        "name": "電力／電信接地、防雷與浪湧保護",
+        "segment": "Electrical Connections",
+        "scope": "ERICO Cadweld、接地網、GEM、突波保護"
+      },
+      {
+        "id": "FASTEN",
+        "name": "建築與機電 CADDY 固定、抗震、預製配線",
+        "segment": "Electrical Connections",
+        "scope": "CADDY 電纜托架、線管支撐、Full Prefab"
+      },
+      {
+        "id": "CONNECT",
+        "name": "工業／公用事業電氣連接器與壓接工具",
+        "segment": "Electrical Connections",
+        "scope": "ILSCO、ECM 電力接頭、工具及測試儀器"
+      },
+      {
+        "id": "BUSBAR",
+        "name": "高電流連接、接地銅排與柔性母線",
+        "segment": "Electrical Connections",
+        "scope": "ERIFLEX、busbars、flexible power connections"
+      },
+      {
+        "id": "SOLAR",
+        "name": "太陽能、儲能與再生能源接地連接",
+        "segment": "Electrical Connections",
+        "scope": "BESS 接地、PV 導體、風力發電固定"
+      },
+      {
+        "id": "CHANNEL",
+        "name": "電氣經銷、安裝及技術整合通路",
+        "segment": "Cross-segment",
+        "scope": "授權經銷、機電承包商、系統整合與庫存管理"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "NVT-001",
+        "business_line": "FASTEN",
+        "relationship": "customer",
+        "name": "ArchKey Solutions / Mona Electric",
+        "details": "官方案例確認採用 nVent CADDY Full Prefab Solutions，提升大型商業工程配線效率。",
+        "evidence_url": "https://www.nvent.com/sites/default/files/acquiadam/assets/EFS-CADDY-MONA%20CASE%20STUDY-2310-FINAL-KF.pdf",
+        "evidence_grade": "A",
+        "evidence_date": "2023",
+        "status_note": "既有官方部署案例；證據年份：2023。僅證實當時採用，不推定現行合約。"
+      },
+      {
+        "id": "NVT-002",
+        "business_line": "FASTEN",
+        "relationship": "customer",
+        "name": "Sembcorp Constructors & Engineers / Daewoo JV",
+        "details": "新加坡 KPE 隧道工程聯合承包商選用 nVent CADDY 電纜支撐產品。",
+        "evidence_url": "https://www.nvent.com/sites/default/files/acquiadam_assets/2022-12/F609W-USEN.pdf",
+        "evidence_grade": "A",
+        "evidence_date": "2007",
+        "status_note": "既有官方部署案例；證據年份：2007。僅證實當時採用，不推定現行合約。"
+      },
+      {
+        "id": "NVT-003",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "name": "Eriweld International",
+        "details": "新加坡 KPE 隧道專案之 CADDY 供應安裝承包商；屬已證實下游工程通路。",
+        "evidence_url": "https://www.nvent.com/sites/default/files/acquiadam_assets/2022-12/F609W-USEN.pdf",
+        "evidence_grade": "A",
+        "evidence_date": "2007",
+        "status_note": "既有官方部署案例；證據年份：2007。僅證實當時採用，不推定現行合約。"
+      },
+      {
+        "id": "NVT-004",
+        "business_line": "ENCLOSURE",
+        "relationship": "customer",
+        "name": "Cuadristas Serca",
+        "details": "西班牙配電盤整合商採用 nVent HOFFMAN MCD/MCS 電控箱，供法國食品飲料製造商使用。",
+        "evidence_url": "https://www.nvent.com/sites/default/files/acquiadam/assets/HOFFMAN-WPCS-H88537-CuadrisercaCaseStudy-EN.pdf",
+        "evidence_grade": "A",
+        "evidence_date": "2022",
+        "status_note": "既有官方部署案例；證據年份：2022。僅證實當時採用，不推定現行合約。"
+      },
+      {
+        "id": "NVT-005",
+        "business_line": "ENCLOSURE",
+        "relationship": "customer",
+        "name": "Lämneå Bruk AB",
+        "details": "瑞典線材機械製造商導入 HOFFMAN ModCenter 263 與五台 Personal Wiring Assistant 2000。",
+        "evidence_url": "https://www.nvent.com/sites/default/files/dam/hofman-wpcs-h88142-lamneacs-2205-en-print.pdf",
+        "evidence_grade": "A",
+        "evidence_date": "2022",
+        "status_note": "既有官方部署案例；證據年份：2022。僅證實當時採用，不推定現行合約。"
+      },
+      {
+        "id": "NVT-006",
+        "business_line": "ENCLOSURE",
+        "relationship": "customer",
+        "name": "PTS Products Inc.",
+        "details": "明尼蘇達配電盤代工廠官方案例採用 HOFFMAN 配電盤切割與配線自動化。",
+        "evidence_url": "https://www.nvent.com/sites/default/files/acquiadam/assets/HOFFMAN-WPCS-CCS00016-PTSSteinhauer-EN-2103_0.pdf",
+        "evidence_grade": "A",
+        "evidence_date": "2021",
+        "status_note": "既有官方部署案例；證據年份：2021。僅證實當時採用，不推定現行合約。"
+      },
+      {
+        "id": "NVT-007",
+        "business_line": "EMBEDDED",
+        "relationship": "customer",
+        "name": "AceAxis",
+        "details": "nVent SCHROFF 2019–2020 年提供客製 Interscale 機箱，用於 4G/5G PIM 測試。",
+        "evidence_url": "https://schroff.nvent.com/sites/g/files/hdkjer281/files/acquiadam_assets/2020-10/Schroff-WPCS-Interscale-AceAxis-2002.pdf",
+        "evidence_grade": "A",
+        "evidence_date": "2020",
+        "status_note": "既有官方部署案例；證據年份：2020。僅證實當時採用，不推定現行合約。"
+      },
+      {
+        "id": "NVT-008",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "name": "4Most",
+        "details": "SCHROFF 官方 AceAxis 案例列明透過 4Most 經銷，為具名下游通路。",
+        "evidence_url": "https://schroff.nvent.com/sites/g/files/hdkjer281/files/acquiadam_assets/2020-10/Schroff-WPCS-Interscale-AceAxis-2002.pdf",
+        "evidence_grade": "A",
+        "evidence_date": "2020",
+        "status_note": "既有官方部署案例；證據年份：2020。僅證實當時採用，不推定現行合約。"
+      },
+      {
+        "id": "NVT-009",
+        "business_line": "GROUND",
+        "relationship": "customer",
+        "name": "Vodafone Fiji",
+        "details": "nVent ERICO 官方案例指出其為 Vodafone Fiji 超過 350 個基地台提供接地與防雷系統。",
+        "evidence_url": "https://www.nvent.com/sites/default/files/acquiadam/assets/H86646-USEN.pdf",
+        "evidence_grade": "A",
+        "evidence_date": "2020",
+        "status_note": "既有官方部署案例；證據年份：2020。僅證實當時採用，不推定現行合約。"
+      },
+      {
+        "id": "NVT-010",
+        "business_line": "CHANNEL",
+        "relationship": "customer",
+        "name": "Midlink Marketing",
+        "details": "nVent ERICO 官方案例指出斐濟 Midlink Marketing 提供現場服務與技術支援，為下游代理。",
+        "evidence_url": "https://www.nvent.com/sites/default/files/acquiadam/assets/H86646-USEN.pdf",
+        "evidence_grade": "A",
+        "evidence_date": "2020",
+        "status_note": "既有官方部署案例；證據年份：2020。僅證實當時採用，不推定現行合約。"
+      },
+      {
+        "id": "NVT-011",
+        "business_line": "EMBEDDED",
+        "relationship": "customer",
+        "name": "Qblox",
+        "details": "SCHROFF 官方案例確認供應半客製量子控制電子機箱，與 Koning & Hartman 共同交付。",
+        "evidence_url": "https://www.nvent.com/en-us/schroff/case-studies",
+        "evidence_grade": "A",
+        "evidence_date": "2024",
+        "status_note": "既有官方部署案例；證據年份：2024。僅證實當時採用，不推定現行合約。"
+      },
+      {
+        "id": "NVT-012",
+        "business_line": "EMBEDDED",
+        "relationship": "customer",
+        "name": "Pickering Interfaces",
+        "details": "SCHROFF 官方案例確認 PXI/PXIe 模組支援 Pickering 電動車 BMS 測試設備。",
+        "evidence_url": "https://www.nvent.com/en-us/schroff/case-studies",
+        "evidence_grade": "A",
+        "evidence_date": "2024",
+        "status_note": "既有官方部署案例；證據年份：2024。僅證實當時採用，不推定現行合約。"
+      },
+      {
+        "id": "NVT-013",
+        "business_line": "EMBEDDED",
+        "relationship": "customer",
+        "name": "ECOSTOR",
+        "details": "SCHROFF 官方案例列為二次利用電池儲能機櫃客戶。",
+        "evidence_url": "https://www.nvent.com/en-us/schroff/case-studies",
+        "evidence_grade": "A",
+        "evidence_date": "2024",
+        "status_note": "既有官方部署案例；證據年份：2024。僅證實當時採用，不推定現行合約。"
+      },
+      {
+        "id": "NVT-014",
+        "business_line": "EMBEDDED",
+        "relationship": "customer",
+        "name": "INTILION",
+        "details": "SCHROFF 官方案例確認提供 60–500kWh 商用儲能系統機箱。",
+        "evidence_url": "https://www.nvent.com/en-us/schroff/case-studies",
+        "evidence_grade": "A",
+        "evidence_date": "2024",
+        "status_note": "既有官方部署案例；證據年份：2024。僅證實當時採用，不推定現行合約。"
+      },
+      {
+        "id": "NVT-015",
+        "business_line": "EMBEDDED",
+        "relationship": "customer",
+        "name": "Vortex Systems LLC",
+        "details": "SCHROFF 官方案例確認供應客製政府專案機箱。",
+        "evidence_url": "https://www.nvent.com/en-us/schroff/case-studies",
+        "evidence_grade": "A",
+        "evidence_date": "2024",
+        "status_note": "既有官方部署案例；證據年份：2024。僅證實當時採用，不推定現行合約。"
+      },
+      {
+        "id": "NVT-016",
+        "business_line": "EMBEDDED",
+        "relationship": "customer",
+        "name": "Tech180",
+        "details": "SCHROFF 官方案例列為航太測試設備機箱客戶。",
+        "evidence_url": "https://www.nvent.com/en-us/schroff/case-studies",
+        "evidence_grade": "A",
+        "evidence_date": "2024",
+        "status_note": "既有官方部署案例；證據年份：2024。僅證實當時採用，不推定現行合約。"
+      },
+      {
+        "id": "NVT-017",
+        "business_line": "EHOUSE",
+        "relationship": "customer",
+        "name": "Amalgamated Warbasse Houses",
+        "details": "TRACHTE 官網列示紐約住宅合作社專案案例，具體產品與採購細節仍需核對。",
+        "evidence_url": "https://devinstance.nvent.com/en-us/trachte/commercial-industrial",
+        "evidence_grade": "B",
+        "evidence_date": "2025",
+        "status_note": "既有官方部署案例；證據年份：2025。僅證實當時採用，不推定現行合約。"
+      },
+      {
+        "id": "NVT-018",
+        "business_line": "COOL",
+        "relationship": "partner",
+        "name": "NVIDIA",
+        "details": "2024 年官方聯合參考架構合作，支援 GB200 NVL72 與後續平台液冷；非已確認 NVIDIA 直接採購。",
+        "evidence_url": "https://investors.nvent.com/press-releases/press-release-details/2024/nVent-Collaborates-with-NVIDIA-on-AI-Ready-Liquid-Cooling-Solutions/default.aspx",
+        "evidence_grade": "A",
+        "evidence_date": "2024-11-18"
+      },
+      {
+        "id": "NVT-019",
+        "business_line": "COOL",
+        "relationship": "partner",
+        "name": "AMD",
+        "details": "2026 年官方公告 nVent RDHx 整合 AMD Helios 機架級 AI 平台；為聯合開發，非採購證據。",
+        "evidence_url": "https://investors.nvent.com/press-releases/press-release-details/2026/nVent-and-AMD-Collaborate-on-Cooling-for-AMD-Helios-Rackscale-Solution/default.aspx",
+        "evidence_grade": "A",
+        "evidence_date": "2026-10-13"
+      },
+      {
+        "id": "NVT-020",
+        "business_line": "COOL",
+        "relationship": "partner",
+        "name": "Siemens",
+        "details": "2025 年共同開發 AI 資料中心液冷與電力參考架構，2026 年擴展至 NVIDIA Vera Rubin 設計。",
+        "evidence_url": "https://press.siemens.com/global/en/pressrelease/siemens-and-nvent-release-joint-reference-architecture-purpose-built-nvidia-ai-data",
+        "evidence_grade": "A",
+        "evidence_date": "2025-12-09"
+      },
+      {
+        "id": "NVT-021",
+        "business_line": "DC_POWER",
+        "relationship": "partner",
+        "name": "Siemens",
+        "details": "共同開發高密度 AI 資料中心電力與液冷參考架構，為同一合作之電力主線。",
+        "evidence_url": "https://press.siemens.com/global/en/pressrelease/siemens-and-nvent-release-joint-reference-architecture-purpose-built-nvidia-ai-data",
+        "evidence_grade": "A",
+        "evidence_date": "2025-12-09"
+      },
+      {
+        "id": "NVT-022",
+        "business_line": "COOL",
+        "relationship": "partner",
+        "name": "Open Compute Project（OCP）",
+        "details": "nVent 參與 OCP Project Deschutes CDU 設計與開放標準生態系；不是客戶。",
+        "evidence_url": "https://investors.nvent.com/press-releases/press-release-details/2025/nVent-Unveils-New-Liquid-Cooling-and-Power-Portfolio-at-SC25/default.aspx",
+        "evidence_grade": "A",
+        "evidence_date": "2025-11-17"
+      },
+      {
+        "id": "NVT-023",
+        "business_line": "COOL",
+        "relationship": "partner",
+        "name": "Google",
+        "details": "nVent CDU 採用 Google 貢獻 OCP 的 Project Deschutes 規格；標準規格相容，並非 Google 直接採購。",
+        "evidence_url": "https://investors.nvent.com/press-releases/press-release-details/2025/nVent-Unveils-New-Liquid-Cooling-and-Power-Portfolio-at-SC25/default.aspx",
+        "evidence_grade": "A",
+        "evidence_date": "2025-11-17"
+      },
+      {
+        "id": "NVT-024",
+        "business_line": "EMBEDDED",
+        "relationship": "partner",
+        "name": "Koning & Hartman",
+        "details": "SCHROFF 與 Koning & Hartman 合作交付 Qblox 半客製量子控制機箱。",
+        "evidence_url": "https://www.nvent.com/en-us/schroff/case-studies",
+        "evidence_grade": "A",
+        "evidence_date": "2024"
+      },
+      {
+        "id": "NVT-025",
+        "business_line": "CHANNEL",
+        "relationship": "supplier",
+        "name": "TrueCommerce",
+        "details": "nVent 採用 TrueCommerce 供應商管理庫存 VMI 解決方案，屬企業採購之軟體供應商；不是 nVent 產品下游客戶。",
+        "evidence_url": "https://www.truecommerce.com/resource/nvent/",
+        "evidence_grade": "A",
+        "evidence_date": "2025"
+      },
+      {
+        "id": "NVT-026",
+        "business_line": "COOL",
+        "relationship": "competitor",
+        "name": "Vertiv",
+        "details": "CDU、液冷、資料中心散熱競品；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-027",
+        "business_line": "COOL",
+        "relationship": "competitor",
+        "name": "CoolIT Systems",
+        "details": "CDU、直液冷與歧管競品；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-028",
+        "business_line": "COOL",
+        "relationship": "competitor",
+        "name": "Boyd",
+        "details": "資料中心液冷設備競品；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-029",
+        "business_line": "RACK",
+        "relationship": "competitor",
+        "name": "Rittal",
+        "details": "工業與資料中心機櫃競品；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-030",
+        "business_line": "RACK",
+        "relationship": "competitor",
+        "name": "Legrand",
+        "details": "機櫃 PDU 與資料中心電力競品；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-031",
+        "business_line": "RACK",
+        "relationship": "competitor",
+        "name": "Vertiv",
+        "details": "機櫃級電源分配與冷卻競品；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-032",
+        "business_line": "DC_POWER",
+        "relationship": "competitor",
+        "name": "Eaton",
+        "details": "開關設備、母線槽與電力配電競品；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-033",
+        "business_line": "DC_POWER",
+        "relationship": "competitor",
+        "name": "Siemens",
+        "details": "中壓開關設備與母線系統競品；另有共同參考架構合作；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-034",
+        "business_line": "DC_POWER",
+        "relationship": "competitor",
+        "name": "Schneider Electric",
+        "details": "資料中心開關設備與配電競品；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-035",
+        "business_line": "ENCLOSURE",
+        "relationship": "competitor",
+        "name": "Rittal",
+        "details": "工業電氣箱體與盤體自動化競品；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-036",
+        "business_line": "ENCLOSURE",
+        "relationship": "competitor",
+        "name": "Hubbell",
+        "details": "電氣外殼與工業連接保護競品；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-037",
+        "business_line": "ENCLOSURE",
+        "relationship": "competitor",
+        "name": "Eaton",
+        "details": "工業電氣箱體與電力防護競品；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-038",
+        "business_line": "EHOUSE",
+        "relationship": "competitor",
+        "name": "Hubbell（PCX）",
+        "details": "Hubbell 旗下 PCX 預製電力模組與 nVent TRACHTE 電控屋市場重疊；TRACHTE 屬 nVent 而非 Hubbell。B 級競爭映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-039",
+        "business_line": "EMBEDDED",
+        "relationship": "competitor",
+        "name": "Elma Electronic",
+        "details": "工業電子機箱、VPX／嵌入式系統競品；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-040",
+        "business_line": "EMBEDDED",
+        "relationship": "competitor",
+        "name": "Pixus Technologies",
+        "details": "電子機箱、背板與嵌入式平台競品；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-041",
+        "business_line": "GROUND",
+        "relationship": "competitor",
+        "name": "Hubbell（BURNDY）",
+        "details": "接地、連接與電力保護競品；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-042",
+        "business_line": "GROUND",
+        "relationship": "competitor",
+        "name": "ABB（Furse）",
+        "details": "接地與防雷保護競品；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-043",
+        "business_line": "GROUND",
+        "relationship": "competitor",
+        "name": "DEHN",
+        "details": "避雷、浪湧保護及接地競品；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-044",
+        "business_line": "FASTEN",
+        "relationship": "competitor",
+        "name": "Atkore",
+        "details": "電氣固定、電纜管理與線管支撐競品；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-045",
+        "business_line": "FASTEN",
+        "relationship": "competitor",
+        "name": "Hilti",
+        "details": "機電固定、吊掛與抗震支撐競品；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-046",
+        "business_line": "CONNECT",
+        "relationship": "competitor",
+        "name": "Hubbell（BURNDY）",
+        "details": "壓接、連接器與電力接頭競品；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-047",
+        "business_line": "CONNECT",
+        "relationship": "competitor",
+        "name": "TE Connectivity",
+        "details": "電力連接器與工業連接競品；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-048",
+        "business_line": "BUSBAR",
+        "relationship": "competitor",
+        "name": "Mersen",
+        "details": "高電流母排與電力連接競品；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-049",
+        "business_line": "BUSBAR",
+        "relationship": "competitor",
+        "name": "Eaton",
+        "details": "母線與高電流配電產品競品；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      },
+      {
+        "id": "NVT-050",
+        "business_line": "SOLAR",
+        "relationship": "competitor",
+        "name": "Hubbell",
+        "details": "太陽能／儲能接地與電力連接競品；依公開產品組合的 B 級市場映射，非具名競標。",
+        "evidence_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+        "evidence_grade": "B",
+        "status_note": "產品市場重疊，不代表直接交易"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "supplier",
+      "partner",
+      "competitor"
+    ],
+    "research_notes": {
+      "primary_2025_10k": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+      "source_policy": "A=官方具名案例／合作公告；B=市場重疊競爭者或細節未完全核實之具名案例。",
+      "critical_correction": "原始 display.product_stack 的『伴熱系統』屬 2025-01-30 已出售的 Thermal Management（RAYCHEM/TRACER）業務，因使用者要求保留原公司解析，原始 11 欄完全不改；industry_chain 僅列 2026 年持續經營業務。",
+      "2025_portfolio": "2025 年收購 Avail Electrical Products Group，涵蓋 enclosures、switchgear、bus systems；2024 收購 Trachte。此等公司／品牌為集團內部資產，不當作外部供應商。",
+      "direct_customer_policy": "NVIDIA、AMD、Siemens、Google 都不是已證實直接購買 nVent 液冷產品的客戶，分別列為合作／標準相容關係。大型雲端客戶未公開具名，不補推測節點。",
+      "taiwan_suppliers": "無可公開驗證的具名台灣直接上游供應商。",
+      "raw_materials": "2025 10-K 揭露低碳鋼、不鏽鋼、電子元件、銅、鋁與塗料；未逐名揭露材料供應商。",
+      "coverage_limits": [
+        "客戶集中於官方案例，部分屬歷史專案，不能推論 2026 年持續採購。",
+        "液冷 hyperscaler 客戶未具名，故沒有硬湊微軟、Google、Meta 或 AWS。",
+        "25 個競爭者屬 B 級市場映射，不是交易關係。",
+        "同一企業於不同業務主線可有不同節點，但不代表獨立合約。",
+        "2026-10-01 Maverick Power 已完成收購，原本 12 條業務主線中的 DC_POWER 必須涵蓋 Maverick 中低壓配電與模組化電力系統。"
+      ],
+      "source_catalog": [
+        {
+          "key": "10k",
+          "url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm"
+        },
+        {
+          "key": "nv",
+          "url": "https://investors.nvent.com/press-releases/press-release-details/2024/nVent-Collaborates-with-NVIDIA-on-AI-Ready-Liquid-Cooling-Solutions/default.aspx"
+        },
+        {
+          "key": "amd",
+          "url": "https://investors.nvent.com/press-releases/press-release-details/2026/nVent-and-AMD-Collaborate-on-Cooling-for-AMD-Helios-Rackscale-Solution/default.aspx"
+        },
+        {
+          "key": "siemens",
+          "url": "https://press.siemens.com/global/en/pressrelease/siemens-and-nvent-release-joint-reference-architecture-purpose-built-nvidia-ai-data"
+        },
+        {
+          "key": "sc25",
+          "url": "https://investors.nvent.com/press-releases/press-release-details/2025/nVent-Unveils-New-Liquid-Cooling-and-Power-Portfolio-at-SC25/default.aspx"
+        },
+        {
+          "key": "siemens26",
+          "url": "https://investors.nvent.com/press-releases/press-release-details/2026/Siemens-and-partners-develop-reference--architecture-purpose-built-for-NVIDIA-AI-data-centers-/default.aspx"
+        },
+        {
+          "key": "schroff",
+          "url": "https://www.nvent.com/en-us/schroff/case-studies"
+        },
+        {
+          "key": "ace",
+          "url": "https://schroff.nvent.com/sites/g/files/hdkjer281/files/acquiadam_assets/2020-10/Schroff-WPCS-Interscale-AceAxis-2002.pdf"
+        },
+        {
+          "key": "mona",
+          "url": "https://www.nvent.com/sites/default/files/acquiadam/assets/EFS-CADDY-MONA%20CASE%20STUDY-2310-FINAL-KF.pdf"
+        },
+        {
+          "key": "semb",
+          "url": "https://www.nvent.com/sites/default/files/acquiadam_assets/2022-12/F609W-USEN.pdf"
+        },
+        {
+          "key": "cuad",
+          "url": "https://www.nvent.com/sites/default/files/acquiadam/assets/HOFFMAN-WPCS-H88537-CuadrisercaCaseStudy-EN.pdf"
+        },
+        {
+          "key": "lam",
+          "url": "https://www.nvent.com/sites/default/files/dam/hofman-wpcs-h88142-lamneacs-2205-en-print.pdf"
+        },
+        {
+          "key": "pts",
+          "url": "https://www.nvent.com/sites/default/files/acquiadam/assets/HOFFMAN-WPCS-CCS00016-PTSSteinhauer-EN-2103_0.pdf"
+        },
+        {
+          "key": "vod",
+          "url": "https://www.nvent.com/sites/default/files/acquiadam/assets/H86646-USEN.pdf"
+        },
+        {
+          "key": "modern",
+          "url": "https://blog.nvent.com/category/nvent/customer-success-stories/"
+        },
+        {
+          "key": "utility",
+          "url": "https://blog.nvent.com/utility-case-study-transmission-line-application/"
+        },
+        {
+          "key": "columbia",
+          "url": "https://blog.nvent.com/substation-application-in-columbia-south-carolina/"
+        },
+        {
+          "key": "warb",
+          "url": "https://devinstance.nvent.com/en-us/trachte/commercial-industrial"
+        },
+        {
+          "key": "vmi",
+          "url": "https://www.truecommerce.com/resource/nvent/"
+        },
+        {
+          "key": "2026cap",
+          "url": "https://investors.nvent.com/press-releases/press-release-details/2026/nVent-Expands-Data-Center-Liquid-Cooling-Capacity/default.aspx"
+        },
+        {
+          "key": "sale",
+          "url": "https://investors.nvent.com/press-releases/press-release-details/2025/nVent-Completes-Sale-of-Thermal-Management-Business/default.aspx"
+        }
+      ],
+      "quality_control": {
+        "json_validated": true,
+        "node_ids_unique": true,
+        "all_node_line_ids_valid": true,
+        "original_11_fields_reconstructed_from_commit": "da93c81d",
+        "original_blob_sha": "be82b0e7986b82278ce86e792970fe67025e2f2a",
+        "caveat": "原始 11 欄以讀取的原始文字逐欄重建；未執行與 GitHub blob 的機器逐位元比對，不能宣稱 byte-for-byte verified。"
+      },
+      "current_2026_news_review": [
+        {
+          "date": "2026-10-30",
+          "event": "第三季營收 15.15 億美元，年增 44%；公司公告創紀錄銷售與訂單。",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026068391/q32026nvtpressrelease.htm",
+          "evidence_grade": "A"
+        },
+        {
+          "date": "2026-10-01",
+          "event": "nVent 完成收購 Maverick Power，擴充資料中心配電平台。Maverick 為集團內部業務，不能作為外部供應商。",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026068391/q32026nvtpressrelease.htm",
+          "evidence_grade": "A"
+        },
+        {
+          "date": "2026-10-13",
+          "event": "AMD Helios 機架級平台整合 nVent 後門熱交換器 RDHx，屬具名合作／產品整合，非 AMD 已下採購單。",
+          "source_url": "https://investors.nvent.com/press-releases/press-release-details/2026/nVent-and-AMD-Collaborate-on-Cooling-for-AMD-Helios-Rackscale-Solution/default.aspx",
+          "evidence_grade": "A"
+        },
+        {
+          "date": "2026-07-31",
+          "event": "第二座 Blaine, Minnesota 液冷製造場址擴建 160,000 平方英尺，預計 2027 上半年投產；公司揭露超過 2 GW 液冷部署。",
+          "source_url": "https://finance.yahoo.com/technology/ai/articles/nvent-expands-data-center-liquid-101500165.html",
+          "evidence_grade": "A"
+        },
+        {
+          "date": "2026-03-18",
+          "event": "投資人日揭露已部署數千台液對液 CDU、累計超過 2 GW；與大型雲端業者合作但未揭露終端客戶名稱。",
+          "source_url": "https://s22.q4cdn.com/268397047/files/doc_downloads/2026/Investor-Day-Transcript.pdf",
+          "evidence_grade": "A"
+        },
+        {
+          "date": "2026-10-30",
+          "event": "Q3 法說會證實新模組化冷卻平台已開始接單，但未披露具名買方。",
+          "source_url": "https://stockanalysis.com/stocks/nvt/transcripts/721403-q3-2026/",
+          "evidence_grade": "B"
+        }
+      ],
+      "taiwan_ecosystem_2026": {
+        "confirmed_companies": [
+          "雙鴻（Auras）",
+          "奇鋐（AVC）",
+          "貿聯-KY（BizLink）",
+          "台達電（Delta）",
+          "鴻海（Foxconn）",
+          "川湖（King Slide）",
+          "光寶科（Lite-On）"
+        ],
+        "relationship": "NVIDIA 2025 GTC 官方推薦供應商／供應鏈生態系；並非 nVent 直接供應商",
+        "source_url": "https://www.cna.com.tw/news/afe/202503200150.aspx",
+        "strict_note": "這些台廠與 nVent 同屬 AI 伺服器供應鏈，沒有直接供貨證據，不能列為 nVent supplier。"
+      },
+      "quality_review_2026_11_12": "已依近期新聞補入 Q3 2026 訂單、Maverick 收購、AMD Helios 整合與液冷產能。原有歷史案例保留為歷史採用證據而非現行訂單。仍未找到具名 hyperscaler 直接採購或台廠直接供應商，不以其他供應鏈名單冒充。"
+    }
   }
 }
