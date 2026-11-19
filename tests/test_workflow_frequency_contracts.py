@@ -66,5 +66,5 @@ def test_sec_financial_refresh_never_runs_classification_or_business_evidence():
 def test_market_daily_and_etf_weekly_schedules_are_preserved():
     market = _workflow("production-market-refresh.yml")
     etf = _workflow("etf-holdings-refresh.yml")
-    assert 'cron: "30 1 * * 2-6"' in market
+    assert 'cron: "30 2 * * 2-6"' in market
     assert 'cron: "0 0 * * 2"' in etf

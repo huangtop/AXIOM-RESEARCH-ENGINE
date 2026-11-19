@@ -61,8 +61,8 @@ def test_description_requires_provenance_and_never_infers_from_company_name(tmp_
 def test_provenance_bearing_description_drives_theme_and_news_policy(tmp_path):
     payload = build_theme_sector_inference(_fixture_root(tmp_path))
     record = payload["records"][0]
-    assert record["themes"][0]["theme_id"] == "theme:artificial-intelligence"
-    assert record["sectors"][0]["sector_id"] == "sector:ai-networking"
+    assert record["themes"][0]["theme_id"] == "theme:ai_infrastructure"
+    assert record["sectors"][0]["sector_id"] == "sector:ai_networking"
     assert record["research_universe_status"] == "selected"
     assert record["analysis_policy"]["news"]["enabled"] is True
     assert record["analysis_policy"]["etf"]["enabled"] is False

@@ -9,7 +9,7 @@ on:
         default: false
         type: boolean
   schedule:
-    # 01:30 UTC Tue-Sat = US previous trading evening 20:30 EST / 21:30 EDT.
+    # 02:30 UTC Tue-Sat = US previous trading evening 21:30 EST / 22:30 EDT.
     # No nightly run on Sunday/Monday UTC after a non-trading Saturday/Sunday.
     - cron: "30 2 * * 2-6"
 

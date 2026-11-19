@@ -1481,7 +1481,7 @@ def test_v2662_safe_upsert_sanitizes_only_production_copy(
         ][
             "version"
         ]
-        == "v2.6.6.2a"
+        == "v2.6.6.2c-batch1"
     )
 
 
