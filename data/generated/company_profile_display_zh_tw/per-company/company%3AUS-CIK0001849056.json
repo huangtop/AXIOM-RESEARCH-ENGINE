@@ -329,5 +329,586 @@
       "無碳基載電力需求"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "symbol": "OKLO",
+    "company": "Oklo Inc.",
+    "locale": "zh-TW",
+    "research_as_of": "2026-11-19",
+    "business_lines": [
+      {
+        "id": "POWER",
+        "name": "Aurora 快中子核電廠與電力供應",
+        "products": "Aurora Powerhouse、核電長約、資料中心基載電力"
+      },
+      {
+        "id": "FUEL",
+        "name": "HALEU 核燃料與燃料製造",
+        "products": "HALEU、核燃料轉換與製造"
+      },
+      {
+        "id": "EPC",
+        "name": "電廠工程、設備與施工",
+        "products": "蒸汽渦輪、發電機、反應爐組件、EPC"
+      },
+      {
+        "id": "RECYCLE",
+        "name": "核燃料回收與先進材料",
+        "products": "燃料再循環、先進燃料材料、鈽資源"
+      },
+      {
+        "id": "ISOTOPE",
+        "name": "醫療同位素與研究反應爐",
+        "products": "Atomic Alchemy、Groves 同位素研究反應爐"
+      },
+      {
+        "id": "INTEGRATE",
+        "name": "資料中心整合與先進核能研發",
+        "products": "冷卻、微電網、實驗室驗證、技術合作"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "OKLO_001",
+        "name": "Meta Platforms",
+        "relationship": "customer",
+        "business_line": "POWER",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://oklo.com/newsroom/news-details/2026/Oklo-Meta-Announce-Agreement-in-Support-of-1-2-GW-Nuclear-Energy-Development-in-Southern-Ohio/default.aspx"
+        ],
+        "commercial_status": "具名預付款安排；電力尚未交付",
+        "details": "2026 年 1 月簽署俄亥俄州 1.2 GW Aurora 園區預付款安排；Meta 可預付未來電力，資金支持燃料採購與開發。尚非已交付電力或已營運核電廠。",
+        "named_counterparty": true,
+        "ticker": "META"
+      },
+      {
+        "id": "OKLO_002",
+        "name": "Switch",
+        "relationship": "customer",
+        "business_line": "POWER",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://oklo.com/newsroom/oklo-and-switch-form-landmark-strategic-relationship-to-deploy-12-gigawatts-of-advanced-nuclear-"
+        ],
+        "commercial_status": "非約束性電力主協議",
+        "details": "2024 年簽署至 2044 年最高 12 GW 的非約束性 Master Power Agreement；不等於已簽具約束力 PPA，也不代表已完成電廠。",
+        "named_counterparty": true
+      },
+      {
+        "id": "OKLO_003",
+        "name": "Equinix",
+        "relationship": "customer",
+        "business_line": "POWER",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1849056/000162828026018698/oklo-20251231.htm"
+        ],
+        "commercial_status": "潛在客戶／非約束性安排",
+        "details": "公司 2025 年 10-K 列為潛在客戶；依初步合作／意向推進供電規劃，尚無商業電力交付。",
+        "named_counterparty": true,
+        "ticker": "EQIX"
+      },
+      {
+        "id": "OKLO_004",
+        "name": "Diamondback Energy",
+        "relationship": "customer",
+        "business_line": "POWER",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1849056/000162828026018698/oklo-20251231.htm"
+        ],
+        "commercial_status": "潛在客戶／規劃中",
+        "details": "2025 年 10-K 具名列為潛在電力／熱能需求方，規劃能源合作；不視為已履約供電。",
+        "named_counterparty": true,
+        "ticker": "FANG"
+      },
+      {
+        "id": "OKLO_005",
+        "name": "Prometheus Hyperscale",
+        "relationship": "customer",
+        "business_line": "POWER",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1849056/000162828026018698/oklo-20251231.htm"
+        ],
+        "commercial_status": "潛在客戶／規劃中",
+        "details": "2025 年 10-K 具名列為潛在資料中心電力客戶，涉及長期電力需求規劃；未開始供電。",
+        "named_counterparty": true
+      },
+      {
+        "id": "OKLO_006",
+        "name": "U.S. Department of the Air Force",
+        "relationship": "customer",
+        "business_line": "POWER",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1849056/000162828026071319/oklo-20260930.htm"
+        ],
+        "commercial_status": "政府專案暫定選定；尚未供電",
+        "details": "2025 年取得 Eielson Air Force Base 電力與蒸汽專案暫定選定通知（Notice of Intent to Award），至少 5 MWe 設計目標；非已完成採購或供電。",
+        "named_counterparty": true
+      },
+      {
+        "id": "OKLO_007",
+        "name": "Centrus Energy",
+        "relationship": "supplier",
+        "business_line": "FUEL",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://oklo.com/newsroom/oklo-centrus-secure-fuel-supply-for-aurora-powerhouse-deployment-in-ohio"
+        ],
+        "commercial_status": "已簽正式核燃料採購；未來交付",
+        "details": "2026-11-12 已簽多年期具約束力 HALEU 採購合約，涵蓋最多五座 Aurora 的多年燃料需求，預計 2029 年交付；Oklo 預付款支持 Centrus 美國濃縮產能。",
+        "named_counterparty": true,
+        "ticker": "LEU"
+      },
+      {
+        "id": "OKLO_008",
+        "name": "Siemens Energy",
+        "relationship": "supplier",
+        "business_line": "EPC",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://oklo.com/newsroom/oklo-and-siemens-energy-sign-binding-contract-to-expedite-procurement-of-the-power-conversion-sy"
+        ],
+        "commercial_status": "具約束力設備設計及交付合約",
+        "details": "2025-11-19 簽署具約束力的電力轉換系統設計與交付合約，涵蓋 SST-600 蒸汽渦輪、SGen-100A 發電機及輔助設備；用於 Aurora-INL。",
+        "named_counterparty": true,
+        "ticker": "ENR"
+      },
+      {
+        "id": "OKLO_009",
+        "name": "Kiewit Nuclear Solutions",
+        "relationship": "supplier",
+        "business_line": "EPC",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://oklo.com/newsroom/oklo-centrus-sign-letter-of-intent-to-purchase-nuclear-fuel-for-aurora-powerhouse-deployment-in-"
+        ],
+        "commercial_status": "Idaho 主建造商已選定；Ohio 為 MOU",
+        "details": "2025 年 Oklo 選定 Kiewit 為 Idaho 首座 Aurora 電廠主建造商；2026 年俄亥俄州部署另簽工程採購施工規劃 MOU，區分已選定承包與未來規劃。",
+        "named_counterparty": true
+      },
+      {
+        "id": "OKLO_010",
+        "name": "U.S. Forged Rings",
+        "relationship": "supplier",
+        "business_line": "EPC",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://oklo.com/newsroom/oklo-u-s-forged-rings-partner-to-advance-domestic-manufacturing-for-future-aurora-powerhouse-dep"
+        ],
+        "commercial_status": "已簽產能預留；2030 年規劃交付",
+        "details": "2026-11-06 簽大型反應爐組件製造產能預留協議，支援反應爐容器、蓋板等；預計 2030 年起初步交付，2035 年前保留產能。",
+        "named_counterparty": true
+      },
+      {
+        "id": "OKLO_011",
+        "name": "Standard Nuclear",
+        "relationship": "partner",
+        "business_line": "FUEL",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://investor.oklo.com/news/"
+        ],
+        "commercial_status": "具名策略聯盟",
+        "details": "2026 年簽署先進核燃料供應鏈策略聯盟；核燃料製造與供應鏈協作，非已證實的大量核燃料交付。",
+        "named_counterparty": true
+      },
+      {
+        "id": "OKLO_012",
+        "name": "Lightbridge",
+        "relationship": "partner",
+        "business_line": "RECYCLE",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://oklo.com/newsroom/lightbridge-and-oklo-sign-mou-to-explore-co-location-of-commercial-fuel-fabrication-facilities-a"
+        ],
+        "commercial_status": "MOU／可行性評估",
+        "details": "2025 年簽 MOU 研究燃料製造設施共址與舊核材料再利用，8 月宣布進一步評估；屬研發與可行性合作。",
+        "named_counterparty": true,
+        "ticker": "LTBR"
+      },
+      {
+        "id": "OKLO_013",
+        "name": "ABB",
+        "relationship": "partner",
+        "business_line": "INTEGRATE",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://investor.oklo.com/news/"
+        ],
+        "commercial_status": "MOU／技術合作",
+        "details": "2025 年宣布控制、監控與操作員培訓合作，含監控室規劃；不將 MOU 直接視為設備採購合約。",
+        "named_counterparty": true,
+        "ticker": "ABB"
+      },
+      {
+        "id": "OKLO_014",
+        "name": "Vertiv",
+        "relationship": "partner",
+        "business_line": "INTEGRATE",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://investor.oklo.com/news/"
+        ],
+        "commercial_status": "具名技術合作",
+        "details": "2025 年宣布結合 Aurora 電力與資料中心電力、冷卻系統的技術合作，服務 hyperscale 與 colocation 場景。",
+        "named_counterparty": true,
+        "ticker": "VRT"
+      },
+      {
+        "id": "OKLO_015",
+        "name": "Liberty Energy",
+        "relationship": "partner",
+        "business_line": "INTEGRATE",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://investor.oklo.com/news/"
+        ],
+        "commercial_status": "具名技術合作",
+        "details": "2025 年宣布整合型電力方案合作，探索先進核能與可調度能源服務的組合。",
+        "named_counterparty": true,
+        "ticker": "LBRT"
+      },
+      {
+        "id": "OKLO_016",
+        "name": "RPower",
+        "relationship": "partner",
+        "business_line": "INTEGRATE",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://investor.oklo.com/news/"
+        ],
+        "commercial_status": "具名合作",
+        "details": "2025 年宣布加速資料中心電力可用性合作，提供過渡電力與部署整合方向。",
+        "named_counterparty": true
+      },
+      {
+        "id": "OKLO_017",
+        "name": "NVIDIA",
+        "relationship": "partner",
+        "business_line": "RECYCLE",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://investor.oklo.com/news/"
+        ],
+        "commercial_status": "研究合作",
+        "details": "2026 年與 Oklo、Los Alamos National Laboratory 宣布運用 AI 支援核燃料驗證；研究合作非核電設備供應。",
+        "named_counterparty": true,
+        "ticker": "NVDA"
+      },
+      {
+        "id": "OKLO_018",
+        "name": "Blykalla",
+        "relationship": "partner",
+        "business_line": "RECYCLE",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://investor.oklo.com/news/"
+        ],
+        "commercial_status": "策略研發合作",
+        "details": "2025 年宣布跨大西洋先進反應爐商業化合作，2026 年擴大策略關係；不是直接供應商。",
+        "named_counterparty": true
+      },
+      {
+        "id": "OKLO_019",
+        "name": "newcleo",
+        "relationship": "partner",
+        "business_line": "RECYCLE",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://investor.oklo.com/news/"
+        ],
+        "commercial_status": "策略合作",
+        "details": "2025 年與 Oklo、Blykalla 宣布推進美國先進核燃料生態系統合作，屬技術及產業鏈策略合作。",
+        "named_counterparty": true
+      },
+      {
+        "id": "OKLO_020",
+        "name": "U.S. Department of Energy",
+        "relationship": "partner",
+        "business_line": "FUEL",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://investor.oklo.com/news/"
+        ],
+        "commercial_status": "政府計畫與核能研發合作",
+        "details": "能源部核燃料配置、Aurora 與 Groves 專案安全審查及同位素試驗設施合作；政府合作方非一般商業供應商。",
+        "named_counterparty": true
+      },
+      {
+        "id": "OKLO_021",
+        "name": "Idaho National Laboratory",
+        "relationship": "partner",
+        "business_line": "FUEL",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1849056/000162828026018698/oklo-20251231.htm"
+        ],
+        "commercial_status": "政府實驗室合作",
+        "details": "Aurora-INL 場址、燃料資源與技術研究合作；屬政府實驗室合作而非已商轉電力客戶。",
+        "named_counterparty": true
+      },
+      {
+        "id": "OKLO_022",
+        "name": "Los Alamos National Laboratory",
+        "relationship": "partner",
+        "business_line": "RECYCLE",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://investor.oklo.com/news/"
+        ],
+        "commercial_status": "國家實驗室研發合作",
+        "details": "快中子燃料／鈽材料實驗、2026 年 AI 核燃料驗證合作；技術研發階段。",
+        "named_counterparty": true
+      },
+      {
+        "id": "OKLO_023",
+        "name": "Argonne National Laboratory",
+        "relationship": "partner",
+        "business_line": "RECYCLE",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://investor.oklo.com/news/"
+        ],
+        "commercial_status": "國家實驗室研發合作",
+        "details": "先進核燃料、燃料回收與燃料組件流動測試合作；研究驗證而非已商轉供應。",
+        "named_counterparty": true
+      },
+      {
+        "id": "OKLO_024",
+        "name": "Oak Ridge National Laboratory",
+        "relationship": "partner",
+        "business_line": "RECYCLE",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://investor.oklo.com/news/"
+        ],
+        "commercial_status": "國家實驗室研發合作",
+        "details": "與 DOE 合作推進下一代核材料研發及材料特性研究。",
+        "named_counterparty": true
+      },
+      {
+        "id": "OKLO_025",
+        "name": "Deep Isolation",
+        "relationship": "partner",
+        "business_line": "RECYCLE",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://investor.oklo.com/news/"
+        ],
+        "commercial_status": "研究專案合作",
+        "details": "參與 DOE 核燃料再循環與核廢棄物管理相關研究專案；未見直接設備採購證據。",
+        "named_counterparty": true
+      },
+      {
+        "id": "OKLO_026",
+        "name": "Case Western Reserve University",
+        "relationship": "partner",
+        "business_line": "RECYCLE",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://investor.oklo.com/news/"
+        ],
+        "commercial_status": "學術研究合作",
+        "details": "參與 DOE 核燃料回收研究合作專案；屬學研合作。",
+        "named_counterparty": true
+      },
+      {
+        "id": "OKLO_027",
+        "name": "NuScale Power",
+        "relationship": "competitor",
+        "business_line": "POWER",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1849056/000162828026018698/oklo-20251231.htm"
+        ],
+        "commercial_status": "產業競爭比較；非公司正式具名競爭者",
+        "details": "小型模組化核電與長期供電市場的替代方案；不同反應爐技術路線。",
+        "named_counterparty": true,
+        "ticker": "SMR"
+      },
+      {
+        "id": "OKLO_028",
+        "name": "GE Vernova",
+        "relationship": "competitor",
+        "business_line": "POWER",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1849056/000162828026018698/oklo-20251231.htm"
+        ],
+        "commercial_status": "產業競爭比較；非公司正式具名競爭者",
+        "details": "BWRX-300 小型模組化核電與電力設備方案，競逐核電部署市場。",
+        "named_counterparty": true,
+        "ticker": "GEV"
+      },
+      {
+        "id": "OKLO_029",
+        "name": "BWX Technologies",
+        "relationship": "competitor",
+        "business_line": "POWER",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1849056/000162828026018698/oklo-20251231.htm"
+        ],
+        "commercial_status": "產業競爭比較；非公司正式具名競爭者",
+        "details": "核反應爐製造、核燃料及微型反應爐領域，部分業務與先進核能供應鏈競合。",
+        "named_counterparty": true,
+        "ticker": "BWXT"
+      },
+      {
+        "id": "OKLO_030",
+        "name": "X-energy",
+        "relationship": "competitor",
+        "business_line": "POWER",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1849056/000162828026018698/oklo-20251231.htm"
+        ],
+        "commercial_status": "產業競爭比較；非公司正式具名競爭者",
+        "details": "高溫氣冷式小型模組化反應爐與燃料供應體系，競逐工業及資料中心長期電力。",
+        "named_counterparty": true
+      },
+      {
+        "id": "OKLO_031",
+        "name": "TerraPower",
+        "relationship": "competitor",
+        "business_line": "POWER",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1849056/000162828026018698/oklo-20251231.htm"
+        ],
+        "commercial_status": "產業競爭比較；非公司正式具名競爭者",
+        "details": "Natrium 先進反應爐與儲能方案，競逐先進核電建置市場。",
+        "named_counterparty": true
+      },
+      {
+        "id": "OKLO_032",
+        "name": "Kairos Power",
+        "relationship": "competitor",
+        "business_line": "POWER",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1849056/000162828026018698/oklo-20251231.htm"
+        ],
+        "commercial_status": "產業競爭比較；非公司正式具名競爭者",
+        "details": "氟鹽冷卻先進反應爐與科技公司電力合作，為先進核能替代方案。",
+        "named_counterparty": true
+      },
+      {
+        "id": "OKLO_033",
+        "name": "Westinghouse Electric Company",
+        "relationship": "competitor",
+        "business_line": "POWER",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1849056/000162828026018698/oklo-20251231.htm"
+        ],
+        "commercial_status": "產業競爭比較；非公司正式具名競爭者",
+        "details": "AP300／eVinci 等核能方案，與 Oklo 在先進核能部署競爭。",
+        "named_counterparty": true
+      }
+    ],
+    "research_metadata": {
+      "source_profile_commit": "da93c81d",
+      "source_profile_sha": "daef24bd8e35ade5c327db6a6d7f7e20dc7ab74a",
+      "beneficiary_relationships": [
+        {
+          "node_id": "OKLO_007",
+          "name": "Centrus Energy",
+          "details": "已簽多年期 HALEU 採購合約與預付款，屬明確供應鏈受惠；燃料預計 2029 年開始交付，不等於已認列全部收入。",
+          "source_urls": [
+            "https://oklo.com/newsroom/oklo-centrus-secure-fuel-supply-for-aurora-powerhouse-deployment-in-ohio"
+          ]
+        },
+        {
+          "node_id": "OKLO_008",
+          "name": "Siemens Energy",
+          "details": "Aurora-INL 渦輪、發電機與電力轉換設備具約束力採購，直接設備訂單受惠，未披露完整合約金額。",
+          "source_urls": [
+            "https://oklo.com/newsroom/oklo-and-siemens-energy-sign-binding-contract-to-expedite-procurement-of-the-power-conversion-sy"
+          ]
+        },
+        {
+          "node_id": "OKLO_009",
+          "name": "Kiewit Nuclear Solutions",
+          "details": "獲選 Idaho 首座 Aurora 主建造商，具有直接工程承攬機會；Ohio 後續工作仍以 MOU 規劃為主。",
+          "source_urls": [
+            "https://oklo.com/newsroom/oklo-centrus-sign-letter-of-intent-to-purchase-nuclear-fuel-for-aurora-powerhouse-deployment-in-"
+          ]
+        },
+        {
+          "node_id": "OKLO_010",
+          "name": "U.S. Forged Rings",
+          "details": "具名製造產能預留協議支援未來 Aurora 反應爐組件，直接潛在供應鏈受惠；尚未交貨。",
+          "source_urls": [
+            "https://oklo.com/newsroom/oklo-u-s-forged-rings-partner-to-advance-domestic-manufacturing-for-future-aurora-powerhouse-dep"
+          ]
+        },
+        {
+          "node_id": "OKLO_011",
+          "name": "Standard Nuclear",
+          "details": "先進核燃料供應鏈策略聯盟帶來潛在製造及合作商機，非已確認採購營收。",
+          "source_urls": [
+            "https://investor.oklo.com/news/"
+          ]
+        },
+        {
+          "node_id": "OKLO_012",
+          "name": "Lightbridge",
+          "details": "燃料製造共址與再循環可行性合作，具技術與未來設施商機；未有已確定的商業燃料採購。",
+          "source_urls": [
+            "https://oklo.com/newsroom/lightbridge-and-oklo-sign-mou-to-explore-co-location-of-commercial-fuel-fabrication-facilities-a"
+          ]
+        },
+        {
+          "node_id": "OKLO_013",
+          "name": "ABB",
+          "details": "反應爐監控及培訓方案合作可能帶來自動化設備機會；未證實已簽量產採購。",
+          "source_urls": [
+            "https://investor.oklo.com/news/"
+          ]
+        },
+        {
+          "node_id": "OKLO_014",
+          "name": "Vertiv",
+          "details": "資料中心電力與冷卻整合合作的潛在商機，並非已確認供貨或營收。",
+          "source_urls": [
+            "https://investor.oklo.com/news/"
+          ]
+        },
+        {
+          "node_id": "OKLO_015",
+          "name": "Liberty Energy",
+          "details": "整合型電力方案合作，屬潛在服務商機；無法據此推定已認列收入。",
+          "source_urls": [
+            "https://investor.oklo.com/news/"
+          ]
+        },
+        {
+          "node_id": "OKLO_016",
+          "name": "RPower",
+          "details": "資料中心過渡電力整合合作機會，尚非核電廠營運收入。",
+          "source_urls": [
+            "https://investor.oklo.com/news/"
+          ]
+        }
+      ],
+      "evidence_grades": {
+        "A": "公司正式公告、SEC 文件所載具名客戶、供應鏈或合作關係；commercial_status 區分正式採購與非約束性協議",
+        "B": "產業競爭比較；非 Oklo 正式具名競爭者"
+      },
+      "count_by_relationship": {
+        "customer": 6,
+        "supplier": 4,
+        "partner": 16,
+        "competitor": 7
+      },
+      "business_line_count": 6,
+      "node_count": 33
+    }
   }
 }

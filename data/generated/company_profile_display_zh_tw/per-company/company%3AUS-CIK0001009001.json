@@ -331,5 +331,605 @@
       "AI 資料中心帶動核電需求"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-19",
+    "company": "Cameco Corporation",
+    "symbol": "CCJ",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "CCJ Cameco 產業鏈｜鈾礦、核燃料、Westinghouse AP1000 與 Inkai",
+      "description": "2025 年報、2026 Q3 財報與法說核對 McArthur River、Cigar Lake、Key Lake、Blind River、Port Hope、Inkai、Westinghouse、AP1000；區分長約、合資、政策框架與台灣受惠股。"
+    },
+    "business_lines": [
+      {
+        "id": "URANIUM",
+        "name": "天然鈾礦開採及 U3O8 銷售"
+      },
+      {
+        "id": "MILLING",
+        "name": "礦石加工、精煉與轉換"
+      },
+      {
+        "id": "FUEL",
+        "name": "UO2、UF6 及 CANDU 燃料組件"
+      },
+      {
+        "id": "INKAI",
+        "name": "哈薩克 Inkai 合資 ISR 鈾供應"
+      },
+      {
+        "id": "WESTINGHOUSE",
+        "name": "Westinghouse 核反應爐、燃料與服務權益"
+      },
+      {
+        "id": "AP1000",
+        "name": "AP1000 新建反應爐專案"
+      },
+      {
+        "id": "SMR",
+        "name": "AP300 與小型模組化反應爐研發"
+      },
+      {
+        "id": "UTILITY",
+        "name": "全球核電公用事業長期供應"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "INKAI_partner_001",
+        "name": "Kazatomprom",
+        "business_line": "INKAI",
+        "relationship": "partner",
+        "details": "JV Inkai 由 Cameco 持有 40%、Kazatomprom 持有 60%；合資生產鈾並分配 Cameco 購買份額，並非全資礦山。",
+        "evidence_level": "confirmed_equity_joint_venture",
+        "source_ids": [
+          "AR25",
+          "Q326"
+        ],
+        "ticker": "KAP"
+      },
+      {
+        "id": "WESTINGHOUSE_partner_002",
+        "name": "Brookfield Renewable / Brookfield",
+        "business_line": "WESTINGHOUSE",
+        "relationship": "partner",
+        "details": "Cameco 持有 Westinghouse 49%，Brookfield 相關投資方持有 51%；屬共同股權持有，不是 Cameco 的直接客戶。",
+        "evidence_level": "confirmed_equity_coownership",
+        "source_ids": [
+          "AR25"
+        ],
+        "ticker": "BEP"
+      },
+      {
+        "id": "WESTINGHOUSE_partner_003",
+        "name": "Westinghouse Electric Company",
+        "business_line": "WESTINGHOUSE",
+        "relationship": "partner",
+        "details": "Cameco 持股 49% 的被投資公司，核反應爐技術、核燃料、運轉服務和新建專案；不將 Westinghouse 全額收入合併為 Cameco 營收。",
+        "evidence_level": "confirmed_49_percent_equity_investment",
+        "source_ids": [
+          "AR25",
+          "Q326"
+        ],
+        "ticker": null
+      },
+      {
+        "id": "AP1000_partner_004",
+        "name": "美國商務部／美國政府",
+        "business_line": "AP1000",
+        "relationship": "partner",
+        "details": "2025 戰略合作及 2026 年 9 月美韓非約束性投資框架，尚待最終合約與融資，不可當作已取得反應爐訂單。",
+        "evidence_level": "nonbinding_policy_framework",
+        "source_ids": [
+          "NEWS_Q3",
+          "CALL_Q3"
+        ],
+        "ticker": null
+      },
+      {
+        "id": "AP1000_partner_005",
+        "name": "韓國政府及韓國核能產業",
+        "business_line": "AP1000",
+        "relationship": "partner",
+        "details": "2026 年 9 月美韓框架提及最多八座美國大型核反應爐（含六座 AP1000）及最多 1,200 億美元融資意向，屬政策與投資框架。",
+        "evidence_level": "nonbinding_policy_framework",
+        "source_ids": [
+          "NEWS_Q3"
+        ],
+        "ticker": null
+      },
+      {
+        "id": "AP1000_customer_006",
+        "name": "捷克 Dukovany 核電新建專案",
+        "business_line": "AP1000",
+        "relationship": "customer",
+        "details": "Westinghouse 參與由韓國水電核能公司領導的 Dukovany 兩座機組專案，2025 年相關付款使 Westinghouse 權益收益基期偏高；屬被投資公司專案，非 Cameco 直接鈾採購客戶。",
+        "evidence_level": "confirmed_westinghouse_project_revenue",
+        "source_ids": [
+          "AR25",
+          "Q326"
+        ],
+        "ticker": null
+      },
+      {
+        "id": "UTILITY_customer_007",
+        "name": "全球核電公用事業（未具名合約組合）",
+        "business_line": "UTILITY",
+        "relationship": "customer",
+        "details": "截至 2025 年底，Cameco 2026–2030 年每年平均約 2,800 萬磅鈾交付承諾；不得從未具名組合推定單一電力公司為採購方。",
+        "evidence_level": "confirmed_long_term_delivery_commitments_unnamed",
+        "source_ids": [
+          "SEC25"
+        ],
+        "ticker": null
+      },
+      {
+        "id": "UTILITY_customer_008",
+        "name": "核燃料服務公用事業客戶（未具名）",
+        "business_line": "FUEL",
+        "relationship": "customer",
+        "details": "Blind River、Port Hope 的精煉、轉換、CANDU 燃料服務面向核電客戶；未揭露個別交易者維持匿名。",
+        "evidence_level": "confirmed_customer_segment_not_named",
+        "source_ids": [
+          "AR25"
+        ],
+        "ticker": null
+      },
+      {
+        "id": "URANIUM_competitor_009",
+        "name": "Kazatomprom",
+        "business_line": "URANIUM",
+        "relationship": "competitor",
+        "details": "全球大型鈾供應商；同時是 Inkai JV 合作方，角色按業務分開。",
+        "evidence_level": "industry_competitor",
+        "source_ids": [
+          "AR25"
+        ],
+        "ticker": null
+      },
+      {
+        "id": "URANIUM_competitor_010",
+        "name": "Paladin Energy",
+        "business_line": "URANIUM",
+        "relationship": "competitor",
+        "details": "全球鈾礦供應競爭者，非已確認交易對手。",
+        "evidence_level": "sector_competitor",
+        "source_ids": [
+          "AR25"
+        ],
+        "ticker": "PDN.AX"
+      },
+      {
+        "id": "URANIUM_competitor_011",
+        "name": "Energy Fuels",
+        "business_line": "URANIUM",
+        "relationship": "competitor",
+        "details": "美國鈾礦及相關材料供應競爭者。",
+        "evidence_level": "sector_competitor",
+        "source_ids": [
+          "AR25"
+        ],
+        "ticker": "UUUU"
+      },
+      {
+        "id": "URANIUM_competitor_012",
+        "name": "Ur-Energy",
+        "business_line": "URANIUM",
+        "relationship": "competitor",
+        "details": "美國 ISR 鈾礦供應競爭者。",
+        "evidence_level": "sector_competitor",
+        "source_ids": [
+          "AR25"
+        ],
+        "ticker": "URG"
+      },
+      {
+        "id": "FUEL_competitor_013",
+        "name": "Orano",
+        "business_line": "FUEL",
+        "relationship": "competitor",
+        "details": "核燃料循環與轉換等環節競爭，部分環節也可能互補；非自動等於 Cameco 供應商。",
+        "evidence_level": "sector_competitor",
+        "source_ids": [
+          "AR25"
+        ],
+        "ticker": null
+      },
+      {
+        "id": "FUEL_competitor_014",
+        "name": "ConverDyn",
+        "business_line": "FUEL",
+        "relationship": "competitor",
+        "details": "UF6 轉換服務競爭者。",
+        "evidence_level": "sector_competitor",
+        "source_ids": [
+          "AR25"
+        ],
+        "ticker": null
+      },
+      {
+        "id": "WESTINGHOUSE_competitor_015",
+        "name": "Framatome",
+        "business_line": "WESTINGHOUSE",
+        "relationship": "competitor",
+        "details": "核燃料組件、核反應爐服務與技術競爭；屬 Westinghouse 相關市場。",
+        "evidence_level": "sector_competitor",
+        "source_ids": [
+          "AR25"
+        ],
+        "ticker": null
+      },
+      {
+        "id": "WESTINGHOUSE_competitor_016",
+        "name": "GE Vernova Hitachi Nuclear Energy",
+        "business_line": "WESTINGHOUSE",
+        "relationship": "competitor",
+        "details": "大型核反應爐與 SMR 技術路線競爭者；非 Cameco 鈾礦直接競爭者。",
+        "evidence_level": "sector_competitor",
+        "source_ids": [
+          "AR25"
+        ],
+        "ticker": "GEV"
+      },
+      {
+        "id": "SMR_competitor_017",
+        "name": "NuScale Power",
+        "business_line": "SMR",
+        "relationship": "competitor",
+        "details": "SMR 技術路線競爭者，應與 AP300 研發進度分開。",
+        "evidence_level": "sector_competitor",
+        "source_ids": [
+          "AR25"
+        ],
+        "ticker": "SMR"
+      },
+      {
+        "id": "UTILITY_beneficiary_018",
+        "name": "台灣核電工程與電力設備產業（未具名）",
+        "business_line": "UTILITY",
+        "relationship": "beneficiary",
+        "details": "核能新建、維修與電力設備景氣可能受惠；沒有公開證明任何台灣上市公司是 Cameco 的直接 Supplier，故不列供應商。",
+        "evidence_level": "sector_exposure_only",
+        "source_ids": [],
+        "ticker": null
+      }
+    ],
+    "value_chain": [
+      {
+        "stage": "upstream",
+        "name": "鈾礦開採與採購",
+        "description": "Cigar Lake、McArthur River 等高品位礦山及哈薩克 Inkai JV，部分鈾來源亦透過市場採購調配。",
+        "confirmed_partners": [
+          "JV Inkai / Kazatomprom"
+        ],
+        "unverified_entities": []
+      },
+      {
+        "stage": "midstream",
+        "name": "加工、精煉、轉換與燃料製造",
+        "description": "Key Lake 礦石處理、Blind River 精煉、Port Hope UF6/UO2 轉換與 CANDU 燃料製造；轉換不是濃縮，不能將 Cameco 寫成濃縮服務提供商。",
+        "confirmed_products": [
+          "U3O8",
+          "UO2",
+          "UF6 轉換",
+          "CANDU 燃料束"
+        ],
+        "roadmap_products": []
+      },
+      {
+        "stage": "downstream",
+        "name": "核電公用事業與 Westinghouse 49% 權益",
+        "description": "核燃料長期交付，透過持股參與核反應爐服務、AP1000 與 AP300；Westinghouse 權益法收入不等於全部合併營收。",
+        "confirmed_segments": [
+          "長期鈾交付",
+          "燃料服務",
+          "Westinghouse 權益"
+        ],
+        "prospective_segments": [
+          "AP1000 美國新建框架",
+          "AP300 SMR"
+        ]
+      }
+    ],
+    "technology_roadmap": [
+      {
+        "topic": "Key Lake 2026 延長停機維護",
+        "status": "operational_maintenance",
+        "detail": "2026 Q3 啟動較長維護停機，造成當季產量降低與成本增加；新基建調試進行中。",
+        "source_ids": [
+          "Q326",
+          "NEWS_Q3"
+        ]
+      },
+      {
+        "topic": "JV Inkai 2026 供應",
+        "status": "production_guidance",
+        "detail": "2026 全年預計生產 1,040 萬磅 U3O8（100% 基礎），Cameco 預計可購份額 420 萬磅；截至 Q3 僅收到部分，後續運輸存在時間差。",
+        "source_ids": [
+          "Q326"
+        ]
+      },
+      {
+        "topic": "2026 鈾交付指引",
+        "status": "narrowed_guidance",
+        "detail": "公司將 2026 年鈾銷售／交付指引由 2,900–3,200 萬磅收窄為 2,950–3,050 萬磅；交付量不同於當年礦山產量。",
+        "source_ids": [
+          "NEWS_Q3"
+        ]
+      },
+      {
+        "topic": "Westinghouse AP1000",
+        "status": "operating_and_pipeline",
+        "detail": "既有機組與建設中專案存在，但 2026 年 9 月美韓 1,200 億美元框架屬非約束性意向，非已認列營收。",
+        "source_ids": [
+          "CALL_Q3",
+          "NEWS_Q3"
+        ]
+      },
+      {
+        "topic": "Westinghouse AP300",
+        "status": "development_not_confirmed_large_order",
+        "detail": "小型模組化反應爐技術路線，與 AP1000 已運轉機組不同。",
+        "source_ids": [
+          "AR25"
+        ]
+      }
+    ],
+    "taiwan_supply_chain": {
+      "definition": "僅納入有公開直接採購、供應商、設備、ODM/OEM 或長約證據的台灣企業",
+      "confirmed_direct_suppliers": [],
+      "assessment": "核電設備產業相關不等於 Cameco 直接供應商；未把台灣受惠股混入 supplier。"
+    },
+    "latest_financial_context": {
+      "period": "2026-Q3",
+      "reporting_currency": "CAD",
+      "uranium_2026_delivery_guidance_million_lb": [
+        29.5,
+        30.5
+      ],
+      "inkai_2026_total_production_guidance_million_lb": 10.4,
+      "inkai_cameco_purchase_allocation_million_lb": 4.2,
+      "westinghouse_equity_interest_pct": 49,
+      "westinghouse_q3_equity_net_loss_cad_million": -24,
+      "westinghouse_q3_share_adjusted_ebitda_cad_million": 143,
+      "source_ids": [
+        "Q326",
+        "NEWS_Q3"
+      ]
+    },
+    "investment_questions": [
+      {
+        "topic": "供應壁壘",
+        "assessment": "高品位加拿大礦山、轉換能力與長約組合形成壁壘。"
+      },
+      {
+        "topic": "合約保障",
+        "assessment": "2025 年底 2026–2030 年平均每年 2,800 萬磅交付承諾，並非每年固定相同數量。"
+      },
+      {
+        "topic": "價格風險",
+        "assessment": "實現價格由固定與市場連動合約組合決定，不能直接乘以現貨價。"
+      },
+      {
+        "topic": "維護停機",
+        "assessment": "Key Lake 延長維修壓抑 Q3 產量與成本。"
+      },
+      {
+        "topic": "Inkai 物流",
+        "assessment": "合資分配與實際跨境運輸時間可能不同。"
+      },
+      {
+        "topic": "Westinghouse",
+        "assessment": "49% 權益法持股，財務不可按 100% 合併。"
+      },
+      {
+        "topic": "新建核電",
+        "assessment": "AP1000 專案 pipeline 不等於確定訂單。"
+      },
+      {
+        "topic": "美韓框架",
+        "assessment": "1,200 億美元非約束性融資意向，尚待最終協議。"
+      },
+      {
+        "topic": "台灣供應商",
+        "assessment": "沒有直接供應證據的台股不放 supplier。"
+      },
+      {
+        "topic": "AI 需求",
+        "assessment": "AI 資料中心為長期電力需求催化，但非 Cameco 直接 AI 晶片供應鏈。"
+      }
+    ],
+    "topic_coverage_audit": [
+      {
+        "topic": "2026 Q3",
+        "status": "verified",
+        "evidence": "Q326"
+      },
+      {
+        "topic": "2025 年報及 SEC",
+        "status": "verified",
+        "evidence": "AR25 / SEC25"
+      },
+      {
+        "topic": "2026 Q3 法說",
+        "status": "verified",
+        "evidence": "CALL_Q3"
+      },
+      {
+        "topic": "Key Lake 停機",
+        "status": "verified",
+        "evidence": "Q326"
+      },
+      {
+        "topic": "Inkai 生產與物流",
+        "status": "verified",
+        "evidence": "Q326"
+      },
+      {
+        "topic": "Westinghouse 權益",
+        "status": "verified",
+        "evidence": "AR25 / Q326"
+      },
+      {
+        "topic": "美韓框架",
+        "status": "nonbinding_not_order",
+        "evidence": "NEWS_Q3"
+      },
+      {
+        "topic": "Dukovany 基期",
+        "status": "verified",
+        "evidence": "AR25 / Q326"
+      },
+      {
+        "topic": "台灣直接供應商",
+        "status": "none_admitted",
+        "evidence": "沒有公開具名 Supplier→Cameco 證據"
+      },
+      {
+        "topic": "新併購與新訂單",
+        "status": "not_claimed_without_primary_contract",
+        "evidence": "不能把政策框架當訂單"
+      }
+    ],
+    "sources": [
+      {
+        "id": "AR25",
+        "grade": "A",
+        "date": "2026-03",
+        "type": "2025 年報",
+        "url": "https://www.cameco.com/invest/financial-information/annual-reports/2025"
+      },
+      {
+        "id": "SEC25",
+        "grade": "A",
+        "date": "2026-03",
+        "type": "SEC 2025 Annual Report",
+        "url": "https://www.sec.gov/Archives/edgar/data/1009001/000119312526139308/d711806dex991.pdf"
+      },
+      {
+        "id": "Q326",
+        "grade": "A",
+        "date": "2026-10-30",
+        "type": "2026 Q3 財報",
+        "url": "https://www.cameco.com/invest/financial-information/quarterly-reports/2026/q3"
+      },
+      {
+        "id": "NEWS_Q3",
+        "grade": "A",
+        "date": "2026-10-30",
+        "type": "2026 Q3 公司公告",
+        "url": "https://www.cameco.com/media/news/cameco-reports-2026-third-quarter-results"
+      },
+      {
+        "id": "CALL_Q3",
+        "grade": "A",
+        "date": "2026-10-30",
+        "type": "2026 Q3 法說逐字稿",
+        "url": "https://www.cameco.com/sites/default/files/documents/CCO-transcript-2026-Q3-call.pdf"
+      },
+      {
+        "id": "OPERATIONS",
+        "grade": "A",
+        "date": null,
+        "type": "官方營運",
+        "url": "https://www.cameco.com/businesses/uranium-operations"
+      },
+      {
+        "id": "FUEL",
+        "grade": "A",
+        "date": null,
+        "type": "官方核燃料服務",
+        "url": "https://www.cameco.com/businesses/fuel-services"
+      },
+      {
+        "id": "WESTINGHOUSE",
+        "grade": "A",
+        "date": null,
+        "type": "Westinghouse 官方",
+        "url": "https://www.westinghousenuclear.com/"
+      },
+      {
+        "id": "WNA",
+        "grade": "B",
+        "date": null,
+        "type": "World Nuclear Association",
+        "url": "https://world-nuclear.org/information-library/nuclear-fuel-cycle"
+      }
+    ],
+    "research_audit": {
+      "method": "SEC/年度報告優先；2026 Q3 財報與法說；近期三個月重大事件；交易、合資、政策框架分離",
+      "review_rounds": [
+        {
+          "round": 1,
+          "focus": "原始檔保全",
+          "correction": "只新增第12欄"
+        },
+        {
+          "round": 2,
+          "focus": "財報期間",
+          "correction": "2025全年與2026Q3分開"
+        },
+        {
+          "round": 3,
+          "focus": "會計",
+          "correction": "Westinghouse 49%權益法非合併營收"
+        },
+        {
+          "round": 4,
+          "focus": "Inkai",
+          "correction": "40%合資與購買分配分開"
+        },
+        {
+          "round": 5,
+          "focus": "Key Lake",
+          "correction": "維修停機與永久產能損失分開"
+        },
+        {
+          "round": 6,
+          "focus": "鈾交付",
+          "correction": "銷售量不等於當年開採量"
+        },
+        {
+          "round": 7,
+          "focus": "合約",
+          "correction": "2026-2030平均交付不等於每年固定"
+        },
+        {
+          "round": 8,
+          "focus": "美韓框架",
+          "correction": "非約束性融資不當訂單"
+        },
+        {
+          "round": 9,
+          "focus": "Dukovany",
+          "correction": "2025一次性基期效果不當2026新訂單"
+        },
+        {
+          "round": 10,
+          "focus": "台灣",
+          "correction": "無直接證據不列Supplier"
+        },
+        {
+          "round": 11,
+          "focus": "核燃料",
+          "correction": "UF6轉換不等於濃縮"
+        },
+        {
+          "round": 12,
+          "focus": "AI",
+          "correction": "電力需求間接受惠不等於AI硬體供應"
+        }
+      ],
+      "as_of": "2026-11-19"
+    }
   }
 }

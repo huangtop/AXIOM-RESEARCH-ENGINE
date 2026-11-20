@@ -190,5 +190,542 @@
       "技術授權"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.research.v1",
+    "as_of": "2026-11-19",
+    "company": "Atomera Incorporated",
+    "symbol": "ATOM",
+    "locale": "zh-TW",
+    "seo": {
+      "title": "ATOM 產業鏈｜MST 外延矽、GAA、DRAM、RF 與 GaN-on-Silicon",
+      "description": "以 SEC、Atomera IR、2026 Q3 法說、IQE 共同開發及台灣公司官方資料，拆解 Atomera 材料工程、授權客戶、設備與台灣受惠企業。"
+    },
+    "business_lines": [
+      {
+        "id": "MST",
+        "name": "Mears Silicon Technology 工程化外延矽與智財授權"
+      },
+      {
+        "id": "GAA",
+        "name": "先進邏輯 GAA／CFET"
+      },
+      {
+        "id": "MEMORY",
+        "name": "4F² DRAM、NAND 周邊電晶體"
+      },
+      {
+        "id": "RF",
+        "name": "RF SOI／射頻元件"
+      },
+      {
+        "id": "POWER",
+        "name": "類比、BCD 與功率元件"
+      },
+      {
+        "id": "GAN",
+        "name": "RF GaN-on-Silicon"
+      },
+      {
+        "id": "EDA",
+        "name": "MSTcad／Sentaurus TCAD 模擬"
+      },
+      {
+        "id": "EPI",
+        "name": "外延設備與工程晶圓"
+      }
+    ],
+    "relationship_categories": [
+      "customer",
+      "partner",
+      "supplier",
+      "competitor",
+      "beneficiary"
+    ],
+    "nodes": [
+      {
+        "id": "POWER_customer_001",
+        "name": "STMicroelectronics",
+        "business_line": "POWER",
+        "relationship": "customer",
+        "details": "2023 年簽商業授權；2025 年宣布不繼續 BCD110 產品的 MST 認證；屬歷史授權客戶而非已認列的量產權利金來源。",
+        "ticker": "STM",
+        "evidence_level": "confirmed_historical_license_discontinued",
+        "source_ids": [
+          "SEC_ST_20230426",
+          "IR_ST_20251021",
+          "SEC_10K_20260224"
+        ]
+      },
+      {
+        "id": "MST_customer_002",
+        "name": "Asahi Kasei Microdevices（AKM）",
+        "business_line": "MST",
+        "relationship": "customer",
+        "details": "10-K 披露付費整合授權，允許在晶圓上評估 MST；尚不能推定已完成量產導入。",
+        "ticker": null,
+        "evidence_level": "confirmed_paid_integration_license",
+        "source_ids": [
+          "SEC_10K_20260224"
+        ]
+      },
+      {
+        "id": "MST_customer_003",
+        "name": "未具名晶圓代工廠 JDA 客戶",
+        "business_line": "MST",
+        "relationship": "customer",
+        "details": "10-K 記載晶圓代工客戶 JDA 及測試晶圓合作；未揭露身分與量產採購金額。",
+        "ticker": null,
+        "evidence_level": "confirmed_jda_unnamed",
+        "source_ids": [
+          "SEC_10K_20260224"
+        ]
+      },
+      {
+        "id": "RF_customer_004",
+        "name": "未具名 RF fabless／foundry 客戶",
+        "business_line": "RF",
+        "relationship": "customer",
+        "details": "以付費整合授權進行製程驗證，與量產權利金分開。",
+        "ticker": null,
+        "evidence_level": "confirmed_paid_integration_unnamed",
+        "source_ids": [
+          "SEC_10K_20260224"
+        ]
+      },
+      {
+        "id": "GAA_customer_005",
+        "name": "三家未具名 GAA 技術評估客戶",
+        "business_line": "GAA",
+        "relationship": "customer",
+        "details": "Q3 法說提到與三家 GAA 客戶接觸、處於不同的技術評估及晶圓測試階段；不代表三張量產訂單。",
+        "ticker": null,
+        "evidence_level": "engaged_prospective_customers_not_purchases",
+        "source_ids": [
+          "CALL_Q3_20261029",
+          "IR_Q3_20261029"
+        ]
+      },
+      {
+        "id": "MEMORY_customer_006",
+        "name": "未具名 DRAM／NAND 評估對象",
+        "business_line": "MEMORY",
+        "relationship": "customer",
+        "details": "技術接觸與工程評估，不等同公開採購或 design win；因此此節點明確標示 prospective。",
+        "ticker": null,
+        "evidence_level": "prospective_evaluation_only",
+        "source_ids": [
+          "CALL_Q3_20261029"
+        ]
+      },
+      {
+        "id": "GAN_partner_007",
+        "name": "IQE plc",
+        "business_line": "GAN",
+        "relationship": "partner",
+        "details": "2026-10-22 宣布 GaN-on-Si 共同開發協議，旨在提供工程晶圓與改良 RF GaN 性能；共同開發並不等於已簽批量採購。",
+        "ticker": null,
+        "evidence_level": "confirmed_joint_development",
+        "source_ids": [
+          "IR_IQE_20261022"
+        ]
+      },
+      {
+        "id": "EDA_partner_008",
+        "name": "Synopsys",
+        "business_line": "EDA",
+        "relationship": "partner",
+        "details": "MSTcad 與 Sentaurus TCAD 技術整合合作；不是直接買賣客戶。",
+        "ticker": "SNPS",
+        "evidence_level": "confirmed_technology_collaboration",
+        "source_ids": [
+          "SEC_10K_20260224",
+          "PRODUCT_MSTCAD"
+        ]
+      },
+      {
+        "id": "GAN_partner_009",
+        "name": "Texas State University",
+        "business_line": "GAN",
+        "relationship": "partner",
+        "details": "GaN-on-Si 材料工程及外延評估方面的學研關係，不列客戶。",
+        "ticker": null,
+        "evidence_level": "confirmed_academic_research",
+        "source_ids": [
+          "SEC_10K_20260224"
+        ]
+      },
+      {
+        "id": "EPI_supplier_010",
+        "name": "Applied Materials",
+        "business_line": "EPI",
+        "relationship": "supplier",
+        "details": "10-K 具名的外延製程設備租賃／維護供應方，包含 Centura 外延設備。",
+        "ticker": "AMAT",
+        "evidence_level": "confirmed_equipment_lease_vendor",
+        "source_ids": [
+          "SEC_10K_20260224"
+        ]
+      },
+      {
+        "id": "EPI_supplier_011",
+        "name": "Lawrence Semiconductor",
+        "business_line": "EPI",
+        "relationship": "supplier",
+        "details": "具名設備與無塵室支援來源；涉及 ASM Epsilon 200mm 外延設備。",
+        "ticker": null,
+        "evidence_level": "confirmed_equipment_lease_vendor",
+        "source_ids": [
+          "SEC_10K_20260224"
+        ]
+      },
+      {
+        "id": "EPI_partner_012",
+        "name": "未具名外延設備策略合作方",
+        "business_line": "EPI",
+        "relationship": "partner",
+        "details": "2025 年公開的策略合作關係，不能未經證據直接指認為 AMAT、ASM 或其他設備廠。",
+        "ticker": null,
+        "evidence_level": "confirmed_unnamed_partner",
+        "source_ids": [
+          "SEC_10K_20260224"
+        ]
+      },
+      {
+        "id": "GAA_beneficiary_013",
+        "name": "台積電",
+        "business_line": "GAA",
+        "relationship": "beneficiary",
+        "details": "2330.TW：GAA 奈米片電晶體同技術領域代表，非已證實 Atomera 授權對象、供應商或採購商。",
+        "ticker": "2330.TW",
+        "evidence_level": "sector_exposure_only",
+        "source_ids": [
+          "TW_TSMC"
+        ]
+      },
+      {
+        "id": "RF_beneficiary_014",
+        "name": "聯華電子",
+        "business_line": "RF",
+        "relationship": "beneficiary",
+        "details": "2303.TW：RF SOI 與 BCD 技術領域代表，沒有公開 Atomera 直接供貨或授權契約證據。",
+        "ticker": "2303.TW",
+        "evidence_level": "sector_exposure_only",
+        "source_ids": [
+          "TW_UMC"
+        ]
+      }
+    ],
+    "value_chain": [
+      {
+        "stage": "upstream",
+        "name": "矽晶圓、外延設備與模擬工具",
+        "description": "已知設備來源包括 Applied Materials、Lawrence Semiconductor；Synopsys 為技術合作。未確認具名台灣直接供應商。",
+        "confirmed_partners": [
+          "Applied Materials",
+          "Lawrence Semiconductor",
+          "Synopsys"
+        ],
+        "unverified_entities": [
+          "未具名外延設備策略夥伴",
+          "未具名材料供應商"
+        ]
+      },
+      {
+        "stage": "midstream",
+        "name": "MST 智財、工程化矽層與製程整合",
+        "description": "MST 將超薄工程化材料層導入電晶體製程以調整摻雜擴散、漏電及性能；包括 Prima、Selecta 與 MSTcad 工具。",
+        "confirmed_products": [
+          "MST",
+          "MSTcad",
+          "Prima",
+          "Selecta",
+          "整合授權與工程晶圓驗證"
+        ],
+        "roadmap_products": [
+          "GAA 與 CFET 量產整合",
+          "4F² DRAM 與 NAND 先進製程",
+          "與 IQE 共同開發的 RF GaN-on-Si"
+        ]
+      },
+      {
+        "stage": "downstream",
+        "name": "IDM、foundry、RF fabless、邏輯與記憶體公司",
+        "description": "ST 為歷史商業授權但 BCD110 計畫中止；AKM 屬付費整合；其他晶圓代工與射頻客戶尚未公開名稱，GAA、DRAM、NAND 屬各階段評估。",
+        "confirmed_segments": [
+          "歷史商業授權",
+          "付費整合授權",
+          "晶圓代工廠共同開發"
+        ],
+        "prospective_segments": [
+          "GAA／CFET",
+          "4F² DRAM",
+          "NAND peripheral CMOS",
+          "GaN RF"
+        ]
+      }
+    ],
+    "technology_roadmap": [
+      {
+        "topic": "MST 外延矽",
+        "status": "commercial_licensing_with_hvm_risk",
+        "detail": "對電晶體效能、漏電與製程良率的提升須逐客戶量產驗證。",
+        "source_ids": [
+          "SEC_10K_20260224",
+          "PRODUCT_MST"
+        ]
+      },
+      {
+        "topic": "GAA／CFET",
+        "status": "customer_evaluation",
+        "detail": "2026 Q3 三家客戶技術接觸，非確認量產訂單。",
+        "source_ids": [
+          "CALL_Q3_20261029"
+        ]
+      },
+      {
+        "topic": "4F² DRAM／NAND",
+        "status": "research_and_evaluation",
+        "detail": "9 月技術發表與客戶評估，仍需量產授權。",
+        "source_ids": [
+          "IR_SISPAD_20260922",
+          "CALL_Q3_20261029"
+        ]
+      },
+      {
+        "topic": "IQE RF GaN-on-Si",
+        "status": "signed_jda",
+        "detail": "10 月 22 日合作協議；商業交付與採購金額沒有以 JDA 自動成立。",
+        "source_ids": [
+          "IR_IQE_20261022"
+        ]
+      },
+      {
+        "topic": "ST BCD110",
+        "status": "qualification_discontinued",
+        "detail": "2025 年 10 月停止認證是公司技術商業化的重要負面事件。",
+        "source_ids": [
+          "IR_ST_20251021"
+        ]
+      }
+    ],
+    "latest_financial_context": {
+      "period": "2026-Q3",
+      "quarter_end": "2026-09-30",
+      "reported_q3_revenue_usd": 0,
+      "reported_first_nine_months_revenue_usd": 169000,
+      "reported_q3_net_loss_usd_million": 6.0,
+      "cash_equivalents_and_short_term_investments_usd_million": 34.8,
+      "sources": [
+        "SEC_10Q_20261030",
+        "IR_Q3_20261029"
+      ]
+    },
+    "taiwan_supply_chain": {
+      "definition": "僅公開具名的 Supplier、Vendor、OEM、ODM、Foundry、設備供應商、長約供貨或採購關係可以加入。",
+      "confirmed_direct_suppliers": [],
+      "note": "台灣受惠股與台灣直接供應商分開；沒有直接契約證據者不列供應商。"
+    },
+    "investment_questions": [
+      {
+        "topic": "營收轉換",
+        "assessment": "2026 Q3 營收零，專利與技術接觸仍需轉成量產授權和權利金。"
+      },
+      {
+        "topic": "重大負面案例",
+        "assessment": "ST BCD110 認證未延續，不能將歷史商業授權當成活躍 HVM 客戶。"
+      },
+      {
+        "topic": "2026 Q4 新協議",
+        "assessment": "IQE 合作屬共同開發、非已確認採購收入。"
+      },
+      {
+        "topic": "先進製程",
+        "assessment": "GAA、DRAM、NAND 應用潛力與客戶量產階段分開。"
+      },
+      {
+        "topic": "上游",
+        "assessment": "AMAT 外延設備與 Lawrence Semiconductor 租賃關係具 SEC 證據。"
+      },
+      {
+        "topic": "台灣產業鏈",
+        "assessment": "沒有具名直接供應商；TSMC、UMC 僅 beneficiary。"
+      },
+      {
+        "topic": "技術護城河",
+        "assessment": "專利材料工程具潛力，但需評估客戶製程整合成本、性能及可靠性。"
+      },
+      {
+        "topic": "財務",
+        "assessment": "Q3 虧損與現金消耗使 HVM 轉換時間成為關鍵。"
+      },
+      {
+        "topic": "催化劑",
+        "assessment": "新量產授權、實際 royalty、IQE 工程晶圓測試成功、具名設計採用。"
+      },
+      {
+        "topic": "主要風險",
+        "assessment": "技術替代、既有客戶退出導入、未具名客戶難核實及研發支出。"
+      }
+    ],
+    "topic_coverage_audit": [
+      {
+        "topic": "ATOM index 檢查",
+        "status": "verified",
+        "evidence": "GitHub main index.json：ATOM → company:US-CIK0001420520"
+      },
+      {
+        "topic": "2026 Q3 季報",
+        "status": "sourced",
+        "evidence": "SEC_10Q_20261030"
+      },
+      {
+        "topic": "2025 年報",
+        "status": "sourced",
+        "evidence": "SEC_10K_20260224"
+      },
+      {
+        "topic": "最新法說",
+        "status": "sourced",
+        "evidence": "CALL_Q3_20261029"
+      },
+      {
+        "topic": "近三月重大新聞",
+        "status": "reviewed",
+        "evidence": "IQE 共同開發、SISPAD 技術公告、Q3 財報；不將 JDA 當成採購訂單"
+      },
+      {
+        "topic": "ST 失去導入機會",
+        "status": "confirmed",
+        "evidence": "IR_ST_20251021"
+      },
+      {
+        "topic": "具名台灣直接供應商",
+        "status": "none_confirmed",
+        "evidence": "confirmed_direct_suppliers 留空"
+      },
+      {
+        "topic": "付費新聞與硬體媒體",
+        "status": "no_unsupported_relationships_admitted",
+        "evidence": "只從具體契約證據建立直接交易節點"
+      }
+    ],
+    "sources": [
+      {
+        "id": "SEC_10K_20260224",
+        "type": "SEC 10-K",
+        "date": "2026-02-24",
+        "url": "https://www.sec.gov/Archives/edgar/data/1420520/000168316826001291/atomera_i10k-123125.htm",
+        "grade": "A"
+      },
+      {
+        "id": "SEC_10Q_20261030",
+        "type": "SEC 10-Q",
+        "date": "2026-10-30",
+        "url": "https://www.sec.gov/Archives/edgar/data/1420520/000168316826008195/atomera_i10q-093026.htm",
+        "grade": "A"
+      },
+      {
+        "id": "IR_Q3_20261029",
+        "type": "Official IR",
+        "date": "2026-10-29",
+        "url": "https://ir.atomera.com/news/atomera-provides-third-quarter-2026-results/1c712e62-7fe4-4d49-9ccc-deb4bff655f6",
+        "grade": "A"
+      },
+      {
+        "id": "IR_IQE_20261022",
+        "type": "Official IR joint development agreement",
+        "date": "2026-10-22",
+        "url": "https://ir.atomera.com/news/atomera-has-signed-a-joint-development-agreement-with-iqe-to-bring-high-performance-cost-effective-rf-gan-on-silicon/35512ab5-56e5-4a3d-8dfe-b8336a9bfa0e",
+        "grade": "A"
+      },
+      {
+        "id": "IR_SISPAD_20260922",
+        "type": "Official IR technology news",
+        "date": "2026-09-22",
+        "url": "https://ir.atomera.com/news/media-alert-atomera-to-highlight-advances-in-4f-dram-transistors-and-gan-devices-at-sispad/8be7bd14-bfbf-470e-91da-55ec7612e7d9",
+        "grade": "A"
+      },
+      {
+        "id": "CALL_Q3_20261029",
+        "type": "Earnings call transcript",
+        "date": "2026-10-29",
+        "url": "https://stockanalysis.com/stocks/atom/transcripts/724041-q3-2026/",
+        "grade": "B"
+      },
+      {
+        "id": "SEC_ST_20230426",
+        "type": "SEC 8-K",
+        "date": "2023-04-26",
+        "url": "https://www.sec.gov/Archives/edgar/data/1420520/000168316823002649/atomera_ex9901.htm",
+        "grade": "A"
+      },
+      {
+        "id": "IR_ST_20251021",
+        "type": "Official project update",
+        "date": "2025-10-21",
+        "url": "https://atomera.com/update-on-mst-project-with-stmicroelectronics/",
+        "grade": "A"
+      },
+      {
+        "id": "PRODUCT_MST",
+        "type": "Official technology",
+        "date": "2026-11-19",
+        "url": "https://www.atomera.com/technology/fundamentals",
+        "grade": "A"
+      },
+      {
+        "id": "PRODUCT_MSTCAD",
+        "type": "Official technology",
+        "date": "2026-11-19",
+        "url": "https://www.atomera.com/technology/mstcad",
+        "grade": "A"
+      },
+      {
+        "id": "TW_TSMC",
+        "type": "Taiwan official annual report",
+        "date": "2026-06-04",
+        "url": "https://investor.tsmc.com/static/annualReports/2025/english/index.html",
+        "grade": "A"
+      },
+      {
+        "id": "TW_UMC",
+        "type": "Taiwan official RF-SOI page",
+        "date": "2026-11-19",
+        "url": "https://www.umc.com/en/Product/technologies/Detail/rfsoi",
+        "grade": "A"
+      }
+    ],
+    "research_audit": {
+      "method": "SEC-first, IR and transcript triangulation, 90-day news review, separate customers/partners/suppliers/beneficiaries",
+      "as_of": "2026-11-19",
+      "review_rounds": [
+        {
+          "round": 1,
+          "focus": "原始資料完整性",
+          "result": "原 11 個頂層欄位保留且值完全相同"
+        },
+        {
+          "round": 2,
+          "focus": "客戶有效性",
+          "result": "ST 歷史商業授權與 2025 中止 BCD110 已區分；AKM 付費整合不當量產"
+        },
+        {
+          "round": 3,
+          "focus": "合作與訂單",
+          "result": "IQE JDA、Synopsys TCAD 不當採購；匿名客戶不擅自具名"
+        },
+        {
+          "round": 4,
+          "focus": "台灣供應鏈",
+          "result": "具名直接供應商為空，2330 與 2303 僅列受惠股"
+        }
+      ],
+      "limitations": [
+        "部分客戶匿名，無法指認",
+        "量產權利金需另以正式商業事件確立",
+        "此檔未執行前端 HTML 頁面測試"
+      ]
+    }
   }
 }

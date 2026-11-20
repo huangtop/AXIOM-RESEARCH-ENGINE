@@ -157,7 +157,53 @@ def _parse_yahoo_close(
             continue
         if close > 0:
             candidates.append((session_date, int(raw_ts), close))
+    # Yahoo may publish a completed daily bar with close=None
+    # while retaining the regular-session closing price in metadata.
+    if timestamps and closes:
+        latest_index = len(timestamps) - 1
+        latest_ts = timestamps[latest_index]
+        latest_close = (
+            closes[latest_index]
+            if latest_index < len(closes)
+            else None
+        )
 
+        if isinstance(latest_ts, (int, float)) and latest_close is None:
+            latest_bar_time = datetime.fromtimestamp(
+                latest_ts, tz=timezone.utc
+            ).astimezone(exchange_tz)
+            latest_day = latest_bar_time.date()
+
+            market_ts = meta.get("regularMarketTime")
+            market_price = meta.get("regularMarketPrice")
+
+            if (
+                isinstance(market_ts, (int, float))
+                and market_price is not None
+            ):
+                market_time = datetime.fromtimestamp(
+                    market_ts, tz=timezone.utc
+                ).astimezone(exchange_tz)
+
+                try:
+                    fallback_price = Decimal(str(market_price))
+                except (InvalidOperation, ValueError):
+                    fallback_price = Decimal("0")
+
+                if (
+                    fallback_price.is_finite()
+                    and fallback_price > 0
+                    and market_time.date() == latest_day
+                    and market_time.hour >= 16
+                    and market_time <= local_cutoff
+                    and _regular_session_close(
+                        latest_day, exchange_tz, meta
+                    ) <= local_cutoff
+                ):
+                    candidates.append(
+                        (latest_day, int(latest_ts), fallback_price)
+                    )
+    
     if not candidates:
         raise PreviousCloseResponseError("Yahoo chart response has no completed positive close")
     session_date, _timestamp, close = max(candidates, key=lambda item: (item[0], item[1]))

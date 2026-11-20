@@ -227,5 +227,964 @@
       "AI"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "symbol": "IBM",
+    "company": "International Business Machines Corporation",
+    "locale": "zh-TW",
+    "research_as_of": "2026-11-19",
+    "business_lines": [
+      {
+        "id": "AI",
+        "name": "watsonx 與企業 AI",
+        "products": "watsonx.ai、watsonx Orchestrate、AI 助理與治理"
+      },
+      {
+        "id": "HYBRID",
+        "name": "Red Hat 與混合雲",
+        "products": "Red Hat OpenShift、Ansible、IBM Cloud、混合雲部署"
+      },
+      {
+        "id": "AUTOMATION",
+        "name": "企業自動化與可觀測性",
+        "products": "Maximo、Instana、Turbonomic、AIOps"
+      },
+      {
+        "id": "DATA",
+        "name": "資料與交易平台",
+        "products": "Db2、企業資料整合、交易與分析"
+      },
+      {
+        "id": "INFRA",
+        "name": "大型主機與伺服器",
+        "products": "IBM Z、LinuxONE、Power、Storage"
+      },
+      {
+        "id": "CONSULT",
+        "name": "IBM Consulting",
+        "products": "雲端遷移、SAP 轉型、企業數位顧問"
+      },
+      {
+        "id": "ECOSYSTEM",
+        "name": "策略合作與半導體研發",
+        "products": "雲端生態系、ISV、AI 硬體與半導體共同研發"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "IBM_001",
+        "name": "Vodafone",
+        "relationship": "customer",
+        "business_line": "AI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/watsonx"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "TOBi 數位客服助理導入 watsonx 相關生成式 AI 技術",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_002",
+        "name": "Dun & Bradstreet",
+        "relationship": "customer",
+        "business_line": "AI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/watsonx"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "D&B Ask Procurement 採用 IBM watsonx 提供採購風險分析",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_003",
+        "name": "United States Tennis Association",
+        "relationship": "customer",
+        "business_line": "AI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/watsonx"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "美國網球公開賽以 IBM watsonx 建構球迷 AI 互動與數據體驗",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_004",
+        "name": "Banco do Brasil",
+        "relationship": "customer",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://newsroom.ibm.com/2025-05-06-ibm-accelerates-enterprise-gen-ai-revolution-with-hybrid-capabilities"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "採用 IBM Z、LinuxONE 與 Red Hat OpenShift 支援銀行核心服務",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_005",
+        "name": "Pfizer",
+        "relationship": "customer",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/cloud/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "SAP S/4HANA 與 IBM Power 平台構成混合雲架構",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_006",
+        "name": "National Van Lines",
+        "relationship": "customer",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/cloud/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "以 IBM Power Virtual Server 支援營運持續與災難復原",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_007",
+        "name": "City Furniture",
+        "relationship": "customer",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/cloud/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "使用 IBM Power Virtual Server 提升營運韌性",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_008",
+        "name": "Harvard University",
+        "relationship": "customer",
+        "business_line": "HYBRID",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.ibm.com/solutions/hybrid-cloud"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "使用 IBM Cloud 支援高速模型訓練與實驗",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_009",
+        "name": "Etihad Airways",
+        "relationship": "customer",
+        "business_line": "HYBRID",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.ibm.com/solutions/hybrid-cloud"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "使用 IBM Cloud 與服務推進機場報到數位化",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_010",
+        "name": "University of Tasmania",
+        "relationship": "customer",
+        "business_line": "AI",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.ibm.com/products/watsonx"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "與 IBM 合作以 AI 精簡校務工作流程",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_011",
+        "name": "Water Corporation",
+        "relationship": "customer",
+        "business_line": "CONSULT",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/watsonx/client-quotes"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "IBM Consulting 協助遷移 SAP 架構並使用 watsonx Code Assistant",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_012",
+        "name": "Delta Air Lines",
+        "relationship": "customer",
+        "business_line": "HYBRID",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/investor/att/pdf/IBM-4Q22-Earnings-Prepared-Remarks.pdf"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "與 IBM Consulting 合作以 Red Hat 混合雲現代化應用",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_013",
+        "name": "Canadian Imperial Bank of Commerce",
+        "relationship": "customer",
+        "business_line": "HYBRID",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/investor/att/pdf/IBM-4Q22-Earnings-Prepared-Remarks.pdf"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "CIBC 採用 Red Hat 混合雲部署及擴展應用",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_014",
+        "name": "Toyota Motor Corporation",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/maximo/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "Toyota 印第安納組裝廠採用 Maximo Health 與 Predict",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_015",
+        "name": "Melbourne Water",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/case-studies/melbourne-water"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "採用 Maximo Visual Inspection、Monitor 與 IBM Cloud 監控排水設施",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_016",
+        "name": "Downer Group",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/maximo/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "採用 IBM Maximo 提升運輸資產可靠性",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_017",
+        "name": "New York Power Authority",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/maximo/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "以 IBM Maximo 推動公用事業資產數位化",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_018",
+        "name": "Sund & Bælt",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/maximo/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "採用 IBM Maximo 自動化基礎設施檢測",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_019",
+        "name": "Riyadh Airports",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/maximo/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "採用 IBM Maximo 現代化機場維修管理",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_020",
+        "name": "Amsterdam Airport Schiphol",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/maximo/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "使用 Maximo 進行預防及預測性維護",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_021",
+        "name": "Transport for London",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/maximo/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "以 IBM Maximo 集中交通設備維護",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_022",
+        "name": "Shell",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/maximo/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "與 IBM 合作 OREN 礦業數位化及資產管理",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_023",
+        "name": "Petroleum Development Oman",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/maximo/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "使用 IBM Maximo 自動化採購與維護程序",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_024",
+        "name": "Bruce Power",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/maximo/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "使用 IBM Maximo for Nuclear Power 管理核電資產",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_025",
+        "name": "Ellevio",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/maximo/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "使用 Maximo 整合變電站感測資料與預測維護",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_026",
+        "name": "Kubota",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/maximo/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "使用 Maximo 整合 IoT 與 AI 改善水務設備維護",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_027",
+        "name": "Cornell University",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/maximo/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "以 Maximo 管理校園設施資產",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_028",
+        "name": "Boston Children’s Hospital",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/maximo/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "以 Maximo 管理醫院設備維護",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_029",
+        "name": "Airbus",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/instana/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "A220 計畫採用 IBM Instana 提升應用可觀測性",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_030",
+        "name": "Starling Bank",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/instana/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "使用 IBM Instana 進行全堆疊應用可觀測性",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_031",
+        "name": "BBC Studios",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/turbonomic/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "採用 IBM Turbonomic 管理 IT 資源",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_032",
+        "name": "Komatsu",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/turbonomic/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "使用 IBM Turbonomic 優化雲端成本與應用效能",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_033",
+        "name": "Hyland",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/turbonomic/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "採用 IBM Turbonomic 降低運算成本",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_034",
+        "name": "WPP",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/turbonomic/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "採用 IBM Turbonomic 優化雲端資源",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_035",
+        "name": "Mizuho Bank",
+        "relationship": "customer",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/products/instana/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "使用 IBM Instana 取得應用效能可視性",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_036",
+        "name": "State Bank of India",
+        "relationship": "customer",
+        "business_line": "DATA",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.ibm.com/case-studies"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "與 IBM 合作建置銀行客戶服務與資料平台",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_037",
+        "name": "NatWest Group",
+        "relationship": "customer",
+        "business_line": "AI",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.ibm.com/products/watsonx"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "與 IBM 合作推進銀行數位客戶體驗",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_038",
+        "name": "Scuderia Ferrari",
+        "relationship": "customer",
+        "business_line": "AI",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.ibm.com/products/watsonx"
+        ],
+        "commercial_status": "官方具名客戶案例",
+        "details": "與 IBM 合作以 AI 與數據改善全球車迷體驗",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_039",
+        "name": "Adobe",
+        "relationship": "partner",
+        "business_line": "ECOSYSTEM",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+        ],
+        "commercial_status": "官方策略合作／共同研發",
+        "details": "IBM 年報直接具名之策略合作夥伴，整合企業體驗及顧問服務",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_040",
+        "name": "Amazon Web Services",
+        "relationship": "partner",
+        "business_line": "HYBRID",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+        ],
+        "commercial_status": "官方策略合作／共同研發",
+        "details": "IBM 年報具名策略合作夥伴，於 AWS 部署 IBM 軟體與混合雲方案",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_041",
+        "name": "Microsoft",
+        "relationship": "partner",
+        "business_line": "HYBRID",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+        ],
+        "commercial_status": "官方策略合作／共同研發",
+        "details": "IBM 年報具名策略合作夥伴，支援 Azure 上企業應用與 AI 轉型",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_042",
+        "name": "Oracle",
+        "relationship": "partner",
+        "business_line": "DATA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+        ],
+        "commercial_status": "官方策略合作／共同研發",
+        "details": "IBM 年報具名策略合作夥伴，支援企業資料庫及系統轉型",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_043",
+        "name": "Palo Alto Networks",
+        "relationship": "partner",
+        "business_line": "ECOSYSTEM",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+        ],
+        "commercial_status": "官方策略合作／共同研發",
+        "details": "IBM 年報具名資安策略合作夥伴",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_044",
+        "name": "Salesforce",
+        "relationship": "partner",
+        "business_line": "AI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+        ],
+        "commercial_status": "官方策略合作／共同研發",
+        "details": "IBM 年報具名策略合作夥伴，整合企業 AI、CRM 與顧問服務",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_045",
+        "name": "Samsung Electronics",
+        "relationship": "supplier",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.ibm.com/strategic-partnerships/samsung",
+          "https://newsroom.ibm.com/2021-12-14-IBM-and-Samsung-Unveil-Semiconductor-Breakthrough-That-Defies-Conventional-Design"
+        ],
+        "commercial_status": "已確認晶圓代工供應／同時為策略合作夥伴",
+        "details": "IBM 官方揭露 Samsung Foundry 製造 IBM Telum II 處理器與 Spyre AI 加速器，供下一代 IBM Z 系統使用；雙方亦有長期半導體研發合作。",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_046",
+        "name": "SAP",
+        "relationship": "partner",
+        "business_line": "CONSULT",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+        ],
+        "commercial_status": "官方策略合作／共同研發",
+        "details": "IBM 年報具名策略合作夥伴，推動 SAP 系統與混合雲轉型",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_047",
+        "name": "NVIDIA",
+        "relationship": "partner",
+        "business_line": "AI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://newsroom.ibm.com/2026-03-16-ibm-and-nvidia-announce-expanded-collaboration-at-gtc-2026-to-advance-ai-for-the-enterprise"
+        ],
+        "commercial_status": "官方策略合作／共同研發",
+        "details": "IBM 與 NVIDIA 公告擴大 AI 資料、GPU 與企業部署合作",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_048",
+        "name": "Tokyo Electron",
+        "relationship": "partner",
+        "business_line": "ECOSYSTEM",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://newsroom.ibm.com/2025-04-02-tokyo-electron-and-ibm-renew-collaboration-for-advanced-semiconductor-technology"
+        ],
+        "commercial_status": "官方策略合作／共同研發",
+        "details": "2025 年雙方續簽五年先進半導體與 chiplet 聯合研發協議",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_049",
+        "name": "Microsoft",
+        "relationship": "competitor",
+        "business_line": "HYBRID",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+        ],
+        "commercial_status": "年報具名競爭者",
+        "details": "IBM 2025 年 10-K 直接列為軟體業務主要競爭者；亦為策略合作夥伴",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_050",
+        "name": "Alphabet",
+        "relationship": "competitor",
+        "business_line": "AI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+        ],
+        "commercial_status": "年報具名競爭者",
+        "details": "IBM 10-K 列為軟體業務主要競爭者",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_051",
+        "name": "Amazon",
+        "relationship": "competitor",
+        "business_line": "HYBRID",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+        ],
+        "commercial_status": "年報具名競爭者",
+        "details": "IBM 10-K 列為軟體業務主要競爭者，AWS 另有合作關係",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_052",
+        "name": "Oracle",
+        "relationship": "competitor",
+        "business_line": "DATA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+        ],
+        "commercial_status": "年報具名競爭者",
+        "details": "IBM 10-K 列為軟體業務主要競爭者，另有策略合作",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_053",
+        "name": "Salesforce",
+        "relationship": "competitor",
+        "business_line": "AI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+        ],
+        "commercial_status": "年報具名競爭者",
+        "details": "IBM 10-K 列為軟體業務主要競爭者，另有策略合作",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_054",
+        "name": "SAP",
+        "relationship": "competitor",
+        "business_line": "DATA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+        ],
+        "commercial_status": "年報具名競爭者",
+        "details": "IBM 10-K 列為軟體業務主要競爭者，另有策略合作",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_055",
+        "name": "Broadcom",
+        "relationship": "competitor",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+        ],
+        "commercial_status": "年報具名競爭者",
+        "details": "IBM 10-K 列為軟體業務主要競爭者",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_056",
+        "name": "Cisco",
+        "relationship": "competitor",
+        "business_line": "AUTOMATION",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+        ],
+        "commercial_status": "年報具名競爭者",
+        "details": "IBM 10-K 將 Cisco 旗下 Splunk 列為軟體業務主要競爭者",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_057",
+        "name": "Accenture",
+        "relationship": "competitor",
+        "business_line": "CONSULT",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+        ],
+        "commercial_status": "年報具名競爭者",
+        "details": "IBM 10-K 直接列為顧問業務競爭者",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_058",
+        "name": "Capgemini",
+        "relationship": "competitor",
+        "business_line": "CONSULT",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+        ],
+        "commercial_status": "年報具名競爭者",
+        "details": "IBM 10-K 直接列為顧問業務競爭者",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_059",
+        "name": "Dell Technologies",
+        "relationship": "competitor",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+        ],
+        "commercial_status": "年報具名競爭者",
+        "details": "IBM 10-K 直接列為基礎設施競爭者",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_060",
+        "name": "Hewlett Packard Enterprise",
+        "relationship": "competitor",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+        ],
+        "commercial_status": "年報具名競爭者",
+        "details": "IBM 10-K 直接列為基礎設施競爭者",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_061",
+        "name": "NetApp",
+        "relationship": "competitor",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+        ],
+        "commercial_status": "年報具名競爭者",
+        "details": "IBM 10-K 直接列為基礎設施競爭者",
+        "named_counterparty": true
+      },
+      {
+        "id": "IBM_062",
+        "name": "Pure Storage",
+        "relationship": "competitor",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+        ],
+        "commercial_status": "年報具名競爭者",
+        "details": "IBM 10-K 直接列為基礎設施競爭者",
+        "named_counterparty": true
+      }
+    ],
+    "research_metadata": {
+      "source_profile_commit": "da93c81d",
+      "source_profile_sha": "97fc40d149294d030f23931237d0d038c2a78db9",
+      "beneficiary_relationships": [
+        {
+          "node_id": "IBM_039",
+          "name": "Adobe",
+          "details": "已公開具名策略合作或研發關係；潛在受惠來自聯合解決方案、服務與技術採用，但未揭露可歸因的營收或利潤，不能推定量化財務增益。",
+          "source_urls": [
+            "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+          ]
+        },
+        {
+          "node_id": "IBM_040",
+          "name": "Amazon Web Services",
+          "details": "已公開具名策略合作或研發關係；潛在受惠來自聯合解決方案、服務與技術採用，但未揭露可歸因的營收或利潤，不能推定量化財務增益。",
+          "source_urls": [
+            "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+          ]
+        },
+        {
+          "node_id": "IBM_041",
+          "name": "Microsoft",
+          "details": "已公開具名策略合作或研發關係；潛在受惠來自聯合解決方案、服務與技術採用，但未揭露可歸因的營收或利潤，不能推定量化財務增益。",
+          "source_urls": [
+            "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+          ]
+        },
+        {
+          "node_id": "IBM_042",
+          "name": "Oracle",
+          "details": "已公開具名策略合作或研發關係；潛在受惠來自聯合解決方案、服務與技術採用，但未揭露可歸因的營收或利潤，不能推定量化財務增益。",
+          "source_urls": [
+            "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+          ]
+        },
+        {
+          "node_id": "IBM_043",
+          "name": "Palo Alto Networks",
+          "details": "已公開具名策略合作或研發關係；潛在受惠來自聯合解決方案、服務與技術採用，但未揭露可歸因的營收或利潤，不能推定量化財務增益。",
+          "source_urls": [
+            "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+          ]
+        },
+        {
+          "node_id": "IBM_044",
+          "name": "Salesforce",
+          "details": "已公開具名策略合作或研發關係；潛在受惠來自聯合解決方案、服務與技術採用，但未揭露可歸因的營收或利潤，不能推定量化財務增益。",
+          "source_urls": [
+            "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+          ]
+        },
+        {
+          "node_id": "IBM_045",
+          "name": "Samsung Electronics",
+          "details": "已確認直接晶圓代工受惠：Samsung Foundry 製造 IBM Telum II 處理器與 Spyre AI 加速器；未公開對三星的營收金額。",
+          "source_urls": [
+            "https://www.ibm.com/strategic-partnerships/samsung"
+          ]
+        },
+        {
+          "node_id": "IBM_046",
+          "name": "SAP",
+          "details": "已公開具名策略合作或研發關係；潛在受惠來自聯合解決方案、服務與技術採用，但未揭露可歸因的營收或利潤，不能推定量化財務增益。",
+          "source_urls": [
+            "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm"
+          ]
+        },
+        {
+          "node_id": "IBM_047",
+          "name": "NVIDIA",
+          "details": "已公開具名策略合作或研發關係；潛在受惠來自聯合解決方案、服務與技術採用，但未揭露可歸因的營收或利潤，不能推定量化財務增益。",
+          "source_urls": [
+            "https://newsroom.ibm.com/2026-03-16-ibm-and-nvidia-announce-expanded-collaboration-at-gtc-2026-to-advance-ai-for-the-enterprise"
+          ]
+        },
+        {
+          "node_id": "IBM_048",
+          "name": "Tokyo Electron",
+          "details": "已公開具名策略合作或研發關係；潛在受惠來自聯合解決方案、服務與技術採用，但未揭露可歸因的營收或利潤，不能推定量化財務增益。",
+          "source_urls": [
+            "https://newsroom.ibm.com/2025-04-02-tokyo-electron-and-ibm-renew-collaboration-for-advanced-semiconductor-technology"
+          ]
+        }
+      ],
+      "evidence_grades": {
+        "A": "IBM 官方具名案例、策略合作公告或 SEC 10-K 直接揭露",
+        "B": "IBM 官方產品案例集合或相關官方材料；具名關係存在但逐筆專頁未驗證"
+      },
+      "count_by_relationship": {
+        "customer": 38,
+        "supplier": 1,
+        "partner": 9,
+        "competitor": 14
+      },
+      "business_line_count": 7,
+      "node_count": 62,
+      "audit_notes_zh_tw": [
+        "原始公司檔 11 欄不作修補，包括 Officer 51 等原始資料異常；僅新增 industry_chain。",
+        "IBM 2025 年報具名策略合作與競爭者；同一企業可分別有 partner 和 competitor 節點。",
+        "未找到能支持 IBM 直接採購或製造供應商的具名第一手證據，供應商暫留零，避免將合作夥伴誤列為供應商。",
+        "受惠關係僅代表具名合作可能產生商機，不代表已驗證營收增量。",
+        "部分客戶使用 IBM 官方產品案例集合，並非逐筆直接 URL；標示 B 等級。",
+        "2026-11-19 修正：Samsung Electronics 官方證實為 IBM Telum II 與 Spyre 晶圓代工供應商，從 partner 改列 supplier；其策略合作身分保留於 details。Rapidus 與 Tokyo Electron 不因共同研發而誤列已供貨供應商。"
+      ]
+    }
   }
 }

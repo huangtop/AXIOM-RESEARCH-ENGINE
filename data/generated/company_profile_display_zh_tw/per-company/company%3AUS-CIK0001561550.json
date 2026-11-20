@@ -227,5 +227,891 @@
       "AI 應用監控"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "symbol": "DDOG",
+    "company": "Datadog, Inc.",
+    "locale": "zh-TW",
+    "research_as_of": "2026-11-19",
+    "business_lines": [
+      {
+        "id": "INFRA",
+        "name": "基礎設施、網路與雲端監控",
+        "products": "Infrastructure Monitoring、Network Monitoring、Cloud Cost Management"
+      },
+      {
+        "id": "APM",
+        "name": "APM、分散式追蹤與資料庫監控",
+        "products": "APM、Distributed Tracing、Database Monitoring、Continuous Profiler"
+      },
+      {
+        "id": "LOG",
+        "name": "日誌管理、事件分析與可觀測性管線",
+        "products": "Log Management、Observability Pipelines、Error Tracking"
+      },
+      {
+        "id": "EXPERIENCE",
+        "name": "數位體驗、前端與產品分析",
+        "products": "Real User Monitoring、Synthetic Monitoring、Product Analytics"
+      },
+      {
+        "id": "SECURITY",
+        "name": "雲端安全、SIEM 與程式碼安全",
+        "products": "Cloud Security、Cloud SIEM、Code Security"
+      },
+      {
+        "id": "AI",
+        "name": "LLM 與 AI Agent 可觀測性",
+        "products": "LLM Observability、Agent Observability、Bits AI"
+      },
+      {
+        "id": "ECOSYSTEM",
+        "name": "雲端基礎設施、採購通路與服務整合",
+        "products": "AWS、Azure、Google Cloud、Marketplace、系統整合"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "DDOG_001",
+        "name": "Porsche Informatik",
+        "relationship": "customer",
+        "business_line": "INFRA",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "為 Volkswagen Group 旗下業務的數位轉型提供基礎設施與應用可觀測性；Datadog 官方具名客戶故事。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_002",
+        "name": "Auth0",
+        "relationship": "customer",
+        "business_line": "APM",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "以 Datadog 改善身份認證服務的可靠性與韌性；Datadog 官方具名案例。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_003",
+        "name": "Forbes",
+        "relationship": "customer",
+        "business_line": "EXPERIENCE",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "採用 Datadog 監控數位內容服務體驗與應用效能；Datadog 官方具名案例。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_004",
+        "name": "Itaú Unibanco",
+        "relationship": "customer",
+        "business_line": "APM",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.datadoghq.com/case-studies/itau-unibanco/"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "將 APM、Infrastructure Monitoring、Flex Logs、RUM 與 Observability Pipelines 納入可觀測性現代化；官方案例披露事故率下降 40%。",
+        "named_counterparty": true,
+        "ticker": "ITUB"
+      },
+      {
+        "id": "DDOG_005",
+        "name": "SAS",
+        "relationship": "customer",
+        "business_line": "APM",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "使用 Datadog 統一可觀測性支援 AI 驅動分析服務規模化運作；Datadog 官方具名案例。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_006",
+        "name": "Toyota Motor North America",
+        "relationship": "customer",
+        "business_line": "INFRA",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "監控 AWS 環境、加速功能交付及故障排除；Datadog 官方 Toyota 案例。",
+        "named_counterparty": true,
+        "ticker": "TM"
+      },
+      {
+        "id": "DDOG_007",
+        "name": "Cognizant TriZetto",
+        "relationship": "customer",
+        "business_line": "INFRA",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "整合監控工具以減少 IT 成本並提高維運可見度；Datadog 官方具名案例。",
+        "named_counterparty": true,
+        "ticker": "CTSH"
+      },
+      {
+        "id": "DDOG_008",
+        "name": "Autodesk",
+        "relationship": "customer",
+        "business_line": "APM",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "以 Datadog 監控設計軟體相關應用及雲端服務的效能；Datadog 官方具名案例。",
+        "named_counterparty": true,
+        "ticker": "ADSK"
+      },
+      {
+        "id": "DDOG_009",
+        "name": "Mondelēz International",
+        "relationship": "customer",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.datadoghq.com/case-studies/mondelez-international/"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "使用 Datadog 統一監控 AWS、多雲與地端基礎設施，官方案例披露縮短事件處理時間。",
+        "named_counterparty": true,
+        "ticker": "MDLZ"
+      },
+      {
+        "id": "DDOG_010",
+        "name": "NTT DATA",
+        "relationship": "customer",
+        "business_line": "AI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.datadoghq.com/case-studies/ntt-data/"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "以 Datadog Agent Observability 評估 Amazon Bedrock AgentCore 上 AI agent 品質與推論成本；官方案例披露測試階段成本下降 50%。",
+        "named_counterparty": true,
+        "ticker": "NTTYY"
+      },
+      {
+        "id": "DDOG_011",
+        "name": "HashiCorp",
+        "relationship": "customer",
+        "business_line": "APM",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "以 Datadog 統一監控應用效能並促進 DevOps 協作；官方具名案例。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_012",
+        "name": "SNCF",
+        "relationship": "customer",
+        "business_line": "INFRA",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "使用 Datadog 整合不同事業部門的系統可觀測性與現代化作業；官方具名案例。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_013",
+        "name": "AppFolio",
+        "relationship": "customer",
+        "business_line": "AI",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "選用 Datadog Agent Observability 監控及優化 AI 應用；官方客戶名錄列出實際採用。",
+        "named_counterparty": true,
+        "ticker": "APPF"
+      },
+      {
+        "id": "DDOG_014",
+        "name": "Mercado Libre",
+        "relationship": "customer",
+        "business_line": "APM",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "以 Datadog 打通應用與基礎設施監控，促進工程團隊跨部門協作；官方具名案例。",
+        "named_counterparty": true,
+        "ticker": "MELI"
+      },
+      {
+        "id": "DDOG_015",
+        "name": "Modal",
+        "relationship": "customer",
+        "business_line": "AI",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "採用 Datadog 統一可觀測性監控 AI 基礎設施及應用；官方具名案例。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_016",
+        "name": "STOXX",
+        "relationship": "customer",
+        "business_line": "LOG",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "使用 Datadog 支援即時指數資料系統的準確性及運作可見度；官方具名案例。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_017",
+        "name": "PayMongo",
+        "relationship": "customer",
+        "business_line": "SECURITY",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "使用 Datadog 監控並保護支付處理平台；官方具名案例。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_018",
+        "name": "GetGo",
+        "relationship": "customer",
+        "business_line": "EXPERIENCE",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "使用 Datadog 提高行動應用可見度並縮短事件處理時間；官方具名案例。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_019",
+        "name": "Arc XP",
+        "relationship": "customer",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://events.datadoghq.com/aws-reinvent/resources/"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "以 Datadog 監控 AWS 環境並處理服務事故；Datadog 官方 AWS 案例資源列示。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_020",
+        "name": "PayPal",
+        "relationship": "customer",
+        "business_line": "APM",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "官方客戶證言指出 Datadog 的 OpenTelemetry 互通性符合其大規模可觀測性需求。",
+        "named_counterparty": true,
+        "ticker": "PYPL"
+      },
+      {
+        "id": "DDOG_021",
+        "name": "Posten Bring",
+        "relationship": "customer",
+        "business_line": "INFRA",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "官方客戶證言指出 Datadog 用於主動預防問題及加速維運反應。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_022",
+        "name": "Siemens",
+        "relationship": "customer",
+        "business_line": "INFRA",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "Datadog 官方客戶名錄列為使用者；公開資料未在名錄中逐項確認採購產品。",
+        "named_counterparty": true,
+        "ticker": "SIEGY"
+      },
+      {
+        "id": "DDOG_023",
+        "name": "Twilio",
+        "relationship": "customer",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies",
+          "https://www.datadoghq.com/legal/subprocessors/"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "Datadog 官方客戶名錄列示 Twilio；此處只認定具名客戶，不推估採購規模。 Datadog 官方次處理商名單列 Twilio 為通訊服務商；同時亦列於 Datadog 客戶名錄。",
+        "named_counterparty": true,
+        "ticker": "TWLO"
+      },
+      {
+        "id": "DDOG_024",
+        "name": "Zillow Group",
+        "relationship": "customer",
+        "business_line": "APM",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "Datadog 官方客戶名錄列示 Zillow；此處只認定具名客戶，不推估採購規模。",
+        "named_counterparty": true,
+        "ticker": "Z"
+      },
+      {
+        "id": "DDOG_025",
+        "name": "Asana",
+        "relationship": "customer",
+        "business_line": "INFRA",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "Datadog 官方客戶名錄列示 Asana；此處只認定具名客戶，不推估採購規模。",
+        "named_counterparty": true,
+        "ticker": "ASAN"
+      },
+      {
+        "id": "DDOG_026",
+        "name": "Nasdaq",
+        "relationship": "customer",
+        "business_line": "INFRA",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "Datadog 官方客戶名錄列示 Nasdaq；此處只認定具名客戶，不推估採購規模。",
+        "named_counterparty": true,
+        "ticker": "NDAQ"
+      },
+      {
+        "id": "DDOG_027",
+        "name": "Plaid",
+        "relationship": "customer",
+        "business_line": "APM",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "Datadog 官方客戶名錄列示 Plaid；此處只認定具名客戶，不推估採購規模。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_028",
+        "name": "Zendesk",
+        "relationship": "customer",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies",
+          "https://www.datadoghq.com/legal/subprocessors/"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "Datadog 官方客戶名錄列示 Zendesk；另在 Datadog 次處理商名單中列為客服平台供應商，屬雙向關係。 Datadog 官方次處理商名單列 Zendesk 為客戶支援平台服務商；同時亦列於 Datadog 客戶名錄。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_029",
+        "name": "OpenAI",
+        "relationship": "customer",
+        "business_line": "AI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies",
+          "https://www.datadoghq.com/legal/subprocessors/"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "Datadog 官方客戶名錄列示 OpenAI；Datadog 次處理商名單另列 OpenAI 為 AI 服務供應商，屬雙向關係。 Datadog 官方次處理商名單列 OpenAI 為 AI 服務商；同時亦列於 Datadog 官方客戶名錄。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_030",
+        "name": "Deloitte",
+        "relationship": "customer",
+        "business_line": "INFRA",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.datadoghq.com/customers/?type-0=case-studies"
+        ],
+        "commercial_status": "已公開使用／具名客戶",
+        "details": "Datadog 官方客戶名錄列示 Deloitte Cloud；僅認定具名使用者，不推估整個集團採購量。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_031",
+        "name": "Amazon Web Services",
+        "relationship": "supplier",
+        "business_line": "ECOSYSTEM",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.datadoghq.com/legal/subprocessors/",
+          "https://www.datadoghq.com/about/latest-news/press-releases/datadog-announces-expanded-collaboration-agreement-highlights-new-capabilities-with-aws-across-ai-observability-and-security-at-aws-reinvent/",
+          "https://www.sec.gov/Archives/edgar/data/1561550/000162828026008819/ddog-20251231.htm"
+        ],
+        "commercial_status": "官方次處理商名單／服務供應關係",
+        "details": "Datadog 官方次處理商名單列 AWS 為基礎設施服務商；2025 年再簽策略合作協議。 另於 2025 年宣布新的策略合作協議，包含 AWS Marketplace、AI、可觀測性與資安產品整合。 Datadog 年報亦將該雲平台的原生監控工具列為競爭方案。",
+        "named_counterparty": true,
+        "ticker": "AMZN"
+      },
+      {
+        "id": "DDOG_032",
+        "name": "Google Cloud",
+        "relationship": "supplier",
+        "business_line": "ECOSYSTEM",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.datadoghq.com/legal/subprocessors/",
+          "https://www.datadoghq.com/about/latest-news/press-releases/datadog-expands-strategic-partnership-with-google-cloud-and-integrates-with-vertex-ai/",
+          "https://www.sec.gov/Archives/edgar/data/1561550/000162828026008819/ddog-20251231.htm"
+        ],
+        "commercial_status": "官方次處理商名單／服務供應關係",
+        "details": "Datadog 官方次處理商名單列 Google 為基礎設施服務商；另有 Vertex AI 可觀測性及聯合銷售合作。 另與 Google Cloud 擴大策略合作，將 Vertex AI 模型監控納入 Datadog。 Datadog 年報亦將該雲平台的原生監控工具列為競爭方案。",
+        "named_counterparty": true,
+        "ticker": "GOOGL"
+      },
+      {
+        "id": "DDOG_033",
+        "name": "Microsoft Azure",
+        "relationship": "supplier",
+        "business_line": "ECOSYSTEM",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.datadoghq.com/legal/subprocessors/",
+          "https://www.datadoghq.com/about/latest-news/press-releases/datadog-microsoft-strategic-partnership/",
+          "https://www.sec.gov/Archives/edgar/data/1561550/000162828026008819/ddog-20251231.htm"
+        ],
+        "commercial_status": "官方次處理商名單／服務供應關係",
+        "details": "Datadog 官方次處理商名單列 Microsoft Azure 為基礎設施服務商；Azure 原生入口亦提供 Datadog 採購整合。 另與 Microsoft 宣布 Azure Portal 原生採購整合與策略合作。 Datadog 與 Microsoft Azure 宣布策略合作，Datadog 可於 Azure Portal 以第一方整合方式購買及部署；Microsoft 亦在 Datadog 年報列為競爭者。 Datadog 年報亦將該雲平台的原生監控工具列為競爭方案。",
+        "named_counterparty": true,
+        "ticker": "MSFT"
+      },
+      {
+        "id": "DDOG_034",
+        "name": "Anthropic",
+        "relationship": "supplier",
+        "business_line": "AI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.datadoghq.com/legal/subprocessors/"
+        ],
+        "commercial_status": "官方次處理商名單／服務供應關係",
+        "details": "Datadog 官方次處理商名單列 Anthropic 為 AI 服務商，屬實際上游服務關係。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_035",
+        "name": "Baseten",
+        "relationship": "supplier",
+        "business_line": "AI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.datadoghq.com/legal/subprocessors/"
+        ],
+        "commercial_status": "官方次處理商名單／服務供應關係",
+        "details": "Datadog 官方次處理商名單列 Baseten Labs 為 AI 服務商。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_036",
+        "name": "Databricks",
+        "relationship": "supplier",
+        "business_line": "AI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.datadoghq.com/legal/subprocessors/"
+        ],
+        "commercial_status": "官方次處理商名單／服務供應關係",
+        "details": "Datadog 官方次處理商名單列 Databricks 為 AI 服務商。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_037",
+        "name": "Fireworks AI",
+        "relationship": "supplier",
+        "business_line": "AI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.datadoghq.com/legal/subprocessors/"
+        ],
+        "commercial_status": "官方次處理商名單／服務供應關係",
+        "details": "Datadog 官方次處理商名單列 Fireworks.ai 為 AI 服務商。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_038",
+        "name": "Nebius",
+        "relationship": "supplier",
+        "business_line": "AI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.datadoghq.com/legal/subprocessors/"
+        ],
+        "commercial_status": "官方次處理商名單／服務供應關係",
+        "details": "Datadog 官方次處理商名單列 Nebius 為 AI 服務商。",
+        "named_counterparty": true,
+        "ticker": "NBIS"
+      },
+      {
+        "id": "DDOG_039",
+        "name": "Snowflake",
+        "relationship": "supplier",
+        "business_line": "LOG",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.datadoghq.com/legal/subprocessors/"
+        ],
+        "commercial_status": "官方次處理商名單／服務供應關係",
+        "details": "Datadog 官方次處理商名單列 Snowflake 為資料倉儲服務商。",
+        "named_counterparty": true,
+        "ticker": "SNOW"
+      },
+      {
+        "id": "DDOG_040",
+        "name": "ReversingLabs",
+        "relationship": "supplier",
+        "business_line": "SECURITY",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.datadoghq.com/legal/subprocessors/"
+        ],
+        "commercial_status": "官方次處理商名單／服務供應關係",
+        "details": "Datadog 官方次處理商名單列 Reversing Labs 為威脅情報服務商。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_041",
+        "name": "Salesforce",
+        "relationship": "supplier",
+        "business_line": "ECOSYSTEM",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.datadoghq.com/legal/subprocessors/"
+        ],
+        "commercial_status": "官方次處理商名單／服務供應關係",
+        "details": "Datadog 官方次處理商名單列 Salesforce 為客戶支援平台服務商。",
+        "named_counterparty": true,
+        "ticker": "CRM"
+      },
+      {
+        "id": "DDOG_042",
+        "name": "AWS Marketplace",
+        "relationship": "partner",
+        "business_line": "ECOSYSTEM",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.datadoghq.com/about/latest-news/press-releases/datadog-announces-expanded-collaboration-agreement-highlights-new-capabilities-with-aws-across-ai-observability-and-security-at-aws-reinvent/"
+        ],
+        "commercial_status": "已公告合作／整合",
+        "details": "Datadog 與 AWS 的 2025 年策略合作協議明確包括 AWS Marketplace 上架與聯合市場拓展；此為通路關係，不另計 AWS 供應商節點。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_043",
+        "name": "Google Cloud Marketplace",
+        "relationship": "partner",
+        "business_line": "ECOSYSTEM",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.datadoghq.com/about/latest-news/press-releases/datadog-announces-availability-on-google-cloud-marketplace-to-support-customers-cloud-migrations/"
+        ],
+        "commercial_status": "已公告合作／整合",
+        "details": "Datadog 已上架 Google Cloud Marketplace，支援雲端客戶透過平台採購。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_044",
+        "name": "Dynatrace",
+        "relationship": "competitor",
+        "business_line": "APM",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1561550/000162828026008819/ddog-20251231.htm"
+        ],
+        "commercial_status": "公司年報具名競爭者",
+        "details": "Datadog 2025 年 10-K 直接列名 APM 領域競爭者。",
+        "named_counterparty": true,
+        "ticker": "DT"
+      },
+      {
+        "id": "DDOG_045",
+        "name": "Cisco Systems",
+        "relationship": "competitor",
+        "business_line": "APM",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1561550/000162828026008819/ddog-20251231.htm"
+        ],
+        "commercial_status": "公司年報具名競爭者",
+        "details": "Datadog 2025 年 10-K 直接列名 APM 與日誌管理競爭者；包含其可觀測性產品線。",
+        "named_counterparty": true,
+        "ticker": "CSCO"
+      },
+      {
+        "id": "DDOG_046",
+        "name": "Elastic",
+        "relationship": "competitor",
+        "business_line": "LOG",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1561550/000162828026008819/ddog-20251231.htm"
+        ],
+        "commercial_status": "公司年報具名競爭者",
+        "details": "Datadog 2025 年 10-K 直接列名日誌管理競爭者。",
+        "named_counterparty": true,
+        "ticker": "ESTC"
+      },
+      {
+        "id": "DDOG_047",
+        "name": "IBM",
+        "relationship": "competitor",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1561550/000162828026008819/ddog-20251231.htm"
+        ],
+        "commercial_status": "公司年報具名競爭者",
+        "details": "Datadog 2025 年 10-K 直接列名地端基礎設施監控競爭者。",
+        "named_counterparty": true,
+        "ticker": "IBM"
+      },
+      {
+        "id": "DDOG_048",
+        "name": "SolarWinds",
+        "relationship": "competitor",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1561550/000162828026008819/ddog-20251231.htm"
+        ],
+        "commercial_status": "公司年報具名競爭者",
+        "details": "Datadog 2025 年 10-K 直接列名地端基礎設施監控競爭者。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_049",
+        "name": "New Relic",
+        "relationship": "competitor",
+        "business_line": "APM",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1561550/000162828026008819/ddog-20251231.htm"
+        ],
+        "commercial_status": "公司年報具名競爭者",
+        "details": "Datadog 2025 年 10-K 直接列名 APM 競爭者。",
+        "named_counterparty": true
+      },
+      {
+        "id": "DDOG_050",
+        "name": "PagerDuty",
+        "relationship": "partner",
+        "business_line": "ECOSYSTEM",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.pagerduty.com/docs/guides/datadog-integration-guide/"
+        ],
+        "commercial_status": "官方技術整合／產品支援",
+        "details": "Datadog 與 PagerDuty 提供雙向事件通知及事故處理技術整合；官方雙方文件確認整合功能，未聲稱分潤或共同營收。",
+        "named_counterparty": true,
+        "ticker": "PD"
+      },
+      {
+        "id": "DDOG_051",
+        "name": "Oracle Cloud Infrastructure",
+        "relationship": "partner",
+        "business_line": "ECOSYSTEM",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://investors.datadoghq.com/news-releases/"
+        ],
+        "commercial_status": "官方技術整合／產品支援",
+        "details": "Datadog 2025 年宣布擴大支援 Oracle Cloud Infrastructure 的可觀測性整合；此為技術整合，不推定已成立採購合約。",
+        "named_counterparty": true,
+        "ticker": "ORCL"
+      }
+    ],
+    "research_metadata": {
+      "source_profile_commit": "da93c81d",
+      "source_profile_sha": "3baedf76407890ef2ae6bdc4ebd809fd90611b1d",
+      "beneficiary_relationships": [
+        {
+          "node_id": "DDOG_031",
+          "name": "Amazon Web Services",
+          "details": "Datadog 已將 Amazon Web Services 具名列為次處理服務商；Datadog 使用相關雲端、AI、資料或安全服務形成直接採購需求，但個別供應金額及財務貢獻未公開。",
+          "source_urls": [
+            "https://www.datadoghq.com/legal/subprocessors/"
+          ]
+        },
+        {
+          "node_id": "DDOG_032",
+          "name": "Google Cloud",
+          "details": "Datadog 已將 Google Cloud 具名列為次處理服務商；Datadog 使用相關雲端、AI、資料或安全服務形成直接採購需求，但個別供應金額及財務貢獻未公開。",
+          "source_urls": [
+            "https://www.datadoghq.com/legal/subprocessors/"
+          ]
+        },
+        {
+          "node_id": "DDOG_033",
+          "name": "Microsoft Azure",
+          "details": "Datadog 已將 Microsoft Azure 具名列為次處理服務商；Datadog 使用相關雲端、AI、資料或安全服務形成直接採購需求，但個別供應金額及財務貢獻未公開。",
+          "source_urls": [
+            "https://www.datadoghq.com/legal/subprocessors/"
+          ]
+        },
+        {
+          "node_id": "DDOG_034",
+          "name": "Anthropic",
+          "details": "Datadog 已將 Anthropic 具名列為次處理服務商；Datadog 使用相關雲端、AI、資料或安全服務形成直接採購需求，但個別供應金額及財務貢獻未公開。",
+          "source_urls": [
+            "https://www.datadoghq.com/legal/subprocessors/"
+          ]
+        },
+        {
+          "node_id": "DDOG_035",
+          "name": "Baseten",
+          "details": "Datadog 已將 Baseten 具名列為次處理服務商；Datadog 使用相關雲端、AI、資料或安全服務形成直接採購需求，但個別供應金額及財務貢獻未公開。",
+          "source_urls": [
+            "https://www.datadoghq.com/legal/subprocessors/"
+          ]
+        },
+        {
+          "node_id": "DDOG_036",
+          "name": "Databricks",
+          "details": "Datadog 已將 Databricks 具名列為次處理服務商；Datadog 使用相關雲端、AI、資料或安全服務形成直接採購需求，但個別供應金額及財務貢獻未公開。",
+          "source_urls": [
+            "https://www.datadoghq.com/legal/subprocessors/"
+          ]
+        },
+        {
+          "node_id": "DDOG_037",
+          "name": "Fireworks AI",
+          "details": "Datadog 已將 Fireworks AI 具名列為次處理服務商；Datadog 使用相關雲端、AI、資料或安全服務形成直接採購需求，但個別供應金額及財務貢獻未公開。",
+          "source_urls": [
+            "https://www.datadoghq.com/legal/subprocessors/"
+          ]
+        },
+        {
+          "node_id": "DDOG_038",
+          "name": "Nebius",
+          "details": "Datadog 已將 Nebius 具名列為次處理服務商；Datadog 使用相關雲端、AI、資料或安全服務形成直接採購需求，但個別供應金額及財務貢獻未公開。",
+          "source_urls": [
+            "https://www.datadoghq.com/legal/subprocessors/"
+          ]
+        },
+        {
+          "node_id": "DDOG_039",
+          "name": "Snowflake",
+          "details": "Datadog 已將 Snowflake 具名列為次處理服務商；Datadog 使用相關雲端、AI、資料或安全服務形成直接採購需求，但個別供應金額及財務貢獻未公開。",
+          "source_urls": [
+            "https://www.datadoghq.com/legal/subprocessors/"
+          ]
+        },
+        {
+          "node_id": "DDOG_040",
+          "name": "ReversingLabs",
+          "details": "Datadog 已將 ReversingLabs 具名列為次處理服務商；Datadog 使用相關雲端、AI、資料或安全服務形成直接採購需求，但個別供應金額及財務貢獻未公開。",
+          "source_urls": [
+            "https://www.datadoghq.com/legal/subprocessors/"
+          ]
+        },
+        {
+          "node_id": "DDOG_041",
+          "name": "Salesforce",
+          "details": "Datadog 已將 Salesforce 具名列為次處理服務商；Datadog 使用相關雲端、AI、資料或安全服務形成直接採購需求，但個別供應金額及財務貢獻未公開。",
+          "source_urls": [
+            "https://www.datadoghq.com/legal/subprocessors/"
+          ]
+        },
+        {
+          "node_id": "DDOG_029",
+          "name": "OpenAI",
+          "details": "Datadog 官方次處理商名單另列 OpenAI 為上游服務供應商；同時具名列於客戶名錄。此處受惠僅指服務採購需求，不等同淨營收或利潤已量化。",
+          "source_urls": [
+            "https://www.datadoghq.com/legal/subprocessors/",
+            "https://www.datadoghq.com/customers/?type-0=case-studies"
+          ]
+        },
+        {
+          "node_id": "DDOG_023",
+          "name": "Twilio",
+          "details": "Datadog 官方次處理商名單另列 Twilio 為上游服務供應商；同時具名列於客戶名錄。此處受惠僅指服務採購需求，不等同淨營收或利潤已量化。",
+          "source_urls": [
+            "https://www.datadoghq.com/legal/subprocessors/",
+            "https://www.datadoghq.com/customers/?type-0=case-studies"
+          ]
+        },
+        {
+          "node_id": "DDOG_028",
+          "name": "Zendesk",
+          "details": "Datadog 官方次處理商名單另列 Zendesk 為上游服務供應商；同時具名列於客戶名錄。此處受惠僅指服務採購需求，不等同淨營收或利潤已量化。",
+          "source_urls": [
+            "https://www.datadoghq.com/legal/subprocessors/",
+            "https://www.datadoghq.com/customers/?type-0=case-studies"
+          ]
+        }
+      ],
+      "evidence_grades": {
+        "A": "Datadog 具名詳細客戶案例、2025 SEC 10-K 競爭者、官方次處理商名單、雙方正式合作公告",
+        "B": "Datadog 官方客戶名錄、具名技術整合文件；未公開單筆採購金額"
+      },
+      "count_by_relationship": {
+        "customer": 30,
+        "supplier": 11,
+        "partner": 4,
+        "competitor": 6
+      },
+      "business_line_count": 7,
+      "node_count": 51,
+      "audit_notes_zh_tw": [
+        "客戶名錄與詳細個案區分，官方客戶標誌不推定採購額或產品組合。",
+        "2026-10-16 Datadog 官方次處理商名單確認雲端、AI、威脅情報及其他服務供應商。",
+        "AWS、Google Cloud、Microsoft Azure 兼具供應商、策略合作及原生監控競爭角色，以同一節點呈現避免重複計數。",
+        "OpenAI、Twilio、Zendesk 同時出現在 Datadog 客戶名錄與次處理商名單，雙向關係寫入單一節點 details。",
+        "供應商受惠僅代表 Datadog 使用其服務，未推算供貨收入、成長率或利潤。",
+        "同業競爭以 Datadog 2025 年 10-K 具名對象為依據。",
+        "原始 11 頂層欄位依固定版本保留；僅新增 industry_chain。"
+      ]
+    }
   }
 }

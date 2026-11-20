@@ -239,5 +239,939 @@
       "企業平台整合"
     ],
     "strategy_changes": []
+  },
+  "industry_chain": {
+    "schema_version": "axiom-industry-chain.zh-tw.v1",
+    "symbol": "NET",
+    "company": "Cloudflare, Inc.",
+    "locale": "zh-TW",
+    "research_as_of": "2026-11-19",
+    "business_lines": [
+      {
+        "id": "APPSEC",
+        "name": "應用安全與抗攻擊",
+        "products": "WAF、DDoS、Bot Management、API Shield"
+      },
+      {
+        "id": "ZERO",
+        "name": "Zero Trust 與 SASE",
+        "products": "Cloudflare One、Access、Gateway、Magic WAN"
+      },
+      {
+        "id": "NETWORK",
+        "name": "CDN、DNS 與網路服務",
+        "products": "CDN、DNS、Argo、Magic Transit、R2"
+      },
+      {
+        "id": "DEVAI",
+        "name": "Workers、AI 與開發者平台",
+        "products": "Workers、Workers AI、AI Gateway、R2、D1"
+      },
+      {
+        "id": "INFRA",
+        "name": "全球網路與伺服器硬體",
+        "products": "AMD EPYC、SSD、NIC、全球機房與互連"
+      },
+      {
+        "id": "CHANNEL",
+        "name": "通路、技術聯盟與導入",
+        "products": "PowerUP、系統整合、Zero Trust 技術聯盟"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "NET_001",
+        "name": "Shopify",
+        "relationship": "customer",
+        "business_line": "DEVAI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/shopify/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "採用 CDN、WAF、Bot Management、Workers、SSL for SaaS；支援全球商家網站與結帳流程。",
+        "named_counterparty": true,
+        "ticker": "SHOP"
+      },
+      {
+        "id": "NET_002",
+        "name": "Canva",
+        "relationship": "customer",
+        "business_line": "ZERO",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/canva/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "採用 WAF、CDN、Bot Management、Access、Workers，保護設計資產與全球員工存取。",
+        "named_counterparty": true
+      },
+      {
+        "id": "NET_003",
+        "name": "Porsche Informatik",
+        "relationship": "customer",
+        "business_line": "NETWORK",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/porsche-informatik/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "以 CDN、R2、Workers、SSL for SaaS 保護及遷移逾 3,000 個經銷商網站；案例稱頁面載入改善 40%。",
+        "named_counterparty": true
+      },
+      {
+        "id": "NET_004",
+        "name": "Delivery Hero",
+        "relationship": "customer",
+        "business_line": "ZERO",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/delivery-hero/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "採用 Cloudflare One、Zero Trust 與應用防護，保護全球逾 4 萬名員工的應用存取。",
+        "named_counterparty": true,
+        "ticker": "DHER.DE"
+      },
+      {
+        "id": "NET_005",
+        "name": "VFS Global",
+        "relationship": "customer",
+        "business_line": "APPSEC",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/vfs-global/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "採用 WAF、Bot Management、Rate Limiting、Log Explorer，保護簽證服務入口及敏感資料。",
+        "named_counterparty": true
+      },
+      {
+        "id": "NET_006",
+        "name": "Gusto",
+        "relationship": "customer",
+        "business_line": "ZERO",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/gusto/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "採用 Cloudflare Access 保護逾 4,000 名使用者，並與交付夥伴 CDW 完成分階段導入。",
+        "named_counterparty": true
+      },
+      {
+        "id": "NET_007",
+        "name": "Mitsubishi Gas Chemical",
+        "relationship": "customer",
+        "business_line": "ZERO",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/mitsubishi-gas-chemical/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "導入 Zero Trust、Gateway 與 DNS 篩選，官方案例揭露遠端連線費用減少 75%。",
+        "named_counterparty": true,
+        "ticker": "4182.T"
+      },
+      {
+        "id": "NET_008",
+        "name": "Fujitec",
+        "relationship": "customer",
+        "business_line": "ZERO",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/https://www.cloudflare.com/it-it/case-studies/fujitec/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "採用 Cloudflare One 取代傳統 VPN，官方案例描述約 45 天完成 Zero Trust 部署。",
+        "named_counterparty": true,
+        "ticker": "6406.T"
+      },
+      {
+        "id": "NET_009",
+        "name": "Fullscript",
+        "relationship": "customer",
+        "business_line": "DEVAI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/https://www.cloudflare.com/en-au/case-studies/fullscript/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "採用 WAF、Bot Management、Workers、R2、Zero Trust；官方案例稱部署速度提升八倍。",
+        "named_counterparty": true
+      },
+      {
+        "id": "NET_010",
+        "name": "Just Eat Takeaway",
+        "relationship": "customer",
+        "business_line": "APPSEC",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/https://www.cloudflare.com/th-th/case-studies/just-eat-takeaway/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "將 WAF、DDoS 與自動化安全規則遷移至 Cloudflare，降低全球訂餐平台中斷風險。",
+        "named_counterparty": true
+      },
+      {
+        "id": "NET_011",
+        "name": "Stack Overflow",
+        "relationship": "customer",
+        "business_line": "DEVAI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/zh-tw/case-studies/stack-overflow/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "使用應用安全及開發者平台阻擋 DDoS 攻擊，並推進 AI 驅動的收入模式。",
+        "named_counterparty": true
+      },
+      {
+        "id": "NET_012",
+        "name": "ZIPAIR",
+        "relationship": "customer",
+        "business_line": "APPSEC",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/en-gb/case-studies/zipair/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "使用 Bot Management 保護訂票系統，維持高流量時段的訂票可用性。",
+        "named_counterparty": true
+      },
+      {
+        "id": "NET_013",
+        "name": "Hutchison Telecommunications Hong Kong",
+        "relationship": "customer",
+        "business_line": "APPSEC",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "採用 Cloudflare 安全與效能服務整合防護，降低攻擊並改善多市場數位服務。",
+        "named_counterparty": true,
+        "ticker": "0215.HK"
+      },
+      {
+        "id": "NET_014",
+        "name": "New York City Housing Authority",
+        "relationship": "customer",
+        "business_line": "NETWORK",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "使用 Cloudflare 服務支援重新開放住房申請等候名單的線上入口。",
+        "named_counterparty": true
+      },
+      {
+        "id": "NET_015",
+        "name": "AllSaints",
+        "relationship": "customer",
+        "business_line": "NETWORK",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "透過 Cloudflare 應用服務提升電商網站效能、安全與可用性。",
+        "named_counterparty": true
+      },
+      {
+        "id": "NET_016",
+        "name": "TeamViewer",
+        "relationship": "customer",
+        "business_line": "DEVAI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/en-gb/case-studies/teamviewer/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "使用 WAF、Workers 與 CDN 保護網站及軟體下載並改善延遲。",
+        "named_counterparty": true,
+        "ticker": "TMV.DE"
+      },
+      {
+        "id": "NET_017",
+        "name": "Ocado Group",
+        "relationship": "customer",
+        "business_line": "ZERO",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/ocado-group/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "採用 Zero Trust 方案替代傳統 VPN，支援跨區域營運與員工存取。",
+        "named_counterparty": true,
+        "ticker": "OCDO.L"
+      },
+      {
+        "id": "NET_018",
+        "name": "EQT",
+        "relationship": "customer",
+        "business_line": "ZERO",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/eqt/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "使用 Cloudflare 整合安全、效能及存取控制，提升投資管理企業網路可靠性。",
+        "named_counterparty": true,
+        "ticker": "EQT.ST"
+      },
+      {
+        "id": "NET_019",
+        "name": "TrueLayer",
+        "relationship": "customer",
+        "business_line": "ZERO",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/en-ca/case-studies/truelayer/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "採用 Cloudflare Zero Trust 保護開放銀行 API 與內部資源存取。",
+        "named_counterparty": true
+      },
+      {
+        "id": "NET_020",
+        "name": "PayNet",
+        "relationship": "customer",
+        "business_line": "ZERO",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "以 Cloudflare 網路與安全服務支援安全的現代雲端運作。",
+        "named_counterparty": true
+      },
+      {
+        "id": "NET_021",
+        "name": "Fossil Group",
+        "relationship": "customer",
+        "business_line": "APPSEC",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/fossil/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "採用 Cloudflare 整合電商安全與效能，降低多供應商維護複雜度。",
+        "named_counterparty": true,
+        "ticker": "FOSL"
+      },
+      {
+        "id": "NET_022",
+        "name": "THG",
+        "relationship": "customer",
+        "business_line": "NETWORK",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "使用 Cloudflare 提升內部與客戶服務的部署速度、效能及安全。",
+        "named_counterparty": true,
+        "ticker": "THG.L"
+      },
+      {
+        "id": "NET_023",
+        "name": "VistaPrint",
+        "relationship": "customer",
+        "business_line": "NETWORK",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "採用 Cloudflare 內容傳遞及 Zero Trust Network Access，改善全球網站與員工存取。",
+        "named_counterparty": true
+      },
+      {
+        "id": "NET_024",
+        "name": "ComfortDelGro",
+        "relationship": "customer",
+        "business_line": "APPSEC",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/comfortdelgro/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "採用 Cloudflare 服務強化全球營運的數位韌性。",
+        "named_counterparty": true,
+        "ticker": "C52.SI"
+      },
+      {
+        "id": "NET_025",
+        "name": "Hapag-Lloyd",
+        "relationship": "customer",
+        "business_line": "NETWORK",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "使用 Cloudflare 整合全球安全及效能服務，改善可靠性與成本。",
+        "named_counterparty": true,
+        "ticker": "HLAG.DE"
+      },
+      {
+        "id": "NET_026",
+        "name": "CrazyGames",
+        "relationship": "customer",
+        "business_line": "APPSEC",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "採用 Cloudflare 保護每月數千萬玩家的平台，抵禦大規模惡意流量。",
+        "named_counterparty": true
+      },
+      {
+        "id": "NET_027",
+        "name": "Hack The Box",
+        "relationship": "customer",
+        "business_line": "APPSEC",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "採用 Cloudflare 防護網路安全訓練平台，減輕每月大量攻擊。",
+        "named_counterparty": true
+      },
+      {
+        "id": "NET_028",
+        "name": "Olive Young",
+        "relationship": "customer",
+        "business_line": "APPSEC",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "採用 Cloudflare AI Bot 防護及低延遲服務支援全球美妝電商。",
+        "named_counterparty": true
+      },
+      {
+        "id": "NET_029",
+        "name": "BAFTA",
+        "relationship": "customer",
+        "business_line": "APPSEC",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "採用 Cloudflare 平台支援自營公開投票系統，確保品牌信任與可靠性。",
+        "named_counterparty": true
+      },
+      {
+        "id": "NET_030",
+        "name": "Poki",
+        "relationship": "customer",
+        "business_line": "DEVAI",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/"
+        ],
+        "commercial_status": "已公開採用／案例",
+        "details": "以 Cloudflare 邊緣平台支援全球多人遊戲服務。",
+        "named_counterparty": true
+      },
+      {
+        "id": "NET_031",
+        "name": "Advanced Micro Devices",
+        "relationship": "supplier",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://blog.cloudflare.com/gen-12-servers/",
+          "https://blog.cloudflare.com/gen13-config/"
+        ],
+        "commercial_status": "公開硬體規格／已部署",
+        "details": "Gen 12 伺服器使用 AMD EPYC 9684X；Gen 13 伺服器使用 EPYC 9965，屬實際部署的 CPU 供應鏈。",
+        "named_counterparty": true,
+        "ticker": "AMD"
+      },
+      {
+        "id": "NET_032",
+        "name": "Samsung Electronics",
+        "relationship": "supplier",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://blog.cloudflare.com/gen-12-servers/"
+        ],
+        "commercial_status": "公開硬體規格／已部署",
+        "details": "Cloudflare Gen 12 採用 Samsung PM9A3，Gen 13 配置 Samsung PM9D3a 7.68TB NVMe SSD。",
+        "named_counterparty": true,
+        "ticker": "005930.KS"
+      },
+      {
+        "id": "NET_033",
+        "name": "Micron Technology",
+        "relationship": "supplier",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://blog.cloudflare.com/gen-12-servers/"
+        ],
+        "commercial_status": "公開硬體規格／已部署",
+        "details": "Cloudflare Gen 12 採用 Micron 7450 Pro，Gen 13 配置 Micron 7600 Pro 7.68TB NVMe SSD。",
+        "named_counterparty": true,
+        "ticker": "MU"
+      },
+      {
+        "id": "NET_034",
+        "name": "Intel",
+        "relationship": "supplier",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://blog.cloudflare.com/gen-12-servers/"
+        ],
+        "commercial_status": "公開硬體規格／已部署",
+        "details": "Cloudflare Gen 12 使用 Intel E810 25GbE、Gen 13 配置 Intel E830 100GbE 網卡；非 CPU 供應商。",
+        "named_counterparty": true,
+        "ticker": "INTC"
+      },
+      {
+        "id": "NET_035",
+        "name": "NVIDIA",
+        "relationship": "supplier",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://blog.cloudflare.com/gen-12-servers/"
+        ],
+        "commercial_status": "公開硬體規格／已部署",
+        "details": "Cloudflare Gen 12 使用 NVIDIA Mellanox ConnectX-6 Lx、Gen 13 配置 ConnectX-6 Dx 網路介面卡。",
+        "named_counterparty": true,
+        "ticker": "NVDA"
+      },
+      {
+        "id": "NET_036",
+        "name": "ASPEED Technology",
+        "relationship": "supplier",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://blog.cloudflare.com/gen-12-servers/"
+        ],
+        "commercial_status": "公開硬體規格／已部署",
+        "details": "Cloudflare Gen 12 官方硬體配置列出 ASPEED AST2600 BMC 與 AST1060 硬體信任根晶片。",
+        "named_counterparty": true,
+        "ticker": "5274.TW"
+      },
+      {
+        "id": "NET_037",
+        "name": "Accenture",
+        "relationship": "partner",
+        "business_line": "CHANNEL",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/partners/global-system-integrators/"
+        ],
+        "commercial_status": "正式合作／技術整合",
+        "details": "Cloudflare 官方全球系統整合商名單列為合作夥伴，承接企業網路安全及 Zero Trust 整合專案。",
+        "named_counterparty": true,
+        "ticker": "ACN"
+      },
+      {
+        "id": "NET_038",
+        "name": "Kyndryl",
+        "relationship": "partner",
+        "business_line": "CHANNEL",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/partners/global-system-integrators/"
+        ],
+        "commercial_status": "正式合作／技術整合",
+        "details": "Cloudflare 全球系統整合夥伴，提供企業網路及安全轉型服務。",
+        "named_counterparty": true,
+        "ticker": "KD"
+      },
+      {
+        "id": "NET_039",
+        "name": "NTT",
+        "relationship": "partner",
+        "business_line": "CHANNEL",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/partners/global-system-integrators/"
+        ],
+        "commercial_status": "正式合作／技術整合",
+        "details": "Cloudflare 全球系統整合夥伴，提供網路與資安整合服務。",
+        "named_counterparty": true,
+        "ticker": "9432.T"
+      },
+      {
+        "id": "NET_040",
+        "name": "CrowdStrike",
+        "relationship": "partner",
+        "business_line": "ZERO",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/partners/technology-partners/crowdstrike/"
+        ],
+        "commercial_status": "正式合作／技術整合",
+        "details": "Cloudflare One 與 CrowdStrike Falcon Next-Gen SIEM／裝置安全狀態整合，支援聯合零信任防護。",
+        "named_counterparty": true,
+        "ticker": "CRWD"
+      },
+      {
+        "id": "NET_041",
+        "name": "Oracle",
+        "relationship": "partner",
+        "business_line": "NETWORK",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/partners/"
+        ],
+        "commercial_status": "正式合作／技術整合",
+        "details": "Cloudflare 與 Oracle Cloud Infrastructure 推出整合式邊緣網路及應用安全服務，並提供聯合採購途徑。",
+        "named_counterparty": true,
+        "ticker": "ORCL"
+      },
+      {
+        "id": "NET_042",
+        "name": "CDW",
+        "relationship": "partner",
+        "business_line": "CHANNEL",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/gusto/"
+        ],
+        "commercial_status": "正式合作／技術整合",
+        "details": "Cloudflare 官方 Gusto 客戶案例確認 CDW 參與 Cloudflare Access 導入，支援採購、上線及合規文件。",
+        "named_counterparty": true,
+        "ticker": "CDW"
+      },
+      {
+        "id": "NET_043",
+        "name": "JD Cloud",
+        "relationship": "partner",
+        "business_line": "DEVAI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/press/press-releases/2025/"
+        ],
+        "commercial_status": "正式合作／技術整合",
+        "details": "2025 年 12 月宣布合作，支援全球開發者部署與擴展 AI 推論。",
+        "named_counterparty": true
+      },
+      {
+        "id": "NET_044",
+        "name": "Akamai Technologies",
+        "relationship": "competitor",
+        "business_line": "NETWORK",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1477333/000147733326000016/cloud-20251231.htm"
+        ],
+        "commercial_status": "產品市場競爭",
+        "details": "Akamai CDN、邊緣安全與運算服務直接競爭。",
+        "named_counterparty": true,
+        "ticker": "AKAM"
+      },
+      {
+        "id": "NET_045",
+        "name": "Fastly",
+        "relationship": "competitor",
+        "business_line": "NETWORK",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1477333/000147733326000016/cloud-20251231.htm"
+        ],
+        "commercial_status": "產品市場競爭",
+        "details": "Fastly CDN、邊緣運算與應用安全產品競爭。",
+        "named_counterparty": true,
+        "ticker": "FSLY"
+      },
+      {
+        "id": "NET_046",
+        "name": "Zscaler",
+        "relationship": "competitor",
+        "business_line": "ZERO",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1477333/000147733326000016/cloud-20251231.htm"
+        ],
+        "commercial_status": "產品市場競爭",
+        "details": "Zscaler Zero Trust、SSE 與 SASE 服務直接競爭。",
+        "named_counterparty": true,
+        "ticker": "ZS"
+      },
+      {
+        "id": "NET_047",
+        "name": "Netskope",
+        "relationship": "competitor",
+        "business_line": "ZERO",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1477333/000147733326000016/cloud-20251231.htm"
+        ],
+        "commercial_status": "產品市場競爭",
+        "details": "Netskope SSE、SWG 與零信任產品競爭。",
+        "named_counterparty": true
+      },
+      {
+        "id": "NET_048",
+        "name": "Palo Alto Networks",
+        "relationship": "competitor",
+        "business_line": "ZERO",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1477333/000147733326000016/cloud-20251231.htm"
+        ],
+        "commercial_status": "產品市場競爭",
+        "details": "Prisma Access、SASE 與企業安全平台競爭。",
+        "named_counterparty": true,
+        "ticker": "PANW"
+      },
+      {
+        "id": "NET_049",
+        "name": "Fortinet",
+        "relationship": "competitor",
+        "business_line": "ZERO",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1477333/000147733326000016/cloud-20251231.htm"
+        ],
+        "commercial_status": "產品市場競爭",
+        "details": "FortiSASE、SD-WAN 與企業網路安全產品競爭。",
+        "named_counterparty": true,
+        "ticker": "FTNT"
+      },
+      {
+        "id": "NET_050",
+        "name": "Amazon Web Services",
+        "relationship": "competitor",
+        "business_line": "DEVAI",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1477333/000147733326000016/cloud-20251231.htm"
+        ],
+        "commercial_status": "產品市場競爭",
+        "details": "CloudFront、Lambda、S3 等 CDN、邊緣運算及儲存服務競爭。",
+        "named_counterparty": true,
+        "ticker": "AMZN"
+      },
+      {
+        "id": "NET_051",
+        "name": "Google",
+        "relationship": "competitor",
+        "business_line": "DEVAI",
+        "evidence_grade": "B",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1477333/000147733326000016/cloud-20251231.htm"
+        ],
+        "commercial_status": "產品市場競爭",
+        "details": "Google Cloud CDN、Cloud Run 與邊緣開發服務競爭。",
+        "named_counterparty": true,
+        "ticker": "GOOGL"
+      },
+      {
+        "id": "NET_052",
+        "name": "First Wave Technology",
+        "relationship": "partner",
+        "business_line": "CHANNEL",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/case-studies/comfortdelgro/"
+        ],
+        "commercial_status": "正式合作／技術整合",
+        "details": "Cloudflare 官方 ComfortDelGro 案例具名確認 First Wave Technology 提供 API Shield 導入與 Cloudflare 全託管服務。",
+        "named_counterparty": true
+      },
+      {
+        "id": "NET_053",
+        "name": "Deutsche Telekom",
+        "relationship": "partner",
+        "business_line": "CHANNEL",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/press/press-releases/2026/cloudflare-and-deutsche-telekom-join-forces-for-a-secure-and-resilient-internet/"
+        ],
+        "commercial_status": "正式合作／技術整合",
+        "details": "2026 年 9 月正式宣布策略合作，Deutsche Telekom 將 Cloudflare 安全及連接服務納入歐洲企業產品組合並直接互連網路。",
+        "named_counterparty": true,
+        "ticker": "DTE.DE"
+      },
+      {
+        "id": "NET_054",
+        "name": "SK Hynix",
+        "relationship": "supplier",
+        "business_line": "INFRA",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://cloudflare.tv/this-week-in-net/inside-cloudflares-gen-13-servers-trading-cache-for-cores/xvm92Oqv"
+        ],
+        "commercial_status": "公開硬體規格／已部署",
+        "details": "Cloudflare 工程團隊在 Gen 13 伺服器訪談中具名確認與 SK Hynix 記憶體供應商保持直接供應關係。",
+        "named_counterparty": true,
+        "ticker": "000660.KS"
+      },
+      {
+        "id": "NET_055",
+        "name": "Presidio",
+        "relationship": "partner",
+        "business_line": "CHANNEL",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/press/press-releases/2026/cloudflare-launches-design-partner-designation-to-accelerate-secure-ai-and-seamless-sase-adoption/"
+        ],
+        "commercial_status": "正式合作／技術整合",
+        "details": "2026 年 6 月列為 Cloudflare One Design Partner，提供 SASE 與安全 AI 導入服務。",
+        "named_counterparty": true
+      },
+      {
+        "id": "NET_056",
+        "name": "OpenAI",
+        "relationship": "partner",
+        "business_line": "DEVAI",
+        "evidence_grade": "A",
+        "source_urls": [
+          "https://www.cloudflare.com/press/press-releases/2026/cloudflare-partners-with-openai-daybreak-models-to-redefine-vulnerability-management-with-ai-powered-edge-defense/"
+        ],
+        "commercial_status": "早期存取／正式技術合作",
+        "details": "2026 年 9 月宣布 AI 邊緣防護及漏洞管理合作，整合模型能力與 Cloudflare 邊緣防禦。",
+        "named_counterparty": true
+      }
+    ],
+    "research_metadata": {
+      "source_profile_commit": "da93c81d",
+      "source_profile_sha": "d180fb3e1578593d0f4e9976b411db98612fd74e",
+      "beneficiary_relationships": [
+        {
+          "node_id": "NET_031",
+          "name": "Advanced Micro Devices",
+          "details": "Cloudflare Gen 12／Gen 13 已公開使用 AMD EPYC 處理器，形成實際伺服器 CPU 採購需求。",
+          "source_urls": [
+            "https://blog.cloudflare.com/gen-12-servers/",
+            "https://blog.cloudflare.com/gen13-config/"
+          ]
+        },
+        {
+          "node_id": "NET_032",
+          "name": "Samsung Electronics",
+          "details": "Gen 12 SSD 配置採用 Samsung PM9A3，對應已公開的儲存硬體需求。",
+          "source_urls": [
+            "https://blog.cloudflare.com/gen-12-servers/"
+          ]
+        },
+        {
+          "node_id": "NET_033",
+          "name": "Micron Technology",
+          "details": "Gen 12 SSD 配置採用 Micron 7450 Pro，對應已公開的儲存硬體需求。",
+          "source_urls": [
+            "https://blog.cloudflare.com/gen-12-servers/"
+          ]
+        },
+        {
+          "node_id": "NET_034",
+          "name": "Intel",
+          "details": "Gen 12 網卡配置使用 Intel E810；僅計入網路介面卡供應鏈。",
+          "source_urls": [
+            "https://blog.cloudflare.com/gen-12-servers/"
+          ]
+        },
+        {
+          "node_id": "NET_035",
+          "name": "NVIDIA",
+          "details": "Gen 12 網卡配置使用 NVIDIA Mellanox ConnectX-6 Lx；僅計入網卡供應鏈。",
+          "source_urls": [
+            "https://blog.cloudflare.com/gen-12-servers/"
+          ]
+        },
+        {
+          "node_id": "NET_036",
+          "name": "ASPEED Technology",
+          "details": "Gen 12 BMC 與硬體信任根晶片配置使用 ASPEED 型號。",
+          "source_urls": [
+            "https://blog.cloudflare.com/gen-12-servers/"
+          ]
+        },
+        {
+          "node_id": "NET_042",
+          "name": "CDW",
+          "details": "Gusto 客戶案例確認 CDW 承接 Cloudflare Access 部署、採購及導入服務。",
+          "source_urls": [
+            "https://www.cloudflare.com/case-studies/gusto/"
+          ]
+        },
+        {
+          "node_id": "NET_037",
+          "name": "Accenture",
+          "details": "Cloudflare 官方 GSI 夥伴，可透過共同企業專案承接導入與諮詢服務；未揭露單筆合約金額。",
+          "source_urls": [
+            "https://www.cloudflare.com/partners/global-system-integrators/"
+          ]
+        },
+        {
+          "node_id": "NET_038",
+          "name": "Kyndryl",
+          "details": "Cloudflare 官方 GSI 夥伴，可承接客戶網路與資安整合專案；未揭露單筆合約金額。",
+          "source_urls": [
+            "https://www.cloudflare.com/partners/global-system-integrators/"
+          ]
+        },
+        {
+          "node_id": "NET_039",
+          "name": "NTT",
+          "details": "Cloudflare 官方 GSI 夥伴，可承接企業網路與安全部署專案；未揭露單筆合約金額。",
+          "source_urls": [
+            "https://www.cloudflare.com/partners/global-system-integrators/"
+          ]
+        },
+        {
+          "node_id": "NET_052",
+          "name": "First Wave Technology",
+          "details": "ComfortDelGro 客戶案例確認 First Wave Technology 承接 Cloudflare API Shield 部署及託管服務。",
+          "source_urls": [
+            "https://www.cloudflare.com/case-studies/comfortdelgro/"
+          ]
+        },
+        {
+          "node_id": "NET_053",
+          "name": "Deutsche Telekom",
+          "details": "正式宣布將 Cloudflare 產品納入歐洲企業通路，具備聯合銷售收入機會。",
+          "source_urls": [
+            "https://www.cloudflare.com/press/press-releases/2026/cloudflare-and-deutsche-telekom-join-forces-for-a-secure-and-resilient-internet/"
+          ]
+        },
+        {
+          "node_id": "NET_054",
+          "name": "SK Hynix",
+          "details": "Cloudflare 工程團隊具名確認 SK Hynix 為記憶體供應合作對象。",
+          "source_urls": [
+            "https://cloudflare.tv/this-week-in-net/inside-cloudflares-gen-13-servers-trading-cache-for-cores/xvm92Oqv"
+          ]
+        },
+        {
+          "node_id": "NET_055",
+          "name": "Presidio",
+          "details": "Cloudflare One Design Partner，承接 SASE 企業導入與顧問服務。",
+          "source_urls": [
+            "https://www.cloudflare.com/press/press-releases/2026/cloudflare-launches-design-partner-designation-to-accelerate-secure-ai-and-seamless-sase-adoption/"
+          ]
+        }
+      ],
+      "evidence_grades": {
+        "A": "Cloudflare 官方具名客戶案例、硬體配置揭露或正式合作公告",
+        "B": "官方案例彙總或官方市場競爭資訊"
+      },
+      "count_by_relationship": {
+        "customer": 30,
+        "supplier": 7,
+        "partner": 11,
+        "competitor": 8
+      },
+      "business_line_count": 6,
+      "node_count": 56
+    }
   }
 }
